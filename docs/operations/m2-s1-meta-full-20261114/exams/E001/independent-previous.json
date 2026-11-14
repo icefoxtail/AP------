@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E001",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+  "reviewSha256": "90829ebb54f7b4832761be2f57ab546babe32af2051bffb821aef36e5aecfef6",
+  "fourSlotSha256": "866a2313c5f76843e0e829c8aac0aca5e2ebeeb3c7552a33c8c23f566a900883",
+  "sampleOrdinals": [
+    10,
+    16,
+    20
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "status": "PASS",
+      "findings": "함수 사분면 조건에서 a>0 및 분모 b≠0을 통해 b<0을 얻고, 둘째 직선의 기울기·절편 부호를 판정한다. goal 사분면과 method 부호/기울기/절편은 실제 목표와 수단을 구별한다. 현 RPM 증가·감소 leaf에 강제하지 않은 gap 판단이 타당하다.",
+      "sourceRead": "Full stem, choices, existing solution and author semantic/4slot inspected. Q20 original image visually inspected. No additional mathematical R1/R2 solve claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE_BUCKET_WITH_LEVEL_CONSERVATION_NOTE"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "status": "PASS",
+      "findings": "주어진 (3,2)를 각 식에 대입하여 성립하는 두 식을 고르는 직접 정의 과제이다. goal 일차방정식+판정, method 대입의 분리가 정확하다. method 1개 경고는 이 문제의 실제 단일 방법에 부합하므로 허용한다.",
+      "sourceRead": "Full stem, choices, existing solution and author semantic/4slot inspected. Q20 original image visually inspected. No additional mathematical R1/R2 solve claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+      "status": "PASS_WITH_CONTENT_DEBT",
+      "findings": "실제 q20.png에서 교점(2,3), 양의 기울기 직선, 음의 기울기 직선을 직접 확인했다. 식 x-y=a는 항상 기울기+1이므로 그림과 충돌한다. author가 이를 별도 contentDebt와 UNRESOLVED로 둔 처리가 정확하다. method 교점·대입은 실제 해설에 있으며 정답 재생성이나 그림 수정은 하지 않았다. goal 합의 인용 a+b는 정확하고 대상은 미정계수이며 필요 시 계수 용어를 함께 두면 더 명시적이다.",
+      "sourceRead": "Full stem, choices, existing solution and author semantic/4slot inspected. Q20 original image visually inspected. No additional mathematical R1/R2 solve claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b65d4b70db484e58dbd4b7bdd98ee11cc2e3d4aa4ae08536d766df146d92b729",
+      "observedFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "그래프에서 변화율을 읽은 후 평행 성질에 연결한다. 기존 하/2 경계는 허용."
+      },
+      "status": "AGREE",
+      "recommendedLevel": "하",
+      "recommendedBucket": 2,
+      "reason": "실제 q06 그림은 (0,2),(1,4)를 지나고 기울기2이다. 기울기 판독과 평행 성질 연결의 두 통상 단계여서 bucket2, 기존 하와 B12 경계 허용에 동의."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6d05cab1f8a1ab9cfa63ef1ac5ca90721af0b609a6229c499d835e39164e1d47",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 증가량 쌍을 비례 관계로 연결하므로 통상적 2단계."
+      },
+      "status": "AGREE",
+      "recommendedLevel": "중",
+      "recommendedBucket": 2,
+      "reason": "감소율 -1/2를 얻고 입력 변화량8에 적용한다. 절편 계산이나 새로운 식 구성은 없지만 두 증가량 쌍을 연결하므로 중/2 B12가 가능하며 유지에 동의."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "사분면 조건의 부호화와 다른 식으로 전달하는 연속 추론. 새 발상 없이 표준 성질 결합이어서 기존4→3 제안."
+      },
+      "status": "AGREE_BUCKET_RECOMMEND_KEEP_EXISTING_LEVEL",
+      "recommendedLevel": "상",
+      "recommendedBucket": 3,
+      "reason": "사분면→계수부호→분모의 비영 조건→다른 직선의 사분면이라는 표준 연결이다. bucket4보다3이 타당하다. 기존 level상도 3단계와 양립하므로 독립 level판정의 보수 원칙상 상 보존을 권고하며, numeric 하향에 연동해 중으로 변경하지 않는다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "observedFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해를 대입만 하는 직접 정의 문항으로 기존 중/2에서 하/1 교정 제안."
+      },
+      "status": "AGREE",
+      "recommendedLevel": "하",
+      "recommendedBucket": 1,
+      "reason": "주어진 해를 네 식에 대입하는 직접 검산만 수행한다. 두 방정식을 새로 해결하지 않으므로 하/1 B12로의 교정에 동의."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안."
+      },
+      "status": "AGREE_BUCKET_RECOMMEND_KEEP_EXISTING_LEVEL",
+      "recommendedLevel": "상",
+      "recommendedBucket": 3,
+      "reason": "평행과 일치의 조건을 각기 다른 계수비 관계로 바꾸고 연립한다. 새 발상이나 비정형 분기는 없으므로 numeric4→3에 동의한다. 기존 level상은 이 결합 난도와 양립하므로 상 보존을 권고한다."
+    }
+  ],
+  "status": "PASS_WITH_CONTENT_DEBT_AND_LEVEL_CONSERVATION_NOTE",
+  "at": "2026-11-14T08:45:37.229172+00:00"
+}

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E001",
+  "sourceBlob": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+  "sourceSha256": "df4dec42d795e06c0641d1fd1981143d201560f13ecc278276aad56390915e3a",
+  "reviewSha256": "a9a6537f50359aacfa6d13179cd1df8618f54dbc65bca6198d6004eda0c00024",
+  "fourSlotSha256": "e24bb420d3c019337e73797aa8ef94837fd0297a361da9c8108d3a609a40000d",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#2 only 3 distinct terms",
+    "#2 method has 1 term",
+    "#3 only 4 distinct terms",
+    "#4 only 4 distinct terms",
+    "#4 method has 1 term",
+    "#5 only 4 distinct terms",
+    "#6 only 4 distinct terms",
+    "#7 only 4 distinct terms",
+    "#15 only 4 distinct terms",
+    "#16 method has 1 term",
+    "#17 only 3 distinct terms",
+    "#17 method has 1 term",
+    "#19 only 4 distinct terms",
+    "#23 only 4 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    6,
+    7,
+    10,
+    16,
+    21
+  ],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 129,
+    "fail": 0,
+    "warn": 14
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+  "finalSourceBlob": "66f891d2103d1995ab88fb73d1a606bed91ad1b2",
+  "finalSourceSha256": "4bd93d4251c46e83158bc192b4e4a04dc08ed075137c8289603526651246eb83",
+  "finalFourSlotSha256": "3592860a065fc604883550d18cc4ffd3082f1a72066664de251da3590550bc22",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#2 only 3 distinct terms",
+      "#2 method has 1 term",
+      "#3 only 4 distinct terms",
+      "#4 only 4 distinct terms",
+      "#4 method has 1 term",
+      "#5 only 4 distinct terms",
+      "#6 only 4 distinct terms",
+      "#7 only 4 distinct terms",
+      "#15 only 4 distinct terms",
+      "#16 method has 1 term",
+      "#17 only 3 distinct terms",
+      "#17 method has 1 term",
+      "#19 only 4 distinct terms",
+      "#23 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 129
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b65d4b70db484e58dbd4b7bdd98ee11cc2e3d4aa4ae08536d766df146d92b729",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "그래프에서 변화율을 읽은 후 평행 성질에 연결한다. 기존 하/2 경계는 허용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6d05cab1f8a1ab9cfa63ef1ac5ca90721af0b609a6229c499d835e39164e1d47",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "두 증가량 쌍을 비례 관계로 연결하므로 통상적 2단계."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "사분면 조건의 부호화와 다른 식으로 전달하는 연속 추론. 새 발상 없이 표준 성질 결합이어서 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "사분면 조건의 부호화와 다른 식으로 전달하는 연속 추론. 새 발상 없이 표준 성질 결합이어서 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "사분면 조건의 부호화와 다른 식으로 전달하는 연속 추론. 새 발상 없이 표준 성질 결합이어서 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9439909813a99b6f50e5c15fe07f652989de62371894b86e1d2f8e4168ccaf58",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "사분면 조건의 부호화와 다른 식으로 전달하는 연속 추론. 새 발상 없이 표준 성질 결합이어서 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "주어진 해를 대입만 하는 직접 정의 문항으로 기존 중/2에서 하/1 교정 제안."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "주어진 해를 대입만 하는 직접 정의 문항으로 기존 중/2에서 하/1 교정 제안."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "주어진 해를 대입만 하는 직접 정의 문항으로 기존 중/2에서 하/1 교정 제안."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b16c85f54cbbbc4cf362a53703e2a1fa3bee3c202058534d055de6291c60f394",
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "NORMAL",
+      "reason": "주어진 해를 대입만 하는 직접 정의 문항으로 기존 중/2에서 하/1 교정 제안."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "category",
+      "before": "연립일차방정식",
+      "after": "일차함수와 그래프",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "standardUnitKey",
+      "before": "M2-03",
+      "after": "M2-04",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "standardUnit",
+      "before": "연립일차방정식",
+      "after": "일차함수와 그래프",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "standardUnitOrder",
+      "before": 3,
+      "after": 4,
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "subUnitKey",
+      "before": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "subUnit",
+      "before": "연립일차방정식",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "field": "integrationPattern",
+      "before": "INTERDEPENDENT",
+      "after": "SEQUENTIAL",
+      "reason": "두 위치 관계를 서로 다른 계수비로 옮겨 연립한다. 표준 관계 결합으로 기존4→3 제안. 기존 상은 두 조건 이상을 다루는 학급 내 상대적 난도로 독립 유지하며 숫자3에 기계 연동하지 않는다."
+    }
+  ]
+}
