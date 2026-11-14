@@ -78,7 +78,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 2,
@@ -115,7 +116,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "tan B=AC/BC=2/3이고 AC=8이므로 2에 해당하는 길이가 8이다. 따라서 BC=12이다. 피타고라스 정리로 AB²=AC²+BC²=8²+12²=64+144=208=16·13이므로 AB=4√13 cm이다. 따라서 ⑤이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "주어진 tan 비로 나머지 한 변을 구하고 피타고라스 정리로 빗변을 구한다.",
@@ -136,9 +137,7 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -161,7 +160,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 3,
@@ -239,7 +239,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 4,
@@ -317,7 +318,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 5,
@@ -355,7 +357,7 @@ window.questionBank = [
     "solution": "직각삼각형 ABC에서 AB²+AC²=BC²이므로 AB²+8²=10², AB=6이다. △ABH와 △ABC는 각각 H와 A가 직각이고, ∠BAH=∠ACB이므로 닮음이다. 따라서 sin x=sin∠C=AB/BC=6/10=3/5이다. 또 △AHC와 △ABC가 닮음이므로 y=∠B이고 cos y=AB/BC=3/5이다. 합은 3/5+3/5=6/5이므로 ③이다.",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "피타고라스 정리, 닮음으로 각을 대응시키고 두 삼각비를 더한다.",
     "levelReason": "중: 피타고라스 정리, 닮음으로 각을 대응시키고 두 삼각비를 더한다.",
@@ -375,10 +377,7 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_SIMILARITY"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY_AA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -402,7 +401,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q05-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q05-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 6,
@@ -458,11 +458,8 @@ window.questionBank = [
       "l4": "30°·45°·60°"
     },
     "rpmSemanticStatus": "FINAL",
-    "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -485,7 +482,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 7,
@@ -521,9 +519,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "삼각형의 내각의 합으로 ∠B=180°−105°−45°=30°이다. △ABH에서 ∠B=30°인 30°-60°-90° 삼각형이므로 BH=√3·AH이다. △AHC는 ∠H=90°, ∠C=45°라서 AH=HC이다. BC=BH+HC=10이므로 (√3+1)AH=10. AH=10/(√3+1)=10(√3−1)/2=5(√3−1) cm이다. 따라서 ④이다.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "높이 보조선을 그어 두 특수직각삼각형을 만들고 길이를 합친 뒤 식을 유리화한다.",
     "levelReason": "중: 높이 보조선을 그어 두 특수직각삼각형을 만들고 길이를 합친 뒤 식을 유리화한다.",
@@ -542,8 +540,8 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
@@ -565,7 +563,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q07-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q07-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 8,
@@ -602,7 +601,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "그림에서 ∠B=90°이고 ∠A=60°이다. tan 60°=BC/AB이므로 √3=BC/√3, 따라서 BC=3이다. △BCD에서는 ∠C=90°, ∠D=45°이므로 ∠B=45°이고 BC=CD=3이다. 피타고라스 정리로 BD²=BC²+CD²=3²+3²=18이므로 BD=3√2이다. 따라서 ①이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 직각삼각형에서 각과 변을 순차적으로 구하고 마지막에 피타고라스 정리를 쓴다.",
@@ -623,9 +622,7 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_ISOSCELES_TRIANGLE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -649,7 +646,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q08-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q08-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 9,
@@ -686,7 +684,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "반지름 OA=OD=1이다. △OAB에서 ∠B=90°이므로 sin x=AB/OA=AB, cos x=OB/OA=OB이다. 또 x와 y는 서로 여각이므로 sin y=cos x=OB이고 cos y=sin x=AB이다. △ODC는 D에서 직각이고 OD=1, ∠O=x이므로 tan x=CD/OD=CD이다. 그러므로 cos y=OB라고 한 ②만 옳지 않다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "단위원·직각삼각형·여각 관계를 그림에서 구분한다.",
@@ -707,9 +705,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "DIRECT_ACTIVE",
@@ -728,7 +726,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 10,
@@ -807,7 +806,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 11,
@@ -842,10 +842,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "A=60°일 때 tan A=√3>1이므로 tan A의 최댓값이 1이라는 ②의 주장은 틀리다. 또 A=90°에서는 tan A가 정의되지 않는다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": "UNKNOWN",
+    "difficultyConfidence": "UNKNOWN",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN",
     "difficultyReason": "정의역 끝점에서 tan이 정의되지 않음을 점검하고 보기의 최대값 주장을 판단한다.",
     "levelReason": "중: 정의역 끝점에서 tan이 정의되지 않음을 점검하고 보기의 최대값 주장을 판단한다.",
     "sourceQid": 11,
@@ -862,10 +862,8 @@ window.questionBank = [
       "l4": "삼각비의 관계"
     },
     "rpmSemanticStatus": "FINAL",
-    "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
@@ -885,7 +883,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 12,
@@ -922,10 +921,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "표에서 sin 12°=0.2079, cos 15°=0.9659, tan 11°=0.1944이다. 따라서 0.2079+0.9659−0.1944=0.9794이다. 정답은 ②이다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "삼각비 표에서 세 값을 찾아 덧셈·뺄셈한다.",
     "levelReason": "중: 삼각비 표에서 세 값을 찾아 덧셈·뺄셈한다.",
     "sourceQid": 12,
@@ -943,7 +942,6 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -965,7 +963,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 13,
@@ -1044,7 +1043,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 14,
@@ -1080,8 +1080,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "수평 거리를 40 m라 한다. A에서 백화점 밑 C를 내려다보는 각이 45°이므로 A와 C의 높이 차는 40 tan45°=40 m이다. A와 B의 높이 차는 올려다보는 각 60°에서 40 tan60°=40√3 m이다. 백화점 높이는 두 차의 합 40+40√3이다. √3=1.7을 쓰면 40(1+1.7)=108 m이므로 ⑤이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "앙각·부각을 두 직각삼각형으로 나누어 높이 차를 구해 합친다.",
@@ -1101,10 +1101,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1124,7 +1124,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q14-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q14-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 15,
@@ -1161,7 +1162,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "수평 거리 10 m, 올려다보는 각 20°이므로 눈높이와 나무 꼭대기 사이의 높이 차를 h라 하면 tan20°=h/10이다. 주어진 tan20°=0.36으로부터 h=10·0.36=3.6 m이다. 나무 높이는 눈높이 1.6 m를 더해 3.6+1.6=5.2 m이므로 ③이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "tan으로 시선 높이차를 구하고 눈높이를 더한다.",
@@ -1184,7 +1185,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1203,7 +1204,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 16,
@@ -1239,10 +1241,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "C에서 AB에 수선을 내려 발을 H라 한다. △ACH에서 AC=6은 빗변이고 ∠A=30°이므로 CH는 30°의 맞은편 변이다. 30°-60°-90° 삼각형의 짧은 변은 빗변의 절반이므로 CH=3 cm이다. 삼각형 넓이는 1/2·AB·CH=1/2·8·3=12 cm²이므로 ④이다.",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "보조 높이를 특수각으로 구한 뒤 삼각형 넓이식을 사용한다.",
     "levelReason": "중: 보조 높이를 특수각으로 구한 뒤 삼각형 넓이식을 사용한다.",
     "sourceQid": 16,
@@ -1260,12 +1262,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1287,7 +1287,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q16-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q16-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 17,
@@ -1323,8 +1324,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "두 대각선이 만나는 점을 O라 하고 AC를 네 삼각형의 밑변으로 나누어 넓이를 더한다. 각 삼각형의 높이는 해당 BD 조각의 길이에 sin45°를 곱한 값이다. 네 넓이의 합은 1/2·(AO+OC)·(BO+OD)·sin45°=1/2·AC·BD·sin45°이다. 따라서 1/2·12·10·(√2/2)=30√2 cm²이다. ⑤이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대각선으로 나뉜 네 삼각형의 넓이를 합쳐 곱셈식으로 묶는다.",
@@ -1345,11 +1346,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1371,7 +1370,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 18,
@@ -1408,7 +1408,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "주어진 조건 AB=6, BC=8, ∠ABC=60°, AD=2√3, DC=4, ∠ADC=150°로 계산한다. A에서 BC에 수선 AH를 내리면 △ABH에서 AB=6은 빗변이고 ∠ABH=60°이므로 30°-60°-90°의 비에서 AH=3√3이다. △ABC의 넓이는 1/2·8·3√3=12√3이다. 다음으로 AD를 D 너머로 연장하고 C에서 그 직선에 내린 수선의 발을 E라 한다. ∠CDE=30°이고 △CDE의 빗변 DC=4이므로 30°-60°-90°의 짧은 변 CE=2이다. △ADC의 넓이는 1/2·AD·CE=1/2·2√3·2=2√3이다. 사각형 넓이는 12√3+2√3=14√3 cm²이므로 ③이다.",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 삼각형을 각각 보조 수선으로 나누어 넓이를 구하고 합친다. q18은 source 표기 복구가 아닌 명시 ALIVE 조건에 대한 대체 풀이.",
@@ -1429,11 +1429,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1456,7 +1454,8 @@ window.questionBank = [
       "noH22IdentityClaim": true
     },
     "sourceDefect": "원본 q18 그림의 좌측 AB 길이표기가 캔버스 밖에서 잘려 판독 불가. source-js 및 PNG는 보존하고, 명시 조건을 제시한 ALIVE 대체를 사용.",
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q18-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 19,
@@ -1487,10 +1486,10 @@ window.questionBank = [
     "choices": [],
     "answer": "39/20",
     "solution": "그림에서 직각삼각형 ABC의 빗변 AC=5, AB=4, BC=3이다. sin A=BC/AC=3/5, cos C=BC/AC=3/5, tan A=BC/AB=3/4이다. 따라서 합은 3/5+3/5+3/4=6/5+3/4=24/20+15/20=39/20이다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "직각삼각형의 3-4-5 변으로 세 삼각비를 계산해 분수를 더한다.",
     "levelReason": "중: 직각삼각형의 3-4-5 변으로 세 삼각비를 계산해 분수를 더한다.",
     "sourceQid": 19,
@@ -1530,7 +1529,8 @@ window.questionBank = [
       "bindingStatus": "MISSING",
       "displayOnly": true,
       "noH22IdentityClaim": true
-    }
+    },
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 20,
@@ -1543,8 +1543,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "standardSubUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
@@ -1561,8 +1561,8 @@ window.questionBank = [
     "choices": [],
     "answer": "4(√3−1) cm",
     "solution": "△ADC에서 ∠ACD=90°, ∠ADC=45°이므로 ∠DAC=45°이고 두 직각변이 같다. 따라서 DC=AC=4이다. △ABC는 C에서 직각이고 ∠B=30°이며 AC=4는 30°의 맞은편 변이다. 30°-60°-90°의 변의 비로 BC=4√3이다. 그림에서 D는 B와 C 사이에 있으므로 BD=BC−DC=4√3−4=4(√3−1) cm이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "30°-60°-90°와 45°-45°-90°에서 길이를 구해 빼야 한다.",
@@ -1582,10 +1582,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "DIRECT_ACTIVE",
@@ -1605,7 +1605,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q20-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO"
   },
   {
     "id": 21,
@@ -1636,10 +1637,10 @@ window.questionBank = [
     "choices": [],
     "answer": "500(1+√3) m",
     "solution": "∠C=180°−60°−75°=45°이다. A에서 BC에 수선을 내려 발을 H라 한다. △ABH에서 AB=1000 m는 빗변이고 ∠B=60°이므로 30°-60°-90°의 변의 비에서 BH=500 m, AH=500√3 m이다. △AHC는 H가 직각이고 C=45°이므로 HC=AH=500√3 m이다. 따라서 BC=BH+HC=500+500√3=500(1+√3) m이다.",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "각의 합, 30°-60°-90°와 45°-45°-90° 두 삼각형의 길이를 구해 합친다.",
     "levelReason": "상: 각의 합, 30°-60°-90°와 45°-45°-90° 두 삼각형의 길이를 구해 합친다.",
     "sourceQid": 21,
@@ -1657,8 +1658,8 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
@@ -1680,7 +1681,8 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q21-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   },
   {
     "id": 22,
@@ -1710,8 +1712,8 @@ window.questionBank = [
     "choices": [],
     "answer": "H=h+d tanθ",
     "solution": "건물 밑을 C, 꼭대기를 T, 관측자의 눈 또는 클리노미터 위치를 A라 한다. 줄자로 수평한 지면에서 건물 밑 C까지의 수평 거리 d를 재고, 클리노미터로 수평선과 꼭대기 방향 시선 AT 사이의 앙각 θ를 잰다. 기구의 높이(눈높이) h도 잰다. 건물이 수직이고 지면이 수평이라고 보면 직각삼각형에서 tanθ=(건물 높이 H−h)/d이다. 따라서 H=h+d tanθ이다. 거리 d, 각 θ, 기구 높이 h를 실제로 측정해 이 식에 넣으면 건물 높이를 구할 수 있다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "측정 가능한 거리·앙각·기구 높이를 모델링해 tan 식을 구성한다.",
@@ -1734,7 +1736,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1754,6 +1756,7 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q22-solution.svg",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION"
   }
 ];

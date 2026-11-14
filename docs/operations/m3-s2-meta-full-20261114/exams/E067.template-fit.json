@@ -1,0 +1,167 @@
+{
+  "examId": "E067",
+  "author": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "at": "2026-11-14T11:17:48.923826+00:00",
+  "basis": "official resolver candidate definitions inspected after own source-first freeze; no old item metadata",
+  "items": [
+    {
+      "ordinal": 1,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "주어진 세 변을 기준각별 sin/cos/tan 정의로 직접 표현하여 옳은 비를 판정한다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 2,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "tanB=8/BC로 한 변을 복원하고 같은 직각삼각형의 빗변을 계산한다. 목표가 직접 길이이며 넓이·다른 대상량으로 넘어가지 않는다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 3,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "0°·30°·45°·60°·90°의 삼각비 참거짓을 판정하여 특수각 정의와 정확히 맞는다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 4,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "특수각30°·60°의 값을 주어진 식에 직접 대입하는 계산이다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 5,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "닮음으로 기준각x,y를 큰 삼각형 각에 대응시킨 뒤 두 삼각비를 변의 비로 변환한다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 6,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      ],
+      "reason": "실제 해설은45°두각의등변성과피타고라스만사용하며삼각비식이나주어진삼각비를사용하지않는다. 목표가길이라는이유로삼각비사용을명시한DIRECT정의에강제투영하지않는다.",
+      "requiredDefinition": "특수각 직각삼각형의 등변·피타고라스 또는 특수변비로 길이를 결정하는 정의. 삼각비 계산 자체가 실제 풀이에 필요하지 않는 경우를 명시해야 한다."
+    },
+    {
+      "ordinal": 7,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "두 직각삼각형에서 BH=√3h,HC=h를 연결하여 목표 높이h를 구한다. 연결된 직각삼각형에서 직접 높이를 산출하는 정의가 맞으며 다른 도형량으로 넘어가지 않아CHAINED보다DIRECT다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 8,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "첫 삼각형의 삼각비로BC=3을 구한 뒤 다른 직각삼각형에서 등변과 피타고라스로BD를 계산한다. 중간 삼각비 결과가 다른 도형의 길이 계산으로 이어진다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 9,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "단위 사분원의 변 길이에 사인·코사인·탄젠트 정의를 대응하고 여각으로 두 삼각비를 변환한다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 10,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "OA=1인 직각삼각형에서sin55°=AB/OA라는 정의로 세로좌표0.8192를 읽는다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 11,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "source범위에90°를포함하지만tan90°는미정의여서유일정답진술의끝점이모호하다. root지시에따라기계후보가있어도source-verified prerequisite보류."
+    },
+    {
+      "ordinal": 12,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TPL_TRIG_RATIO_BASIC_RELATION"
+      ],
+      "reason": "표의행·열에서세값을조회하고주어진식에넣는다. 직각삼각형변·각을비로변환하거나한삼각비를다른삼각비로변환하는실제단계가없어BASIC_RELATION의internalSkeleton과맞지않는다.",
+      "requiredDefinition": "삼각비표에서 지정된 각과 함수의 값을 판독한 뒤 식의 값을 계산하거나 수치 관계를 비교하는 정의."
+    },
+    {
+      "ordinal": 13,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "한 관측각15°와 빗변200으로 높이차 식200sin15°를 직접 만든다. 두 관측점이나 공통 미지량 연립이 없어SHARED_HEIGHT가 아니다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 14,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "알려진 공통 수평거리40으로 위·아래 높이를 각기 직접 산출하고 합한다. 공통 미지량에 대한 두 식을 연립하지 않으므로DIRECT가 정확하다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 15,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "거리10과앙각20°로상대높이를직접계산하고알려진눈높이1.6을더한다. 관측점은하나이며공통미지량연립이없다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 16,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로높이CH=3을먼저구한뒤삼각형넓이12로연결하므로CHAINED다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 17,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로대각선조각의높이를표현하여네삼각형의넓이합으로연결하는정의에맞는다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 18,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "60°·30°삼각형의높이를구한뒤두삼각형의넓이합으로사각형넓이를구하므로CHAINED다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 19,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "주어진3-4-5변을정의비로바꾸어세삼각비의합을직접구한다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 20,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "공통높이4인연결된특수각직각삼각형의변비로BC와DC를산출하여목표BD를구한다. 넓이·부피등다른량으로넘어가지않는다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 21,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "AB1000과60°에서공통높이AH를바로구할수있고45°쪽HC를이어직접계산한다. 공통미지량을동시에연립해야하는SHARED_HEIGHT와구별된다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    },
+    {
+      "ordinal": 22,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "한관측점에서d,h,θ를측정하여H=h+d tanθ라는직접높이측정식을설계한다. 두관측점·두각의공통미지량연립이아니다.",
+      "bindingNote": "semantic fit only; unresolved exact2022 binding or family selection registration is root resolver debt"
+    }
+  ]
+}

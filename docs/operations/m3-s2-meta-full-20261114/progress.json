@@ -3324,9 +3324,10 @@
       "exactRpmSemanticHoldQuestionCount": 0,
       "exactRpmSemanticHoldQuestionUids": [],
       "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
-      "commitParent": "3ea27aca2440ecaeb992c706013c2464844dc0e2",
+      "commitParent": "46145196e7ee93aa1c29336aacb7fa8e10f0cb84",
       "explicitDifficultyHoldQuestionCount": 0,
-      "explicitDifficultyHoldQuestionUids": []
+      "explicitDifficultyHoldQuestionUids": [],
+      "localPackagingParent": "3ea27aca2440ecaeb992c706013c2464844dc0e2"
     },
     {
       "id": "E066",
@@ -3375,14 +3376,15 @@
       "exactRpmSemanticHoldQuestionCount": 0,
       "exactRpmSemanticHoldQuestionUids": [],
       "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
-      "commitParent": "acb4e66d6e4f2138f38168852ed09e83c9cbe58f",
+      "commitParent": "731a0abac9ff38b3305e093f9fc6493b34d1676a",
       "explicitDifficultyHoldQuestionCount": 0,
-      "explicitDifficultyHoldQuestionUids": []
+      "explicitDifficultyHoldQuestionUids": [],
+      "localPackagingParent": "acb4e66d6e4f2138f38168852ed09e83c9cbe58f"
     },
     {
       "id": "E067",
-      "owner": "a",
-      "reviewer": "b",
+      "owner": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+      "reviewer": "GPT_ROOT_00FBAC4C0777",
       "sourcePath": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
       "sourceArchiveFile": "original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
       "year": 2020,
@@ -3396,7 +3398,43 @@
       "uidDigest": "ec91c469008d455c8961b420a2111010b615be00cd76f9aba70a8be995e8f08e",
       "existing4slotPath": null,
       "existing4slotSourceBlob": null,
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "a",
+        "reviewer": "b"
+      },
+      "reviewedQuestionCount": 22,
+      "decisions": {
+        "CORRECT": 21,
+        "REVIEW_COMPLETE_WITH_SOURCE_PREREQUISITE_HOLD": 1
+      },
+      "sourceAfterBlob": "5789749852010152ac8bd420eaae4ddc4fdd15c4",
+      "sourceAfterSha256": "fbb802a88299375a43649b03d71c503b214b12ffe784c3404eb4578d6ac7bd91",
+      "sourceChangedQuestionCount": 22,
+      "sourceChangedFieldCount": 84,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+      "metadataSha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E067.verification.json",
+      "verificationSha256": "e3291d1bf73f7f0df86aebc834609f3134abc500591f3e239f615f8a4322c2db",
+      "independentSampleOrdinals": [
+        7,
+        16,
+        22
+      ],
+      "independentSampleStatus": "PASS_FINAL_METADATA_BOUND",
+      "fourSlotMode": "NEWLY_AUTHORED",
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 8,
+      "activeFieldSchemaDebtCount": 3,
+      "exactRpmSemanticHoldQuestionCount": 0,
+      "exactRpmSemanticHoldQuestionUids": [],
+      "sourceSolutionPrerequisiteHoldQuestionCount": 1,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "d4798d43cc7f3aba01289ff588d175b7845724c1",
+      "explicitDifficultyHoldQuestionCount": 1,
+      "explicitDifficultyHoldQuestionUids": [
+        "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1"
+      ]
     },
     {
       "id": "E068",
@@ -4079,14 +4117,14 @@
   "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 77,
-    "branchReviewedQuestions": 1816,
-    "remainingExams": 6,
-    "remainingQuestions": 142,
-    "independentSamples": 231,
-    "latestPreparedExam": "E066",
+    "branchReviewedExams": 78,
+    "branchReviewedQuestions": 1838,
+    "remainingExams": 5,
+    "remainingQuestions": 120,
+    "independentSamples": 234,
+    "latestPreparedExam": "E067",
     "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
-    "explicitDifficultyHoldQuestions": 10,
+    "explicitDifficultyHoldQuestions": 11,
     "exactRpmSemanticHoldQuestions": 0
   },
   "ownerHistory": [
@@ -4121,6 +4159,27 @@
     "previousIndependentSamplesReused": 222,
     "awcrContinuationRevision": 96,
     "awcrContinuationRawSha256": "aacf117d404e186bb89f72caa27d575547ab6d75ac2bfa53c8f6efa1cecc0de4",
-    "ownershipBasis": "Explicit current user continuation; single writer, compare remote HEAD and fast-forward-only push."
+    "ownershipBasis": "Explicit current user continuation; single writer, compare remote HEAD and fast-forward-only push.",
+    "remotePublicationMethod": "GitHub connector; authenticated repository owner; exact tree SHA parity; compare-and-swap fast-forward refs",
+    "remoteCommitMapping": [
+      {
+        "examId": "E064",
+        "localCommit": "3ea27aca2440ecaeb992c706013c2464844dc0e2",
+        "remoteCommit": "46145196e7ee93aa1c29336aacb7fa8e10f0cb84",
+        "tree": "c72a5bffceb3e0065653109a6fadba0754571d95"
+      },
+      {
+        "examId": "E065",
+        "localCommit": "acb4e66d6e4f2138f38168852ed09e83c9cbe58f",
+        "remoteCommit": "731a0abac9ff38b3305e093f9fc6493b34d1676a",
+        "tree": "2d163266f2bb6da73b1a97d4e83757d9a7377490"
+      },
+      {
+        "examId": "E066",
+        "localCommit": "3797cc81515d39081a504fb2dcf7f818ad6bd81d",
+        "remoteCommit": "d4798d43cc7f3aba01289ff588d175b7845724c1",
+        "tree": "b3c0a7d91809cbe4a2e3fa78da77d367ae43505c"
+      }
+    ]
   }
 }

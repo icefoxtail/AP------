@@ -1,0 +1,1084 @@
+{
+  "examId": "E067",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "939de177498673a1ae08c0d5a934e5c8b1c8ce21",
+  "author": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "judgedAt": "2026-11-14T11:07:00.904116+00:00",
+  "meaningFreezeSha256": "28a837237a4a82de7d44ff3386f8da46b964451930a1f53e7a99ad427c77cdf9",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_8a68214067c8c8cd338d378660aa4bc458ec4f50e8386246832489ee214a04c7",
+      "primaryMethod": "빗변·대변·인접변을 구별하여 각별 삼각비 판정",
+      "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다.",
+      "rpmRecordId": "M3-RPM-143",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "sin·cos·tan"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "삼각비 정의 자체로 끝나며 보조 개념·추가 제약이 없다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 표시된 세 변을 정의의 비에 바로 대응시킨다. bucket 1: 숨은 길이나 각을 추론하지 않는 정의 직접 적용이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q01.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "cos A는 각 A에 대한 이웃한 변/빗변",
+        "interpretation": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다.",
+          "finalAnswerChecked": "②",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_3289724629a426f81d3a495d80f12937a1fd82774bbf38391d4d64e665990867",
+      "primaryMethod": "탄젠트로 한 직각변을 정한 뒤 피타고라스로 빗변 계산",
+      "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다.",
+      "rpmRecordId": "M3-RPM-147",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비와 길이",
+        "l4": "직각삼각형의 변"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_PYTHAGOREAN은 탄젠트로 구한 BC와 AC에서 별도로 빗변을 구하는 필수 단계다. 수 범위 제약은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 탄젠트비와 빗변 계산을 연속해 수행한다. bucket 2: 필요한 한 변을 먼저 복원하면 풀이 경로가 고정된다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q02.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "tan B=AC/BC=2/3",
+        "interpretation": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다.",
+          "finalAnswerChecked": "⑤",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_e95e4384ada884a7a835beea75e417004ffb193e34fcf56ad39ddbba1274301d",
+      "primaryMethod": "특수각의 알려진 삼각비 값과 선택지 대조",
+      "decisiveStep": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다.",
+      "rpmRecordId": "M3-RPM-145",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "특수각의 삼각비",
+        "l4": "30°·45°·60°"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "특수각 삼각비가 Primary이며 그 값을 다시 crossConcept로 중복하지 않는다. 추가 조건이 없다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 기본 특수각 값의 확인이다. bucket 1: 정의표를 바로 회상·대조하며 관계 구성 단계가 없다.",
+      "imageRead": {
+        "status": "NOT_REQUIRED",
+        "paths": [],
+        "inspection": "문제에 그림이 없으며 본문과선택지로판정했다."
+      },
+      "solutionEvidence": {
+        "quote": "특수각의 삼각비를 확인한다.",
+        "interpretation": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다.",
+          "finalAnswerChecked": "④",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_e7d2f815232e399f85f1b34b6c58aee44e0b80a67c82ab074d5c8a0e4de3863b",
+      "primaryMethod": "30°와60°의 특수값 대입",
+      "decisiveStep": "sin30=1/2, tan30=1/√3, cos60=1/2이므로 1/2−1+1/2=0이다.",
+      "rpmRecordId": "M3-RPM-146",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "특수각의 삼각비",
+        "l4": "특수각 계산"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "필수 개념은 특수각 값뿐이며 통상 사칙연산은 CrossConcept로 올리지 않는다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 알려진 특수값을 그대로 대입한다. bucket 1: 식의 구조 변환이나 해석 없이 세 값을 넣어 정리한다.",
+      "imageRead": {
+        "status": "NOT_REQUIRED",
+        "paths": [],
+        "inspection": "문제에 그림이 없으며 본문과선택지로판정했다."
+      },
+      "solutionEvidence": {
+        "quote": "sin 30°=1/2, tan 30°=1/√3, cos 60°=1/2",
+        "interpretation": "sin30=1/2, tan30=1/√3, cos60=1/2이므로 1/2−1+1/2=0이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "sin30=1/2, tan30=1/√3, cos60=1/2이므로 1/2−1+1/2=0이다.",
+          "finalAnswerChecked": "①",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_1e1d8d69c9f14fec60b36a797af14b81fa4adda3981dc6435b8d7150c90aa443",
+      "primaryMethod": "높이로 나뉜 닮은 직각삼각형의 각을 큰 삼각형에 대응",
+      "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다.",
+      "rpmRecordId": "M3-RPM-144",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "삼각비의 관계"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_SIMILARITY_AA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "피타고라스는 미지AB=6을 복원하고 AA닮음은 높이 양쪽의 각x,y를 큰 삼각형 각으로 바꾸는 데 기여한다. 추가 수범위 제한은 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "level 중: 닮은 삼각형에서 기준각을 바꾸어 삼각비를 읽는다. bucket 3: 작은 각x,y를 큰 삼각형의 각에 대응시키는 관계 선택이 결정 단계다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q05.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "AB²+AC²=BC²",
+        "interpretation": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다.",
+          "finalAnswerChecked": "③",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_1ab69506a82e75efce94f2bbd1eb5f0de9deb7b24c7b4d13ed0f7c5897856594",
+      "primaryMethod": "45° 직각삼각형의 같은 두 직각변과 빗변 관계",
+      "decisiveStep": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다.",
+      "rpmRecordId": "M3-RPM-147",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비와 길이",
+        "l4": "직각삼각형의 변"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "실제 해설은 45° 두 각으로 등변을 정한 뒤 피타고라스를 쓴다. 길이 목표를 RPM 직각삼각형의 변에 두고 이 두 필수 근거를 CrossConcept에 보존한다.",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 45° 직각삼각형의 기본 길이 관계다. bucket 2: 같은 두 직각변을 먼저 복원하고 빗변 계산으로 이어진다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q06.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "두 예각이 같은 직각삼각형",
+        "interpretation": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다.",
+          "finalAnswerChecked": "⑤",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_0477f77be60aa4825018e5cb1315b0e5b0d282dceb154cfd1f0f3e95a72d1530",
+      "primaryMethod": "두 특수각 삼각형의 밑변을 높이 하나로 표현하여 합산",
+      "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다.",
+      "rpmRecordId": "M3-RPM-149",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "삼각형의 높이·넓이"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "내각합으로 ∠B=30°를 확보해야 두 특수각 관계를 사용할 수 있다. 특수각 길이 관계는 Primary의 높이 계산에 포함된다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 높이로 두 직각삼각형을 연결한다. bucket 3: 주어진 밑변10을 h의 두 배수의 합으로 재구성해야 한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q07.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "삼각형의 내각의 합으로",
+        "interpretation": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다.",
+          "finalAnswerChecked": "④",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_e0892f318c7fa758ca77d863ca849fc1e1dafc7b3ac71a3de1424d46f97a4945",
+      "primaryMethod": "공통변 BC를 특수각으로 구한 후 다른 직각삼각형의 빗변 계산",
+      "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다.",
+      "rpmRecordId": "M3-RPM-154",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "복합도형",
+        "l4": "피타고라스 결합"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "45° 삼각형의 등변과 피타고라스는 앞의 탄젠트로 구한 공통변을 마지막 BD로 바꾼다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 공통변을 통해 두 직각삼각형을 순서대로 푼다. bucket 2: BC를 전달하는 익숙한 연쇄 계산이며 새로운 보조선 선택은 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q08.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "tan 60°=BC/AB",
+        "interpretation": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다.",
+          "finalAnswerChecked": "①",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_13da56a1c4855168c5d83ce9a0e88a55544a26a48b4bcc9b44d63b4c95faa6f3",
+      "primaryMethod": "반지름1의 삼각비 길이 표현과 여각 관계를 함께 판정",
+      "decisiveStep": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다.",
+      "rpmRecordId": "M3-RPM-144",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "삼각비의 관계"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_ANGLE_TRIG"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_COMPLEMENTARY_ANGLE_TRIG는 x+y=90°에서 sin y=cos x, cos y=sin x를 얻는 구별 단계다. 반지름1은 수치 조건이며 별도 ConditionKey를 만들지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 단위 사분원의 길이 의미와 여각을 연결한다. bucket 2: 한 번 각의 기준을 바꾼 뒤 정의로 각 선택지를 확인한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q09.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "sin x=AB/OA=AB, cos x=OB/OA=OB",
+        "interpretation": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다.",
+          "finalAnswerChecked": "②",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_90a07153907b2d8b1504d93b507b52d3b892fc6187d2988cba6849b3c33dd51b",
+      "primaryMethod": "단위 사분원의 세로좌표를 사인값으로 읽기",
+      "decisiveStep": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다.",
+      "rpmRecordId": "M3-RPM-143",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "sin·cos·tan"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "좌표 표시를 읽는 것은 자료 제시 방식이며 별도 대수/좌표 계산이 없으므로 CrossConcept를 추가하지 않는다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 단위 사분원에서 사인을 세로 길이로 직접 읽는다. bucket 1: 그림에 주어진 수를 정의에 대응시키는 한 단계다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q10.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "sin 55°는 단위원에서 점 A의 세로 좌표",
+        "interpretation": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다.",
+          "finalAnswerChecked": "④",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "primaryMethod": "탄젠트의 범위에 대한 반례로 거짓 진술 확인",
+      "decisiveStep": "A=60°는 제시 범위 안이고 tan60°=√3>1이므로②의 최대1 주장은 거짓이다. 다만90°에서tan이 정의되지 않아⑤의 끝점 문구는 모호하다.",
+      "rpmRecordId": "M3-RPM-144",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "삼각비의 관계"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "삼각비 범위·변화가 Primary이고 0°≤A≤90°는 COND_RANGE로 보존한다. 정의역 끝점 문제는 소스 debt에 분리한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 증가감소·최대최소 진술을 개념으로 판정한다. bucket 2:60° 한 반례를 택하면②를 즉시 배제할 수 있다.",
+      "imageRead": {
+        "status": "NOT_REQUIRED",
+        "paths": [],
+        "inspection": "문제에 그림이 없으며 본문과선택지로판정했다."
+      },
+      "solutionEvidence": {
+        "quote": "A=60°일 때 tan A=√3>1",
+        "interpretation": "A=60°는 제시 범위 안이고 tan60°=√3>1이므로②의 최대1 주장은 거짓이다. 다만90°에서tan이 정의되지 않아⑤의 끝점 문구는 모호하다."
+      },
+      "solutionCheck": {
+        "status": "SOURCE_DOMAIN_AMBIGUITY",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "A=60°는 제시 범위 안이고 tan60°=√3>1이므로②의 최대1 주장은 거짓이다. 다만90°에서tan이 정의되지 않아⑤의 끝점 문구는 모호하다.",
+          "finalAnswerChecked": "②",
+          "uniqueAnswerValidity": "HOLD_DOMAIN_ENDPOINT"
+        }
+      },
+      "debts": [
+        {
+          "field": "source solution verification",
+          "reason": "A=90°에서tan은 미정의인데⑤는 전체 제시 범위의 증가를 말한다.② 거짓은 확실하나 선택지 유일정답의 끝점 해석이 모호하다.",
+          "blocksSemanticMetadata": false,
+          "blocksVerifiedProjection": true
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_944f8c2544014dc9e9c71d87e6c9c75a8d8e0090f948f5362dcea265ffc11d6d",
+      "primaryMethod": "삼각비표의 행·열을 맞추어 값 대입",
+      "decisiveStep": "표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 넣으면0.9794이다.",
+      "rpmRecordId": "M3-RPM-143",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "sin·cos·tan"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "표 조회와 통상 수 계산 외의 추가 개념·조건이 없다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하: 표에서 필요한 세 값을 찾는 기본 활용이다. bucket 1: 행과 열을 직접 읽고 제시 식에 대입한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q12.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "표에서 sin 12°=0.2079, cos 15°=0.9659, tan 11°=0.1944",
+        "interpretation": "표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 넣으면0.9794이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 넣으면0.9794이다.",
+          "finalAnswerChecked": "②",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_abecc61ff6bcefe0a1487c15e8c32af940c3625ae1fc32e87f07501e8106eb8b",
+      "primaryMethod": "비탈길을 빗변으로 보는 직각삼각형에서 사인으로 높이차 표현",
+      "decisiveStep": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다.",
+      "rpmRecordId": "M3-RPM-151",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "높이·거리"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "필수 개념은 높이 측정 삼각비 자체이고 별도보조개념/수범위제약은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 경사 거리와 수직 높이를 구분하여 모델링한다. bucket 2: 비탈길의 길이를 빗변으로 번역하면 사인 정의가 바로 정해진다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q13.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "sin 15°=(높이 차)/200",
+        "interpretation": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다.",
+          "finalAnswerChecked": "①",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_20432e21602abfc6f25b76788e1f9973cb8f9fd370216d2264ca5d935e378cf5",
+      "primaryMethod": "앙각과 부각으로 나눈 두 높이차를 더하기",
+      "decisiveStep": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다.",
+      "rpmRecordId": "M3-RPM-152",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "앙각·부각"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "앙각·부각의 탄젠트 적용이 Primary 안에서 완결된다. 근삿값 지정은4-slot에 보존하며 임의ConditionKey를 만들지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 관측 수평선 위·아래의 높이를 나누어 구한다. bucket 2: 두 주어진 직각삼각형의 높이합이라는 익숙한 전처리다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q14.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "40 tan45°=40 m",
+        "interpretation": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다.",
+          "finalAnswerChecked": "⑤",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_8acf7f3b219ae235e25b0d0180a9cf31d4da8bd11d25a61fb900d90ce61f0343",
+      "primaryMethod": "탄젠트로 눈높이 위의 높이를 구해 관측 높이 추가",
+      "decisiveStep": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다.",
+      "rpmRecordId": "M3-RPM-152",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "앙각·부각"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "직접 탄젠트 높이 계산으로 끝나며 보조 개념은 없다. 지정근삿값은4-slot에 기록한다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 눈높이를 기준으로 생긴 높이차를 전체 높이로 바꾼다. bucket 2: 탄젠트 계산 뒤 주어진 눈높이를 더하는 한 번의 해석이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q15.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "tan20°=h/10",
+        "interpretation": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다.",
+          "finalAnswerChecked": "③",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_c39e255e21d0441ee84a0656e809a96a3ebdc150362c361b93e8f4ce58c0c826",
+      "primaryMethod": "끼인각30°로 높이를 내려 삼각형 넓이 계산",
+      "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다.",
+      "rpmRecordId": "M3-RPM-149",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "삼각형의 높이·넓이"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "높이·넓이 계산이 Primary 자체이므로 CC_TRIANGLE_AREA를 중복하지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 두변과끼인각에서 높이를 복원한다. bucket 2: 수선 한 번으로 높이를 구하면 기본 넓이공식이 정해진다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q16.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "C에서 AB에 수선을 내려",
+        "interpretation": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다.",
+          "finalAnswerChecked": "④",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_6f0258d47014a349c07656d161cef9f0d4c1a96f91506ad156970814c78ca284",
+      "primaryMethod": "대각선으로 나뉜 삼각형 넓이합을 두 대각선 곱으로 묶기",
+      "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다.",
+      "rpmRecordId": "M3-RPM-150",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "다각형의 길이·넓이"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "다각형 넓이의 Primary에 삼각형 분할과 넓이합이 포함되며 같은 내용을 CC로 중복하지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 대각선과 끼인각으로 사각형의 넓이를 구한다. bucket 2: 익숙한 대각선 넓이 관계의 적용이며 별도 경우나 보조선 선택은 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q17.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "AC를 네 삼각형의 밑변으로 나누어",
+        "interpretation": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다.",
+          "finalAnswerChecked": "⑤",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_32ca822d7f054aa80fdd66566b0f6bf5515aaf22a414b6f2fd59165a1ec60a82",
+      "primaryMethod": "대각선으로 두 삼각형을 나누고 둔각 쪽 높이는 연장선에서 구하기",
+      "decisiveStep": "ABC의높이6sin60=3√3으로넓이12√3, ADC는sin150=sin30이어서높이4sin30=2와넓이2√3이다. 합14√3이다.",
+      "rpmRecordId": "M3-RPM-150",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "다각형의 길이·넓이"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "삼각형 분할과 특수각 높이를 통한 다각형 넓이는 Primary 안에서 완결된다. 보각관계는 실제 방법 근거에 보존하되 같은 삼각비 적용을 CC로 부풀리지 않는다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중:60°삼각형과150°삼각형의 높이를 따로 잡는다. bucket 3: 둔각삼각형의 높이를 외부 연장선에서 구성하는 선택이 필요하다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/q18-alive.svg"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "A에서 BC에 수선 AH를 내리면",
+        "interpretation": "ABC의높이6sin60=3√3으로넓이12√3, ADC는sin150=sin30이어서높이4sin30=2와넓이2√3이다. 합14√3이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "ABC의높이6sin60=3√3으로넓이12√3, ADC는sin150=sin30이어서높이4sin30=2와넓이2√3이다. 합14√3이다.",
+          "finalAnswerChecked": "③",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_52c21aee2bbc8f4d796616d4e2d313d05af953beb14321f1870a928010c4a74c",
+      "primaryMethod": "세 변이 주어진 직각삼각형에서 각별 삼각비를 직접 합산",
+      "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다.",
+      "rpmRecordId": "M3-RPM-143",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "sin·cos·tan"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "단순한 통분·덧셈은 보조개념으로 분리하지 않는다. 별도제약이 없다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 하:3-4-5 삼각형의 정의비를 바로 읽는다. bucket 1: 각에 대한 대변·인접변을 정한 후 주어진 세 값을 직접 합산한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/s01.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "sin A=BC/AC=3/5, cos C=BC/AC=3/5, tan A=BC/AB=3/4",
+        "interpretation": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다.",
+          "finalAnswerChecked": "39/20",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7c4a139ed9215bc85baf45bf76c448f2cfc6bbd71d2a0ebe83aa08c463535de9",
+      "primaryMethod": "공통 높이4의 두 특수각 삼각형 밑변 차로 거리 계산",
+      "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다.",
+      "rpmRecordId": "M3-RPM-148",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비와 길이",
+        "l4": "각을 이용한 길이"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "두 특수각의 길이 계산은 Primary 안에 들어가며 별도 보조정리가 필요하지 않다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 두 특수각의 밑변을 같은 기준높이로 구한다. bucket 2: 길이 두 개를 구해 그림의 포함관계로 빼는 익숙한 연결이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/s02.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "두 직각변이 같다",
+        "interpretation": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다.",
+          "finalAnswerChecked": "4(√3−1) cm",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_62894fe20f91bb3b7f2ab376e76e7b13db3ccf247c7f0cd4ce69364c1631e894",
+      "primaryMethod": "보조 높이를 내려 두 특수각 삼각형의 밑변 합으로 강폭 계산",
+      "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다.",
+      "rpmRecordId": "M3-RPM-151",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "높이·거리"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "내각합이 세 번째 각45°를 확보하여 오른쪽삼각형의 등변 구조를 만든다. 높이측정 계산 자체는Primary다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 거리측정 상황을 두 직각삼각형으로 분해한다. bucket 3: 직접 주어지지 않은 수선AH를 선택하고 두 밑변을 더하는 구조를 세운다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_중간_중3_수학/s03.png"
+        ],
+        "inspection": "그림의 직각·변길이·기준각·점순서를 확인했다. Q18 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "∠C=180°−60°−75°=45°",
+        "interpretation": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다.",
+          "finalAnswerChecked": "500(1+√3) m",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_637f5a979931391c39b76a7199dbc421e168ffc6fa47a603386d8a5af8c7d073",
+      "primaryMethod": "수평거리·앙각·기구높이를 측정하여 탄젠트 모델 세우기",
+      "decisiveStep": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다.",
+      "rpmRecordId": "M3-RPM-152",
+      "rpmPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "앙각·부각"
+      },
+      "standardUnitKey": "M3-05",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "높이측정/앙각의Primary 자체로 완결되며 실생활 소재만으로 추가CrossConcept를 부여하지 않는다. 수직건물·수평지면 가정은4-slot조건에 명시한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "level 중: 삼각비 측정방법을 스스로 설명하는 적용문항이다. bucket 3: 측정량d,h,θ를 선택하고 실제높이H와 연결하는 모델 구성이 필요하다.",
+      "imageRead": {
+        "status": "NOT_REQUIRED",
+        "paths": [],
+        "inspection": "문제에 그림이 없으며 본문과선택지로판정했다."
+      },
+      "solutionEvidence": {
+        "quote": "tanθ=(건물 높이 H−h)/d",
+        "interpretation": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:07:00.904116+00:00",
+          "computation": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다.",
+          "finalAnswerChecked": "H=h+d tanθ",
+          "uniqueAnswerValidity": "CONFIRMED"
+        }
+      },
+      "debts": []
+    }
+  ]
+}

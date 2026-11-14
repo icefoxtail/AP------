@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "author-c-targeted-difficulty-recheck-v1",
+  "examId": "E067",
+  "author": "author_c",
+  "ownerTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "frozenAt": "2026-11-14T11:25:52.922026+00:00",
+  "reviewKind": "SOURCE_ONLY_TARGETED_DIFFICULTY_RECHECK",
+  "independence": {
+    "otherAuthorJudgmentsRead": false,
+    "otherAuthorFitsRead": false,
+    "legacyDifficultyRead": false,
+    "inputs": "Only supplied source-only packet, actual source/solution figures, and CURRENT difficulty v1.3 contract before freeze."
+  },
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+  "sourcePacketSha256": "fce44ea9a26bf93cdd1b8893cc8b677c5fffd555865ab079dd99d00ff5bd50a0",
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_1e1d8d69c9f14fec60b36a797af14b81fa4adda3981dc6435b8d7150c90aa443",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2db1e4601b6bcd812e8b5e028e7f925d236aefc18d19c1b5b1630d08ac954e53"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b83d726b1526872ae1c680c95de74de1bee24afa0e694ee30bf208313eb67880"
+        }
+      ],
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "높이 AH가 이미 주어져 있어 두 작은 직각삼각형의 예각을 큰 삼각형의 예각으로 옮기는 표준 전처리가 필요하다. AB 계산 뒤 삼각비 정의를 바로 적용한다. 새로운 보조선·식·접근을 선택하는 부담은 작아 2이며, 각 대응과 피타고라스가 연결되는 점을 B23으로 남긴다.",
+      "decisiveCalculation": "AB=√(10²−8²)=6. 그림의 x=∠C, y=∠B이므로 sin x=6/10, cos y=6/10. 합=6/5(③).",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "AB=√(10²−8²)=6. 그림의 x=∠C, y=∠B이므로 sin x=6/10, cos y=6/10. 합=6/5(③)."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q05.png",
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q05-solution.svg"
+        ]
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_1ab69506a82e75efce94f2bbd1eb5f0de9deb7b24c7b4d13ed0f7c5897856594",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ae9a284cd43dd826c39fb6bc73b89739075996e20b5fe95980e186499e306a1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "92bd6dff6bf397a9d89ca14b295ac80204c8a7dabee1e0db5fa12cf0caa032f0"
+        }
+      ],
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "원그림에 직각 C, ∠B=45°, 맞은편 변 AC=8이 직접 주어져 빗변 AB=8/sin45°의 식이 즉시 결정된다. 해설의 이등변 확인과 피타고라스 전개를 최소 풀이의 전략 부담으로 세지 않는다.",
+      "decisiveCalculation": "AB=8/(√2/2)=8√2(⑤).",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "AB=8/(√2/2)=8√2(⑤)."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q06.png"
+        ]
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_944f8c2544014dc9e9c71d87e6c9c75a8d8e0090f948f5362dcea265ffc11d6d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b097d55a07142dd948787066aa4803edc80940a1fcd703dc8420c05c7e2e99b4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "098db8d4c63b55a89291b943b17921a00166fe9e13f9d1f0e47a94e9b8cb3939"
+        }
+      ],
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "표에서 지정된 세 값을 그대로 찾고 가감하는 직접 조회형이다. 소수 계산 세 항과 표의 행 이동은 별도 조건 해석이나 전략 선택이 아니다.",
+      "decisiveCalculation": "원표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 확인했다. 0.2079+0.9659−0.1944=0.9794(②).",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "원표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 확인했다. 0.2079+0.9659−0.1944=0.9794(②)."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q12.png"
+        ]
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_abecc61ff6bcefe0a1487c15e8c32af940c3625ae1fc32e87f07501e8106eb8b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe14fab482ff3da403e36b58bf85b212a75ab31cfa8a05fa0eac52c5a97e64e3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d0ec596eba3fd68d03c88d263935ab130a1fccf8213e0df7b7a2dc8ce78e03a"
+        }
+      ],
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "원그림에 빗변 200m, 경사각 15°, 수직 높이가 직각삼각형으로 이미 표현되어 있다. 높이/빗변=sin15°를 바로 적용하여 식을 선택한다.",
+      "decisiveCalculation": "높이 BC=AC·sin15°=200sin15°(①).",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "높이 BC=AC·sin15°=200sin15°(①)."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q13.png"
+        ]
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_52c21aee2bbc8f4d796616d4e2d313d05af953beb14321f1870a928010c4a74c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13be1311cc1f39e2450d1d42a4bbb5a4015e3a345962c40d912f893483c800dc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68dc160aff93036f0e456d91e5d42950a4e0e68fd2df287e824999959fd4845a"
+        }
+      ],
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "원그림에 세 변 3,4,5가 모두 표시되어 있다. 피타고라스나 여각의 변환 없이 각 A와 C에서 정의에 맞는 변을 읽고 세 분수를 더하면 된다. 서답형·7점이라는 형식은 난도 근거가 아니다.",
+      "decisiveCalculation": "sinA=3/5, cosC=3/5, tanA=3/4. 합=3/5+3/5+3/4=39/20.",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "sinA=3/5, cosC=3/5, tanA=3/4. 합=3/5+3/5+3/4=39/20."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/s01.png"
+        ]
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_62894fe20f91bb3b7f2ab376e76e7b13db3ccf247c7f0cd4ce69364c1631e894",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e69a42903781bdb83d3b92439cec9f6db2f9d7b5c7cbffcc926369e423e530c5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1f1b077396e4f38ae8b0841ad29b82d69184939269181ec70ca2c2b174a3f92"
+        }
+      ],
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "한 변과 두 각이 주어진 비직각삼각형에서 BC에 대한 직접 삼각비 식은 없다. 먼저 ∠C=45°를 얻은 뒤 A에서 BC로 수선을 내려 30°-60°-90°와 45°-45°-90°의 두 삼각형을 공통 높이로 연결하는 접근을 선택해야 한다. 표준 보조선 한 번의 선택이 핵심이라 3이며 비정형 구조화는 없어 B23 경계로 둔다.",
+      "decisiveCalculation": "∠C=180°−75°−60°=45°. AH⊥BC로 두면 BH=1000cos60°=500, AH=1000sin60°=500√3. HC=AH/tan45°=500√3, BC=500(1+√3)m.",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "∠C=180°−75°−60°=45°. AH⊥BC로 두면 BH=1000cos60°=500, AH=1000sin60°=500√3. HC=AH/tan45°=500√3, BC=500(1+√3)m."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/s03.png",
+          "archive/assets/images/20_이수중_2학기_중간_중3_수학/q21-solution.svg"
+        ]
+      }
+    }
+  ]
+}
