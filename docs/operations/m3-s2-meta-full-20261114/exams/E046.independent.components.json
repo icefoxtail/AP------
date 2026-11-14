@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "m3-s2-independent-component-upper-bound-v1",
+  "examId": "E046",
+  "author": "a",
+  "reviewer": "b",
+  "sourceGitBlobSha": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "sourcePacketSha256": "3d6bae16976b151e9349df91fde0a96e5c8b4dcb28ed0a52a32c09c4dbf2a68a",
+  "sampledAuthorReviewSha256": "af3503b85a4afb887c6930ca6017e57e2697f28d8648a16984529fc6c2a20d65",
+  "sampledSourcePatchSha256": "bfa16f96c0d2c7a9aecb84cb2763c0a3546b74791186a168300d40fd5c09b4ef",
+  "sampled4slotSha256": "965fa0c4a55ae3a6fe37d3a2f72f3160bf312026bd1f8a6ca590155f60c5fbca",
+  "targetComponentsEvidenceSha256": "ddd61712b0b21e96dba624ff7fb78afe12e754460e3f2bf18f24ee587e15ec82",
+  "status": "INDEPENDENT_REVIEW_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "formatPolicy": "원문은 수준별 소문항 묶음이며 하나 선택이라는 조건을 추가하지 않는다.",
+  "items": [
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+      "componentDifficultyBuckets": [
+        2,
+        4
+      ],
+      "representativeDifficultyBucket": 4,
+      "representativePolicy": "MAXIMUM_OF_COMPONENTS",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "basis": "(1) 지름의 직각 뒤 내각합이라는 표준 전처리2, (2) 빗변높이 제곱=분할곱을 세 반원 넓이차 전개에 결속하는4이다. 합산하지 않은 대표4를 수용한다. 원본 각·채색 QA 미결의 해제나 실제 원본 정답 PASS를 주장하지 않는다.",
+      "sourceQa": "OPEN_RELEASE_OWNER_SOURCE_RECHECK_REQUIRED"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d16f70989465a56106904f408c9d2c574bc70b97826419bc38c1e81b71323c14",
+      "componentDifficultyBuckets": [
+        1,
+        2
+      ],
+      "representativeDifficultyBucket": 2,
+      "representativePolicy": "MAXIMUM_OF_COMPONENTS",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "basis": "(1)은 다섯 원자료에 평균·분산 정의 직접 적용1이다. (2)는 현재 막대그래프에서 평점1~5의 도수1,2,4,2,1을 읽은 뒤 가중 편차제곱 평균을 계산하는2이다. 기존 ACTIVE frequency TPL의 값·도수 가중 골격을 재사용한다는 의미 추론을 수용하고 원자료 (1)과의 정확 TPL 공백은 따로 유지한다."
+    }
+  ],
+  "newMathematicalVerification": false
+}

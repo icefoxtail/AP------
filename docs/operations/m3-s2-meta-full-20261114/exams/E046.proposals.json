@@ -1,0 +1,412 @@
+[
+  {
+    "ordinal": 12,
+    "supportingQuestionUids": [
+      "qid_v1_672549a8d923b045756c1d3b74c9b610e6dcc317bbe8ec47206334d0c344be57"
+    ],
+    "kind": "EXISTING_ACTIVE_PARENT_EXACT_TEMPLATE_GAP",
+    "primaryReason": "음식 범주별 도수 중 가장 큰9에 대응하는 햄버거를 읽는 최빈값 정의 문항이다. GLOBAL 중앙경향 PT는 재사용하되 숫자 정렬·중앙값을 요구하는 기존 M3 홀수자료 TPL은 적용하지 않는다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_MODE_ONLY_TEMPLATE_GAP",
+        "detail": "범주 도수의 최빈값 단독 판정에 맞는 세부 ACTIVE TPL은 확인되지 않았다. PT_M1_CENTRAL_TENDENCY는 재사용하고 기존 최빈값 단독 후보에 지원 UID를 추가한다."
+      },
+      {
+        "type": "EXACT_ACTIVE_BINDING_MISSING",
+        "detail": "선택한 GLOBAL ACTIVE PT/TPL의 원본2015 M3 정확 문맥 binding은 현재 없다. 정의 재사용과 등록 연결 완료를 구별한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": "PT_M1_CENTRAL_TENDENCY",
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/b/E035/proposals.json",
+      "sha256": "c07c87867a1c4834c07d8e66013e9fcf236c68bea7583e2e914f62a8ba475088",
+      "record": {
+        "type": "NEW_TPL_PROPOSAL",
+        "nameKo": "원자료의 최빈값 직접 결정",
+        "reuseDefinition": "원자료의 값별 출현 횟수를 세어 최대 도수를 가진 변량을 선택한다.",
+        "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "distinguishingCriterion": "기존 TPL은 중앙값과 최빈값의 동시 계산이며 본 문항에는 중앙값 과정이 없다.",
+        "supportingQuestionUids": [
+          "qid_v1_9cd7dd179a11bcb1110b7d0b291824c92b0cfba2887950e15516865f5c81fa32"
+        ],
+        "globalActiveSearch": {
+          "searchedGlobalActive": true,
+          "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+          "exactFitFound": false
+        },
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E024/proposals.json",
+        "reuseCandidateSha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+        "originalSupportingQuestionUids": [
+          "qid_v1_608cb1a65899afb60195f59564e919e88776c5d47a02c55d962b073ffbfe805c"
+        ],
+        "supportOrdinals": [
+          12
+        ],
+        "id": "B-E035-REUSE-4",
+        "extensionRationale": "최빈값만 요구하는 원자료 직접 빈도 판정. 중앙값 병렬 산출은 없다.",
+        "sourceNewStringKeyInserted": false
+      },
+      "reuseOrDistinction": "최빈값 직접 판정 후보군을 재사용한다. 원자료에서 빈도를 세는 기존 후보와 달리 주어진 범주 도수를 읽으므로 입력형 확장은 출고 검토로 명시한다."
+    }
+  },
+  {
+    "ordinal": 14,
+    "supportingQuestionUids": [
+      "qid_v1_abf58c1bef1d19fdabd28ff13a78c89e64472a877320bd90f7ae8c6a88296405"
+    ],
+    "kind": "EXISTING_ACTIVE_TEMPLATE_CONTEXT_CONNECTION_GAP",
+    "primaryReason": "세 꺾은선 도수분포의 여섯째 값과 최고 빈도 값을 읽어 진술을 비교한다. 현재 정정 해설의 B 중앙값7·최빈값8을 사용하며 GLOBAL ACTIVE 그래프 중앙값·최빈값 판정 TPL이 정확히 대응한다.",
+    "exactDebts": [
+      {
+        "type": "CURRENT_2022_EXACT_RPM_LEAF_GAP",
+        "detail": "M1 대푯값 부모 아래 그래프별 중앙값·최빈값 비교의 exact publisher leaf가 없다.225의 적절한 대푯값 선택으로 치환하지 않는다."
+      },
+      {
+        "type": "EXACT_ACTIVE_BINDING_MISSING",
+        "detail": "선택한 GLOBAL ACTIVE PT/TPL의 원본2015 M3 정확 문맥 binding은 현재 없다. 정의 재사용과 등록 연결 완료를 구별한다."
+      },
+      {
+        "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+        "detail": "의미가 맞는 기존 ACTIVE TPL을 재사용하되 원본 RPM row의 PT/TPL 연결은 별도 출고 정합화 대상이다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS",
+    "existingActiveTemplate": "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS",
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "ordinal": 16,
+    "supportingQuestionUids": [
+      "qid_v1_bbb980e6508ec486220195533bd08d25845a90b29e1d5c0d9a95130e6c4e1c23"
+    ],
+    "kind": "NEW_EXACT_PT_TPL_REQUIRED",
+    "primaryReason": "평균72로5개 자료의 총점을 정해 누락 점수a를 복원하고 마지막에a-평균인 편차를 구한다. 최종 목표가 편차이므로 중간 누락값 복원 TPL로 전체 문항을 덮지 않는다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_DEVIATION_CALCULATION_TEMPLATE_GAP",
+        "detail": "기존 M3 deviation properties는 편차합0의 미지편차 후 분산·표준편차를 요구한다. 이 문항은 평균→미지 원자료→편차이므로 해당 정의를 강제하지 않고 편차 계산 후보를 인계한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": null,
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 17,
+        "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+        "type": "NEW_PT_TPL_PROPOSAL",
+        "nameKo": "편차 합 조건의 미지수와 실제 변량 복원",
+        "definition": "편차의 합0을 방정식으로 나타내어 명시 정수·범위 조건을 만족하는 미지 편차를 정하고 평균과 연결해 원자료를 복원한다.",
+        "distinction": "기존 편차 성질 PT/TPL은 미지 편차 후 분산·표준편차까지 계산하는 골격이다. 현재 문제에는 분산/표준편차 단계가 없어 별도 PT/TPL로 분리한다.",
+        "parent": null,
+        "nearestTemplates": [
+          "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+        ],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "relatedProposal": "c/E036 Q16의 미지편차→변량 복원 분기"
+      },
+      "reuseOrDistinction": "같은 편차·미지자료 복원 계열이나 기존 후보는 편차합0→변량이며 이 문항은 평균→변량→편차이다. exact 동일이라고 하지 않고 인접 후보와의 구별 근거로 보존한다."
+    }
+  },
+  {
+    "ordinal": 17,
+    "supportingQuestionUids": [
+      "qid_v1_f30e9a737dd7725c0d7b35769095a1f7ddfd6b3d3432ba5a69ac1eadcfc13d8b"
+    ],
+    "kind": "EXISTING_PENDING_VARIANCE_PROPOSAL_REUSE",
+    "primaryReason": "이미 주어진 모든 편차2,1,-1,0,-2를 제곱하여 평균한다. 미지 편차를 편차합0으로 복원하거나 도수표를 만드는 문항이 아니다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_DIRECT_VARIANCE_TEMPLATE_GAP",
+        "detail": "직접 편차제곱평균의 ACTIVE exact PT/TPL은 없고 기존 E034Q24 일반 자료 분산 후보의 직접 편차 입력 사례를 재사용한다. 고등 확률변수 분산 유형으로 대체하지 않는다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": null,
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 24,
+        "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+        "type": "NEW_PT_TPL_PROPOSAL",
+        "nameKo": "원자료에서 분산과 표준편차 직접 계산",
+        "definition": "주어진 유한 원자료의 평균과 각 편차를 구하고 편차 제곱의 평균으로 분산을 계산한다.",
+        "distinction": "미지 편차나 도수분포표 없이 원자료에 분산 정의를 직접 적용한다.",
+        "parent": null,
+        "nearestTemplates": [
+          "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+        ],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "relatedProposal": "E034 Q18과 같은 원자료 계산 PT, 분산 목표 TPL 분기"
+      },
+      "reuseOrDistinction": "직접 분산 계산 후보의 이미 주어진 편차 입력 분기. 원자료 평균 계산이 생략된 것을 명시한다."
+    }
+  },
+  {
+    "ordinal": 18,
+    "supportingQuestionUids": [
+      "qid_v1_05b4e5a923ef61d4bd788b9ae88e27ce6e68d4b6382fcd9284d3a197f98c1c17"
+    ],
+    "kind": "EXISTING_ACTIVE_PARENT_TEMPLATE_SCOPE_REVIEW",
+    "primaryReason": "모든 변량에3을 더하면 평균은3 증가하고 편차 및 표준편차는 불변이라는 성질을 적용한다. 상수 덧셈·곱셈을 모두 포함하는 ACTIVE PT는 맞지만 k배의 평균·분산만 명시한 단일 TPL은 정확하지 않다.",
+    "exactDebts": [
+      {
+        "type": "EXISTING_LINEAR_TRANSFORMATION_TEMPLATE_SCOPE_GAP",
+        "detail": "PT는 상수 덧셈까지 명시한다. TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA는 k배 평균·분산으로 한정되어 있으므로 덧셈·표준편차 사례로 정의 범위를 넓힐지 세부 유형을 추가할지 출고 담당이 검토한다."
+      },
+      {
+        "type": "EXACT_ACTIVE_BINDING_MISSING",
+        "detail": "선택한 GLOBAL ACTIVE PT/TPL의 원본2015 M3 정확 문맥 binding은 현재 없다. 정의 재사용과 등록 연결 완료를 구별한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "ordinal": 19,
+    "supportingQuestionUids": [
+      "qid_v1_582f1eda0a36eb27178f6760a17edebecf5c49944a05bbf457524a28aab74c2d"
+    ],
+    "kind": "EXISTING_PENDING_CORRELATION_PROPOSAL_REUSE",
+    "primaryReason": "두 변량이 대체로 함께 증가하는 관계의 뜻을 각 상황에 대조하여 양의 상관관계인 보기를 고른다. 실제 최종 판단은 대표값이나 산포도가 아닌 상관관계의 방향이다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_CORRELATION_INTERPRETATION_TYPE_GAP",
+        "detail": "GLOBAL ACTIVE에 해당 middle 상관관계 방향 판정 PT/TPL이 없다. 기존 E034Q21의 음의 상관관계 상황판정 후보를 같은 방향분류군으로 재사용하되 실제 방향은 양으로 기록한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": null,
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 21,
+        "questionUid": "qid_v1_2f02a4d768cb89d678913711010fecc8d6784600146acbefa948e88188eb9cf8",
+        "type": "NEW_PT_TPL_PROPOSAL",
+        "nameKo": "실생활 상황의 상관관계 방향 판정",
+        "definition": "두 변수가 증가·감소하는 경향을 상황별로 읽어 양·음 또는 무상관을 판정한다.",
+        "distinction": "관측값 집계·회귀·인과 추론과 구분되는 상관관계 정의의 직접 적용이다.",
+        "parent": null,
+        "nearestTemplates": [],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "relatedProposal": "기존 질적 상관관계 판정 신규 제안과 병합 가능"
+      },
+      "reuseOrDistinction": "양·음·무상관을 포함하는 상황 방향판정 정의를 양의 사례에 그대로 재사용한다."
+    }
+  },
+  {
+    "ordinal": 20,
+    "supportingQuestionUids": [
+      "qid_v1_d65540de45f1383dba3c4be17fb4e27fcf653c2d8a0247f81a2e7c3bb369b9be"
+    ],
+    "kind": "EXISTING_PENDING_SCATTER_FAMILY_EXACT_SKELETON_GAP",
+    "primaryReason": "산점도의 비슷한 키 위치에서 상대적으로 위에 있는 점을 찾아 발 크기가 비교적 큰 학생을 정한다. 상관관계의 부호 자체를 판정하는 문제가 아니라 조건부 상대 위치를 읽는 문제다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_SCATTER_RELATIVE_POSITION_TYPE_GAP",
+        "detail": "기존 산점도 읽기 후보군 안에서 한 변량에 대한 상대값 비교 골격을 추가한다. E034Q20의 문턱조건 집계 골격과 구별한다."
+      },
+      {
+        "type": "CURRENT_2022_EXACT_RPM_LEAF_GAP",
+        "detail": "현재2022의 상관관계 해석179나 분포·상관 종합180을 정확한 상대점 판독 leaf로 강제하지 않는다. 상자그림과 산점도 부모와 원본088을 보존한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": null,
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 20,
+        "questionUid": "qid_v1_1faaa4e7d60d063b5e0b9687655a1bdb29031ede1f021e57be7ef2d0a67842f3",
+        "type": "NEW_PT_TPL_PROPOSAL",
+        "nameKo": "산점도 조건별 부분집합 비율",
+        "definition": "산점도의 점을 명시된 좌표 범위로 나누어 분모 집단과 그 안의 분자 집단을 세고 비율을 계산한다.",
+        "distinction": "상관관계 추세 판정이나 확률변수 계산은 실제 풀이에 없다. GLOBAL ACTIVE 산점도/상관관계 검색에서 exact PT/TPL을 확인하지 못했다.",
+        "parent": null,
+        "nearestTemplates": [],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "relatedProposal": "a/E022 Q20 및 c/E006 Q19 조건집계 제안"
+      },
+      "reuseOrDistinction": "같은 산점도 읽기 제안군이지만 문턱조건 집계와 상대 위치 판독은 세부 골격이 다르다."
+    }
+  },
+  {
+    "ordinal": 21,
+    "supportingQuestionUids": [
+      "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55"
+    ],
+    "kind": "EXISTING_ACTIVE_COMPONENTS_SINGLE_FIELD_REPRESENTATION_GAP",
+    "primaryReason": "원본 한 UID 안에 수준별 두 소문항이 있다. (1)은 지름의 원주각과 내각합, (2)는 지름의 직각→빗변높이 닮음관계→세 반원 넓이차 전개이다. CENTER_ARC와 SECTOR_MEASURE는 각각 기존 ACTIVE이며 단일 template 필드로 두 골격을 동시에 표현하지 않는다.",
+    "exactDebts": [
+      {
+        "type": "SINGLE_UID_MULTIPART_TEMPLATE_REPRESENTATION_GAP",
+        "detail": "두 소문항에 필요한 ACTIVE 정의는 각각 존재한다. 신규 합성 유형 부재로 오기하지 않으며 UID·소문항·순서를 나누거나 source에 임의 분기 키를 만들지 않는다."
+      },
+      {
+        "type": "SOURCE_QA_CONFLICT_HOLD",
+        "detail": "현재 원본 q21-r1.svg 첫 그림은40도인데 현재 answer/solution 및 새 해설그림은45도이다. 기존 v0 경고와 현재 바이트를 대조해 충돌 지속을 확인했다. 원문·답·해설·이미지는 수정하지 않는다."
+      },
+      {
+        "type": "SOURCE_SHADING_FIDELITY_RECHECK_PENDING",
+        "detail": "기존 v0는 (2) 채색 영역과 해설 대응도 재확인을 요구했다. 현재 원본 raster의 채색만으로 해제하지 않으며 arbelos 넓이차는 현재 기존 해설을 근거로 한 메타 판단이다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "ordinal": 23,
+    "supportingQuestionUids": [
+      "qid_v1_a08a32d20af41824017d701741be760905482f9dc1c91df95f421267d74afd47"
+    ],
+    "kind": "EXISTING_PENDING_EVEN_MEDIAN_MODE_PROPOSAL_REUSE",
+    "primaryReason": "10개 원자료를 정렬하여 가운데 두 값의 평균과 최다빈도를 구해 합한다. GLOBAL 중앙경향 PT는 맞지만 기존 M3 median/mode TPL의 홀수 개 제한은 충족하지 않는다.",
+    "exactDebts": [
+      {
+        "type": "EVEN_MEDIAN_MODE_TEMPLATE_SCOPE_GAP",
+        "detail": "E026Q15/E034Q13의 짝수 자료 중앙값·최빈값 결합 후보를 재사용한다. 홀수자료 한정 TPL에 강제하지 않고 기존 정의 범위 조정 또는 세부 TPL 승인을 인계한다."
+      },
+      {
+        "type": "CURRENT_2022_SECONDARY_LEAF",
+        "detail": "주경로 중앙값 M1-RPM-223과 함께 실제 최빈값 M1-RPM-224 정의도 사용한다."
+      },
+      {
+        "type": "EXACT_ACTIVE_BINDING_MISSING",
+        "detail": "선택한 GLOBAL ACTIVE PT/TPL의 원본2015 M3 정확 문맥 binding은 현재 없다. 정의 재사용과 등록 연결 완료를 구별한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": "PT_M1_CENTRAL_TENDENCY",
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 13,
+        "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+        "type": "NEW_TPL_PROPOSAL",
+        "nameKo": "짝수 개 자료의 중앙값과 복수 최빈값 결합",
+        "definition": "짝수 개 자료의 중앙값을 가운데 두 값의 평균으로 구하고 모든 최빈값을 모아 요구된 합·차를 계산한다.",
+        "distinction": "GLOBAL M3 중앙값·최빈값 TPL은 홀수 개 변량을 명시한다. M1 세 통계량 결합 TPL은 평균까지 세 통계량이 필수이므로 이 두 통계량 골격을 exact로 대체하지 않는다. 상위 PT는 짝수 중앙값까지 포괄하는 ACTIVE M1 대푯값 PT를 재사용하고 원본2015 M3 연결은 별도 기록한다.",
+        "parent": "PT_M1_CENTRAL_TENDENCY",
+        "nearestTemplates": [
+          "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+          "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+        ],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+      },
+      "reuseOrDistinction": "짝수 중앙값과 최빈값 결합 후보를 재사용한다. 본 문항의 최빈값은 하나이며 복수 최빈값 처리 분기는 사용하지 않는다."
+    }
+  },
+  {
+    "ordinal": 24,
+    "supportingQuestionUids": [
+      "qid_v1_d16f70989465a56106904f408c9d2c574bc70b97826419bc38c1e81b71323c14"
+    ],
+    "kind": "ACTIVE_WEIGHTED_COMPONENT_AND_DIRECT_VARIANCE_GAP",
+    "primaryReason": "동일 UID의 수준별 (1)은 원자료5개의 평균과 직접 분산, (2)는 그래프 도수1,2,4,2,1에서 가중평균과 가중 편차제곱평균이다. (2)는 그래프를 도수 자료로 읽은 뒤 기존 ACTIVE frequency variance 골격을 그대로 사용한다. (1)의 직접분산 exact 공백과 구별한다.",
+    "exactDebts": [
+      {
+        "type": "EXACT_DIRECT_VARIANCE_TEMPLATE_GAP",
+        "detail": "(1)의 원자료 직접분산은 기존 E034Q24 후보를 재사용한다. 미지편차 복원이나 고등 확률변수 유형으로 치환하지 않는다."
+      },
+      {
+        "type": "SINGLE_UID_MULTIPART_TEMPLATE_REPRESENTATION_GAP",
+        "detail": "(2)는 PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE ACTIVE를 재사용할 수 있으나 (1)까지 같은 정확 골격으로 주장하지 않는다. 개별 구성 판단은 별도 evidence에 두고 source PT/TPL null은 유지한다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "현재 source는 CREATE_SELF_CHECK_DONE이며 기존 해설을 읽은 메타검토이다. VERIFIED_FINAL이나 새 R1/R2/R3 완료로 승격하지 않는다."
+      }
+    ],
+    "existingActiveProblemType": null,
+    "existingActiveTemplate": null,
+    "status": "RELEASE_OWNER_REVIEW_PENDING",
+    "sourceNewStringKeyInserted": false,
+    "previousCandidateComparison": {
+      "path": "/workspace/scratch/6538df266481/worker-outputs/a/E034/proposals.json",
+      "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+      "record": {
+        "ordinal": 24,
+        "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+        "type": "NEW_PT_TPL_PROPOSAL",
+        "nameKo": "원자료에서 분산과 표준편차 직접 계산",
+        "definition": "주어진 유한 원자료의 평균과 각 편차를 구하고 편차 제곱의 평균으로 분산을 계산한다.",
+        "distinction": "미지 편차나 도수분포표 없이 원자료에 분산 정의를 직접 적용한다.",
+        "parent": null,
+        "nearestTemplates": [
+          "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+        ],
+        "searchedGlobalActive": true,
+        "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+        "relatedProposal": "E034 Q18과 같은 원자료 계산 PT, 분산 목표 TPL 분기"
+      },
+      "reuseOrDistinction": "소문항(1)의 원자료 직접 분산 정의에 해당한다. 소문항(2)의 frequency ACTIVE 재사용과 구별한다."
+    }
+  }
+]

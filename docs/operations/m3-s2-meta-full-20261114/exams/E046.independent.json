@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E046",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+  "sourceBlob": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "sourceGitBlobSha": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "sourcePacketSha256": "3d6bae16976b151e9349df91fde0a96e5c8b4dcb28ed0a52a32c09c4dbf2a68a",
+  "target4slotSha256": "965fa0c4a55ae3a6fe37d3a2f72f3160bf312026bd1f8a6ca590155f60c5fbca",
+  "targetReviewSha256": "af3503b85a4afb887c6930ca6017e57e2697f28d8648a16984529fc6c2a20d65",
+  "sampledSourcePatchSha256": "bfa16f96c0d2c7a9aecb84cb2763c0a3546b74791186a168300d40fd5c09b4ef",
+  "sampleOrdinals": [
+    14,
+    21,
+    22
+  ],
+  "sampleRule": "그래프 중앙값·최빈값, 원본 QA 미결이 있는 수준별 반원 소문항, 외접원·중점 관계의 정상 ACTIVE 재사용을 표적으로 독립 확인",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_abf58c1bef1d19fdabd28ff13a78c89e64472a877320bd90f7ae8c6a88296405",
+      "status": "PASS",
+      "independentMeaningReview": "현재 꺾은선그래프의 세 학생 도수를 읽고 기존 해설의 A 7/7, B 중앙값7·최빈값8, C 8/8과 대조했다. given 그래프·도수, goal 중앙값·최빈값·판정, method 여섯째 위치 및 최다빈도가 실제 질문과 맞다. 이전 해설의 수치가 아니라 현재 정정된 B 7/8 문장을 인용한 4칸이다. GLOBAL TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS의 누적 도수·정점 판정 정의가 정확히 해당한다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+      "status": "PASS",
+      "independentMeaningReview": "현재 SVG 안의 원본 첫 그림은 40°, 답과 기존 해설·solution SVG는 45°임을 직접 확인했다. 이 값 충돌을 해소했다고 주장하지 않는다. 방법은 (1) 지름의 원주각 직각과 내각합, (2) 지름 직각에서 빗변높이의 길이곱 관계를 얻고 세 반원 넓이차를 전개하는 것으로 기록되었다. given 반원·원·지름·길이, goal 각·반원 넓이, method 원주각·닮음·넓이·내각·전개, condition 수선이 기존 본문/해설에 정확 결속된다. 두 번째 원본 채색의 fidelity 미결을 보존한 상태에서 메타 방법과 인용의 결속만 수용한다.",
+      "quotesChecked": 13,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentExistingSolutionImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d43950eb8a22074e6518dd8ac547397f263c1e451417a369ee03b5a0cc940f6d",
+      "status": "PASS",
+      "independentMeaningReview": "원본과 현재 해설 그림에서 O는 외심, BH는 지름, OD는 BC의 수선, AE와 CF의 교점은 G임을 확인했다. 지름 원주각과 두 수선으로 AGCH 평행사변형, 현 이등분 및 지름 중점으로 OD=HC/2, 대변 길이로 AG=HC를 잇는 기존 해설이다. given 외심·수선의발·길이, goal 사각형·비·선분 길이, method 원주각·평행사변형·중점연결·현의수직이등분성질을 수용한다. 후보의 부모 현이 method 같은 칸에 있으며, 정본 TPL_TRIANGLE_CIRCUMCENTER는 외심 찾기에 한정되지 않고 외접원·빗변 중점 관계를 포함하므로 정상 재사용도 수용한다.",
+      "quotesChecked": 13,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentExistingSolutionImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E046-image-version.json",
+    "sha256": "513bfe6ba887c5fe85d339cee540f9fe4e4442682fd143f0912e594bfd908e82",
+    "verifiedAssets": 8
+  },
+  "sourceQaUnresolved": {
+    "ordinal": 21,
+    "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+    "status": "OPEN_RELEASE_OWNER_SOURCE_RECHECK_REQUIRED",
+    "originalImageAngle": 40,
+    "existingAnswerSolutionAngle": 45,
+    "originalShadingFidelity": "PENDING",
+    "metadataOnlyPass": true,
+    "studentSourceChanged": false,
+    "sourceQaDebtPath": "/workspace/scratch/6538df266481/worker-outputs/a/E046/source-qa-debt.json",
+    "sourceQaDebtSha256": "1a58a686b4c274847d89915e3c31e7bbde30e3b8f100476562a268c0256ca8da"
+  },
+  "newMathematicalVerification": false
+}

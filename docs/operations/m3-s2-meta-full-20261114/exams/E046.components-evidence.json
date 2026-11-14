@@ -1,0 +1,71 @@
+{
+  "examId": "E046",
+  "sourceBlob": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "formatPolicy": "原문은 수준별 소문항 묶음이다. 하나 선택이라는 문구가 없어 상호배타 선택형으로 바꾸지 않는다. UID·순서·count·source structure 불변.",
+  "items": [
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+      "sourceRepresentative": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "difficultyBucket": 4,
+        "policy": "여러 ACTIVE TPL의 단일 필드 표현공백. 난도는 합이 아닌 구성 상한."
+      },
+      "components": [
+        {
+          "label": "수준별 1-(1)",
+          "rpm2015": "M3-RPM-076",
+          "rpm2022": "M3-RPM-164",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "difficultyBucket": 2,
+          "reason": "지름의 직각을 얻은 뒤 삼각형 내각합으로 나머지 각을 정한다. 원본40도/기존해설45도 충돌로 값 판단은 release hold이며 메타 전략은 양쪽에서 같다.",
+          "sourceQa": "CONFLICT_HOLD"
+        },
+        {
+          "label": "수준별 1-(2)",
+          "rpm2015": "M3-RPM-076",
+          "rpm2022": "M3-RPM-164",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "difficultyBucket": 4,
+          "reason": "현재 기존해설은 지름직각→높이제곱=빗변분할곱→세 반원 넓이차의 이항제곱 전개를 결속한다. SECTOR의 합성도형 넓이 정의를 재사용한다. 원본 채색 fidelity는 기존 미결을 유지한다.",
+          "sourceQa": "ORIGINAL_SHADING_RECHECK_PENDING"
+        }
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d16f70989465a56106904f408c9d2c574bc70b97826419bc38c1e81b71323c14",
+      "sourceRepresentative": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "difficultyBucket": 2,
+        "policy": "(1) exact 정의공백과 (2) existingACTIVE 재사용을 구별. 원자료까지 frequency TPL로 강제하지 않고 같은 UID의 두 판단을 별도 보관."
+      },
+      "components": [
+        {
+          "label": "수준별 4-(①)",
+          "rpm2015": "M3-RPM-084",
+          "rpm2022": "M3-RPM-171",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "difficultyBucket": 1,
+          "reason": "원자료를 그대로 평균·편차제곱 평균으로 계산한다. 기존 raw-variance pending 후보에 지원 UID 결속."
+        },
+        {
+          "label": "수준별 4-(②)",
+          "rpm2015": "M3-RPM-084",
+          "rpm2022": "M3-RPM-171",
+          "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+          "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+          "difficultyBucket": 2,
+          "reason": "그래프에서 변량과 도수의 열을 읽고 가중평균·가중 편차제곱평균을 계산한다. 그래프 표기 여부만으로 계급값·도수 골격을 배제하지 않으며 이산 평점이 도수열의 값 역할을 한다.",
+          "definitionReuseKind": "SEMANTIC_INFERENCE_FROM_ACTIVE_DEFINITION",
+          "existingSourceProvenancePreserved": "SOURCE_TEXT_EXTRACTED_WITH_AUDITED_PART2_REPLACEMENT"
+        }
+      ]
+    }
+  ]
+}

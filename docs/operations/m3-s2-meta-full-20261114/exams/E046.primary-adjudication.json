@@ -1,0 +1,74 @@
+{
+  "examId": "E046",
+  "sourceGitBlobSha": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "reviewer": "GPT_ROOT_6538DF266481",
+  "author": "a",
+  "status": "ROOT_ACCEPTED_INDEPENDENT_PRIMARY_AND_COMPONENT_REVIEW",
+  "sourceReadOrdinals": [
+    21,
+    22,
+    24
+  ],
+  "sourceImageReadOrdinals": [
+    21,
+    22,
+    24
+  ],
+  "independentComponentEvidence": {
+    "path": "worker-outputs/b/independent/E046.components.json",
+    "sha256": "b14f02cfdd933cc751c58b7f4bb21ddd2b782469d5a24fd69385901d3d8bc521"
+  },
+  "componentDecisions": [
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+      "componentDifficultyBuckets": [
+        2,
+        4
+      ],
+      "representativeDifficultyBucket": 4,
+      "representativePolicy": "MAXIMUM_OF_COMPONENTS",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "basis": "(1) 지름의 직각 뒤 내각합이라는 표준 전처리2, (2) 빗변높이 제곱=분할곱을 세 반원 넓이차 전개에 결속하는4이다. 합산하지 않은 대표4를 수용한다. 원본 각·채색 QA 미결의 해제나 실제 원본 정답 PASS를 주장하지 않는다.",
+      "sourceQa": "OPEN_RELEASE_OWNER_SOURCE_RECHECK_REQUIRED"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d16f70989465a56106904f408c9d2c574bc70b97826419bc38c1e81b71323c14",
+      "componentDifficultyBuckets": [
+        1,
+        2
+      ],
+      "representativeDifficultyBucket": 2,
+      "representativePolicy": "MAXIMUM_OF_COMPONENTS",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "basis": "(1)은 다섯 원자료에 평균·분산 정의 직접 적용1이다. (2)는 현재 막대그래프에서 평점1~5의 도수1,2,4,2,1을 읽은 뒤 가중 편차제곱 평균을 계산하는2이다. 기존 ACTIVE frequency TPL의 값·도수 가중 골격을 재사용한다는 의미 추론을 수용하고 원자료 (1)과의 정확 TPL 공백은 따로 유지한다."
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d43950eb8a22074e6518dd8ac547397f263c1e451417a369ee03b5a0cc940f6d",
+      "status": "ACCEPT_EXISTING_ACTIVE_TEMPLATE_REUSE",
+      "reason": "원·지름으로부터 생기는 직각과 O의 빗변 중점 관계를 사용하는 현재 해설을 실제 읽었다. ACTIVE CIRCUMCENTER 정의는 외심을 찾는 목표에 한정되지 않고 외접원·빗변 중점 관계를 포함한다. 평행사변형·현 이등분·두 중점 연결을 보조근거로 보존한 재사용을 수용한다. RPM076/164와 해당 TPL의 연결은 등록 대기로 별도 표시되어 있다."
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+      "status": "OPEN_RELEASE_OWNER_SOURCE_RECHECK_REQUIRED",
+      "reason": "Root도 원본 첫 그림40도와 기존 해설 및 solution SVG45도를 직접 대조했다. 채색 fidelity의 기존 미결도 보존한다. 메타 방법의 기록은 source QA 해제를 뜻하지 않는다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d43950eb8a22074e6518dd8ac547397f263c1e451417a369ee03b5a0cc940f6d",
+      "status": "EXISTING_SOLUTION_TERMINOLOGY_NOTE",
+      "literal": "삼각형 $BHC$에서 두 중점 $O,D$를 잇는 선분은 중선이므로",
+      "reason": "기존 해설은 두 중점을 잇는 중점연결선분을 중선이라고 부른다.4칸은 실제 두 중점 연결 성질로 기록되어 있으며 학생용 문장은 수정하지 않는다.",
+      "nextOwner": "CODEX_RELEASE_OWNER_SOURCE_QA"
+    }
+  ],
+  "studentContentChanged": false,
+  "newMathematicalVerification": false
+}

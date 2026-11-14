@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "m3-s2-difficulty-adjudication-v1",
+  "examId": "E046",
+  "author": "a",
+  "reviewer": "b",
+  "sourceGitBlobSha": "db139c37b8351bc40cbfb595583bc4cb78df7c93",
+  "sourcePacketSha256": "3d6bae16976b151e9349df91fde0a96e5c8b4dcb28ed0a52a32c09c4dbf2a68a",
+  "sampledAuthorReviewSha256": "af3503b85a4afb887c6930ca6017e57e2697f28d8648a16984529fc6c2a20d65",
+  "sampledSourcePatchSha256": "bfa16f96c0d2c7a9aecb84cb2763c0a3546b74791186a168300d40fd5c09b4ef",
+  "sampled4slotSha256": "965fa0c4a55ae3a6fe37d3a2f72f3160bf312026bd1f8a6ca590155f60c5fbca",
+  "status": "INDEPENDENT_REVIEW_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "scope": "Historical-level exceptions Q10/Q14/Q18/Q23; Q21/Q24 component upper bounds separately recorded.",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "items": [
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_15f6f3a0b0732919b19ccce923857cdd85ee41306b465ae37502a85f63d4efad",
+      "historicalLevel": "상",
+      "authorDifficultyBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "현재 원본과 해설 그림의 외부 두 할선각30°, 같은 세 호, 목표2x를 확인했다. 기존 해설은 전체호 3t+u=360과 외각 t−u=60을 결합해 마지막 원주각으로 옮긴다. 표준 관계 두 개를 선택하는3이며 비정형 보조구조가 없어 4에서3/B34와 역사 상의 BORDERLINE_ACCEPTABLE을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentExistingSolutionImage"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_abf58c1bef1d19fdabd28ff13a78c89e64472a877320bd90f7ae8c6a88296405",
+      "historicalLevel": "상",
+      "authorDifficultyBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "basis": "현재 세 그래프의 누적 도수와 최대 빈도를 읽는 정형 전처리이다. B의 중앙값7·최빈값8을 확인했다. 세 집단을 반복해 판독한다는 이유로4가 되지 않으며2가 적절하다. 역사 상과의 STRONG_CONFLICT는 숨기지 않고 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalImage"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_05b4e5a923ef61d4bd788b9ae88e27ce6e68d4b6382fcd9284d3a197f98c1c17",
+      "historicalLevel": "중",
+      "authorDifficultyBucket": 1,
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "자료에3을 더하면 평균은9, 표준편차는2로 유지된다는 주어진 변환 성질을 직접 적용한다. 누락자료 복원이나 별도 전략 선택이 없어1/B12를 수용하며 역사 중은 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_a08a32d20af41824017d701741be760905482f9dc1c91df95f421267d74afd47",
+      "historicalLevel": "중",
+      "authorDifficultyBucket": 1,
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "10개 원자료를 정렬한 가운데 두 값3과3의 평균 및 최빈값3을 직접 읽고 더한다. 정의 직접 적용1/B12를 수용한다. 짝수 자료라는 이유로 홀수 전용 TPL에 넣지 않은 타입 공백도 구별되어 있다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E046-image-version.json",
+    "sha256": "513bfe6ba887c5fe85d339cee540f9fe4e4442682fd143f0912e594bfd908e82",
+    "verifiedAssets": 8
+  },
+  "newMathematicalVerification": false
+}

@@ -1,0 +1,80 @@
+{
+  "status": "GLOBAL_ACTIVE_DEFINITIONS_READ",
+  "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+  "entries": [
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+      "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+      "internalSkeleton": "복수의 원의 각 관계를 연쇄해 목표각·길이·넓이를 결정한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "접선-현각과 원주각·호 관계를 이용한다.",
+      "internalSkeleton": "접선·현·호·원주각 관계를 대응시켜 목표각을 구한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "definition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "definition": "계급값·도수 표를 만들어 평균을 구하고 (편차²×도수) 총합을 총도수로 나눈다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS",
+      "parentProblemTypeKey": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS",
+      "definition": "각 반 그래프의 정점(최빈값)과 누적 도수(중앙값)를 읽어 보기의 참·거짓을 판정한다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "definition": "변량을 k배 하면 평균은 k배, 분산은 k²배가 됨을 이용해 새 평균과 분산을 구한다.",
+      "internalSkeleton": null,
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3"
+    },
+    {
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "parentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "definition": "외심·외접원·빗변의 중점 관계를 이용한다.",
+      "internalSkeleton": "외심의 등거리 또는 빗변 중점 성질로 각·길이를 결정한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    }
+  ],
+  "componentDecisions": "components-evidence.json",
+  "fixedGraphVersusTableSurfacePolicy": "같은 가중 도수 골격에 대해 graph 또는 table라는 표현만으로 기존 정의를 배제하지 않는다. 원자료는 빈도 가중 전처리가 없으므로 별도로 구별한다."
+}
