@@ -1687,9 +1687,49 @@
         "from": "상",
         "to": "중",
         "note": "문제에서 꼭짓점·y절편·넓이 계산을 명시적으로 단계화. 표준 완전제곱 변형 및 삼각형 공식 직접 연결. bucket2 B23 경계 기록 수용."
+      },
+      {
+        "ordinal": 19,
+        "status": "APPROVE_BUCKET_CORRECTION",
+        "fromBucket": 3,
+        "toBucket": 4,
+        "boundaryFlag": "B34",
+        "note": "모든 사분면 통과를 개구 방향과 양의 y절편이라는 동시 부등식으로 재구성하고 양 끝값 배제를 판단하는 것이 핵심이다. bucket4/B34/medium 판정, 기존 level상 보존."
       }
     ],
     "mathematicalVerification": "NOT_PERFORMED",
-    "reviewVersion": "M3-S1-META-FULL-v1"
+    "reviewVersion": "M3-S1-META-FULL-v1",
+    "compatibilityAdjudication": [
+      {
+        "ordinal": 10,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "자연수 두 근을 중심 6에서 같은 거리 t로 두고 1~5의 익숙한 유한 후보를 합산하는 표준 연결이다. 기존 상과 독립 bucket3의 인접 경계로 보존한다. 별도의 비정형 분기 발상은 요구되지 않는다."
+      },
+      {
+        "ordinal": 12,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "그래프의 축·대칭·꼭짓점·대입값을 여러 보기에서 확인하는 한 단계 확장으로 bucket2를 판단했다. 기존 하와 인접 경계이며 역사적 level을 변경할 명확한 오류는 없다."
+      },
+      {
+        "ordinal": 16,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "실제 원본 q16 그림의 A,C,B,D 위치를 확인했다. 두 포물선의 같은 쪽 교점 수평 이동량을 이용하는 표준 평행이동·거리 연결이므로 bucket3이며 기존 상을 인접 경계로 보존한다."
+      },
+      {
+        "ordinal": 18,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "실제 원본 q18 그림에서 A,B와 H 및 C,D,E 관계를 확인했다. 같은 입력의 높이 비로 a를 정하고 다른 수선 높이에 적용하는 표준 두 관계 연결로 bucket3이다. 기존 상을 인접 경계로 보존한다."
+      },
+      {
+        "ordinal": 20,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "실제 원본 q20의 두 직사각형 영역과 P,Q,R를 확인했다. 꼭짓점 좌표·평행이동·높이가 같은 넓이 비를 연결하는 표준 복합이므로 bucket3, 기존 상과 인접 경계로 보존한다."
+      },
+      {
+        "ordinal": 23,
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "실제 작도 그림과 유도된 단계가 모두 제공되어 피타고라스 관계 및 양수인 근 선택을 순서대로 연결한다. 낯선 서술 형식만으로4를 부여하지 않고 bucket3, 기존 상은 인접 경계로 보존한다."
+      }
+    ]
   }
 }
