@@ -1,0 +1,3017 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E065",
+  "owner": "GPT_ROOT_14C2C64E43FB",
+  "createdAt": "2026-11-14T14:58:41.301583+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E065",
+    "reviewPath": "/workspace/scratch/14c2c64e43fb/workers/B/E065.review.json",
+    "fourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E065.4slot.json",
+    "independentPath": "/workspace/scratch/14c2c64e43fb/root/independent/E065/independent-review.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "acceptIndependentAdjacentMismatch": [
+      17,
+      19,
+      21
+    ],
+    "authorSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/workers/B/E065.difficulty-blind-freeze.json"
+    ],
+    "independentSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/root/independent/E065/initial.json"
+    ],
+    "rootAcceptance": {
+      "owner": "GPT_ROOT_14C2C64E43FB",
+      "actualSourceOrdinalsRead": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "actualImagesViewed": [
+        "workers/B/assets/E065-q12-q12.png",
+        "workers/B/assets/E065-q15-q15.png",
+        "workers/B/assets/E065-q17-q17.png",
+        "workers/B/assets/E065-q19-q19.png",
+        "workers/B/assets/E065-q20-q20.png",
+        "workers/B/assets/E065-q22-s02.png"
+      ],
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "rationale": "Actual root24source/solutions plus6images, frozen independent numbers, all24 comparisons and three actual axesamples7/17/24 with canonical definitions. One literal quotation repair; all real source discrepancies preserved."
+    },
+    "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/root/independent/E065/accepted-four-slot.json",
+    "acceptedFourSlotSha256": "c1404b8ecf3c2b8f635d3157aaafa411841384c9c94d201bbb6561f3ec492dd0",
+    "acceptedFourSlotBasis": "Q17 given 사각형162 was supported by whole stem but quote only 네 점. Exact existing literal 꼭짓점으로 하는 사각형 improves the source binding without changing any term or judgment."
+  },
+  "sampleReviewer": "GPT_ROOT_14C2C64E43FB",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "전개후차수를보아 두미지수일차방정식을선별한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립2/저자1 B12차이. 다섯 식의 간단한 항정리 후 남는 미지수와 차수를 바로 판별하는 직접 정의문항이므로 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "자연수조건과 방정식만족을 함께 대조한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수조건과 방정식만족을 함께 대조한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "한순서쌍을두식에직접대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "한순서쌍을두식에직접대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "y=3x를먼저대입하고 온전한해로계수를결정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+      },
+      "decision": "ACCEPT",
+      "reason": "y=3x를먼저대입하고 온전한해로계수를결정한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "공통해에서두미정계수의 두번째연립식을구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+      },
+      "decision": "ACCEPT",
+      "reason": "공통해에서두미정계수의 두번째연립식을구한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "분수·소수계수 정수화와괄호부호를정리후연립한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분수·소수계수 정수화와괄호부호를정리후연립한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "계수·상수비의일치로 두계수를정해곱한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+      },
+      "decision": "ACCEPT",
+      "reason": "계수·상수비의일치로 두계수를정해곱한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두사람모두16년을더한나이조건을식으로옮긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+      },
+      "decision": "ACCEPT",
+      "reason": "두사람모두16년을더한나이조건을식으로옮긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+        "difficulty": "UNKNOWN",
+        "difficultyBoundary": "UNKNOWN",
+        "confidence": "low",
+        "reason": "하루낮·밤선택지4는통상하루합24의문맥에서y=24-x로유일대응인데기존해설은x<y만읽어무수히많다고한다. 단일정답성유보."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+      },
+      "decision": "ACCEPT",
+      "reason": "하루낮·밤선택지4는통상하루합24의문맥에서y=24-x로유일대응인데기존해설은x<y만읽어무수히많다고한다. 단일정답성유보. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두함숫값을직접구해합한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "두함숫값을직접구해합한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "기울기절댓값과부호의구별을포함한다중진술정의판정."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "기울기절댓값과부호의구별을포함한다중진술정의판정. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "실제(0,4),(1,1)을읽어기울기·절편으로식구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제(0,4),(1,1)을읽어기울기·절편으로식구한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "두절편정의를보기별직접적용한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+      },
+      "decision": "ACCEPT",
+      "reason": "두절편정의를보기별직접적용한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "완전한점으로a를정하고다른점b를구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "완전한점으로a를정하고다른점b를구한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "실제그림5가(0,1),(2,-2)를지나는데기존해설은2를선택한다. 구조2low만보존한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제그림5가(0,1),(2,-2)를지나는데기존해설은2를선택한다. 구조2low만보존한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "평행기울기·한점으로식을정하고보기점대입한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "평행기울기·한점으로식을정하고보기점대입한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "고정점에서사각형의접촉경계꼭짓점기울기를찾아최대최소를정한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "직사각형을 만나는 기울기구간의 두끝 선택은 전략3이며 학습상과 B23 인접을 실제 그림·해설에 따라 수용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "초기량·증가율의시간을구하고시각으로바꾼다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+      },
+      "decision": "ACCEPT",
+      "reason": "초기량·증가율의시간을구하고시각으로바꾼다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "대칭중심의면적이등분성질로직선포함을판정한다. 실제사각형범위는x1~5,y-1~3이나해설x2~4,y0~2로다르다.중심동일하나부채low."
+      },
+      "authorFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+      },
+      "decision": "ACCEPT",
+      "reason": "사각형의 대칭중심을 넓이이등분 조건으로 선택하는 전략3이며 학습상과 B23 인접을 수용한다. 실제치수 오류는 low로 남긴다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+        "difficulty": "UNKNOWN",
+        "difficultyBoundary": "UNKNOWN",
+        "confidence": "low",
+        "reason": "그림상두번째직선은2x-by=5이며우상향인데본문은bx+y=2이다. alt와해설의b는그림식과불일치하므로UNKNOWN."
+      },
+      "authorFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+      },
+      "decision": "ACCEPT",
+      "reason": "그림상두번째직선은2x-by=5이며우상향인데본문은bx+y=2이다. alt와해설의b는그림식과불일치하므로UNKNOWN. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "high",
+        "reason": "각불완전순서쌍을식에대입해미지좌표차를구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+      },
+      "decision": "ACCEPT",
+      "reason": "한 방정식에 두 순서쌍을 각각 대입하는 직접형1과 학습중의 B12 인접을 수용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+        "difficulty": "UNKNOWN",
+        "difficultyBoundary": "UNKNOWN",
+        "confidence": "low",
+        "reason": "실제만화는4/9kcal·95분·505kcal인데alt/기존해설은4/8·40분·260이다. source충돌로UNKNOWN."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+      },
+      "decision": "ACCEPT",
+      "reason": "실제만화는4/9kcal·95분·505kcal인데alt/기존해설은4/8·40분·260이다. source충돌로UNKNOWN. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "안내된두축교점에서삼각형넓이로잇는다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+      },
+      "decision": "ACCEPT",
+      "reason": "안내된두축교점에서삼각형넓이로잇는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "high",
+        "reason": "두선교점을구한후그x좌표의수직선을구한다."
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+      },
+      "decision": "ACCEPT",
+      "reason": "두선교점을구한후그x좌표의수직선을구한다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_LEVEL_MIDDLE",
+      "reason": "실제 분수·소수계수 정수화와 가감법의 정형2를 읽었다. 원상→중 제안 및 실제 해 목표 정정 수용; 초기동결 바이트 유지."
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "하루 낮/밤 총24시간 문맥을 해설이 버린 함수판정의 유일성부채 확인."
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_LOW_WITH_IMAGE_NUMBER_CONFLICT",
+      "reason": "실제⑤기울기−3/2절편1과 해설②의 번호충돌을 확인했다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_CONDITIONAL_LOW",
+      "reason": "실제 사각형 x1..5/y−1..3과 해설 x2..4/y0..2는 다르지만 동일중심3,1. 원자료 오류 유지."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "실제그림2x−by=5와 본문bx+y=2 충돌을 확인했다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "실제만화4/9,95,505와 해설4/8,40,260 서로 다른 입력을 확인했다."
+    }
+  ],
+  "scopedOverrides": [
+    {
+      "sourceOrdinal": 17,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "level": "중",
+        "difficultyBucket": 2,
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "difficultyBucket": "UNKNOWN",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "두 입력을 주어진 함수식에 직접 대입한다. 두 함숫값의 합 주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "계수0 여부·직선형태·기울기의절댓값·대응유일성·원점통과를 함께 판정하므로 단일primary 유보. 일차함수 정의와 그래프 성질의 복수 판정 일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "실제 그림의 (0,4),(1,1)에서 기울기와 절편을 읽어 식을 정한다. 그래프 두 점으로 일차함수식 결정 실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "각 식에서 x=0/y=0을 대입해 절편을 구별한다. 두 절편의 직접 계산과 보기 판정 표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "한 점→계수→다른 점의 미지좌표→두 값 합 순서는 실제 ACTIVE TPL과 맞으며 target scoped binding은 별도 미등록. 한 점으로 계수 결정 후 다른 점 좌표 복원 한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "표준식의 절편과 증가량으로 그림을 고른다. 실제⑤와 기존해설②의 번호 충돌은 구조2/low로 보존. 기울기와 절편에 맞는 그래프 선택 기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "평행에서 기울기를 정하고 한 점으로 식을 구한 뒤 보기점 대입. 식 결정 내부 절차를 중복CC로 넣지 않는다. 평행 기울기와 한 점으로 정한 직선 위 점 판정 평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "고정점에서 네 꼭짓점으로 향하는 기울기 중 경계 둘을 선택하여 곱한다. 단순 조건부식177을 supporting으로 두고 exact 범위leafgap. 고정점을 지나는 직선과 사각형 교차의 기울기 범위 한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수의 뜻과 그래프"
+      },
+      "reason": "누적량 일차모델에서 지속시간을 역산한 뒤 시작시각에 더한다. 일반 선형활용 leafgap과 온도고도 TPL의 소재/시간목표 차이를 보존. 초기 방류량과 일정 증가율에서 목표 시각 계산 초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardUnit": "일차함수와 그래프",
+        "category": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "difficultyBucket": "UNKNOWN",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "difficultyBucket": 1,
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "difficultyBucket": "UNKNOWN",
+        "standardUnit": "연립일차방정식",
+        "category": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "두 축 교점을 구한 뒤 밑변과 높이의 절댓값으로 직각삼각형 넓이를 구한다. 두 절편으로 좌표축 삼각형 넓이 계산 직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "standardUnit": "일차함수와 그래프",
+        "category": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "subUnitKey",
+      "before": "M2-04-LINEAR_EQ_DEF",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "subUnit",
+      "before": "미지수가 2개인 일차방정식의 뜻",
+      "after": "연립일차방정식",
+      "reason": "정리한 식의 차수와 두 문자 계수를 판별하는 정의 과제이며 연립해 RPM150과 구별한다. 미지수 두 개인 일차방정식 정의 판별 각 항을 정리해 이변수 일차방정식 정의에 해당하는지 직접 판별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "subUnitKey",
+      "before": "M2-04-NATURAL_SOLUTIONS",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "subUnit",
+      "before": "자연수 조건에서의 일차방정식의 해",
+      "after": "연립일차방정식",
+      "reason": "한 이변수 방정식의 자연수 해를 판정하며 연립해150에 강제로 넣지 않는다. 자연수 순서쌍의 일차방정식 해 판정 자연수 순서쌍에 대입하고 양의 범위 및 등식 충족을 구별"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "subUnitKey",
+      "before": "M2-04-SYSTEM_SOLUTION_CHECK",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "subUnit",
+      "before": "연립방정식의 해의 판정",
+      "after": "연립일차방정식",
+      "reason": "두 성분을 각각 두 식에 대입하여 동시에 성립하는지 확인한다. 주어진 해를 만족하는 연립방정식 선택 주어진 두 성분을 각 연립방정식의 두 식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "subUnitKey",
+      "before": "M2-04-VARIABLE_RATIO_SOLVE",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "subUnit",
+      "before": "미지수 사이의 관계식이 주어진 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "y=3x와 수치식을 먼저 결합한 다음 a식에 대입한다. 두 연립 공통해 TPL과 입력 형식이 달라 related 후보만 보존한다. 해의 배수 관계와 수치식으로 계수 결정 수치 두 식으로 공통해를 구하고 남은 계수식에 대입"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "subUnitKey",
+      "before": "M2-04-SYSTEM_COMMON_SOL",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "subUnit",
+      "before": "해가 같은 두 연립방정식의 미지수 구하기",
+      "after": "연립일차방정식",
+      "reason": "수치 두 식의 공통해가 나머지 두 계수식의 입력이 된다. 두 연립의 공통해와 미정계수 연립 두 연립의 공통해 뒤 미정계수 두 식을 다시 연결"
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "subUnitKey",
+      "before": "M2-04-SYSTEM_COMPLEX_COEFF",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "subUnit",
+      "before": "소수와 분수를 포함한 연립방정식의 풀이",
+      "after": "연립일차방정식",
+      "reason": "10배와 분모 최소공배수6배 후 가감법을 적용한다. 소수 전용 TPL의 분수식 추가 및 해 자체 목표 차이는 binding 부채. 소수·분수 계수를 정수화한 뒤 연립해 계산 소수와 분수식을 정수 계수로 변형한 뒤 가감법으로 연립해를 구하는 정형 절차. 초기 reason의 성분합 표현은 목표가 해 자체인 점에 맞게 보정했으며 초기 snapshot 숫자와 바이트는 보존한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "subUnitKey",
+      "before": "M2-04-INFINITE_SOLUTIONS",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "subUnit",
+      "before": "해가 무수히 많은 연립방정식의 조건",
+      "after": "연립일차방정식",
+      "reason": "계수와 상수항의 비를 모두 같게 두는 해의 상태 조건. 해 없음 TPL과 상태가 달라 exact binding은 확정하지 않는다. 무수히 많은 해의 계수 비 조건 무수히 많은 해의 계수·상수항 비를 일치시켜 미정계수 결정; 분모 b의 영 예외를 해설에서 별도로 다루지 않음"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "subUnitKey",
+      "before": "M2-04-AGE_APPLICATION",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "subUnit",
+      "before": "나이에 관한 연립방정식의 세우기",
+      "after": "연립일차방정식의 활용",
+      "reason": "현재 합과16년 뒤 배수관계를 두 식으로 옮기는 두 수 관계이며 해 계산은 목표가 아니다. 현재와 미래 나이 관계의 두 식 모델 현재와 16년 뒤의 나이 합·배수 관계를 두 식으로 모델링"
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "subUnitKey",
+      "before": "M2-05-FUNCTION_CONCEPT",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": "UNKNOWN",
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "subUnit",
+      "before": "함수의 뜻과 판정",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "일반 함수 정의 과제로 일차함수 여부165와 구별한다. 하루 낮과 밤의 보완관계를 해설이 배제하여 단일정답 불명확. 함수의 대응 유일성 판정과 낮밤 도메인 부채 하루 낮과 밤은 총24시간 문맥인데 기존해설은 x<y만 읽어 함수에서 배제; 단일정답의 도메인 해석 부채"
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "두 입력을 주어진 함수식에 직접 대입한다. 두 함숫값의 합 주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "subUnitKey",
+      "before": "M2-05-FUNCTION_VALUE",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "두 입력을 주어진 함수식에 직접 대입한다. 두 함숫값의 합 주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "두 입력을 주어진 함수식에 직접 대입한다. 두 함숫값의 합 주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "subUnit",
+      "before": "함숫값의 계산",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "두 입력을 주어진 함수식에 직접 대입한다. 두 함숫값의 합 주어진 일차함수에 두 입력을 대입하여 함숫값 합 계산"
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "계수0 여부·직선형태·기울기의절댓값·대응유일성·원점통과를 함께 판정하므로 단일primary 유보. 일차함수 정의와 그래프 성질의 복수 판정 일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "subUnitKey",
+      "before": "M2-05-LINEAR_FUNCTION_PROP",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "계수0 여부·직선형태·기울기의절댓값·대응유일성·원점통과를 함께 판정하므로 단일primary 유보. 일차함수 정의와 그래프 성질의 복수 판정 일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "계수0 여부·직선형태·기울기의절댓값·대응유일성·원점통과를 함께 판정하므로 단일primary 유보. 일차함수 정의와 그래프 성질의 복수 판정 일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "subUnit",
+      "before": "일차함수 y=ax+b의 기본 성질과 기울기 해석",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "계수0 여부·직선형태·기울기의절댓값·대응유일성·원점통과를 함께 판정하므로 단일primary 유보. 일차함수 정의와 그래프 성질의 복수 판정 일차함수의 직선·기울기·증감·절편 정의를 복수보기에서 판정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "실제 그림의 (0,4),(1,1)에서 기울기와 절편을 읽어 식을 정한다. 그래프 두 점으로 일차함수식 결정 실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "subUnitKey",
+      "before": "M2-05-EQUATION_FROM_GRAPH",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "실제 그림의 (0,4),(1,1)에서 기울기와 절편을 읽어 식을 정한다. 그래프 두 점으로 일차함수식 결정 실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "실제 그림의 (0,4),(1,1)에서 기울기와 절편을 읽어 식을 정한다. 그래프 두 점으로 일차함수식 결정 실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "subUnit",
+      "before": "그래프를 보고 일차함수의 식 구하기",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "실제 그림의 (0,4),(1,1)에서 기울기와 절편을 읽어 식을 정한다. 그래프 두 점으로 일차함수식 결정 실제 그래프의 두 점 (0,4),(1,1)을 읽어 기울기와 절편 결정"
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "각 식에서 x=0/y=0을 대입해 절편을 구별한다. 두 절편의 직접 계산과 보기 판정 표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "subUnitKey",
+      "before": "M2-05-INTERCEPT_CALCULATION",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "각 식에서 x=0/y=0을 대입해 절편을 구별한다. 두 절편의 직접 계산과 보기 판정 표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "각 식에서 x=0/y=0을 대입해 절편을 구별한다. 두 절편의 직접 계산과 보기 판정 표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "subUnit",
+      "before": "일차함수의 x절편과 y절편 판정",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "각 식에서 x=0/y=0을 대입해 절편을 구별한다. 두 절편의 직접 계산과 보기 판정 표준형 다섯 직선의 x절편과 y절편을 직접 대응"
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "한 점→계수→다른 점의 미지좌표→두 값 합 순서는 실제 ACTIVE TPL과 맞으며 target scoped binding은 별도 미등록. 한 점으로 계수 결정 후 다른 점 좌표 복원 한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnitKey",
+      "before": "M2-05-TWO_POINTS_PARAM",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "한 점→계수→다른 점의 미지좌표→두 값 합 순서는 실제 ACTIVE TPL과 맞으며 target scoped binding은 별도 미등록. 한 점으로 계수 결정 후 다른 점 좌표 복원 한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "한 점→계수→다른 점의 미지좌표→두 값 합 순서는 실제 ACTIVE TPL과 맞으며 target scoped binding은 별도 미등록. 한 점으로 계수 결정 후 다른 점 좌표 복원 한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnit",
+      "before": "두 점을 지나는 일차함수의 미지수 결정",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "한 점→계수→다른 점의 미지좌표→두 값 합 순서는 실제 ACTIVE TPL과 맞으며 target scoped binding은 별도 미등록. 한 점으로 계수 결정 후 다른 점 좌표 복원 한 점에서 계수를 결정한 뒤 다른 점의 좌표를 복원해 합 계산"
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "표준식의 절편과 증가량으로 그림을 고른다. 실제⑤와 기존해설②의 번호 충돌은 구조2/low로 보존. 기울기와 절편에 맞는 그래프 선택 기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "subUnitKey",
+      "before": "M2-05-GRAPH_DRAWING",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "표준식의 절편과 증가량으로 그림을 고른다. 실제⑤와 기존해설②의 번호 충돌은 구조2/low로 보존. 기울기와 절편에 맞는 그래프 선택 기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "표준식의 절편과 증가량으로 그림을 고른다. 실제⑤와 기존해설②의 번호 충돌은 구조2/low로 보존. 기울기와 절편에 맞는 그래프 선택 기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "subUnit",
+      "before": "절편과 기울기를 이용한 그래프 식별",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "표준식의 절편과 증가량으로 그림을 고른다. 실제⑤와 기존해설②의 번호 충돌은 구조2/low로 보존. 기울기와 절편에 맞는 그래프 선택 기울기와 y절편에 맞는 실제 그림 선택; 기존해설은②이나 실제⑤와 조건이 맞는 번호 충돌"
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "평행에서 기울기를 정하고 한 점으로 식을 구한 뒤 보기점 대입. 식 결정 내부 절차를 중복CC로 넣지 않는다. 평행 기울기와 한 점으로 정한 직선 위 점 판정 평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "subUnitKey",
+      "before": "M2-05-PARALLEL_LINE_POINT",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "평행에서 기울기를 정하고 한 점으로 식을 구한 뒤 보기점 대입. 식 결정 내부 절차를 중복CC로 넣지 않는다. 평행 기울기와 한 점으로 정한 직선 위 점 판정 평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "평행에서 기울기를 정하고 한 점으로 식을 구한 뒤 보기점 대입. 식 결정 내부 절차를 중복CC로 넣지 않는다. 평행 기울기와 한 점으로 정한 직선 위 점 판정 평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "subUnit",
+      "before": "평행 조건과 한 점을 이용한 직선의 방정식",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "평행에서 기울기를 정하고 한 점으로 식을 구한 뒤 보기점 대입. 식 결정 내부 절차를 중복CC로 넣지 않는다. 평행 기울기와 한 점으로 정한 직선 위 점 판정 평행 직선의 기울기와 주어진 점으로 식을 정한 뒤 보기점 판정"
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "고정점에서 네 꼭짓점으로 향하는 기울기 중 경계 둘을 선택하여 곱한다. 단순 조건부식177을 supporting으로 두고 exact 범위leafgap. 고정점을 지나는 직선과 사각형 교차의 기울기 범위 한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "subUnitKey",
+      "before": "M2-05-INTERSECT_RECTANGLE",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "고정점에서 네 꼭짓점으로 향하는 기울기 중 경계 둘을 선택하여 곱한다. 단순 조건부식177을 supporting으로 두고 exact 범위leafgap. 고정점을 지나는 직선과 사각형 교차의 기울기 범위 한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "고정점에서 네 꼭짓점으로 향하는 기울기 중 경계 둘을 선택하여 곱한다. 단순 조건부식177을 supporting으로 두고 exact 범위leafgap. 고정점을 지나는 직선과 사각형 교차의 기울기 범위 한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "subUnit",
+      "before": "직선과 도형이 만나는 기울기의 범위",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "고정점에서 네 꼭짓점으로 향하는 기울기 중 경계 둘을 선택하여 곱한다. 단순 조건부식177을 supporting으로 두고 exact 범위leafgap. 고정점을 지나는 직선과 사각형 교차의 기울기 범위 한 고정점을 지나는 직선이 직사각형을 지나는 기울기 구간의 두 끝을 선택하고 곱 계산"
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "누적량 일차모델에서 지속시간을 역산한 뒤 시작시각에 더한다. 일반 선형활용 leafgap과 온도고도 TPL의 소재/시간목표 차이를 보존. 초기 방류량과 일정 증가율에서 목표 시각 계산 초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "subUnitKey",
+      "before": "M2-05-RATE_APPLICATION",
+      "after": "M2-04-LINEAR_FUNCTION_BASIC",
+      "reason": "누적량 일차모델에서 지속시간을 역산한 뒤 시작시각에 더한다. 일반 선형활용 leafgap과 온도고도 TPL의 소재/시간목표 차이를 보존. 초기 방류량과 일정 증가율에서 목표 시각 계산 초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "누적량 일차모델에서 지속시간을 역산한 뒤 시작시각에 더한다. 일반 선형활용 leafgap과 온도고도 TPL의 소재/시간목표 차이를 보존. 초기 방류량과 일정 증가율에서 목표 시각 계산 초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "subUnit",
+      "before": "물 방류량에 관한 일차함수의 활용",
+      "after": "일차함수의 뜻과 그래프",
+      "reason": "누적량 일차모델에서 지속시간을 역산한 뒤 시작시각에 더한다. 일반 선형활용 leafgap과 온도고도 TPL의 소재/시간목표 차이를 보존. 초기 방류량과 일정 증가율에서 목표 시각 계산 초기 물의 양과 일정 증가량에서 목표량까지 걸린 시간을 정하고 시작 시각에 더함"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "standardUnitKey",
+      "before": "M2-06",
+      "after": "M2-04",
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "subUnitKey",
+      "before": "M2-06-AREA_BISECTION",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "standardUnit",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "일차함수와 그래프",
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "category",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "일차함수와 그래프",
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "standardUnitOrder",
+      "before": 6,
+      "after": 4,
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "subUnit",
+      "before": "정사각형의 넓이를 이등분하는 직선의 방정식",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "넓이를 분할하는 직선의 중심 통과 조건을 이용한다. 실제 꼭짓점과 해설 입력이 다르지만 중심은 같다는 좁은 부채를 보존. 정사각형 넓이이등분 직선의 중심 통과 판정 직사각형 넓이를 이등분하는 중심 통과 조건으로 직선식 선택; 실제 꼭짓점과 해설 꼭짓점이 다르나 중심은 같음"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "standardUnitKey",
+      "before": "M2-06",
+      "after": "M2-03",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "subUnitKey",
+      "before": "M2-06-SYSTEM_GRAPH_INTERSECT",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": "UNKNOWN",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "standardUnit",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "연립일차방정식",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "category",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "연립일차방정식",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "standardUnitOrder",
+      "before": 6,
+      "after": 3,
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "subUnit",
+      "before": "두 직선의 교점을 이용한 계수 결정",
+      "after": "연립일차방정식",
+      "reason": "그림 교점 성분을 두 일차식에 대입하는 계수결정 구조. 실제 두번째 식이 본문과 달라 숫자난도 UNKNOWN. 그래프 공통해에서 두 미정계수 복원 실제 두번째 그림식 2x-by=5와 본문 bx+y=2 및 기존해설 계수결정이 충돌"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "subUnitKey",
+      "before": "M2-04-POINT_SUBSTITUTION",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "subUnit",
+      "before": "순서쌍 해의 대입과 식의 값",
+      "after": "연립일차방정식",
+      "reason": "하나의 방정식에 두 순서쌍을 각각 대입하는 구조로 연립해150과 구별한다. 한 일차방정식의 두 해에서 빠진 성분 복원 한 일차방정식에 두 순서쌍을 각각 대입하여 빠진 성분과 차 계산"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitKey",
+      "before": "M2-04",
+      "after": "M2-03",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnitKey",
+      "before": "M2-04-CALORIE_APPLICATION",
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": "UNKNOWN",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnit",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "category",
+      "before": "일차방정식과 연립방정식",
+      "after": "연립일차방정식",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitOrder",
+      "before": 4,
+      "after": 3,
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnit",
+      "before": "운동 시간과 소모 열량에 관한 연립방정식 활용",
+      "after": "연립일차방정식의 활용",
+      "reason": "두 지속시간의 합과 열량의 합을 연결하는 활용. 실제만화와alt/기존해설 수치가 달라 UNKNOWN. 가격개수157과 정확범위를 구별한다. 운동시간과 열량의 연립모델 및 해 해석 실제 만화의4/9kcal·95분·505kcal와 alt/해설의4/8·40분·260kcal가 서로 다른 입력"
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-04",
+      "reason": "두 축 교점을 구한 뒤 밑변과 높이의 절댓값으로 직각삼각형 넓이를 구한다. 두 절편으로 좌표축 삼각형 넓이 계산 직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "subUnitKey",
+      "before": "M2-05-AXIS_TRIANGLE_AREA",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "두 축 교점을 구한 뒤 밑변과 높이의 절댓값으로 직각삼각형 넓이를 구한다. 두 절편으로 좌표축 삼각형 넓이 계산 직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 4,
+      "reason": "두 축 교점을 구한 뒤 밑변과 높이의 절댓값으로 직각삼각형 넓이를 구한다. 두 절편으로 좌표축 삼각형 넓이 계산 직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "subUnit",
+      "before": "일차함수와 좌표축으로 둘러싸인 삼각형의 넓이",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "두 축 교점을 구한 뒤 밑변과 높이의 절댓값으로 직각삼각형 넓이를 구한다. 두 절편으로 좌표축 삼각형 넓이 계산 직선의 두 절편을 구한 뒤 좌표축 삼각형 넓이의 표준 공식 적용"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "standardUnitKey",
+      "before": "M2-06",
+      "after": "M2-04",
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "subUnitKey",
+      "before": "M2-06-PARALLEL_AXIS_LINE",
+      "after": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "standardUnit",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "일차함수와 그래프",
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "category",
+      "before": "일차함수와 일차방정식의 관계",
+      "after": "일차함수와 그래프",
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "standardUnitOrder",
+      "before": 6,
+      "after": 4,
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "subUnit",
+      "before": "두 직선의 교점과 좌표축에 평행한 직선",
+      "after": "일차함수와 일차방정식의 관계",
+      "reason": "연립 계산으로 얻은 교점의 x좌표를 수직선 x=p의 상수로 쓴다. 마지막 직선 방정식 결정을 primary로 분리한다. 연립 교점을 지나는 수직선의 방정식 두 직선의 교점을 연립으로 구한 다음 그 점을 지나는 수직선 방정식 작성"
+    }
+  ],
+  "sourceWriterDeferred": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1292bb1068aa5257df9903ce388e20eb2cda6dbd33af6f50006f08346856a863",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0b51836a036acb45b25cf2cedbc18f466dc1a58e3d8587bb7734262da35d2c35",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0f06a6031a19a22d59e5c49a262a521d4b19d3bbccf23cb7d2aa7535d19689f8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de8cac7bd451334dc4db55453354bcc01deae3377225bd9efd0b33bcf9f54dfc",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4098c3c7fecee0fd99b077503858eb0daa85b00ead88d98de1076e59fd497f45",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1b921b685383e8e21356c756f4986e83286005fafc46e16814b43f44d812bb31",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23920efdc4e9a2080114a50764bf920a1193c6ca101be2e1fa65eaa45772e512",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f71e348a11b761afa4e4994e416e2e45d7c0cc52b22ab2ac2dc4e51b13eb94d8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_23b2b32297ee1918ea28595abab6a3fa8c8c15846efdc8a54f379b1962fa07f0",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_b868453de239f6fbf7ddabac97b5f51bd92ede52e96f5c11b209e786b7a3bce1",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_db8ca1b6bc3f1a96e0288aabaeb6e75a40239a60a1e501eabe06be35f16ac268",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fe5fa3be6b8609640f752993d3e578c02dc87edf4c88aef3c3a8e8aedb48af82",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_35c50a5b61f2beb5b78d76e484517a301c99d8156db3032ca281cfec62ba4fa8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ec72c2b6e583c9e010a6e6aad0715c4d294c099f1e6e15914a7ec37e3b7496fb",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_575e0fa3c069ccfad49c7dcaee5236b7557694030874ff90db0ab4240d5e8c66",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_bddae8e78b2e3a36bf13809cfe9a3b7c118483537cd63cc91b53224a1d3bbecc",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7c19317b6c195f77ce16d67f97795511f6bf6b3a8fec10c1bb55da38b7b9be26",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d49f4def33cb4a2a018480ea16a08e92dc13932bd6b528e178ed1ce0ae630e38",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e6672faa6a735cf678d2c8d2e86797fcfa021424df3126b95c3308fac0baced3",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_95b71006923b7c86954408374061925e4e7a6921b7fdfb22fc438c30c8e4b69d",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8c22625194bd84db79efa0f5645dbe79e9c901e6653fd4e70282bb0b8296ee55",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [
+        "CC_LINEAR_SYSTEM"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "SEQUENTIAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "medium",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f578d7af6fa032de73c99ea5a94ba4de44ddc4c394a76626bdaef2d5114ffe98",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    }
+  ],
+  "reviewedSourceBlob": "75e01cf3e1dcb2a8feaadb069feaabbd832d7d97",
+  "finalSourceBlob": "bdc3f60bea0c7f03530b2ea81bbdf73156fd14aa",
+  "reviewSha256": "0734547840dd3ea7328337c777ef11c7e0127b5199486fd3e8893d189ad61b71",
+  "acceptedReviewSha256": "353e7def2593bdcb8a389f2fbc0dfeb9b46c25b5d70a3c29c8e20ac1b4e66505",
+  "independentSha256": "9daea5b67ce1e2bd07e2128a0917c6a2315afb42e8105687085601f853cafcdc",
+  "reviewedFourSlotSha256": "3fca3c34dc54220ebb81af34b1695f0e33c991671f516b02f4e3452c0d1a3477",
+  "finalFourSlotSha256": "274bc1f1637d33972bfeeb75136aae8a95752708455db29f7d272e95d43f52ca",
+  "independentSupplements": [
+    {
+      "file": "independent-supplements/initial.json",
+      "sha256": "10f526fcdea533bf175bc6f32a2581ba9a339e053e33fffd33272fddc55be771"
+    }
+  ],
+  "fourSlotRebind": {
+    "transformation": "Explicitly identified and independently reviewed immutable candidate supplement plus final sourceGitBlobSha rebind. Original author bytes remain separate.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ],
+  "acceptedFourSlotCandidate": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E065/accepted-four-slot.json",
+    "sha256": "c1404b8ecf3c2b8f635d3157aaafa411841384c9c94d201bbb6561f3ec492dd0",
+    "basis": "Q17 given 사각형162 was supported by whole stem but quote only 네 점. Exact existing literal 꼭짓점으로 하는 사각형 improves the source binding without changing any term or judgment."
+  },
+  "authorSupplements": [
+    {
+      "file": "author-supplements/E065.difficulty-blind-freeze.json",
+      "sha256": "fd384c55a93a2b91edb4236b8fecc50c9823021cc593c844683f3e106a7e2710"
+    }
+  ]
+}
