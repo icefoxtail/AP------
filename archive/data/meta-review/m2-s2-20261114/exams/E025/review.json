@@ -1439,7 +1439,7 @@
         "legacyLevelCompatibility": "BORDERLINE_REVIEW"
       },
       "after": {
-        "templateKey": "TPL_CENTROID_APPLICATION",
+        "templateKey": "",
         "problemTypeKey": "PT_COORD_CENTROID",
         "subUnitKey": "M2-06-TRIANGLE_CENTROID",
         "subUnit": "삼각형의 무게중심의 성질",
@@ -1452,7 +1452,7 @@
       },
       "fieldReview": {
         "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 넓이 분할: 두 번의 무게중심 높이비와 넓이",
-        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "binding": "ACTIVE PT_COORD_CENTROID의 정의·해당 교육과정 binding을 유지한다. APPLICATION의 외부 도형/좌표 결합 요건과 달라 정확한 넓이분할 TPL 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
         "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
         "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
         "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
@@ -1466,7 +1466,9 @@
           "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
         }
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "B-E035-CENTROID-AREA-PARTITION"
+      ],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 3,
@@ -1507,7 +1509,21 @@
         "subUnitKey": "M2-06-SIMILAR_FIGURE",
         "subUnit": "도형의 닮음",
         "legacyLevelCompatibility": "BORDERLINE_REVIEW"
-      }
+      },
+      "revisionHistory": [
+        {
+          "scope": "template-only",
+          "previousTemplateKey": "TPL_CENTROID_APPLICATION",
+          "newTemplateKey": "",
+          "sharedProposalRef": "B-E035-CENTROID-AREA-PARTITION",
+          "reason": "ROOT/C 독립 정의 비교: 이 문항은 순수 무게중심의 중선·등넓이 분할을 중첩 적용하며 TPL_CENTROID_APPLICATION이 요구하는 별도 도형 성질이나 좌표 조건의 결합이 없다. 기존 PT_COORD_CENTROID와 RPM099는 유지하고 정확한 넓이분할 NEW_TPL을 공유한다.",
+          "unchanged": [
+            "difficulty",
+            "fourSlot",
+            "sourceContent"
+          ]
+        }
+      ]
     },
     {
       "sourceOrdinal": 19,
@@ -2353,6 +2369,22 @@
       ],
       "supportingQuestionUids": [
         "qid_v1_d938f89a81e36f770b5751ed9e01716aabe2f4ed5737e73c7207cadc11f0f9bf"
+      ]
+    },
+    {
+      "id": "B-E035-CENTROID-AREA-PARTITION",
+      "type": "NEW_TPL",
+      "name": "무게중심의 등넓이 분할과 중첩 넓이비",
+      "definition": "삼각형의 무게중심과 세 꼭짓점을 이으면 생기는 세 등넓이 부분 또는 세 중선의 여섯 등넓이 부분을 이용해 부분·전체 넓이를 구하며 중첩된 무게중심에도 같은 비를 반복한다.",
+      "parent": "PT_COORD_CENTROID",
+      "distinguishingCriteria": "좌표평균이나 다른 도형 성질을 결합하는 APPLICATION과 달리 순수 무게중심 넓이분할만 반복한다. ROOT/C 독립 정의 비교: 이 문항은 순수 무게중심의 중선·등넓이 분할을 중첩 적용하며 TPL_CENTROID_APPLICATION이 요구하는 별도 도형 성질이나 좌표 조건의 결합이 없다. 기존 PT_COORD_CENTROID와 RPM099는 유지하고 정확한 넓이분할 NEW_TPL을 공유한다.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_DIRECT",
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a"
       ]
     }
   ],
