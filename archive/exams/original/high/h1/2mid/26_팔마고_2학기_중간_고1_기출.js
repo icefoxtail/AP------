@@ -773,7 +773,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 5,
-    "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q17.svg",
+    "image": "assets/images/26_팔마고_2학기_중간_고1_기출/q17-problem-v2.svg",
     "solutionImage": "assets/images/26_팔마고_2학기_중간_고1_기출/q17-solution-v3.svg",
     "solutionImageAlt": "해설 그림: 원점 중심의 원과 중심 O′(2,6)에서 접혀 내려온 주황색 호가 두 점 P, Q에서 만난다. 파란 두 반지름의 길이는 6이고, OO′의 중점 M에서 현 PQ와 OO′가 직각으로 만난다.",
     "solutionImageCaption": "접힌 호의 중심은 O′(2,6)이므로 OO′의 길이는 2√10이다. 접는 직선 PQ는 OO′의 수직이등분선이므로 OM=√10이고, 반지름과 직각삼각형을 이용하면 PM=√26이다. 정답은 2√26이다.",
