@@ -340,7 +340,8 @@ $P\\leftrightarrow S$, $Q\\leftrightarrow T$, $R\\leftrightarrow U$이다.
 $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 
 따라서 $x+y=9+16=25$이므로 정답은 ①이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q07.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q07-problem-v2.svg"
   },
   {
     "id": 8,
@@ -955,7 +956,8 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 대상인 LM 자체를 다른 관계의 모서리와 함께 세지 않는다.
 
 따라서 정답은 ①이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q19.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q19-problem-v2.svg"
   },
   {
     "id": 20,
