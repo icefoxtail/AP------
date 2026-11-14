@@ -1,0 +1,128 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "composite-panels-v1",
+        "panels": [
+          {
+            "caption": {
+              "text": "삼각기둥 LMN-OPQ"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "id": "tri",
+                  "kind": "PRISM",
+                  "base": {
+                    "kind": "POLYGON",
+                    "points": [
+                      [
+                        0,
+                        0
+                      ],
+                      [
+                        6,
+                        0
+                      ],
+                      [
+                        2.4,
+                        4.4
+                      ]
+                    ]
+                  },
+                  "height": 5,
+                  "names": [
+                    "L",
+                    "M",
+                    "N",
+                    "O",
+                    "P",
+                    "Q"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "caption": {
+              "text": "오각기둥 PQRST-UVWXY"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "id": "pent",
+                  "kind": "PRISM",
+                  "base": {
+                    "kind": "POLYGON",
+                    "points": [
+                      [
+                        0,
+                        0
+                      ],
+                      [
+                        3.1,
+                        0.5
+                      ],
+                      [
+                        3.2,
+                        2.2
+                      ],
+                      [
+                        1.36,
+                        2.8
+                      ],
+                      [
+                        -0.4,
+                        1.7
+                      ]
+                    ]
+                  },
+                  "height": 2.4,
+                  "names": [
+                    "P",
+                    "Q",
+                    "R",
+                    "S",
+                    "T",
+                    "U",
+                    "V",
+                    "W",
+                    "X",
+                    "Y"
+                  ]
+                }
+              ],
+              "highlights": [
+                {
+                  "solid": "pent",
+                  "face": "side1",
+                  "fill": "LIGHT"
+                }
+              ]
+            }
+          }
+        ],
+        "caption": "문항에 나온 두 기둥",
+        "sourceConditions": [
+          "The first named solid is triangular prism LMN-OPQ.",
+          "The second named solid is pentagonal prism PQRST-UVWXY.",
+          "The target face QRWV is the side face sharing edges QR and VW."
+        ],
+        "newVisualInformation": [
+          "The named target face QRWV receives a light tint to make its location immediately identifiable."
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 36,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

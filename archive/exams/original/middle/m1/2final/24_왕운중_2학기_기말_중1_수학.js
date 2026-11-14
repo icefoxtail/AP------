@@ -1219,7 +1219,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서술형 1] 아래 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br>($\\angle x$의 크기를 구하는 과정: 2점, $\\angle x$의 크기: 2점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/s01-student.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "[서술형 1] 아래 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br>($\\angle x$의 크기를 구하는 과정: 2점, $\\angle x$의 크기: 2점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q21-problem-v2.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
     "choices": [],
     "answer": "$118^\\circ$",
     "solution": "삼각형의 꼭짓점에서 외각 x는 두 마주 보는 내각의 합이다.\n왼쪽 아래 내각은 표시된 외각 x+2°와 이웃하므로 180°−(x+2°)이다.\n따라서 x=180−(x+2)+58=236−x이고 2x=236이다.\n그러므로 x=118°이다.",
