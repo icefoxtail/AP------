@@ -1,0 +1,61 @@
+{
+  "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {"id":"A","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"rational","numerator":"57628433","denominator":"10000000"},{"kind":"rational","numerator":"99815373","denominator":"10000000"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"B","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"0"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"C","op":"SOURCE_POINT","inputs":[],"args":{"coordinates":[{"kind":"integer","value":"12"},{"kind":"integer","value":"0"}]},"outputType":"POINT","factRole":"GIVEN"},
+            {"id":"L","op":"POLAR_POINT","inputs":["B","C"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"},
+            {"id":"E","op":"POLAR_POINT","inputs":["A","B"],"args":{"length":{"kind":"integer","value":"3"},"angleDeg":{"kind":"integer","value":"180"},"turn":"CCW"},"outputType":"POINT","factRole":"DERIVED_INTERMEDIATE"}
+          ]
+        },
+        "displayPoints": ["A","B","C","L","E"],
+        "displaySegments": [
+          {"id":"AB","refs":["A","B"]},
+          {"id":"AC","refs":["A","C"]},
+          {"id":"BC","refs":["B","C"]},
+          {"id":"BL","refs":["B","L"]},
+          {"id":"AE","refs":["A","E"]}
+        ],
+        "planeMarks": {
+          "angles": [
+            {"id":"apexExterior","refs":["E","A","C"],"style":"ARC","arcs":1,"label":"x","labelKind":"MATH","factRole":"GIVEN"},
+            {"id":"leftExterior","refs":["L","B","A"],"style":"ARC","arcs":1,"label":"x+2°","labelKind":"MATH","factRole":"GIVEN"},
+            {"id":"rightInterior","refs":["A","C","B"],"value":58,"style":"ARC","arcs":1,"label":"58°","labelKind":"MATH","factRole":"GIVEN"}
+          ]
+        },
+        "hiddenPointNames": ["A","B","C","L","E"],
+        "hiddenPointStyle": "NONE",
+        "coordinateCanvas": {"width":570,"height":470},
+        "caption": "삼각형의 두 외각과 한 내각",
+        "accessibilityDescription": "삼각형과 꼭짓점의 외각, 왼쪽 밑각의 외각, 오른쪽 밑각의 내각을 나타낸 도식이다.",
+        "sourceQuote": "아래 그림에서 $\\angle x$의 크기를 구하시오.",
+        "sourceConditions": [
+          {"id":"apexLabel","condition":"상단 꼭짓점에서 x로 표시한 외각을 나타낸다.","mappedTo":"planeMarks.angles.apexExterior"},
+          {"id":"leftExteriorLabel","condition":"왼쪽 밑각의 외각은 x+2°로 표시한다.","mappedTo":"planeMarks.angles.leftExterior"},
+          {"id":"rightInteriorGiven","condition":"오른쪽 밑각은 58°이다.","mappedTo":"planeMarks.angles.rightInterior"},
+          {"id":"leftSideExtension","condition":"왼쪽 변의 직선을 밑점과 꼭짓점 너머로 연장한다.","mappedTo":"displaySegments.BL and displaySegments.AE"}
+        ],
+        "newVisualInformation": ["x, x+2°, 58° 라벨이 각각 소유한 각의 호와 함께 표시된다."]
+      },
+      "typography": {
+        "schemaVersion":"REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx":36,
+        "displayScale":0.45,
+        "fontFloorCssPx":11
+      }
+    }
+  ]
+}
