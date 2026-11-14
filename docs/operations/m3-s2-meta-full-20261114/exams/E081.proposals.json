@@ -1,0 +1,497 @@
+[
+  {
+    "ordinal": 1,
+    "questionUid": "qid_v1_63a36311e6c836a34982fb062114769b85ac5be72c59e022c42a200a8282c354",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "그림에 주어진 세 변1,√2,√3을 각의 맞은편·이웃변·빗변에 대응시킨다.",
+    "decisiveStep": "그림에 AC=√2도 이미 표시되어 있다. sinA=1/√3, sinB=cosA=√2/√3, tanA=1/√2, tanB=√2이므로⑤이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_BASIC_RELATION"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 2,
+    "questionUid": "qid_v1_427c07a252ffce32ea6210bff7e59dee250a6b4c0fbb22fbd695fda78bcab94e",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "주어진 tan으로 직각변을 복원하고 빗변에서 다른 각의 cos를 구한다.",
+    "decisiveStep": "AB=1, BC=√3, AC=√(1+3)=2이므로 cosC=√3/2,⑤이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_BASIC_RELATION"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 3,
+    "questionUid": "qid_v1_dadc8eec0cc8416b3af9c5ae8f44462b121056ee42194ac389a9902b0491ae4e",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "빗변 위 수선이 만드는 닮음으로 BC를 구하고 sin을 계산한다.",
+    "decisiveStep": "AB=8, BC²=BD·BA=24이므로 BC=2√6, sinx=2√6/8=√6/4,①이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_BASIC_RELATION"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 4,
+    "questionUid": "qid_v1_e71725ef67a4a6eb4ed7c84171c15072671db2e208a2574731360e182c62cd24",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "30°·45°·60° 및0°의 삼각비를 각 식에 대입해 등식을 판정한다.",
+    "decisiveStep": "②의 sin45°cos60°=√2/4는 tan60°=√3과 다르다. 나머지는 각각1,1/2의 동치,√2/2의 동치,0+1=1로 참이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_6a1aef0fdbd7640d3db2c2317eeaff8afea74b4bf0a3f6fef12a6a655889e900",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "단위 사분원의 작은 삼각형과 접선까지 늘린 큰 삼각형을 구별해 비를 읽는다.",
+    "decisiveStep": "AC=AD=1에서 sinx=BC,siny=AB,cosx=AB이며 E각 z에 대해 tanz=AD/DE=1/DE이므로ㄱㄴㄹ,④이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_BASIC_RELATION"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 6,
+    "questionUid": "qid_v1_195e9a7b8156905b4f3ffa0fa2498acee6603ee024368f3adc2c9e9fca63f4e4",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "예각 구간에서 삼각비의 증가·감소와30° 표준값을 비교한다.",
+    "decisiveStep": "예각에서 sin,tan 증가·cos감소로①②④ 참이고 sin45=cos45. cos30=√3/2>√3/3=tan30이므로⑤가 거짓이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "핵심은 예각에서 sin,tan의 증가와 cos의 감소이며 서로 다른 각에서 값의 대소를 판정한다. BASIC_RELATION은 변·각의 삼각비 변환만 정의한다. 필요한 정의: 예각 삼각비의 단조 변화 및 특수각 값을 이용한 대소 판정.",
+        "proposalDefinition": "핵심은 예각에서 sin,tan의 증가와 cos의 감소이며 서로 다른 각에서 값의 대소를 판정한다. BASIC_RELATION은 변·각의 삼각비 변환만 정의한다. 필요한 정의: 예각 삼각비의 단조 변화 및 특수각 값을 이용한 대소 판정."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_RATIO_BASIC_RELATION"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_f669fe713a8a0faec8da39043cf14f4f132c7073d931e62a1ef6494349152d85",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "두 앙각이 공유하는 수평 거리를 구한 뒤45° 높이에서 아래 높이를 뺀다.",
+    "decisiveStep": "DC=3, BC=3/tan30=3√3이며 전체앙각45°라 AC=BC=3√3. 따라서 AD=3(√3−1),②이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_62f3f0950ff3d7d695986c07cab0e85464231c34e52f8555f27aff8ef5370764",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "보조 정삼각형과 수선을 만들어30°·60°·45° 직각삼각형을 연결한다.",
+    "decisiveStep": "B=60°. 정삼각형 ABE의 변4에서 AF=2√3이고 AFC는45° 직각이등변삼각형이므로 AC=AF√2=2√6,③이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 9,
+    "questionUid": "qid_v1_ab249f4333adc6ba4676a70a328617c05695cdffed148f8f31c16bf9bf4a3ad2",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "정팔각형을 중심에서 합동인 여덟 삼각형으로 나누어 삼각비 넓이를 합한다.",
+    "decisiveStep": "반지름6, 중심각45°로 한 넓이=6·6·sin45°/2=9√2이며 여덟 개 합72√2,④이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 10,
+    "questionUid": "qid_v1_c5b0ede91d3bf1498031eccd21db2426f79ddc8d6d9896ac3a6436ea94116d84",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "원주각30°에서 중심각60°를 구해 색칠 영역을 부채꼴과 삼각형으로 나눈다.",
+    "decisiveStep": "AOC=60°, 부채꼴넓이=3π/6=π/2. 높이CH=√3 sin60=3/2이므로 OBC넓이=3√3/4, 합이③이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "원주각→중심각60°는 중간값이고 최종 목표는 부채꼴과 삼각형의 넓이 합이다. CENTER_ARC skeleton은 목표각 계산이다. 필요한 정의: 원주각·중심각을 사용한 부채꼴과 삼각형 복합 영역 넓이.",
+        "proposalDefinition": "원주각→중심각60°는 중간값이고 최종 목표는 부채꼴과 삼각형의 넓이 합이다. CENTER_ARC skeleton은 목표각 계산이다. 필요한 정의: 원주각·중심각을 사용한 부채꼴과 삼각형 복합 영역 넓이."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_44fc954bf78456f70a63cce8ac97dba9e9911d0100a992b97f20313a1e5cd25a",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "중심에서 현에 내린 수선이 현을 반으로 나눔을 이용해 반현 길이를 구한다.",
+    "decisiveStep": "OC=3√3, ON=3이므로 CN²=27−9=18, CD=2CN=6√2,⑤이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "mappedTemplateKeys": [
+          "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_e3718ff90560317ef874c2c0cf810c18d226ab9ef85d5505d6a157a21d4ba4d5",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "동일한 중심거리의 현 길이를 정하고 중점연결정리로 세 번째 변을 구한다.",
+    "decisiveStep": "M,N은 AB,AC의 중점이며 OM=ON에서 AB=AC=20. MN=BC/2이므로 BC=24, 둘레64,③이다.",
+    "debts": [
+      {
+        "field": "crossConceptKeys",
+        "candidateLabel": "삼각형 중점연결정리",
+        "reason": "정확한 ACTIVE 정의 미확인. 넓은 닮음 태그로 대체하지 않고 4칸의 사전 용어 중점연결정리 및 실제 MN=BC/2 근거를 유지."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "mappedTemplateKeys": [
+          "TM_CIRCLE_CHORD_LENGTH"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_714197335a20265db0058f983c2b9f3dac94e33ab3933f6644096b13005523b5",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "같은 두 현으로 만든 이등변삼각형과 같은 두 접선의 이등변삼각형에서 각을 연속 구한다.",
+    "decisiveStep": "ACB=112°이므로 CAB=34°. PAB=34°+34°=68°, PA=PB이므로 APB=180°−136°=44°,①이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_UNAVAILABLE",
+        "field": "templateKey",
+        "reason": "공식 후보 없음. 필요한 정의: 같은 두 접선과 다른 이등변삼각형의 각을 연결해 두 접선의 교각을 결정.",
+        "proposalDefinition": "공식 후보 없음. 필요한 정의: 같은 두 접선과 다른 이등변삼각형의 각을 연결해 두 접선의 교각을 결정."
+      },
+      {
+        "type": "PROJECTION_UNMATERIALIZED",
+        "curriculum": "2015",
+        "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "mappedProblemTypeKey": null,
+        "mappedTemplateKeys": []
+      },
+      {
+        "type": "PROJECTION_UNMATERIALIZED",
+        "curriculum": "2022",
+        "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "mappedProblemTypeKey": null,
+        "mappedTemplateKeys": []
+      }
+    ]
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_84c9a0359ca207f99002c2fe61e8ba24657964e30645a0e8177a20d0680ee8a2",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "내접원의 접선 조각들을 같은 길이로 두고 둘레에서 미지 조각을 구한다.",
+    "decisiveStep": "AP=AR=3, CR=CQ=5, BP=BQ=x이므로 둘레2x+16=28, x=6, BC=x+5=11,①이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "미지 접선조각BP를 먼저 계산하지만 최종 목표 BC는 접점을 사이에 둔 두 조각의 합이다. 필요한 정의: 삼각형의 내접원 접선조각 및 둘레 조건으로 한 변 길이 결정. 접선 자체 길이만을 명시한 TM_TANGENT_LENGTH로 강제하지 않는다.",
+        "proposalDefinition": "미지 접선조각BP를 먼저 계산하지만 최종 목표 BC는 접점을 사이에 둔 두 조각의 합이다. 필요한 정의: 삼각형의 내접원 접선조각 및 둘레 조건으로 한 변 길이 결정. 접선 자체 길이만을 명시한 TM_TANGENT_LENGTH로 강제하지 않는다."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "mappedTemplateKeys": [
+          "TM_TANGENT_LENGTH"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_1ada01e9b699122ad66469c8b65bb9debf3db9ed64f10f8c26c159fcb0a4975b",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "같은 호에 대한 원주각과 평행선의 엇각으로 다른 호의 크기를 옮긴다.",
+    "decisiveStep": "호ABC=116°, 호AB=BC=58°. AD∥BE에서 ∠DAE=∠AEB이므로 호DE=호AB=58°, DCE=29°,④이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_COMPOSITE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_3c084fb80987d1c6cecf6cd57cbe9c7b6609230b7cee3a91a00cc42cee15c119",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "호 길이의 원주 비율을 원주각으로 바꾸고 교차 현이 만든 삼각형의 나머지 각을 구한다.",
+    "decisiveStep": "호AB는90°라 ACB45°, 호CD는60°라 DBC30°. PBC 삼각형에서 BPC=180°−45°−30°=105°,②이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_387ffe604b7ef71f88f4edb5c177f7f5e30a163b91ec8bead9cb236a58d55100",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "대각의 합180° 또는 같은 현을 보는 각의 동일성을 이용해 내접사각형을 판정한다.",
+    "decisiveStep": "ㄱ은 같은 현 각40°≠50°로불가. ㄴ은110+70=180, ㄷ은100+100=200, ㄹ은ABC80과ADC100의합180이므로ㄴㄹ,④이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_UNAVAILABLE",
+        "field": "templateKey",
+        "reason": "공식 후보 없음. 필요한 정의: 같은 현을 보는 각 또는 사각형 대각의 합으로 네 점의 공원 조건을 판정.",
+        "proposalDefinition": "공식 후보 없음. 필요한 정의: 같은 현을 보는 각 또는 사각형 대각의 합으로 네 점의 공원 조건을 판정."
+      },
+      {
+        "type": "PROJECTION_UNMATERIALIZED",
+        "curriculum": "2015",
+        "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "mappedProblemTypeKey": null,
+        "mappedTemplateKeys": []
+      },
+      {
+        "type": "PROJECTION_UNMATERIALIZED",
+        "curriculum": "2022",
+        "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "mappedProblemTypeKey": null,
+        "mappedTemplateKeys": []
+      }
+    ]
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_b730b0219059cc129905f3fc44751ac17ce6a54d6346b69e129f6148985255ca",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "접선-현 각과 주어진 같은 각으로 AP=AT를 얻고 닮음으로 접선 길이를 계산한다.",
+    "decisiveStep": "∠APT=∠ATP이므로 AP=AT=6, PB=16. PTA∼PBT에서 PT²=PA·PB=96이므로 PT=4√6,③이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "접현각을 같은 각으로 옮긴 뒤 AP=AT와 AA닮음을 이용해 PT²=PA·PB라는 길이 관계를 만든다. 후보 skeleton은 목표각 계산이다. 필요한 정의: 접현각→닮음으로 접선·할선 길이 관계를 유도하고 미지 길이 계산.",
+        "proposalDefinition": "접현각을 같은 각으로 옮긴 뒤 AP=AT와 AA닮음을 이용해 PT²=PA·PB라는 길이 관계를 만든다. 후보 skeleton은 목표각 계산이다. 필요한 정의: 접현각→닮음으로 접선·할선 길이 관계를 유도하고 미지 길이 계산."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_b755ac0c5cf944dabc771dc7c0cf78c125afd86609de16c50b2cdcb263b6009d",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "중심에서 현에 수선을 내려 중점과 교점의 차를 구하고 두 직각삼각형의 피타고라스를 잇는다.",
+    "decisiveStep": "CM=3.5, MP=0.5, OM²=25−12.25=12.75이므로 OP²=12.75+0.25=13, OP=√13,①이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "mappedTemplateKeys": [
+          "TM_CIRCLE_CHORD_LENGTH"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_a7c04eb6b662d652536c91f3afc2d17aadc8a0da3968bc235a6f337e269d0975",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "지름에 대한 원주각으로 직각을 확보하고 큰 직각삼각형과 작은 삼각형의 닮음을 쓴다.",
+    "decisiveStep": "AC=√(144+25)=13, ADB90°. ABD∼ACB이므로 AD/12=12/13, AD=144/13,②이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "지름에 대한90° 원주각은 닮음 설정의 중간 조건이고 목표는 AD의 길이이다. CENTER_ARC skeleton의 목표각 계산과 다르다. 필요한 정의: 반원 원주각의 직각으로 닮음을 구성하고 길이 비례식 산출.",
+        "proposalDefinition": "지름에 대한90° 원주각은 닮음 설정의 중간 조건이고 목표는 AD의 길이이다. CENTER_ARC skeleton의 목표각 계산과 다르다. 필요한 정의: 반원 원주각의 직각으로 닮음을 구성하고 길이 비례식 산출."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_2826d331066545b78210e032a4d956be5fff43f13ee1c13352355c9686ede1f3",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "수선을 내려 삼각비로 수평·수직 성분을 구한 뒤 목표 거리의 직각삼각형을 구성한다.",
+    "decisiveStep": "BH=20cos60=10, PH=20sin60=10√3, AH=30−10=20. AP²=400+300=700이므로10√7m이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_e9ecd92c4f2a8a03cb8865a3bb8c82ee218326e41ae3b936be2e68ad54324f02",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "사각형의 대각선 길이를 먼저 구하고 이를 공유하는 두 삼각형의 넓이를 합한다.",
+    "decisiveStep": "BD=7tan60=7√3. ABD넓이49√3/2, BCD높이BDsin30=7√3/2이므로 BCD넓이21√3, 합91√3/2이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 23,
+    "questionUid": "qid_v1_4660be84be7a48b85e24cba69f267ad96a16e57ad1478114e4cd9c30fbe27e69",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "접는 선을 겹치는 두 점의 수직이등분선으로 해석해 중심에서 현까지의 거리를 구한다.",
+    "decisiveStep": "접힌 점X와 O의 거리8이므로 접는 선까지 OM=4. AM=√(64−16)=4√3, AB=8√3이고 넓이=AB·4/2=16√3이다.",
+    "debts": [
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "mappedTemplateKeys": [
+          "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        ]
+      }
+    ]
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_27ad635ea92f045b7be845ad0826430c464324e94714ce958949ecd98f6b1262",
+    "status": "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    "primaryMethod": "접선-현 각의 닮음으로 숨은 할선 길이를 구하고 현 중점에 대한 두 피타고라스 식을 차감한다.",
+    "decisiveStep": "PT²=PA·PX에서 PX16, AX12, AM6, BM2. r²=OM²+36,49=OM²+4를 빼 r²=81이므로 r9이다.",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "field": "templateKey",
+        "reason": "접현각→AA닮음으로 PX를 구하고 현중점과 두 피타고라스 식 차감으로 반지름을 구한다. 후보의 목표각 계산과 다르다. 필요한 정의: 접선-할선 닮음 및 현 중점·공통수선 소거를 결합한 반지름 역산.",
+        "proposalDefinition": "접현각→AA닮음으로 PX를 구하고 현중점과 두 피타고라스 식 차감으로 반지름을 구한다. 후보의 목표각 계산과 다르다. 필요한 정의: 접선-할선 닮음 및 현 중점·공통수선 소거를 결합한 반지름 역산."
+      },
+      {
+        "type": "PROJECTION_BINDING_PENDING",
+        "curriculum": "2022",
+        "reason": "EXACT_ACTIVE_BINDING_PENDING",
+        "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "mappedTemplateKeys": [
+          "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+        ]
+      }
+    ]
+  }
+]

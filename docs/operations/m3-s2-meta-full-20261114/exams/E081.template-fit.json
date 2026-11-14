@@ -1,0 +1,152 @@
+{
+  "examId": "E081",
+  "author": "GPT_AUTHOR_C_00FBAC4C0777",
+  "afterFreezeSha256": "25cc915ce88d1fb0e9e4162a64605f4e92c9ca0778d4f8a90400eb6088962894",
+  "at": "2026-11-14T11:17:06.455558+00:00",
+  "items": [
+    {
+      "ordinal": 1,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "그림의 세 변을 각 A,B의 삼각비로 바로 변환한다. AC도 이미 주어져 있다."
+    },
+    {
+      "ordinal": 2,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "tanA에서 변의 비를 정하고 빗변을 거쳐 cosC로 변환한다."
+    },
+    {
+      "ordinal": 3,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "닮음이 제공한 BC와 AB를 sinA의 정의에 직접 대응한다."
+    },
+    {
+      "ordinal": 4,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "30°·45°·60°·0°의 삼각비를 직접 계산해 등식을 판정한다."
+    },
+    {
+      "ordinal": 5,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "단위 사분원에서 두 직각삼각형의 각과 변의 비를 직접 읽어 명제를 판정한다."
+    },
+    {
+      "ordinal": 6,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "핵심은 예각에서 sin,tan의 증가와 cos의 감소이며 서로 다른 각에서 값의 대소를 판정한다. BASIC_RELATION은 변·각의 삼각비 변환만 정의한다. 필요한 정의: 예각 삼각비의 단조 변화 및 특수각 값을 이용한 대소 판정."
+    },
+    {
+      "ordinal": 7,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "30°로 공유 밑변을 수치로 구하고45° 전체높이에서3을 뺀다. 두 미지량 식의 연립이 없어 SHARED_HEIGHT보다 연결된 직각삼각형의 직접 측정에 맞는다."
+    },
+    {
+      "ordinal": 8,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "보조 정삼각형에서 높이 AF=2√3을 구한 뒤 별도45° 삼각형의 빗변 AC로 전달한다. 중간 길이를 다른 도형량 계산에 이어가는 skeleton과 맞는다."
+    },
+    {
+      "ordinal": 9,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "정팔각형을8개로 분할하고 해설그림의 높이3√2(6sin45°)를 삼각형넓이 및 전체넓이에 연결한다. 목표가 넓이라 DIRECT_MEASURE보다 CHAINED_MEASURE에 맞는다."
+    },
+    {
+      "ordinal": 10,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "원주각→중심각60°는 중간값이고 최종 목표는 부채꼴과 삼각형의 넓이 합이다. CENTER_ARC skeleton은 목표각 계산이다. 필요한 정의: 원주각·중심각을 사용한 부채꼴과 삼각형 복합 영역 넓이."
+    },
+    {
+      "ordinal": 11,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 CN을 구해 CD를 두 배 한다. 정의는 결과량을 제한하지 않으며 해당 성질이 직접 쓰인다."
+    },
+    {
+      "ordinal": 12,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "reason": "동일 중심거리인 AB,AC의 길이20이라는 현 길이 조건을 사용해 중점연결정리로 둘레를 구한다. 후보는 현 길이 조건을 이용하는 경우를 명시적으로 포함한다."
+    },
+    {
+      "ordinal": 13,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "공식 후보 없음. 필요한 정의: 같은 두 접선과 다른 이등변삼각형의 각을 연결해 두 접선의 교각을 결정."
+    },
+    {
+      "ordinal": 14,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "미지 접선조각BP를 먼저 계산하지만 최종 목표 BC는 접점을 사이에 둔 두 조각의 합이다. 필요한 정의: 삼각형의 내접원 접선조각 및 둘레 조건으로 한 변 길이 결정. 접선 자체 길이만을 명시한 TM_TANGENT_LENGTH로 강제하지 않는다."
+    },
+    {
+      "ordinal": 15,
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "reason": "주어진 원주각→같은 두 호→평행선 엇각→다른 같은 호→목표원주각으로 복수 각 관계를 연쇄한다."
+    },
+    {
+      "ordinal": 16,
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "reason": "원주 비율의 중심각90°,60°를 원주각45°,30°로 바꾸고 삼각형 내각합으로 목표각105°를 결정한다."
+    },
+    {
+      "ordinal": 17,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "공식 후보 없음. 필요한 정의: 같은 현을 보는 각 또는 사각형 대각의 합으로 네 점의 공원 조건을 판정."
+    },
+    {
+      "ordinal": 18,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "접현각을 같은 각으로 옮긴 뒤 AP=AT와 AA닮음을 이용해 PT²=PA·PB라는 길이 관계를 만든다. 후보 skeleton은 목표각 계산이다. 필요한 정의: 접현각→닮음으로 접선·할선 길이 관계를 유도하고 미지 길이 계산."
+    },
+    {
+      "ordinal": 19,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "reason": "전체 현7과 교점에서 잘린 길이4,3을 사용해 반현3.5와 중심거리를 결정한다. 현 길이 조건을 이용한다는 정의와 직접 맞는다."
+    },
+    {
+      "ordinal": 20,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "지름에 대한90° 원주각은 닮음 설정의 중간 조건이고 목표는 AD의 길이이다. CENTER_ARC skeleton의 목표각 계산과 다르다. 필요한 정의: 반원 원주각의 직각으로 닮음을 구성하고 길이 비례식 산출."
+    },
+    {
+      "ordinal": 21,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "두 연결된 직각삼각형에서 수평10·수직10√3을 구하고 남은 밑변20으로 목표거리 AP를 산출한다. 공통 미지량 연립은 없으므로 DIRECT_MEASURE이다."
+    },
+    {
+      "ordinal": 22,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로 중간 대각선 BD와 다른 삼각형의 높이 BE를 만든 뒤 두 넓이 합으로 연결한다."
+    },
+    {
+      "ordinal": 23,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "접는 선을 XO의 수직이등분선으로 해석한 후 중심에서 현AB로 내린 수선이 AB를 이등분하는 성질을 직접 사용한다. 이후 피타고라스·넓이는 후속 단계이다."
+    },
+    {
+      "ordinal": 24,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "templateKey": null,
+      "reason": "접현각→AA닮음으로 PX를 구하고 현중점과 두 피타고라스 식 차감으로 반지름을 구한다. 후보의 목표각 계산과 다르다. 필요한 정의: 접선-할선 닮음 및 현 중점·공통수선 소거를 결합한 반지름 역산."
+    }
+  ]
+}

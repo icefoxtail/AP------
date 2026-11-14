@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "M3S2_TARGETED_DIFFICULTY_ADJUDICATION_v1",
+  "examId": "E081",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "reviewedAt": "2026-11-14T11:35:18.724437+00:00",
+  "sourceReviewMode": "Independent peer source-only review frozen before comparison. Root compared actual source/figures on disputed decisions and original 3 source-first samples.",
+  "independentReviewRef": "E081.difficulty-independent.json",
+  "independentReviewSha256": "c53ecf2c07e13fd9d0b35d8bf54c75108b75b555b1ef7c81c56eb15e6b51598d",
+  "items": [
+    {
+      "ordinal": 2,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "주어진 tan A에서 목표각 C의 cos로 옮기는 전처리가 있다. A=60°, C=30°를 이용하거나 한 변을 복원한 뒤 피타고라스를 쓰면 되며, 사용할 방법은 바로 정해지는 2단계이다. 특수각을 즉시 알아보면 직접 확인형에 가까워 B12로 남긴다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 3,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "빗변에 내린 수선이 이미 제시된 표준 닮음 도형이다. 필요한 변 BC를 빗변 분할 길이로 복원한 뒤 sin을 대입하는 익숙한 전처리이므로 2단계이다. 닮음의 대응변을 삼각비와 연결해야 하는 경계성은 B23으로 기록한다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 5,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "단위사분원의 두 직각삼각형에서 기준각과 분모가 1인 변을 구별해야 한다. 특히 z가 E의 각이므로 tan z가 DE의 역수라는 한 번의 그림 해석이 필요하다. 이후는 정의의 직접 적용이어서 2단계/B12이며 보기 수로 난도를 올리지 않는다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 6,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 1,
+      "finalBucket": 1,
+      "reason": "예각 삼각비의 증감과 특수각 수치를 바로 확인하는 기본 성질 판정이다. cos30>tan30의 직접 비교라1/B12.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 7,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "두 직각삼각형과 공통 수평거리 BC가 그림에 주어져 있다. 아래 시선의 tan30°로 BC를 구하고, 위 시선의 45°를 이용해 높이를 뺀다. 보조선 선택 없이 표준 시선각 틀을 따르는 2단계이며, 공통변을 매개로 두 삼각형을 연결하는 점은 B23이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 8,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "직각삼각형이 주어지지 않아 A에서 BC로 수선을 내려 두 특수각 삼각형을 만드는 접근을 선택해야 한다. 그 선택 뒤에는 표준 삼각비 두 번으로 끝나는 3단계/B23이다. 기존 해설의 정삼각형 보조점 구성은 필수가 아니므로 그 추가 설명을 난도 근거로 삼지 않았다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 9,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "정팔각형을 중심에서 합동인 8개의 이등변삼각형으로 나누는 정형적인 넓이 틀을 적용한다. 반지름과 중심각을 한 번 구한 뒤 같은 넓이를 반복 합산하므로 2단계이다. 원래 발문에는 분할 그림이 없어 그 표현 전환의 경계성은 B23으로 남긴다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 11,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반쪽 현을 잡은 뒤 피타고라스를 적용하는 표준형이다. 새로운 보조선이나 접근 선택이 없으므로 2단계이며, 기본 성질 직접 적용과 가까워 B12이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 12,
+      "status": "RESOLVED",
+      "authorBucketBefore": 2,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "수선의 발 M,N을 현의 중점으로 바꾸면 주어진 AM과 MN이 각각 변과 중점연결선에 바로 대응한다. 같은 중심거리로 두 현을 같게 하고 중점연결 정리로 나머지 변을 읽는 직접 연결이므로 2단계이다. 원의 성질과 삼각형 중점연결을 결합하는 부담은 B23으로 남긴다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 18,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "접현각을 주어진 각의 등식에 연결하여 APT의 이등변 구조를 먼저 찾아야 한다. 이어 접선과 할선에서 생기는 닮음을 선택해 길이의 곱 관계를 세운다. 두 관계를 실제로 엮는 표준 복합 추론이므로 3단계이며, 비정형 분기나 범위 판단은 없다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 20,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 3,
+      "finalBucket": 3,
+      "reason": "지름 AB가 만드는 ∠ADB=90°를 찾아 큰 직각삼각형과 작은 직각삼각형을 닮음으로 연결하는 풀이 방향을 선택해야 한다. 피타고라스·반원의 원주각·닮음이 표준적으로 결합하는 3단계이고, 전형적인 빗변수선 도형이 드러난 뒤에는 직접 계산이어서 B23이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 22,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "원본의 대각선 BD와 본문 채점기준에 ABD넓이→BD→BCD넓이→합산 경로가 제시되어 있다. 학생이 분할전략을 새로 선택하지 않아2/B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    }
+  ]
+}

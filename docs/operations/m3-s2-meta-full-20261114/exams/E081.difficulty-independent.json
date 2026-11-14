@@ -1,0 +1,229 @@
+{
+  "examId": "E081",
+  "sourceArchiveFile": "original/middle/m3/2final/16_왕의중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "064b58dccb7a6b55fe6d5400cbff01802325c97a",
+  "sourcePacketSha256": "f6bb23f50b6fb5cc5421f1834908901aa8c6f6ddf8157041720e84a346aebb8a",
+  "reviewer": "author_b",
+  "reviewedAt": "2026-11-14T11:25:49.045630+00:00",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "independentOfAuthorLedger": true,
+  "sourceOnlyPacketRead": true,
+  "peerMetadataViewedBeforeFreeze": false,
+  "scope": "Additional independent difficulty review only. No peer or legacy difficulty values viewed. Not a blind solution-certification stage.",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_427c07a252ffce32ea6210bff7e59dee250a6b4c0fbb22fbd695fda78bcab94e",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "difficultyConfidence": "medium",
+      "reason": "주어진 tan A에서 목표각 C의 cos로 옮기는 전처리가 있다. A=60°, C=30°를 이용하거나 한 변을 복원한 뒤 피타고라스를 쓰면 되며, 사용할 방법은 바로 정해지는 2단계이다. 특수각을 즉시 알아보면 직접 확인형에 가까워 B12로 남긴다.",
+      "decisiveComputation": "B=90°이고 tan A=√3이므로 A=60°, C=30°. 따라서 cos C=√3/2. 별도로 BC=√3, AC=√(1+3)=2에서도 같은 값이다.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q02.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q2-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "B=90°이고 tan A=√3이므로 A=60°, C=30°. 따라서 cos C=√3/2. 별도로 BC=√3, AC=√(1+3)=2에서도 같은 값이다.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_dadc8eec0cc8416b3af9c5ae8f44462b121056ee42194ac389a9902b0491ae4e",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "빗변에 내린 수선이 이미 제시된 표준 닮음 도형이다. 필요한 변 BC를 빗변 분할 길이로 복원한 뒤 sin을 대입하는 익숙한 전처리이므로 2단계이다. 닮음의 대응변을 삼각비와 연결해야 하는 경계성은 B23으로 기록한다.",
+      "decisiveComputation": "AB=5+3=8. △BCD∼△BAC에서 BC²=BD·BA=3·8=24, BC=2√6. sin x=BC/AB=√6/4.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q03.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q3-solution-v2.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "AB=5+3=8. △BCD∼△BAC에서 BC²=BD·BA=3·8=24, BC=2√6. sin x=BC/AB=√6/4.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6a1aef0fdbd7640d3db2c2317eeaff8afea74b4bf0a3f6fef12a6a655889e900",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "difficultyConfidence": "medium",
+      "reason": "단위사분원의 두 직각삼각형에서 기준각과 분모가 1인 변을 구별해야 한다. 특히 z가 E의 각이므로 tan z가 DE의 역수라는 한 번의 그림 해석이 필요하다. 이후는 정의의 직접 적용이어서 2단계/B12이며 보기 수로 난도를 올리지 않는다.",
+      "decisiveComputation": "AC=AD=1. ABC에서 sin x=BC, sin y=AB, cos x=AB. ADE에서 tan z=AD/DE=1/DE이므로 ㄷ은 일반적으로 성립하지 않고 ㄱ·ㄴ·ㄹ이 참, ④.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q05.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q5-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "AC=AD=1. ABC에서 sin x=BC, sin y=AB, cos x=AB. ADE에서 tan z=AD/DE=1/DE이므로 ㄷ은 일반적으로 성립하지 않고 ㄱ·ㄴ·ㄹ이 참, ④.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_195e9a7b8156905b4f3ffa0fa2498acee6603ee024368f3adc2c9e9fca63f4e4",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reason": "예각 범위의 삼각비 증감과 특수각 값을 그대로 확인한다. 조건을 새 식이나 도형으로 바꾸거나 풀이 전략을 고를 필요가 없는 기본 성질 확인형 1단계이다.",
+      "decisiveComputation": "sin과 tan은 예각에서 증가, cos는 감소하므로 ①②④가 참. sin45°=cos45°이고 cos30°=√3/2>√3/3=tan30°이므로 틀린 것은 ⑤.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q6-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "sin과 tan은 예각에서 증가, cos는 감소하므로 ①②④가 참. sin45°=cos45°이고 cos30°=√3/2>√3/3=tan30°이므로 틀린 것은 ⑤.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_f669fe713a8a0faec8da39043cf14f4f132c7073d931e62a1ef6494349152d85",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "두 직각삼각형과 공통 수평거리 BC가 그림에 주어져 있다. 아래 시선의 tan30°로 BC를 구하고, 위 시선의 45°를 이용해 높이를 뺀다. 보조선 선택 없이 표준 시선각 틀을 따르는 2단계이며, 공통변을 매개로 두 삼각형을 연결하는 점은 B23이다.",
+      "decisiveComputation": "BC=DC/tan30°=3√3. ∠ABC=15°+30°=45°이므로 AC=BC=3√3. AD=AC−DC=3√3−3.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q07.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q7-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "BC=DC/tan30°=3√3. ∠ABC=15°+30°=45°이므로 AC=BC=3√3. AD=AC−DC=3√3−3.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_62f3f0950ff3d7d695986c07cab0e85464231c34e52f8555f27aff8ef5370764",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "직각삼각형이 주어지지 않아 A에서 BC로 수선을 내려 두 특수각 삼각형을 만드는 접근을 선택해야 한다. 그 선택 뒤에는 표준 삼각비 두 번으로 끝나는 3단계/B23이다. 기존 해설의 정삼각형 보조점 구성은 필수가 아니므로 그 추가 설명을 난도 근거로 삼지 않았다.",
+      "decisiveComputation": "∠B=180°−75°−45°=60°. A에서 BC로 내린 수선의 발을 H라 하면 AH=4sin60°=2√3. AC=AH/sin45°=2√6.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q08.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q8-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "∠B=180°−75°−45°=60°. A에서 BC로 내린 수선의 발을 H라 하면 AH=4sin60°=2√3. AC=AH/sin45°=2√6.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_ab249f4333adc6ba4676a70a328617c05695cdffed148f8f31c16bf9bf4a3ad2",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "정팔각형을 중심에서 합동인 8개의 이등변삼각형으로 나누는 정형적인 넓이 틀을 적용한다. 반지름과 중심각을 한 번 구한 뒤 같은 넓이를 반복 합산하므로 2단계이다. 원래 발문에는 분할 그림이 없어 그 표현 전환의 경계성은 B23으로 남긴다.",
+      "decisiveComputation": "반지름 R=12/2=6, 중심각=360°/8=45°. 넓이=8·(1/2)·6²·sin45°=72√2.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q9-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "반지름 R=12/2=6, 중심각=360°/8=45°. 넓이=8·(1/2)·6²·sin45°=72√2.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_44fc954bf78456f70a63cce8ac97dba9e9911d0100a992b97f20313a1e5cd25a",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "difficultyConfidence": "medium",
+      "reason": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반쪽 현을 잡은 뒤 피타고라스를 적용하는 표준형이다. 새로운 보조선이나 접근 선택이 없으므로 2단계이며, 기본 성질 직접 적용과 가까워 B12이다.",
+      "decisiveComputation": "OC=OA=3√3, ON=3, CN=ND. CN²=27−9=18이므로 CD=2√18=6√2.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q11.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q11-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "OC=OA=3√3, ON=3, CN=ND. CN²=27−9=18이므로 CD=2√18=6√2.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_e3718ff90560317ef874c2c0cf810c18d226ab9ef85d5505d6a157a21d4ba4d5",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "수선의 발 M,N을 현의 중점으로 바꾸면 주어진 AM과 MN이 각각 변과 중점연결선에 바로 대응한다. 같은 중심거리로 두 현을 같게 하고 중점연결 정리로 나머지 변을 읽는 직접 연결이므로 2단계이다. 원의 성질과 삼각형 중점연결을 결합하는 부담은 B23으로 남긴다.",
+      "decisiveComputation": "AM=MB=10이므로 AB=20. OM=ON에서 AB=AC=20. M,N이 중점이므로 BC=2MN=24. 둘레=20+20+24=64.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q12.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q12-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "AM=MB=10이므로 AB=20. OM=ON에서 AB=AC=20. M,N이 중점이므로 BC=2MN=24. 둘레=20+20+24=64.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_b730b0219059cc129905f3fc44751ac17ce6a54d6346b69e129f6148985255ca",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyConfidence": "high",
+      "reason": "접현각을 주어진 각의 등식에 연결하여 APT의 이등변 구조를 먼저 찾아야 한다. 이어 접선과 할선에서 생기는 닮음을 선택해 길이의 곱 관계를 세운다. 두 관계를 실제로 엮는 표준 복합 추론이므로 3단계이며, 비정형 분기나 범위 판단은 없다.",
+      "decisiveComputation": "접현각으로 ∠ATP=∠ABT=∠PBT=∠APT, 따라서 AP=AT=6. PB=6+10=16. △PTA∼△PBT에서 PT²=PA·PB=96, PT=4√6.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q18.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q18-solution-v2.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "접현각으로 ∠ATP=∠ABT=∠PBT=∠APT, 따라서 AP=AT=6. PB=6+10=16. △PTA∼△PBT에서 PT²=PA·PB=96, PT=4√6.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_a7c04eb6b662d652536c91f3afc2d17aadc8a0da3968bc235a6f337e269d0975",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "지름 AB가 만드는 ∠ADB=90°를 찾아 큰 직각삼각형과 작은 직각삼각형을 닮음으로 연결하는 풀이 방향을 선택해야 한다. 피타고라스·반원의 원주각·닮음이 표준적으로 결합하는 3단계이고, 전형적인 빗변수선 도형이 드러난 뒤에는 직접 계산이어서 B23이다.",
+      "decisiveComputation": "AC=√(12²+5²)=13. AB가 지름이므로 ∠ADB=90°. A가 공통인 △ABD∼△ACB에서 AD/AB=AB/AC, AD=144/13.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q20.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q20-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "AC=√(12²+5²)=13. AB가 지름이므로 ∠ADB=90°. A가 공통인 △ABD∼△ACB에서 AD/AB=AB/AC, AD=144/13.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_e9ecd92c4f2a8a03cb8865a3bb8c82ee218326e41ae3b936be2e68ad54324f02",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "medium",
+      "reason": "원문 그림에 BD가 있고 채점기준도 ABD의 넓이, BD, BCD의 넓이, 합산을 직접 안내한다. 따라서 분할 경로를 새로 선택할 부담이 작고, 각 삼각형의 표준 삼각비·넓이 계산을 실행하는 2단계이다. 두 넓이를 공통변으로 연결하는 점은 B23으로 기록하며 서술형 형식과 계산 길이로 상향하지 않는다.",
+      "decisiveComputation": "BD=7tan60°=7√3. [ABD]=(1/2)·7·7√3=49√3/2. [BCD]=(1/2)·12·7√3·sin30°=21√3. 합은 91√3/2.",
+      "assetsRead": [
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/s02.png",
+        "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/16_왕의중_2학기_기말_중3_수학/q22-solution.svg"
+      ],
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_FOR_DIFFICULTY",
+        "computation": "BD=7tan60°=7√3. [ABD]=(1/2)·7·7√3=49√3/2. [BCD]=(1/2)·12·7√3·sin30°=21√3. 합은 91√3/2.",
+        "scope": "Actual source geometry, decisive steps and final value checked; no new R1/R2/R3 certification claimed."
+      }
+    }
+  ]
+}
