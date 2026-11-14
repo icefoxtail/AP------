@@ -1,0 +1,62 @@
+[
+  {
+    "ordinal": 4,
+    "questionUid": "qid_v1_e8ab52161b0fd0f2ee407fcdeb2969363da34a0bf6706cf9c06d2488d87a6c58",
+    "type": "RPM_LEAF_LINK_PROPOSAL",
+    "nameKo": "삼각비로 기울기와 직선식 구성",
+    "definition": "축과 이루는 예각으로 기울기의 절댓값을 구하고 방향 부호와 절편을 연결해 직선식을 구성한다.",
+    "distinction": "특수각 값 자체나 다각형 길이·넓이가 목표가 아니므로 정확 publisher leaf가 없다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "삼각비",
+      "삼각비의 활용"
+    ],
+    "reuseTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_b787d9bab647db310fb29e812b7fbc540a9f37f96e11e4ea028cb38020b6cc9e",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접점 직각과 반지름차로 반지름 복원",
+    "definition": "외부점에서 중심까지 거리를 주어진선분+r로 나타내고 접점 직각삼각형의 피타고라스로 반지름을 복원",
+    "distinction": "목표는 접선길이 또는 접함여부가 아니라 원의 반지름이다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENCY_CONDITION",
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_d20e5fb44065d096b9131a559220b2bb48e1cfc62ea67c162a04b132df167149",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접원 직사각형의 남은 삼각형 둘레",
+    "definition": "평행접선 사이 지름과 접선등길이를 이용하여 내부 접선조각을 미지수로 두고 남은 삼각형의 둘레에서 소거한다.",
+    "distinction": "개별 접선길이 계산보다 둘레의 등가 합·차 구성이 목표이다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_a70f2e2989e65c7cc9b68cec040af2ffd699f03af0d7f62061cd0ac7b5d29575",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "외부 접선으로 삼각형 둘레 재구성",
+    "definition": "세 외부점의 동일 접선 길이를 옮겨 삼각형 둘레를 긴 두 접선의 합으로 바꾼다.",
+    "distinction": "목표 접선 길이 단일 계산과 구분하며 기존 a/E016 Q13 제안의 같은 골격이다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
