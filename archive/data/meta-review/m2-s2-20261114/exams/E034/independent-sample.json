@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E034",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "00efa8f7662958b740a88c347e454c0bad9b8015",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "2d68fc4fdea0c1e50e4973eaa2edd5410ebc470bdbef7d72c91f99f40b72d0b8",
+  "fourSlotInputSha256": "d2407c60891e2cf2eadb330d92dbc63ddde66579a5b32b5f1df16ba55e73d039",
+  "sampleOrdinals": [
+    7,
+    9,
+    14
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6c676ab2dbf66fb9a8178de6c67883b23ceac6156fa033ab94da19f3fcf65d8f",
+      "verdict": "PASS_WITH_MINOR_REPAIR",
+      "metadataReview": "원본에서 B,D의 직각과 B,C,D 공선, 위쪽 ACE 음영을 확인했다. 합동이 발문에 이미 주어져 새 RHS/RHA를 성립시키는 기존 PT를 primary로 삼을 수 없다. 대응변 전달 CC_TRIANGLE_CONGRUENCE를 거쳐 두 분할의 넓이 합·차로 목표를 구하는 NEW_PT/RPM 공백에 동의한다. M1 중점정사영·사다리꼴 목표·정사각형 합동넓이와 MG 역방향 등적평행은 이번 입력/목표와 다르다.",
+      "fourSlotReview": "인용은 모두 존재한다. given 삼각형·합동과 goal 넓이, 공선 조건은 맞다. 실제 직각 표시가 두 넓이계산의 근거이므로 given 직각삼각형 또는 condition 직각을 기존 solution의 정확한 직각삼각형 문구로 보강 권고. method 넓이는 현재 사각형 넓이라는 짧은 인용보다 실제 합·차 관계 또는 [ACE]=42+32−24 수식으로 보강하면 결정 단계를 더 정확히 지지한다.",
+      "difficultyReview": "주어진 합동에서 길이를 직접 옮기고 보조 넓이 분할을 선택하는3 medium/B34를 수용한다. 원문 상과의 인접 충돌도 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E034-07.png",
+      "observedFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "주어진 합동으로 얻은 길이를 넓이 계산에 옮기며 목표 영역을 합·차로 표현할 보조 분할을 선택한다."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_8fc002950b5f6174b586682bb31ed651a2c8bc1f3d5e2d32dba9027443221b0e",
+      "verdict": "PASS_WITH_MINOR_REPAIR",
+      "metadataReview": "그림에서 G와I가 모두 DE에 있고 DE∥BC임을 확인했다. 무게중심의 높이1/3을 내접반지름과 같게 놓아 r=h/3을 얻고 내심 세부분 넓이합에서 미지 BC를 복원한 뒤 평행비로 DE를 정한다. 다른 중심·넓이·평행선 구조를 실제 결합하므로 TPL_CENTROID_APPLICATION과 CC_TRIANGLE_INCENTER/CC_TRIANGLE_AREA/CC_PARALLEL_LINES_RATIO가 정확하다. 마지막 비례식만으로 primary를 평행비에 두지 않는 판단을 수용한다. 중간 결과가 한 방향으로 전달되어 SEQUENTIAL도 타당하다.",
+      "fourSlotReview": "핵심 method 네 단계와 공선·평행 조건은 실제 정확 인용으로 충분하다. given 삼각형의 인용 두 점 G,I는 각각은 삼각형 대상을 직접 지지하지 않으므로 실제 발문에 있는 $\\triangle ABC$로 교체 권고한다. 다른 칸은 수용.",
+      "difficultyReview": "두 중심의 높이를 같은 양으로 연결하여 주어지지 않은 밑변을 넓이식에서 복원하는 구조 선택이 핵심이므로 bucket4 medium/B34 및 원문 상을 수용한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 10,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E034-09.png",
+      "observedFinalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 중심의 높이를 같은 양으로 해석하여 넓이식의 숨은 밑변BC를 정하고 평행선 길이로 전달하는 전략 선택이 있다."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5ef591bc40c0b57ddd4c1fb4ebdd216b62f43a0e9cc14e0c3fcdd37e2bc3173a",
+      "verdict": "PASS_WITH_MINOR_REPAIR",
+      "metadataReview": "이는 추상적 확률 법칙 명제의 참·거짓을 묻는 문제가 아니라 실제 주사위 사건 다섯 개가 없음/전체/일부 중 무엇인지 비교하는 목표다. PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO의 확률 정의·기본 성질 계산과 정확히 일치한다. 후보확률에0<P<1을 요구하므로 COND_RANGE는 실제 값 제한이며 canonical 범위를 확장하지 않는다. 간단한 사건 소속 확인은 해당 기본확률 골격 안의 판독으로 CC 빈값 수용.",
+      "fourSlotReview": "goal·method·condition은 정확하다. given의 현재 확률0/1이 아닌 것은 문구는 구할 조건을 반복하므로, 시행 term과 실제 stem 주사위 한 개를 던졌을 때로 바꾸어 입력을 명시하는 최소 수리를 권고한다.",
+      "difficultyReview": "유한한 여섯 눈에서 일부/없음/전체를 직접 구별하는1/하를 수용한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": null,
+      "observedFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여섯 눈의 일부/없음/전체를 직접 비교해 확률의 경곗값을 판단한다."
+      }
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

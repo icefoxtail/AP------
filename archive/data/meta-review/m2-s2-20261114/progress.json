@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m2-s2-meta-review-v1",
   "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
-  "owner": "GPT_ROOT_576242AD7339",
+  "owner": "GPT_ROOT_87F142347508",
   "branch": "review/m2-s2-meta-full-20261114",
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "scope": "original middle m2 semester 2 mid/final all recorded years",
@@ -4935,12 +4935,108 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "59dfa11a1cc038cf347fff00a158def81c72f0a8fdee981a197ba1bc8a837f7b"
+      "uidSetSha256": "59dfa11a1cc038cf347fff00a158def81c72f0a8fdee981a197ba1bc8a837f7b",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        5
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        7,
+        9,
+        14
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            1,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            2,
+            3,
+            4,
+            6,
+            21,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            7
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            10,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            22,
+            23
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E034/four-slot.json",
+          "sha256": "d2407c60891e2cf2eadb330d92dbc63ddde66579a5b32b5f1df16ba55e73d039"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E034/independent-sample.json",
+          "sha256": "e852602bf0f450fd0cdcf1a2eafc30328b4131ae21a703146c3d055d0d539839"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E034/mechanical-check.json",
+          "sha256": "3e010278d7e08364c70339ed7ef76d40ba3818a2f13136bb05b38860d3779dd9"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E034/review.json",
+          "sha256": "2d68fc4fdea0c1e50e4973eaa2edd5410ebc470bdbef7d72c91f99f40b72d0b8"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E034/root-acceptance.json",
+          "sha256": "22bb732de0f64625a55de585f4464ccc6d2dab28be0a63b21bceb0a3379bef59"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E035",
@@ -6738,11 +6834,29 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 36,
-    "reviewedQuestions": 855,
+    "reviewedExams": 37,
+    "reviewedQuestions": 879,
     "unresolvedQuestions": 0,
-    "remainingExams": 31,
-    "remainingQuestions": 749
+    "remainingExams": 30,
+    "remainingQuestions": 725
   },
-  "lastVerifiedExamCommit": "0ee4d1ab44cf99e75e7d9e278c49485dca41fa26"
+  "lastVerifiedExamCommit": "0ee4d1ab44cf99e75e7d9e278c49485dca41fa26",
+  "originalOwner": "GPT_ROOT_576242AD7339",
+  "continuation": {
+    "acceptedBy": "GPT_ROOT_87F142347508",
+    "fromOwner": "GPT_ROOT_576242AD7339",
+    "branchHeadAtAcceptance": "066122fb39a717781c345a19d9da18f8770a830a",
+    "awcrPredecessorRevision": 8,
+    "awcrPredecessorRawSha256": "8acba4b489b092c52980149cd7fbce81e42cf6e4e5af9a5fd3b7a74df763db96",
+    "awcrAcceptanceRevision": 9,
+    "reusedRemoteExams": 36,
+    "reusedRemoteQuestions": 855,
+    "remainingAtAcceptanceExams": 31,
+    "remainingAtAcceptanceQuestions": 749,
+    "latestMainObserved": "e9cdc120e2a7d7b26b2bac01306191276b8fbcc1",
+    "singleRootWriter": true,
+    "previousWorkspaceProcessObserved": false,
+    "sourceReadOnly": true,
+    "mainMergeAuthorized": false
+  }
 }

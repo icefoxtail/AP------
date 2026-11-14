@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E034",
+  "owner": "A",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "00efa8f7662958b740a88c347e454c0bad9b8015",
+  "sourceSha256": "a29f18540184dd16227f750fad092dc36851293bbae05ba8a5149d8728f8e1ea",
+  "reviewSha256": "2d68fc4fdea0c1e50e4973eaa2edd5410ebc470bdbef7d72c91f99f40b72d0b8",
+  "fourSlotSha256": "d2407c60891e2cf2eadb330d92dbc63ddde66579a5b32b5f1df16ba55e73d039",
+  "independentSampleSha256": "e852602bf0f450fd0cdcf1a2eafc30328b4131ae21a703146c3d055d0d539839",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    7,
+    9,
+    14
+  ],
+  "sampleResolution": [],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Split the given median by its direct centroid ratio, then substitute the two parts into the requested linear expression; preserve source bucket 2 over the conflicting sidecar 3."
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "The stated right triangle supplies hypotenuse 25 and leg 24; one direct squared-difference substitution determines the remaining side.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Test the supplied side triples against the Pythagorean equality using each longest side; no hidden geometric construction is required.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "The drawn perpendicular provides the right triangle; subtract the bases, recover the height and add the perimeter."
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "Repeat the centroid height fraction inside a nested triangle and transfer the resulting area back to the target portion."
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "Only the known larger side and the unknown side can be the hypotenuse; each branch is a direct squared sum or difference."
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "The congruence is supplied, so use its lengths to choose an area decomposition for the target triangle rather than prove congruence."
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "Connect the centroid ratio on the given median to the right-triangle circumradius, then use circle area."
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 4,
+      "level": "상",
+      "reason": "Identify the shared centroid and incenter height, equate two area expressions to recover the hidden base, and transfer it to the parallel section."
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Two consecutive independent route stages have two and four choices, so a direct product counts the paths under the stated route restriction.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Enumerate ordered outcomes of two distinct dice for the two disjoint absolute differences; retain the standard two-case counting demand.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Classify listed die events as impossible, certain or intermediate by direct outcome membership.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Count the four vowel cards among the twelve explicitly listed letters and form one direct favorable fraction.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "The stated umbrella inventory gives a direct red fraction; the alternative yellow color is absent and contributes zero.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Build the favorable fraction for each separate bag and multiply the two straightforward draws."
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Explicit replacement preserves the draw probabilities; use the complement of two independent failures for at least one success.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "Use the five-vertex cycle to obtain two admissible die sums and count them. The natural close boundary is B23."
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "Apply a lower bound on the sum and an upper bound on absolute difference together while keeping ordered pairs distinct."
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Extract two side lengths from the stated square areas, form the collinear leg lengths and apply one standard right-triangle relation.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "The chocolate-draw probability in the banana-only selection is zero, so the requested product is determined directly.",
+      "reviewer": "GPT_ROOT_87F142347508"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "Distinguish unordered card selection from digit placement; the larger selected card determines the units digit and the odd-event cases."
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Recover a height from the area, use the isosceles altitude bisection and apply the standard right-triangle relation."
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 5,
+      "reason": "The existing explanation calls the subsegment G-prime D a median to BC in triangle GBC; the full median is GD. The intended centroid area relation is clear, so preserve this terminology issue separately."
+    }
+  ],
+  "notes": [
+    "ROOT read the difficulty exceptions, existing solutions and ten needed figures; independent B sample is required before publication.",
+    "Continuation ROOT independently read all additional changed-normal-bucket stems and existing solutions; no source or answer was rewritten."
+  ],
+  "evidenceReuse": {
+    "fromOwner": "GPT_ROOT_576242AD7339",
+    "sourceBlobMatched": true,
+    "originalReviewPreservedExceptRecordedDelta": true,
+    "rootDecisionSourceSha256": "826b5dd09ed0b1a529dfd26cc18955a1150e2482781fb53695ffe3b184b15b3e",
+    "priorIndependentSampleReused": true,
+    "readbackBy": "GPT_ROOT_87F142347508"
+  }
+}
