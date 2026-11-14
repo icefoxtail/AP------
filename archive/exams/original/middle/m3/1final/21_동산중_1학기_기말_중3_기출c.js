@@ -26,7 +26,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 좌변을 전개하고 인수분해하여 일차항 계수를 비교합니다.\n정석 풀이:\n$(x+2)(x-4)-7=x^2-2x-8-7=x^2-2x-15=(x+3)(x-5)$입니다.\n따라서 $a,b$는 $3,-5$이므로 $a+b=-2$입니다.",
-    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
@@ -235,10 +235,8 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-028",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
@@ -296,10 +294,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 7,
@@ -387,12 +385,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -437,7 +435,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -485,7 +483,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -541,7 +539,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 12,
@@ -579,11 +577,9 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-031",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_ROOTS_COEFFICIENTS"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -631,7 +627,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -678,10 +674,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -729,7 +723,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -777,12 +771,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -824,18 +818,16 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": ["COND_RESTRICTED_INTERVAL"],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 18,
@@ -877,12 +869,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -924,15 +916,13 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -983,7 +973,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 21,
@@ -1031,7 +1021,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 22,
@@ -1076,10 +1066,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 23,
@@ -1113,15 +1103,15 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 24,
@@ -1157,12 +1147,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -1197,7 +1187,7 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-039",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_LINEAR_FUNCTIONS", "CC_RECTANGLE_AREA"],
     "conditionKeys": [
       "COND_RANGE"
     ],
@@ -1206,10 +1196,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "image": "assets/images/21_동산중_1학기_기말_중3_수학/q25.png",
     "solutionImage": "assets/images/21_동산중_1학기_기말_중3_수학/q25-solution.svg"
   }

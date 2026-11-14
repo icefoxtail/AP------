@@ -1,0 +1,928 @@
+{
+  "examKey": "E049",
+  "questions": 25,
+  "errors": [],
+  "sourceChangedItems": 21,
+  "sourceChangedFields": 41,
+  "sourceEdits": [
+    {
+      "ordinal": 1,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTORIZATION",
+      "after": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "reason": "전개식의 일차항 계수 비교; 좌변의 일차항 계수-2를 a+b와 비교한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_RECTANGLE_AREA"
+      ],
+      "reason": "넓이식을 인수분해해 다른 변 역산; (3a+2)(2a-1)을 주어진 가로로 나누어 세로를 읽는다."
+    },
+    {
+      "ordinal": 5,
+      "field": "conditionKeys",
+      "before": [
+        "COND_POSITIVE"
+      ],
+      "after": [],
+      "reason": "넓이식을 인수분해해 다른 변 역산; (3a+2)(2a-1)을 주어진 가로로 나누어 세로를 읽는다."
+    },
+    {
+      "ordinal": 6,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "양변 정리 후 이차계수 조건; 우변을 전개하여 a-2가0이 아니어야 함을 적용한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "양변 정리 후 이차계수 조건; 우변을 전개하여 a-2가0이 아니어야 함을 적용한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "양변 정리 후 이차계수 조건; 우변을 전개하여 a-2가0이 아니어야 함을 적용한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 이차인수의 영인자 성질; A=0 또는B=0을 각각 표준 인수분해하여 해를 합친다."
+    },
+    {
+      "ordinal": 8,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 이차인수의 영인자 성질; A=0 또는B=0을 각각 표준 인수분해하여 해를 합친다."
+    },
+    {
+      "ordinal": 9,
+      "field": "integrationPattern",
+      "before": "REINTERPRETATION",
+      "after": "NONE",
+      "reason": "근의 등식을 변형하여 목표식의 문자 소거; α²=9-3α와9/α=α+3을 만들어 목표식에 넣는다."
+    },
+    {
+      "ordinal": 10,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 근의 인수형으로 계수 복원; 이차항 계수3을 유지하여3(x-2/3)(x+4)를 전개한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "두 근을 구해 순서별 식의값 계산; 인수분해한1과2/3을 크기 순서대로 α,β에 대응한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "crossConceptKeys",
+      "before": [
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "after": [],
+      "reason": "근의 비를 매개변수로 표현해 계수 결정; 두 근을2t,3t로 나타내어 합10 조건과 곱 k를 연결한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "근의 비를 매개변수로 표현해 계수 결정; 두 근을2t,3t로 나타내어 합10 조건과 곱 k를 연결한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "integrationPattern",
+      "before": "CASE_BRANCH",
+      "after": "NONE",
+      "reason": "이항 후 완전제곱식의 중근 조건; 정리한(x-4)²=12-4k에서 오른쪽0 조건을 적용한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "conditionKeys",
+      "before": [
+        "COND_POSITIVE"
+      ],
+      "after": [],
+      "reason": "서로 다른 두 실근의 제곱식 조건; q>0일 때만±√q가 서로 다른 두 값임을 읽는다."
+    },
+    {
+      "ordinal": 14,
+      "field": "integrationPattern",
+      "before": "CASE_BRANCH",
+      "after": "NONE",
+      "reason": "서로 다른 두 실근의 제곱식 조건; q>0일 때만±√q가 서로 다른 두 값임을 읽는다."
+    },
+    {
+      "ordinal": 15,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "완전제곱식 풀이 후 해 표현 비교; (x+3)²=10에서 p=-3,q=10을 읽는다."
+    },
+    {
+      "ordinal": 16,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "근의 공식 결과와 주어진 근 비교; 짝수계수형으로 정리한1±√(1+2k)의 각 부분을 대조한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "근의 공식 결과와 주어진 근 비교; 짝수계수형으로 정리한1±√(1+2k)의 각 부분을 대조한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "두 해집합의 순서로 계수 범위 결정; 경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "두 해집합의 순서로 계수 범위 결정; 경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "conditionKeys",
+      "before": [
+        "COND_RANGE"
+      ],
+      "after": [
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "reason": "두 해집합의 순서로 계수 범위 결정; 경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "integrationPattern",
+      "before": "INTERDEPENDENT",
+      "after": "NONE",
+      "reason": "두 해집합의 순서로 계수 범위 결정; 경계근-2,6과 이동근a±3을 구해 두 끝 부등식을 결합한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "분배 총량과 학생 수로 방정식 모델링; 학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "분배 총량과 학생 수로 방정식 모델링; 학생 수n과1인당n+3을 곱해130으로 두고 자연수 해를 택한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "주어진 높이식의 최초 시각 선택; 높이21을 대입해 나온1초·4초 중 작은 양수를 고른다."
+    },
+    {
+      "ordinal": 19,
+      "field": "conditionKeys",
+      "before": [
+        "COND_POSITIVE"
+      ],
+      "after": [],
+      "reason": "주어진 높이식의 최초 시각 선택; 높이21을 대입해 나온1초·4초 중 작은 양수를 고른다."
+    },
+    {
+      "ordinal": 19,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "주어진 높이식의 최초 시각 선택; 높이21을 대입해 나온1초·4초 중 작은 양수를 고른다."
+    },
+    {
+      "ordinal": 20,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "다양한 상황의 함수식 구성 후 차수 판정; 직사각형 넓이와 운동·빗변 길이를 식으로 옮겨 차수를 비교한다."
+    },
+    {
+      "ordinal": 21,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_ACCEPTABLE",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "기본 포물선의 여러 성질 판정; 대입과 대칭·축·계수 절댓값의 폭을 각각 확인한다."
+    },
+    {
+      "ordinal": 22,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "통과점으로 계수와 다른 좌표 계산; 첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다."
+    },
+    {
+      "ordinal": 22,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "통과점으로 계수와 다른 좌표 계산; 첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다."
+    },
+    {
+      "ordinal": 22,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "통과점으로 계수와 다른 좌표 계산; 첫 점에서 a를 구하고 둘째 x값으로 b를 구해 곱한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "두 오답의 보존 계수로 원식 복원; 첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "두 오답의 보존 계수로 원식 복원; 첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다."
+    },
+    {
+      "ordinal": 23,
+      "field": "integrationPattern",
+      "before": "INTERDEPENDENT",
+      "after": "NONE",
+      "reason": "두 오답의 보존 계수로 원식 복원; 첫 오답의 상수-24와 둘째의 일차항2를 결합해 인수분해한다."
+    },
+    {
+      "ordinal": 24,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 자연수의 차와 제곱합 모델링; 작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다."
+    },
+    {
+      "ordinal": 24,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "두 자연수의 차와 제곱합 모델링; 작은 수n과큰 수n+3의 제곱합을149로 두고 양의 해를 택한다."
+    },
+    {
+      "ordinal": 25,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "일차함수 좌표와 직사각형 넓이의 결합; Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다."
+    },
+    {
+      "ordinal": 25,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_REVIEW",
+      "reason": "일차함수 좌표와 직사각형 넓이의 결합; Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다."
+    },
+    {
+      "ordinal": 25,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_RECTANGLE_AREA"
+      ],
+      "reason": "일차함수 좌표와 직사각형 넓이의 결합; Q의 좌표(a,12-a)를 두 변으로 해석하여 넓이32의 두 유효해를 구한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "fourSlot": {
+    "fail": [],
+    "warn": [
+      "#1 only 4 distinct terms",
+      "#6 only 4 distinct terms",
+      "#14 only 4 distinct terms",
+      "#15 only 4 distinct terms",
+      "#20 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 25,
+      "examItems": 25,
+      "quotes": 138
+    }
+  },
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "missingNativeLeaves": [
+    4,
+    5,
+    8,
+    9,
+    11,
+    12,
+    16,
+    17,
+    23,
+    24
+  ],
+  "missing2022Leaves": [
+    4,
+    5,
+    8,
+    9,
+    11,
+    12,
+    16,
+    17,
+    20,
+    22,
+    23,
+    24
+  ],
+  "projectionBindingGaps": [],
+  "protectedFields": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_bf0d4a4c2b35ff4c5d4ad3e9004d3274557afd37196382c460872615f47075ff",
+        "sha256": "2358072ea135b0820275dc01d2f11677c49d35812572c9bb0d265af46fc5fe41",
+        "unchanged": true
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_e8667d79d44bffa4d11527b97459fcd945c8d375a82e1d3fdc7c4c3a2e60eb50",
+        "sha256": "1544f091de7c43cf5d5580f88a41e2b8caff733ccf024259c5eef0922fb42516",
+        "unchanged": true
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_ecc7b2513a712b6e792e7cf54c4843b209414e4326e90dfe0c2eaea272e04d8c",
+        "sha256": "d1d0a741453963830717cab6a6144504240ca496940211a6bd10f28b563ae0b8",
+        "unchanged": true
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_83a71031da447218255417d0d0b9f498c1207e98da084ca1018d8eb797c85598",
+        "sha256": "069e6f32a5fbf9cb5368dfd64dab37dbfdf4a45cda42527cb9e901a7e450f8be",
+        "unchanged": true
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_a091e2221b72f1a80eca7c50eac84669db7518dec0aa6bd1648e94902f45180d",
+        "sha256": "03909067cb873556924ef0afc9b496496b331486ea4db2349dfd105f23047b50",
+        "unchanged": true
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_d3e4dc4d5ecc9875763b3d7e9323f21d01f1cce0252e9bc78c5a2b04f23a3aeb",
+        "sha256": "43cd2b77841c3b74dfa62e7c7d10a822d393b73c45d966cf4909763cdc75e5f7",
+        "unchanged": true
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_e4f4798364f4d94a1efa9dae769be05678a34ce0f8c3b1ce1892f10f528e3007",
+        "sha256": "a9c1309c26da9bf57e9f8a2e0ef2d5c80b520ffd333244344858b276c004bd4d",
+        "unchanged": true
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_43e5da75778c2ba918f1e41407a27e0b161422db1b6d9dc7d189e14d382502b8",
+        "sha256": "8415450d06a3ec9561732629df50c88174552ef7d4822d73af6bae10882e14c8",
+        "unchanged": true
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_f7d7fa9b009cb742c8caab15d7eab047b179bf3a60bfcabe4497996a3aa7fc67",
+        "sha256": "d12334b0768966d8abd71571866417f43db2b285258c7f24dced8b391eccdb03",
+        "unchanged": true
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_0c24e50d016cc48352eec5d78752339261fda5572f8e187333a9ba693d0cef89",
+        "sha256": "0fa70e8503774f887c3f6e8d5d62c1a6404c0d82129bb190c317692844907631",
+        "unchanged": true
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_917582187073a23b0a048cc84b58406b983c9c001054ed6d67a61021024f531b",
+        "sha256": "9f437ec660027ac59fdda1c9527f87e839a6c1d0fcafb42c262c8736dbecbc78",
+        "unchanged": true
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_400a2c57e4dc10ed921eec61f70d1b18d37bdd7d619e745544d4cc888a7e0fd0",
+        "sha256": "bb9d904213a23537793f4f18b790f6846fdd502a847b1b68255fb0930623ab01",
+        "unchanged": true
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_8540e90d1f76e60f25262aae16ebec9036e7291c5510b637a510e09f6f146b12",
+        "sha256": "34fa70a15cf98aa26961ed65bcc7dab0fd99daa855ae5e38dbbe3ed953c1a407",
+        "unchanged": true
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
+        "sha256": "01c1dcf537e25e5d4e079a16f55664ec708a423976d5185946e8d487b5427e6e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_382c2b46b06c2adfcac1ed5345a7425e34b127b4932986db8d6da18c10114d11",
+        "sha256": "0daa1c0933be62a4570d2756207cc78ea8b1dec936ef6fdfb60143df8b1dd51a",
+        "unchanged": true
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1fc384c6a6d8c0467b6506a3a2ac4b2db0332251bbbc6724fea393715a8137e4",
+        "sha256": "c3af17ae6462d3941df84c782e0cc31b9177db8aa9bca2790a77683b7c105413",
+        "unchanged": true
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_d3388bbf1a01cf6c43fa19eb29ac92ea0ffc55bae8e781eb2990dc6d7b8f6cf9",
+        "sha256": "fcacc19576697098752666af8bb89acd512e7cf9317ef55633c8c7bb54fffae4",
+        "unchanged": true
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_67f4f9455236c83769f22f2002970a62bacda4d42d3ce9ada8c2342cdddd0bb7",
+        "sha256": "591e9b5b88e38e5c8b2c7aebc674de4efe11ad0daf3d4d9d3a5f2dc2e30f451e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_5d3d546c62f38a26e360ffc859242050b30b464ca258c78d2cc677fde037cebf",
+        "sha256": "5d5902124d590e8987eb9920bed579dd06332703e728f9c29ff7d1d01e994811",
+        "unchanged": true
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_482eff9cd61f9821a78d58e7ffc939a7de075fb730e9719db920a930db1c1d44",
+        "sha256": "26d3a94c0489d31f4379802dc2fc4833f36e6453d976c88bf5bcf238ff8a2770",
+        "unchanged": true
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_42c7af4436410b33a954cb3799a37e65dcd3c7c8b8c55aa8ba5d1e4aa1c0baad",
+        "sha256": "3acb28d6ec5ee914f1973ea76fb78b89ad7ec411635ad46eaa7e6bace33e4ed9",
+        "unchanged": true
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_64c3950f38efe77960cc4f1d864b9fb5be6152ffee30471dece24eb65ffd5bfa",
+        "sha256": "b6d56894d0469337c78eec50618c05aaa74618a79bd262d421389c936ee85444",
+        "unchanged": true
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_f223797fc900671e96c43a324540da175eb09648202bd5613f34ef34e5a5ac08",
+        "sha256": "6fa18c996f85c59d07f26a9dce7ad0eed9039476c7ef29bdd72ceb8c4d36301c",
+        "unchanged": true
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_4d5187b35841fd4dfe85c0a5e39288d03a9ea27955a4e96699da25f7f185c04c",
+        "sha256": "c684462ea410a591b2ae2eafe081a92cd7add7865eecf0271bce4e27398ab820",
+        "unchanged": true
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_e1ad5cffdd26fe9cf2e9ebd26bf451e80c903e0b48b8ebd40f2f02cb78e4dd0e",
+        "sha256": "5b8ef35133da930ab9049074c6c7844f0ff37e5dcdb42c4be44ee5f9fc070a97",
+        "unchanged": true
+      }
+    ]
+  },
+  "fingerprints": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_bf0d4a4c2b35ff4c5d4ad3e9004d3274557afd37196382c460872615f47075ff",
+        "QBODY": "f716e3d23e43fbc6a9232661ea568186a368b513deb7c22763ae88eb87885f23",
+        "QFULL": "720bb96260f36fc9029c4a5c1d3d87f224521e74762f8e18190b8c763b668b59",
+        "stemEvidenceSha256": "33335dd6f77acb51b43ea5b5f9567218a0fa9df52a167cbaa017f51b0d9fdbff"
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_e8667d79d44bffa4d11527b97459fcd945c8d375a82e1d3fdc7c4c3a2e60eb50",
+        "QBODY": "ca1e0ff2ea487c7928da0a108e9b30caf9992cac0de36009b59c214bc3c9ccc2",
+        "QFULL": "fa4123db1a5a477f4210c64a687f4cd418b926513f922ae5e4def8a1f7fefaf3",
+        "stemEvidenceSha256": "bc1a15cf313fefc8ec102e0d3b9be6c1c732bb466955054592f6c44a38a8a3ac"
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_ecc7b2513a712b6e792e7cf54c4843b209414e4326e90dfe0c2eaea272e04d8c",
+        "QBODY": "83cf434561a8c1dd98c48ec1dbd2490051a78393279f9d7888bb75867f056e17",
+        "QFULL": "389788ae60eb5dc131ed0af4a4d9f8c366fff024564d09655d42ea70695aa404",
+        "stemEvidenceSha256": "93c9e699dc16f2c5aa715063bf051a78d79a8791db42a606f663597f5667cbb1"
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_83a71031da447218255417d0d0b9f498c1207e98da084ca1018d8eb797c85598",
+        "QBODY": "bce265a4739172d71c56359db621c57e84f738d6172c0bada9ab512554d81bdd",
+        "QFULL": "dd4674887f985e2bcf1cf4d74bfd3b77dd59e4815b7a7ceec68c1df10fa5885f",
+        "stemEvidenceSha256": "3a76355728c7c8e61d3cc60f7efef1461bdf91d13af03aba1d5579f9e65c7a5c"
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_a091e2221b72f1a80eca7c50eac84669db7518dec0aa6bd1648e94902f45180d",
+        "QBODY": "5c9a718cf5fd4b4219b29a355faade31bec78e97b039e89d902864ee107f6da7",
+        "QFULL": "d04c22e9dea08d896d84a2214e28c969701f02d1dad38bd47a2da3cfdaecd4f9",
+        "stemEvidenceSha256": "640e7255829e1249baa2b6d81d90c892e77906cdd3923725eb36ef81469b6df0"
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_d3e4dc4d5ecc9875763b3d7e9323f21d01f1cce0252e9bc78c5a2b04f23a3aeb",
+        "QBODY": "08722cbca5e0bc9e7e46e5b201c9a186c86c9d6df266ab532cbf306e42e41cf8",
+        "QFULL": "0a3ef6147b301e0b92601eb3bcba7787a008bdc315a504cfdf15b671df44c6f5",
+        "stemEvidenceSha256": "084441575e90c625fc30b667ebdabb9494cceddac7de0338788b13fdc55ddd64"
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_e4f4798364f4d94a1efa9dae769be05678a34ce0f8c3b1ce1892f10f528e3007",
+        "QBODY": "99aa7cb233d9cec28098d85f77c02768adfe1ce3715b3824ff02fbfd293cc7f7",
+        "QFULL": "c7ac16270819519e9431e9860a762631e0975b3ffe7849caff8e2a7caa204b70",
+        "stemEvidenceSha256": "02be3b52ff7f4d9abebb1a41b083bd341ea3d8718478e57dcf7b49b1de3b5985"
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_43e5da75778c2ba918f1e41407a27e0b161422db1b6d9dc7d189e14d382502b8",
+        "QBODY": "abbb778f9f7bb5030b9206fbd50dc21f6e0dbc91ba2dbf3cdcd3fba6509df266",
+        "QFULL": "482fefbd1e3f5ed801e41fef45d1616885c9faea70dfbb26222f2d6f69ad3af7",
+        "stemEvidenceSha256": "505d489a48abfc47114e20bd5b407a6233f81ad3f13b98906e67a71a17a0b3eb"
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_f7d7fa9b009cb742c8caab15d7eab047b179bf3a60bfcabe4497996a3aa7fc67",
+        "QBODY": "154e000ac596b6ff8856aab1ae69699d19554745c4eab9358efcec1f799aa521",
+        "QFULL": "a3aae1b3757a8bf5de818fbcffe8fb69659c368cccac9fb23abf102b028e248f",
+        "stemEvidenceSha256": "e41c0e0a90d92ed40c4401e2d805262db69f9ef92ea943f83759faae464c8bc5"
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_0c24e50d016cc48352eec5d78752339261fda5572f8e187333a9ba693d0cef89",
+        "QBODY": "632b8e6980d2b254c0ed57e4c7a59050c2fc3448dc579ea52db579adc3aff329",
+        "QFULL": "18547b8a64967b3c2566a7b735fa2e8da473a7e8e1d476915efb6548d7c95465",
+        "stemEvidenceSha256": "a6c80c7551e5bd705c5c5240ddd43f1921e8e0b9b1b813584bed2a4e2f75fdc0"
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_917582187073a23b0a048cc84b58406b983c9c001054ed6d67a61021024f531b",
+        "QBODY": "96d2d9d2c8f1f45a12845c67618710afebb18523457d3a07e659c293c7307dcb",
+        "QFULL": "fe24c0d3b1480fdfa3fa88d86782770f9d30d2547b1ad8bd58044e44d093382a",
+        "stemEvidenceSha256": "e0558a390ebf59010a60c5cae9907027878a00baddb34c0a46a663e6ef33019e"
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_400a2c57e4dc10ed921eec61f70d1b18d37bdd7d619e745544d4cc888a7e0fd0",
+        "QBODY": "aeeaced06b6502f7d1955350ce37c9f6eb64340c9cdd893999fdde241eefad1c",
+        "QFULL": "5496bbf7c4734cd2039a7aba47d699d1d72f811881fbc6f1665ad49dcc5268ef",
+        "stemEvidenceSha256": "46485fffea2da8da782d3ad30e54f5fa7057ba3570ed9370c7e0a78149c1a724"
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_8540e90d1f76e60f25262aae16ebec9036e7291c5510b637a510e09f6f146b12",
+        "QBODY": "05ef0d7170e982244c1ce73f88044e1ffe4734644f981cec07b5501559acbe98",
+        "QFULL": "d86a54990d2ff6861ce909f46d7f3d4facab2c9e0b658e1271683bad17ba3b35",
+        "stemEvidenceSha256": "e04a597283f9c3fdfe41d1973e5f04c39fe66f8c37e85074c4862d012a535bd6"
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
+        "QBODY": "44628fb81ec03a29b7b2f5f1c5ec904a08a1f56b5a63c883c5ce253d3c2c3023",
+        "QFULL": "a0358d1f443e851214ea0f65d8f287f96ec0ce9ed1344edac82ec07c992af51c",
+        "stemEvidenceSha256": "a80b9cdda5abf93f4395358b475ae859574f30ce1d9cb571c5c69e7ea9b394db"
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_382c2b46b06c2adfcac1ed5345a7425e34b127b4932986db8d6da18c10114d11",
+        "QBODY": "993361764c81963e6563ebdb7f7362cbc414136511ee200e4b6b08903cb009c4",
+        "QFULL": "a85315e269157de1d71ba969549fa6986df09ab674f7c9eec97af15c15bd2be5",
+        "stemEvidenceSha256": "a71e883ca54d0e3534a20069939eefd69233cc2ee064a65c8f9344dd4ee844e4"
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1fc384c6a6d8c0467b6506a3a2ac4b2db0332251bbbc6724fea393715a8137e4",
+        "QBODY": "43ab689e9ebf61ad6366af7d4e7d537bff96d3ca90d61961611a6bf43b00ac99",
+        "QFULL": "4a5265f747de93884723e664a6f7acc8eae40e12d340590bfa226508ba5f026c",
+        "stemEvidenceSha256": "dd2e24e91ab50dee6affe4dcda5702293beb8a88b159b88390fab46a76f08489"
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_d3388bbf1a01cf6c43fa19eb29ac92ea0ffc55bae8e781eb2990dc6d7b8f6cf9",
+        "QBODY": "594c9bd4e58973ae314ff7f7b4623ff51c2330747fabf5c482076caac2fa0762",
+        "QFULL": "a20668e83d415d0973773781822ea57efb4f840e469ee04821b581d9a9d63cff",
+        "stemEvidenceSha256": "851f8165d1ef030b4b6a12a2b9634cd149eb5f3a01750e59e5027874227fb2d3"
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_67f4f9455236c83769f22f2002970a62bacda4d42d3ce9ada8c2342cdddd0bb7",
+        "QBODY": "66b54a58e8b1997059c4d2e5d7be0310791bf7eda476aeef669440c9deb0d4e8",
+        "QFULL": "f1ace3bf5435d7537d6e355db85fcafbb49a7def36a19aa28f4c6245752c90a7",
+        "stemEvidenceSha256": "54df7776bc3c5911d154948e81bb23515bc6c27247823ca853a11e9fea6e76e0"
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_5d3d546c62f38a26e360ffc859242050b30b464ca258c78d2cc677fde037cebf",
+        "QBODY": "61b5c9e5dee1f8ed6ff7743e73e81289db6167bc08a8932dcab0b4becaad99e6",
+        "QFULL": "30df98b7278d00d4d825756a54548b16760b4fefe6fa87121d3ce35ede8c6c33",
+        "stemEvidenceSha256": "5511235326f61480aa282b7e3690cee5616e453a7ac0a66c8e8330ed621bef5f"
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_482eff9cd61f9821a78d58e7ffc939a7de075fb730e9719db920a930db1c1d44",
+        "QBODY": "9f338648058b0e34b72edbed8ab75182366760375e1073abad3aaaf063832199",
+        "QFULL": "5e2ce1e1436cd0009494fadb93b8eb10646e70210ce29c5cf56287269e72ecbf",
+        "stemEvidenceSha256": "786c57443cfce78385a0c0e85f605553d24362cc476b12f58dec9cec22637538"
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_42c7af4436410b33a954cb3799a37e65dcd3c7c8b8c55aa8ba5d1e4aa1c0baad",
+        "QBODY": "249fef3408288198a6eecd6238bba9646deb38507a7f2e595c714ed40d2e950e",
+        "QFULL": "bf35f074aee45f1f6f51b4b77481b5d2e619cdb59b6d14fa7b6a1c73652c4f80",
+        "stemEvidenceSha256": "535faed2aecfe8bc3fdd94fbe1514ba2f6e5729502ae134ddf0f14ce53810d08"
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_64c3950f38efe77960cc4f1d864b9fb5be6152ffee30471dece24eb65ffd5bfa",
+        "QBODY": "88c583dda04262deabf5f2cc3ecd304232418986fcc8861cf82215d08cdc988a",
+        "QFULL": "c1939cfaa65b17f260c23f359b5bf9eb3b7beb2c92ab879b39a19b8cce9fdb52",
+        "stemEvidenceSha256": "99ffbda132ef7ab21d0bc5b8c011a59689c9eb368a75d55e8bd2ba1f5d99eeaa"
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_f223797fc900671e96c43a324540da175eb09648202bd5613f34ef34e5a5ac08",
+        "QBODY": "ab4d77adcb304e22517ffd9dc5d6bc21bff96c8e91db7190d42b74c530da08ad",
+        "QFULL": "aa3dfb44fd56c54fda9ba4fcfb7a960930b5506a3c3273a024ef3e24bd40d5b6",
+        "stemEvidenceSha256": "c2df8e917506cab354e0ba273876a0571a207d064e712dfea703b78ad7920dad"
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_4d5187b35841fd4dfe85c0a5e39288d03a9ea27955a4e96699da25f7f185c04c",
+        "QBODY": "91afd8774313d368436648468e89014aa9f16424b1f191b1d094e262dc105c27",
+        "QFULL": "39b3a5e948ed4008ed796d224f75972b759b686484365a3e1f41cf148e43879b",
+        "stemEvidenceSha256": "3c388bebd1aa960654ab442887fbcb3920db531e2bcece1032a2f36413a37331"
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_e1ad5cffdd26fe9cf2e9ebd26bf451e80c903e0b48b8ebd40f2f02cb78e4dd0e",
+        "QBODY": "ed573060408d96c0eeacfe8fa04aa5f14257be2c3d0da2d608a787aba075e8aa",
+        "QFULL": "397e0f4038bda90828a98d8afb932f9378bdb1171aa02aa45373e3ba3cfdcc94",
+        "stemEvidenceSha256": "36a6495e76817c1b029c870710412079680576be50dc6508df8993a16b6bbe3c"
+      }
+    ]
+  },
+  "sourceFinalBlob": "ff54bd647ee22666bf27fcf272350efda45ba759",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E049",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-14",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "064a208da4fba7f1447be10b3f5a8e45dea05186",
+    "inputHashes": {
+      "reviewSha256": "7d72a69d24d41611f1f45ed86462560f94b19eace0e941bdf778dfc9c5f67b7d",
+      "fourSlotSha256": "61057a84660815fb06e3641f9a76355df0d7f3748c76bf2d4087a0435578fe92"
+    },
+    "sampledOrdinals": [
+      6,
+      11,
+      21
+    ],
+    "additionalReviewedOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+    "findings": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_bf0d4a4c2b35ff4c5d4ad3e9004d3274557afd37196382c460872615f47075ff",
+        "status": "PASS",
+        "note": "전개 일차항의계수로 a+b를 읽을수있음.곱셈부단원 교정 및1 수용."
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_e8667d79d44bffa4d11527b97459fcd945c8d375a82e1d3fdc7c4c3a2e60eb50",
+        "status": "PASS",
+        "note": "정수·양의x계수 조건이현원문에실재하여 인수분해정규화됨.2 수용."
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_ecc7b2513a712b6e792e7cf54c4843b209414e4326e90dfe0c2eaea272e04d8c",
+        "status": "PASS",
+        "note": "정수·양의x계수 조건으로 두인수 합을결정.2 수용."
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_83a71031da447218255417d0d0b9f498c1207e98da084ca1018d8eb797c85598",
+        "status": "PASS",
+        "note": "상수곱−12의정수쌍 합후보 열거.최종028/120부모+gap·FACTORIZATION유지 확인."
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_a091e2221b72f1a80eca7c50eac84669db7518dec0aa6bd1648e94902f45180d",
+        "status": "PASS",
+        "note": "그림6a²+a−2넓이,가로3a+2를직접확인. factor약분과CC직사각형넓이2 수용."
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_d3e4dc4d5ecc9875763b3d7e9323f21d01f1cce0252e9bc78c5a2b04f23a3aeb",
+        "status": "PASS",
+        "note": "양변정리 후이차항a−2비영 조건.2/B12 경계교정 수용."
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_e4f4798364f4d94a1efa9dae769be05678a34ce0f8c3b1ce1892f10f528e3007",
+        "status": "PASS",
+        "note": "주어진근−3의직접대입1 수용."
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_43e5da75778c2ba918f1e41407a27e0b161422db1b6d9dc7d189e14d382502b8",
+        "status": "PASS",
+        "note": "AB=0 두인수 각각정형분해.2 교정과사차형교육과정debt·부모맥락gap 수용."
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_f7d7fa9b009cb742c8caab15d7eab047b179bf3a60bfcabe4497996a3aa7fc67",
+        "status": "PASS",
+        "note": "근등식을나누어역수항소거.3 수용; 최종 α≠0 condition정의역/COND_NONZERO 확인."
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_0c24e50d016cc48352eec5d78752339261fda5572f8e187333a9ba693d0cef89",
+        "status": "PASS",
+        "note": "이차항계수3을유지해두근인수형전개.2 수용."
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_917582187073a23b0a048cc84b58406b983c9c001054ed6d67a61021024f531b",
+        "status": "PASS",
+        "note": "두근1,2/3의크기순서로선형식에대입.2/B12 및정확목표gap 수용."
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_400a2c57e4dc10ed921eec61f70d1b18d37bdd7d619e745544d4cc888a7e0fd0",
+        "status": "PASS",
+        "note": "근비2:3을2t,3t로두어합·곱조건연결.3, 근계수직접표현교육과정debt 수용."
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_8540e90d1f76e60f25262aae16ebec9036e7291c5510b637a510e09f6f146b12",
+        "status": "PASS",
+        "note": "완전제곱식 우변0 조건.2 및NONE 수용."
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_37095e6bd0bc687fc91415ea925d33a02bdd7f226db95e2a8d9de6e1efd1fd25",
+        "status": "PASS",
+        "note": "제곱식양의우변에서서로다른두근 직접정의1. q양수는요구조건이므로불필요보조제거 수용."
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_382c2b46b06c2adfcac1ed5345a7425e34b127b4932986db8d6da18c10114d11",
+        "status": "PASS",
+        "note": "제곱완성으로−3±√10을구해p,q읽음.두근쌍이므로표현고유,2 수용."
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_1fc384c6a6d8c0467b6506a3a2ac4b2db0332251bbbc6724fea393715a8137e4",
+        "status": "PASS",
+        "note": "근의공식과제시된두근쌍비교.정형2로조정 수용."
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_d3388bbf1a01cf6c43fa19eb29ac92ea0ffc55bae8e781eb2990dc6d7b8f6cf9",
+        "status": "PASS",
+        "note": "고정경계−2,6과이동근a±3의사이조건.3/B34 및구간제약 수용."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_67f4f9455236c83769f22f2002970a62bacda4d42d3ce9ada8c2342cdddd0bb7",
+        "status": "PASS",
+        "note": "학생n과1인당n+3의명시관계로단일모델.2 및자연수기각 수용."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_5d3d546c62f38a26e360ffc859242050b30b464ca258c78d2cc677fde037cebf",
+        "status": "PASS",
+        "note": "주어진높이식에21대입,두시간중처음선택.2 수용."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_482eff9cd61f9821a78d58e7ffc939a7de075fb730e9719db920a930db1c1d44",
+        "status": "PASS",
+        "note": "다양한식/상황을 함수식으로나타내차수판정.2/B12 수용."
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_42c7af4436410b33a954cb3799a37e65dcd3c7c8b8c55aa8ba5d1e4aa1c0baad",
+        "status": "PASS",
+        "note": "기본포물선의대입·축·폭·대칭독립확인.2/B12 및2022의미대응135 수용."
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_64c3950f38efe77960cc4f1d864b9fb5be6152ffee30471dece24eb65ffd5bfa",
+        "status": "PASS",
+        "note": "첫점에서a,둘째점에서b대입.2/B12 수용."
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_f223797fc900671e96c43a324540da175eb09648202bd5613f34ef34e5a5ac08",
+        "status": "PASS",
+        "note": "두오독사례의정확한계수를조합하여복원.3/B34 수용."
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_4d5187b35841fd4dfe85c0a5e39288d03a9ea27955a4e96699da25f7f185c04c",
+        "status": "PASS",
+        "note": "차3·제곱합149의명시관계로단일방정식.2 및연속수와다른exactgap 수용."
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_e1ad5cffdd26fe9cf2e9ebd26bf451e80c903e0b48b8ebd40f2f02cb78e4dd0e",
+        "status": "PASS",
+        "note": "원본선분AB·수선직사각형 및해설그림확인.좌표→면적모델3/B34, 최종범위4칸·COND_RANGE 보강 확인."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/05-content-1.png",
+        "sha256": "5fec460e630231c6b424a9c11e67bf954a52029100df936d106837da3c487b8c",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/05-solutionImage-2.svg",
+        "sha256": "4b405d6a19f94fb2e3dd49761c3fb2c03aee9bad04c82e587d93523cf9ebb158",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/25-content-1.png",
+        "sha256": "a4df7f332cdc418b160e4f85537d3e4b98fccbee8c141dbbe7f099e8b80ae23f",
+        "status": "READ"
+      },
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E049/25-solutionImage-2.svg",
+        "sha256": "9edff8805ba70392e7971a91c034fd20b50821509c02ee021ae1ceb5dc9bb895",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION",
+    "reviewedArtifactHashCheck": {
+      "E049.review.json": "7d72a69d24d41611f1f45ed86462560f94b19eace0e941bdf778dfc9c5f67b7d",
+      "E049.4slot.json": "61057a84660815fb06e3641f9a76355df0d7f3748c76bf2d4087a0435578fe92"
+    }
+  },
+  "resolverExecution": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "difficultyPolicyDebtOrdinals": [],
+  "primaryEvidenceDebtOrdinals": [],
+  "evidenceDebtOrdinals": [],
+  "undecidedDifficultyOrdinals": []
+}
