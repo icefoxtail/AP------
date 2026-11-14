@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E025",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "77995d45dd80c921a350727c50833f60c7f260b8",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "c2d02034c1be61bebdb80c176bf41c4cda1b8513cf78b3b851420b9667c3fb2f",
+  "fourSlotInputSha256": "41dea417e91347997e58cb9a647d0f17dc206c290d213707ad084669e46772bf",
+  "sampleOrdinals": [
+    11,
+    16,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_eb83b4f300c99f020270cb71a9d05363ba2a4262aee261f363b4746bee5ce78f",
+      "verdict": "PASS",
+      "metadataReview": "ACTIVE PT_FUNCTION_VALUE는 특정 입력의 출력 계산만, PT_INVERSE_VALUE는 역함수식/역함숫값, PT_FUNCTION_RECOVERY는 미지 함수 복원이다. 이미 주어진 일차함수에서 출력a와 입력b를 함께 구하는 정확한 양방향 목표는 이 정의를 자동 확장할 수 없어 NEW_PT E025-FUNCTION-INPUT-OUTPUT 수용. RPM046 함숫값의 상위 소속과 primary 내부 일차식 역산/CC없음/NONE도 타당하다.",
+      "fourSlotReview": "일차함수 given·식의값 goal·대입 NAMED·일차방정식 IMPLIED가 실제 정확 인용에 맞는다.",
+      "difficultyReview": "단순 대입과 한 단계 역산이 지시된1, medium/B12의 중1 인접 차이를 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 4,
+      "imageViewed": false
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+      "verdict": "PASS",
+      "metadataReview": "실제 그림의 BM=CM, AN=MN, CD∥ME, EM4를 확인했다. 기존 해설은 넓이 S/4,S/2와 CN:ND=r:1을 결합해 r을 역산하며, 주어진 길이비로 넓이를 계산하는 유형과 방향이 반대다. NEW_PT E025-AREA-TO-SEGMENT-RATIO 및 RPM gap 수용. 마지막CD 복원에는 별도 중점연결 비례가 필요하므로 CC_PARALLEL_LINES_RATIO 및 SEQUENTIAL도 맞는다.",
+      "fourSlotReview": "삼각형·두중점 입력, 길이 목표, 넓이/비례식/중점연결정리 방법, 평행 조건을 현재 source exact 인용과 모두 대조했다. 넓이 방법 quote도 실제 명칭이 포함된다.",
+      "difficultyReview": "숨은3:1을 복원하는 전략 선택이 있고 복수 면적식 연결이 필요하므로3/상, medium B34 경계 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E025-16.png"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d938f89a81e36f770b5751ed9e01716aabe2f4ed5737e73c7207cadc11f0f9bf",
+      "verdict": "REPAIR",
+      "metadataReview": "실제 목표는 한 이동자의 두 속력 구간별 거리를 거리합과 순이동시간합의 두 식으로 구성·복원하는 것이다. RPM040은 마주가기·따라가기,041은 강물·기차여서 정확한 leaf 공백이 맞다. ACTIVE H1_SYSTEM parent 재사용하되 DIRECT는 대입·가감·대칭합 풀이만 규정하여 거리/시간 모델 구성 exact NEW_TPL이 타당하다. CC_SPEED_DISTANCE_TIME와 SEQUENTIAL 수용. B E032Q24도 같은 두구간 모델이며 그 문항은 휴식이 없어 휴식 제외를 선택 변형으로 둔 공통 제안으로 통합 가능하다.",
+      "fourSlotReview": "속력·거리 given, 식구성/거리의 두 goal, 모델링·가감풀이 IMPLIED 인용 모두 정확하다. 핵심 입력인5분 휴식이 현재4칸에서 빠져 있으므로 condition에 사전용어 제외와 stem의 5분간 휴식을 취하고를 붙여 이동시간에서 빠지는 조건임을 scenarioNote에 보강 권고한다. canonical Condition의 값제한으로 신설하는 뜻은 아니다.",
+      "difficultyReview": "휴식시간 제외를 한 번 해석하여 두 표준 관계를 연결하는2/중 수용. source 수학 검수를 별도로 확장하지 않았다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": false
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

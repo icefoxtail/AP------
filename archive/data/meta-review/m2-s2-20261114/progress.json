@@ -3506,12 +3506,131 @@
         24,
         25
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "1b3304ebbe082fde16e1e25666147fe9cb6d8a719bb5d16daf7359f45cb66dfa"
+      "uidSetSha256": "1b3304ebbe082fde16e1e25666147fe9cb6d8a719bb5d16daf7359f45cb66dfa",
+      "reviewedQuestionCount": 25,
+      "registrationPendingQuestionCount": 25,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 25,
+      "independentSampleOrdinals": [
+        11,
+        16,
+        23
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "연립일차방정식",
+          "rpmL2": "연립일차방정식",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "rpmL1": "연립일차방정식",
+          "rpmL2": "연립일차방정식의 활용",
+          "ordinals": [
+            10,
+            22,
+            23
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 그 그래프(1)",
+          "ordinals": [
+            11
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            12
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            13,
+            21
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            14,
+            15,
+            17,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            16
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            18,
+            19,
+            25
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            20
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E025/four-slot.json",
+          "sha256": "4a2804eead17c32f2057beb4a29342f426b0575948e44fceb303392b018b88d7"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E025/independent-sample.json",
+          "sha256": "f1a259fa0377d6593e7569ce74622e947eb858aad2d0557431c9e968453030d2"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E025/mechanical-check.json",
+          "sha256": "711c5a6ec70d6bf5b204dd96469066ce5551a64f484869daea45f144cb426169"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E025/review.json",
+          "sha256": "0069e4297661ba31786fcdfd1cc52c0e58170e6bec7dabaf7ceed1f3e54ee744"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E025/root-acceptance.json",
+          "sha256": "ce6100aa929455b6d5c6d772e8ebaa94837612ad88e488d8c64e69d60c32b9ae"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E026",
@@ -4183,8 +4302,9 @@
           "sha256": "304fc1e5f4ab6b75a67ddf47db53706511761ea05cbd5f41fcfb524a209c651c"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
-      "historicalLevelAbsentOrdinals": []
+      "remoteSaveState": "VERIFIED",
+      "historicalLevelAbsentOrdinals": [],
+      "remoteCommit": "e87f64bf9c0aaab3a45ddcb92b6a4a8fa23560b3"
     },
     {
       "examId": "E031",
@@ -5823,11 +5943,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 28,
-    "reviewedQuestions": 666,
+    "reviewedExams": 29,
+    "reviewedQuestions": 691,
     "unresolvedQuestions": 0,
-    "remainingExams": 39,
-    "remainingQuestions": 938
+    "remainingExams": 38,
+    "remainingQuestions": 913
   },
-  "lastVerifiedExamCommit": "cda2171c19c5bac8c734c219f454f898ee413b7c"
+  "lastVerifiedExamCommit": "e87f64bf9c0aaab3a45ddcb92b6a4a8fa23560b3"
 }

@@ -1,0 +1,2443 @@
+{
+  "schemaVersion": "m2-s2-meta-review-v1",
+  "examId": "E025",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "77995d45dd80c921a350727c50833f60c7f260b8",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewedQuestionCount": 25,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_affaf76b02cc29b20d89881b5c7dc4421acd4e725e77075461334d524acb7447",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "상황을 식으로 바꾸어 이변수 일차식 판정",
+      "decisiveStep": "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다.",
+      "before": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 두 미지수 일차방정식의 뜻 > None: 상황을 식으로 바꾸어 이변수 일차식 판정",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "일차성 판정 전에 밑변과 높이의 곱으로 삼각형 넓이 조건을 식으로 바꾼다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다.",
+        "difficulty": "기본 넓이 관계에서 미지수의 곱을 확인하면 정의를 직접 판단한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-EQ-DEF"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기본 넓이 관계에서 미지수의 곱을 확인하면 정의를 직접 판단한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "두 미지수 일차방정식의 뜻",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "두 미지수 일차방정식의 뜻",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ea1b692e469fefaf164dcc74503ec57a020507fd9e17b483329ec9325cc8f07f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "이변수 일차식의 자연수해 열거",
+      "decisiveStep": "한 변수의 양수 범위를 정하고 다른 변수도 자연수가 되는 후보만 남긴다.",
+      "before": {
+        "subUnit": "연립일차방정식의 활용",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "subUnit": "연립일차방정식",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 두 미지수 일차방정식의 해 > None: 이변수 일차식의 자연수해 열거",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "x,y는 양의 정수인 자연수여야 하므로 분수해를 버리고 가능한 y범위를 정한다.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "작은 범위의 세 후보를 직접 대입하여 하나의 자연수쌍을 고른다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "한 변수의 양수 범위를 정하고 다른 변수도 자연수가 되는 후보만 남긴다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "한 변수의 양수 범위를 정하고 다른 변수도 자연수가 되는 후보만 남긴다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-NATURAL-SOL"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "작은 범위의 세 후보를 직접 대입하여 하나의 자연수쌍을 고른다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "두 미지수 일차방정식의 해",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "두 미지수 일차방정식의 해",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "subUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "subUnit": "연립일차방정식의 활용"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_789343791ad7501d2972b58d21d68e69f2c4550185519ce5a30d705dd47d18a1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 해의 대입으로 계수와 좌표 순차 결정",
+      "decisiveStep": "완전한 순서쌍에서 a를 구한 뒤 p가 있는 두 번째 순서쌍을 완성된 방정식에 넣는다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "그래프를 그리지 않지만 두 순서쌍은 해당 직선 위의 두 점과 같은 해의 의미이며 native POINT_SUBSTITUTION의 계수→좌표→합 골격과 정확히 일치한다. source 연립일차방정식 소속을 보존하고 native 정의의 해당 소속 연결 debt를 분리한다.",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "첫 대입의 계수를 두 번째 좌표 계산에 전달한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "완전한 순서쌍에서 a를 구한 뒤 p가 있는 두 번째 순서쌍을 완성된 방정식에 넣는다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "일차방정식의 그래프 위에 있는 두 점의 좌표를 각각 대입하여 미지의 계수와 좌표를 구하는 과제.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "첫 대입의 계수를 두 번째 좌표 계산에 전달한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-033",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-151",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_d00b288e3dc14d3b215c47e8d0fe2435cfcff06800f90787ad529ca59877c164",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-030",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "계수 배수와 부호로 소거 연산 선택",
+      "decisiveStep": "한 변수의 계수가 반대가 되는 합과 같아지는 차의 두 조합을 선택한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 가감법: 계수 배수와 부호로 소거 연산 선택",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "제시된 배수와 더하기·빼기를 각 계수에 직접 대조한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "한 변수의 계수가 반대가 되는 합과 같아지는 차의 두 조합을 선택한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "연립일차방정식을 가감법으로 풀 때 특정 미지수를 소거하기 위해 각 식에 곱할 수와 더하거나 뺄 연산을 선택하는 과제.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "제시된 배수와 더하기·빼기를 각 계수에 직접 대조한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-030",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-148",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8987e47959a280a40e28a5c237d08e61dfc8a246dd4669370ecb94eac683681b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-034",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "괄호 정리 후 가감법으로 공통해",
+      "decisiveStep": "첫 식의 괄호와 상수를 정리하고 y계수를 반대로 만들어 더한 뒤 되대입한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 복잡한 꼴의 연립방정식 > 괄호가 있는 연립방정식: 괄호 정리 후 가감법으로 공통해",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "정형 괄호 정리와 기본 가감법을 직접 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "첫 식의 괄호와 상수를 정리하고 y계수를 반대로 만들어 더한 뒤 되대입한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정형 괄호 정리와 기본 가감법을 직접 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-034",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "괄호가 있는 연립방정식"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "괄호가 있는 연립방정식"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-152",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_aec888b00304d93d5f44cdd7643447dd1c6d28163972a189e7c5a6c0e96bc721",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "연립방정식의 해를 별도식 계수에 전달",
+      "decisiveStep": "주어진 두 식에서 x,y를 구하고 세 번째 조건에 넣어 k를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 해와 계수 > 계수 결정: 연립방정식의 해를 별도식 계수에 전달",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "알려진 연립식의 해를 마지막 계수 조건에 순서대로 대입한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "주어진 두 식에서 x,y를 구하고 세 번째 조건에 넣어 k를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "알려진 연립식의 해를 마지막 계수 조건에 순서대로 대입한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-033",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-151",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_2339f8b87e25c56b5187e6e2f4266fde5d38f1ba1066ea2939aadbce1794cbda",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-031",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대입 소거 후 남은 식의 계수",
+      "decisiveStep": "y=x-2를 다른 식에 넣어 x항을 모으고 결과4x=1의 계수를 읽는다.",
+      "before": {
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 대입법: 대입 소거 후 남은 식의 계수",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "지정된 대입을 한 번 수행하여 동류항을 정리한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "y=x-2를 다른 식에 넣어 x항을 모으고 결과4x=1의 계수를 읽는다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "E025-SUBSTITUTION-STEP"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "지정된 대입을 한 번 수행하여 동류항을 정리한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-031",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-149",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_fa0418f0a78ecbbf6bc400e5395da7b67208fffd1ad2eda0c577d30f2f0115d5",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-035",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분모·소수 제거 후 가감법",
+      "decisiveStep": "두 식을 정수계수로 바꾸고 같은 y계수를 빼 공통해를 구한 뒤 두 해의 곱을 계산한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "native DECIMAL_COEFFICIENTS는 일차결합 목표를 명시한다. 이 문항은 분수·소수식의 해를 구한 뒤 곱을 요구하므로 일반 H1 SYSTEM_DIRECT의 대입·가감 정의를 재사용한다.",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "분모와 소수 자리수를 정리한 뒤 표준 가감 계산으로 연결한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "두 식을 정수계수로 바꾸고 같은 y계수를 빼 공통해를 구한 뒤 두 해의 곱을 계산한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분모와 소수 자리수를 정리한 뒤 표준 가감 계산으로 연결한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-035",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-153",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d311a82bb431da70dfc14f3fe4fa42c36d653774c0d36968595ba9d679ea409a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-036",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "무수히 많은 해의 전 계수비 일치",
+      "decisiveStep": "상수항비로 한 식의 배수를 정하고 두 미지수 계수가 동시에 일치하도록 a,b를 정한다.",
+      "before": {
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우: 무수히 많은 해의 전 계수비 일치",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "무수히 많은 해의 같은 배수 조건을 직접 비교하는 표준형이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "상수항비로 한 식의 배수를 정하고 두 미지수 계수가 동시에 일치하도록 a,b를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "E025-INFINITE-SOLUTIONS"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "무수히 많은 해의 같은 배수 조건을 직접 비교하는 표준형이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-036",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "해가 없거나 무수히 많은 경우"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "해가 없거나 무수히 많은 경우"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-154",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4659bdc8f46c59bba7cf631bc5eb5ad05f13e20d8bdc0c929793776c657bb50e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-039",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 종류 수량과 총액에서 단가 복원",
+      "decisiveStep": "자료의 두 구매 조건을 두 단가의 연립식으로 만들고 필요한 재구매액에 대입한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "연립일차방정식",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "subUnit": "연립일차방정식의 활용",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격: 두 종류 수량과 총액에서 단가 복원",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "그림 자료의 두 수량 관계를 같은 단가에 연결하여 연립한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "자료의 두 구매 조건을 두 단가의 연립식으로 만들고 필요한 재구매액에 대입한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "definition": "두 종류 물건의 수량과 총액에 대한 연립일차방정식을 세워 각 물건의 단가를 결정하는 과제.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림 자료의 두 수량 관계를 같은 단가에 연결하여 연립한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-039",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-157",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "연립일차방정식"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_eb83b4f300c99f020270cb71a9d05363ba2a4262aee261f363b4746bee5ce78f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-046",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 함수의 입력과 함숫값 양방향 계산",
+      "decisiveStep": "알려진 입력에서 a를 계산하고 주어진 출력1을 식에 같게 놓아 입력b를 복원한다.",
+      "before": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 뜻 > 함숫값: 주어진 함수의 입력과 함숫값 양방향 계산",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "간단한 함수식에 직접 대입하는 방향과 일차식 한 번 역산하는 방향이 명시되어 있다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "알려진 입력에서 a를 계산하고 주어진 출력1을 식에 같게 놓아 입력b를 복원한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "E025-FUNCTION-INPUT-OUTPUT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "간단한 함수식에 직접 대입하는 방향과 일차식 한 번 역산하는 방향이 명시되어 있다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-046",
+        "effectivePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "basePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-164",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_bf02eb64a71acfb1aa328a07eb434234b4f89895fd58f47ce9128bfff9021b51",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-238",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "공통각과 뒤바뀐 대응의 AA 닮음",
+      "decisiveStep": "전체AC를 구하고 A↔E,C↔C 대응의2:1비로 BC를 얻어 EC를 뺀다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이: 공통각과 뒤바뀐 대응의 AA 닮음",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "두 삼각형의 뒤바뀐 대응과 전체·부분 길이의 변환을 연결한다. E022Q4와 같은 구조를3/B23으로 일관되게 판단한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "전체AC를 구하고 A↔E,C↔C 대응의2:1비로 BC를 얻어 EC를 뺀다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 삼각형의 뒤바뀐 대응과 전체·부분 길이의 변환을 연결한다. E022Q4와 같은 구조를3/B23으로 일관되게 판단한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-238",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-207",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b087ce63cc17ddc63eeb25375ae60d8e34d75acb5ec2d33fd022ed402e474221",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "동일 삼각형 넓이의 두 표현에서 높이",
+      "decisiveStep": "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다.",
+      "before": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음 > 피타고라스 정리 > 삼각형의 넓이식으로 높이 결정 > None: 동일 삼각형 넓이의 두 표현에서 높이",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "주목표 높이는 넓이 등식으로 결정되고 빗변 길이만 피타고라스 입력으로 얻는다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다.",
+        "difficulty": "넓이를 같은 삼각형의 다른 밑변 기준으로 한 번 바꾼다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-AREA-REBASE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "넓이를 같은 삼각형의 다른 밑변 기준으로 한 번 바꾼다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "피타고라스 정리",
+          "l3": "삼각형의 넓이식으로 높이 결정",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "피타고라스 정리",
+          "l3": "삼각형의 넓이식으로 높이 결정",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-091",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선의 부분·전체 비",
+      "decisiveStep": "AE와EC를 더한AC를 구성하고 AD/AB=AE/AC에 대입한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례: 평행선의 부분·전체 비",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "부분의 합으로 전체 대응변을 만든 뒤 비례식을 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "AE와EC를 더한AC를 구성하고 AD/AB=AE/AC에 대입한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부분의 합으로 전체 대응변을 만든 뒤 비례식을 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-091",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-209",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f7ba4e4364caa36a664d7f5d1c2a990b628c5b64d0e35dbff14f3dab09d283f9",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-091",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "세 중점연결선의 길이 합",
+      "decisiveStep": "원삼각형 세 변의 절반씩을 더하여 중점삼각형 둘레를 구한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "crossConceptKeys": [
+          "CC_PERIMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례: 세 중점연결선의 길이 합",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "중점선으로 얻은 세 길이를 최종 둘레로 합한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "원삼각형 세 변의 절반씩을 더하여 중점삼각형 둘레를 구한다.",
+        "difficulty": "각 변의 절반을 직접 반복 적용한 뒤 합한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "원삼각형 세 변의 절반씩을 더하여 중점삼각형 둘레를 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 변의 절반을 직접 반복 적용한 뒤 합한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-091",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-209",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "subUnit": "평행선 사이의 선분의 길이의 비"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "도형의 닮음"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "공통 높이의 넓이비로 교점 분할비 역산",
+      "decisiveStep": "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다.",
+      "before": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음 > 평행선과 선분의 길이의 비 > 공통 높이 넓이비의 역산 > None: 공통 높이의 넓이비로 교점 분할비 역산",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "공통높이의 넓이비로 CN:ND를 얻은 뒤 입력EM으로 전체CD를 복원하는 중점연결선 비례가 추가로 필요하다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다.",
+        "difficulty": "겹치는 세 영역을 같은 전체넓이와 미지 선분비로 연결하여 숨은3:1비를 복원한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-AREA-TO-SEGMENT-RATIO"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "겹치는 세 영역을 같은 전체넓이와 미지 선분비로 연결하여 숨은3:1비를 복원한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "공통 높이 넓이비의 역산",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "공통 높이 넓이비의 역산",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_27bd8e28888abbddded366fbe2a8473aa63d9c247d3c05520386d58487455b43",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-096",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "교차 닮음의 비를 내부 평행선에 전달",
+      "decisiveStep": "첫 닮음의BE:ED를BE:BD로 바꾸고 두 번째 닮음의EF:DC에 적용한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 선분비를 이용한 복합도형: 교차 닮음의 비를 내부 평행선에 전달",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "서로 다른 두 삼각형 쌍 사이에서 부분비를 전체비로 변환해 연결한다. E022Q7과 동일한 두 단계 골격이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "첫 닮음의BE:ED를BE:BD로 바꾸고 두 번째 닮음의EF:DC에 적용한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "서로 다른 두 삼각형 쌍 사이에서 부분비를 전체비로 변환해 연결한다. E022Q7과 동일한 두 단계 골격이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-096",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-214",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-099",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 번의 무게중심 높이비와 넓이",
+      "decisiveStep": "높이를1/3씩 두 번 축소하고 중점 밑변1/2과 결합해 원래 넓이를 복원한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 넓이 분할: 두 번의 무게중심 높이비와 넓이",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "새 삼각형의 무게중심 높이를 원래 높이에 다시 연결한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "높이를1/3씩 두 번 축소하고 중점 밑변1/2과 결합해 원래 넓이를 복원한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "새 삼각형의 무게중심 높이를 원래 높이에 다시 연결한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-099",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-217",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-097",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "연속 무게중심의 중선2:1 길이 복원",
+      "decisiveStep": "작은 중선의GG′:G′D=2:1로GD를 얻고 큰 중선의AG:GD=2:1로AD를 구한다.",
+      "before": {
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 2:1 비: 연속 무게중심의 중선2:1 길이 복원",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "같은 중선에서 서로 다른 두2:1비의 전체와 부분을 구별한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "작은 중선의GG′:G′D=2:1로GD를 얻고 큰 중선의AG:GD=2:1로AD를 구한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [
+        "E025-CENTROID-LENGTH"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "reason": "같은 중선에서 서로 다른 두2:1비의 전체와 부분을 구별한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-097",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-215",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "problemTypeKey": null,
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비"
+      },
+      "beforeMetadata": {
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_8a8a2b16bcf5d105074a404a1616ba8c649b898c066d773fa63067ab021e6ac2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-103",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "가장 긴 변의 제곱으로 직각 판정",
+      "decisiveStep": "후보 세 길이의 가장 긴 변 제곱을 다른 둘의 제곱합과 비교하고 삼각형 불성립 후보도 제외한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 직각삼각형 판정: 가장 긴 변의 제곱으로 직각 판정",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "기존 해설은 세 번째 후보를 제곱합 이전에 두 변의 합이 긴 변보다 작다는 삼각부등식으로 제외한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "후보 세 길이의 가장 긴 변 제곱을 다른 둘의 제곱합과 비교하고 삼각형 불성립 후보도 제외한다.",
+        "difficulty": "제시된 작은 정수 길이에 표준 제곱합 검사를 직접 적용한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "후보 세 길이의 가장 긴 변 제곱을 다른 둘의 제곱합과 비교하고 삼각형 불성립 후보도 제외한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "제시된 작은 정수 길이에 표준 제곱합 검사를 직접 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-103",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "직각삼각형 판정"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "직각삼각형 판정"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-221",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_459f16c6ffa56ed87ed2bbc8abfe0197705f0c59f3e104291fff5c6684b78464",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "반원 넓이합에서 공통 영역을 제거",
+      "decisiveStep": "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음 > 피타고라스 정리 > 피타고라스 넓이 전이 > None: 반원 넓이합에서 공통 영역을 제거",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "반원 넓이 전이로 남는 영역이 삼각형임을 확인한 뒤 두 직각변으로 그 실제 넓이를 계산한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다.",
+        "difficulty": "피타고라스 넓이 전이 뒤 그림의 공통영역을 제거하는 표준 히포크라테스형이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-PYTH-AREA-RPM"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "피타고라스 넓이 전이 뒤 그림의 공통영역을 제거하는 표준 히포크라테스형이다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 넓이 전이",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 넓이 전이",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_b00ba410be20253d2b46fe7cbc6708ba1c12dad3135db95486ed3fcfafb9d02b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-044",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "회전 배치의 두 높이를 연립 모델로 표현",
+      "decisiveStep": "긴변과짧은변의 세로 반복을 읽어3x-2y와x+3y 두 관계를 만들고 공통해를 면적에 사용한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "연립일차방정식",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null
+      },
+      "after": {
+        "templateKey": "TPL_H1_SYSTEM_DIRECT",
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "subUnit": "연립일차방정식의 활용",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식의 활용 > 도형 활용 > 도형 조건을 이용한 연립방정식: 회전 배치의 두 높이를 연립 모델로 표현",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "연립식의 공통해로 변 길이를 정한 뒤 별도 목표인 직사각형 넓이에 가로×세로를 사용한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "긴변과짧은변의 세로 반복을 읽어3x-2y와x+3y 두 관계를 만들고 공통해를 면적에 사용한다.",
+        "difficulty": "각 그림에서 같은 긴변·짧은변의 개수를 구분하는 두 표준 모델을 만든다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "긴변과짧은변의 세로 반복을 읽어3x-2y와x+3y 두 관계를 만들고 공통해를 면적에 사용한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 그림에서 같은 긴변·짧은변의 개수를 구분하는 두 표준 모델을 만든다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-044",
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "도형 활용",
+          "l4": "도형 조건을 이용한 연립방정식"
+        },
+        "basePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "도형 활용",
+          "l4": "도형 조건을 이용한 연립방정식"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-162",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnit": "연립일차방정식"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d938f89a81e36f770b5751ed9e01716aabe2f4ed5737e73c7207cadc11f0f9bf",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "휴식을 뺀 두 속력 구간의 거리·시간 연립 모델",
+      "decisiveStep": "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다.",
+      "before": {
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+        "crossConceptKeys": [
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립일차방정식 > 연립일차방정식의 활용 > 속력·시간·거리 > None: 휴식을 뺀 두 속력 구간의 거리·시간 연립 모델",
+        "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "연립 모델의 시간식을 각 구간의 거리/속력으로 만든다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다.",
+        "difficulty": "총시간에서 휴식을 빼고 익숙한 거리·속력 관계를 두 구간에 적용한다.",
+        "fourSlot": "B 독립 표본에서 모델·RPM 공백·난도 수용. 핵심 휴식5분을 제외 term의 exact 원문 인용으로 condition에 보강했다."
+      },
+      "reason": "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다.",
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "definition": "둘 이상의 방정식, 공통근, 대칭 관계를 연립하여 미지수나 매개변수를 정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다."
+        }
+      ],
+      "proposalRefs": [
+        "E025-TWO-SPEED-TRIP"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "총시간에서 휴식을 빼고 익숙한 거리·속력 관계를 두 구간에 적용한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": null,
+        "effectivePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "속력·시간·거리",
+          "l4": null
+        },
+        "basePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "속력·시간·거리",
+          "l4": null
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": null,
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "problemTypeKey": null
+      },
+      "beforeMetadata": {
+        "problemTypeKey": ""
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_291009ffad3fbe060bc5b14ad63f65d0aef7554bf3da05e75d62907a3365222e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-096",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 내부 평행선의 비율 연결",
+      "decisiveStep": "작은 ADF/ABE에서 얻은AD:AB를 ADE/ABC에 전달하여 AC를 구하고 AE를 뺀다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 선분비를 이용한 복합도형: 두 내부 평행선의 비율 연결",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "서로 다른 크기의 두 삼각형 쌍에서 같은 비를 연결해 전체길이를 복원한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "작은 ADF/ABE에서 얻은AD:AB를 ADE/ABC에 전달하여 AC를 구하고 AE를 뺀다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "서로 다른 크기의 두 삼각형 쌍에서 같은 비를 연결해 전체길이를 복원한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-096",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-214",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_8cb17e84b83a3fe5882540582b3d52c6fd82d57489d10ff15e7a17af49605a96",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-100",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중점선과 무게중심 높이의 차로 길이·넓이비",
+      "decisiveStep": "중선의1/2와2/3위치를 비교해HG를 얻고FE의절반밑변과1/6높이차로 내부넓이를 정한다.",
+      "before": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINES_RATIO",
+          "CC_SIMILAR_FIGURES_AREA_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 무게중심을 이용한 복합도형: 중점선과 무게중심 높이의 차로 길이·넓이비",
+        "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "중점연결선에서H와FE의 위치를 정하고 작은 삼각형AFE의 넓이에 닮음비 제곱을 사용한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "중선의1/2와2/3위치를 비교해HG를 얻고FE의절반밑변과1/6높이차로 내부넓이를 정한다.",
+        "difficulty": "두 높이 기준을 같은 원래 중선·높이로 통일해 차이를 선택한다. ROOT 실제 발문·기존 해설 재독에서 현 bucket과 legacy의 인접 경계 수용.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "reason": "중선의1/2와2/3위치를 비교해HG를 얻고FE의절반밑변과1/6높이차로 내부넓이를 정한다.",
+      "registrationDebt": [
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두 높이 기준을 같은 원래 중선·높이로 통일해 차이를 선택한다."
+      },
+      "semanticRpm": {
+        "rpmRecordId": "M2-RPM-100",
+        "effectivePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "basePath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "originalCurriculum": "2015",
+        "taxonomyCurriculum": "2015",
+        "current2022EquivalentRecordId": "M2-RPM-218",
+        "projectionApplied": false
+      },
+      "beforeSource": {
+        "templateKey": null,
+        "problemTypeKey": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "templateKey": "",
+        "problemTypeKey": "",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    }
+  ],
+  "topicSummary": [
+    {
+      "rpmL1": "연립일차방정식",
+      "rpmL2": "연립일차방정식",
+      "ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "rpmL1": "연립일차방정식",
+      "rpmL2": "연립일차방정식의 활용",
+      "ordinals": [
+        10,
+        22,
+        23
+      ]
+    },
+    {
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 그 그래프(1)",
+      "ordinals": [
+        11
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "도형의 닮음",
+      "ordinals": [
+        12
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음",
+      "rpmL2": "피타고라스 정리",
+      "ordinals": [
+        13,
+        21
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "평행선 사이의 선분의 길이의 비",
+      "ordinals": [
+        14,
+        15,
+        17,
+        24
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음",
+      "rpmL2": "평행선과 선분의 길이의 비",
+      "ordinals": [
+        16
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "삼각형의 무게중심",
+      "ordinals": [
+        18,
+        19,
+        25
+      ]
+    },
+    {
+      "rpmL1": "도형의 닮음과 피타고라스 정리",
+      "rpmL2": "피타고라스 정리",
+      "ordinals": [
+        20
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "E025-EQ-DEF",
+      "type": "NEW_PT",
+      "name": "두 미지수 일차방정식의 정의 판정",
+      "definition": "주어진 수량 관계를 식으로 나타내어 두 미지수의 차수와 곱항 유무로 일차방정식인지 판정한다.",
+      "parent": "연립일차방정식 / RPM_LEAF_GAP",
+      "distinguishingCriteria": "B-E014-EQ-DEF 공통 정의 재사용. 해를 구하거나 그래프를 선택하는 유형과 다름.",
+      "existingCandidatesReviewed": [
+        "PT_M1_LINEAR_EQUATION_SOLVING",
+        "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_affaf76b02cc29b20d89881b5c7dc4421acd4e725e77075461334d524acb7447"
+      ]
+    },
+    {
+      "id": "E025-NATURAL-SOL",
+      "type": "NEW_PT",
+      "name": "두 미지수 일차방정식의 자연수 해 계수",
+      "definition": "한 일차관계의 두 변수를 양의 정수로 제한하여 한 변수의 유한 범위를 정하고 다른 변수가 자연수가 되는 해를 열거한다.",
+      "parent": "두 미지수 일차방정식 / RPM_LEAF_GAP",
+      "distinguishingCriteria": "B-E014-NATURAL-SOL 재사용. 둘 이상의 방정식의 공통해가 아니라 한 식의 여러 제한해 계수이며 중복조합 공식이 아니다.",
+      "existingCandidatesReviewed": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "M2-RPM-032"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_ea1b692e469fefaf164dcc74503ec57a020507fd9e17b483329ec9325cc8f07f"
+      ]
+    },
+    {
+      "id": "E025-SUBSTITUTION-STEP",
+      "type": "NEW_TPL",
+      "name": "대입 소거 후 일차식의 계수 판정",
+      "definition": "한 식에 고립된 미지수 표현을 다른 식에 대입하고 동류항을 정리한 소거 결과에서 계수를 읽는다.",
+      "parent": "PT_H1_SYSTEM_EQUATION / M2-RPM-031",
+      "distinguishingCriteria": "DIRECT는 연립해를 끝까지 구하는 골격이며 이 문항은 지정 소거 중간식의 계수를 묻는다. 가감법의 배수·연산 선택 native와도 방법이 다르다.",
+      "existingCandidatesReviewed": [
+        "TPL_H1_SYSTEM_DIRECT",
+        "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2339f8b87e25c56b5187e6e2f4266fde5d38f1ba1066ea2939aadbce1794cbda"
+      ]
+    },
+    {
+      "id": "E025-INFINITE-SOLUTIONS",
+      "type": "NEW_TPL",
+      "name": "해가 무수히 많을 때 계수비 전체 일치",
+      "definition": "두 일차방정식의 모든 계수와 상수항이 같은 배수가 되도록 미정계수를 정한다.",
+      "parent": "PT_H1_SYSTEM_EQUATION / M2-RPM-036",
+      "distinguishingCriteria": "B-E032-INFINITE-SOLUTIONS 재사용. 해없음의 상수항비 불일치나 직접 가감으로 유일해를 구하는 유형과 다르다.",
+      "existingCandidatesReviewed": [
+        "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "TPL_H1_SYSTEM_DIRECT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d311a82bb431da70dfc14f3fe4fa42c36d653774c0d36968595ba9d679ea409a"
+      ]
+    },
+    {
+      "id": "E025-FUNCTION-INPUT-OUTPUT",
+      "type": "NEW_PT",
+      "name": "주어진 함수식의 입력값과 함숫값 양방향 계산",
+      "definition": "완성된 함수식에서 특정 입력의 출력을 계산하고 다른 주어진 출력에 대응하는 미지 입력을 식으로 역산한다.",
+      "parent": "M2-RPM-046 함숫값",
+      "distinguishingCriteria": "PT_FUNCTION_VALUE는 특정 입력의 출력 계산, PT_INVERSE_VALUE는 역함수식·역함숫값이며 이 기초 과제는 주어진 일차함수의 직접 대입과 입력 방정식을 함께 요구한다.",
+      "existingCandidatesReviewed": [
+        "PT_FUNCTION_VALUE",
+        "TPL_FUNCTION_VALUE_DIRECT",
+        "PT_INVERSE_VALUE",
+        "TPL_INVERSE_VALUE_DIRECT",
+        "PT_FUNCTION_RECOVERY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_eb83b4f300c99f020270cb71a9d05363ba2a4262aee261f363b4746bee5ce78f"
+      ]
+    },
+    {
+      "id": "E025-AREA-REBASE",
+      "type": "NEW_PT",
+      "name": "같은 삼각형의 다른 밑변 넓이식으로 높이 복원",
+      "definition": "동일 삼각형의 넓이를 서로 다른 밑변과 대응높이의 곱으로 표현하여 미지 높이를 구한다.",
+      "parent": "삼각형의 넓이 / RPM_LEAF_GAP",
+      "distinguishingCriteria": "B-E023-AREA-REBASE/E022 동일 공백 재사용. 피타고라스는 목표높이에 직접 쓰이지 않고 빗변 입력에만 사용.",
+      "existingCandidatesReviewed": [
+        "PT_M2_PYTHAGOREAN_RELATION",
+        "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "PT_COORD_TRIANGLE_AREA"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b087ce63cc17ddc63eeb25375ae60d8e34d75acb5ec2d33fd022ed402e474221"
+      ]
+    },
+    {
+      "id": "E025-AREA-TO-SEGMENT-RATIO",
+      "type": "NEW_PT",
+      "name": "공통 높이의 넓이비로 내부 교점 분할비 역산",
+      "definition": "중점 조건으로 부분 삼각형의 넓이를 전체의 분수로 정하고 공통 높이의 넓이비를 미지 선분비로 나타내어 넓이의 합 관계에서 교점 분할비를 복원한다.",
+      "parent": "공통 높이의 삼각형 넓이비 / RPM_LEAF_GAP",
+      "distinguishingCriteria": "E010-SAME-HEIGHT의 주어진 밑변비→넓이 계산과 방향이 반대이다. 현행 평행선길이비 TPL만으로 실제 해설의 넓이식 역산을 주골격으로 표현하지 못한다.",
+      "existingCandidatesReviewed": [
+        "E010-SAME-HEIGHT",
+        "PT_PARALLEL_SEGMENT_RATIO",
+        "PT_COORD_TRIANGLE_AREA",
+        "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd"
+      ]
+    },
+    {
+      "id": "E025-CENTROID-LENGTH",
+      "type": "NEW_TPL",
+      "name": "무게중심의 중선2:1로 선분 길이 계산",
+      "definition": "무게중심이 중선을 꼭짓점 쪽에서2:1로 나누는 성질을 단독 또는 같은 중선의 반복 무게중심에 적용하여 선분 길이를 계산한다.",
+      "parent": "PT_COORD_CENTROID / M2-RPM-097",
+      "distinguishingCriteria": "E007-CENTROID/C-E012 기본 중선길이 공백 재사용. REVERSE는 꼭짓점·좌표 목표이고 APPLICATION은 다른 도형 성질이나 좌표 조건을 결합한다.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966"
+      ]
+    },
+    {
+      "id": "E025-PYTH-AREA-RPM",
+      "type": "RPM_LEAF_GAP",
+      "name": "반원 넓이 전이와 공통영역 제거",
+      "definition": "직각삼각형 세 변의 제곱합을 반원 넓이합으로 옮기고 겹친 영역을 제거해 남은 영역의 넓이를 계산한다.",
+      "parent": "피타고라스 정리 / PT_M2_PYTHAGOREAN_RELATION",
+      "distinguishingCriteria": "ACTIVE AREA_TRANSFER는 정확하지만 RPM101/105 길이계산과 분리한 넓이 전이 leaf가 없다.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-101",
+        "M2-RPM-105",
+        "TPL_M2_PYTHAGOREAN_AREA_TRANSFER"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_459f16c6ffa56ed87ed2bbc8abfe0197705f0c59f3e104291fff5c6684b78464"
+      ]
+    },
+    {
+      "id": "E025-TWO-SPEED-TRIP",
+      "type": "NEW_TPL",
+      "name": "휴식이 있는 두 속력 구간의 연립 모델",
+      "definition": "한 이동자가 서로 다른 일정 속력으로 진행한 두 구간의 거리합과 휴식을 뺀 이동시간합을 연립하여 각 구간의 거리를 구한다.",
+      "parent": "PT_H1_SYSTEM_EQUATION / RPM_LEAF_GAP",
+      "distinguishingCriteria": "RPM040 마주가기·따라가기와041 강물·기차 상황이 아니며 한 미지수 M1모델이나 두물체 그래프교점 모델과 다르다. DIRECT 가감풀이 이전의 거리·시간 두 모델 구성이 결정 단계.",
+      "existingCandidatesReviewed": [
+        "M2-RPM-040",
+        "M2-RPM-041",
+        "PT_M1_LINEAR_EQUATION_MODELING",
+        "TPL_H1_SYSTEM_DIRECT",
+        "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d938f89a81e36f770b5751ed9e01716aabe2f4ed5737e73c7207cadc11f0f9bf"
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "type": "SOURCE_EXAM_SCOPE",
+      "ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        22,
+        23
+      ],
+      "note": "2학기 원본에 포함된 연립일차방정식·함수의 실제 문항을 누락 없이 원래 순서로 검토했다."
+    },
+    {
+      "type": "VISUAL_EVIDENCE",
+      "ordinals": [
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        24,
+        25
+      ],
+      "note": "13개 그림을 실제 확인했고 Q10 자료문·Q14 길이표시·Q22 전체높이 그림은 개별 확대 확인."
+    },
+    {
+      "type": "SOURCE_DIAGRAM_REVIEW_NOTE",
+      "ordinals": [
+        14
+      ],
+      "note": "source 발문은 AB=12이며 기존 해설도 전체AB=12로 계산한다. 그림의12표시는 별도 전체치수선 없이 AD쪽 가까이에 있어 부분AD값으로 오해할 여지가 있다. 학생 내용/그림/답을 변경하지 않고 명시적 발문 해석을 기준으로 조건부 메타 의미를 보존한다."
+    },
+    {
+      "type": "CROSS_EXAM_CONSISTENCY",
+      "ordinals": [
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        21,
+        25
+      ],
+      "note": "실제 문항을 읽은 뒤 E022 및 앞선 공통 구조와 정의·난도 경계 일관성을 확인했다. 원문 수치/근거는 각 문항에서 새로 인용."
+    },
+    {
+      "type": "INDEPENDENT_RECHECK",
+      "reviewer": "ROOT/B",
+      "ordinals": [
+        4,
+        7,
+        9,
+        11,
+        12,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24,
+        25
+      ],
+      "note": "ROOT 난도 인접 수용 및 Q9/19 STRONG 보존. B Q11/16/23 의미·공백·난도 수용 후 Q23 휴식 제외4칸 보완. E032Q24와 두구간 거리·시간 공통모델에 휴식 제외를 선택 변형으로 통합할 수 있음.",
+      "sampleRef": "workers/B/cross/E025.sample.json"
+    }
+  ]
+}

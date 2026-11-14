@@ -1,0 +1,1458 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "77995d45dd80c921a350727c50833f60c7f260b8",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/meta_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_affaf76b02cc29b20d89881b5c7dc4421acd4e725e77075461334d524acb7447",
+      "fingerprints": {
+        "QBODY": "d9731bd87bbd3b1150b304bac1c5e81d2b3a8db08b98ace8d5f740889daad4e1",
+        "QFULL": "c6cd25fcd924c8bcf96c4c6425da954c17a78b79e8b3da8ca5d5e01e4e60ade3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "미지수가 2개인 일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "나타낼 수 없는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "\\dfrac{xy}{2}=14",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 넓이를 두 미지수의 관계식으로 나타낸다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "일차방정식이 아니다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "상황을 식으로 바꾸어 이변수 일차식 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ea1b692e469fefaf164dcc74503ec57a020507fd9e17b483329ec9325cc8f07f",
+      "fingerprints": {
+        "QBODY": "d93adbbd0b491c3649ae2eda902a53165518e9854530f30b0045dc96db6bb9fe",
+        "QFULL": "e0be0d12dab01c83458bbc72b6426b44262f33440259e2e8c915eae0ed93ab2a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $2x+3y=12$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순서쌍 $(x,y)$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=1$이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "가능한 자연수 $y$는 $1,2,3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 변수의 가능한 작은 범위를 직접 나열하고 자연수 여부를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $x$와 $y$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "이변수 일차식의 자연수해 열거",
+        "condition": "x,y는 양의 정수인 자연수여야 하므로 분수해를 버리고 가능한 y범위를 정한다."
+      },
+      "steps": [
+        "한 변수의 양수 범위를 정하고 다른 변수도 자연수가 되는 후보만 남긴다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_789343791ad7501d2972b58d21d68e69f2c4550185519ce5a30d705dd47d18a1",
+      "fingerprints": {
+        "QBODY": "16639ddf5995b3d9c7e31f1f06081c5e05447dfc59e8ad68b988bb42964a356b",
+        "QFULL": "1afa5ed208c045f5e5494f1a2f57b7f63572876bb3eff6d47bbf65e6563078ca"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "두 순서쌍"
+          },
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $2x+ay=6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+p$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "두 순서쌍을 방정식에 각각 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 해의 대입으로 계수와 좌표 순차 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "완전한 순서쌍에서 a를 구한 뒤 p가 있는 두 번째 순서쌍을 완성된 방정식에 넣는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_d00b288e3dc14d3b215c47e8d0fe2435cfcff06800f90787ad529ca59877c164",
+      "fingerprints": {
+        "QBODY": "94435553e0895f51c55807c67b162a080b1676e0632d4f438b1225aa3cbc6540",
+        "QFULL": "445afc3b80f83ef57d0acbde20f529f7f8ce60a87321120dc1b01d31b99fd4ef"
+      },
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "필요한 식을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "src": "stem",
+            "quote": "가감법을 이용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수를 서로 반대이거나 같게",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "계수 배수와 부호로 소거 연산 선택",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "한 변수의 계수가 반대가 되는 합과 같아지는 차의 두 조합을 선택한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8987e47959a280a40e28a5c237d08e61dfc8a246dd4669370ecb94eac683681b",
+      "fingerprints": {
+        "QBODY": "b8c13d299b1aa2c76992751e24866b6c699fe2c0160cfb95dc54add6f1f6049c",
+        "QFULL": "e033d730433edb5b7b84f71dc29e29c49bdfd4b0c465d0f9ae517dcef263d75a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "을 풀면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "$15x-5y=20$이고, 둘째 식 $2x+5y=-3$과 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "y의 반대 계수를 더하여 소거한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=1$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "괄호 정리 후 가감법으로 공통해",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "첫 식의 괄호와 상수를 정리하고 y계수를 반대로 만들어 더한 뒤 되대입한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_aec888b00304d93d5f44cdd7643447dd1c6d28163972a189e7c5a6c0e96bc721",
+      "fingerprints": {
+        "QBODY": "7d034cd0a43bab655975c518326e19da015e594afff6b31342e80d8368963003",
+        "QFULL": "6ce4eb58b68c33cd4efce437dab7cc8e277791a55b503279a5e468039013f177"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $kx+2y-2=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "수 $k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "그 값을 마지막 식에 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "연립방정식의 해를 구한 뒤",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "연립방정식의 해를 별도식 계수에 전달",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "주어진 두 식에서 x,y를 구하고 세 번째 조건에 넣어 k를 정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_2339f8b87e25c56b5187e6e2f4266fde5d38f1ba1066ea2939aadbce1794cbda",
+      "fingerprints": {
+        "QBODY": "18d683c8a0117824c7bcf7bcaf28432d14cb9fab136d014ce54b938fa4022a2f",
+        "QFULL": "26dde76806b950cac7a44a79dc9c093b56f43a5fd9e9503be9116924296f2318"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입법",
+            "src": "solution",
+            "quote": "㉠의 $y=x-2$를 ㉡의 $y$ 자리에 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$x+3x-6=-5$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 미지수 항을 모아 소거 후 계수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "대입 소거 후 남은 식의 계수",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "y=x-2를 다른 식에 넣어 x항을 모으고 결과4x=1의 계수를 읽는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_fa0418f0a78ecbbf6bc400e5395da7b67208fffd1ad2eda0c577d30f2f0115d5",
+      "fingerprints": {
+        "QBODY": "08ab5fc704fd7f40f582f5a7711dedfd3e2dd321ea79cc2e2358935747c65654",
+        "QFULL": "1f9c0872e960c6475828e150bf1282a174213a8cfa3122766ffda7321f7bff29"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$\\alpha\\beta$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 식을 빼면 $13x=26$",
+            "evidenceType": "IMPLIED",
+            "justification": "같아진 y계수를 빼 소거한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이어서 $y=2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 x를 정리한 식에 대입하여 y를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "분모·소수 제거 후 가감법",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 식을 정수계수로 바꾸고 같은 y계수를 빼 공통해를 구한 뒤 두 해의 곱을 계산한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d311a82bb431da70dfc14f3fe4fa42c36d653774c0d36968595ba9d679ea409a",
+      "fingerprints": {
+        "QBODY": "5c4d16595b59965fc416f32703a9378e8f6c2707484a7f2576e2392a45981653",
+        "QFULL": "a470cf45c059b4caa0c3d6b0b5857ac34c7e3ee846534c7f96447190d2e9e1e6"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수를 비교한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식이 동일한 배수일 때 모든 계수비와 상수항비가 같음을 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 무수히 많을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "무수히 많은 해의 전 계수비 일치",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "상수항비로 한 식의 배수를 정하고 두 미지수 계수가 동시에 일치하도록 a,b를 정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4659bdc8f46c59bba7cf631bc5eb5ad05f13e20d8bdc0c929793776c657bb50e",
+      "fingerprints": {
+        "QBODY": "4a40d606b3d7af284b327e909986ab51a17cb2c82bcd2676dee71055dc669aed",
+        "QFULL": "75d3becac5bc775e02d95e99528d7ab67b6db649e01e3141c3b27e76ab491732"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "오른쪽 자료와 같은 문제"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$21k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "소 한 마리의 값을 $x$냥, 양 한 마리의 값을 $y$냥",
+            "evidenceType": "IMPLIED",
+            "justification": "두 단가를 미지수로 두고 두 수량·총액 조건을 식으로 나타낸다."
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "두 식을 빼면 $21x=34$",
+            "evidenceType": "IMPLIED",
+            "justification": "양의 단가 계수를 같게 만든 뒤 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 종류 수량과 총액에서 단가 복원",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "자료의 두 구매 조건을 두 단가의 연립식으로 만들고 필요한 재구매액에 대입한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_eb83b4f300c99f020270cb71a9d05363ba2a4262aee261f363b4746bee5ce78f",
+      "fingerprints": {
+        "QBODY": "a925d1a71c7a90145b69ee1d8fce624b337d152a99a870200d277e1ccdeaea73",
+        "QFULL": "50a59d5646cd204a9a70156191cfe57ace7ab49047c355205328d92628e56933"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "함수값 조건을 각각 식에 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$\\dfrac13b-2=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 출력에서 미지 입력을 구하는 일차식을 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "주어진 함수의 입력과 함숫값 양방향 계산",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "알려진 입력에서 a를 계산하고 주어진 출력1을 식에 같게 놓아 입력b를 복원한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_bf02eb64a71acfb1aa328a07eb434234b4f89895fd58f47ce9128bfff9021b51",
+      "fingerprints": {
+        "QBODY": "048523e0666f544fef62f80e98461b9e55276273e5ca0c2bd549cda3fcdc8128",
+        "QFULL": "ae129bef501eb354a618bec28c17b5936ea990b461c14b7bbc117aee1ba600e0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BE}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "두 각이 각각 같은 삼각형의 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$BC:DC=2:1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\angle A=\\angle DEC$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "공통각과 뒤바뀐 대응의 AA 닮음",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "전체AC를 구하고 A↔E,C↔C 대응의2:1비로 BC를 얻어 EC를 뺀다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b087ce63cc17ddc63eeb25375ae60d8e34d75acb5ec2d33fd022ed402e474221",
+      "fingerprints": {
+        "QBODY": "ae3e18073fad00897872f45bb5386edf2f7de24fd501f0e521f0e1a371d96964",
+        "QFULL": "747bec129bf3b6b2220e94ee4aeb18a212c126fc592c3b7bf4c76bebdcbb45ed"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AH}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로 빗변을 구하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형의 넓이를 두 방법으로 나타낸다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$\\overline{AH}\\perp\\overline{BC}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "동일 삼각형 넓이의 두 표현에서 높이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
+      "fingerprints": {
+        "QBODY": "1e0bcd9bb0ac43fa795e91a8d1451ef2e2c6bda8ac6b3f4966a2759bbd3431c6",
+        "QFULL": "fad0f07de9c2c732ee678769030d927e3e9e807adb2c5d2980886af07c526983"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "$\\triangle ADE\\sim\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AD}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮은 삼각형의 대응변의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\dfrac{AD}{AB}=\\dfrac{AE}{AC}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{DE}\\parallel\\overline{BC}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행선의 부분·전체 비",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "AE와EC를 더한AC를 구성하고 AD/AB=AE/AC에 대입한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f7ba4e4364caa36a664d7f5d1c2a990b628c5b64d0e35dbff14f3dab09d283f9",
+      "fingerprints": {
+        "QBODY": "0c67fb1f2e0c4d1771c4d5108ede6eb959e273b7e1074c04bc7b4a7b4d03cbcc",
+        "QFULL": "9067858bbf33cff78965b976bf379798a9fd0ab77407d311693b3a6b9f6efd90"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을 각각 $D,E,F$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "삼각형의 두 변의 중점을 이은 선분의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "중점을 이은 세 선분이 원삼각형의 대응변 절반임을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "세 중점연결선의 길이 합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "원삼각형 세 변의 절반씩을 더하여 중점삼각형 둘레를 구한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+      "fingerprints": {
+        "QBODY": "ef623b4604950594c703019889164eb134a751a897e730fca9cd777d3a40c4fb",
+        "QFULL": "08e3a21b5645ab552585849b8067e0432dbcaf2bceecd3fd906d3885a08f7c8c"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\overline{BM}=\\overline{CM}$, $\\overline{AN}=\\overline{MN}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{CN}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이를 $S$라 하자.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$[ACN]:[ADN]=r:1$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 높이를 가진 두 삼각형의 밑변비를 넓이비로 표현한다."
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{CD}\\parallel\\overline{ME}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "공통 높이의 넓이비로 교점 분할비 역산",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_27bd8e28888abbddded366fbe2a8473aa63d9c247d3c05520386d58487455b43",
+      "fingerprints": {
+        "QBODY": "05f0e6c77fe37f3671ed631613b2357a6291c8c450fe4f170d5b590f4d5d86ef",
+        "QFULL": "063804c986c2b78cd010b2bd55565c6e008cd0a91050c44c201193cba87139af"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "$\\overline{AB}\\parallel\\overline{EF}\\parallel\\overline{DC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{EF}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "교차하는 두 선분과 평행선으로 생기는 닮음비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$BE:BD=3:(3+4)=3:7$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{AB}\\parallel\\overline{EF}\\parallel\\overline{DC}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "교차 닮음의 비를 내부 평행선에 전달",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "첫 닮음의BE:ED를BE:BD로 바꾸고 두 번째 닮음의EF:DC에 적용한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a",
+      "fingerprints": {
+        "QBODY": "3480d38ef52c1d1f54e04fab93d392edc23b306139be57d15464335fe1515816",
+        "QFULL": "159c4d8056a491e867aae4d64d8834f1869d0c801e4bddf77f3e6a1718ddfc73"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이고"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 $6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심은 중선을 $2:1$로 나누므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[G'BD]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac19h",
+            "evidenceType": "IMPLIED",
+            "justification": "중점 밑변과 두 번 줄어든 높이의 곱으로 넓이비를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 번의 무게중심 높이비와 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "높이를1/3씩 두 번 축소하고 중점 밑변1/2과 결합해 원래 넓이를 복원한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "fingerprints": {
+        "QBODY": "d98f29740c8a3b8c5518437d5b25193a3ab42091239861ad5483742d3556442a",
+        "QFULL": "5e6ab4a3850373df5059bbb6102e73c8a930f530e3dbf066d86224e776829ce3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AD}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "두 무게중심이 같은 중선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AG:GD=2:1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "연속 무게중심의 중선2:1 길이 복원",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "작은 중선의GG′:G′D=2:1로GD를 얻고 큰 중선의AG:GD=2:1로AD를 구한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_8a8a2b16bcf5d105074a404a1616ba8c649b898c066d773fa63067ab021e6ac2",
+      "fingerprints": {
+        "QBODY": "46b61aa3ddf7adb78aea9edf7973df93e59c1cda18a8f5d1d14c4f752727ec3c",
+        "QFULL": "8e96be274f395ae838f25e9accce7904c8c49c2b5d8a43d98665bd30297e4819"
+      },
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형의 세 변의 길이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직각삼각형인 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$5^2+12^2=25+144=169=13^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱합의 역으로 직각삼각형 여부를 판정한다."
+          },
+          {
+            "term": "삼각부등식",
+            "src": "solution",
+            "quote": "$7+14<25$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 짧은 변의 합보다 긴 변이 길어 삼각형 자체가 불가능하다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "가장 긴 변의 제곱으로 직각 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "후보 세 길이의 가장 긴 변 제곱을 다른 둘의 제곱합과 비교하고 삼각형 불성립 후보도 제외한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_459f16c6ffa56ed87ed2bbc8abfe0197705f0c59f3e104291fff5c6684b78464",
+      "fingerprints": {
+        "QBODY": "45301b29749aecabb584d8b8ce59da4dcce6215d61c12cfaf90fce8cfbdee68d",
+        "QFULL": "4859a4c474c7de4c98584203bfcccf23992d11280c25c6f13151cccb119ae2e2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          },
+          {
+            "term": "반원",
+            "src": "stem",
+            "quote": "지름으로 하는 반원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "색칠한 부분의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등적변형",
+            "src": "solution",
+            "quote": "색칠한 두 부분의 넓이의 합은 $\\triangle ABC$의 넓이와 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱 관계의 반원 넓이 등식에서 공통영역을 제거한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12\\times12\\times9=54",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle A=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "반원 넓이합에서 공통 영역을 제거",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_b00ba410be20253d2b46fe7cbc6708ba1c12dad3135db95486ed3fcfafb9d02b",
+      "fingerprints": {
+        "QBODY": "75007ac0f762681c026411ff1093d71b6c2fa1f4f7a37005d8302f0b049e30ea",
+        "QFULL": "64fabee430c117992d5f53f761a9bcd694d759ae25b610a16859741b936de03f"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형의 긴 변과 짧은 변"
+          },
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식을 세워서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식을 작성하시오."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "직사각형의 면적을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "전체 높이와 두 높이의 차를 긴 변 $x$, 짧은 변 $y$로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 그림의 수직 길이 합과 차로 두 관계식을 구성한다."
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "이 식에서 첫째 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "계수가 같아진 x항을 빼서 소거한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "직사각형의 면적은 $xy=7\\times3=21$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "회전 배치의 두 높이를 연립 모델로 표현",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "긴변과짧은변의 세로 반복을 읽어3x-2y와x+3y 두 관계를 만들고 공통해를 면적에 사용한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_d938f89a81e36f770b5751ed9e01716aabe2f4ed5737e73c7207cadc11f0f9bf",
+      "fingerprints": {
+        "QBODY": "8716192493f236caf99b2b45700c1613f347caa52a92df1532e0c8d56d87abec",
+        "QFULL": "21da7cf253cbf96b410336f7e1c3f83873fe333709fc99d789043bbf99407fd0"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "분속 200 m로 일정하게"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "10 km 단축 마라톤"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식을 작성하시오."
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "분속 200 m로 달린 거리를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "두 속력으로 달린 거리의 합과 실제로 달린 시간의 합을 식으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "거리 보존과 실제 이동시간의 합으로 두 관계식을 만든다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$x+2y=17000$이다. 여기서 $x+y=10000$을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 관계식을 가감하여 이동거리를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "급수대에서 5분간 휴식을 취하고"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "휴식을 뺀 두 속력 구간의 거리·시간 연립 모델",
+        "condition": "90분 중5분 휴식은 이동거리 식의 시간에서 제외하는 핵심 설정이다. 미지수의 허용 범위 제한과는 달라4칸에 기록하고 canonical Condition은 비적용."
+      },
+      "steps": [
+        "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_291009ffad3fbe060bc5b14ad63f65d0aef7554bf3da05e75d62907a3365222e",
+      "fingerprints": {
+        "QBODY": "7f83b49c98e9c118e05b75e2b867021a220b08249e6cd5f0f0f7f13d9350c768",
+        "QFULL": "85688b884f53f0657ca52150628a281b6eca297bfe173a2d9a0850a3a07685c3"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{EC}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "두 평행선에서 생기는 닮음비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AE:AC=AD:AB=4:7$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{DE}\\parallel\\overline{BC}$, $\\overline{DF}\\parallel\\overline{BE}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 내부 평행선의 비율 연결",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "작은 ADF/ABE에서 얻은AD:AB를 ADE/ABC에 전달하여 AC를 구하고 AE를 뺀다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_8cb17e84b83a3fe5882540582b3d52c6fd82d57489d10ff15e7a17af49605a96",
+      "fingerprints": {
+        "QBODY": "a49bdbb4ead5740e36823c9db818a2c2d431772005ee210ce2553a18fd88075a",
+        "QFULL": "21cf997f85691d774395d4416315d314d21fb1f472d4f84d13cfc5aa5bfedf8d"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\overline{AH}:\\overline{HG}:\\overline{GD}$"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle AFE:\\triangle FGE:\\triangle GBC$"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심과 중점연결정리를 함께",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리를 함께",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비가 $1:2$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "중점선과 무게중심 높이의 차로 길이·넓이비",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "중선의1/2와2/3위치를 비교해HG를 얻고FE의절반밑변과1/6높이차로 내부넓이를 정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/meta_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}
