@@ -2690,3 +2690,147 @@ test("fieldCandidates rpmPath is accepted when the path is a leaf of the locked 
   f.request.items[0].fieldCandidates = { rpmPath: [{ value: { majorUnit: "가", midUnit: "나", l3: "다", l4: "없는 L4" }, source: "agree" }] };
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rpmPath not in RPM master or received registry/);
 });
+
+function partialFixture(t) {
+  const f = fixture(t);
+  const hold = { questionUid: "uid2", sourceArchiveFile: f.request.sourceArchiveFile, sourceOrdinal: 2,
+    sourceFingerprint: "legacy-fingerprint", reviewStatus: "manual_review", metadataStatus: "approved_partial_with_explicit_holds",
+    fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" }, problemTypeKey: "", templateKey: null };
+  const sourcePath = `archive/exams/${f.request.sourceArchiveFile}`;
+  const writeBank = (first = f.q) => {
+    const text = `window.questions = ${JSON.stringify([first, { ...f.q, id: 2 }])};\n`;
+    f.put(sourcePath, text);
+    f.request.expectedSourceBlobSha1 = blob(text);
+    return text;
+  };
+  for (const p of [META, "archive/data/question_identity_map.json"]) {
+    const doc = f.read(p);
+    doc.records.push(hold);
+    f.put(p, doc);
+  }
+  f.request.scope = "PARTIAL_UIDS";
+  f.request.expectedQuestionCount = 2;
+  writeBank();
+  return { ...f, hold, sourcePath, writeBank, receiptPath: `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json` };
+}
+
+function itemRebindFixture(t) {
+  const f = partialFixture(t);
+  const sourceSha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
+  const bodySha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, image: q.image }));
+  const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  git("init", "-q");
+  // Put the actual old JS bytes into Git, then change only the targeted ordinal.
+  const priorSourceBlobSha1 = git("hash-object", "-w", f.sourcePath);
+  const current = { ...f.q, solution: "학생용 해설 교정" };
+  f.writeBank(current);
+  const item = f.request.items[0];
+  item.rebind = { priorSourceBlobSha1, priorContentFingerprint: bodySha(f.q) };
+  Object.assign(item.before, { sourceFingerprint: sourceSha(f.q), contentFingerprint: null });
+  Object.assign(item.after, { sourceFingerprint: sourceSha(current), contentFingerprint: bodySha(current) });
+  item.identityBefore = { sourceFingerprint: sourceSha(f.q) };
+  return { ...f, item, current, sourceSha, bodySha };
+}
+
+test("partial UID dry-run and write preserve the omitted HOLD and source bytes", t => {
+  const f = partialFixture(t);
+  const raw = p => fs.readFileSync(path.join(f.root, p), "utf8");
+  const before = raw(META), source = raw(f.sourcePath);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+  assert.equal(raw(META), before);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+  const holdBytes = JSON.stringify(f.hold, null, 2).replaceAll("\n", "\n    ");
+  assert.ok(before.includes(holdBytes) && raw(META).includes(holdBytes));
+  assert.equal(raw(f.sourcePath), source);
+  assert.deepEqual(f.read(f.receiptPath).appliedRecords.map(r => r.questionUid), ["uid1"]);
+});
+
+test("partial UID rejects foreign UID, wrong ordinal, duplicate UID/ordinal and empty items", t => {
+  const f = partialFixture(t), [item] = f.request.items;
+  for (const [items, error] of [
+    [[{ ...item, questionUid: "foreign" }], /UID\/source ordinal mismatch/],
+    [[{ ...item, sourceOrdinal: 2 }], /UID\/source ordinal mismatch/],
+    [[item, { ...item, sourceOrdinal: 2 }], /duplicate request UID/],
+    [[item, { ...item, questionUid: "uid2" }], /duplicate request ordinal/],
+    [[], /partial items must not be empty/],
+  ]) assert.throws(() => registerReviewedExamV2({ root: f.root, request: { ...f.request, items } }), error);
+});
+
+test("unmarked partial UID fails and a complete legacy request retains its receipt shape", t => {
+  const f = partialFixture(t);
+  delete f.request.scope;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /UID denominator mismatch/);
+  const full = fixture(t);
+  registerReviewedExamV2({ root: full.root, request: full.request, write: true });
+  const receipt = full.read(f.receiptPath);
+  assert.equal(receipt.totalQuestions, 1);
+  assert.equal(Object.hasOwn(receipt, "scope"), false);
+  assert.equal(Object.hasOwn(receipt, "partialUidCount"), false);
+});
+
+test("partial UID rebind verifies old Git bytes and updates both fingerprints", t => {
+  const f = itemRebindFixture(t);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.fingerprintRepairCount, 1);
+  for (const p of [META, "archive/data/question_identity_map.json"]) {
+    const [bound, held] = f.read(p).records;
+    assert.equal(bound.sourceFingerprint, f.sourceSha(f.current));
+    assert.deepEqual(held, f.hold);
+  }
+  assert.deepEqual(f.read(f.receiptPath).fingerprintRepairs[0].rebind, f.item.rebind);
+});
+
+test("partial UID rebind refuses a changed stem or figure even with a truthful prior hash", t => {
+  for (const change of [{ content: "다른 발문" }, { image: "other.png" }, { question: "옛 형식 발문 변경" }]) {
+    const f = itemRebindFixture(t);
+    Object.assign(f.current, change);
+    f.writeBank(f.current);
+    Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rebind content fingerprint mismatch/);
+  }
+});
+
+test("partial UID rebind refuses missing, invalid or unrelated blob evidence", t => {
+  const f = itemRebindFixture(t), proof = f.item.rebind, currentBlob = f.request.expectedSourceBlobSha1;
+  assert.equal(execFileSync("git", ["hash-object", "-w", f.sourcePath], { cwd: f.root, encoding: "utf8" }).trim(), currentBlob);
+  for (const [change, error] of [
+    [{ rebind: undefined }, /rebind evidence required/],
+    [{ rebind: { ...proof, priorSourceBlobSha1: undefined } }, /priorSourceBlobSha1 is required/],
+    [{ rebind: { ...proof, priorSourceBlobSha1: "a".repeat(40) } }, /prior source blob unavailable/],
+    [{ rebind: { ...proof, priorSourceBlobSha1: currentBlob } }, /prior source fingerprint mismatch/],
+    [{ rebind: { ...proof, priorContentFingerprint: "a".repeat(64) } }, /content fingerprint mismatch/],
+  ]) assert.throws(() => registerReviewedExamV2({ root: f.root, request: {
+    ...f.request, items: [{ ...f.item, ...change }],
+  } }), error);
+  f.request.expectedSourceBlobSha1 = "b".repeat(40);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source Git blob drift/);
+});
+
+test("partial UID replay reports its exact denominator and ignores changes to omitted rows", t => {
+  const f = itemRebindFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const meta = f.read(META);
+  meta.records[1].reviewStatus = "review_required";
+  f.put(META, meta);
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(replay.replay, true);
+  assert.deepEqual(replay.plannedPaths, []);
+  for (const item of [replay, f.read(f.receiptPath)])
+    assert.deepEqual([item.scope, item.totalQuestions, item.partialUidCount], ["PARTIAL_UIDS", 1, 1]);
+  assert.deepEqual(f.read(META), meta);
+  const receipt = f.read(f.receiptPath);
+  receipt.appliedRecords[0] = meta.records[1];
+  f.put(f.receiptPath, receipt);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /partial receipt UID scope mismatch/);
+});
+
+test("partial UID Consumer verification sees only applied records from the receipt", t => {
+  const f = partialFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), [row] = receipt.appliedRecords;
+  const catalog = { records: [{ ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: [] }] };
+  f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([{ ...row, sourceFile: row.sourceArchiveFile, course: row.standardCourse }])};`);
+  const lanes = verifyConsumerValues(f.root, receipt.appliedRecords, receipt.runtimeRecords, catalog);
+  assert.deepEqual(lanes, { canonical: 1, usableMetaLane: 0 });
+  assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
+});

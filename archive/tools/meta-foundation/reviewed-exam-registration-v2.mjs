@@ -1828,14 +1828,47 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     L3: requireText(s.rpmPath?.l3, "semantic RPM L3"), L4: requireText(s.rpmPath?.l4, "semantic RPM L4") });
 }
 
-// The caller first binds the complete source file to expectedSourceBlobSha1.
-// Hashes supplied by a request are assertions, never the fingerprint authority.
-export function validateReviewedSourceFingerprints({ question: q, metadata, identity, patch }) {
+function sourceFingerprints(q) {
+  const content = { content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null };
+  return { sourceFingerprint: digest(JSON.stringify({ content: content.content, choices: content.choices,
+    answer: q.answer ?? null, solution: q.solution ?? null, image: content.image })),
+    contentFingerprint: digest(JSON.stringify(content)) };
+}
+
+function loadPriorQuestionBank(root, sha, cache) {
+  if (!/^[a-f0-9]{40}$/.test(sha || "")) fail("rebind priorSourceBlobSha1 is required");
+  if (cache.has(sha)) return cache.get(sha);
+  let bank;
+  try {
+    const bytes = execFileSync("git", ["cat-file", "blob", sha], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+    vm.runInNewContext(bytes, ctx, { timeout: 5000 });
+    bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
+  } catch {
+    fail(`rebind prior source blob unavailable or invalid: ${sha}`);
+  }
+  if (!Array.isArray(bank)) fail(`rebind prior source blob has no question bank: ${sha}`);
+  cache.set(sha, bank);
+  return bank;
+}
+
+// expectedSourceBlobSha1 is validated before this check. Request hashes are assertions, not authority.
+export function validateReviewedSourceFingerprints({ question: q, metadata, identity, patch, priorQuestion, requireRebind = false }) {
   const uid = metadata.questionUid;
-  const sourceFingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
-    answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null }));
-  const contentFingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null }));
+  const { sourceFingerprint, contentFingerprint } = sourceFingerprints(q);
   const requested = Object.hasOwn(patch.after, "sourceFingerprint");
+  if (requireRebind && !patch.rebind) fail(`fingerprint rebind evidence required: ${uid}`);
+  if (patch.rebind !== undefined) {
+    if (!requested || !priorQuestion) fail(`rebind prior question and after fingerprints required: ${uid}`);
+    const prior = sourceFingerprints(priorQuestion);
+    if (patch.rebind?.priorContentFingerprint !== prior.contentFingerprint || prior.contentFingerprint !== contentFingerprint ||
+        !eq(priorQuestion.question ?? null, q.question ?? null) ||
+        !eq(priorQuestion.sourceQuestionNo ?? priorQuestion.id, q.sourceQuestionNo ?? q.id) ||
+        (metadata.contentFingerprint != null && metadata.contentFingerprint !== contentFingerprint))
+      fail(`rebind content fingerprint mismatch: ${uid}`);
+    if ([metadata.sourceFingerprint, identity.sourceFingerprint].some(value => value !== prior.sourceFingerprint && value !== sourceFingerprint))
+      fail(`rebind prior source fingerprint mismatch: ${uid}`);
+  }
   if (requested) {
     for (const [key, value] of Object.entries({ sourceFingerprint, contentFingerprint })) {
       if (!Object.hasOwn(patch.after, key) || !Object.hasOwn(patch.before, key)) fail(`fingerprint repair before/after required: ${uid}.${key}`);
@@ -1918,14 +1951,36 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   unique(metadata.records, r => `${r.sourceArchiveFile}#${r.sourceOrdinal}`, "metadata source ordinal");
   const ids = unique(identity.records, "questionUid", "identity UID");
   const rows = metadata.records.filter(r => r.sourceArchiveFile === source).sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
-  const patches = unique(req.items || [], "questionUid", "request UID");
-  if (rows.length !== bank.length || patches.size !== bank.length || identity.records.filter(r => r.sourceArchiveFile === source).length !== bank.length) fail("UID denominator mismatch");
+  const partial = req.scope === "PARTIAL_UIDS";
+  if (req.scope !== undefined && !partial) fail("unsupported registration scope");
+  const patches = unique(req.items, "questionUid", "request UID");
+  if (rows.length !== bank.length || (!partial && patches.size !== bank.length) ||
+      identity.records.filter(r => r.sourceArchiveFile === source).length !== bank.length) fail("UID denominator mismatch");
+  if (partial && !patches.size) fail("partial items must not be empty");
+  const targetUids = new Set(partial ? patches.keys() : rows.map(r => r.questionUid));
+  if (partial) {
+    unique(req.items, "sourceOrdinal", "request ordinal");
+    for (const item of req.items) {
+      const row = rows[item.sourceOrdinal - 1];
+      if (!Number.isInteger(item.sourceOrdinal) || row?.questionUid !== item.questionUid || row.sourceOrdinal !== item.sourceOrdinal)
+        fail(`UID/source ordinal mismatch: ${item.questionUid}`);
+    }
+  }
+  if (req.approval.sourceRebind && req.items.some(item => item.rebind !== undefined))
+    fail("item rebind cannot be combined with approval.sourceRebind");
+  const scopeFields = partial ? { scope: req.scope, partialUidCount: patches.size } : {};
   const requestSha256 = digest(stable(req));
   const receiptPath = `${RECEIPTS}/${req.requestId}.json`;
   const receiptFull = safePath(root, receiptPath);
   const previous = fs.existsSync(receiptFull) ? read(receiptPath) : null;
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
   if (previous) {
+    if (partial && (previous.scope !== req.scope || previous.partialUidCount !== patches.size ||
+        previous.totalQuestions !== patches.size || previous.appliedRecords.length !== patches.size ||
+        unique(previous.appliedRecords, "questionUid", "receipt UID").size !== patches.size ||
+        previous.appliedRecords.some(record => !targetUids.has(record.questionUid)) ||
+        [...(previous.appliedIdentityRecords || []), ...previous.runtimeRecords].some(record => !targetUids.has(record.questionUid))))
+      fail("partial receipt UID scope mismatch");
     for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
@@ -1940,12 +1995,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
     }
     const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read) : null;
-    return { status: "PASS", requestId: req.requestId, totalQuestions: rows.length, replay: true, plannedPaths: [],
+    return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, replay: true, plannedPaths: [],
       consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
       ...(consumerLanes ? { consumerLanes } : {}) };
   }
   if (verifyProjection) fail("registration receipt required before --verify-projection");
-  const targetUids = new Set(rows.map(r => r.questionUid));
   const plan = registryPlan(root, req.registryChanges || [], evidenceRefs);
   const tables = lookup(plan);
   tables.received = loadReceivedValues(root);
@@ -1996,13 +2050,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [];
-  const extensionUsage = new Map();
+  const extensionUsage = new Map(), priorBanks = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
   // touching any metadata value. The prior receipt (SHA-bound) must equal the current metadata row for row.
   const rebindPrior = req.approval.sourceRebind ? loadSourceRebindPrior({ req, source, bytes, rows, read, evidenceRefs }) : null;
   for (let i = 0; i < bank.length; i++) {
-    const current = rows[i], patch = patches.get(current.questionUid), q = JSON.parse(JSON.stringify(bank[i]));
+    const current = rows[i], patch = patches.get(current.questionUid);
+    if (partial && !patch) continue;
+    const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
     if (!patch || patch.sourceOrdinal !== i + 1 || current.sourceOrdinal !== i + 1 || id?.sourceArchiveFile !== source || id.sourceOrdinal !== i + 1) fail(`UID/source ordinal mismatch #${i + 1}`);
     if (q.questionUid && q.questionUid !== current.questionUid) fail(`source UID mismatch #${i + 1}`);
@@ -2086,13 +2142,16 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
           !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, beforeTables, current, question: q, patch, final, ordinal: i + 1, field: f }))
         fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     }
-    const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
+    const priorQuestion = patch.rebind === undefined ? null : loadPriorQuestionBank(root, patch.rebind?.priorSourceBlobSha1, priorBanks)[i];
+    const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch, priorQuestion,
+      requireRebind: partial && Object.hasOwn(patch.after, "sourceFingerprint") });
     const fingerprint = checked.sourceFingerprint;
     if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
       questionUid: current.questionUid, sourceOrdinal: i + 1,
       metadataBefore: { sourceFingerprint: current.sourceFingerprint ?? null, contentFingerprint: current.contentFingerprint ?? null },
       identityBefore: { sourceFingerprint: id.sourceFingerprint },
-      after: { sourceFingerprint: checked.sourceFingerprint, contentFingerprint: checked.contentFingerprint }
+      after: { sourceFingerprint: checked.sourceFingerprint, contentFingerprint: checked.contentFingerprint },
+      ...(patch.rebind ? { rebind: patch.rebind } : {})
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
@@ -2369,7 +2428,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
     ...(extensionUsage.size ? { generatedExtensionKeys: [...extensionUsage.values()].sort((x, y) => x.key.localeCompare(y.key, "en")) } : {}),
-    appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };
+    appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests, ...scopeFields };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) fail("registration must not write exam source bytes");
@@ -2389,7 +2448,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       throw error;
     }
   }
-  return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length,
+  return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
     consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
