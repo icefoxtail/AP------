@@ -1,0 +1,1835 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m1/1mid/16_연향중_1학기_중간_중1_수학.js",
+  "sourceGitBlobSha": "7e6a0fb42fa48072c0d62627636174abe6b0e22f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "META_A",
+    "role": "AUTHOR",
+    "at": "2026-11-14T08:21:26.767568+00:00"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b1b9b4f24a62724d1a5206d65bde5562ac27e821df7b45d297eea353d59478ec",
+      "sourceOrdinal": 1,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "efabc25d964d3a00a6709e70afef0980378f7a3c6a96b6eb545eecafefa52394"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f928d98237b8980f124fcc5b4962e1b661e1a2f8f9b3d37e36a83cc6aa6cb6d4"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "choices",
+            "quote": "소수"
+          },
+          {
+            "term": "합성수",
+            "src": "choices",
+            "quote": "합성수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "모든 소수가 홀수라는 전칭 진술과 소수 정의를 구별한다.",
+      "reasons": {
+        "classification": "소수 성질의 예외를 포함한 독립 진술 감별로 현재 prime/composite claim audit군과 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "25fd5e1ead68e2610e333c397aab109d09a57ae4e0034d8195e795a50ff2bb8d",
+      "proposedMethodSlots": [
+        {
+          "term": "소수",
+          "src": "choices",
+          "quote": "소수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "홀짝",
+          "src": "choices",
+          "quote": "모든 소수는 홀수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "25fd5e1ead68e2610e333c397aab109d09a57ae4e0034d8195e795a50ff2bb8d",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e",
+      "sourceOrdinal": 2,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "81ca1308014f668e3406a4347d1448a070d1bce0c3c5b95629ff6d3e3e8cec1a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e0c44f49bb3a3def714c8123f908ba8df6545e314b33144510ee43211408e226"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "$2 \\times 3^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "모든 수에 공통인 소인수의 최소지수와 어느 수에든 존재하는 소인수의 최대지수를 구별한다.",
+      "reasons": {
+        "classification": "최대공약수와 최소공배수 두 결과를 병렬로 요구한다. 미지 지수 복원 PT를 직접 계산형에 강제 재사용할 수 없다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_WITH_EVIDENCE_DEBT",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:27:09.245Z",
+        "result": "ACCEPTED_PROPOSAL_WITH_DUAL_TARGET_DEBT",
+        "notes": "세 수가 이미 소인수분해 형태로 주어지고 최대공약수·최소공배수 두 값을 동등하게 요구한다. goal 두 항목이 정확하다. 미지 지수 복원 TPL과 직접계산 구조를 구별하고 한쪽 목표만 남겨 단일 exact leaf로 축소하지 않은 판단을 확인했다."
+      },
+      "sourceQuestionSha256": "41fb90bafd8d667c0ef6dc8f66e4edd5e3eb4216da4aff7c0f845ef5cf623097",
+      "proposedMethodSlots": [
+        {
+          "term": "지수",
+          "src": "stem",
+          "quote": "$2^2 \\times 3$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "소인수",
+          "src": "stem",
+          "quote": "세 수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "41fb90bafd8d667c0ef6dc8f66e4edd5e3eb4216da4aff7c0f845ef5cf623097",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_78d77b00afb9c2e2fcef43307e6ceef9deb1d69a03e0ab2ea86bb66e1726cd8d",
+      "sourceOrdinal": 3,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20fcbcbe2410b704c1e45e8ca76bdb1ebb63043651fe918f7fc0c7be089a667f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "044cea43f1f8fe68840b91471dd09e1e0940e5d1251cd3fe134418214b36e855"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$4$가 남고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 수"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 나눗셈에서 남는 수를 제거하고 가능한 가장 큰 제수를 최대공약수로 정한다.",
+      "reasons": {
+        "classification": "나머지 제거라는 한 번의 모델 변환 후 최대공약수로 결정하는 전형 응용이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "c2e34bd21973a77a869103936bf58a28456e8f21dc5eb58d95f5eef071b79dd3",
+      "proposedMethodSlots": [
+        {
+          "term": "공약수",
+          "src": "stem",
+          "quote": "어떤 수로",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "최대공약수",
+          "src": "stem",
+          "quote": "가장 큰 수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "c2e34bd21973a77a869103936bf58a28456e8f21dc5eb58d95f5eef071b79dd3",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_8df73d6d0f1d4da09830a85e28ec5a7eb133aa2fea45c2f079508c0b8bbc2bdc",
+      "sourceOrdinal": 4,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "424c585698f431e28f91a4e10fd9fe1b80f9c84213a61dd4160790483da16d35"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a036d30d6f7608df80290e8301a77d3ed832d205115e495f11692a0d736dc068"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "한 바퀴 도는데"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "몇 바퀴"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "요청 대상이 첫 추월 위치가 아니라 처음 출발한 곳임을 유지하고 공동 시각을 동생의 한 바퀴 시간으로 나눈다.",
+      "reasons": {
+        "classification": "주기 동시귀환과 회전 수 환산의 전형 최소공배수 응용이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "a0b38b1c196fc4db218b5e374cd59bd11ca8947b64ccfd030aaf45fc4b7cc8f3",
+      "proposedMethodSlots": [
+        {
+          "term": "최소공배수",
+          "src": "stem",
+          "quote": "처음 출발한 곳에서",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "주기",
+          "src": "stem",
+          "quote": "동시에 출발",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "a0b38b1c196fc4db218b5e374cd59bd11ca8947b64ccfd030aaf45fc4b7cc8f3",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_00122e9d234335307c6e0d71eb06985e839ee6e97861ae000a2582fecb7ff7dc",
+      "sourceOrdinal": 5,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7c5b16351d9d401faf9ef891af3bc2ae1f61970314f1535f7f0339eb7e588ad8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e111b071bff1f4eaee90e9f537325604147e3f9a7c311134a4f85a56eaf975dd"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "$-2.3, \\quad 6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "0과 음의 정수를 정수에 포함하고 자연수를 따로 구별한다.",
+      "reasons": {
+        "classification": "수 체계의 포함 관계와 부호를 직접 적용한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "3aa661191e34aa0a3e9bb142ae4dc7bbdf6c1a3a65610975670cec0e46c50984",
+      "proposedMethodSlots": [
+        {
+          "term": "정수",
+          "src": "choices",
+          "quote": "정수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "자연수",
+          "src": "choices",
+          "quote": "자연수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "3aa661191e34aa0a3e9bb142ae4dc7bbdf6c1a3a65610975670cec0e46c50984",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_03fed56f33d9618208f3481a657e522ae2371bb7920dd0586cc551c42184515c",
+      "sourceOrdinal": 6,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "add19c5c9e6213a6dc254445a6905d34f856dd4bfd793e05bea7430a6cdbbb5f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "65796d6474442e9db08b97fd82821d7ef730ba9dfb3ba9ff0443b2c8d66b15db"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "$-\\dfrac{2}{3} \\quad 2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "네 번째"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "양수·0을 먼저 분리하고 음수는 절댓값이 작을수록 앞에 온다는 점을 적용한다.",
+      "reasons": {
+        "classification": "단순 유리수 목록을 정렬하므로 값 계산이 동반된 거듭제곱 순위 TPL과 다르다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "a153b4e2d65d1855da566cc0418228ef5cfeb93b2eb92ea24a4647edcf79c793",
+      "proposedMethodSlots": [
+        {
+          "term": "대소비교",
+          "src": "stem",
+          "quote": "큰 수부터",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "순서",
+          "src": "stem",
+          "quote": "차례로 배열",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "a153b4e2d65d1855da566cc0418228ef5cfeb93b2eb92ea24a4647edcf79c793",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_774206932c337f83cf0c2b1d56fc96ccb16f9b7b6b6d93adfc676c20c8f96284",
+      "sourceOrdinal": 7,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c7c5bf1e72b49a79f10cd2ba24a7cfa4fb3ef3b2eb370fde162e4d832d14b13b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9732c69cf8abfc6d5fb7d2b53f3b98806793a6f6c2262f9808c3dbe7a1b5fa5c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$-2$보다 크고 $6$ 이하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등호를 사용"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "-2 초과와6 이하를 하나의 연속 부등식으로 나타낸다.",
+      "reasons": {
+        "classification": "수직선 구간과 대소 관계의 정의를 표현하는 직접 번역이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "a17e87d027fc916e35c13f87379c7bb12dfaae22600e8bac79cf52d210c3d44f",
+      "proposedMethodSlots": [
+        {
+          "term": "대소비교",
+          "src": "stem",
+          "quote": "크고",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "구간",
+          "src": "stem",
+          "quote": "이하",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "a17e87d027fc916e35c13f87379c7bb12dfaae22600e8bac79cf52d210c3d44f",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_3b5d89166faa8a73c1c1e4167e1a9e1daec8517dd704dead0445093ea682b8bb",
+      "sourceOrdinal": 8,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3c14b8fb73a45184f9ccb923f40ddc008e62be6badc7051532e698ffbe9e1513"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "648d4feaa3fdb02862212ce3d6e03bcbaab8d9c3846005671b80e51079c8c341"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "세 정수"
+          },
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "대소 관계"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "세 정수"
+          },
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "a의 두 부호 후보 중 범위에 맞는 것을 남기고 c,b의 -3까지 거리를 비교한다.",
+      "reasons": {
+        "classification": "절댓값·상한/하한·기준점 거리 조건을 모두 결합해야 한다. SOURCE_ONLY CASE_BRANCH 전략 후보로 기록한다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "df7cc94216713c1fc0dd85824e8b39977c78649b41833f567f21d885ed3b0f3b",
+      "proposedMethodSlots": [
+        {
+          "term": "절댓값",
+          "src": "stem",
+          "quote": "절댓값은 같다",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "거리",
+          "src": "stem",
+          "quote": "$-3$에 더 가깝다",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "df7cc94216713c1fc0dd85824e8b39977c78649b41833f567f21d885ed3b0f3b",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0",
+      "sourceOrdinal": 9,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f15ff7eea7df882556f3ba62bc653c2fc0bb09bd64d9129e43ab3bc5783db07c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6fc8676ab45ef225e4dbf52bdb6af75fa44bd4e89541bb9c892959bd20dfc110"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$432$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "약수인 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 소수 지수가 원수의 지수를 넘지 않는 후보 둘을 선택한다.",
+      "reasons": {
+        "classification": "약수의 소인수 지수 판정은 현재 PT와 맞지만 2개 복수선택·먼저 원수분해가 추가된다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_WITH_EVIDENCE_DEBT",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:27:09.245Z",
+        "result": "ACCEPTED_PROPOSAL_WITH_DEBT",
+        "notes": "발문에 정답2개가 명시되어 있음을 직접 확인했다. 약수 판정이되 한 오답을 고르는 기존 CORE 골격과 구분한 것이 맞다. 원본 5선지와 복수선택 형식을 보존하며 공식기록 format은 옳은 것 고르기다. 해설 없는 method를 확정하지 않는다."
+      },
+      "sourceQuestionSha256": "30cf6d38b934ce76bdc0d64fd75a33bc440e62f1048c78936a2b010dd3a7891c",
+      "proposedMethodSlots": [
+        {
+          "term": "소인수분해",
+          "src": "stem",
+          "quote": "$432$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "지수",
+          "src": "choices",
+          "quote": "$2^3 \\times 3^3$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "30cf6d38b934ce76bdc0d64fd75a33bc440e62f1048c78936a2b010dd3a7891c",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_f83ba0d1887686d2f2fcc32d4ec67a9cca7417d411f58be6e8624ad26500f737",
+      "sourceOrdinal": 10,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3fc79f7f07854c3cee738dee8ebd32a384297207fa2ec3653f474180484bafe8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ba6ac597518ed18fa68b6ef699e460e98b61b15f59615cb1c52f6d141295538a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "자연수의 제곱"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모두 구하여 더하면"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a$"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$100$ 이하"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "최소 보완인수만 찾고 멈추지 않고 추가 제곱인수를 붙인 후보를100이하에서 제한한다.",
+      "reasons": {
+        "classification": "최소 승수 하나가 아니라 범위 내 전체 후보의 합이 목표라 추가 열거가 필요하다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "58fe1e8d514b751c861f59947ce44c68b375345fe92741f82606f3cf97c84367",
+      "proposedMethodSlots": [
+        {
+          "term": "소인수분해",
+          "src": "stem",
+          "quote": "$28$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "홀짝",
+          "src": "stem",
+          "quote": "자연수의 제곱",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "58fe1e8d514b751c861f59947ce44c68b375345fe92741f82606f3cf97c84367",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_7d0e148c1ace2bcda3c87790fd9da71028c425c53491e51b6bdd5cf7737fc2d2",
+      "sourceOrdinal": 11,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8bc2d176094b54e185fa44bca51b3965d29a02785a5dfddd5d2f52e7d1a5be66"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cec91f3281b2d90aabc3f1fff3038687810c043678fa5c6f09cfd1849a0dc94d"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes",
+          "value": "6f768b7b2b5d1008f115aaee848452872062206d85af8bbda5323031bd8ea024",
+          "sourceImage": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q11_img01.png"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "숫자"
+          },
+          {
+            "term": "규칙",
+            "src": "stem",
+            "quote": "어떤 규칙"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "□ 안"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "q11 실제 그림의 첫 두 예에서 작은 구역 수의 제곱과 나머지 두 수의 합의 관계를 검토한다.",
+      "reasons": {
+        "classification": "실제 에셋의57,43,10 및51,13,8을 확인했다. 거듭제곱 규칙 발견 후보이며 정답/풀이가 없어 의도한 규칙을 확정하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "ae9bcda8322f46195e570b5e45e0d593f6371c13da5ba43a6ca12ee83e03d2dc",
+      "proposedMethodSlots": [
+        {
+          "term": "거듭제곱",
+          "src": "stem",
+          "quote": "어떤 규칙",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "합",
+          "src": "stem",
+          "quote": "위치에 따라 숫자",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [
+        {
+          "path": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q11_img01.png",
+          "sha256": "6f768b7b2b5d1008f115aaee848452872062206d85af8bbda5323031bd8ea024",
+          "visualReview": "INSPECTED",
+          "author": "META_A"
+        }
+      ],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "ae9bcda8322f46195e570b5e45e0d593f6371c13da5ba43a6ca12ee83e03d2dc",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_d1e2a5e562749c0630c616f45e1a6afbe7abf2daa0d09d40a18ac15ccabc22ff",
+      "sourceOrdinal": 12,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10b38058558d5358db89b507d78e960efcb1604ef3953b877c443532ce505249"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5367cd18f737b9305cd92251cd0108f18ad3c21650cad0ce977806adb6329951"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "계산 결과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "음수 빼기와 분수 통분, 음수제곱 적용범위를 구별해 각 등식을 검산한다.",
+      "reasons": {
+        "classification": "5개의 직접 계산 진위를 판단하는 혼합 산술이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "b748db4a104f8c12ddfc60481a02dd8b7eed0799646625e78a27ba235d21e93c",
+      "proposedMethodSlots": [
+        {
+          "term": "통분",
+          "src": "choices",
+          "quote": "$\\left(-\\dfrac{1}{6}\\right)",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "부호",
+          "src": "choices",
+          "quote": "$-2^2",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "b748db4a104f8c12ddfc60481a02dd8b7eed0799646625e78a27ba235d21e93c",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_bdf57dcfb0a758b021b3549871462984dfc2cc0afc5934c3503ac8b7111ad170",
+      "sourceOrdinal": 13,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5bf970303b80a54a4adf2c89eb01324dce554e5b29e503fceabbf0bed8523bf9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd387efc063e324f2e4ffe4ecbeabdd00dc6074d7c7f70f42538676b7f937f95"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes",
+          "value": "4aa1963e97b77264df0de5a180f2750b30e44aead0a786fe6c4531f2aa5f7989",
+          "sourceImage": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q13_img01.png"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$1+2+3+\\cdots+100$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산 법칙"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산 결과"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "q13 실제 과정 그림의1+100,2+99 순서 재배열과 중괄호 묶음을 각각 판정한다.",
+      "reasons": {
+        "classification": "주어진 합산 과정을 읽고 같은 합을 갖는50쌍을 세는 과제이며 새로운 합공식 발견을 요구하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "ae6cf6444f3ec15e8e9473b6ee39918b982409c8f345108babf8d6cd1fe94341",
+      "proposedMethodSlots": [
+        {
+          "term": "교환법칙",
+          "src": "choices",
+          "quote": "교환법칙",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "결합법칙",
+          "src": "choices",
+          "quote": "결합법칙",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [
+        {
+          "path": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q13_img01.png",
+          "sha256": "4aa1963e97b77264df0de5a180f2750b30e44aead0a786fe6c4531f2aa5f7989",
+          "visualReview": "INSPECTED",
+          "author": "META_A"
+        }
+      ],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "ae6cf6444f3ec15e8e9473b6ee39918b982409c8f345108babf8d6cd1fe94341",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_7d7abdbe2cb5ad7afc838976b50eb0b902cb8f9bdcf0c945e10ec11bb67ecc1f",
+      "sourceOrdinal": 14,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7954b9a89764ca2a8ae0296b6c57506e6d5f005cf8405598897635a78af5736f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee490a8c42a57f21391b46e3ec460361719cccd3dd9ea559743810fc2050f5c8"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "일차식",
+            "src": "stem",
+            "quote": "$(-2) \\times 4x = -8x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "괄호 앞의 음수와 분수계수가 각 항에 동일하게 적용되는지 확인한다.",
+      "reasons": {
+        "classification": "일차식 구조 parent의 계산범위에 맞고 여러 변형의 참인 것을 고르는 형식이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "9594185ddfc6a53c7b361dbf6ec4a09d2ef2637cadbecd4df80c083841d6a26f",
+      "proposedMethodSlots": [
+        {
+          "term": "분배법칙",
+          "src": "stem",
+          "quote": "$2(x+4)-3(2x-5)",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "동류항",
+          "src": "stem",
+          "quote": "$(3x-4)+(2x+3)",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "9594185ddfc6a53c7b361dbf6ec4a09d2ef2637cadbecd4df80c083841d6a26f",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_617ae4a87c271d4659511918492240ff57cb41ae751ede3b1e820825e407f72f",
+      "sourceOrdinal": 15,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7121c906fe927fd8344f99ffdc8f1e70f2dd46f5f5ae53a02a6c0b52caeeca7c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1b7df6ce3eeac7ae594e9250e3f1833bb854606ae73a009d616a7af3c1902445"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역수",
+            "src": "stem",
+            "quote": "역수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$A \\div B$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "대분수→가분수 변환과 나누는 수의 역수곱을 구별한다.",
+      "reasons": {
+        "classification": "짧은 역수 변환·몫 계산이지만 두 번의 역수 취급이 필요하다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "9a937aea21a691e34861dc11a0de35a88d9778a219560590f6c89871d3ad33ce",
+      "proposedMethodSlots": [
+        {
+          "term": "역수",
+          "src": "stem",
+          "quote": "역수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "분수",
+          "src": "stem",
+          "quote": "$-1\\dfrac{1}{2}$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "9a937aea21a691e34861dc11a0de35a88d9778a219560590f6c89871d3ad33ce",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6",
+      "sourceOrdinal": 16,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccca49c145b5a22da21237a538d69e0de5d485a8df6d20eab9cff15505f7d204"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e3754ba9e1bdcabd0dddb5f6211a08565ac3701384afee7f11f9098668ae2701"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "문자를 사용하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "가격·배수·거리·겉넓이·거스름돈의 각각의 수량 관계를 확인한다.",
+      "reasons": {
+        "classification": "여러 생활 소재의 잘못된 번역 선택으로 translation parent/TPL의 실제 구성과 가깝다. 겉넓이 공식도 진위 판정에 쓰인다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_WITH_EVIDENCE_DEBT",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:27:09.245Z",
+        "result": "ACCEPTED_PROPOSAL_WITH_AUXILIARY_GAP",
+        "notes": "생활 수량·거리·정육면체 겉넓이·거스름돈을 문자식으로 표현한 선지를 모두 읽었다. 잘못된 번역을 고르는 goal 판정이 적절하다. 실제 겉넓이 개념이 필요한 점과 맞는 ACTIVE CC 부재를 구분했고 부적절한 일반도형 키로 채우지 않았다."
+      },
+      "sourceQuestionSha256": "01d4e04a71c557e6f268068db877e98ff6daf54e5597384c04aa59bb8702881d",
+      "proposedMethodSlots": [
+        {
+          "term": "문자식",
+          "src": "stem",
+          "quote": "문자를 사용하여",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "겉넓이",
+          "src": "choices",
+          "quote": "정육면체의 겉넓이",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "01d4e04a71c557e6f268068db877e98ff6daf54e5597384c04aa59bb8702881d",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_80da6c947c59171fc95693c7754ba549072376af63992f688519452f9eba2b9d",
+      "sourceOrdinal": 17,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d414fa8f197ae9ee60a9d1656847c5deabf6ac1e72ed37812174b00925079ee0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e39e1295ab818fc7bedced3b922d61f86605d09042519c17cfbeeb2c469cdb24"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "나타낸 식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "같은 문자곱을 제곱으로 나타내되 나누는 범위를 임의로 넓히지 않는다.",
+      "reasons": {
+        "classification": "OPERATION_NOTATION의 문자를 포함한 기호 생략 감별에 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "3892fd940d642f1f6fe7cbd4e64cc95b4cdec3efe2c23abff6d3f60a6781e264",
+      "proposedMethodSlots": [
+        {
+          "term": "거듭제곱",
+          "src": "choices",
+          "quote": "$3 \\times x \\times (-2) \\times x = -6x^2$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "분수",
+          "src": "choices",
+          "quote": "\\dfrac{x-y}{5}",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "3892fd940d642f1f6fe7cbd4e64cc95b4cdec3efe2c23abff6d3f60a6781e264",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_7d3d11d607496b47df3b89aaf59bc7957bb1b2adc28ceb1a1344ed208cf28b24",
+      "sourceOrdinal": 18,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "393f649411d4dff79bb7dfdf8f92e13a842c8b780dd3e05f30bf44a5a59c49c9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "de9fee109cb07baf2dc6ef61f0739bed99a64461ff016767f5883d7e4c7df7ba"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "choices",
+            "quote": "$-x^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "식의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "-x^2와(-x)^2를 구별하고 홀수 거듭제곱의 부호를 적용한다.",
+      "reasons": {
+        "classification": "다른 하나를 고르는 목표지만 필수 방법은 수 대입과 거듭제곱 부호 비교이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "de0d810c6ee3598fe015ffcb920749ed665f570329692a7cf02ce8c55d6e5f3f",
+      "proposedMethodSlots": [
+        {
+          "term": "대입",
+          "src": "stem",
+          "quote": "$x = -1$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "거듭제곱",
+          "src": "choices",
+          "quote": "$(-x)^2$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "de0d810c6ee3598fe015ffcb920749ed665f570329692a7cf02ce8c55d6e5f3f",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_cc67e1d2236c04d0d809f9390c0e9fba8747a4a6e3e214effcb7b6f679d30c85",
+      "sourceOrdinal": 19,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f44f90d825024be3fb61614bd3ab30059c263cdd0a9cefdc08ed4ee3dab8bd1b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee65403421771a87335e8b79c89102c6cfcdf0c65f091aa46753a8b34bec19cf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$(-35) \\times 97$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "빈 칸"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "사용된 법칙"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "97을100-□로 바꾸고 각 항에 같은 인수를 곱한 등식이 분배법칙임을 확인한다.",
+      "reasons": {
+        "classification": "계산 과정이 이미 제시되어 빈칸 수와 사용 법칙을 대조하는 과제다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "c9f78b833d2254519101bc788c8afe2bf9489d8d2750b974feb43cbe19643bb0",
+      "proposedMethodSlots": [
+        {
+          "term": "분배법칙",
+          "src": "stem",
+          "quote": "$a \\times (b+c) = a \\times b + a \\times c$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "부호",
+          "src": "stem",
+          "quote": "(-35) \\times (100 - \\square)",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "c9f78b833d2254519101bc788c8afe2bf9489d8d2750b974feb43cbe19643bb0",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_4d9b67cc2879447a511085a249d14859edc4a3fed8872a151fef17864e9efeda",
+      "sourceOrdinal": 20,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a5e7f95cfa3425ebf41d411ccbf853f4cb00d446045375e03a1d128557af7c4c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d9559079c49ddb6b72a79f6b930fec19051667166dfa99e508ec1ef1fa8d646"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "분수 계수를 포함한 이차항과 일차항의 계수, 전체 차수를 구별한다.",
+      "reasons": {
+        "classification": "이차항 포함 다항식의 구조 판정으로 일차식만 정의한 현재 parent보다 넓다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "879499c885c0e0de5f65e6e61f6e20a99e63eb903ede349a1d56e3403d81d61e",
+      "proposedMethodSlots": [
+        {
+          "term": "항",
+          "src": "stem",
+          "quote": "항은",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "계수",
+          "src": "stem",
+          "quote": "계수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "차수",
+          "src": "stem",
+          "quote": "일차식",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "879499c885c0e0de5f65e6e61f6e20a99e63eb903ede349a1d56e3403d81d61e",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_38a1340b08c69570194c2e59620b9f507298de8240f62318fd3240509b510280",
+      "sourceOrdinal": 21,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ebd241e0d1362bf4a883d871f521c7a3a2858fdd389f64327307377c791e6e4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9d125ea14d22e8e8ad6299aadb26c2dfdeaa0958bf5383c3d6e121895ed2f9f4"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차식",
+            "src": "stem",
+            "quote": "$ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "일차항과 상수항을 따로 합친 뒤 두 계수의 합을 구한다.",
+      "reasons": {
+        "classification": "LINEAR_EXPRESSION_STRUCTURE와 SIGNED_SUM_DIFFERENCE의 계산 골격에 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "0d3fcb67587bbe51093a81f58d4e4c6c2b240caa9f64ae0999c4a80d8821f6b8",
+      "proposedMethodSlots": [
+        {
+          "term": "분배법칙",
+          "src": "stem",
+          "quote": "3(2x-1)",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "동류항",
+          "src": "stem",
+          "quote": "$ax+b$",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "0d3fcb67587bbe51093a81f58d4e4c6c2b240caa9f64ae0999c4a80d8821f6b8",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_7dc6a6977c4cf62e19d225b3638903a2a1ad03834acc3e62e065e1a5562bd9b0",
+      "sourceOrdinal": 22,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$3$이 남는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 세 자리"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자리의 자연수"
+          },
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "세 자리"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "소문항 안내에 따라 LCM→세 자리 공배수→나머지3복원의 순서로 최대값을 정한다.",
+      "reasons": {
+        "classification": "한 제약 변환과 범위선택을 요구하나 단계가 발문에 제공되어 발상부담을 낮춘다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "eec439638fcf5471a64a75bea6b600419d4a9f13176f74a36cfb80eae6f25b1c",
+      "proposedMethodSlots": [
+        {
+          "term": "최소공배수",
+          "src": "stem",
+          "quote": "최소공배수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "공배수",
+          "src": "stem",
+          "quote": "공배수",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "eec439638fcf5471a64a75bea6b600419d4a9f13176f74a36cfb80eae6f25b1c",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_ad310d4a20e547863386e0ce515e5f696516cd578e1e9b74b4379caf60ba8d71",
+      "sourceOrdinal": 23,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes",
+          "value": "eb8145f9887c6ee0dbd9fa367776e716a24c0244eb07e9d8a10710d7b145001b",
+          "sourceImage": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q23_img01.png"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "두 식 $A$, $B$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "계산 순서"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산한 결과"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "q23 실제 이미지의 A/B는 중괄호·대괄호·분수 나눗셈을 포함하며 각각의 화살표 연산 순서를 먼저 판단한다.",
+      "reasons": {
+        "classification": "두 혼합식의 계산과 최종 몫을 묶은 소문항이며 거듭제곱은 없어서 괄호 혼합계산 leaf가 맞는다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "72967c4be61ec58cff88a0be3cc403b8e8aa05e7ceb28589147c28f8b3f59b78",
+      "proposedMethodSlots": [
+        {
+          "term": "순서",
+          "src": "stem",
+          "quote": "빠른 순서부터",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "사칙연산",
+          "src": "stem",
+          "quote": "계산한 결과",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [
+        {
+          "path": "assets/images/16_연향중_1학기_중간_중1_수학/16_연향중_1학기_중간_중1_수학_q23_img01.png",
+          "sha256": "eb8145f9887c6ee0dbd9fa367776e716a24c0244eb07e9d8a10710d7b145001b",
+          "visualReview": "INSPECTED",
+          "author": "META_A"
+        }
+      ],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "72967c4be61ec58cff88a0be3cc403b8e8aa05e7ceb28589147c28f8b3f59b78",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    },
+    {
+      "questionUid": "qid_v1_aec6efb9551263f18b6961aa0177273d36e14a43afc72c45ee7d5d17acf62d01",
+      "sourceOrdinal": 24,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "사과의 개수"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$x$개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$x$를 사용한 식으로"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "2개의 사과"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "아버지 수량은 누나와 어머니 식을 먼저 만든 뒤 결정하며 전체 합을 동류항으로 정리한다.",
+      "reasons": {
+        "classification": "문자식 번역→동류항 합→수대입의 연결을 소문항별로 제시한 전형 과제이다."
+      },
+      "judgedBy": {
+        "agent": "META_A",
+        "at": "2026-11-14T08:21:26.767568+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_A"
+      },
+      "sourceQuestionSha256": "7a4f77fcaea635fbf429330f107c8e1401e510e7be2fbfabadf6116a34d02c68",
+      "proposedMethodSlots": [
+        {
+          "term": "문자식",
+          "src": "stem",
+          "quote": "$x$를 사용하여 식",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "동류항",
+          "src": "stem",
+          "quote": "가족 4명이 딴 전체",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        },
+        {
+          "term": "대입",
+          "src": "stem",
+          "quote": "지수가 2개의 사과",
+          "status": "SOURCE_ONLY_PROPOSAL"
+        }
+      ],
+      "methodEvidenceStatus": "EVIDENCE_DEBT_SOURCE_ONLY",
+      "assetEvidence": [],
+      "sourceQuestionHashAlgorithm": "sha256-utf8-question-field",
+      "protectedQuestionSha256": "7a4f77fcaea635fbf429330f107c8e1401e510e7be2fbfabadf6116a34d02c68",
+      "protectedQuestionHashAlgorithm": "sha256-raw-utf8-question-v1"
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_REVIEWED",
+    "independentReview": "NOT_RUN",
+    "sourceOnlyMethodPolicy": "SOURCE_ONLY에서는 계약 §8에 따른 해설 method 근거가 없으므로 method=[]; 추론은 proposedMethodSlots로 분리.",
+    "mechanical": {
+      "items": 24,
+      "examItems": 24,
+      "quoteCount": 64,
+      "unexpectedFailures": [],
+      "expectedSourceOnlyMethodDebt": 24,
+      "warnings": [
+        "#1 only 3 distinct terms",
+        "#2 only 3 distinct terms",
+        "#3 only 2 distinct terms",
+        "#4 only 2 distinct terms",
+        "#5 only 2 distinct terms",
+        "#6 only 2 distinct terms",
+        "#7 only 2 distinct terms",
+        "#8 only 4 distinct terms",
+        "#9 only 2 distinct terms",
+        "#10 only 4 distinct terms",
+        "#11 only 3 distinct terms",
+        "#12 only 2 distinct terms",
+        "#13 only 3 distinct terms",
+        "#14 only 2 distinct terms",
+        "#15 only 2 distinct terms",
+        "#16 only 2 distinct terms",
+        "#17 only 2 distinct terms",
+        "#17 same 4-slot set as #16",
+        "#18 only 2 distinct terms",
+        "#19 only 3 distinct terms",
+        "#20 only 2 distinct terms",
+        "#21 only 2 distinct terms",
+        "#22 only 4 distinct terms",
+        "#23 only 3 distinct terms",
+        "#24 only 3 distinct terms"
+      ],
+      "proposedMethodQuoteCount": 50,
+      "proposedMethodMechanicalFailures": [],
+      "at": "2026-11-14T08:21:27.408923+00:00"
+    },
+    "semanticWarningDisposition": "간단한 정의/계산 문항은 정확한 개념 수만 기록하며 용어수 경고를 없애기 위해 불필요한 용어를 추가하지 않음. method 사칙연산은 계산 자체 또는 소문항이 계산을 요구한 문항에 한정."
+  },
+  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/independent-review.json",
+  "sourceBaselineGitBlobSha": "7e6a0fb42fa48072c0d62627636174abe6b0e22f",
+  "sourceCurrentSha256": "1029c285ed903c2153621edf56415e21e692cea3f17de5588fc855f6a32c9f34"
+}
