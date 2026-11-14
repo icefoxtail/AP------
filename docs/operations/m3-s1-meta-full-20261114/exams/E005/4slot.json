@@ -1579,9 +1579,9 @@
     "sampledOrdinals": [
       1,
       2,
-      19
+      4
     ],
-    "basis": "Sparse q1, arithmetic-method WARN q2 and candidate/visual q19. Current question field, choices, solutions and q19 PNG read.",
+    "basis": "WARN 문항을 우선하여 3개 선택하고 실제 현재 source/choices/solution/4칸을 독립대조. 이외 중요문항 추가검토는 별도 보존.",
     "findings": [
       {
         "ordinal": 1,
@@ -1594,9 +1594,9 @@
         "note": "제곱근성질·절댓값 적용 후 혼합연산이 문제의 직접 목표. 사칙연산 method 경고는 계산 자체 목표의 명시 예외에 해당, 부풀린 방법어 아님."
       },
       {
-        "ordinal": 19,
+        "ordinal": 4,
         "status": "PASS",
-        "note": "PNG의 x²2개·x5개·단위2개와 재배열 해설 일치. 정확한 대수타일재배열 방법은 구조화 후보로 선언, broad method만으로 대체하지 않음. goal 둘레 적합."
+        "note": "양수의 제곱비교와 음수부등호 반전을 실제 해설에 결속. goal은 대소비교이고 method/constraint 혼동 없음. sparse WARN 수용."
       }
     ],
     "additionalLevelAdjudication": [
@@ -1623,6 +1623,13 @@
       }
     ],
     "mathematicalVerification": "NOT_PERFORMED",
-    "reviewVersion": "M3-S1-META-FULL-v1"
+    "reviewVersion": "M3-S1-META-FULL-v1",
+    "additionalFourSlotChecks": [
+      {
+        "ordinal": 19,
+        "status": "PASS",
+        "note": "PNG의 x²2개·x5개·단위2개와 재배열 해설 일치. 정확한 대수타일재배열 방법은 구조화 후보로 선언, broad method만으로 대체하지 않음. goal 둘레 적합."
+      }
+    ]
   }
 }
