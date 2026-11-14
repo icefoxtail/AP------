@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 14,
-    "reviewedQuestions": 330
+    "reviewedExams": 15,
+    "reviewedQuestions": 354
   },
   "duplicateUids": [],
   "exams": [
@@ -1054,9 +1054,30 @@
           }
         }
       },
-      "status": "PENDING",
+      "status": "REVIEWED_PROPOSAL",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "07b3d31eeef4d1a2bd5e1d45d6f94f5b4514c19b",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_0B1AF1898334",
+      "sampledOrdinals": [
+        6,
+        11,
+        15
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E011",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 15,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 11,
+      "sourceChangedFields": 22,
+      "contentDebtCount": 1,
+      "typeProposalCount": 22
     },
     {
       "key": "E012",
@@ -8528,5 +8549,7 @@
     "rootOnlyPush": true,
     "sharedCheckpointRevision": 2,
     "predecessorRawSha256": "a898b038e1fbf8ab0dd49c82bfedfd69e9104dc984973930bbdbc2b221b857db"
-  }
+  },
+  "updatedAt": "2026-11-14T13:45:32.225948+00:00",
+  "lastPublishedHeadBeforeCurrent": "e4a4e8196b670a0d677f7e8dcb0815b22b7a6103"
 }
