@@ -71,6 +71,34 @@ class TrigonometricGeneral(unittest.TestCase):
         _,_,observed=build_figure(interval('SIN',('2','0'),rate_pi='1',rng=('-2','2'),lines=[{'id':'t','slope':'1/10','intercept':'0','intersectionCount':3}],axis_ticks=['-1','1']))
         self.assertEqual(observed['status'],'PASS',observed['errors'])
 
+    def test_strict_inequality_reference_line_preserves_coordinates_and_marker_state(self):
+        source=interval_pi('COS',rng=('0','2'),states=('CLOSED','OPEN'),lines=[
+            {'id':'h','y':'-1/3*sqrt(3)','intersectionCount':2,'color':'WARM'},
+        ])
+        closed,closed_model,result=build_figure(source)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        source['referenceLines'][0]['intersectionMarker']='OPEN'
+        plan,model,result=build_figure(source)
+        self.assertEqual(result['status'],'PASS',result['errors'])
+        self.assertEqual(plan['trigIntervalFeatures']['lines'][0]['intersections'],closed['trigIntervalFeatures']['lines'][0]['intersections'])
+        expected_x=math.acos(-1/math.sqrt(3))
+        for actual,expected in zip(result['lines'][0]['x'],[expected_x,2*math.pi-expected_x]):
+            self.assertAlmostEqual(actual,expected,places=10)
+        failures=[
+            (closed_model['svg'],'TRIG_INTERSECTION_DOT_MARKER_MISMATCH:h-1'),
+            (model['svg'].replace('r="3.2" fill="#fff"','r="0.2" fill="#fff"',1),'TRIG_INTERSECTION_DOT_MARKER_MISMATCH:h-1'),
+            (model['svg'].replace('r="3.2" fill="#fff"','style="display:none" r="3.2" fill="#fff"',1),'TRIG_INTERSECTION_DOT_MARKER_MISMATCH:h-1'),
+        ]
+        for svg,code in failures:
+            changed=audit(plan,svg,model['transform'])
+            self.assertIn(code,changed['errors'])
+        bad=copy.deepcopy(plan)
+        bad['trigIntervalFeatures']['lines'][0].pop('intersectionMarker')
+        self.assertIn('TRIG_INTERSECTION_MARKER_INVENTORY_MISMATCH:h',audit(bad,model['svg'],model['transform'])['errors'])
+        source['referenceLines'][0]['intersectionMarker']='HOLLOW'
+        with self.assertRaisesRegex(ValueError,'TRIG_LINE_INTERSECTION_MARKER_INVALID:h'):
+            fit_overview(source)
+
     def test_cosine_with_a_pi_rate_and_open_ends(self):
         plan,_,observed=build_figure(interval('COS',('1','0'),rate_pi='1/2',rng=('-2','2'),states=('OPEN','OPEN'),lines=[{'id':'k','y':'1/2','intersectionCount':2}],key=True))
         self.assertEqual(observed['status'],'PASS',observed['errors'])

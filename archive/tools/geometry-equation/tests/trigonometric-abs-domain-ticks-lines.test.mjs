@@ -110,3 +110,29 @@ test('a domain from -pi/2 to 3pi/2 with a vertical line draws both end dots, the
   assert.equal((svg.match(/id="interval-endpoint-(start|end)"/g)||[]).length,2);
   assert.ok(/id="line-v"[^>]*stroke="#b8325f"/.test(svg));assert.ok(/id="line-h"[^>]*stroke="#1f5fa8"/.test(svg));
 });
+
+test('actual strict-inequality Q7 draws both open crossings and the author explanation',async()=>{
+  const out=fs.mkdtempSync(path.join(os.tmpdir(),'trig-open-crossing-'));
+  const item={sourcePath:'archive/exams/original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js',ordinal:7};
+  const accessibilityDescription='곡선이 기준선 아래인 두 교점 사이가 해이다. 열린 원으로 표시된 두 교점은 포함되지 않는다.';
+  const plan={capability:'trigonometric-spike-v1',graphPlan:{
+    family:'trigonometric',function:'COS',coefficients:['1','1','0'],phasePi:'0',
+    sourceDomain:{kind:'INTERVAL_PI',rangePi:['0','2'],states:['CLOSED','OPEN']},
+    referenceLines:[{id:'h',y:'-1/3*sqrt(3)',intersectionCount:2,intersectionMarker:'OPEN',color:'WARM'}],
+    axisTickPi:true,axisTickValues:{x:['1'],y:[]},displaySize:'full',
+  },caption:'코사인 곡선과 수평 기준선',accessibilityDescription,
+    sourceConditions:[{id:'c1',condition:'0≤x<2π에서 코사인 곡선이 기준선보다 낮은 열린 구간',mappedTo:'graphPlan'}],
+    newVisualInformation:['두 교점은 포함하지 않는다.']};
+  const result=await renderPlan({item,plan,outDir:out});
+  assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result).slice(0,500));
+  const svg=fs.readFileSync(path.join(out,'figure-solution.svg'),'utf8');
+  assert.ok(svg.includes('<desc id="visual-desc">'+accessibilityDescription+'</desc>'));
+  for(const id of ['intersection-h-1','intersection-h-2']){
+    const dot=svg.match(new RegExp('<circle id="'+id+'"[^>]+>'))?.[0];
+    assert.ok(dot,id);
+    for(const cue of ['data-state="OPEN"','fill="#fff"','stroke="#b85c00"','stroke-width="1.8"'])assert.ok(dot.includes(cue),dot);
+  }
+  assert.match(svg,/<circle id="interval-endpoint-start"[^>]+data-state="CLOSED"/);
+  assert.match(svg,/<circle id="interval-endpoint-end"[^>]+data-state="OPEN"/);
+  assert.match(svg,/data-tick-pi-value="1"/);
+});
