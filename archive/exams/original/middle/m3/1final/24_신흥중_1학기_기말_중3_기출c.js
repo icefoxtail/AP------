@@ -463,7 +463,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 좌표축에 파랑 포물선 y=2x²과 주황 포물선 y=−4x²을 그렸다. y=1과 y=−1에서 각 곡선의 가로 폭을 점선으로 표시한다.",
+    "solutionImageCaption": "|y|=1인 높이에서 파란 포물선의 가로 폭이 더 넓다. y=2x²의 꼭짓점은 (0,0)이므로 틀린 설명은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -498,7 +502,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 (0,3)과 주어진 점 (3,6) 사이의 곡선 구간을 주황색 굵은 선으로 강조한다.",
+    "solutionImageCaption": "6=9a+3이므로 a=1/3이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -532,7 +540,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 좌표축에 그린 파랑과 주황 포물선의 꼭짓점 (0,0)과 (−3,1)을 가로·세로 점선으로 잇는다.",
+    "solutionImageCaption": "m=−3, n=1이므로 m+n=−2이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -552,7 +564,7 @@ window.questionBank = [
     "content": "일차함수 $y=ax+b$의 그래프가 그림과 같을 때, 이차함수 $y=-(x+a)^2+b$의 그래프로 적당한 것은? (4점)",
     "choices": [],
     "answer": "①",
-    "solution": "[키포인트] 일차함수의 그래프 개형을 통해 기울기와 $y$절편의 부호를 파악하고, 이를 이차함수의 꼭짓점 위치와 볼록한 방향에 적용한다.\\n조건 정리: 일차함수 $y=ax+b$의 그래프가 오른쪽 위를 향하고, $y$축의 양의 부분과 만난다.\\n풀이 방향: $a, b$의 부호를 알아낸 뒤 $y=-(x+a)^2+b$의 개형을 유추한다.\\n정석 풀이: 주어진 일차함수 그래프에서,\\n그래프가 오른쪽 위를 향하므로 기울기는 양수이다. 즉, $a > 0$이다.\\n$y$축과 양의 부분에서 만나므로 $y$절편은 양수이다. 즉, $b > 0$이다.\\n이제 이차함수 $y=-(x+a)^2+b$의 그래프 개형을 분석한다.\\n1. 꼭짓점의 좌표는 $(-a, b)$이다. $a>0$이므로 $-a<0$이고, $b>0$이다. 따라서 꼭짓점 $(-a, b)$는 제2사분면(x가 음수, y가 양수인 영역)에 위치한다.\\n2. $x^2$의 계수가 $-1$로 음수($-1 < 0$)이므로 위로 볼록한 포물선이다.\\n꼭짓점이 제2사분면에 있으면서 위로 볼록한 모양의 그래프를 보기에서 찾으면 해당 조건을 만족하는 것은 보기 ②이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 일차함수의 그래프 개형을 통해 기울기와 $y$절편의 부호를 파악하고, 이를 이차함수의 꼭짓점 위치와 볼록한 방향에 적용한다.\\n조건 정리: 일차함수 $y=ax+b$의 그래프가 오른쪽 위를 향하고, $y$축의 양의 부분과 만난다.\\n풀이 방향: $a, b$의 부호를 알아낸 뒤 $y=-(x+a)^2+b$의 개형을 유추한다.\\n정석 풀이: 주어진 일차함수 그래프에서,\\n그래프가 오른쪽 위를 향하므로 기울기는 양수이다. 즉, $a > 0$이다.\\n$y$축과 양의 부분에서 만나므로 $y$절편은 양수이다. 즉, $b > 0$이다.\\n이제 이차함수 $y=-(x+a)^2+b$의 그래프 개형을 분석한다.\\n1. 꼭짓점의 좌표는 $(-a, b)$이다. $a>0$이므로 $-a<0$이고, $b>0$이다. 따라서 꼭짓점 $(-a, b)$는 제2사분면(x가 음수, y가 양수인 영역)에 위치한다.\\n2. $x^2$의 계수가 $-1$로 음수($-1 < 0$)이므로 위로 볼록한 포물선이다.\\n꼭짓점이 제2사분면에 있으면서 위로 볼록한 모양의 그래프를 보기에서 찾으면 해당 조건을 만족하는 것은 보기 ①이다.\\n따라서 정답은 ①이다.",
     "image": "assets/images/24_신흥중_1학기_기말_중3_기출/q16.png",
     "imageSize": "tall",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -594,7 +606,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 계수 식 없이, 꼭짓점 V(−2,5)에서 내려와 원점 O를 지나고 오른쪽에서는 x축 아래에 놓이는 포물선.",
+    "solutionImageCaption": "y절편 조건은 4a+5≤0이므로 a≤−5/4이다. 가장 큰 음수 a는 −5/4이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -630,7 +646,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 꼭짓점은 (4,−1), x절편은 2와 6, y절편은 3이다.",
+    "solutionImageCaption": "x²−8x+12=0의 근은 2와 6이므로 (−6,0),(2,0)이라는 ④의 설명은 옳지 않다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -693,7 +713,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 A(3,16)과 두 x절편 B(−1,0), C(7,0)를 잇는 삼각형 안에 점선 높이와 직각 표시가 있다.",
+    "solutionImageCaption": "A(3,16)이므로 △ABC의 넓이는 1/2×8×16=64이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -789,6 +813,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_기말_중3_기출c/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황색 포물선에 점 (1,5)가 있고 꼭짓점 V는 파란 직선 y=x−2 위에 있다.",
+    "solutionImageCaption": "V=(p,q)가 y=x−2 위에 있으므로 q=p−2이다. P(1,5)를 대입하면 p=5/2, q=1/2이고 p+q=3이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   }
 ];
