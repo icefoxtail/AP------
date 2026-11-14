@@ -205,9 +205,9 @@
     "sampledOrdinals": [
       1,
       9,
-      17
+      3
     ],
-    "basis": "WARN priority q1/q9 and implied graph method q17; direct current source and q17 PNG read.",
+    "basis": "WARN 문항을 우선하여 3개 선택하고 실제 현재 source/choices/solution/4칸을 독립대조. 이외 중요문항 추가검토는 별도 보존.",
     "findings": [
       {
         "ordinal": 1,
@@ -220,9 +220,9 @@
         "note": "정답2개 형식 및 전개→이차함수 정의 확인을 보존. goal은 이차함수이고 방법어가 아님."
       },
       {
-        "ordinal": 17,
+        "ordinal": 3,
         "status": "PASS",
-        "note": "실제 PNG의 아래로 열림·왼쪽 축·양의y절편과 method 개형/축/y절편 대응 확인."
+        "note": "완전제곱식으로 양변을 보정하는 단일 핵심method가 정확히 기재되어 있다. goal 합, given 이차방정식 적합. sparse/단일method WARN 수용."
       }
     ],
     "additionalLevelAdjudication": [
@@ -267,6 +267,13 @@
       }
     ],
     "mathematicalVerification": "NOT_PERFORMED",
-    "reviewVersion": "M3-S1-META-FULL-v1"
+    "reviewVersion": "M3-S1-META-FULL-v1",
+    "additionalFourSlotChecks": [
+      {
+        "ordinal": 17,
+        "status": "PASS",
+        "note": "실제 PNG의 아래로 열림·왼쪽 축·양의y절편과 method 개형/축/y절편 대응 확인."
+      }
+    ]
   }
 }
