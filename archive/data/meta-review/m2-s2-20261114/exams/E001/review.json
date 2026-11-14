@@ -1576,7 +1576,8 @@
         "integrationPattern": "",
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
-        "legacyLevelCompatibility": "UNKNOWN"
+        "legacyLevelCompatibility": "UNKNOWN",
+        "crossConceptKeys": []
       },
       "after": {
         "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
@@ -1584,12 +1585,15 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "crossConceptKeys": [
+          "CC_RATE_OF_CHANGE"
+        ]
       },
       "fieldReview": {
         "classification": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 넓이·부피 비: 원뿔 높이비의 세제곱을 채우는 시간비로 변환",
         "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
-        "crossConcept": "닮음의 부피비는 Primary다. 일정 유량→부피·시간 정비례 연결은 정확한 CC가 없어 별도 등록 제안 P02에 남긴다.",
+        "crossConcept": "닮음의 부피비 이후 일정한 부피 변화량/시간인 CC_RATE_OF_CHANGE를 이용하여 부피비를 시간비로 옮긴다. 현행 ACTIVE 정의 한 양이 다른 양의 변화에 따라 일정하게 변하는 비율에 정확히 해당한다.",
         "condition": "NOT_APPLICABLE: 이 문항의 기하 관계·점 배치·주어진 비 또는 유량은 4칸에 기록한다. 미지수·해·후보값의 값·부호·범위 제한이 해 선택을 바꾸는 canonical Condition은 없다.",
         "integration": "높이비 → 부피비 → 시간비 → 남은 시간.",
         "difficulty": "높이비와 부피비를 구별하고 추가 시간이라는 목표를 해석해야 한다.",
@@ -1612,9 +1616,7 @@
           "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
         }
       ],
-      "proposalRefs": [
-        "E001-P02"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 3,
@@ -2086,21 +2088,6 @@
       "supportingQuestionUids": [
         "qid_v1_ff7c626f2bcf6542b6e12a90adbaf568549ad4d0a396b5a8346843a1050809aa"
       ]
-    },
-    {
-      "id": "E001-P02",
-      "type": "CC",
-      "name": "일정 유량의 부피와 시간 정비례",
-      "definition": "단위 시간당 채우는 부피가 일정할 때 채운 부피비를 걸린 시간비로 옮긴다.",
-      "parent": "비와 비례 / 닮음 부피비의 외부 연결",
-      "distinguishingCriteria": "일반 비례배분이나 원뿔 부피 공식과 달리 물리량 비의 전달을 담당한다.",
-      "existingCandidatesReviewed": [
-        "CC_RATIO_AND_PROPORTION은 전체 양의 분할 정의여서 일정 유량 관계를 정확히 포함하지 않음",
-        "CC_CONE_VOLUME은 절대 부피 공식으로 이 풀이에 필요 없음"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_ceb8b9def9b97d91e4c9cf075f2c4a058436803a972e0de7824c1cda6667dbbf"
-      ]
     }
   ],
   "notes": [
@@ -2166,6 +2153,13 @@
         21
       ],
       "note": "ROOT가 actual 발문·보기·해설을 독립 재독하여 현재 bucket과 legacy level 유지 수용. finalDifficulty와 after를 BORDERLINE_ACCEPTABLE로 정합 반영. 별도 ROOT 증거 파일 참조."
+    },
+    {
+      "type": "EXISTING_CC_REUSE",
+      "ordinals": [
+        19
+      ],
+      "note": "ROOT의 중복 정의 대조와 freeze 해제 허용에 따라 일정 유량 원문을 재대조했다. CC_RATE_OF_CHANGE의 기존 일반 정의가 부피/시간의 일정 비율을 포괄하므로 P02 좁은 CC 제안 철회. 학생 내용과 4칸은 불변."
     }
   ]
 }
