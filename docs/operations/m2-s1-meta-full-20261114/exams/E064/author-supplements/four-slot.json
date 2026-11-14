@@ -1,0 +1,1794 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "ecf339531be08d173f9a69b992bc8e00b5d35a75",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+    "at": "2026-11-14T15:18:36.902253+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_6997268b8d3c26a5f9977ea7eee887d48f91770d02fc8c6fdca889f2815fca77",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51c50d0860f543b7748bcd0b06825397ac9f3092929218d9c6ee667430b8328f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2e86c61a135be500befb317dfb7dedd347f308e2bd393d56bf937cf4b009d79a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "학생 수가 40명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "여학생 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "solution",
+            "quote": "$\\begin{cases} x + y = 40 \\quad \\cdots \\text{①} \\\\ x - y = 4 \\quad \\cdots \\text{②} \\end{cases}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$x = 22$를 ①식에 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "남학생 4명이 남는다고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "총수와 차의 연립모델",
+        "classification": "두집단 총40과 남학생4초과 관계로 여학생수를 결정. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3788e8583997873b9bab99aefa27579c127a976244bf1c4f11f2ed7871983894",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f5f0cf12b42c62533d9d6233be6b74ebb1a49ef75a40ccca83787841c7d7d85"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4adab02dfd099935643bdd4cab6b9ee78eee14b1ffa55cd9538658cde405b6f5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "15마리이고 다리의 수를 모두 합하면 52개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "고양이는 모두 몇 마리"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "solution",
+            "quote": "$\\begin{cases} x + y = 15 \\quad \\cdots \\text{①} \\\\ 4x + 2y = 52 \\quad \\cdots \\text{②} \\end{cases}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소거",
+            "termId": 368,
+            "src": "solution",
+            "quote": "②'식에서 ①식을 변끼리 뺌",
+            "evidenceType": "IMPLIED",
+            "justification": "한 미지수 y를 두식의 차에서 제거한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "마릿수와 다리수의 연립모델",
+        "classification": "전체마릿수15와 다리총52를 두 미지수의 가중합관계로 세운다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb86c5b2853dbd07e661a2abc8e78f2f521b89374d430c1cb9d50446c9b3b1ec",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c3233b03b0d716e88966e9563506c0e3eb1f39f815f187ebc49917dfce718119"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db33a974f9e7be131055cc57c875e7208856b6bdb9e2b9ad1804707a1a06b6cc"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "choices",
+            "quote": "넓이가 $40\\text{ cm}^2$인 직사각형"
+          },
+          {
+            "term": "대응",
+            "termId": 106,
+            "src": "choices",
+            "quote": "가로의 길이는 $y\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수가 아닌 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "solution",
+            "quote": "일차함수는 $y = ax + b$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "solution",
+            "quote": "직사각형 가로: $x \\times y = 40",
+            "evidenceType": "IMPLIED",
+            "justification": "가로세로곱을 고정넓이40으로 둔다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "실생활 대응의 일차성 판정",
+        "classification": "각관계를y=ax+b로나타내며 직사각형넓이40에서 나오는40/x는 일차식이 아님을 판정. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_a7493655d2c84e95567761db1a0eb39493d6bbb7716fe0eb31ad9d0a7e89d6e2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca454dcab7d3a9f4b4f825dd14cd37e19ffe76b135a80572115d2dc70cdae66b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1126b8f5a582b7e2f1295fed0c6bbb9911a358a50fcb7da5e17da4c4d827dba2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$f(x)=2x+a$"
+          },
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(-1)=2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(4)-f(0)$"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$f(4)-f(0)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$f(-1) = 2$를 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "solution",
+            "quote": "$f(4) = 2(4) + 4 = 12$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "함숫값 차 계산",
+        "classification": "기존상세해설은a를확정한후두함숫값차를계산한다. 기울기방법1은명시된대안으로보존. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_452944536ef759777c13b73e69ceafddf78cac215e6fb2b2bbc95b51ec9e6c66",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "739dcd8220812b46b8f4ac1dffb60f31896e421f69cdddd74f542e390365ed3f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "883498ac23b90f169b715beaa080c66690b35e2af4dac13dfcc6aa4ab84c102b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=ax+5$"
+          },
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "stem",
+            "quote": "$x$절편이 4"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "$y$절편이 $b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "solution",
+            "quote": "평행이동한 직선의 방정식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$x = 0$ 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $-9$만큼 평행이동"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "수직이동한 직선의 절편과 계수",
+        "classification": "y축−9이동으로상수항−4를확정하고x절편4를대입하여기울기와합을구한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_03134926d5c27aec908d0e3e49b30ec93523b97cf10fbd8e6bd76198d6b5e31b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "92c4ace12b0260bc50d9a918fab035d9abf46ad1b0d36a439dd849cbf37a1967"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1e421642da53b590c8b4bafea97ae5407d37032909f174700aa8677f17895db"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "점 $(a, b)$"
+          },
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=\\frac{1}{a}x+ab$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "지나지 않는 사분면"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "solution",
+            "quote": "기울기와 $y$절편의 부호",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "solution",
+            "quote": "제1사분면은 절대 지나지",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "제2사분면 위의 점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "점의 사분면에서 새그래프의 사분면",
+        "classification": "점a,b의부호를역수기울기와곱절편에전달해지나지않는사분면판정. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e3d6707f93d159e2dd046fa213e13c2c22d76eba74407688e8f594a925cfbca4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5ba8f00a8265ebd586fd06f9e3bf65e83cc0c3d246b4bc6e12cdc4d2581e1231"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a1c07aef5fd9433d6c89223e9740057781970cbeabd0897634bad364f665f92"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$f(x)=\\frac{3}{2}x+k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "$\\frac{f(7)-f(-2)}{9}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기의 정의:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "solution",
+            "quote": "분자 계산",
+            "evidenceType": "IMPLIED",
+            "justification": "두함숫값차의실제계산부분에서상수항이소거된다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "기울기를 함숫값 변화율로 읽기",
+        "classification": "입력차9로나눈출력차는기울기3/2이며상수항은소거된다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_23de3f140e4d13c0de929f808acfcffeed72a1d6f2e5c17964ae6f7f97e87c99",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e62054b4436df421a34e184c9510814bf76cd7247bded5b4f22e663594a9fb5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9dc38be581431268edcd0dbb922dc63fdbcf3e8fe209dc025f3c91b4a2443cce"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "세 점 $(1, -1)$, $(-1, 3)$, $(k, k+1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "$(k, k+1)$"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 구하기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "대입하여 $k$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "termId": 627,
+            "src": "stem",
+            "quote": "한 직선 위에"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두점식과 세번째점 대입",
+        "classification": "두수치점으로기울기와직선식을구한뒤세번째점의k를대입한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_56e70166e404b75ca05faeadf94b889236f582bb04ba9c995530298b0d12330d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e8ac91e1dbb83be7bbc169f7dd9e12c79be0139afa6ad7a134d3d5ca0d6fd0a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "055b46df9a4f6304082f1cfc5be565386029895c8e7cc246deb2a22857985c3a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$ax-y=3$, $2x+y=b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$, $b$의 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "두 직선이 평행",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기가 같아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편이 달라야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "서로 만나지 않을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 직선의 무교점 조건",
+        "classification": "명시두일차방정식의기울기일치와절편불일치를함께요구한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "기존해설 계수비 재검증3/b의 b=0 정의누락부채; 새해설이나원조건추가없음."
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_fefde76a8694457448147ac64b626a7c137366a1b817557e58987be5de98a331",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "521ef06e34ffb707a511d885e24660d2ac0da8ed952e70d8cc4b039668b2ed0d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ed7881d7c5ef61450adf1c5c64cd27c11caa8cc2acb44acc317909d5c943ae6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$x+y=4$"
+          },
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "$ax+2y=5$, $x-2y=1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "solution",
+            "quote": "$\\begin{cases} x + y = 4 \\quad \\cdots \\text{①} \\\\ x - 2y = 1 \\quad \\cdots \\text{②} \\end{cases}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "점 $(3, 1)$을 $ax + 2y = 5$에 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "교점을 지날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "세 직선의 공통교점 계수",
+        "classification": "미정계수가없는두직선을연립한교점(3,1)을남은직선에대입한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_d401ea8377d7d7e5b7e3b698d5e853580d3146cad45aea54fd95cc07a312d1b3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ebfcd77809398da779fc69bedd6f70b3f0819d5f26ac70f31ace50b4be04be8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f75b888669b93d2fe1eedeebe74b10a5493a1e37e9c81c2a59afdc8ae39db009"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=-x+2$, $y=\\frac{2}{5}x+2$"
+          },
+          {
+            "term": "좌표축",
+            "termId": 707,
+            "src": "stem",
+            "quote": "$x$축"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "도형의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "termId": 151,
+            "src": "solution",
+            "quote": "각 직선의 $x$절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "삼각형의 넓이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 직선과 축의 삼각형넓이",
+        "classification": "공통y절편높이2와두x절편−5/2의차7을결합한넓이. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_327c96b5044ac269be77c3dc2a147edde63ee597eadd18d2530f4d6a8175826c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a39fcd827c9ec2297980109c6f33b544804c241e6b20ced0169f5ba2db556b84"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1639ebd6fbb0285b9b9dac9391e96d1dd5ac3df36780512862840175cd8b2d40"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=3x+6$, $y=ax+6$"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "넓이가 15"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "삼각형의 넓이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "solution",
+            "quote": "두 직선의 $x$절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "solution",
+            "quote": "$a < 0$이므로 $-\\frac{6}{a} > 0$",
+            "evidenceType": "IMPLIED",
+            "justification": "계수부호로양의x절편을선택하여밑변차의순서를결정."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "$a < 0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "넓이조건에서 직선기울기 복원",
+        "classification": "공통높이6과넓이15에서밑변5를얻고a<0의절편방향으로a를정한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_85047beb1062ee5a90fea2534cb3d081ffd2d4260f900705a2cce30e619e7daa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8507e24a8453734342ae803dc1b1c5e7ed05ab341286c4cf6b326a109d2298d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eeb4e6fce44f93eefa820632be906bdfffebf05875bddc6e5b5caa3097573430"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "$y=ax-2$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$\\text{A}(1, 6)$, $\\text{B}(4, 2)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$"
+          },
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 범위 확정",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$2 = a(4) - 2",
+            "evidenceType": "IMPLIED",
+            "justification": "선분끝점의좌표를직선식에넣어경계기울기를구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "termId": 144,
+            "src": "stem",
+            "quote": "선분 $\\text{AB}$와 만날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "선분과 만나는 경계직선",
+        "classification": "정점(0,−2)에서두끝점A/B로향하는기울기1,8을포함한범위. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_4932a2e76e7984e29f02a1e1879337a550bd763ae3c5bb8b2d4fa004577ae5ce",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dde39eeb9aad131c14ee2971d21812d5290dea8aec081ac1b57f7281d87de3c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c45b7308c381d9153fbadd32fadf0e37d4dc4ff89b1a018fea042cb4452b0d6b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그림과 같은 일차함수의 그래프"
+          },
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "stem",
+            "quote": "$x$절편을 $m$"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "$y$절편을 $n$"
+          },
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=mx+n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "지나지 않는 사분면"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "solution",
+            "quote": "$m, n$의 부호 판별",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "solution",
+            "quote": "제3사분면은 지나지",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "다른 그래프 절편으로 새함수 사분면",
+        "classification": "원그림의음x절편m/양y절편n을새함수의기울기와절편으로사용한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_37d27b38e40efb566bd053816d646dfd3b707c9d527c772a017f58408308a4f4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "17269da13eccb0cc22a0e476e0a3b6ef037db9bac5d8d5ddec3d57d264423be8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67ffd7e69efbd4dd9ed9590183b7c56202fd4b1dc2b993fa8cd39aea4c31f316"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "그림과 같은 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "$k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "직선의 기울기 $m$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$x = 0$ 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "실제두점으로 y절편",
+        "classification": "실제그림의(-2,2),(4,−1)로기울기−1/2와직선식의절편을구한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_06e741cf17b6158c67bbfe885b46f84ca7ce558a940aeb5c72c9213d6d9b8643",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "791f3fcda007855460087ae1a675f2b4f4f90fb66c524cbbafd5bdc5b28a99d1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c0b0cb9073e9a337013a25323b2d177197e0c674bc7c8e286563529952521c07"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$ax+by+6=0$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그래프가 다음 그림"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a$, $b$의 부호"
+          },
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "stem",
+            "quote": "부호는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "termId": 151,
+            "src": "solution",
+            "quote": "$x$절편과 $y$절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "solution",
+            "quote": "부호 부등식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "직선그래프 절편으로 계수부호",
+        "classification": "두음의절편−6/a,−6/b에서a,b의부호를역추론한다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1afbc8c03f22058a2211655dbe1690b9f65ba5cd89493d8ff6dfad5a6355c29e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa951a0877bffe034587e091b22788a9983aebcf050806a78dd7352ea6e1e93f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1de94d8b81b958b8eee5f7cf7fbc306e91cc903361a28fad600299a2587286bc"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=-4x-6$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그래프에 대한 설명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          },
+          {
+            "term": "성질",
+            "termId": 305,
+            "src": "stem",
+            "quote": "설명"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "solution",
+            "quote": "① 평행이동:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "termId": 151,
+            "src": "solution",
+            "quote": "③ 절편:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기가 $-4 < 0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차함수의 여러 그래프성질",
+        "classification": "이동·절편·증감·사분면의독립진술전체를판정하는포괄목표. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f8c62e9c09a1b62f6575fde30c50683ffbb7e1183d84319f0b71537088785289",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bece0925ae91dd76c80f08b6baecfbc61e2128a4cffd53734ea69641a413dc57"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "669a580e8c8df61fd999312a46e1ced112f6d7a8b9310246db83ad8535c43a1b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(2, 2a-3)$, $(-1, 5a+6)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "solution",
+            "quote": "$y$좌표가 서로 같아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "solution",
+            "quote": "일차방정식 풀기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "stem",
+            "quote": "$y$축에 수직"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "수평선의 같은 y좌표",
+        "classification": "y축에수직인수평선두점은 y좌표가같으므로계수방정식을푼다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_4d152320d1a91ea033a762198a94b6ec6a6d3e4d33014df94c8393bab7c0e11b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef706e5e0c16fbbf37b96e0a940b5e238db39c5907aaca5fc0aac043ecd886b2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e7efed4ada2cc56fd8ddc487288e1c850a0be81ace5bff8dc47373d30a79410c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "$6\\text{ km}$만큼 떨어진"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "각각 그래프로 나타내면"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "출발한 지 20분 후"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "출발한 지 20분 후",
+            "candidate": true
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "몇 $\\text{km}$ 떨어진 지점"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "solution",
+            "quote": "교점 구하기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$y = \\frac{1}{10} \\times 30 = 3\\text{ km}$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한교점시각을동생위치식에넣어거리좌표를구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이동 그래프의 교점거리",
+        "classification": "서로다른출발시점의두직선식을세워교점을구하고y거리좌표를읽는다. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_f42864e8aad168ef3a334ff38730b529fd4c9064fffb5cd65de8bf8e835146a2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8fd93647439482a92cfd2325ebb519ab8765e0bc741b8c6ee45bf1d875444e7d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4cbdddc055e12049ceef0abcd2bf56f6716f0b296fc9d9f905c0834420fa22b6"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(-3, -5)$, $(-1, a)$, $(3, -b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "$(-1, a)$, $(3, -b)$"
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "$3a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "두 기울기가 같음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "solution",
+            "quote": "$\\frac{a + 5}{2} = \\frac{5 - b}{6}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "termId": 627,
+            "src": "stem",
+            "quote": "한 직선 위에"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공선의 기울기 일치로 일차결합",
+        "classification": "기울기(a+5)/2와(5−b)/6이같음에서개별계수를정하지않고목표3a+b를정리. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_0d93e3eb5394c32a90597bf92b8a1a404e969ab2c9bff5570ac47f4e035daf73",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "12b40434b46a43e6d848e42b3fa9dad14c2a60422bb73b7d2af356ebb096de8c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a59531f440c14aeb725b194988a2f66d8e0ad309900cd54c9bd05981b825128"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=ax-3$의 그래프는 일차함수 $y=\\frac{1}{2}x+3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "solution",
+            "quote": "두 직선의 $x$절편이 서로 같다는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "점 $(-6, 0)$을 $y = ax - 3$에 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "$x$축 위에서 만날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공통 x절편 조건의 직선계수",
+        "classification": "고정직선의x절편−6을찾아목표직선에대입하여기울기a를결정. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_1d2d0874fc11b3e6e684b26720ee37e49988c66cc205baba43f0f8cf6eacbd91",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a2eb18eeed3307fbbd8b657ed5235186ac4b2bd9d3a2e818be491f9e9eaf6b8b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d0ef3d623582fa38c9b295fd8d954399de49115647c638cc136f806e7a15af2b"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "$\\begin{cases} 3x-2y+2=0 \\\\ ax-4y+b=0 \\end{cases}$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "점 $(4, 3)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$, $b$"
+          },
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "$\\frac{b}{a}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "solution",
+            "quote": "\\frac{a}{3} = \\frac{-4}{-2} = 2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "점 $(4, 3)$ 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 존재하지 않고"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "점 $(4, 3)$을 지날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "무해 계수조건과 점통과",
+        "classification": "연립식무해의계수비로a6을정한뒤별도점(4,3)대입으로b−12를구하고비율. 실제목표와기존해설을 현재canonical에대조하여 구 namespace를 의미제안으로 교정.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T15:18:36.902253+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "소요시간"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "출발 지연시간20분. 같은given값131 parent와함께비활성후보로남김.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 19,
+          "slot": "given",
+          "quote": "출발한 지 20분 후"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Actual per-question semantic judgments; existing solutions only. Native receipt separate.",
+    "independentReview": "PENDING"
+  }
+}
