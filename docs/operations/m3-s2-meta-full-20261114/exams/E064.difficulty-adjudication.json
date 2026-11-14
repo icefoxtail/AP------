@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "M3S2_TARGETED_DIFFICULTY_ADJUDICATION_v1",
+  "examId": "E064",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "reviewedAt": "2026-11-14T11:09:41.438440+00:00",
+  "items": [
+    {
+      "ordinal": 8,
+      "reason": "실제그림의 중심각120°를같은호원주각으로바로반분해60°이다. bucket1유지, 기존level중을인접경계로유지한다.",
+      "status": "RESOLVED",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 15,
+      "reason": "실제그림의접선과현이이루는70°를대응원주각에직접옮긴다.50°는필수계산이아니다. bucket1유지, 기존level중을인접경계로유지한다.",
+      "status": "RESOLVED",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 13,
+      "reason": "원주각의내접대각65°,외각연결로x20°를재계산했다. 여러호미지수의장문해설은필수경로가아니므로author3을2/B23으로조정한다.",
+      "status": "RESOLVED",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 21,
+      "reason": "현AB10을보는원주각60°가일정인큰호가유효한해의하나이다. 중심각은원주각의두배120°여야하며본문의180−60표현은근거수리대상이다. 의미bucket3은가능하나공식source-verified projection은HOLD한다.",
+      "status": "RESOLVED",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 22,
+      "reason": "두직각을공유하는지름을AB/BC/CA와AP/BP/CP두무리로분류하면내접사각형6개가나온다. 구조선택은있으나추가상호제약없어bucket3/B23;기존level상은인접경계로유지한다.",
+      "status": "RESOLVED",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    }
+  ]
+}

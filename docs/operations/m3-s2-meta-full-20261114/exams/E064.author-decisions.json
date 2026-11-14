@@ -1,0 +1,1076 @@
+{
+  "examId": "E064",
+  "sourceArchiveFile": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "21a6e600696f5b56f5d0f1dc4be43cacca85d36e",
+  "author": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "judgedAt": "2026-11-14T11:01:00.086904+00:00",
+  "meaningFreezeSha256": "cdce450b9b3b004a996b3e9830d765f424b524f68299faf75b57c4e21b1d9260",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_fd151a3be077c3ab8f97b50568f25bffc0255d284204a3558b8613ae2084ccb7",
+      "primaryMethod": "현을 이등분하는 수선과 피타고라스 정리",
+      "decisiveStep": "AH²=5²−3²=16이므로 AB=2AH=8이다.",
+      "rpmRecordId": "M3-RPM-155",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심에서 현에 내린 수선"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_PYTHAGOREAN은 반현 AH를 계산하는 별도 길이 정리다. 특수 수 범위 제한은 없으므로 conditionKeys는 비운다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 현의 절반을 먼저 정하고 직각삼각형을 계산한다. bucket 2: 반현 길이로 바꾸는 익숙한 전처리 후 풀이법은 고정되어 있다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q01.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "원의 중심에서 현 AB에 내린 수선은 현을 이등분한다.",
+        "interpretation": "AH²=5²−3²=16이므로 AB=2AH=8이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AH²=5²−3²=16이므로 AB=2AH=8이다.",
+          "finalAnswerChecked": "⑤"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_93b94de0ac1a03f42c73c71d1a27097dca2f16f830de8a0c1a6d5b2d967e13ea",
+      "primaryMethod": "같은 중심거리의 현과 현의 이등분 성질을 각각 대조",
+      "decisiveStep": "OM=ON에서 AB=CD이고 AM=BM, CN=DN이므로 CD=2AM이다. AM=OM은 도출되지 않는다.",
+      "rpmRecordId": "M3-RPM-157",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심거리와 현의 길이"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "현의 길이와 수선의 이등분은 모두 Primary 안의 직접 성질이다. 수 범위나 해 선택 제한을 별도 COND로 추가할 이유는 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 두 현의 성질을 구별해 보기를 판정한다. bucket 2: 거리 같음과 반현 관계의 익숙한 연결이며 새로운 전략 선택은 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q02.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "중심에서 현에 내린 수선은 현을 이등분하므로",
+        "interpretation": "OM=ON에서 AB=CD이고 AM=BM, CN=DN이므로 CD=2AM이다. AM=OM은 도출되지 않는다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "OM=ON에서 AB=CD이고 AM=BM, CN=DN이므로 CD=2AM이다. AM=OM은 도출되지 않는다.",
+          "finalAnswerChecked": "①"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_2d080d98cc944a6f1054519343a77ff3848045217f1debd4834ba4f494866d92",
+      "primaryMethod": "같은 중심거리의 현을 같은 변으로 바꿔 이등변삼각형의 밑각 계산",
+      "decisiveStep": "AB=AC이므로 두 밑각은 (180−50)/2=65°이다.",
+      "rpmRecordId": "M3-RPM-157",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심거리와 현의 길이"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_ISOSCELES_TRIANGLE은 AB=AC 이후 65°를 결정하는 보조 개념이다. 수 범위 제약은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 현 성질을 삼각형 성질에 연결한다. bucket 2: 같은 거리→같은 현→같은 밑각이라는 전형적 연결이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q03.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "원의 중심에서 두 현까지의 거리가 같으므로",
+        "interpretation": "AB=AC이므로 두 밑각은 (180−50)/2=65°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AB=AC이므로 두 밑각은 (180−50)/2=65°이다.",
+          "finalAnswerChecked": "⑤"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_36a0c02b846afcb4a3724463a0aa4fefcb073f74e5b14be065670db69e97bd1a",
+      "primaryMethod": "접점의 반지름과 접선의 수직을 이용한 피타고라스 계산",
+      "decisiveStep": "∠OTP=90°이므로 PT²=10²−5²=75, PT=5√3이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_PYTHAGOREAN이 접선 길이의 수치 계산을 맡는다. 양의 길이 선택은 길이의 기본 의미여서 별도의 명시 수 범위 COND는 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 접선의 수직 성질을 알고 길이를 연결해야 한다. bucket 2: 직각으로 해석한 뒤 표준 피타고라스 계산만 필요하다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q04.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "접점에서 반지름과 접선은 수직이므로",
+        "interpretation": "∠OTP=90°이므로 PT²=10²−5²=75, PT=5√3이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "∠OTP=90°이므로 PT²=10²−5²=75, PT=5√3이다.",
+          "finalAnswerChecked": "②"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_2430c5c573ab8eb6315c3de9c3a9643be1584e0a7e1c91134926aabbe37c9b4c",
+      "primaryMethod": "두 접선과 반지름의 합동·수직 관계를 이용한 밑각 추론",
+      "decisiveStep": "접점의 두 직각으로 ∠AOB=150°이고 OA=OB이므로 x=(180−150)/2=15°이다.",
+      "rpmRecordId": "M3-RPM-161",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 각 구하기"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CONGRUENCE",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "해설의 OAP≅OBP가 OP의 각 이등분을 보장하고, OA=OB인 삼각형의 밑각이 x를 결정한다. 추가 수 범위 조건은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 접선 각과 이등변삼각형의 밑각을 연쇄 적용한다. bucket 2: 정형적인 접선 두 개의 각 관계이며 비정형 보조선이나 분기는 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q05.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "\\triangle OAP\\cong\\triangle OBP",
+        "interpretation": "접점의 두 직각으로 ∠AOB=150°이고 OA=OB이므로 x=(180−150)/2=15°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "접점의 두 직각으로 ∠AOB=150°이고 OA=OB이므로 x=(180−150)/2=15°이다.",
+          "finalAnswerChecked": "④"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_5008174f922cc5981e52b44eedcc0cae48ecf7e43312c2f66235aaf98876f6a7",
+      "primaryMethod": "두 접선의 길이와 두 직각삼각형 넓이 합",
+      "decisiveStep": "AP=BP=√(15²−9²)=12이고 넓이는 2×9×12/2=108이다.",
+      "rpmRecordId": "M3-RPM-159",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "한 점에서 그은 두 접선"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "피타고라스로 접선 길이를 정한 뒤 CC_TRIANGLE_AREA로 두 조각의 넓이를 합한다. 기본 도형 제시 외 별도 선택 제약은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 길이 계산 뒤 사각형을 두 삼각형으로 나눈다. bucket 2: OP를 공통 빗변으로 쓰는 익숙한 분할과 연산으로 전략이 명확하다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q06.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "AP^2+9^2=15^2",
+        "interpretation": "AP=BP=√(15²−9²)=12이고 넓이는 2×9×12/2=108이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AP=BP=√(15²−9²)=12이고 넓이는 2×9×12/2=108이다.",
+          "finalAnswerChecked": "②"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6269051356f86abb5c664b61d3179fdecb7a2370b61ba4e592b9b1dfd00064e4",
+      "primaryMethod": "세 꼭짓점의 같은 접선 조각을 연립해 한 조각 결정",
+      "decisiveStep": "x+y=8, y+z=7, x+z=6을 합하고 빼면 2x=7이므로 BE=7/2이다.",
+      "rpmRecordId": "M3-RPM-160",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_SIMULTANEOUS_LINEAR_EQUATIONS은 세 접선 조각의 합 관계를 소거하는 결정 단계다. 별도 범위·정수 조건은 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 내접원 접선 조각을 미지수로 표현하는 표준 활용이다. bucket 3: 세 변의 정보를 어떤 조합으로 소거할지 선택해야 한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q07.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "한 점에서 원에 그은 두 접선의 길이는 같다.",
+        "interpretation": "x+y=8, y+z=7, x+z=6을 합하고 빼면 2x=7이므로 BE=7/2이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "x+y=8, y+z=7, x+z=6을 합하고 빼면 2x=7이므로 BE=7/2이다.",
+          "finalAnswerChecked": "③"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_1bc23d383e421e7f0b1d378d7a4f42ade91cc6b9533da7787b23ce70b217bcb9",
+      "primaryMethod": "같은 호의 중심각을 반으로 나눔",
+      "decisiveStep": "x=120°/2=60°이다.",
+      "rpmRecordId": "M3-RPM-163",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "중심각과 원주각의 2:1 관계 자체가 Primary이다. 다른 개념·수 범위 제한은 쓰이지 않는다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 하: 같은 호의 기본 성질 한 번 적용이다. bucket 1: 그림에서 중심각과 원주각이 바로 대응하고 별도 해석이 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q08.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "점 P의 원주각 x와 중심각은 같은 호 AB를 본다.",
+        "interpretation": "x=120°/2=60°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "x=120°/2=60°이다.",
+          "finalAnswerChecked": "②"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_d0f13bd8543fdafbae919916b56c59fb9d1adea669e334aff42d5e79636575cb",
+      "primaryMethod": "지름의 원주각과 삼각형 내각합을 구한 뒤 같은 현의 원주각으로 전달",
+      "decisiveStep": "∠ABC=90°, ∠ACB=65°이므로 같은 현 AB를 보는 x도65°이다.",
+      "rpmRecordId": "M3-RPM-164",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "반원에 대한 원주각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_TRIANGLE_ANGLE_SUM이 90°와25°에서65°를 계산한다. 지름과 같은 호는 Primary 내부이므로 중복 CC로 넣지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 지름의 직각과 같은 원주각을 이어 쓴다. bucket 2: 익숙한 세 각 관계가 순서대로 정해지는 표준 문제다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q09.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "지름에 대한 원주각은 직각이다.",
+        "interpretation": "∠ABC=90°, ∠ACB=65°이므로 같은 현 AB를 보는 x도65°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "∠ABC=90°, ∠ACB=65°이므로 같은 현 AB를 보는 x도65°이다.",
+          "finalAnswerChecked": "④"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_5c8d106ef06130fd6b1b3d5a077c3d5bcf904bbaf93a6e9796985213042a3d33",
+      "primaryMethod": "꼭짓점이 놓인 작은 호와 마주 보는 큰 호를 구별",
+      "decisiveStep": "C가 작은 호 위이므로 보는 호는360−100=260°, 원주각은130°이다.",
+      "rpmRecordId": "M3-RPM-163",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "작은 호·큰 호와 원주각은 Primary 내부의 관계다. 별도 CC나 수 범위 조건은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 보고 있는 호의 방향을 구별해야 한다. bucket 2: 큰 호로 한 번 바꿔 중심각 절반을 적용한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q10.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "점 C는 작은 호 AB 위에 있으므로",
+        "interpretation": "C가 작은 호 위이므로 보는 호는360−100=260°, 원주각은130°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "C가 작은 호 위이므로 보는 호는360−100=260°, 원주각은130°이다.",
+          "finalAnswerChecked": "④"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_8e4e0c9e46709fc774ce0bbf149f6747d6dbde24becb9e5ce82a365bdb0a460d",
+      "primaryMethod": "교차현 각의 호 합과 호의 비를 연립",
+      "decisiveStep": "호BC=t, 호AD=3t/2이면 (t+3t/2)/2=70에서 t=56°, x=t/2=28°이다.",
+      "rpmRecordId": "M3-RPM-168",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "호의 비·교차현 각·원주각의 연결은 복합 각 추론 Primary로 충분하다. 단순 일차 계산을 별도 CrossConcept로 부풀리지 않는다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 호의 비와 교차하는 현의 각을 연결하는 표준 응용이다. bucket 3: 호를 미지수로 정해 관계식을 구성해야 한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q11.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "각 x는 호 BC에 대한 원주각",
+        "interpretation": "호BC=t, 호AD=3t/2이면 (t+3t/2)/2=70에서 t=56°, x=t/2=28°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "호BC=t, 호AD=3t/2이면 (t+3t/2)/2=70에서 t=56°, x=t/2=28°이다.",
+          "finalAnswerChecked": "①"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_7cf99d4ab93514710a667f3dc91469a1e6eed9297051e28c5bf47ca49bd84825",
+      "primaryMethod": "접선의 수직으로 얻은 중심각과 원주각의 호를 합산",
+      "decisiveStep": "호DF=180−50=130°, 호ED=2×55=110°, 호FE=120°이므로 x=60°이다.",
+      "rpmRecordId": "M3-RPM-168",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "접선과 반지름의 수직은 호DF를 얻는 보조 개념이다. 나머지는 원주각의 복합 추론이며 별도 범위 제한은 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 내접원·외접원의 서로 다른 각 관계를 이어 계산한다. bucket 3: 전체360°에서 두 호를 빼는 표현을 선택해야 한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q12.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "두 반지름 OD, OF는 각각 접선에 수직이므로",
+        "interpretation": "호DF=180−50=130°, 호ED=2×55=110°, 호FE=120°이므로 x=60°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "호DF=180−50=130°, 호ED=2×55=110°, 호FE=120°이므로 x=60°이다.",
+          "finalAnswerChecked": "⑤"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_75355c8767cb2da934696d86cfbddb7d9e412dcac00e314ff1497642ce7f5fbf",
+      "primaryMethod": "내접사각형의 각과 두 외부 할선의 호 차를 연결",
+      "decisiveStep": "호AB+BC=230°, AD+CD=130°, BC−AD=60°이므로 AB−CD=40°이고 x=20°이다.",
+      "rpmRecordId": "M3-RPM-168",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "같은 원의 호 합·차와 원주각이 모두 복합 각 추론 Primary에 속한다. 외부 각이라는 상황을 수 범위 COND로 오기하지 않는다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 내접사각형 밖의 두 삼각형 또는 호 차를 관계화한다. bucket 3: 계산할 호의 차를 다른 두 관계에서 구성하는 전략 선택이 있다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q13.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "2\\cdot115^\\circ=230^\\circ",
+        "interpretation": "호AB+BC=230°, AD+CD=130°, BC−AD=60°이므로 AB−CD=40°이고 x=20°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "호AB+BC=230°, AD+CD=130°, BC−AD=60°이므로 AB−CD=40°이고 x=20°이다.",
+          "finalAnswerChecked": "③"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_5892cc4641db153fac680e4c2c44ff66e1c4e80e97c7a543a05df6011234f751",
+      "primaryMethod": "삼각형 ACD의 남은 각을 같은 현의 원주각으로 전달",
+      "decisiveStep": "∠ACD=180−115−40=25°이며 B,C가 현AD의 같은 쪽이므로 x=25°이다.",
+      "rpmRecordId": "M3-RPM-162",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "같은 호에 대한 원주각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "CC_TRIANGLE_ANGLE_SUM으로25°를 먼저 구한 뒤 Primary인 같은 호 원주각으로 옮긴다. 순서대로 놓인 네 점은 도형 정보이며 별도 수 범위 조건은 없다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 내각합과 같은 현 원주각을 연결한다. bucket 2: 보조선이 이미 주어져 있고 풀이 순서가 전형적이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q14.svg"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "삼각형 ACD에서 세 내각의 합은 180^\\circ이다.",
+        "interpretation": "∠ACD=180−115−40=25°이며 B,C가 현AD의 같은 쪽이므로 x=25°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "∠ACD=180−115−40=25°이며 B,C가 현AD의 같은 쪽이므로 x=25°이다.",
+          "finalAnswerChecked": "②"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_3f5294911836129b2e04251f037234c5a54696c3618900f5cc4c5d4c764daad9",
+      "primaryMethod": "접현각을 반대쪽 원주각으로 바로 대응",
+      "decisiveStep": "접선AT와 현AB의 각70°가 ∠ACB와 같으므로 x=70°이다.",
+      "rpmRecordId": "M3-RPM-167",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "접선과 현이 이루는 각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "접선과 현의 각과 대응 원주각의 동일성 한 개념만 필요하다. 그림의50°는 계산에 불필요하며 별도 CC로 만들지 않는다.",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 하: 접현각 정리의 기본 확인이다. bucket 1: 대응 현과 원주각이 바로 보이고 다른 조건은 필요하지 않다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q15.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같다.",
+        "interpretation": "접선AT와 현AB의 각70°가 ∠ACB와 같으므로 x=70°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "접선AT와 현AB의 각70°가 ∠ACB와 같으므로 x=70°이다.",
+          "finalAnswerChecked": "④"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_57101b2335ebda70b1b79a8669c2314bc9e81c658ee530504fff27709293616f",
+      "primaryMethod": "접현각으로 한 각을 정한 뒤 내접사각형의 대각 관계 적용",
+      "decisiveStep": "∠ABD=30°, ∠DAB=110°이므로 대각 x=180−110=70°이다.",
+      "rpmRecordId": "M3-RPM-168",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "삼각형 내각합으로110°를 구하는 부분만 별도 CC이며, 접현각과 내접사각형은 Primary의 복합각 관계다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 접현각과 내접사각형 성질을 연속 적용한다. bucket 2: 그림의 두 각에서 필요한 삼각형과 대각이 명확해 전략 분기가 없다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q16.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "접선과 현 AD가 이루는 30^\\circ",
+        "interpretation": "∠ABD=30°, ∠DAB=110°이므로 대각 x=180−110=70°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "∠ABD=30°, ∠DAB=110°이므로 대각 x=180−110=70°이다.",
+          "finalAnswerChecked": "④"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_a4cd8efac11a2dc5b37c4395bbce8d4804cce6acae9d525b8191aaf54511d894",
+      "primaryMethod": "작은 반원의 접점 반지름과 이등변삼각형 각 관계",
+      "decisiveStep": "∠CO′Q=90−28=62°, ∠O′CQ=59°, ∠ACQ=121°이므로 ∠AQC=31°이다.",
+      "rpmRecordId": "M3-RPM-161",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 각 구하기"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "작은 원의 두 반지름이 이루는 이등변삼각형과 마지막 삼각형 내각합이 독립적인 보조 개념이다. 큰 원은 배경이며 별도 원주각 CC를 넣지 않는다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 접선과 두 반원의 위치에서 필요한 작은 원만 추려 각을 잇는다. bucket 3: 보각을 골라 삼각형 AQC로 옮기는 방향 선택이 필요하다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q17.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "O'Q는 접선 AP에 수직이다.",
+        "interpretation": "∠CO′Q=90−28=62°, ∠O′CQ=59°, ∠ACQ=121°이므로 ∠AQC=31°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "∠CO′Q=90−28=62°, ∠O′CQ=59°, ∠ACQ=121°이므로 ∠AQC=31°이다.",
+          "finalAnswerChecked": "①"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_5891b807720b753c6f3cb1e8511385a6e0090281e57a36f5748477f8376842ad",
+      "primaryMethod": "등거리 현의 길이와 반현·이등변삼각형의 각 계산",
+      "decisiveStep": "AB=AC=6, AQ=BP=3, 두 밑각50°이므로 x=80°, y=50°이다.",
+      "rpmRecordId": "M3-RPM-157",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심거리와 현의 길이"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "등거리 현으로 AB=AC를 얻은 뒤 이등변삼각형 성질이 x,y를 결정한다. 소문항 개수만으로 난이도를 올리지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 같은 현 성질을 길이와 각으로 해석한다. bucket 2: 소문항은 많지만 각 질문은 같은 정형 구조의 직접 결과다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q18.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "중심에서 현 AC에 내린 수선은 현을 이등분하므로",
+        "interpretation": "AB=AC=6, AQ=BP=3, 두 밑각50°이므로 x=80°, y=50°이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AB=AC=6, AQ=BP=3, 두 밑각50°이므로 x=80°, y=50°이다.",
+          "finalAnswerChecked": "AQ=3 cm; AB=6 cm; BP=3 cm; y=50°; x=80°"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e2633929122014f08f73ba83ed1cbfe7cab09fca29ddf8b6c64f4849b52c7dc2",
+      "primaryMethod": "현의 수직이등분선에 놓인 중심에서 반지름 방정식 구성",
+      "decisiveStep": "r=d+3, r²=d²+81을 연립하면6d=72, d=12이므로 r=15이다.",
+      "rpmRecordId": "M3-RPM-156",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "현의 수직이등분선과 중심"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "crossConditionRationale": "현의 수직이등분선으로 직각삼각형을 만들고 CC_PYTHAGOREAN이 반지름 방정식의 근거가 된다. 양수는 길이의 기본 뜻이며 발문에 별도 수 범위는 없다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 파손된 원을 중심·반지름으로 모델링하는 표준 활용이다. bucket 3: r과 중심거리의 차3을 표현한 뒤 제곱항을 소거해야 한다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q19.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "현 AB의 수직이등분선은 중심 O를 지나므로",
+        "interpretation": "r=d+3, r²=d²+81을 연립하면6d=72, d=12이므로 r=15이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "r=d+3, r²=d²+81을 연립하면6d=72, d=12이므로 r=15이다.",
+          "finalAnswerChecked": "15 cm"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_27aaba5dbc7423765f163cc410ec3c031530a5fd122e0226e84ed8e2a817c4b6",
+      "primaryMethod": "네 꼭짓점의 같은 접선 조각을 합쳐 대변 길이 합 비교",
+      "decisiveStep": "AP=AS, BP=BQ, CQ=CR, DR=DS를 대입하면 AB+CD=AD+BC가 된다.",
+      "rpmRecordId": "M3-RPM-159",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "한 점에서 그은 두 접선"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "동일점의 두 접선 길이 성질과 합의 재배열만 쓰이므로 별도 CrossConcept가 필요하지 않다. 외접 상황은 4칸 condition에 명시하고 임의 COND를 생성하지 않는다.",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 각 꼭짓점의 접선 성질을 증명 문장으로 연결한다. bucket 2: 접점에서 네 변을 나누는 정형적인 직접 증명이며 답형만으로 올리지 않는다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q20.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "한 점에서 원에 그은 두 접선의 길이는 같다.",
+        "interpretation": "AP=AS, BP=BQ, CQ=CR, DR=DS를 대입하면 AB+CD=AD+BC가 된다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AP=AS, BP=BQ, CQ=CR, DR=DS를 대입하면 AB+CD=AD+BC가 된다.",
+          "finalAnswerChecked": "AB+CD=AD+BC"
+        }
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_ec846662bf38ff19a2a02aa91a9340705df91854c14ac798bf8d164f947e8e7b",
+      "primaryMethod": "동일 현을 일정한 각으로 보는 점의 자취를 원호로 설계",
+      "decisiveStep": "무대 양 끝AB를 보는 원주각60°인 큰 호를 택하면 모든 위치에서 촬영각60°이다. 중심각은2×60=120°, 반지름은10/√3이다.",
+      "rpmRecordId": "M3-RPM-162",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "같은 호에 대한 원주각"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_UPPER_BOUND"
+      ],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "필수 목표는 레일 모양 설명이므로 반지름을 계산하는 삼각비는 선택적 확장이다. Primary를 보조 계산으로 대체하거나 불필요 CC를 추가하지 않는다. 촬영각의60° 상한은 COND_UPPER_BOUND에 해당한다. 촬영각이 60°를 넘지 않아야 하므로 COND_UPPER_BOUND를 적용한다. 원호 위 모든 위치라는 제약은 4-slot 양화로 보존한다.",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 중: 원주각의 일정성으로 실생활 경로를 설계한다. bucket 3: 촬영각 조건을 고정 현을 보는 원호의 자취로 바꾸는 표현 선택이 핵심이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q21-r1.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "이 큰 호 위의 어느 위치에서도 현 AB를 보는 원주각은 60^\\circ이다.",
+        "interpretation": "무대 양 끝AB를 보는 원주각60°인 큰 호를 택하면 모든 위치에서 촬영각60°이다. 중심각은2×60=120°, 반지름은10/√3이다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "무대 양 끝AB를 보는 원주각60°인 큰 호를 택하면 모든 위치에서 촬영각60°이다. 중심각은2×60=120°, 반지름은10/√3이다.",
+          "finalAnswerChecked": "무대 양 끝을 잇는 현이 10 m이고 그 현을 보는 원주각이 60°가 되는 원의 큰 호"
+        },
+        "sourceExplanationNote": "중심각은 같은 호의 원주각의 두 배인 2×60°=120°이다. 현 길이10=2R sin60°에서 R=10/√3도 확인했다. 기존 해설의 180−60 표기는 일반 근거로 부정확하지만 제시 원호와 최종 답은 타당하다."
+      },
+      "debts": []
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_0f68c0a716d12f6afefceba4ee0e580352eb2b128bd249ad336a8020160dcf05",
+      "primaryMethod": "같은 지름을 보는 두 직각을 찾아 내접사각형 여섯 종류 분류",
+      "decisiveStep": "AB,BC,CA,AP,BP,CP 각각을 지름으로 보는 직각쌍에서 ABDE,BCEF,CADF,AEPF,BDPF,CDEP를 얻는다.",
+      "rpmRecordId": "M3-RPM-166",
+      "rpmPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "네 점이 한 원 위에 있을 조건"
+      },
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "crossConditionRationale": "수직인 높이를 원에 내접할 조건으로 전환하는 것이 Primary 자체이며 단순 조합 공식을 쓰지 않는다. 정수·범위 조건 대신 실제 수선과 교점 조건을4칸에 남긴다.",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "학습 level 상: 높이 교점까지 포함한 여러 점에서 모든 가능한 원내접 구성을 체계적으로 찾아야 한다. bucket 4: 지름 후보를 삼각형 변과 꼭짓점–수심 선분으로 분류해 누락을 막는 구조화가 중심이다.",
+      "imageRead": {
+        "status": "INSPECTED",
+        "paths": [
+          "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/20_이수중_2학기_기말_중3_기출/q22.png"
+        ],
+        "inspection": "문제 그림을 실제 열어 점의 순서·직각/등변 표시·수치를 확인했다. q14 SVG는 PNG로 렌더링하여 확인했다."
+      },
+      "solutionEvidence": {
+        "quote": "같은 선분을 지름으로 보는 두 직각을 가진다.",
+        "interpretation": "AB,BC,CA,AP,BP,CP 각각을 지름으로 보는 직각쌍에서 ABDE,BCEF,CADF,AEPF,BDPF,CDEP를 얻는다."
+      },
+      "solutionCheck": {
+        "status": "VERIFIED_FINAL",
+        "scope": "metadata-routing mathematical check; not R1/R2/R3 blind certification",
+        "independentVerification": {
+          "performed": true,
+          "reviewer": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+          "at": "2026-11-14T11:01:00.086904+00:00",
+          "computation": "AB,BC,CA,AP,BP,CP 각각을 지름으로 보는 직각쌍에서 ABDE,BCEF,CADF,AEPF,BDPF,CDEP를 얻는다.",
+          "finalAnswerChecked": "ABDE, BCEF, CADF, AEPF, BDPF, CDEP"
+        }
+      },
+      "debts": []
+    }
+  ]
+}
