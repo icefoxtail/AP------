@@ -1,0 +1,1846 @@
+{
+  "schemaVersion": "m1-s1-cross-worker-proposals-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "author": "META_C_RESUME",
+  "createdAt": "2026-11-14T13:58:03.758364+00:00",
+  "scope": "Only A new definitions, parent inclusion, exact leaf parents, explicit binding declarations and B external parent refs, plus root-requested Maesan17 new optional-part structure (22–24) and provisional q14 difficulty boundary; no item re-solving, previous full reviews or prior 36 samples repeated.",
+  "status": "CROSS_REVIEW_COMPLETE_WITH_ROOT_INTEGRATION_RECOMMENDATIONS",
+  "reviewedArtifacts": [
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-a/23_동산중_1학기_중간_중1_기출/registration-proposals.json",
+      "sha256": "05caad379fdad93ca37da24c26791dfe34cae4c2759a23f81dc6d2deae22c356"
+    },
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-a/19_연향중_1학기_기말_중1_수학/registration-proposals.json",
+      "sha256": "0e86464019b3b2a96eedb653babab6ee279376a08262a69bd4543bccc3d7b905"
+    },
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+    }
+  ],
+  "canonicalEvidence": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+    }
+  ],
+  "proposalChecks": [
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-COMMON-DIVISOR",
+      "kind": "PROBLEM_TYPE",
+      "proposedKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+      "supportingQuestionUids": [
+        "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "여러 정수에 대한 나눗셈의 정수성 또는 나머지 조건을 같은 미지 자연수의 공약수 조건으로 바꾸어 허용값의 최댓값·개수·집합을 결정한다. 직접 같은 수의 물건을 배분하는 상황 없이도 분모 또는 제수의 역할을 식으로 해석한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_GCD_DIVISOR_APPLICATION",
+          "status": "ACTIVE",
+          "definition": "The goal is the largest number of equal recipients with no remainder; the greatest common divisor gives the maximum.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "기존 정의의 같은 수의 물건을 최대 인원에게 배분하는 서사와 다르게, 미지 제수의 정수성/나머지 제한이 결정적이다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-DISTINCT-COND",
+      "kind": "CONDITION",
+      "proposedKey": "COND_PAIRWISE_DISTINCT_NUMBERS",
+      "supportingQuestionUids": [
+        "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+      ],
+      "status": "EXPLICIT_INPUT_CONDITION_DRAFT_NOT_RESULT_TAG",
+      "definition": "주어진 수 또는 선택할 수들이 서로 다르거나 중복 없이 선택된다고 문항이 명시한다. 숫자 자릿수·평면의 점으로 범위를 한정하지 않는다.",
+      "exclusions": [
+        "풀이자가 편의상 나눈 경우",
+        "원문에 없는 중복 금지"
+      ],
+      "reason": "문항에 명시된 입력 제한으로만 사용하도록 정의·제외 범위가 분리되어 있다. 숫자·점·자릿수의 기존 한정 조건을 일반 수로 임의 확장하지 않았다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-FACTOR-SELECT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_PRIME_FACTORIZATION_SELECT_REPRESENTATION",
+      "supportingQuestionUids": [
+        "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "status": "ACTIVE",
+        "definition": "The task asks which symbolic equality correctly expresses exponentiation or prime factorization; the defining strategy is to verify each equality against multiplication and prime-power rules.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "한 자연수에 대해 제시된 여러 곱 표현 중 모든 밑이 소수이고 곱의 값이 원수와 같은 표현을 선택한다. 합성수 밑이나 잘못된 지수는 소수 판정과 곱 검산으로 배제한다.",
+      "reason": "기존 소인수분해 진술 판정 부모의 symbolic equality/prime factorization 정의에 포함된다. C의 순수 소인수분해 등식 감사와 입력 수의 개수만 달라 하나의 자식 정의로 통합할 수 있다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-FRACTION-DIVISOR",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT",
+      "supportingQuestionUids": [
+        "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "A_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "key": "PT_M1_COMMON_DIVISOR_CONDITION",
+        "definition": "여러 정수에 대한 나눗셈의 정수성 또는 나머지 조건을 같은 미지 자연수의 공약수 조건으로 바꾸어 허용값의 최댓값·개수·집합을 결정한다. 직접 같은 수의 물건을 배분하는 상황 없이도 분모 또는 제수의 역할을 식으로 해석한다."
+      },
+      "definition": "고정된 자연수들을 같은 미지 자연수로 나눈 몫이 모두 자연수라는 조건을 미지수의 공약수 조건으로 바꾼다. 최댓값이면 최대공약수, 개수이면 최대공약수의 약수를 사용한다.",
+      "reason": "같은 미지 제수로 나눈 몫의 자연수 조건을 공약수 조건으로 변환하므로 A의 새 공약수 조건 부모에 정확히 포함된다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-GCD-UNKNOWN-NUMBER",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MISSING_NUMBER",
+      "supportingQuestionUids": [
+        "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "status": "ACTIVE",
+        "definition": "The task recovers unknown exponents and a prime factor from simultaneous gcd and lcm specifications; min/max exponent matching is decisive.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "알려진 자연수들과 전체의 최대공약수·최소공배수가 주어질 때, 미지 자연수의 각 소인수 지수에 최솟값·최댓값 조건을 적용한다. 알려진 수들이 이미 담당한 지수와 미지수가 반드시 담당할 지수를 구분하여 허용값을 나열하거나 센다.",
+      "reason": "동시 최대공약수·최소공배수 조건을 소인수 지수의 최소·최대로 바꿔 미지 수를 복원하는 자식이다. 미지 수의 표현 방식 차이는 동일한 지수 제약 구조로 처리된다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-GEAR-PERIOD",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_GEAR_RETURN",
+      "supportingQuestionUids": [
+        "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+        "definition": "서로 다른 정수 주기로 반복되는 둘 이상의 현상이 함께 발생하는 시각이나 횟수를 공배수 조건으로 결정한다.",
+        "exclusions": [
+          "한 반복단위의 위치·잔여 개수",
+          "정육면체 채우기의 길이·단위 개수"
+        ]
+      },
+      "definition": "각 톱니바퀴의 처음 표식이 다시 함께 맞물리는 최소 통과 톱니 수를 두 톱니 수의 최소공배수로 정하고, 요구한 바퀴의 톱니 수로 나누어 회전 수를 구한다.",
+      "reason": "최소공배수로 표식의 최초 재맞물림을 정하는 구조가 B 주기 부모에 포함된다. B/C FIRST_COINCIDENCE와 표식 회전수 환산 여부의 차이를 명시한 통합 정의를 권고한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-LEAF-CUBE-NET",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3"
+      ],
+      "status": "REUSED_ROOT_PREVIOUS_CROSSCHECK_NOT_REPEATED",
+      "reason": "root가 cube 부모·최종해설 오표기 수정을 검증했으므로 이 항목의 같은 검토를 반복하지 않았다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-LEAF-EQUAL-SUM",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2"
+      ],
+      "status": "EXACT_PARENT_LEAF_PROPOSAL_CONFIRMED",
+      "parentChecks": [
+        {
+          "curriculum": "2015",
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "등합 배치에서 빈칸 수 복원",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        },
+        {
+          "curriculum": "2022",
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "등합 배치에서 빈칸 수 복원",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        }
+      ]
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-LEAF-OPERATION-LAW",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805"
+      ],
+      "status": "EXACT_PARENT_LEAF_PROPOSAL_CONFIRMED",
+      "parentChecks": [
+        {
+          "curriculum": "2015",
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": null,
+          "newL3IsExplicitProposal": "연산법칙",
+          "proposedL4": "연산법칙과 계산 변형의 대응",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+          "existingL3EvidencePath": null
+        },
+        {
+          "curriculum": "2022",
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": null,
+          "newL3IsExplicitProposal": "연산법칙",
+          "proposedL4": "연산법칙과 계산 변형의 대응",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+          "existingL3EvidencePath": null
+        }
+      ]
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-MIXED-ORDER",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_MIXED_ORDER",
+      "supportingQuestionUids": [
+        "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+      ],
+      "status": "INCLUDED_IN_PARENT_WITH_MERGE_NOTE",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+        "definition": "정수와 유리수로 이루어진 수식에서 부호, 거듭제곱, 괄호 및 사칙연산의 순서를 적용하거나 유효한 연산법칙으로 변형하여 수식의 값을 구한다.",
+        "exclusions": [
+          "연산순서만 고르는 과제",
+          "법칙명 판별",
+          "후보 계산결과의 상이값 선택"
+        ]
+      },
+      "definition": "부호 있는 유리수의 식에서 거듭제곱, 괄호, 곱셈·나눗셈, 덧셈·뺄셈의 우선순위를 적용하여 수식값 또는 다음 계산 단계를 결정한다. 원문에 없는 연산이나 공통인수 추출은 요구하지 않는다.",
+      "reason": "수식값 계산은 B의 새 부모에 포함된다. 제안문 중 다음 계산 단계를 결정한다는 부분은 부모의 연산순서만 고르는 과제 제외와 충돌할 수 있으므로 통합 정의에서 제거하고 순수 순서 선택은 OPERATION_PRECEDENCE_JUDGMENT에 둔다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-NET-RECIPROCAL",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_RECIPROCAL",
+      "supportingQuestionUids": [
+        "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3"
+      ],
+      "status": "REUSED_ROOT_PREVIOUS_CROSSCHECK_NOT_REPEATED",
+      "reason": "root가 cube 부모·최종해설 오표기 수정을 검증했으므로 이 항목의 같은 검토를 반복하지 않았다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-NOTATION",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+      "supportingQuestionUids": [
+        "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "곱셈·나눗셈 기호를 포함한 문자식을 계수·거듭제곱·분수 표기 규칙에 따라 나타내거나 제시된 등가 표기를 판정한다. 생활 수량 문장을 식으로 번역하는 문제와 구분한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "status": "ACTIVE",
+          "definition": "The goal is to validate symbolic translations of everyday quantities; compare each expression with its verbal meaning.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+          "status": "ACTIVE",
+          "definition": "The template tests omitted × and ÷ signs in expressions with letters, negatives, and coefficients.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "기존 OPERATION_NOTATION 골격의 의미는 보존하며 생활 수량 번역으로 한정된 부모를 변경하지 않는 add-only 분리이다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-NUMSYS-CLAIMS",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_GENERAL",
+      "supportingQuestionUids": [
+        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+        "definition": "자연수·정수·유리수의 포함 관계, 부호 분류, 원소의 존재와 개수에 관한 진술을 정의에 따라 판정한다.",
+        "exclusions": [
+          "절댓값만의 성질 판별",
+          "소수·소인수분해·서로소 등이 섞인 혼합 진술"
+        ]
+      },
+      "definition": "자연수·정수·유리수의 포함 관계, 양수·음수·0의 분류를 사용하여 제시된 일반 진술의 참거짓을 판정한다.",
+      "reason": "B 부모의 정의·포함관계·부호·존재 진술 범위에 포함된다. B CORE 및 C NUMBER_SYSTEM_CLAIMS와 핵심 절차가 같다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-PRIME-COND",
+      "kind": "CONDITION",
+      "proposedKey": "COND_PRIME_VARIABLE",
+      "supportingQuestionUids": [
+        "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f"
+      ],
+      "status": "EXPLICIT_INPUT_CONDITION_DRAFT_NOT_RESULT_TAG",
+      "definition": "문항에서 특정 수 또는 변수가 소수라고 명시한다. 1보다 큰 자연수이면서 양의 약수가 1과 자신뿐이라는 제한을 사용한다.",
+      "exclusions": [
+        "소인수분해 풀이 중 우연히 얻은 소수",
+        "소수 조건이 원문에 없는 변수"
+      ],
+      "reason": "문항에 명시된 입력 제한으로만 사용하도록 정의·제외 범위가 분리되어 있다. 숫자·점·자릿수의 기존 한정 조건을 일반 수로 임의 확장하지 않았다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-PRIME-LIST",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "supportingQuestionUids": [
+        "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_BOUNDED_PRIME_COUNT",
+          "status": "ACTIVE",
+          "definition": "The goal is the number of primes in a closed interval; prime testing within the stated bounds is the method.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+          "status": "ACTIVE",
+          "definition": "The requested result is the set of true statements about primes and composites; the decisive strategy is to check each definition-based claim.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "폐구간 전체의 소수 개수가 아니며, 소수에 관한 일반 진술의 참 집합도 아니다. 입력은 열거된 수이고 출력은 해당 목록의 개수이다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-SIGNED-SUM",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_ADD_SUBTRACT",
+      "supportingQuestionUids": [
+        "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+        "definition": "정수와 유리수로 이루어진 수식에서 부호, 거듭제곱, 괄호 및 사칙연산의 순서를 적용하거나 유효한 연산법칙으로 변형하여 수식의 값을 구한다.",
+        "exclusions": [
+          "연산순서만 고르는 과제",
+          "법칙명 판별",
+          "후보 계산결과의 상이값 선택"
+        ]
+      },
+      "definition": "부호 있는 유리수의 덧셈·뺄셈을 뺄셈의 덧셈 변환, 통분 및 필요한 묶음으로 계산한다. 소수 변환이나 공통인수 추출을 필수 단계로 요구하지 않는다.",
+      "reason": "B 일반 산술 부모에 포함되며 C SIGNED_SUM과 동일한 합·차 구조다. 소수의 포함 여부를 별도 템플릿으로 나누지 않는다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-SINGLE-QUANTITY",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SINGLE_CONTEXT",
+      "supportingQuestionUids": [
+        "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "status": "ACTIVE",
+        "definition": "The goal is to validate symbolic translations of everyday quantities; compare each expression with its verbal meaning.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "한 상황에서 주어진 단가·개수·할인율·전체금액 등의 관계를 문자식으로 옮기고, 요구한 수량에 맞는 식을 생성하거나 선택한다.",
+      "reason": "실제 수량 문장을 문자식과 대응시키므로 기존 translation 부모 범위에 포함된다. C SINGLE_QUANTITY_FORMULA와 소재·용어 차이만 있어 통합한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-SUBSET-MAX",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_SUBSET_PRODUCT_EXTREMUM_MAXIMUM",
+      "supportingQuestionUids": [
+        "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+        "definition": "주어진 유리수 집합에서 정해진 개수의 수를 선택할 때 가능한 곱의 부호와 크기를 비교하여 요구한 최댓값 또는 최솟값을 구한다.",
+        "exclusions": [
+          "최대곱과 최소곱을 합산하는 기존 특화 유형"
+        ]
+      },
+      "definition": "주어진 유한 유리수 집합에서 정해진 개수의 서로 다른 원소를 선택하여 곱을 최대로 한다. 곱의 부호와 크기로 후보를 제한하거나 가능한 조합을 비교한다.",
+      "reason": "B 부모의 고정 개수 선택 곱 극값과 일치하며 B가 같은 키로 제시한 MAXIMUM과 통합한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "A-UNKNOWN-OPERAND",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_ARITHMETIC_UNKNOWN_OPERAND",
+      "supportingQuestionUids": [
+        "qid_v1_1c933c43526ab46d73371168ba8a41c0f2a8465bca8de007ffcd2221a33b289a"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "완성된 수식 등식에서 빈칸으로 표시된 피연산자를 알려진 유리수의 연산과 역연산으로 복원한다. 잘못 수행한 계산 사건이나 새로운 일차방정식 모델링을 전제로 하지 않는다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "status": "ACTIVE",
+          "definition": "The target is the original number after an operation was performed incorrectly; inverse-operation reasoning recovers it.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_ISOLATE_UNKNOWN_FACTOR",
+          "status": "ACTIVE",
+          "definition": "The template has one unknown multiplicand and a fixed squared rational divisor, with a signed target value.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "기존 TPL의 미지 인수 복원 골격을 재사용하되 잘못 계산한 원래 수라는 기존 부모의 서사 요건은 이 문항에 없다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "B-EVAL",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "supportingQuestionUids": [
+        "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+        "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+      ],
+      "status": "EXTERNAL_PARENT_RESOLVED",
+      "definitionAuthority": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+      },
+      "parentDefinition": "정수와 유리수로 이루어진 수식에서 부호, 거듭제곱, 괄호 및 사칙연산의 순서를 적용하거나 유효한 연산법칙으로 변형하여 수식의 값을 구한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "B-NUMSYS",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+      ],
+      "status": "EXTERNAL_PARENT_RESOLVED",
+      "definitionAuthority": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+      },
+      "parentDefinition": "자연수·정수·유리수의 포함 관계, 부호 분류, 원소의 존재와 개수에 관한 진술을 정의에 따라 판정한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "B-PERIOD",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "supportingQuestionUids": [
+        "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1"
+      ],
+      "status": "EXTERNAL_PARENT_RESOLVED",
+      "definitionAuthority": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+      },
+      "parentDefinition": "서로 다른 정수 주기로 반복되는 둘 이상의 현상이 함께 발생하는 시각이나 횟수를 공배수 조건으로 결정한다."
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "proposalId": "B-SUBSET",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+      "supportingQuestionUids": [
+        "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+      ],
+      "status": "EXTERNAL_PARENT_RESOLVED",
+      "definitionAuthority": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+      },
+      "parentDefinition": "주어진 유리수 집합에서 정해진 개수의 수를 선택할 때 가능한 곱의 부호와 크기를 비교하여 요구한 최댓값 또는 최솟값을 구한다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-ADDITION-DIAGRAM-EQUATION",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_LINEAR_EQUATION_ADDITION_DIAGRAM",
+      "supportingQuestionUids": [
+        "qid_v1_2166af9066c296de1c8a8f33ebaf1be59be6a492d7d59f4e4cbc903bde48c0b7"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "status": "ACTIVE",
+        "definition": "등식의 성질과 이항을 보존하며 일차방정식의 해를 확인하거나 구한다.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "아래 칸이 연결된 위 칸들의 합이라는 명시된 도식 규칙을 단계별 일차식으로 나타낸 뒤 최종 칸의 값과 같게 놓아 일차방정식을 푼다.",
+      "reason": "명시된 합 도식을 유한 치환하여 일차방정식을 얻고 푸는 자식이므로 기존 일차방정식 풀이 부모의 범위에 포함된다. 수열의 미지 규칙 추론과 구별한 범위가 적절하다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-COMMON-PROPORTION-POINT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_PROPORTION_PARAMETER_COMMON_POINT",
+      "supportingQuestionUids": [
+        "qid_v1_0db0a30ffd5cb6ed1c4a34c256717eefaa2aadf355922ab43773693c908737e1"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "status": "ACTIVE",
+        "definition": "Find direct- and inverse-proportion constants from plotted points.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "정비례 그래프와 반비례 그래프의 공통점에서 알려진 좌표 성분 및 한 관계식으로 다른 성분을 구한 다음 다른 그래프의 비례상수를 결정한다. 구한 좌표·상수의 요청된 결합값을 계산한다.",
+      "reason": "그래프 점의 좌표를 보완하고 비례상수를 구하는 구조가 plotted points→constants 부모 범위에 포함된다. 두 독립 그래프 상수를 각각 구하는 자식과 구별한 공통점 연쇄가 명확하다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-CONTAINER-TO-GRAPH",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_CONTAINER_SHAPE_TO_WATER_LEVEL_GRAPH",
+      "supportingQuestionUids": [
+        "qid_v1_1869550c8e2c9ed1836d811da08ec7a1de017af03c9b0ec4e3dca74c90bb79e5"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "일정한 시간당 유입량 조건에서 용기의 높이별 수평 단면 넓이와 수위 증가율의 반대 관계를 이용하여 시간에 따른 수위 그래프를 선택한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+          "status": "ACTIVE",
+          "definition": "일정한 유량에서 수위 그래프를 해석해 용기의 단면 변화를 추론한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+          "status": "ACTIVE",
+          "definition": "Check extrema, repeated values, and level crossings on a graph.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "기존 그래프→용기 형상의 역추론과 입력·출력이 반대이다. 주어진 그래프의 극값이나 반복값을 읽는 해석도 아니다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-CONTEXT-DIRECT-CLASSIFICATION",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_CONTEXT_PROPORTION_CLASSIFICATION",
+      "supportingQuestionUids": [
+        "qid_v1_830654b83fbd70b9ef20a7ebb8980a441542a238029a90375bc5b8e82c381131"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "생활 상황의 두 수량 관계를 식이나 일정한 비율로 해석하여 정비례인지 판정한다. 초기량이 있는 관계와 곱이 일정한 반비례 관계를 구별한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+          "status": "ACTIVE",
+          "definition": "대수식으로 주어진 두 변수 관계를 정비례인지 판정하고 개수를 구한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "이미 제시된 대수식의 분류·개수와 달리 생활 수량의 관계를 먼저 추출하는 것이 필수이며 최종 응답 개수를 고정하지 않는다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-DIRECT-GRAPH-ARRIVAL",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_PROPORTION_PARAMETER_GRAPH_ARRIVAL_COMPARISON",
+      "supportingQuestionUids": [
+        "qid_v1_7bbb86c23f92b599ec2139d15286cb948432cbb0fd39ef6a86e8300934c8d46e"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "status": "ACTIVE",
+        "definition": "Find direct- and inverse-proportion constants from plotted points.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "원점을 지나는 두 거리·시간 직선의 표시점에서 각각 정비례상수를 구해 관계식을 세운 뒤, 같은 목적 거리의 도달 시간을 각각 구하여 시간 차를 계산한다. 단위가 다르면 먼저 일치시킨다.",
+      "reason": "그래프의 표시점에서 정비례상수를 구하고 같은 거리의 시간을 계산한다. 상수 복원이 주된 선행 구조로 부모 범위에 포함되며 도착시간 비교 자식의 추가 목표가 구체적이다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-EQUALITY-RECOGNITION",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_EQUALITY_RECOGNITION",
+      "supportingQuestionUids": [
+        "qid_v1_17618e0f93314e4d503fca0fe5e9c2cd667d3aae8643d7c70e2161c7e29c2036"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "식이나 부등식 등이 섞여 제시될 때 등호로 두 식이 같음을 나타낸 표현을 등식으로 식별한다. 주어진 등식의 해를 구하거나 항등식·방정식 유형을 판정하는 단계는 요구하지 않는다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "status": "ACTIVE",
+          "definition": "등식의 성질과 이항을 보존하며 일차방정식의 해를 확인하거나 구한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "해 확인·계산 전의 등식 정의 확인이므로 방정식 풀이 또는 등식 유형 분류와 구분한다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-INVERSE-CONSERVATION",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_INVERSE_PROPORTION_CONSERVATION_MODEL",
+      "supportingQuestionUids": [
+        "qid_v1_44243c43854b30f5c9613d3db733225162044fade2d91a8018058be38d5aa684"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "고정된 총량을 두 변수가 나누어 담당하는 상황에서 두 수량의 곱이 일정함을 식으로 나타내 반비례 관계식을 세운다. 톱니 수와 회전 수는 통과하는 톱니 수를 같은 총량으로 놓는다.",
+      "nearestExisting": [
+        {
+          "key": "PT_LCM_APPLICATION",
+          "status": "ACTIVE",
+          "definition": "주어진 여러 길이의 공배수 조건을 이용해 가장 작은 정육면체의 변 길이를 정하고 반복 단위의 개수를 구한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_LCM_APPLICATION_GEAR_CYCLE",
+          "status": "ACTIVE",
+          "definition": "The template turns the first common tooth engagement count into a requested number of rotations for one specified gear.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_LCM_APPLICATION",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+          "status": "ACTIVE",
+          "definition": "Find direct- and inverse-proportion constants from plotted points.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "처음 다시 만나는 시점이나 최소공배수 계산을 요구하지 않으며 그래프의 좌표에서 상수를 읽는 문제도 아니다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-INVERSE-INTEGER-COUNT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_COUNT_FROM_EQUATION",
+      "supportingQuestionUids": [
+        "qid_v1_2f0876982821e650277bf473c7985d9f828d34cdcf2136c1cb2c1c5359b2db23"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
+        "status": "ACTIVE",
+        "definition": "반비례 그래프 위에서 정수 부호 제한을 만족하는 점을 모두 구하는 유형이다. M1 semantic L3 ACTIVE binding이 없어 proposal로 남긴다.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "0이 아닌 정수 비례상수가 식으로 주어진 반비례 관계에서 좌표곱이 상수인 정수 순서쌍을 양·음 약수쌍으로 분류하여 모두 세거나 나열한다. x=0은 식의 정의역에서 제외한다.",
+      "reason": "정수 좌표의 약수쌍을 모두 열거한 뒤 개수를 내는 것은 기존 모든 점을 구하는 부모 범위에 포함된다. 그래프에서 상수를 읽는 단계가 없는 자식이 필요하지만 B의 GIVEN_CONSTANT와 같아 대표키 통합을 권고한다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-INVERSE-POINT-MEMBERSHIP",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_PROPORTION_PARAMETER_INVERSE_POINT_MEMBERSHIP",
+      "supportingQuestionUids": [
+        "qid_v1_79b29c89fd845a5363b77e4b577e91dfc688a2c29e45cfdb382dc3ef175f257f"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "status": "ACTIVE",
+        "definition": "Find direct- and inverse-proportion constants from plotted points.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "반비례 그래프에 표시된 한 점의 두 좌표의 곱으로 비례상수를 정한 후 후보 점들의 좌표곱이 그 상수와 같은지 판정한다.",
+      "reason": "제안한 부모에는 포함된다. 다만 전역 기존 그래프 성질 PT/TPL의 실제 근거에도 xy 일정→점 소속 판정이 이미 있어 신규 TPL보다 ACTIVE 쌍 재사용을 우선 권고한다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-KNOWN-PROPORTION-COORDINATE",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_PROPORTION_COORDINATE_EVALUATION",
+      "supportingQuestionUids": [
+        "qid_v1_89d808212e23b415fc0dbeee5c6023ae84f9040e56e38b4913bc09938ddec8a3"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "정비례 또는 반비례 관계식과 그 그래프 위 점의 한 좌표 성분이 주어질 때 식에 대입하여 나머지 성분을 결정하고 요청한 간단한 결합값을 구한다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+          "status": "ACTIVE",
+          "definition": "Find direct- and inverse-proportion constants from plotted points.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+          "status": "ACTIVE",
+          "definition": "Find a, solve p,q,r, then multiply.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "상수가 이미 알려져 있어 그래프의 점에서 비례상수를 복원하는 기존 부모의 방향과 다르다. 표의 비례상수 및 세 값의 곱도 요구하지 않는다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-LEAF-IDENTITY-COEFFICIENT",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_3effa70c3b7da0bb7b6d14c1616aa700851d701fddd6cd47a6662bd74cd61364"
+      ],
+      "status": "EXACT_PARENT_LEAF_PROPOSAL_CONFIRMED",
+      "parentChecks": [
+        {
+          "curriculum": "2015",
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "등식과 방정식"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "항등식의 계수 비교",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        },
+        {
+          "curriculum": "2022",
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "등식과 방정식"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "항등식의 계수 비교",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        }
+      ]
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-LEAF-POLYNOMIAL-STRUCTURE",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11"
+      ],
+      "status": "EXACT_PARENT_LEAF_PROPOSAL_CONFIRMED",
+      "parentChecks": [
+        {
+          "curriculum": "2015",
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": null,
+          "newL3IsExplicitProposal": "다항식의 기본 구조",
+          "proposedL4": "다항식의 항·계수·차수",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+          "existingL3EvidencePath": null
+        },
+        {
+          "curriculum": "2022",
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": null,
+          "newL3IsExplicitProposal": "다항식의 기본 구조",
+          "proposedL4": "다항식의 항·계수·차수",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+          "existingL3EvidencePath": null
+        }
+      ]
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-LEAF-PROPORTION-GRAPH-PROPERTY",
+      "kind": "RPM_LEAF",
+      "proposedKey": null,
+      "supportingQuestionUids": [
+        "qid_v1_df3a26b09b5094d51111e523f68f09dcc6ff82503197362dd05707d8560974c8"
+      ],
+      "status": "EXACT_PARENT_LEAF_PROPOSAL_CONFIRMED",
+      "parentChecks": [
+        {
+          "curriculum": "2015",
+          "parentPath": {
+            "curriculum": "2015",
+            "scope": "M1-1",
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "정비례와 반비례",
+            "l3": "관계 해석"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "정비례·반비례 그래프의 공통 부호 성질",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        },
+        {
+          "curriculum": "2022",
+          "parentPath": {
+            "curriculum": "2022",
+            "scope": "M1-1",
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "정비례와 반비례",
+            "l3": "관계 해석"
+          },
+          "existingL1L2Confirmed": true,
+          "existingL3Confirmed": true,
+          "newL3IsExplicitProposal": null,
+          "proposedL4": "정비례·반비례 그래프의 공통 부호 성질",
+          "officialLeafExistenceClaimed": false,
+          "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+          "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+        }
+      ]
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-NATURAL-ROOT-PARAMETER",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_LINEAR_EQUATION_NATURAL_ROOT_PARAMETER",
+      "supportingQuestionUids": [
+        "qid_v1_a4fa318f14a3726a647f9f03a674f5de003b2d93dd5cdd8107e39fbf1601a4b9"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "EXISTING_ACTIVE_PARENT",
+      "parentEvidence": {
+        "key": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "status": "ACTIVE",
+        "definition": "등식의 성질과 이항을 보존하며 일차방정식의 해를 확인하거나 구한다.",
+        "ownerPack": "MIDDLE1",
+        "parentProblemTypeKey": null,
+        "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+      },
+      "definition": "매개변수를 포함한 일차방정식을 풀어 해를 매개변수의 식으로 나타내고, 해와 매개변수에 명시된 자연수 조건을 함께 적용하여 허용값 또는 최소값을 구한다.",
+      "reason": "방정식의 해를 매개변수식으로 정리한 뒤 명시된 자연수 조건으로 제한하는 자식이다. 기존 풀이 부모를 사용하고 조건 적용이라는 차이를 자식에 명시한 판단이 타당하다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-POLY-AUDIT",
+      "kind": "TEMPLATE",
+      "proposedKey": "TPL_M1_POLYNOMIAL_STRUCTURE_TERM_DEGREE_AUDIT",
+      "supportingQuestionUids": [
+        "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11"
+      ],
+      "status": "INCLUDED_IN_PARENT",
+      "parentStatus": "B_PROPOSED_PARENT_RESOLVED",
+      "parentEvidence": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9",
+        "key": "PT_M1_POLYNOMIAL_STRUCTURE",
+        "definition": "다항식의 항, 차수, 각 차수의 계수 및 상수항을 식의 구조에서 확인하고 주어진 조건이나 진술의 참거짓을 판정한다.",
+        "exclusions": [
+          "전개·계산이 주목표인 다항식 연산",
+          "일차식 계산 전용 기존 유형"
+        ]
+      },
+      "definition": "제시된 다항식의 항을 부호와 함께 나누어 각 항의 계수·차수, 상수항 및 다항식의 차수에 관한 진술을 판정한다. 문자의 최고차수가 1일 것을 전제하지 않는다.",
+      "reason": "B의 일반 다항식 구조 부모가 차수·계수·상수항 진술을 모두 포함한다. B/C TERM_COEFFICIENT_AUDIT와 골격이 같아 통합 가능하다."
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "A-SIGN-TO-QUADRANT",
+      "kind": "PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedKey": "PT_M1_SIGN_CONSTRAINT_POINT_QUADRANT",
+      "supportingQuestionUids": [
+        "qid_v1_dde9d57972e584de2aa18bb2f519c89262b69aedcca6ada1695eafc74d97b09a"
+      ],
+      "status": "ADD_ONLY_DRAFT_SCOPE_EXPLICIT",
+      "definition": "좌표 변수의 곱·차·몫 등의 부호 조건에서 가능한 변수 부호를 정한 뒤, 해당 변수의 부호 변환을 적용한 점이 속하는 사분면을 결정한다. 시작점의 사분면이 주어질 것을 전제하지 않는다.",
+      "nearestExisting": [
+        {
+          "key": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+          "status": "ACTIVE",
+          "definition": "주어진 사분면의 부호조건을 식의 부호로 전파하여 변환된 점이 속하는 사분면을 고른다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_M1_QUADRANT_SIGN_DEDUCTION_GRAPH_SIGN_QUADRANTS",
+          "status": "ACTIVE",
+          "definition": "The template starts from the sign of two coordinate products and propagates signs through point expressions and graph coefficients.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "PT_COORDINATE_POINT_READING",
+          "status": "ACTIVE",
+          "definition": "좌표평면에서 점의 좌표 순서와 위치를 읽고, 사분면 부호·좌표축·원점의 성질을 적용해 진술이나 변환 결과를 판정한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "기존 부모의 주어진 사분면을 출발점으로 하지 않는다. 두 좌표곱 조건만으로 제한된 기존 TPL보다 입력 관계를 정확히 지정한다.",
+      "canonicalMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "proposalId": "B-POLY",
+      "kind": "EXTERNAL_PARENT_REFERENCE",
+      "proposedKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+      "supportingQuestionUids": [
+        "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11"
+      ],
+      "status": "EXTERNAL_PARENT_RESOLVED",
+      "definitionAuthority": {
+        "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+        "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+      },
+      "parentDefinition": "다항식의 항, 차수, 각 차수의 계수 및 상수항을 식의 구조에서 확인하고 주어진 조건이나 진술의 참거짓을 판정한다."
+    }
+  ],
+  "leafParentChecks": [
+    {
+      "proposalId": "A-LEAF-EQUAL-SUM",
+      "curriculum": "2015",
+      "parentPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "등합 배치에서 빈칸 수 복원",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "proposalId": "A-LEAF-EQUAL-SUM",
+      "curriculum": "2022",
+      "parentPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "등합 배치에서 빈칸 수 복원",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "proposalId": "A-LEAF-OPERATION-LAW",
+      "curriculum": "2015",
+      "parentPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": null,
+      "newL3IsExplicitProposal": "연산법칙",
+      "proposedL4": "연산법칙과 계산 변형의 대응",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "existingL3EvidencePath": null
+    },
+    {
+      "proposalId": "A-LEAF-OPERATION-LAW",
+      "curriculum": "2022",
+      "parentPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": null,
+      "newL3IsExplicitProposal": "연산법칙",
+      "proposedL4": "연산법칙과 계산 변형의 대응",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "existingL3EvidencePath": null
+    },
+    {
+      "proposalId": "A-LEAF-IDENTITY-COEFFICIENT",
+      "curriculum": "2015",
+      "parentPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "항등식의 계수 비교",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "proposalId": "A-LEAF-IDENTITY-COEFFICIENT",
+      "curriculum": "2022",
+      "parentPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "항등식의 계수 비교",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "proposalId": "A-LEAF-POLYNOMIAL-STRUCTURE",
+      "curriculum": "2015",
+      "parentPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": null,
+      "newL3IsExplicitProposal": "다항식의 기본 구조",
+      "proposedL4": "다항식의 항·계수·차수",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "existingL3EvidencePath": null
+    },
+    {
+      "proposalId": "A-LEAF-POLYNOMIAL-STRUCTURE",
+      "curriculum": "2022",
+      "parentPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": null,
+      "newL3IsExplicitProposal": "다항식의 기본 구조",
+      "proposedL4": "다항식의 항·계수·차수",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "existingL3EvidencePath": null
+    },
+    {
+      "proposalId": "A-LEAF-PROPORTION-GRAPH-PROPERTY",
+      "curriculum": "2015",
+      "parentPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "정비례·반비례 그래프의 공통 부호 성질",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "proposalId": "A-LEAF-PROPORTION-GRAPH-PROPERTY",
+      "curriculum": "2022",
+      "parentPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석"
+      },
+      "existingL1L2Confirmed": true,
+      "existingL3Confirmed": true,
+      "newL3IsExplicitProposal": null,
+      "proposedL4": "정비례·반비례 그래프의 공통 부호 성질",
+      "officialLeafExistenceClaimed": false,
+      "parentEvidencePath": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "existingL3EvidencePath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    }
+  ],
+  "exactBindingDeclarationChecks": [
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "exactRowsChecked": 46,
+      "missingExactRequestOrdinals": [],
+      "errors": [],
+      "courseMismatchDispositions": [
+        {
+          "ordinal": 18,
+          "curriculum": "2022",
+          "status": "COURSE_MISMATCH_CORRECTLY_SEPARATED",
+          "expectedCourse": "중1 수학"
+        },
+        {
+          "ordinal": 20,
+          "curriculum": "2022",
+          "status": "COURSE_MISMATCH_CORRECTLY_SEPARATED",
+          "expectedCourse": "중1 수학"
+        }
+      ],
+      "status": "DECLARED_EXACT_FIELDS_VERIFIED"
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "exactRowsChecked": 46,
+      "missingExactRequestOrdinals": [],
+      "errors": [],
+      "courseMismatchDispositions": [
+        {
+          "ordinal": 10,
+          "curriculum": "2022",
+          "status": "COURSE_MISMATCH_CORRECTLY_SEPARATED",
+          "expectedCourse": "중1 수학"
+        },
+        {
+          "ordinal": 21,
+          "curriculum": "2022",
+          "status": "COURSE_MISMATCH_CORRECTLY_SEPARATED",
+          "expectedCourse": "중1 수학"
+        },
+        {
+          "ordinal": 22,
+          "curriculum": "2022",
+          "status": "COURSE_MISMATCH_CORRECTLY_SEPARATED",
+          "expectedCourse": "중1 수학"
+        }
+      ],
+      "status": "DECLARED_EXACT_FIELDS_VERIFIED"
+    }
+  ],
+  "globalActiveReuseChecks": [
+    {
+      "pair": [
+        "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "TPL_H1_IDENTITY_COEFFICIENT_COMPARE"
+      ],
+      "status": "SEMANTIC_REUSE_VALID_M1_BINDING_REQUIRED",
+      "evidence": [
+        {
+          "key": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "status": "ACTIVE",
+          "definition": "항등식의 특수값 대입 또는 계수비교로 미정계수를 정하는 유형.",
+          "ownerPack": "H1_FOUNDATION",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+          "status": "ACTIVE",
+          "definition": "양변 전개 후 같은 차수의 계수를 비교해 미정계수를 정한다.",
+          "ownerPack": "H1_FOUNDATION",
+          "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "미정계수 결정은 현 H1 정의에 정확히 포함된다. ownerPack H1_FOUNDATION을 유지한 M1 binding 제안이 필요하다."
+    },
+    {
+      "pair": [
+        "PT_FUNCTION_GRAPH_PROPERTIES",
+        "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      ],
+      "status": "SEMANTIC_REUSE_VALID",
+      "evidence": [
+        {
+          "key": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "status": "ACTIVE",
+          "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "ownerPack": "FUNCTIONS_GRAPHS",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        {
+          "key": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "status": "ACTIVE",
+          "definition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+          "ownerPack": "FUNCTIONS_GRAPHS",
+          "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        }
+      ],
+      "reason": "정비례·반비례의 사분면·위치·형태 성질은 전역 정의 범위에 포함된다. canonical 대표 근거에 반비례 점 소속도 있어 해당 A 신규 제안의 재사용 대안을 명시했다."
+    }
+  ],
+  "resolvedIssues": [
+    {
+      "id": "A_EXACT_BINDING_FIELDS_COURSE_OWNER",
+      "observation": "최초 열람 때 연향기말 2022의 中1 수학 row를 REUSE_ACTIVE_BINDING으로 보았고 exact target에 course/owner가 없었다. A에게 통보했다.",
+      "currentReadback": "연향기말의 exactRequests에 중1 수학, 실제 ownerPack 및 EXACT_COURSE_BINDING_GAP 분리가 반영된 현 SHA를 읽어 확인했다.",
+      "openByExam": []
+    }
+  ],
+  "rootProposalMergeRecommendations": [
+    {
+      "decisionId": "MERGE_SIGNED_SUM",
+      "representativeKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_ADD_SUBTRACT",
+      "aliasProposalKeys": [
+        "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_SIGNED_SUM"
+      ],
+      "parentProblemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "mergedDefinitionDraft": "부호 있는 정수·분수·유한소수의 합과 차를 뺄셈의 부호 변환, 필요한 수 표현 통일 및 통분으로 계산한다. 소수 변환이나 공통인수 추출은 입력에 있을 때만 적용한다.",
+      "reason": "A와 C의 결정 절차는 부호 처리·표현 통일·합산으로 같다. 소수가 있는지 여부가 새 구조를 만들지 않는다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_SINGLE_QUANTITY",
+      "representativeKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SINGLE_CONTEXT",
+      "aliasProposalKeys": [
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SINGLE_QUANTITY_FORMULA"
+      ],
+      "parentProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "mergedDefinitionDraft": "한 상황에서 단가·개수·고정비·할인 등의 수량 관계를 문자식으로 나타내고 요청한 전체량 또는 남은량에 맞는 식을 생성하거나 선택한다.",
+      "reason": "같은 수량 번역→합차 구성→요청량 대응 구조이며 쇼핑·할인 등 소재 차이는 새 TPL 근거가 아니다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_MIXED_ORDER",
+      "representativeKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_MIXED_ORDER",
+      "aliasProposalKeys": [],
+      "parentProblemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "mergedDefinitionDraft": "부호 있는 유리수 식에서 실제로 나타난 괄호·거듭제곱을 먼저 처리하고 곱셈·나눗셈, 덧셈·뺄셈의 순서로 수식값을 계산한다. 없는 연산을 필수로 요구하지 않는다.",
+      "reason": "A/B/C의 같은 키를 한 정의로 합친다. A의 다음 계산 단계라는 목표 확대는 제거하며 순수 연산 순서 선택은 OPERATION_PRECEDENCE_JUDGMENT에 둔다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_NUMBER_SYSTEM",
+      "representativeKey": "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_CORE",
+      "aliasProposalKeys": [
+        "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_GENERAL",
+        "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_NUMBER_SYSTEM_CLAIMS"
+      ],
+      "parentProblemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "mergedDefinitionDraft": "진술의 대상 수 범위와 전칭 조건을 확인하고 자연수·정수·유리수의 정의, 포함관계, 0과 부호, 유리수 사이의 수 존재 성질 또는 반례로 참거짓을 판정한다.",
+      "reason": "모두 정의·반례에 따른 수 체계 진술 감사이다. 특정 진술의 소재가 조밀성인지 0인지에 따라 자식을 나누지 않는다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_POLYNOMIAL_STRUCTURE",
+      "representativeKey": "TPL_M1_POLYNOMIAL_STRUCTURE_TERM_COEFFICIENT_AUDIT",
+      "aliasProposalKeys": [
+        "TPL_M1_POLYNOMIAL_STRUCTURE_TERM_DEGREE_AUDIT"
+      ],
+      "parentProblemTypeKey": "PT_M1_POLYNOMIAL_STRUCTURE",
+      "mergedDefinitionDraft": "다항식을 부호 포함 항으로 나누어 항 수, 차수, 계수, 상수항을 확인한 뒤 진술·조건과 대조한다.",
+      "reason": "A/B/C 모두 항 식별 후 차수·계수·상수항 확인이라는 동일 골격이다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_PRIME_LIST_PARENT",
+      "representativeKey": "PT_M1_PRIME_LIST_CLASSIFICATION_COUNT",
+      "aliasProposalKeys": [
+        "PT_M1_FINITE_LIST_PRIME_COUNT"
+      ],
+      "parentProblemTypeKey": null,
+      "mergedDefinitionDraft": "명시된 유한 자연수 목록에서 각 수의 소수 여부를 판별하고 요청한 원소나 소수의 개수를 결정한다.",
+      "reason": "명시된 유한 자연수 목록을 소수인지 분류하고 개수를 세는 동일 입력·목표다. B 대표 부모를 재사용한다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_PRIME_LIST_TEMPLATE",
+      "representativeKey": "TPL_M1_PRIME_LIST_CLASSIFICATION_COUNT_CORE",
+      "aliasProposalKeys": [
+        "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE"
+      ],
+      "parentProblemTypeKey": "PT_M1_PRIME_LIST_CLASSIFICATION_COUNT",
+      "mergedDefinitionDraft": "목록의 각 자연수에 대해 1과 자기 자신 외 약수의 유무로 소수를 분류하고 개수를 센다.",
+      "reason": "A/B의 목록 원소별 소수 판별→개수 계산 골격이 같다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_GCD_LCM_DIRECT_PARENT",
+      "representativeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "aliasProposalKeys": [
+        "PT_M1_GCD_LCM_DIRECT_COMPUTATION"
+      ],
+      "parentProblemTypeKey": null,
+      "mergedDefinitionDraft": "주어진 자연수들의 소인수 지수에 최솟값·최댓값 규칙을 적용하여 최대공약수, 최소공배수, 둘의 순서쌍 또는 그 관계식 값을 구한다.",
+      "reason": "B 부모의 직접 평가 정의가 C의 두 값 직접 계산을 포괄한다. 쌍 산출 TPL은 별도로 유지한다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "REPARENT_GCD_LCM_PAIR",
+      "representativeKey": "TPL_M1_GCD_LCM_VALUE_EVALUATION_GCD_LCM_PAIR",
+      "aliasProposalKeys": [
+        "TPL_M1_GCD_LCM_DIRECT_COMPUTATION_GCD_LCM_PAIR"
+      ],
+      "parentProblemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "mergedDefinitionDraft": "주어진 여러 자연수의 소인수 지수를 비교하여 최대공약수와 최소공배수를 요청한 순서쌍으로 구한다.",
+      "reason": "일반 부모를 합치되 두 병렬 출력 목표를 한 자식에 명시한다. 복수 primary를 기록하지 않는다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_ARITHMETIC_EQUALITY",
+      "representativeKey": "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT",
+      "aliasProposalKeys": [
+        "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_ARITHMETIC_EQUALITY_AUDIT"
+      ],
+      "parentProblemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "mergedDefinitionDraft": "주어진 유리수 사칙연산·거듭제곱 식의 값을 계산하여 제시한 등식 또는 결과와 비교하고 요청한 참·거짓 계산을 고른다.",
+      "reason": "C와 B 모두 식 평가→제시값 비교라는 동일 절차이다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_OPERATOR_ORDER",
+      "representativeKey": "TPL_M1_OPERATION_PRECEDENCE_JUDGMENT_MARKED_OPERATIONS",
+      "aliasProposalKeys": [
+        "TPL_M1_OPERATION_PRECEDENCE_JUDGMENT_LABELED_OPERATOR_ORDER"
+      ],
+      "parentProblemTypeKey": "PT_M1_OPERATION_PRECEDENCE_JUDGMENT",
+      "mergedDefinitionDraft": "연산 기호마다 표지가 있는 수식에서 괄호 안 우선과 곱셈·나눗셈 선행 및 같은 순위의 좌우 순서에 맞는 표지 순서를 고른다.",
+      "reason": "표시된 연산의 괄호·우선순위·같은 순위의 방향으로 순서 선택하는 동일 구조이다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_INVERSE_INTEGER_POINTS",
+      "representativeKey": "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION_GIVEN_CONSTANT",
+      "aliasProposalKeys": [
+        "TPL_M1_INVERSE_PROPORTION_INTEGER_POINT_COUNT_FROM_EQUATION"
+      ],
+      "parentProblemTypeKey": "PT_M1_INVERSE_PROPORTION_INTEGER_POINT_ENUMERATION",
+      "mergedDefinitionDraft": "식으로 주어진 0이 아닌 정수 비례상수에 대해 좌표곱이 같은 정수 약수쌍을 부호 조건과 함께 빠짐없이 열거하여 정수점을 나열하거나 센다.",
+      "reason": "A/B 모두 상수가 이미 주어진 반비례식의 정수 약수쌍 열거이며 출력이 개수 또는 나열인 차이는 같은 골격이다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_GEAR_PRODUCT_PARENT",
+      "representativeKey": "PT_M1_PROPORTIONAL_RELATION_MODELING",
+      "aliasProposalKeys": [
+        "PT_M1_INVERSE_PROPORTION_CONSERVATION_MODEL"
+      ],
+      "parentProblemTypeKey": null,
+      "mergedDefinitionDraft": "두 양의 일정한 비 또는 일정한 곱을 주어진 수치와 상황에서 확인하고 정비례·반비례 관계식을 구성한다.",
+      "reason": "A 지원문항은 기어의 톱니 수와 회전수의 곱 불변량으로 관계식을 만드는 것으로 B 부모·GEAR_PRODUCT에 정확히 포함된다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_GEAR_PRODUCT_TEMPLATE",
+      "representativeKey": "TPL_M1_PROPORTIONAL_RELATION_MODELING_GEAR_PRODUCT",
+      "aliasProposalKeys": [
+        "TPL_M1_INVERSE_PROPORTION_CONSERVATION_MODEL_CORE"
+      ],
+      "parentProblemTypeKey": "PT_M1_PROPORTIONAL_RELATION_MODELING",
+      "mergedDefinitionDraft": "맞물린 기어가 같은 시간 동안 맞물리는 톱니 수가 같음을 이용해 톱니 수와 회전수의 반비례식을 만든다.",
+      "reason": "입력·고정량·관계식 산출이 같은 구조다. 최초 재맞물림의 LCM 문제와는 분리 유지한다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_FIRST_COINCIDENCE",
+      "representativeKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_FIRST_COINCIDENCE",
+      "aliasProposalKeys": [
+        "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_GEAR_RETURN"
+      ],
+      "parentProblemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "mergedDefinitionDraft": "현재 함께 시작한 정수 주기들의 최초 공통 진행량을 최소공배수로 구하고, 요청에 따라 기준 시각·연도를 더하거나 한 주기 크기로 나누어 반복 횟수로 환산한다.",
+      "reason": "A/C의 톱니 진행량과 B의 시간 진행량 모두 최소 양의 공배수 뒤 요청 단위로 환산한다. 수치 단위 차이는 새 자식의 근거가 아니며 유한 기간 포함·배제 자식은 별도로 유지한다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "MERGE_FACTORIZATION_AUDIT",
+      "representativeKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_PRIME_FACTORIZATION_ONLY_AUDIT",
+      "aliasProposalKeys": [
+        "TPL_M1_PRIME_FACTORIZATION_SELECT_REPRESENTATION"
+      ],
+      "parentProblemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+      "mergedDefinitionDraft": "하나 또는 여러 자연수에 제시된 곱 표현에 대해 인수가 모두 소수인지와 곱이 해당 자연수와 같은지 검사하여 요청한 타당·부당 표현을 고른다.",
+      "reason": "A의 한 자연수에 대한 여러 표현과 C의 여러 자연수별 등식은 검사하는 각 단위가 같은 (자연수, 곱표현) 쌍이며 핵심 절차가 같다.",
+      "mode": "MERGE_PROPOSAL_ALIASES_ONLY",
+      "canonicalAliasesWritten": false
+    },
+    {
+      "decisionId": "ACTIVE_REUSE_INVERSE_POINT_MEMBERSHIP",
+      "representativeKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "aliasProposalKeys": [
+        "TPL_M1_PROPORTION_PARAMETER_INVERSE_POINT_MEMBERSHIP"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "mergedDefinitionDraft": null,
+      "reason": "전역 ACTIVE 정의와 대표 근거에 반비례 그래프의 xy 일정성을 이용한 점 소속 판정이 이미 존재한다. 현 ACTIVE 정의는 변경하지 않고 A 연향기말17의 기존 쌍 재사용을 권고한다.",
+      "mode": "REUSE_EXISTING_ACTIVE_PAIR_INSTEAD_OF_NEW_TEMPLATE",
+      "canonicalAliasesWritten": false
+    }
+  ],
+  "rootSemanticOverridesForC": [
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "ordinal": 19,
+      "questionUid": "qid_v1_61ca901eb7d7028acbb19974851cf36a7590659077392d15dd1fc3a61e8a21fe",
+      "priorWorkerFile": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "priorWorkerFileSha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e",
+      "supersedes": "items[ordinal-1].semanticDecision only; prior review, source, four slots and difficulty unchanged",
+      "previousCandidate": {
+        "status": "EXISTING_DEFINITION_REUSE_CONFIRMED",
+        "reason": "문자식의 곱셈·나눗셈 기호 생략으로 기존 OPERATION_NOTATION의 완료 의미 판단을 재사용한다. 분모 0 제외를 명시 조건 인용으로 추가하지 않는다.",
+        "targetProblemTypeKeySuggestion": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "targetTemplateKeySuggestion": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+        "targetKeysRegistered": true,
+        "definitionProposalId": null,
+        "canonicalWritePerformed": false
+      },
+      "rootIntegratedCandidate": {
+        "problemTypeKeySuggestion": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+        "templateKeySuggestion": "TPL_M1_ALGEBRAIC_OPERATION_NOTATION_CORE",
+        "status": "UNREGISTERED_PROPOSAL"
+      },
+      "reason": "기존 OPERATION_NOTATION 자식의 절차는 맞지만 부모가 생활 수량의 verbal meaning 검사로 한정된다. A의 기호 생략·동치 표기 부모와 CORE 제안으로 옮겨 부모·자식의 범위를 맞춘다.",
+      "newDraft": null,
+      "sourceMutationPerformed": false
+    },
+    {
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "ordinal": 19,
+      "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+      "priorWorkerFile": "/workspace/scratch/42de8b02ef57/worker-c/19_연향중_1학기_중간_중1_기출/residual-review.json",
+      "priorWorkerFileSha256": "6fba37b05d53875dca3ec566dde5f56fa040fb7524c94aa0747593c9af2a5b01",
+      "supersedes": "items[ordinal-1].semanticDecision only; prior review, source, four slots and difficulty unchanged",
+      "previousCandidate": {
+        "status": "EXISTING_DEFINITION_REUSE_CONFIRMED",
+        "reason": "좌결합 나눗셈과 괄호 안 나눗셈의 동치식 판별은 기존 QUOTIENT_EQUIVALENCE와 맞는다. 암묵적 분모 0 제외를 명시 원문 인용으로 만들지 않는다.",
+        "targetProblemTypeKeySuggestion": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "targetTemplateKeySuggestion": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_QUOTIENT_EQUIVALENCE",
+        "targetKeysRegistered": true,
+        "definitionProposalId": null,
+        "canonicalWritePerformed": false
+      },
+      "rootIntegratedCandidate": {
+        "problemTypeKeySuggestion": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+        "templateKeySuggestion": "TPL_M1_ALGEBRAIC_OPERATION_NOTATION_QUOTIENT_EQUIVALENCE",
+        "status": "UNREGISTERED_PROPOSAL"
+      },
+      "reason": "나눗셈의 좌결합·괄호 분모에 따른 동치표현은 생활 수량 번역 부모에 포함되지 않는다. A의 새 기호표기 부모 아래 기존 QUOTIENT_EQUIVALENCE 골격을 보존한 자식 초안을 둔다.",
+      "newDraft": {
+        "parentDefinitionSource": "A-NOTATION",
+        "parentDefinition": "곱셈·나눗셈 기호를 포함한 문자식을 계수·거듭제곱·분수 표기 규칙에 따라 나타내거나 제시된 등가 표기를 판정한다. 생활 수량 문장을 식으로 번역하는 문제와 구분한다.",
+        "templateDefinitionDraft": "문자의 곱셈·나눗셈에서 왼쪽부터 계산하는 식과 괄호로 묶은 분모를 구별하여 같은 값을 나타내는 표현을 모두 판별한다. 분모가 0이 아닌 식의 정의역에서 해석한다.",
+        "internalSkeletonDraft": [
+          "곱·나눗셈의 좌결합과 괄호 구조 읽기",
+          "분수식으로 바꾸기",
+          "동치인 표현 판별"
+        ],
+        "differenceFromExisting": "기존 골격은 재사용하되 생활 수량에 한정된 부모를 바꾸지 않고 새 표기 부모에 연결한다."
+      },
+      "sourceMutationPerformed": false
+    },
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "ordinal": 1,
+      "questionUid": "qid_v1_54c6820c76afd2705802ae22a3ede27a4ad9f7665693b7c8a3eee0d23382a38c",
+      "priorWorkerFile": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "priorWorkerFileSha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e",
+      "supersedes": "items[ordinal-1].semanticDecision only; prior review, source, four slots and difficulty unchanged",
+      "previousCandidate": {
+        "status": "EXISTING_DEFINITION_REUSE_CONFIRMED",
+        "reason": "소수·합성수와 소인수 관련 혼합 진술 검사라는 기존 NUMBER_CLAIM_AUDIT의 완료 의미 판단을 재사용한다.",
+        "targetProblemTypeKeySuggestion": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "targetTemplateKeySuggestion": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_NUMBER_CLAIM_AUDIT",
+        "targetKeysRegistered": true,
+        "definitionProposalId": null,
+        "canonicalWritePerformed": false
+      },
+      "rootIntegratedCandidate": {
+        "problemTypeKeySuggestion": "PT_M1_MIXED_NUMBER_ASSERTION_AUDIT",
+        "templateKeySuggestion": "TPL_M1_MIXED_NUMBER_ASSERTION_AUDIT_CORE",
+        "status": "UNREGISTERED_PROPOSAL"
+      },
+      "reason": "자식 NUMBER_CLAIM_AUDIT는 소수·거듭제곱·소인수분해 혼합을 말하지만 현 부모는 primes/composites 일반 진술로 좁다. B의 실제 혼합 수 개념 진술 부모·자식에 정확히 포함되므로 그 제안을 재사용한다.",
+      "newDraft": null,
+      "sourceMutationPerformed": false
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "ordinal": 13,
+      "questionUid": "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974",
+      "priorWorkerFile": "/workspace/scratch/42de8b02ef57/worker-c/19_왕운중_1학기_중간_중1_기출/residual-review.json",
+      "priorWorkerFileSha256": "7517226550e7fd3d010a7109954985ca655eebe6580b6e71f45d3ba00463dec7",
+      "supersedes": "items[ordinal-1].semanticDecision only; prior review, source, four slots and difficulty unchanged",
+      "previousCandidate": {
+        "status": "EXISTING_DEFINITION_REUSE_CONFIRMED",
+        "reason": "후보를 넣은 여러 수의 최대공약수 조건을 검사하는 기존 GCD_CONDITION_FILTER 정의를 재사용한다.",
+        "targetProblemTypeKeySuggestion": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+        "targetTemplateKeySuggestion": "TPL_M1_COMMON_DIVISIBILITY_FILTER_GCD_CONDITION_FILTER",
+        "targetKeysRegistered": true,
+        "definitionProposalId": null,
+        "canonicalWritePerformed": false
+      },
+      "rootIntegratedCandidate": {
+        "problemTypeKeySuggestion": "PT_M1_GCD_CONSTRAINT_CANDIDATE_FILTER",
+        "templateKeySuggestion": "TPL_M1_GCD_CONSTRAINT_CANDIDATE_FILTER_FIXED_NUMBERS_AND_ONE_CANDIDATE",
+        "status": "UNREGISTERED_PROPOSAL"
+      },
+      "reason": "후보 수 자체가 공약수인지를 고르는 것이 아니라 고정 수들과 후보의 gcd가 지정값인지 검사한다. 현재 COMMON_DIVISIBILITY_FILTER 부모의 common-divisor membership 목표와 다르므로 기존 GCD_CONDITION_FILTER 자식 절차를 정확한 새 부모 아래 제안한다.",
+      "newDraft": {
+        "problemTypeDefinitionDraft": "고정된 자연수들과 후보 자연수의 최대공약수가 주어진 값과 같다는 조건을 후보별로 검사하여 적합 또는 부적합한 후보를 판별한다.",
+        "templateDefinitionDraft": "고정 수들의 최대공약수를 먼저 정리한 뒤 각 후보와의 최대공약수를 계산하거나 소인수 지수의 최소값으로 지정 gcd 조건과 비교한다.",
+        "internalSkeletonDraft": [
+          "고정 수들의 공통 약수 조건 정리",
+          "후보마다 gcd 또는 최소 지수 계산",
+          "지정값과 비교해 후보 판정"
+        ],
+        "exclusions": [
+          "후보 자체가 고정 수들의 공약수인지 검사",
+          "gcd와 lcm이 동시에 주어진 미지 지수·소인수 복원"
+        ],
+        "nearestExisting": {
+          "key": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+          "status": "ACTIVE",
+          "definition": "The target is the candidate that fails common-divisor membership; minimum prime exponents provide the decisive test.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "sourcePath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+        },
+        "supportingQuestionUids": [
+          "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974"
+        ]
+      },
+      "sourceMutationPerformed": false
+    }
+  ],
+  "preserveSeparateDefinitions": [
+    {
+      "families": [
+        "FINITE_INCLUSION_EXCLUSION",
+        "FIRST_COINCIDENCE"
+      ],
+      "reason": "첫 공통 발생 한 번과 유한 기간의 제외일 포함·배제는 서로 다른 결정 절차이다."
+    },
+    {
+      "families": [
+        "ABSOLUTE_MAGNITUDE_SELECTION",
+        "ABSOLUTE_EXTREMA_INPUT_SUM",
+        "EXTREMA_SUM",
+        "SUBSTITUTION_EXTREMUM"
+      ],
+      "reason": "절댓값을 거친 극값, 원래 수의 두 극값 합, 대입 뒤 극값은 입력 변환·요청량이 달라 정확 자식은 유지한다."
+    },
+    {
+      "families": [
+        "RECIPROCAL_CHAIN",
+        "RECOVER_AND_SUM",
+        "DOMAIN_SELECTION"
+      ],
+      "reason": "각 역수를 구한 후 곱/몫을 계산, 역수 관계에서 복원 후 합, 복원값의 수체계 선택은 결정 단계·요청량이 달라 자식은 유지한다. 부모 수준 통합은 별도 가능하다."
+    }
+  ],
+  "safetyOfIntegration": {
+    "canonicalRegistrationPerformed": false,
+    "sourceEditsPerformed": false,
+    "cExamPacketRewritesPerformed": false,
+    "existingAnswerSolutionApprovalClaimed": false,
+    "handoff": "root가 통합 index에서 alias/대표키와 4개 C override를 반영한다. 원시 worker JSON은 감사 근거로 보존한다."
+  },
+  "counts": {
+    "aProposalDeclarations": 40,
+    "leafParentDeclarationsCheckedExcludingRootCube": 10,
+    "proposalMergeRecommendations": 17,
+    "cSemanticOverrideCount": 4,
+    "targetedNewOriginalEvidenceUids": 4
+  },
+  "targetedNewOriginalEvidenceReview": {
+    "exam": "17_매산중_1학기_중간_중1_수학",
+    "scope": "Only newly established optional selection structure for 22–24 and q14 provisional 1/2 boundary. Part answers, respondent handwriting and other questions were not reviewed as answer/solution authority.",
+    "reviewedArtifacts": [
+      {
+        "path": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/original-source-evidence.json",
+        "sha256": "25aa7b0ea0a9008fcadf7ca1a1402cb00c926505e6adeca47df53a0c05716ade"
+      },
+      {
+        "path": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/residual-review.json",
+        "sha256": "1a9cb547e8ce2ec0edba5252b0b5d30c540b5f736eb1324501428cc4fe50eaee"
+      }
+    ],
+    "originalSource": {
+      "driveFileId": "1GlAmJX-5gdsK8QpaKb7n6RA5_zcYuY92",
+      "filename": "2017_매산중1_수학_1중간_소인수분해_식의값_중상.pdf",
+      "sha256": "28f9eb0c1c3400613bc918b241945c6e7693def92e783392eebe690b37250b51",
+      "pageCount": 4
+    },
+    "visualEvidence": {
+      "page1based": 4,
+      "renderPath": "/workspace/scratch/42de8b02ef57/worker-a/assets/maesan17-page-4.png",
+      "renderSha256": "57a8f37a537e1cd87e656005b1860b9a725053a41a56092fd9a793997e8bb213",
+      "openedBy": "META_C_RESUME",
+      "observation": "인쇄된 공통 지시문은 주관식2·3·4를 수준별 선택형으로 명시하고 한 문제를 선택하도록 한다. 각 묶음에는 3점·4점·5점의 세 소문항이 있다. 세 수준을 모두 수행해야 한다는 지시는 없다. 응시자 필기와 동그라미는 선택 문맥 또는 정답 권위로 사용하지 않았다."
+    },
+    "rubric": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+      "sectionsUsed": [
+        "§2 actual required burden / no arbitrary numeric fill",
+        "§3 Bucket 1 and 2",
+        "§4.1 1↔2 boundary",
+        "§6 evidence",
+        "§9 low confidence",
+        "§18 targeted recheck",
+        "§20 reviewed_pass field gate"
+      ]
+    },
+    "optionalGroupChecks": [
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_5b30fd3ce0e76896ca056689272cd4eeae1cc87c3ebfe60d5764df1a31bfba6f",
+        "priorSingleUidMaximumPromotion": "NOT_JUSTIFIED_BY_NEW_PRINTED_SELECTION_STRUCTURE",
+        "reviewedDecision": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "proposedSingleUidBucket": "UNKNOWN",
+        "status": "WITHDRAWAL_CONFIRMED_PART_SELECTION_CONTEXT_REQUIRED",
+        "reason": "선택하지 않을 수 있는 소문항의 최고 부담을 원 UID의 필수 부담으로 투영할 근거가 없다. 현재 UID 구조와 source level은 보존하고 실제 선택 소문항 또는 승인된 집계 기준을 확인하기 전 단일 bucket을 확정하지 않는다.",
+        "partCandidateHandling": "기존 소문항별 저신뢰 후보는 sidecar로 보존한다. 본 교차검토는 선택 구조만 확인했으며 각 후보 숫자를 재풀이해 확정하지 않았다.",
+        "sourceUidPreserved": true,
+        "productionPromotionAllowed": false
+      },
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_2dac9ee608178a2f9220b84b68f42cbf6559ffc08cefccef3aca64e7b1269d62",
+        "priorSingleUidMaximumPromotion": "NOT_JUSTIFIED_BY_NEW_PRINTED_SELECTION_STRUCTURE",
+        "reviewedDecision": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "proposedSingleUidBucket": "UNKNOWN",
+        "status": "WITHDRAWAL_CONFIRMED_PART_SELECTION_CONTEXT_REQUIRED",
+        "reason": "선택하지 않을 수 있는 소문항의 최고 부담을 원 UID의 필수 부담으로 투영할 근거가 없다. 현재 UID 구조와 source level은 보존하고 실제 선택 소문항 또는 승인된 집계 기준을 확인하기 전 단일 bucket을 확정하지 않는다.",
+        "partCandidateHandling": "기존 소문항별 저신뢰 후보는 sidecar로 보존한다. 본 교차검토는 선택 구조만 확인했으며 각 후보 숫자를 재풀이해 확정하지 않았다.",
+        "sourceUidPreserved": true,
+        "productionPromotionAllowed": false
+      },
+      {
+        "ordinal": 24,
+        "questionUid": "qid_v1_c7b9cac8b827c18eeb31e8d31ac94eac119d66b78d623bc21e8835c58a667c05",
+        "priorSingleUidMaximumPromotion": "NOT_JUSTIFIED_BY_NEW_PRINTED_SELECTION_STRUCTURE",
+        "reviewedDecision": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "proposedSingleUidBucket": "UNKNOWN",
+        "status": "WITHDRAWAL_CONFIRMED_PART_SELECTION_CONTEXT_REQUIRED",
+        "reason": "선택하지 않을 수 있는 소문항의 최고 부담을 원 UID의 필수 부담으로 투영할 근거가 없다. 현재 UID 구조와 source level은 보존하고 실제 선택 소문항 또는 승인된 집계 기준을 확인하기 전 단일 bucket을 확정하지 않는다.",
+        "partCandidateHandling": "기존 소문항별 저신뢰 후보는 sidecar로 보존한다. 본 교차검토는 선택 구조만 확인했으며 각 후보 숫자를 재풀이해 확정하지 않았다.",
+        "sourceUidPreserved": true,
+        "productionPromotionAllowed": false
+      }
+    ],
+    "question14BoundaryCheck": {
+      "ordinal": 14,
+      "questionUid": "qid_v1_84a055950e7a61c7ab2cbda27ac3f0beffa6e136f90adbe452fd30c00968c5ff",
+      "evidenceAuthority": "A original-source-evidence printed facts with root independent visual confirmation; q14 image not re-opened because root completed its visual check.",
+      "reviewedCandidate": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "learningLevelCandidate": "중"
+      },
+      "judgment": "PROVISIONAL_BUCKET_2_LOW_B12_SUPPORTED",
+      "reason": "같은 합이라는 조건을 한 번 식 관계로 읽은 뒤 익숙한 부호 덧셈·뺄셈으로 처리한다. 공통항 소거는 가능한 단축 접근이지만 진행을 위해 필수적인 비정형 발상은 아니다. 직접 숫자 대입과 한 번의 조건 해석 사이 B12를 보존하며 계산 줄 수로 상향하지 않는다.",
+      "remaining": "검수 승인된 풀이와 source curriculum/context 및 legacy comparison이 미완료여서 확정 난도·reviewed_pass로 승격하지 않는다.",
+      "fullSolutionWritten": false,
+      "answerComputed": false,
+      "productionPromotionAllowed": false
+    },
+    "sourceMutationPerformed": false,
+    "rawWorkerPacketMutationPerformed": false
+  }
+}

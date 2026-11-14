@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m1-worker-integration-closeout-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "worker": "META_C_RESUME",
+  "phase": "ROOT_INTEGRATED_CANDIDATE_CONSOLIDATION",
+  "writerState": "CLOSED",
+  "closedAt": "2026-11-14T14:10:18.282816+00:00",
+  "artifacts": [
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/merged-registry-proposals.json",
+      "sha256": "5b350c3be057457d7d24a36380e00122ef992c2eef2d90bb3ec17addcc326f76"
+    },
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/merged-item-decisions.json",
+      "sha256": "1f5a689d74bb6ed95f2a8e327f4edf4c1df15560e8b10308db87356d016fb26b"
+    },
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/merged-structural-checks.json",
+      "sha256": "f18913be8b2477b96a534965817e6a0a283014a71ecb96a78d12928aa82e1373"
+    }
+  ],
+  "status": "STRUCTURAL_PASS",
+  "scope": "UID/order, candidate reference, exact declared parent, alias collision/cycle, evidence file hash and source-version binding checks; no repeated problem solving or official resolver execution.",
+  "counts": {
+    "exams": 12,
+    "uids": 286,
+    "uniqueUids": 286,
+    "singleCandidates": 284,
+    "withheldSingleProjection": 2,
+    "partCandidates": 6,
+    "activeDefinitionsReferenced": 112,
+    "proposedProblemTypes": 45,
+    "proposedTemplates": 114,
+    "proposedConditions": 2,
+    "proposalAliasKeys": 27,
+    "mergeDecisions": 25,
+    "semanticOverrides": 6,
+    "priorMultipleLookupSelections": 2,
+    "leafProposalGroups": 46,
+    "inputArtifacts": 69,
+    "distinctAliasRepresentatives": 23
+  },
+  "unresolvedSingleCandidateProjection": [
+    {
+      "questionUid": "qid_v1_2dac9ee608178a2f9220b84b68f42cbf6559ffc08cefccef3aca64e7b1269d62",
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "ordinal": 23,
+      "reason": "SELECTABLE_PART_CANDIDATES_NO_SINGLE_PRIMARY"
+    },
+    {
+      "questionUid": "qid_v1_c7b9cac8b827c18eeb31e8d31ac94eac119d66b78d623bc21e8835c58a667c05",
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "ordinal": 24,
+      "reason": "SELECTABLE_PART_CANDIDATES_NO_SINGLE_PRIMARY"
+    }
+  ],
+  "remainingSingleUidDifficultyUnknownCount": 3,
+  "releasePassClaimed": false,
+  "rootNextAction": "Preserve integrated candidate artifacts and their source cross-review references in branch, then close Notion/AWCR task and Codex handoff. No worker writes remain."
+}

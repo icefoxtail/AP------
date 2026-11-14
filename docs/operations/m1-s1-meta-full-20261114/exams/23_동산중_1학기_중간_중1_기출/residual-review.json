@@ -71,13 +71,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-PRIME_FACTORIZATION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -101,6 +138,22 @@
             "l3": "소수와 합성수",
             "l4": "소수·합성수 판별",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-001",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-114",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -197,7 +250,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
             "curriculum": "2015",
@@ -229,12 +283,84 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b",
+                  "qid_v1_2f3257280a8470181a81973e3d241d51086b31824f2ad04a682496573d2a5c51",
+                  "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+                  "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
+                  "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_f9e5f95bad562e5731c7a50c3d342d206f627e6e19bd70f81b6a7797d4a72782"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-PRIME_FACTORIZATION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -258,6 +384,22 @@
             "l3": "소인수분해",
             "l4": "자연수의 소인수분해",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-003",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-116",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -346,7 +488,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
             "curriculum": "2015",
@@ -374,12 +517,80 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+            "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-PRIME_FACTORIZATION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -403,6 +614,22 @@
             "l3": "소인수분해",
             "l4": "소인수분해를 이용한 약수의 구조",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-004",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-117",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -499,7 +726,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
             "curriculum": "2015",
@@ -518,12 +746,68 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-GCD_LCM",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+                  "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
+                  "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+                  "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+                  "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-GCD_LCM"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -547,6 +831,22 @@
             "l3": "최대공약수·최소공배수의 활용",
             "l4": "나누어떨어짐 조건",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-011",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-124",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -644,13 +944,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-GCD_LCM"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -674,6 +1011,22 @@
             "l3": "공약수와 최대공약수",
             "l4": "공약수 조건으로 수 찾기",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-008",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-121",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -771,13 +1124,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-GCD_LCM"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -801,6 +1191,22 @@
             "l3": "최대공약수·최소공배수의 활용",
             "l4": "주기·배열·묶음 문제",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-012",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-125",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -898,13 +1304,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -928,6 +1371,22 @@
             "l3": "수 체계",
             "l4": "정수와 유리수의 포함 관계",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-014",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-127",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1017,7 +1476,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
             "curriculum": "2015",
@@ -1047,12 +1507,82 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+                "supportingItemCount": 3,
+                "supportingQuestionUids": [
+                  "qid_v1_6cd2b86156ffe8f7e964da51a40a50b5961aaec4f7b96b9892cf4bbc101b253c",
+                  "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
+                  "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -1076,6 +1606,26 @@
             "l3": "수직선과 대소 관계",
             "l4": "수직선 위의 수",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-015",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-015"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-128",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-128"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1164,7 +1714,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
             "curriculum": "2015",
@@ -1192,12 +1743,80 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_5febd470aaa0329190ac999734c062a9d0e62bf4d59aabfc43a56f025a65b847"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -1221,6 +1840,22 @@
             "l3": "절댓값",
             "l4": "절댓값 조건으로 수 찾기",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-018",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-131",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1311,7 +1946,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
             "curriculum": "2015",
@@ -1326,16 +1962,69 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
         "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
         "newLeafProposalRefs": [
           "A-LEAF-EQUAL-SUM"
         ],
@@ -1427,13 +2116,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -1457,6 +2183,22 @@
             "l3": "덧셈과 뺄셈",
             "l4": "덧셈·뺄셈 혼합",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-021",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-134",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1553,7 +2295,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
             "curriculum": "2015",
@@ -1582,16 +2325,86 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+                "supportingItemCount": 2,
+                "supportingQuestionUids": [
+                  "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805",
+                  "qid_v1_8bc9c811cc835ba1a24e54bcaa41ef5a7ecdc296581e61f368e82898ff5d0412"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+                "curriculum": "2022",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_5efe4ce5a066bd5db3518a969b170b7e1db7a1b4d3aa83c55af132f76c09f805"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
         "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
         "newLeafProposalRefs": [
           "A-LEAF-OPERATION-LAW"
         ],
@@ -1696,13 +2509,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -1726,6 +2576,22 @@
             "l3": "곱셈과 나눗셈",
             "l4": "부호가 있는 수의 곱셈",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-022",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-135",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1814,7 +2680,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
             "curriculum": "2015",
@@ -1831,12 +2698,66 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-02",
+                "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+                "supportingItemCount": 3,
+                "supportingQuestionUids": [
+                  "qid_v1_3b9eddec458d80a5ab7f07d8636a6e7ebcc405aaa1b63d0a8af6fd439164bd5b",
+                  "qid_v1_408b1406613bf0cd05e2ba7a1fb3232ea81bb032001c9e78bb14a58927811f72",
+                  "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_408b1406613bf0cd05e2ba7a1fb3232ea81bb032001c9e78bb14a58927811f72"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_408b1406613bf0cd05e2ba7a1fb3232ea81bb032001c9e78bb14a58927811f72"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -1860,6 +2781,22 @@
             "l3": "혼합 계산",
             "l4": "거듭제곱이 포함된 혼합 계산",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-026",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-139",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -1957,7 +2894,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
             "curriculum": "2015",
@@ -1973,16 +2911,70 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-07",
+                "subUnitKey": "M1-07-SOLID_FIGURE",
+                "supportingItemCount": 2,
+                "supportingQuestionUids": [
+                  "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3",
+                  "qid_v1_6ce2fa03238108560bf64b8a2d06f27d093602a2acfb67a757a8ad76a03799df"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-07",
           "subUnitKey": "M1-07-SOLID_FIGURE"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
         "existingComparisonsReused": [],
+        "exactConnectionChecks": [],
         "newLeafProposalRefs": [
           "A-LEAF-CUBE-NET"
         ],
@@ -2073,13 +3065,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_ARITHMETIC_UNKNOWN_OPERAND",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_1c933c43526ab46d73371168ba8a41c0f2a8465bca8de007ffcd2221a33b289a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_ARITHMETIC_UNKNOWN_OPERAND",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_1c933c43526ab46d73371168ba8a41c0f2a8465bca8de007ffcd2221a33b289a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_ARITHMETIC_UNKNOWN_OPERAND",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2103,6 +3132,22 @@
             "l3": "혼합 계산",
             "l4": "거듭제곱이 포함된 혼합 계산",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-026",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-139",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2191,7 +3236,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
             "curriculum": "2015",
@@ -2206,12 +3252,64 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 1,
+                "supportingQuestionUids": [
+                  "qid_v1_74d4d68e5cd8ec512c16efaf5e7434667cb34eb3cc689aba1b57595e332b7ca3"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_74d4d68e5cd8ec512c16efaf5e7434667cb34eb3cc689aba1b57595e332b7ca3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_74d4d68e5cd8ec512c16efaf5e7434667cb34eb3cc689aba1b57595e332b7ca3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-03",
           "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2235,6 +3333,22 @@
             "l3": "식의 값",
             "l4": "조건식으로 식의 값 구하기",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-030",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-143",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2325,7 +3439,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
             "curriculum": "2015",
@@ -2359,12 +3474,86 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+                  "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+                  "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+                  "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+                  "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+            "status": "EXACT_COURSE_BINDING_GAP",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [
+              {
+                "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+                "curriculum": "2022",
+                "standardCourse": "中1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 3,
+                "supportingQuestionUids": [
+                  "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+                  "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+                  "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "sameUnitCourseNames": [
+              "中1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-03",
           "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2388,6 +3577,22 @@
             "l3": "문자의 사용",
             "l4": "문자로 수량 나타내기",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-027",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-140",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2478,13 +3683,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-03",
           "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2508,6 +3750,22 @@
             "l3": "문자의 사용",
             "l4": "곱셈·나눗셈 기호 생략",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-028",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-141",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2596,7 +3854,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
             "curriculum": "2022",
@@ -2612,12 +3871,65 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_573a827f1d9204561710ae964c0fc75af34d1d870a437d5f2bee29531eabf8b4"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "status": "EXACT_COURSE_BINDING_GAP",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [
+              {
+                "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+                "curriculum": "2022",
+                "standardCourse": "中1 수학",
+                "standardUnitKey": "M1-03",
+                "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+                "supportingItemCount": 2,
+                "supportingQuestionUids": [
+                  "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+                  "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "sameUnitCourseNames": [
+              "中1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_573a827f1d9204561710ae964c0fc75af34d1d870a437d5f2bee29531eabf8b4"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-03",
           "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2641,6 +3953,24 @@
             "l3": "식의 값",
             "l4": "대입하여 식의 값 구하기",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-029",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-142",
+            "existingExactActiveRecordIds": [
+              "M1-RPM-142"
+            ],
+            "action": "REUSE_EXACT_ACTIVE_CONNECTION",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2737,7 +4067,8 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [
           {
             "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
             "curriculum": "2015",
@@ -2756,12 +4087,68 @@
             "ownerPack": "MIDDLE1"
           }
         ],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+            "status": "REUSE_ACTIVE_BINDING",
+            "existingExactBindingRows": [
+              {
+                "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+                "curriculum": "2015",
+                "standardCourse": "중1 수학",
+                "standardUnitKey": "M1-01",
+                "subUnitKey": "M1-01-GCD_LCM",
+                "supportingItemCount": 5,
+                "supportingQuestionUids": [
+                  "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+                  "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
+                  "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+                  "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+                  "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f"
+                ],
+                "status": "ACTIVE",
+                "ownerPack": "MIDDLE1"
+              }
+            ],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [
+              "중1 수학"
+            ],
+            "supportingQuestionUids": [
+              "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-01",
+            "subUnitKey": "M1-01-GCD_LCM",
+            "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-01",
           "subUnitKey": "M1-01-GCD_LCM"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2785,6 +4172,22 @@
             "l3": "최대공약수·최소공배수의 활용",
             "l4": "나누어떨어짐 조건",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-011",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-124",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -2886,13 +4289,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+            "status": "ADD_MISSING_EXACT_BINDING",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -2916,6 +4356,22 @@
             "l3": "곱셈과 나눗셈",
             "l4": "부호가 있는 수의 곱셈",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-022",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-135",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],
@@ -3007,13 +4463,50 @@
       ],
       "curriculumBindingDecision": {
         "sourceCurriculum": "2015",
-        "existingMatchingBindingRows": [],
+        "sourceCurriculumOrigin": "REGISTERED_METADATA_CONTEXT; original JS field absent",
+        "existingSameUnitSubUnitRows": [],
+        "exactRequestsByCurriculum": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "ownerPack": "MIDDLE1",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+            "status": "ADD_EXACT_BINDING_AFTER_PARENT_REGISTRATION",
+            "existingExactBindingRows": [],
+            "courseSpellingMismatchRows": [],
+            "sameUnitCourseNames": [],
+            "supportingQuestionUids": [
+              "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+            ],
+            "applyGuard": "REGISTERED_CONTEXT_2015; RAW_SOURCE_FIELD_ABSENT"
+          }
+        ],
         "candidateBinding": {
           "problemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+          "standardCourse": "중1 수학",
+          "ownerPack": "MIDDLE1",
           "standardUnitKey": "M1-02",
           "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS"
         },
-        "action": "CHECK_CANONICAL_COURSE_ALIAS_THEN_ADD_MISSING_EXACT_BINDING; do not assume an absent row from spelling only",
+        "action": "Use exactRequestsByCurriculum; 中1 수학 and 중1 수학 are distinct until authorized alias/canonical remediation, never auto-normalize",
         "sourceOnlyGuard": false
       },
       "rpmDecision": {
@@ -3037,6 +4530,22 @@
             "l3": "혼합 계산",
             "l4": "거듭제곱이 포함된 혼합 계산",
             "exactSemanticLeaf": true
+          }
+        ],
+        "exactConnectionChecks": [
+          {
+            "curriculum": "2015",
+            "comparedBaseRecordId": "M1-RPM-026",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
+          },
+          {
+            "curriculum": "2022",
+            "comparedBaseRecordId": "M1-RPM-139",
+            "existingExactActiveRecordIds": [],
+            "action": "ADD_EXACT_ALTERNATE_CONNECTION_AFTER_APPROVAL",
+            "sourcePathExact": true
           }
         ],
         "newLeafProposalRefs": [],

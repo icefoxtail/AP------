@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "worker": "META_A",
+  "createdAt": "2026-11-14T14:06:51.721312+00:00",
+  "status": "SUPPLEMENTAL_DEFINITION_COMPARISON_CLOSED",
+  "scope": "DEFINITION_DRAFT_COMPARISON_ONLY",
+  "evidenceRefs": [
+    {
+      "refId": "A_MAESAN",
+      "path": "worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "sha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897"
+    },
+    {
+      "refId": "B_COMMON",
+      "path": "worker-b/registry-proposals.json",
+      "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+    },
+    {
+      "refId": "B16",
+      "path": "worker-b/16_연향중_1학기_중간_중1_수학/registration-proposals.json",
+      "sha256": "c075a3d1226d146957508d07a8bb6c95e5942a0984dfc86ec388d45571e225d7"
+    },
+    {
+      "refId": "C_WANGUN",
+      "path": "worker-c/19_왕운중_1학기_중간_중1_기출/residual-review.json",
+      "sha256": "7517226550e7fd3d010a7109954985ca655eebe6580b6e71f45d3ba00463dec7"
+    },
+    {
+      "refId": "C_GEUMDANG",
+      "path": "worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "sha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e"
+    }
+  ],
+  "constraints": {
+    "originalExamArtifactsModified": false,
+    "sourceReviewedAgain": false,
+    "solutionsReviewedAgain": false,
+    "activeRegistryChanged": false,
+    "canonicalApplicationClaimed": false,
+    "fullReviewRerun": false,
+    "priorCloseoutModified": false
+  },
+  "decisions": [
+    {
+      "id": "A-CROSS-FINAL-01",
+      "topic": "common multiple condition",
+      "action": "MERGE_UNREGISTERED_PARENTS_WITH_EXPLICIT_UNION_DEFINITION",
+      "representativeParent": "PT_M1_COMMON_MULTIPLE_CONDITION",
+      "parentAliases": {
+        "PT_M1_REMAINDER_COMMON_MULTIPLE": "PT_M1_COMMON_MULTIPLE_CONDITION"
+      },
+      "evidenceRefs": [
+        "A_MAESAN",
+        "C_WANGUN",
+        "C_GEUMDANG"
+      ],
+      "existingDraftComparison": "A는 정수성·공통 나머지와 범위/값/개수/극값을 명시한다. C는 같은 부족량의 더하기 변환과 후속 나머지까지 명시한다. 현재 A 정의만으로 C의 모든 경우를 정확히 포괄한다고 주장하지 않는다.",
+      "requiredUnionDefinitionDraft": "여러 나눗셈의 정수성, 같은 나머지 또는 같은 부족량(제수에서 나머지를 뺀 값)을 공배수 조건으로 바꾸어, 주어진 범위 안의 값·개수·최소·최대 또는 후속 나눗셈의 나머지를 결정한다. 나머지를 빼거나 공통 부족량을 더하는 변환을 구별하며 원래 나눗셈 조건을 보존한다. 반복 사건의 시간 주기와 도형 채우기는 전제하지 않는다.",
+      "retainDistinctChildren": [
+        {
+          "key": "TPL_M1_COMMON_MULTIPLE_SHARED_REMAINDER_BOUND",
+          "parent": "PT_M1_COMMON_MULTIPLE_CONDITION",
+          "difference": "같은 나머지를 뺀 공배수에서 수 또는 극값 결정"
+        },
+        {
+          "key": "TPL_M1_REMAINDER_COMMON_MULTIPLE_COMMON_REMAINDER_BOUND",
+          "parent": "PT_M1_COMMON_MULTIPLE_CONDITION",
+          "difference": "범위 안의 수를 정한 뒤 새 제수의 나머지 계산"
+        },
+        {
+          "key": "TPL_M1_REMAINDER_COMMON_MULTIPLE_COMMON_DEFICIT",
+          "parent": "PT_M1_COMMON_MULTIPLE_CONDITION",
+          "difference": "같은 부족량을 더하여 공배수로 바꾼 뒤 원래 수 복원"
+        }
+      ],
+      "registrationStatus": "UNREGISTERED_DRAFT_INTEGRATION_ONLY"
+    },
+    {
+      "id": "A-CROSS-FINAL-02",
+      "topic": "evaluated expression comparison",
+      "action": "MERGE_UNREGISTERED_PARENTS_WITH_EXPLICIT_ORDER_RELATION_EXTENSION",
+      "representativeParent": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "parentAliases": {
+        "PT_M1_RATIONAL_COMPARISON_ASSERTION": "PT_M1_EVALUATED_EXPRESSION_COMPARISON"
+      },
+      "evidenceRefs": [
+        "A_MAESAN",
+        "B_COMMON"
+      ],
+      "existingDraftComparison": "B의 기존 문구는 일치·불일치/계산 결과 참거짓이다. A 쌍별 부등호 판정을 포함시키려면 대소관계를 통합 정의에 명시해야 한다.",
+      "requiredUnionDefinitionDraft": "여러 유리수 또는 수식을 계산하여 값의 일치·불일치·대소관계나 제시한 계산 결과의 참거짓을 판정한다. 최대·최솟값 또는 순위만을 선택하거나 연산법칙의 이름만 판별하는 과제는 제외한다.",
+      "retainedChild": {
+        "key": "TPL_M1_RATIONAL_COMPARISON_ASSERTION_CORE",
+        "parent": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+        "difference": "각 보기의 두 값을 독립적으로 평가하여 제시 부등호의 참거짓 판정"
+      },
+      "otherChildrenRemain": [
+        "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_OUTLIER",
+        "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_EQUALITY_AUDIT"
+      ],
+      "registrationStatus": "UNREGISTERED_DRAFT_INTEGRATION_ONLY"
+    },
+    {
+      "id": "A-CROSS-FINAL-03",
+      "topic": "equal number-line spacing",
+      "action": "EXACT_DRAFT_ALIAS",
+      "representativeParent": "PT_M1_RATIONAL_NUMBER_LINE_READING",
+      "representativeTemplate": "TPL_M1_RATIONAL_NUMBER_LINE_READING_EQUAL_SUBDIVISION",
+      "aliases": {
+        "PT_M1_NUMBERLINE_EQUAL_SPACING_RECOVERY": "PT_M1_RATIONAL_NUMBER_LINE_READING",
+        "TPL_M1_NUMBERLINE_EQUAL_SPACING_RECOVERY_CORE": "TPL_M1_RATIONAL_NUMBER_LINE_READING_EQUAL_SUBDIVISION"
+      },
+      "evidenceRefs": [
+        "A_MAESAN",
+        "B_COMMON"
+      ],
+      "reason": "B 실제 자식 정의가 이미 두 기준값 사이의 등분 수로 한 눈금 크기를 정하고 이동을 적용한다. A의 두 알려진 점에서 간격 복원과 동일 골격이므로 주어진 눈금 읽기 대 간격 복원이라는 구별은 해당 정의에 존재하지 않는다.",
+      "registrationStatus": "UNREGISTERED_DRAFT_INTEGRATION_ONLY"
+    },
+    {
+      "id": "A-CROSS-FINAL-04",
+      "topic": "reciprocal recovery and chain evaluation",
+      "action": "COMMON_PARENT_RETAIN_COEFFICIENT_RECOVERY_CHILD",
+      "representativeParent": "PT_M1_RECIPROCAL_RELATION",
+      "evidenceRefs": [
+        "A_MAESAN",
+        "B_COMMON",
+        "B16",
+        "C_WANGUN"
+      ],
+      "exactAliasRejectedBetween": [
+        "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT",
+        "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_RECIPROCAL_CHAIN"
+      ],
+      "reason": "A는 주어진 역수에서 원래 수를 복원하고 고정 계수와 곱해진 미지수를 처리하는 경우를 포함하며 요청한 곱을 계산한다. C의 직접 역수 chain은 주어진 수의 역수를 구한 뒤 곱 또는 몫을 구한다. 정의 범위가 완전히 같지 않다.",
+      "retainChild": {
+        "key": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT",
+        "parent": "PT_M1_RECIPROCAL_RELATION",
+        "preserveDefinitionUnchanged": true,
+        "difference": "계수와 곱해진 미지수의 역방향 복원 포함; 최종 곱"
+      },
+      "cIntegrationPlanAcknowledged": {
+        "newDraftKey": "TPL_M1_RECIPROCAL_RELATION_RECIPROCAL_CHAIN",
+        "parent": "PT_M1_RECIPROCAL_RELATION",
+        "mergeDrafts": [
+          "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_RECIPROCAL_CHAIN",
+          "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_QUOTIENT"
+        ],
+        "definitionRequirements": [
+          "직접 역수 계산과 역수가 주어진 원래 수 복원을 모두 명시",
+          "복원된 수들의 곱 또는 몫 계산 명시",
+          "나눗셈의 역수곱을 수 자체의 역수 복원과 구별",
+          "A 계수형 미지수 복원을 이 chain의 정확 alias라고 주장하지 않음"
+        ],
+        "proposalAuthority": "C integration owner message; A independently checked B16 and C draft definition text"
+      },
+      "uidProjectionConstraint": "매산22 선택묶음에는 역방향/계수형 복원이 포함되므로 C의 기존 직접 역수 chain 하나로 전체 UID를 치환하지 않는다. A 기존 묶음 후보와 선택문맥 투영 상태는 보존한다.",
+      "registrationStatus": "UNREGISTERED_DRAFT_INTEGRATION_ONLY"
+    }
+  ],
+  "integrationResponsibilities": [
+    "C/root가 통합 초안에 결정과 지원 UID를 결속",
+    "현재 ACTIVE 정의나 정본은 이 파일로 자동 수정하지 않음",
+    "정확 binding 및 RPM 교차표 등록은 기존 계약에 따름"
+  ]
+}

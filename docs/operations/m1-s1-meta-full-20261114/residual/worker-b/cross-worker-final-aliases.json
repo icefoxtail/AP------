@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "M1-S1-FINAL-PROPOSAL-ALIAS-CROSSCHECK-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "author": "META_B",
+  "createdAt": "2026-11-14T14:03:36.056903+00:00",
+  "scope": "Root/C 요청에 따라 기존 제안 정의와 완료 검토 문구만 비교. 원문/풀이/이미지 재검토 및 원시 워커 산출물 변경 없음.",
+  "sourceReferences": {
+    "B_COMMON": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-b/registry-proposals.json",
+      "sha256": "4f3d89a6b41cc845a84f0880f37fedf5fd219f4d1cc94d963771db8b637373a9"
+    },
+    "B16": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-b/16_연향중_1학기_중간_중1_수학/registration-proposals.json",
+      "sha256": "c075a3d1226d146957508d07a8bb6c95e5942a0984dfc86ec388d45571e225d7"
+    },
+    "A_MAESAN": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-a/17_매산중_1학기_중간_중1_수학/registration-proposals.json",
+      "sha256": "b85c444effa62a2c9645c716e24426cf21785519c44999c97fa862a27ff74897"
+    },
+    "C_GEUMDANG": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "sha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e"
+    },
+    "C_MERGE": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/cross-worker-a-proposals.json",
+      "sha256": "cab7c6c2496c103404e680d3898fb7f07fd157bace6316098a26cd305226e353"
+    },
+    "SAMSAN_PRIOR": {
+      "path": "/workspace/scratch/42de8b02ef57/m1-work/docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/review.json",
+      "sha256": "47ecdd5005375d780435fbc5b82a7a9b4022c9db291bf75900074b82005bc907"
+    },
+    "MAESAN_PRIOR": {
+      "path": "/workspace/scratch/42de8b02ef57/m1-work/docs/operations/m1-s1-meta-full-20261114/exams/17_매산중_1학기_중간_중1_수학/review.json",
+      "sha256": "0cb7d9d91f13c94e40203f19233f34f9014ff8da35519ca957f68b024b9a076c"
+    }
+  },
+  "mergeRecommendations": [
+    {
+      "decisionId": "MERGE_B16_GCD_LCM_PAIR",
+      "representativeKey": "TPL_M1_GCD_LCM_VALUE_EVALUATION_GCD_LCM_PAIR",
+      "aliasProposalKeys": [
+        "TPL_M1_GCD_LCM_VALUE_EVALUATION_BOTH_DIRECT",
+        "TPL_M1_GCD_LCM_DIRECT_COMPUTATION_GCD_LCM_PAIR"
+      ],
+      "parentProblemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "mergedDefinitionDraft": "주어진 여러 자연수의 각 소인수 지수의 공통 최솟값과 전체 최댓값을 취해 최대공약수와 최소공배수를 각각 구하고 요청한 순서로 제시한다.",
+      "reason": "같은 지수 min/max 결정 절차와 두 병렬 출력 목표. 순서쌍 표기는 별도 계산 전략이 아니므로 통합 가능.",
+      "leafMappingDecision": "별도 영역. B16의 신규 병렬 leaf안과 C의 primary+secondaryGoal 기록을 이 템플릿 통합만으로 자동 덮어쓰지 않음."
+    },
+    {
+      "decisionId": "MERGE_LAPS_ONLY_WITH_EXPLICIT_UNIFIED_FIRST_COINCIDENCE_DRAFT",
+      "representativeKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_FIRST_COINCIDENCE",
+      "aliasProposalKeys": [
+        "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_GEAR_RETURN",
+        "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_START_RETURN_LAPS"
+      ],
+      "parentProblemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "mergedDefinitionDraft": "현재 함께 시작한 정수 주기들의 최초 공통 진행량을 최소공배수로 구하고, 요청에 따라 기준 시각·연도를 더하거나 한 주기 크기로 나누어 반복 횟수로 환산한다.",
+      "definitionAuthorityRef": "C_MERGE.rootProposalMergeRecommendations.MERGE_FIRST_COINCIDENCE",
+      "reason": "C의 기존 통합 초안을 추가 확인한 결과 최초 공통 진행량의 lcm→요청 단위 환산이라는 공통 골격 아래 회전수와 시각 출력을 통합할 수 있다. START_RETURN_LAPS는 이미 초안에 포함된 GEAR_RETURN과 같이 lcm를 지정 주기로 나눈다.",
+      "criticalGuard": "원시 B FIRST_COINCIDENCE 정의는 시각/연도 결정만 포함하므로 그 정의 자체를 정확 재사용했다고 표기하지 않는다. 최종 통합 index에서 이 명시적 새 미등록 통합 정의를 기록할 때에만 alias 통합을 수용한다.",
+      "stillSeparateScope": [
+        "유한 기간에서 각 주기 사건의 합집합/교집합 발생 횟수 세기",
+        "현재 동시에 시작하지 않은 위상 조건 복원"
+      ]
+    },
+    {
+      "decisionId": "MERGE_RECIPROCAL_CHAIN_UNDER_RELATION",
+      "representativeKey": "TPL_M1_RECIPROCAL_RELATION_RECIPROCAL_CHAIN",
+      "aliasProposalKeys": [
+        "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_RECIPROCAL_CHAIN",
+        "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_QUOTIENT"
+      ],
+      "parentProblemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+      "mergedDefinitionDraft": "0이 아닌 주어진 수의 역수 또는 역수가 주어진 수를 곱이 1인 관계로 복원한 뒤, 복원한 두 수의 곱이나 몫을 구한다. 필요한 경우 소수나 대분수를 분수로 바꾼다.",
+      "internalSkeletonDraft": [
+        "수 표현 통일이 필요한 경우 분수로 변환",
+        "곱이 1인 대칭적 역수 관계로 필요한 수 복원",
+        "요청한 곱 또는 몫 계산"
+      ],
+      "reason": "역수를 직접 지정하는 것과 그 역수의 값을 주어 원수를 복원하는 것은 같은 곱1의 대칭관계이다. C 정의가 이미 곱/나눗셈을 모두 포함하므로 B16의 몫은 포함 가능. 일반 수식평가보다 B의 역수관계 부모가 결정 전략을 정확히 나타냄.",
+      "invalidEarlierKeySpelling": "TPL_M1_NUMERIC_SUBSTITUTION_EVALUATION_RECIPROCAL_CHAIN was a message typo; not a real source proposal."
+    },
+    {
+      "decisionId": "MERGE_DIRECT_PRIME_PARAMETER_EXTRACTION",
+      "representativeParentKey": "PT_M1_PRIME_POWER_PARAMETER_RECOVERY",
+      "aliasParentProposalKeys": [
+        "PT_M1_PRIME_FACTORIZATION_EXPONENT_EXTRACTION"
+      ],
+      "representativeTemplateKey": "TPL_M1_PRIME_POWER_PARAMETER_RECOVERY_DIRECT",
+      "aliasTemplateProposalKeys": [
+        "TPL_M1_PRIME_FACTORIZATION_EXPONENT_EXTRACTION_CORE"
+      ],
+      "reason": "매산2의 기존 검토는 32와125를 각각2와5의 거듭제곱과 대응하여 지수차를 구하는 것이다. 자연수의 소인수분해→미지지수 대응→결합식 산출이라는 B의 direct 골격과 같음.",
+      "preservedExclusion": "연속곱/팩토리얼의 소인수 지수를 세는 전략은 B 정의의 기존 제외 범위로 유지. A의 일반적인 곱이라는 말만으로 이 범위까지 합치지 않음.",
+      "supportingPriorReview": {
+        "ordinal": 2,
+        "questionUid": "qid_v1_2604d7b4c505ac45d02f05f2a9344bb11acbcdb27ce5cb55e0e28486102e2e0b",
+        "primaryMethod": "각 자연수를 소수의 거듭제곱으로 나타내 지수를 읽는 전략 후보.",
+        "decisiveStep": "32와125의 소인수분해를 2와5의 거듭제곱과 대응한다.",
+        "classificationReason": "소인수분해 후 지수 차가 목표이며 반복곱에서 밑·지수·값의 합을 구하는 기존 유형과 다르다."
+      }
+    }
+  ],
+  "rootSemanticOverrides": [
+    {
+      "exam": "17_삼산중_1학기_중간_중1_수학",
+      "ordinal": 2,
+      "questionUid": "qid_v1_5e4344a4ae5ee794c487f661f583d9cbc113fc3a36fd31f8a21da6f6c45c9237",
+      "oldCandidateSource": "activeLookup[0]; after PT/TPL intentionally blank under SOURCE_ONLY",
+      "priorEvidence": {
+        "ordinal": 2,
+        "questionUid": "qid_v1_5e4344a4ae5ee794c487f661f583d9cbc113fc3a36fd31f8a21da6f6c45c9237",
+        "primaryMethod": "소인수분해에서 지수 읽기",
+        "decisiveStep": "자연수를 소수의 곱으로 정리하고2가 곱해진 횟수를 거듭제곱 지수로 읽는다.",
+        "classificationReason": "소인수분해의 빈 지수를 찾는 직접 적용이다."
+      },
+      "rejectOldProblemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+      "reason": "기존 검토의 목표는 지수 하나 읽기이며 등식 참거짓 판별이 아니다. 옛 후보의 부모는 팔마1에서 제외한 바로 그 equality-judgment 제한을 가짐.",
+      "problemTypeKeySuggestion": "PT_M1_PRIME_POWER_PARAMETER_RECOVERY",
+      "templateKeySuggestion": "TPL_M1_PRIME_POWER_PARAMETER_RECOVERY_EXPONENT_READ",
+      "templateDisposition": "NEW_DRAFT_CHILD_UNDER_EXISTING_B_PROPOSED_PARENT",
+      "templateDefinitionDraft": "주어진 자연수를 소인수분해하고 지정된 소인수의 출현 횟수를 거듭제곱의 지수로 읽어 그 지수 하나를 구한다.",
+      "internalSkeletonDraft": [
+        "자연수를 소인수분해",
+        "지정된 소인수의 횟수 확인",
+        "해당 지수 제시"
+      ],
+      "differenceFromDirect": "B DIRECT는 여러 지수/소인수를 대응한 뒤 요청한 결합식에 대입한다. 삼산2에는 이 최종 결합식 계산이 없으므로 DIRECT exact 재사용으로 축소하지 않음.",
+      "exactParentBindingRequests": [
+        {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "ownerPack": "MIDDLE1",
+          "action": "ADD_AFTER_PARENT_REGISTRATION_AND_SOURCE_CURRICULUM_EVIDENCE"
+        },
+        {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-01",
+          "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+          "ownerPack": "MIDDLE1",
+          "action": "ADD_AFTER_PARENT_REGISTRATION_AND_SOURCE_CURRICULUM_EVIDENCE"
+        }
+      ],
+      "priorRpmComparisonIds": [
+        "M1-RPM-003",
+        "M1-RPM-116"
+      ],
+      "methodApproval": "NOT_GRANTED_SOURCE_ONLY",
+      "sourceProjectionApplied": false
+    },
+    {
+      "exam": "17_삼산중_1학기_중간_중1_수학",
+      "ordinal": 12,
+      "questionUid": "qid_v1_7317585f7a40adb63640b6858cf77c34f03c776ebbf0d16d2be74747fc29ad49",
+      "oldCandidateSource": "activeLookup[0]; after PT/TPL intentionally blank under SOURCE_ONLY",
+      "priorEvidence": {
+        "ordinal": 12,
+        "questionUid": "qid_v1_7317585f7a40adb63640b6858cf77c34f03c776ebbf0d16d2be74747fc29ad49",
+        "primaryMethod": "문자식 연산기호 생략의 정확성 판별",
+        "decisiveStep": "숫자 계수의 위치, 반복 문자의 거듭제곱, 나눗셈 분모와 음수 계수를 점검한다.",
+        "classificationReason": "곱셈·나눗셈 기호를 생략한 표현을 검토하는 직접 유형이다."
+      },
+      "rejectOldProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "problemTypeKeySuggestion": "PT_M1_ALGEBRAIC_OPERATION_NOTATION",
+      "templateKeySuggestion": "TPL_M1_ALGEBRAIC_OPERATION_NOTATION_CORE",
+      "proposalAuthorityRef": "A_MAESAN",
+      "reason": "기존 검토는 계수 위치·거듭제곱·분모·음수 계수의 표기를 판별한다. 생활수량 문장과 식의 번역이라는 옛 부모 제한을 충족하지 않으며 A의 표기법 새 부모와 CORE에 포함됨.",
+      "exactParentBindingRequests": [
+        {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+          "ownerPack": "MIDDLE1",
+          "action": "ADD_AFTER_PARENT_REGISTRATION_AND_SOURCE_CURRICULUM_EVIDENCE"
+        },
+        {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+          "ownerPack": "MIDDLE1",
+          "action": "ADD_AFTER_PARENT_REGISTRATION_AND_SOURCE_CURRICULUM_EVIDENCE"
+        }
+      ],
+      "priorRpmComparisonIds": [
+        "M1-RPM-028",
+        "M1-RPM-141"
+      ],
+      "methodApproval": "NOT_GRANTED_SOURCE_ONLY",
+      "sourceProjectionApplied": false
+    }
+  ],
+  "integrationPolicy": "최종 root 통합 index의 제안 alias/override에만 사용. 원시 워커 evidence·정본·source 모두 보존. ACTIVE 등록/official Resolver PASS를 뜻하지 않음."
+}

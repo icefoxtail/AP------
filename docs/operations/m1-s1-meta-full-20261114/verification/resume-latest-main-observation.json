@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "m1-s1-final-main-observation-v1",
+  "observedAt": "2026-11-14T14:07:45.702307+00:00",
+  "baselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
+  "previousLineageAuditedMain": "83273a9744fd306ca5a03182b01298205bf84de8",
+  "latestMainObserved": "a54075b0d292de57841c64a9b70ff02acab90695",
+  "lineageAuditRef": "docs/operations/m1-s1-meta-full-20261114/verification/resume-source-lineage.json",
+  "lineageAuditSha256": "e9f10b09e9a63d6766732e8e92d14488fce0d789f056315795a9aebc98754a2d",
+  "changedPathsSinceLineageAudit": 47,
+  "targetSourceRegistryAuthorityToolDriftSinceLineageAudit": [],
+  "authorityRegistryAndToolDriftFromBaseline": [
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.json",
+    "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+  ],
+  "targetChecksReusedOnlyIfNoRelevantDrift": true,
+  "notAnApproval": true,
+  "observedUnrelatedFoundationChanges": [
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-c-25-pungdeok-mid-parent-20261114.json",
+      "disposition": "Other semester evidence file; not included in any target UID approval or canonical definitions."
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+      "disposition": "Only two catalog version receipt fields changed; source/metadata target rows and canonical definitions remain unchanged.",
+      "fieldChanges": [
+        {
+          "path": "/checked/archive2CatalogIndexVersion",
+          "before": "archive2-canonical-v1:38165ac5da4638dbad29f2f7912fa1b4c2d056bf0c814f2a0fc3333a1abd6544",
+          "after": "archive2-canonical-v1:d8a2033ffe1e38f8e1ab5d865cff8f44c57798c2a32f11b4ee4f1be0d356dda0"
+        },
+        {
+          "path": "/checked/currentCanonicalSourceReadinessV1/catalogIndexVersion",
+          "before": "archive2-canonical-v1:38165ac5da4638dbad29f2f7912fa1b4c2d056bf0c814f2a0fc3333a1abd6544",
+          "after": "archive2-canonical-v1:d8a2033ffe1e38f8e1ab5d865cff8f44c57798c2a32f11b4ee4f1be0d356dda0"
+        }
+      ]
+    }
+  ],
+  "canonicalAuthorityDefinitionToolDriftFromBaseline": [],
+  "status": "TARGET_AND_CANONICAL_DRIFT_NONE; UNRELATED_RECEIPT_CHANGES_RECORDED"
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "m1-worker-closeout-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "workKey": "M1-S1-META-FULL",
+  "worker": "META_C_RESUME",
+  "writerState": "CLOSED",
+  "closedAt": "2026-11-14T13:58:41.858457+00:00",
+  "meaning": "Assigned residual interpretation and targeted cross-review artifacts completed; not a release PASS or current-solution approval claim.",
+  "artifacts": [
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/17_금당중_1학기_중간_중1_수학/residual-review.json",
+      "sha256": "7277390fb3447b34d71fa4dbe9dfa138f8adba147c4e53df62c38bc3e9ca4f7e",
+      "questionCount": 25,
+      "sourceOnly": true,
+      "gapDispositions": 23,
+      "contentDebtDispositions": 55,
+      "validation": {
+        "itemsAccountForPriorOrdinals": true,
+        "allOriginalGapsHaveDisposition": true,
+        "allOriginalContentDebtHaveDisposition": true,
+        "uidOrderPreserved": true,
+        "newSuggestedTemplateKeysAbsentInCurrentRegistry": true
+      }
+    },
+    {
+      "exam": "19_동산중_1학기_기말_중1_수학",
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/19_동산중_1학기_기말_중1_수학/residual-review.json",
+      "sha256": "2d13fbc449f449af3d44596afcbc35b08ebaecde92cbf044b46e35fa367850d7",
+      "questionCount": 25,
+      "sourceOnly": true,
+      "gapDispositions": 18,
+      "contentDebtDispositions": 51,
+      "validation": {
+        "itemsAccountForPriorOrdinals": true,
+        "allOriginalGapsHaveDisposition": true,
+        "allOriginalContentDebtHaveDisposition": true,
+        "uidOrderPreserved": true,
+        "newSuggestedTemplateKeysAbsentInCurrentRegistry": true
+      }
+    },
+    {
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/19_연향중_1학기_중간_중1_기출/residual-review.json",
+      "sha256": "6fba37b05d53875dca3ec566dde5f56fa040fb7524c94aa0747593c9af2a5b01",
+      "questionCount": 23,
+      "sourceOnly": false,
+      "gapDispositions": 24,
+      "contentDebtDispositions": 27,
+      "validation": {
+        "itemsAccountForPriorOrdinals": true,
+        "allOriginalGapsHaveDisposition": true,
+        "allOriginalContentDebtHaveDisposition": true,
+        "uidOrderPreserved": true,
+        "newSuggestedTemplateKeysAbsentInCurrentRegistry": true
+      }
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/19_왕운중_1학기_중간_중1_기출/residual-review.json",
+      "sha256": "7517226550e7fd3d010a7109954985ca655eebe6580b6e71f45d3ba00463dec7",
+      "questionCount": 24,
+      "sourceOnly": false,
+      "gapDispositions": 35,
+      "contentDebtDispositions": 0,
+      "validation": {
+        "itemsAccountForPriorOrdinals": true,
+        "allOriginalGapsHaveDisposition": true,
+        "allOriginalContentDebtHaveDisposition": true,
+        "uidOrderPreserved": true,
+        "newSuggestedTemplateKeysAbsentInCurrentRegistry": true
+      }
+    },
+    {
+      "path": "/workspace/scratch/42de8b02ef57/worker-c/cross-worker-a-proposals.json",
+      "sha256": "cab7c6c2496c103404e680d3898fb7f07fd157bace6316098a26cd305226e353",
+      "kind": "CROSS_REVIEW_AND_ROOT_INTEGRATION_OVERRIDES",
+      "counts": {
+        "aProposalDeclarations": 40,
+        "leafParentDeclarationsCheckedExcludingRootCube": 10,
+        "proposalMergeRecommendations": 17,
+        "cSemanticOverrideCount": 4,
+        "targetedNewOriginalEvidenceUids": 4
+      }
+    }
+  ],
+  "rawPacketCounts": {
+    "exams": 4,
+    "questions": 97,
+    "uniqueUids": 97,
+    "sourceOnlyQuestions": 50,
+    "currentSolutionQuestionsApprovalPending": 47,
+    "gapDispositions": 100,
+    "contentDebtDispositions": 133,
+    "distinctDefinitionProposalIds": 36,
+    "distinctLeafProposalIds": 10,
+    "rawSemanticStatuses": {
+      "EXISTING_DEFINITION_REUSE_CONFIRMED": 50,
+      "NEW_DEFINITION_PROPOSAL_READY": 47
+    }
+  },
+  "rootIntegration": {
+    "required": true,
+    "authoritativeOverlay": "/workspace/scratch/42de8b02ef57/worker-c/cross-worker-a-proposals.json",
+    "rawPacketsRewriteRequired": false,
+    "mergeRecommendationCount": 17,
+    "semanticOverrideCount": 4,
+    "semanticOverrideItems": [
+      {
+        "exam": "17_금당중_1학기_중간_중1_수학",
+        "ordinal": 19,
+        "questionUid": "qid_v1_61ca901eb7d7028acbb19974851cf36a7590659077392d15dd1fc3a61e8a21fe"
+      },
+      {
+        "exam": "19_연향중_1학기_중간_중1_기출",
+        "ordinal": 19,
+        "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6"
+      },
+      {
+        "exam": "17_금당중_1학기_중간_중1_수학",
+        "ordinal": 1,
+        "questionUid": "qid_v1_54c6820c76afd2705802ae22a3ede27a4ad9f7665693b7c8a3eee0d23382a38c"
+      },
+      {
+        "exam": "19_왕운중_1학기_중간_중1_기출",
+        "ordinal": 13,
+        "questionUid": "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974"
+      }
+    ],
+    "countsMeaning": "Raw packet status counts precede the four explicit parent-definition overrides. Root integrated index must use overrides and representative keys rather than treating raw existing-reuse labels as final."
+  },
+  "completedEvidenceNotToRepeat": [
+    "Original exam full reviews and prior 36 independent samples reused; no R1/R2/R3 re-execution.",
+    "Geumdang17 q15/q22 original PDF comparison closed transcription uncertainty; original printed distractor issues are nonblocking for metadata.",
+    "Parent common QFULL lineage investigation completed in resume-source-lineage.json at commit 24967490dc04f29ebd83683aa1d90bbb1c2f1920; current approval remains separate.",
+    "A exact binding field declarations read back for 92 target rows across two exams; 中1 수학 course mismatches remain explicit gaps.",
+    "Maesan17 22–24 optional-part structure checked on original p4; q14 root-confirmed printed facts reused for provisional 1/2 boundary only."
+  ],
+  "remainingOutsideWorker": [
+    {
+      "owner": "ROOT/CODEX",
+      "id": "R01_SOURCE_ONLY_METHOD",
+      "action": "Obtain legitimate current-approved existing solution evidence before method binding. Duplicate-stem transfer cannot bypass approval; do not write new solution to simulate completion."
+    },
+    {
+      "owner": "ROOT/CODEX",
+      "id": "R02_CURRENT_SOLUTION_APPROVAL",
+      "action": "Reuse completed lineage investigation and address current-version final approval evidence for solved93; do not redo the completed hash comparison."
+    },
+    {
+      "owner": "CONTENT_EVIDENCE_FOLLOWUP",
+      "id": "R05_YEONHYANG_MID_Q7",
+      "action": "Existing solution supports candidate sufficiency only; derivation/minimum argument requires legitimate evidence or separately authorized supplementation."
+    },
+    {
+      "owner": "ROOT/CODEX",
+      "id": "REGISTRY_BINDING_LEAF_AND_RESOLVER",
+      "action": "Use cross-review representative keys and four C overrides, approve registrations, resolve exact course/curriculum binding and proposed leaf connections, then run official resolver prerequisites and release gates."
+    }
+  ],
+  "actionsPerformedByThisWorker": {
+    "gitAddCommitPushCheckout": false,
+    "sharedCanonicalRegistryWrite": false,
+    "sourceAnswerSolutionImageWrite": false,
+    "fullResolveOrRepeatedIndependentSamples": false,
+    "newSolutionAuthored": false,
+    "remoteAWCRNotionStateMutation": false
+  },
+  "nextAction": "Root incorporates five completed JSON artifacts plus this closeout into the authorized branch, records final task/AWCR checkpoint and Codex handoff. This worker has no pending assigned edits."
+}

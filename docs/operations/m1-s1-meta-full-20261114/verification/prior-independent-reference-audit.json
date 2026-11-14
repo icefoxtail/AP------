@@ -1,0 +1,1105 @@
+{
+  "schemaVersion": "M1-S1-PRIOR-INDEPENDENT-REFERENCE-AUDIT-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "author": "META_B",
+  "createdAt": "2026-11-14T14:14:53.179311+00:00",
+  "status": "REFERENCE_LAYER_DIFFERENCE_AUDITED_WITH_EXPLICIT_LIMITS",
+  "scope": "Read-only comparison of prior independent-reference hashes, locally available path history, final manifest/adjudication/closeout references and the new A preservation receipt. No source/solution/image rereview, no Git mutation, no raw worker overwrite.",
+  "baselineResumeCommit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+  "counts": {
+    "exams": 12,
+    "independentSamples": 36,
+    "declaredAuthorArtifactHashRecords": 24,
+    "declaredHashEqualsCurrentIntegratedBytes": 0,
+    "currentHashesMatchFinalArtifactManifest": 24,
+    "exactDeclaredHashRecoveredAsGitBlob": 0,
+    "exactAuthorReviewProjectionReconstructions": 5,
+    "samplesInExactReviewProjectionReconstructions": 15,
+    "authorFourSlotHistoricalPayloadsRecovered": 0,
+    "unavailableOlderPathHistoryEntries": 18
+  },
+  "findings": [
+    "finalAuthorArtifactReadback is an author-payload reference layer, not a hash of the later integrated Git file. The declared review hash is also recorded as rootIntegration.workerArtifactSha256; individual files explicitly preserve this distinction.",
+    "The current integrated review/four-slot files match all 24 corresponding final-artifact-manifest records. Their differing 24 author references predate this resume and are preserved without rewriting.",
+    "For five review payloads, removing only explicit root wrapper fields from the current JSON and serializing it exactly reconstructs the declared author SHA-256. This identifies their payload content, but is not recovery of an independently stored historical Git blob.",
+    "The remaining seven author-review payloads and all twelve author-four-slot payloads were not recovered exactly. Their full field differences and sample-content invariance cannot be asserted from the recorded author hashes.",
+    "No exact declared author payload was found as a readable historical Git blob in the bounded path history. Several older commit:path reads were unavailable locally; no broad history search or object hydration was attempted after the bounded audit.",
+    "The prior final-adjudications document records three integrationPattern changes and no sampleSlotAmendments. This is a stored past statement, distinct from fresh byte verification.",
+    "A new preservation receipt separately binds the preserved 36 sample UID/ordinal and current source fingerprints. Its current-source binding and preserved-baseline guarantees remain useful even where original author-payload byte provenance cannot be fully recovered. It is not a new independent semantic review or a quality PASS."
+  ],
+  "referenceRoles": {
+    "priorIndependentReview": "Preserved prior sample decisions/notes and author-file reference hashes; no silent upgrade to current integrated-file hash attestation.",
+    "finalArtifactManifest": "Exact hashes of final integrated artifacts; all 24 requested review/four-slot entries match current files.",
+    "finalVerification": "Stored 2026-11-14 mechanical verification snapshot with 36 sample ordinals and source/protected-field results; not a fresh semantic approval.",
+    "closeoutReview": "Stored final integrated review hashes and document consistency scope; explicitly denies new quality approval.",
+    "newAPreservationReceipt": "Fresh baseline/current byte preservation and current source UID/fingerprint binding for the 36 preserved samples; separate evidence from old author-file hashes."
+  },
+  "supportingReferences": {
+    "finalArtifactManifest": {
+      "path": "docs/operations/m1-s1-meta-full-20261114/verification/final-artifact-manifest.json",
+      "sha256": "e0f4cc90ec82db6bfad212da2f1216346a1f1d761f476dd5eb66282ed9671a00"
+    },
+    "finalVerification": {
+      "path": "docs/operations/m1-s1-meta-full-20261114/verification/final-verification.json",
+      "sha256": "d8b1fb0ef5fb6c3eb42f7862a1f8d97a42e97f46ee38cdbaa3ed93b32690eeee",
+      "verifiedAt": "2026-11-14T08:45:50.327Z",
+      "qualityStatus": "NOT_A_FULL_SEMANTIC_OR_RELEASE_PASS"
+    },
+    "finalAdjudications": {
+      "path": "docs/operations/m1-s1-meta-full-20261114/verification/final-adjudications.json",
+      "sha256": "30fdb2bcee7baf226fbe1a6028916f8d5dba6b6bae5652bdac71b696d9e27e2b",
+      "at": "2026-11-14T08:36:50.228492+00:00",
+      "changes": [
+        {
+          "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+          "ordinal": 21,
+          "questionUid": "qid_v1_a1a75735b2684fb4a04060caf8402f197a419419d376cffc70aa293b8e15a0b6",
+          "field": "integrationPattern",
+          "previousBranchValue": "NONE",
+          "finalValue": "CASE_BRANCH",
+          "isIndependentSampleUid": false
+        },
+        {
+          "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+          "ordinal": 22,
+          "questionUid": "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
+          "field": "integrationPattern",
+          "previousBranchValue": "NONE",
+          "finalValue": "CASE_BRANCH",
+          "isIndependentSampleUid": false
+        },
+        {
+          "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
+          "ordinal": 17,
+          "questionUid": "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+          "field": "integrationPattern",
+          "previousBranchValue": "SEQUENTIAL",
+          "finalValue": "NONE",
+          "isIndependentSampleUid": false
+        }
+      ],
+      "sampleSlotAmendments": []
+    },
+    "closeoutReview": {
+      "path": "docs/operations/m1-s1-meta-full-20261114/verification/closeout-review.json",
+      "sha256": "40eaa48d8f3a1f71f206e92dba88ac1f4a93bc988a962af06a957df23f3d35b1",
+      "reviewedAt": "2026-11-14T08:54:33.350Z",
+      "qualityApprovalGranted": false
+    },
+    "newAPreservationReceipt": {
+      "path": "/workspace/scratch/42de8b02ef57/worker-a/resume-preservation-verification.json",
+      "sha256": "1fc48112926cbb75a91e03d2a739b3e51f6566f61f65f98858b22e2c9dc1c705",
+      "receiptReadAsJson": true,
+      "reportedGuarantee": "source12/UID286/old48 byte preservation; 36 sampled current UID/ordinal/QBODY/QFULL/question-hash bindings; declared historical hash mismatches retained."
+    }
+  },
+  "exams": [
+    {
+      "exam": "16_연향중_1학기_중간_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/independent-review.json",
+      "independentSha256": "019df2bc09839e6b1868e8613ec64b198a07234e0ec4f941fbee98ff2e675351",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        2,
+        9,
+        16
+      ],
+      "sampleUids": [
+        "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e",
+        "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0",
+        "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": true,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/17_금당중_1학기_중간_중1_수학/independent-review.json",
+      "independentSha256": "1d23250e4ce91d2ac43eb66cc3451a2c45c569887e39553740e7a5eebd525fb1",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        12,
+        15,
+        22
+      ],
+      "sampleUids": [
+        "qid_v1_af43fa6f95f310083fca054f5078763dd5a352f7c096ee3dabd2cb7323bc4d43",
+        "qid_v1_d1d8d1f29d81896f68ad20120f073f7e366fc96a1dafdd59777f03fff1ed0072",
+        "qid_v1_1934da63ea59df9402fef2edde153824c6e1ace9dba0c14b14af3052349d15e6"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": true,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/17_매산중_1학기_중간_중1_수학/independent-review.json",
+      "independentSha256": "f4140ac37ecddd8bd4502d018ade0a27ba8b3c7bdbf51b10a10ce2bc0a954b7b",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        4,
+        14,
+        19
+      ],
+      "sampleUids": [
+        "qid_v1_0ebe24b2f37a820655f7f5e9a80207b8bf4a66d7ac62a55e653444299aca5c94",
+        "qid_v1_84a055950e7a61c7ab2cbda27ac3f0beffa6e136f90adbe452fd30c00968c5ff",
+        "qid_v1_9b9c2e542781840d71af3629a82ea5ad613067059ab306b14da6d579297469f5"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "17_삼산중_1학기_중간_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/independent-review.json",
+      "independentSha256": "c06978b10b642e050ee3d105078e04f071b6ffb716cfd48e1f739681987dd4b1",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        15,
+        19,
+        23
+      ],
+      "sampleUids": [
+        "qid_v1_794db02f4e679ba7a086169d03379d9bcfd3733aff20a4e80056d0c7035440ad",
+        "qid_v1_38d44411b60118b8f0c5ea883b69bcfb20012289f1e4b5351ef28e8271eecdeb",
+        "qid_v1_b350d047a1052165477735c3446f2c392bb7b26e6ea2f46f8615cf761cd13d43"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": true,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_금당중_1학기_기말_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/independent-review.json",
+      "independentSha256": "2288e2dc765d1064f26ff093575e7fd991bfde83f0ab3a4223a4a1a4045bd755",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        2,
+        15,
+        20
+      ],
+      "sampleUids": [
+        "qid_v1_e5c6c39a303f03299f61f46ad735e90e05c224fef51c619dd0ee5c9db2fce109",
+        "qid_v1_c52522288ff65425f7f7ff23a2de2ef59f039524cba13128449f78536ea3ba09",
+        "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": false,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_동산중_1학기_기말_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/independent-review.json",
+      "independentSha256": "a4eec46d0739c3fb473b5d3d3cf900a02462a8ec62792f044223dcdd1094624c",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        5,
+        16,
+        24
+      ],
+      "sampleUids": [
+        "qid_v1_c7a19a451177bd12fe9268fc714a01a4ce9b7b322bc340965299df46d0403652",
+        "qid_v1_9a7f37108a17e6616a34cafca8e1871a587ecb5603f754f6e0acfbf114a3fb05",
+        "qid_v1_8f783640a24439ca782cc86be5b7094daa2c677408834f7855e0d4f598fcac8a"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": false,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_기말_중1_수학/independent-review.json",
+      "independentSha256": "eb5780472a83b139b4fb3a61577fea56499e7983552cb41ab13e6ac64a5e0b05",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        1,
+        13,
+        21
+      ],
+      "sampleUids": [
+        "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11",
+        "qid_v1_1869550c8e2c9ed1836d811da08ec7a1de017af03c9b0ec4e3dca74c90bb79e5",
+        "qid_v1_8fc304a5235c3ec41914e55fcabb286916ed9a0c6be511f6381bebd57683e293"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/independent-review.json",
+      "independentSha256": "ed832a928386754cbec2f39a21653cc2fd9b28d6817112ab17cefa68b9b5fcde",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        7,
+        16,
+        23
+      ],
+      "sampleUids": [
+        "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+        "qid_v1_30823040895108b3b727e7e169e1ce127c777f2f3e89ecf21e0ffd8dacd84408",
+        "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": true,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_왕운중_1학기_기말_중1_수학",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/independent-review.json",
+      "independentSha256": "ff24f35ba941d7ec822c3366d248d4d0ee0a7fba03ff6e59b5d1a589109c31a0",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        6,
+        16,
+        24
+      ],
+      "sampleUids": [
+        "qid_v1_84cf1f48629fd79a142ce5fda0f82102e7c9f5cf60dff20ba4164c078f9d868c",
+        "qid_v1_288aafe77c04590487e8d046b4aeb44b1091569aa368dd277e6c39255bddef6a",
+        "qid_v1_3a02ab6b7c95fb7d1551c25997f97f36b6aa8952ed64ad90b6ef6f57a183408f"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": false,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/independent-review.json",
+      "independentSha256": "e0df18edd9ceb1fba259a69e4d8b3f2bb0acd06358e273111278f3c6555e340f",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        18,
+        22,
+        24
+      ],
+      "sampleUids": [
+        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+        "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
+        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": true,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "19_팔마중_1학기_중간_중1_기출",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/independent-review.json",
+      "independentSha256": "0ffe476004574c98079c99ab625e1881d86e0c82374552a22856bf828332adc1",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        4,
+        17,
+        23
+      ],
+      "sampleUids": [
+        "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+        "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+        "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": false,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "independentPath": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/independent-review.json",
+      "independentSha256": "d20d57d70ecdcafa4fbf6e2c852f85242eb83893ba2d47b4a8e25fd8dec16072",
+      "sampleCount": 3,
+      "sampleOrdinals": [
+        10,
+        18,
+        23
+      ],
+      "sampleUids": [
+        "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2",
+        "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+        "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+      ],
+      "readbackAt": "2026-11-14T08:36:50.228492+00:00",
+      "initialWorkerReviewHashEqualsFinalAuthorReadback": false,
+      "initialWorkerFourSlotHashEqualsFinalAuthorReadback": false,
+      "rootIntegrationWorkerHashEqualsFinalAuthorReadback": true,
+      "recordedSampleSlotContentChanged": false
+    }
+  ],
+  "artifactHashAudit": [
+    {
+      "exam": "16_연향중_1학기_중간_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/review.json",
+      "declaredAuthorSha256": "1161f4045a641c152d0e0a3e0ac7dcc30e213b9a49bbd202d6e91fd9fcd6f72a",
+      "currentIntegratedSha256": "6ace77250fe32aab90b26566a7e66945f77631ea1b5570a64ea7826c11ffaab0",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "6ace77250fe32aab90b26566a7e66945f77631ea1b5570a64ea7826c11ffaab0",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "0d1cd18e39b9b9f329c4b93e0dbcbc7b864e7305",
+          "sha256": "6ace77250fe32aab90b26566a7e66945f77631ea1b5570a64ea7826c11ffaab0",
+          "bytes": 181473,
+          "targetMatch": false
+        },
+        {
+          "commit": "e0ae0de9bc072bbf3f1703030d53d3b00e56d590",
+          "blob": "257cbe4eb2ebb36e581caa3c8b8b4153123a77d5",
+          "sha256": "a18046914c3860c84428ea7c1f91292ef85b6bc5d16df7240708b67d82f2db1f",
+          "bytes": 174174,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "1161f4045a641c152d0e0a3e0ac7dcc30e213b9a49bbd202d6e91fd9fcd6f72a",
+        "matchesDeclaredAuthorSha256": true,
+        "status": "EXACT_RECONSTRUCTION_FROM_CURRENT_INTEGRATED_JSON",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "16_연향중_1학기_중간_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/16_연향중_1학기_중간_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "8c095d5ca08469dac21b746bb9a8aafb8b8522690e19e4850de32f3d12554b2d",
+      "currentIntegratedSha256": "f9bbbd4f68183fa90361e67e106611d9712de1b60d8ce4d819fe363c338dc4b1",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "f9bbbd4f68183fa90361e67e106611d9712de1b60d8ce4d819fe363c338dc4b1",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "830a6853b462dad6471deda62817fef7cca843fe",
+          "sha256": "f9bbbd4f68183fa90361e67e106611d9712de1b60d8ce4d819fe363c338dc4b1",
+          "bytes": 61913,
+          "targetMatch": false
+        },
+        {
+          "commit": "e0ae0de9bc072bbf3f1703030d53d3b00e56d590",
+          "blob": "5079db9f5ea886bea2ab16c8f36472145f67cf4d",
+          "sha256": "873328db1369dbae150fbc4aa2ef5a0b22eeb61da05011c03bcbe9879a549a02",
+          "bytes": 61828,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_금당중_1학기_중간_중1_수학/review.json",
+      "declaredAuthorSha256": "68380d1d87603f3bb3b48afcb8be34f17bf1a4cd3fbe02c29a5ba5423e63c235",
+      "currentIntegratedSha256": "930821970a393dd39455b615a76e8422353139ed75e06c1f118c84bf9a52715b",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "930821970a393dd39455b615a76e8422353139ed75e06c1f118c84bf9a52715b",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "9139677c7612211fecd3ace74cb008cc1ed89947",
+          "sha256": "930821970a393dd39455b615a76e8422353139ed75e06c1f118c84bf9a52715b",
+          "bytes": 168500,
+          "targetMatch": false
+        },
+        {
+          "commit": "805968cef649cfabff28e60777446c73c33a9bbe",
+          "blob": "afa7889b78e990e53bfe376ef33d1464bc881a1f",
+          "sha256": "284d6dc703166bba532e0d9201341eca4ba924841399ec5f16750166aa57b54e",
+          "bytes": 160912,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "8ae1eaeaafbedbab85641c5109db28c1a23766f6d261dd358b89b13d58cfdcb5",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "17_금당중_1학기_중간_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_금당중_1학기_중간_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "584d55c8e555447d25ed3fb6563e5d3bced40792f6182930acac7c461d1c8e72",
+      "currentIntegratedSha256": "092168b643f909dd7c337d8af7adc2c770914237387d060c6fe4dfa638d37695",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "092168b643f909dd7c337d8af7adc2c770914237387d060c6fe4dfa638d37695",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "4b7830eb5af8973f64a20205b6e290e47ea16da9",
+          "sha256": "092168b643f909dd7c337d8af7adc2c770914237387d060c6fe4dfa638d37695",
+          "bytes": 74203,
+          "targetMatch": false
+        },
+        {
+          "commit": "805968cef649cfabff28e60777446c73c33a9bbe",
+          "blob": "df943775ced1b0d35f9b8863369d4479c12ac17b",
+          "sha256": "89e95e69598911ec2f72e87650e2d02483292162a4ea5d700c43cc1592191679",
+          "bytes": 74112,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_매산중_1학기_중간_중1_수학/review.json",
+      "declaredAuthorSha256": "a6d09f0c78ee8d960b253d22e62abfc49902e231d9013fb5a40c7304367b1e6a",
+      "currentIntegratedSha256": "0cb7d9d91f13c94e40203f19233f34f9014ff8da35519ca957f68b024b9a076c",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "0cb7d9d91f13c94e40203f19233f34f9014ff8da35519ca957f68b024b9a076c",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "9f61a9e65cda79f485a5ffc455b154bc93fb6238",
+          "sha256": "0cb7d9d91f13c94e40203f19233f34f9014ff8da35519ca957f68b024b9a076c",
+          "bytes": 178042,
+          "targetMatch": false
+        },
+        {
+          "commit": "ace250399a7960e6841a4ae426362642d6723eb1",
+          "blob": "ca57615775eb33cec21bc63df1044d1e55553631",
+          "sha256": "d94f94a101f774012baa8d465b6ac406c6cb12a8c8c82dd09c7a71dfee162454",
+          "bytes": 170743,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "a6d09f0c78ee8d960b253d22e62abfc49902e231d9013fb5a40c7304367b1e6a",
+        "matchesDeclaredAuthorSha256": true,
+        "status": "EXACT_RECONSTRUCTION_FROM_CURRENT_INTEGRATED_JSON",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_매산중_1학기_중간_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "70988f1b6072851d961420057cccd3d68ee30a7fd6286a7c7ed4a6d89f7740fe",
+      "currentIntegratedSha256": "d07df8d0eb032a355df44f35af43a89d80d4c0a9f1fc8b68aca39973f354d91b",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "d07df8d0eb032a355df44f35af43a89d80d4c0a9f1fc8b68aca39973f354d91b",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "b18fa598cdad16e67c45e71ab17ecedad456fef7",
+          "sha256": "d07df8d0eb032a355df44f35af43a89d80d4c0a9f1fc8b68aca39973f354d91b",
+          "bytes": 61912,
+          "targetMatch": false
+        },
+        {
+          "commit": "ace250399a7960e6841a4ae426362642d6723eb1",
+          "blob": "63e379be7792a2558c4cdeca19b4f9c4e22df64c",
+          "sha256": "7dfba0b95d6529e485c29092a4171ab4bc7b8447ed08932da57b4956015bbae4",
+          "bytes": 61826,
+          "targetMatch": false
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "17_삼산중_1학기_중간_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/review.json",
+      "declaredAuthorSha256": "412d7b578af8266fb3373649416481b8054c34aad59981dd303615fd8aa4b71d",
+      "currentIntegratedSha256": "47ecdd5005375d780435fbc5b82a7a9b4022c9db291bf75900074b82005bc907",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "47ecdd5005375d780435fbc5b82a7a9b4022c9db291bf75900074b82005bc907",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "0fa5af0e263887b87605efb2808be5d14b156c5a",
+          "sha256": "47ecdd5005375d780435fbc5b82a7a9b4022c9db291bf75900074b82005bc907",
+          "bytes": 157643,
+          "targetMatch": false
+        },
+        {
+          "commit": "8dad9aef44c7c13fef618b633a9cca397508d706",
+          "error": "fatal: bad object 8dad9aef44c7c13fef618b633a9cca397508d706:docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "b214ba07ec204d93ce19d261a55311e92f7d54d360c66fc984975faaa2ccb3bb",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "17_삼산중_1학기_중간_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "40ca9f99242c37c30618450c5a6678c16e626319f0a997a41d169c32ac5d7947",
+      "currentIntegratedSha256": "b294a4e3b2ba829f078c312635b2bdfed89602fe8257634e724281339a223687",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "b294a4e3b2ba829f078c312635b2bdfed89602fe8257634e724281339a223687",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "d12fd24f9c392347282c6e8ae15041169f7150b7",
+          "sha256": "b294a4e3b2ba829f078c312635b2bdfed89602fe8257634e724281339a223687",
+          "bytes": 90901,
+          "targetMatch": false
+        },
+        {
+          "commit": "8dad9aef44c7c13fef618b633a9cca397508d706",
+          "error": "fatal: bad object 8dad9aef44c7c13fef618b633a9cca397508d706:docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_금당중_1학기_기말_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/review.json",
+      "declaredAuthorSha256": "721d16f057fafe5955de4308647250b4d10b1b593db56a00bd4edb7ae135fc32",
+      "currentIntegratedSha256": "7324bc35974067286774d99183ae8982ff320643ea1fa5bc55949fd1fa7a3008",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "7324bc35974067286774d99183ae8982ff320643ea1fa5bc55949fd1fa7a3008",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "9c1f81c795391206e7fe1ecbbbbeec628961501d",
+          "sha256": "7324bc35974067286774d99183ae8982ff320643ea1fa5bc55949fd1fa7a3008",
+          "bytes": 153663,
+          "targetMatch": false
+        },
+        {
+          "commit": "f18c282b4233c579d3c37f000d716f345bd3a73d",
+          "error": "fatal: bad object f18c282b4233c579d3c37f000d716f345bd3a73d:docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "203ce99e9eef410c8bd95323731cb7d9578b97f81d29b38e03dcc30f7fd8b151",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_금당중_1학기_기말_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "41e490b938f0d453a8f6ee9b07da24b000c51b2596797d46747724d7e067584c",
+      "currentIntegratedSha256": "e13f8a32b8f33feba7fed270e8e8259630c681574b400d86fe16d118cb5c9e4e",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "e13f8a32b8f33feba7fed270e8e8259630c681574b400d86fe16d118cb5c9e4e",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "d2d4aa2854786b1a1848cf710ca37536de508139",
+          "sha256": "e13f8a32b8f33feba7fed270e8e8259630c681574b400d86fe16d118cb5c9e4e",
+          "bytes": 86521,
+          "targetMatch": false
+        },
+        {
+          "commit": "f18c282b4233c579d3c37f000d716f345bd3a73d",
+          "error": "fatal: bad object f18c282b4233c579d3c37f000d716f345bd3a73d:docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_동산중_1학기_기말_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/review.json",
+      "declaredAuthorSha256": "029409e3134ff3ad2dd00d62b38f372d8ca6c08c89653a0c513b61ec6e007de9",
+      "currentIntegratedSha256": "6867fb6296b0bbc93ea02541083247a91eed4b005dac023cf06d2de038480bb7",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "6867fb6296b0bbc93ea02541083247a91eed4b005dac023cf06d2de038480bb7",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "7757654aea605e5211a8146b640c860df0654ea0",
+          "sha256": "6867fb6296b0bbc93ea02541083247a91eed4b005dac023cf06d2de038480bb7",
+          "bytes": 169173,
+          "targetMatch": false
+        },
+        {
+          "commit": "40f43100027e34cf0e61e20e925453bc1e7bd34a",
+          "error": "fatal: bad object 40f43100027e34cf0e61e20e925453bc1e7bd34a:docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "eb732c9c2b030953792090ae1b3cb4b628d0cb128f5e6996fda5313c0f1487bf",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_동산중_1학기_기말_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "64d556a406a0558d92ec15576c3aea3c216e6ee13bdb5f70ff29c1bfb7d22ec4",
+      "currentIntegratedSha256": "117b0f6de482d8f64ceec556763544f3a5ed3fdf5042783c26241c21944aa97e",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "117b0f6de482d8f64ceec556763544f3a5ed3fdf5042783c26241c21944aa97e",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "6ea32aa31645432448949aa34359e5ea58811127",
+          "sha256": "117b0f6de482d8f64ceec556763544f3a5ed3fdf5042783c26241c21944aa97e",
+          "bytes": 77219,
+          "targetMatch": false
+        },
+        {
+          "commit": "40f43100027e34cf0e61e20e925453bc1e7bd34a",
+          "error": "fatal: bad object 40f43100027e34cf0e61e20e925453bc1e7bd34a:docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_기말_중1_수학/review.json",
+      "declaredAuthorSha256": "86c89aa5b96b10fdacf9cbca504b21759aa20e9ee17830ed768e8facf7b5d240",
+      "currentIntegratedSha256": "d261dd54a893b7b0af8f98494467d77881a04c61faf6cd1d48b79a79e135f7ad",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "d261dd54a893b7b0af8f98494467d77881a04c61faf6cd1d48b79a79e135f7ad",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "5a3dc0a7aa4c67bdcb60b5cb73638244dd9d0252",
+          "sha256": "d261dd54a893b7b0af8f98494467d77881a04c61faf6cd1d48b79a79e135f7ad",
+          "bytes": 171588,
+          "targetMatch": false
+        },
+        {
+          "commit": "4fabdeee184fbd1eb0e5e6998fa41565192e98f1",
+          "error": "fatal: bad object 4fabdeee184fbd1eb0e5e6998fa41565192e98f1:docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_기말_중1_수학/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "86c89aa5b96b10fdacf9cbca504b21759aa20e9ee17830ed768e8facf7b5d240",
+        "matchesDeclaredAuthorSha256": true,
+        "status": "EXACT_RECONSTRUCTION_FROM_CURRENT_INTEGRATED_JSON",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_기말_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "dfe89a601eac5b2053e919ea636e4e8306fd809a19d1aeb32e8dac7e78f1d832",
+      "currentIntegratedSha256": "67dbd622eb2989b449829a73491d80b348a0c4b20d2409b0165bcb3fd4abd672",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "67dbd622eb2989b449829a73491d80b348a0c4b20d2409b0165bcb3fd4abd672",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "e80fe9dc9cb53a2c869cef32df60adf37853e5f8",
+          "sha256": "67dbd622eb2989b449829a73491d80b348a0c4b20d2409b0165bcb3fd4abd672",
+          "bytes": 63119,
+          "targetMatch": false
+        },
+        {
+          "commit": "4fabdeee184fbd1eb0e5e6998fa41565192e98f1",
+          "error": "fatal: bad object 4fabdeee184fbd1eb0e5e6998fa41565192e98f1:docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_기말_중1_수학/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/review.json",
+      "declaredAuthorSha256": "64b39ee09a718d5a5fe1b8f47b440a7941d8c1ddd1002c43b110691265d5dff5",
+      "currentIntegratedSha256": "1386dbc127d049357cb5bb5c8f3bac3b0b2118ff8956fb199a5072f65e1512dd",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "1386dbc127d049357cb5bb5c8f3bac3b0b2118ff8956fb199a5072f65e1512dd",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "857f06716a55048ad4879453ec464bc81d62f19e",
+          "sha256": "1386dbc127d049357cb5bb5c8f3bac3b0b2118ff8956fb199a5072f65e1512dd",
+          "bytes": 158502,
+          "targetMatch": false
+        },
+        {
+          "commit": "66b6f3f067851fd80bd0f0f22e7f683ec57d7ad2",
+          "error": "fatal: bad object 66b6f3f067851fd80bd0f0f22e7f683ec57d7ad2:docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "5830d3a40b58647967e47b72aa967983ffcca8bf9fd09da476dd45530925ca39",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_연향중_1학기_중간_중1_기출",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/four-slot.json",
+      "declaredAuthorSha256": "8d4e0f947e9d64e286f83023d172218a12f5eb7fbcdf9edee277e320a61f409d",
+      "currentIntegratedSha256": "c2bb51386dce0fd501f9d48b8836c657cd5bd2e98e5163ddd1a1ffa4514d7f92",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "c2bb51386dce0fd501f9d48b8836c657cd5bd2e98e5163ddd1a1ffa4514d7f92",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "1a322ad66b5237547030004b30ee887caa33793d",
+          "sha256": "c2bb51386dce0fd501f9d48b8836c657cd5bd2e98e5163ddd1a1ffa4514d7f92",
+          "bytes": 72461,
+          "targetMatch": false
+        },
+        {
+          "commit": "66b6f3f067851fd80bd0f0f22e7f683ec57d7ad2",
+          "error": "fatal: bad object 66b6f3f067851fd80bd0f0f22e7f683ec57d7ad2:docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_왕운중_1학기_기말_중1_수학",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/review.json",
+      "declaredAuthorSha256": "36418882017d1ef0d2bd3732e944aded4e97948af65c3e9b4fdb95d440b07926",
+      "currentIntegratedSha256": "95a9e0c200770ae063bb41d7f58de5261f221b7a123a4f956719cb8f27c5464f",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "95a9e0c200770ae063bb41d7f58de5261f221b7a123a4f956719cb8f27c5464f",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "36f12f06df06b44a22bc765c145e32406e3996bb",
+          "sha256": "95a9e0c200770ae063bb41d7f58de5261f221b7a123a4f956719cb8f27c5464f",
+          "bytes": 155640,
+          "targetMatch": false
+        },
+        {
+          "commit": "0acdc0e650ceb18096680a4b15dbc14d0289dbeb",
+          "error": "fatal: bad object 0acdc0e650ceb18096680a4b15dbc14d0289dbeb:docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "da54175ca069f61ceb63fa40a9536905d644651b3a2bd113bcf53a622eb7924c",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_왕운중_1학기_기말_중1_수학",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/four-slot.json",
+      "declaredAuthorSha256": "34c339147b9507ffa92d54498c75a7532079bef49c49fffe642dfc0a11529b30",
+      "currentIntegratedSha256": "4b37beb5c059022035d79b405b3f7e711ce750afd54fbb6cbb17d76ccbfc1b64",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "4b37beb5c059022035d79b405b3f7e711ce750afd54fbb6cbb17d76ccbfc1b64",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "11320d274600cebd37eb9178a7e134865c89d4f5",
+          "sha256": "4b37beb5c059022035d79b405b3f7e711ce750afd54fbb6cbb17d76ccbfc1b64",
+          "bytes": 88520,
+          "targetMatch": false
+        },
+        {
+          "commit": "0acdc0e650ceb18096680a4b15dbc14d0289dbeb",
+          "error": "fatal: bad object 0acdc0e650ceb18096680a4b15dbc14d0289dbeb:docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/review.json",
+      "declaredAuthorSha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d",
+      "currentIntegratedSha256": "34d605cec8dce5d97246fb40e01df3068f871fc52e168f961d23c87f495184dc",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "34d605cec8dce5d97246fb40e01df3068f871fc52e168f961d23c87f495184dc",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "2ba69d1b4c36d9a0f78a3acd118e44f04edb7c50",
+          "sha256": "34d605cec8dce5d97246fb40e01df3068f871fc52e168f961d23c87f495184dc",
+          "bytes": 210549,
+          "targetMatch": false
+        },
+        {
+          "commit": "7742a1c61b0bf8847905c8d537db11b0cab83844",
+          "error": "fatal: bad object 7742a1c61b0bf8847905c8d537db11b0cab83844:docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d",
+        "matchesDeclaredAuthorSha256": true,
+        "status": "EXACT_RECONSTRUCTION_FROM_CURRENT_INTEGRATED_JSON",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/four-slot.json",
+      "declaredAuthorSha256": "9b18110e63d092157dee171b983af7036e54a27630504e89b48a59e97a1cbdfd",
+      "currentIntegratedSha256": "e39f5dd2f28dc71e58b36570a4bb8924e069f6a457c34b528f2c6797aa1aaf1a",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "e39f5dd2f28dc71e58b36570a4bb8924e069f6a457c34b528f2c6797aa1aaf1a",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "d5824e3283bb1e6830efe47c95129996ebbcd960",
+          "sha256": "e39f5dd2f28dc71e58b36570a4bb8924e069f6a457c34b528f2c6797aa1aaf1a",
+          "bytes": 58698,
+          "targetMatch": false
+        },
+        {
+          "commit": "7742a1c61b0bf8847905c8d537db11b0cab83844",
+          "error": "fatal: bad object 7742a1c61b0bf8847905c8d537db11b0cab83844:docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_중간_중1_기출/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "19_팔마중_1학기_중간_중1_기출",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+      "declaredAuthorSha256": "8046501353855d50c1552d252a6045b0ffbc56256c4e64bc8d03f1f5715fc65f",
+      "currentIntegratedSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "74ae9a9cbf125206bebee9cf784ce74d5f36590f",
+          "sha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+          "bytes": 179358,
+          "targetMatch": false
+        },
+        {
+          "commit": "06cc662e24ff429243704f19ab840601f8ec6f0f",
+          "error": "fatal: bad object 06cc662e24ff429243704f19ab840601f8ec6f0f:docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "35558e3007739aea21111277047e8e4fc409cd7af6b67ed8fbc7d432ef90f2aa",
+        "matchesDeclaredAuthorSha256": false,
+        "status": "NOT_RECONSTRUCTED",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "19_팔마중_1학기_중간_중1_기출",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/four-slot.json",
+      "declaredAuthorSha256": "8d721ccc6ba711077697c402fb4556cc625da9678ac68f7d4a0ed7e6a3132c77",
+      "currentIntegratedSha256": "791b222612f6ab89c52692272567407e62f8d380c500f11a7898478a16fac691",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "791b222612f6ab89c52692272567407e62f8d380c500f11a7898478a16fac691",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "d55f78ece401525bbcf11c9f8c080d6479997853",
+          "sha256": "791b222612f6ab89c52692272567407e62f8d380c500f11a7898478a16fac691",
+          "bytes": 82617,
+          "targetMatch": false
+        },
+        {
+          "commit": "06cc662e24ff429243704f19ab840601f8ec6f0f",
+          "error": "fatal: bad object 06cc662e24ff429243704f19ab840601f8ec6f0f:docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "artifact": "review.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/review.json",
+      "declaredAuthorSha256": "21b978de382469945af642bdcbb1ac31cdbe815a594755e2e8ac86a364cd1ee8",
+      "currentIntegratedSha256": "68e2f57b6021f7ec5a45f6c0ec47d7b25852abb3fe3f76bc3f3c460b6c06ddd3",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "68e2f57b6021f7ec5a45f6c0ec47d7b25852abb3fe3f76bc3f3c460b6c06ddd3",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "b734a314dfa0287e94107080d6910e7d7221d6fc",
+          "sha256": "68e2f57b6021f7ec5a45f6c0ec47d7b25852abb3fe3f76bc3f3c460b6c06ddd3",
+          "bytes": 215081,
+          "targetMatch": false
+        },
+        {
+          "commit": "eeab3bb2e07e33f0dab7e93697da31c218203442",
+          "error": "fatal: bad object eeab3bb2e07e33f0dab7e93697da31c218203442:docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/review.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "authorProjectionReconstruction": {
+        "procedure": "remove rootIntegration and per-item rootSourceDisposition; serialize UTF-8 JSON, indent 2, LF terminator",
+        "sha256": "21b978de382469945af642bdcbb1ac31cdbe815a594755e2e8ac86a364cd1ee8",
+        "matchesDeclaredAuthorSha256": true,
+        "status": "EXACT_RECONSTRUCTION_FROM_CURRENT_INTEGRATED_JSON",
+        "historicalGitBlobRecovered": false
+      }
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "artifact": "four-slot.json",
+      "path": "docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/four-slot.json",
+      "declaredAuthorSha256": "66a8c8a7fd7e819c8065bf0c533e970729bbfd4e266ecbf59abd72fea9529ce6",
+      "currentIntegratedSha256": "038f6fa22b76dd3f962476693395af1c4f9cf49b89dfeb42e36319c2a0ca1d19",
+      "matchesCurrentIntegratedBytes": false,
+      "storedFinalManifestSha256": "038f6fa22b76dd3f962476693395af1c4f9cf49b89dfeb42e36319c2a0ca1d19",
+      "matchesFinalManifest": true,
+      "availablePathHistory": [
+        {
+          "commit": "327c4518d0e89aac9cb4879fdd4c58b3b8ff34fc",
+          "blob": "ed4a919c766d7515f63ce14f688a950db2fc58cc",
+          "sha256": "038f6fa22b76dd3f962476693395af1c4f9cf49b89dfeb42e36319c2a0ca1d19",
+          "bytes": 59473,
+          "targetMatch": false
+        },
+        {
+          "commit": "eeab3bb2e07e33f0dab7e93697da31c218203442",
+          "error": "fatal: bad object eeab3bb2e07e33f0dab7e93697da31c218203442:docs/operations/m1-s1-meta-full-20261114/exams/23_동산중_1학기_중간_중1_기출/four-slot.json\n"
+        }
+      ],
+      "exactDeclaredShaRecoveredAsGitBlob": false,
+      "historicalPayloadComparisonStatus": "DECLARED_AUTHOR_FOUR_SLOT_BYTES_NOT_RECOVERED; no sample-content invariance claim from this hash"
+    }
+  ],
+  "exactReviewProjectionReconstructions": [
+    {
+      "exam": "16_연향중_1학기_중간_중1_수학",
+      "sampleUids": [
+        "qid_v1_054cc89c1290ebd7c7db90d00385e4aa610a03be4d71ea063a89600123716a6e",
+        "qid_v1_6cb416d39b4b5c8ad6e97c605972922221f3156a193243480a816cad0b6e92d0",
+        "qid_v1_3c61ff122146cb69a0ad625ed60fb7e115c3950769d750d0d2894266ead589b6"
+      ],
+      "reconstructedSha256": "1161f4045a641c152d0e0a3e0ac7dcc30e213b9a49bbd202d6e91fd9fcd6f72a"
+    },
+    {
+      "exam": "17_매산중_1학기_중간_중1_수학",
+      "sampleUids": [
+        "qid_v1_0ebe24b2f37a820655f7f5e9a80207b8bf4a66d7ac62a55e653444299aca5c94",
+        "qid_v1_84a055950e7a61c7ab2cbda27ac3f0beffa6e136f90adbe452fd30c00968c5ff",
+        "qid_v1_9b9c2e542781840d71af3629a82ea5ad613067059ab306b14da6d579297469f5"
+      ],
+      "reconstructedSha256": "a6d09f0c78ee8d960b253d22e62abfc49902e231d9013fb5a40c7304367b1e6a"
+    },
+    {
+      "exam": "19_연향중_1학기_기말_중1_수학",
+      "sampleUids": [
+        "qid_v1_e3d1a29ca5e72aa5f159dccd6eefbb9576b092076b78ae091ec92d9b0eeb5d11",
+        "qid_v1_1869550c8e2c9ed1836d811da08ec7a1de017af03c9b0ec4e3dca74c90bb79e5",
+        "qid_v1_8fc304a5235c3ec41914e55fcabb286916ed9a0c6be511f6381bebd57683e293"
+      ],
+      "reconstructedSha256": "86c89aa5b96b10fdacf9cbca504b21759aa20e9ee17830ed768e8facf7b5d240"
+    },
+    {
+      "exam": "19_왕운중_1학기_중간_중1_기출",
+      "sampleUids": [
+        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+        "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
+        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
+      ],
+      "reconstructedSha256": "1304bd42fd420db63bda3e5dafa24d1ffde42407fb2414e3f02450e35308113d"
+    },
+    {
+      "exam": "23_동산중_1학기_중간_중1_기출",
+      "sampleUids": [
+        "qid_v1_a6df586db995581b452b568267388ee1dbb74117098ba780212e1ce8bb49cde2",
+        "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+        "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3"
+      ],
+      "reconstructedSha256": "21b978de382469945af642bdcbb1ac31cdbe815a594755e2e8ac86a364cd1ee8"
+    }
+  ],
+  "limitations": [
+    "Exact original author files were not independently recovered as Git blobs. The complete semantics of missing historical bytes cannot be certified unchanged.",
+    "Exact reconstruction of five JSON author payloads is a narrowly proved SHA identity, not a claim of a new historical commit or new independent review.",
+    "The audit does not resolve SOURCE_ONLY method evidence, reviewed_hold solution authority, registry/binding approval or content-debt issues.",
+    "Do not replace old author hashes with current integrated hashes; retain both roles and the new A receipt."
+  ],
+  "mutations": {
+    "newAuditReportOnly": true,
+    "sourceWrites": 0,
+    "rawWorkerArtifactWrites": 0,
+    "sharedRegistryWrites": 0,
+    "gitIndexCommitRemoteWrites": 0
+  },
+  "qualityApprovalGranted": false,
+  "newIndependentSemanticReviewPerformed": false,
+  "writingStatus": "CLOSED"
+}
