@@ -1213,7 +1213,11 @@ window.questionBank = [
       "subConcept": "원뿔 단면과 부피",
       "conditionsUsed": "모선 4cm, 모선과 밑면의 각 60°.",
       "integrationPatternExplanation": "단면 삼각비로 r·h를 구한 뒤 부피를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔에서 모선 4 cm와 밑면이 이루는 각은 60도이다. 단면의 밑변은 반지름이고 다른 직각변은 높이이다.",
+    "solutionImageCaption": "반지름은 4cos60°=2 cm이고, 높이는 4sin60°=2√3 cm이다. 따라서 부피는 8√3π/3 cm³이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
