@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E061",
+  "author": "m3_a",
+  "reviewer": "m3_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "1ffbd793da5a313038a515be32c586d6104662dd",
+  "targetReviewSha256": "dd7eae58ad5e0b6609c7734c97de47d4cddea1ae69bd7e89f856abde9e825d23",
+  "target4slotSha256": "8fc1294d86ff3052d01203c1da5176a3167cbd9ecccd469320854c1ffda1376b",
+  "sampledSourcePatchSha256": "2a42374f7ad5c05264e57582325e7b3423c073222e83819f5a5fa83a61a94a5e",
+  "sampleOrdinals": [
+    5,
+    17,
+    21
+  ],
+  "sampleRule": "Independent reviewer m3_b read source and original figures before author semantic decisions; direct-ratio, composite-area and vertex-root reconstruction samples were checked. No author difficulty exception was present.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6f92af7c7e2c89a4e10319a015dd432a6892bd7550fc6464b78bf63b5434207c",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본도형에13/5/12 세변이실제로명시되어있음을직접확인했다. sinB는맞은편12와빗변13의직접비이다. 기존해설의불필요한Pyth계산으로primary·난도를상향하지않은BASIC_RELATION/1 및4칸사인방법이정확하다.",
+      "quotesChecked": 4,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e99dcb3dec3b898986930128a4b03b7c3fb555259065ef188b05eb9e1a4128ff",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "본문한변6과원본의AD2/AF4/EC4를대조했다. 바깥세삼각형의높이를sin60으로구해각넓이2√3,큰정삼각형에서빼안쪽넓이를구하므로CHAINED_MEASURE와POLYGON_AREA CC·4칸사인/넓이/차가맞는다. 왼쪽B부분원본crop은메타의미검토와별도로보류한다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_26d268148703c2cae1cf2fc04c14dc482c67e12ea09beb37e98307bd135f5bf1",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "완전제곱식에서꼭짓점x1을읽고직선에서y8,공통x축교점5를복원하여계수를결정하는해설을확인했다. 정점·근으로이차함수를복원하는ACTIVE TPL의의미재사용과선형함수CC가정확하다.4칸의완전제곱식/절편/대입/연립방법이두조건을모두담고2022의조건식결정RPM142로분리되었다.",
+      "quotesChecked": 11,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e99dcb3dec3b898986930128a4b03b7c3fb555259065ef188b05eb9e1a4128ff",
+      "type": "SOURCE_DIAGRAM_CROPPED_TEXT_COMPENSATED",
+      "reason": "원본그림의왼쪽B꼭짓점과일부구간길이잘림. 본문한변6과읽을수있는AD2/AF4/EC4로현재메타의미는판정가능하다.",
+      "nextAction": "원본PDF/고해상도이미지로B와BD/BE라벨을회수하고표시QA를검증한다.",
+      "release": "HOLD_SOURCE_IMAGE_QA"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "0d49f9d4b6b2965d5787229f3ccfd2de2e3146eeccd7878613587e84fd57075a"
+}
