@@ -1,0 +1,263 @@
+[
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원주각 성질 진술 판정",
+    "reuseDefinition": "같은 호·같은 원주각·호의 길이 및 중심각 배수 관계에 대한 진술을 정리와 대조한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "distinguishingCriterion": "CENTER_ARC 내부 골격은 목표각 계산이다. 현 문항은 수치 목표각 없이 정리의 배수 방향과 대응 성질을 검토한다.",
+    "supportingQuestionUids": [
+      "qid_v1_8510815903a7c2f219ebd70187837973c0e4ef5692a3892ef4573d71c1e822b8"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원주각 비례로 호 길이 결정",
+    "reuseDefinition": "같은 원에서 두 원주각의 크기 비를 그들이 보는 호의 길이 비로 옮겨 미지 호 길이를 구한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "distinguishingCriterion": "CENTER_ARC는 목표각 계산, SECTOR_MEASURE는 중심각·반지름의 부채꼴 측정이다. 원주각 비만으로 호 길이를 산출하는 정확한 골격을 등록 제안한다.",
+    "supportingQuestionUids": [
+      "qid_v1_1a724726113e5957f34f94776d4c543b01ced59584d3b5e5ec2c18e58594582d"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+    "distinguishingCriterion": "미지수의 크기 위치에 따라 중앙값을 나누고 평균과의 등식에서 얻은 해를 자연수·순서 조건으로 검토한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "rpmRecordId": "M3-RPM-087",
+    "supportingQuestionUids": [
+      "qid_v1_6c3fecc3e8dd557fc45ca1f3ae75564ed98ba25e2fac86ae389c2dbf31d6073d"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원자료의 최빈값 직접 결정",
+    "reuseDefinition": "원자료의 값별 출현 횟수를 세어 최대 도수를 가진 변량을 선택한다.",
+    "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "distinguishingCriterion": "기존 TPL은 중앙값과 최빈값의 동시 계산이며 본 문항에는 중앙값 과정이 없다.",
+    "supportingQuestionUids": [
+      "qid_v1_608cb1a65899afb60195f59564e919e88776c5d47a02c55d962b073ffbfe805c"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+    "distinguishingCriterion": "짝수 중앙값 조건으로 미지 점수의 하한을 얻고 평균 부등식의 상한과 교집합에서 자연수를 센다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "rpmRecordId": "M3-RPM-087",
+    "supportingQuestionUids": [
+      "qid_v1_5a97e78f8ef847cb397290241195e2917663d026c3d43b88b50b16ced4bc0cec"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "대푯값·산포도 정의와 흩어짐 진술 판정",
+    "reuseDefinition": "평균·중앙값·최빈값의 정의와 분산의 크기가 흩어짐에 미치는 의미를 확인한다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "distinguishingCriterion": "기존 TPL은 편차의 뺄셈 부호 오류를 고른다. 본 문항의 오류는 분산 크기와 집중 정도의 의미 역전이다.",
+    "supportingQuestionUids": [
+      "qid_v1_6f4a622b5774b8e38fed1707c72a2f1c3c6b57b07a6a8b54cd5a1868305b6e0a"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "변량에서 평균을 빼 편차 계산",
+    "reuseDefinition": "원자료의 평균을 계산한 뒤 지정 변량과 평균의 차를 편차로 답한다.",
+    "distinguishingCriterion": "미지 편차합0 또는 표준편차 계산까지 가는 TPL과 달리 한 변량의 편차만 직접 구한다. 기존 편차합0/미지편차 부모, 도수표, 확률변수 또는 선형변환 PT와도 실제 골격이 다르므로 새 부모가 필요하다.",
+    "supportingQuestionUids": [
+      "qid_v1_fe16a4afcf44f49dd1a06efc345b23bee6119d01c67d4d7e06c3ce97cf78a97b"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "parentScope": "중3 통계/대푯값과 산포도"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "한 자료의 평균·산포도 수치 진술 검토",
+    "reuseDefinition": "평균·분산·표준편차와 평균 초과 자료 개수를 각각 산출해 보기의 수치와 비교한다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "distinguishingCriterion": "편차 부호의 정의 판정과 달리 실제 수치 계산을 포함한다. E015 Q15 동일 제안 재사용.",
+    "supportingQuestionUids": [
+      "qid_v1_486f756b906448a7f70a07cde3c2ad8b1de9b5618570be07c95ab23bbac8ff6e"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "평균·분산에서 미지 변량 제곱합",
+    "reuseDefinition": "평균으로 미지 변량의 합을 구하고 분산의 편차 제곱합을 전개하여 원자료의 제곱합을 얻는다.",
+    "distinguishingCriterion": "누락 편차 하나를 구하는 기본 TPL과 달리 미지수 합을 편차 제곱식에 대입하여 목표 제곱합을 소거한다. E006 제안 재사용. 기존 편차합0/미지편차 부모, 도수표, 확률변수 또는 선형변환 PT와도 실제 골격이 다르므로 새 부모가 필요하다.",
+    "supportingQuestionUids": [
+      "qid_v1_b5e4236b2a59bedad89cc559dbe9accd49c66c5e8ddd3a0061324f28e83902b7"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "parentScope": "중3 통계/대푯값과 산포도"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "일차변환 자료의 평균과 분산",
+    "reuseDefinition": "각 변량에 ax+b를 적용할 때 평균은 a평균+b, 분산은 a²분산으로 변환한다.",
+    "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "distinguishingCriterion": "기존 SCALED_DATA는 k배만 다룬다. 평행이동 항의 분산 불변성을 함께 다루는 affine 골격은 E006 등록 제안 재사용.",
+    "supportingQuestionUids": [
+      "qid_v1_cc620b6af0023c0c2517380d242aafe03920832caec6cb54406a5586ff693f3a"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 두 좌표의 상대 크기로 점 선택",
+    "reuseDefinition": "후보 점들에서 첫 좌표에 비해 둘째 좌표가 큰지 작은지 비교하여 요구된 점을 선택한다.",
+    "distinguishingCriterion": "전체 상관 방향이나 조건에 맞는 점의 개수 집계가 아니라 특정 후보의 두 좌표를 상대 비교한다.",
+    "parentScope": "M3 통계/산점도",
+    "supportingQuestionUids": [
+      "qid_v1_79b9871d68abcfda6183884dd30aa095235d6d2a833277f93a2b1507aeaf4703"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_PENDING_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표 조건 집계",
+    "reuseDefinition": "두 좌표의 같음·대소·범위 조건을 만족하는 점을 선택하여 개수·비율을 구한다.",
+    "distinguishingCriterion": "상관 방향 해석·산점도 작성과 구분한다.",
+    "parentScope": "M3 통계/산점도",
+    "priorProposalRef": "worker-outputs/c/E006/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_859b36d699e39203d1d28c467ab43ef088751db7c2eb9a511f7b599693bf7f11"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_PENDING_PT_TPL_PROPOSAL",
+    "nameKo": "상황과 음의 상관관계 산점도 대응",
+    "reuseDefinition": "한 변량 증가에 다른 변량이 감소하는 상황을 음의 상관관계 분포로 읽는다.",
+    "distinguishingCriterion": "좌표 조건으로 개별 점을 세지 않고 전체 방향을 판정한다.",
+    "parentScope": "M3 통계/상관관계",
+    "priorProposalRef": "worker-outputs/c/E006/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_2ab65f3570dac8cd2635ee24ca7ba407363811801ee2650ba245cab1be893627"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_PENDING_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표 조건 집계",
+    "reuseDefinition": "두 좌표의 같음·대소·범위 조건을 만족하는 점을 선택하여 개수·비율을 구한다.",
+    "distinguishingCriterion": "상관 방향 해석·산점도 작성과 구분한다.",
+    "parentScope": "M3 통계/산점도",
+    "priorProposalRef": "worker-outputs/c/E006/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_e9acec1d4cf60774f92fa0a6bd87bf7e9fe07702bc96083e851c3757708dec98"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "동일 평균 두 집단의 통합 표준편차",
+    "reuseDefinition": "평균이 같은 집단의 분산×집단크기를 더하여 총 편차 제곱합을 얻고 전체 크기로 나눠 표준편차를 구한다.",
+    "distinguishingCriterion": "도수표의 변량·계급값을 읽는 TPL이나 누락 편차 복원과 달리 집단 요약 통계량을 합성한다. 기존 편차합0/미지편차 부모, 도수표, 확률변수 또는 선형변환 PT와도 실제 골격이 다르므로 새 부모가 필요하다.",
+    "supportingQuestionUids": [
+      "qid_v1_b4185a2a1d79a892acc9724e23aaaa686bead347896ff16cfc67e5e737ae66f3"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "parentScope": "중3 통계/대푯값과 산포도"
+  },
+  {
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 경향과 개별 좌표의 복수 사실 설명",
+    "reuseDefinition": "산점도의 전체 상관 방향과 같은 축 좌표에서 다른 값이 나타나는 성질을 구분해 여러 사실을 근거와 함께 설명한다.",
+    "distinguishingCriterion": "단일 상관 부호 선택이나 범위 집계가 아닌 경향과 좌표 관계의 개방형 설명이다.",
+    "parentScope": "M3 통계/산점도 및 상관관계",
+    "supportingQuestionUids": [
+      "qid_v1_8ad71193c413abc00e7650f21c22dc995da59775372c10ad078aaefc58fe81a8"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

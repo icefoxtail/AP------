@@ -27,7 +27,15 @@ window.questionBank=[
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 2,
@@ -62,7 +70,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O에서 110° 원주각이 보는 큰 호 AC와 중심각 x가 놓인 작은 호 AC를 표시한 그림.",
     "solutionImageCaption": "원주각 110°가 보는 큰 호 AC는 220°이다. 작은 호 AC와 중심각 x는 서로 대응한다. 정답 ④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -97,7 +114,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 지름 AC를 밑변으로 하는 원주각 삼각형 ABC에서 B의 직각과 C의 50°를 표시한 그림.",
     "solutionImageCaption": "지름 AC를 보는 원주각은 90°이다. 삼각형 ABC의 내각의 합을 이용한다. 정답 ②.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -132,7 +158,15 @@ window.questionBank=[
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -167,7 +201,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O에서 접선 AT와 평행한 현 BC, 그리고 삼각형 ABC의 40° 각과 대응하는 같은 각 표시.",
     "solutionImageCaption": "AT와 BC는 평행하고, 접선-현각 관계와 삼각형 ABC의 내각의 합을 이용한다. 정답 ④.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "crossConceptKeys": ["CC_PARALLEL_LINE_ANGLES","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -202,7 +245,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 안에서 교차하는 현 AC와 BD, 두 맞꼭지각이 보는 호 AB와 CD의 72°와 90° 표기.",
     "solutionImageCaption": "호 AB는 360°의 1/5, 호 CD는 360°의 1/4이다. 교차하는 두 현이 만드는 각은 마주 보는 두 호의 크기 합의 절반이다. 정답 ①.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -237,7 +289,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원에 내접한 다섯 꼭짓점 A, B, C, D, E의 오각형과 중심각 COD=72°, 꼭짓점 B와 E의 원주각 x와 y.",
     "solutionImageCaption": "중심각 COD는 호 CD의 크기를 정한다. x와 y가 보는 호의 합은 한 바퀴와 호 CD를 더한 크기이다. 정답 ③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 8,
@@ -270,17 +331,18 @@ window.questionBank=[
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "crossConceptKeys": [
-      "CC_DIAMETER",
-      "CC_INSCRIBED_ANGLE"
-    ],
-    "integrationPattern": "INTERDEPENDENT",
-    "difficultyBucket": 4,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_SIMILARITY","CC_CIRCLE_CIRCUMFERENCE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "solutionImageAlt": "해설 그림: 깨진 접시의 원 위 점 A, B, C, E와 수선 CD, 보조지름 CE, 닮은 두 직각삼각형 및 6 cm·3 cm·2 cm·CE=9 cm 표기.",
     "solutionImageCaption": "보조지름 CE로 △ACD와 △ECB의 닮음을 보이면 AC:CE=CD:CB이다. CE는 지름이므로 원의 둘레는 CE에 π를 곱해 구한다. 정답 ③.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "conditionKeys": [],
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -308,7 +370,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -337,7 +408,15 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -365,7 +444,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 12,
@@ -393,7 +481,15 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -422,7 +518,14 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -451,7 +554,15 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -479,7 +590,14 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -507,7 +625,15 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -538,7 +664,14 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -573,7 +706,14 @@ window.questionBank=[
     "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 지난달과 이번달 봉사 활동 시간의 산점도에서 y=x 기준선과 그 위 또는 위쪽의 점을 강조했다.",
     "solutionImageCaption": "y=x 위는 지난달과 이번달의 봉사 시간이 같고, 그 위쪽은 이번달 봉사 시간이 더 많음을 나타낸다. 정답: ①, a+b=13.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -599,7 +739,14 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -634,7 +781,14 @@ window.questionBank=[
     "solutionImage": "assets/images/23_연향중_2학기_기말_중3_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 좌우 시력 산점도에 y=x 기준선을 그리고 두 눈 시력이 같은 여섯 점을 강조했다.",
     "solutionImageCaption": "y=x 위의 점은 왼쪽 눈과 오른쪽 눈의 시력이 같음을 나타낸다. 정답: ④, 2/5.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -664,7 +818,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD와 점 C의 접선 CT, 주어진 100° 및 40° 각, 대응하는 두 각 표시.",
     "solutionImageCaption": "내접사각형에서 ∠BCD를 구하고 삼각형 BCD와 접선-현각 관계를 적용한다. 정답 60°.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -694,7 +857,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 밖 두 할선과 원 안에서 만나는 두 현, P의 36°와 E의 80°, 호 BD=116°와 AC=44° 표기.",
     "solutionImageCaption": "교차현각에서 두 호의 합은 160°이고 외부 할선각에서 두 호의 차는 72°이다. 정답 22°.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 23,
@@ -720,7 +892,14 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -746,6 +925,13 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

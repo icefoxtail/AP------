@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E024",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "d64c3c3285826c4df89d9044f5e1e87d5a80708b",
+  "artifactHashes": {
+    "review.json": "feddeed2edb3cf6cbf9861dabc92757e97513addcf3e275007980298ec1d1033",
+    "E024.4slot.json": "eb509aa254f361dce9a7ed58101241456924bcdd9ab2016870f256fdcf104e80",
+    "source-patch.json": "779af2a150fbc62627d0aec7766dc042d1aeed28d23c826689b713c01363be47"
+  },
+  "sampleOrdinals": [
+    8,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_92b06787c13ce78044601ae6b707b07c354c89b94bafefd0e80e66dbc2a13e55",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "보조지름이 원주각90도와 동일호의 각을 새로 만들어 AA닮음으로 지름·둘레를 구한다. 실제 그림에서 AC=6,CB=3,CD=2 및 수선관계를 확인했고 COMPOSITE080/168 주분류·닮음/원주 CC가 타당하다.",
+      "assetsInspected": [
+        "assets/images/23_연향중_2학기_기말_중3_기출/q8.png"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_859b36d699e39203d1d28c467ab43ef088751db7c2eb9a511f7b599693bf7f11",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "이미지 하단의 a=같은시간,b=이번달이더많음이 실제 y=x,y>x의 서로겹치지 않는 조건집계로 대응된다. 상관 방향 판정은 없어 current2022 parent+exactleaf gap이 타당하며 두 조건 모두4slot에 보완되었다.",
+      "assetsInspected": [
+        "assets/images/23_연향중_2학기_기말_중3_기출/q18.png"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_b4185a2a1d79a892acc9724e23aaaa686bead347896ff16cfc67e5e737ae66f3",
+      "status": "PASS_AFTER_PT_SCOPE_CORRECTION",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "실제 표의 두 평균7, 인원16·14, 표준편차3·sqrt6을 공통평균 제곱합으로 합성하는 방법과 목표·공통평균 조건은 정확하다. 다만 PT_M3_DISPERSION_DEVIATION_PROPERTIES는 합0으로 미지편차를 구하는 정의여서 이 문제에 재사용할 수 없다. 신규PT/TPL 제안으로 분리 요청. 보완본은 좁은 기존PT를 제거하고 신규PT/TPL 제안으로 분리했으며 원문·4slot은 불변이다.",
+      "assetsInspected": [
+        "assets/images/23_연향중_2학기_기말_중3_기출/q23.png"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_PT_SCOPE_AND_CONDITION_REASON_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3",
+  "minorCorrectionRequested": {
+    "ordinal": 18,
+    "field": "conditionReason",
+    "reason": "현 conditionKeys에는 y>x 선택조건 키가 있으므로 generic 비움 문구를 실제 조건판단으로 정밀화 요청.",
+    "status": "RESOLVED"
+  }
+}
