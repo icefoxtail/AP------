@@ -9,7 +9,7 @@ base main: `0ba1e7de048de3af0771da6c0972409fd46baa75`
 
 ## 현재 검증된 범위
 
-전체 115시험지 / 2750문항 중 10시험지 / 237문항의 통합 검토안을 저장했다. 남은 105시험지는 완료로 간주하지 않는다.
+전체 115시험지 / 2750문항 중 11시험지 / 261문항의 통합 검토안을 저장했다. 남은 104시험지는 완료로 간주하지 않는다.
 
 원문·선택지·정답·해설·이미지·레이아웃·ID·문항 순서는 보존한다. 실제 변경은 원본의 허용 메타 필드와 작업 전용 검토안/근거 파일에 제한한다. main 병합·공용 등록·배포는 수행하지 않는다.
 
@@ -35,7 +35,6 @@ base main: `0ba1e7de048de3af0771da6c0972409fd46baa75`
 |---|---|---|
 | E011 | `original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js` | PENDING |
 | E012 | `original/middle/m3/1mid/25_연향중_1학기_중간_중3_기출.js` | PENDING |
-| E013 | `original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js` | PENDING |
 | E014 | `original/middle/m3/1final/24_신흥중_1학기_기말_중3_기출c.js` | PENDING |
 | E015 | `original/middle/m3/1final/24_연향중_1학기_기말_중3_기출c.js` | PENDING |
 | E016 | `original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js` | PENDING |
