@@ -5229,9 +5229,10 @@
           "sha256": "0faa3cb7d2ea4e941165b7d827edf75dfabd9f815330b729902194cbdcaa83d5"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "0ee4d1ab44cf99e75e7d9e278c49485dca41fa26"
     },
     {
       "examId": "E037",
@@ -5316,12 +5317,140 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "37043d825b423a0fe844a5a2217132c62f00b6a8dcbf5c3a029d18f23040faed"
+      "uidSetSha256": "37043d825b423a0fe844a5a2217132c62f00b6a8dcbf5c3a029d18f23040faed",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        8,
+        16
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        4,
+        18,
+        24
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            5,
+            6,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            7,
+            8,
+            10,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            9,
+            21
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E038/four-slot.json",
+          "sha256": "2570d19b57ed5a649dca37ba1f33f898459cb0f3ed83615049123e11b00c5a21"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E038/independent-sample.json",
+          "sha256": "660f93b00c0bc8ba6ca502820b2cfa3b6ad7f7fd2eed9b06ce78f9bac114fb71"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E038/mechanical-check.json",
+          "sha256": "3ff3807971a4efe2f845fd0f54001337592f50ed58d7565b2382fa9f22c9475a"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E038/review.json",
+          "sha256": "54782ac8cf242bd0f0582d5eb3720cad3108b67b060c254b6645d2b15bb79b41"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E038/root-acceptance.json",
+          "sha256": "8cd56204ba2653b047c82c339098e058c594a08369ca9526ee948d43f8054e6c"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
     },
     {
       "examId": "E039",
@@ -6609,11 +6738,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 35,
-    "reviewedQuestions": 831,
+    "reviewedExams": 36,
+    "reviewedQuestions": 855,
     "unresolvedQuestions": 0,
-    "remainingExams": 32,
-    "remainingQuestions": 773
+    "remainingExams": 31,
+    "remainingQuestions": 749
   },
-  "lastVerifiedExamCommit": "39d6b25789a1c97f75b8a22464be228d612b1e8d"
+  "lastVerifiedExamCommit": "0ee4d1ab44cf99e75e7d9e278c49485dca41fa26"
 }

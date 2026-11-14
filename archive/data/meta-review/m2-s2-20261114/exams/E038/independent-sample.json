@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E038",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2final/21_팔마중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "867fba9415d3f80e9f470043ed1e23a74e6085b1",
+  "reviewSha256": "54782ac8cf242bd0f0582d5eb3720cad3108b67b060c254b6645d2b15bb79b41",
+  "fourSlotSha256": "2570d19b57ed5a649dca37ba1f33f898459cb0f3ed83615049123e11b00c5a21",
+  "ordinals": [
+    4,
+    18,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_1b203a4d15f46c34a8691d5bb7153fda0f47b3a8751311d02f5e4678d8d957b7",
+      "verdict": "PASS",
+      "reason": "각이등분선의 변비로 미지 길이를 구하는 ACTIVE TPL의 definition·internalSkeleton에 정확히 맞고, 같은 높이 넓이비로 옮기는 단계는 CC_TRIANGLE_AREA이다. 서로소 y,z는 둘 다 결정할 미지 정수이므로 고정 정수 d와 gcd(x,d)=1인 현행 COND 정의를 대체할 수 없다. B-E038-COPRIME-PAIR 및 정확 RPM 공백을 수용한다. 그림에서 AB16, AC12, BC14와 이등분 표시를 확인했다.",
+      "quotesExact": true,
+      "quoteCount": 8,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "judgment": "ACCEPT",
+        "reason": "길이비를 넓이비에 옮기고 기약비와 비례배분을 연결하므로 bucket3 및 신규 중 후보를 수용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_662dc9a6afb9f0f049cabd3790f9b555f79bf205d71d1729e020506626aa9d81",
+      "verdict": "PASS",
+      "reason": "첫 공의 색을 관찰한 조건부확률 자체가 아니라 두번째 검은 공의 전체확률이다. 첫 흰색/검은색 두 경로의 배반 합은 EVENT_RELATION_COMPLEMENT_ADDITION에 맞고, 각 경로의 비복원 결합확률은 ACTIVE CC_PROBABILITY_MULTIPLICATION의 P(A)P(B|A) 정의가 정확히 포괄한다. CASE_BRANCH와 비복원 절차의 4칸 보존을 수용하며 추가 미지값 범위 COND로 만들지 않는다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "judgment": "ACCEPT",
+        "reason": "관찰하지 않은 첫 색을 표준 두 경우로 나누어 곱한 뒤 더하는 정형 구조이므로 bucket2 및 신규 중 후보를 수용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d363cc5f21097e4c54d7db2f6cb86302a59629435dc0c6c4d3598e24b6d69ac3",
+      "verdict": "PASS",
+      "reason": "실제 그래프의 절편2,-6으로 직선식을 만든 뒤 두 좌표를 동시에1~6으로 제한하여 사건을 센다. CC_LINE_EQUATION 정의는 식 세우기와 직선 위 조건의 보조 사용을 모두 포함한다. BASIC_COUNT_RATIO 주방법, 자연수·범위 조건과 REINTERPRETATION을 수용한다. 세 소문항은 앞 결과가 다음 단계에 실제 사용되며 4칸의 방정식·순서쌍·확률 목표도 일치한다.",
+      "quotesExact": true,
+      "quoteCount": 13,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "judgment": "ACCEPT",
+        "reason": "그래프를 식으로 바꾸고 두 좌표의 동시 범위 제한을 사건에 옮기는 연결이 있어 bucket3 및 신규 중 후보를 수용한다."
+      }
+    }
+  ],
+  "overallStatus": "PASS",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "발문·선지·기존 해설과 Q4·24 실제 그림을 읽었다. 모든 선택 인용은 exact source 대조했다.",
+    "세 문항의 숫자 historical level은 그대로 rawSourceLevel에 보존하며 final level=null/compat UNKNOWN과 별도 신규 중 후보 및 LEGACY_LEVEL_NORMALIZATION_PENDING 부채를 유지한다. 숫자의 자동 환산이 아니다.",
+    "taxonomy/concept/condition compiled ACTIVE의 definition과 존재하는 internalSkeleton을 직접 대조했다. source나 저자 파일을 수정하지 않았다."
+  ]
+}
