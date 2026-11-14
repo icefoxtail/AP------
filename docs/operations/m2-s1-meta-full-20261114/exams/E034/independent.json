@@ -1,0 +1,658 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E034",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:18:00.215488+00:00",
+  "sourceGitBlobSha": "27b3092bfb400952e215cea6d1912714a6c03f2f",
+  "reviewSha256": "8ac573c2562febc82cc2bb8948e4f0fcc0ed707e429b11a398a6e3091bcc7f14",
+  "fourSlotSha256": "bfbe822066f21895e1019c273d47e6a60495489701ab9702897ed08a14c86d29",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E034.initial.json",
+  "initialFreezeSha256": "724dac9793d1f36817b5e52949820a9d800dc904aa629a8b533592e2b9d404b4",
+  "sampleOrdinals": [
+    6,
+    20,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "classification": "공통해에서 미정계수를 정하는 M2-RPM-151이다. 추가조건식을 포함하여 미정계수가 없는 두 식을 고르는 실제 결정단계를 확인했다.",
+      "binding": "ACTIVE 공통해 TPL 정의를 실제 읽었다. 주어진 한 연립과 추가조건식이라는 입력 차이는 기록한 채 재사용후보로 두고 scoped binding은 미확정이다.",
+      "crossConcept": "공통해를 얻어 계수식에 대입하는 내부 단계라 별도 CC를 더하지 않는다.",
+      "condition": "추가 등식은 공통해를 정하는 입력이며 새로운 수범위 제약은 없다.",
+      "integration": "하나의 계수결정 primary 내부 절차로 NONE.",
+      "difficulty": "확정된 두 식 선택→해→계수 역산의 정형 절차. 중/2 B23을 수용한다.",
+      "fourSlot": "r2의 연립일차방정식568과 매개변수 목표가 실제 대상에 맞는다. 기존 해설의 식 차와 대입 인용을 확인했다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "classification": "기존 해설은 두 물통의 잔량이 같아지는 두 그래프의 교점이다. M2-RPM-174를 수용한다.",
+      "binding": "기본 두함수교점 ACTIVE TPL과 실제 두점 모델링을 포함하는 motiongraph TPL 정의를 읽었다. 물통 잔량의 대상 차이를 명시한 후보 상태를 수용한다.",
+      "crossConcept": "현재 basic intersection primary 밖에서 두 일차식을 먼저 얻으므로 CC_LINE_EQUATION이 정의에 맞는다. 추후 모델링 포함 TPL로 확정되면 중복 제거를 다시 판단해야 한다.",
+      "condition": "같은 잔량은 목표 등식이며 임의의 추가 시간범위 조건을 만들지 않았다.",
+      "integration": "두 직선식 산출물이 교점 방정식에 입력되어 SEQUENTIAL을 수용한다.",
+      "difficulty": "원 source 상/3과 달리 안내된 표준 두 모델→한 일차방정식은 중/2 B23이다. 실제 그림 x절편 라벨 잘림 때문에 low 조건부 판단이다.",
+      "fourSlot": "r2 method는 두 미지수 연립67 대신 실제 -2x+30=-5x+60의 일차방정식64이다. 경과시간 CANDIDATE와 같은 goal의 값131을 확인했다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "3-1 기본 직선식과 3-2 선분교차 범위가 병존하며 전자는 목표가 실제 본문에서 빠졌다. 단일 RPM을 강제하지 않은 null을 수용한다.",
+      "binding": "ACTIVE 두점 직선과 선분교차 범위 정의를 각각 읽었고 부분별 후보만 기록한 것이 맞다. 전체 exact binding은 미확정이다.",
+      "crossConcept": "단일 primary 미판정에 종속된 CC null을 수용하며 없음으로 단정하지 않는다.",
+      "condition": "선분과 만나도록 하는 조건이 실제 범위 목표의 경계를 정하나 내용 충돌을 고쳐 쓰지 않는다.",
+      "integration": "전체 primary 미판정이므로 null로 남기고 NONE 결론을 만들지 않는다.",
+      "difficulty": "실제 본문 B(2,-1), 실제 그림 B의 y=-2가 충돌하고 3-1 목표가 빠져 UNKNOWN/low가 맞다.",
+      "fourSlot": "r2에 실제 누락된 3-1 목표를 evidenceDebt로 명시했다. 존재하는 목표와 해설 인용만 사용하고 누락된 목표를 해설에서 역작성하지 않았다. 기울기는 해설의 명칭이 있어 NAMED 수용."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d02f22d79c378e2ed7fb28c922066e97d6a491299c37580f84f7f632a431aa70",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "정리후두미지수일차식인지 식의형태를직접판정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "전개·소거 후 두 미지수의차수를 확인하는 정의 적용.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "정리후두미지수일차식인지 식의형태를직접판정; 직접 적용과 정형 두 단계의 B12 차이로 저자 숫자를 수용하며 자동 상향 규칙을 만들지 않는다.; 전개·소거 후 정의 판정의 직접성은 하를, 보기별 변환은 숫자2를 설명하므로 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c6acaff267e690f2892e6759b6c22c76d87cb22e47142d894fdc87ab34b0b9e9",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진순서쌍을네일차식에대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "해 순서쌍을각식에바로대입하는 직접 판정.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진순서쌍을네일차식에대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_11a18c1f02b4a9d646155925858fa7d5349e08cee5f245b637c236bd9a28c48f",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진해로두계수복원후비율"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 해를 두식에대입하여 계수를얻는 짧은계산.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "주어진해로두계수복원후비율; 두 계수를 각각 복원하여 비율을 구하는 학습 중과 짧은 직접대입의 숫자1이 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f93b8675898c2b2387655b6fc1649a7723e1b14179ab65837fe8faaefb8f25c0",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "정리된미지수를다른식에직접대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "한변수로이미정리된 식을대입하는 정형연립풀이.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "정리된미지수를다른식에직접대입; 직접 적용과 정형 두 단계의 B12 차이로 저자 숫자를 수용하며 자동 상향 규칙을 만들지 않는다.; 이미 정리된 식의 직접 대입은 학습 하, 두 식의 연결은 숫자2로 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8acc50158546a106523f29c8849c2afa30028451192b7e285b425ed0007f9a33",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "소수정수화후식차소거"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "소수를정수화하고소거하는 정형전처리.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT",
+      "reason": "소수정수화후식차소거"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_e65a2448463846d2f4b7e97807efad1e9cb9b2692a5c09406ecc45c241255548",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "공통해를얻을확정식두개선택후상수역산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "계수없는 두식을먼저택해공통해를얻고계수식에대입하는 학습유형.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "공통해를얻을확정식두개선택후상수역산"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_63ad05d25ac1657e7e7a9bff47a62cfd4b9773e4c2cfb6966ed08ac323ae4fb0",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두식의계수비와상수비일치확인"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "세계수비의일치여부를각보기에서직접확인.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT",
+      "reason": "두식의계수비와상수비일치확인; 직접 적용과 정형 두 단계의 B12 차이로 저자 숫자를 수용하며 자동 상향 규칙을 만들지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f2d22674ac4d425388bda11d0936d052a1a52af0fa866b7d6b6920f4e6018ca8",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "두속력구간의거리합과시간합모델"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "거리합과시간합으로두이동거리모델을세우는 표준활용.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "두속력구간의거리합과시간합모델"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_aeb96f0704e46d732c1bdf9528ead783786436be7af398c500a9a81d8fdf285d",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "일차함수정의와일차항소거확인"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "정리후일차항존재를직접판정.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "일차함수정의와일차항소거확인"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_14d28f18c68c7cea72183507d08df75fde183edbba21cb11796eb010f81bcd0a",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진함수에한값대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "함숫값을하나직접대입.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진함수에한값대입"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7fa1fb2f5261f15fb100a185729e4af8e5f09078969d7237160cccd5be533ad4",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두증가량비로기울기계수선택"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두증가량의비로기울기를구하는 직접정의.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT",
+      "reason": "두증가량비로기울기계수선택"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b06a724a9f750a126a088b88c56461d10ab988da9664bad84fb39df33aa510a5",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "수직이동식에점대입으로이동량결정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "수직이동식에점좌표를대입하는 정형두단계.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "수직이동식에점대입으로이동량결정; 수직이동의 기본식을 익히는 학습 하와 점 대입을 덧붙이는 숫자2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c2a58649618d3f3a6b73825eee2799caf7f76b07b0c0b1911bfa1de9f790025a",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "양의기울기로증가방향판정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "기울기의부호와증가방향직접대응.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "양의기울기로증가방향판정"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0efa43ccc8bfd6f9dd84134deba89f254a2fb27ccd3f66a6e04a58b5e00cc872",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "절편·사분면·증가·평행성질종합판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "절편·사분면·증가·평행의여러표준성질을구별.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "절편·사분면·증가·평행성질종합판정"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_6fcff10e38e421f99c9d3112595d431c94ea6bd7135a6f70a9cdc72f2d871aec",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "일차방정식을y에관해정리"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "y에관하여정리해같은그래프식을선택.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "일차방정식을y에관해정리"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_836a6103350d4c71c5c61a8dafb82f8fc35c83eeffd4e9c815af721e571429c0",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "실제음기울기양절편과계수부호대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제그림의기울기음수/y절편양수를계수부호로읽음.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "실제음기울기양절편과계수부호대응; 기울기와 절편 두 부호를 구별하는 학습 중과 그림에서 직접 읽는 숫자1은 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7ab481a5dacdd09c4839371deaa15d2a77c6eb98108f01f56ce157a69d1aa30c",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "축수직직선의고정x좌표정의"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "x축수직선의고정x좌표를직접표현.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT",
+      "reason": "축수직직선의고정x좌표정의"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_19094807547ac6f15acca37931be797fce40c7b0e4344e1c5a6e2223ca2bbc54",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "교점y에서x를정하고계수대입. 실제한직선방향이해설과충돌하므로text/solution조건부2low만제안"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "교점y좌표를읽어두식에차례로대입하는 표준구조이나실제그림의우상향과해설a=-1이충돌.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "교점y에서x를정하고계수대입. 실제한직선방향이해설과충돌하므로text/solution조건부2low만제안"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_e22ddf3ee846136ebfdfbeb6934e89e20479132b84d48d5e96351a510c6bebaa",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "평행을위한같은기울기와다른절편확인"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두직선의기울기일치와절편차이를확인하는 정형계수조건.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "평행을위한같은기울기와다른절편확인"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_acd906ebe60f77ca44b21c04159968372898acda8cd4d875bc595b7a2a9c5060",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "기존해설의두절편자료로모델교점시간을얻는표준절차. 실제그림x라벨잘림때문에조건부low"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "초기중2/low를 source상3과비교했다. 두표준일차식을세워교점을구하는학습활용으로중2를제안하며이미지눈금한계로low와별도독립검토유지.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "기존해설의두절편자료로모델교점시간을얻는표준절차. 실제그림x라벨잘림때문에조건부low"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_b6213ea1d6b46dda8ad7a1041173cdf626a4d640ae101c54349f2c8fbd66e1e9",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "계수관계복원후자연수순서쌍개수"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "해대입으로계수관계를얻고자연수쌍을세는 정형결합.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "계수관계복원후자연수순서쌍개수"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2edafdf033d6a467b4ea8277e157b53689cc70be69dd524e7ba35d7c1be6b205",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "직접읽기소문항과교환계수복원후원해구하기소문항결합"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "쉬운직접조건부분과계수맞바꿈복원부분을구분하는소문항. 복원은주어진해대입뒤연립정리의표준절차.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "직접읽기소문항과교환계수복원후원해구하기소문항결합"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_be2e11c62f27d6f805b74e5de2126d646958008a941806308f5aa0f50efa878f",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "3-1실제목표누락과3-2본문B의y=-1/그림y=-2충돌로단일숫자판정유보"
+      },
+      "acceptedDifficulty": {
+        "level": "상",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "본문B(2,-1)과그림B의y=-2가달라범위끝값이달라진다.3-1세부목표도본문누락되어숫자난도유보.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_SOURCE_DEBT",
+      "reason": "3-1실제목표누락과3-2본문B의y=-1/그림y=-2충돌로단일숫자판정유보"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b2d6e8ce92243700b8643474fbe6d96bf408e5e6f9e0c297ee715009fc62e68c",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "안내소문항대로일차모델·직접대입·0도달시간계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "남은쪽수모델에일수와잔량0을대입하는 안내소문항.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT",
+      "reason": "안내소문항대로일차모델·직접대입·0도달시간계산"
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "전개·소거 후 정의 판정의 직접성은 하를, 보기별 변환은 숫자2를 설명하므로 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "두 계수를 각각 복원하여 비율을 구하는 학습 중과 짧은 직접대입의 숫자1이 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "이미 정리된 식의 직접 대입은 학습 하, 두 식의 연결은 숫자2로 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "수직이동의 기본식을 익히는 학습 하와 점 대입을 덧붙이는 숫자2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "기울기와 절편 두 부호를 구별하는 학습 중과 그림에서 직접 읽는 숫자1은 B12 인접 호환이다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "Actual content24, existing solutions24 and five images were read before author comparison; initial exposure and hash are preserved.",
+    "Q3 exact coefficient leaf151; Q6 decisive wording; method NAMED/IMPLIED corrections were directly checked against actual existing solutions.",
+    "Critical defect count excludes explicitly recorded original source defects (Q18 graph direction conflict, Q20 clipped labels, Q23 omitted goals/coordinate conflict). These are not resolved or quality PASS.",
+    "Q20/24 elapsed-time candidate remains unregistered with same-slot dictionary parent; source curriculum/official resolver/binding gaps remain open."
+  ]
+}

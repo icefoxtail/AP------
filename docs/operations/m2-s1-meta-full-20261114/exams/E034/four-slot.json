@@ -1,0 +1,1758 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "9d8c21531f424e6baa449c7f015e43bc8574238d",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+    "at": "2026-11-14T14:10:40.863122+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d02f22d79c378e2ed7fb28c922066e97d6a491299c37580f84f7f632a431aa70",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5ba9ce1562688f33f07cd805dcfe546b69735f8ae8604e5fd8482ded060bfce3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bc056b3e0abc6f29a416a1c6bd1349cd6ceb0d954cc3418491157f691d9daa8b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "termId": 62,
+            "src": "choices",
+            "quote": "$4x + 4y - 3 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "미지수가 2개인 일차방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "ax+by+c=0 꼴로 정리할 수 있어야 하며 정리 후 두 미지수가 살아남아야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 미지수가 남는 일차방정식의 정의를 판정 기준으로 직접 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 미지수 일차방정식의 정의 판정",
+        "classification": "주어진 두 미지수 일차방정식의 정의를 판정하며, 실제로 연립방정식을 푸는148/149로 축소하지 않는다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c6acaff267e690f2892e6759b6c22c76d87cb22e47142d894fdc87ab34b0b9e9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c4562f1c75f8e0eea749b1d3e7468dcf38d693541024fa99640e0a2c559a037c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a574390b4afe64767b85976a6704d2f5ae74e4a0d9b7b0a9f67bac6155bd184b"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "순서쌍",
+            "termId": 402,
+            "src": "stem",
+            "quote": "$(3, -1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "해로 갖는 일차방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "각 방정식에 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "주어진 순서쌍을 각 일차방정식에 대입",
+        "classification": "단일 방정식 여러 개에 주어진 순서쌍을 대입하는 과제이며 연립방정식의 주어진 해150와 정확 범위가 다르다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_11a18c1f02b4a9d646155925858fa7d5349e08cee5f245b637c236bd9a28c48f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9e4bf1328c6a7b01012c1248f24a3a44a708c56471e14e6f975722afcbb9002"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88eb808f2776e216f8f492e5ef5d33002172689be4c02152ab56e6e4e1f1f8a0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "순서쌍",
+            "termId": 402,
+            "src": "stem",
+            "quote": "$x = 2, y = 4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a, b$"
+          },
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "$\\frac{a}{b}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "각 식에 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "상수 $a, b$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "연립방정식의 주어진 해 대입",
+        "classification": "연립방정식의 주어진 해 대입가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f93b8675898c2b2387655b6fc1649a7723e1b14179ab65837fe8faaefb8f25c0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f18729c60e1b1b47c8143fa81d5b4cdd19e9749776d5b87d8622f0d4be2e3861"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e1fe0d4736143b3210a3c3fb1ec639c3177d66a6c6c04036f857f78dfeb45a32"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해를 구한 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입법",
+            "termId": 435,
+            "src": "solution",
+            "quote": "대입법을 이용하면 편리하다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대입법",
+        "classification": "대입법가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8acc50158546a106523f29c8849c2afa30028451192b7e285b425ed0007f9a33",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d5a341f0c81f3929a9795054596d8b1417984cb463740b3b6767fa00e7c59796"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67156d3f9d7b4a846cba2d052f1ad98a310aa66a8a526d7e9f426866dc49b89c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해를 구한 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식의성질",
+            "termId": 433,
+            "src": "solution",
+            "quote": "각 식의 양변에 10을 곱한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 같은 양수로 곱하여 소수 계수를 정수화한다."
+          },
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉡에서 ㉠을 변끼리 빼어",
+            "evidenceType": "IMPLIED",
+            "justification": "두 방정식의 차로 y항을 소거한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "소수 계수 정수화 후 가감법",
+        "classification": "소수 계수 정수화 후 가감법가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_e65a2448463846d2f4b7e97807efad1e9cb9b2692a5c09406ecc45c241255548",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "690ad1e46cd880591892fc3b2f88827409d3d3c5597438fbd6ef2d7b547886b7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0db3ca8b4ecd20a0544d03d23c913c5e2619942a459711b9649105813d99b783"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$x + 5y = 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉡에서 ㉠을 변끼리 빼면 $x$가 소거된다",
+            "evidenceType": "IMPLIED",
+            "justification": "공통해를 구하기 위해 동일계수 x항을 뺀다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "공통해 $(2, 0)$을 $2x + 3y = a$에 대입한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "공통해에서 계수 결정",
+        "classification": "공통해에서 계수 결정가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_63ad05d25ac1657e7e7a9bff47a62cfd4b9773e4c2cfb6966ed08ac323ae4fb0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6c952c6e20ac9b29c0181c3a1ff999f316a068f2bdb22bff72cdecb17d294647"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c5cc76db568455605094b55b3b8534592c7875d81d3fd401534a9f40a03f511d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "choices",
+            "quote": "$\\begin{cases} x + 2y = -4 \\\\ 2x + 4y = -8 \\end{cases}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해가 무수히 많은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "solution",
+            "quote": "모든 비가 같으므로 해가 무수히 많음",
+            "evidenceType": "IMPLIED",
+            "justification": "계수와상수항비의동일성을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "해가 무수히 많은 연립방정식",
+        "classification": "해가 무수히 많은 연립방정식가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f2d22674ac4d425388bda11d0936d052a1a52af0fa866b7d6b6920f4e6018ca8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "81530a7b8d20908788dda9e3b25076f832b2d605e0d221c7a91ee8df356f2139"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d09fa6ba25c7ea483562d3f7c9abd8a60b80fcf62359c24d1daefdb85b17ab18"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "$11\\text{km}$"
+          },
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "시속 $18\\text{km}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "자전거를 타고 간 거리"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "termId": 299,
+            "src": "solution",
+            "quote": "$x + y = 11",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이동거리의 합을 전체거리와 같게 둔다."
+          },
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉢식에서 ㉠식을 변끼리 빼면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 이동수단의 거리·시간 연립 모델",
+        "classification": "한 사람이 서로 다른 두 속력으로 구간을 이동한다.158마주가기·따라가기,159강물·기차와 실제 상황/결정단계가 달라 속력활용 부모와 신규leaf제안을 남긴다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_aeb96f0704e46d732c1bdf9528ead783786436be7af398c500a9a81d8fdf285d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df91efb93ce5889ce4a1312d3f4de7414ee02440148d456d19f8b42c98222821"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3d92c4f979bb093bc17c85624eb8ee262b7715b4d0d72609cddfecab2703d515"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "choices",
+            "quote": "$y = 1000 - 10x$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$x$에 관한 일차함수"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "$y = ax + b$ ($a \\ne 0$, $a, b$는 상수)",
+            "evidenceType": "IMPLIED",
+            "justification": "일차함수 정의의 형태와 일차항의 소거 여부를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차함수의 정의",
+        "classification": "일차함수의 정의가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_14d28f18c68c7cea72183507d08df75fde183edbba21cb11796eb010f81bcd0a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da1a9d89d96ae5f992d8315144e617a740c3ccbd8407274bb08a981f2360f14e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ac351c7c52f1c841cf67037990ff49a66ee02a3cfe3a80a898d93bf4f2ac64a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$f(x) = -3x + 1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(2)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$f(2) = -3(2) + 1 = -6 + 1 = -5$",
+            "evidenceType": "IMPLIED",
+            "justification": "함수식의 x를2로 치환하는 직접대입이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "함숫값 대입",
+        "classification": "함숫값 대입가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7fa1fb2f5261f15fb100a185729e4af8e5f09078969d7237160cccd5be533ad4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a55d3e8aec800d8e08ad9fd3c16881c68314d385593d4f4e71b8b38964656a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4e0bf68282d13fc6b7a722ad2956fad63a67b02f983288f6d7105e3246408fa"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          },
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$x$의 값이 $2$에서 $4$까지 증가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y$의 값은 $1$만큼 증가하는 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "$\\text{기울기} = \\frac{1}{4 - 2} = \\frac{1}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 증가량의 비를 기울기로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "증가량의 비로 기울기 판정",
+        "classification": "증가량의 비로 기울기 판정가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b06a724a9f750a126a088b88c56461d10ab988da9664bad84fb39df33aa510a5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "84b75e35edff34f137d8ff5e7a56535111b58b16c186993edee7c811ebb2a39e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5000f02162245a71c3890b967f9348790de6cdd766ff273568b802b28cf6fb22"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y = 2x$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(1, 4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "termId": 745,
+            "src": "stem",
+            "quote": "$k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "solution",
+            "quote": "$y = 2x + k$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$4 = 2(1) + k$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "수직이동 후 주어진 점 통과",
+        "classification": "수직이동 후 주어진 점 통과가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c2a58649618d3f3a6b73825eee2799caf7f76b07b0c0b1911bfa1de9f790025a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bbf7447ca870a63cb0565d16069e96d0d10e266dd866ae9afb3db80a0a9a6279"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e424a3b37ad189cccfe8889bfc71710d7cf315a9deacf166bee862a683af03eb"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "오른쪽 위로 향하는 직선"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 $a > 0$일 때 오른쪽 위로 향하고",
+            "evidenceType": "IMPLIED",
+            "justification": "기울기 부호로 그래프 증가방향을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "양의 기울기와 증가방향",
+        "classification": "양의 기울기와 증가방향가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0efa43ccc8bfd6f9dd84134deba89f254a2fb27ccd3f66a6e04a58b5e00cc872",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ff56d38a30baebab5d615c09c87767881dd256f5072c9b39ef119ec935779dc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34c0fa5293326b9d7d88e54d6aa42f8eda0042c67f9e0386199c1992bf67aa20"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y = 3x + 6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "그래프에 대한 설명"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "설명으로 옳지"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$y = 0$ 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기가 $3$으로 같고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차함수 그래프의 복수성질 판정",
+        "classification": "일차함수 그래프의 복수성질 판정가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_6fcff10e38e421f99c9d3112595d431c94ea6bd7135a6f70a9cdc72f2d871aec",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3d93c7fe2a0c436f11feae8c75bca586ebd1a8ab0e022ee4335a9d89b6ef243e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27ae81c1cd768478da575ed79d01570f15f412f4393a94d0601f829a92997631"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$4x - 2y + 6 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일치하는 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "termId": 432,
+            "src": "solution",
+            "quote": "$2y = 4x + 6$",
+            "evidenceType": "IMPLIED",
+            "justification": "y항을 한쪽으로 모아 등가식을 만든다."
+          },
+          {
+            "term": "등식의성질",
+            "termId": 433,
+            "src": "solution",
+            "quote": "양변을 2로 나누면",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 양수로 나누어 y를 고립한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차방정식을 함수식으로 변형",
+        "classification": "일차방정식을 함수식으로 변형가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_836a6103350d4c71c5c61a8dafb82f8fc35c83eeffd4e9c815af721e571429c0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c4bac70d190a7e08b572bbeb5ce070eea9cf542f40897009f52eed89d14577f5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f413c26ebd592dfc8732d4957ecf005b4707368a4220b5dd9ec042252daf56d7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$ax - y + b = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          },
+          {
+            "term": "부호",
+            "termId": 25,
+            "src": "choices",
+            "quote": "$a < 0, b > 0$"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 $a < 0$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "termId": 151,
+            "src": "solution",
+            "quote": "$b > 0$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$a, b$는 상수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "그래프의 기울기와 절편 부호",
+        "classification": "그래프의 기울기와 절편 부호가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7ab481a5dacdd09c4839371deaa15d2a77c6eb98108f01f56ce157a69d1aa30c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1e8ed75d5e3ea47f99607c5bd4f1d0b82c04be147888e7d64b30bdf16d1de48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "592836feed52d1fe1a7418668abc0f5b4fcf22fcdb228dfad4160f906ab20160"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$(3, 4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선의방정식",
+            "termId": 436,
+            "src": "stem",
+            "quote": "직선의 방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "solution",
+            "quote": "$x$좌표가 $3$으로 항상 일정하다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수직선에서 x좌표가변하지않는정의를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "stem",
+            "quote": "$x$축에 수직"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "좌표축에 평행한 직선",
+        "classification": "좌표축에 평행한 직선가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_19094807547ac6f15acca37931be797fce40c7b0e4344e1c5a6e2223ca2bbc54",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4c5ae5a7ecb4131b36922d805ffc9cc53bd3221a0b5eef20137dd15f6c274c7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10568b257a92596d842f0ea797dcd069c521d453d25359ef160fdbebfc1fdc2a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$2x + 3 = 5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "solution",
+            "quote": "교점의 좌표는 $(1, 3)$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "그래프의 교점과 연립방정식",
+        "classification": "그래프의 교점과 연립방정식가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_e22ddf3ee846136ebfdfbeb6934e89e20479132b84d48d5e96351a510c6bebaa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2506c92ab1c919b330b63b601b4a7fc4623733804f34d3d7cb62fb4ed49404a8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e90ad93f15d144ddaff0f5c48f87b5e68a2d769f6551e38911d4e301778cd070"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$ax - 3y - 2 = 0$, $2x + y + 2 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "기울기는 같고 $y$절편은 달라야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행하고일치하지않는두직선의조건을적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "교점이 없을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "교점이 없는 두 직선의 평행조건",
+        "classification": "교점이 없는 두 직선의 평행조건가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_acd906ebe60f77ca44b21c04159968372898acda8cd4d875bc595b7a2a9c5060",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9fda74e86ecd1f3c3aabd7c94eabbee956ef3f9c5659c3a164392b269486bbd0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6701a573ccb4c9d9c35f3473e0910b27847fbf741c5f1e4eb65eb13d031a1974"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "관계를 그래프로"
+          },
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$30\\text{L}, 60\\text{L}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "몇 분 후인가"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "몇 분 후인가",
+            "candidate": true
+          }
+        ],
+        "method": [
+          {
+            "term": "직선의방정식",
+            "termId": 436,
+            "src": "solution",
+            "quote": "$y = -2x + 30$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존해설은두절편에서물통A의식을구한다."
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "solution",
+            "quote": "$-2x + 30 = -5x + 60$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 잔량을 같게 놓아 x에 관한 하나의 일차방정식으로 표현한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 물통의 그래프 교점",
+        "classification": "두 물통의 그래프 교점가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_b6213ea1d6b46dda8ad7a1041173cdf626a4d640ae101c54349f2c8fbd66e1e9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88fc7daeb7a5b98339c36404c9eabb13ea5d867a30ff38e6c9754c8e3ecd0cfb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "75e15b9f8d16eb2b6fce91fb0ef04cd22c5ca53f3775bba63451da6b28056aa5"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "순서쌍",
+            "termId": 402,
+            "src": "stem",
+            "quote": "$x = 1, y = -2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해의 개수"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "해의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "주어진 일차방정식에 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "termId": 294,
+            "src": "solution",
+            "quote": "$(1, 7), (2, 6), (3, 5), (4, 4), (5, 3), (6, 2), (7, 1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "양의정수순서쌍을나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$x, y$가 자연수"
+          },
+          {
+            "term": "조건",
+            "termId": 394,
+            "src": "stem",
+            "quote": "$a \\ne 0, b \\ne 0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "자연수 순서쌍의 개수",
+        "classification": "한일차방정식의자연수순서쌍개수가최종목표이다.연립방정식의유일해나부등식정수개수로강제하지않는다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2edafdf033d6a467b4ea8277e157b53689cc70be69dd524e7ba35d7c1be6b205",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13c354dadd3f86cd06992e64d21f16724d39046197acaa5c8139835cca53df40"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "95c323962817acb84eda2916904c3b8ec95abb42bde80eaaba71bca4074e5bcf"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$x + y$의 값"
+          },
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "처음에 주어진 연립방정식의 해"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "해 $x = -2, y = -1$ 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉢에서 ㉡을 변끼리 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "계수미지수a를소거하여b를구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "맞바뀐 계수 복원 후 원래 해 결정",
+        "classification": "맞바뀐 계수 복원 후 원래 해 결정가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_be2e11c62f27d6f805b74e5de2126d646958008a941806308f5aa0f50efa878f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b57ec08af0962b225c9b4c71bf45a0480070aa410f497c360e0a273ac325e4aa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8ae699d40361cd4a22576928b1309e050768534f27ae18b4bea6aabee211758"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "$\\text{A}(3, 2), \\text{B}(2, -1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          },
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$a$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "$\\frac{2 - 0}{0 - (-2)} = \\frac{2}{2} = 1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경계조건",
+            "termId": 359,
+            "src": "solution",
+            "quote": "점 $\\text{A}$를 지날 때와 점 $\\text{B}$를 지날 때의 사이",
+            "evidenceType": "IMPLIED",
+            "justification": "3-2선분양끝통과직선을계수범위경계로둔다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "기본 직선식과 선분교차 매개변수 범위의 복합 소문항",
+        "classification": "기본 직선식과 선분교차 매개변수 범위의 복합 소문항가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "PART3_1_TARGETS_OMITTED_IN_ACTUAL_STEM_EXISTING_SOLUTION_TARGETS_NOT_BACKFILLED"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b2d6e8ce92243700b8643474fbe6d96bf408e5e6f9e0c297ee715009fc62e68c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70a33bf49fdd2fdf8f7225844cbb00e963e1b548600d9fae64244d19f27bfb17"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c65aee219d9b790cb5d02883d1687ec38d4af493b475542bc50a98f6552fd721"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$240$쪽 분량"
+          },
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "매일 $8$쪽씩"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차식",
+            "termId": 36,
+            "src": "stem",
+            "quote": "$y$를 $x$의 식"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "남은 분량은 몇 쪽"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "며칠 만에"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "며칠 만에",
+            "candidate": true
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "termId": 299,
+            "src": "solution",
+            "quote": "$y = 240 - 8x$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서읽은분량을빼잔량을표현한다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$x = 15$를 관계식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일정한 감소량의 일차함수 모델",
+        "classification": "쪽수감소의직접함수모델·함숫값·잔량0역대입을묶은활용이다.점·기울기에서식을정하는177과대상/결정구조가달라관련부모에gap유지.",
+        "condition": "원문 제한을 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/A-14c2c64e43fb",
+        "at": "2026-11-14T14:10:40.863122+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    }
+  ],
+  "candidates": [
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "소요시간",
+        "걸린시간"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "시작 후 목표상태까지 지난 분/일 단위 시간량을 goal로 나타내는 후보. retired 상황298의시간alias를재사용하지않고정본등록은미실행. 같은슬롯상위값131을병기.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 20,
+          "slot": "goal",
+          "quote": "몇 분 후인가"
+        },
+        {
+          "sourceOrdinal": 24,
+          "slot": "goal",
+          "quote": "며칠 만에"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Actual per-question semantic judgments; existing solutions only. Native receipt separate.",
+    "independentReview": "PENDING"
+  }
+}
