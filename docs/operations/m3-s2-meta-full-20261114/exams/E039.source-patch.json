@@ -1,0 +1,712 @@
+[
+  {
+    "ordinal": 1,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": null,
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "difficultyReason": "중하: 계수 부호와 절댓값으로 두 그래프의 성질을 비교하고 옳지 않은 두 보기를 고른다.",
+      "metaStatus": "RPM_ONLY",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "subUnit": "이차함수의 그래프",
+      "difficultyReason": "기본 포물선의 성질을 직접 대조하며 두 정답이라는 형식은 별도 난도 상승 근거가 아니다.",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding"
+      ]
+    }
+  },
+  {
+    "ordinal": 2,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "rpmPrimaryKey": "M3-RPM-049",
+      "difficultyReason": "하위: 세로 평행이동한 식에 한 점을 대입해 계수를 바로 구한다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수의 평행이동",
+        "subConcept": "세로 평행이동 후 계수 결정",
+        "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+        "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+      },
+      "metaStatus": "DIRECT_BINDING_GAP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "crossConceptKeys": [
+        "CC_TRANSLATION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "subUnit": "이차함수의 그래프",
+      "rpmPrimaryKey": "M3-RPM-048",
+      "difficultyReason": "이동된 식을 한 번 만든 뒤 점 대입하는 정형 전처리이다.",
+      "semanticMeta": {
+        "primaryConcept": "이차함수의 계수 결정",
+        "subConcept": "세로 평행이동 후 계수 결정",
+        "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+        "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+      },
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding",
+        "rpm2022Leaf"
+      ]
+    },
+    "primaryAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+    "primaryAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+  },
+  {
+    "ordinal": 3,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "difficultyReason": "중하: 꼭짓점형에서 꼭짓점·대칭축·절편을 구해 그래프 보기를 비교한다.",
+      "metaStatus": "RPM_ONLY",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "subUnit": "이차함수의 그래프",
+      "difficultyReason": "주어진 꼭짓점형의 기본 성질을 직접 읽는 판정이다.",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding"
+      ]
+    }
+  },
+  {
+    "ordinal": 4,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "difficultyReason": "중간: 그래프의 꼭짓점·절편을 식의 계수와 연결해 세 값을 정한 뒤 곱한다.",
+      "metaStatus": "FAMILY_BINDING_GAP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "이차함수의 그래프",
+      "difficultyReason": "꼭짓점 읽기 후 한 점을 대입하는 정형 계수 복원이다.",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding",
+        "rpm2022Leaf"
+      ]
+    },
+    "primaryAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+    "primaryAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+  },
+  {
+    "ordinal": 5,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "difficultyReason": "중하: 꼭짓점형에서 가로 이동량과 대칭축을 읽어 더한다.",
+      "metaStatus": "DIRECT_BINDING_GAP",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "이차함수의 그래프",
+      "difficultyReason": "꼭짓점형의 이동량과 축을 직접 읽는다.",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding"
+      ]
+    }
+  },
+  {
+    "ordinal": 6,
+    "before": {
+      "problemTypeKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "metaStatus": "RPM_ONLY",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "이차함수의 그래프",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "templateKey",
+        "rpm2022Leaf"
+      ]
+    },
+    "primaryAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+    "primaryAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+  },
+  {
+    "ordinal": 7,
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비"
+    }
+  },
+  {
+    "ordinal": 8,
+    "before": {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계",
+      "difficultyReason": "중하: 예각에서 삼각비의 증가·감소와 sin=cos인 각을 이용해 옳은 두 설명을 고른다.",
+      "metaStatus": "DIRECT_ACTIVE",
+      "metaDebtFields": []
+    },
+    "after": {
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "subUnit": "삼각비",
+      "difficultyReason": "기본 성질과 직접 반례로 진술을 확인하며 별도 미지량을 도출하지 않는다.",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "templateKey"
+      ]
+    }
+  },
+  {
+    "ordinal": 9,
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비"
+    }
+  },
+  {
+    "ordinal": 10,
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 활용",
+      "rpmPrimaryKey": "M3-RPM-060"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비",
+      "rpmPrimaryKey": "M3-RPM-059"
+    }
+  },
+  {
+    "ordinal": 11,
+    "before": {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계",
+      "rpmPrimaryKey": "M3-RPM-056",
+      "difficultyReason": "중간: 직선의 절편으로 직각삼각형을 만든 뒤 거리와 세 삼각비를 연결한다.",
+      "metaStatus": "DIRECT_ACTIVE"
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비",
+      "rpmPrimaryKey": "M3-RPM-055",
+      "difficultyReason": "좌표에서 길이로 옮기는 표준 전처리 뒤 정의를 적용한다.",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 12,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중상: 관측점이 탑을 사이에 두고 있어 두 밑변 구간을 합하고 공통 높이를 연립한다.",
+      "metaStatus": "FAMILY_ACTIVE"
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "두 관측점의 위치와 공통 높이를 연결하는 표준 측량 모델이다.",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 13,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "metaStatus": "FAMILY_ACTIVE"
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 14,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CENTER_RADIUS",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "metaStatus": "FAMILY_ACTIVE"
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_TRIANGLE_CONGRUENCE_RHS",
+        "CC_CIRCLE_SECTOR_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 15,
+    "before": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "rpmPrimaryKey": "M3-RPM-061",
+      "difficultyReason": "중상: 접기의 길이 보존과 45° 직각삼각형을 결합해 밑변과 높이를 결정한다.",
+      "semanticMeta": {
+        "primaryConcept": "삼각비를 이용한 삼각형 넓이",
+        "subConcept": "접기 대응변과 45° 높이",
+        "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+        "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+      },
+      "metaStatus": "FAMILY_ACTIVE"
+    },
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_FOLDING",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryKey": "M2-RPM-105",
+      "difficultyReason": "접기 대응변과 높이를 연결하여 직각삼각형 길이를 구하는 표준 전략이다.",
+      "semanticMeta": {
+        "primaryConcept": "접기와 피타고라스 정리",
+        "subConcept": "접기 대응변과 45° 높이",
+        "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+        "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+      },
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 16,
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "metaStatus": "RPM_ONLY",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "이차함수의 그래프",
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "binding"
+      ]
+    }
+  },
+  {
+    "ordinal": 17,
+    "before": {
+      "problemTypeKey": null,
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_QUADRATIC_FUNCTION",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "이차함수와 그래프",
+      "difficultyReason": "중간: 두 식에서 일차항 계수를 반으로 나누어 완전제곱을 만들어 상수항을 정리한다.",
+      "semanticMeta": {
+        "primaryConcept": "완전제곱식으로 이차함수 변형",
+        "subConcept": "일반형을 꼭짓점형으로 고치기",
+        "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+        "integrationPatternExplanation": "두 선택지의 각 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+      },
+      "metaStatus": "RPM_ONLY",
+      "metaDebtFields": [
+        "problemTypeKey",
+        "templateKey"
+      ]
+    },
+    "after": {
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "이차함수의 그래프",
+      "difficultyReason": "양수 또는 음수 계수의 완전제곱식 변환을 정형 수행한다.",
+      "semanticMeta": {
+        "primaryConcept": "완전제곱식으로 이차함수 변형",
+        "subConcept": "일반형을 꼭짓점형으로 고치기",
+        "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+        "integrationPatternExplanation": "선택한 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+      },
+      "metaStatus": "PROJECTION_PENDING",
+      "metaDebtFields": [
+        "templateKey"
+      ]
+    }
+  },
+  {
+    "ordinal": 18,
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비"
+    }
+  },
+  {
+    "ordinal": 19,
+    "before": {
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비"
+    }
+  },
+  {
+    "ordinal": 20,
+    "before": {
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "subUnit": "삼각비의 뜻과 관계"
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "NORMAL",
+      "subUnit": "삼각비"
+    }
+  },
+  {
+    "ordinal": 21,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": null,
+      "conditionKeys": null,
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중간: tangent로 수직 높이 차이를 계산한 뒤 관측자의 눈높이를 더한다.",
+      "metaStatus": "FAMILY_ACTIVE"
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "difficultyReason": "한 직각삼각형 높이 계산 후 기준 높이를 더하는 정형 측량이다.",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  },
+  {
+    "ordinal": 22,
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": null,
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "UNKNOWN",
+      "difficultyReason": "중상: 삼각비·넓이로 높이와 길이를 정한 뒤 피타고라스 정리를 연결한다.",
+      "metaStatus": "DIRECT_ACTIVE"
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "높이·넓이식·사영 길이를 한 흐름으로 연결하는 표준 복합 전략이다.",
+      "metaStatus": "PROJECTION_PENDING"
+    }
+  }
+]

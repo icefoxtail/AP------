@@ -1,0 +1,700 @@
+{
+  "schemaVersion": "m3-s2-existing-metadata-sync-v1",
+  "examId": "E039",
+  "status": "AUTHOR_COMPLETE_PENDING_INDEPENDENT_DELTA_HASH_BINDING",
+  "changes": [
+    {
+      "ordinal": 1,
+      "field": "difficultyReason",
+      "before": "중하: 계수 부호와 절댓값으로 두 그래프의 성질을 비교하고 옳지 않은 두 보기를 고른다.",
+      "after": "기본 포물선의 성질을 직접 대조하며 두 정답이라는 형식은 별도 난도 상승 근거가 아니다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 1,
+      "field": "metaStatus",
+      "before": "RPM_ONLY",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 1,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 2,
+      "field": "rpmPrimaryKey",
+      "before": "M3-RPM-049",
+      "after": "M3-RPM-048",
+      "reason": "기존 source RPM 식별자를 실제 전체 문항 판단의 원본 비교 RPM과 일치시킨다."
+    },
+    {
+      "ordinal": 2,
+      "field": "difficultyReason",
+      "before": "하위: 세로 평행이동한 식에 한 점을 대입해 계수를 바로 구한다.",
+      "after": "이동된 식을 한 번 만든 뒤 점 대입하는 정형 전처리이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 2,
+      "field": "semanticMeta",
+      "before": {
+        "primaryConcept": "이차함수의 평행이동",
+        "subConcept": "세로 평행이동 후 계수 결정",
+        "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+        "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+      },
+      "after": {
+        "primaryConcept": "이차함수의 계수 결정",
+        "subConcept": "세로 평행이동 후 계수 결정",
+        "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+        "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+      },
+      "reason": "Q2 계수복원 primary, Q15 피타고라스 primary, Q17 두 문제 중 하나 선택이라는 실제 요구와 충돌한 항목만 정정한다."
+    },
+    {
+      "ordinal": 2,
+      "field": "metaStatus",
+      "before": "DIRECT_BINDING_GAP",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 2,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding",
+        "rpm2022Leaf"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 3,
+      "field": "difficultyReason",
+      "before": "중하: 꼭짓점형에서 꼭짓점·대칭축·절편을 구해 그래프 보기를 비교한다.",
+      "after": "주어진 꼭짓점형의 기본 성질을 직접 읽는 판정이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 3,
+      "field": "metaStatus",
+      "before": "RPM_ONLY",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 3,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 4,
+      "field": "difficultyReason",
+      "before": "중간: 그래프의 꼭짓점·절편을 식의 계수와 연결해 세 값을 정한 뒤 곱한다.",
+      "after": "꼭짓점 읽기 후 한 점을 대입하는 정형 계수 복원이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 4,
+      "field": "metaStatus",
+      "before": "FAMILY_BINDING_GAP",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 4,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding",
+        "rpm2022Leaf"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 5,
+      "field": "difficultyReason",
+      "before": "중하: 꼭짓점형에서 가로 이동량과 대칭축을 읽어 더한다.",
+      "after": "꼭짓점형의 이동량과 축을 직접 읽는다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 5,
+      "field": "metaStatus",
+      "before": "DIRECT_BINDING_GAP",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 5,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 6,
+      "field": "metaStatus",
+      "before": "RPM_ONLY",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 6,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "templateKey",
+        "rpm2022Leaf"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "field": "difficultyReason",
+      "before": "중하: 예각에서 삼각비의 증가·감소와 sin=cos인 각을 이용해 옳은 두 설명을 고른다.",
+      "after": "기본 성질과 직접 반례로 진술을 확인하며 별도 미지량을 도출하지 않는다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "metaStatus",
+      "before": "DIRECT_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "field": "metaDebtFields",
+      "before": [],
+      "after": [
+        "templateKey"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 10,
+      "field": "rpmPrimaryKey",
+      "before": "M3-RPM-060",
+      "after": "M3-RPM-059",
+      "reason": "기존 source RPM 식별자를 실제 전체 문항 판단의 원본 비교 RPM과 일치시킨다."
+    },
+    {
+      "ordinal": 11,
+      "field": "rpmPrimaryKey",
+      "before": "M3-RPM-056",
+      "after": "M3-RPM-055",
+      "reason": "기존 source RPM 식별자를 실제 전체 문항 판단의 원본 비교 RPM과 일치시킨다."
+    },
+    {
+      "ordinal": 11,
+      "field": "difficultyReason",
+      "before": "중간: 직선의 절편으로 직각삼각형을 만든 뒤 거리와 세 삼각비를 연결한다.",
+      "after": "좌표에서 길이로 옮기는 표준 전처리 뒤 정의를 적용한다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "metaStatus",
+      "before": "DIRECT_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 12,
+      "field": "difficultyReason",
+      "before": "중상: 관측점이 탑을 사이에 두고 있어 두 밑변 구간을 합하고 공통 높이를 연립한다.",
+      "after": "두 관측점의 위치와 공통 높이를 연결하는 표준 측량 모델이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 12,
+      "field": "metaStatus",
+      "before": "FAMILY_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 13,
+      "field": "metaStatus",
+      "before": "FAMILY_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 14,
+      "field": "metaStatus",
+      "before": "FAMILY_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 15,
+      "field": "rpmPrimaryKey",
+      "before": "M3-RPM-061",
+      "after": "M2-RPM-105",
+      "reason": "기존 source RPM 식별자를 실제 전체 문항 판단의 원본 비교 RPM과 일치시킨다."
+    },
+    {
+      "ordinal": 15,
+      "field": "difficultyReason",
+      "before": "중상: 접기의 길이 보존과 45° 직각삼각형을 결합해 밑변과 높이를 결정한다.",
+      "after": "접기 대응변과 높이를 연결하여 직각삼각형 길이를 구하는 표준 전략이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "semanticMeta",
+      "before": {
+        "primaryConcept": "삼각비를 이용한 삼각형 넓이",
+        "subConcept": "접기 대응변과 45° 높이",
+        "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+        "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+      },
+      "after": {
+        "primaryConcept": "접기와 피타고라스 정리",
+        "subConcept": "접기 대응변과 45° 높이",
+        "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+        "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+      },
+      "reason": "Q2 계수복원 primary, Q15 피타고라스 primary, Q17 두 문제 중 하나 선택이라는 실제 요구와 충돌한 항목만 정정한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "metaStatus",
+      "before": "FAMILY_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 16,
+      "field": "metaStatus",
+      "before": "RPM_ONLY",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 16,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "binding"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 17,
+      "field": "difficultyReason",
+      "before": "중간: 두 식에서 일차항 계수를 반으로 나누어 완전제곱을 만들어 상수항을 정리한다.",
+      "after": "양수 또는 음수 계수의 완전제곱식 변환을 정형 수행한다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "semanticMeta",
+      "before": {
+        "primaryConcept": "완전제곱식으로 이차함수 변형",
+        "subConcept": "일반형을 꼭짓점형으로 고치기",
+        "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+        "integrationPatternExplanation": "두 선택지의 각 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+      },
+      "after": {
+        "primaryConcept": "완전제곱식으로 이차함수 변형",
+        "subConcept": "일반형을 꼭짓점형으로 고치기",
+        "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+        "integrationPatternExplanation": "선택한 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+      },
+      "reason": "Q2 계수복원 primary, Q15 피타고라스 primary, Q17 두 문제 중 하나 선택이라는 실제 요구와 충돌한 항목만 정정한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "metaStatus",
+      "before": "RPM_ONLY",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 17,
+      "field": "metaDebtFields",
+      "before": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "after": [
+        "templateKey"
+      ],
+      "reason": "실제로 비어 있는 PT/TPL·교육과정 binding·확정된 2022 publisher leaf 공백만 적는다. 존재하는 ACTIVE 키 자체를 누락으로 표시하지 않는다."
+    },
+    {
+      "ordinal": 21,
+      "field": "difficultyReason",
+      "before": "중간: tangent로 수직 높이 차이를 계산한 뒤 관측자의 눈높이를 더한다.",
+      "after": "한 직각삼각형 높이 계산 후 기준 높이를 더하는 정형 측량이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 21,
+      "field": "metaStatus",
+      "before": "FAMILY_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    },
+    {
+      "ordinal": 22,
+      "field": "difficultyReason",
+      "before": "중상: 삼각비·넓이로 높이와 길이를 정한 뒤 피타고라스 정리를 연결한다.",
+      "after": "높이·넓이식·사영 길이를 한 흐름으로 연결하는 표준 복합 전략이다.",
+      "reason": "숫자 bucket 보정과 충돌하는 기존 난도 등급 문구만 현재 판단 근거로 맞춘다. level/levelReason은 역사값으로 보존한다."
+    },
+    {
+      "ordinal": 22,
+      "field": "metaStatus",
+      "before": "DIRECT_ACTIVE",
+      "after": "PROJECTION_PENDING",
+      "reason": "stage-meta-bridge.mjs의 기존 상태값을 사용한다. 새 GLOBAL 재사용/등록대기는 공통 finalization PASS로 승격하지 않는다."
+    }
+  ],
+  "statusEvidence": [
+    {
+      "ordinal": 1,
+      "originalStatus": "RPM_ONLY",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 2,
+      "originalStatus": "DIRECT_BINDING_GAP",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_BINDING_GAP",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding",
+        "rpm2022Leaf"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 3,
+      "originalStatus": "RPM_ONLY",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 4,
+      "originalStatus": "FAMILY_BINDING_GAP",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_BINDING_GAP",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding",
+        "rpm2022Leaf"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 5,
+      "originalStatus": "DIRECT_BINDING_GAP",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "DIRECT_BINDING_GAP",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 6,
+      "originalStatus": "RPM_ONLY",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "templateKey",
+        "rpm2022Leaf"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 7,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 8,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "templateKey"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 9,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 10,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 11,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 12,
+      "originalStatus": "FAMILY_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 13,
+      "originalStatus": "FAMILY_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 14,
+      "originalStatus": "FAMILY_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 15,
+      "originalStatus": "FAMILY_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 16,
+      "originalStatus": "RPM_ONLY",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": false,
+      "activeValidationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "binding"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 17,
+      "originalStatus": "RPM_ONLY",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "RPM_ONLY",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey"
+      ],
+      "pendingFinalization": true,
+      "remainingDebtFields": [
+        "templateKey"
+      ],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 18,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 19,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 20,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "DIRECT_ACTIVE",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": false,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": false,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 21,
+      "originalStatus": "FAMILY_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "FAMILY_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    },
+    {
+      "ordinal": 22,
+      "originalStatus": "DIRECT_ACTIVE",
+      "afterStatus": "PROJECTION_PENDING",
+      "originalRPMMappingStatus": "DIRECT_ACTIVE",
+      "selectionChanged": true,
+      "activeBinding": true,
+      "activeValidationErrors": [],
+      "pendingFinalization": true,
+      "remainingDebtFields": [],
+      "sourceCurriculumAttestationAdded": false
+    }
+  ],
+  "studentFieldsChanged": false,
+  "fourSlotChanged": false,
+  "sourceCurriculumAdded": false,
+  "sourceStatusAuthority": "archive/tools/meta-foundation/stage-meta-bridge.mjs",
+  "scope": "기존에 존재한 메타 필드만 동기화. 새 등록이나 공통 finalization을 수행하지 않는다."
+}

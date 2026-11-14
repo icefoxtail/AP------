@@ -1,0 +1,198 @@
+{
+  "examId": "E039",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+  "sourceRawSha256": "058bc0c09f332ebcf613788a35f5a88040afc6a03b6692373b8cce31f0a27fb2",
+  "sourcePacketSha256": "a061d4d104775ea14fd92210c71781997640272e568144c8455c5f9a2e08252f",
+  "sampled4slotSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+  "sampledReviewSha256": "162c9491a66267827105eebef7357b361544fb0a129bd6f3018ddacb6d05ffac",
+  "sampledSourcePatchSha256": "9b81822f657d9afca78033f06a9c535c5dd93d3839f65cf7e812f56f6c53dbf4",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    4,
+    15,
+    22
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_1c578a13d628f910ac9be2bba624862a045ccc56e2f6a06857c654887921bc24",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 그래프의 꼭짓점 (−3,−2)과 y절편 2를 직접 읽었다. given은 함수와 그래프, goal은 매개변수 a,p,q와 그 곱, method는 꼭짓점·y절편·방정식으로 정확히 분리되어 있다. 발문에 꼭짓점형 y=a(x+p)²+q가 명시되어 있으므로 2015의 그래프와 식/계수 결정 및 2022 그래프(1)의 exact leaf 공백이라는 기존 root 판정을 현재 043~054·135~142와 대조하여 수용한다. 일반형 식을 복원하는 다른 문항의 054/142 경로를 형식만 보고 강제하지 않는다. H1 ACTIVE ROOT_VERTEX 정의가 이 골격을 포함하므로 기존 유효 재사용을 유지한다. 현재 M3 꼭짓점·y절편 native ACTIVE 정의도 존재함을 확인했으며 신규 PT/TPL이 필요하다는 주장은 하지 않는다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_2082be11603f67eebe2cf4e2928a6a10a7c8ce9dbc424728f88ccb852384a980",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 12
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 그림과 기존 해설에서 직사각형의 세로 6, 접어 포개진 AB=BC, 주어진 45°를 확인했다. goal은 삼각형 ABC의 넓이이며 직사각형 전체의 넓이가 아니다. method의 접기·이등변삼각형·피타고라스·넓이와 보조 수선 AH는 해설의 실제 단계에 해당한다. AH는 해설에서 만든 수선이므로 condition에서 뺀 B의 보정을 수용한다. 삼각형넓이공식 후보와 그 부모 넓이가 같은 method 칸에 있다. 실제 해설이 sin/cos/tan을 사용하지 않으므로 피타고라스 PT/TPL을 주제로, 접기와 넓이를 보조 CC로 구분한 판단이 타당하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_c82b8d79aae8c49d53abfde0745607c56c252f8c9a65020921f3e2d5b375f219",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 11
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 그림의 BC=5와 ∠B=60° 및 발문의 삼각형 넓이를 직접 확인했다. given의 넓이와 method의 넓이식은 주어진 값과 그 값으로 AB를 역산하는 역할로 구별된다. goal의 선분 AC 길이가 명확하며, method는 sin으로 CH를 구하고 넓이식으로 AB를 복원한 다음 cos의 사영 BH를 빼고 피타고라스를 적용하는 실제 순서를 담는다. 원본에 없는 수선 H를 condition에 넣지 않은 보정과 삼각형넓이공식의 같은 칸 부모 넓이를 수용한다. 따라서 CHAINED_MEASURE와 넓이·피타고라스 보조 CC가 적합하다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "authorshipBoundary": "Prior c evidence is preserved as historical provenance; all three sampled rows contain substantive current b slot corrections personally inspected here. This receipt accepts b current packet, not c historical packet without review.",
+  "visualEvidence": [
+    "worker-outputs/b/E039/images-0.png",
+    "worker-outputs/b/E039/images-1.png",
+    "worker-outputs/b/E039/images-2.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 3,
+      "field": "choice1",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_1.png",
+      "blob": "fdd10cbaec8f4345f9c60404f1940ad9b42bb738",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "choice2",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_2.png",
+      "blob": "5b3f4d240fb68e41004918d5a138015a821a3a56",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "choice3",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_3.png",
+      "blob": "77a49d9bfcadf62692c6e8cb45c7835f10d5d24d",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "choice4",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_4.png",
+      "blob": "fd8577fb77102189fe235d17e3d785697a2616fc",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 3,
+      "field": "choice5",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_5.png",
+      "blob": "8e7d6a6c94d253226e4eec431389f2ac2f6fe364",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 4,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q04.png",
+      "blob": "2e4fa0f17b5349a09d0b98dcc483b1d3cf2d153d",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 12,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q12.png",
+      "blob": "e565950a1ebb72fa5568473b34f8ca7b18eb2e5e",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 13,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q13.png",
+      "blob": "2a725b6764a83a7992b81a2925ccaea9f51365fa",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q14.png",
+      "blob": "600bb8b18717d2932cddddf65ab7742e2a296937",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q15.png",
+      "blob": "dbd79b816993b0ae3fa337aab22c72115194b1db",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 22,
+      "field": "content",
+      "path": "archive/assets/images/22_신흥중_2학기_중간_중3_수학/s07.png",
+      "blob": "6c4a208d528df925afadec285cc1d563c3b00f09",
+      "bytesMatchCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json"
+  ],
+  "reusedEvidence": {
+    "path": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+    "sha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0",
+    "personallyReadForOrdinal": 4,
+    "sourceIdentityMatches": true,
+    "independentDecision": "ACCEPT_EXISTING_PARENT_AND_PUBLISHER_LEAF_GAP_KEEP_VALID_ACTIVE_REUSE"
+  },
+  "finalBindingReview": {
+    "status": "REBOUND_AFTER_EXISTING_METADATA_DELTA_REVIEW",
+    "previousHashes": {
+      "sampled4slotSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+      "sampledReviewSha256": "66155e408b29ccefc640d3fa4fb82025b370ecb14445c431023fcc86b0829878",
+      "sampledSourcePatchSha256": "6af1aa52904818dcf4044ca4081ae4bed78d27dff391e790c536884ca6f25d08"
+    },
+    "amendmentRef": "worker-outputs/b/E039/existing-metadata-sync.json",
+    "amendmentSha256": "dd5a28a0713f88e5bf4c5328092d7bc2ce091a3ab46ee7cf9286e63ed9395e49",
+    "changedScope": "기존에 존재하는 44메타 필드의 source/review 동기화. RPM ID4곳과 의미문구3곳은 이전 전체 판단과 실제 요구에 일치하며 난도 사유는 현재 숫자판정과 일치한다. PROJECTION_PENDING은 기존 enum으로 새 승인 승격이 아니다. PT/TPL·numeric bucket·4칸은 기존과 동일하다.",
+    "all44BeforeAfterValuesChecked": true,
+    "reverseDeltaPatchSha256": "6af1aa52904818dcf4044ca4081ae4bed78d27dff391e790c536884ca6f25d08",
+    "same4slot": true,
+    "sampledOrdinals": [
+      4,
+      15,
+      22
+    ],
+    "independentSampleDecision": "REUSE_VALID_UNCHANGED_CURRENT_SAMPLES",
+    "difficultyDecision": "REUSE_VALID_UNCHANGED_NINE_EXCEPTIONS",
+    "newMathematicalVerification": false
+  }
+}

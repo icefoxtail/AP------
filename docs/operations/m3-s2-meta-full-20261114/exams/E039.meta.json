@@ -1,0 +1,3330 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E039",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "b",
+  "rootIntegrator": "GPT_ROOT_6538DF266481",
+  "independentReviewer": "c",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceBeforeBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+  "sourceAfterBlob": "de512c18bf5249f578557dceafb23f458c94d842",
+  "sourceAfterSha256": "283de7fdd33f5f2d37f055e5bf3a3fc96deae375a28cdbf95a87a0c7e0873d36",
+  "questionCount": 22,
+  "uidDigest": "e0da39738c218fa5abad08c625aeec7f044004aeab194e77fc9796ddec59aabc",
+  "authorRawReviewSha256": "162c9491a66267827105eebef7357b361544fb0a129bd6f3018ddacb6d05ffac",
+  "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
+  "authority": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "existingEvidenceRefs": [
+    "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+  ],
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.source-patch.json",
+      "sha256": "9b81822f657d9afca78033f06a9c535c5dd93d3839f65cf7e812f56f6c53dbf4"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.4slot.json",
+      "sha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.proposals.json",
+      "sha256": "b155b513bdc1473cfe09d96f66b1303a6f60cf2de11c50e2c2c1bfc7d0fe9fe2"
+    },
+    "image-version-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.image-version-evidence.json",
+      "sha256": "895bbabaf0029e49229471e2a59a16ee0bd71cff579da5fe0c6edde84e6b585b"
+    },
+    "existing-metadata-sync.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.existing-metadata-sync.json",
+      "sha256": "dd5a28a0713f88e5bf4c5328092d7bc2ce091a3ab46ee7cf9286e63ed9395e49"
+    },
+    "prior-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.prior-evidence.json",
+      "sha256": "606e2bb1e711083ff96ec63fb8fd474c82d90b26311133adcff44f65cccf7310"
+    },
+    "active-reuse-connection-debts.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.active-reuse-connection-debts.json",
+      "sha256": "74cd72933737fd04ffaf4dea3d9cd6f9a4a0ab0e4f99b49c255f931b9d53bfd6"
+    },
+    "master-label-corrections.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.master-label-corrections.json",
+      "sha256": "4d87a9937eb71481e3e494f1eeb28da2397604ec7cd80212d60888d862ba06bc"
+    },
+    "continuation-slot-changes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.continuation-slot-changes.json",
+      "sha256": "adcb0199d26ae13157f09f243a5fc8980471e085303bb0190447ad19f2f3f584"
+    },
+    "candidate-parent-amendment.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.candidate-parent-amendment.json",
+      "sha256": "72f6d5d81a7074e9b53f1dbbb925d1d8ae2c1d38bbea6c21dbf16a2e9ba2a118"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.independent.json",
+      "sha256": "b01ee516ba08c36af37bc843f8bef8071912dbc2cf74ea7e2b138628852e3c53"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E039.difficulty-adjudication.json",
+      "sha256": "315fcaf23ddbad24af2824d4df58aabc7bdd255f8e47ac6f46a8be5bab7a4f42"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_10fc9d1dc968a0e20fde379e56e557f1e7f07577047dfde09e5c80592348801c",
+      "sourceQuestionNo": 1,
+      "decision": "CORRECT",
+      "decisiveStep": "이차항 계수의 부호와 절댓값으로 볼록성과 폭을 읽고 꼭짓점·축·x축 대칭 진술을 각각 판정한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중하: 계수 부호와 절댓값으로 두 그래프의 성질을 비교하고 옳지 않은 두 보기를 고른다.",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyReason": "기본 포물선의 성질을 직접 대조하며 두 정답이라는 형식은 별도 난도 상승 근거가 아니다.",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-045",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수와 그 그래프",
+            "l3": "y=ax²의 그래프",
+            "l4": "그래프의 모양"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-135",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "y=ax²"
+          },
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "y=ax²"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "selectedTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+        "reuseAssessment": "ACTIVE 골격 재사용 가능; crosswalk 연결 누락",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "기본 포물선의 성질을 직접 대조하며 두 정답이라는 형식은 별도 난도 상승 근거가 아니다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "일반 그래프 용어 대신 실제로 판정하는 축·꼭짓점·볼록성을 보존한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "원문 정답2개 형식을 그대로 보존한다. GLOBAL 함수그래프 성질판정 정의가 폭·볼록성·대칭성을 포괄한다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "이차항 계수의 부호와 절댓값으로 볼록성과 폭을 읽고 꼭짓점·축·x축 대칭 진술을 각각 판정한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "618005d0220cc1621da2dd30f63a96c372577a09efefb28e36ab89867a1e171b"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_5e27d63034ed133c94f5fe3e0ab0cab6bbb5943a809c39f75c0ede7b394477dd",
+      "sourceQuestionNo": 2,
+      "decision": "CORRECT",
+      "decisiveStep": "평행이동 후 식을 y=ax²+5로 정하고 주어진 한 점을 대입해 이차항 계수를 복원한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryKey": "M3-RPM-049",
+        "difficultyReason": "하위: 세로 평행이동한 식에 한 점을 대입해 계수를 바로 구한다.",
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 평행이동",
+          "subConcept": "세로 평행이동 후 계수 결정",
+          "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+          "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+        },
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "crossConceptKeys": [
+          "CC_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryKey": "M3-RPM-048",
+        "difficultyReason": "이동된 식을 한 번 만든 뒤 점 대입하는 정형 전처리이다.",
+        "semanticMeta": {
+          "primaryConcept": "이차함수의 계수 결정",
+          "subConcept": "세로 평행이동 후 계수 결정",
+          "conditionsUsed": "평행이동한 그래프가 $(1,-8)$을 지난다.",
+          "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
+        },
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding",
+          "rpm2022Leaf"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-048",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수와 그 그래프",
+            "l3": "그래프와 식",
+            "l4": "계수 결정"
+          },
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": null,
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": null,
+            "l4": null
+          },
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP"
+        },
+        "independentAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+        "independentAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "selectedTemplateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_TRANSLATION"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "이동된 식을 한 번 만든 뒤 점 대입하는 정형 전처리이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_CONFIRMED",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "동일 판본의 기존 용어·인용·방법·명시조건을 직접 확인하여 보존했다."
+      },
+      "debt": [
+        "current2022 그래프(1)에서 평행이동된 기본형의 한 점으로 계수 복원하는 exact leaf 공백. 그래프(2)의142를 원본48에서 기계적으로 상속하지 않는다.",
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "ROOT가 실제 풀이 형식에 따라 current2022 부모와 exact leaf 공백을 독립 확인했다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "평행이동 후 식을 y=ax²+5로 정하고 주어진 한 점을 대입해 이차항 계수를 복원한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "3daf4c4ad7fd16cb623d5d93ea82b565bfcefdf0ffa22668d10e55924ecc405a"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_24c0be9cec1973f9bb8eb4c3c533adf803fcf22abcd01fc7b347363025c7be44",
+      "sourceQuestionNo": 3,
+      "decision": "CORRECT",
+      "decisiveStep": "꼭짓점형에서 꼭짓점(4,−1)과 축을 읽고 양의 계수 및 y절편3을 대조하여 맞는 그림을 고른다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중하: 꼭짓점형에서 꼭짓점·대칭축·절편을 구해 그래프 보기를 비교한다.",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyReason": "주어진 꼭짓점형의 기본 성질을 직접 읽는 판정이다.",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-050",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "꼭짓점형",
+            "l4": "꼭짓점·축"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-137",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "selectedTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+        "reuseAssessment": "ACTIVE 골격 재사용 가능; crosswalk 연결 누락",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "주어진 꼭짓점형의 기본 성질을 직접 읽는 판정이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_CONFIRMED",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "동일 판본의 기존 용어·인용·방법·명시조건을 직접 확인하여 보존했다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "본문의5개 img 선택지 q03_1~q03_5를 모두 직접 읽었다. 일부 원본 이미지가 가장자리에서 잘려 있으나 해당 파일을 수정하지 않는다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_1.png",
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_2.png",
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_3.png",
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_4.png",
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q03_5.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "꼭짓점형에서 꼭짓점(4,−1)과 축을 읽고 양의 계수 및 y절편3을 대조하여 맞는 그림을 고른다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "d98574032f0297c09d5a8ec5e6161fe7200512e6bd34746aabfc199bf7a58b2a"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_1c578a13d628f910ac9be2bba624862a045ccc56e2f6a06857c654887921bc24",
+      "sourceQuestionNo": 4,
+      "decision": "CORRECT",
+      "decisiveStep": "그림의 꼭짓점과 y절편으로 꼭짓점형의 p,q와 a를 복원한 뒤 세 계수의 곱을 계산한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중간: 그래프의 꼭짓점·절편을 식의 계수와 연결해 세 값을 정한 뒤 곱한다.",
+        "metaStatus": "FAMILY_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "difficultyReason": "꼭짓점 읽기 후 한 점을 대입하는 정형 계수 복원이다.",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding",
+          "rpm2022Leaf"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-048",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수와 그 그래프",
+            "l3": "그래프와 식",
+            "l4": "계수 결정"
+          },
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": null,
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": null,
+            "l4": null
+          },
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP"
+        },
+        "independentAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+        "independentAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "selectedTemplateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "꼭짓점 읽기 후 한 점을 대입하는 정형 계수 복원이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "세 수 a,p,q를 결정한 뒤 곱하는 목표여서 매개변수 대상이 빠지지 않게 한다."
+      },
+      "debt": [
+        "current2022 그래프(1)의 꼭짓점형 계수 복원 exact leaf 공백; 일반형 그래프(2)의 조건식 leaf를 강제하지 않는다.",
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "ROOT가 실제 풀이 형식에 따라 current2022 부모와 exact leaf 공백을 독립 확인했다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q04.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "그림의 꼭짓점과 y절편으로 꼭짓점형의 p,q와 a를 복원한 뒤 세 계수의 곱을 계산한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "44fddfefe1355c939ffb8c87002f690cdd50f3f10619ed8e31a612c5da91356a"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_edd4d341db49154f68d83e371dda8f668b896692bab42f218cdc47029fcbca7b",
+      "sourceQuestionNo": 5,
+      "decision": "CORRECT",
+      "decisiveStep": "x+1의 부호를 읽어 수평 이동량−1과 대칭축−1을 정하고 두 수의 합을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중하: 꼭짓점형에서 가로 이동량과 대칭축을 읽어 더한다.",
+        "metaStatus": "DIRECT_BINDING_GAP",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "difficultyReason": "꼭짓점형의 이동량과 축을 직접 읽는다.",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-049",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "꼭짓점형",
+            "l4": "평행이동"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-136",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "평행이동"
+          },
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "평행이동"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "selectedTemplateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동'을 핵심 풀이 골격으로 사용하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "꼭짓점형의 이동량과 축을 직접 읽는다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "이동량a와 축 위치b의 합이라는 구체 목표를 일반 값에서 드러낸다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "x+1의 부호를 읽어 수평 이동량−1과 대칭축−1을 정하고 두 수의 합을 구한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "47684fa5047b097576473e2203222e83e7a02ba9f76fe3eb698635a98936ebde"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_78f5f984e0aef8f82ba883bb069da738dffa8e0772a9968065a19ee553ff351b",
+      "sourceQuestionNo": 6,
+      "decision": "CORRECT",
+      "decisiveStep": "볼록성으로a, 축 −b/(2a)의 위치로b, y절편으로c의 부호를 순서대로 판정한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "templateKey",
+          "rpm2022Leaf"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-053",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "그래프와 계수",
+            "l4": "그래프 위치"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": null,
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": null,
+            "l4": null
+          },
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP"
+        },
+        "independentAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E039.rpm-leaf-gap-adjudication.json",
+        "independentAdjudicationSha256": "7be8e59b2f850ea4a0266b1d05bb5ec5441d128f620f358a3e763dbf2e5185e0"
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "기존 ACTIVE PT 범위는 확인되나 정확한 TPL 골격 부재; 신규 또는 정의 확장 제안",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "a의 부호를 축 식에 전달해 b의 부호를 정하는 표준 그래프 해석이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "a,b,c가 이차함수 계수이며 요구가 그 부호임을 함께 기록한다."
+      },
+      "debt": [
+        "current2022 그래프(2) 부모는 확인되나 그래프에서 계수 부호를 역추론하는 exact leaf가135~142에 없다.",
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "ROOT가 실제 풀이 형식에 따라 current2022 부모와 exact leaf 공백을 독립 확인했다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q06.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "볼록성으로a, 축 −b/(2a)의 위치로b, y절편으로c의 부호를 순서대로 판정한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "fef96952d76a2a44d4831c1ecebbc544d5dee7187788ae9270a670127fe0ef06"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_5c12b8501a0ac1eac6bf69c65e115d9c6f6694947eace10573d9ac06098c5fd4",
+      "sourceQuestionNo": 7,
+      "decision": "CORRECT",
+      "decisiveStep": "각B의 맞은편 변과 빗변을 대응시켜 사인의 정의를 직접 적용한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-055",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-143",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "세 변이 모두 주어진 직각삼각형의 삼각비 정의 확인이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_CONFIRMED",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "동일 판본의 기존 용어·인용·방법·명시조건을 직접 확인하여 보존했다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q07.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "각B의 맞은편 변과 빗변을 대응시켜 사인의 정의를 직접 적용한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "0ab9ec03463c9c845223a5b3f1d00dbe696fed1e51cfc87559d5daf887e45c32"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f0d6fa9b9efa76ba5f480d956ac6cfbc97938fb64387418f6a349c08f788e89c",
+      "sourceQuestionNo": 8,
+      "decision": "CORRECT",
+      "decisiveStep": "예각 범위의 사인·코사인 변화와 두 값의 상등을 확인하고 특수각 반례로 잘못된 범위·대소 진술을 배제한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중하: 예각에서 삼각비의 증가·감소와 sin=cos인 각을 이용해 옳은 두 설명을 고른다.",
+        "metaStatus": "DIRECT_ACTIVE",
+        "metaDebtFields": []
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyReason": "기본 성질과 직접 반례로 진술을 확인하며 별도 미지량을 도출하지 않는다.",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "templateKey"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-056",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-144",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "기존 ACTIVE PT 범위는 확인되나 정확한 TPL 골격 부재; 신규 또는 정의 확장 제안",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReason": "0°<A<90°라는 열린 예각 범위를 보존하고 선택지의 별도 닫힌 범위 진술은 판정 대상으로 구분한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "기본 성질과 직접 반례로 진술을 확인하며 별도 미지량을 도출하지 않는다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "단순 수치 삼각비와 다른 증가·감소 성질을 명시한다. 주어진 범위를 더 구체적인 예각으로 기록하며 추론한 양수 부호를 추가 조건으로 만들지 않는다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "예각 범위의 사인·코사인 변화와 두 값의 상등을 확인하고 특수각 반례로 잘못된 범위·대소 진술을 배제한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "05fb9d9b47fc72f9424b9a84ac41adad0b89fbf79c451efac2561b38b9c5a179"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_539a29d691aa4c24508d09ac2746707e8d1032380df0207e2ed46063c372abff",
+      "sourceQuestionNo": 9,
+      "decision": "CORRECT",
+      "decisiveStep": "각 선택지에 특수각 사인·코사인·탄젠트 값을 직접 대입하여 곱이1/2인지 비교한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-058",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-146",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "특수각의 삼각비 값을 직접 계산·비교·판정한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "특수각 값의 직접 대입과 곱셈이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_CONFIRMED",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "동일 판본의 기존 용어·인용·방법·명시조건을 직접 확인하여 보존했다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "각 선택지에 특수각 사인·코사인·탄젠트 값을 직접 대입하여 곱이1/2인지 비교한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "9bbff69a3c9a09ae3512e5b86ec963e69c98e4f4c9d56c62cbff4776e746a4ef"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_7c5ddecd2d7c12c9c8ff7ba75a6e68329443a718b332177069b8ea0805b708de",
+      "sourceQuestionNo": 10,
+      "decision": "CORRECT",
+      "decisiveStep": "두 직각삼각형의 공통 높이를 먼저 sin45°로 구한 뒤 sin60° 관계로 목표변을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryKey": "M3-RPM-060"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryKey": "M3-RPM-059"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-059",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비와 길이",
+            "l4": "직각삼각형의 변"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-147",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비와 길이",
+            "l4": "직각삼각형의 변"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비와 길이",
+            "l4": "직각삼각형의 변"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "그림에 주어진 수선으로 연결된 두 직각삼각형의 정형 삼각비 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "구할 목표가 선분AC의 길이임을 보존한다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q10.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "두 직각삼각형의 공통 높이를 먼저 sin45°로 구한 뒤 sin60° 관계로 목표변을 구한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "736096f9ed4b7a0eb63c6f119bbda0c514d5fa27be9e324b2e291e2f6f2cc4bf"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_1d3eccf010bdc13604429358bd3b2c2e150b8e51f572aef1b0a1837ef1dd2f48",
+      "sourceQuestionNo": 11,
+      "decision": "CORRECT",
+      "decisiveStep": "직선의 절편에서 두 직각변을 복원하고 피타고라스로 빗변을 구한 다음 세 삼각비의 곱을 계산한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryKey": "M3-RPM-056",
+        "difficultyReason": "중간: 직선의 절편으로 직각삼각형을 만든 뒤 거리와 세 삼각비를 연결한다.",
+        "metaStatus": "DIRECT_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_LINEAR_FUNCTIONS",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryKey": "M3-RPM-055",
+        "difficultyReason": "좌표에서 길이로 옮기는 표준 전처리 뒤 정의를 적용한다.",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-055",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-143",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+        "reuseAssessment": "ACTIVE 골격 재사용 가능; crosswalk 연결 누락",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_LINEAR_FUNCTIONS",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "좌표에서 길이로 옮기는 표준 전처리 뒤 정의를 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "일차함수 절편으로 도형을 복원하지만 최종 목표는 세 삼각비의 곱이다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q11.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "직선의 절편에서 두 직각변을 복원하고 피타고라스로 빗변을 구한 다음 세 삼각비의 곱을 계산한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "83b2f075633cc393fe4bb9920d864952813c8b23fce21418bbe530854deda517"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_ca396993905ed1441fbcc071a786951523a2f36e3d1bb74d96934a07bf41504a",
+      "sourceQuestionNo": 12,
+      "decision": "CORRECT",
+      "decisiveStep": "탑의 공통 높이를x로 두고 서로 반대편 두 관측점의 거리를x/√3과x로 나타내어 그 합10인 방정식을 세운다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중상: 관측점이 탑을 사이에 두고 있어 두 밑변 구간을 합하고 공통 높이를 연립한다.",
+        "metaStatus": "FAMILY_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyReason": "두 관측점의 위치와 공통 높이를 연결하는 표준 측량 모델이다.",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-064",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "앙각·부각"
+          },
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-152",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "앙각·부각"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "앙각·부각"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "두 관측점·두 각에서 공통 높이·거리를 공유하는 식을 세운다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "두 관측점의 위치와 공통 높이를 연결하는 표준 측량 모델이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "높이x의 수치가 아니라 높이에 관한 선형 관계식을 고르는 요구다. 공통 높이를 두 탄젠트 식에 넣어 수평거리 합과 연결한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q12.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "탑의 공통 높이를x로 두고 서로 반대편 두 관측점의 거리를x/√3과x로 나타내어 그 합10인 방정식을 세운다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "6220d822d53777b3e446e4b8b34274f29768c6604c1d64ef973b012858ddc487"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_b6e5f368cf83959e3272b54748011f9611d1d649f283e0ca923dfa5ad47987d0",
+      "sourceQuestionNo": 13,
+      "decision": "CORRECT",
+      "decisiveStep": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metaStatus": "FAMILY_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-062",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-150",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "둔각의 보각과 도형 분할을 선택한 뒤 두 삼각형을 정형 계산한다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "넓이의 대상인 사각형을 명시한다. 대각선 분할 뒤 둔각150도와 보각30도의 관계 및 높이 수선 구성을 실제 방법으로 보완한다. 후보 삼각형넓이공식과 등록 부모 넓이를 같은 method칸에 결속한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q13.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "a7d2e4f7dbee0b6b7ca8f2a0cf72c21b5d58a7513516ee0d3a99e96ca5c98c77"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_fc14d651d9f0b7a54f59560ba0b936c466c1085a3362e914a9d21c5818757157",
+      "sourceQuestionNo": 14,
+      "decision": "CORRECT",
+      "decisiveStep": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CENTER_RADIUS",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metaStatus": "FAMILY_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE",
+          "CC_TRIANGLE_CONGRUENCE_RHS",
+          "CC_CIRCLE_SECTOR_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-062",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-150",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_TRIANGLE_CONGRUENCE_RHS",
+        "CC_CIRCLE_SECTOR_AREA"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "원각과 삼각비로 두 부분의 넓이를 구성하는 표준 복합 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "목표는 부채꼴과 삼각형을 합친 색칠 영역의 넓이이다. 같은 반지름과 수선으로 두 직각삼각형을 합동으로 옮긴 뒤 삼각비로 높이·밑변을 구하는 연쇄를 유지한다. 후보 삼각형넓이공식과 등록 부모 넓이를 같은 method칸에 결속한다. 후보 부채꼴넓이공식과 등록 부모 부채꼴를 같은 method칸에 결속한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q14.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "f7611c057d1c9675d9060f08b4812eb312b5a08b7f2702e028302c2f86bd1eb3"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_2082be11603f67eebe2cf4e2928a6a10a7c8ce9dbc424728f88ccb852384a980",
+      "sourceQuestionNo": 15,
+      "decision": "CORRECT",
+      "decisiveStep": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryKey": "M3-RPM-061",
+        "difficultyReason": "중상: 접기의 길이 보존과 45° 직각삼각형을 결합해 밑변과 높이를 결정한다.",
+        "semanticMeta": {
+          "primaryConcept": "삼각비를 이용한 삼각형 넓이",
+          "subConcept": "접기 대응변과 45° 높이",
+          "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+          "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+        },
+        "metaStatus": "FAMILY_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_FOLDING",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryKey": "M2-RPM-105",
+        "difficultyReason": "접기 대응변과 높이를 연결하여 직각삼각형 길이를 구하는 표준 전략이다.",
+        "semanticMeta": {
+          "primaryConcept": "접기와 피타고라스 정리",
+          "subConcept": "접기 대응변과 45° 높이",
+          "conditionsUsed": "직사각형의 세로 6cm, 접기에서 대응변 $AB=BC$, $\\angle ABC=45^\\circ$.",
+          "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
+        },
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M2-RPM-105",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M2-RPM-223",
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "effectivePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "selectedTemplateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "접기 대칭이나 입체도형의 길이·겉넓이 계산에 직각삼각형의 제곱 관계를 적용한다.",
+        "reuseAssessment": "ACTIVE Pythagorean composite 정의가 접기 대칭의 길이·넓이를 명시하고, compiled curriculum_bindings의2015/중2수학/M2-07/PYTHAGOREAN_APPLICATION/동일owner ACTIVE 행을 직접 확인했다. 실제 풀이에는 sin/cos/tan이 없고45° 이등변직각의 제곱 관계로6√2를 얻는다.",
+        "newPTRequired": false,
+        "newTPLRequired": false,
+        "exactPriorGradeBindingEvidence": {
+          "path": "/workspace/scratch/9c9d44bb632b/m3-meta/archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "sha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "ownerPack": "MIDDLE_GEOMETRY",
+          "status": "ACTIVE"
+        }
+      },
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_FOLDING",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "접기 대응변과 높이를 연결하여 직각삼각형 길이를 구하는 표준 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "종이 직사각형 전체가 아닌 삼각형ABC 넓이가 목표다. AH는 풀이에서 만든 수선으로 발문이 별도 해 제한으로 준 조건이 아니다. method에 위치시킨다. 접기 보존길이와 만들어 낸 높이6의 직각삼각형 구성을 방법에 보존한다. 후보 삼각형넓이공식과 등록 부모 넓이를 같은 method칸에 결속한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/q15.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "ec5751034601196ca1edece23522fc94751665147861612c1e4383fdf27f9933"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9f2f91924cd6ae8c3e87ba22d036a85f9f7c48a36375674589bc898c3c22a04e",
+      "sourceQuestionNo": 16,
+      "decision": "CORRECT",
+      "decisiveStep": "주어진 꼭짓점형에서 축·꼭짓점·이동량을 읽고 x=0 대입으로 y절편, 양의 계수로 볼록성을 답한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "binding"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-050",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "꼭짓점형",
+            "l4": "꼭짓점·축"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-137",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(1)\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022ComponentRecordIds": [
+          "M3-RPM-136",
+          "M3-RPM-137",
+          "M3-RPM-138"
+        ]
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "selectedTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+        "reuseAssessment": "ACTIVE 골격 재사용 가능; crosswalk 연결 누락",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "서로 독립한 기본 성질을 직접 읽고 대입한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "다섯 소문항의 실제 대상인 축과 꼭짓점을 추가하고 절편이 y절편임을 구체화한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "주어진 꼭짓점형에서 축·꼭짓점·이동량을 읽고 x=0 대입으로 y절편, 양의 계수로 볼록성을 답한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "6e5d060f18e59459ff25ad7a14111fb8e4b2b23501d94a7ea24672fd4f437afb"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_420f418f6d1f8f3544cfd9d06ffcc68ec4f0820caebcbe22d1126e6b93a107ca",
+      "sourceQuestionNo": 17,
+      "decision": "CORRECT",
+      "decisiveStep": "각 이차식에서 이차항 계수를 묶고 완전제곱을 만들기 위해 상수를 보정하여 꼭짓점형으로 고친다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수와 그래프",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_COMPLETE_SQUARE",
+          "CC_QUADRATIC_FUNCTION",
+          "CC_VERTEX"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중간: 두 식에서 일차항 계수를 반으로 나누어 완전제곱을 만들어 상수항을 정리한다.",
+        "semanticMeta": {
+          "primaryConcept": "완전제곱식으로 이차함수 변형",
+          "subConcept": "일반형을 꼭짓점형으로 고치기",
+          "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+          "integrationPatternExplanation": "두 선택지의 각 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+        },
+        "metaStatus": "RPM_ONLY",
+        "metaDebtFields": [
+          "problemTypeKey",
+          "templateKey"
+        ]
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "standardUnit": "이차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "subUnit": "이차함수의 그래프",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "difficultyReason": "양수 또는 음수 계수의 완전제곱식 변환을 정형 수행한다.",
+        "semanticMeta": {
+          "primaryConcept": "완전제곱식으로 이차함수 변형",
+          "subConcept": "일반형을 꼭짓점형으로 고치기",
+          "conditionsUsed": "제곱항의 계수를 먼저 묶고 일차항 계수의 절반을 제곱해 더하고 뺀다.",
+          "integrationPatternExplanation": "선택한 이차식을 완전제곱식으로 바꾸어 꼭짓점형을 얻는다."
+        },
+        "metaStatus": "PROJECTION_PENDING",
+        "metaDebtFields": [
+          "templateKey"
+        ]
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-051",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+            "l3": "일반형",
+            "l4": "완전제곱식 변형"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-139",
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "완전제곱식 변형"
+          },
+          "effectivePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "완전제곱식 변형"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "기존 ACTIVE PT 범위는 확인되나 정확한 TPL 골격 부재; 신규 또는 정의 확장 제안",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "양수 또는 음수 계수의 완전제곱식 변환을 정형 수행한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "최종식은 완전제곱식에 상수를 더한 꼭짓점 표준형이므로 완전제곱식 자체를 목표로 삼지 않는다. 완전제곱은 기존 method에 남긴다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "원문 두 문제 중 한 가지를 선택하는 배점4/6 조건을 그대로 보존하며 두 풀이의 공통 골격만 메타에 기록한다.",
+        "정본 master의 M3-04-QUADRATIC_FUNCTION_GRAPH 표시명 이차함수의 그래프로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "각 이차식에서 이차항 계수를 묶고 완전제곱을 만들기 위해 상수를 보정하여 꼭짓점형으로 고친다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "00a93fbb43ef3cfd36d8bd2be7ad10b57b4e337bc59702ec9943fb4288794168"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_fa689059b45356706e41c3038e307e4811abfc12d75ed97b040f19f4d613a85f",
+      "sourceQuestionNo": 18,
+      "decision": "CORRECT",
+      "decisiveStep": "사인을 직각삼각형의 맞은편 변/빗변이라는 비로 해석해 주어진 소수값의 의미를 설명한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-055",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-143",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "삼각비 정의의 직접 설명이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "설명의 대상인 사인을 정의와 함께 기록한다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "사인을 직각삼각형의 맞은편 변/빗변이라는 비로 해석해 주어진 소수값의 의미를 설명한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "922c0022629e424e9037b24551ceb4a5f7a2e650c7df70251966c02bb41d55d4"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_6b83d2e8d13b9ec7533d37e14d3a88a1063675377b21fe4048e1a5989f7e7a14",
+      "sourceQuestionNo": 19,
+      "decision": "CORRECT",
+      "decisiveStep": "sin²+cos²=1에서 사인을 구하고 예각 조건으로 양의 제곱근을 택한 뒤 sin/cos로 탄젠트를 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-056",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-144",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReason": "0°<A<90°가 사인의 양의 제곱근 선택을 정한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 삼각비에서 다른 두 삼각비를 구하는 표준 관계 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "양의 제곱근 선택의 원래 명시 근거가 예각임을 정확히 보존한다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "sin²+cos²=1에서 사인을 구하고 예각 조건으로 양의 제곱근을 택한 뒤 sin/cos로 탄젠트를 구한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "4a9a19e6784d7bbafc8559c3992ad902891dd132ef780a011ef8ab4f1b151485"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_d072b6b70a12d9d99fd677d606d764b48588520d40855b87e19ac0b276489dcd",
+      "sourceQuestionNo": 20,
+      "decision": "CORRECT",
+      "decisiveStep": "단위 사분원 점의 좌표에서 사인·코사인을 읽고 여각 관계와 x=1의 접선 교점 높이로 나머지 삼각비를 읽는다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 뜻과 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-055",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-143",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022ComponentRecordIds": [
+          "M3-RPM-143",
+          "M3-RPM-144"
+        ]
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO",
+        "selectedTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비 정의와 한 삼각비에서 다른 삼각비로의 변환을 이용한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "단위 원 좌표·여각·직각삼각형 비의 표현을 정형 대응시킨다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "단위 사분원의 수치 좌표와 x=1에서의 높이 읽기가 삼각비 정의의 표현이다."
+      },
+      "debt": [],
+      "reviewNotes": [
+        "정본 master의 M3-05-TRIG_RATIO 표시명 삼각비로 기존 키/표시명 불일치만 정정한다. 분류 의미와 학생 내용은 동일하다."
+      ],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/s05.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "단위 사분원 점의 좌표에서 사인·코사인을 읽고 여각 관계와 x=1의 접선 교점 높이로 나머지 삼각비를 읽는다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "6679bc7f23e781294fe03086e97933ef1da633861334c844e2550c34bee37f16"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b68d275d9b4803a758fd6b70da7f0cf00229b5cfc88f057ce9b3f995a2511a6c",
+      "sourceQuestionNo": 21,
+      "decision": "CORRECT",
+      "decisiveStep": "수평거리60과 tan50°로 눈에서 꼭대기까지의 높이를 구하고 눈높이1.5를 더한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중간: tangent로 수직 높이 차이를 계산한 뒤 관측자의 눈높이를 더한다.",
+        "metaStatus": "FAMILY_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "difficultyReason": "한 직각삼각형 높이 계산 후 기준 높이를 더하는 정형 측량이다.",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-063",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "높이·거리"
+          },
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-151",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "높이·거리"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "높이·거리"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 직각삼각형 높이 계산 후 기준 높이를 더하는 정형 측량이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "눈높이1.5를 건물 전체 높이에 더하는 기준량으로 given에 명시한다. 높이 기준을 눈에서 지면으로 바꾸는 필요한 덧셈 단계를 누락하지 않는다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "수평거리60과 tan50°로 눈에서 꼭대기까지의 높이를 구하고 눈높이1.5를 더한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "fd18d17e544b27d58bfc4df2db26eff84f5c30f4bdf60d3896df197ccf647b70"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_c82b8d79aae8c49d53abfde0745607c56c252f8c9a65020921f3e2d5b375f219",
+      "sourceQuestionNo": 22,
+      "decision": "CORRECT",
+      "decisiveStep": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": null,
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "difficultyReason": "중상: 삼각비·넓이로 높이와 길이를 정한 뒤 피타고라스 정리를 연결한다.",
+        "metaStatus": "DIRECT_ACTIVE"
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyReason": "높이·넓이식·사영 길이를 한 흐름으로 연결하는 표준 복합 전략이다.",
+        "metaStatus": "PROJECTION_PENDING"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-066",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "피타고라스 결합"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-154",
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "피타고라스 결합"
+          },
+          "effectivePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "피타고라스 결합"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "높이·넓이식·사영 길이를 한 흐름으로 연결하는 표준 복합 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "fourSlot": {
+        "status": "REUSE_WITH_SEMANTIC_CORRECTION",
+        "priorAuthor": "worker-c",
+        "sourceBlob": "59b9e73814d8fb0e5b9ad53b09e0032ab43f6bc6",
+        "reason": "목표 선분AC의 길이를 구체화한다. H는 기존 해설이 C에서 AB로 새로 내린 수선의 발이다. 원본 그림과 발문에 없는 별도 제한으로 기록하지 않는다. 높이CH 및 사영BH를 만드는 수선 구성을 condition에서 method로 옮긴다. 후보 삼각형넓이공식과 등록 부모 넓이를 같은 method칸에 결속한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "continuationReview": {
+        "reviewer": "review_b",
+        "sourceIdentityVerified": true,
+        "stemChoicesAnswerExistingSolutionPersonallyRead": true,
+        "originalAssetsPersonallyRead": [
+          "archive/assets/images/22_신흥중_2학기_중간_중3_수학/s07.png"
+        ],
+        "semanticDisposition": "REUSE_CONFIRMED",
+        "rationale": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다."
+      },
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "",
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "operationalRecordBeforeSha256": "5e4ae47f20b82c29469b6a4fb99decf0a52626bd85e96c6873491c65851e9461"
+    }
+  ],
+  "authorSummary": {
+    "questionCount": 22,
+    "decisions": {
+      "CORRECT": 22
+    },
+    "topicCounts": {
+      "이차함수와 그 그래프": 3,
+      "이차함수 y=ax²+bx+c의 그래프": 5,
+      "삼각비": 8,
+      "삼각비의 활용": 5,
+      "피타고라스 정리": 1
+    },
+    "sourcePatchItems": 22,
+    "officialResolverStatus": "NOT_RUN_NO_FALSE_SOLUTION_VERIFICATION",
+    "studentPayloadModified": false,
+    "fourSlot": {
+      "REUSE_WITH_SEMANTIC_CORRECTION": 18,
+      "REUSE_CONFIRMED": 4
+    },
+    "semanticUndecided": 0
+  },
+  "warningReview": null,
+  "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_USER_EXCLUDED",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "semanticPayloadSha256": "64ba3313965f770f15c24d21c463946f7d6207c837a248b0a408bef5d8b3a91b",
+  "independentFinalStatus": "PASS"
+}
