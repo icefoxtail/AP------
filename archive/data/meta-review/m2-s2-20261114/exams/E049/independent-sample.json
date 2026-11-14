@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E049",
+  "reviewer": "ROOT",
+  "author": "A",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/20_연향중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "3832acbef7d6141e7e6710c5117836e0b767323c",
+  "reviewSha256": "53148e4574e1becf57ae9a9df70e3b9c913944e069387d444b0a16ed508ce271",
+  "fourSlotSha256": "bef3ba432ad59cfcd38cb52320c93db0908c76b2650bb17618c744a6276d6393",
+  "ordinals": [
+    15,
+    17,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_c3c9b687de09ad4514521df9d17efd09b7f98e0a9b741a149d8752dc3e1c65dc",
+      "verdict": "PASS",
+      "reason": "무게중심 input, 옳지않은성질 goal, 중선2:1·같은높이의넓이·서로다른중선 구분 method가 실제문항과 일치한다. 넓이+길이성질 복합판정의 RPMleaf/TPL공백을 유지하며 기존PT와2015중2 binding을 실제대조했다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7f697ff018536656f34ef98cbfc91a9fcc01939127225bb3d2f10d7f6aea5513",
+      "verdict": "PASS_AFTER_EVIDENCE_CLARIFICATION",
+      "reason": "무게중심·주어진넓이 input, 전체넓이 goal, 중점과중첩중선비의 넓이전이 method를 actual그림과대조했다. exact넓이식으로 인용범위를명확히한 작성자판을 다시읽었다. 원문 높이같음은 G’D·GD를 밑변으로 읽으면 유효하므로 source오류/HOLD를 만들지 않았다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_973b6fe163d097d8450b0f1dcb49027f5b7fc74d422132d9aa16101be414fbcb",
+      "verdict": "PASS",
+      "reason": "직사각형과수선의발 input, 두길이 goal, 피타고라스+같은삼각형넓이의두표현 method를 확인했다. ACTIVE PT/TPL·CC_TRIANGLE_AREA 정의와2015 exact binding을 실제대조했고 SEQUENTIAL분리가 적합하다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_c670558df1bffa99de89e9b162689731988421afefff5e5b4fee40266879a039",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "주어진 이등변삼각형과 꼭지각 이등분선에 수직이등분 성질을 직접 대조한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_37f41630f7934631d3fe3539f23f412938fabe540c1d11230df6d3bd537f968c",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "명시된 두 이등변삼각형의 밑각을 순차 구하고 차를 취하는 정형 구조이다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_ead92a65a9db583bc026d870e0e9fdf6574c52e27d9ccc223f71d6ff0b8d3357",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "반지름 등거리에서 중심각을 구한 뒤 꼭지각으로 연결하는 한 번의 표준 관계 해석이다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_a6e9b893c56233d5163a02095838fbe4cbde55d88abdda9ce23f1b4c70ff2126",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "제공된 두 반각을 그대로 옮기고 삼각형 내각합에 대입한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_5147f3b8f099830990db9778a6c4eaf5fb4538377a739e72a3ab5c68d19580f5",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "대변과 이웃각의 기본 성질을 두 표시값에 직접 적용한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_371a1771f984c13478c86b6670dab2fd13d6f4682455da70fda97f1907d26367",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "일반 사각형에서 충분조건과 부족한 조건을 구분하고 엇각으로 두 평행쌍을 판정한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_35fba1813cefd6f952ab4b8cec9e3f54258bab36aa84d9b8531b0e4bc666485b",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "마름모의 등변을 이등변 밑각으로 옮긴 뒤 대각 성질을 연결한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_9d4e31a91012ac3106ff6701d4434fa122e4e287113953b1a8248a622bfab9c2",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "반대각선의 등길이를 전체 대각선의 등길이로 옮겨 직사각형 조건을 비교한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_f7669532d29e14d238ece8d7102c0e67ef1772f509c6c3b92e614d9e9312f54e",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "닮음 기호의 대응 순서와 표시된 비·각에 직접 대응한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_fae0b75dead6874d8f92f587ca5e486b05ed61c8fd93cb9fcc890f3682f332f4",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "높이로 생긴 직각삼각형의 표준 AA에서 전체 빗변을 구하고 주어진 부분을 뺀다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_d2efa5b99ad809c948683ceacb7bb7210efd6d711760f0a5e0646c2cdfdfd960",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "두 교차삼각형의 비를 전체 비로 바꾸어 한 내부 평행선의 비례식에 전달하는 정형 연결이다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d4b2b94e6167bf225f64a38e95a8ec47068783138b6808a4e8b0caaf9e9ba49e",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "세 중점표시에서 세 변을 각각 절반으로 옮긴 뒤 둘레를 합한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_c34c9944749248be02a233851b3702afd931c7077759976c215c45ddeb207c39",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "전체12와 부분4를 구별해 나머지 구간을 만든 다음 한 평행선비를 적용한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_3033e578713cd08f12771b8e61d92667b90d26b9025da9f1587000cbfc9706dc",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "전체 변을 합으로 복원한 뒤 동일3:5를 두 중첩 평행삼각형에 반복 적용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_c3c9b687de09ad4514521df9d17efd09b7f98e0a9b741a149d8752dc3e1c65dc",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "같은 중선 내 분할비와 서로 다른 중선의 절대길이를 구분하고 기본 넓이성질을 대조한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_8d0cb4f585ba62009a164165d22de2cafb62e78ac7a76359ea75af07c4e58420",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "두 무게중심이 모두 명시되어 같은 중선의1/3와2/3를 순차 적용한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7f697ff018536656f34ef98cbfc91a9fcc01939127225bb3d2f10d7f6aea5513",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "명시된 두 무게중심과 중점의 표준 넓이분할을 순차 연결하며 새 보조선 선택이 없다. B23 경계를 유지한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_602cb80a64eb559538eefe7006ed2a25b70fb8d94169a219b4616d85267ac750",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "연속 두 직각삼각형에 피타고라스를 적용하며 두 번째 밑변만 합으로 전처리한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_5e451aebf57e63b8a9962af1fdbe7c37a372f9e2c39d301951fe4b1312a83367",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "표시된 정사각형 넓이를 제곱관계로 읽어 직각을 판정하고 삼각형 넓이에 연결한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_93541fffb75ea40c6e6a2bb085b54b6682e5e188fbd33561352ae0e7a6637724",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "각 세 수의 가장 큰 변을 정하고 제곱합을 직접 비교한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9c9707e501cf0e5c90a2601ef7126de04d1eb8f3b83956f06330b6e40e8ea863",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "소문항이 AA판정·대응순서·비례식의 단계를 안내하며 전체AB만 합으로 전처리한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_fc5fcb49c49e1faffc3a6ea702547b05e2585797256d1d23c73fe22841d8a8b6",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "명시된 평행선비 한 구조로 두 목표길이를 구하고 한 부분길이를 차로 얻는다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_973b6fe163d097d8450b0f1dcb49027f5b7fc74d422132d9aa16101be414fbcb",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "소문항이 대각선 계산을 안내하고 같은 삼각형 넓이의 두 표현으로 수선을 구하는 표준 연결이다."
+    }
+  ],
+  "overallStatus": "PASS_METADATA_SAMPLE_WITH_REGISTRATION_PENDING",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "ROOT independently read all23 stems, choices, existing answers/solutions and actual20source figures to check the absent historical learning-level proposals. No new full mathematical verification was performed.",
+    "Three four-slot samples contain16exactsourcequotes. Q17 source statement is valid using its immediately preceding median subsegments as bases; the final slot quote merely names the numerical area relation more precisely."
+  ]
+}
