@@ -456,9 +456,10 @@ window.questionBank = [
     solution: "[키포인트] 먼저 점 $E(3,3)$으로부터 $k$를 구한 뒤, 정사각형의 가로 길이와 세로 길이를 같게 놓는다.\n조건 정리: $E(3,3)$이 $y=\\sqrt{kx}$ 위에 있고, $A$와 $D$는 같은 높이에 있다.\n풀이 방향: $k$를 복원하고 $A,D$의 $x$좌표 차이를 정사각형의 한 변으로 사용한다.\n정석 풀이:\n1. $3=\\sqrt{3k}$이므로 $9=3k$, 따라서 $k=3$이다.\n2. $A=(t,\\sqrt{3t})$이다. 같은 높이의 점 $D$는 $y=\\sqrt{x}$ 위에 있으므로 $D$의 $x$좌표는 $3t$이다.\n3. 정사각형의 가로 길이는 $3t-t=2t$, 세로 길이는 $\\sqrt{3t}$이다. 따라서 $2t=\\sqrt{3t}$이다.\n4. $t\\gt0$이므로 양변을 제곱하여 $4t^2=3t$, 즉 $t=\\dfrac34$이다.\n5. 따라서 $4t+6=3+6=9$이다.\n따라서 정답은 ⑤이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
-    image: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg",
+    image: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg",
+    imageSize: "tall",
     imageStatus: "reviewed_pass",
-    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg",
+    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg",
     visualSpec: {
       visualSpecVersion: "0.1",
       visualDependency: "ESSENTIAL",
@@ -466,7 +467,7 @@ window.questionBank = [
       renderer: "deterministic-svg",
       semanticRoles: ["radical", "square", "feet"],
       essentialVisualFacts: "y=sqrt(3x), y=sqrt(x), E=(3,3), ABCD is a square; target coordinate is not labeled",
-      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg"
+      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg"
     },
     generationMode: "EXAM_FOLLOWUP_SIMILAR_ONLY",
     sourceGrounding: "plan-2026-08-26"
