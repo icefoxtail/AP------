@@ -1,0 +1,2077 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "42e26063b5359db7b98bb6254874d1c3eacd20da",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/m2_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1451a589586a68af5a217a586399db8376e3d7f081b8a58b2618971430c4e99c",
+      "fingerprints": {
+        "QBODY": "2b1903faff4cd5a911b1aebc186c091db2d2d74cc4da1cf55c0053384842fd6d",
+        "QFULL": "82e9dae18e8a512a54e4c6105aba539ad6398e0eb558ee7871043202fceb06f2"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "오른쪽 평행사변형 ABCD에"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "O는 두 대각선의 교점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 기본 성질을 적용합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각의 크기는 서로 같습니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "두 대각선은 서로 다른 것을 이등분합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선이 교점에서 반분된다는 선분 중점 성질이다. 각을 나누는 이등분선과 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "평행사변형의 각·변·대각선 성질 비교",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "대각과 이웃각·대각선 중점을 확인하고 엇각으로 OCD를 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "db026ce3b4a21d105a627ab229b3e248655e945e67b343f9e6f2ed17af627019",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 1,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_7ff6548290212a7e1b07a82735aa57f02c6faa5867b150f0ae7dbbf0af02cb19",
+      "fingerprints": {
+        "QBODY": "b7dcef4e5c1564256e047750758145ad563b8466add2f4a152506a86630771a9",
+        "QFULL": "76f76702e742ebedfedbd5286b32bf9355ee2ef712d9fec0d05670abe0d4f4db"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 ABCD가 평행사변형인"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "O는 두 대각선의 교점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형인 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "평행사변형인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형이 되기 위한 5가지 조건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "두 대각선이 서로 다른 것을 이등분한다",
+            "evidenceType": "IMPLIED",
+            "justification": "교점이 각 대각선의 중점이라는 판정 조건이다."
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "등변사다리꼴일 수 있어",
+            "evidenceType": "IMPLIED",
+            "justification": "충분하지 않은 조건을 만족하는 다른 사각형을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "대각선의 상호 이등분으로 평행사변형 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "네 반대각선 길이가 같으므로 OA=OC와OB=OD가 동시에 성립함을 읽는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "398e309142045bff93be08eb200f071b9ea6fcb70e57f5ecc4fa4e160a05370b",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 2,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_f3ddfb7d8126b2711194facf4c3e5ac3719b082644c299ff8edc66841a695e70",
+      "fingerprints": {
+        "QBODY": "9ba455526c39e275838962f4bc2aae04ef4386248b3b09be61bbe377a6e51138",
+        "QFULL": "3f993bdc483efbc5635dc74f51d3060328992a67e2080f327a4fbe6a1c9d766d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "정사각형이 되는 것을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형이 되는 것을 고르면?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "정사각형이 되는 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형은 이미 네 내각이",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 직각과 대각선 성질을 사용한다."
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 성질이 더해지면",
+            "evidenceType": "IMPLIED",
+            "justification": "수직 대각선 조건이 직사각형에 마름모의 성질을 부여한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직사각형에 수직 대각선 조건 결합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "직각 조건과 마름모의 대각선 조건이 동시에 만족되어 정사각형임을 판정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "3a1ad509fab5425dcaee0a788998b31b35bb1a9969d5a5137a08af7e82629618",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 3,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_0d1dd4cf5f45e2ec10870923f1b3e2fa070df371ed179dbe78b59e269f47fdda",
+      "fingerprints": {
+        "QBODY": "10738e63a833381be605304f1dba570757159c5835fb54840062d3df7f164e10",
+        "QFULL": "d978e4283c1b740e9bf3a23c92660ca943203f80f950a33f70bd4d6cabe6c5a0"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 삼각형 ABC에서"
+          },
+          {
+            "term": "수선의발",
+            "src": "solution",
+            "quote": "에 내린 수선의 발이 D입니다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 이용해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}} \\perp \\overline{\\text{BC}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "공통 높이를 매개로 두 피타고라스식",
+        "condition": "피타고라스 제곱근에서 길이의 양수 조건으로 음의근을 제외한다."
+      },
+      "steps": [
+        "AB와BD로AD를 구한 뒤 AD와CD로AC를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "da6c1dc7ea84ea2d7fdb702c3338732404a319507862a62bb71896461ddb615b",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 4,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f3297bae500961e770184f2927283cf87509c063ec9b0d963173f10d320b0e26",
+      "fingerprints": {
+        "QBODY": "599ab41a91941ee6aefbc209dbb3098120ca1b80cc759e178654725a7a30ef6d",
+        "QFULL": "e9d1484940b5fa8db1e95a84501a8cfebdbb7ec86027a1014d7e37d0f610a2ab"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 중에서 직각삼각형인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형인 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "직각삼각형인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 만족하지 않으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "최대변 제곱과 두 제곱합의 비교",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "다섯 보기에서 가장 긴 변을 빗변 후보로 정해 피타고라스 역을 대조한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "147240167e178eea98fdfba94c2a9c749d916e337204d15e72494267e3283739",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 5,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_39025b664af9c80ee4e38b417548262b7e317c3f0153f65aa915820ad21aa182",
+      "fingerprints": {
+        "QBODY": "f1debab04ee618d13f18e76cda4c7b054586f6d8b414683065739fd02a7c579e",
+        "QFULL": "aeddb9bdda0480f50c6a1e0134d190417d2966da3e3602baa337b19311337f03"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각기둥",
+            "src": "stem",
+            "quote": "두 삼각기둥은 서로 닮음이고"
+          },
+          {
+            "term": "각기둥",
+            "src": "stem",
+            "quote": "두 삼각기둥은 서로 닮음이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "이 비가 닮음비가 됩니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응하는 각의 크기는 서로 같습니다",
+            "evidenceType": "IMPLIED",
+            "justification": "대응각은 같은 크기이다."
+          },
+          {
+            "term": "모서리",
+            "src": "solution",
+            "quote": "대응하는 모서리의 길이의 비는 일정",
+            "evidenceType": "IMPLIED",
+            "justification": "대응 모서리의 닮음비로 다른 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "두 삼각기둥은 서로 닮음이고"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "닮은 입체의 대응변·각·면 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "기둥 높이4:6으로 닮음비2:3을 만들고 모서리와 각 대응을 확인한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "89f744b1a088ead3927c60f4acf0cd27d93a330cffb011210df9bcd5c2b698d2",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 6,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_4b6041a5d099e9b9c36cf671b964d07119db71aefce2a6fd89302b53643568e4",
+      "fingerprints": {
+        "QBODY": "703ae2e73eb116426def54ceac11532507a5435d05fca5fa609523b2d7f4021b",
+        "QFULL": "22fe64069b170a6e52ad7ca0bb30f9ddef25cf9114f04ac1cfe9bb6dd7518d95"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "두 원기둥이 서로 닮은 도형"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "작은 원기둥의 밑면의 반지름이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "밑넓이",
+            "src": "stem",
+            "quote": "큰 원기둥의 밑면의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 대응하는 높이의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원의 넓이 공식",
+            "evidenceType": "IMPLIED",
+            "justification": "닮음비로 큰 반지름을 구하고 원 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "높이의 닮음비를 밑면 넓이에 전달",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "높이9:12로 반지름6:R을 만들고 큰 밑면 넓이를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "7bc08613c54d469a358702d6c2406ce7b846bfb2a707e9000b7135ab0dc25523",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 7,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_4961f848aaf302b7241207a803468d46185396c70f8a3babc0bdf544a44d0007",
+      "fingerprints": {
+        "QBODY": "bd023f68a4d263525b7a9c8ae67f68f80c1610e0ebcac34456fce43c2b0d74c7",
+        "QFULL": "03cd57a495f4d3e3330256b0868eeb6ebc611dcf0c37888299a8a79d1b6e776a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 ABC에서"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "의 중점 M에서 그은 수선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "두 삼각형은 AA 닮음입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응변의 비례식을 세워",
+            "evidenceType": "IMPLIED",
+            "justification": "공통각과 직각으로 닮은 두 삼각형의 대응변 비를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "의 중점 M에서 그은 수선"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "의 중점 M에서 그은 수선"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "중점을 전처리한 AA 닮음 길이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "BM=BC/2를 만든 후 직각·공통각의 닮음에서BD:BC=BM:BA를 적용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "7b319664dc77ad9453ec326c12cefc941e21a3ddffb607e60f0c63cbcab891a7",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 8,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d845fd6ba3b65a1c7d320d1ca3d8173ab061313111845238394620838fc2a6a7",
+      "fingerprints": {
+        "QBODY": "93b3b0c973c80c265197be8e96db0976dabcdeb51e621b628b03dfae6ab5b783",
+        "QFULL": "fb10bf15bbec3aaf7955411d309da8c1c3950edf73fb472d8edfe40d92ab9544"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "에 내린 수선의 발을 각각 D, E"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "닮은 삼각형이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음이 성립합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "직각과 공통 또는 맞꼭지각으로 닮은 삼각형들을 묶는다."
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "맞꼭지각을 이루는 직각삼각형들",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "에 내린 수선의 발을 각각 D, E"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "직각·공통각·맞꼭지각으로 닮음 묶음",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "C와90°−C를 공유하는 네 삼각형과 B를 포함하는 ADB를 구분한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "3fff2d05e93c6310f37f5f9a33ae706120bf9727cebf5aac3cd92988170b315c",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 9,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_35d9eaa7517f64d9a95f13764bf2c977609147d7a0e6da36991354bafabb82a8",
+      "fingerprints": {
+        "QBODY": "8a310b8a20335f0967a36068bfa29cf0f4d159c46e8a648c8ad7036a403afd3d",
+        "QFULL": "29a7cacea83da64b235ff1279d6d258a158ff41f3578c1470ede5e01eed66414"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "사다리꼴 ABCD에서"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점을 각각 M과 N"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$x-y$의 값은?"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$x - y = 10 - 8 = 2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리)을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$\\overline{\\text{AD}} // \\overline{\\text{MN}} // \\overline{\\text{BC}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "사다리꼴 중점 연결선이 두 밑변과 평행하여 두 삼각형에서 중점연결을 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점을 각각 M과 N"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}} // \\overline{\\text{BC}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "사다리꼴 대각선을 가르는 중점선",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 부분삼각형의 중점연결정리로PN=AD/2와MP=BC/2를 적용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "ac8c02514c3e09dc1cf66c9fc32d4943e5a6d634a093435145ed74bd9cf91448",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 10,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c4d6b2a4e19be01af20a56a8842ae495857d223e34035ae35d2668df316a0bfa",
+      "fingerprints": {
+        "QBODY": "43062a06d7f53b8e7d238cdea6c262d3b4cd3d46b27773d7665706e2caae41d2",
+        "QFULL": "003debeae73ad8f51f452c4d307b94a7d69632c2f09cd2995ad49ef7b243f546"
+      },
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "의 이등분선이"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "임을 설명하는 과정이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "stem",
+            "quote": "점 C를 지나고",
+            "evidenceType": "IMPLIED",
+            "justification": "C를 지나는 평행 보조선을 그어 이등변삼각형을 만든다."
+          },
+          {
+            "term": "동위각",
+            "src": "solution",
+            "quote": "동위각과 엇각의 성질을 추론하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "동위각과 엇각의 성질을 추론하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "두 밑각의 크기가 같은 삼각형이 이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 밑각에서 두 변의 길이가 같음을 얻는다."
+          },
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "stem",
+            "quote": "삼각형에서 평행선에 의하여 생기는",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선이 자른 선분비에 이등변의 변 길이를 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "의 이등분선이"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}} // \\overline{\\text{EC}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행 보조선으로 각이등분선 선분비 증명",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "동위각·엇각으로 ACE의 두 밑각을 같게 한 뒤 AE=AC를 평행 선분비에 넣는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "8935c863cf64ee2c553e3719b724c2af1f6fdfed1a9415e9b4d46291cfd56d45",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 11,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_a0d03dd3c59adca2262d29061e54e8fd4effd3dde5bd2f7f0d9b41e1202680c8",
+      "fingerprints": {
+        "QBODY": "a6de11695972022fb4b61b6700348f7dd2247fb94142bb778654a45e657d8cd0",
+        "QFULL": "31dee875e926649f7f0a4b2a46f2e96ab4186e5ea27eca0b57c4ed666a15fa11"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "선분의 길이의 비 성질을 두 삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형에서 공통 BE:EC 비를 연속 이용한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "공통 선분 비",
+            "evidenceType": "IMPLIED",
+            "justification": "두 평행선 관계의 대응 선분비를 같게 놓는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AC}} // \\overline{\\text{DE}}$, $\\overline{\\text{CD}} // \\overline{\\text{EF}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "공통 분할비로 두 평행삼각형 연결",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "BF:FD를BE:EC로 옮긴 뒤BD:DA에 다시 적용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "eda8a4c31aef88181e7196e55585f2d36f27d8b0f867a6802ef7ef07686650ac",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 12,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_08cf93e63ed437a5ef08787c071966b5b9550f4ea6629de76f2d5355746c1fc1",
+      "fingerprints": {
+        "QBODY": "21c9fb7bdb31fd53d5a4c6be782869c03d99e44e9553056ec61eb25c4a18ef1f",
+        "QFULL": "8b00f4aa575502d14735f13ae0845751b95be1e979edd86bbb5e72169d26bea4"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 사다리꼴"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "두 대각선의 교점 O를 지납니다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "$\\triangle\\text{AOD} \\sim \\triangle\\text{COB}$",
+            "evidenceType": "IMPLIED",
+            "justification": "엇각과 맞꼭지각에서 성립하는 대각선 교차삼각형 닮음으로 AD를 복원한다."
+          },
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "$\\dfrac{\\overline{\\text{EO}}}{\\overline{\\text{BC}}} = \\dfrac{\\overline{\\text{AE}}}{\\overline{\\text{AB}}}",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 단면의 각 부분 길이를 부분삼각형의 대응비로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}} // \\overline{\\text{EF}} // \\overline{\\text{BC}}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "사다리꼴 대각선 교점의 평행 단면",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "AE:AB에서EO와AO:OC를 얻고 교차삼각형의 비로AD를 복원해OF를 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "4e77844402ff8bd0fbb3d01ab895eae2deacd21288595157e07fcad2c66a96c0",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 13,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5a319863e4d3f559ec9a349ea7dea39d06b7ac52541e66228ec509515e092f07",
+      "fingerprints": {
+        "QBODY": "74ce5b47ffd72c744ab47919310b6797cb1cdec18a8a03b862e37aa4785070ba",
+        "QFULL": "f822dfc26a052929048f11cd3044f70b25926dd1238249203b9c89516954d5b7"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "$l // m // n$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$y-x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "평행선 사이에 잘린 선분의 길이의 비는 같습니다",
+            "evidenceType": "IMPLIED",
+            "justification": "세 횡단선의 평행선 사이 대응 구간비가 같다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$\\dfrac{6}{8} = \\dfrac{x}{10}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$l // m // n$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "세 평행선의 한 비를 두 길이에 적용",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "6:8=x:10=y:12를 풀고y−x를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "b2e4117b83518f1c61c60236461c01545b7ea42a41f6a680864dc2cdbb772a96",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 14,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_c77f3b22e877bcaef89e0d7f2517370c3a6f83f238f8db0957f46e2ed8a585fe",
+      "fingerprints": {
+        "QBODY": "5277a41c39fd67fc051430b440368b613aa01502ea81d75a0b66a52f4e19400c",
+        "QFULL": "c121bd3f7d46a13403212bbc07c1f56d8b5083a3cc8d3374c23f7d09be16216e"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$y = \\overline{\\text{BM}}"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심은 각 중선의 길이를",
+            "evidenceType": "IMPLIED",
+            "justification": "중선을 꼭짓점 쪽에서 2:1로 나눈다."
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "M은 $\\overline{\\text{BC}}$의 중점",
+            "evidenceType": "IMPLIED",
+            "justification": "중점이 밑변을 이등분한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "무게중심의 중선 분할과 밑변 중점",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "CG:GN=2:1과BM=BC/2를 각각 계산해 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "3ab19a8e2ca3f814d0afabd42557ab3e3697f36d6c538859e09c891ef84691d7",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 15,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_fcabae322dd08650f3b65ac5555c456133452249b452e7baa63bee9d207d6b16",
+      "fingerprints": {
+        "QBODY": "f623341d900562ad72f150a906b7a3b2118aa0065a897f69fb5737cf0401d7ad",
+        "QFULL": "13ac1db638a4e3298f60b0c5580a6414ff31eb888715e3961c8e0313c9a3f687"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심이고"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이가 $48"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "넓이는 각각 전체 넓이의",
+            "evidenceType": "IMPLIED",
+            "justification": "무게중심과 세 꼭짓점이 만드는 세 삼각형은 등넓이이다."
+          },
+          {
+            "term": "넓이비",
+            "src": "solution",
+            "quote": "E, F가 중점이므로 각각",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이에서 중점은 해당 삼각형 넓이를 반분한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "E, F가 중점이므로 각각",
+            "evidenceType": "IMPLIED",
+            "justification": "신규 넓이비 후보의 상위 용어를 함께 보존한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "무게중심 등넓이와 중점 넓이 분할",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "GAB와GCA의1/3넓이를 각각중점으로반분하고 두 목표부분을 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e13192245d9fc4ec336861c757fdc0eff8a0cb08d774c78fa13d46f0a96761ca",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 16,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_89c79c513f8fbeff31a4883516ab39370d5ca592368612353799872865f79b4a",
+      "fingerprints": {
+        "QBODY": "f8fef410e801ae59e90e22ead3d0269d0eb42818c5aa75a6e94ee64d32144a12",
+        "QFULL": "d058a9187ccbcddc2d73b687ff398827995bc6e246c7c56746c9fb3e209b1f75"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "두 눈의 수의 합이 3 또는 9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "눈의 수의 합이 3인 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "합 3과 합 9의 경우를 나눈다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(1, 2), (2, 1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 합을 만드는 순서쌍을 나열한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "합의 법칙을 적용합니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 두 개의 주사위"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "합이 다른 두 주사위 사건 열거",
+        "condition": "두 주사위는 구별되며 각 눈은 자연수1..6인 유한 순서쌍이다."
+      },
+      "steps": [
+        "합3과합9의 배타적 순서쌍을 나누어 세고 더한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e90bea4cefcde41d5be57773cfe744a99646ea91325d08d8272657b70df1c03a",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 17,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_34d7df6a1e015dd20d4554f9887ae23c15ae23ad3a92fee0feab047f0293823b",
+      "fingerprints": {
+        "QBODY": "da655292a6b87000f4c63fc99063f1f5ad3ca9d01cc9c6577879a28a21f091e8",
+        "QFULL": "dd56dc782cf59889f5e9c8ff4e511df4f5f386353e052c3f28ac18706faf2579"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "사건 $A$가 일어날 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률)은 $1 - p$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$0 \\le p \\le 1$",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 범위와 끝값의 의미를 명제에 대조한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "확률 기본 성질 명제의 진위",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "확률범위·불가능/필연·여사건의식1−p를 보기와 대조한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e0865c2f0c2a611ac06e72a9754171f9637406437088ea83e880f21f41b255a6",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 18,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_32660a4b57acdd5286c26239bca4d49f7b0265404cbc1e5de51487313b5074ce",
+      "fingerprints": {
+        "QBODY": "f66a52bd20c090e8e4f34a469182519746b28e9cf5abf5a62444ab44322b6f72",
+        "QFULL": "277752cc0df2a3dcf377bc40c4041d2a07fa6d6cac1f8a340d2063e4359c5ec5"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "파란 공이 나올 확률이"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "파란 공 2개, 빨간 공 4개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "흰 공의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{2}{6 + x} = \\dfrac{1}{5}$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한 공2개를 미지의 전체공6+x개로 나누어 확률과 같게 둔다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "일차방정식을 풉니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "확률비에서 전체 원소 수 역산",
+        "condition": "미지 공 개수는 음이 아닌 정수이다. 확률과 총수의 모델에서 음의 수·분수 공을 허용하지 않는다."
+      },
+      "steps": [
+        "2/(6+x)=1/5로 전체 개수와 흰 공 수를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "2c395e279a3e140ce040fcd331d59c929393a88f84198f28ddc1b38d602b3ec5",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 19,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_717104a2ee00b503b5803392767eed1dfad9222ccf2771022a2c858a6e244971",
+      "fingerprints": {
+        "QBODY": "c0e51324c7d1a858fcab55d70e26cd920e0ae35e6be51bc71e1fad66dca97c2f",
+        "QFULL": "b1895700b1d151402b136189dbf87ef658801acfeed04665b302d5ca37eaa273"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "남학생 2명과 여학생 3명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적어도 한 명 뽑힐 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "5명 중에서 대표 2명을 뽑는 전체 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "전체와 여학생만 두 명을 고르는 경우를 순서 없이 센다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률 공식을 적용합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{3}{10}$입니다",
+            "evidenceType": "IMPLIED",
+            "justification": "전체10조합에 대한 여학생3조합의 비를 여사건확률로 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "적어도 한 명 뽑힐"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "조합으로 여사건을 세어 적어도 확률",
+        "condition": "남학생이 적어도 한명이라는 하한이 여사건을 정한다."
+      },
+      "steps": [
+        "여학생 둘의 조합수를 전체 대표 조합수로 나누어1에서 뺀다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "03b9540bf44145506f004c5944dbd5dcd42e5ff41807fabe61e4135bf12ecebd",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 20,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_0327ff76432dca7b69c22db6914beae91b024ac1229c60c806a4f21fc3b6d08e",
+      "fingerprints": {
+        "QBODY": "2132099154c50217a7f92f5cd22b23fb9653ebf9bd327b3f5c6a1dc708a54b1c",
+        "QFULL": "c3eb26fcb985b2624c8472db0efe30a7bee4b5fb57e5449eccec6be0117656a9"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "5까지의 자연수가 각각 적힌"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "두 수의 차가 4 이하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "4 이하일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "두 수의 차의 최댓값은",
+            "evidenceType": "IMPLIED",
+            "justification": "가장 큰 5와 작은 1의 차로 모든 결과가 조건을 만족함을 확인한다."
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "반드시 일어나는 사건이므로 확률은 1",
+            "evidenceType": "IMPLIED",
+            "justification": "모든 결과가 해당하므로 확률 1이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1에서 5까지의 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1에서 5까지의 자연수"
+          },
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "이 중에서 2장을 임의로 뽑을 때"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "두 수의 차가 4 이하"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "최대 차로 필연 사건 판정",
+        "condition": "카드값은 자연수1..5이고 서로 다른 두장의 차가4이하라는 상한을 확인한다."
+      },
+      "steps": [
+        "가능한 두 수 차의 최대가5−1=4라서 모든 표본이 사건에 포함됨을 확인한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "d788be8b02e5f166aafbf3a283d48165b3164c0fa111e7fd31ad1d447e7cd9a6",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 21,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_b5f275fe99e9ddb33d67fea16b39f6f473eb02bb97cdaff88e8c00f7c4f67dbd",
+      "fingerprints": {
+        "QBODY": "cc96ab3d29904f0023fee9fc95803021b3686811e9b41909cda1c4f90889ab48",
+        "QFULL": "b0d416fe91e4882be81c43d4929015f782b62efd7de77fb057e1a1cc02144a09"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "두 직선 $ax+by=4$"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "나온 눈의 수를 각각 $a, b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "평행하거나 일치할 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기가 같을 조건",
+            "evidenceType": "IMPLIED",
+            "justification": "평행과 일치를 한꺼번에 포함하는 기울기동일 조건이다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$\\dfrac{a}{1} = \\dfrac{b}{2} \\iff b = 2a$",
+            "evidenceType": "IMPLIED",
+            "justification": "계수비를 같게 하는 비례식이며 항등식의 계수비교가 아니다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(1, 2), (2, 4), (3, 6)$",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위 범위에서 비례식을 만족하는 세 순서쌍을 나열한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{3}{36} = \\dfrac{1}{12}$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체36개 중 유리한3개를 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행하거나 일치할 확률은?"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "평행하거나 일치할 확률은?"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$a, b \\in \\{1, 2, 3, 4, 5, 6\\}$"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행·일치 조건을 계수비로 바꾼 확률",
+        "condition": "a,b는 각 시행에서 나온 자연수1..6이다. 비례식을 만족해도 b>6인 후보는 배제한다."
+      },
+      "steps": [
+        "기울기 동일 조건b=2a를 만족하는1..6의 세 순서쌍을 센다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "7d9196216d8fa45d0516e86459f14b212a4620724a65a82d07600de34e90a4b2",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 22,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_2930a2a7312d8ab87cf22a2e99084d1f1e2fa90248d9b9b7ab21011dbd448cdb",
+      "fingerprints": {
+        "QBODY": "9a180b65056f1e2089176e472370f415b4ead5297e0e636de97615e6e20c3086",
+        "QFULL": "c7edcf5d7664e9ce8f2b854c838a6fb402d5a80353a80c7ff687310c78f40d51"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형 ABC의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하는 과정과 답"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "밑변에 내린 수선은 밑변을 수직이등분합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점의 높이가 밑변을 이등분한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 사용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이 공식에 대입합니다",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 높이와 밑변으로 삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "이등변의 높이에서 피타고라스 넓이",
+        "condition": "피타고라스 제곱근에서 길이의 양수 조건으로 음의근을 제외한다."
+      },
+      "steps": [
+        "꼭짓점 수선이 밑변을 반분함으로 직각변3을 얻고 높이4를 넓이로 옮긴다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "ee04c32192425a2966b27df129bd2e6cba90e6683521c616f039f735c9b51799",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 23,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_1ad90187e77fdc30a18568b6f1f1697060cf66c77c761c43411fafdd2da08636",
+      "fingerprints": {
+        "QBODY": "21e39b55f54f0bd45ee4e129a885dee0292c100e48832c28b58653f82024b024",
+        "QFULL": "5940a42f1bd7ea0648ec8a4e4e59dddd6ef1476c3881f5ed92a95f32d1427f71"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "닮음조건도 쓰시오"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "SAS 닮음이 성립합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변의 길이의 비례식을 세워",
+            "evidenceType": "IMPLIED",
+            "justification": "닮음의 대응 변 비로 BC를 구한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "대응변의 길이의 비례식을 세워",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "SAS 닮음을 수치 길이로 전달",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "AB=AD+BD를 구성해 두 변의3:2비와 공통각으로 닮음을 보인 뒤BC를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "c0249c71dee54a279ff5cbe308110abf969bda32bc9842c2e8bdf0e747685f19",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 24,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_90048500149139b197e35e9e60856c103b93483334c91d6ecebab249fac635b5",
+      "fingerprints": {
+        "QBODY": "2539ad41514f358f12d2875a06193b63b08bdc6fe327e6597c9e084ca6c21c7e",
+        "QFULL": "10eaf1b0c006a6d96e7d920d7b44594e6ed6f73b5e5f2ff561c8dbfdf67a9396"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 ABCD에서"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선의 교점이고"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하는 과정과 답"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "대각선은 서로 다른 것을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형 대각선의 교점은 대각선의 중점이다."
+          },
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "두 중선의 교점 P는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중선의 교점을 무게중심으로 판단한다."
+          },
+          {
+            "term": "내분",
+            "src": "solution",
+            "quote": "$2:1$로 내분하므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "의 중점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "평행사변형 중점으로 무게중심 발견",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 대각선의 중점에서 BO와AM이중선임을 확인하여P의2:1비를 적용한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "ef077107ba9342b404f2b43a11e42c3c79a3b691a509028cc0170846043cd6c9",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 25,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    },
+    {
+      "sourceOrdinal": 26,
+      "questionUid": "qid_v1_855baff6b2e809d69bdda152b29a85ae9d86a79fd9d23d21f1fdf1509d648eed",
+      "fingerprints": {
+        "QBODY": "562010946afce1a18fccd1f41f02c0c32045875982fcce9e82897e28160c622d",
+        "QFULL": "4a048b81b08381b79e89e3fd672c9772874ccc055cec357971b540ecc1b07919"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "파란 공 4개, 노란 공 2개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "2개가 다른 색일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "다음 두 가지로 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 주머니의 색이 파랑 또는 노랑인 경우로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "A에서 파란 공, B에서 노란 공",
+            "evidenceType": "IMPLIED",
+            "justification": "각 주머니에서 원하는 색을 뽑을 확률을 곱한다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "두 사건은 동시에 일어날 수 없으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 배반인 색의 순서별 확률을 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 주머니의 다른 색 경로 확률",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "파랑-노랑과노랑-파랑 두 경로의 독립확률을 각각 곱하고 더한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e0f017238594fa068a47c9b6139c91d2eb7c8f3fdd86bfbdcc5c4c3c47323a8a",
+        "note": "Canonical QBODY/QFULL follow registration raw content=null rule; legacy question text is additionally bound here."
+      },
+      "reuseRef": {
+        "path": "/workspace/scratch/87f142347508/prior4slot/E040.4slot.json",
+        "sha256": "a960838c5b7d06024573246110de3675b9f12e64d7d1fc3341666ba512a2cb1c",
+        "sourceGitBlobSha": "bb36f02957ef91a4582a59f3df4aa3035a59ef61",
+        "sourceOrdinal": 26,
+        "scope": "exact quotes and slot semantics read and rechecked against current pack"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "삼각기둥",
+      "en": "TRIANGULAR_PRISM",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "각기둥",
+      "note": "밑면이 삼각형인 각기둥",
+      "usedIn": [
+        6
+      ]
+    },
+    {
+      "term": "넓이비",
+      "en": "AREA_RATIO",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "비",
+      "note": "두 도형의 넓이의 비",
+      "usedIn": [
+        16
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/m2_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E040",
+  "owner": "A",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "42e26063b5359db7b98bb6254874d1c3eacd20da",
+  "sourceSha256": "690ead7e9cd5620cbe615d2323e29531089d8e857c02f0dff605633558439e71",
+  "reviewSha256": "50ba852a32b909a0987ff7c1979f43d3440d620246e4573c353626099208297b",
+  "fourSlotSha256": "6cb95c4c65d185ab84ec7ee940ff6b64acfde21f21c2fb126715c98a2ccac0cb",
+  "independentSampleSha256": "9dc43a9e2d87fc9baf307d20a674e40dd8e72012e257a6cfb9d65ff09e128ecf",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "unresolvedItems": [],
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    9,
+    11,
+    16
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Four slots unchanged; root independently adjudicated difficulty exceptions and changed Q24 bucket3 to2/B23 after comparing the actual scaffolded SAS task.",
+      "sampleInputReviewSha256": "51606da3c722145291f91009303a116d457e7a37b9d523b3d2a1234595c57c57",
+      "finalReviewSha256": "50ba852a32b909a0987ff7c1979f43d3440d620246e4573c353626099208297b",
+      "adjudicatedCompatibilityOrdinals": [
+        2,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        16,
+        19,
+        20,
+        23,
+        26
+      ],
+      "bucketChangeOrdinals": [
+        24
+      ]
+    },
+    {
+      "scope": "Q19 canonical Condition registration and semantic-definition check",
+      "ordinal": 19,
+      "removed": [
+        "COND_INTEGER",
+        "COND_NONNEGATIVE"
+      ],
+      "reason": "공 개수의 정수·비음수 의미는 4칸에 보존한다. 이 문항의 한 확률식은 유일해를 주며 정수/부호 제한이 추가 후보를 제외하거나 결정을 바꾸지 않으므로 canonical Condition은 추가하지 않는다. 미등록 COND_NONNEGATIVE는 사용하지 않는다.",
+      "fourSlotUnchanged": true
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Compare the displayed lengths and angles with the direct parallelogram properties; each requested choice needs only a basic relation."
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Distinguish sufficient diagonal bisection from weaker kite, trapezoid and orthogonality conditions."
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Match the stated extra condition to the familiar rectangle-plus-rhombus characterization of a square."
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "The given altitude connects two successive standard Pythagorean substitutions."
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "Compare each supplied longest-side square with the sum of the other squares directly; propose learning level low independently of the noncanonical raw level.",
+      "proposedLevel": "하"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "Similarity and vertex correspondence are supplied, so compare the common edge ratio and matching angle and face directly."
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Transfer the supplied height scale to the radius and then to base area."
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "The visible midpoint supplies one input length, followed by the standard shared-angle right-triangle AA correspondence."
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Compare the four common-angle right triangles through the two altitudes; retain the unexcluded isosceles special case as a source hold."
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "The same midpoint segment splits two triangles around the diagonal, giving two direct half-base lengths."
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "The parallel auxiliary line and proof order are fully supplied; fill corresponding angles and the resulting equal side, as independent B confirmed."
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "Carry one partition ratio between two distinct parallel-triangle configurations and compose the intermediate whole side."
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "Combine the diagonal intersection ratio with both sides of the parallel section; the sequence needs selecting multiple partial triangles."
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "One explicit parallel-line ratio is repeated for two lengths and then subtracted."
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "Use the centroid median ratio and the base midpoint directly; the source noncanonical learning level remains separately preserved.",
+      "proposedLevel": "하"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Use standard centroid thirds, then halve each indicated region at its midpoint; independent B checked the actual shaded figure."
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "Enumerate the ordered pairs for two short disjoint die sums and add, retaining the distinct-dice condition.",
+      "proposedLevel": "하"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "Compare probability definitions and complement statements directly; the equal-elementary-outcomes assumption missing from the unrestricted ratio claim stays a source hold.",
+      "proposedLevel": "하"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Set one probability fraction with an unknown total and solve the resulting short equation."
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Use the standard at-least-one complement with a small unordered-pair count."
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "The explicit largest and smallest card values bound every difference immediately, so the event is certain.",
+      "proposedLevel": "하"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "The instruction names the isosceles property; bisect the base by the altitude, apply Pythagoras, then use the triangle area formula."
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "소문항이 닮음조건 찾기와 비례식 사용을 안내한다. AB=AD+DB를 전처리한 뒤 공통각의 표준 SAS 대응과 한 비례식을 연결하는 부담은2/B23이며 E041 Q17과 일관된다."
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "하",
+      "reason": "Choose the partial triangle inside the parallelogram and reinterpret the intersection as its centroid before applying the median ratio; preserve the strong historical-level conflict."
+    },
+    {
+      "ordinal": 26,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "Separate the two different-color orders, form each product from the stated bag contents and add."
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 9,
+      "reason": "The source does not exclude equal B and C or equivalent special angle coincidences that make the nominal non-similar triangle similar too; intended AA classification is recorded conditionally."
+    },
+    {
+      "ordinal": 18,
+      "reason": "The favorable-count/total-count ratio is stated without an equally likely elementary-outcomes assumption."
+    }
+  ],
+  "notes": [
+    "ROOT read the actual stems, choices, existing answers and explanations for the difficulty exceptions and viewed the source montage with all seventeen required figures. Independent B checked Q9/Q11/Q16 slots and actual figures.",
+    "Noncanonical raw learning levels are preserved with explicit separate proposals. No source answer or explanation was rewritten."
+  ]
+}
