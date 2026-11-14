@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E013",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "4845ebcfc5e684e08337b4ba4e6c48f5c5507cec",
+  "reviewSha256": "329c657c33266214902a28fe1e0a063bc4a89105f87e1167d53218ddc2ed1eca",
+  "fourSlotSha256": "fa533f56b4cdae4ea92d44a778b12474a1d1a688764453371074f12e2e114558",
+  "sampleOrdinals": [
+    17,
+    22,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_198def5b93fe80a67337bbcb2bfed0b5992999d93d8944a66e4b92284c33bfb0",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "계수값 goal과 부등식 풀이·수직선 경계 비교 method가 분리되어 있다. 실제 PNG의−2 열린 끝점/왼쪽 해와 인용된x<−2가 일치한다. 숫자2 판정과 NONE 통합, RPM2015계수조건023을 수용한다.",
+      "sourceRead": "Full stem, choices, existing solution, exact submitted review/4slots; original q17/q20/q22 PNGs visually inspected. No independent solution VERIFIED_FINAL receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "원본 PNG의 직사각형3a²b×4ab와 사다리꼴 윗변2a·아랫변4a를 확인했다. 높이가 goal이고 넓이 등식→단항식 나눗셈이 method이다. a³/a의 실제 지수 감산이 필요하여 M2단항식나눗셈010+CC_AREA/SEQUENTIAL 판단을 수용한다. 사각형 성질 PT를 제거하는 것이 타당하다. source2 유지도 확인했다.",
+      "sourceRead": "Full stem, choices, existing solution, exact submitted review/4slots; original q17/q20/q22 PNGs visually inspected. No independent solution VERIFIED_FINAL receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_76d858707482bb1bc613a4a68b67d9348a11fd7f03c86b312790a416efb5d6ec",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "독립된 두 다항식 나눗셈과 두 일차부등식 오류를 실제 source에서 확인했다. goal의 다항식·해·판정과 네 결정 방법이 정확하다. 한UID에 고유 primary가 없다는 debt를 남기고 per-part RPM/정의역을 분리한 처리를 수용한다. 뒤 부등식x에 앞 나눗셈x≠0을 전역 전파하지 않은 점이 적절하다.",
+      "sourceRead": "Full stem, choices, existing solution, exact submitted review/4slots; original q17/q20/q22 PNGs visually inspected. No independent solution VERIFIED_FINAL receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "x=−2를 네 식에 직접 대입한 참·거짓 판정이다. 정의 직접 적용1이며 기존중과의 인접 불일치를 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "실제 반복 시작 위치와 순환마디 양끝 점의 대응을 직접 확인하는1. 중/1 인접 차이를 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "양변100배와 차99x=53까지 빈칸으로 안내된 절차이다. 숫자 연결을 포함한2/B12 유지가 허용된다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "분모에서11과7을 각각 제거하는 배수 조건을 얻고 가장 작은 공배수를 고르는 정형 연결이다.2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "40,50을2와5로 분해하고 같은 항 다섯 개를 약분한 뒤 지수를 읽는다. 익숙한 밑 통일 절차라2/B23이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "실제 그림은−2 열린 끝점과 왼쪽 해이다. 부등식을x<−1−4a로 정리한 뒤 경계를 동일시하는 정형 역문제로2/B23이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "실제 과녁에서c=−5x+4y,f=3x+2y이다. 뺄셈 순서가 명시되지 않아 두 순서를 모두 생성해야 한다는 조건 해석이 추가된다.3/medium/B23과 기존상 인접 불일치를 수용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "NONE",
+      "reason": "넓이 두 공식을 등식으로 놓고단항식3a로 나누는 정형 결합이다.2/medium/NONE 유지가 적절하다. 현재 source 자체도2이므로 숫자 변경은 아니다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "고정비+월비용 두 식 비교와 최솟값의 자연수 올림이 안내된 정형 모델이다.2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "네 독립 오류는 각 항 나누기, 역수, 음수배 반전, 분모제거의 표준 규칙이다. 부분 수로 난도를 올리지 않고2/medium/B23이 적절하다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT",
+      "reason": "원본 PNG의 직사각형3a²b×4ab와 사다리꼴 윗변2a·아랫변4a를 확인했다. 높이가 goal이고 넓이 등식→단항식 나눗셈이 method이다. a³/a의 실제 지수 감산이 필요하여 M2단항식나눗셈010+CC_AREA/SEQUENTIAL 판단을 수용한다. 사각형 성질 PT를 제거하는 것이 타당하다. source2 유지도 확인했다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_MULTIPART_DEBT",
+      "reason": "독립된 두 다항식 나눗셈과 두 일차부등식 오류를 실제 source에서 확인했다. goal의 다항식·해·판정과 네 결정 방법이 정확하다. 한UID에 고유 primary가 없다는 debt를 남기고 per-part RPM/정의역을 분리한 처리를 수용한다. 뒤 부등식x에 앞 나눗셈x≠0을 전역 전파하지 않은 점이 적절하다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_NAMED_RPM_GAP",
+      "reason": "순환마디 자리 추적이라는 실제 primary를 명시했다. 정확 leaf 여부는003의순환마디·표현 범위 해석에 달리며 author가 신규 활성 매핑을 주장하지 않고gap으로 남긴 것은 보수적으로 수용한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "level": "중",
+      "difficultyBucket": 1,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "sourceOrdinal": 4,
+      "level": "중",
+      "difficultyBucket": 1,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "sourceOrdinal": 20,
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "status": "PASS_WITH_NAMED_DEBTS",
+  "notes": [
+    "Numeric2 forQ22 is retained from source, not a3→2 change.",
+    "Q22 method단항식 evidenceTypeIMPLIED has a valid explicit justification. Full solution contains standard monomial-division formula, so NAMED would also be defensible; this does not change the selected method or block acceptance.",
+    "No shared registry/metadata writes, source content edits, or R2 VERIFIED_FINAL evidence were performed."
+  ],
+  "at": "2026-11-14T10:55:06.902212+00:00"
+}

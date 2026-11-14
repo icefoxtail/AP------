@@ -37,10 +37,10 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0055"
     },
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
     "content": "다음 중 $x=-2$일 때, 참인 부등식을 모두 고른 것은? (3점)<br><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">ㄱ. $x < 5$<br>ㄴ. $-x + 3 > 1$<br>ㄷ. $1 + x \\ge 3$<br>ㄹ. $2x \\ge x + 1$</div>",
@@ -101,7 +101,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0055"
     },
     "difficultyBucket": 1,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -164,7 +164,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0055"
     },
     "difficultyBucket": 1,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -220,10 +220,10 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
     "content": "다음 중 순환소수의 표현이 옳은 것은? (4점)",
@@ -284,7 +284,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0055"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -347,8 +347,8 @@ window.questionBank = [
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -372,7 +372,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -412,7 +412,7 @@ window.questionBank = [
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
     "difficultyBucket": 1,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -437,7 +437,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -477,7 +477,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0056"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -539,9 +539,9 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -561,7 +561,7 @@ window.questionBank = [
     "decisiveStep": "A는 7과 11의 공배수여야 하므로 최소 77이다.",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_LEAST_COMMON_MULTIPLE"],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
@@ -605,7 +605,7 @@ window.questionBank = [
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -626,7 +626,7 @@ window.questionBank = [
     "decisiveStep": "유한소수 조건을 통과하는 것은 g=9, y=20뿐이다.",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_GREATEST_COMMON_DIVISOR"],
     "conditionKeys": [
       "COND_NATURAL_NUMBER",
       "COND_RANGE"
@@ -671,7 +671,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0056"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -736,7 +736,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0056"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -762,7 +762,7 @@ window.questionBank = [
       "COND_NATURAL_NUMBER",
       "COND_NONZERO"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -802,7 +802,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0056"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -825,7 +825,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -865,7 +865,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0056"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -888,7 +888,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -928,7 +928,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0057"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -993,7 +993,7 @@ window.questionBank = [
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -1018,7 +1018,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1058,9 +1058,9 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0057"
     },
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -1082,7 +1082,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1122,7 +1122,7 @@ window.questionBank = [
       "sourceFactStatus": "EXTRACTED_BASELINE_UNVERIFIED"
     },
     "difficultyBucket": 1,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -1145,7 +1145,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1185,7 +1185,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0057"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -1208,7 +1208,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1250,7 +1250,7 @@ window.questionBank = [
     },
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -1272,7 +1272,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1306,7 +1306,7 @@ window.questionBank = [
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0058"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
@@ -1329,7 +1329,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1339,12 +1339,12 @@ window.questionBank = [
     "solution": "직사각형의 넓이는 밑변과 높이를 곱한다.\n$3a^2b\\times4ab=12a^3b^2$이다.\n사다리꼴의 윗변은 $2a$, 아랫변은 $4a$이므로 넓이는 $\\dfrac{2a+4a}{2}h=3ah$이다.\n두 넓이가 같으므로 $12a^3b^2=3ah$이다. 밑변의 길이 $2a$가 양수이므로 $a>0$이고, 양변을 $3a$로 나누어 $h=4a^2b^2$를 얻는다. 따라서 사다리꼴의 높이는 $4a^2b^2$이다.",
     "id": 22,
     "level": "중",
-    "category": "도형의 성질",
+    "category": "수와 식",
     "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M2-01",
+    "standardUnit": "수와 식",
+    "standardUnitOrder": 1,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1352,8 +1352,8 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
-    "subUnit": "사각형의 성질",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourceQid": 22,
@@ -1385,7 +1385,7 @@ window.questionBank = [
     "decisiveStep": "3ah=12a³b²에서 h=4a²b²이다.",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_AREA"],
     "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
@@ -1425,9 +1425,9 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "SCOPED_SOURCE_REVIEWED_PAGE_0058"
     },
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -1451,7 +1451,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   },
   {
@@ -1484,9 +1484,9 @@ window.questionBank = [
       "baselineIntakeSha256": "2a9b5c4c447f6bb4d9f6c66a96393e4d69b2489515bdafefa6c6145880c3745b",
       "sourceFactStatus": "SOURCE_DEFECT_CORRECTION_PAGE_0058"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
@@ -1507,10 +1507,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NONZERO"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   }
 ];

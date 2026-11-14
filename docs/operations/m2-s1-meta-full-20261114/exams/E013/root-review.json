@@ -1,0 +1,863 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E013",
+  "owner": "GPT_ROOT_59E0F5BD3A77",
+  "createdAt": "2026-11-14T11:00:32.658653+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E013",
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/A/E013.review.json",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/A/E013.4slot.json",
+    "independentPath": "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E013.sample.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "acceptIndependentAdjacentMismatch": [
+      1,
+      4,
+      20
+    ],
+    "fourSlotOverrides": [
+      {
+        "sourceOrdinal": 22,
+        "slot": "method",
+        "term": "단항식",
+        "before": "IMPLIED",
+        "after": "NAMED",
+        "reason": "The existing solution explicitly divides both sides by3a and displays the standard monomial quotient formula; independent B separately accepts this narrow evidenceType correction."
+      }
+    ],
+    "independentSupplementPaths": [
+      "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E013.q22-method-evidence-amendment.json"
+    ],
+    "rootSourceReads": [
+      1,
+      4,
+      9,
+      17,
+      20,
+      22,
+      23,
+      24
+    ],
+    "rootSemanticJudgments": [
+      {
+        "sourceOrdinal": 22,
+        "decision": "ACCEPT_MONOMIAL_DIVISION_WITH_AREA_AUXILIARY",
+        "reason": "The existing solution equates two elementary areas and necessarily reduces a cubed factor by a; author and independent B inspected the actual geometry. No quadrilateral-property theorem is decisive. The old source PT clear remains a source-bound registrar proposal to avoid an unbound partial source type assignment."
+      },
+      {
+        "sourceOrdinal": 24,
+        "decision": "PRESERVE_MULTIPART_PRIMARY_AND_CONDITION_SCOPE_DEBT",
+        "reason": "The one UID contains two polynomial-division and two independent inequality corrections. No single primary or nonzero restriction can cover all subparts; preserve original broad source primary, exact per-part evidence and explicit ambiguity."
+      },
+      {
+        "sourceOrdinal": 20,
+        "decision": "ACCEPT_BUCKET3_AND_ADJACENT_MISMATCH",
+        "reason": "The subtraction order is genuinely unspecified, so two possible source expressions must be generated; independent B inspected both target labels. This adds a condition interpretation beyond one known erroneous operation."
+      }
+    ],
+    "notes": [
+      "Root reviewed all author per-item semantic/difficulty change reasons and the exact independent receipt. Targeted original stems/choices/existing solutions were reread for changed and disputed decisions.",
+      "All other submitted judgments are accepted with their named RPM/binding/resolver debts; unsupported type clear is deferred without claiming source mutation."
+    ]
+  },
+  "sampleReviewer": "B",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "x=−2를 네 식에 직접 대입한 참·거짓 판정이다. 정의 직접 적용1이며 기존중과의 인접 불일치를 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "실제 반복 시작 위치와 순환마디 양끝 점의 대응을 직접 확인하는1. 중/1 인접 차이를 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "양변100배와 차99x=53까지 빈칸으로 안내된 절차이다. 숫자 연결을 포함한2/B12 유지가 허용된다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "분모에서11과7을 각각 제거하는 배수 조건을 얻고 가장 작은 공배수를 고르는 정형 연결이다.2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "40,50을2와5로 분해하고 같은 항 다섯 개를 약분한 뒤 지수를 읽는다. 익숙한 밑 통일 절차라2/B23이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "실제 그림은−2 열린 끝점과 왼쪽 해이다. 부등식을x<−1−4a로 정리한 뒤 경계를 동일시하는 정형 역문제로2/B23이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "실제 과녁에서c=−5x+4y,f=3x+2y이다. 뺄셈 순서가 명시되지 않아 두 순서를 모두 생성해야 한다는 조건 해석이 추가된다.3/medium/B23과 기존상 인접 불일치를 수용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "NONE",
+      "reason": "넓이 두 공식을 등식으로 놓고단항식3a로 나누는 정형 결합이다.2/medium/NONE 유지가 적절하다. 현재 source 자체도2이므로 숫자 변경은 아니다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "고정비+월비용 두 식 비교와 최솟값의 자연수 올림이 안내된 정형 모델이다.2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "네 독립 오류는 각 항 나누기, 역수, 음수배 반전, 분모제거의 표준 규칙이다. 부분 수로 난도를 올리지 않고2/medium/B23이 적절하다."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT",
+      "reason": "원본 PNG의 직사각형3a²b×4ab와 사다리꼴 윗변2a·아랫변4a를 확인했다. 높이가 goal이고 넓이 등식→단항식 나눗셈이 method이다. a³/a의 실제 지수 감산이 필요하여 M2단항식나눗셈010+CC_AREA/SEQUENTIAL 판단을 수용한다. 사각형 성질 PT를 제거하는 것이 타당하다. source2 유지도 확인했다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_MULTIPART_DEBT",
+      "reason": "독립된 두 다항식 나눗셈과 두 일차부등식 오류를 실제 source에서 확인했다. goal의 다항식·해·판정과 네 결정 방법이 정확하다. 한UID에 고유 primary가 없다는 debt를 남기고 per-part RPM/정의역을 분리한 처리를 수용한다. 뒤 부등식x에 앞 나눗셈x≠0을 전역 전파하지 않은 점이 적절하다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_NAMED_RPM_GAP",
+      "reason": "순환마디 자리 추적이라는 실제 primary를 명시했다. 정확 leaf 여부는003의순환마디·표현 범위 해석에 달리며 author가 신규 활성 매핑을 주장하지 않고gap으로 남긴 것은 보수적으로 수용한다."
+    }
+  ],
+  "scopedOverrides": [
+    {
+      "sourceOrdinal": 1,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 22,
+      "slot": "method",
+      "term": "단항식",
+      "before": "IMPLIED",
+      "after": "NAMED",
+      "reason": "The existing solution explicitly divides both sides by3a and displays the standard monomial quotient formula; independent B separately accepts this narrow evidenceType correction."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "해집합을 풀거나 부등식의 성질로 변형하는 문항이 아니라 주어진 값에서 진위를 판정한다. 기본 부등식 분류는 보존하되 정확한 RPM leaf를 억지로018에 붙이지 않는다. x=-2를 넣어 ㄱ·ㄴ만 참임을 확인한다. 주어진 값 대입과 수의 비교만 하는 직접 정의 적용이므로1. 기존 중과의 경계 불일치는 독립 검토가 필요하다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "빈칸을 복원한 후 괄호가 있는 뺄셈을 수행하므로013. 두 일차식의 합을 찾는012보다 음의 괄호 해제가 핵심이다. □=(3a+8b)-(5a+6b)=-2a+2b. 덧셈의 한 항을 이항해 바로 동류항을 정리하는 짧은 표준 계산이다. 기존1 유지."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "단항식과 다항식의 곱셈에 분배법칙을 적용하므로014. 계수는 결과 형식이다. 3x·2x=6x²이고 다른 항은 x²항을 만들지 않아 계수6. 필요한 곱3x·2x 하나를 골라 계수를 읽을 수 있는 직접 적용1."
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "순환마디 식별과 표기 자체를 묻는003이다. 0.5181818…의 반복18은 첫5 뒤에 시작한다. 반복되는 마디를 읽어 표기와 대조하는 직접 개념 적용1. 중/1 경계는 독립 검토 전 REVIEW."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "최종 요구는 주어진 분수의 유한소수 가능 여부이므로001; 분모 소인수 검사는 판별 방법이다. 14/63=2/9에서 소인수3이 남는다. 약분 전 분모가 아니라 남은 분모로 판단하는 전처리 한 단계가 있으므로2."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "순환소수를 분수로 바꾸는004의 안내된 과정 완성이다. 100x−x=99x=53으로 A100 B99 C53. 두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "동등한 두 소문항이007과008에 각각 대응한다. 같은 지수법칙 subUnit은 명확하나 단일 dominant leaf는 정하지 않는다. x=4·5=20, y=5−2=3을 각각 얻어 더한다. 두 법칙 모두 직접 주어진 형태에 대입하는 기본 수준1. 문항 수 자체로 올리지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "수의 대소관계를 보존·반전하는 부등식 성질018이다. ③만 a<b, 나머지는 a>b이다. 변형 후 네 식과 반대인 대소관계를 비교해야 하는 익숙한 전처리2."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "crossConceptKeys": [
+          "CC_LEAST_COMMON_MULTIPLE"
+        ],
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "분모 소인수2,5 외의 인수를 없애야 하는002에 대응한다. 11과7이 모두 A에 들어가야 하므로 최소 A=77. 두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "crossConceptKeys": [
+          "CC_GREATEST_COMMON_DIVISOR"
+        ],
+        "difficultyConfidence": "high"
+      },
+      "reason": "범위·기약분자·유한소수 조건을 동시에 만족하는 유리수를 찾으므로006이다. x=11g, g≤9인180의 약수 중 g9만 분모20을 만든다. 단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "곱·몫·거듭제곱의 혼합 계산을 점검하므로011이다. ③20x²y÷4x=5xy만 제시 결과와 같다. 복수 지수법칙과 부호를 정리한 뒤 보기 결과를 비교하는 표준2."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "단항식 혼합 계산 후 표준형의 계수·지수를 읽는011이다. 왼쪽6x²y7에서 a6 b2 c7을 읽어11. 지수 계산과 표준형 읽기라는 익숙한 전처리의2."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "동일 밑의 지수 몫을 계산하는007에 대응하며 소인수 분해와 동일항 묶기는 밑을 맞추는 전처리이다. 40^8/50^4=2²⁰, 다섯 동일항을 약분한 둘째 식=5². 주어진40과50을2,5로 나타내고 동일항의 수5를 약분하는 전략이 바로 정해지는2/B23."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "괄호를 순차적으로 제거하는 다항식 덧셈·뺄셈013이다. 안쪽3b−a, 중간−2a−b를 거쳐8a+b. 중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "difficultyConfidence": "high"
+      },
+      "reason": "괄호 다항식을 단항식으로 나눈 뒤 결과를 비교하는015에 대응한다. ⑤(x/2−x/4)÷x=1/4라2가 아니다. 괄호 안 분수식의 정리 후 몫을 비교하는 한 번의 익숙한 전처리2."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "가격 문장 모델의 최대 정수 수량이 목표이므로025이다. 8000b+2500<20000에서 b≤2인 자연수, 잔돈1500. 정형적인단가×권수+배송료 모델과 정수선택이 즉시 결정되는2."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "계수 조건023이며 수직선은 주어진 해를 표현하는 수단이다. 해x<−1−4a를 그림의x<−2와 대조하여a1/4. 한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "배율10³을연속곱하는지수법칙007이다. 물의부피이야기는환산배경이며도형/부피분류근거가아니다. 1t=10³·10³g=10⁶g. 1t=10³kg,1kg=10³g를곱하는직접적용1."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "주어진A,B,C,D를식에대입해결과를구하는016이며분배법칙014는계산단계이다. (2A+B)C=−10x²−2xy, (A−2B)D=9y². A,B를먼저괄호별로정리하는익숙한전처리후분배하는2."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "단순오류수정이아니라순서가정해지지않은차조건을이용하므로조건식활용017이다. S=known−difference 또는known+difference로−5x+4y와3x+2y. 조건이허용하는두뺄셈순서를선택해모두복원해야하므로3/B23. 기존상은상/3인접불일치로독립재검토필요."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyConfidence": "high"
+      },
+      "reason": "분수를소수로변환하는005와마디표현003을사용하지만최종핵심은주기를이용한원거리자리숫자이다. 정확한leaf부재를남기고단순표기leaf로강제하지않는다. 26/111=0.234…이고100≡1(mod3)이므로100번째2. 주기3을얻어100의나머지를읽는익숙한전처리2."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙",
+        "category": "수와 식"
+      },
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "가격문장활용의최소정수025이다. 비용모델은할인율이나이익률을쓰지않으므로028이아니다. 1,250,000+2500x<55000x에서x>500/21이므로24. 고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "한UID에다항식나눗셈2개와일차부등식2개가독립적으로섞여있다. 단일primary를새로확정하지않고기존POLYNOMIAL분류를잠정보존하며각부분의실제RPM을별도로기록한다. 바른결과는3a²+1,6x+12,x>−4,x>6이다. 각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "해집합을 풀거나 부등식의 성질로 변형하는 문항이 아니라 주어진 값에서 진위를 판정한다. 기본 부등식 분류는 보존하되 정확한 RPM leaf를 억지로018에 붙이지 않는다. x=-2를 넣어 ㄱ·ㄴ만 참임을 확인한다. 주어진 값 대입과 수의 비교만 하는 직접 정의 적용이므로1. 기존 중과의 경계 불일치는 독립 검토가 필요하다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "해집합을 풀거나 부등식의 성질로 변형하는 문항이 아니라 주어진 값에서 진위를 판정한다. 기본 부등식 분류는 보존하되 정확한 RPM leaf를 억지로018에 붙이지 않는다. x=-2를 넣어 ㄱ·ㄴ만 참임을 확인한다. 주어진 값 대입과 수의 비교만 하는 직접 정의 적용이므로1. 기존 중과의 경계 불일치는 독립 검토가 필요하다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "해집합을 풀거나 부등식의 성질로 변형하는 문항이 아니라 주어진 값에서 진위를 판정한다. 기본 부등식 분류는 보존하되 정확한 RPM leaf를 억지로018에 붙이지 않는다. x=-2를 넣어 ㄱ·ㄴ만 참임을 확인한다. 주어진 값 대입과 수의 비교만 하는 직접 정의 적용이므로1. 기존 중과의 경계 불일치는 독립 검토가 필요하다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "빈칸을 복원한 후 괄호가 있는 뺄셈을 수행하므로013. 두 일차식의 합을 찾는012보다 음의 괄호 해제가 핵심이다. □=(3a+8b)-(5a+6b)=-2a+2b. 덧셈의 한 항을 이항해 바로 동류항을 정리하는 짧은 표준 계산이다. 기존1 유지."
+    },
+    {
+      "sourceOrdinal": 3,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "단항식과 다항식의 곱셈에 분배법칙을 적용하므로014. 계수는 결과 형식이다. 3x·2x=6x²이고 다른 항은 x²항을 만들지 않아 계수6. 필요한 곱3x·2x 하나를 골라 계수를 읽을 수 있는 직접 적용1."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "순환마디 식별과 표기 자체를 묻는003이다. 0.5181818…의 반복18은 첫5 뒤에 시작한다. 반복되는 마디를 읽어 표기와 대조하는 직접 개념 적용1. 중/1 경계는 독립 검토 전 REVIEW."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "순환마디 식별과 표기 자체를 묻는003이다. 0.5181818…의 반복18은 첫5 뒤에 시작한다. 반복되는 마디를 읽어 표기와 대조하는 직접 개념 적용1. 중/1 경계는 독립 검토 전 REVIEW."
+    },
+    {
+      "sourceOrdinal": 4,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "순환마디 식별과 표기 자체를 묻는003이다. 0.5181818…의 반복18은 첫5 뒤에 시작한다. 반복되는 마디를 읽어 표기와 대조하는 직접 개념 적용1. 중/1 경계는 독립 검토 전 REVIEW."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "최종 요구는 주어진 분수의 유한소수 가능 여부이므로001; 분모 소인수 검사는 판별 방법이다. 14/63=2/9에서 소인수3이 남는다. 약분 전 분모가 아니라 남은 분모로 판단하는 전처리 한 단계가 있으므로2."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "순환소수를 분수로 바꾸는004의 안내된 과정 완성이다. 100x−x=99x=53으로 A100 B99 C53. 두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "순환소수를 분수로 바꾸는004의 안내된 과정 완성이다. 100x−x=99x=53으로 A100 B99 C53. 두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "순환소수를 분수로 바꾸는004의 안내된 과정 완성이다. 100x−x=99x=53으로 A100 B99 C53. 두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "동등한 두 소문항이007과008에 각각 대응한다. 같은 지수법칙 subUnit은 명확하나 단일 dominant leaf는 정하지 않는다. x=4·5=20, y=5−2=3을 각각 얻어 더한다. 두 법칙 모두 직접 주어진 형태에 대입하는 기본 수준1. 문항 수 자체로 올리지 않는다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "동등한 두 소문항이007과008에 각각 대응한다. 같은 지수법칙 subUnit은 명확하나 단일 dominant leaf는 정하지 않는다. x=4·5=20, y=5−2=3을 각각 얻어 더한다. 두 법칙 모두 직접 주어진 형태에 대입하는 기본 수준1. 문항 수 자체로 올리지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "수의 대소관계를 보존·반전하는 부등식 성질018이다. ③만 a<b, 나머지는 a>b이다. 변형 후 네 식과 반대인 대소관계를 비교해야 하는 익숙한 전처리2."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_LEAST_COMMON_MULTIPLE"
+      ],
+      "reason": "분모 소인수2,5 외의 인수를 없애야 하는002에 대응한다. 11과7이 모두 A에 들어가야 하므로 최소 A=77. 두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "분모 소인수2,5 외의 인수를 없애야 하는002에 대응한다. 11과7이 모두 A에 들어가야 하므로 최소 A=77. 두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "분모 소인수2,5 외의 인수를 없애야 하는002에 대응한다. 11과7이 모두 A에 들어가야 하므로 최소 A=77. 두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "분모 소인수2,5 외의 인수를 없애야 하는002에 대응한다. 11과7이 모두 A에 들어가야 하므로 최소 A=77. 두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_GREATEST_COMMON_DIVISOR"
+      ],
+      "reason": "범위·기약분자·유한소수 조건을 동시에 만족하는 유리수를 찾으므로006이다. x=11g, g≤9인180의 약수 중 g9만 분모20을 만든다. 단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "범위·기약분자·유한소수 조건을 동시에 만족하는 유리수를 찾으므로006이다. x=11g, g≤9인180의 약수 중 g9만 분모20을 만든다. 단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "곱·몫·거듭제곱의 혼합 계산을 점검하므로011이다. ③20x²y÷4x=5xy만 제시 결과와 같다. 복수 지수법칙과 부호를 정리한 뒤 보기 결과를 비교하는 표준2."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "단항식 혼합 계산 후 표준형의 계수·지수를 읽는011이다. 왼쪽6x²y7에서 a6 b2 c7을 읽어11. 지수 계산과 표준형 읽기라는 익숙한 전처리의2."
+    },
+    {
+      "sourceOrdinal": 12,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "단항식 혼합 계산 후 표준형의 계수·지수를 읽는011이다. 왼쪽6x²y7에서 a6 b2 c7을 읽어11. 지수 계산과 표준형 읽기라는 익숙한 전처리의2."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "동일 밑의 지수 몫을 계산하는007에 대응하며 소인수 분해와 동일항 묶기는 밑을 맞추는 전처리이다. 40^8/50^4=2²⁰, 다섯 동일항을 약분한 둘째 식=5². 주어진40과50을2,5로 나타내고 동일항의 수5를 약분하는 전략이 바로 정해지는2/B23."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "동일 밑의 지수 몫을 계산하는007에 대응하며 소인수 분해와 동일항 묶기는 밑을 맞추는 전처리이다. 40^8/50^4=2²⁰, 다섯 동일항을 약분한 둘째 식=5². 주어진40과50을2,5로 나타내고 동일항의 수5를 약분하는 전략이 바로 정해지는2/B23."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "괄호를 순차적으로 제거하는 다항식 덧셈·뺄셈013이다. 안쪽3b−a, 중간−2a−b를 거쳐8a+b. 중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "괄호를 순차적으로 제거하는 다항식 덧셈·뺄셈013이다. 안쪽3b−a, 중간−2a−b를 거쳐8a+b. 중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "괄호 다항식을 단항식으로 나눈 뒤 결과를 비교하는015에 대응한다. ⑤(x/2−x/4)÷x=1/4라2가 아니다. 괄호 안 분수식의 정리 후 몫을 비교하는 한 번의 익숙한 전처리2."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "가격 문장 모델의 최대 정수 수량이 목표이므로025이다. 8000b+2500<20000에서 b≤2인 자연수, 잔돈1500. 정형적인단가×권수+배송료 모델과 정수선택이 즉시 결정되는2."
+    },
+    {
+      "sourceOrdinal": 16,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "가격 문장 모델의 최대 정수 수량이 목표이므로025이다. 8000b+2500<20000에서 b≤2인 자연수, 잔돈1500. 정형적인단가×권수+배송료 모델과 정수선택이 즉시 결정되는2."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "integrationPattern",
+      "before": "REINTERPRETATION",
+      "after": "NONE",
+      "reason": "계수 조건023이며 수직선은 주어진 해를 표현하는 수단이다. 해x<−1−4a를 그림의x<−2와 대조하여a1/4. 한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "계수 조건023이며 수직선은 주어진 해를 표현하는 수단이다. 해x<−1−4a를 그림의x<−2와 대조하여a1/4. 한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "계수 조건023이며 수직선은 주어진 해를 표현하는 수단이다. 해x<−1−4a를 그림의x<−2와 대조하여a1/4. 한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "계수 조건023이며 수직선은 주어진 해를 표현하는 수단이다. 해x<−1−4a를 그림의x<−2와 대조하여a1/4. 한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "배율10³을연속곱하는지수법칙007이다. 물의부피이야기는환산배경이며도형/부피분류근거가아니다. 1t=10³·10³g=10⁶g. 1t=10³kg,1kg=10³g를곱하는직접적용1."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "배율10³을연속곱하는지수법칙007이다. 물의부피이야기는환산배경이며도형/부피분류근거가아니다. 1t=10³·10³g=10⁶g. 1t=10³kg,1kg=10³g를곱하는직접적용1."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "주어진A,B,C,D를식에대입해결과를구하는016이며분배법칙014는계산단계이다. (2A+B)C=−10x²−2xy, (A−2B)D=9y². A,B를먼저괄호별로정리하는익숙한전처리후분배하는2."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "주어진A,B,C,D를식에대입해결과를구하는016이며분배법칙014는계산단계이다. (2A+B)C=−10x²−2xy, (A−2B)D=9y². A,B를먼저괄호별로정리하는익숙한전처리후분배하는2."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "integrationPattern",
+      "before": "CASE_BRANCH",
+      "after": "NONE",
+      "reason": "단순오류수정이아니라순서가정해지지않은차조건을이용하므로조건식활용017이다. S=known−difference 또는known+difference로−5x+4y와3x+2y. 조건이허용하는두뺄셈순서를선택해모두복원해야하므로3/B23. 기존상은상/3인접불일치로독립재검토필요."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "단순오류수정이아니라순서가정해지지않은차조건을이용하므로조건식활용017이다. S=known−difference 또는known+difference로−5x+4y와3x+2y. 조건이허용하는두뺄셈순서를선택해모두복원해야하므로3/B23. 기존상은상/3인접불일치로독립재검토필요."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "분수를소수로변환하는005와마디표현003을사용하지만최종핵심은주기를이용한원거리자리숫자이다. 정확한leaf부재를남기고단순표기leaf로강제하지않는다. 26/111=0.234…이고100≡1(mod3)이므로100번째2. 주기3을얻어100의나머지를읽는익숙한전처리2."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "분수를소수로변환하는005와마디표현003을사용하지만최종핵심은주기를이용한원거리자리숫자이다. 정확한leaf부재를남기고단순표기leaf로강제하지않는다. 26/111=0.234…이고100≡1(mod3)이므로100번째2. 주기3을얻어100의나머지를읽는익숙한전처리2."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitKey",
+      "before": "M2-05",
+      "after": "M2-01",
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnitKey",
+      "before": "M2-05-QUADRILATERAL_PROPERTIES",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "crossConceptKeys",
+      "before": [],
+      "after": [
+        "CC_AREA"
+      ],
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnit",
+      "before": "도형의 성질",
+      "after": "수와 식",
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "standardUnitOrder",
+      "before": 5,
+      "after": 1,
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "subUnit",
+      "before": "사각형의 성질",
+      "after": "지수법칙",
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "category",
+      "before": "도형의 성질",
+      "after": "수와 식",
+      "reason": "사각형의성질정리나닮음이없다. 넓이공식으로만든단항식의몫이계산핵심이라M2-01-EXPONENT_LAW/010으로교정제안한다. M1 RPM에는기본사다리꼴넓이단독leaf가없음을확인했다. 12a³b²=3ah에서h=4a²b². 두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "integrationPattern",
+      "before": "SEQUENTIAL",
+      "after": "NONE",
+      "reason": "가격문장활용의최소정수025이다. 비용모델은할인율이나이익률을쓰지않으므로028이아니다. 1,250,000+2500x<55000x에서x>500/21이므로24. 고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "가격문장활용의최소정수025이다. 비용모델은할인율이나이익률을쓰지않으므로028이아니다. 1,250,000+2500x<55000x에서x>500/21이므로24. 고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "가격문장활용의최소정수025이다. 비용모델은할인율이나이익률을쓰지않으므로028이아니다. 1,250,000+2500x<55000x에서x>500/21이므로24. 고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "가격문장활용의최소정수025이다. 비용모델은할인율이나이익률을쓰지않으므로028이아니다. 1,250,000+2500x<55000x에서x>500/21이므로24. 고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "conditionKeys",
+      "before": [
+        "COND_NONZERO"
+      ],
+      "after": [],
+      "reason": "한UID에다항식나눗셈2개와일차부등식2개가독립적으로섞여있다. 단일primary를새로확정하지않고기존POLYNOMIAL분류를잠정보존하며각부분의실제RPM을별도로기록한다. 바른결과는3a²+1,6x+12,x>−4,x>6이다. 각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "integrationPattern",
+      "before": "CASE_BRANCH",
+      "after": "NONE",
+      "reason": "한UID에다항식나눗셈2개와일차부등식2개가독립적으로섞여있다. 단일primary를새로확정하지않고기존POLYNOMIAL분류를잠정보존하며각부분의실제RPM을별도로기록한다. 바른결과는3a²+1,6x+12,x>−4,x>6이다. 각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "한UID에다항식나눗셈2개와일차부등식2개가독립적으로섞여있다. 단일primary를새로확정하지않고기존POLYNOMIAL분류를잠정보존하며각부분의실제RPM을별도로기록한다. 바른결과는3a²+1,6x+12,x>−4,x>6이다. 각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "한UID에다항식나눗셈2개와일차부등식2개가독립적으로섞여있다. 단일primary를새로확정하지않고기존POLYNOMIAL분류를잠정보존하며각부분의실제RPM을별도로기록한다. 바른결과는3a²+1,6x+12,x>−4,x>6이다. 각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+    }
+  ],
+  "sourceWriterDeferred": [
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+      "field": "problemTypeKey",
+      "before": "PT_QUADRILATERAL_PROPERTIES",
+      "after": null,
+      "reason": "REGISTRATION_BOUND_FIELD_PROPOSAL_ONLY_NO_UNBOUND_SOURCE_CLEAR_OR_FILL"
+    }
+  ],
+  "reviewedSourceBlob": "4845ebcfc5e684e08337b4ba4e6c48f5c5507cec",
+  "finalSourceBlob": "123a36e6a953a9a1e30e1bba11a0188e2f399877",
+  "reviewSha256": "329c657c33266214902a28fe1e0a063bc4a89105f87e1167d53218ddc2ed1eca",
+  "acceptedReviewSha256": "3d172ce07b99f44c35e665c11a2cb6e33ddb11618b74f2f73e91a26df5e0bd3c",
+  "independentSha256": "adc13a53aca7c15540d410122a5be8e5ffe8498396c7d01b68e92fccd902963a",
+  "reviewedFourSlotSha256": "fa533f56b4cdae4ea92d44a778b12474a1d1a688764453371074f12e2e114558",
+  "finalFourSlotSha256": "282d8e68ae5220d6401ab6ded2ca019b2bc23392b122184d85917faba709cd7f",
+  "independentSupplements": [
+    {
+      "file": "independent-supplements/E013.q22-method-evidence-amendment.json",
+      "sha256": "24edd2a609d4d064c43a0b383528a6e0b7f82873a50e9dfcbce5261a4a8ceca8"
+    }
+  ],
+  "fourSlotRebind": {
+    "transformation": "sourceGitBlobSha and only the explicitly recorded scopedOverrides; author bytes preserved separately.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ]
+}
