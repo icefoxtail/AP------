@@ -456,8 +456,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[풀이 과정]\n$AB$의 기울기는 $\\frac13$, $BC$의 기울기는 $-\\frac43$이다.\n따라서 $C$를 지나 $AB$에 수직인 직선은 $y=-3x+16$, $A$를 지나 $BC$에 수직인 직선은 $y=\\frac34x+1$이다.\n두 직선을 연립하면 $H=(4,4)$이다.\n직선 $BC$의 방정식은 $4x+3y-33=0$이고 $BC=5$이다.\n$H$에서 $BC$까지의 거리는 $\\frac{|16+12-33|}{5}=1$이다.\n따라서 삼각형 $HBC$의 넓이는 $\\frac12\\cdot5\\cdot1=\\frac52$이다.\n\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_금당고_2학기_중간_고1_유사2/q14.svg",
-    "imageSize": "large"
+    "image": "assets/images/25_금당고_2학기_중간_고1_유사2/q14-problem-v1.svg",
+    "imageSize": "full"
   },
   {
     "id": 15,

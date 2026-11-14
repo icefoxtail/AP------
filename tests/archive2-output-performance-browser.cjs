@@ -11,6 +11,7 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const H = require('./archive2-solution-loading-browser.cjs');
 const { inspectPdf } = require('./archive2-output-pdf-evidence.cjs');
+const { loadQualificationFixtures } = require('./archive2-output-qualification-fixtures.cjs');
 
 const root = path.resolve(__dirname, '..');
 const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || require('./archive2-output-comparison-references.json').performanceReference;
@@ -27,14 +28,6 @@ const operationTimeoutMs = networkOnly ? 480000 : 90000;
 const suiteDeadline = Date.now() + suiteBudgetMinutes * 60 * 1000;
 const hash = value => crypto.createHash('sha256').update(value).digest('hex');
 const round = value => Number(Number(value).toFixed(2));
-const fixtures = [
-  { id: 'envelope50', kind: 'envelope', sources: H.sourceFiles },
-  { id: 'envelope50-qpp1', kind: 'envelope', qpp: 1, sources: H.sourceFiles },
-  { id: 'images24', kind: 'original', sources: [H.sourceFiles[1]] },
-  { id: 'long23', kind: 'original', sources: ['archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js'] },
-  { id: 'ordinary', kind: 'original', sources: [H.sourceFiles[0]] },
-  { id: 'envelope8', kind: 'envelope', limit: 8, sources: [H.sourceFiles[0]] }
-];
 const operationsByCycle = {
   performance: [{ id: 'cold-exam', mode: 'exam' }, { id: 'exam-sol', mode: 'sol' }, { id: 'sol-ans', mode: 'ans' },
     { id: 'ans-exam', mode: 'exam' }, { id: 'exam-sol-warm', mode: 'sol' }, { id: 'sol-ans-warm', mode: 'ans' },
@@ -78,7 +71,7 @@ function writeReport() {
   fs.mkdirSync(reportDir, { recursive: true });
   fs.writeFileSync(path.join(reportDir, 'output-performance.json'), JSON.stringify(report, null, 2));
 }
-function planCoverage(legacy, golden) {
+function planCoverage(fixtures, legacy, golden) {
   const labels = profileOnly ? ['current'] : ['baseline', 'current'];
   const measurements = [];
   const add = (fixture, repeat, purpose, network, operations) => {
@@ -879,22 +872,13 @@ async function main() {
   requireThat(chrome && fs.existsSync(chrome), 'REAL_CHROME_BIN_REQUIRED');
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.playwrightVersion = require('playwright/package.json').version;
-  for (const fixture of fixtures) fixture.questions = fixture.kind === 'envelope' ? H.realFixture(root).slice(0, fixture.limit || 50) : H.loadBank(root, fixture.sources[0]);
-  report.fixtures = fixtures.filter(fixture => !networkOnly || fixture.id === networkFixtureId).map(fixture => ({ id: fixture.id, kind: fixture.kind, qpp: fixture.qpp || 4, questions: fixture.questions.length,
-    inputSha256: hash(JSON.stringify(fixture.questions)), sources: fixture.sources.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file))) })) }));
-  requireThat(fixtures[0].questions.length === 50, 'REAL_50_QUESTION_FIXTURE_CHANGED');
-  requireThat(hash(JSON.stringify(fixtures.find(item => item.id === 'envelope50-qpp1').questions)) === hash(JSON.stringify(fixtures[0].questions)),
-    'QPP_VARIANT_CHANGED_REAL_50_QUESTION_BYTES');
-  const legacy = { ...fixtures[0], id: 'legacy50', kind: 'legacy' };
-  const goldenSource = 'archive/exams/test-fixtures/render-authority-golden.js';
-  const golden = { id: 'continuation-golden', kind: 'original', sources: [goldenSource], questions: H.loadBank(root, goldenSource) };
-  if (!networkOnly) {
-    report.fixtures.push({ id: legacy.id, kind: legacy.kind, qpp: legacy.qpp || 4, questions: legacy.questions.length,
-      inputSha256: hash(JSON.stringify(legacy.questions)), sources: report.fixtures[0].sources });
-    report.fixtures.push({ id: golden.id, kind: golden.kind, qpp: golden.qpp || 4, questions: golden.questions.length,
-      inputSha256: hash(JSON.stringify(golden.questions)), sources: [{ file: goldenSource, sha256: hash(fs.readFileSync(path.join(root, goldenSource))) }] });
-  }
-  planCoverage(legacy, golden);
+  const pinned = loadQualificationFixtures(root);
+  report.fixtures = pinned.fixtures.filter(fixture => !networkOnly || fixture.id === networkFixtureId)
+    .map(fixture => ({ ...fixture, questions: fixture.questions.length }));
+  const runtimeFixtures = pinned.fixtures.map(fixture => ({ ...fixture, sources: fixture.sources.map(source => source.file) }));
+  const fixtures = runtimeFixtures.slice(0, 6);
+  const [legacy, golden] = runtimeFixtures.slice(6);
+  planCoverage(fixtures, legacy, golden);
   writeReport();
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-output-performance-'));
   const baselineRoot = path.join(temp, 'baseline');
@@ -903,9 +887,9 @@ async function main() {
     if (!profileOnly) {
       execFileSync('git', ['worktree', 'add', '--detach', baselineRoot, baseSha], { cwd: root, stdio: 'pipe', timeout: 120000 });
       worktree = true;
-      baselineServer = await H.serve(baselineRoot, root);
+      baselineServer = await H.serve(baselineRoot, root, pinned.sourceOverlay);
     }
-    currentServer = await H.serve(root);
+    currentServer = await H.serve(root, root, pinned.sourceOverlay);
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
     if (networkOnly) {

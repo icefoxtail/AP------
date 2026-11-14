@@ -549,13 +549,14 @@ window.questionBank = [
     "solution": "[키포인트] 두 수선의 방정식을 구하여 교점 $H$의 좌표를 찾은 뒤 삼각형의 넓이를 계산한다.\n조건 정리: $AH\\perp BC$, $CH\\perp AB$이고 $H=(p,q)$이다.\n풀이 방향: $BC$와 $AB$의 기울기를 이용해 두 수선의 방정식을 세운다.\n정석 풀이:\n1. 직선 $BC$의 기울기는 $-1$이므로 점 $A(2,1)$을 지나는 수선의 기울기는 $1$이다. 따라서 첫 번째 수선은 $y=x-1$이다.\n2. 직선 $AB$의 기울기는 $\\dfrac12$이므로 점 $C(5,7)$을 지나는 수선의 기울기는 $-2$이다. 따라서 두 번째 수선은 $y=-2x+17$이다.\n3. 두 수선을 연립하면 $H=(6,5)$이다. 따라서 $p+q=11$이다.\n4. 삼각형 $HBC$의 넓이는 좌표를 이용하여 $\\dfrac12|8(7-5)+5(5-4)+6(4-7)|=\\dfrac32$이다.\n5. 따라서 구하는 값은 $2\\times\\dfrac32+11=14$이다.\n핵심 확인: $H=(6,5)$는 두 수선 $y=x-1$, $y=-2x+17$을 모두 만족한다.\n따라서 정답은 ③이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_금당고_2학기_중간_고1_유사/q14.svg",
+    "image": "assets/images/25_금당고_2학기_중간_고1_유사/q14-problem-v1.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_유사/q14-solution.svg",
     "solutionImageAlt": "두 수선의 교점 H",
     "solutionImageCaption": "AH⊥BC, CH⊥AB와 H=(6,5)를 확인한다.",
     "solutionImageSize": "large",
     "imageStatus": "reviewed",
-    "visualAsset": "assets/images/25_금당고_2학기_중간_고1_유사/q14.svg",
+    "visualAsset": "assets/images/25_금당고_2학기_중간_고1_유사/q14-problem-v1.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -567,7 +568,7 @@ window.questionBank = [
         "orthocenter_H"
       ],
       "essentialVisualFacts": "A=(2,1), B=(8,4), C=(5,7), H=(6,5), AH perpendicular BC, CH perpendicular AB",
-      "assetRef": "assets/images/25_금당고_2학기_중간_고1_유사/q14.svg"
+      "assetRef": "assets/images/25_금당고_2학기_중간_고1_유사/q14-problem-v1.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"

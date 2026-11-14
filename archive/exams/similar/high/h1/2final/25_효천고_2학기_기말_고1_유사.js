@@ -598,9 +598,10 @@ window.questionBank = [
     "solution": "[키포인트] 목표값에서 시작해 $f(x)=t$의 원상을 세 단계 거꾸로 추적한다.\n조건 정리: $0\\le t\\lt6$이면 $f(x)=t$는 $x=\\dfrac t2$, $x=6-\\dfrac t2$의 두 해를 갖는다.\n풀이 방향: $2$의 원상에서 시작해 두 번 더 원상을 구한다.\n정석 풀이: $f(x)=2$의 해는 $1,5$이다. 다음 단계에서 $1$의 원상은 $\\dfrac12,\\dfrac{11}{2}$이고, $5$의 원상은 $\\dfrac52,\\dfrac72$이므로 네 값이 생긴다. 이 네 값은 모두 $0$과 $6$ 사이의 값이고 $6$이 아니므로 각각 다시 두 개의 원상을 갖는다. 서로 겹치는 값이 없으므로 마지막 원상은 모두 $8$개이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q17.svg",
+    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q17-problem-v2.svg",
+    "imageSize": "tall",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q17.svg",
+    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q17-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",

@@ -6,7 +6,7 @@ from graph_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['graphPlan'],payload['svg'],payload['transform'])
+    result=audit(payload['graphPlan'],payload['svg'],payload['transform'],model=payload.get('action')=='modelBinding')
     status='OK'
 except (ValueError,KeyError,TypeError) as error:
     result,status={'code':str(error)},'ERROR'

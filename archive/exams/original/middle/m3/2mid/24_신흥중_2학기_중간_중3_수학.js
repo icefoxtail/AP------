@@ -34,7 +34,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A를 기준으로 직각삼각형의 굵은 빗변 AB는 17, 밑변 AC는 15, 점선으로 그린 맞은편 변 BC는 8이다.",
+    "solutionImageCaption": "각을 바꾸어도 빗변은 그대로이고 맞은편 변과 이웃한 변의 역할은 바뀐다. 정답 ①, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -68,7 +72,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑변 6, 높이 8, 빗변 10의 직각삼각형이다. 밑변과 높이 및 빗변과 안쪽 점선이 각각 수직이며, 각 x와 y에 같은 호를 표시했다.",
+    "solutionImageCaption": "각 x와 y가 같아 두 삼각비를 길이 6, 8, 10인 같은 삼각형에서 읽을 수 있다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -266,7 +274,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT"
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이 AC에 대해 왼쪽 B의 30도와 가운데 E의 60도에서 각각 밑변을 재는 두 직각삼각형이다. BE는 6, EC는 x이다.",
+    "solutionImageCaption": "큰 삼각형의 밑변은 6+x, 작은 삼각형의 밑변은 x이고 높이는 같다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -300,7 +312,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 C에서 밑변 AB로 수선을 내려 두 직각삼각형을 만들었다. 높이 CD는 4이고 AD와 같으며, BD는 4√3이다.",
+    "solutionImageCaption": "밑변은 BD와 AD를 합한 길이이고 수직 높이는 CD이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -369,7 +385,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 손에서 올려다본 각은 40도이고 연줄은 40 m이다.",
+    "solutionImageCaption": "손 높이와 손에서 연까지의 높이차를 더한다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -404,7 +424,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 빗변 5인 직각삼각형에서 각 B는 42도, 각 A는 48도다. 두 각에서 바라보는 변 AC를 굵게 표시했다.",
+    "solutionImageCaption": "AC는 42°에서 맞은편 변, 48°에서 이웃한 변이다. 정답 ①, ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -438,7 +462,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A의 이등분선 AP를 굵은 밑변으로 표시했다. 점 B와 C에서 이 밑변을 포함한 직선으로 내린 높이는 각각 2√3과 4√3이다.",
+    "solutionImageCaption": "두 삼각형의 넓이를 공통 밑변 AP와 두 높이로 나타내어 더한다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -470,7 +498,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형에서 OM과 ON이 각각 두 현에 수직이고, 두 현의 각 절반에 같은 눈금이 있다. 두 중점을 잇는 MN은 BC와 평행하다.",
+    "solutionImageCaption": "M, N은 서로 다른 두 현의 중점이므로 MN은 BC와 평행하고 길이는 BC의 절반이다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -502,7 +534,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 굵은 현과 다른 현까지의 점선 수선 길이가 모두 4 cm이다. 다른 현의 한쪽 5 cm에 같은 길이 눈금을 표시했다.",
+    "solutionImageCaption": "한 현은 길이 5 cm인 두 부분으로 나뉘고, 두 현은 중심에서 같은 거리에 있다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -535,7 +571,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q16-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 작은 원에 접하는 현 AB의 중점 M에서 직각 표시가 있다. 두 반지름 OA와 OM은 각각 R과 r이고, 반현 AM과 MB에는 같은 눈금이 있다.",
+    "solutionImageCaption": "AM의 제곱은 큰 반지름과 작은 반지름의 제곱 차이다. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -580,14 +619,15 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 원 $O$는 사각형 $ABHD$의 네 변과 접하고, 네 점 $E$, $F$, $G$, $I$는 접점이다. 직사각형 $ABCD$에서 $\\overline{AB}=12\\,\\mathrm{cm}$, $\\overline{BC}=18\\,\\mathrm{cm}$일 때, $\\triangle CDH$의 둘레의 길이를 구하면? [4점]",
-    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q18.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q18_question-v2.svg",
+    "imageSize": "tall",
     "choices": [
       "$30\\,\\mathrm{cm}$",
       "$32\\,\\mathrm{cm}$",
@@ -600,7 +640,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형의 네 접점 E, F, G, I를 표시했다. 점 D에서 나온 접선 두 개와 점 H에서 나온 접선 두 개에 서로 다른 표시를 붙였다.",
+    "solutionImageCaption": "DH는 12+x, HC는 12−x이므로 두 변을 더하면 x가 사라진다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -634,7 +678,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 접은 선 AB의 서로 반대쪽에 있는 중심 O와 접기 전의 원 위 점 Q를 잇는다. 두 정삼각형에서 중심각 AOB는 120도이고 원주각 APB는 60도이다.",
+    "solutionImageCaption": "같은 호를 보는 원주각의 크기는 중심각의 절반이다. 정답 ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -666,7 +714,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 내접원 중심 O와 세 꼭짓점을 연결한다. 세 접점으로 내린 점선 반지름은 모두 같은 길이이며 각 변과 수직이다.",
+    "solutionImageCaption": "세 변을 각각 밑변으로 삼으면 높이가 모두 반지름인 삼각형 세 개의 넓이 합이 54 cm²이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -694,7 +746,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 삼각형 BCE와 DHE의 빗변을 굵게 표시했다. BC는 6 cm, CE는 2√3, DH는 2√3−2이다.",
+    "solutionImageCaption": "큰 정사각형의 넓이에서 두 직각삼각형의 넓이를 뺀다. 정답 48−14√3 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -723,7 +779,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지면 위 B와 D가 10 m 떨어져 있다. B의 30도와 D의 45도에서 같은 꼭대기 A를 보며, 밑변 DC와 건물 높이 AC는 같은 눈금으로 표시했다.",
+    "solutionImageCaption": "45° 쪽의 밑변은 높이와 같고, 30° 쪽의 밑변은 여기에 10 m를 더한 길이다. 정답 5√3+5 m.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -751,7 +810,10 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 중심에서 정삼각형의 각 변까지 같은 길이의 수선을 표시했다. 점 A에서 밑변 중점 L로 내린 높이는 점선을 이었고 BL은 3 cm이다.",
+    "solutionImageCaption": "삼각형 ABC가 정삼각형이므로 밑변 반쪽과 피타고라스 정리로 높이를 구한다. 정답 9√3 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -777,6 +839,10 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 변 BC가 원과 만나는 점은 F이다. B에서 그은 접선 BD와 BF, C에서 그은 접선 CE와 CF는 각각 같은 눈금을 갖는다.",
+    "solutionImageCaption": "삼각형의 둘레에서 BF와 FC를 BD와 CE로 바꾸면 AD와 AE의 합이 된다. 정답 22 cm.",
+    "solutionImageSize": "full"
   }
 ];

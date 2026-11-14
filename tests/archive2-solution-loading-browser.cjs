@@ -9,7 +9,6 @@ const http = require('node:http');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
 const { execFileSync } = require('node:child_process');
-const { chromium } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
 const baseSha = process.env.ARCHIVE_SOLUTION_BASE_SHA || require('./archive2-output-comparison-references.json').originalReference;
@@ -72,14 +71,14 @@ async function record(name, work, group = 'rows') {
   }
 }
 
-function loadBank(directory, file) {
+function loadBank(directory, file, readSource = filename => fs.readFileSync(path.join(directory, filename))) {
   const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(directory, file), 'utf8'), context, { filename: file, timeout: 3000 });
+  vm.runInNewContext(readSource(file).toString('utf8'), context, { filename: file, timeout: 3000 });
   requireThat(Array.isArray(context.window.questionBank), 'FIXTURE_BANK_MISSING', { file });
   return context.window.questionBank;
 }
-function realFixture(directory) {
-  return sourceFiles.flatMap(file => loadBank(directory, file).map((question, index) => {
+function realFixture(directory, readSource) {
+  return sourceFiles.flatMap(file => loadBank(directory, file, readSource).map((question, index) => {
     const source = file.slice('archive/exams/'.length);
     const uid = `loading:${source}:${index + 1}`;
     return { ...question, sourceArchiveFile: source, _sourceFile: source,
@@ -110,7 +109,7 @@ function solutionAssetMetadata(questions, directory) {
     totalBytes: files.reduce((sum, file) => sum + file.bytes, 0), largestFileBytes: Math.max(0, ...files.map(file => file.bytes)), files };
 }
 
-async function serve(directory, sharedSourceRoot = directory) {
+async function serve(directory, sharedSourceRoot = directory, sourceOverlay) {
   const state = { retryRecovered: false, faults: {}, timers: new Set() };
   const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
     '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2' };
@@ -134,9 +133,14 @@ async function serve(directory, sharedSourceRoot = directory) {
         res.on('close', () => { clearTimeout(timer); state.timers.delete(timer); });
         return;
       }
-      // Compare renderer versions against identical current source/figure bytes.
-      // Code is always read from its own checkout; an absent baseline script is
-      // a real 404, never a fallback to the new implementation.
+      // Measured-output qualification serves the same verified exam JS on both hosts.
+      // Other exams/assets retain their shared root; code always comes from its own checkout.
+      const pinnedSource = sourceOverlay?.(pathname);
+      if (pinnedSource !== undefined) {
+        res.setHeader('Content-Type', mime['.js']);
+        res.end(pinnedSource);
+        return;
+      }
       const servingRoot = pathname.startsWith('/archive/exams/') || pathname.startsWith('/archive/assets/') ? sharedSourceRoot : directory;
       const filename = path.resolve(servingRoot, '.' + pathname);
       if (!filename.startsWith(servingRoot + path.sep) || !fs.existsSync(filename) || !fs.statSync(filename).isFile()) {
@@ -410,6 +414,7 @@ async function main() {
     report.fixture.solutionAssets = solutionAssetMetadata(actual, root);
     const originalCount = loadBank(root, sourceFiles[0]).length;
     baselineServer = await serve(baselineRoot, root); currentServer = await serve(root);
+    const { chromium } = require('playwright');
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
     deadline = Date.now() + 300000;
