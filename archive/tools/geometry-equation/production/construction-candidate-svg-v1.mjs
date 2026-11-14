@@ -143,6 +143,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
 
     let spec;
     try{spec=specFor(plan,model,identity.assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('SPEC_ERROR',{code:error.message});}
+    if(graph&&identity.surface==='PROBLEM_VISUAL')spec.displayFacts.preferTickSide=true;
     if(Object.hasOwn(plan,'accessibilityDescription')){
       const description=plan.accessibilityDescription;
       if(typeof description!=='string'||!description.trim()||description.length>500||/[\r\n]/.test(description))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});

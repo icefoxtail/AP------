@@ -1205,25 +1205,28 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                     route_length=sum(math.dist(a,b) for a,b in zip(route,route[1:]))
                     if route_length>max_length:continue
                     chosen=box;method=route_method;label['_selectedLeaderPath']=route;break
-            for gap in default_gaps:
-                for direction in directions:
-                    box=candidate(label['at'],w,h,direction,gap)
-                    if (line_owner is not None or leader_owned_ids) and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
-                        # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line
-                        # (or, for a mark label, only the mark it names).
-                        if not acceptable(box,owner_check=False):continue
-                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,(owner_line_incident_ids(line_owner,start,occupied) if collinear_owners else {line_owner['id']}) if line_owner is not None else leader_owned_ids)
-                        if end is None:continue
-                        tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
-                    if not acceptable(box):continue
-                    if owner_marker is not None and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
-                        # A point label this far from its point is tied back to it by a visible leader; without one the next candidate is tried.
-                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,owner_incident_ids(start,owner_marker,occupied))
-                        if end is None:continue
-                        tie_to_owner(end)
-                    chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
-                    break
-                if chosen:break
+            if tick_owner is not None and label.get('preferTickSide'):
+                # Keep a row of ticks on its conventional side when a little more clearance is enough.
+                candidates=((gap,direction) for direction in directions for gap in default_gaps)
+            else:
+                candidates=((gap,direction) for gap in default_gaps for direction in directions)
+            for gap,direction in candidates:
+                box=candidate(label['at'],w,h,direction,gap)
+                if (line_owner is not None or leader_owned_ids) and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
+                    # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line
+                    # (or, for a mark label, only the mark it names).
+                    if not acceptable(box,owner_check=False):continue
+                    start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,(owner_line_incident_ids(line_owner,start,occupied) if collinear_owners else {line_owner['id']}) if line_owner is not None else leader_owned_ids)
+                    if end is None:continue
+                    tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                if not acceptable(box):continue
+                if owner_marker is not None and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
+                    # A point label this far from its point is tied back to it by a visible leader; without one the next candidate is tried.
+                    start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,owner_incident_ids(start,owner_marker,occupied))
+                    if end is None:continue
+                    tie_to_owner(end)
+                chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
+                break
             if chosen is None and tick_owner is not None and tick_callout is None:
                 # Two tick labels meeting near the origin (x=-1 and y=1) can leave one of them no clean box on its axis-normal sides. It may then slide along its
                 # axis by up to the owner-alignment tolerance (it still names its own tick); the nearest slide that clears every other label and mark wins.
