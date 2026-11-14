@@ -40,15 +40,15 @@ window.questionBank = [
       "sourceQid": 1,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyReason": "The condition for a quadratic equation is directly read after collecting x² terms: its coefficient 4+b must be nonzero. One immediate definition check, so bucket 1.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NONZERO"],
+    "conditionKeys": [],
     "integrationPattern": "NONE"
   },
   {
@@ -240,10 +240,10 @@ window.questionBank = [
       "sourceQid": 5,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyReason": "Carry out the completing-square algorithm, track four intermediate values, and combine them. The setup is prescribed, but several linked algebraic steps must be organized; bucket 3/B23.",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
@@ -290,10 +290,10 @@ window.questionBank = [
       "sourceQid": 6,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
     "difficultyReason": "Insert a=5,b=−1,c=−2 in the quadratic formula and simplify the discriminant. A direct familiar procedure with no strategy selection, bucket 2.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
@@ -341,14 +341,14 @@ window.questionBank = [
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyReason": "Apply the quadratic formula once, then identify the numerator and radicand in the requested form and add them. The route is explicit, bucket 2.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RATIONAL"],
     "integrationPattern": "NONE"
   },
   {
@@ -390,7 +390,7 @@ window.questionBank = [
       "sourceQid": 8,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "Use coefficient comparison for the natural-number roots, enumerate the only unordered positive pairs summing to 4, and branch to determine a. The domain and case split are central, so bucket 4/B34.",
     "difficultyBoundaryFlag": "B34",
@@ -450,8 +450,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
-    "integrationPattern": "REINTERPRETATION"
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 10,
@@ -459,7 +459,7 @@ window.questionBank = [
     "category": "이차함수의 뜻",
     "originalCategory": "이차방정식",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-04",
+    "standardUnitKey": "M3-02",
     "standardUnit": "이차함수와 그 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
@@ -476,8 +476,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 색칠한 넓이는 전체 정사각형에서 잘라낸 부분을 뺍니다.\n전체 넓이 $=(x+1)^2$.\n잘라낸 넓이 $=1^2=1$.\n$y=(x+1)^2-1=x^2+2x+1-1=x^2+2x$.\n정답 ④입니다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수와 그래프",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "image": "assets/images/21_금당중_1학기_기말_중3_수학/q10.png",
@@ -496,9 +496,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_AREA"],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "NONE"
   },
   {
     "id": 11,
@@ -540,7 +540,7 @@ window.questionBank = [
       "sourceQid": 11,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyReason": "Inspect five graph statements using axis, vertex, opening direction, width, and symmetry. The properties are standard, but the student must compare several distinct claims; bucket 3/B23.",
     "difficultyBoundaryFlag": "B23",
@@ -557,7 +557,7 @@ window.questionBank = [
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-04",
+    "standardUnitKey": "M3-01",
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
@@ -580,8 +580,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 그래프 $y=kx^2$의 계수는 양수와 음수를 먼저 나누어 비교합니다.\n문제에서 제시한 값은 $a=-2$, $b=-\\frac12$, $c=3$, $d=1$입니다.\n양수끼리는 $3>1$이므로 $c>d$.\n음수끼리는 $-\\frac12>-2$이므로 $b>a$.\n따라서 $c>d>b>a$, 정답 ⑤입니다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수와 그래프",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q12_solution.svg",
@@ -597,10 +597,10 @@ window.questionBank = [
       "originalImageGitBlobSha": "e1f6fa7dccbb6baf2664d0141a71cfd08cda4195",
       "newItemDistinguishedFromSchoolOriginal": true
     },
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
     "difficultyReason": "Order four explicit coefficients by sign and magnitude. The values and comparison rule are stated directly, bucket 2.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
@@ -650,7 +650,7 @@ window.questionBank = [
       "sourceQid": 13,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "Read the graph’s symmetry axis, vertex and x-intercept, select y=ax²+8, then determine a. Translating graphical data into an equation requires a standard strategic choice, bucket 3/B23.",
     "difficultyBoundaryFlag": "B23",
@@ -659,7 +659,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "NONE"
   },
   {
     "id": 14,
@@ -702,7 +702,7 @@ window.questionBank = [
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyReason": "Read the vertex form to check location, axis, opening and shift, then compare |a| for width. Familiar graph properties with one direct comparison, bucket 2/B12; retain legacy 하 after adjacent-level recheck.",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
@@ -752,7 +752,7 @@ window.questionBank = [
       "sourceQid": 15,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyReason": "Rewrite x+2 as x−(−2), then read the horizontal and vertical translations. One familiar representation rule, bucket 2/B12; retain legacy 하 after adjacent-level recheck.",
     "difficultyBoundaryFlag": "B12",
@@ -765,7 +765,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -806,7 +806,7 @@ window.questionBank = [
       "sourceQid": 16,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "Compare five labeled graph vertices with the five proposed vertex-form equations. The graph-to-equation correspondence and decoys require organized checking, but no nonstandard insight; bucket 3 near B34. Recheck accepts the adjacent legacy 상 label.",
     "difficultyBoundaryFlag": "B34",
@@ -870,7 +870,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -908,10 +908,10 @@ window.questionBank = [
       "sourceQid": 18,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "For one function prove positivity for all x<0; for each of four alternatives find a negative-x witness with negative y. This requires a case-by-case sign strategy, bucket 4/B34.",
-    "difficultyBoundaryFlag": "B34",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
@@ -959,10 +959,10 @@ window.questionBank = [
       "sourceQid": 19,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
     "difficultyReason": "Reflect every point (x,y) to (x,−y), equivalently negate the whole function expression. One direct transformation, bucket 2.",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
@@ -1013,7 +1013,7 @@ window.questionBank = [
       "sourceQid": 20,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "Read several roots and signs from the graph, evaluate the indicated quadratic expressions at specific x-values, and decide which claim fails. The graph constraints interact with coefficient tests; bucket 4/B34.",
     "difficultyBoundaryFlag": "B34",
@@ -1064,7 +1064,7 @@ window.questionBank = [
       "sourceQid": 21,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyReason": "Use the vertex to determine the opening direction and establish the behavior on each half-axis; combine the all-quadrants requirement with y(0)>0. Interdependent sign and range conditions, bucket 4/B34.",
     "difficultyBoundaryFlag": "B34",
@@ -1072,8 +1072,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE"],
-    "integrationPattern": "INTERDEPENDENT"
+    "conditionKeys": ["COND_NONZERO"],
+    "integrationPattern": "NONE"
   },
   {
     "id": 22,
@@ -1108,7 +1108,7 @@ window.questionBank = [
       "sourceQid": 22,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "Recognize both perfect-square forms that give a repeated root and handle the two signs for p and the root. A standard but branched structure, bucket 3/B23.",
     "difficultyBoundaryFlag": "B23",
@@ -1117,11 +1117,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "NONE"
   },
   {
     "id": 23,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -1156,20 +1156,20 @@ window.questionBank = [
       "sourceQid": 23,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "Find the x-intercepts, use their midpoint for the symmetry axis, substitute for the vertex height, then combine with triangle area. Several connected representations and a geometry application, bucket 4/B34.",
-    "difficultyBoundaryFlag": "B34",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_QUADRATIC_EQUATION","CC_TRIANGLE_AREA"],
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 24,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -1202,15 +1202,15 @@ window.questionBank = [
       "sourceQid": 24,
       "sourceBranch": "codex/scan-intake-deliverables-20261012"
     },
-    "difficultyBucket": 4,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyReason": "Complete the square, locate the vertex and intercept information, then use the sign for x<0 to exclude a quadrant. A multi-representation graph analysis, bucket 4/B34.",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_COMPLETE_SQUARE"],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   }
 ];
