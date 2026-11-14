@@ -502,12 +502,12 @@ window.questionBank = [
     "standardUnit": "명제",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "표"
     ],
     "wide": false,
-    "content": "다음은 명제 ‘$a$, $b$가 모두 홀수일 때, $m=11a+b$, $n=3a+b$ 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다.<br><img src=\"assets/images/25_순천고_2학기_기말_고1_기출/q16.png\" alt=\"증명 과정\"><br>위의 과정에서 □ 안의 (가), (나)에 알맞은 식을 각각 $f(a)$, $g(a)$, (다)에 알맞은 수를 $k$라 할 때, $f(k)+g(k)$의 값은? [4.5점]",
+    "content": "다음은 명제 ‘$a$, $b$가 모두 홀수일 때, $m=11a+b$, $n=3a+b$ 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다.<br><img src=\"assets/images/25_순천고_2학기_기말_고1_기출/q16.png\" alt=\"증명 과정\" style=\"display:block;width:100%;max-width:100%;height:auto;\"><br>위의 과정에서 □ 안의 (가), (나)에 알맞은 식을 각각 $f(a)$, $g(a)$, (다)에 알맞은 수를 $k$라 할 때, $f(k)+g(k)$의 값은? [4.5점]",
     "choices": [
       "$10$",
       "$20$",
