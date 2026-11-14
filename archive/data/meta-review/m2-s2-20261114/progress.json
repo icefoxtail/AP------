@@ -8356,12 +8356,122 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "2d1d1a3e977fef68fb092c0cbbcb41d8295b274483add7cf63e65b2703883811"
+      "uidSetSha256": "2d1d1a3e977fef68fb092c0cbbcb41d8295b274483add7cf63e65b2703883811",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 17,
+      "registrationPendingQuestionCount": 17,
+      "unresolvedQuestionCount": 7,
+      "unresolvedOrdinals": [
+        1,
+        2,
+        8,
+        10,
+        14,
+        19,
+        24
+      ],
+      "sourceHoldQuestionCount": 11,
+      "sourceHoldOrdinals": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        10,
+        13,
+        14,
+        19,
+        24
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        2,
+        7,
+        24
+      ],
+      "independentReviewer": "ROOT",
+      "topicSummary": [
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            21
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            14,
+            15,
+            16,
+            17,
+            22
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            18,
+            19,
+            20,
+            23,
+            24
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E055/four-slot.json",
+          "sha256": "78fe44f2911746a7be92ce091db554e9092f400369aed91aafecd41818cd443c"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E055/independent-sample.json",
+          "sha256": "862732cc043039a4f2ff0e28fdaeba204acc2183ca937fee7ed3fe7347039d4b"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E055/mechanical-check.json",
+          "sha256": "3aa44242224975b17f0b3534a2a43cfa521c42b0e001848a830e86c1217463a7"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E055/review.json",
+          "sha256": "9162a12821ec07eaa4bca2f9c318802ac836dc76fec9794b9624ad2cb22fb326"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E055/root-acceptance.json",
+          "sha256": "ceb1f22c2688a5300b57aa0e76c7374dfd22de59ef447d9b896f0c98da96967a"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E056",
@@ -8511,11 +8621,12 @@
           "sha256": "14802d23bfa9f2b18773088656c4305aa23ebb14a8eec17ca45fd1787e413a83"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         24
-      ]
+      ],
+      "remoteCommit": "e7ccab7b03c42686c7b89782e38b49520d4e54b4"
     },
     {
       "examId": "E057",
@@ -9008,14 +9119,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 55,
-    "reviewedQuestions": 1316,
-    "fullyJudgedQuestions": 1298,
-    "unresolvedQuestions": 18,
-    "remainingExams": 12,
-    "remainingQuestions": 288
+    "reviewedExams": 56,
+    "reviewedQuestions": 1340,
+    "fullyJudgedQuestions": 1315,
+    "unresolvedQuestions": 25,
+    "remainingExams": 11,
+    "remainingQuestions": 264
   },
-  "lastVerifiedExamCommit": "a94edf65155b3b98279916610db83cd54044b214",
+  "lastVerifiedExamCommit": "e7ccab7b03c42686c7b89782e38b49520d4e54b4",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",

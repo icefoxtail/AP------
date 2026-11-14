@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E055",
+  "reviewer": "ROOT",
+  "author": "A",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "efdb02b2055770e91d5dd840dac6661d60f8ca6c",
+  "reviewSha256": "40ccac092b084551678bf8128b6dd96a1ca5994048b499885d607a45e0d4b3bd",
+  "fourSlotSha256": "78fe44f2911746a7be92ce091db554e9092f400369aed91aafecd41818cd443c",
+  "ordinals": [
+    2,
+    7,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_5ea7778dbac6e3f48afc272885bbd1807cd92b8ddb2dbd79e4f55f6dc85f02ce",
+      "verdict": "ACCEPT_PARTIAL_RECORD_ONLY",
+      "reason": "문자상등과이등변삼각형 given, B각 goal은확인했다. method인연쇄외각과미지수는기존해설의정확인용이지만실제그림이다른문항이므로PARTIAL_SOURCE_EVIDENCE 후보기록으로만수용한다. ACTIVE 이등변PT/TPL·2015부모는후보골격과일치하고등록차단은유지한다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": true,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a805fa22286617292762779b0ac6c0b938a25addad614fdc8b8c3e95f82d7341",
+      "verdict": "PASS_WITH_SOURCE_HOLD",
+      "reason": "외심 given과각 goal, 같은반지름→이등변밑각상등 method를 실제그림의x/29도위치에대조했다. 기존해설의유효한등각인용만사용하고추정출제의도로30도를고른부분을재사용하지않은수리를수용한다. ACTIVE 외심PT/TPL과2015binding에맞고별도CC가필요없다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_2cc9c4780dca8975f92ba7ed5d3306628554a28088350e533f8fa1b58a7d7583",
+      "verdict": "ACCEPT_PARTIAL_RECORD_ONLY",
+      "reason": "대각선·사각형 given과이름/이유 goal, 대각선성질 method는일반분류의정확인용이다. 잘린번호별분기조건은정상슬롯으로추정하지않고PARTIAL/UNRESOLVED에남겼다. 특수사각형PT/TPL의후보대응만수용하며최종판정이나등록을승인하지않는다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": true,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_ff5129c97cc92f71068cf6ad1c43c8a0613fc67b46bade77a17cc7033b522a0a",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "실제그림은 두각만 보이고 선택지의 길이를 판단할 BC수치가 없다. alt의C외각설명도 실제40도와 충돌하므로 완전문항을 보류한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_5ea7778dbac6e3f48afc272885bbd1807cd92b8ddb2dbd79e4f55f6dc85f02ce",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "동일경로의 실제파일은 외심을 묻는6번그림이다. D/E/F의 위치가 없어 연쇄외각모형은 조건부후보로만 남긴다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_8d2647bb3ee299886b5a1f9b4f8ec84f36b5c99c60997f7a4d16a42004376a06",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "증명본문이 공통선과두끝각을 안내하며 ASA를 골라 같은밑각 정리를 설명하는 정형 증명이다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_21270c46cc6a57e46decfde45dff97d72c796e565c0ac3598c4b732804b51d36",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 두 직각삼각형에서50도와40도를 여각으로 맞추어 RHA조건을 판정하는 한 전처리이다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_db0b72b1cedca4a88fd535c8144162abdf4c9757b278328a32c588dba687badc",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "공통빗변과명시된같은변을 RHS에 넣어 각이등분을 얻고 여각을 계산한다. 정형 합동연결이므로2를 수용한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_e6af9ae46a3646020c288bdd0e1e3b39d4f32d201dfb702034858035dcf3db20",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 수직이등분선 교점을 외심으로 인식하여 세번째변의 수선발이 중점임을 판정한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a805fa22286617292762779b0ac6c0b938a25addad614fdc8b8c3e95f82d7341",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "실제 x는OAB,29도는OBA로 명확하다. 같은 반지름의 밑각을 직접전이하는1을 수용하며 원문30도결론 오류는 별도HOLD로 보존한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_815dd58f2f0e0b1ff1d4917a740e6ba23e6d7c45310a862bcf3f5059f3c6fdb1",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "실제그림의C반각이 잘려 있어 나머지 반각을 정할 필수각이 없다. 해설의31도는후보모형만 지지한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_bc40c0b577c15f8114402fd7fcd3e55180927bba6fc8ebc36b57098c68b15a75",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "아래 접점과각표시가 잘리고4cm가 무엇을 지시하는지도 기존해설과 다르다. 전체 보기판정과 난도를 확정하지 않는다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ef679971c44bd381009de6be44d5cb6b81c1417e6f7b9dfc4cf5d27e55ab9892",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두 외각을 각각 미지의반각으로 표현하고 개별각이 아닌 A+B합으로 소거하는 선택이 필요하다.3/B23을 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9631fd12edb49f64239154af2bcf3dc2bf8b366c92c81df17b01849a7670066e",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "이등변삼각형이 예각만을 뜻하지 않는다는 반례범주를 골라 중심위치의 항상성 진위를 판단한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_46b2eef4c830854ae8a76d470d539ef3e868cd0ec5762e79ea82e2466eae9900",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "직각과빗변15가 본문에 모두 있어 비필수그림 손상과 별개로 반빗변의 직접 적용1이 가능하다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_cf74a1f77b263aedd61c770a11a203584da72439041b23a6316c682c16774665",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "실제그림의x는A의외각이고y표시는잘려 있다. 해설이x를B각으로 설명하므로 목표대응과 완전메타를 보류한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_3842c20155a20f73e88f574f32538ff3083e4f55f3a5b624394876fbdd8a6be5",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "이미 주어진 교점·대각선반분·평행선에서 ASA대응각/변을 대조하는 표준성질판정이다.2를 수용하되 원본상과 강한충돌은 유지한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_c0abe2b17f0340402b4925451d393c0da02e8d27f7bfe95593a3691c725b8e0a",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 두 중점으로 얻은 같은길이·평행의 한대변쌍을 선택하여 평행사변형 조건을 적용한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_1ae6c0b27056dacf0e5048181adcccd478d8171f924d467e3600b7bd54dfdf7c",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "실제 E,F는BD위이고 AE/EF/FD의표시가 있으나 BE표시는불명확하다. 기존해설은별도의수선·60도모형이다. 실제결정경로가확정되지않아수치후보도만들지않는다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_ec3d096eb3e52d9d7b144a42f6617db73f94619eedda66c914f907e981709794",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "정사각형의대각선대칭에서두보조삼각형의SAS대응을선택해 목표각을외각으로옮긴다.주어진선만으로도대응선택이있어3/B23을수용한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_e91f5bbf45eb4a31a3ca8f24bec2cca00a18b99e3c97b72f780d0dc4ea7cbeda",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "빈칸이접선조각과RHS→빗변합방정식순서를안내하는정형반지름계산이다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_5c868ef40bdee0accf1baae90de1043523afa1078710a30d1a7d6026e0b8beb1",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "각합으로빠진각을보충하고대각선반쪽의쌍을구별해충분조건을판정한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_51193f8f3a98fa4c90443a18cf43a33dfa1636c3f002fe8d7aa6835976cd6ff5",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "본문이공통변·직각·SAS쌍을안내하므로남은대변상등과대응대각선결론을채우는표준증명이다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_2cc9c4780dca8975f92ba7ed5d3306628554a28088350e533f8fa1b58a7d7583",
+      "bucket": "UNKNOWN",
+      "decision": "HOLD",
+      "reason": "분류도하단결과와번호가없어각번호가가리키는분기를대조할수없다.일반분류원리는기록하되완전메타는보류한다."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "declaredSourceEvidenceBlockedOrdinals": [
+    1,
+    2,
+    8,
+    10,
+    14,
+    19,
+    24
+  ],
+  "imageEvidenceViewed": [
+    "workers/A/tmp/E055/montage.jpg",
+    "workers/A/tmp/E055/19.png"
+  ],
+  "notes": [
+    "Exact source stems, choices, existing answers/solutions and actual diagrams were read for these samples and all21 difficulty exceptions. Normal Q9/Q15/Q18 were not re-solved.",
+    "A PASS on the independent packet checks means faithful preservation of exact quotes and declared holds. It is not a pass on incomplete source questions or acceptance of conditional candidate metadata.",
+    "Q19 has NO_SUPPORTED_CANDIDATE: no numeric difficulty was fabricated to satisfy a schema. Historical source level/bucket remains separate."
+  ]
+}
