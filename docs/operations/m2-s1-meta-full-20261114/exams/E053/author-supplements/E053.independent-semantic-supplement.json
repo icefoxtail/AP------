@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "m2-author-narrow-semantic-supplement-v1",
+  "examId": "E053",
+  "status": "ROOT_ACCEPTANCE_REQUIRED",
+  "createdAt": "2026-11-14T14:33:41.982548+00:00",
+  "originalReviewSha256": "bee28d5b000fa1415f628bd61a5230b3e315c9206d438c10684151a5eef60178",
+  "originalFourSlotSha256": "b528cd9727ce2ae518ce1617cdb2de53c67c91bbc6701166e726512c18bb86f2",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E053.accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "3e0ed2986879ad87c8fe834f9b7577243e4e5fc9512c00200becbf36c7c41661",
+  "changes": [
+    {
+      "sourceOrdinal": 24,
+      "term": "피타고라스정리",
+      "before": {
+        "term": "피타고라스정리",
+        "termId": 195,
+        "src": "solution",
+        "quote": "$\\sqrt{10^2+24^2}$",
+        "evidenceType": "IMPLIED",
+        "justification": "기존해설은BC와CA를두직각변으로 놓고 제곱합의 제곱근을 취한다."
+      },
+      "after": {
+        "term": "피타고라스정리",
+        "termId": 195,
+        "src": "solution",
+        "quote": "$\\sqrt{10^2+24^2}$",
+        "evidenceType": "NAMED"
+      },
+      "reason": "실제 기존해설 sqrt(10^2+24^2)의 표준 피타고라스 계산식이 명시되어 NAMED로 분류한다. 원문 직각 꼭짓점 불명확 부채와 UNKNOWN은 보존한다."
+    }
+  ],
+  "invariants": [
+    "Original author/review/freeze/source/answer/solution/UID/order unchanged. Numeric UNKNOWN and source condition debt preserved."
+  ]
+}

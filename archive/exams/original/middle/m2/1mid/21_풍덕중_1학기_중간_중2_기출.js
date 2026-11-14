@@ -312,8 +312,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "각 식을 차례로 계산한다.\n(가) $5x^2 \\times (-6y^3)=-30x^2y^3$이므로 참이다.\n(나) $(-2x^2y)^3=-8x^6y^3$이므로 $-xy \\times (-8x^6y^3)=8x^7y^4$로 참이다.\n(다) $12a^5b^2 \\div 3a^2b=4a^3b$이므로 거짓이다.\n(라) $9a^4 \\div (-27a^{11})=-\\frac{1}{3a^7}$이므로 참이다.\n(마) $(-2x^2y)^2=4x^4y^2$이므로 거짓이다.\n따라서 옳은 것은 (가), (나), (라)이므로 정답은 ②이다.",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -349,8 +349,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$\n부피 $= xy \\times h = 60x^2y$\n$\\therefore h = 60x$",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -598,8 +598,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직각삼각형에서 피타고라스 정리를 사용한다.\n$AC^2=AB^2-BC^2=15^2-9^2=225-81=144$이므로 $AC=12$이다.\n따라서 $\\triangle ABC$의 넓이는 $\\frac12 \\times BC \\times AC=\\frac12 \\times 9 \\times 12=54$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-    "subUnit": "피타고라스 정리의 활용",
+    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+    "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -711,7 +711,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "상",
+    "level": "중",
     "category": "내심/외심 복합",
     "originalCategory": "내심/외심 복합",
     "standardCourse": "중2 수학",
@@ -808,8 +808,8 @@ window.questionBank = [
     ],
     "answer": "10",
     "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\n$\\therefore a+b = 10$",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

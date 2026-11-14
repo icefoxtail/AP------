@@ -1,0 +1,1878 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "c10cdf8e4279bb4a4932196e4e29a4525e4787d0",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+    "at": "2026-11-14T14:28:56.337825+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d6af6c3aea32608b8653d99c5adb6c05212fa1eaa26fb5abbe2bdb350fcfa0fc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7dbeba6334e2c12faa23865500588468f2055ee2cae4a66c40f07b5906b79864"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "abd2f40808bc9c3c10107c9f081dd263efe616aacd1ecde5fe3aa8be65a291d8"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{(\\text{정수})}{(\\text{0이 아닌 정수})}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "stem",
+            "quote": "꼴로 나타낼 수 없는 수"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "나타낼 수 없는 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "solution",
+            "quote": "유리수는 분수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "무한소수",
+            "termId": 427,
+            "src": "solution",
+            "quote": "순환하지 않는 무한소수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "정수비로 나타내는 유리수 정의의 판정",
+        "classification": "유리수 여부의 정의판정이며 분수를 소수로 바꾸는123과 다르므로 exact leafgap이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_031fb715a414529e3acbbc96b19bf6646e1b7a797ba74edd6d4105ee7e2eb135",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10d32a87ffdb04dde84458a0e2ac7c0db139c727dda594c73b77dcb29409480c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "64017365899787d05d1ae4c0eefb57b7d3a7a8b47fa1e235f8ec0783a36323e1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수의 순환마디"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환마디",
+            "termId": 429,
+            "src": "stem",
+            "quote": "순환마디와 표현"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "표현으로 옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "순환마디",
+            "termId": 429,
+            "src": "solution",
+            "quote": "순환마디는 $58$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "solution",
+            "quote": "점을 찍어 나타내면 $-1.4\\dot{5}\\dot{8}$",
+            "evidenceType": "IMPLIED",
+            "justification": "반복블록의 양끝에 점을 찍어 표시한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "순환마디와 점 표기의 대응",
+        "classification": "순환마디와 표현121이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_303f4cc4bb54e26dd75f008ab46793440abb11cd19ab7a23cbd44d21f9cf6e1e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "751e2b1bdce4cac327396b7a45c0ec8ca9d500d3a65ad7795b6afd9d2964a70b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fecfcd07ae8089d67ae255de8f931a8da2b54ca24bb7948c2526a9a9329f0f8c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "다음 분수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "stem",
+            "quote": "유한소수로 나타낼 수 없는 것"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "나타낼 수 없는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수",
+            "termId": 13,
+            "src": "solution",
+            "quote": "기약분수의 분모 소인수가 $2, 5$뿐이어야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "solution",
+            "quote": "유한소수임.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "기약분모 소인수로 유한소수 판별",
+        "classification": "각 분수의 유한소수 가능성을 판별119이며120조건을 사용한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2f4b4212b540fa8b2587b7e37e2d8a3a386eaed3a7c19becf520684da8a5c798",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68314bde929ba846ee8d1a4491815c79dd884795573dae06cdf954b650421ae5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a7b7bb4478678d9f2e9e22825ab08778183563aa3c3bdd79ccc41fbacc27a131"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분모",
+            "termId": 581,
+            "src": "stem",
+            "quote": "분모는 12이다."
+          },
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "\\frac{x}{12}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "분수 $x$"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "termId": 379,
+            "src": "solution",
+            "quote": "통분:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수",
+            "termId": 13,
+            "src": "solution",
+            "quote": "분모에 $3$이 남아 유한소수가 아님.",
+            "evidenceType": "IMPLIED",
+            "justification": "기약화 뒤 분모에 2와5 이외 소인수3이 남는 실제 판정을 수행한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$\\frac{1}{4} < \\frac{x}{12} < \\frac{1}{2}$"
+          },
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "stem",
+            "quote": "유한소수로 나타낼 수 없다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "범위와 소수표현을 만족하는 분수 개수의 조건부 구조",
+        "classification": "기존 해설은 정수분자 두 후보를 걸러124구조를 수행한다. 그러나 원문의 x역할과 정수성 전제 누락 때문에 수치난도는 UNKNOWN이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_23a322d5fe7e9600424bf3122218b1baee713b20ef3fd15a396d909e644ce93e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "35b6ba6627d4fc4077d6a3f68e36fc49fb40f83aeb69ef77f3cb80b2381069aa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac4d40212529803e2c5dfe662365359e5deb37aa9d0729f973e1b0de395c15e5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "$x=1.023023...$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연산",
+            "termId": 33,
+            "src": "stem",
+            "quote": "가장 편리한 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "solution",
+            "quote": "$1000x = 1023.023...$",
+            "evidenceType": "IMPLIED",
+            "justification": "소수점을 주기3만큼 옮기는10의 거듭제곱 배수이다."
+          },
+          {
+            "term": "소거",
+            "termId": 368,
+            "src": "solution",
+            "quote": "$\\implies 1000x - x$ 를 통해 소수점 아래를 소거함.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "소수부분을 같게 만든 두 식의 차 선택",
+        "classification": "순환소수를 분수로 바꾸는122의 소거식 선택이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_6b4301fa0565b3d2a76ab7a352184dece41003b1cfa3d7d9126687790465d924",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcc9a22642203b1529d2180d3ac932a4f4a17f96433912539d735a1b91c9506d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d801aa4ae56eeb9683c4ee4548d026b620bcd7e36013bc758721393d3780a05e"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "choices",
+            "quote": "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "choices",
+            "quote": "정수가 아닌 유리수는 모두 유한소수로 나타낼 수 있다."
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "solution",
+            "quote": "유한소수 또는 순환소수(무한소수)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "termId": 243,
+            "src": "solution",
+            "quote": "$\\frac{1}{3}$은 유한소수로 나타낼 수 없는 유리수",
+            "evidenceType": "IMPLIED",
+            "justification": "전칭진술에 해당하지 않는 구체적인1/3을 제시한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "유리수의 두 소수표현 분류와 반례",
+        "classification": "정수가 아닌 유리수가 모두 유한소수라는 일반진술을 반례로 부정한다. 특정분수의 유한소수판별 leaf와 구분해 gap이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_782c287e0c321100fd47474111ceee1d7e50e0082d5078214e2c2b3b0101da67",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41799982a16a7eac72d4cac54ec8d63beea790d009ad710d4be49c7bdab32491"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40f5ad7236f37917069b05ae69ebd19cb067be036f3859b77401e11ec35ffe95"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "choices",
+            "quote": "$(a^m)^n = (a^n)^m$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "choices",
+            "quote": "$(a^m)^n = (a^n)^m$"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$(a^m)^n = a^{mn}$, $(a^n)^m = a^{nm}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$a \\ne 0$"
+          },
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$m, n$이 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "거듭제곱의 거듭제곱 지수의 곱 비교",
+        "classification": "선택의 실제 결정은 중첩지수126의 mn=nm이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3ccda7859029e56113b732053ac1b5ecdc2f0042c670ac9d3ccd9510ab8e06bd",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c2d53959acbc400898c3aaf1b5bacc2747f0f0ea7b3c65dae2284cf84f2b7d66"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "42394bfb8f0e094526461ca4b431b5c7d50c81465acfcb46f26d8baf24f7386f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$2^5 + 2^5 = 2^a, 3^2 + 3^2 + 3^2 = 3^b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$ab$"
+          },
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "termId": 40,
+            "src": "solution",
+            "quote": "$2 \\times 2^5 = 2^6 \\implies a=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 항의 합을 배수의 곱으로 묶는다."
+          },
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$3 \\times 3^2 = 3^3 \\implies b=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 밑의 곱을 지수합으로 바꾼다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "같은 거듭제곱의 합을 배수로 묶기",
+        "classification": "묶은 계수와 같은 밑의 곱을 결합하는125이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_4bbb9fa8e28d4c8e740a9a466e56457527c86633e3b4cf1f4f0cb48f033a46dc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e6760cd71ea3e1d8fb5085a4eef86b0cc37f259032ff637c17b4a2471fd428b4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a6f572c16c0b542fab4b51dee4e16bcf2e8791a15ff9d6d2b13d71290c50b259"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "$5x^2 \\times (-6y^3) = -30x^2y^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "다음 보기"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$(-2x^2y)^3=-8x^6y^3$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 인수의 거듭제곱을 전개한다."
+          },
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "solution",
+            "quote": "$12a^5b^2 \\div 3a^2b=4a^3b$",
+            "evidenceType": "IMPLIED",
+            "justification": "계수를 나누고 같은 문자 지수를 뺀다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "단항식 곱·몫·거듭제곱 결과 확인",
+        "classification": "실제 단항식 혼합129이며 기존source 다항식단원을 지수법칙 부모로 교정제안한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_502753abcf258b6b7bbe2396bdd33c92506b893b4e142c7444f120d2eafb18ba",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13d8cb9a5385769d4b886ad5957f4731237a3d0a295200b7f21921a35e30eb73"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3eb2695b8ad4861fd86c99410adada3da81af0fc2f0542470f360d96b1f3c649"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각기둥",
+            "termId": 410,
+            "src": "stem",
+            "quote": "삼각기둥"
+          },
+          {
+            "term": "부피",
+            "termId": 219,
+            "src": "stem",
+            "quote": "$60x^2y$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "termId": 218,
+            "src": "stem",
+            "quote": "높이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "solution",
+            "quote": "밑넓이 $= \\frac{1}{2} \\times 3x \\times \\frac{2}{3}y = xy$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "termId": 219,
+            "src": "solution",
+            "quote": "부피 $= xy \\times h = 60x^2y$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "solution",
+            "quote": "$\\therefore h = 60x$",
+            "evidenceType": "IMPLIED",
+            "justification": "부피를 밑넓이의 단항식으로 나누어 높이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼각기둥의 밑넓이와 부피식에서 높이 역산",
+        "classification": "각기둥 공식의 중1 선수213을 보존하고 문자식 몫은 별도 보조계산으로 둔다. 중2 target은 actual 단항식계산 부모에 교정 제안한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_cd28c7a0b278f890343ab76b6c2da6959f68cb98cc9b099512b40718c600b9c8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fae1812e2b5a0e8789d7b4c4c7f07aecbbefadd457c67a31a99e27099ed71d7f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bc1c1f497a7de25e6ef41e596654407e2966f144a83e209c7bb66edcf133030c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "stem",
+            "quote": "이등변삼각형 ABC"
+          },
+          {
+            "term": "외각",
+            "termId": 715,
+            "src": "stem",
+            "quote": "외각이 $115^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle A$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외각",
+            "termId": 715,
+            "src": "solution",
+            "quote": "$\\angle C = 180 - 115 = 65^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "외각과 내각의 합180을 적용한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "solution",
+            "quote": "$\\angle B = \\angle C = 65^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 밑각이 같은 성질이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "외각을 내각으로 바꾼 후 같은 밑각 이용",
+        "classification": "밑각과 꼭짓각178이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d9144370e24221fb5dbfafe0ca335142b274253161bc0c8da5b5051dd3c53b80",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "07222e4b4e8a16149d193ad5aa0f23960acf406c4e16eb276dd58c1744286544"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eaf690646b058f4ead7fc1e26c048db66d5d701b5ef72638e8b9f0d54786e1a3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "stem",
+            "quote": "이등변삼각형 ABC"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle A=100^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle B$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "$\\angle B + \\angle C = 180 - 100 = 80^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 내각합에서 꼭짓각을 뺀다."
+          },
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "solution",
+            "quote": "\\angle B = \\angle C$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 두밑각에 남은 각을 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "같은 두 밑각을 내각합에서 배분",
+        "classification": "밑각과 꼭짓각178의 직접 적용이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_2f487d17b6f153e99b356a260e90fc122b3fd41c1b2a88ccabae04d1abebfe8b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40b1849f60fc4bd1bfc30aa730c1acd4f0fe03bb43c44a2c19f088c36bb6030d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd06eedc34173bc777f67e9e60a92b1c03be909308e9e0099889d20831ec291e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{BC}=16cm$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{BD}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "termId": 178,
+            "src": "solution",
+            "quote": "밑변을 수직이등분함.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "solution",
+            "quote": "$\\therefore \\overline{BD} = \\frac{1}{2} \\overline{BC} = 8cm$",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변의 절반으로 부분길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}, \\overline{AD} \\perp \\overline{BC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이등변삼각형 꼭짓점의 수선이 밑변을 이등분",
+        "classification": "주어진 것은 수선이며 목표는 밑변분할 길이다. 밑각178/이등변판정179와 구별하고 꼭지각이등분선 TPL의 역방향 재사용 후보로 둔다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_0199a1c441ee7ba78c363fbb7e300158bdfc81a46179f946d304b0f7cf90ad20",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1029a9c2a24b2b85a6f9a3fbabecbca27745dcdf3458626635a0b4f31b1b2118"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9b71d34a3ee7d628857997f9a89ccc49a14dfd7c13b3bde33e7030623907da6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle BDC$"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "solution",
+            "quote": "그 외각 이등분선은 $\\overline{CB}$와 $54.5^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "solution",
+            "quote": "$54.5^\\circ-35.5^\\circ=19^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설은 두 이등분선의 각도 차를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "stem",
+            "quote": "$\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "내각과 외각의 두 이등분선 사이각 계산",
+        "classification": "각의 이등분선 성질182이며 이등변 밑각은 중간 입력이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_4484ddf0d81ff0a2bae5a88e95a9972eddb46b205f57ca8d56d907ff7b3b369f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c0a55835178319b7af477a3ac34679b30ab1eb91d198ca7f13da58034228b051"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f7579d31b82f7e43d5c0b5943190f06ecf7295d5bf93946df6da92d58ab383d9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "termId": 161,
+            "src": "stem",
+            "quote": "두 직각삼각형"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{DE}$, $\\overline{BC}=\\overline{EF}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle D=x^\\circ$"
+          },
+          {
+            "term": "미지수",
+            "termId": 745,
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "termId": 723,
+            "src": "solution",
+            "quote": "RHS 합동이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "$\\angle D=180^\\circ-90^\\circ-40^\\circ=50^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "대응각을 얻은 뒤 직각삼각형 내각합을 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "RHS 합동으로 대응각 결정",
+        "classification": "빗변과 한변의 RHS180이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_387a2835258c9fcfd47f91616c20358c6c66601528f1a6bfdcb90563b4f40c6f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "74d1c56a35bce8eabe06b0147862d16ac51efbebdef55824d1f4f0a67d64d81e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "66dbe3a5f9d69700e79801772a3f3e74e32f928fa7bbf84f0df176c187e4cbc6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "세 변의 길이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "stem",
+            "quote": "둔각삼각형"
+          },
+          {
+            "term": "둔각",
+            "termId": 408,
+            "src": "stem",
+            "quote": "둔각삼각형인 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "solution",
+            "quote": "$5+7>9$",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 부등식으로 먼저 성립 여부를 확인한다."
+          },
+          {
+            "term": "둔각",
+            "termId": 408,
+            "src": "solution",
+            "quote": "$c^2>a^2+b^2$이면 둔각삼각형이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼각형 성립 확인 후 변제곱의 비교",
+        "classification": "직각 여부만 묻는221보다 각 종류 판정222이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fad07d7ee1c4d74ad06a448db7d09dd8c7adb0a450e954b5a31250c4212c494b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fb6c5fe8b4d73e130baa2abf3a03d44f19d1b4d1aac90506ec2d9bb7252739a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5a474d2a790c4e75f78ed389c67beeeeaa1ce0a3dcc0d101f8d7481c78cfc901"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "termId": 161,
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{AB}=15$, $\\overline{BC}=9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "termId": 195,
+            "src": "solution",
+            "quote": "피타고라스 정리를 사용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "solution",
+            "quote": "$\\frac12 \\times BC \\times AC=\\frac12 \\times 9 \\times 12=54$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "termId": 344,
+            "src": "stem",
+            "quote": "$\\angle C=90^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "피타고라스로 나머지 변을 구해 넓이 산출",
+        "classification": "두직각변 중 누락된 길이를 얻는219가 핵심이고 얻은 변을 넓이식에 넣는다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_8198263fbeeaf9c2750683b42669fb1902881ab1b4becee81688f24eebbaa755",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed9f5ff31b662199de18e559b86068c57f2015baf8e7c9274e8f0e827f1b1462"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "72aeea3ccdac11e98c42e0a8e9e97ea9209e2dbddfefbdf5ca70cd204d4c13ff"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "termId": 185,
+            "src": "stem",
+            "quote": "내심"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle A=50^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle BIC$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "solution",
+            "quote": "각각 $\\angle B$, $\\angle C$의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "$\\angle BIC=180^\\circ-\\frac12(\\angle B+\\angle C)",
+            "evidenceType": "IMPLIED",
+            "justification": "두 반각과 내각합을 결합한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "내심의 두 각이등분선과 내각합",
+        "classification": "각의이등분선과내심186이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2b8b9d1e6e69f35f7de495983f05ef8ae247af2059cdcf86aeba25b5729c307b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c04dc711a65874a494a8464606eae91ef65b466625a8fecc6e3da2a574fca187"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "85d4a3d781e2b7702e8d9a1b5ba2deb1665f1e785cac0b764c462a2c367525f9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "termId": 184,
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "둘레",
+            "termId": 214,
+            "src": "stem",
+            "quote": "둘레가 $20"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "\\overline{AC}=8$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "termId": 153,
+            "src": "stem",
+            "quote": "반지름은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "둘레",
+            "termId": 214,
+            "src": "solution",
+            "quote": "둘레 $= 2r + 8 = 20",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "termId": 153,
+            "src": "solution",
+            "quote": "\\implies r = 6$",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 두 외접반지름을 r로 놓고 길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "외접반지름 두 개의 둘레식",
+        "classification": "외심의 반지름 계산188이며 실제둘레식이 선형이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d260452eb4b9eeab948cf46d6861aba3e37da755dc333f670f589ca34c912220",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1c8a0181bedc07aba7cd36269a6b895c954490af3892cb3716cd681f919f57d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d39d6238a6db701f0fb925b70a4d146875fad6650895409d84e0e09891abf9ca"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "termId": 720,
+            "src": "stem",
+            "quote": "내접원"
+          },
+          {
+            "term": "접선",
+            "termId": 118,
+            "src": "stem",
+            "quote": "각각 $D$, $E$, $F$에서 접한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{AC}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "termId": 448,
+            "src": "solution",
+            "quote": "한 점에서 원에 그은 두 접선의 길이는 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "solution",
+            "quote": "$AC=AF+FC=4+6=10$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 접선길이로 바꾼 두 부분의 합을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "한 점에서 원에 그은 접선 두 길이의 같음",
+        "classification": "실제 결정은 동일 외부점의 접선길이 같음이다. 내심거리187이나 외심각에 강제로 귀속하지 않고 source 중2 안의 exactleafgap과 원접선 후보를 기록한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_73bb5ce851767f1e8a79140ef29e341c9c4927f0077ddc41c340ab50eaf0cb3e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "44a63d3a9d91b24ce6ad32f6bc35653d51e8ffc54b2b34c9f4b63dbe37e7b9d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b43b88d89e58e921aedd1aa1913fc7eed49cc485f24a877c89b10d86318dfb8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "termId": 184,
+            "src": "stem",
+            "quote": "$O$는 $\\triangle ABC$의 외심"
+          },
+          {
+            "term": "내심",
+            "termId": 185,
+            "src": "stem",
+            "quote": "$I$는 $\\triangle OBC$의 내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle A$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "termId": 185,
+            "src": "solution",
+            "quote": "$I$는 $\\triangle OBC$의 내심이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "termId": 184,
+            "src": "solution",
+            "quote": "$O$는 $\\triangle ABC$의 외심이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$\\angle A<90^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "안쪽삼각형 내심각과 바깥삼각형 외심각 연결",
+        "classification": "외심·내심을 이용한 복합도형189와 공식 중심결합TPL이다.",
+        "condition": "A가예각이라는제한은중심각을 2A로 대응시키는 분기를 고른다. 실제정형두공식 연결을 근거로 legacy상→중을제안한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_34b96c1a56dc32a4851bdb85497a529d1282ee62453a6f0fa607bff43cff3df8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "397a7bc606b40966ff1c81adb6f35dc6b7651f9376e202a5168230b27ef40fa2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ac48e71458927679802773f26c28d7e24c7421dbcfd93a493c1c1ae5a0fa758"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "기약분수",
+            "termId": 558,
+            "src": "stem",
+            "quote": "어떤 기약분수"
+          },
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "$0.2\\dot{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기약분수",
+            "termId": 558,
+            "src": "stem",
+            "quote": "처음 기약분수"
+          },
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수로 나타내면"
+          }
+        ],
+        "method": [
+          {
+            "term": "분모",
+            "termId": 581,
+            "src": "solution",
+            "quote": "원래 분모는 $90$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분자",
+            "termId": 582,
+            "src": "solution",
+            "quote": "원래 분자는 $13$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "기약분수",
+            "termId": 558,
+            "src": "stem",
+            "quote": "두 사람이 잘못 읽어 만든 분수도 각각 기약분수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "오독한 두 기약분수에서 성분 복원의 조건부 구조",
+        "classification": "기존 해설의 구조는 조건유리수124이나 원분모와 잘못 읽은 분모가 같아지는 원문모순으로 최종 난도UNKNOWN이다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "ACTUAL_CHOICES_BLANK_5",
+        "MISREAD_DENOMINATOR_EQUALS_ORIGINAL_CONTRADICTION"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_e4002b19166a2e6a6f00744485e690a54463bf5f9440e538961b5fa5623bad83",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "017a6e475e93b974807f736bcfe25d95bad3c47c570ce0540a1eadbf8cc0c8b4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0545c4b023a4f66104427b4bd34a52b21ad51e76a583cbe8bf99b95733bb4472"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24}}{8y^6}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a+b$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 문자의 지수를 곱한 뒤 양변의 지수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "거듭제곱 전개 후 문자별 지수 비교",
+        "classification": "중첩거듭제곱126이며 기존 다항식 source단원을 지수법칙 부모로 교정제안한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "ACTUAL_CHOICES_BLANK_5"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c5524a8bff9d8bad7279da2327a470ceef7ef562f69759fc5d3b0000d9e08cef",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "daca377982c6238c9902347c1d8deb056a3cc38fe7197c2f27b08fe6f553ca01"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5dd9bd576be1a8871e0e59860c275bf788e23fc73fc2d1fc66941a6b5dbdd31d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "termId": 161,
+            "src": "stem",
+            "quote": "직각삼각형 ABC"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$BC=10, CA=24$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "외접원 넓이 $M$, 내접원 넓이 $N$"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$M-N$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "termId": 195,
+            "src": "solution",
+            "quote": "$\\sqrt{10^2+24^2}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "termId": 153,
+            "src": "solution",
+            "quote": "외접원의 반지름은 빗변의 절반",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "solution",
+            "quote": "$M=\\pi R^2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "직각삼각형의 내외접반지름으로 원넓이차 계산",
+        "classification": "기존 해설은 두 중심반지름을 결합한189이나 직각 꼭짓점이 실제 본문에 없어 조건부 구조만 보존한다.",
+        "condition": "발문의 입력값과 해 선택 제한을 구별하고 명시적 범위·부호를 실제 인용으로 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_14C2C64E43FB",
+        "at": "2026-11-14T14:28:56.337825+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "RIGHT_ANGLE_VERTEX_NOT_EXPLICIT",
+        "ACTUAL_CHOICES_BLANK_5"
+      ]
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Each stem, choices, existing solution and required figure read; machine receipt is in separate validation file.",
+    "independentReview": "PENDING"
+  }
+}
