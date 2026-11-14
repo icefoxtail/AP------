@@ -324,8 +324,8 @@ window.questionBank = [
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
     "aliveType": "B",
-    "image": "assets/images/25_금당고_2학기_기말_고1_유사/q06.svg",
-    "visualAsset": "assets/images/25_금당고_2학기_기말_고1_유사/q06.svg",
+    "image": "assets/images/25_금당고_2학기_기말_고1_유사/q06-problem-v2.svg",
+    "visualAsset": "assets/images/25_금당고_2학기_기말_고1_유사/q06-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -337,7 +337,7 @@ window.questionBank = [
         "arrows"
       ],
       "essentialVisualFacts": "-2->1, -1->3, 0->0, 1->2",
-      "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q06.svg"
+      "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q06-problem-v2.svg"
     },
     "sourceKind": "LEGACY_SIMILAR",
     "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
@@ -935,8 +935,9 @@ window.questionBank = [
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "25_금당고_2학기_기말_고1_기출",
     "aliveType": "B",
-    "image": "assets/images/25_금당고_2학기_기말_고1_유사/q16.svg",
-    "visualAsset": "assets/images/25_금당고_2학기_기말_고1_유사/q16.svg",
+    "image": "assets/images/25_금당고_2학기_기말_고1_유사/q16-problem-v2.svg",
+    "imageSize": "full",
+    "visualAsset": "assets/images/25_금당고_2학기_기말_고1_유사/q16-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -949,7 +950,7 @@ window.questionBank = [
         "point"
       ],
       "essentialVisualFacts": "asymptotes x=-3,y=2; curve passes (0,1)",
-      "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q16.svg"
+      "assetRef": "assets/images/25_금당고_2학기_기말_고1_유사/q16-problem-v2.svg"
     },
     "sourceKind": "LEGACY_SIMILAR",
     "sourceExamPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",

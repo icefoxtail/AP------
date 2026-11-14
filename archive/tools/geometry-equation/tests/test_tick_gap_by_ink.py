@@ -48,6 +48,24 @@ class TickGapByInkTests(unittest.TestCase):
         self.assertEqual([(v['box'],v['placement']) for v in plain['labels']],[(v['box'],v['placement']) for v in inked['labels']])
         self.assertEqual(plain['labels'][0]['placement'],'AUTO_W')
         self.assertTrue(tick_box_respects_owner(Box(**inked['labels'][0]['box']),item['at'],'y',self.INK))
+    def test_problem_tick_tries_farther_on_its_preferred_side_first(self):
+        item,obstacles=self.fixtures()
+        obstacles=[o for o in obstacles if o['id'] not in ('east-block','west-block')]
+        obstacles.append({'id':'near-tick','kind':'label','geometry':Box(95,108,1,2)})
+        item={**item,'preferred':'W','tickInk':self.INK}
+        default=self.run_layout(item,obstacles)
+        preferred=self.run_layout({**item,'preferTickSide':True},obstacles)
+        self.assertEqual(default['labels'][0]['placement'],'COORDINATE_RELOCATION_E')
+        self.assertEqual(preferred['labels'][0]['placement'],'AUTO_W')
+        self.assertTrue(tick_box_respects_owner(Box(**preferred['labels'][0]['box']),item['at'],'y',self.INK))
+
+    def test_problem_tick_can_change_side_when_preferred_side_is_blocked(self):
+        item,obstacles=self.fixtures()
+        obstacles=[o for o in obstacles if o['id'] not in ('east-block','west-block')]
+        obstacles.append({'id':'west-block','kind':'label','geometry':Box(45,0,49,200)})
+        result=self.run_layout({**item,'preferred':'W','preferTickSide':True,'tickInk':self.INK},obstacles)
+        self.assertEqual(result['labels'][0]['placement'],'COORDINATE_RELOCATION_E')
+
     def test_x_axis_gap_uses_the_vertical_ink_too(self):
         box=Box(95,116,10,13.32)                                                   # box top 16 below the axis y=100
         self.assertTrue(tick_box_respects_owner(box,(100,100),'x'))

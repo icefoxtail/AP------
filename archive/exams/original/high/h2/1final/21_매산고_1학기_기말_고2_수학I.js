@@ -346,7 +346,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "a3844f33e5ad502f2f3ac2e57c2846a891fd917ef1669b0b788c90a79353a14e"
+    "sourceIdentityFingerprint": "a3844f33e5ad502f2f3ac2e57c2846a891fd917ef1669b0b788c90a79353a14e",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 주기 동안 반복되는 절댓값 사인곡선과 최댓값·최솟값 위치.",
+    "solutionImageCaption": "위상 이동 뒤 y=3|sin(πx)|−1이다. 한 주기의 폭은 1이며 곡선에서 최댓값과 최솟값 위치를 읽을 수 있다. 정답은 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -385,7 +389,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "366aed6ffc7c839d9f1b21d284883b0280c0200860f732370a504f89658cefe1"
+    "sourceIdentityFingerprint": "366aed6ffc7c839d9f1b21d284883b0280c0200860f732370a504f89658cefe1",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 −1부터 1에서 감소하는 포물선과 왼쪽 끝점.",
+    "solutionImageCaption": "치환 t=sin x 뒤 삼각함수 부분은 5−(t+2)²이다. 이 구간에서 감소하므로 최대는 t=−1에서 4이다. 정답은 −4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

@@ -557,7 +557,7 @@ window.questionBank = [
   {
     "id": 14,
     "questionType": "객관식",
-    "content": "다음 그림과 같이 두 점 $\\mathrm{A, B}$는 각각 서로 수직인 두 평면 $\\alpha, \\beta$ 위에 있고, 점 $\\mathrm{P}$는 두 평면 $\\alpha, \\beta$의 교선 $l$ 위에 있다. 직선 $l$과 두 직선 $\\mathrm{PA, PB}$가 이루는 각의 크기가 각각 $60^\\circ, 45^\\circ$일 때, 평면 $\\mathrm{PBA}$와 평면 $\\beta$가 이루는 각의 크기를 $\\theta$라고 하자. 이때 $\\cos^2\\theta$의 값을 구하면? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q14-repaired.svg\" class=\"exam-img\" alt=\"서로 수직인 두 평면과 교선 l, 점 P A B의 공간 관계\"></div>",
+    "content": "다음 그림과 같이 두 점 $\\mathrm{A, B}$는 각각 서로 수직인 두 평면 $\\alpha, \\beta$ 위에 있고, 점 $\\mathrm{P}$는 두 평면 $\\alpha, \\beta$의 교선 $l$ 위에 있다. 직선 $l$과 두 직선 $\\mathrm{PA, PB}$가 이루는 각의 크기가 각각 $60^\\circ, 45^\\circ$일 때, 평면 $\\mathrm{PBA}$와 평면 $\\beta$가 이루는 각의 크기를 $\\theta$라고 하자. 이때 $\\cos^2\\theta$의 값을 구하면? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q14-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"교선 l에서 만나는 두 평면과 점 P, A, B\"></div>",
     "choices": [
       "$\\frac{1}{8}$",
       "$\\frac{1}{7}$",
@@ -755,7 +755,7 @@ window.questionBank = [
   {
     "id": 19,
     "questionType": "서술형",
-    "content": "[서술형 1] 사면체 $\\mathrm{ABCD}$에 대하여 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=8, \\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}, \\angle\\mathrm{ABD}=90^\\circ$이고 평면 $\\mathrm{ABD}$와 평면 $\\mathrm{ACD}$가 이루는 각이 $60^\\circ$이다. 직선 $\\mathrm{AD}$와 평면 $\\mathrm{DBC}$이 이루는 각을 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오. [10점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q19-repaired.svg\" class=\"exam-img\" alt=\"사면체 ABCD와 두 평면 ABD ACD\"></div>",
+    "content": "[서술형 1] 사면체 $\\mathrm{ABCD}$에 대하여 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=8, \\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}, \\angle\\mathrm{ABD}=90^\\circ$이고 평면 $\\mathrm{ABD}$와 평면 $\\mathrm{ACD}$가 이루는 각이 $60^\\circ$이다. 직선 $\\mathrm{AD}$와 평면 $\\mathrm{DBC}$이 이루는 각을 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오. [10점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q19-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"사면체 ABCD와 주어진 모서리 길이\"></div>",
     "choices": [],
     "answer": "2√5/5",
     "solution": "조건·목표: 직선 AD와 평면 DBC가 이루는 예각 θ의 cosθ를 구한다.\n전략: △ABD의 직각 조건과 AD를 축으로 하는 두 평면의 이면각을 이용해 사면체 부피와 △DBC의 넓이를 구한다.\n풀이 ① △ABD는 B에서 직각이므로 BD²=AD²-AB²=8²-4²=48, BD=4√3이다. AB=AC, BD=CD이므로 B,C는 AD축에서 같은 거리의 원 위에 있다.\n풀이 ② A에서 AD방향으로 B의 정사영 길이는 (AB²+AD²-BD²)/(2AD)=(16+64-48)/16=2이다. 따라서 AD축에서 B,C까지의 거리는 √(AB²-2²)=2√3이다.\n풀이 ③ 평면 ABD와 ACD의 이면각 60°에서 B,C의 축둘레 중심각이 60°이므로 BC=2(2√3)sin30°=2√3이다. C에서 평면 ABD까지의 높이는 2√3sin60°=3이다.\n풀이 ④ △ABD 넓이는 (1/2)×AB×BD=8√3이므로 사면체 부피 V=(1/3)×8√3×3=8√3이다.\n풀이 ⑤ △DBC에서 BD=CD=4√3, BC=2√3이므로 BC에 내린 높이는 √((4√3)²-(√3)²)=3√5, 넓이는 (1/2)×2√3×3√5=3√15이다.\n풀이 ⑥ AD와 평면 DBC 사이의 각 θ에 대해 3V=AD×[△DBC 넓이]×sinθ이므로 sinθ=(3×8√3)/(8×3√15)=1/√5이다.\n결론: θ는 예각이므로 cosθ=√(1-1/5)=2√5/5이다.",
@@ -791,7 +791,7 @@ window.questionBank = [
   {
     "id": 20,
     "questionType": "서술형",
-    "content": "[서술형 2] 같은 평면위의 네 점 $\\mathrm{A, B, O, P}$에 대하여 $\\overline{\\mathrm{AB}}=8$, 선분 $\\mathrm{AB}$의 중점을 $\\mathrm{O}$, 선분 $\\mathrm{AB}$를 지름으로 하는 반원 위의 한 점을 $\\mathrm{P}$, 선분 $\\mathrm{AO}$를 지름으로 하는 반원 위의 점을 $\\mathrm{Q}$라 하자. $\\angle\\mathrm{ABP}=30^\\circ$일 때, $\\vec{\\mathrm{AQ}} \\cdot \\vec{\\mathrm{BP}}$의 최솟값과 최댓값을 구하시오. [10점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q20-repaired.svg\" class=\"exam-img\" alt=\"지름 AB와 AO인 두 반원 및 점 P Q\"></div>",
+    "content": "[서술형 2] 같은 평면위의 네 점 $\\mathrm{A, B, O, P}$에 대하여 $\\overline{\\mathrm{AB}}=8$, 선분 $\\mathrm{AB}$의 중점을 $\\mathrm{O}$, 선분 $\\mathrm{AB}$를 지름으로 하는 반원 위의 한 점을 $\\mathrm{P}$, 선분 $\\mathrm{AO}$를 지름으로 하는 반원 위의 점을 $\\mathrm{Q}$라 하자. $\\angle\\mathrm{ABP}=30^\\circ$일 때, $\\vec{\\mathrm{AQ}} \\cdot \\vec{\\mathrm{BP}}$의 최솟값과 최댓값을 구하시오. [10점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q20-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"지름 AB와 AO 및 OB 위의 반원, 점 P와 Q 및 선분 BP와 AQ\"></div>",
     "choices": [],
     "answer": "최솟값 -24, 최댓값 -12+8√3",
     "solution": "조건·목표: 두 반원 위의 P,Q에 대해 AQ·BP의 최솟값과 최댓값을 구한다.\n전략: 반원들을 좌표평면에 놓고 Q를 삼각함수로 나타내어 내적의 범위를 계산한다.\n풀이 ① A=(0,0), O=(4,0), B=(8,0)으로 둔다. AB가 지름이므로 ∠APB=90°이다. ∠ABP=30°이므로 BP=8cos30°=4√3이고, P=(2,2√3), BP=(-6,2√3)이다.\n풀이 ② AO를 지름으로 하는 위쪽 반원의 중심은 (2,0), 반지름은 2이다. Q=(2+2cos t,2sin t), 0≤t≤π로 놓으면 AQ=(2+2cos t,2sin t)이다.\n풀이 ③ AQ·BP=(2+2cos t)(-6)+(2sin t)(2√3)=-12-12cos t+4√3sin t이다.\n풀이 ④ -12cos t+4√3sin t=8√3sin(t-π/3)으로 쓸 수 있다. 0≤t≤π에서 최대 8√3은 t=5π/6에서 얻는다. 따라서 최대 내적은 -12+8√3이다.\n풀이 ⑤ 같은 구간에서 sin(t-π/3)의 최소는 t=0에서 -√3/2이므로 내적 최솟값은 -12-12=-24이다.\n결론: 최솟값 -24, 최댓값 -12+8√3이다.",

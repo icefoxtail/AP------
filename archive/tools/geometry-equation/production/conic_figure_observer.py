@@ -13,8 +13,10 @@ curve points, intersections and feet of perpendiculars from the authored plan wi
   * every drawn name (point, line, segment length) must be the plan's text, inside the canvas, next to its
     owner (or joined to it by a leader that starts at the name and ends on the owner).
 """
+from collections import Counter
 import hashlib
 import math
+import re
 import xml.etree.ElementTree as ET
 
 import sympy as S
@@ -506,6 +508,43 @@ def _round_scale(par,samples):
     return (width/wanted[0]+height/wanted[1])/2 if wanted[0] and wanted[1] else None
 
 
+def arch_display_frame(plan, par, extra, points, segments, raw_lines, elements, errors):
+    """Recover the scale and origin from the ground SVG line, not hidden axis values."""
+    arch=plan['arch']
+    if (not isinstance(arch,dict) or set(arch)!={'ground','laser'}
+        or any(not isinstance(arch[key],str) or not arch[key] for key in ('ground','laser'))
+        or arch['ground']==arch['laser'] or extra['multi'] or par['kind']!='PARABOLA' or par['axis']!='Y' or _fl(par['p'])>=0):
+        raise Refuse('PARABOLIC_ARCH_INVALID')
+    by_id={segment.get('id'):segment for segment in segments}
+    if len(by_id)!=len(segments) or arch['ground'] not in by_id or arch['laser'] not in by_id:
+        raise Refuse('PARABOLIC_ARCH_SEGMENT_REQUIRED')
+    ground,laser=by_id[arch['ground']],by_id[arch['laser']]
+    a,b=points[ground['from']],points[ground['to']]
+    if ground.get('dashed') or not _fl(a[0])<_fl(b[0]) or S.simplify(a[1]-b[1])!=0 or not on_curve(par,a) or not on_curve(par,b):
+        raise Refuse('PARABOLIC_ARCH_GROUND_INVALID')
+    tx,ty=points[laser['from']]
+    cx,cy=points[laser['to']]
+    declared=extra['tangentFrom'].get(laser['from'])
+    laser_line=(ty-cy, cx-tx, (ty-cy)*cx+(cx-tx)*cy)
+    tangent=tangency_of(par,laser_line)
+    if (laser.get('dashed') or declared is None or declared[0]!=laser['to'] or tangent is None
+        or S.simplify(tangent[0]-tx)!=0 or S.simplify(tangent[1]-ty)!=0 or S.simplify(cy-a[1])!=0
+        or not (_fl(cx)<_fl(a[0]) or _fl(cx)>_fl(b[0]))
+        or not _fl(a[0])<_fl(tx)<_fl(b[0]) or not _fl(ty)>_fl(a[1])):
+        raise Refuse('PARABOLIC_ARCH_LASER_INVALID')
+    if (any(raw.get('coordinates') is True for raw in plan.get('points',[]))
+        or any(not raw.get('hidden') for raw in raw_lines)
+        or any(element.get('data-role') in ('axis','axis-head','tick') or element.tag==NS+'text' for element in elements)):
+        raise Refuse('PARABOLIC_ARCH_COORDINATE_CUES')
+    nodes=[el for el in _find(elements,'segment','data-from') if el.get('id')=='segment-'+arch['ground']]
+    if len(nodes)!=1:raise Refuse('PARABOLIC_ARCH_GROUND_MISSING')
+    x1,y1,x2,y2=_line_coords(nodes[0],errors,'SEGMENT_COORDINATE_INVALID')
+    if x1>=x2 or abs(y2-y1)>PIXEL_TOLERANCE:raise Refuse('PARABOLIC_ARCH_GROUND_MOVED')
+    scale=(x2-x1)/_fl(b[0]-a[0])
+    return (x1-_fl(a[0])*scale, y1+_fl(a[1])*scale, scale,
+            (_fl(a[0]),_fl(b[0]),_fl(tx),laser['from'],laser['to']), (ground['from'],ground['to'],laser['to']))
+
+
 def audit(plan,svg):
     errors=[];checks={'capability':'ellipse-figure-v1','conic':True}
     digest='sha256:'+hashlib.sha256(svg.encode('utf-8')).hexdigest()
@@ -525,28 +564,37 @@ def audit(plan,svg):
     except (TypeError,ValueError): errors.append('SVG_INTRINSIC_MISSING');canvas={'width':0.0,'height':0.0}
     if root.get('transform'): errors.append('SVG_TRANSFORM_UNSUPPORTED')
 
-    axes={}
-    for element in _find(elements,'axis','data-axis'):
-        name=element.get('data-axis')
-        if name in axes: errors.append('AXIS_DUPLICATE:%s'%name)
-        axes[name]=_line_coords(element,errors,'AXIS_COORDINATE_INVALID')
-    for name in ('x','y'):
-        if name not in axes: errors.append('AXIS_MISSING:%s'%name)
-    if errors: return result()
-    ox=axes['y'][0];oy=axes['x'][1]
-    heads={}
-    for element in _find(elements,'axis-head','data-axis'): heads.setdefault(element.get('data-axis'),[]).append(element)
-    for name in ('x','y'):
-        found=heads.get(name,[])
-        if len(found)!=1: errors.append('AXIS_HEAD_MISSING_OR_AMBIGUOUS:%s'%name);continue
-        try: head_points=[[float(v) for v in part.split(',')] for part in (found[0].get('points') or '').split()]
-        except ValueError: errors.append('AXIS_HEAD_GEOMETRY_INVALID:%s'%name);continue
-        if len(head_points)!=3 or any(len(pt)!=2 for pt in head_points): errors.append('AXIS_HEAD_GEOMETRY_INVALID:%s'%name);continue
-        tip=head_points[0];x1,y1,x2,y2=axes[name]
-        if name=='x':
-            if tip[0]<max(x1,x2)-PIXEL_TOLERANCE or abs(tip[1]-oy)>PIXEL_TOLERANCE: errors.append('AXIS_HEAD_DIRECTION_INVALID:x')
-        elif tip[1]>min(y1,y2)+PIXEL_TOLERANCE or abs(tip[0]-ox)>PIXEL_TOLERANCE: errors.append('AXIS_HEAD_DIRECTION_INVALID:y')
-    if errors: return result()
+    arch_frame=None
+    if 'arch' in plan:
+        try:
+            arch_frame=arch_display_frame(plan,par,extra,points,segments,raw_lines,elements,errors)
+        except Refuse as error:
+            errors.append(str(error))
+        if errors:return result()
+        ox,oy,scale,_,_=arch_frame
+    else:
+        axes={}
+        for element in _find(elements,'axis','data-axis'):
+            name=element.get('data-axis')
+            if name in axes: errors.append('AXIS_DUPLICATE:%s'%name)
+            axes[name]=_line_coords(element,errors,'AXIS_COORDINATE_INVALID')
+        for name in ('x','y'):
+            if name not in axes: errors.append('AXIS_MISSING:%s'%name)
+        if errors: return result()
+        ox=axes['y'][0];oy=axes['x'][1]
+        heads={}
+        for element in _find(elements,'axis-head','data-axis'): heads.setdefault(element.get('data-axis'),[]).append(element)
+        for name in ('x','y'):
+            found=heads.get(name,[])
+            if len(found)!=1: errors.append('AXIS_HEAD_MISSING_OR_AMBIGUOUS:%s'%name);continue
+            try: head_points=[[float(v) for v in part.split(',')] for part in (found[0].get('points') or '').split()]
+            except ValueError: errors.append('AXIS_HEAD_GEOMETRY_INVALID:%s'%name);continue
+            if len(head_points)!=3 or any(len(pt)!=2 for pt in head_points): errors.append('AXIS_HEAD_GEOMETRY_INVALID:%s'%name);continue
+            tip=head_points[0];x1,y1,x2,y2=axes[name]
+            if name=='x':
+                if tip[0]<max(x1,x2)-PIXEL_TOLERANCE or abs(tip[1]-oy)>PIXEL_TOLERANCE: errors.append('AXIS_HEAD_DIRECTION_INVALID:x')
+            elif tip[1]>min(y1,y2)+PIXEL_TOLERANCE or abs(tip[0]-ox)>PIXEL_TOLERANCE: errors.append('AXIS_HEAD_DIRECTION_INVALID:y')
+        if errors: return result()
 
     # --- the curves: scale from the declared markers (or a curve alone), then every sample (and chord midpoint) on the equation ------------------
     curves=_find(elements,'curve')
@@ -581,20 +629,21 @@ def audit(plan,svg):
         pid=element.get('data-point')
         if pid in markers: errors.append('POINT_DUPLICATE:%s'%pid)
         markers[pid]=(_attr_float(element,'cx',errors,'POINT_COORDINATE_INVALID'),_attr_float(element,'cy',errors,'POINT_COORDINATE_INVALID'))
-    # A parabola alone fixes only (p x scale), so the scale is read from the declared point markers (median of
-    # their distances from the drawn origin over the exact ones); the curve is then checked against it.
-    candidates=[]
-    for pid,value in points.items():
-        reach=math.hypot(_fl(value[0]),_fl(value[1]))
-        if pid in markers and reach>=0.5: candidates.append(math.hypot(markers[pid][0]-ox,markers[pid][1]-oy)/reach)
-    candidates.sort()
-    first_id=next(iter(pars))
-    if candidates: scale=candidates[len(candidates)//2]
-    else:
-        lone=pars[first_id];lone_samples=[pt for run in curve_runs[first_id] for pt in run]
-        if lone['kind']=='HYPERBOLA': scale=_hyperbola_scale(lone,lone_samples,ox,oy)
-        elif lone['kind'] in ('CIRCLE','ELLIPSE'): scale=_round_scale(lone,lone_samples)
-        else: scale=_curve_scale(lone,lone_samples,ox,oy,_fl(lone['h']),_fl(lone['k']),_fl(lone['p']))
+    if arch_frame is None:
+        # A parabola alone fixes only (p x scale), so the scale is read from the declared point markers (median of
+        # their distances from the drawn origin over the exact ones); the curve is then checked against it.
+        candidates=[]
+        for pid,value in points.items():
+            reach=math.hypot(_fl(value[0]),_fl(value[1]))
+            if pid in markers and reach>=0.5: candidates.append(math.hypot(markers[pid][0]-ox,markers[pid][1]-oy)/reach)
+        candidates.sort()
+        first_id=next(iter(pars))
+        if candidates: scale=candidates[len(candidates)//2]
+        else:
+            lone=pars[first_id];lone_samples=[pt for run in curve_runs[first_id] for pt in run]
+            if lone['kind']=='HYPERBOLA': scale=_hyperbola_scale(lone,lone_samples,ox,oy)
+            elif lone['kind'] in ('CIRCLE','ELLIPSE'): scale=_round_scale(lone,lone_samples)
+            else: scale=_curve_scale(lone,lone_samples,ox,oy,_fl(lone['h']),_fl(lone['k']),_fl(lone['p']))
     if not scale:
         errors.append('CONIC_CURVE_OFF_EQUATION:scale');return result()
     checks['scale']=scale
@@ -637,6 +686,15 @@ def audit(plan,svg):
             if one['axis']=='X': value=(my-ky)**2-4*pv*(mx-hx);grad=math.hypot(2*(my-ky),4*pv)
             else: value=(mx-hx)**2-4*pv*(my-ky);grad=math.hypot(2*(mx-hx),4*pv)
         return abs(value)/max(grad,1e-12)*scale
+    if arch_frame is not None:
+        from_x,to_x,contact_x,contact_id,emitter_id=arch_frame[3]
+        start,end,contact=(ox+scale*x for x in (from_x,to_x,contact_x))
+        if (len(runs)!=1 or abs(runs[0][0][0]-start)>PIXEL_TOLERANCE or abs(runs[0][-1][0]-end)>PIXEL_TOLERANCE
+            or any(right[0]<left[0] or right[0]-left[0]>3 for left,right in zip(runs[0],runs[0][1:]))
+            or all(abs(point[0]-contact)>PIXEL_TOLERANCE for point in runs[0])):
+            errors.append('PARABOLIC_ARCH_CURVE_EXTENT_MISMATCH')
+        checks['arch']={'from':from_x,'to':to_x,'contact':contact_id,'emitter':emitter_id}
+
     worst=0.0
     for cid,one in pars.items():
         for run in curve_runs[cid]:
@@ -659,6 +717,9 @@ def audit(plan,svg):
 
     # --- point markers -----------------------------------------------------------------------------------------------------------------------
     for pid,value in points.items():
+        if arch_frame is not None and not labels[pid]:
+            if pid in markers:errors.append('PARABOLIC_ARCH_HIDDEN_POINT_SHOWN:'+pid)
+            continue
         if pid not in markers: errors.append('POINT_MISSING:%s'%pid);continue
         ex,ey=pixel(*value)
         if math.hypot(markers[pid][0]-ex,markers[pid][1]-ey)>PIXEL_TOLERANCE:
@@ -716,14 +777,18 @@ def audit(plan,svg):
 
     # --- segments and polygons -------------------------------------------------------------------------------------------------------------
     found_segments={}
+    segment_elements={}
     for element in _find(elements,'segment','data-from'):
         key=(element.get('data-from'),element.get('data-to'))
         if key in found_segments: errors.append('SEGMENT_DUPLICATE:%s-%s'%key)
         found_segments[key]=_line_coords(element,errors,'SEGMENT_COORDINATE_INVALID')
+        segment_elements[key]=element
     for raw in segments:
         key=(raw['from'],raw['to'])
         if key not in found_segments: errors.append('SEGMENT_MISSING:%s'%raw.get('id'));continue
         sx1,sy1,sx2,sy2=found_segments[key]
+        if arch_frame is not None and (segment_elements[key].get('stroke-dasharray') is not None)!=(raw.get('dashed') is True):
+            errors.append('PARABOLIC_ARCH_SEGMENT_STYLE_MISMATCH:'+raw['id'])
         for pid,got in ((raw['from'],(sx1,sy1)),(raw['to'],(sx2,sy2))):
             ex,ey=pixel(*points[pid])
             if math.hypot(got[0]-ex,got[1]-ey)>PIXEL_TOLERANCE: errors.append('SEGMENT_ENDPOINT_MOVED:%s:%s'%(raw.get('id'),pid))
@@ -819,6 +884,9 @@ def audit(plan,svg):
 
     # --- names ------------------------------------------------------------------------------------------------------------------------------
     coordinate_ids={raw.get('id') for raw in (plan.get('points') or []) if isinstance(raw,dict) and raw.get('coordinates') is True}
+    if arch_frame is not None:
+        ids=Counter(element.get('id') for element in elements if element.get('id'))
+        if any(count>1 for count in ids.values()):errors.append('PARABOLIC_ARCH_DUPLICATE_ID')
     label_elements={}
     for element in elements:
         if element.get('data-label-role')=='point' and element.get('data-point'): label_elements[element.get('data-point')]=element
@@ -826,6 +894,9 @@ def audit(plan,svg):
         if not wanted: continue
         element=label_elements.get(pid)
         if element is None: errors.append('LABEL_MISSING:%s'%pid);continue
+        if arch_frame is not None and (element.get('id')!='label-point-'+pid
+            or element.get('data-owner')!='ellipse-point-'+pid or ids['point-'+pid]!=1):
+            errors.append('PARABOLIC_ARCH_POINT_LABEL_OWNER_MISMATCH:'+pid)
         shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
         if pid in coordinate_ids:
             if not _coordinate_label_matches(shown,pid,points[pid]): errors.append('LABEL_COORDINATES_MISMATCH:%s:%s'%(pid,shown))
@@ -835,13 +906,31 @@ def audit(plan,svg):
         if box['x']<0 or box['y']<0 or box['x']+box['width']>canvas['width'] or box['y']+box['height']>canvas['height']:
             errors.append('LABEL_OUT_OF_CANVAS:%s'%pid)
         ex,ey=pixel(*points[pid])
+        if arch_frame is not None and pid in arch_frame[4]:
+            translated=re.fullmatch(r'translate\(([-\d.]+) ([-\d.]+)\)',element.get('transform',''))
+            if (translated is None or any(abs(float(value)-box[key])>0.01 for key,value in zip(('x','y'),translated.groups()))
+                or abs(box['x']+box['width']/2-ex)>8+PIXEL_TOLERANCE or box['y']<ey):
+                errors.append('PARABOLIC_ARCH_GROUND_LABEL_DISPLACED:'+pid)
         if _box_distance(ex,ey,box)>(POINT_LEADER_MAX if pid in coordinate_ids else LABEL_DISTANCE): errors.append('LABEL_TOO_FAR:%s'%pid)
         for other,value in points.items():
             if other==pid: continue
             gx,gy=pixel(*value)
             if _point_in_box(gx,gy,box,2.0): errors.append('LABEL_COVERS_POINT:%s:%s'%(pid,other))
     for pid in label_elements:
-        if pid not in points: errors.append('LABEL_UNDECLARED:%s'%pid)
+        if pid not in points or arch_frame is not None and not labels[pid]:errors.append('LABEL_UNDECLARED:%s'%pid)
+    if arch_frame is not None:
+        expected=set('label-point-'+pid for pid,wanted in labels.items() if wanted)|set(
+            'measure-'+row['id'] for row in segments if row.get('label'))
+        got=[element.get('id') for element in elements if element.get('data-label-kind')]
+        if len(got)!=len(expected) or set(got)!=expected:errors.append('PARABOLIC_ARCH_UNDECLARED_LABEL')
+        title=root.find(NS+'title')
+        description=root.find(NS+'desc')
+        expected_title=plan.get('caption','포물선 모양 조형물')
+        expected_description=plan.get('accessibilityDescription','포물선 호의 양 끝은 지면에 닿고, 지면에서 시작하는 선분은 호에 접한다.')
+        if (root.get('role')!='img' or root.get('aria-labelledby')!='visual-title visual-desc'
+            or title is None or title.get('id')!='visual-title' or title.text!=expected_title or description is None
+            or description.get('id')!='visual-desc' or description.text!=expected_description):
+            errors.append('PARABOLIC_ARCH_ACCESSIBLE_NAME_MISMATCH')
 
     segment_labels={element.get('data-segment'):element for element in elements if element.get('data-label-role')=='measure'}
     line_labels={element.get('data-line'):element for element in elements if element.get('data-label-role')=='line'}

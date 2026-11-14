@@ -137,12 +137,13 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(graph){
       // runPhase2 604-605: the independent graph observer audits the model's own polyline against the (framed) graph plan.
       if(typeof model?.svg!=='string')throw new Stop('MODEL_PLAN_MISMATCH',{reason:'GRAPH_MODEL_SVG_MISSING'});
-      const binding=await call(pythonWorker,'modelBinding',{graphPlan:plan.graphPlan,svg:model.svg,transform:observerFrame(model.transform)},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000});
+      const binding=await call(pythonWorker,'modelBinding',{action:'modelBinding',graphPlan:plan.graphPlan,svg:model.svg,transform:observerFrame(model.transform)},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000});
       if(binding.status!=='PASS')throw new Stop('MODEL_PLAN_MISMATCH',{errors:binding.errors??null});
     }else peer=bindModelToPlan(plan,model);
 
     let spec;
     try{spec=specFor(plan,model,identity.assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('SPEC_ERROR',{code:error.message});}
+    if(graph&&identity.surface==='PROBLEM_VISUAL')spec.displayFacts.preferTickSide=true;
     if(Object.hasOwn(plan,'accessibilityDescription')){
       const description=plan.accessibilityDescription;
       if(typeof description!=='string'||!description.trim()||description.length>500||/[\r\n]/.test(description))throw new Stop('SPEC_ERROR',{code:'INVALID_ACCESSIBILITY_DESCRIPTION'});

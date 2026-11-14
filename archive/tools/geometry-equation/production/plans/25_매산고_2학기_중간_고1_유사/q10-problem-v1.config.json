@@ -1,0 +1,254 @@
+{
+  "sourcePath": "archive/exams/similar/high/h1/2mid/25_매산고_2학기_중간_고1_유사.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "line1",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "b": {
+                  "kind": "expression",
+                  "op": "mul",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "-12"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "line2",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "b": {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "mul",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        },
+                        {
+                          "kind": "expression",
+                          "op": "sqrt",
+                          "args": [
+                            {
+                              "kind": "integer",
+                              "value": "2"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "-12"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T1",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O",
+                "line1"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T2",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "O",
+                "line2"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayCircles": [
+          "circle"
+        ],
+        "displayPoints": [
+          "O",
+          "A",
+          "T1",
+          "T2"
+        ],
+        "displaySegments": [
+          {
+            "id": "at1",
+            "refs": [
+              "A",
+              "T1"
+            ]
+          },
+          {
+            "id": "at2",
+            "refs": [
+              "A",
+              "T2"
+            ]
+          }
+        ],
+        "coordinateLabels": [
+          "O",
+          "A"
+        ],
+        "labelDirections": {
+          "A": "N"
+        },
+        "axisTickValues": {
+          "x": [
+            4,
+            8
+          ],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 480
+        },
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "equation",
+              "at": [
+                7,
+                -4.7
+              ],
+              "text": "x²+y²=16",
+              "labelKind": "TEXT"
+            }
+          ]
+        },
+        "caption": "원과 바깥점 A에서 그은 두 접선",
+        "sourceConditions": [
+          "원 x²+y²=16, 바깥점 A(12,0), 두 접선이 주어져 있다."
+        ],
+        "newVisualInformation": [
+          "주어진 원과 접선 관계"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "requestedSizeClass": "full",
+        "displayScale": 0.493994140625,
+        "cssTargetFontPx": 12.25,
+        "fontFloorCssPx": 11,
+        "comfortCssPx": 0.25,
+        "minimumBaseFontPx": 11,
+        "maximumBaseFontPx": 40,
+        "baseFontPx": 24.8,
+        "rounding": "CEIL_TO_TENTH_BASE_PX"
+      }
+    }
+  ]
+}

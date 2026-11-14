@@ -797,7 +797,7 @@ window.questionBank = [
     "id": 19,
     "questionNumber": 19,
     "questionType": "객관식",
-    "content": "그림과 같이 선분 $\\mathrm{AB}$를 지름으로 하는 원 위의 점 $\\mathrm{O}$에 대하여 점 $\\mathrm{C}$는 선분 $\\mathrm{AB}$의 연장선 위에 있고 $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{BC}}$이다. 점 $\\mathrm{C}$와 원 위의 임의의 점 $\\mathrm{P}$를 연결한 선분이 원과 만나는 $\\mathrm{P}$가 아닌 점을 $\\mathrm{Q}$라 하자. $\\angle\\mathrm{AOP}=2\\alpha, \\angle\\mathrm{QOB}=2\\beta$이고, 선분 $\\overline{\\mathrm{PC}}=\\frac{3\\sin\\alpha}{\\sin\\beta}$라 할 때 이 원의 반지름의 길이를 구하면? [4.5점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q19.png\" class=\"question-img\">",
+    "content": "그림과 같이 선분 $\\mathrm{AB}$를 지름으로 하는 원의 중심 $\\mathrm{O}$에 대하여 점 $\\mathrm{C}$는 선분 $\\mathrm{AB}$의 연장선 위에 있고 $\\overline{\\mathrm{OB}}=\\overline{\\mathrm{BC}}$이다. 점 $\\mathrm{C}$와 원 위의 임의의 점 $\\mathrm{P}$를 연결한 선분이 원과 만나는 $\\mathrm{P}$가 아닌 점을 $\\mathrm{Q}$라 하자. $\\angle\\mathrm{AOP}=2\\alpha, \\angle\\mathrm{QOB}=2\\beta$이고, 선분 $\\overline{\\mathrm{PC}}=\\frac{3\\sin\\alpha}{\\sin\\beta}$라 할 때 이 원의 반지름의 길이를 구하면? [4.5점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q19.png\" class=\"question-img\">",
     "choices": [
       "1",
       "$\\sqrt{2}$",

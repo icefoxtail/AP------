@@ -560,7 +560,7 @@ window.questionBank = [
     {
     "number": 9,
     "score": 4.2,
-    "question": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 아래 그림과 같을 때, $(f^{-1} \\circ g^{-1})^{-1}(3)+(g \\circ (f \\circ g)^{-1})(3)$의 값은? [4.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q09.svg\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+    "question": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 아래 그림과 같을 때, $(f^{-1} \\circ g^{-1})^{-1}(3)+(g \\circ (f \\circ g)^{-1})(3)$의 값은? [4.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q09-problem-v2.svg\" style=\"max-width: 316px; display: block; margin: 10px 0;\">",
     "choices": [
       "$4$",
       "$5$",
@@ -571,7 +571,7 @@ window.questionBank = [
     "id": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 아래 그림과 같을 때, $(f^{-1} \\circ g^{-1})^{-1}(3)+(g \\circ (f \\circ g)^{-1})(3)$의 값은? [4.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q09.svg\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+    "content": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여 $X$에서 $X$로의 두 함수 $f, g$가 아래 그림과 같을 때, $(f^{-1} \\circ g^{-1})^{-1}(3)+(g \\circ (f \\circ g)^{-1})(3)$의 값은? [4.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q09-problem-v2.svg\" style=\"max-width: 316px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "⑤",
     "solution": "그림의 화살표에서\n$f(1)=2$, $f(2)=4$, $f(3)=1$, $f(4)=3$이고\n$g(1)=4$, $g(2)=1$, $g(3)=3$, $g(4)=2$이다.\n\n$(f^{-1} \\circ g^{-1})^{-1}=g\\circ f$이므로\n$(g\\circ f)(3)=g(f(3))=g(1)=4$이다.\n\n또 $(f\\circ g)^{-1}(3)$은 $f(g(x))=3$을 만족하는 $x$이다.\n$f(4)=3$이고 $g(1)=4$이므로 $(f\\circ g)^{-1}(3)=1$이다.\n따라서 $g((f\\circ g)^{-1}(3))=g(1)=4$이다.\n\n구하는 값은 $4+4=8$이므로 정답은 ⑤이다.",
@@ -1001,7 +1001,7 @@ window.questionBank = [
     {
     "number": 15,
     "score": 4.8,
-    "question": "아래 그림과 같이 유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가 직선 $y=-x+10$과 두 점 $P, Q$에서 만난다. 삼각형 $OPQ$의 넓이가 $44$일 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [4.8점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15.svg\" style=\"max-width: 460px; display: block; margin: 10px 0;\">",
+    "question": "아래 그림과 같이 유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가 직선 $y=-x+10$과 두 점 $P, Q$에서 만난다. 삼각형 $OPQ$의 넓이가 $44$일 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [4.8점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15-problem-v2.svg\" style=\"max-width: 275px; display: block; margin: 10px 0;\">",
     "choices": [
       "$\\frac{141}{25}$",
       "$\\frac{143}{25}$",
@@ -1012,7 +1012,7 @@ window.questionBank = [
     "id": 15,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "아래 그림과 같이 유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가 직선 $y=-x+10$과 두 점 $P, Q$에서 만난다. 삼각형 $OPQ$의 넓이가 $44$일 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [4.8점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15.svg\" style=\"max-width: 460px; display: block; margin: 10px 0;\">",
+    "content": "아래 그림과 같이 유리함수 $y=\\frac{k}{x}\\,(k>0)$의 그래프가 직선 $y=-x+10$과 두 점 $P, Q$에서 만난다. 삼각형 $OPQ$의 넓이가 $44$일 때, 상수 $k$의 값은? (단, $O$는 원점이다.) [4.8점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q15-problem-v2.svg\" style=\"max-width: 275px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "①",
     "solution": "직선과 쌍곡선의 교점의 $x$좌표를 $u,v$라 하면\n$x^2-10x+k=0$의 두 근이 $u,v$이다.\n\n두 점 $P(u,10-u)$, $Q(v,10-v)$와 원점을 꼭짓점으로 하는 삼각형의 넓이는\n$\\dfrac12|u(10-v)-v(10-u)|=5|u-v|$이다.\n따라서 $5|u-v|=44$이므로 $|u-v|=\\dfrac{44}{5}$이다.\n\n이차방정식의 판별식은 두 근 차의 제곱이므로\n$100-4k=(u-v)^2=\\dfrac{1936}{25}$이다.\n$4k=100-\\dfrac{1936}{25}=\\dfrac{564}{25}$, 따라서 $k=\\dfrac{141}{25}$이다.\n\n정답은 ①이다.",
@@ -1222,7 +1222,7 @@ window.questionBank = [
     {
     "number": 18,
     "score": 5.2,
-    "question": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18.svg\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+    "question": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v3.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
     "choices": [
       "$\\frac{7}{4}$",
       "$2$",
@@ -1233,7 +1233,7 @@ window.questionBank = [
     "id": 18,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18.svg\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+    "content": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v3.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "⑤",
     "solution": "$u=f(x)$로 놓으면 방정식은 $f(u)=2-u$이다. 그래프에서\n$f(u)=u+1$ ($0\\le u\\le1$), $f(u)=-2u+4$ ($1\\le u\\le2$)이다.\n\n첫 구간에서는 $u+1=2-u$이므로 $u=\\dfrac12$이다. 둘째 구간에서는 $-2u+4=2-u$이므로 $u=2$이다.\n\n이제 $f(x)=\\dfrac12$의 해는 $x=\\dfrac74$이고, $f(x)=2$의 해는 $x=1$이다.\n따라서 모든 실근의 합은 $\\dfrac74+1=\\dfrac{11}{4}$이고 정답은 ⑤이다.",

@@ -73,7 +73,7 @@ const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','labelPlacement','equalGroup','emphasisGroup','factRole','noLabel','straight','over','arcScale','angleDimension','color','fillColor'],
   equalLengths:['id','count','segments','pathMark','markStyle','color'],parallels:['id','count','segments','lines','color'],
   expressionLabels:['id','ownerSegment','text','factRole','labelKind','labelWeight','unit','labelAt','ownership','side'],
-  arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole','color'],
+  arcs:['id','circle','center','from','to','side','label','labelKind','labelWeight','unit','labelPlacement','highlight','factRole','color','dashed'],
   traces:['id','center','radius','through','spanDeg','span','labelAt','label','labelKind','labelWeight','unit','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
@@ -735,7 +735,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!['DEGREE','NAME','MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
     if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
     const unit=unitOf(row,kind,row.label!==undefined,'arcs');
-    const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
+    if(row.dashed!==undefined&&(typeof row.dashed!=='boolean'||row.dashed&&row.highlight===false))bad('ARC_DASH_INVALID:'+row.id);
+    const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false,...(row.dashed?{dash:true}:{})};
     // color (G13c, C1): a palette colour for the arc's line; arcs of one colour are one relation, so they must have the same length (radius x angle, relative 1e-6). An arc that is not drawn (highlight false) has no colour.
     if(row.color!==undefined){
       if(!isPaletteName(row.color)||row.highlight===false)bad('ARC_COLOR_INVALID:'+row.id);

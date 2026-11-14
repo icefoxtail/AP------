@@ -12,6 +12,8 @@ on:
       - 'tests/archive-output-metadata-loader.test.cjs'
       - 'tests/archive2-output-strict-gate.cjs'
       - 'tests/archive2-output-comparison-references.json'
+      - 'tests/archive2-output-qualification-fixtures.cjs'
+      - 'tests/archive2-output-qualification-fixtures.test.cjs'
       - 'tests/archive2-output-release-qualification.cjs'
       - 'tests/archive2-output-release-qualification.test.cjs'
       - 'tests/archive2-solution-loading-browser.cjs'
@@ -34,6 +36,8 @@ on:
       - 'tests/archive-output-metadata-loader.test.cjs'
       - 'tests/archive2-output-strict-gate.cjs'
       - 'tests/archive2-output-comparison-references.json'
+      - 'tests/archive2-output-qualification-fixtures.cjs'
+      - 'tests/archive2-output-qualification-fixtures.test.cjs'
       - 'tests/archive2-output-release-qualification.cjs'
       - 'tests/archive2-output-release-qualification.test.cjs'
       - '.github/workflows/archive-output-performance.yml'
@@ -59,13 +63,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 1
           persist-credentials: false
-      - name: Fetch only the comparison baseline
-        env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
-        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Fetch the renderer baseline and qualification source snapshot
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
+        run: |
+          source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
+          git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
@@ -115,6 +121,7 @@ jobs:
           tests/archive-mixed-envelope-cache.test.cjs
           tests/archive2-output-visibility-observation.test.cjs
           tests/archive-output-metadata-loader.test.cjs
+          tests/archive2-output-qualification-fixtures.test.cjs
           tests/archive-question-image-map-regression.test.js
           tests/archive-exam-render-executor-slot-layout.test.cjs
           tests/archive-render-authority-adapter.test.js
@@ -156,13 +163,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 1
           persist-credentials: false
-      - name: Fetch only the comparison baseline
-        env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
-        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Fetch the renderer baseline and qualification source snapshot
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
+        run: |
+          source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
+          git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:
@@ -256,13 +265,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 1
           persist-credentials: false
-      - name: Fetch only the comparison baseline
-        env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
-        run: git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Fetch the renderer baseline and qualification source snapshot
+        env:
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || 'b9d77f8a32e245f29c672de100178bb1ebf4c617' }}
+        run: |
+          source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
+          git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:

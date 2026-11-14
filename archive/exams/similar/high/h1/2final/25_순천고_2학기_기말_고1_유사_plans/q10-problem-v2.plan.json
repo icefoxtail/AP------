@@ -1,0 +1,398 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": [],
+        "args": {}
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "inputs": []
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "D1",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "D2",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "FRAME1",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      },
+      {
+        "id": "FRAME2",
+        "op": "SOURCE_POINT",
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN",
+        "inputs": []
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "diag",
+      "refs": [
+        "D1",
+        "D2"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "FRAME1",
+    "FRAME2",
+    "D1",
+    "D2"
+  ],
+  "hiddenPointNames": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "FRAME1",
+    "FRAME2",
+    "D1",
+    "D2"
+  ],
+  "unmarkedPointNames": [
+    "FRAME1",
+    "FRAME2",
+    "D1",
+    "D2"
+  ],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "txa",
+        "at": [
+          1,
+          -0.35
+        ],
+        "text": "a",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tya",
+        "at": [
+          -0.35,
+          1
+        ],
+        "text": "a",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "txb",
+        "at": [
+          2,
+          -0.35
+        ],
+        "text": "b",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tyb",
+        "at": [
+          -0.35,
+          2
+        ],
+        "text": "b",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "txc",
+        "at": [
+          3,
+          -0.35
+        ],
+        "text": "c",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tyc",
+        "at": [
+          -0.35,
+          3
+        ],
+        "text": "c",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "txd",
+        "at": [
+          4,
+          -0.35
+        ],
+        "text": "d",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tyd",
+        "at": [
+          -0.35,
+          4
+        ],
+        "text": "d",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "txe",
+        "at": [
+          5,
+          -0.35
+        ],
+        "text": "e",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "tye",
+        "at": [
+          -0.35,
+          5
+        ],
+        "text": "e",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "ftext",
+        "at": [
+          5.95,
+          4.35
+        ],
+        "text": "y=f(x)",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "diagonal",
+        "at": [
+          5.65,
+          5.4
+        ],
+        "text": "y=x",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "caption": "함수 y=f(x)의 그래프와 직선 y=x. 축의 a,b,c,d,e가 순서대로 나타난다.",
+  "sourceConditions": [
+    "현행 그림에서 f(a)=e, f(b)=d, f(c)=b, f(d)=c, f(e)=a이고 y=x 직선이 그려져 있다."
+  ],
+  "newVisualInformation": [
+    "주어진 그래프와 축 눈금의 대응만 표시한다."
+  ]
+}

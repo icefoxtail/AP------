@@ -591,6 +591,7 @@ def prepare(spec):
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
                 label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tex':tick_fraction_tex} if tick_fraction_tex else {}),**({'tickPiValue':tick_pi['multiple']} if tick_pi else {}),**({'tickCalloutFallback':True} if spec['displayFacts'].get('tickLabelFallbackCallout') is True else {})}
+                if spec['displayFacts'].get('preferTickSide') is True:label['preferTickSide']=True
                 callout=tick_callouts.pop((axis,value),None)
                 if callout is not None:
                     label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':axis,'value':value,'sourceAt':list(p),'offsetUser':list(callout['offsetUser'])}
@@ -871,6 +872,7 @@ def prepare(spec):
                        'ownerPoints':[obj['startPoint'],obj['endPoint']],
                        'centerPoint':obj['centerPoint'],'ownerRadius':value.radius,'sweep':value.sweep,
                        **({'mark':'arc','markId':oid} if obj.get('highlight') else {}),
+                       **({'dash':'6 4'} if obj.get('dash') else {}),
                        **({'stroke':PALETTE[obj['color']]['line']} if obj.get('color') else {})},'curve')   # color (G13c, C1): the arc wears the palette line colour
             if obj.get('labelText') is not None:
                 middle=value.start_angle+value.sweep_radians/2;outward=vp.screen((value.center[0]+value.radius*math.cos(middle),value.center[1]+value.radius*math.sin(middle)))
