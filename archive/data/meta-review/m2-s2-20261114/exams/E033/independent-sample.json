@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E033",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/21_매산중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "847c7ec895a909b38103a98e9309f267fc73c068",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "d9277f184103492524d47b373795a335bd0bdd883c2d0e3046aef77cdbb74a5a",
+  "fourSlotSha256": "a7f72b3f9f70ff4289cab41d566012fe51a0ae2ec122b8a6bcd2ee9db0b2f45b",
+  "ordinals": [
+    11,
+    21,
+    23
+  ],
+  "overallConclusion": "REPAIR_MINOR",
+  "items": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_a97b189d14ceebbed3a6e537651cbce5809b1a6e897585899cd41b729ddffc67",
+      "conclusion": "PASS",
+      "reason": "실제 직각삼각형 세 변을 지름으로 한 반원 그림과 해설을 확인했다. π/8(a²+b²+c²)에 피타고라스 제곱합을 대입하는 것이 결정 단계이므로 기존 ACTIVE AREA_TRANSFER가 정확하다. 반원 넓이 자체는 이 템플릿 내부라 별도 원 넓이 CC를 붙이지 않은 판단이 맞다. RPM의 길이/수 관계 leaf와 넓이 전이를 분리한 공백도 수용한다. 한 번의 제곱합 치환이므로 bucket2/medium/B23 및 새 legacy 후보 중의 실제 사고 근거를 지지하며, 원문에 level이 없으므로 null/UNKNOWN과 등록대기는 유지해야 한다. 4칸 역할과 모든 인용이 현재 원문에 맞는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_b8fab302ea87df1fa815b356f19da50df5307911873c970f6939b4871612f5b0",
+      "conclusion": "PASS",
+      "reason": "두 수준별 소문항과 두 그림을 실제 대조했다. 1-①은 중선2:1과 중선의 등넓이 분할뿐이므로 B-E035 순수넓이 NEW_TPL, 1-②는 별도 중점 M,N과 두 무게중심으로 AEF~AMN을 구성하여 닮음비 제곱을 쓰므로 APPLICATION의 다른 도형 성질 결합에 맞는다. 둘째를 대표 RPM100으로 두고 첫째 RPM99를 subquestionDefinitionReview와 COMPOUND_ITEM_SUBQUESTION_MAPPING_PENDING으로 분리한 판단을 수용한다. CC_TRIANGLE_AREA와 CC_SIMILAR_FIGURES_AREA_VOLUME는 전체 수치와 제곱비 전환에 대응한다. 두 다른 삼각형의 무게중심을 하나의 비교 삼각형 AMN에 모으는 전략 때문에 3/4 경계의4 및 새 상 후보를 수용한다. source level 부재를 자동 환산하지 않고 null/UNKNOWN으로 보존한 것이 맞다. goal은 정규화된 넓이 한 용어이며 이유에서 두 목표 GDC/AEF를 명시해 중복하지 않았고 인용 모두 exact다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_8340d13952d2687182ecf4fe9eec194225a5de77fd3c0998c5d0f4138a3b190b",
+      "conclusion": "REPAIR_MINOR",
+      "reason": "동전 지불과 주사위 좌표 이동을 실제 읽고 좌표 그림을 확인했다. 첫째는 5a+b=25의 유한 비음 정수 후보를 직접 열거하므로 공유 DIRECT-ENUMERATION NEW_TPL, 둘째는 y이동2 한 번과 x이동3 한 번/1 세 번의 목록으로 나누고 순서를 세어 더하므로 H1 COUNTING_DIRECT_CASE의 배타적 합 정의에 맞는다. 두 소문항의 경로와 첫째 전용 비음정수 CC를 분리한 기록 및 매핑대기는 타당하다. 다만 대표 둘째 경로는 (3,2)와 (1,1,1,2)의 두 조건별 분기가 필수이며 두 소문항은 서로의 결과를 순차 입력하지 않는다. 따라서 현재 SEQUENTIAL은 CASE_BRANCH로 바꾸고 integration 근거를 대표 둘째의 두 목록 분기에 맞추는 최소 수리를 권고한다. 반복 횟수가 주어지지 않아 허용 목록 길이부터 구성하는 전략은3/4 경계이며 현재4/medium/B34와 새 상 후보는 수용 가능하다. level=null/UNKNOWN 유지도 맞다. 4칸 인용은 exact이며 방법에 합의법칙 및 해설의 2+4=6 인용을 추가하면 마지막 결합까지 명료하다."
+    }
+  ],
+  "exactQuoteCheck": "PASS",
+  "quotesChecked": 25,
+  "imagesActuallyViewed": [
+    "workers/C/images/E033/11.png",
+    "workers/C/images/E033/21.png",
+    "workers/C/images/E033/21-2.png",
+    "workers/C/images/E033/23.png"
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
