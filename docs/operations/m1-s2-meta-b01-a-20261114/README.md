@@ -61,7 +61,7 @@ GAP이 우선인 상호배타적 의미 판정이다. 정상 의미값을 보존
 - `final-verification.json`: 95문항 보호 payload 불변, UID join 95개 고유, source/compact blob 일치, raw 인용 검사 FAIL 0, 4칸 필수 형식·공식 term ID 검사 통과.
 - 다른 작업자의 표본: 시험지1 Q2·7·15, 시험지2 Q6·21·23, 시험지3 Q13·18·22, 시험지4 Q8·18·23. 변경·충돌·난이도 경계는 각 review와 root override 및 integration audit에 별도로 기록했다.
 - source validator는 88 VALIDATED/7 FAIL이다. 7 FAIL은 이미 분리한 공식 binding/필수 PT·TPL 공백이며 이를 전체 PASS로 표시하지 않았다. 더 엄격한 exact-course 검사에서는 완전한 ACTIVE PT/TPL pair 90개, exact binding 82개다. HOLD로 표시한 유형 공백도 인계한다.
-- 왕운중 기말: `m1s2-b01-a-exam2-native-20261114-r2`, native v2 24문항 공식 dry-run PASS, runtime materialization 24, fingerprint repair 24. r1은 같은 브랜치의 이전 커밋에만 보존한다.
+- 왕운중 기말: `m1s2-b01-a-exam2-native-20261114-r3`, native v2 24문항 공식 dry-run PASS, runtime materialization 24, fingerprint repair 24. 공식 basicScopeParentRef 8개로 기존 부모 선택 24개를 결속했다. r1·r2는 같은 브랜치의 이전 커밋에 보존하며 현재 inbox에는 r3만 둔다.
 - 연향중 기말·연향중 중간·왕의중 중간: 각각 difficulty reviewedCorrection 9·2·6 UID 공식 dry-run PASS. 이 17 UID 요청은 난이도 계열 필드만 반영하며 full semantic 등록 완료를 뜻하지 않는다.
 - 전체 기존 identity source fingerprint가 현재 보호 payload fingerprint보다 오래되었다. 이 배치가 문제를 바꾼 것이 아니며 native v2가 24개를 공식 경로로 갱신한다. 나머지 71개 full meta 등록은 canonical 공백과 기존 fingerprint 재결속을 해결한 뒤 official registrar로 수행한다. 기존 contentFingerprint 차이는 연향중 기말 Q10, 왕의중 중간 Q14에 별도 표시했다.
 - compact 95문항의 runtime은 main의 공식 4slot writer가 생성한다. 공용 metadata/identity/runtime 파일을 수동 편집하지 않았다.
@@ -94,3 +94,9 @@ GAP이 우선인 상호배타적 의미 판정이다. 정상 의미값을 보존
 PR #1974의 첫 CI run `43528778641`은 runtime readiness가 manifest 입력을 변경한 뒤 즉시 이전 해시를 검사하여 중단됐다. main 공식 reviewed writer에 이미 있는 build_db 최대 1회 재생성 절차를 `archive-pr-registration-prepare.mjs`에 동일하게 연결했다. 두 번째 실패는 그대로 전파하며 기존 snapshot·derived scope·native proof·필수 검사를 유지한다.
 
 관련 prepare/proof 회귀검사 28 PASS·0 FAIL·0 SKIP, A2 독립 diff 리뷰 결함 0건. A1이 열린 PR 73개 전부를 대조해 두 CI 파일과의 기존 작업 겹침 0건을 확인했다. 시험지·요청·compact 및 공용 정본/파생 데이터는 이 복구에서 변경하지 않았다. 이 두 CI 파일은 본 배치의 필수 병합 검사를 실행하기 위한 직접 의존 수정이다. 정확한 실패·수정 바이트·검증 근거는 `ci-recovery-verification.json`에 있다. 새 커밋의 원격 CI 결과는 별도로 확인한다.
+
+## 왕운중 기말 native 부모 등록 보정
+
+CI run `43530562918`은 재생성 고정점 검사를 통과한 다음 native Consumer 재검에서 중단됐다. 분리된 24문항 표본 환경의 공식 생성기로 `Q2.curriculumKey` 불일치를 재현했고, native L1/L2가 단원 표시명으로 대체된 22문항의 부모 연결 문제를 확인했다. 기존 source RPM 경로에 정확히 일치하는 공식 basic parent 8행을 그대로 발췌해 immutable r3의 `basicScopeParentRef`로 연결했다. 후보가 둘인 native tuple은 전체 대안과 선택 UID를 근거에 함께 남겼다. 새 키·공통 crosswalk·검증기 변경은 없다. Q1·Q21의 정상 부모와 Q23의 4/상·근거 대기는 유지했다.
+
+공식 dry-run 24 PASS, 분리 표본의 apply/replay 및 `--verify-projection` 24 PASS, changed-UID Consumer 24 changed/24 checked/24 passed·미관측 필드 0을 확인했다. 실제 전체 저장소 필수 CI와 main 등록은 아직 별도 확인 대상이다. 현재 요청·근거는 `root-exam2.native-r3-dryrun.json`, `native-parent-registration-verification.json`, `a2-native-r3-audit.json`을 우선한다. r2 dry-run과 기존 `a2-registration-audit.json`은 원격 커밋 `e8fa8be3b342e73fd11a278c3ce542600d47154f` 당시의 역사 기록이며 r3 Consumer 성공을 대신하지 않는다. source/compact/95문항 검증과 최종 KEEP/CORRECT/GAP 집계는 이 등록 요청 보정으로 바뀌지 않았다.
