@@ -281,7 +281,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q04.png\" />",
+    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$일 때, $\\sin A$의 값은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q4-problem-v2.svg\" />",
     "choices": [
       "$\\frac{3}{4}$",
       "$\\frac{3}{5}$",
@@ -631,7 +631,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q08.png\" />",
+    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2.svg\" />",
     "choices": [
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OB}}}}$의 길이가 커진다.",
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OC}}}}$의 길이가 커진다.",
@@ -894,7 +894,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11.png\" />",
+    "content": "아래 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{A}$의 크기와 선분 $\\mathrm{AB}$의 길이 $c$가 주어졌을 때, 다음 중 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BC}}$의 길이를 순서대로 바르게 짝지은 것은?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q11-problem-v2.svg\" />",
     "choices": [
       "$c\\sin A$, $c\\cos A$",
       "$c\\sin A$, $c\\tan A$",
@@ -1246,7 +1246,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15.png\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
+    "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{CD}$에 내린 수선의 발을 각각 $\\mathrm{M}$과 $\\mathrm{N}$이라고 할 때, 보기의 설명 중 옳은 것을 모두 고르면?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q15-problem-v2.svg\" /><br><b>[보 기]</b><br>(ㄱ) $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{BM}}$<br>(ㄴ) $\\angle \\mathrm{OAM} = \\angle \\mathrm{OCN}$<br>(ㄷ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이면, $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이다<br>(ㄹ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$이면, $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$이다",
     "choices": [
       "(ㄱ)",
       "(ㄱ), (ㄴ)",
@@ -1263,7 +1263,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "원",
       "현",
@@ -1974,7 +1974,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 6.0,
-    "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_1.png\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
+    "content": "[서술형 2] 원의 현에 대한 성질을 이용하여 $x$의 값을 각각 구하시오. (6점, 각각 3점)<br>(1)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q23-problem-v2.svg\" /><br>(2)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/s02_2.png\" />",
     "choices": [],
     "answer": "(1) 7 cm, (2) 5 cm",
     "solution": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 14cm인 현의 절반은 x=7cm이다. (2) 중심에서 같은 거리에 있는 현의 길이는 같으므로, 중심에서 4cm 떨어진 두 현은 길이가 같다. 한 현이 5cm이므로 x=5cm이다.",
@@ -1985,7 +1985,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "현",
       "수선",

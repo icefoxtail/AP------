@@ -701,7 +701,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?"
+      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심이 같은 두 원에서 큰 원의 현은 작은 원에 닿는다. 중심에서 접점으로 내린 수선이 10 cm 현을 이등분한다.",
+      "solutionImageCaption": "현의 절반은 5 cm이다. 피타고라스 정리로 큰 반지름의 제곱에서 작은 반지름의 제곱을 빼면 5²이다. 따라서 고리의 넓이는 25π cm²이며 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -963,7 +967,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이"
+      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 C에서 빗변으로 내린 수선의 발 F와 내접원의 접점 D, E를 구별했다.",
+      "solutionImageCaption": "피타고라스 정리로 AC=12 cm이다. 닮음과 넓이에서 BF=25/13 cm, CF=60/13 cm이다. 내접원의 반지름이 2 cm이므로 CD=2 cm이고 DE=2√2 cm이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

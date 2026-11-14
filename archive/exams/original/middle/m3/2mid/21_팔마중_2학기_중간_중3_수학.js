@@ -1088,7 +1088,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "5362c6fa7a78c7b5b5aba53753479f6f1752c156"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 현 AB와 CD에 내린 수선 OM, ON에 같은 파란 표식을 하고, 네 반현 AM, MB, CN, ND에 같은 주황 표식을 했다.",
+    "solutionImageCaption": "OM=ON이므로 AB=CD이며 AM=MB=CN=ND이다. 이로 보아 AM=OM이라고 단정할 수 없으므로 바르지 않은 것은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1411,7 +1415,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "d7ffe9940432c15679fd1d782beccf647267a342"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: P-C-O가 일직선이고 원의 반지름 OB가 접선 PB와 직각을 이룬다. PC=9cm, 반지름은 8cm이다.",
+    "solutionImageCaption": "PO=PC+CO=9+8=17cm이다. 직각삼각형 PBO에서 PB=√(17²−8²)=15cm이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1648,7 +1656,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "ca9d92e52e9d951805ec97333fa2a2a1d7d51a07"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=10cm, AC=12cm, AD=4cm. A, B, C에서 같은 점으로 그은 접선 조각끼리 같은 색 눈금으로 표시한다.",
+    "solutionImageCaption": "BE=BD=10−4=6cm, CE=CF=12−4=8cm이므로 BC=14cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1984,6 +1996,10 @@ window.questionBank = [
         "template": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
         "method": "중심수선으로 반변과 높이를 구해 삼각형 넓이 계산"
       }
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 현 AB, AC에 내린 같은 길이의 수선 OD, OE와 ∠B=60°, ∠A=x를 나타낸다.",
+    "solutionImageCaption": "∠A=60°이다. 또 OD=2cm이면 정삼각형의 한 변은 4√3cm, 높이는 6cm이므로 넓이는 12√3cm²이다. 정답은 (1) 60°, (2) 12√3cm²이다.",
+    "solutionImageSize": "full"
   }
 ];
