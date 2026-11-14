@@ -1,0 +1,171 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "ellipse-figure-v1",
+        "conic": {
+          "kind": "PARABOLA",
+          "vertex": [
+            "0",
+            "4"
+          ],
+          "p": "-1/4",
+          "axis": "Y"
+        },
+        "arch": {
+          "ground": "ground",
+          "laser": "laser"
+        },
+        "points": [
+          {
+            "id": "A",
+            "kind": "ON_CONIC",
+            "x": "-2"
+          },
+          {
+            "id": "B",
+            "kind": "ON_CONIC",
+            "x": "2"
+          },
+          {
+            "id": "C",
+            "kind": "POINT",
+            "x": "5/2",
+            "y": "0"
+          },
+          {
+            "id": "T",
+            "kind": "TANGENT_FROM",
+            "from": "C",
+            "which": 1,
+            "label": false
+          },
+          {
+            "id": "D",
+            "kind": "FOOT",
+            "from": "T",
+            "onto": "base",
+            "label": false
+          },
+          {
+            "id": "V",
+            "kind": "VERTEX",
+            "label": false
+          },
+          {
+            "id": "E",
+            "kind": "POINT",
+            "x": "3",
+            "y": "4",
+            "label": false
+          },
+          {
+            "id": "G",
+            "kind": "POINT",
+            "x": "3",
+            "y": "0",
+            "label": false
+          },
+          {
+            "id": "L",
+            "kind": "POINT",
+            "x": "-5/2",
+            "y": "0",
+            "label": false
+          },
+          {
+            "id": "R",
+            "kind": "POINT",
+            "x": "7/2",
+            "y": "0",
+            "label": false
+          }
+        ],
+        "segments": [
+          {
+            "id": "ground",
+            "from": "A",
+            "to": "B",
+            "label": "4\\mathrm{m}"
+          },
+          {
+            "id": "left",
+            "from": "L",
+            "to": "A"
+          },
+          {
+            "id": "gap",
+            "from": "B",
+            "to": "C",
+            "label": "\\frac{1}{2}\\mathrm{m}"
+          },
+          {
+            "id": "right",
+            "from": "C",
+            "to": "R"
+          },
+          {
+            "id": "laser",
+            "from": "T",
+            "to": "C"
+          },
+          {
+            "id": "target",
+            "from": "T",
+            "to": "D",
+            "dashed": true,
+            "label": "h"
+          },
+          {
+            "id": "level",
+            "from": "V",
+            "to": "E",
+            "dashed": true
+          },
+          {
+            "id": "height",
+            "from": "G",
+            "to": "E",
+            "dashed": true,
+            "label": "4\\mathrm{m}"
+          }
+        ],
+        "lines": [
+          {
+            "id": "base",
+            "y": "0",
+            "hidden": true
+          },
+          {
+            "id": "beam",
+            "at": "T",
+            "tangent": true,
+            "hidden": true
+          }
+        ],
+        "caption": "포물선 조형물에 닿는 레이저",
+        "accessibilityDescription": "포물선 조형물의 두 끝 A와 B는 지면에 닿는다. B 오른쪽의 C에서 출발한 레이저가 조형물에 접하고, 그 접점에서 지면까지의 높이는 h이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "조형물의 폭과 높이는 각각 4m이고, 지면의 점 C는 B에서 2분의 1m 떨어져 있다.",
+            "mappedTo": [
+              "ground",
+              "height",
+              "gap",
+              "laser"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "baseFontPx": 22,
+        "displayScale": 0.8
+      }
+    }
+  ]
+}
