@@ -1,0 +1,982 @@
+{
+  "schemaVersion": "m2-s1-a2-difficulty-comparison-v1",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "worker": "A2",
+  "examId": "E019",
+  "revision": 1,
+  "createdAt": "2026-11-14T11:45:07.770344+00:00",
+  "scope": "difficulty_and_learningLevel_only",
+  "initialFreeze": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E019-difficulty-blind-freeze-r1.json",
+    "sha256": "d7cc0670cc272ec74afdb0177afe98e6aa5ad9d94fedb58b467f486e9c69956e",
+    "inputPackSha256": "4b170013732826371042ba853b67aa37ee02e0274405c0746615c7c5eaea13da",
+    "frozenAt": "2026-11-14T11:34:19.096168+00:00"
+  },
+  "acceptedArtifact": {
+    "examId": "E019",
+    "path": "/workspace/scratch/59e0f5bd3a77/m2-meta/docs/operations/m2-s1-meta-full-20261114/exams/E019/accepted-review.json",
+    "sha256": "83dd3d4bf1a3b4c546d82aa7f27c36f6050594be6b335f933a0449a7c604c654"
+  },
+  "rootAcknowledgmentPointer": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/root-accepted-pointers-after-freeze.json",
+    "sha256": "e099e3b0478cf303ebacce99287c4336847d49284066910c501440648c733e69"
+  },
+  "allSixManifestBeforeExposure": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/six-exam-difficulty-blind-manifest-r1.json",
+    "sha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387"
+  },
+  "comparisonAfterAllSixFrozen": true,
+  "itemCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ca38b9deec332aa5c238dcdf32a8c0ba75d14e765a61deab8346891b19f81470",
+      "fingerprints": {
+        "QBODY": "6ecbd56cbf3afb3eb59b474398eb0a7e717dfb9f3cdb4d1e36e896ad28a4f828",
+        "QFULL": "24c2f3191b130c6fe336861e96ad6264915952bee99843a8cebbcfb44d899849"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식을 한 번 정리해 사라지는 x항을 찾는 직접 정의 적용1을 유지한다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "식을 먼저 정리한 뒤 미지수 항이 사라지는 계수 조건을 제외한다.",
+        "learningLevelReason": "겉모양과 정리 후의 미지수 개수를 구별한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": true,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0d4b6b216a144f022fa029778a63264bd5bec7064251c604b72c9b250fe82b63",
+      "fingerprints": {
+        "QBODY": "139d42a4f6b9595f9f2a906b34265a5bff70f4c2baf85ace8185fd06863ad8ef",
+        "QFULL": "eb2af82e60a88665249a733d9cfd07e3040ae33797f42a368bd1d42649756f65"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해로 a,b를 순서대로 정한 뒤 c를 읽는 익숙한 전처리2."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "중",
+        "difficultyReason": "이미 주어진 해를 각 식에 그대로 대입해 두 계수를 얻고 마지막 식에 넣는다. 전략 선택은 없으나 연결이 있어 경계다.",
+        "learningLevelReason": "두 상수의 결정과 다음 등식의 값 계산을 연결한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb1c05728991e2059c5970d509f2dec23d11513bbfcf2eb00d6ec46c7a376f2a",
+      "fingerprints": {
+        "QBODY": "8dec8f7d68b79f3eaae1faa79ebb691ffb61f04f4854afd7a413dd5f9902d0a3",
+        "QFULL": "6bcbbf778b239fbc745bad82423c77a55058120eb1d9ede1b2d221f8acabcaf1"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수계수의 정수화라는 익숙한 전처리 후 가감법을 적용하는2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "중",
+        "difficultyReason": "소수 계수를 정수로 바꾸고 표준 가감법으로 연립방정식을 푼다.",
+        "learningLevelReason": "계수 전처리와 두 식의 소거 계산을 결합한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_85c43001d45a70bb09dd72ac92a23803084be97a61412046e9d26ed27a132da5",
+      "fingerprints": {
+        "QBODY": "22e606b07b11e94b77fdfb5322c71fe1253484362d988b5005d4578df640c9ca",
+        "QFULL": "62c0bf8025d58822563c074c75aafcd17b8558500d7398ec48aa3ef52090968a"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "x를 고립시켜 한 번 대입하는 표준 절차와 설명 대조이므로2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "연립방정식의 풀이 또는 해를 확인하면서 소거 부호와 대입 변형의 오류를 판별한다.",
+        "learningLevelReason": "가감법·대입법에 관한 여러 주장과 해를 확인한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f3a8e979fa267f024fd8db48c51c7e1825c2a22ba05801135e9f96d0bbeb736",
+      "fingerprints": {
+        "QBODY": "0aff61fade1b0f7df4e704e3e2411c7d012a5329b39f1106c8078c08ee12a8ca",
+        "QFULL": "73ff4fc1b36ae30a5e020723caf9941842041e1143d04c976514dbc2fa81f668"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence.",
+        "authorReason": "평행한 식의 계수비를 맞추고 같은 상수항에서 일치값을 제외하는 익숙한2/B23. 기존상4와의 강한 충돌은 독립 level 판정 대상으로 남긴다."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "교점 없음이 단순히 기울기 같음이 아니라 일치하는 직선을 제외하는 조건임을 연결한다.",
+        "learningLevelReason": "평행·일치의 차이와 매개변수의 제외 조건을 함께 판단한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "해 없음의 평행·비일치 조건을 표준 계수비로 적용하고 하나의 일치값을 제외한다. 조건에 따라 새 경우를 확장하는 문제는 아니므로 기존 2/중과 B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "fingerprints": {
+        "QBODY": "5b4ea0f35ee7e5048be2b5168b152176ad39eece218aea0e957d9c18fe2ac5cd",
+        "QFULL": "f15640f422b2303720dd30a4ee02d53eafed0e3ebebd82b68cb10e94fab415b1"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 속력의 합으로 만나는 시간을 구하고 거리 차를 계산하는 익숙한2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "같은 시간 동안 이동한 두 거리가 전체 거리라는 표준 관계를 식으로 만든다.",
+        "learningLevelReason": "속력과 시간의 관계를 두 이동량의 차까지 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_018b23417b28686e6140f9958dd6ece1b61e69ccceef612508d1bc62edc67db0",
+      "fingerprints": {
+        "QBODY": "ae8dd63384a4f178ee682964636a8767c6d1a6f34a4f1d4d764353446f54a92c",
+        "QFULL": "aa592faadc2aff26b9a4ace7f7a0ef866d9b4c9d0cbd0a4d3ae895d12dd212dc"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "전체−한 부분으로 다른 부분을 나타내고15% 변화를 적용하는 정형2/B23. 별도 접근 선택 없이 주어진 비율식을 만들 수 있어 기존3보다2를 제안한다."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "두 집단의 전년도 인원을 나누고 서로 다른 증감률을 적용해 올해 수와 연결한 뒤 질문 시점으로 환산한다.",
+        "learningLevelReason": "전체와 부분, 증감률, 전년·올해의 구별을 동시에 모델링한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "전체에서 한 부분을 빼 다른 집단을 표시하고 제시된 증감률을 적용하는 표준 모델이다. 별도 접근 선택보다 익숙한 전처리가 우세해 기존 2/B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_156e54c2083002b546c743d7f5e16a4ab97b3184dec184e905c8a1864cd54444",
+      "fingerprints": {
+        "QBODY": "2d5c4644b5a450ae2fe0f2b2ca8bf60a7beb664d4f6cf39c273a8ac1dfb4ff6b",
+        "QFULL": "9da62d05bc3ad5db4d087d8b852641fa6b837e69a3358adcbce5cb25690e9350"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여섯 관계를 각각 입력 하나에 출력이 하나인지 해석하는 표준2. 관계 수 자체로 올리지 않는다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "각 상황에서 하나의 입력에 출력이 유일한지 해석하여 함수 정의를 적용한다.",
+        "learningLevelReason": "약수·절댓값·나머지 등 서로 다른 상황의 대응 관계를 판별한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_48469497c9b630c80fb5e4cf69d73a966a33b5b7049c6c92e447977b5a00a259",
+      "fingerprints": {
+        "QBODY": "ac9d8cbf5594dcb3ff7c5746c32dc27821ce8759d1c8222a40e41b0ff1b19da4",
+        "QFULL": "f811671d72d713fbbe5969fa97b6d8ed5b9eb8d3b666673c4e1c506b7f5c7e96"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 식에 대입하고a를 바로 역산하는 직접 적용1."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "함수식에 주어진 입력과 출력 조건을 직접 대입한다.",
+        "learningLevelReason": "단순 일차식의 함수값과 역대입 기본 확인이다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
+      "fingerprints": {
+        "QBODY": "67b8a03205953f069a42b15b80732ad3561c86f68789cddda1662b74ce3095a2",
+        "QFULL": "a3d31d5a4cc438ee405248542963e4cb0afba38a02260ea2837ecb9fae5df5a8"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기와 절편을 읽고 두 절편의 차를 구해 설명을 확인하는 표준2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "기울기·절편·사분면·평행이동을 각 식에서 직접 확인하는 표준 보기 판단이다.",
+        "learningLevelReason": "서로 다른 그래프 성질과 이동량의 부호를 구별한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "fingerprints": {
+        "QBODY": "88ffb5e39a988c1e943872c21577b030490c8c98542d365803644b621b652442",
+        "QFULL": "87e75844e38d11491ff8f8bafd40fca35ccb8855cbc6ec533c094febcb693eac"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 음수의 몫과−b의 부호를 읽어 사분면을 정하는 익숙한2/B23. 기존3에서2로 제안한다."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "그림에서 두 계수의 부호를 읽고 새 함수의 기울기·절편 부호로 변환한 뒤 통과 사분면을 판단한다.",
+        "learningLevelReason": "시각적 부호 정보와 문자식의 부호 및 그래프 위치를 연결한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "그림의 기울기·절편 부호를 읽으면 새 식의 두 부호는 직접 결정된다. 정형적인 부호→사분면 판단으로 기존 2/B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "fingerprints": {
+        "QBODY": "ce24b05b32381668966f35a9af3bf5d571a29dcafb28ff05ed4055206b33f000",
+        "QFULL": "36f0a389cddfc2c758fd4fc9469e0d5216dbab0e73cd5bfde34ca903098b95dd"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기를 읽은 뒤(4,0)을 대입하는 한 번의 익숙한 전처리2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "그림의 두 절편으로 기울기를 구하고 평행 조건과 새 x절편을 적용한다.",
+        "learningLevelReason": "기울기·평행·절편을 표준 일차함수식으로 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_427a266062de662d1d1411da3b886f9dbbc44dd3445a994e07fa329ef9743d10",
+      "fingerprints": {
+        "QBODY": "21ba480d970847f2ec3409a360c773d48c9e22826af34ae64b30c80ad408046a",
+        "QFULL": "dbe35830efd54b654b88cf1434d3705083f86ef987c642fb4abc6f6dd723c647"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "익숙한 y축방향 이동량4를 더하고 점을 대입하는2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "수직 평행이동을 상수항 변화로 표현한 후 주어진 점을 대입한다.",
+        "learningLevelReason": "이동된 식과 점의 좌표를 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c8a1ee64e9e67ca0e578fac1398d01c929db7b4ce4abc4ad96f184996fa99cef",
+      "fingerprints": {
+        "QBODY": "c05728bf09bbf31055310e649d58a6aa79b730b730231048e7d87f6cc1f7025e",
+        "QFULL": "57c5ca5182610b86820c31cced6dc495bbe0a4f2e4a65a71e17570b3b559b067"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연비를 이용해 초기량70을 구한 뒤25L소비거리를 구하는 정형2/B23. 긴생활문맥만으로3을유지하지않는다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "전체 주행거리에서 초기 연료량을 구하고 소비량과 남은 양을 일차 관계로 나타낸다.",
+        "learningLevelReason": "단위당 소비와 초기량을 표준 모델로 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1571c0024ce3c15affc76940674519fd0563c9470ff52f4a0e2909fb46fbdee0",
+      "fingerprints": {
+        "QBODY": "1764dda6932e499f896985aa35777b867b3493b928877a171c7082975c1dce57",
+        "QFULL": "37c6cef91dcc72de8e2c60bffe236f8d34ea2cdd4abaeba2fd3f7154e5fa4c71"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "중",
+        "difficultyReason": "점이나 축과의 관계로 직선의 방향을 해석하여 수직선의 대응 유일성 실패를 찾는다.",
+        "learningLevelReason": "기하적 직선 조건과 함수의 정의를 구별한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "같은 x좌표의 두 점을 지나는 수직선에서 출력의 비유일성을 직접 확인할 수 있다. 기존 1/중과 B12를 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_311f08e77c06ac3b7fb195cb8654184a045b971e4e2ab9fe22e62620ce482d44",
+      "fingerprints": {
+        "QBODY": "931fa10ae60fa36964d4595e5e1d5dd6d191285063c0e3d46d6b8dc8d99f1d93",
+        "QFULL": "c06046318638c552169456b8ce882dd6da95db7d106f4086d64737a0f5eca308"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "수평선y4를보기형식으로읽는직접적용1."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "y축에 수직인 직선이 수평선임을 이용해 주어진 y좌표를 바로 고정한다.",
+        "learningLevelReason": "축과 직선의 기본 관계를 직접 적용한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_af44a161f3ff86ed9d34a36904d0ee7a6b8fffa4f04b42e3acf31e3e191fe50c",
+      "fingerprints": {
+        "QBODY": "3151c75ab8daf212fe1697d7eeb27b9e529f9fe33347a79f9644fad57a5ae17f",
+        "QFULL": "fb5f514c739c3468adbb8b357fbbb9a021a7852473db9563f9edb97a750060a3"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence.",
+        "authorReason": "상수항에서고정된−1/2비에두계수를맞추는정형2/B23. 기존상4와의강한충돌은별도독립level판정으로남긴다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "무수히 많은 해의 조건을 세 계수의 같은 비로 옮겨 상수를 구한다.",
+        "learningLevelReason": "연립방정식의 해 개수와 일치 조건을 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "fingerprints": {
+        "QBODY": "3cd9b3d31192a0129955969827abf015dfaaff0c08c77c50b5990df71d9a93df",
+        "QFULL": "d6ed23a25fe68b5393bf18e6bd89136a41adbc13960ec40fca7007b0152192fc"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의두점/절편을읽어두식으로표현하는익숙한전처리2/B23제안."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "그래프의 절편과 교점 정보를 이용해 두 직선의 관계를 복원하고 식의 보기에 대응시킨다.",
+        "learningLevelReason": "시각 자료에서 좌표를 선택하고 두 방정식과 일치시키는 판단이 필요하다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "그래프의 주어진 좌표와 절편을 이용해 두 직선을 보기에 대응시키는 표준 절차이다. 새로운 도형 구성이나 전략 선택이 없어 기존 2/B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9dc5b8661b5ad67adbbd9c1f682248e13bd55ab050e58980e5c652b2ee5f628f",
+      "fingerprints": {
+        "QBODY": "95eebe2b659bc904247fa41e2847b6dce55a23ed704f38c37e2fcee9872d0b31",
+        "QFULL": "5cb5fb0419afc3158bca5e428f24cfbd3749c92294fc1898852c02f7590a20f0"
+      },
+      "acceptedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B34",
+        "learningLevel": "상",
+        "difficultyReason": "먼저 두 직선의 교점을 구하고 세 번째 직선의 평행 및 공점 조건을 각각 걸러 삼각형 존재를 판단한다. 기존 해설의 복수 답과 발문 형식의 정합성 확인이 남는다.",
+        "learningLevelReason": "삼각형의 존재 여부를 여러 제외 조건으로 나누어 확인하는 것이 핵심이다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 3/학습 상에는 양측이 합의한다. 복수 답 안내의 불명확성은 해석 형식의 debt이며 비평행·비공점 검사라는 수학적 부담 자체를 불명확하게 만들지는 않아 기존 medium/B34를 수용한다. 형식 debt는 그대로 남긴다.",
+      "contentContextDebt": [
+        "기존 정답과 해설은 두 선택지를 답으로 기록하지만 발문에는 복수 선택 안내가 없다. 이 표기 정합성은 내용 debt이며 난도 상향 근거로 삼지 않는다."
+      ],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "fingerprints": {
+        "QBODY": "971b3dfdc44b805a4baba6abb4834908eac15d8c819bbc1f1eb0cfcca1f6a60d",
+        "QFULL": "4d30ce7a8e4d35630e2e8d38bae8c02501e0f609648c7aa7040680f570489c60"
+      },
+      "acceptedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B34",
+        "learningLevel": "중",
+        "difficultyReason": "기존 해설의 위치 가정 아래 절편으로 만든 두 넓이를 좌표식으로 바꾸고 넓이비와 직선 관계를 연립하는 표준 복합 구조다. 위치 전제가 본문에서 확인되지 않는다.",
+        "learningLevelReason": "넓이비와 직선 위의 점, 원점과의 기울기를 연결한다."
+      },
+      "comparisonCategory": "CONTENT_CONTEXT_EVIDENCE_LIMITATION",
+      "numericDifference": false,
+      "learningLevelDifference": true,
+      "proposalAction": "RETAIN_INTENDED_BUCKET_LOWER_CONFIDENCE",
+      "proposedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "manual_review",
+      "comparisonReason": "의도된 영역에서 좌표와 넓이비를 연결하는 구조의 숫자 3은 합의한다. 기존 상은 인접 학습 수준으로 보존하되 P의 위치 제한이 없어 해설의 부호 없는 넓이식 적용에 실제 불확실성이 남으므로 confidence low를 제안한다.",
+      "contentContextDebt": [
+        "P가 선분 AB 위 또는 제1사분면에 있다는 제한이나 원본 그림이 입력에 없다. 기존 해설의 넓이식은 좌표를 그대로 양의 높이·밑변으로 사용한다. 그 위치 전제의 확인이 필요하며 의도된 구조만 조건부 판정했다."
+      ],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_770b351cfb4894efb4f16e2fcecef2290d73a49b97a8f35ab5ea4c392f2b66bf",
+      "fingerprints": {
+        "QBODY": "3711acffb9bf2c2addf43cbcc3162c681382de9538463473525a527b4511d8f4",
+        "QFULL": "e9afe25074655f124c1001225916e870ec733b184e7b46e2aab3fbab8109d700"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence.",
+        "authorReason": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "계수를 바꾸었다는 조건을 새 연립식으로 해석해 상수를 복원한 뒤 원래 방정식의 해를 구한다.",
+        "learningLevelReason": "잘못 바뀐 식과 원래 식을 분리해 두 단계의 관계를 구성한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "교환할 두 계수와 바뀐 식의 해가 주어져 복원 절차가 정해진다. 연립방정식을 반복해서 푸는 계산 자체는 전략 선택 3의 근거가 아니므로 기존 2/중과 B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "fingerprints": {
+        "QBODY": "f9fca0eb8fb8cd2b271f0fd2e9d4ca4a8ae61fcf7f228362d4833e1137eb5823",
+        "QFULL": "dfb2720680b927cf85870596085de720723feb1a363acd03aad0b6ae00fa746c"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence.",
+        "authorReason": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "공통 y절편으로 한 상수를 정하고 그림의 양쪽 x절편과 넓이를 연결해 다른 상수를 역산한다.",
+        "learningLevelReason": "좌표·절편·삼각형 넓이와 매개변수 관계를 구성한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "그림이 공통 높이와 밑변 양쪽의 위치를 고정한다. 넓이에서 밑변을 역산한 뒤 절편과 기울기를 구하는 직접 표준 연결로 기존 2/중과 B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9fa93463b36894899f789d81dbed2d4b810f954f08902027d4c99903e29853fe",
+      "fingerprints": {
+        "QBODY": "5bbcca70bb2e5a358a01da7d91c3314332a57a134fdf6b25056659b29d41ffa8",
+        "QFULL": "664a36c814e3b79c913fdf24345c0d79e365cfa4387b5c0e09ce208dd9843d46"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history.",
+        "authorReason": "수평선y3을밑변으로선택하고남은교점의높이차를연결하는표현선택3/B23."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "세 교점을 구한 뒤 수평한 변을 밑변으로 선택해 좌표 차로 높이를 읽는다.",
+        "learningLevelReason": "연립방정식과 좌표평면의 넓이 계산을 연결한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "수평선이 명시되어 밑변 선택이 직접 드러나며 표준 교점 계산으로 높이를 읽는다. 반복 연립 계산을 별도 전략으로 세지 않고 기존 2/B23을 수용한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9bb7be48df356940c437ee6b6b237ed23c4257358dab2a0d992142a3c717b767",
+      "fingerprints": {
+        "QBODY": "963beb6503ca8b2a11cd7b95f7da1916d6e7834274f66f4df80cb9ba0c168303",
+        "QFULL": "493ef86f9650dd5231525f936977e5aad8bef02e2e78fd32e666490a1a260945"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이동량−a를상수항에더한뒤(a,5)를대입하면한일차식으로끝나는익숙한2/B23."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "직선식을 함수꼴로 바꾸고 매개변수만큼의 수직 이동을 반영하여 주어진 점을 대입한다.",
+        "learningLevelReason": "같은 문자가 이동량과 점의 좌표에 모두 들어가는 관계를 정리한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    }
+  ],
+  "sourceAndSharedFilesModified": false,
+  "qualityPassClaimed": false
+}

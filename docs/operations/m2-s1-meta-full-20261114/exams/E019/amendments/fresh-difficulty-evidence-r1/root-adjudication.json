@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E019",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:50:06.542350+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E019",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 1,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다."
+      },
+      {
+        "sourceOrdinal": 2,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다."
+      },
+      {
+        "sourceOrdinal": 20,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 의도된 영역에서 좌표와 넓이비를 연결하는 구조의 숫자 3은 합의한다. 기존 상은 인접 학습 수준으로 보존하되 P의 위치 제한이 없어 해설의 부호 없는 넓이식 적용에 실제 불확실성이 남으므로 confidence low를 제안한다."
+      }
+    ],
+    "itemUpdates": [
+      {
+        "sourceOrdinal": 20,
+        "merge": {
+          "finalDifficulty": {
+            "reviewStatus": "manual_review",
+            "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+          }
+        },
+        "set": {
+          "contentDebt": [
+            {
+              "type": "MISSING_INTERSECTION_REGION_RESTRICTION",
+              "evidence": "원문과asset필드에P가선분AB위라는조건/그림이없다. 넓이는3|t|와4|y|이므로|t|=4|y|이다. 기존해a1/4외에a−1/4도P=(12,−3)을만들고넓이36:12=3:1을만족한다. 선택지①과②가둘다가능하다.",
+              "action": "기존정답②와원문/해설을보존. 선분AB위조건추가또는복수정답처리는별도내용작업으로이관한다."
+            },
+            "P가 선분 AB 위 또는 제1사분면에 있다는 제한이나 원본 그림이 입력에 없다. 기존 해설의 넓이식은 좌표를 그대로 양의 높이·밑변으로 사용한다. 그 위치 전제의 확인이 필요하며 의도된 구조만 조건부 판정했다."
+          ]
+        },
+        "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E019-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E019-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E019.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 24,
+        "blindInitialSha256": "d7cc0670cc272ec74afdb0177afe98e6aa5ad9d94fedb58b467f486e9c69956e",
+        "comparisonSha256": "cea930bf8a0c6ded93690311fb8185bab00cb7bbec0bef71cba431e9febd9651",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "acb4da0a91a76e66bd4e877f7a519e5f3fe94b6e",
+    "currentFourSlotSha256": "4e97ec2f2e63e2a49da494557ce24ef4560fdc589eeb0173e782b36965acdb90",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "83dd3d4bf1a3b4c546d82aa7f27c36f6050594be6b335f933a0449a7c604c654",
+  "previousFourSlotSha256": "4e97ec2f2e63e2a49da494557ce24ef4560fdc589eeb0173e782b36965acdb90",
+  "acceptedReviewSha256": "81ae0708f6f01d8368b0a2e31dc3640e8ed4e7c82f20f9620e496ab2ac1cac74",
+  "acceptedFourSlotSha256": "dc873b7a8741afa2acdc112685f71f32a385639a91a579ab3cf7b3d82d2a837f",
+  "reviewedSourceBlob": "acb4da0a91a76e66bd4e877f7a519e5f3fe94b6e",
+  "finalSourceBlob": "499e520f9ec35573f64714c59ea5554e23cd3ee5",
+  "changes": [
+    {
+      "sourceOrdinal": 1,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식을 한 번 정리해 사라지는 x항을 찾는 직접 정의 적용1을 유지한다."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다.",
+        "authorReason": "식을 한 번 정리해 사라지는 x항을 찾는 직접 정의 적용1을 유지한다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해로 a,b를 순서대로 정한 뒤 c를 읽는 익숙한 전처리2."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다.",
+        "authorReason": "주어진 해로 a,b를 순서대로 정한 뒤 c를 읽는 익숙한 전처리2."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "before": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "after": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 의도된 영역에서 좌표와 넓이비를 연결하는 구조의 숫자 3은 합의한다. 기존 상은 인접 학습 수준으로 보존하되 P의 위치 제한이 없어 해설의 부호 없는 넓이식 적용에 실제 불확실성이 남으므로 confidence low를 제안한다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root.",
+        "authorReason": "의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 의도된 영역에서 좌표와 넓이비를 연결하는 구조의 숫자 3은 합의한다. 기존 상은 인접 학습 수준으로 보존하되 P의 위치 제한이 없어 해설의 부호 없는 넓이식 적용에 실제 불확실성이 남으므로 confidence low를 제안한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "merge": {
+        "finalDifficulty": {
+          "reviewStatus": "manual_review",
+          "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+        }
+      },
+      "set": {
+        "contentDebt": [
+          {
+            "type": "MISSING_INTERSECTION_REGION_RESTRICTION",
+            "evidence": "원문과asset필드에P가선분AB위라는조건/그림이없다. 넓이는3|t|와4|y|이므로|t|=4|y|이다. 기존해a1/4외에a−1/4도P=(12,−3)을만들고넓이36:12=3:1을만족한다. 선택지①과②가둘다가능하다.",
+            "action": "기존정답②와원문/해설을보존. 선분AB위조건추가또는복수정답처리는별도내용작업으로이관한다."
+          },
+          "P가 선분 AB 위 또는 제1사분면에 있다는 제한이나 원본 그림이 입력에 없다. 기존 해설의 넓이식은 좌표를 그대로 양의 높이·밑변으로 사용한다. 그 위치 전제의 확인이 필요하며 의도된 구조만 조건부 판정했다."
+        ]
+      },
+      "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 미지수가 둘 다 남아야 한다는 정의에 따라 정리된 계수 하나가 0인지 판정한다. 기존 1/하를 수용하되 식 정리의 전처리로 B12를 기록한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2의 직접 대입 1도 합리적이나 두 상수를 구해 다음 식으로 연결하는 표준 초입 2도 가능하다. 기존 2/중을 B12로 보존한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 의도된 영역에서 좌표와 넓이비를 연결하는 구조의 숫자 3은 합의한다. 기존 상은 인접 학습 수준으로 보존하되 P의 위치 제한이 없어 해설의 부호 없는 넓이식 적용에 실제 불확실성이 남으므로 confidence low를 제안한다."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E019-difficulty-blind-freeze-r1.json",
+      "sha256": "d7cc0670cc272ec74afdb0177afe98e6aa5ad9d94fedb58b467f486e9c69956e",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E019-difficulty-comparison-r1.json",
+      "sha256": "cea930bf8a0c6ded93690311fb8185bab00cb7bbec0bef71cba431e9febd9651",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E019.json",
+      "sha256": "4b170013732826371042ba853b67aa37ee02e0274405c0746615c7c5eaea13da",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}

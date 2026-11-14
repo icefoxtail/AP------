@@ -2,7 +2,7 @@
   "schemaVersion": "m2-s1-process-evidence-v1",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
   "owner": "GPT_ROOT_59E0F5BD3A77",
-  "at": "2026-11-14T11:27:59.938117+00:00",
+  "at": "2026-11-14T11:50:06.484492+00:00",
   "exposureDisclosure": {
     "exams": [
       "E013",
@@ -15,7 +15,7 @@
     "fact": "Original authors saw existing level/bucket before first numeric judgment. Their reports are not represented as blind first passes.",
     "repairScope": "Numeric/learning-difficulty evidence only. Other six metadata axes and valid independent semantic samples are reused.",
     "repairAgent": "/root/worker_a2",
-    "status": "FRESH_CONTEXT_CONTENT_ONLY_RECHECK_IN_PROGRESS",
+    "status": "FRESH_CONTEXT_SUPPLEMENT_COMPLETE_WITH_NAMED_CONTEXT_DEBTS",
     "inputPacks": [
       {
         "examId": "E013",
@@ -46,6 +46,83 @@
         "examId": "E019",
         "path": "blind-inputs/E019.json",
         "sha256": "4b170013732826371042ba853b67aa37ee02e0274405c0746615c7c5eaea13da"
+      }
+    ],
+    "initialManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+    "comparisonManifestSha256": "17137fc22b672f39d0ae37e4d68b791c8fb61cf45ccb25cbc79a6fc22de65aa4",
+    "initialsFrozenBeforeAnyPriorSixMetadata": true,
+    "verifiedItemCount": 142,
+    "visuallyInspectedOriginalAssets": 27,
+    "rootAdjudication": {
+      "numericChanged": [
+        {
+          "examId": "E013",
+          "sourceOrdinal": 10,
+          "from": 3,
+          "to": 4,
+          "independentLearningLevelChange": "중→상",
+          "boundary": "B34"
+        }
+      ],
+      "confidenceOrBoundaryRefinementCount": 23,
+      "contextDebtManualReview": [
+        {
+          "examId": "E015",
+          "sourceOrdinal": 10
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 6
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 23
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 20
+        }
+      ],
+      "originalNumericDifferenceCount": 45,
+      "originalLearningLevelDifferenceCount": 23,
+      "historyPolicy": "Historical exposure remains disclosed. The later fresh-context supplement is not relabeled as the original authors first pass. Adjacent numeric disagreements were retained with explicit boundary reasoning except the single material condition-structure adjudication."
+    },
+    "storedEvidence": [
+      {
+        "examId": "E013",
+        "currentIndex": "exams/E013/CURRENT.json",
+        "evidenceDirectory": "exams/E013/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "a6c7846b1475c21c196c1ec85581e84d49e1d21c0882dfad5d4d3253599270da"
+      },
+      {
+        "examId": "E014",
+        "currentIndex": "exams/E014/CURRENT.json",
+        "evidenceDirectory": "exams/E014/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "9ab88abe6ac2efdd2468a0c5afc896347a509e02691061674dfb10e7ee2b7218"
+      },
+      {
+        "examId": "E015",
+        "currentIndex": "exams/E015/CURRENT.json",
+        "evidenceDirectory": "exams/E015/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "407b5d4b772807ee8906e690106fb2b2b0811fca2f62c57d7b02d1bd0250a2ad"
+      },
+      {
+        "examId": "E016",
+        "currentIndex": "exams/E016/CURRENT.json",
+        "evidenceDirectory": "exams/E016/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "d8e6612706e11057bc28c95646c708add38efba4a276d136c6f45dc0e3e210f3"
+      },
+      {
+        "examId": "E017",
+        "currentIndex": "exams/E017/CURRENT.json",
+        "evidenceDirectory": "exams/E017/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "2cf3644e284f612b7dd9b466d23b6e43efe62ad3fb81f1db4b1a08d81fc46074"
+      },
+      {
+        "examId": "E019",
+        "currentIndex": "exams/E019/CURRENT.json",
+        "evidenceDirectory": "exams/E019/amendments/fresh-difficulty-evidence-r1/evidence",
+        "inputPackSha256": "4b170013732826371042ba853b67aa37ee02e0274405c0746615c7c5eaea13da"
       }
     ]
   },

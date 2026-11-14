@@ -1,0 +1,685 @@
+{
+  "schemaVersion": "m2-s1-a2-difficulty-blind-freeze-v1",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "rootOwner": "GPT_ROOT_59E0F5BD3A77",
+  "worker": "A2",
+  "examId": "E019",
+  "scope": "difficultyBucket_and_independent_learningLevel_only",
+  "sourceArchiveFile": "original/middle/m2/1final/24_승평중_1학기_기말_중2_기출.js",
+  "originalStudentPayloadSourceBlob": "6de15f494722e99364ec481f31ee884e39d919bf",
+  "inputPackPath": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E019.json",
+  "inputPackSha256": "4b170013732826371042ba853b67aa37ee02e0274405c0746615c7c5eaea13da",
+  "frozenAt": "2026-11-14T11:34:19.096168+00:00",
+  "immutableRevision": 1,
+  "priorMetadataExposureBeforeFreeze": false,
+  "comparisonStatus": "NOT_STARTED_WAIT_ALL_SIX_FREEZES",
+  "chronology": [
+    "Notion router, execution and resume pages read",
+    "AWCR bootstrap read; root owns shared revisions",
+    "Difficulty authority and independent learning-level rubric read",
+    "Exact redacted content, choices, existing answer and supplied solution read",
+    "All referenced problem and solution assets fetched readonly from recorded Git HEAD and visually inspected",
+    "Initial judgments frozen without old metadata or other reviewer verdicts"
+  ],
+  "authorities": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "sha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md",
+      "sha256": "44c2036546d2b7b37dfc5ad2c643f0324e1a22cc12932c8f018e049947b8d943"
+    }
+  ],
+  "itemCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ca38b9deec332aa5c238dcdf32a8c0ba75d14e765a61deab8346891b19f81470",
+      "fingerprints": {
+        "QBODY": "6ecbd56cbf3afb3eb59b474398eb0a7e717dfb9f3cdb4d1e36e896ad28a4f828",
+        "QFULL": "24c2f3191b130c6fe336861e96ad6264915952bee99843a8cebbcfb44d899849"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "식을 먼저 정리한 뒤 미지수 항이 사라지는 계수 조건을 제외한다.",
+      "learningLevelReason": "겉모양과 정리 후의 미지수 개수를 구별한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0d4b6b216a144f022fa029778a63264bd5bec7064251c604b72c9b250fe82b63",
+      "fingerprints": {
+        "QBODY": "139d42a4f6b9595f9f2a906b34265a5bff70f4c2baf85ace8185fd06863ad8ef",
+        "QFULL": "eb2af82e60a88665249a733d9cfd07e3040ae33797f42a368bd1d42649756f65"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "learningLevel": "중",
+      "difficultyReason": "이미 주어진 해를 각 식에 그대로 대입해 두 계수를 얻고 마지막 식에 넣는다. 전략 선택은 없으나 연결이 있어 경계다.",
+      "learningLevelReason": "두 상수의 결정과 다음 등식의 값 계산을 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb1c05728991e2059c5970d509f2dec23d11513bbfcf2eb00d6ec46c7a376f2a",
+      "fingerprints": {
+        "QBODY": "8dec8f7d68b79f3eaae1faa79ebb691ffb61f04f4854afd7a413dd5f9902d0a3",
+        "QFULL": "6bcbbf778b239fbc745bad82423c77a55058120eb1d9ede1b2d221f8acabcaf1"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "learningLevel": "중",
+      "difficultyReason": "소수 계수를 정수로 바꾸고 표준 가감법으로 연립방정식을 푼다.",
+      "learningLevelReason": "계수 전처리와 두 식의 소거 계산을 결합한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_85c43001d45a70bb09dd72ac92a23803084be97a61412046e9d26ed27a132da5",
+      "fingerprints": {
+        "QBODY": "22e606b07b11e94b77fdfb5322c71fe1253484362d988b5005d4578df640c9ca",
+        "QFULL": "62c0bf8025d58822563c074c75aafcd17b8558500d7398ec48aa3ef52090968a"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "연립방정식의 풀이 또는 해를 확인하면서 소거 부호와 대입 변형의 오류를 판별한다.",
+      "learningLevelReason": "가감법·대입법에 관한 여러 주장과 해를 확인한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f3a8e979fa267f024fd8db48c51c7e1825c2a22ba05801135e9f96d0bbeb736",
+      "fingerprints": {
+        "QBODY": "0aff61fade1b0f7df4e704e3e2411c7d012a5329b39f1106c8078c08ee12a8ca",
+        "QFULL": "73ff4fc1b36ae30a5e020723caf9941842041e1143d04c976514dbc2fa81f668"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "교점 없음이 단순히 기울기 같음이 아니라 일치하는 직선을 제외하는 조건임을 연결한다.",
+      "learningLevelReason": "평행·일치의 차이와 매개변수의 제외 조건을 함께 판단한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "fingerprints": {
+        "QBODY": "5b4ea0f35ee7e5048be2b5168b152176ad39eece218aea0e957d9c18fe2ac5cd",
+        "QFULL": "f15640f422b2303720dd30a4ee02d53eafed0e3ebebd82b68cb10e94fab415b1"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "같은 시간 동안 이동한 두 거리가 전체 거리라는 표준 관계를 식으로 만든다.",
+      "learningLevelReason": "속력과 시간의 관계를 두 이동량의 차까지 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_018b23417b28686e6140f9958dd6ece1b61e69ccceef612508d1bc62edc67db0",
+      "fingerprints": {
+        "QBODY": "ae8dd63384a4f178ee682964636a8767c6d1a6f34a4f1d4d764353446f54a92c",
+        "QFULL": "aa592faadc2aff26b9a4ace7f7a0ef866d9b4c9d0cbd0a4d3ae895d12dd212dc"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "learningLevel": "중",
+      "difficultyReason": "두 집단의 전년도 인원을 나누고 서로 다른 증감률을 적용해 올해 수와 연결한 뒤 질문 시점으로 환산한다.",
+      "learningLevelReason": "전체와 부분, 증감률, 전년·올해의 구별을 동시에 모델링한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_156e54c2083002b546c743d7f5e16a4ab97b3184dec184e905c8a1864cd54444",
+      "fingerprints": {
+        "QBODY": "2d5c4644b5a450ae2fe0f2b2ca8bf60a7beb664d4f6cf39c273a8ac1dfb4ff6b",
+        "QFULL": "9da62d05bc3ad5db4d087d8b852641fa6b837e69a3358adcbce5cb25690e9350"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "각 상황에서 하나의 입력에 출력이 유일한지 해석하여 함수 정의를 적용한다.",
+      "learningLevelReason": "약수·절댓값·나머지 등 서로 다른 상황의 대응 관계를 판별한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_48469497c9b630c80fb5e4cf69d73a966a33b5b7049c6c92e447977b5a00a259",
+      "fingerprints": {
+        "QBODY": "ac9d8cbf5594dcb3ff7c5746c32dc27821ce8759d1c8222a40e41b0ff1b19da4",
+        "QFULL": "f811671d72d713fbbe5969fa97b6d8ed5b9eb8d3b666673c4e1c506b7f5c7e96"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "하",
+      "difficultyReason": "함수식에 주어진 입력과 출력 조건을 직접 대입한다.",
+      "learningLevelReason": "단순 일차식의 함수값과 역대입 기본 확인이다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
+      "fingerprints": {
+        "QBODY": "67b8a03205953f069a42b15b80732ad3561c86f68789cddda1662b74ce3095a2",
+        "QFULL": "a3d31d5a4cc438ee405248542963e4cb0afba38a02260ea2837ecb9fae5df5a8"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "기울기·절편·사분면·평행이동을 각 식에서 직접 확인하는 표준 보기 판단이다.",
+      "learningLevelReason": "서로 다른 그래프 성질과 이동량의 부호를 구별한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "fingerprints": {
+        "QBODY": "88ffb5e39a988c1e943872c21577b030490c8c98542d365803644b621b652442",
+        "QFULL": "87e75844e38d11491ff8f8bafd40fca35ccb8855cbc6ec533c094febcb693eac"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "learningLevel": "중",
+      "difficultyReason": "그림에서 두 계수의 부호를 읽고 새 함수의 기울기·절편 부호로 변환한 뒤 통과 사분면을 판단한다.",
+      "learningLevelReason": "시각적 부호 정보와 문자식의 부호 및 그래프 위치를 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "원본 직선의 음의 기울기와 원점 아래 y절편을 실제 확인했다.",
+      "assetEvidence": [
+        {
+          "examId": "E019",
+          "sourceOrdinal": 11,
+          "field": "image",
+          "assetRef": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q11.png",
+          "sha256": "5a32dd00d28c27e18ca9258e4ed76abc165b2d1d65c2cbd48aa2942d0573ea82",
+          "gitHead": "e2f43bd3112b8efbed2d954d9e49077897f7db3b",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q11.png",
+          "viewPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q11.png"
+        }
+      ],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "fingerprints": {
+        "QBODY": "ce24b05b32381668966f35a9af3bf5d571a29dcafb28ff05ed4055206b33f000",
+        "QFULL": "36f0a389cddfc2c758fd4fc9469e0d5216dbab0e73cd5bfde34ca903098b95dd"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "그림의 두 절편으로 기울기를 구하고 평행 조건과 새 x절편을 적용한다.",
+      "learningLevelReason": "기울기·평행·절편을 표준 일차함수식으로 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "원본 격자 그래프에서 y절편 -1과 x절편 2를 실제 확인했다.",
+      "assetEvidence": [
+        {
+          "examId": "E019",
+          "sourceOrdinal": 12,
+          "field": "image",
+          "assetRef": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q12.png",
+          "sha256": "5e2072da0ddc97f60d1fc485ad6a1aeef46e579ce44dd6bb1943166f80fa96c8",
+          "gitHead": "e2f43bd3112b8efbed2d954d9e49077897f7db3b",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q12.png",
+          "viewPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q12.png"
+        }
+      ],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_427a266062de662d1d1411da3b886f9dbbc44dd3445a994e07fa329ef9743d10",
+      "fingerprints": {
+        "QBODY": "21ba480d970847f2ec3409a360c773d48c9e22826af34ae64b30c80ad408046a",
+        "QFULL": "dbe35830efd54b654b88cf1434d3705083f86ef987c642fb4abc6f6dd723c647"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "수직 평행이동을 상수항 변화로 표현한 후 주어진 점을 대입한다.",
+      "learningLevelReason": "이동된 식과 점의 좌표를 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c8a1ee64e9e67ca0e578fac1398d01c929db7b4ce4abc4ad96f184996fa99cef",
+      "fingerprints": {
+        "QBODY": "c05728bf09bbf31055310e649d58a6aa79b730b730231048e7d87f6cc1f7025e",
+        "QFULL": "57c5ca5182610b86820c31cced6dc495bbe0a4f2e4a65a71e17570b3b559b067"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "전체 주행거리에서 초기 연료량을 구하고 소비량과 남은 양을 일차 관계로 나타낸다.",
+      "learningLevelReason": "단위당 소비와 초기량을 표준 모델로 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1571c0024ce3c15affc76940674519fd0563c9470ff52f4a0e2909fb46fbdee0",
+      "fingerprints": {
+        "QBODY": "1764dda6932e499f896985aa35777b867b3493b928877a171c7082975c1dce57",
+        "QFULL": "37c6cef91dcc72de8e2c60bffe236f8d34ea2cdd4abaeba2fd3f7154e5fa4c71"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "learningLevel": "중",
+      "difficultyReason": "점이나 축과의 관계로 직선의 방향을 해석하여 수직선의 대응 유일성 실패를 찾는다.",
+      "learningLevelReason": "기하적 직선 조건과 함수의 정의를 구별한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_311f08e77c06ac3b7fb195cb8654184a045b971e4e2ab9fe22e62620ce482d44",
+      "fingerprints": {
+        "QBODY": "931fa10ae60fa36964d4595e5e1d5dd6d191285063c0e3d46d6b8dc8d99f1d93",
+        "QFULL": "c06046318638c552169456b8ce882dd6da95db7d106f4086d64737a0f5eca308"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "하",
+      "difficultyReason": "y축에 수직인 직선이 수평선임을 이용해 주어진 y좌표를 바로 고정한다.",
+      "learningLevelReason": "축과 직선의 기본 관계를 직접 적용한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_af44a161f3ff86ed9d34a36904d0ee7a6b8fffa4f04b42e3acf31e3e191fe50c",
+      "fingerprints": {
+        "QBODY": "3151c75ab8daf212fe1697d7eeb27b9e529f9fe33347a79f9644fad57a5ae17f",
+        "QFULL": "fb5f514c739c3468adbb8b357fbbb9a021a7852473db9563f9edb97a750060a3"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "무수히 많은 해의 조건을 세 계수의 같은 비로 옮겨 상수를 구한다.",
+      "learningLevelReason": "연립방정식의 해 개수와 일치 조건을 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "fingerprints": {
+        "QBODY": "3cd9b3d31192a0129955969827abf015dfaaff0c08c77c50b5990df71d9a93df",
+        "QFULL": "d6ed23a25fe68b5393bf18e6bd89136a41adbc13960ec40fca7007b0152192fc"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "learningLevel": "중",
+      "difficultyReason": "그래프의 절편과 교점 정보를 이용해 두 직선의 관계를 복원하고 식의 보기에 대응시킨다.",
+      "learningLevelReason": "시각 자료에서 좌표를 선택하고 두 방정식과 일치시키는 판단이 필요하다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "원본 두 직선의 증가·감소 방향, 증가 직선의 x절편 4와 교차 위치를 실제 확인했다. 그림의 좌표 정보와 기존 해설 및 보기의 식을 함께 읽었다.",
+      "assetEvidence": [
+        {
+          "examId": "E019",
+          "sourceOrdinal": 18,
+          "field": "image",
+          "assetRef": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q18.png",
+          "sha256": "b6eeda0021292f6f6d4973dab2061321e1cbd653b1f6e7c900639fe8e24b3b0f",
+          "gitHead": "e2f43bd3112b8efbed2d954d9e49077897f7db3b",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q18.png",
+          "viewPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q18.png"
+        }
+      ],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9dc5b8661b5ad67adbbd9c1f682248e13bd55ab050e58980e5c652b2ee5f628f",
+      "fingerprints": {
+        "QBODY": "95eebe2b659bc904247fa41e2847b6dce55a23ed704f38c37e2fcee9872d0b31",
+        "QFULL": "5cb5fb0419afc3158bca5e428f24cfbd3749c92294fc1898852c02f7590a20f0"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "low",
+      "difficultyBoundaryFlag": "B34",
+      "learningLevel": "상",
+      "difficultyReason": "먼저 두 직선의 교점을 구하고 세 번째 직선의 평행 및 공점 조건을 각각 걸러 삼각형 존재를 판단한다. 기존 해설의 복수 답과 발문 형식의 정합성 확인이 남는다.",
+      "learningLevelReason": "삼각형의 존재 여부를 여러 제외 조건으로 나누어 확인하는 것이 핵심이다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": [
+        "기존 정답과 해설은 두 선택지를 답으로 기록하지만 발문에는 복수 선택 안내가 없다. 이 표기 정합성은 내용 debt이며 난도 상향 근거로 삼지 않는다."
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "fingerprints": {
+        "QBODY": "971b3dfdc44b805a4baba6abb4834908eac15d8c819bbc1f1eb0cfcca1f6a60d",
+        "QFULL": "4d30ce7a8e4d35630e2e8d38bae8c02501e0f609648c7aa7040680f570489c60"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "low",
+      "difficultyBoundaryFlag": "B34",
+      "learningLevel": "중",
+      "difficultyReason": "기존 해설의 위치 가정 아래 절편으로 만든 두 넓이를 좌표식으로 바꾸고 넓이비와 직선 관계를 연립하는 표준 복합 구조다. 위치 전제가 본문에서 확인되지 않는다.",
+      "learningLevelReason": "넓이비와 직선 위의 점, 원점과의 기울기를 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": [
+        "P가 선분 AB 위 또는 제1사분면에 있다는 제한이나 원본 그림이 입력에 없다. 기존 해설의 넓이식은 좌표를 그대로 양의 높이·밑변으로 사용한다. 그 위치 전제의 확인이 필요하며 의도된 구조만 조건부 판정했다."
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_770b351cfb4894efb4f16e2fcecef2290d73a49b97a8f35ab5ea4c392f2b66bf",
+      "fingerprints": {
+        "QBODY": "3711acffb9bf2c2addf43cbcc3162c681382de9538463473525a527b4511d8f4",
+        "QFULL": "e9afe25074655f124c1001225916e870ec733b184e7b46e2aab3fbab8109d700"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "계수를 바꾸었다는 조건을 새 연립식으로 해석해 상수를 복원한 뒤 원래 방정식의 해를 구한다.",
+      "learningLevelReason": "잘못 바뀐 식과 원래 식을 분리해 두 단계의 관계를 구성한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "fingerprints": {
+        "QBODY": "f9fca0eb8fb8cd2b271f0fd2e9d4ca4a8ae61fcf7f228362d4833e1137eb5823",
+        "QFULL": "dfb2720680b927cf85870596085de720723feb1a363acd03aad0b6ae00fa746c"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "공통 y절편으로 한 상수를 정하고 그림의 양쪽 x절편과 넓이를 연결해 다른 상수를 역산한다.",
+      "learningLevelReason": "좌표·절편·삼각형 넓이와 매개변수 관계를 구성한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "원본 그림에서 두 직선이 y축 위 A에서 만나고 B는 음의 x축, C는 양의 x축에 있는 배치를 실제 확인했다.",
+      "assetEvidence": [
+        {
+          "examId": "E019",
+          "sourceOrdinal": 22,
+          "field": "image",
+          "assetRef": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q22.png",
+          "sha256": "abb2d55216d532f0c6514e995c63ec659543db03097e6797ce9b17ab16115e01",
+          "gitHead": "e2f43bd3112b8efbed2d954d9e49077897f7db3b",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q22.png",
+          "viewPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/assets/E019/q22.png"
+        }
+      ],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9fa93463b36894899f789d81dbed2d4b810f954f08902027d4c99903e29853fe",
+      "fingerprints": {
+        "QBODY": "5bbcca70bb2e5a358a01da7d91c3314332a57a134fdf6b25056659b29d41ffa8",
+        "QFULL": "664a36c814e3b79c913fdf24345c0d79e365cfa4387b5c0e09ce208dd9843d46"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "learningLevel": "중",
+      "difficultyReason": "세 교점을 구한 뒤 수평한 변을 밑변으로 선택해 좌표 차로 높이를 읽는다.",
+      "learningLevelReason": "연립방정식과 좌표평면의 넓이 계산을 연결한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9bb7be48df356940c437ee6b6b237ed23c4257358dab2a0d992142a3c717b767",
+      "fingerprints": {
+        "QBODY": "963beb6503ca8b2a11cd7b95f7da1916d6e7834274f66f4df80cb9ba0c168303",
+        "QFULL": "493ef86f9650dd5231525f936977e5aad8bef02e2e78fd32e666490a1a260945"
+      },
+      "curriculumContext": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "learningLevel": "중",
+      "difficultyReason": "직선식을 함수꼴로 바꾸고 매개변수만큼의 수직 이동을 반영하여 주어진 점을 대입한다.",
+      "learningLevelReason": "같은 문자가 이동량과 점의 좌표에 모두 들어가는 관계를 정리한다.",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "reviewStatus": "INITIAL_BLIND_ASSESSMENT_FROZEN",
+      "studentContentAndExistingSolutionRead": true,
+      "requiredVisualInspection": "NO_REFERENCED_VISUAL",
+      "assetEvidence": [],
+      "contextDebt": []
+    }
+  ]
+}
