@@ -60,7 +60,11 @@ window.questionBank = [
       "integrationPatternExplanation": "이차함수 기본형의 그래프 성질을 보기별로 판단한다."
     },
     "level": "중",
-    "levelReason": "그래프의 열린 방향·대칭축·꼭짓점·폭을 대조해 두 개의 틀린 보기를 함께 골라야 한다."
+    "levelReason": "그래프의 열린 방향·대칭축·꼭짓점·폭을 대조해 두 개의 틀린 보기를 함께 골라야 한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 y=−2x²와 주황 y=−x²의 폭을 같은 y=−2에서 비교한다. 위쪽 초록 곡선은 파랑 곡선을 x축에 비춘 모습이다.",
+    "solutionImageCaption": "y=−2x²는 아래로 열린다. y=−2에서 파랑 폭이 주황보다 좁고, 파랑과 초록은 x축에 대칭이다. 옳지 않은 보기는 ③과 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -122,7 +126,11 @@ window.questionBank = [
       "integrationPatternExplanation": "평행이동 식을 세운 뒤 주어진 점의 좌표를 대입한다."
     },
     "level": "하",
-    "levelReason": "세로 평행이동 식에 주어진 한 점을 대입해 계수 하나를 바로 구한다."
+    "levelReason": "세로 평행이동 식에 주어진 한 점을 대입해 계수 하나를 바로 구한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점의 파란 포물선을 위로 5만큼 옮긴 주황 곡선이 점 (1,−8)을 지난다.",
+    "solutionImageCaption": "옮긴 함수는 y=ax²+5이다. (1,−8)을 대입하면 −8=a+5이므로 a=−13, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -246,7 +254,11 @@ window.questionBank = [
       "integrationPatternExplanation": "꼭짓점으로 이동형의 두 값을 정한 뒤 절편을 대입해 계수를 구하고 곱한다."
     },
     "level": "중",
-    "levelReason": "그림에서 꼭짓점과 y절편을 읽어 미지 계수를 구한 뒤 세 수의 곱을 계산한다."
+    "levelReason": "그림에서 꼭짓점과 y절편을 읽어 미지 계수를 구한 뒤 세 수의 곱을 계산한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파랑 포물선이 꼭짓점 (−3,−2)와 y절편 (0,2)를 지난다. 두 점은 주황이며, 세로 점선은 꼭짓점을 지나는 대칭축이다.",
+    "solutionImageCaption": "꼭짓점에서 p=3, q=−2이다. y절편을 대입하면 2=9a−2이므로 a=4/9이다. 따라서 apq=−8/3이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -308,7 +320,11 @@ window.questionBank = [
       "integrationPatternExplanation": "꼭짓점형에서 가로 이동량과 대칭축을 각각 읽어 합한다."
     },
     "level": "하",
-    "levelReason": "꼭짓점형에서 가로 이동량과 대칭축을 바로 읽어 두 수를 더한다."
+    "levelReason": "꼭짓점형에서 가로 이동량과 대칭축을 바로 읽어 두 수를 더한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 원래 포물선의 꼭짓점은 원점이다. 주황 새 포물선은 왼쪽으로 1만큼 옮겼고, 세로 점선이 새 꼭짓점을 지난다.",
+    "solutionImageCaption": "a=−1이고 새 대칭축의 좌표는 b=−1이다. 따라서 a+b=−2로 정답 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -389,7 +405,7 @@ window.questionBank = [
       "sin 값 읽기"
     ],
     "wide": true,
-    "content": "오른쪽 직각삼각형 $\\mathrm{ABC}$에 대하여 다음 중에서 옳은 것은? (4점)<br><img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q07.png\" alt=\"문제 7번 그림\" style=\"max-width: 250px;\">",
+    "content": "오른쪽 직각삼각형 $\\mathrm{ABC}$에 대하여 다음 중에서 옳은 것은? (4점)<br><img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q07_question-v2.svg\" alt=\"문제 7번 그림\" style=\"max-width: 250px;\">",
     "choices": [
       "$\\sin A = \\dfrac{15}{17}$",
       "$\\cos A = \\dfrac{8}{17}$",
@@ -594,7 +610,11 @@ window.questionBank = [
       "integrationPatternExplanation": "먼저 45°인 직각삼각형에서 높이를 구하고, 그 높이를 60°인 직각삼각형에 연결한다."
     },
     "level": "중",
-    "levelReason": "높이를 내려 두 직각삼각형으로 나누고 45°와 60°의 삼각비를 차례로 적용한다."
+    "levelReason": "높이를 내려 두 직각삼각형으로 나누고 45°와 60°의 삼각비를 차례로 적용한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형은 높이 AD를 공유한다. 파랑 삼각형의 45도와 빗변 3√2, 주황 삼각형의 60도를 구별하고 같은 AD·BD에 초록 눈금을 넣었다.",
+    "solutionImageCaption": "왼쪽 45도 삼각형에서 AD=3cm이다. 오른쪽에는 sin60°=AD/AC를 적용해 AC=2√3cm를 구한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -650,7 +670,11 @@ window.questionBank = [
       "integrationPatternExplanation": "절편으로 삼각형 변의 길이를 구한 뒤 세 삼각비를 계산해 곱한다."
     },
     "level": "중",
-    "levelReason": "직선의 두 절편으로 직각삼각형의 세 변을 구한 뒤 세 삼각비의 곱을 계산한다."
+    "levelReason": "직선의 두 절편으로 직각삼각형의 세 변을 구한 뒤 세 삼각비의 곱을 계산한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 일차함수가 좌표축과 만나는 A와 B를 원점 O와 이었다. 파랑 가로 AO는 8, 주황 세로 OB는 4이며 두 각 a, b는 각기 다른 색이다.",
+    "solutionImageCaption": "A=(−8,0), B=(0,4)이므로 가로 8, 세로 4, 빗변 4√5이다. cos a·sin a·tan b=(2/√5)·(1/√5)·2=4/5이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -706,7 +730,11 @@ window.questionBank = [
       "integrationPatternExplanation": "두 직각삼각형의 공통 높이를 각각 tangent 관계에 연결하고 밑변 구간의 합을 사용한다."
     },
     "level": "상",
-    "levelReason": "탑의 밑이 두 관측점 사이에 있음을 그림에서 파악하고 두 접선비 식과 거리 합을 연결한다."
+    "levelReason": "탑의 밑이 두 관측점 사이에 있음을 그림에서 파악하고 두 접선비 식과 거리 합을 연결한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 탑 높이 AD는 x m이다. B의 60도는 파랑 삼각형, C의 45도는 주황 삼각형이며 주황 눈금이 AD와 DC가 같다는 것을 표시한다. B와 C 사이 10 m를 아래에 붙였다.",
+    "solutionImageCaption": "45도에서 DC=x이고, 60도에서 BD=x/√3이다. BD+DC=10이므로 x/√3+x=10, 즉 x=(10−x)√3이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -764,7 +792,11 @@ window.questionBank = [
       "integrationPatternExplanation": "사각형을 두 삼각형으로 분할하고 각 삼각형의 넓이를 구해 더한다."
     },
     "level": "상",
-    "levelReason": "사각형을 두 삼각형으로 나누고 서로 다른 끼인각의 높이를 구해 넓이 두 개를 합한다."
+    "levelReason": "사각형을 두 삼각형으로 나누고 서로 다른 끼인각의 높이를 구해 넓이 두 개를 합한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형을 대각선 AC로 갈랐다. 파란 ABC의 B에 있는 보라 각은 150도이고, 주황 ACD의 D 각은 60도이다. 각 삼각형의 높이 AH와 CK는 각각 해당 밑변과 수직이다.",
+    "solutionImageCaption": "보라 각 ABC의 150°와 그 바깥쪽 30°에서 높이는 4sin30°=2 cm, 넓이는 2√3 cm²이다. ACD의 높이는 6sin60°=3√3 cm, 넓이는 12√3 cm²이다. 합은 14√3 cm²로 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -823,7 +855,11 @@ window.questionBank = [
       "integrationPatternExplanation": "원주각으로 중심각을 구해 부채꼴과 나머지 삼각형의 넓이를 각각 구한다."
     },
     "level": "상",
-    "levelReason": "원주각에서 중심각을 구한 다음 부채꼴과 이등변삼각형 넓이를 각각 계산한다."
+    "levelReason": "원주각에서 중심각을 구한 다음 부채꼴과 이등변삼각형 넓이를 각각 계산한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 부분은 중심각 60도의 부채꼴 AOC이고 주황은 삼각형 OCB이다. 현 BC를 두 주황 눈금으로 반씩 나누고 중심에서 내린 수선을 표시했다.",
+    "solutionImageCaption": "B의 초록 원주각 30°를 두 배 하면 파란 중심각 60°이다. 부채꼴 넓이는 6π이다. 수선 OH=3 cm, 현 BC=6√3 cm이므로 주황 삼각형의 넓이는 9√3이다. 전체 넓이는 (6π+9√3) cm²이므로 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -881,7 +917,11 @@ window.questionBank = [
       "integrationPatternExplanation": "접기로 같은 변을 확인하고 45° 직각삼각형에서 높이와 밑변을 결정해 넓이를 구한다."
     },
     "level": "상",
-    "levelReason": "접기 그림의 대응변을 판독하고 보존 길이·45° 직각삼각형·넓이를 연결한다."
+    "levelReason": "접기 그림의 대응변을 판독하고 보존 길이·45° 직각삼각형·넓이를 연결한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 접기에서 AB와 BC가 겹치므로 파란 한 눈금으로 표시했다. B 각은 45도이며 A에서 BC에 내린 수선 AH는 종이의 폭 6 cm이다.",
+    "solutionImageCaption": "45도인 직각삼각형에서 BH=AH=6 cm, AB=6√2 cm이다. 같은 BC를 밑변으로 잡으면 넓이는 (1/2)·6√2·6=18√2 cm²이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -937,7 +977,11 @@ window.questionBank = [
       "integrationPatternExplanation": "꼭짓점형의 두 이동값에서 축·꼭짓점을 읽고 절편과 열린 방향을 각각 구한다."
     },
     "level": "하",
-    "levelReason": "꼭짓점형에서 축·꼭짓점·평행이동을 읽고 y절편만 한 번 대입해 확인한다."
+    "levelReason": "꼭짓점형에서 축·꼭짓점·평행이동을 읽고 y절편만 한 번 대입해 확인한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 포물선은 y=x²이고, 주황 포물선은 오른쪽으로 4, 위로 1만큼 옮긴 그래프이다. 주황 꼭짓점과 y절편을 함께 표시한다.",
+    "solutionImageCaption": "대칭축 x=4, 꼭짓점 (4,1), 이동은 오른쪽 4와 위쪽 1이다. y절편은 17이다. 포물선은 위로 열린다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1196,7 +1240,11 @@ window.questionBank = [
       "integrationPatternExplanation": "tan으로 눈높이부터 꼭대기까지의 수직 차이를 구하고 눈높이를 더한다."
     },
     "level": "중",
-    "levelReason": "눈높이와 건물 사이 직각삼각형에서 tan으로 높이를 구하고 눈높이를 더한다."
+    "levelReason": "눈높이와 건물 사이 직각삼각형에서 tan으로 높이를 구하고 눈높이를 더한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 시선은 눈높이에서 건물 꼭대기를 올려다본 50도 각이다. 파란 직각삼각형의 수평변은 60 m이고 수직 높이는 h이다. 지면부터 눈까지의 높이는 1.5 m이다.",
+    "solutionImageCaption": "눈높이 위의 높이는 60·tan50°=60·1.19=71.4 m이다. 눈높이 1.5 m를 더하면 건물의 높이는 72.9 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1249,6 +1297,10 @@ window.questionBank = [
       "integrationPatternExplanation": "삼각비로 높이와 밑변 일부를 구하고 넓이로 전체 밑변을 결정한 뒤 피타고라스로 $AC$를 구한다."
     },
     "level": "상",
-    "levelReason": "주어진 넓이와 삼각비로 AB 길이를 찾고 피타고라스 정리로 AC를 구한다."
+    "levelReason": "주어진 넓이와 삼각비로 AB 길이를 찾고 피타고라스 정리로 AC를 구한다.",
+    "solutionImage": "assets/images/22_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 C에서 밑변 AB에 내린 수선이 H에 닿는다. B의 60도와 BC=5로 높이를 구하고, AB를 BH와 HA로 나눈다.",
+    "solutionImageCaption": "CH=5√3/2 cm이고 삼각형의 넓이에서 AB=8 cm이다. BH=5/2 cm이므로 AH=11/2 cm이다. 직각삼각형 ACH에서 AC=7 cm이다.",
+    "solutionImageSize": "full"
   }
 ];
