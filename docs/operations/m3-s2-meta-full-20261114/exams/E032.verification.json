@@ -409,9 +409,10 @@
   "unresolvedMasterTagCount": 0,
   "fourSlot": {
     "path": "E032.4slot.json",
-    "sha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+    "sha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
     "fail": [],
     "warn": [
+      "sourceGitBlobSha dd9d5490f2abff2196fb21bac02e2f2a3538e5f0 != current exam blob 300bce88086c7c8139d199f08a817ec3586fe4c7",
       "#5 only 4 distinct terms",
       "#8 only 3 distinct terms",
       "#11 only 3 distinct terms",
@@ -420,20 +421,21 @@
     "stats": {
       "items": 22,
       "examItems": 22,
-      "quotes": 146
+      "quotes": 151
     },
-    "sourceBlob": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0"
+    "sourceBlob": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+    "candidateParentSameSlot": "PASS"
   },
   "independent": {
     "status": "PASS",
-    "artifactSha256": "56b15e506a78b0cc980ebb7c31cc695e04679a89ee1cd468e4c4c4584e1fbfc5",
+    "artifactSha256": "9afda2bbe59856bfd1f55c3fcea01363fb3bb3891356ddbf53932110f730bf22",
     "sampleOrdinals": [
       6,
       7,
       21
     ],
     "slotHashMatches": true,
-    "targetSlotSha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+    "targetSlotSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
     "reviewHashMatches": true,
     "targetReviewSha256": "38dab3dd39ea8293b159c5f0c4caa4d0209ab0aa40032ed183a405102f990a92",
     "sourcePatchHashMatches": true,
@@ -449,7 +451,7 @@
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
-      "sha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b"
+      "sha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac"
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.proposals.json",
@@ -473,7 +475,7 @@
     },
     "independent": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.independent.json",
-      "sha256": "56b15e506a78b0cc980ebb7c31cc695e04679a89ee1cd468e4c4c4584e1fbfc5"
+      "sha256": "9afda2bbe59856bfd1f55c3fcea01363fb3bb3891356ddbf53932110f730bf22"
     },
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.difficulty-adjudication.json",
@@ -482,14 +484,47 @@
     "rpmLeafGapAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.rpm-leaf-gap-adjudication.json",
       "sha256": "c829a650fb9f0dfd604805f08531317e9192768d576a84e4b6a6abb78f4df096"
+    },
+    "fourSlotAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot-amendment.json",
+      "sha256": "6ee6d2578352fc9b2624f7818d82c98e0d759854fd80a1f023a8b473d17d7d5f"
+    },
+    "fourSlotIndependentAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot-independent-amendment.json",
+      "sha256": "e67b1c6b2402c9bec0540437f2df0ba0b01cf3810e96d66a51b3fcf700b2ccb4"
     }
   },
-  "packagedMetadataSha256": "16a41f48ae317563074dd63fa5e14e92b8b1e8d2258e96cbb39c42c59a0f9299",
+  "packagedMetadataSha256": "42a84db25ba316fbb6f332a473b79985248dccdc92910e8882e9a7636f0e2ba2",
   "sourcePayloadReuse": {
     "basis": "All non-metadata fields compared exactly by VM values; QBODY and QFULL additionally unchanged",
     "evidenceSourceBlob": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
     "metadataOnlySourceBlob": "300bce88086c7c8139d199f08a817ec3586fe4c7",
     "sameStudentContent": true,
     "sameFourSlotArtifact": true
+  },
+  "targetedFourSlotAmendment": {
+    "changedOrdinals": [
+      1,
+      2,
+      4,
+      10,
+      18
+    ],
+    "previous": {
+      "commit": "ef521cc5f88c6d033044ad5f3c825ed51009f2e1",
+      "metadataSha256": "16a41f48ae317563074dd63fa5e14e92b8b1e8d2258e96cbb39c42c59a0f9299",
+      "verificationSha256": "7d7650e7d89a5f5f6277ec105d9d0e35bb3738c0302853dd07e1a4382e99ff6d",
+      "fourSlotSha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+      "independentSha256": "56b15e506a78b0cc980ebb7c31cc695e04679a89ee1cd468e4c4c4584e1fbfc5"
+    },
+    "independentDelta": "PASS",
+    "existingThreeSampleOrdinals": [
+      6,
+      7,
+      21
+    ],
+    "studentSourceChanged": false,
+    "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+    "warningAcceptance": "Any added slot-length warning caused solely by the mandatory same-slot candidate parent is accepted under contract section 10; prior semantic warnings remain separately documented."
   }
 }

@@ -1,0 +1,579 @@
+{
+  "schemaVersion": "m3-s2-targeted-4slot-amendment-v1",
+  "examId": "E032",
+  "author": "c",
+  "reviewerRequested": "a",
+  "sourceRef": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+  "source4slotSha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+  "after4slotSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+  "after4slotSnapshot": "/workspace/scratch/6538df266481/worker-outputs/c/amendments/E032.4slot.after.json",
+  "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "baselineSourceBlob": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+  "currentBranchSourceBlob": "300bce88086c7c8139d199f08a817ec3586fe4c7",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_591b7da905fb1096580e24b5e2177af6b2d91ae8345d5f3f64ce64ef7389ab56",
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "접시의 중심과 막대기의 중점 사이의 거리를 $d$라 하면 피타고라스 정리에 의해 $d^2+4^2=6^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "접시의 중심과 막대기의 중점 사이의 거리를 $d$라 하면 피타고라스 정리에 의해 $d^2+4^2=6^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "addedParentTerm": "현"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ]
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ]
+      },
+      "addedParentTerm": "현"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_67598608037fbc106b773f2da0bfa142ca0e72bb7d95d9c998263f2f60ff23b2",
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\overline{OA}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$이므로 직각삼각형 $OAM$에서 $AM=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그러므로 $\\triangle OCD$의 넓이는 $\\dfrac12\\times12\\times8=48\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ]
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\overline{OA}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$이므로 직각삼각형 $OAM$에서 $AM=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그러므로 $\\triangle OCD$의 넓이는 $\\dfrac12\\times12\\times8=48\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ]
+      },
+      "addedParentTerm": "현"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_e67c9f7101932ac3e5afca14c41045941187380e9ff1e05a748de39eda1a1be7",
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "두 현 $AD$, $BC$가 원 안의 점 $Q$에서 만나고 $\\angle BQD=80^\\circ$이므로 $u+v=160^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 풀면 $u=120^\\circ$, $v=40^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle x=\\angle CDA$는 호 $CA$에 대한 원주각이므로 $x=\\dfrac{40^\\circ}{2}=20^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "두 현 $AD$, $BC$가 원 안의 점 $Q$에서 만나고 $\\angle BQD=80^\\circ$이므로 $u+v=160^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 풀면 $u=120^\\circ$, $v=40^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle x=\\angle CDA$는 호 $CA$에 대한 원주각이므로 $x=\\dfrac{40^\\circ}{2}=20^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "addedParentTerm": "각"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_4cc23117a4c07a00f19a570d5e20ff96f7ba309cce759e05631547d20e5d6f6b",
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다."
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다."
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "addedParentTerm": "현"
+    }
+  ],
+  "reason": "4칸 계약 §10의 후보와 parent 동일칸 규칙에 따라 실제 원문해설의 현·각을 method에 보완한다. 같은 parent를 가진 후보2개인 Q4/Q10은 parent1개만 추가하며 기존 세부후보는 보존한다.",
+  "selfCheckDelta": {
+    "quotesCheckedBefore": 146,
+    "quotesCheckedAfter": 151
+  },
+  "unchanged": [
+    "student source question choices answer solution images UIDs and item order",
+    "all metadata classifications and numerical difficulty",
+    "all existing slot terms quotes and other item fields",
+    "all given goal condition slots",
+    "all other17 items including independent samples6/7/21",
+    "candidate declarations"
+  ],
+  "newMathematicalVerification": false,
+  "status": "AUTHOR_DELTA_READY_INDEPENDENT_REVIEW_PENDING"
+}

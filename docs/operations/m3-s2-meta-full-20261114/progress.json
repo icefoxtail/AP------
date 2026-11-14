@@ -1576,9 +1576,9 @@
       "sourceChangedQuestionCount": 22,
       "sourceChangedFieldCount": 156,
       "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E032.meta.json",
-      "metadataSha256": "16a41f48ae317563074dd63fa5e14e92b8b1e8d2258e96cbb39c42c59a0f9299",
+      "metadataSha256": "42a84db25ba316fbb6f332a473b79985248dccdc92910e8882e9a7636f0e2ba2",
       "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E032.verification.json",
-      "verificationSha256": "7d7650e7d89a5f5f6277ec105d9d0e35bb3738c0302853dd07e1a4382e99ff6d",
+      "verificationSha256": "3a30416c92315eacff0e52018f70da93e12b5c0569aba6f602c14038396cfd98",
       "independentSampleOrdinals": [
         6,
         7,
@@ -1590,10 +1590,28 @@
         "CURRENT_SOLUTION_REBOUND_WITH_TARGETED_CORRECTION": 22
       },
       "fourSlotValidatorFail": 0,
-      "fourSlotValidatorWarnings": 4,
+      "fourSlotValidatorWarnings": 5,
       "activeFieldSchemaDebtCount": 5,
       "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
-      "commitParent": "6965e648396af0c9530f135a1eef6976134236e3"
+      "commitParent": "6965e648396af0c9530f135a1eef6976134236e3",
+      "targetedFourSlotAmendment": {
+        "changedOrdinals": [
+          1,
+          2,
+          4,
+          10,
+          18
+        ],
+        "previousCommit": "ef521cc5f88c6d033044ad5f3c825ed51009f2e1",
+        "authorRef": {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot-amendment.json",
+          "sha256": "6ee6d2578352fc9b2624f7818d82c98e0d759854fd80a1f023a8b473d17d7d5f"
+        },
+        "reviewerRef": {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot-independent-amendment.json",
+          "sha256": "e67b1c6b2402c9bec0540437f2df0ba0b01cf3810e96d66a51b3fcf700b2ccb4"
+        }
+      }
     },
     {
       "id": "E033",
@@ -2704,7 +2722,7 @@
     "remainingExams": 47,
     "remainingQuestions": 1105,
     "independentSamples": 108,
-    "latestPreparedExam": "E037",
+    "latestPreparedExam": "E032",
     "mainMerge": "NOT_RUN_USER_EXCLUDED"
   },
   "ownerHistory": [
