@@ -550,7 +550,8 @@
           "sha256": "b4a7394673b22087c3e2623fc8e742503efaf5ecfdc20e581e0ded4b6af11c4f"
         }
       },
-      "remoteSaveState": "PENDING_READBACK"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "abd9d611be3190cc73480fe385d5f99074d9c37b"
     },
     {
       "examId": "E005",
@@ -589,12 +590,106 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "2af384460c7ea2a4ac2c060e5be89c3e44e39a6746047dc884a46aa5cddbe392"
+      "uidSetSha256": "2af384460c7ea2a4ac2c060e5be89c3e44e39a6746047dc884a46aa5cddbe392",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        18
+      ],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        6,
+        12,
+        24
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            1,
+            6,
+            7,
+            20,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            2,
+            3,
+            8,
+            9,
+            11,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선과 선분의 길이의 비",
+          "ordinals": [
+            4,
+            10,
+            12
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            5,
+            19,
+            23
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            21
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E005/four-slot.json",
+          "sha256": "4e316aeb5f8474959ac73fdc9c15d5054ffd23991633698d7356e2d5f295380c"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E005/independent-sample.json",
+          "sha256": "8d8aaad49508df2ed0b270f50e3fc3aa0efe3d9da4f06ca66c088c890806594d"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E005/mechanical-check.json",
+          "sha256": "02ae28beed4b20dac5e54449c6a5eba14c9d51fee25f1a63857e9c5e99a93f1f"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E005/review.json",
+          "sha256": "6628f45eefb74fa7bb3b5262e8e871dac80d43e2b2afdee2afa2ec1c235b0ce8"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E005/root-acceptance.json",
+          "sha256": "a14b065b55a2605f71a82122bd604c8e6dd424c55cce71adfd1baa009f248367"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK"
     },
     {
       "examId": "E006",
@@ -3430,11 +3525,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 5,
-    "reviewedQuestions": 118,
+    "reviewedExams": 6,
+    "reviewedQuestions": 142,
     "unresolvedQuestions": 0,
-    "remainingExams": 62,
-    "remainingQuestions": 1486
+    "remainingExams": 61,
+    "remainingQuestions": 1462
   },
-  "lastVerifiedExamCommit": "8e1f00b08ff01fbaba68f8273197152d815a8125"
+  "lastVerifiedExamCommit": "abd9d611be3190cc73480fe385d5f99074d9c37b"
 }
