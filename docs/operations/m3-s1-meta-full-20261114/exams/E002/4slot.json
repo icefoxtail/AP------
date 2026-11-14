@@ -1,0 +1,1695 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/26_왕운중_1학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "0cf0f482e5f7cd2e3fbad43a1761a88926dc5ef5",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E002",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_a6fd36827300385d23e443c8d616f7a7fef164c38efcba63aa397a764e9991bf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77b254fae83291666a0af4c83befe26d7c9645c7d7bc00bffda843ab417b19f9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf4141bd40fddfcef6a70b50f6696d3390a7925be1cacbf5932089ec69acb570"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "$2x^2=(x-3)^2$"
+          },
+          {
+            "term": "이차식",
+            "src": "solution",
+            "quote": "이차식이 남는 등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식으로 옳은 것"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$x^2+6x-9=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "양변의 곱과 제곱을 전개하여 한쪽으로 정리한 결과를 기준으로 차수를 판정한다."
+          },
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "이차식이 남는 등식인지 확인한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전개 뒤 등식 여부와 최고차항이2인지 확인한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c72d82b3e57b9920584606ed1b8536b9f1a45b714cee606deec7ef961a8333da",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "127b16e42f8f2d771b7172538910d36fcf2f0c6f87159ea2bd883adcdb749991"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e05ffbb811c7705ee9d5856404518104c0801a640b7eb388a0664bde7bbd2756"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-5x+6=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "풀면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "좌변을 인수분해한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "기본 인수분해를 통해 두 일차인수가 0인 경우를 바로 읽는 단일 핵심 방법이다. 경고를 없애기 위해 계산 용어를 추가하지 않는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_6efa19a52d035dabafcda9986cd416413e33aa963281316eadafa026c1909f00",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e276ea65c360dcd093f6b801f927d713d82fc6a192f7bda9b3312fc198ea5266"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "622f257ae65611ce11ae0c25456f0e500860c9bc7ee6f26de387a76e517025cb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$2x^2+5x+k=0$"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "한 근이 $x=-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "다른 한 근을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "주어진 근을 대입해 $k$를 먼저 정한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$2x^2+5x-3=(2x-1)(x+3)=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$k$는 상수"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_0d9ddd7e4515fdf82ac4a0e84b5902793483a30f7e9d029f745adeae484dd29f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ba67e228d1ab5bc9813b9e1fccfc8e4a8ca434f43699096aec5058708be8fe64"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "841eebe42cbbf4f7f464c9d0e146d535c9e876d4f5c63d6edfda56103113aa38"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2+2mx+16=0$"
+          },
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 갖도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "양수 $m$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "중근 조건을 완전제곱식으로 나타낸다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$m^2=16$",
+            "evidenceType": "IMPLIED",
+            "justification": "상수항16이 (x+m)²의 상수항m²와 같아야 함을 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $m$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_fdb9ca2bb88e791f7db9e0a742ad942f4d71ceb7fc7a39ce525cf1f78f80d89c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3b0be87e64994f9f77bf664469b0629d9f9024ae15d48727469cf48e8f73d821"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33d87fafab348a1e977743e085c34d37f334866ca171cf69d85ca2c23f8162a3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$2x^2+3x+k=0$"
+          },
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "$x=\\dfrac{-3\\pm\\sqrt{17}}{4}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수항",
+            "src": "stem",
+            "quote": "수 $k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "근의 공식의 제곱근 안을 비교한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$9-8k=17$",
+            "evidenceType": "IMPLIED",
+            "justification": "근의 공식에서 미정 상수항을 포함한 근호 안과 주어진 해의 근호 안을 대응시킨다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_2a7ce3b6455226612425f42c75fbb439559924017b84316911c5aad3b5a92682",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c5c1529bce994a726ffce1056be7ea7266d07281085fa29844935002dd2c93c6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0411d9bab7957c65fa766f8578b4ae87f7159a8045314d768ac1708cd550f479"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "올바르게 풀어낸 학생"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$x=1,5$를 모두 얻어",
+            "evidenceType": "IMPLIED",
+            "justification": "흥민의 (x−3)²=4에서 양·음 제곱근을 모두 포함한 해인지 확인한다."
+          },
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "$16+4=20$",
+            "evidenceType": "IMPLIED",
+            "justification": "민재의 근의 공식 적용에서 상수항−1의 부호를 확인한다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "$x+1$로 나누면서 $x=-1$인 해를 잃었다.",
+            "evidenceType": "IMPLIED",
+            "justification": "양변을 x+1로 나누는 변형은 x+1=0의 해를 따로 보존해야 한다는 나눗셈 조건을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "세 풀이를 같은 하나의 공식으로 묶지 않고 제곱근, 근의 공식, 해를 잃는 나눗셈을 모두 기록한다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_5df016bca055b7bfe70a35541d94af9690477200015f75a5051dce86313b99f2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf0dcfdda6068185f565644d9f7fb925804baf99d105dff77dfb32ed8bbefade"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8d3997a8c16879719a5ed335d4ba74ed871cbf8eb111848201771873cc6e4cf8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$3(x+1)^2=a$"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "두 근의 차가 $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$x=-1\\pm\\sqrt{\\dfrac a3}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$2\\sqrt{\\dfrac a3}=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 빼 공통 중심−1을 소거하고 제곱근의 두 배를 주어진1과 같게 둔다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a&gt;0$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3058846823c658f7b3137a9ebea6f55d18bbcfd957fca6290307c30c8afd943a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5ca996040c97e98342e0ed56e6d48df23622523df52ff095ffc341eaa1cb164c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "78679ad69d54503615e358a90798cf185abd8d2cacad7e42790061147687b02f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "$3(x+1)&lt;k+2$"
+          },
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-2x-3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "상수 $k$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "이차방정식의 해는 $-1,3$",
+            "evidenceType": "IMPLIED",
+            "justification": "x²−2x−3을 (x+1)(x−3)로 나누어 후보 근을 먼저 얻는다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "두 해를 부등식에 각각 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교집합",
+            "src": "solution",
+            "quote": "$-2<k\\le10$",
+            "evidenceType": "IMPLIED",
+            "justification": "−1을 포함하는 k>−2와3을 배제하는 k≤10을 동시에 만족시킨다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "동시에 만족시키는 $x$의 값이 $x=-1$뿐"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c85e0c5290b7015185242f2749ac0c2f4ee8dd9b321bfd7d554f773474906019",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "28fbccb838b93b1d968d9a934cda46c35a5f9ec7adce425c70bc1f5c605456e6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "86b760dbcb2efcfff161fe2b896bc9dd80d0c6d8558bf977e468f5819ff0c6bd"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2-10=-2(x+1)^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "두 근 사이에 있는 정수"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "정리하면 $3x^2+4x-8=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "우변의 제곱을 전개하고 양변을 정리하여 근의 공식을 적용할 형태로 만든다."
+          },
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "$\\dfrac{-2\\pm2\\sqrt7}{3}$",
+            "evidenceType": "IMPLIED",
+            "justification": "3x²+4x−8=0의 두 근을 근의 공식으로 얻는다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "정수는 $-2,-1,0,1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "두 근 사이"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_5cdc879848f211c6a991eadc6d821506b2d124666404c5704464a3287cd9e59b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "617fd9322aa21c07b1ea4fda3bbdde78acf4c119069a04f7a1f593817222cae3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fed35a47690c961f7330ec92403dade86991fc2f4928bc05e9089c907a083b6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$3(x-6)^2=k+2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 정수 $k$의 값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$x=6\\pm\\sqrt{\\dfrac{k+2}{3}}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sqrt{\\dfrac{k+2}{3}}$라 하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$1,2,3,4,5$",
+            "evidenceType": "IMPLIED",
+            "justification": "6−t와6+t가 모두 자연수가 되도록 양의 정수 t를1부터5까지 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "그 해가 모두 두 자연수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "모든 정수 $k$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_5b5f2fec3572762583245d06fb6f5fa1f325c05ed035f1b3c583c29d1b6365db",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fc304f1d679e4e01e2a605730e508fe872766c508e8ea736bc7768242f924e62"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a096a0e964913f4167cafa84ad98272eecdb36359b015f4a286f9fa5871c597c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$f(x)=2x^2-3x+4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(-1)-f(2)$"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$f(-1)-f(2)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(-1)=9$, $f(2)=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 두 x값을 함수식에 각각 대입하여 값을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직접 함숫값 대입만으로 결정되므로 사칙연산을 별도 방법으로 부풀리지 않는다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_a2935f426619846fe875776690c378ee7ea74416dad522b489652543d50d1522",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ffbd38c64c48a42b5c8459d47da4e34de610a2f743c03b5e1f99b66d1fe9de4f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77ce96de27dcbf971b704051e56e2a827bc3e593646ea232d113d3e03f246041"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=2x^2$"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프에 대한 설명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "대칭축은 $y$축",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$x$축에 대칭이동하면 $y=-2x^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(-2,8)$을 지난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "x=−2를 주어진 함수식에 넣어 점 포함 설명을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_cb7fd9c30ddbef92307fc1d1abe82e84b3bfd7ce907e01e0038be321bbeab4d9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d140e153f98032663909d06ae841fa7152e5c7c4b1c01adaf2ae5bdcfba06f88"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db7eefa6b7453cdce47c483485fe69234988a75d864d55a51e0d4f6057ba9fde"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-3x^2$"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $(-2,a)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(-2,a)$가 $y=-3x^2$ 위에 있으므로 $a=-12$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 점의 좌표를 함수식에 대입하여 a를 정한다."
+          },
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "$x$축 대칭인 그래프는 $y=3x^2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$b$는 상수"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_8d112d5e1064bd12e78f64370ad02e11dc9d1b805b41065afa0f32b879f43ab0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fdcba4dfbd8920ec236a6bb9ed2a9e999f511ab80299f712e8148a154788b264"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bba607e3a5d91510439ce362704482fad81a582954642c580067c4e7aa912ebf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2$"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "평행이동한 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 평행이동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "$y=a(x-3)^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$-4.5=9a$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 y절편 (0,−4.5)를 꼭짓점형에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_27b1517ecfabfd8e38a19524576133865abc3b999377887d4610889c14d537f9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8b11501fab2f1de591633b4fbad82a9a9149a04c24279c3ecf94c8a93d87d86f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8937f16fb04fb8b1f18934d6b0fbb057d96b0cae1e2e99a31399b68e5602fecf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수의 식을 $y=f(x)$"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "두 $x$절편과 $y$절편"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(3)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$f(x)=a(x+2)(x-2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 x절편−2,2를 일차인수로 갖는 인수형으로 함수를 나타낸다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(0)=-8$이므로 $a=2$",
+            "evidenceType": "IMPLIED",
+            "justification": "y절편으로 a를 정한 뒤 x=3을 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_43a88d00723465ac29fcc39df5995d761f89dc11ab7284fcdb0391fd5cd846e2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3fcf063b5f2f065c56068bf45d597ee5b1e1384bfe9bc4bba29291523b537ba2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd0b9e4e24c56be0324e6c484ce78f5ca53d851ae0c9d63bff17669b4b105077"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2-2x+3$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=\\dfrac{2}{3}$"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "그래프와 만나는 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AC}+\\overline{BD}$"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\overline{AC}+\\overline{BD}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=\\dfrac23$과 만나는 네 점",
+            "evidenceType": "IMPLIED",
+            "justification": "수평선의 y값을 각 이차함수에 대입하여 교점 x좌표의 방정식을 세운다."
+          },
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "$x=-1\\pm\\dfrac{\\sqrt{30}}3$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 교점 방정식의 근을 구하여 대응하는 두 x좌표의 공통 근호를 비교한다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "같은 쪽 교점끼리의 거리가 각각 $3$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 수평선 위에서 대응하는 교점의 x좌표 차를 거리로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_8b9f8e9c0f579568641ec1bd13dd8fa797affe647ea3a51a6c5d04c968fd4cc6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c3c04786acaa0deda7feddb4e1359d365f4812750b233eb053a50565ec637fbc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f53b9cfe1a92126c741a321545d4aa577eb13ae4213cbb7e26d8c70374d18ed9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "비례",
+            "src": "stem",
+            "quote": "속력의 제곱에 비례"
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "아래 표와 같은 관계"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "제동 거리"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "제동 거리를 $y=ax^2$로 두어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2=16^2a$",
+            "evidenceType": "IMPLIED",
+            "justification": "표의 (속력,제동거리)=(16,2)를 제곱비례식에 넣어 a를 정한 뒤80을 넣는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6e52f39d5688e45f477e191f77f6bbbcdcb5face73defe7752c1d3f211b87c75",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7795dcccf71afaf52d1aedeaa82dc4548ecd3243d2c5827e5940a45075f62702"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "42b2f894b3f650253e47ded0786863723ef1da65e8c30dd7b2d056c3999e165f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=x^2$과 $y=ax^2$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발을 $H$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{CE}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "함숫값",
+            "src": "solution",
+            "quote": "$AH=t^2$, $BH=at^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x좌표에서 수선 길이를 각각 함수값으로 표현한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$AB=2BH$에서 $a=\\dfrac13$",
+            "evidenceType": "IMPLIED",
+            "justification": "AB=AH−BH와 길이비를 연결해 a를 정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$DE=\\dfrac13u^2=\\dfrac13$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 번째 수선에서 ED 값을 넣어 u², 따라서 CE를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "$x$좌표가 같은 점 $A, B$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_48b80eef7ce15d82ad3026ff3e7580d96c93d640163e3877084edb35d7bce1ee",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "050bf59add0eefbc284ab3b7d0e326dd72bd4bed930b2e6c03ecf5eb4f3ca50f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fa9b961f263e9013907a61d09df198e120f708e26bb9dda141bfe506fabf45b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=ax^2+bx+c$"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표가 $(-2,3)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "수 $a$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "$y=a(x+2)^2+3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "모든 사분면을 지나려면 $a<0$",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭짓점이 제2사분면일 때 아래쪽 사분면을 포함하려면 아래로 열린 그래프여야 한다."
+          },
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "$y(0)=4a+3>0$",
+            "evidenceType": "IMPLIED",
+            "justification": "제1사분면을 지나려면 y절편이 양수라는 조건을 a<0과 결합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "모든 사분면을 지날 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_004b77176c45e1e3be056713a8d4387422f5248a1e1f8d97dad76affa238514a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "535cce88c2ac3c13774d7b632786664274cd9b4341fba2063310af55f733e1b0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b32165881eec8a8a2809d58dedd8d9618083124b34ba31fb663dbd7d2204c436"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2+4x+1$"
+          },
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "$p$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$P=(2,5)$, $Q=(6,5)$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 일반형을 꼭짓점형으로 고쳐 좌표를 읽는다."
+          },
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "오른쪽으로 $p$만큼 옮기면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$5(p+4)=80$",
+            "evidenceType": "IMPLIED",
+            "justification": "고정 높이5와 이동 후 폭p+4의 곱을 원래 넓이의 네 배와 같게 둔다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$p&gt;0$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2afe4e82e5bb88f6d8f6b4e045eed5cd28d336509e80b3b6f77a690a8a924578",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c80714dba29622c5b95dbd29271de39b37d0ea98fa51f90891d7f6175c8ad66"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ad5347e6f0fdc49688ed91b6d000c29a9cbda1b6080744bf38fa7655ed96f3b"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "연속하는 두 자연수"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱이 $72$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "두 자연수를 $x$, $x+1$로 둔다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2+x-72=(x-8)(x+9)=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수"
+          },
+          {
+            "term": "연속정수",
+            "src": "stem",
+            "quote": "연속하는 두 자연수"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_e038d90f0eba4960539d12a4a5fd852d26d54132688774016076f9d490555463",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "76f933942dd08f3c7e2254ab4f00c69cfc8a9e59e49083aac100fac86940212e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "39f20dc483cadf71faa1798553113163c2e01ecd39d403c1addef72df28df984"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y=-x^2-2x+19$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABO$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABO$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y=-(x+1)^2+20$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$B=(0,19)$",
+            "evidenceType": "IMPLIED",
+            "justification": "x=0을 함수식에 대입하여 y절편 B를 얻는다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12\\cdot19\\cdot1",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_df1ba1a5c9d6d796e3325c2e5ee1c11e74468f60ea786e518ff61e505fe10bd6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "166c7213bf8200c1874667392b2138d2f9035f24ad87db12d6be5d31db08f8c6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "736ca5575c7d75e2c0945d8ae0a65a914ceea0a6f1fca13b70d68d28f6e816df"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x^2+bx=c$"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$c+\\left(\\dfrac b2\\right)^2=\\left(x+\\dfrac b2\\right)^2$"
+          },
+          {
+            "term": "해",
+            "src": "solution",
+            "quote": "$x=\\dfrac{-b+\\sqrt{b^2+4c}}2$"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 적용한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "양수인 해를 택하면",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스식의 x+b/2가 길이이므로 양의 제곱근을 선택하고 x를 정리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$b&gt;0$, $c&gt;0$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E002",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 141,
+    "quotesNotFound": 0,
+    "notes": "All23 stems,choices,existing solutions and6 referenced PNGs actually read. Author self-check only; no independent pass claimed.",
+    "validation": {
+      "tool": "tools/4slot/validate-4slot.cjs",
+      "items": 23,
+      "examItems": 23,
+      "quotes": 141,
+      "fail": 0,
+      "warn": 4,
+      "warnings": [
+        "q2 distinct terms3 and single core method: basic factorization only.",
+        "q11 distinct terms4 and single core method: direct substitution only."
+      ]
+    }
+  },
+  "reviewedSourceBaseBlob": "a3ca4d41a7e8b38159be4075a34b40e665766160",
+  "independentReview": {
+    "status": "PASS",
+    "author": "meta_b",
+    "reviewer": "GPT_ROOT_D71839569CD9",
+    "sampledOrdinals": [
+      2,
+      11,
+      4
+    ],
+    "basis": "WARN priority: q2/q11; implied method and tag correction q4. Direct current source and exact evidence read.",
+    "findings": [
+      {
+        "ordinal": 2,
+        "status": "PASS",
+        "note": "단순 인수분해로 해를 구하는 문제. given 이차방정식, goal 해, method 인수분해가 충분하다. 단일 method/3용어 WARN 수용."
+      },
+      {
+        "ordinal": 11,
+        "status": "PASS",
+        "note": "일반형 함수식에 두 입력을 직접 대입하여 차를 구함. goal 함숫값·차와 implied 대입 정확. 4용어·단일 method WARN 수용."
+      },
+      {
+        "ordinal": 4,
+        "status": "PASS",
+        "note": "중근을 완전제곱식으로 나타내고 상수항을 비교하는 실제 해설과 method 일치. 양수 m 조건을 보존. 판별식 태그 교정 타당."
+      }
+    ],
+    "additionalLevelAdjudication": [
+      {
+        "ordinal": 21,
+        "status": "APPROVE_SOURCE_CORRECTION",
+        "from": "상",
+        "to": "중",
+        "note": "연속 자연수 식 세우기·인수분해·자연수 해 선택의 익숙한 연결. 서술형/배점이 고난도 근거가 아님. bucket2 별도 판단과 일치."
+      },
+      {
+        "ordinal": 22,
+        "status": "APPROVE_SOURCE_CORRECTION",
+        "from": "상",
+        "to": "중",
+        "note": "문제에서 꼭짓점·y절편·넓이 계산을 명시적으로 단계화. 표준 완전제곱 변형 및 삼각형 공식 직접 연결. bucket2 B23 경계 기록 수용."
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "reviewVersion": "M3-S1-META-FULL-v1"
+  }
+}
