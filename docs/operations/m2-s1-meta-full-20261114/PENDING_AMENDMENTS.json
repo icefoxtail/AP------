@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m2-s1-pending-adjudications-v1",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
-  "status": "APPLYING",
+  "status": "ALL_SEVEN_APPLIED_VALIDATED",
   "scope": "Preserve the already reviewed scoped decisions; do not alter student content or shared registries. Recheck source/artifact hashes, apply one exam at a time, run native validators, publish and read remote HEAD.",
   "completed": [
     {
@@ -409,9 +409,9 @@
     {
       "examId": "E009",
       "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
-      "applicationStatus": "NOT_APPLIED",
+      "applicationStatus": "APPLIED_VALIDATED_REMOTE_COMMIT_IN_CURRENT_PUBLICATION",
       "rootAdjudicatedInSession": true,
-      "postChangeNativeValidation": "NOT_RUN",
+      "postChangeNativeValidation": "PASS",
       "changes": [
         {
           "ordinals": [
@@ -428,7 +428,10 @@
           "reason": "Root read the existing solution that explicitly names the concentration ratio, and dictionary650. Preserve the existing concentration candidate and every other atom."
         }
       ],
-      "evidence": []
+      "evidence": [],
+      "currentArtifactIndex": "docs/operations/m2-s1-meta-full-20261114/exams/E009/CURRENT.json",
+      "appliedBy": "GPT_ROOT_59E0F5BD3A77",
+      "appliedAt": "2026-11-14T10:51:47.125192+00:00"
     }
   ],
   "notes": [

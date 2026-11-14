@@ -1,0 +1,1891 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E009",
+  "owner": "C",
+  "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 23,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_21b9e229ae09eca3a8edb3f167efce05765a216778bab59eda00758062ff65ae",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "등호·미지수 수·최고차수를 확인하고 문장 관계도 식으로 표현",
+      "decisiveStep": "①3x-2y=5와⑤3x+4y=41만 이원일차방정식",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "단일 이원일차방정식의 뜻을 판정한다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "등호 유무, 두 미지수, 일차 조건을 간단히 확인한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "단일 이원일차방정식의 뜻을 판정한다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 두 미지수의 일차방정식 정의 판정 leaf 부재.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [
+        "C-E009-TWO-VAR-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "등호 유무, 두 미지수, 일차 조건을 간단히 확인한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f8d4dbcac22894d0ac697262d55f77d6a92c80e2cb926af96e913d3e82cbed5f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "점수 총합 식을 세워 음이 아닌 정수 순서쌍을 열거",
+      "decisiveStep": "2x+3y=16에서 (8,0),(5,2),(2,4)",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_LOWER_BOUND"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_LOWER_BOUND"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "한 개의 수량 방정식의 비음정수해 개수이며 연립 두 식 풀이와 다르다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "정수이되0을 포함하는 비음 조건이다. 자연수로 축소하면(8,0)을 누락한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "0을 포함하고 홀수 y에서 정수가 아닌 해를 제외하며 가능한 범위를 빠짐없이 확인한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "한 개의 수량 방정식의 비음정수해 개수이며 연립 두 식 풀이와 다르다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 단일 이원일차방정식 활용에서 비음정수 순서쌍 개수를 세는 leaf 부재.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [
+        "C-E009-NONNEGATIVE-PAIR"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "0을 포함하고 홀수 y에서 정수가 아닌 해를 제외하며 가능한 범위를 빠짐없이 확인한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bedbb473c4536559c879aad394218c71bf923a74ee074225f1cceeda53e1fc36",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-149",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "고립된 x식을 다른 일차방정식에 대입",
+      "decisiveStep": "2(3y-7)+y=7",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "x=3y-7이 직접 주어진 대입법이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "한 식에 대입해 y를 정하고 x를 복원하는 직접 표준형이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "x=3y-7이 직접 주어진 대입법이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 식에 대입해 y를 정하고 x를 복원하는 직접 표준형이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8c0d81da13c08e6c27baf1f1e0215c12e9f04bcc54a2dc8eada2ce7f4c626882",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-153",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분모를 없애 계수를 맞춘 후 가감하고 해의 차 계산",
+      "decisiveStep": "4x-y=16과 x+y=-6을 더한다",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "분수 계수의 연립식을 정수화하여 푸는 복잡한 꼴의 연립방정식이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "분수 계수의 연립식을 정수화하여 푸는 복잡한 꼴의 연립방정식이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "분모 제거와 가감, 다른 해 대입, 차 계산의 연결로 숫자2를 제안하되 기존하와1/2경계를 명시한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f669b5d0b884cfe6f31307e6c7b756ae765ce9278cc9b76024c9e0b1f9ce1afb",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-151",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 알려진 순서쌍으로 계수에 관한 연립식을 세워 소거",
+      "decisiveStep": "3a+4b=5와 -2a-6b=5를 연립",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "하",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차방정식의 두 해를 대입해 미정계수를 결정하는 연립 모델이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일차방정식의 두 해를 대입해 미정계수를 결정하는 연립 모델이다.",
+      "registrationDebt": [
+        "DIFFICULTY_TYPE_CORRECTION: metadata difficultyBucket raw string 하 is not a valid numeric bucket; preserve before and propose independently judged2.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해 좌표를 계수의 식 두 개로 옮기고 배수를 맞춰 소거하며 분수곱을 구한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_cd35d032d09752e30287a1ada3759343db8b2c3060e8273710d48bed6c738dc3",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-161",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "남녀 작년 수의 합과 올해 증감량으로 연립 후 올해 남학생 계산",
+      "decisiveStep": "x+y=360,0.1x-0.05y=6에서 작년x를 구해1.1배",
+      "beforeSource": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "농도·비율",
+          "l4": "증감률"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "농도·비율",
+          "l4": "증감률"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "증가율·감소율을 함께 사용하는 학생수 연립 활용이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "작년 수를 변수로 삼아 총수와 순증감을 식으로 세운 뒤 올해값으로 다시 바꾸어야 한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "증가율·감소율을 함께 사용하는 학생수 연립 활용이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "작년 수를 변수로 삼아 총수와 순증감을 식으로 세운 뒤 올해값으로 다시 바꾸어야 한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9f84108928c12a93a215894072262825ea8e32b031d138d998136a4d9111728b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-151",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 연립해를 구해 추가 일차방정식의 계수 결정",
+      "decisiveStep": "공통해(6,4)를 x+ay=2에 대입",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "연립해를 계수 결정에 사용하는 해와 계수 유형이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "가감법으로 해를 구한 뒤 다른 식의 a를 한 번 역산한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "연립해를 계수 결정에 사용하는 해와 계수 유형이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "가감법으로 해를 구한 뒤 다른 식의 a를 한 번 역산한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_82414dd0e9204aaa0641cd5200fc982a77dd4b54fc589be1d9efb279a5700061",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-160",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "소금물 총량과 소금 질량 보존식에서 잘못된 빈칸 판정",
+      "decisiveStep": "최종 소금질량은 500×8/100이며 비율8/100만 쓸 수 없다",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "농도·비율",
+          "l4": "농도 혼합"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "농도·비율",
+          "l4": "농도 혼합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "농도 혼합의 질량·비율을 구분하는 연립 활용이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "농도 자체와 소금량의 단위를 구분하고 빈칸식에 전체500g을 반영한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "농도 혼합의 질량·비율을 구분하는 연립 활용이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "농도 자체와 소금량의 단위를 구분하고 빈칸식에 전체500g을 반영한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b635728d2f53c19f1e735cf98fc5bc187f625b98a69a2259551363f32dc6b82f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "입력 하나에 출력이 유일한지 반례로 판정",
+      "decisiveStep": "x=2일 때 공배수y는12,24,36,…로 여러 개",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일반 함수의 정의이며 일차함수 여부가 아니다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "입력 하나의 공배수가 여럿임을 알면 즉시 비함수를 판정한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일반 함수의 정의이며 일차함수 여부가 아니다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 일반 함수의 유일 대응 판정 leaf가 없고 일차함수 판별 leaf와 다르다.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [
+        "C-E009-FUNCTION-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "입력 하나의 공배수가 여럿임을 알면 즉시 비함수를 판정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_22136690a9f3af7f62745085c3fb41f3162e0849d0b1d0e2944b2d06c745e6aa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-164",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "함숫값 조건을 대입해 입력을 역산",
+      "decisiveStep": "6a+1=-11",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "선형 함수의 함숫값 조건으로 미지 입력을 구한다.",
+        "binding": "M2-RPM-164 DIRECT_BINDING_GAP. ACTIVE PT_FUNCTION_VALUE/TPL_FUNCTION_VALUE_DIRECT는 특정입력의 출력을 구하는 정의이므로 본 입력역산에 대한 적용 범위 확인 필요.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "f(a)=-11이 미지입력a를 제한한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "한 개 일차방정식의 직접 역산이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "선형 함수의 함숫값 조건으로 미지 입력을 구한다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 개 일차방정식의 직접 역산이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_26a7e17a594bc0e516af881986a22e20f322090aa4aec08dc334df00729a0196",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-165",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "y에 대해 정리해 비영 일차식인지 확인",
+      "decisiveStep": "③ y=6x+1만 비영 일차함수",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일차함수 판별의 정확한 leaf이다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "이차식·분모x·상수함수를 제외하는 정의 적용이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일차함수 판별의 정확한 leaf이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이차식·분모x·상수함수를 제외하는 정의 적용이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "수직 이동량을 상수항에 더하고 점을 대입",
+      "decisiveStep": "이동식 y=2x+k-4에(-1,2)대입",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "하",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편식의 수직 이동 후 계수를 결정한다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "상수항을 이동량으로 바꾸는 그래프 변환이 결정적이다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "이동식 구성 후 점 대입으로 k를 결정한다.",
+        "difficulty": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "기울기·절편식의 수직 이동 후 계수를 결정한다.",
+      "registrationDebt": [
+        "DIFFICULTY_TYPE_CORRECTION: sidecar difficultyBucket raw string 하 corrected to independently judged2 after cross-exam boundary review; source numeric2 retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "수직 이동량을 상수항에 반영한 뒤 점을 대입해 원식의 미지계수를 결정하는 두 단계이다. E004Q9 및 E003Q11의 같은 구조와 독립 비교하여 숫자2로 정정하고 기존하와의 인접 경계는 별도 허용 재검 대상으로 남긴다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_7fc5c74066b0a5cd85795f6a640fd6f7f48a85d51bba8cfff74c0189dc633418",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "한 그래프의 x절편과 다른 그래프의 y절편을 같게 놓는다",
+      "decisiveStep": "-3=3k",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편을 읽어 두 절편값의 등식을 만든다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "서로 다른 종류의 절편을 y=0/x=0 의미로 구분해 연결한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "기울기·절편을 읽어 두 절편값의 등식을 만든다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "서로 다른 종류의 절편을 y=0/x=0 의미로 구분해 연결한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9d385ee53fd1daf75ae94d28a4ccddb162aa8c0f6c2a8dc0c52e591d269ae438",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "기울기와 두 절편을 읽어 그래프 설명을 판정",
+      "decisiveStep": "x절편4이므로 x축과의 교점(4,0)",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "하",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "status": "EXISTING_REUSE_CANDIDATE"
+        }
+      },
+      "fieldReview": {
+        "classification": "주어진 한 일차함수의 기울기·절편 성질 확인이다.",
+        "binding": "실제 ACTIVE PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT는 그래프 형태·성질 판정을 포괄한다. M2 scoped binding 확인 전 의미상 후보로 기록.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "한 식에서 기울기를 읽고 x절편을 한 번 계산하면 정답 문장을 판별할 수 있다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "주어진 한 일차함수의 기울기·절편 성질 확인이다.",
+      "registrationDebt": [
+        "DIFFICULTY_TYPE_CORRECTION: sidecar difficultyBucket string 하 is invalid, numeric1 proposed.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 식에서 기울기를 읽고 x절편을 한 번 계산하면 정답 문장을 판별할 수 있다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_416ddeffbb31781870d78a0dd923f5810f49350b65dddb9e36d2c47af8d6bf04",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-170",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 점으로 직선식을 구하고 세 번째 좌표의 관계를 추출",
+      "decisiveStep": "y=2x+4에(p,2q)를 넣어 p-q=-2",
+      "beforeSource": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "status": "BINDING_MISSING"
+        }
+      },
+      "fieldReview": {
+        "classification": "두 점으로 함수식을 구성하는 BASIC leaf이며 sidecar EQUATION을 수정한다.",
+        "binding": "ACTIVE PT_LINE_EQUATION/TPL_LINE_TWO_POINTS의 두 점→기울기→직선식 골격 일치. 원 crosswalk170 DIRECT_BINDING_GAP이며 실제 M2 BASIC binding 별도 확인.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "세 번째 점의 두 미지수를 각각 결정하지 않고 요구한 차만 등식에서 읽어야 한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "두 점으로 함수식을 구성하는 BASIC leaf이며 sidecar EQUATION을 수정한다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세 번째 점의 두 미지수를 각각 결정하지 않고 요구한 차만 등식에서 읽어야 한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5c093fe721517a255a18361875fc929def49cb26d1394f3e9228735d3a5b32d4",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-168",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행에서 기울기를 같게 정하고 점의 좌표를 대입",
+      "decisiveStep": "a=4,10=4k+2",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+          "status": "BINDING_MISSING"
+        }
+      },
+      "fieldReview": {
+        "classification": "일차함수 그래프의 평행 조건을 이용한 계수·좌표 결정이다.",
+        "binding": "ACTIVE PT_LINE_RELATION/TPL_RELATION_MULTIPLE_POSITION은 평행 조건의 매개변수 결정을 포괄한다. M2-RPM-168 DIRECT_BINDING_GAP의 실제 scoped binding 확인 필요.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "평행 조건의 기울기와 점 대입을 순서대로 연결한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일차함수 그래프의 평행 조건을 이용한 계수·좌표 결정이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행 조건의 기울기와 점 대입을 순서대로 연결한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_b31a67c9954946ec253d475f53ca1674fe691087548f3e36d8b024108b8edc14",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-167",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "곱·차의 부호로 두 계수 부호를 정해 그래프 선택",
+      "decisiveStep": "ab<0,a-b>0에서 a>0,b<0",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(1)",
+          "l3": "일차함수의 그래프",
+          "l4": "그래프 그리기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "그래프 그리기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "status": "EXISTING_REUSE_CANDIDATE"
+        }
+      },
+      "fieldReview": {
+        "classification": "계수 부호에 따른 직선 그래프 선택이며 그래프 그리기 leaf로 의미상 대응한다.",
+        "binding": "실제 ACTIVE TPL_LINE_GRAPH_BY_COEFFICIENTS는 계수 부호→기울기·절편 부호→그래프 선택으로 본 절차와 일치한다. family binding을 root가 검증해야 한다.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "두 계수 사이 곱·차의 명시 부등식이 허용 부호를 제한한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "계수의 곱과 차 조건을 함께 해석한 후 기울기와 절편의 부호를 연결한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "계수 부호에 따른 직선 그래프 선택이며 그래프 그리기 leaf로 의미상 대응한다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수의 곱과 차 조건을 함께 해석한 후 기울기와 절편의 부호를 연결한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d60c89d8ab148db7aeede601c63b55657ab91f3d1681b3670caa6b8772f3d899",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-176",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "y절편 차를 밑변, 두 직선 교점의 x좌표를 높이로 사용",
+      "decisiveStep": "밑변9,높이6인 삼각형의 넓이",
+      "beforeSource": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "fieldReview": {
+        "classification": "일차함수와 좌표축이 만든 영역의 넓이이므로 source EQUATION 유지, sidecar BASIC 수정이다.",
+        "binding": "M2-RPM-176 RPM_ONLY. ACTIVE 두함수+두축 차넓이 template는 두 좌표축 모두의 차넓이로 한정되어, 한 y축과 두선이 만든 단일 삼각형과 구분한다.",
+        "crossConcept": "교점과절편에서 얻은 길이를 삼각형 넓이로 계산한다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "좌표 관계 계산 후 기하 넓이 계산으로 이어진다.",
+        "difficulty": "절편 두 값과 교점 한 개를 구하여 단순 삼각형 공식에 대입하는 표준 응용이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일차함수와 좌표축이 만든 영역의 넓이이므로 source EQUATION 유지, sidecar BASIC 수정이다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "절편 두 값과 교점 한 개를 구하여 단순 삼각형 공식에 대입하는 표준 응용이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_bd59c8643eaefd5454e40ad4ab366deb41a146eed2d6d3c676e459bff1588a39",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-170",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 점으로 직선식을 구성해 두 절편과 기울기를 합산",
+      "decisiveStep": "기울기2,y절편8,x절편-4",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "status": "BINDING_MISSING"
+        }
+      },
+      "fieldReview": {
+        "classification": "두 점으로 일차함수 식을 구한 뒤 그래프 수치를 읽는다.",
+        "binding": "ACTIVE PT_LINE_EQUATION/TPL_LINE_TWO_POINTS의 두 점에서 직선식 결정 절차와 일치한다. 실제 M2 scope binding은 별도 검증.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "기울기,절편 복원,x절편 계산의 세 표준 단계를 순서대로 적용한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "두 점으로 일차함수 식을 구한 뒤 그래프 수치를 읽는다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기,절편 복원,x절편 계산의 세 표준 단계를 순서대로 적용한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_b69a1a30116e3e60d19799bf37330e00dcad480f9f4c8e3978b437e4cf98e2ea",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "기준온도와20분 뒤 온도에서 일정 감소율을 구해 목표온도 시간 역산",
+      "decisiveStep": "y=-2.5x+100에 y=20을 넣는다",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "일정 변화율 생활상황의 일차함수 모델링이며 정확한 활용 leaf가 필요하다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "두 시간의 온도에서 기울기를 복원하고 목표출력을 역산하는 정형적 모델이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일정 변화율 생활상황의 일차함수 모델링이며 정확한 활용 leaf가 필요하다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 일정 변화율 실생활 모델에서 목표 도달 시간을 역산하는 활용 leaf가 없다.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [
+        "C-E009-CONSTANT-RATE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 시간의 온도에서 기울기를 복원하고 목표출력을 역산하는 정형적 모델이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-157",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주문·오배송 가격차와 총개수로 연립식을 모델링",
+      "decisiveStep": "x+y=10, (2000x+1300y)-(1300x+2000y)=1400",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "두 종류 물건의 개수·가격 활용이며 수량교환 전후를 구분한다.",
+        "binding": "ACTIVE 단가결정 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST는 단가가 미지수인 문제다. 본문은 단가가 주어지고 수량교환을 복원하므로 그대로 붙이지 않는다.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "두 종류 물건의 개수·가격 활용이며 수량교환 전후를 구분한다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_bc83c0294fe12892f849196298da14eb23612cf7bdbda4d2aa194825f8b0a679",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-168",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 그래프의 이동식을 구성하고 일치하는 계수를 비교",
+      "decisiveStep": "-3=3a,1+p=-5",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프(2)",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치"
+        },
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+          "status": "BINDING_MISSING"
+        }
+      },
+      "fieldReview": {
+        "classification": "일차함수 그래프의 일치 조건을 두 번의 수직 이동과 결합한다.",
+        "binding": "ACTIVE PT_LINE_RELATION/TPL_RELATION_MULTIPLE_POSITION의 일치조건 매개변수 결정 정의에 해당하며 이동은 CrossConcept로 분리한다.",
+        "crossConcept": "일치조건 이전에 두 그래프의 수직이동으로 절편을 바꾸어야 한다.",
+        "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+        "integration": "두 이동식을 만든 뒤 동일 직선 조건으로 계수를 비교한다.",
+        "difficulty": "각 이동량을 정확한 상수항에 더한 후 기울기와 절편을 각각 비교한다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "일차함수 그래프의 일치 조건을 두 번의 수직 이동과 결합한다.",
+      "registrationDebt": [
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 이동량을 정확한 상수항에 더한 후 기울기와 절편을 각각 비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_bd4b9b5cf9186cab80e336a9a97d8ed2c6b534e1393b5855a4af3fe0b0bb7882",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "선형함숫값을 차례로 구한 뒤 반비례 함수의 입력을 역산",
+      "decisiveStep": "a=f(6)=9,f(9)=27/2=g(b)=9/b",
+      "beforeSource": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_FUNCTION_VALUE_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE"
+      },
+      "fieldReview": {
+        "classification": "선형 함수와 반비례 함수의 함숫값을 연결하여 미지 입력을 결정하므로 일차함수의 함숫값 leaf 하나로 좁히기 어렵다.",
+        "binding": "No exact active PT/TPL pair is established for this decisive method. Canonical candidates inspected; no fabricated key; root resolver verification remains pending.",
+        "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+        "condition": "f(6)=a 및 f(a)=g(b)의 두 함숫값 등식이 허용a,b를 결정한다.",
+        "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+        "difficulty": "앞 단계 함수값을 다음 함수의 조건으로 넘기고 간단한 비례식을 푸는 연속 대입이다.",
+        "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+      },
+      "reason": "선형 함수와 반비례 함수의 함숫값을 연결하여 미지 입력을 결정하므로 일차함수의 함숫값 leaf 하나로 좁히기 어렵다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP: 일차함수와 반비례 함수값 연결 및 미지입력 역산 leaf가 없고 일차함수 함숫값만으로 후반부를 포괄하지 않는다.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+      ],
+      "proposalRefs": [
+        "C-E009-MIXED-FUNCTION-INPUT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "앞 단계 함수값을 다음 함수의 조건으로 넘기고 간단한 비례식을 푸는 연속 대입이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No new independent solution verification fabricated; root performs genuine read-only resolver checks."
+      }
+    }
+  ],
+  "topicSummary": [
+    "x=3y-7이 직접 주어진 대입법이다.",
+    "계수 부호에 따른 직선 그래프 선택이며 그래프 그리기 leaf로 의미상 대응한다.",
+    "기울기·절편식의 수직 이동 후 계수를 결정한다.",
+    "기울기·절편을 읽어 두 절편값의 등식을 만든다.",
+    "농도 혼합의 질량·비율을 구분하는 연립 활용이다.",
+    "단일 이원일차방정식의 뜻을 판정한다.",
+    "두 점으로 일차함수 식을 구한 뒤 그래프 수치를 읽는다.",
+    "두 점으로 함수식을 구성하는 BASIC leaf이며 sidecar EQUATION을 수정한다.",
+    "두 종류 물건의 개수·가격 활용이며 수량교환 전후를 구분한다.",
+    "분수 계수의 연립식을 정수화하여 푸는 복잡한 꼴의 연립방정식이다.",
+    "선형 함수와 반비례 함수의 함숫값을 연결하여 미지 입력을 결정하므로 일차함수의 함숫값 leaf 하나로 좁히기 어렵다.",
+    "선형 함수의 함숫값 조건으로 미지 입력을 구한다.",
+    "연립해를 계수 결정에 사용하는 해와 계수 유형이다.",
+    "일반 함수의 정의이며 일차함수 여부가 아니다.",
+    "일정 변화율 생활상황의 일차함수 모델링이며 정확한 활용 leaf가 필요하다.",
+    "일차방정식의 두 해를 대입해 미정계수를 결정하는 연립 모델이다.",
+    "일차함수 그래프의 일치 조건을 두 번의 수직 이동과 결합한다.",
+    "일차함수 그래프의 평행 조건을 이용한 계수·좌표 결정이다.",
+    "일차함수 판별의 정확한 leaf이다.",
+    "일차함수와 좌표축이 만든 영역의 넓이이므로 source EQUATION 유지, sidecar BASIC 수정이다.",
+    "주어진 한 일차함수의 기울기·절편 성질 확인이다.",
+    "증가율·감소율을 함께 사용하는 학생수 연립 활용이다.",
+    "한 개의 수량 방정식의 비음정수해 개수이며 연립 두 식 풀이와 다르다."
+  ],
+  "proposals": [
+    {
+      "id": "C-E009-TWO-VAR-DEFINITION",
+      "type": "RPM_LEAF_GAP",
+      "definition": "미지수가2개인 일차방정식의 뜻 판별",
+      "intendedParent": "2022/M2-1/연립일차방정식/연립일차방정식",
+      "distinguishingRule": "단일 이원일차방정식의 뜻을 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_21b9e229ae09eca3a8edb3f167efce05765a216778bab59eda00758062ff65ae"
+      ],
+      "evidence": [
+        "①3x-2y=5와⑤3x+4y=41만 이원일차방정식"
+      ]
+    },
+    {
+      "id": "C-E009-NONNEGATIVE-PAIR",
+      "type": "RPM_LEAF_GAP",
+      "definition": "단일 이원일차방정식 활용의 비음정수 순서쌍 개수",
+      "intendedParent": "2022/M2-1/연립일차방정식/연립일차방정식의 활용/수와 개수",
+      "distinguishingRule": "한 개의 수량 방정식의 비음정수해 개수이며 연립 두 식 풀이와 다르다.",
+      "supportingQuestionUids": [
+        "qid_v1_f8d4dbcac22894d0ac697262d55f77d6a92c80e2cb926af96e913d3e82cbed5f"
+      ],
+      "evidence": [
+        "2x+3y=16에서 (8,0),(5,2),(2,4)"
+      ]
+    },
+    {
+      "id": "C-E009-FUNCTION-DEFINITION",
+      "type": "RPM_LEAF_GAP",
+      "definition": "입력별 출력 유일성으로 일반 함수 여부 판정",
+      "intendedParent": "2022/M2-1/일차함수/일차함수와 그 그래프(1)",
+      "distinguishingRule": "일반 함수의 정의이며 일차함수 여부가 아니다.",
+      "supportingQuestionUids": [
+        "qid_v1_b635728d2f53c19f1e735cf98fc5bc187f625b98a69a2259551363f32dc6b82f"
+      ],
+      "evidence": [
+        "x=2일 때 공배수y는12,24,36,…로 여러 개"
+      ]
+    },
+    {
+      "id": "C-E009-CONSTANT-RATE",
+      "type": "RPM_LEAF_GAP",
+      "definition": "일정 변화율 실생활 모델의 목표 도달 시간",
+      "intendedParent": "2022/M2-1/일차함수/일차함수와 그 그래프(2)",
+      "distinguishingRule": "일정 변화율 생활상황의 일차함수 모델링이며 정확한 활용 leaf가 필요하다.",
+      "supportingQuestionUids": [
+        "qid_v1_b69a1a30116e3e60d19799bf37330e00dcad480f9f4c8e3978b437e4cf98e2ea"
+      ],
+      "evidence": [
+        "y=-2.5x+100에 y=20을 넣는다"
+      ]
+    },
+    {
+      "id": "C-E009-MIXED-FUNCTION-INPUT",
+      "type": "RPM_LEAF_GAP",
+      "definition": "서로 다른 기본함수의 함숫값 연결과 입력 역산",
+      "intendedParent": "2022/M2-1/일차함수/일차함수와 그 그래프(1)",
+      "distinguishingRule": "선형 함수와 반비례 함수의 함숫값을 연결하여 미지 입력을 결정하므로 일차함수의 함숫값 leaf 하나로 좁히기 어렵다.",
+      "supportingQuestionUids": [
+        "qid_v1_bd4b9b5cf9186cab80e336a9a97d8ed2c6b534e1393b5855a4af3fe0b0bb7882"
+      ],
+      "evidence": [
+        "a=f(6)=9,f(9)=27/2=g(b)=9/b"
+      ]
+    }
+  ],
+  "notes": [
+    "23문항 본문·선택지·기존 해설 전부 읽음. q8 빈칸 도식과 q17 그래프 선택지를 직접 확인했다.",
+    "metadata numeric에 문자열하가 들어간 q5/q12/q14는 raw before를 보존하고 독립적으로2/2/1을 제안했다. q12는 A의 독립검토 및 같은 구조 문항 비교 후 초기1 제안을 철회했다.",
+    "농도는 실제 백분율 개념의 사전 후보로 제출한다. 시간은 RETIRED 상황의 alias이므로 재사용하지 않고 목표 값을 질문의 시간단위 인용으로 구체화했다. 공용 사전을 수정하지 않는다.",
+    "공식 resolver 및 machine curriculum provenance는 증거가 확보된 범위까지만 기록하며 미검증 최종승인을 주장하지 않는다.",
+    "난이도 v1.3에 따라 중/3의 순수B23은 compatibility NORMAL로 표기하며 하/2의 인접 mismatch와 구별했다."
+  ],
+  "acceptedReviewProvenance": {
+    "originalReviewSha256": "b4f7da6a33092047f7615a24b7b7201a163336058d1c0065866ae4aa6c7eee92",
+    "rootReviewSha256": "a8394e27961797cf0c0b1d902fbab62878ae8b52a0020d895728e26c0c819343",
+    "reviewedSourceGitBlobSha": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+    "currentSourceGitBlobSha": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+    "amendment": "amendments/resume-revision1/reconstructed-amendment.json",
+    "note": "Original author and independent evidence preserved. Fresh reconstruction of explicit pending adjudications after unavailable local bytes; no claim to match missing old file hashes."
+  }
+}

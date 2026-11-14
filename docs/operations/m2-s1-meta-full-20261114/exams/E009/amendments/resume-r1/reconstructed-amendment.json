@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "m2-s1-reconstructed-amendment-v1",
+  "examId": "E009",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reconstructedBy": "M2-S1-META-FULL/worker_c",
+  "at": "2026-11-14T10:43:17.479723+00:00",
+  "sourceGitBlobSha": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+  "originalReviewSha256": "b4f7da6a33092047f7615a24b7b7201a163336058d1c0065866ae4aa6c7eee92",
+  "originalFourSlotSha256": "d58461ab762b85c61ac9e4ad0b6dc3416cf36f7c6a5f1ec366e17bbcc5536a95",
+  "pendingPlanSha256": "189188d53d6b516cbef39af17087b8d54198f1eb9cc8d26e33f5d68a089b05d6",
+  "status": "RECONSTRUCTED_AWAITING_ROOT_ACCEPTANCE",
+  "oldLocalFilesRecovered": false,
+  "priorRootAdjudicationReused": true,
+  "scope": "Explicit pending changes only; no student-content or shared registry mutation. Previously valid independent sample is reused.",
+  "actualEvidenceRead": [
+    "current source stems and existing solutions for affected questions",
+    "original review/four-slot/root-review",
+    "4slot contract section8 and10",
+    "compiled taxonomy TPL_LINE_MULTI_CONDITION definition/internalSkeleton for E003",
+    "dictionary term650 for E009"
+  ],
+  "changes": [
+    {
+      "sourceOrdinal": 8,
+      "field": "slots.method",
+      "before": null,
+      "after": {
+        "term": "비율",
+        "termId": 650,
+        "src": "solution",
+        "quote": "농도 비율인",
+        "evidenceType": "NAMED"
+      },
+      "reason": "Candidate 농도 has registered parent 비율 in the SAME method slot, explicitly named in the existing solution."
+    }
+  ],
+  "nativeValidation": {
+    "status": "PASS",
+    "evidence": "native-validation.json",
+    "items": 23,
+    "quotes": 169,
+    "fail": 0,
+    "warn": 2
+  }
+}
