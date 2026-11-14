@@ -1,0 +1,1069 @@
+[
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 1,
+    "rpm": 56,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "cos A=2/3을 두 변의 비로 놓고 피타고라스로 나머지 변을 구하여 sin A와 tan A의 곱을 계산한다.",
+    "difficulty": "한 삼각비에서 두 삼각비를 복원해 곱한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 2,
+    "rpm": 56,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_UNIT_CIRCLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "단위 사분원 좌표와 38°·52° 여각 관계로 sin·cos를 읽고 tan38°은 두 변의 비임을 확인한다.",
+    "difficulty": "좌표 판독과 여각의 교환을 결합.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 3,
+    "rpm": 56,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN"
+    },
+    "reason": "현 해설은 tan(45°-30°)의 차 공식으로 tan15°를 계산하고 분모를 유리화한다. 중3 직각삼각형의 길이만으로 푼 증거는 제공되지 않았다.",
+    "difficulty": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+        "reason": "tan(45°-30°) 차 공식은 중3 삼각비 정본 범위를 벗어난다. 기존 해설은 변경하지 않았으며 중등 범위 풀이 검증 담당에게 보류 인계.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      },
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "현 해설은 tan(45°-30°)의 차 공식으로 tan15°를 계산하고 분모를 유리화한다. 중3 직각삼각형의 길이만으로 푼 증거는 제공되지 않았다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "30°·45°·60° 특수각 leaf와15°를 삼각함수 차 공식으로 계산하는 실제 풀이 골격은 다르다."
+      },
+      {
+        "type": "DIFFICULTY_HOLD_SOURCE_SCOPE",
+        "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "rpmLeafGap": "30°·45°·60° 특수각 leaf와15°를 삼각함수 차 공식으로 계산하는 실제 풀이 골격은 다르다.",
+    "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_DIFFICULTY_HOLD"
+  },
+  {
+    "image": "READ",
+    "ordinal": 4,
+    "rpm": 55,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_RIGHT_TRIANGLE_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "빗변13과 직각삼각형 닮음에서 BH=AB²/BC, HC=AC²/BC를 구하고 작은 삼각형의 sin 값을 합한다.",
+    "difficulty": "수선에 따른 닮음 길이 관계와 삼각비를 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 5,
+    "rpm": 55,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_SIMULTANEOUS_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "sin x로 AD를 복원하고 AB·AC를 계산한 뒤 D에서 AC에 내린 수선K의 두 피타고라스 식을 빼 AK,DK를 정하여 tan y를 얻는다.",
+    "difficulty": "새 보조수선과 두 제곱식의 소거가 핵심인 다단계 기하 복원.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 6,
+    "rpm": 64,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "가까운 관측점 거리=h와 먼 거리=h+50을 공통 높이로 나타내어 tan30° 식을 푼다.",
+    "difficulty": "두 관측식의 공통 미지량 모델링이 필요.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 7,
+    "rpm": 55,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "정사면체 밑면 정삼각형의 중심거리 DH=a/√3를 구하고 단면 ADH의 높이로 sin x를 계산한다.",
+    "difficulty": "입체 높이의 발과 정삼각형 중심거리를 식별하는 공간 추론.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 8,
+    "rpm": 62,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN"
+    },
+    "reason": "등변사다리꼴 두 대각선의 길이가 같음을 이용하여 넓이=d²sin120°/2에서 대각선을 구한다.",
+    "difficulty": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+        "reason": "현 해설은 sin120°를 직접 사용한다. 중3의 예각 삼각비만 사용하는 sin60° 전환 근거를 제시하지 않는다. 기존 해설은 변경하지 않았으며 중등 범위 풀이 검증 담당에게 보류 인계.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "DIFFICULTY_HOLD_SOURCE_SCOPE",
+        "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_DIFFICULTY_HOLD"
+  },
+  {
+    "image": "READ",
+    "ordinal": 9,
+    "rpm": 55,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "정사각형에서 세 바깥 삼각형 넓이를 빼 BMN 넓이를 구하고 피타고라스로 얻은 BM,BN과 삼각형 넓이의 사인 관계에서 sin x를 역산한다.",
+    "difficulty": "도형 분할넓이와 변의 길이를 동시에 복원하여 삼각비로 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 10,
+    "rpm": 61,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_AREA_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "두 변과 끼인각으로 ABC 넓이를 구한 뒤 BC중점의1/2, AD:AB의2/3 넓이비를 연속 적용한다.",
+    "difficulty": "서로 다른 밑변을 공유하는 두 넓이비의 적용대상을 구별한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 11,
+    "rpm": 64,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "기구의 수선발이 두 관측점 사이에 있어 수평거리를 h와200-h로 두고 tan30° 식을 세운다.",
+    "difficulty": "관측점 배치에 따른 거리합 조건을 식으로 모델링한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 12,
+    "rpm": 75,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "동일 중심각의 호·현·SAS합동은 성립하지만 중심각 두 배가 현 길이 두 배를 뜻하지 않음을 구별한다.",
+    "difficulty": "기본 성질의 대상량 구별.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 13,
+    "rpm": 80,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "원주각25°에서 호AC50°를 정하고 동일호CD와 반원180°에서 남은호DB80°의 원주각을 구한다.",
+    "difficulty": "동일호와 반원합을 순서대로 적용.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 14,
+    "rpm": 69,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "활꼴 높이1과 반현3에서 중심거리 r-1을 두어 피타고라스 방정식으로 r를 구한 뒤 원넓이를 계산한다.",
+    "difficulty": "미지반지름이 두 변에 동시에 나타나는 역문제.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 15,
+    "rpm": 75,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "원주각50°에 대응하는 호의 중심각100°를 이용해 반원호 길이를 구하고 주어진 호를 빼 남은 호길이를 구한다.",
+    "difficulty": "중심각과 호길이 비례 후 반원분할.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 16,
+    "rpm": 72,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
+    },
+    "reason": "C,D에서 동일 접선 조각을 두고 PA=PB와 CD합을 연립하여 PB를 구한다.",
+    "difficulty": "두 선형 식을 세워 접선 조각을 결정한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 17,
+    "rpm": 80,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "두 외부할선 각으로 마주 보는 두 호의 차를 구하고 네 호의 합360°를 연립하여 목표 원주각의 대응호 합을 정한다.",
+    "difficulty": "서로 다른 두 관측식과 전체합으로 필요한 호합만 소거한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 18,
+    "rpm": 72,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_POLYGON_AREA",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "접선 조각의 합10과 양끝 높이차6으로 지름8을 구한 뒤 사다리꼴에서 반원 넓이를 뺀다.",
+    "difficulty": "접선 길이→보조 직각삼각형→합성넓이의 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 19,
+    "rpm": 80,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "crossConceptKeys": [
+        "CC_RADIAN_DEGREE_CONVERSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN"
+    },
+    "reason": "두 호의 길이 합과 반지름으로 중심각 합을 구하고 교차하는 두 현의 각은 그 합의 절반임을 적용한다.",
+    "difficulty": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+        "reason": "현 해설은 호길이/반지름=π/2라디안=90°를 사용하여 중등 호길이 비례 대신 호도법을 쓴다. 기존 해설은 변경하지 않았으며 중등 범위 풀이 검증 담당에게 보류 인계.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "DIFFICULTY_HOLD_SOURCE_SCOPE",
+        "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_DIFFICULTY_HOLD"
+  },
+  {
+    "image": "READ",
+    "ordinal": 20,
+    "rpm": 69,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다.",
+    "difficulty": "길이곱과 비례상수의 2단계 결정.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "교차하는 두 현의 부분길이 곱AP·PB=CP·DP와2:5의 비로 비례상수의 제곱을 구하고 양의 길이를 택한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "중심거리와 현 길이 leaf는 교차하는 두 현의 부분길이 곱(방멱) 관계를 표현하지 않는다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "rpmLeafGap": "중심거리와 현 길이 leaf는 교차하는 두 현의 부분길이 곱(방멱) 관계를 표현하지 않는다."
+  },
+  {
+    "image": "READ",
+    "ordinal": 21,
+    "rpm": 55,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "정사각뿔의 정삼각형 옆면에서 VM,VN을 구하고 중점 단면VMN의 높이를 복원해 x의 세 삼각비를 식에 대입한다.",
+    "difficulty": "입체의 단면 선택과 두 단계 길이 복원이 필요한 문제.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 22,
+    "rpm": 69,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "이등변삼각형 높이를 좌표로 놓고 외부점Q의 두 할선 길이곱과AP:PQ의 비를 이차방정식으로 연결하여 Q의 위치에 맞는 해를 고른다.",
+    "difficulty": "좌표 거리와 할선비가 결합되어 미지점 위치의 이차식과 해선택을 요구한다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "이등변삼각형 높이를 좌표로 놓고 외부점Q의 두 할선 길이곱과AP:PQ의 비를 이차방정식으로 연결하여 Q의 위치에 맞는 해를 고른다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "현의 중심거리나 이등분 leaf와 외부점 두 할선의 길이곱은 다르므로 방멱/두할선 길이곱 leaf와 TPL 등록이 필요하다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "rpmLeafGap": "현의 중심거리나 이등분 leaf와 외부점 두 할선의 길이곱은 다르므로 방멱/두할선 길이곱 leaf와 TPL 등록이 필요하다."
+  },
+  {
+    "image": "READ",
+    "ordinal": 23,
+    "rpm": 72,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+      "crossConceptKeys": [
+        "CC_POINT_LINE_DISTANCE",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN"
+    },
+    "reason": "현 해설은 직사각형에 좌표를 두어 중심에서 y=mx까지 거리=반지름으로 접선기울기를 정하고 위쪽 변과의 교점으로 삼각형 넓이를 구한다.",
+    "difficulty": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+        "reason": "중심에서 직선까지의 거리 |8m-4|/√(m²+1)=4 공식을 사용하는 좌표해설은 중3 범위를 벗어난다. 기존 해설은 변경하지 않았으며 중등 범위 풀이 검증 담당에게 보류 인계.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "실제 해설의 접선방정식·좌표거리 풀이와 중3 접선 길이 leaf의 범위가 다르다. 문항의 중등 풀이 검증 후 최종 native projection 확정 필요."
+      },
+      {
+        "type": "DIFFICULTY_HOLD_SOURCE_SCOPE",
+        "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+        "nextAction": "중등 범위의 대체 풀이를 독립 검증하고 그 실제 풀이 기준으로 5단계 난도와 경계를 재판정한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "rpmLeafGap": "실제 해설의 접선방정식·좌표거리 풀이와 중3 접선 길이 leaf의 범위가 다르다. 문항의 중등 풀이 검증 후 최종 native projection 확정 필요.",
+    "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_DIFFICULTY_HOLD"
+  }
+]
