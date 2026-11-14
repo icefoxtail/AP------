@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E017",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T13:51:48.671767+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_금당중_1학기_중간_중3_기출.js",
+  "sourceBlob": "3305a9f880980561ac068e6e0b0e03183f4960a3",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E017.review.json",
+      "sha256": "998ec5a5a5b3f9a3ae36fc78dc7eddde9dba0330621a22b51898c9ef65ac3c18"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E017.4slot.json",
+      "sha256": "19986f436c138ecb9f03b22a82acc2d76aef1e8d9b8aac6d025fe21ba69947d4"
+    }
+  },
+  "sampledOrdinals": [
+    2,
+    3,
+    11,
+    18,
+    19,
+    20
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    4,
+    9,
+    10,
+    12,
+    14,
+    15,
+    17,
+    22,
+    23,
+    24
+  ],
+  "scope": "METADATA_ONLY; source and selected 4slot read; image q11 actually viewed",
+  "findings": [
+    {
+      "ordinal": 2,
+      "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+      "note": "합·곱·몫·부호의 독립 진술 감사로 정답 보기의 몫 leaf로 축소하지 않음. 각 한단계 성질로 bucket1 수용."
+    },
+    {
+      "ordinal": 3,
+      "status": "PASS",
+      "note": "√81=9의 양의 제곱근을 한 번 더 읽는 정의·부호 직접형. bucket1 B12 경계에서 기존중 보존 수용."
+    },
+    {
+      "ordinal": 11,
+      "status": "PASS_WITH_TAXONOMY_PROPOSAL",
+      "note": "PNG 직접 읽음. 같은 밑선의 세 정사각형 공유변 √5와2√5를 전체둘레에서 두 번 제거하는 구조. 길이·외곽 둘레의 exact leaf 제안 보존."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_AFTER_REVISION",
+      "note": "n구간별 부호와 소수정의로 한 인수를1로 제한. 소수 condition 누락을 author에게 요청하여 슬롯에 정확인용 추가 및 미등록 conditionKey proposal 보존한 최종본 확인. bucket4 수용."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS",
+      "note": "네 연속수를 양끝·가운데로 재묶어154·156+1을155²로 만드는 숨은 구조발견. bucket4 B34 수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS",
+      "note": "네제곱 차 인수분해와 두 제곱의 합을 합·차의 제곱으로 표현하는 표준항등식 연결. bucket3 B34 및 인수분해 이용값 분류 수용."
+    }
+  ],
+  "additionalCheck": "실제 source 변경문항의 제곱근 정의·부호·대소, 완전제곱·공통인수·인수분해값, 근호 혼합계산을 각 primary에 대조했다. q14는 합의 제곱 전개 자체, q17/24는 factorized expression 평가가 실제 결정단계다.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
