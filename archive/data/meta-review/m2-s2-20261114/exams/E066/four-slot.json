@@ -1,0 +1,1840 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/18_연향중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "841b0b961ff12d3861ca509dabd06233aac9d3f4",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / actual source and solution semantic review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_87d2214f7a04a922f430afb05f32f456e0113fcf1adfac0126d0440293a9ff78",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형이 되는 조건"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형이면서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모이어야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\angle ABO=\\angle BAO=45^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 반대각선 길이에서 이등변 밑각을 옮겨 직각을 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "서로 다른 것을 이등분"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5bbe7dd5d670ba71663497db0b6b5ffcb2d4e5e2d14f667f1894b886adc660ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83e54a97cf5c16b90afb35e1020a3166ee9e69e3e9295a1ff3c1d2acad83b1dc"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_56c5f277704364fcb88c70d76244b3349874a1fff9e5737d53ecb346de3d56c0",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "90^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "\\equiv"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "할 수 없는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "합동 조건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fe2708693705b25b04f373eb1f8afb903d984a290553d576246bc92d33d5ad0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2178f22e8fa34ec94e3ab70c50f6d2df4f6e3772c2994a173560222a6f3b7858"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ff3e0c3a8eb16e1e21d6e96321d3f0f8d0caba89237360365ac759b547571238",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square\\text{ADEC}$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{DBE}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "높이가 같아",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등적변형",
+            "src": "solution",
+            "quote": "넓이가 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "ADC와 DCF를 같은 넓이로 치환하여 목표 사각형을 DEF로 바꾼다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "넓이의 비",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": " // "
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "= 2 : 3"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97df463db494da9b978a6bc7c8f980e3e7a2f088f64eed9f4f17385b5ec1e818"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da8c67b3129b372d1b3eb53fa7cd79927d615758c775cb51e4c28636e59c81f8"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_3279cce749dd4487c04263a8eee4f9e467543247563217cadb85656b7cb3db4b",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "\\overline{OA}=\\overline{OB}=\\overline{OC}",
+            "evidenceType": "IMPLIED",
+            "justification": "외심에서 세 꼭짓점까지 거리가 같다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\angle OAB=\\angle OBA",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름이 같은 이등변삼각형의 밑각을 옮긴다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "50^\\circ-30^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "외심이 외부에 있어 두 각의 차가 원래 꼭지각이 된다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "내각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d4bb67bd506f8fc8efc6c08d583f478555e9a005ed2b72aa320b43224a5eef4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff67ce4c3fafc13f4dcadf89721bba4666eb53b15c389d5a69a8990d3f807a54"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1db68682e8dab93e964780db8341789f55a0100e1025fc8aeb10bf507359309c",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "\\overline{BE}=\\overline{CD}",
+            "evidenceType": "IMPLIED",
+            "justification": "합동에서 대응 길이를 전달한다."
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "사다리꼴",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "32-\\dfrac{15}{2}-\\dfrac{15}{2}",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 양쪽 합동 삼각형의 넓이를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{AE}}=\\overline{\\text{DE}}"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67f888db354ffa35194dce0e2aa9d48c615f64f15f096d3bf81c95eeb37fdcf0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53a62cf414d41c77342daaf2f0a2232f8fa3005d4187b8327c9710ce60240296"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_0392252663f730e173df0e2826d0560b419f43c07abe42ca8b1ff51ac2b133dd",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접점",
+            "src": "solution",
+            "quote": "접점까지의 길이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "길이는 서로 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "9-4=5",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 접선조각을 전체에서 뺀다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "2+5=7",
+            "evidenceType": "IMPLIED",
+            "justification": "두 접선조각을 더하여 변 전체를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2467f51a372c98433a11a10724a67284c5398d80d079d8a8e26712f7466d57a2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a1a6669f26d6ddc2bdba256cfbd1144c2e69ed205a4479236fadcbbd8eeebe0"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_55a62a8f14901d99086cbada5d16a23129795e1f49fe4f738ae47bca124aa6b0",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과"
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "외각의 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BDC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\angle ABC=\\angle ACB",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 이등변삼각형의 두 밑각을 먼저 구한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "외각이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "948ed84661e613c5ee3bb5066d9c1ae930acb52f3ae62f95afbef79ac68c91f0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "74a393e56fa326b6efee2f2c18cfbf5665e070db2a57d4bef54aeec09c8a3509"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_c96d43d01cb2a63859229541f47b9ce02ce703052169689e03fa7dd62067684a",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square\\text{ABCD}$"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "되지 않는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "대변의 길이가 각각 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "두 대각선이 서로 다른 것을 이등분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행하고 그 길이가 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "17fddc7f95a95de59354fb1766aaeef6f7636693e7bf1db397d96a6824608849"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77f216b0ef71587db811974de010131668085fd451ab6858d86e0b324bd4fe7e"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b0cab29f1489cf0ac97c7ee57470f4a3794ea581bb1be38c6d023ba6ead875a7",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{DAC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중점을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\overline{AD}=\\overline{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 두 변을 가진 ADC의 밑각을 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": " // "
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "=\\frac{1}{2}\\overline{\\text{BC}}"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9df11091f89ca93d9c2d5747d3a68381f434ca41f422b2ac1701d96221591dd3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ced6e7f293892f23dda890272b399534ebbc6f2077d663acaa5df48be33bb4c1"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b11302d3a7122d262c9372b1ba251d28d664d7c260d7df8fc9a8dbfe4bcfd24",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "직선 $AF$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "만나는 점을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "합동(SAS)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{BE}}=\\overline{\\text{BF}}"
+          },
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "$E,F,C$가 한 직선 위에 있으므로"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea66422c144392fc819cef04b169fc383beaeb303a1db272f1395de30b32c695"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8a8db8a1922b70a0b39ab3f9310445f52fa1ec2750992ea42c646f5044d66b3"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c6cb6183136b26778c4d5f6acf0c3f89ac994bdc999a2876c3536e7a15030d6a",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심과"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{OBI}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "SSS 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "32^\\circ-26^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 꼭짓점에서 내심·외심으로 향하는 두 각의 차이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4f0bf0b698269789b2d4103d79dc307a314cdfb757c3d74660331a57ee8c77c6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15fb2af2697c6540229ef5125cb860ed4ab7b5d976ee48eb0657ef8570a41e5e"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_490130ca61d11494015508cd6a0fcc353afdbcc2d6fd9479fec1a84dc6e9ce9c",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $\\text{P}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "높이의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "넓이의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "밑변의 길이가",
+            "evidenceType": "IMPLIED",
+            "justification": "마주 보는 두 변의 길이가 같아 높이비가 넓이비가 된다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "= 2 : 3"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AE}}$ 위의 점"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8037b7f6b0bb18983d385cb3c3dbd6bb9e6cdefc3242232bc59e71cde83e51a3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcfdfcbdfceedf87129fdead74f42bbb821ef7b1c357efd38649320caa4e78a3"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fd38acbc6175aaf889113ee736396df076128e008d2984a3ff169bc4d2831fcf",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형"
+          },
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮음"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응해야",
+            "evidenceType": "IMPLIED",
+            "justification": "해설의 ABC~DFE를 전제한 후보 대응변 판정이며 원문 대응 근거는 미확정이다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "y=180-66-44",
+            "evidenceType": "IMPLIED",
+            "justification": "해설이 가정한 대응각에서 남은 내각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceEvidence": "닮은 두 삼각형의 각·변 대응을 고정하는 원문 근거가 부족하다. 해설이 ABC~DFE를 새로 가정하므로 그 순서 아래의 수치·방법·난도는 후보이며 최종 등록은 차단한다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ec2603d4a648fd24c1a78082673e02fc284bf43de1858d9db42d03dc0d12dc8a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a54b3e0199fa914790725d49a2dca097a195d2e23f732d06a3a0b78ae266f258"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "sourceCondition"
+      ],
+      "methodCandidateOnly": true
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_63a147f1a8f3e15a6773187f3a071bb55a3479b445e9cd4befd3be5b1e9b7370",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "두 평행사변형"
+          },
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "\\sim"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응하는 변은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비와 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "둘레의 비",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "닮음비가 $2:3$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "42d1ef46796bbb70d3f47a2634ef45286de81e828869dbce4c3271a1ba07b734"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b1a48efc9d654096d628bf3189917fe9ac1c41a22b9f4e4af15cebbb728f1da"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f01e81ae97e68611f235766408cebc0508a77144ea07786cfd77c9c962ba9124",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "정삼각형"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "접었을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "접은 부분은 겹쳐지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "접기 전후 대응 길이가 같다."
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "8:10=",
+            "evidenceType": "IMPLIED",
+            "justification": "두 닮은 삼각형의 대응변비를 목표 DF에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}}$ 위의 점"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3f8ac5c183a02f8d0cb5f73ad219125a55da1e56ebfe2c804b224346dce77125"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dfe94e9c6a0d0cc0e4258cd9b059a1b48f8758ae9418e94c13fdd07cb78834e8"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_d0869c2c131acf9043de120b6c02134d8cf3874431a8e574358c32b1cfacb263",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "$\\triangle BAD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "18-10=8",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 주어진 부분을 빼 BD를 얻는다."
+          },
+          {
+            "term": "SAS닮음",
+            "src": "solution",
+            "quote": "SAS 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "SAS 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a28627b614f0361999beb5ec128e494d6ab94ccc7462b75989cbde89090992f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a9d7c34b560c474153f051bdb2ac0c48085ffce47bfe515f4396f410a3ba625f"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_794a30ffb40d7c6f257dca14ce3ffac6c0dd840f02bf93fc89102bf846d34fd4",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "16-3=13",
+            "evidenceType": "IMPLIED",
+            "justification": "비례식으로 얻은 AB에서 AD를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "\\angle ADC=\\angle AEB=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a3e05c9a50e98f10d923cd250a9e7ee6bb0438b1b8f58c1143b2b916812ac6d1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe7bb08f7b917cc7aa58fff2b04b854020ff700be189c1e90f2bc399e0026042"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_793a179a1eeecdb43f398d06022efb3de49a538aa574cf4b5c26cb1cee1eeda6",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{\\text{PQ}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "\\overline{BP}:\\overline{BD}=1:3",
+            "evidenceType": "IMPLIED",
+            "justification": "부분 대 부분 비를 부분 대 전체 비로 바꾼다."
+          },
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "\\overline{PQ}//\\overline{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 평행선의 길이비에 바뀐 전체비를 넣는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "55c8f513635530a2548cd60d0a5f587b7348bdeff783481a188cb217a330f68a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d8c6e6a21533d44f35a9a7e775086120e88cf2cb6e18d3517eb691050f595e6"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_66d895860d5a082cd07c467598004177f0215ad5d0fe60dd2ca088a64dd34956",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "닮음(AA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "닮음(AA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\overline{AF}:\\overline{AD}=\\overline{AD}:\\overline{AC}",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변의 사영 길이를 대응변비로 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "6.4-3.6",
+            "evidenceType": "IMPLIED",
+            "justification": "한 대각선 위의 두 부분길이 차로 EF를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83a903ed5583a5fdc8528aba465fdfb7e63f9754997c29fd8c9aad037e999af7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d83a89998800a976b7fc78778352251fe8fea32d82e0d6ff731c2a00a37c0409"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d0ab5438d77f3d97e8632bc12184057b7eb23d9a60e10f0a89618d1fce056725",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\frac{\\overline{\\text{BD}}}{\\overline{\\text{FE}}}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "닮음(AA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "닮음(AA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "\\overline{FE}//\\overline{AC}",
+            "evidenceType": "IMPLIED",
+            "justification": "사영비로 얻은 길이를 내부 평행비의 입력으로 쓴다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\overline{FE}:\\overline{AC}=\\overline{DE}:\\overline{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선의 대응비를 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{BD}}=\\overline{\\text{DE}}"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행하도록"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dc558dce5c9d427c9034653d6df3431632af7d3d28ef8c79bf74c0e2a5e16d97"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0e86d1449a80fb394cfcc073119f4af8027bf2627cd23946140806514524c0a6"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_f44b63013a71b15948888296c1530ed25cb36aae95fb77db5a46ad4f2da4e1dc",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "\\equiv"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHS 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "\\overline{DE}=\\overline{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "RHS합동에서 목표 둘레에 필요한 길이를 옮긴다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "\\overline{BD}+\\overline{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 이어진 밑변 조각을 전체 BC로 합친다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{AC}}=\\overline{\\text{AE}}"
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\perp"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f36d50410c4aa3faeaffeef3deed3bf46d74add0fabbe9ca9dd6a1342216d248"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_f995b2b41c79ddecd0aa1ed7f83f8776010732dd6d147d320785f9f60dc618ce",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 차"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "넓이의 차"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "빗변의 중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "25\\pi-4\\pi",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 넓이를 각각 계산해 뺀다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "54b6ffaba92a0d4fff7356ef2c412bd9020bcb548930bd7345e750693e6e3b84"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c8c98a89e8372cfa912bc2229b9d46a1b6ee39d690650f5d512292df556fe042",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "$\\triangle ABD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "8:(6+x)=6:8",
+            "evidenceType": "IMPLIED",
+            "justification": "공통각과 주어진 등각에서 전체·부분 길이의 대응비를 만든다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle\\text{ABD}=\\angle\\text{ACB}"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c49129ca9f5f7b62c2600c8bdf9d89e60090ecfcd3cd1e0bb003a14f453ec6d8"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_e5c360051dda591b4832020ec859c8fa31da6cc767f096f851abfef16471676f",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$x$를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각의 크기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "AA닮음",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "15:x=9:6",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 대응길이를 직접 비례식에 넣는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": " // "
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a13cd0604e376ca213190a0b9b5bbbc5e0dc656391778a21a8e9d0ffa7d2381b"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "SAS닮음",
+      "en": "SAS_SIMILARITY",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "닮음조건",
+      "note": "두 대응변의 비와 끼인각으로 확인하는 삼각형 닮음.",
+      "usedIn": [
+        16
+      ]
+    },
+    {
+      "term": "AA닮음",
+      "en": "AA_SIMILARITY",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "닮음조건",
+      "note": "두 대응각의 같음으로 확인하는 삼각형 닮음.",
+      "usedIn": [
+        10,
+        15,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ]
+    }
+  ],
+  "selfCheck": {
+    "sourceItemsRead": 24,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  },
+  "review": {
+    "status": "UNREVIEWED"
+  },
+  "judgedAt": "2026-11-14T06:08:37.723498+00:00"
+}
