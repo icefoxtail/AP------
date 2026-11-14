@@ -1329,6 +1329,8 @@ def audit(p):
         if row.get('color') is not None and (row['color'] not in PALETTE_LINES or row.get('highlight',True) is False):errors.append('ARC_COLOR_INVALID:'+oid)
         if row.get('highlight',True) is not True and row.get('highlight') is not None:continue
         if len(nodes)!=1:errors.append('ARC_MARK_MISSING:'+oid);continue
+        expected_dash='6 4' if row.get('dashed') is True else None
+        if nodes[0].get('stroke-dasharray')!=expected_dash:errors.append('ARC_DASH_MISMATCH:'+oid)
         center=peer_point(row['center']);start=peer_point(row['from']);end=peer_point(row['to']);radius=norm(sub(start,center))
         if abs(norm(sub(end,center))-radius)>1e-6*max(1.0,radius):errors.append('ARC_ENDPOINT_NOT_ON_CIRCLE:'+row['to'])
         pts=poly_model(nodes[0])
