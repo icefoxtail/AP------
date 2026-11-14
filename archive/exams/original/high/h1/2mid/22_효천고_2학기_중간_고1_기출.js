@@ -533,7 +533,7 @@ window.questionBank = [
     "wide": false,
     "content": "세 실수 $x$, $y$, $z$와 조건 $p$, $q$, $r$, $s$, $t$, $u$에 대하여 다음 빈칸에 알맞은 답을 적은 것은? [4.7점]",
     "image": "assets/images/22_효천고_2학기_중간_고1_기출/q15.png",
-    "imageSize": "full",
+    "imageSize": "tall",
     "choices": [
       "①",
       "②",
