@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E006",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "253b395cea3866adc138c927cf60833ec3581d3d",
+  "artifactHashes": {
+    "review.json": "d019affbb266cda2ba43adec6c51a51a6e4dc48d8819a2c7c1a84502d2bc12dd",
+    "E006.4slot.json": "16482a1f25ad466d10e15ecb887da97a278d9ca4516465f268e589e7d80cf3d5",
+    "source-patch.json": "31cf0bd2ca1f1a691a0e263010b68337f70c6207f9e4a39f2134dd9ef50ba11a"
+  },
+  "sampleOrdinals": [
+    3,
+    16,
+    19
+  ],
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "COMPACT_NO_QUOTES_SOURCE_BLOB_IDENTICAL",
+      "judgment": "현의 절반과 반지름으로 중심거리를 구하는 실제 풀이를 정확히 분류했다. compact의 중점·피타고라스 및 수선 조건이 맞다.",
+      "assetsInspected": [],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_5dfd15408f4888df594a58cd0cf17b0e04e229f71a93cbf7750ed1fae033ad7f",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "COMPACT_NO_QUOTES_SOURCE_BLOB_IDENTICAL",
+      "judgment": "대푯값·표준편차 혼합 판정과 compact 5방법이 실제 해설과 일치. CrossConcept에 CC_MEAN/CC_MEDIAN뿐 아니라 실제 최빈값 판정에 쓰인 ACTIVE CC_MODE 추가를 권고한다.",
+      "assetsInspected": [],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e7f5d8791f191b293767a83d85de2dac0b0347fb6a89dbfe6eb14f944ec1cea2",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "COMPACT_NO_QUOTES_SOURCE_BLOB_IDENTICAL",
+      "judgment": "산점도 조건별 집계 분류·방법은 맞다. 그러나 70점 이상/75점 미만, 적어도 하나85점 이상, 모두70점 미만, 실기90점 이상이라는 명시 범위 제한이 핵심인데 compact condition이 비었다. 최소 범위(297)를 해당 정확 source quote와 함께 추가해 조건 축을 보완해야 한다. 정답2개 제한도 문항 형식/메모에 유지한다.",
+      "assetsInspected": [],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    }
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only, no new mathematical R1/R2/R3",
+  "priorStatus": "CHANGES_REQUESTED_Q19_CONDITION"
+}

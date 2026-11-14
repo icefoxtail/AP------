@@ -1,0 +1,181 @@
+[
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형의 대각 보각",
+    "reuseDefinition": "내접사각형의 한 내각을 보조 이등변삼각형에서 복원하고 마주 보는 각의 합 180도로 목표각을 결정한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "distinguishingCriterion": "복수 원주각·접현각을 연쇄하는 COMPOSITE와 달리 핵심 원 성질은 내접사각형의 대각 보각 한 가지다.",
+    "supportingQuestionUids": [
+      "qid_v1_aee304e0166d9a224cdc5ef0dc11e2316d54980a37c266926ece2dff25828c32"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "자료를 크기순으로 정렬하고 홀수·짝수 자료 수에 맞춰 중앙값을 구한다.",
+    "distinguishingCriterion": "짝수 개 자료를 정렬하여 가운데 두 값의 평균으로 중앙값을 결정한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "rpmRecordId": "M3-RPM-081",
+    "supportingQuestionUids": [
+      "qid_v1_2c3bc4d4afbc94396956593293b9ea2176bca0400e2827a29cc09652ec1795b6"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "한 자료 집합에서 평균·중앙값·최빈값을 각각 구하고 요구된 결합값을 계산한다.",
+    "distinguishingCriterion": "자료의 합·가운데 순서·최대 빈도로 평균·중앙값·최빈값을 구한 후 세 대푯값의 대소를 비교한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+    "rpmRecordId": "M3-RPM-082",
+    "supportingQuestionUids": [
+      "qid_v1_2ea22413a1f502270448606c8aaf6df37e47c834024a2614822a88c6c75f2e3f"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "짝수 자료의 중앙값과 최빈값 결합",
+    "reuseDefinition": "정렬 가능한 원자료 또는 줄기와 잎에서 짝수 자료의 가운데 두 값 평균과 최빈값을 구해 지정한 결합값을 계산한다.",
+    "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "distinguishingCriterion": "기존 M3 TPL은 홀수 자료의 가운데 한 값을 명시하고 M1 ALL_STATISTICS는 평균까지 함께 계산하므로 정확 골격을 분리한다.",
+    "supportingQuestionUids": [
+      "qid_v1_690395490ab4839711ebc978843b846c0b97bce7959cc47d8386ccd805100e78"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "평균의 민감도, 짝수 개 자료의 중앙값, 동률 최빈값 등 대표값의 기본 정의를 보기별로 판정한다.",
+    "distinguishingCriterion": "세 자료의 평균·중앙값·복수 최빈값을 정의에 따라 각각 확인해 거짓 설명을 고른다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "rpmRecordId": "M3-RPM-082",
+    "supportingQuestionUids": [
+      "qid_v1_39cb0d1e17060301282f41e27e6aac0036301fc6df71ac49709da5c864b41250"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "원자료 대푯값·산포도 복합 진술 판정",
+    "reuseDefinition": "한 원자료에서 평균·중앙값·최빈값·분산/표준편차를 직접 계산하여 수치 진술의 참거짓을 판정한다.",
+    "distinguishingCriterion": "편차 부호·정의만 판정하는 PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE와 달리 대푯값과 산포도의 수치 계산을 모두 요구한다.",
+    "parentScope": "2015 M3-2 통계/대푯값과 산포도; current2022 M3-2 산포도와 M1-2 대푯값 선행 개념",
+    "supportingQuestionUids": [
+      "qid_v1_5dfd15408f4888df594a58cd0cf17b0e04e229f71a93cbf7750ed1fae033ad7f"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "평균·분산에서 미지 자료의 제곱합",
+    "reuseDefinition": "평균의 합 조건과 편차 제곱합 식을 연립하여 개별 자료를 풀지 않고 요구된 제곱합을 구한다.",
+    "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "distinguishingCriterion": "미지 편차 합0 후 표준편차 계산 TPL과 달리 분산이 주어지고 원자료의 제곱합을 역산한다.",
+    "supportingQuestionUids": [
+      "qid_v1_b5e3c476ff26be4717d5d1d4ea2e205a7e075cf851ecce7a9e886c00fe1bf283"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "변량 평행이동의 평균·분산",
+    "reuseDefinition": "모든 변량에 상수를 더할 때 평균의 이동과 편차 및 분산의 불변을 결정한다.",
+    "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "distinguishingCriterion": "기존 SCALED_DATA는 k배 변환을 명시하므로 더하기만 하는 변환은 별도 정확 골격으로 제안한다.",
+    "supportingQuestionUids": [
+      "qid_v1_986b7a314c55656e4ed15b796b315e61e93ea23a59f75aea6fb039a36df65df2"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_TPL_AND_RPM_LEAF_PROPOSAL",
+    "nameKo": "산점도 조건별 점수 집계",
+    "reuseDefinition": "산점도 점들의 두 좌표를 범위 조건으로 분류해 도수·비율·부분집합 대푯값을 계산하고 진술을 판정한다.",
+    "distinguishingCriterion": "산점도 작성이나 상관 방향 판정이 아니라 주어진 점의 좌표별 조건 집계가 결정 단계다.",
+    "parentScope": "current2022 M3-2 통계/상자그림과 산점도/산점도",
+    "supportingQuestionUids": [
+      "qid_v1_e7f5d8791f191b293767a83d85de2dac0b0347fb6a89dbfe6eb14f944ec1cea2"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표 비교와 상관 방향 판정",
+    "reuseDefinition": "가로·세로 좌표의 크기를 개별 점에서 비교하고 전체 분포의 증가·감소 경향으로 상관 방향을 판정한다.",
+    "distinguishingCriterion": "막대/꺾은선 그래프의 도수·산포 비교와 다르게 두 변량의 대응 점을 직접 읽는다.",
+    "parentScope": "M3-RPM-090 / M3-RPM-179",
+    "supportingQuestionUids": [
+      "qid_v1_0ee5f580ccba2843c07ea6865ae53cfd189df4305ea6ccf02df6b98edee4758e"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "선형변환된 통계량에서 원자료 제곱합",
+    "reuseDefinition": "ax+b 자료의 평균·분산으로 원자료 평균·분산을 환원하고 편차 제곱식에서 원자료 제곱합을 복원한다.",
+    "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "distinguishingCriterion": "정방향 k배 평균·분산 산출과 달리 이동을 포함한 역변환 및 제곱합 복원이 목표다.",
+    "supportingQuestionUids": [
+      "qid_v1_1a102e3237e9403bf1ffdf75fcf8548047e39617f36191f3f2aacf9d740987c7"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
