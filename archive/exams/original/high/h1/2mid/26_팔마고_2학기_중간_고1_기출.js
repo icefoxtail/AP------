@@ -471,12 +471,13 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 다음 중 벤다이어그램의 색칠한 부분이 집합 $\\{(A\\cap B^C)\\cup(A^C\\cup B^C)\\}^C\\cap A$와 항상 같은 것은? [4.6점]",
+    "choiceColumns": 2,
     "choices": [
-      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice01.svg\" alt=\"벤다이어그램 선택지 1\" />",
-      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice02.svg\" alt=\"벤다이어그램 선택지 2\" />",
-      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice03.svg\" alt=\"벤다이어그램 선택지 3\" />",
-      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice04.svg\" alt=\"벤다이어그램 선택지 4\" />",
-      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice05.svg\" alt=\"벤다이어그램 선택지 5\" />"
+      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice01-v2.svg\" style=\"width:140px; max-width:100%; height:auto; display:block\" alt=\"벤다이어그램 선택지 1\" />",
+      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice02-v2.svg\" style=\"width:140px; max-width:100%; height:auto; display:block\" alt=\"벤다이어그램 선택지 2\" />",
+      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice03-v2.svg\" style=\"width:140px; max-width:100%; height:auto; display:block\" alt=\"벤다이어그램 선택지 3\" />",
+      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice04-v2.svg\" style=\"width:140px; max-width:100%; height:auto; display:block\" alt=\"벤다이어그램 선택지 4\" />",
+      "<img src=\"assets/images/26_팔마고_2학기_중간_고1_기출/q11-choice05-v2.svg\" style=\"width:140px; max-width:100%; height:auto; display:block\" alt=\"벤다이어그램 선택지 5\" />"
     ],
     "answer": "①",
     "solution": "주어진 집합에서 괄호 안을 먼저 정리한다.\n$(A\\cap B^C)\\subseteq B^C$이므로\n$(A\\cap B^C)\\cup(A^C\\cup B^C)=A^C\\cup B^C$이다.\n드모르간 법칙에 따라\n$\\{A^C\\cup B^C\\}^C=A\\cap B$이다.\n마지막으로 $A$와 교집합을 취해도\n$(A\\cap B)\\cap A=A\\cap B$이다.\n따라서 두 집합이 겹치는 공통 부분만 칠한 ①이 정답이다.",
