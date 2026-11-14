@@ -3,7 +3,7 @@
   "requestId": "similar-23-hyanglim-m1-2mid-candidate-v1",
   "examUid": "23_향림중_2학기_중간_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/23_향림중_2학기_중간_중1_유사.js",
-  "expectedSourceBlobSha1": "724250f9f784c28d82716293f0e73581f234b79b",
+  "expectedSourceBlobSha1": "528fcdd88a6177fa0ac17e69ab33e64b023e9ab9",
   "expectedQuestionCount": 26,
   "expectedTotalPoints": 100,
   "sourceProvenance": {
@@ -12,7 +12,7 @@
     "sourceOriginalJs": "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
     "sourceOriginalJsBlobSha1": "7a77b7f312aa941ef607a2fb8bf637294a3d010f",
     "sourceTextHashMethod": "NOT_RUN",
-    "evidenceDebt": "Docs 전체 본문 SHA-256 미계산. 문서 ID·revision과 원본 JS blob으로 출처 결속.",
+    "evidenceDebt": "Docs 전체 본문 SHA-256 미계산. 문서 ID·revision과 원본 JS blob으로 출처 결속. Q8의 의미 분류는 현재 문항에 맞게 후보 수정했으나 공식 RPM/ACTIVE Resolver 미실행. conditionKeys 26개 항목은 정본 레지스트리 조회·문항별 확정 미실행이며 임의 키를 채우지 않음.",
     "correctionLog": [
       {
         "scope": "Q4",
@@ -127,6 +127,12 @@
         "change": "선택지 표식을 개별 선택지로 분리하고 이중 이스케이프 TeX 및 해설 끝 NONE 잔재 제거.",
         "mathContentChanged": false,
         "independentReview": "NOT_RUN"
+      },
+      {
+        "scope": "Q8 metadata",
+        "change": "평행선 분류를 제거하고 각 관계 기반 후보로 수정; 난이도를 하로 통일. 공식 Resolver는 미실행 상태로 유지.",
+        "mathContentChanged": false,
+        "independentReview": "BLIND_MATH_REVIEW_COMPLETE; META_RESOLVER_NOT_RUN"
       }
     ]
   },
@@ -482,13 +488,13 @@
       "rpm": {
         "majorUnit": "기본 도형",
         "midUnit": "기본 도형",
-        "l3": "평행선과 각",
-        "l4": "동위각·엇각"
+        "l3": "각",
+        "l4": "각의 크기"
       },
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-        "why": "세 평행선 사이 꺾인 선의 엇각 방정식으로 미지각을 구하는 템플릿"
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "why": "수정된 텍스트 발문은 평각과 직각 조건을 순차 적용한다. 평행선·동위각·엇각은 사용되지 않음. ACTIVE Resolver 판정 전인 provisional candidate."
       },
       "crossConceptKeys": [],
       "conditionKeys": [],
@@ -496,7 +502,7 @@
       "difficultyBucket": 1,
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 개의 기본 각 관계를 순서대로 적용하는 텍스트 문항이다.",
+      "difficultyReason": "평각식으로 x를 구한 뒤 직각 관계를 확인하고 두 번째 평각식으로 y를 구하는 기본 각 관계 문항이다.",
       "level": "하",
       "sourceQid": "8",
       "hold": "",
@@ -515,8 +521,8 @@
         "status": "NOT_CREATED"
       },
       "correction": {
-        "change": "그림을 복원하지 않고 일직선각·직각 분할·일직선각 관계를 정의한 독립 완결형 변형으로 재작성.",
-        "independentReview": "NOT_RUN"
+        "change": "실제 발문은 평행선·동위각·엇각을 사용하지 않아 RPM·후보 PT/TPL을 각 관계로 정정하고 난이도를 하로 일치시킴.",
+        "independentReview": "BLIND_MATH_REVIEW_COMPLETE; ACTIVE_RESOLVER_NOT_RUN"
       }
     },
     {

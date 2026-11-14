@@ -1,13 +1,13 @@
 {
   "schemaVersion": "archive-meta-4slot-v0",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/23_향림중_2학기_중간_중1_유사.js",
-  "sourceGitBlobSha": "724250f9f784c28d82716293f0e73581f234b79b",
+  "sourceGitBlobSha": "528fcdd88a6177fa0ac17e69ab33e64b023e9ab9",
   "dictionaryVersion": "candidate",
   "judgedBy": "author-self-check-unreviewed",
   "candidates": [],
   "selfCheck": {
     "status": "NOT_RUN",
-    "reason": "공식 4칸/독립 검토 미실행; 원문 4칸을 후보 상태로 이전함."
+    "reason": "공식 4칸/독립 메타 검토 미실행; Q8의 옛 평행선·엇각 기록을 현재 각 관계형 문항에 맞게 정정함."
   },
   "items": [
     {
@@ -186,20 +186,24 @@
       "format": "객관식",
       "slots": {
         "given": [
-          "평행선",
-          "각"
+          "150°와 3x°의 합은 180°",
+          "4x°와 50°의 합은 90°",
+          "y°와 4x°의 합은 180°"
         ],
         "goal": [
-          "각"
+          "y의 값"
         ],
         "method": [
-          "엇각",
-          "평각"
+          "평각",
+          "직각",
+          "일차방정식"
         ],
-        "condition": []
+        "condition": [
+          "이웃한 각"
+        ]
       },
       "steps": [
-        "3x=90도 확인 후 90-50=40도의 보각 140도 산출"
+        "150+3x=180에서 x=10; 4x+50=90 확인; y+4x=180에서 y=140"
       ],
       "status": "UNREVIEWED",
       "reviewStatus": "NOT_RUN"

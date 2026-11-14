@@ -267,8 +267,8 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "상",
-    "category": "평행선과 각",
+    "level": "하",
+    "category": "각",
     "originalCategory": "평행선과 각",
     "standardCourse": "중1 수학",
     "standardUnitKey": "M1-05",
@@ -279,7 +279,7 @@ window.questionBank = [
     "wide": false,
     "tags": [
       "객관식",
-      "평행선과 각"
+      "각"
     ],
     "content": "다음 각 관계가 성립한다. (가) $150^{\\circ}$와 $3x^{\\circ}$는 한 직선 위의 이웃한 각이다. (나) $4x^{\\circ}$와 $50^{\\circ}$의 합은 직각이다. (다) $y^{\\circ}$와 $4x^{\\circ}$는 한 직선 위의 이웃한 각이다. $y$의 값은? [4점]",
     "choices": [
@@ -297,11 +297,11 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "다음 그림에서 $l\\parallel m\\parallel n$이고, $150^{\\circ}$, $3x$, $4x$, $50^{\\circ}$가 표시되어 있을 때, $\\angle y$의 크기는? [4점]",
     "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "동위각·엇각",
+    "subUnit": "각의 크기",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER"
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION"
   },
   {
     "id": 9,

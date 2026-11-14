@@ -3,7 +3,7 @@
   "examUid": "23_향림중_2학기_중간_중1_유사",
   "candidateJsPath": "archive/exams/similar/middle/m1/2mid/23_향림중_2학기_중간_중1_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m1/2mid/23_향림중_2학기_중간_중1_유사.meta-candidate.json",
-  "candidateGitBlobSha1": "724250f9f784c28d82716293f0e73581f234b79b",
+  "candidateGitBlobSha1": "528fcdd88a6177fa0ac17e69ab33e64b023e9ab9",
   "createdAt": "2026-11-13T07:45:34Z",
   "reviewerRole": "CREATOR_SELF_CHECK_ONLY",
   "signOffStatus": "PENDING_INDEPENDENT_REVIEW",
@@ -22,6 +22,21 @@
       "scope": "All questions",
       "status": "OPEN",
       "detail": "독립 검수·공식 교육과정 검토·4칸 심사·시각 검수·실제 Archive 표시 검증 미실행; missing source figures are not claimed as restored."
+    },
+    {
+      "scope": "Q8 metadata",
+      "status": "OPEN",
+      "detail": "기존 평행선/엇각 분류 불일치를 후보 의미상 정정함. 공식 Resolver·최종 메타 분류는 미실행."
+    },
+    {
+      "scope": "All questions metadata",
+      "status": "OPEN",
+      "detail": "conditionKeys 26개 모두 비어 있음. 정본 ACTIVE 조건 레지스트리 확인 및 문항별 역할 판정이 미실행되어 임의 키를 생성하지 않음."
+    },
+    {
+      "scope": "Source and visual validation",
+      "status": "OPEN",
+      "detail": "Drive 본문 해시 미계산; 시각 검수 및 Archive 화면 검증은 요청 제한에 따라 NOT_RUN."
     }
   ],
   "items": [
@@ -285,5 +300,19 @@
       "pedagogicalVerdict": "UNREVIEWED",
       "assetCheck": "NOT_NEEDED_TEXT_COMPLETE"
     }
-  ]
+  ],
+  "reviewEvidence": {
+    "status": "PARTIAL_BLIND_MATH_REVIEW",
+    "reviewer": "/root/hyanglim23_blind_r1",
+    "input": "student-only freeze (qid, type, points, content, choices; answers/solutions/meta excluded)",
+    "result": "26개 문항을 독립 풀이함. Q6·Q13·Q14 답을 검토했고 Q8의 문항 계산은 y=140으로 확인. 해설 비교에서 다른 수학·중1 풀이법 오류는 보고되지 않음.",
+    "notCompleted": [
+      "official RPM/ACTIVE Resolver",
+      "conditionKeys authoritative registry resolution",
+      "Drive body text hash",
+      "visual review (NOT_RUN)",
+      "actual Archive display validation (NOT_RUN)"
+    ],
+    "overallSignOff": "PENDING_INDEPENDENT_REVIEW"
+  }
 }
