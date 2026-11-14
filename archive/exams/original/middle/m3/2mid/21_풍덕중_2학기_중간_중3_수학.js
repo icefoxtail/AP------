@@ -140,7 +140,11 @@ window.examData = {
         "$10\\sqrt{3}\\,\\mathrm{m}$"
       ],
       "answer": "③",
-      "solution": "타워 높이를 $h$, C에서 타워 밑까지의 거리를 $x$라 하면 D에서 타워 밑까지는 $x+10$이다.\n$\\tan60^\\circ=\\dfrac h x$이므로 $h=\\sqrt3x$이다.\n$\\tan30^\\circ=\\dfrac h{x+10}$이므로 $h=\\dfrac{x+10}{\\sqrt3}$이다.\n두 식을 같게 두면 $3x=x+10$, 따라서 $x=5$이고 $h=5\\sqrt3$ m이다.\n정답은 ③이다."
+      "solution": "타워 높이를 $h$, C에서 타워 밑까지의 거리를 $x$라 하면 D에서 타워 밑까지는 $x+10$이다.\n$\\tan60^\\circ=\\dfrac h x$이므로 $h=\\sqrt3x$이다.\n$\\tan30^\\circ=\\dfrac h{x+10}$이므로 $h=\\dfrac{x+10}{\\sqrt3}$이다.\n두 식을 같게 두면 $3x=x+10$, 따라서 $x=5$이고 $h=5\\sqrt3$ m이다.\n정답은 ③이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 탑 AB와 두 관측점 D,C를 잇는 시선, DC=10m, 30도와 60도, 공통 높이 h와 가까운 수평거리 x를 나타낸다.",
+      "solutionImageCaption": "두 식에서 h=√3x=(x+10)/√3이므로 x=5이고 탑의 높이는 5√3m이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -238,7 +242,11 @@ window.examData = {
         "$3.5$"
       ],
       "answer": "④",
-      "solution": "접점에서 한 외부점에서 그은 두 접선의 길이는 같습니다.\n따라서 $\\overline{AS}=\\overline{AP}=x$, $\\overline{DS}=\\overline{DR}$, $\\overline{CR}=\\overline{CQ}$, $\\overline{BP}=\\overline{BQ}=6$이다.\n윗변에서 $\\overline{AD}=\\overline{AS}+\\overline{SD}=x+\\overline{DR}=8$이므로 $\\overline{DR}=8-x$이다.\n오른쪽 변에서 $\\overline{CD}=\\overline{CR}+\\overline{RD}=10$이므로 $\\overline{CR}=10-(8-x)=x+2$이다. 따라서 $\\overline{CQ}=x+2$이다.\n아랫변 길이는 $\\overline{BC}=\\overline{BQ}+\\overline{QC}=6+(x+2)=x+8$이다. $\\overline{BC}=11$이므로 $x+8=11$, 따라서 $x=3$이다.\n정답은 ④이다."
+      "solution": "접점에서 한 외부점에서 그은 두 접선의 길이는 같습니다.\n따라서 $\\overline{AS}=\\overline{AP}=x$, $\\overline{DS}=\\overline{DR}$, $\\overline{CR}=\\overline{CQ}$, $\\overline{BP}=\\overline{BQ}=6$이다.\n윗변에서 $\\overline{AD}=\\overline{AS}+\\overline{SD}=x+\\overline{DR}=8$이므로 $\\overline{DR}=8-x$이다.\n오른쪽 변에서 $\\overline{CD}=\\overline{CR}+\\overline{RD}=10$이므로 $\\overline{CR}=10-(8-x)=x+2$이다. 따라서 $\\overline{CQ}=x+2$이다.\n아랫변 길이는 $\\overline{BC}=\\overline{BQ}+\\overline{QC}=6+(x+2)=x+8$이다. $\\overline{BC}=11$이므로 $x+8=11$, 따라서 $x=3$이다.\n정답은 ④이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O에 외접한 사각형 ABCD와 접점 P,Q,R,S를 표시하고, 각 꼭짓점에서 나온 접선 길이 쌍을 파랑·주황·초록 눈금과 분홍 선으로 구분한다.",
+      "solutionImageCaption": "AD=8이므로 DR=8−x이고, CD=10에서 CR=CQ=x+2이다. BC=11=6+(x+2)이므로 x=3이다. 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -294,7 +302,11 @@ window.examData = {
         "$25\\pi$"
       ],
       "answer": "⑤",
-      "solution": "큰 원의 현 길이가 $10$ cm이므로 그 반은 $5$ cm이다.\n중심에서 현에 내린 수선은 현을 이등분하고, 이 거리는 작은 원의 반지름 $r$이다.\n큰 원의 반지름을 $R$이라 하면 $R^2=r^2+5^2$, 따라서 $R^2-r^2=25$이다.\n색칠한 넓이는 $\\pi R^2-\\pi r^2=\\pi(R^2-r^2)=25\\pi$ cm$^2$이다.\n정답은 ⑤이다."
+      "solution": "큰 원의 현 길이가 $10$ cm이므로 그 반은 $5$ cm이다.\n중심에서 현에 내린 수선은 현을 이등분하고, 이 거리는 작은 원의 반지름 $r$이다.\n큰 원의 반지름을 $R$이라 하면 $R^2=r^2+5^2$, 따라서 $R^2-r^2=25$이다.\n색칠한 넓이는 $\\pi R^2-\\pi r^2=\\pi(R^2-r^2)=25\\pi$ cm$^2$이다.\n정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 동심원에서 큰 원의 현 AB가 작은 원에 M에서 접하고, OM이 AB에 수직이다. M은 현의 중점이며 반현은 5cm, 두 반지름은 r과 R이다.",
+      "solutionImageCaption": "M은 AB의 중점이므로 AM=5cm이다. 직각삼각형 OMA에서 R²−r²=5²=25이므로 두 원 사이의 넓이는 25πcm²이다. 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -318,7 +330,11 @@ window.examData = {
       "question": "[서술형 3]<br>아래 물음에 답하시오. (8점)<br>다음 그림에서 직각삼각형 $\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{D}$, $\\mathrm{E}$, $\\mathrm{F}$는 그 접점이다.<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/s03.png\" /><br>단, $\\angle A=90^\\circ$, $\\overline{AB}=6\\,\\mathrm{cm}$, $\\overline{AC}=8\\,\\mathrm{cm}$이다.<br><br>(1) $\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CF}}$의 길이를 각각 구하시오. [2점]<br>(2) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. [3점]<br>(3) 삼각형 $ABC$의 내부에서 원 $O$의 내부를 제외한 부분의 넓이를 구하시오. [3점]<br><br><table style=\"border-collapse: collapse; width: 100%; border: 1px solid #333;\"><tr style=\"border-bottom: 1px solid #333; background: #f8f8f8;\"><th style=\"padding: 4px; border-right: 1px solid #333;\">채점 기준</th><th style=\"padding: 4px; width: 60px;\">배점</th></tr><tr style=\"border-bottom: 1px solid #333;\"><td style=\"padding: 4px; border-right: 1px solid #333;\">(i) $\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CF}}$의 길이를 각각 구한 경우</td><td style=\"padding: 4px; text-align: center;\">2점</td></tr><tr style=\"border-bottom: 1px solid #333;\"><td style=\"padding: 4px; border-right: 1px solid #333;\">(ii) 반지름 구하는 식을 세우고 원 $\\mathrm{O}$의 반지름의 길이를 구한 경우 (식의 풀이과정 필요)</td><td style=\"padding: 4px; text-align: center;\">3점</td></tr><tr><td style=\"padding: 4px; border-right: 1px solid #333;\">(iii) 삼각형 $ABC$의 내부에서 원 $O$의 내부를 제외한 부분의 넓이를 구한 경우</td><td style=\"padding: 4px; text-align: center;\">3점</td></tr></table>",
       "choices": [],
       "answer": "(1) $4\\,\\mathrm{cm}$, $6\\,\\mathrm{cm}$; (2) $2\\,\\mathrm{cm}$; (3) $(24-4\\pi)\\,\\mathrm{cm}^2$",
-      "solution": "(1) 원의 중심 O는 직각 $\\angle A$의 이등분선 위에 있다. $OD\\perp AB$, $OF\\perp AC$이므로 $\\triangle AOD$와 $\\triangle AOF$는 45°-45°-90° 직각삼각형이다. 따라서 $\\overline{AD}=\\overline{AF}=r$이다. 또 같은 외부점에서 그은 접선의 길이는 같으므로 $\\overline{BD}=\\overline{BE}$, $\\overline{CF}=\\overline{CE}$이다.\n먼저 $\\overline{BC}=\\sqrt{6^2+8^2}=10$ cm이다. 두 직각변과 빗변을 접선 구간으로 나누면 $AB+AC=(AD+DB)+(AF+FC)=2r+DB+FC$이고 $BC=BE+EC=DB+FC$이다. 두 식을 빼면 $2r=AB+AC-BC=6+8-10=4$이므로 $r=2$ cm이다.\n따라서 $BD=AB-AD=6-2=4$ cm이고 $CF=AC-AF=8-2=6$ cm이다.\n(2) 위에서 구한 원의 반지름은 $2$ cm이다.\n(3) 구하는 영역은 삼각형 ABC의 내부에서 원 O의 내부를 제외한 부분이다. 삼각형의 넓이는 $\\dfrac12\\cdot6\\cdot8=24$ cm$^2$이고 원의 넓이는 $\\pi\\cdot2^2=4\\pi$ cm$^2$이다. 따라서 구하는 영역의 넓이는 $(24-4\\pi)$ cm$^2$이다."
+      "solution": "(1) 원의 중심 O는 직각 $\\angle A$의 이등분선 위에 있다. $OD\\perp AB$, $OF\\perp AC$이므로 $\\triangle AOD$와 $\\triangle AOF$는 45°-45°-90° 직각삼각형이다. 따라서 $\\overline{AD}=\\overline{AF}=r$이다. 또 같은 외부점에서 그은 접선의 길이는 같으므로 $\\overline{BD}=\\overline{BE}$, $\\overline{CF}=\\overline{CE}$이다.\n먼저 $\\overline{BC}=\\sqrt{6^2+8^2}=10$ cm이다. 두 직각변과 빗변을 접선 구간으로 나누면 $AB+AC=(AD+DB)+(AF+FC)=2r+DB+FC$이고 $BC=BE+EC=DB+FC$이다. 두 식을 빼면 $2r=AB+AC-BC=6+8-10=4$이므로 $r=2$ cm이다.\n따라서 $BD=AB-AD=6-2=4$ cm이고 $CF=AC-AF=8-2=6$ cm이다.\n(2) 위에서 구한 원의 반지름은 $2$ cm이다.\n(3) 구하는 영역은 삼각형 ABC의 내부에서 원 O의 내부를 제외한 부분이다. 삼각형의 넓이는 $\\dfrac12\\cdot6\\cdot8=24$ cm$^2$이고 원의 넓이는 $\\pi\\cdot2^2=4\\pi$ cm$^2$이다. 따라서 구하는 영역의 넓이는 $(24-4\\pi)$ cm$^2$이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: AB=6cm, AC=8cm인 직각삼각형 ABC의 내접원 O와 접점 D,E,F를 표시한다. 각 꼭짓점에서 나온 같은 접선 쌍을 색 눈금으로 묶고, 원 바깥의 삼각형 내부를 옅게 칠했다.",
+      "solutionImageCaption": "AD=AF=r, BD=BE, CF=CE이고 BC=10cm이다. 두 직각변의 접선 길이 관계에서 r=2cm, BD=4cm, CF=6cm이다. 삼각형 넓이는 24cm², 원 넓이는 4πcm²이므로 색칠한 넓이는 (24−4π)cm²이다. 답은 (1) 4cm, 6cm; (2) 2cm; (3) (24−4π)cm²이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

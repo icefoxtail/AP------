@@ -342,7 +342,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 모양으로 아래로 열린 두 포물선의 꼭짓점 V와 W를 표시해 원래 그래프와 이동 후 그래프를 비교한다.",
+    "solutionImageCaption": "a=−2, p=−5이므로 a+p=−7이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -691,7 +695,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 제3사분면을 옅게 칠하고, 원점에 닿으며 꼭짓점이 (3,−4)인 위로 열린 경계 포물선을 그린다.",
+    "solutionImageCaption": "x<0에서 그래프가 제3사분면에 들어가지 않으려면 y(0)=9a−4≥0이어야 하므로 a≥4/9이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
