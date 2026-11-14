@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E021",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "b3b8bab44a7375a7a5f4443937c821ea14ef890c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "f2c3c5f4ffc13aace7223836bc13bab761693fc3c1d0bb8a81d0791ccd09c9b3",
+  "fourSlotSha256": "2e0bf4b5c8ed6f8ee054a8b7ba86d7f1d6f16327138d04652f806ad95ac83b3c",
+  "ordinals": [
+    1,
+    17,
+    22
+  ],
+  "overallConclusion": "MINOR_REVISION_REQUIRED",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
+      "conclusion": "PASS",
+      "reason": "현재 그림의 왼쪽6cm 점선이 l부터n까지 전체를 가리키며 윗부분2cm를 빼야 함을 실제 확인했다. source의2/4=3/x와 현재4칸 exact 인용이 일치하고 prior2/6은 재사용하지 않은 처리가 맞다. RPM093·GENERAL 선분비 PT/TPL, 별도CC없음/NONE 및2/medium/B12의 한 번의 부분-전체 해석을 지지한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+      "conclusion": "RPM_AND_QUOTE_REFINEMENT_REQUIRED",
+      "reason": "실제 문항은 확률값 계산이 아니라 기본 성질 명제의 진위 판정이므로 NEW_PT 판단에 동의한다. 다만 현 RPM114의 L4도 확률 계산이라고 명시되어 있어 E007Q16과 동일하게 정확한 leaf 공백을 표시해야 한다. PT공백만 기록하면서 RPM114를 정확한 KEEP으로 유지하면 판단 축이 어긋난다. RPM_LEAF_GAP과 부모 확률의 뜻·성질 범위를 남기는 것이 일관된다. 4칸 method 범위의 quote는 현재 $0$과$1$을 포함한다는 부분만 있어 NAMED의 명칭 근거가 약하므로 원문에 실제 있는 ‘확률의 범위에는 $0$과 $1$도 포함된다는 점’으로 넓히거나 IMPLIED로 바꾸면 된다. 별도 범위COND는 풀이 후보값 제한이 아니라 판단 대상 명제이므로 비적용이 맞다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+      "conclusion": "PASS",
+      "reason": "두 소문항의 실제 그림과 기존 풀이를 읽었다. 원뿔의 부피로 높이를 역산하고 모선을 피타고라스로 정한 뒤 옆넓이를 계산하는 순차 구조와 RPM106·COMPOSITE_APPLICATION 선택이 적합하다. compiled concepts의 영문 key와 한국어 label/definition에서 원뿔·모선·부채꼴·옆넓이·겉넓이를 표적 검색했다. CC_CONE_VOLUME는 부피, CC_CIRCLE_SECTOR_AREA는 주어진 중심각과 반지름의 평면 부채꼴 공식에 한정되며 모선과 밑면둘레에서 πrl로 연결하는 원뿔 옆넓이 관계는 명시하지 않는다. CC_CUBOID_DIAGONAL_SYMMETRIC도 직육면체 전용이다. 따라서 현 RPM106의 입체 길이 관계 밖의 옆넓이 보조 정의 제안에 정확한 기존 중복은 찾지 못했다. 4칸의 두 목표 및 부피·모선·옆넓이 근거가 현재 source와 일치한다."
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
