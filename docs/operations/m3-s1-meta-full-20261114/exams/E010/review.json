@@ -5456,10 +5456,10 @@
         "reason": "공식 resolver의 VERIFIED_FINAL 영수증을 메타검토로 새로 주장하지 않는다. 정적 M3-RPM-020=RPM_ONLY/NO_ACTIVE_MAPPING를 확인했다.",
         "activeSearchCandidate": {
           "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-          "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+          "templateKey": null,
           "source": "canonical/packs/middle3/taxonomy.json",
           "productionReuse": false,
-          "reason": "ACTIVE 정의에서 실제 단계와 맞는 후보를 찾았다. 세부 scope와 native binding 및 crosswalk 재료화는 별도 공식 경로를 따른다."
+          "reason": "PT의 곱셈공식 활용은 맞지만 TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING은 한 도형의 넓이 분할을 모델링하는 정의이다. 현재 문항의 서로 다른 두 정사각형 둘레합·넓이합으로 둘레곱을 구하는 골격과 달라 TPL을 제외한다."
         }
       },
       "debts": [
@@ -5468,6 +5468,13 @@
           "crosswalkRecordId": "M3-RPM-020",
           "mappingStatus": "RPM_ONLY",
           "reason": "공식 재료화와 의미 판단을 구분한다."
+        },
+        {
+          "kind": "ACTIVE_TEMPLATE_SCOPE_GAP",
+          "rejectedTemplateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+          "canonicalDefinition": "직사각형 또는 정사각형의 넓이 분할을 곱셈공식으로 표현한다.",
+          "actualMethod": "두 정사각형의 둘레합·넓이합에서 변의 합과 제곱합을 얻고 xy를 구하여 둘레곱을 계산",
+          "reason": "하나의 도형 넓이 분할과 별개 두 도형 수량 조건의 대칭식 활용은 동일 TPL 골격으로 승인하지 않는다."
         }
       ],
       "before": {
@@ -5658,7 +5665,7 @@
         "activeBinding": true,
         "difficultyComplete": false,
         "l3Active": true,
-        "l4Active": true
+        "l4Active": false
       },
       "resolverExecution": {
         "status": "NOT_RUN",
@@ -5935,6 +5942,15 @@
       "desiredLeaf": "이차식을 인수분해하여 지정 인수를 갖지 않는 식 판정",
       "distinction": "공통인수를 찾거나 주어진 인수의 나머지 인수를 구하는 목표와 다르다.",
       "registration": "NOT_REGISTERED"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_f4744c8283f72f2bb24d69e0d47728dddf73876ef83b96b71a0fd9b9512182f5",
+      "kind": "ACTIVE_TEMPLATE_GAP",
+      "desiredParent": "PT_M3_POLY_MULTIPLICATION",
+      "desiredLeaf": "두 도형의 둘레합·넓이합을 이용한 곱셈공식 활용",
+      "distinction": "넓이 분할형 TPL과 달리 두 변의 합·제곱합에서 곱을 추출한다.",
+      "registration": "NOT_REGISTERED"
     }
   ],
   "assetReview": [
@@ -6121,6 +6137,11 @@
         "ordinal": 23,
         "status": "ACCEPT",
         "note": "둘레합과 넓이합을 합·제곱합으로 모델링해 xy와 둘레 곱을 구한다. 도형활용 leaf와 bucket3는 적합하다."
+      },
+      {
+        "ordinal": 23,
+        "status": "PINPOINT_SCOPE_CORRECTION_VERIFIED",
+        "note": "두 정사각형의 둘레합·넓이합으로 곱을 구하는 목표는 한 도형의 넓이 분할 TPL 정의와 달라 작성자 activeSearchCandidate.templateKey=null 및 정확한scopegap 수정본을 실제 확인했다. 원래 PT/RPM/4칸/원문은 보존."
       }
     ],
     "compatibilityAdjudication": [
@@ -6224,7 +6245,7 @@
       ]
     },
     "reviewedArtifactsFinal": {
-      "E010.review.json": "d9538aeb2d8d230de0a47ccb590f9960d638f49d8c9437f77b83b779fdaa6692",
+      "E010.review.json": "2d793c07308c0563e92e1c199b71eec3b716391f8bf94237eb0bf0921afb2d7f",
       "E010.4slot.json": "5e18db2c0971e3077915f13a1b0fbea6bdb8d8bb944e84d98b11744c1cdd46a7"
     }
   },

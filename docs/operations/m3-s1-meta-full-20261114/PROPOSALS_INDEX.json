@@ -7065,6 +7065,13 @@
           "crosswalkRecordId": "M3-RPM-020",
           "mappingStatus": "RPM_ONLY",
           "reason": "공식 재료화와 의미 판단을 구분한다."
+        },
+        {
+          "kind": "ACTIVE_TEMPLATE_SCOPE_GAP",
+          "rejectedTemplateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+          "canonicalDefinition": "직사각형 또는 정사각형의 넓이 분할을 곱셈공식으로 표현한다.",
+          "actualMethod": "두 정사각형의 둘레합·넓이합에서 변의 합과 제곱합을 얻고 xy를 구하여 둘레곱을 계산",
+          "reason": "하나의 도형 넓이 분할과 별개 두 도형 수량 조건의 대칭식 활용은 동일 TPL 골격으로 승인하지 않는다."
         }
       ],
       "projection": {
@@ -7074,10 +7081,10 @@
         "reason": "공식 resolver의 VERIFIED_FINAL 영수증을 메타검토로 새로 주장하지 않는다. 정적 M3-RPM-020=RPM_ONLY/NO_ACTIVE_MAPPING를 확인했다.",
         "activeSearchCandidate": {
           "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
-          "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+          "templateKey": null,
           "source": "canonical/packs/middle3/taxonomy.json",
           "productionReuse": false,
-          "reason": "ACTIVE 정의에서 실제 단계와 맞는 후보를 찾았다. 세부 scope와 native binding 및 crosswalk 재료화는 별도 공식 경로를 따른다."
+          "reason": "PT의 곱셈공식 활용은 맞지만 TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING은 한 도형의 넓이 분할을 모델링하는 정의이다. 현재 문항의 서로 다른 두 정사각형 둘레합·넓이합으로 둘레곱을 구하는 골격과 달라 TPL을 제외한다."
         }
       },
       "validationErrors": [],
@@ -11266,6 +11273,19 @@
         "desiredParent": "PT_M3_POLY_FACTORIZATION",
         "desiredLeaf": "이차식을 인수분해하여 지정 인수를 갖지 않는 식 판정",
         "distinction": "공통인수를 찾거나 주어진 인수의 나머지 인수를 구하는 목표와 다르다.",
+        "registration": "NOT_REGISTERED"
+      }
+    },
+    {
+      "examKey": "E010",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "ordinal": 23,
+        "questionUid": "qid_v1_f4744c8283f72f2bb24d69e0d47728dddf73876ef83b96b71a0fd9b9512182f5",
+        "kind": "ACTIVE_TEMPLATE_GAP",
+        "desiredParent": "PT_M3_POLY_MULTIPLICATION",
+        "desiredLeaf": "두 도형의 둘레합·넓이합을 이용한 곱셈공식 활용",
+        "distinction": "넓이 분할형 TPL과 달리 두 변의 합·제곱합에서 곱을 추출한다.",
         "registration": "NOT_REGISTERED"
       }
     },
