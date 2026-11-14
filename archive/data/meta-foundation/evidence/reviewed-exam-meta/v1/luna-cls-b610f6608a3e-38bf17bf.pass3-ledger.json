@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T16:40:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/23_제일고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "64=2⁶ admits n=2,3,6; the distinct integer roots are ±8,4,2, so there are four a values.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass1",
+      "resolutionReason": "The product telescopes to ln256/ln2=8, so logₐ8=3 and positive a=2.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l4": "곱·몫·거듭제곱"
+      },
+      "conditionKeys": []
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The two fractions combine to 2/cosθ=−6, so cosθ=−1/3 and the positive sine gives tanθ·sinθ=−8/3.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The opposite-ray condition makes 4θ an odd multiple of π; the interval gives θ=3π/4 and the sine argument π/3.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass1",
+      "resolutionReason": "For A=[2^(a−1),2^(a+1)] and B=[1,8], nonempty intersection requires −1≤a≤4, giving six integers.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "midUnit": "로그함수",
+        "l4": "치환"
+      },
+      "hold": "integrationPattern 값 목록이 H2-수학I.json에 없어 보류한다."
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass1",
+      "resolutionReason": "z=2^f yields f=2 or 4; checking the root counts of |3^x−m|=2−n and 4−n shows (2,2) is the only pair without three roots.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "지수방정식",
+        "l4": "치환"
+      },
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_UPPER_BOUND"
+      ],
+      "hold": "integrationPattern 값 목록이 H2-수학I.json에 없어 보류한다."
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The log domain is 2<x<5 with x≠3, so x=4 is the only integer solution.",
+      "choiceTableUsed": "H2-수학I.json",
+      "hold": "로그 밑이 1이 아니어야 한다는 조건을 나타내는 허용 키가 없어 conditionKeys 전체를 보류한다."
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass1",
+      "resolutionReason": "t=log₂x gives −1<t<4; for natural x this yields 1 through 15, so there are 15 values.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "midUnit": "로그함수",
+        "l3": "로그부등식"
+      },
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The residual proportion inequality gives x≥20.6, so the least natural percent is 21.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass1",
+      "resolutionReason": "In quadrant III, sinθ=−4/5 and tanθ=4/3, so the expression equals 8.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "삼각함수의 뜻",
+        "l4": "삼각함수 값"
+      },
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The quadratic roots are 4 and −2, and the logarithm domain x>1 leaves only 4.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass1",
+      "resolutionReason": "Equal powers of 2 give sinθ−cosθ=3cosθ, so tanθ=4.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "밑 통일"
+      }
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "The four expressions evaluate to −27,−1,6√2,12; only the last two are correct.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "거듭제곱근",
+        "l4": "실수 조건"
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "For t=a^(1/3)>0, the equation gives 3(t³−t⁻³)=8; its positive solution is a=3.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass1",
+      "resolutionReason": "The log difference equals 2log x, so its integer values are 3,4,5 and the product is 10⁶.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ]
+    }
+  ]
+}

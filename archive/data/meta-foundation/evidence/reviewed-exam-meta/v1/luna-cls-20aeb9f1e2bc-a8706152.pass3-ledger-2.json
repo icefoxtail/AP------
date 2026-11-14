@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:10:15+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "t²+1=3t, t⁴+1=7t²이므로 분수는 3/7이고 p-q=4다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_LOG_APPLICATION"
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "진폭 1, 중심선 -1, 주기 2π/3이므로 a=1,b=3,c=1이고 합은 5다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "rpmPath": {
+        "l3": "그래프 변환",
+        "l4": "주기·진폭"
+      }
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "공통 구간은 [5π/4,5π/3]이므로 끝점 곱은 25π²/12다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_INEQUALITY",
+      "rpmPath": {
+        "l4": "그래프를 이용한 해"
+      }
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "u 최대 16에서 α=4, v 최대 15에서 β=-log₃15라서 목표값은 15다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "rpmPath": {
+        "l3": "지수방정식",
+        "l4": "치환"
+      }
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "log_c a=4/3, log_a c=3/4이므로 부등식은 k>63/16이고 최소 정수는 4다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_LOG_INEQUALITY_DOMAIN"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "해당 식은 구간에서 감소하여 u=1부터 -4, u=-1에서 4를 내므로 -4≤k≤4다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIGONOMETRIC_EQUATION"
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "양의 t에서 차는 32a/π이고 정수값은 1부터 15; aₙ=sin(nπ/32)라 제곱합은 15/2여서 8S=60이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_TRIG_IDENTITY_RELATIONS"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "log(15⁹)=10.584라 11자리이고 소수 부분 0.584가 첫 자릿수 3을 정해 a-b=8이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_LOG_APPLICATION"
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "여섯제곱근 안은 8=2³이므로 전체는 2^(3/6), 따라서 k=1/2다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_EXPONENT_CALCULATION"
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "첫 곱은 cos²θ이고 둘째 곱을 빼는 것은 다시 cos²θ를 더하는 것이므로 결과는 2cos²θ다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l4": "삼각함수 관계"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "cos의 크기는 4/5이고 제3사분면에서는 음수여서 cosθ=-4/5다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_TRIG_QUADRANT_EVALUATION",
+      "rpmPath": {
+        "l4": "삼각함수 값"
+      }
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "참인 문장은 홀수근의 음수 경우 ㄴ과 짝수근의 음수 경우 ㄹ이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "hold": "integrationPattern: H2-수학I.json의 활성 유형 목록에 홀수·짝수 지수에 따라 실수인 거듭제곱근을 판별하는 유형이 없음"
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "u=2,v=1로 b=a²,c=a이며 세 번째 식에서 a=2, ab+c=10이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_LOG_IDENTITY_OPERATIONS",
+      "rpmPath": {
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "t=3,-1에서 x=27,1/3이고 두 해의 곱은 9다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_EXPONENTIAL_EQUATION"
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 그래프의 영점과 교차 구간으로 자연수 해 1부터 6까지를 얻어 합은 21이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [],
+      "integrationPattern": "PT_EXPONENTIAL_INEQUALITY",
+      "rpmPath": {
+        "l3": "지수부등식",
+        "l4": "밑의 범위에 따른 부등호"
+      }
+    }
+  ]
+}

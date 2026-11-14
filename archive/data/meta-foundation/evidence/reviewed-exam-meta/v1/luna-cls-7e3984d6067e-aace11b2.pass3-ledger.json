@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:18:19+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "B=60°이므로 CA=2×4×sin60°=4√3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "외접원 반지름"
+      }
+    },
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a=4이고 13=8+b²-4b에서 양의 길이 b=5를 택하므로 a+b=9이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_05_SINE_LAW"
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "AB=BC=4sin75°이므로 넓이는 4sin²75°=2+√3이고 p/q=2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_05_TRIANGLE_AREA",
+      "rpmPath": {
+        "l4": "두 변과 끼인각"
+      }
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "34-30cosB=98+98cosB에서 cosB=-1/2이므로 넓이는 (15+49)sinB/2=16√3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_05_COSINE_LAW"
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "Σa₃ₖ=85, Σb₂ₖ=(3/4)(9⁵-1)이므로 p=85, q=9, r=5이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_07_SEQUENCE_SUM"
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "46/5=9.2의 양옆 n=9, 10에서 절댓값은 1, 4이므로 n=9이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n≥2에서 a₂ₙ=-2ⁿ이므로 a₁₀-a₁₄=-32-(-128)=96이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_06_GEOMETRIC_SEQUENCE"
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "r²-r-6=0에서 r=3을 택하면 S₁₅+1=3¹⁵이므로 로그값에 5를 더한 결과는 20이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "PT_H22A_06_GEOMETRIC_SEQUENCE"
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "각 네 항 묶음의 가중합은 4이므로 28항까지 28이고 마지막 -29-30을 더하면 -31이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "midUnit": "등차수열과 등비수열",
+        "l3": "수열의 활용",
+        "l4": "귀납적 패턴"
+      }
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2a²=a²+b²-c²에서 b²=a²+c²를 얻으므로 각 B가 90°인 직각삼각형이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_05_SINE_LAW"
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass2",
+      "resolutionReason": "a₁=-2이고 n≥2에서 aₙ=10-2n이므로 aₘ>0인 자연수 m은 2, 3, 4이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "r⁴=16에서 r=±2이나 r=-2이면 첫째항이 -1이므로 r=2, a₁=1/3이고 합은 7/3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "d≠0에서 u=4d이므로 a₁₂/a₅=(u+10d)/(u+3d)=14d/7d=2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+      "rpmPath": {
+        "l3": "등비수열",
+        "l4": "중항"
+      }
+    }
+  ]
+}
