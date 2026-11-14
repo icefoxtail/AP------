@@ -1,0 +1,773 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E045",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:40:10.446916+00:00",
+  "sourceGitBlobSha": "535e870de2279b7664ce4558259c04a77e067e31",
+  "sourceSha256": "f304e2b183036a2c64295927bb8d57bb4deced177a078979b3c806526eda4110",
+  "reviewSha256": "81646a429e264ad1f26160acd86857515a908c47e71c705fa9bc86066ff209bd",
+  "fourSlotSha256": "064a1c2d2d726dbabed9cb418474567f601aa705861829168b9a78fa6f421404",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/A/independent/E045/difficulty-content-first-freeze.json",
+  "initialFreezeSha256": "3a5346c8698bfe057bbbe5f2b9b3783d3c10540deedc4910f19985b132fe4611",
+  "actualAssets": [
+    {
+      "sourceOrdinal": 15,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E045/assets/q15.png",
+      "sha256": "fa4b5d271533f39c091189c7ccb00805d2c85cd339fcfe475fb3e76b5a81b272",
+      "actualImageOpened": true,
+      "observation": "①의x절편−2/y절편3과다른4그림대조"
+    },
+    {
+      "sourceOrdinal": 24,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E045/assets/s04.png",
+      "sha256": "3284ed0043ef60c20ebf57133649585175bc1e64b2f0fdac90e85adb318175dc",
+      "actualImageOpened": true,
+      "observation": "A=(0,3),(5,5);B=(0,0),(5,3)의실제점/눈금확인"
+    }
+  ],
+  "sampleOrdinals": [
+    7,
+    11,
+    20
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 7,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "실제해설은15이하소수를나열하고세므로M1-RPM001 선수의미가맞다. 함수표기만으로함숫값대입leaf를강제하지않으며M2대상부모는보존한다.",
+        "binding": "실제ACTIVE PT_BOUNDED_PRIME_COUNT/TPL_BOUNDED_PRIME_COUNT_CORE의범위안소수개수정의를읽었다. internalSkeleton의다른수치는canonical예시이며이문항해설로전용하지않음.",
+        "crossConcept": "소수판별과개수는현재primary내부로CC없음수용.",
+        "condition": "입력15와x이하소수정의의상한을COND_UPPER_BOUND로반영. 원해설의15이하라는literal과대조했다.",
+        "integration": "범위의소수세기단일primary내부NONE.",
+        "difficulty": "하1/B12로독립1과일치한다.",
+        "fourSlot": "함수/소수PRIME9 given과함숫값/개수goal, 실제소수열거·총개수method인용확인."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "목표와기존최종계산은M1원뿔103 부피이고M2절편으로반지름높이를공급한다. M2대상부모보존+선수RPM분리수용.",
+        "binding": "실제ACTIVE M2회전체PT/TPL은절편→회전치수→원뿔부피전체를포함함을읽었다. 현재M1primary참조와정확한M2후보를분리하고활성화는유보한다.",
+        "crossConcept": "현재M1원뿔primary에서CC_INTERCEPTS가외부입력이라는판정수용. r1은향후M2전체TPL로primarybinding시절편이내부단계가되는경계를명시했다.",
+        "condition": "y축을회전축으로1회전하는실제조건이회전체172의유효동의어로보존된다.",
+        "integration": "절편이반지름높이가되어원뿔부피계산에입력되는현재primary기준SEQUENTIAL.",
+        "difficulty": "절편두개와표준원뿔공식의정형연결로중2/B23 수용.",
+        "fourSlot": "r1에서실제 V=1/3πr²h 표준식과공식333이추가되어중심부피방법의literal근거가완성됨. 원문/해설불변."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "교점좌표의부호조건으로매개변수범위를정하는knownprimary는단순교점값056과달라RPMgap수용.",
+        "binding": "실제ACTIVE M2 intersectionquadrant PT/TPL 정의가좌표매개표현→사분면부호→공통범위를명시하므로후보일치수용.",
+        "crossConcept": "연립/좌표부호/공통범위는검토한공식primary내부여서CC중복없음.",
+        "condition": "제2사분면의실제제약을4칸에보존했다.",
+        "integration": "같은교점사분면primary내정형흐름이므로NONE수용.",
+        "difficulty": "분모와분자부호조건연결로중3/B23가독립3과일치.",
+        "fourSlot": "두직선given/m범위goal/연립·좌표부호·부등식공통범위method/제2사분면condition을기존해설전체와대조했다."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4",
+      "initialIndependent": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_961de2d5c97209aa1d7997837941b0c3331f085755cffd2b6d430c48567792b4",
+        "actualStemSha256": "e10c254c7912e2762448c05f1be49dfc717ac7d0ae0c27000a7f8ec51cb3d2a1",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "x계수공배수에맞는가감연산선택"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "최소공배수로 같은 x계수를 만든 뒤 빼는 연산을 직접 선택한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "x계수공배수에맞는가감연산선택"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_4e6650e61093966b73c6ba71208266bc048b9a8584012d00b0a6d19bf1c2b597",
+      "initialIndependent": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_4e6650e61093966b73c6ba71208266bc048b9a8584012d00b0a6d19bf1c2b597",
+        "actualStemSha256": "0cfce6fdcbc5b12ae8d4afbcbcefdec12d2ddb3725f7e1628132ffe67d84ab32",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "계수비일치와상수비차이판정; 기존비율식의a=0분모영경우설명누락유지"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 동일한 x계수 식에서 해없음의 y계수 조건을 비교한다. 기존해설의 -9/a 사용에는 a=0 정의역 처리가 명시되지 않아 낮은확신을 남긴다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "계수비일치와상수비차이판정; 기존비율식의a=0분모영경우설명누락유지"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d9fcce4a31dbe085588a3d57255dd85bd7edae0e4df99e2328b03232e7178636",
+      "initialIndependent": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_d9fcce4a31dbe085588a3d57255dd85bd7edae0e4df99e2328b03232e7178636",
+        "actualStemSha256": "7120fa1f860119ad6f61d8eb6cbae0d9126dd5ec763dca6956a97e4c48235059",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "소수정수화후연립해와일차결합계산"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수를 정수계수로 고쳐 연립식을 푼 뒤 정해진 일차결합을 계산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "소수정수화후연립해와일차결합계산"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_5bb04d89fb97361cacd81aa924e07484759dc9e3c3d452eed0e53e0821a5ae62",
+      "initialIndependent": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_5bb04d89fb97361cacd81aa924e07484759dc9e3c3d452eed0e53e0821a5ae62",
+        "actualStemSha256": "66a9cb8e21053414ef7ecf7a4297ad717d83aeb187b2d086c2ddfe658bc9730e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "계수없는두식공통해후a,b복원"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "미지상수가 없는 두 식으로 공통해를 먼저 정한 뒤 각 상수를 대입한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "계수없는두식공통해후a,b복원"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_e1299c17ed605b66b38360db9fca661d02fd3d41b84bdde85628052442846530",
+      "initialIndependent": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_e1299c17ed605b66b38360db9fca661d02fd3d41b84bdde85628052442846530",
+        "actualStemSha256": "ca2e09c243f00ab84565571a9905cbd357cc75adbc2cc95fd17b60dc18eefaed",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "승패기록과두최종위치로계단변화량합을직접소거"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "승패가 뒤바뀌는 두사람의 계단변화를 연립하고 요구한 합을 직접 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "승패기록과두최종위치로계단변화량합을직접소거"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574",
+      "initialIndependent": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_f3595d71c3560f2a7b7078c21faf762b93703f3a8bc0e5804b6621974d8e4574",
+        "actualStemSha256": "f4694e9a2859e1ace40cf35d765be2a15ad54f0cb5a9d7bcae71c7f48126af40",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "자릿값교환의90차이를두식으로모델링"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자리수 합과 자리교환 변화량으로 두 숫자를 정하는 정형 모델이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "자릿값교환의90차이를두식으로모델링"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+      "initialIndependent": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_eca7fb65b58d3d60fe80a73788473ccd36907e2d58a0a49db3b39517084e23a7",
+        "actualStemSha256": "25b49dd93955c375f3f0d4542c3841214ec37331c4181c0f0ecd3f330b2b408b",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "15이하소수의직접개수세기"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "함수의 정의가 지시한 범위 안 소수를 열거하고 센다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "15이하소수의직접개수세기"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f74b7bab9fed48f1366e40789907f81d07632fbd8d776ed4315b3b178cbc8a59",
+      "initialIndependent": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_f74b7bab9fed48f1366e40789907f81d07632fbd8d776ed4315b3b178cbc8a59",
+        "actualStemSha256": "7bf6e621717307b45230e417a07bea3fdd1cfb39ddbc4f228eb3cf41d7d5b164",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "다섯대응의함수성과일차성을분리판정후개수합"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 대응의 함수 여부와 일차성을 따로 세어 합한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "다섯대응의함수성과일차성을분리판정후개수합"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_4fcd1faec46797a9ed91544d1f4426b4932de5a0a06e586b1c8bcd101ab6154d",
+      "initialIndependent": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_4fcd1faec46797a9ed91544d1f4426b4932de5a0a06e586b1c8bcd101ab6154d",
+        "actualStemSha256": "9f4278239e3009ad369dafb7486770368df58c9150d83d2bbb96e8219b25c2a4",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "수직이동식과점대입으로이동량결정"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이동한 식의 상수항에 k를 더하고 한 점을 대입한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "수직이동식과점대입으로이동량결정"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+      "initialIndependent": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_d090bf57651fa33dbe27bf9bcc612d0485fda5df97cd90b2e8fa19ce02cc7b39",
+        "actualStemSha256": "97aef02b6bfd358a19ec0e0c7999dbb3db0379284b4afd0827f36b41117d325e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "음기울기와음x절편을각식에서검사"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기 부호와 x절편 부호의 두 조건을 순서대로 확인한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "음기울기와음x절편을각식에서검사"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f",
+      "initialIndependent": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_cdda356a88dbc1d56c71dc67c52bedcb9644f6b0069200dbe8d3feea37664c7f",
+        "actualStemSha256": "117216baf48f31b04815e63d9f7a9a90be660977611b69bb1e2cd420978a276e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "절편으로원뿔치수정한후부피공식적용"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "절편으로 원뿔 반지름·높이를 정해 부피 공식을 적용한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "절편으로원뿔치수정한후부피공식적용"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+      "initialIndependent": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_b5015ea7ce79dd88a8564e89195ea6cca7ce68897bf1923307dd578cc058de3d",
+        "actualStemSha256": "193a8df2adeb1b27d2ddb7c86537e5a77fa1654d14efe9b7a261e4e71a16d10f",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두삼각형넓이차; 기존해설이제1사분면영역을명시"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 축절편 삼각형의 영역 포함을 확인하여 넓이를 뺀다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두삼각형넓이차; 기존해설이제1사분면영역을명시"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+      "initialIndependent": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_e695dd895128b8552110491a008369a71e738420c52511c53594a2ed171c5876",
+        "actualStemSha256": "e6d68831d8d4d51fd1827dc098cdd4407d6f61b0601807b9c802285e90b9b36c",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "일차성비영기울기와제1사분면배제의두경계조건결합"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "음수기울기와 비양수 y절편의 두 부등식에서 경계 합을 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "일차성비영기울기와제1사분면배제의두경계조건결합 독립3↔저자2는음기울기/절편의두경계결합B23로저자2수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf",
+      "initialIndependent": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_9e07b7ff3d15b31beec74f3989cb65194ce32196b4ec21c64ae498b915746ccf",
+        "actualStemSha256": "1f7f3e9a24da174b1cba408880ff8befd057f3ec26c78f56dc36b93e8a72e2bc",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "두점기울기와평행조건으로미지좌표"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행한 직선의 기울기와 두점기울기를 같게 둔다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두점기울기와평행조건으로미지좌표"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "initialIndependent": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+        "actualStemSha256": "81b2d486b137db25a6a38ab7dffb9941edbac2b5d13086a1efb4da45f19dde99",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "표준형정리후두절편을실제그림과대응"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 방정식의 두절편을 계산하여 실제 그래프를 직접 고른다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "표준형정리후두절편을실제그림과대응 독립2↔저자1은표준형과두절편직접읽기의B12경계로저자1수용."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+      "initialIndependent": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_b17d1c4cee2045cf08ccb8ac8da9ef453405196a3d663f82f3a05f3079d94b7b",
+        "actualStemSha256": "6032a35346a97d9c909bf065f8168f13762e22f545864e2842cd24853757e10e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "기울기/절편/사분면/점통과/이동여러성질비교"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "함수꼴로 변환하여 기울기·점통과·절편 등 설명을 각각 검산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "기울기/절편/사분면/점통과/이동여러성질비교"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1136a42150f0c4bbe9a465dda5976fb9f4668a98787921e00cbe59620bd996d4",
+      "initialIndependent": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_1136a42150f0c4bbe9a465dda5976fb9f4668a98787921e00cbe59620bd996d4",
+        "actualStemSha256": "4c52e2046ca36805c49b17564b8a86bedcb33f4ae056e40dcc631361c5be95b7",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "첫점으로계수복원후다른점미지좌표대입"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "첫 점으로 계수를 찾은 다음 두번째 점에서 미지좌표를 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "첫점으로계수복원후다른점미지좌표대입"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b",
+      "initialIndependent": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_00db77520dc86bfcc9a9598ec147053dcb759d6310941e3934889e411eb4211b",
+        "actualStemSha256": "de7475f87ac396c3a7f7b95fc4790d109f063d5a32836e7580e5f766de436503",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "NONE",
+          "reason": "축평행직선의일정좌표정의직접적용"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "y축 평행 직선의 일정한 x좌표를 바로 사용한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "축평행직선의일정좌표정의직접적용"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_56b755eede5cba871ec09993d68d5b94ed1f309054536ed4d571abfb92daae99",
+      "initialIndependent": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_56b755eede5cba871ec09993d68d5b94ed1f309054536ed4d571abfb92daae99",
+        "actualStemSha256": "797c8812f664d15c156fa147f20d48f06f63391cc4651af239e4406274ce7c6e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "두식연립해의좌표합"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "교점을 연립방정식의 해로 바꿔 좌표합을 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두식연립해의좌표합"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c",
+      "initialIndependent": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_ecf2b058943b3213a7ba079d340ab21bedfdd8d1484f05365cd5ccad7833ed1c",
+        "actualStemSha256": "2df71e45a63bc8c899ecde45d06dfd73b1a0208da5c293e2d13a2f95a061723b",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "교점좌표분수식의부호조건두개를매개변수구간으로결합"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "매개변수로 나타낸 교점의 두좌표 부호 조건을 연결해 분모와 분자의 허용구간을 제한한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "교점좌표분수식의부호조건두개를매개변수구간으로결합"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_ea068752786b026fc4090aa5b4c4f116c1bd5d548bf6f6bf76cfaa411b354ffd",
+      "initialIndependent": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_ea068752786b026fc4090aa5b4c4f116c1bd5d548bf6f6bf76cfaa411b354ffd",
+        "actualStemSha256": "c2330b0949a611e48516eb04ffbe02373db1b42677511791ba5aad99c5ab192c",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "계수교환오독복원후원연립해계산의안내단계"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "잘못 바꾼 식의 해로 계수를 복원한 뒤 원래 식을 푸는 단계가 소문항으로 안내되어 있다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "계수교환오독복원후원연립해계산의안내단계"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_c523894c210ec83120cb0828335d8fcd6522fdaf4b10db428bdf11c8a3156abf",
+      "initialIndependent": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_c523894c210ec83120cb0828335d8fcd6522fdaf4b10db428bdf11c8a3156abf",
+        "actualStemSha256": "eae1f391bf35072a6d2f6dfc492d34d4996d3d8403e0cb8e374aac3b3c3b8552",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두물품수량과총가격연립모델후단가계산"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 구매 조합의 수량×단가 합으로 연립식을 세우고 푼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두물품수량과총가격연립모델후단가계산"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_fe62e7955ce2dadfea717c48f2c728ddd6f27435d5817aa607b5e2f7a3b01431",
+      "initialIndependent": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_fe62e7955ce2dadfea717c48f2c728ddd6f27435d5817aa607b5e2f7a3b01431",
+        "actualStemSha256": "518adee14844d2e20ca7175921432ad0123c33c8e7fcd5196a08ce34e2284238",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "고도단위환산후일정기온변화모델과목표기온대입"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "변화율 단위를 환산하고 초기값을 포함한 온도식을 세워 목표 고도를 정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "고도단위환산후일정기온변화모델과목표기온대입"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "initialIndependent": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+        "actualStemSha256": "af4cd4752b129f20c6a533a2584f18ff8e2b8b62ce5af40bf2f9d5231876cb21",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "실제두그래프에서식구한뒤같은위치시간계산"
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 두 그래프의 두점에서 각각 식을 세운 뒤 같은 위치가 되는 시각을 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "실제두그래프에서식구한뒤같은위치시간계산"
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "decision": "ACCEPT",
+      "reason": "r1은분모a가있는-9/a=1대신실제양변a곱한후a=-9의선형단계로인용을좁혔다. low부채보존"
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "함수개수/일차함수개수두목표와공식countTPL재사용후보확인; RPM미판정의종속축null수용"
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT",
+      "reason": "일차성의기울기비영및음기울기/비양절편경계, ACTIVEquadrant범위TPL수용"
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "첫점계수복원후둘째점좌표목표가공식pointTPL과일치. r1 goal좌표148확인"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT",
+      "reason": "교환계수복원+원래연립해의공식coeffswapTPL범위확인"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT",
+      "reason": "고도단위환산과온도일차모델, 온도candidate+same-slot값parent 및고도높이목표확인"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "실제A(0,3)(5,5)/B(0,0)(5,3)확인. motiongraphTPL내모델+만남을중복CC로세지않고경과시간후보사용수용"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "24existingfullsolutions and2actualimages read before authorcomparison. Existingvalidsnapshotreused.",
+    "Q2 ratio denominator a=0 checkomission remains source/solutiondebt withlowconfidence.",
+    "M1 prerequisiteRPM and M2targetnamespace preserved; exactcandidate does not mean active scopedbinding.",
+    "No source/answer/solution/figure/UID/order changes."
+  ]
+}
