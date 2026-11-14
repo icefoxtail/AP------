@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "/root/meta_b",
+  "author": "/root/meta_c",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+  "sampled": [
+    8,
+    10,
+    20
+  ],
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_THEN_ORIGINAL_THREE_PNG_THEN_AUTHOR_SLOTS_REGISTRY",
+  "scope": "FULL_METADATA_SEMANTICS_THREE_SAMPLES_NOT_R1_R2",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-c/sources/archive/exams/original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+      "blob": "ef39f3709e39917c0ecff924ebce0f9ea8ceb838",
+      "sha256": "304888fcd72afd585313c1e765ed604d68b75525ca5082102763bfcb0cd70192"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-c/evidence/24_연향중_2학기_중간_중1_기출.4slot.json",
+      "sha256": "b567342839c30f5c475c221186045b945ffe4685d4d7307da13ac01ce3b6accb"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-c/reviews/24_연향중_2학기_중간_중1_기출-review.json",
+      "sha256": "2874740f0877390072ff4a5455764a0703e6ee3282edb184cf2dad3143ff1a3d"
+    }
+  },
+  "figures": [
+    {
+      "ordinal": 8,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/yeonhyang24-q8.png",
+      "sha256": "28fed2815b2bce75776937f235c34450597e1604e74595e84010cb6fdddcb0ff",
+      "actualView": true
+    },
+    {
+      "ordinal": 10,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/yeonhyang24-q10.png",
+      "sha256": "81270c665ff05fae8d23ea42eac6a0eef07becfd164368c4dd7ba95860e628f2",
+      "actualView": true
+    },
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/yeonhyang24-q20.png",
+      "sha256": "59bcbecb05b372a67d18d4cf2085ab1cca82d24af06e8ef00dd45768ea7c37f7",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "verdict": "ACCEPT",
+      "meaning": "각 꺾임점에 평행보조선을 넣고 동위각·엇각으로 방향각을 전달해 전체평각에서25도를 제외한다.",
+      "native": "반복된 꺾인선 전달은 BENT_LINE의 같은 결정 구조를 반복하는 변형으로 수용. 단일원소 치환이 아니며 실제 source해설의 평행보조선 경로를 읽음.",
+      "difficulty": {
+        "bucket": 3,
+        "level": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "전형적 평행보조선을 반복 적용하고 최종평각으로 연결한다. 조건분기·새로운 비정형 구조가 없어3을 지지한다."
+      },
+      "fourSlot": "보조선·동위각·엇각·평각 방법과 평행 조건으로 정확히 포괄.",
+      "questionUid": "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
+      "metadata": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "상",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "QBODY": "4b7ece75cf48ca4116105605a389df0d6930a5cd65cb4700f76cc445244a99ad",
+      "QFULL": "a38a356de745464b71ea7aae645da5f611fc60d75e10761efd58b53d31115276"
+    },
+    {
+      "ordinal": 10,
+      "verdict": "ACCEPT_WITH_EXPLICIT_REGISTRATION_DEBT",
+      "meaning": "같은 반지름의 호와 현의 길이를 복사하여 한점을 지나는 평행선을 만드는 작도 순서를 판단한다.",
+      "native": "기존 BASIC_CONSTRUCTION / ARC_CHORD_ANGLE_COPY가 원호와 현을 옮기는 의존 순서를 정확히 정의한다. 단순 평행각값 전이 TPL에서 고친 판단 수용. 작도라는 의미부모가 타당하며2015 exactbinding미존재는 별도등록대기로 남김.",
+      "difficulty": {
+        "bucket": 2,
+        "level": "중",
+        "compatibility": "NORMAL"
+      },
+      "fourSlot": "goal순서와 method보조선·호·현·순서 적절. 요청한 고정점을 통과한다는 위치관계 조건 추가 실제 확인.",
+      "questionUid": "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
+      "metadata": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "기본 작도",
+          "l4": "선분·각의 이동"
+        }
+      },
+      "QBODY": "79cd378c00c85e8b1745495462ef3a182a8917fa94213601516e7f4b49a51c62",
+      "QFULL": "48fbf59972f80ba729be01abcf01320b3df0db9168cb796c40c6756d6d31f70f"
+    },
+    {
+      "ordinal": 20,
+      "verdict": "ACCEPT",
+      "meaning": "BD=3AB로 전체AD를4부분, 중점AC를2부분으로 놓아 BC의 차가1부분임을 연결한다.",
+      "native": "기존 segment midpoint ratio 유형의 비·중점·선분합차 복원 골격 재사용 수용; 정의가 단일 중첩 예시로 좁은 점은 공식 정의 일반화 검토에 남긴다.",
+      "difficulty": {
+        "bucket": 2,
+        "previousBucket": 3,
+        "level": "중",
+        "compatibility": "NORMAL",
+        "reason": "중점과3배관계를 단일 단위길이로 연결하는 명확한 표준 해석이며 서술형식으로3을 유지하지 않는다."
+      },
+      "fourSlot": "선분 method의 인용을 BC=AC-AB=2x-x=x로 바꾸고 두 구간의 차를 명시한 근거는 실제 결정관계를 정확히 담는다. 차 용어를 따로 늘리지 않은 보완방식을 수용.",
+      "questionUid": "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720",
+      "metadata": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중",
+        "rpmPrimaryRecordId": "M1-RPM-061",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "두 점 사이의 거리와 중점"
+        }
+      },
+      "QBODY": "343db715b2d12650c9fdad798d2444b36655d232f75ee7db5427b79e4442e035",
+      "QFULL": "4685843ab89344f495f049cba665f0ae3974fa90dec58fda2e571e295fe479e0"
+    }
+  ]
+}
