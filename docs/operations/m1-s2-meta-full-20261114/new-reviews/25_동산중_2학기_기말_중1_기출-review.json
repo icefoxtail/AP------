@@ -1,0 +1,2663 @@
+{
+  "schemaVersion": "m1-s2-exam-review-handoff-v1",
+  "author": "META_B",
+  "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+  "sourcePath": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "baselineSourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+  "sourceBlob": "d73e0e5adb3b2cccd1ac37291e96587c9fe176d1",
+  "sourceSha256": "129e1c46e51bd4aebbee35ec12323a0b1e7a73b37a0890da17a00e08cc1cec78",
+  "questionCount": 24,
+  "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
+  "topics": {
+    "문자식 기호 생략": [
+      1
+    ],
+    "수량의 문자식": [
+      2
+    ],
+    "식의 값 대입": [
+      3
+    ],
+    "음수 대입과 연산순서": [
+      4
+    ],
+    "항·계수·상수항": [
+      5
+    ],
+    "동류항 정리": [
+      6
+    ],
+    "일차식의 뺄셈": [
+      7
+    ],
+    "일차식의 수 나눗셈": [
+      8
+    ],
+    "분수계수 일차식의 뺄셈": [
+      9
+    ],
+    "구매·거스름돈 관계식": [
+      10
+    ],
+    "방정식 해의 의미": [
+      11
+    ],
+    "등식변형의 성질": [
+      12
+    ],
+    "괄호가 있는 일차방정식": [
+      13
+    ],
+    "공통해로 계수 결정": [
+      14
+    ],
+    "좌표 읽기": [
+      15
+    ],
+    "원점·좌표축·사분면": [
+      16
+    ],
+    "사분면 부호와 좌표식": [
+      17
+    ],
+    "속력 상황의 그래프": [
+      18
+    ],
+    "주기 그래프 해석": [
+      19
+    ],
+    "상황의 정비례 판별": [
+      20
+    ],
+    "정비례·반비례의 교점": [
+      21
+    ],
+    "단위량의 총량식과 평가": [
+      22
+    ],
+    "거리·속력·시간차 방정식": [
+      23
+    ],
+    "거리·시간 그래프의 사실": [
+      24
+    ]
+  },
+  "reusedEvidence": {
+    "semanticPath": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json",
+    "baselineSourceExact": true,
+    "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+    "sourceSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
+    "reuseBoundary": "未適用 prior semantic candidate를 현재 ACTIVE 정본과 다시 대조. 미등록 TPL·supplement ID는 source에 삽입하지 않고 existing base RPM FAMILY의 명시 selectionRule를 사용한다.",
+    "curriculumScope": "2022/M1-1; 시험지 파일 등록경로2final은 보존"
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+      "topic": "문자식 기호 생략",
+      "primaryReason": "문자식의 곱셈·나눗셈 기호 생략 규칙을 적용한다. 같은 문자의 곱은 거듭제곱으로 나타내고 계수와 문자의 표기 순서를 확인한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "문자의 사용",
+          "L4": "곱셈·나눗셈 기호 생략"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#1",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-141"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "곱셈·나눗셈 기호 생략"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "문자식의 곱셈·나눗셈 기호 생략 규칙을 적용한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "같은 문자의 곱은 거듭제곱으로 나타내고 계수와 문자의 표기 순서를 확인한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+      "topic": "수량의 문자식",
+      "primaryReason": "나머지를 제외한 수량을 등분한 양으로 나타낸다. 전체 수량에서 남은 양을 뺀 뒤 사람 수로 나눈 문자식을 고른다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "문자의 사용",
+          "L4": "문자로 수량 나타내기"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#2",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "REINTERPRETATION",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-140"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "나머지를 제외한 수량을 등분한 양으로 나타낸다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "전체 수량에서 남은 양을 뺀 뒤 사람 수로 나눈 문자식을 고른다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+      "topic": "식의 값 대입",
+      "primaryReason": "주어진 수를 문자식에 대입해 식의 값을 읽는다. 문자 자리에 주어진 수를 넣고 식에 정해진 연산을 수행한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "식의 값",
+          "L4": "대입하여 식의 값 구하기"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#3",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-142"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "식의 값",
+            "l4": "대입하여 식의 값 구하기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "주어진 수를 문자식에 대입해 식의 값을 읽는다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "문자 자리에 주어진 수를 넣고 식에 정해진 연산을 수행한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+      "topic": "음수 대입과 연산순서",
+      "primaryReason": "음수인 문자값을 식에 대입하고 지수와 연산 순서를 적용한다. 각 문자의 주어진 값을 대입한 뒤 거듭제곱·부호·나눗셈을 식의 순서대로 처리한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "식의 값",
+          "L4": "대입하여 식의 값 구하기"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#4",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-142"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "식의 값",
+            "l4": "대입하여 식의 값 구하기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "음수인 문자값을 식에 대입하고 지수와 연산 순서를 적용한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "각 문자의 주어진 값을 대입한 뒤 거듭제곱·부호·나눗셈을 식의 순서대로 처리한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+      "topic": "항·계수·상수항",
+      "primaryReason": "일차식의 항·계수·상수항을 부호를 포함해 구별한다. 항의 부호와 생략된 문자 계수를 함께 읽어 진술을 판별한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "일차식",
+          "L4": "일차식과 계수·상수항"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/cross/25_동산중_2학기_기말_중1_기출-independent.json",
+          "sha256": "0f62e8370f2c60242b29b7b5b76b46493bbb5ba3bf04fda2902474f1674ba692",
+          "sample": 5,
+          "status": "ACCEPTED"
+        }
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#5",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-144"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식",
+            "l4": "일차식과 계수·상수항"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "일차식의 항·계수·상수항을 부호를 포함해 구별한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "항의 부호와 생략된 문자 계수를 함께 읽어 진술을 판별한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+      "topic": "동류항 정리",
+      "primaryReason": "동류항을 찾아 같은 종류의 항끼리 정리한다. 문자항과 상수항을 각각 묶어 식을 간단히 한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "일차식",
+          "L4": "동류항 정리"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": {
+          "path": "/workspace/scratch/64695b8ede31/root-review/25_동산중_2학기_기말_중1_기출-difficulty-independent.json",
+          "sha256": "5f6c9cafe0fa090f5cb19fc95bb4d05874a01eae6caf427c94683a16ffebd56d",
+          "sample": 6,
+          "status": "ACCEPTED"
+        }
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#6",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-145"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식",
+            "l4": "동류항 정리"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "동류항을 찾아 같은 종류의 항끼리 정리한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "문자항과 상수항을 각각 묶어 식을 간단히 한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+      "topic": "일차식의 뺄셈",
+      "primaryReason": "빼는 괄호의 부호를 각 항에 적용하고 동류항을 정리한다. 괄호 앞의 음수 부호를 분배한 뒤 문자항과 상수항을 모은다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "일차식의 계산",
+          "L4": "괄호가 있는 일차식 계산"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#7",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-147"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "빼는 괄호의 부호를 각 항에 적용하고 동류항을 정리한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "괄호 앞의 음수 부호를 분배한 뒤 문자항과 상수항을 모은다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+      "topic": "일차식의 수 나눗셈",
+      "primaryReason": "일차식을 수로 나누는 연산을 역수의 곱으로 바꿔 각 항에 적용한다. 나누는 분수의 역수를 일차식의 모든 항에 곱한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "일차식의 계산",
+          "L4": "괄호가 있는 일차식 계산"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "추가 독립 개념 없이 primary 유형 안의 절차로 해결한다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#8",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-147"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "일차식을 수로 나누는 연산을 역수의 곱으로 바꿔 각 항에 적용한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "나누는 분수의 역수를 일차식의 모든 항에 곱한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "topic": "분수계수 일차식의 뺄셈",
+      "primaryReason": "분모가 다른 일차식을 통분하고 괄호 앞 부호를 적용한 뒤 동류항을 정리한다. 공통 분모 위에서 빼는 식 전체의 부호를 바꾸어 일차항과 상수항을 각각 합친다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "일차식의 계산",
+          "L4": "괄호가 있는 일차식 계산"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "통분·부호 적용·동류항 정리는 주유형 내부 계산 단계다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "통분·괄호제거는 정해진 직접 절차이며 조건 관계에 따른 풀이 전략 선택이 없어3→2.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#9",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-147"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "일차식의 계산",
+            "l4": "괄호가 있는 일차식 계산"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "분모가 다른 일차식을 통분하고 괄호 앞 부호를 적용한 뒤 동류항을 정리한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "공통 분모 위에서 빼는 식 전체의 부호를 바꾸어 일차항과 상수항을 각각 합친다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "topic": "구매·거스름돈 관계식",
+      "primaryReason": "구매 수량과 단가로 지불 금액을 나타내고 거스름돈 관계를 등식으로 번역한다. 낸 돈에서 총 물건값을 뺀 양을 제시된 거스름돈과 같게 놓는다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 활용",
+          "L3": "생활 속 관계식",
+          "L4": "요금·가격"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 활용"
+        }
+      },
+      "integrationReason": "문장 관계를 등식으로 표현하는 것은 주유형의 정의이며 별도 개념 결과의 재해석이 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#10",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "REINTERPRETATION",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-161"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 활용",
+            "l3": "생활 속 관계식",
+            "l4": "요금·가격"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "구매 수량과 단가로 지불 금액을 나타내고 거스름돈 관계를 등식으로 번역한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "낸 돈에서 총 물건값을 뺀 양을 제시된 거스름돈과 같게 놓는다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "topic": "방정식 해의 의미",
+      "primaryReason": "주어진 후보 해를 각 방정식에 대입하여 등식의 성립 여부를 판정한다. 미지수 자리에 지정된 값을 넣은 좌변과 우변의 일치를 확인한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이",
+          "L3": "등식과 방정식",
+          "L4": "방정식의 해"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이"
+        }
+      },
+      "integrationReason": "선지마다 같은 대입을 반복할 뿐 경우·범위·조건별 풀이 분기가 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": {
+          "path": "/workspace/scratch/64695b8ede31/root-review/25_동산중_2학기_기말_중1_기출-difficulty-independent.json",
+          "sha256": "5f6c9cafe0fa090f5cb19fc95bb4d05874a01eae6caf427c94683a16ffebd56d",
+          "sample": 11,
+          "status": "ACCEPTED"
+        }
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#11",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-149"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "등식과 방정식",
+            "l4": "방정식의 해"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "주어진 후보 해를 각 방정식에 대입하여 등식의 성립 여부를 판정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "미지수 자리에 지정된 값을 넣은 좌변과 우변의 일치를 확인한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "topic": "등식변형의 성질",
+      "primaryReason": "표시된 등식 변형 단계에 대응하는 양변의 동일 연산과 이항의 성질을 판정한다. 항 이동을 양변의 같은 수 빼기와 연결하고 계수 제거를 같은 0이 아닌 수로 나누는 조작으로 구분한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이",
+          "L3": "등식과 방정식",
+          "L4": "등식의 성질"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이"
+        }
+      },
+      "integrationReason": "각 변형의 성질을 대조할 뿐 조건에 따른 경우 나누기가 아니다.",
+      "conditionReason": "각 단계에서 성립하는 성질을 빠짐없이 고르는 형식이며 변수에 대한 추가 영역제약은 없다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#12",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-148"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "등식과 방정식",
+            "l4": "등식의 성질"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "표시된 등식 변형 단계에 대응하는 양변의 동일 연산과 이항의 성질을 판정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "항 이동을 양변의 같은 수 빼기와 연결하고 계수 제거를 같은 0이 아닌 수로 나누는 조작으로 구분한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "topic": "괄호가 있는 일차방정식",
+      "primaryReason": "괄호가 있는 일차방정식을 전개하고 이항과 동류항 정리로 미지수의 계수를 분리한다. 분배한 식의 미지수 항을 한쪽으로 모은 뒤 계수로 나눈다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이",
+          "L3": "일차방정식의 풀이",
+          "L4": "괄호·분수·소수가 있는 방정식"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이"
+        }
+      },
+      "integrationReason": "전개·이항·계수 나눗셈은 주유형 자체의 풀이 골격이다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#13",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-151"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "일차방정식의 풀이",
+            "l4": "괄호·분수·소수가 있는 방정식"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "괄호가 있는 일차방정식을 전개하고 이항과 동류항 정리로 미지수의 계수를 분리한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "분배한 식의 미지수 항을 한쪽으로 모은 뒤 계수로 나눈다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "topic": "공통해로 계수 결정",
+      "primaryReason": "두 일차방정식의 공통 해를 첫 식에서 정한 뒤 두 번째 식에 대입해 매개변수를 정한다. 해가 같다는 조건으로 두 번째 방정식의 미지수 값을 고정하고 매개변수에 관한 일차식으로 바꾼다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이",
+          "L3": "해와 조건",
+          "L4": "계수 조건 결정"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 풀이"
+        }
+      },
+      "integrationReason": "공통 해에서 계수를 정하는 단방향 과정은 COEFFICIENT_RECOVERY에 포함된다. 별도 개념들이 상호 의존하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "한 식의 해를 다른 식에 고정해 계수의 방정식으로 전환하는 표준 구조3. legacy 상 경계 독립재검.",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "independentStatus": "ACCEPTED",
+        "independentReview": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/cross/25_동산중_2학기_기말_중1_기출-independent.json",
+          "sha256": "0f62e8370f2c60242b29b7b5b76b46493bbb5ba3bf04fda2902474f1674ba692",
+          "sample": 14,
+          "status": "ACCEPTED"
+        }
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#14",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-153"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 풀이",
+            "l3": "해와 조건",
+            "l4": "계수 조건 결정"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "두 일차방정식의 공통 해를 첫 식에서 정한 뒤 두 번째 식에 대입해 매개변수를 정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "해가 같다는 조건으로 두 번째 방정식의 미지수 값을 고정하고 매개변수에 관한 일차식으로 바꾼다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f30518505fe44d01d57555fd9096bb0f742b25b9bceb13f6666031e8bbdf06fe",
+      "topic": "좌표 읽기",
+      "primaryReason": "좌표평면에 표시된 점의 가로·세로 좌표를 순서대로 읽어 제시된 순서쌍과 대조한다. 점에서 두 축으로 수직 투영하여 x좌표를 먼저, y좌표를 다음으로 읽는다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "좌표평면",
+          "L4": "점의 좌표 읽기"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        }
+      },
+      "integrationReason": "같은 좌표 읽기로 여러 선지를 대조할 뿐 조건별 경우 분기가 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#15",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "COORDINATE_PLANE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-163"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "좌표평면",
+            "l4": "점의 좌표 읽기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "좌표평면에 표시된 점의 가로·세로 좌표를 순서대로 읽어 제시된 순서쌍과 대조한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "점에서 두 축으로 수직 투영하여 x좌표를 먼저, y좌표를 다음으로 읽는다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9bb9b64b29ed2301706ca6e221d28002de41dbb6616cf151ac5065ba9e969d77",
+      "topic": "원점·좌표축·사분면",
+      "primaryReason": "원점·좌표 순서·좌표축 위 점·사분면의 정의를 그림과 대조해 진술을 판정한다. 좌표 순서와 축 위에서 0이 되는 좌표, 좌표 부호에 따른 사분면을 구분한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "좌표평면",
+          "L4": "점의 좌표 읽기"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        }
+      },
+      "integrationReason": "여러 진술을 기본 정의로 검사할 뿐 조건에 따라 풀이 경로가 나뉘지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#16",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "COORDINATE_PLANE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-163"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "좌표평면",
+            "l4": "점의 좌표 읽기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "원점·좌표 순서·좌표축 위 점·사분면의 정의를 그림과 대조해 진술을 판정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "좌표 순서와 축 위에서 0이 되는 좌표, 좌표 부호에 따른 사분면을 구분한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1",
+      "topic": "사분면 부호와 좌표식",
+      "primaryReason": "주어진 사분면에서 두 문자의 부호를 정하고 변환된 두 좌표식의 부호로 새 사분면을 판정한다. 좌표의 수치 계산이나 대칭이동이 아니라 부호 조건을 좌표식에 전파하는 단계가 핵심이다.",
+      "axes": {
+        "rpmL1L4": "GAP",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "CHANGE",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "RPM_LEAF_GAP",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "",
+          "L4": ""
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        },
+        "note": "사분면 조건으로 좌표식의 부호를 판정하는 native 유형은 정확하지만 locked RPM의 점의 좌표 읽기·대칭인 점의 좌표에 정확한 세부 leaf가 없다. FAMILY 후보를 exact로 가장하지 않는다."
+      },
+      "integrationReason": "부호를 정하고 새 사분면을 판정하는 순서는 현재 primary TPL 자체의 풀이 골격이다. 독립된 두 개념의 순차 결합으로 세지 않는다.",
+      "conditionReason": "제4사분면의 a>0,b<0이 변환 좌표의 부호를 결정하므로 COND_POSITIVE/NEGATIVE를 보완한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "NATIVE_EXACT_RPM_LEAF_DEBT",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#17",
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_POSITIVE",
+            "COND_NEGATIVE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "COORDINATE_PLANE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "주어진 사분면에서 두 문자의 부호를 정하고 변환된 두 좌표식의 부호로 새 사분면을 판정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "좌표의 수치 계산이나 대칭이동이 아니라 부호 조건을 좌표식에 전파하는 단계가 핵심이다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_530b6b53eff5428ff17f5f160cf18275bd5f245b9dcb80cdd46b610f0e48ad2b",
+      "topic": "속력 상황의 그래프",
+      "primaryReason": "문장에 제시된 속력의 증가와 일정 구간을 시간-속력 그래프의 변화 모양으로 대응시킨다. 증가 구간 뒤 수평 구간이 이어지는지 읽어 상황과 그래프를 연결한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "그래프",
+          "L4": "상황을 그래프로 나타내기"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        }
+      },
+      "integrationReason": "상황을 그래프로 옮기는 것 하나가 primary이고, 시간 순서가 있다는 사실만으로 SEQUENTIAL 결합이 생기지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "정의·표준 절차를 직접 적용하고 전략 선택 부담이 없어1을 유지한다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#18",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "GRAPH_RELATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-165"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "상황을 그래프로 나타내기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "문장에 제시된 속력의 증가와 일정 구간을 시간-속력 그래프의 변화 모양으로 대응시킨다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "증가 구간 뒤 수평 구간이 이어지는지 읽어 상황과 그래프를 연결한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_1a11efeba9bb9038e1dd00cd7761912209c47e790038b4c373ecbee99a46297f",
+      "topic": "주기 그래프 해석",
+      "primaryReason": "주기적으로 반복되는 높이-시간 그래프에서 최고 높이, 특정 시각의 높이, 같은 높이의 횟수와 반복 간격을 읽어 진술을 판정한다. 각 진술을 동일한 그래프의 좌표·교점·반복 간격과 비교한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "그래프",
+          "L4": "그래프 해석"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        }
+      },
+      "integrationReason": "여러 객관식 진술의 참·거짓을 확인하는 것은 미지수의 경우·범위를 나누는 수학적 CASE_BRANCH가 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#19",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "GRAPH_RELATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-166"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "주기적으로 반복되는 높이-시간 그래프에서 최고 높이, 특정 시각의 높이, 같은 높이의 횟수와 반복 간격을 읽어 진술을 판정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "각 진술을 동일한 그래프의 좌표·교점·반복 간격과 비교한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_105e1a9e66ef8eb61ae37b8ad256d82b117ebeb6d50230a04f353cbc3d27af3e",
+      "topic": "상황의 정비례 판별",
+      "primaryReason": "생활 상황의 두 수량 관계를 식으로 표현하고 원점을 지나는 일정한 상수배 관계인지 판별한다. 정비례 관계식의 형태와 비교하여 정비례인 상황만 고른다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "정비례와 반비례",
+          "L3": "정비례",
+          "L4": "정비례 관계식"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "정비례와 반비례"
+        }
+      },
+      "integrationReason": "선택지별로 같은 정비례 판정 기준을 적용하는 일은 CASE_BRANCH가 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#20",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "GRAPH_RELATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-167"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "정비례와 반비례",
+            "l3": "정비례",
+            "l4": "정비례 관계식"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "생활 상황의 두 수량 관계를 식으로 표현하고 원점을 지나는 일정한 상수배 관계인지 판별한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "정비례 관계식의 형태와 비교하여 정비례인 상황만 고른다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc",
+      "topic": "정비례·반비례의 교점",
+      "primaryReason": "두 그래프에 주어진 공통점을 정비례식과 반비례식에 각각 대입해 상수를 결정한다. 같은 좌표가 두 식을 모두 만족한다는 점을 이용하여 두 상수를 독립적으로 얻는다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "정비례와 반비례",
+          "L3": "관계 해석",
+          "L4": "그래프에서 식 구하기"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "정비례와 반비례"
+        }
+      },
+      "integrationReason": "두 상수는 주어진 같은 점에서 각각 구할 수 있고 서로의 결과를 알아야 다른 상수를 구하는 상호 의존성이 없다. 두 관계를 함께 다루는 일은 이미 current primary TPL 안에 있다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#21",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "GRAPH_RELATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-171"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "정비례와 반비례",
+            "l3": "관계 해석",
+            "l4": "그래프에서 식 구하기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "두 그래프에 주어진 공통점을 정비례식과 반비례식에 각각 대입해 상수를 결정한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "같은 좌표가 두 식을 모두 만족한다는 점을 이용하여 두 상수를 독립적으로 얻는다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "topic": "단위량의 총량식과 평가",
+      "primaryReason": "표의 기준량을 단위량으로 바꾸어 두 섭취량의 총함량을 문자식으로 구성한 뒤, 다음 소문항에서 제시량을 그 식에 대입한다. 단위량과 섭취량의 곱을 합쳐 수량식을 작성하고 그 식을 실제 입력량 평가에 사용한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "GAP",
+        "template": "GAP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "KEEP",
+        "legacyLevel": "KEEP",
+        "difficulty": "KEEP",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": false,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산",
+          "L3": "문자의 사용",
+          "L4": "문자로 수량 나타내기"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "문자의 사용과 식의 계산"
+        }
+      },
+      "integrationReason": "명시적 두 소문항이 앞서 작성한 문자식을 뒤의 대입 계산에 사용하는 순서이므로 기존 SEQUENTIAL을 유지한다. Root도 실제 발문·풀이와 표를 읽고 이 두 소문항 관계를 확인했다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryRecordId": "M1-RPM-140-UNIT-QUANTITY-EVALUATION-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산",
+          "l3": "문자의 사용",
+          "l4": "문자로 수량 나타내기"
+        },
+        "curriculumKey": "2022",
+        "courseKey": "M1-1"
+      },
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#22",
+      "sourceChanges": {
+        "conceptClusterKey": {
+          "before": null,
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-140"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "문자의 사용",
+            "l4": "문자로 수량 나타내기"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "표의 기준량을 단위량으로 바꾸어 두 섭취량의 총함량을 문자식으로 구성한 뒤, 다음 소문항에서 제시량을 그 식에 대입한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "단위량과 섭취량의 곱을 합쳐 수량식을 작성하고 그 식을 실제 입력량 평가에 사용한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df",
+      "topic": "거리·속력·시간차 방정식",
+      "primaryReason": "같은 거리를 미지수로 두고 각 이동 시간을 거리/속력으로 표현하여 도착 시간 차 조건을 일차방정식으로 모델링한다. 속력이 다른 두 이동의 시간 차를 같은 거리 미지수의 관계식으로 나타낸다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+        "parentMatch": true,
+        "exactBinding": false,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "문자와 식",
+          "L2": "일차방정식의 활용",
+          "L3": "속력·시간·거리",
+          "L4": "거리 관계식"
+        },
+        "effectiveParent": {
+          "L1": "문자와 식",
+          "L2": "일차방정식의 활용"
+        }
+      },
+      "integrationReason": "생활 문장을 시간·거리 관계식으로 모델링하는 작업은 primary 자체이므로 이를 다시 REINTERPRETATION 결합으로 중복 집계하지 않는다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "조건 관계를 식으로 연결하는 표준 전략 선택이 필요하다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "REGISTRATION_PENDING",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#23",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "REINTERPRETATION",
+          "after": "NONE"
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-156"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "문자와 식",
+            "midUnit": "일차방정식의 활용",
+            "l3": "속력·시간·거리",
+            "l4": "거리 관계식"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "같은 거리를 미지수로 두고 각 이동 시간을 거리/속력으로 표현하여 도착 시간 차 조건을 일차방정식으로 모델링한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "속력이 다른 두 이동의 시간 차를 같은 거리 미지수의 관계식으로 나타낸다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93",
+      "topic": "거리·시간 그래프의 사실",
+      "primaryReason": "시간-거리 그래프의 시작점과 표시된 좌표를 읽고 상황에서 확인되는 사실을 문장으로 서술한다. 출발점·도달점의 시간과 거리를 직접 읽어 사실을 진술한다.",
+      "axes": {
+        "rpmL1L4": "CHANGE",
+        "primaryParent": "KEEP",
+        "problemType": "KEEP",
+        "template": "KEEP",
+        "CC": "KEEP",
+        "Condition": "KEEP",
+        "Integration": "CHANGE",
+        "legacyLevel": "KEEP",
+        "difficulty": "CHANGE",
+        "fourSlot": "NEW_DIRECT_REVIEW"
+      },
+      "nativeEvidence": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
+        "parentMatch": true,
+        "exactBinding": true,
+        "semanticFit": true,
+        "validation": "VALIDATED",
+        "errors": []
+      },
+      "rpmEvidence": {
+        "status": "EXACT",
+        "basePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M1-1",
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프",
+          "L3": "그래프",
+          "L4": "그래프 해석"
+        },
+        "effectiveParent": {
+          "L1": "좌표평면과 그래프",
+          "L2": "좌표와 그래프"
+        }
+      },
+      "integrationReason": "독립적인 사실 둘을 같은 그래프에서 읽는 것은 선행 결과를 다른 개념에 넣는 SEQUENTIAL 구조가 아니다.",
+      "conditionReason": "일반 도형 수치만으로 별도 COND를 만들지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 해석 또는 익숙한 전처리를 거치는 명확한 표준 절차이다.",
+        "compatibility": "NORMAL",
+        "independentStatus": "NOT_REQUIRED",
+        "independentReview": null
+      },
+      "proposedMetadata": null,
+      "registrationStatus": "BRANCH_METADATA_PENDING_ROOT_INTEGRATION",
+      "identitySourceFingerprintMatch": false,
+      "registrationFingerprintGate": "HOLD_SOURCE_FINGERPRINT_MISMATCH",
+      "trueUnjudged": null,
+      "reuse": "docs/operations/m1-meta-review-20261113/04-dongsan-semantic-review.json#24",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "conceptClusterKey": {
+          "before": null,
+          "after": "GRAPH_RELATION"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-166"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          }
+        },
+        "courseKey": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "primaryMethod": {
+          "before": null,
+          "after": "시간-거리 그래프의 시작점과 표시된 좌표를 읽고 상황에서 확인되는 사실을 문장으로 서술한다."
+        },
+        "decisiveStep": {
+          "before": null,
+          "after": "출발점·도달점의 시간과 거리를 직접 읽어 사실을 진술한다."
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2022"
+        }
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "kind": "EXACT_BINDING_COURSE_SPELLING",
+      "status": "PROPOSAL_ONLY",
+      "reason": "활성 native와 source의 중1 수학을 유지하고 中1 수학으로 오기된4개binding을 별도 등록 경로에서 정정해야 한다.",
+      "rows": [
+        {
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "parent": {
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+          },
+          "before": "中1 수학",
+          "after": "중1 수학",
+          "supportingQuestionUids": [
+            "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+            "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+            "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "parent": {
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+          },
+          "before": "中1 수학",
+          "after": "중1 수학",
+          "supportingQuestionUids": [
+            "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+            "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad"
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+          "parent": {
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION"
+          },
+          "before": "中1 수학",
+          "after": "중1 수학",
+          "supportingQuestionUids": [
+            "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+            "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+            "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+            "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+            "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70"
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+          "parent": {
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD"
+          },
+          "before": "中1 수학",
+          "after": "중1 수학",
+          "supportingQuestionUids": [
+            "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+            "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "NEW_TEMPLATE_EXISTING_PT",
+      "status": "PROPOSAL_ONLY",
+      "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION",
+      "parent": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "definition": "기준량당 수량을 단위량으로 환산하여 여러 문자량의 총량식을 세우고, 주어진 문자 값을 그 식에 대입하여 값을 구한다.",
+      "skeleton": "기준량당 수량을 단위량으로 바꾼다 → 각 문자량과 단위량의 곱을 더하여 총량식을 구성한다 → 앞서 만든 식에 제시된 문자 값을 대입한다 → 같은 총량의 단위로 식의 값을 나타낸다.",
+      "distinguish": "생활수량의 번역만 평가하는 기존 WORD_QUANTITY_TRANSLATION과 달리 단위량 환산·총량식 구성 후 같은 식의 값 평가가 연속으로 요구된다.",
+      "supportingQuestionUids": [
+        "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+      ],
+      "reusedProposalPath": "docs/operations/m1-meta-review-20261113/04-dongsan-q22-native-proposal.json"
+    },
+    {
+      "kind": "RPM_LEAF_GAP",
+      "ordinals": [
+        17
+      ],
+      "meaning": "사분면 조건으로 좌표식의 부호를 판정하는 native 유형은 정확하지만 locked RPM의 점의 좌표 읽기·대칭인 점의 좌표에 정확한 세부 leaf가 없다. FAMILY 후보를 exact로 가장하지 않는다.",
+      "supportingQuestionUids": [
+        "qid_v1_a522a6981ee48b611c9394519acfe249450312545fcf0669ba4928e79b88ccc1"
+      ],
+      "status": "MEANING_JUDGED_PUBLISHER_LEAF_DEBT"
+    }
+  ],
+  "contentDebt": [],
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/1bI-WMfKfdPs_IHmzjgJFtLBki7lbP_Z5/view?usp=drivesdk",
+    "fileId": "1bI-WMfKfdPs_IHmzjgJFtLBki7lbP_Z5",
+    "sha256": "3886823aa8ac0861639d8e5630939ddeb6abbde6116bfdb8b7192a8890c7999f",
+    "readbackVerified": true,
+    "originalSourceBlob": "d73e0e5adb3b2cccd1ac37291e96587c9fe176d1",
+    "protectedPayloadSame": true
+  },
+  "independent": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_기말_중1_기출.json",
+      "sha256": "dd8e8911199899cdc55dec68eccd7a06ca8caad7f1172836c6454702f9c2c6ed",
+      "reviewer": "/root/meta_c",
+      "status": "ACCEPTED_AFTER_COMPATIBILITY_READBACK"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_기말_중1_기출-supplement-1.json",
+      "sha256": "5f6c9cafe0fa090f5cb19fc95bb4d05874a01eae6caf427c94683a16ffebd56d",
+      "reviewer": "GPT_ROOT_64695B8EDE31",
+      "status": "REVIEWED"
+    }
+  ],
+  "independentInputBinding": {
+    "status": "SAMPLE_SCOPE_REVIEWED",
+    "reviewedRawSha256": null,
+    "currentRawSha256": "3886823aa8ac0861639d8e5630939ddeb6abbde6116bfdb8b7192a8890c7999f"
+  },
+  "validation": {
+    "syntax": "PASS",
+    "uidOrder": "PASS",
+    "protectedFieldChanges": 0,
+    "changedQuestions": 24,
+    "raw4slot": {
+      "fail": [],
+      "warn": [
+        "#1 only 4 distinct terms",
+        "#2 only 4 distinct terms",
+        "#3 only 4 distinct terms",
+        "#3 method has 1 term",
+        "#6 only 3 distinct terms",
+        "#7 only 3 distinct terms",
+        "#8 only 4 distinct terms",
+        "#9 only 4 distinct terms",
+        "#11 only 4 distinct terms",
+        "#13 only 4 distinct terms",
+        "#15 only 3 distinct terms",
+        "#20 only 3 distinct terms"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 135
+      }
+    },
+    "compactParity": "PASS",
+    "sourceBlobRebinding": "EXACT"
+  },
+  "scopeLimits": [
+    "No full mathematical R1/R2/R3 performed.",
+    "Shared registration, main merge and deployment are outside this stage."
+  ]
+}
