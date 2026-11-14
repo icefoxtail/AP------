@@ -1,34 +1,487 @@
 {
   "schemaVersion": "archive-meta-4slot-compact-v1",
   "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
-  "sourceGitBlobSha": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+  "sourceGitBlobSha": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
   "dictionaryVersion": "term-dict-v1.5-2026-11-04",
-  "evidence": {"branch":"review/m1-s2-meta-b01-b-20261114","commit":"d6576ac7f686c8ed6eb187f14a7b4eac3554f016","path":"docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json"},
-  "reviewedBy": {"agent":"GPT_ROOT_3362DD3EDC06_B; independent reviewer GPT_PREREQ_AUDIT","at":"2026-11-14","sampled":[10,15,23]},
+  "evidence": {
+    "branch": "review/m1-s2-meta-b01-b-20261114",
+    "commit": "d6576ac7f686c8ed6eb187f14a7b4eac3554f016",
+    "path": "docs/operations/m1-s2-meta-b01-b-20261114/04-palma-mid-review.json",
+    "followups": [
+      {
+        "path": "docs/operations/m1-s2-meta-full-20261114/followups/25-palma-mid-q15.json",
+        "sha256": "cb824299ec0ce06939b60cd0476cb296eea9576cc8558028edb57df64503a84d"
+      }
+    ],
+    "targetedIndependent": {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/25-palma-mid-q15-original.json",
+      "sha256": "8db6f268c519a6f323bca1bca9ac84110fdb4c3346da6bc932f08e5afacb4a1c",
+      "ordinal": 15
+    }
+  },
+  "reviewedBy": {
+    "agent": "GPT_ROOT_3362DD3EDC06_B; independent reviewer GPT_PREREQ_AUDIT",
+    "at": "2026-11-14",
+    "sampled": [
+      10,
+      15,
+      23
+    ]
+  },
   "items": [
-    {"ordinal":1,"format":"단일 정답","given":[171,603],"goal":[286],"method":[311,329,320],"condition":[],"candidates":[]},
-    {"ordinal":2,"format":"옳은 것 고르기","given":[142,143],"goal":[132],"method":[143,145,144],"condition":[627],"candidates":[]},
-    {"ordinal":3,"format":"단일 정답","given":[188,144,289],"goal":[215],"method":[188,286,64],"condition":[],"candidates":[]},
-    {"ordinal":4,"format":"보기(ㄱㄴㄷ) 판정","given":[178,143],"goal":[132],"method":[188,718,216],"condition":[],"candidates":[]},
-    {"ordinal":5,"format":"단일 정답","given":[181,718,289],"goal":[174],"method":[344,175,64],"condition":[],"candidates":[]},
-    {"ordinal":6,"format":"보기(ㄱㄴㄷ) 판정","given":[147,143],"goal":[307],"method":[405,180,243],"condition":[373],"candidates":[]},
-    {"ordinal":7,"format":"단일 정답","given":[173,601,329],"goal":[129,286],"method":[347,180,405,323],"condition":[],"candidates":[]},
-    {"ordinal":8,"format":"단일 정답","given":[143,174],"goal":[286],"method":[180,406],"condition":[180],"candidates":[]},
-    {"ordinal":9,"format":"옳지 않은 것 고르기","given":[158,134],"goal":[29],"method":[347,134],"condition":[],"candidates":[]},
-    {"ordinal":10,"format":"옳지 않은 것 고르기","given":[174,134],"goal":[132],"method":[153,154],"condition":[],"candidates":[]},
-    {"ordinal":11,"format":"보기(ㄱㄴㄷ) 판정","given":[158],"goal":[318],"method":[141,409,318],"condition":[],"candidates":[]},
-    {"ordinal":12,"format":"옳은 것 고르기","given":[158,328,174],"goal":[723,394],"method":[609,723,714],"condition":[],"candidates":[]},
-    {"ordinal":13,"format":"단일 정답","given":[193,158],"goal":[286],"method":[612,611,714],"condition":[],"candidates":[]},
-    {"ordinal":14,"format":"단일 정답","given":[166,160],"goal":[174,286],"method":[159,714,346],"condition":[],"candidates":[]},
-    {"ordinal":15,"format":"단일 정답","given":[174],"goal":[174,286],"method":[714],"condition":[],"candidates":[]},
-    {"ordinal":16,"format":"단일 정답","given":[169,289],"goal":[168,132],"method":[406,715,578],"condition":[],"candidates":[]},
-    {"ordinal":17,"format":"단일 정답","given":[158,174,346],"goal":[174],"method":[714,180,159],"condition":[180],"candidates":[]},
-    {"ordinal":18,"format":"단일 정답","given":[168,310],"goal":[714,286],"method":[310,714],"condition":[],"candidates":[]},
-    {"ordinal":19,"format":"단일 정답","given":[152,142],"goal":[144,129],"method":[371,375],"condition":[357],"candidates":[]},
-    {"ordinal":20,"format":"단일 정답","given":[604,143],"goal":[174],"method":[715,180],"condition":[180],"candidates":[]},
-    {"ordinal":21,"format":"서술","given":[158,174],"goal":[174],"method":[714,175],"condition":[],"candidates":[]},
-    {"ordinal":22,"format":"서술","given":[158,160],"goal":[158,193,723],"method":[160,609,723],"condition":[],"candidates":[]},
-    {"ordinal":23,"format":"서술","given":[169,715,310],"goal":[286,129],"method":[715,310,335],"condition":[],"candidates":[]},
-    {"ordinal":24,"format":"소문항 묶음","given":[169,310,335],"goal":[168,714,715],"method":[375,64,714,715],"condition":[],"candidates":[]}
+    {
+      "ordinal": 1,
+      "format": "단일 정답",
+      "given": [
+        171,
+        603
+      ],
+      "goal": [
+        286
+      ],
+      "method": [
+        311,
+        329,
+        320
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 2,
+      "format": "옳은 것 고르기",
+      "given": [
+        142,
+        143
+      ],
+      "goal": [
+        132
+      ],
+      "method": [
+        143,
+        145,
+        144
+      ],
+      "condition": [
+        627
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 3,
+      "format": "단일 정답",
+      "given": [
+        188,
+        144,
+        289
+      ],
+      "goal": [
+        215
+      ],
+      "method": [
+        188,
+        286,
+        64
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 4,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "given": [
+        178,
+        143
+      ],
+      "goal": [
+        132
+      ],
+      "method": [
+        188,
+        718,
+        216
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 5,
+      "format": "단일 정답",
+      "given": [
+        181,
+        718,
+        289
+      ],
+      "goal": [
+        174
+      ],
+      "method": [
+        344,
+        175,
+        64
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 6,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "given": [
+        147,
+        143
+      ],
+      "goal": [
+        307
+      ],
+      "method": [
+        405,
+        180,
+        243
+      ],
+      "condition": [
+        373
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 7,
+      "format": "단일 정답",
+      "given": [
+        173,
+        601,
+        329
+      ],
+      "goal": [
+        129,
+        286
+      ],
+      "method": [
+        347,
+        180,
+        405,
+        323
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 8,
+      "format": "단일 정답",
+      "given": [
+        143,
+        174
+      ],
+      "goal": [
+        286
+      ],
+      "method": [
+        180,
+        406
+      ],
+      "condition": [
+        180
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 9,
+      "format": "옳지 않은 것 고르기",
+      "given": [
+        158,
+        134
+      ],
+      "goal": [
+        29
+      ],
+      "method": [
+        347,
+        134
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 10,
+      "format": "옳지 않은 것 고르기",
+      "given": [
+        174,
+        134
+      ],
+      "goal": [
+        132
+      ],
+      "method": [
+        153,
+        154
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 11,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "given": [
+        158
+      ],
+      "goal": [
+        318
+      ],
+      "method": [
+        141,
+        409,
+        318
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 12,
+      "format": "옳은 것 고르기",
+      "given": [
+        158,
+        328,
+        174
+      ],
+      "goal": [
+        723,
+        394
+      ],
+      "method": [
+        609,
+        723,
+        714
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 13,
+      "format": "단일 정답",
+      "given": [
+        193,
+        158
+      ],
+      "goal": [
+        286
+      ],
+      "method": [
+        612,
+        611,
+        714
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 14,
+      "format": "단일 정답",
+      "given": [
+        166,
+        160
+      ],
+      "goal": [
+        174,
+        286
+      ],
+      "method": [
+        159,
+        714,
+        346
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 15,
+      "format": "단일 정답",
+      "given": [
+        174
+      ],
+      "goal": [
+        174,
+        286
+      ],
+      "method": [
+        714
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 16,
+      "format": "단일 정답",
+      "given": [
+        169,
+        289
+      ],
+      "goal": [
+        168,
+        132
+      ],
+      "method": [
+        406,
+        715,
+        578
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 17,
+      "format": "단일 정답",
+      "given": [
+        158,
+        174,
+        346
+      ],
+      "goal": [
+        174
+      ],
+      "method": [
+        714,
+        180,
+        159
+      ],
+      "condition": [
+        180
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 18,
+      "format": "단일 정답",
+      "given": [
+        168,
+        310
+      ],
+      "goal": [
+        714,
+        286
+      ],
+      "method": [
+        310,
+        714
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 19,
+      "format": "단일 정답",
+      "given": [
+        152,
+        142
+      ],
+      "goal": [
+        144,
+        129
+      ],
+      "method": [
+        371,
+        375
+      ],
+      "condition": [
+        357
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 20,
+      "format": "단일 정답",
+      "given": [
+        604,
+        143
+      ],
+      "goal": [
+        174
+      ],
+      "method": [
+        715,
+        180
+      ],
+      "condition": [
+        180
+      ],
+      "candidates": []
+    },
+    {
+      "ordinal": 21,
+      "format": "서술",
+      "given": [
+        158,
+        174
+      ],
+      "goal": [
+        174
+      ],
+      "method": [
+        714,
+        175
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 22,
+      "format": "서술",
+      "given": [
+        158,
+        160
+      ],
+      "goal": [
+        158,
+        193,
+        723
+      ],
+      "method": [
+        160,
+        609,
+        723
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 23,
+      "format": "서술",
+      "given": [
+        169,
+        715,
+        310
+      ],
+      "goal": [
+        286,
+        129
+      ],
+      "method": [
+        715,
+        310,
+        335
+      ],
+      "condition": [],
+      "candidates": []
+    },
+    {
+      "ordinal": 24,
+      "format": "소문항 묶음",
+      "given": [
+        169,
+        310,
+        335
+      ],
+      "goal": [
+        168,
+        714,
+        715
+      ],
+      "method": [
+        375,
+        64,
+        714,
+        715
+      ],
+      "condition": [],
+      "candidates": []
+    }
   ]
 }
