@@ -1,0 +1,1449 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "38d0c278eb66be4a84f853e738bb39c1c9498d72",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/m2_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e15a120f5eeba03474064701c98753b588ca30cbc2658867e7cf183ad4041d12",
+      "fingerprints": {
+        "QBODY": "37e780e185a27b1fa09abdfd6fc57421d0b12576e14bcccefff418e2e18bf3db",
+        "QFULL": "c86bf971f4f02b24c4e8700b19065717879976777e104a3ef2b98b2ed979ea47"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수인 것을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "모두 고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차함수",
+            "src": "solution",
+            "quote": "일차함수는 $y=ax+b$ ($a\\ne0$) 꼴이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$y=3(x-1)=3x-3$",
+            "evidenceType": "IMPLIED",
+            "justification": "보기의 괄호를 풀어 정의와 같은 꼴로 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "일차함수 정의에 관계식 직접 대조",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "식을 정리하여 y=ax+b에서 a가0이 아닌 관계만 고른다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6d9757c340e3bd0f60f7728ce400c09e594b6818b24e9b8d4829d0940bd5658b",
+      "fingerprints": {
+        "QBODY": "a011c976905b1f8ca387f42d2a2579f7bad3f68be0016f1b156bce8abebe9fce",
+        "QFULL": "17e5f06f1169dbf6b64e0cd1209d4566afb35c2b61883ad5262397f12dbd8750"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수"
+          },
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(a)=1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$a$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(a)=2a+3=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "함수의 입력자리에 a를 넣고 주어진 출력1과 같게 둔다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$2a=-2$",
+            "evidenceType": "IMPLIED",
+            "justification": "출력조건에서 생긴 일차방정식을 풀어 입력을 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "주어진 함숫값에서 미지 입력 역산",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "f(a)=1을2a+3=1로 바꾸어 알려진 함수식의 입력a를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d13f71337cb7fb946060731137f6d0280b54bf776e6b974c964a0ba5dd5a687b",
+      "fingerprints": {
+        "QBODY": "5f582ddbc7ce7929ac317fb40a3b1f7d9aaa58456991c0cf098267c6abf43a03",
+        "QFULL": "60a4158e8c0c402bf1446b3250b43963317bb5db2d495f0b13610094203aec78"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동한 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "그래프의 식은"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "모든 $y$값에서 2를 뺀다",
+            "evidenceType": "IMPLIED",
+            "justification": "y축 방향으로 -2 이동하면 함수식의 출력에서2를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $-2$만큼"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "알려진 수직 이동량을 상수항에 반영",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "모든 y좌표에서2를 빼서 이동한 그래프의 식을 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+      "fingerprints": {
+        "QBODY": "eb12e148aac87885cfe1e2f3e818f4bcaa28744c0c56cdabfc71389b4d4e2811",
+        "QFULL": "e2b96063d92aeadcb10b94960016929f5c248d98db3fcbc7bfc5dfd8927bfca9"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수"
+          },
+          {
+            "term": "x축",
+            "src": "stem",
+            "quote": "$x$축 및 $y$축"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "도형의 넓이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "$y$축과 만나는 점은 $(0,2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "x=0인 축 교점이 y절편이다."
+          },
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "$x$축과 만나는 점은",
+            "evidenceType": "IMPLIED",
+            "justification": "y=0을 대입해 x절편을 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$\\frac12\\times5\\times2=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 축 위 절편의 길이를 직각삼각형 밑변과 높이로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "두 절편을 밑변과 높이로 읽어 삼각형 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "x절편과 y절편의 좌표를 구하고 축 위 길이의 절댓값을 곱해 반으로 나눈다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_ca976e00631f592fd32407c2f5fee77dab34a0343c0347e549c2040baccad9f1",
+      "fingerprints": {
+        "QBODY": "5a4b929ee7424f8f9a7204b01c22e0a56050e11146bf89402dd584d2d355cfe4",
+        "QFULL": "6e0459b2d1b601d214f0af88c23eb19e1dc42e818ba8348fd6d91aff92d56939"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "$x$절편은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기 $-\\frac23$은 음수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "기울기가 같은 직선과는 평행",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "절편·기울기·통과점의 기본 성질 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "x절편은y=0 대입으로 구하고 계수 부호와 점 대입으로 각 주장을 대조한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+      "fingerprints": {
+        "QBODY": "0e8635934497f756bdd39101a7c481a38e0285dc84a1d909cd92c512621f9f46",
+        "QFULL": "0050237cab1d3894ed8f15d7a4258a813ef9b759c99395ce6c962aab051fc963"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "지나지 않는 사분면"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "오른쪽 위로 향하므로 $a>0$",
+            "evidenceType": "IMPLIED",
+            "justification": "원래 그래프의 증가 방향에서 기울기의 부호를 읽는다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$-b>0$, 즉 $b<0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "제2, 3, 4사분면을 지나고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "원래 그래프의 계수 부호를 새 함수로 전이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "실제 그래프에서a>0,b<0을 읽고 새 식의 음의 기울기와 음의 절편으로 통과 사분면을 판정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6b327e7079d0f502a4afe22dcb1977fd0e11df95a11417aa6a85ec391dc74b2a",
+      "fingerprints": {
+        "QBODY": "e81fd1535705d56320c8e078666191a159493b9142580791a4df7d00220adac5",
+        "QFULL": "8445ac78486ccf782388c25918980e74b9426cef1f1a7aabb1f377329395eca3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $(-4,-2)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점 $(-4,-2)$를 $x+ay+8=0$에 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$4-2a=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "대입 후 남은 한 미지수의 일차식을 푼다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "그래프 위 한 점을 방정식에 대입해 계수 결정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "주어진 점의 두 좌표를 x+ay+8=0에 대입해 유일한 계수a를 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+      "fingerprints": {
+        "QBODY": "c3a9d071ca3b436c97b529c285fb399bab4f54943b97271922eb4274b71a69b8",
+        "QFULL": "1fe9e14f63ad5d14465610948fec99fee376b64eaf43a8fb01c1ad76128aeb6a"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행한 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "직선의 방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "주어진 직선의 $x$절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "평행한 직선의 기울기는 2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=2(x+2)=2x+4$",
+            "evidenceType": "IMPLIED",
+            "justification": "통과점(-2,0)과 기울기2를 점·기울기형에 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행한 직선"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "선행 직선의 x절편과 평행 기울기로 새 직선",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "첫 직선에y=0을 넣어 통과점을 얻고 평행 조건의 기울기2로 새 식을 만든다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_83242ba62a5b8f2abafa733e98a15b60f429638cd248c6917d6cc819e2325bed",
+      "fingerprints": {
+        "QBODY": "4e8f4307aff43025d8647b172b2353b988f09bb952d1dc141e4a2d945d91a029",
+        "QFULL": "d757ae1baecc47b707f697a64a1ab6e90367fdd00314b11c388d2120635e7f52"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "수 $k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "$x=-2$인 수직선",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 수직 직선 위 모든 점은 x=-2를 공유한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2x-1=k$에 $x=-2$를 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "수직선의 일정한 x좌표를 식에 대입",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "실제 그림의x=-2를 읽어2x-1=k에서 상수k를 결정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_17b89877ccd95cb53802037753270364a0c1c0a062f9b0ac773a88707d79111a",
+      "fingerprints": {
+        "QBODY": "96f021535fc0146ac3ef30aeba957f90d41cc992369200376a085aab2867375f",
+        "QFULL": "42d31bc3e42623e9b5a0ad364d451addb5cffe035b2d310a8f873f8db87696c4"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프를 그린"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 그래프의 교점은 $(2,1)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "첫째 식 $ax+2y=4$에 대입",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 교점은 두 식을 모두 만족하므로 같은 좌표를 각 식에 대입하여 두 계수를 각각 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "공통 교점 좌표로 두 식의 계수 각각 복원",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "그림의 교점(2,1)이 두 방정식을 모두 만족함을 써 a,b를 각각 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c81421ec67b7f04a3ed86ab76b03e02b594283409cbc57eff85c2492a2a29e73",
+      "fingerprints": {
+        "QBODY": "b385e52c4a9e78bf78bc5eb4ba98785e0244ced9769ae48edcbc41a5a93c29f6",
+        "QFULL": "8dfecc8020b4cca79801a0d0d7ad5a17e6dfcb321798f05394b152218968da1f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "한 장을 뽑을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "3의 배수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "포함배제",
+            "src": "solution",
+            "quote": "함께 있는 12는 한 번만 센다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 목록의 합에서 공통 원소의 중복 계수를 제거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1에서 12까지"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3의 배수 또는 4의 배수"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "두 배수 목록의 중복을 한 번 제거",
+        "condition": "1~12의 유한 범위 안에서3 또는4의 배수인 수만 결과로 인정하므로 ACTIVE COND_RANGE와 COND_DIVISIBILITY를 적용한다."
+      },
+      "steps": [
+        "3과4의 배수 목록을 합치되 공통 원소12를 중복 계산하지 않는다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_a60b496bfdef0143d747340f4203ea2b997df3048b0304b3743e784067a695da",
+      "fingerprints": {
+        "QBODY": "3c0d96b247dd877b8399cf5d4f48be246103a4e6d12b84179f1622dc4f85e600",
+        "QFULL": "2c90ccac319e4434ce50c3ed039af76bafdc52bfc60e4e0cd11ca5c13bfcbfcf"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "도로가 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "가는 방법은"
+          }
+        ],
+        "method": [
+          {
+            "term": "경로",
+            "src": "solution",
+            "quote": "최단 경로는 오른쪽으로 3번, 위쪽으로 3번",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "끊긴 구간을 지나는 6가지",
+            "evidenceType": "IMPLIED",
+            "justification": "금지구간 앞까지3가지와 그 뒤부터2가지 경로를 곱한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$20-3\\times2=14$",
+            "evidenceType": "IMPLIED",
+            "justification": "복원한 격자의 전체 경로에서 금지구간을 거치는 경로를 제외한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "최단거리",
+            "src": "stem",
+            "quote": "최단 거리로"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "끊긴 격자의 최단경로 계수",
+        "condition": "최단경로와 끊긴 구간은 경로 Primary가 다루는 구조적 제약이며4칸에 보존했다. 일반 값·부호 제한으로 바꾸지 않는다."
+      },
+      "steps": [
+        "전체 단조경로에서 끊긴 한 구간을 지나는 앞·뒤 경로 곱을 빼거나 실제 격자에 경로수를 누적한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_5ec1b5a3db6a2f4d5e6d40acafa2428f88c48fe44e497475bbfe62bc2b6d05f8",
+      "fingerprints": {
+        "QBODY": "a774773c3b5734b018448d8c335fbe30cd98059264d5e903598532bb4717cdf5",
+        "QFULL": "2ba4084bd0bebcc2a59ed55de7fdb277881c3b8e39ebdee9e5d8f6c570bc7361"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "13명의 신사, 숙녀"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "악수의 횟수"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "서로 다른 두 사람의 한 쌍",
+            "evidenceType": "IMPLIED",
+            "justification": "한 악수는 순서를 구분하지 않는 두 사람의 선택이다."
+          },
+          {
+            "term": "중복불허",
+            "src": "solution",
+            "quote": "한 악수는 두 사람의 계산에 각각 한 번씩",
+            "evidenceType": "IMPLIED",
+            "justification": "순서 있는 계산의 이중 계수를2로 나누어 제거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "한 번씩 악수"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "한 악수를 순서 없는 두 사람의 선택으로 계수",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "각 사람의12회 상대를 센 뒤 동일한 악수가 두 번 세어진 것을 나눈다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_2f6781e99413d5250395e62484a047db4c00587eaa459c68bfe0add83d468c6c",
+      "fingerprints": {
+        "QBODY": "f553df04847d6afc291c8d9bb428678ff731b9cf32dd4a02073233e4f1a07b2f",
+        "QFULL": "7e3be3bdb6f1be0f01ae17f425f5fcdf327ef3759c32b50397c4b0ed8056a2a3"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동전을 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "앞면이 3개 나올 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$2\\times2\\times2\\times2=16$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 동전의 두 결과를 독립적으로 결합한다."
+          },
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "THHH, HTHH, HHTH, HHHT",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$\\frac4{16}=\\frac14$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "네 동전 중 앞면 세 번인 반복확률",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "네 독립 동전의16결과 중 뒤가 나오는 한 위치4가지를 센다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_36672a96facba8b1cb6735a5388834302c91a6ec0d20896323c6c3ac118193aa",
+      "fingerprints": {
+        "QBODY": "871c54958a9531a88b547ee463a7b21efa7e92a1a4cff2681d59fe11930bd199",
+        "QFULL": "196800ca2d192be9c5a0e969a10ebcb4bec48e4c558140eaec43537da5bba6a4"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "대표 2명을 선출"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "모두 여학생일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "$7\\times6\\div2=21$",
+            "evidenceType": "IMPLIED",
+            "justification": "대표 두 명 사이의 순서를 구분하지 않고 선택한다."
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "$6+3=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "남학생 두 명과 여학생 두 명인 사건은 동시에 성립하지 않는다."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$\\frac9{21}=\\frac37$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "같은 성별 두 대표의 배반사건 확률 합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "순서 없는 전체 두 사람과 남남·여여의 선택수를 구해 배반 두 경우를 합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+      "fingerprints": {
+        "QBODY": "ae0291207cdbc8e028d6a1c68bbe9e8886ebeb6590a02f8049749a8f8d88d27d",
+        "QFULL": "98642cc434ddd6d5912758e1cdcf2ad739030b4381d1a5f9357a24a59da35b8f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자연수"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "짝수일 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "홀수일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "홀수",
+            "src": "solution",
+            "quote": "한 수만 짝수여야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 정수의 합이 홀수일 필요충분조건은 홀짝이 서로 다른 것이다."
+          },
+          {
+            "term": "독립",
+            "src": "solution",
+            "quote": "홀짝 선택은 독립으로 해석",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$\\frac12\\times(1-\\frac23)=\\frac16$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 독립 가정 아래 두 결과의 확률을 곱한다."
+          },
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "두 경우는 함께 일어나지 않으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "홀수",
+            "src": "stem",
+            "quote": "$a+b$가 홀수"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "홀짝이 서로 다른 두 배반 경우의 확률",
+        "condition": "a,b가 자연수라는 배경만으로 후보를 거르지 않는다. 합의 홀짝 사건과 해설의 독립 가정은4칸/CC에 명시하며 자릿수 홀짝 전용 COND_PARITY_POSITION은 적용하지 않는다.",
+        "sourceEvidence": "발문은 a,b의 주변 홀짝 확률만 주고 두 선택의 독립성을 명시하지 않았다. 기존 해설이 독립으로 해석한다고 추가하여 답을 정한다. 이 독립 가정 아래 메타2와4칸은 판정 가능하나 일반적으로 주변확률만으로 목표 확률이 정해지는 것은 아니므로 원문 조건 확인이 필요하다."
+      },
+      "steps": [
+        "짝홀·홀짝으로 나누고 독립으로 해석한 각 결합확률을 곱해 더한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "methodCandidateOnly": true,
+      "unresolvedFields": [
+        "sourceAssumption",
+        "given",
+        "method",
+        "difficultyBucket",
+        "level"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0b20ea9127511c9d3c915be2ee70919a94c70be8635298b16ddc7c2a6cebbe3b",
+      "fingerprints": {
+        "QBODY": "b9f7cc0311b8a71e56e7571a5f4aadb186c983e7bd9e0898fd286bbbee863acf",
+        "QFULL": "287d68f6bd4c0edf865d01b9c34b537802f204ae0e43bfe808b30527b90f1872"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위를 한 번씩 던져서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "승부가 결정될 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "눈이 같은 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 눈은 무승부로 목표인 승부결정의 반대사건이다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$36-6=30$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체에서 무승부 여섯 경우를 제외한다."
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$\\frac{30}{36}=\\frac56$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "승부 미결정인 같은 눈의 여사건",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "같은 눈6가지를 전체36가지에서 제외하여 승부 결정 확률을 구한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0015dc69def320de7fa4e39bc81e7c8bbf7d53aa55fb05a7d5a96143cbdeff8b",
+      "fingerprints": {
+        "QBODY": "0278d05e8dc14a0208145fe284335b93bcb8b10dc2c9b2194277ac22cf95dc79",
+        "QFULL": "718727df80daa75645bc787ebff0a55571b56d2506bb76b6691472e26a7562a5"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동전을 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "적어도 하나가 앞면일 확률은 여사건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$b=1-\\frac18=\\frac78$",
+            "evidenceType": "IMPLIED",
+            "justification": "a는 모두 뒷면의 확률이므로 b=1-a이고 a+b=1이다. 개별 수치 계산은 필수가 아니다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "서로 여사건인 두 확률의 합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "모두 뒷면과 적어도 한 앞면이 전체를 서로 겹치지 않게 나누므로 두 확률 합을1로 정한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ff9040c2829edb3a2eb671bac7d239a6e35df2a84f571df44ca90438e5a7a575",
+      "fingerprints": {
+        "QBODY": "7c596e23230ca818b6f706aeb47742514ba33d562b2054def9dac66f77fe7a9d",
+        "QFULL": "d0f531ae85ec223c9a87fab7000b041dfe7b6f6a764ee6da95beccbf3afd9c93"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "3개의 보기 중에 1개가 정답"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "문제가 3개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "적어도 한 문제를 맞출 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$\\frac23\\times\\frac23\\times\\frac23=\\frac8{27}$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설은 각 보기를 균등하게 독립 선택한 세 오답확률을 곱한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "적어도 한 문제를 맞힐 확률은 여사건",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "전부 오답인 독립확률의 여사건",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "한 문제의 오답확률2/3을 세 번 곱해 적어도 하나 정답의 반대사건을 제외한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_003d3c0ce857918ef50ee37ff021d6b75d36ca7480ddf644c813753f5c04a2b3",
+      "fingerprints": {
+        "QBODY": "b4382e14e0d32a31ae59183629665cc950c46b4cfe40b5737c1d75d8bb6e50df",
+        "QFULL": "cbf5f6796016cfb3f3ff75cfca8cda13460ba3e0cf607cd500926532aa47779e"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "차례로 2개의 제비를 뽑을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "2개 모두 당첨 제비일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "비복원추출",
+            "src": "solution",
+            "quote": "당첨 제비를 다시 넣지 않았으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$\\frac4{10}\\times\\frac39=\\frac2{15}$",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 당첨과 그 결과 이후 둘째 당첨의 조건부확률을 곱해 결합확률을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "다시 넣지 않는다"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "비복원 순차추출에서 남은 표본을 갱신",
+        "condition": "비복원은 두 번째 표본을 갱신하는 추출 절차로 제안TPL과4칸에 보존한다. 독립시행이나 미지값의 부호·범위 제한 키를 대용하지 않는다."
+      },
+      "steps": [
+        "첫 당첨4/10 뒤에는 당첨3개와전체9개가 남으므로3/9를 곱한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_f385c722484a29e235cf35d48ed420e150ff3b3aa3d36c0ab3df0736a5a26503",
+      "fingerprints": {
+        "QBODY": "6440c434dbeb99cd58ce75583446d96a90c14c15bd7f90abf39b6278cdd689cc",
+        "QFULL": "114a532a3cb4335007c423c96c492ba023c4bad1e3a33eeedd120e218df1fdc4"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "정육각형",
+            "src": "stem",
+            "quote": "정육각형"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "도형의 둘레의 길이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "얼마씩 늘어나는지"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "$y$를 $x$에 대한 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "둘레는 $6-2=4$변만큼 늘어난다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차식",
+            "src": "solution",
+            "quote": "$y=12+8(x-1)=8x+4$",
+            "evidenceType": "IMPLIED",
+            "justification": "처음 도형의 둘레에 일정 증가량을 첨가 횟수만큼 더한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=8$을 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "한 변이 완전히 겹치도록"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "도형 첨가의 일정 둘레 증가로 일차식 모델링",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "공유 변의 두 경계가 사라져 늘어나는8을 정한 뒤 처음값12와x-1회 증가를 결합한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_c60e0d0e47f33fe610dda1482a19a87739fa0a6da1b4b261ae313d1d36d9bae4",
+      "fingerprints": {
+        "QBODY": "d876841c3916a3fb591335a683ea07a43b96f94075921c77000eb92f7c97a8e6",
+        "QFULL": "0edd105f9b20ed4027da014c649363695e5397c055fcc83c4df13479a8fa5406"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점이 무수히 많을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "같은 직선이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "무한히 많은 교점을 두 직선 일치로 판정",
+        "condition": "원문의 정수 조건은4칸에 보존한다. 동일한 직선의 계수 비교로 유일하게 정해진4,2에서 정수성으로 후보를 추가 제거하지 않아 COND_INTEGER는 미적용한다."
+      },
+      "steps": [
+        "두 방정식이 상수항까지 같은 배수일 때 같은 직선임을 적용해계수를 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+      "fingerprints": {
+        "QBODY": "ac4e0167da821a4aa0767cca0d01aa8c5f8a52e3090c113f3a0da0c8dc035859",
+        "QFULL": "77f01504ae5608649d1bdca28600ae98443a9bb478fa64bfba74ef34fef052fd"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "서로 다른 두 개의 주사위"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "두 눈의 수의 곱만큼"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "곱한 결과 어떠한 수"
+          },
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "경우를 순서쌍으로"
+          },
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "숫자 6에 꽂힐 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "12칸 이동하면 처음 위치로 돌아온다",
+            "evidenceType": "IMPLIED",
+            "justification": "깃발의 위치는 이동칸수를12로 나눈 나머지로 결정된다."
+          },
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "곱한 수가 6, 18, 30",
+            "evidenceType": "IMPLIED",
+            "justification": "1~6의 두 눈의 곱 범위에서12로 나눈 나머지가6인 수를 고른다."
+          },
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "곱이 6인 순서쌍",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "$\\frac8{36}=\\frac29$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "12칸 순환의 목표 위치를 곱의 나머지로 변환",
+        "condition": "목표 도착 위치는12로 나눈 나머지6의 사건이고 단순12배수 조건과 다르다. 이를4칸 방법·신규 순환CC에 보존하며 COND_DIVISIBILITY를 억지로 적용하지 않는다."
+      },
+      "steps": [
+        "한 바퀴12의 주기를 이용해곱6·18·30으로 나누고 각 순서쌍 개수를 더해 전체36과 비교한다."
+      ],
+      "judgedBy": "/root/m2_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/m2_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}

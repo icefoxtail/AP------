@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E061",
+  "reviewer": "ROOT",
+  "author": "A",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "38d0c278eb66be4a84f853e738bb39c1c9498d72",
+  "reviewSha256": "46b354e27b41a276e26549caa9ec18adb590224be4eedeb56f91d002621dccfe",
+  "fourSlotSha256": "fb6c7d0ae5e0203e5f1d83403942baf2bd2115a7353d5ab59c7132cb7aaa4bff",
+  "ordinals": [
+    10,
+    16,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_17b89877ccd95cb53802037753270364a0c1c0a062f9b0ac773a88707d79111a",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "그래프와 연립식 given, 계수합 goal, 주어진 공통교점의 좌표대입 method를 구별했다. 목표가 교점위치 자체가 아니므로 native M2 graph-intersection PT를 선택하고 역방향 계수복원 NEW_TPL 후보는 기존 B-E056 제안과 연결했다. 원본RPM056/2015함수부모는 유지한다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "resolvedRepairs": [
+        "Primary changed to exact ACTIVE PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION; existing inverse-coefficient template proposal family reused."
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+      "verdict": "ACCEPT_PARTIAL_RECORD_ONLY",
+      "reason": "주변확률 given·홀수합 사건 goal은 기록할 수 있으나 독립곱 method는 기존해설이 추가한 가정에 의존한다. 정확 인용은 확인했으며 PARTIAL_SOURCE_EVIDENCE/UNKNOWN 및 등록차단으로만 수용한다.",
+      "quotesExact": true,
+      "quoteCount": 8,
+      "imageViewed": false,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": true,
+      "resolvedRepairs": [
+        "Missing independence assumption now explicitly blocks final difficulty and metadata; original numeric/level preserved separately and four-slot marked partial."
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "서로다른 두 주사위와 곱 given, 단계별 곱·순서쌍·확률 goal, 주기와 나머지·계수 method를 실제 원판그림 및 소문항과 대조했다. 12의 배수 조건이 아니라 나머지6인 사건이어서 기존 배수COND를 강제하지 않고 순환CC 제안으로 분리한 판단을 수용한다.",
+      "quotesExact": true,
+      "quoteCount": 9,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_e15a120f5eeba03474064701c98753b588ca30cbc2658867e7cf183ad4041d12",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "상수·반비례·이차의 대표 관계를 일차함수 정의에 직접 비교하므로1/B12를 수용한다. 과거중과의 인접 차이는 독립확인 후 수용한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_6d9757c340e3bd0f60f7728ce400c09e594b6818b24e9b8d4829d0940bd5658b",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "완성된 f(x)에 주어진 함숫값을 넣어 미지 입력을 한 번 역산하므로1을 수용한다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_d13f71337cb7fb946060731137f6d0280b54bf776e6b974c964a0ba5dd5a687b",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "수직 이동의 방향과 크기가 명시되어 상수항 변화에 바로 적용하므로1을 수용한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 축 교점을 먼저 읽어 직각삼각형 넓이에 적용하는 정형 전처리이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ca976e00631f592fd32407c2f5fee77dab34a0343c0347e549c2040baccad9f1",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "각 보기를 절편·점대입·기울기의 기본 성질에 직접 비교하는 형태이므로1/B12를 수용한다. 보기 수만으로 난도를 높이지 않는다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제 증가직선의 양의y절편에서 a,b부호를 읽어 새 식의 부호로 옮기는 한 해석이므로2/B23을 수용한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6b327e7079d0f502a4afe22dcb1977fd0e11df95a11417aa6a85ec391dc74b2a",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "명시된 점을 일차방정식에 직접 넣어 계수를 정하므로1을 수용한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "x축 교점과 평행 기울기를 표준 한점·기울기 식으로 연결하므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_83242ba62a5b8f2abafa733e98a15b60f429638cd248c6917d6cc819e2325bed",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "실제 수직선 x=-2의 일정 좌표를 그대로 식에 대입하므로1을 수용한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_17b89877ccd95cb53802037753270364a0c1c0a062f9b0ac773a88707d79111a",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제 교점(2,1)을 두 식의 공통해로 읽고 각 미지계수에 전달하는 해석이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c81421ec67b7f04a3ed86ab76b03e02b594283409cbc57eff85c2492a2a29e73",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 작은 배수 목록의 공통12를 한 번 제외하는 전처리가 있으므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a60b496bfdef0143d747340f4203ea2b997df3048b0304b3743e784067a695da",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제 끊긴 한 구간을 반영하는 정형 최단격자경로이므로2/B23을 수용한다. 해설의 전체격자 상태를 잘못 지칭한 문장은 별도 hold이다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_5ec1b5a3db6a2f4d5e6d40acafa2428f88c48fe44e497475bbfe62bc2b6d05f8",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "한 악수를 순서없는 두 사람 선택으로 해석해 중복을 없애는 표준 계수이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_2f6781e99413d5250395e62484a047db4c00587eaa459c68bfe0add83d468c6c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "앞면3회를 네 자리 중 한 뒷면 자리로 해석하여 기본 표본수에 나누므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_36672a96facba8b1cb6735a5388834302c91a6ec0d20896323c6c3ac118193aa",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "같은 성별의 두 조합을 서로 배반인 경우로 더하는 고정 경로이므로2/B23을 수용한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+      "bucket": "UNKNOWN",
+      "decision": "ACCEPT_UNRESOLVED_SOURCE",
+      "reason": "발문은 두 자연수의 주변 홀짝확률만 제시한다. 독립이나 결합분포를 고정할 시행 조건이 없으므로 최종UNKNOWN/HOLD를 수용하고2/중은 추가 독립가정 아래 후보로만 보존한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_0b20ea9127511c9d3c915be2ee70919a94c70be8635298b16ddc7c2a6cebbe3b",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "표준 두 주사위 시행에서 동점의 짧은 목록을 제외하는 여사건 해석이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_0015dc69def320de7fa4e39bc81e7c8bbf7d53aa55fb05a7d5a96143cbdeff8b",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "모두뒷면과 적어도하나앞면은 바로 여사건이어서 구체적 시행계수 없이 확률합1을 쓰므로1/B12를 수용한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_ff9040c2829edb3a2eb671bac7d239a6e35df2a84f571df44ca90438e5a7a575",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "표준 임의찍기 반복모형에서는 모두실패의 곱과 여사건을 쓰는2/B12이다. 균등·독립 선택이 원문에 명시되지 않았다는 조건부모형 hold는 유지한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_003d3c0ce857918ef50ee37ff021d6b75d36ca7480ddf644c813753f5c04a2b3",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "다시 넣지 않는다는 단서로 다음 표본의 분모·분자를 한 번 갱신하므로2/B12를 수용한다. 제비/공의 명칭 혼용은 별도 hold로 유지한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_f385c722484a29e235cf35d48ed420e150ff3b3aa3d36c0ab3df0736a5a26503",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소문항이 공유변을 제외한 증가량→일차식→대입 순서를 안내하므로2/B23을 수용한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_c60e0d0e47f33fe610dda1482a19a87739fa0a6da1b4b261ae313d1d36d9bae4",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "교점무한을 같은직선으로 바꾸고 비례계수를 비교하는 표준 해석이므로2/B12를 수용한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소문항이 도착조건의 곱→순서쌍→확률을 모두 안내한다. 12주기 해석 뒤 작은 표본을 세는2/B23을 수용하고 원본상과 STRONG_CONFLICT 및 학습중 후보를 분리한다.",
+      "proposedLevel": "중"
+    }
+  ],
+  "sourceReadCoverage": {
+    "stemAndChoicesRead": 23,
+    "answersAndSolutionsRead": 23,
+    "requiredFiguresViewed": 6,
+    "viaMontage": "workers/A/tmp/E061/montage.jpg",
+    "freshFullMathematicalReverification": false
+  },
+  "definitionChecks": [
+    "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM (forward direction; not selected for inverse coefficient goal)",
+    "PT_FUNCTION_GRAPH_INTERSECTION (narrower goal; replaced at Q10)",
+    "PT_PROBABILITY_PROPERTIES_APPLICATION",
+    "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+    "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "M2-1 function/equation content remains within the same M2-2 exam source scope; original curriculum and2022 display mapping stay distinct.",
+    "Q16 arbitrary natural-number selection has insufficient joint-probability evidence and is blocked. Q19 standard random-guessing interpretation retains a separate conditional-model source hold.",
+    "Original answers, solutions, figures and valid earlier review evidence remain unchanged."
+  ],
+  "reviewedAt": "2026-11-14T06:17:56.777905+00:00"
+}
