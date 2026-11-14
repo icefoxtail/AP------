@@ -1,0 +1,1136 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "b43aec425a482f93e3aadd7ecc3c18bf2b04086e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / actual source and solution semantic review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_dec067c9ca0ebaf07a77c62585767f039ddea8bbff0a8ac9dffa5a49950cf6c2",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형 $ABC$"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과 $BC$의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "밑변의 수직이등분선이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "이므로 합동이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$AB=AC$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_969149bbdc1850c83c3de62d1a8194bbfddc23f479b6499932685dbef0add6d8",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이어진 이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BAD$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이어진 이등변삼각형의 각을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "$D,F,C$가 한 직선 위이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "한 직선의 이웃각 합180도를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$AB=AD=DE=EF=FC$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bfacf66f0d31dc54d139693878dcd757f0e3643f8fd80fd79b2202331e0f7af5",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형 $ABC$"
+          },
+          {
+            "term": "수선의발",
+            "src": "solution",
+            "quote": "$\\angle ADE=90^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle DBE$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "RHS 합동이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$DB=DE=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 각45도에서 두 변의 같음을 얻는다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이는 $\\dfrac12\\times4\\times4=8$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$AC=AD$"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB\\perp DE$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_60bbe428780c7a29cbb9d7eadaca8c51c14947e59328186e74c10641f7bf8ea5",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심에서는 세 꼭짓점까지의 거리가",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형의 각을 이용한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5b6d404c70fb1a735179eba9b927e60ee98a6fd3a4c62fc77baf2efc59ba3c5a",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심과 내심이다"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "외심과 내심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle OBC+\\angle BIC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심의 같은 반지름으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심의 각의 이등분 성질을",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_5361653de294f74db3c4578552d42ffaed59e52771c7e5118e97730b854d8c70",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이다"
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$DE\\parallel BC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle A$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각 이등분과 평행선의 동위각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행선의 동위각을 결합한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$DE\\parallel BC$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6ca8bcf2f79ee7c3f082a4f52dfce141539528169d8cfbd8c4dd20036b95dde3",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$ABCD$가 평행사변형이 아닌 것은?"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $AC$와 $BD$의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "평행사변형이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 판정 조건은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_4606b434d450e1562744cc430718638c40c2cd2c31317f701febb3d94e45e749",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "점 $P$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$[ABP]$는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "마주 보는 삼각형 넓이의 합은 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "한 내부점에서 대변별 삼각형 넓이의 합 관계를 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9cbbc510a67df2e9cbb4f255d03d85e961f0a57927fc132f82a0d4b172f162f7",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 대각선은 꼭짓각을 이등분하고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 이웃한 각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8fd409d81a8f08ff48d4fc99aabf46b8e780ebec78a46a8ecaf2968e8d23bb15",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $ABCD$"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $AC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "대각선 $AC$에 대한 대칭으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형에서 $\\angle ABC=90^\\circ$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_1c0e0117b0af5fdda32692c3c379c76cf77d7eb7403bd139fe4e84248450cfc9",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "두 정사각형이 놓여 있다"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $EICJ$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "합동인 두 삼각형을 찾아",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이를 서로 바꿔 생각한다",
+            "evidenceType": "IMPLIED",
+            "justification": "합동 삼각형의 넓이를 교환하여 한 중심 삼각형으로 만든다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "두 정사각형은 합동이고"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_14892ce54d5078be3cbc04ccaca9e28dd67c2d8c93701fa094b959f067cd1a50",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "여러 가지 사각형 사이의 관계"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "각각 알맞은 조건으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 한 내각이 직각이면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형으로 만드는 결정 조건",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3efbaf5c4240f764cb4ccdae67a5d0910d37bad861db3f5de987e2ccb4443cfc",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$ABCD\\sim EFGH$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳은 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 $3:4$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$ABCD\\sim EFGH$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_b8c8926ff95ad795ba170e36602fb6a5706387f4c2e1f4a9f64307af71ca078f",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "두 직육면체는 서로 닮은 도형이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x+y$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 $2:3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$x:9=2:3$",
+            "evidenceType": "IMPLIED",
+            "justification": "대응 모서리에 같은 비례식을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형이다"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_23f475e88b3fc3b5a899675acb514376c87a87a2995653eb6c02fa1f95544130",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BC$의 길이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "$AB:AD=4:2=2:1$, $AC:AB=8:4=2:1$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통각을 끼는 두 변의 비가 같아 SAS 닮음을 사용한다."
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변 $BD$, $BC$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_dbb60c41a9f4c54ce180f53a1d60c0ba6fb10202262959097d6550a59d356f40",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$와 $\\triangle BCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AB$의 길이를 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "두 각이 각각 같으면 닮음이며",
+            "evidenceType": "IMPLIED",
+            "justification": "AA 닮음 조건을 적용한다."
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "$AB$는 $BC$에, $BC$는 $CD$에 대응한다",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 순서에 맞추어 변을 대응시킨다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7118efb828e11d5b320e7691e14d0578272e6690902f53033e336b7ce55f3807",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을 각각 $D$, $E$, $F$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "$\\triangle DEF$의 둘레는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "각 변은 원래 삼각형의 대응변의 절반이다",
+            "evidenceType": "IMPLIED",
+            "justification": "세 중점 사이 선분에 중점연결정리를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을 각각 $D$, $E$, $F$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$BC\\parallel DE$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "평행선으로 생긴 닮은삼각형과 같은 비의 선분 분할",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선 위에 대응하는 분할구간 비가 같음을 쓴다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 $DE:BC=12:18=2:3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$BC\\parallel DE$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6c62d76b472a6ad0d1ba98aa2e7f70156abaefbe317edd7a9ffe19cc7300b123",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$l\\parallel m\\parallel n$이고 $l'\\parallel m'\\parallel n'$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+b$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "여러 평행선이 두 직선을 자르면 대응하는 선분의 길이비가 일정하다",
+            "evidenceType": "IMPLIED",
+            "justification": "세 평행선의 대응구간 비례를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$l\\parallel m\\parallel n$이고 $l'\\parallel m'\\parallel n'$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_dae9924d1894bb1e01d68e12a0b43b70b55ad749b62662630e0b6f3ee640eb48",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle A$의 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명의 흐름에 비추어 잘못된 것을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각의 이등분선 조건에서 나와야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle A$의 이등분선"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_c8c011841066ee28a93fce7a86c89f102c9f371de4d2fe011803006b57751f63",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형 $ABC$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발을 각각 $D$, $E$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "빗변과 한 예각이 각각 같으므로 서로 합동이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=\\sqrt{AD^2+BD^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형 두 직각변으로 빗변을 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[ABC]=\\dfrac12\\times10\\times10=50$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "직선 $l$에 내린 수선의 발"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_4a81b492e51b7289bcc49f4a769bab51c6169a28974ef0ae298abdc106904a12",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "외접원과 내접원"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "외접원과 내접원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "외접원과 내접원의 넓이의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "직각삼각형의 외심은 빗변의 중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심에서 세 변에 내린 수선의 길이는 모두",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "두 원의 넓이의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle C=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_bc37aead9fba599f5b6b55880688107f418d234ed8cee2823250181180781ea5",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BCD$의 크기를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "평행선의 엇각과",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각의 이등분 조건을",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 이웃한 두 각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\angle ABE=\\angle CBE$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_1346c622e1f615587c1785f7006c785e5e5ab0002b71cabeadd76b21f26cf1dc",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "대각선 $AC$의 중점을 $O$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "사각형 $AFCE$의 둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "두 삼각형의 합동으로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "대각선의 성질로 마름모를 판정한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AC$에 수직인 직선"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "대각선 $AC$의 중점을 $O$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceItemsRead": 24,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  }
+}
