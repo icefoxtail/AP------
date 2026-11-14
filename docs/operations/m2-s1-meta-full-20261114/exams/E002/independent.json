@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E002",
+  "author": "B",
+  "reviewer": "C",
+  "independent": true,
+  "sourceGitBlobSha": "41c99a9d9bdda01f43966d3422723aec50548bd3",
+  "reviewSha256": "b749a5be93f53bd29dfabe0aa7ce24f214b13bcd3c809aa5574e78a171b58361",
+  "fourSlotSha256": "fc774cdeee1c52ae025e819b37122fc5e9bd710ca800730fe770d92e9c817be7",
+  "sampleOrdinals": [
+    1,
+    15,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_a6a14ba7df088c3ceb81eee75b6a3637cd950077cbf4357d7b7e1d465ad8009b",
+      "classification": "M2-03 도입의 단일 이원일차방정식이며 가감법/대입법 연립 leaf를 붙이지 않는 RPM_LEAF_GAP에 동의한다.",
+      "binding": "단일식 자연수 순서쌍 선택과 기존 연립방정식 ACTIVE 유형은 다르므로 등록보류가 정확하다.",
+      "difficulty": "선택지 대입 또는 y>=2 배제의 직접 한 단계로 하/1에 동의한다.",
+      "fourSlot": "given 일차방정식, goal 해, method 대입, condition 자연수의 역할이 분리되어 있다. method 한 용어 경고는 문항이 직접 대입형이므로 재독 후 허용한다.",
+      "status": "PASS",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "일차방정식",
+          "src": "stem",
+          "quote": "일차방정식 $x+3y=5$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "해",
+          "src": "stem",
+          "quote": "해는?",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "대입",
+          "src": "solution",
+          "quote": "$y=1$이면\n$x+3=5$이므로 $x=2$이다.",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "자연수",
+          "src": "stem",
+          "quote": "$x, y$의 값이 자연수일 때",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_cefb7d8d0fb4eed5ab7ad10704245fce66054f95d6dbbf66c1c69f526b246a60",
+      "classification": "일정 변화율의 생활 적용이며 주어진 함수식의 직접 함수값 leaf에 억지 매핑하지 않은 활용 leaf 제안에 동의한다.",
+      "binding": "기온에서 고도로 역산하는 기존 TPL과 고도에서 기온을 계산하는 본 문항을 구분한 판단이 적절하다.",
+      "difficulty": "18에서 6×1.7만 빼면 되며 관계식 복원이나 경우 분류가 없다. numeric2→1 승인; legacy 중 유지, B12, medium, BORDERLINE_ACCEPTABLE은 경계 관리로 수용한다.",
+      "fourSlot": "초기 일정 단독 given과 비례 단독 method의 부족을 지적했고 변경본의 변화량/기준값 및 차 인용을 직접 재확인했다. 범위 0~10km도 보존된다.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "변화량",
+          "src": "stem",
+          "quote": "높이가 1 km 높아질 때마다 기온이",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "값",
+          "src": "stem",
+          "quote": "지면의 기온이",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "값",
+          "src": "stem",
+          "quote": "대청봉 정상의 기온은?",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "비례",
+          "src": "solution",
+          "quote": "높이 1.7 km에서 낮아지는 기온은\n$6\\times1.7=10.2",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "차",
+          "src": "solution",
+          "quote": "18-10.2=7.8",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "범위",
+          "src": "stem",
+          "quote": "지면에서 10 km까지",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_fee57aa0adbf76241a061566a56dfc7ff80f56f773a13dbb6e93cf6ca6230636",
+      "classification": "교점의 x좌표가 [2,3]에 속하도록 a를 정하므로 조건에 따른 식 결정 leaf와 EQUATION 부모가 타당하다.",
+      "binding": "사분면 교점의 부호조건 TPL은 유한 선분의 닫힌 구간과 같지 않아 신규 절차 제안이 적절하다.",
+      "difficulty": "직선식→교점의 유리식→범위 부등식→자연수 계수 개수의 연결 추론으로 상/3에 동의한다.",
+      "fourSlot": "초기 goal 개수 단독에서 빠진 매개변수 대상을 지적했다. 변경본 goal 매개변수+개수의 실제 stem 인용을 확인했고 method 기울기/교점/연립부등식은 해설의 실제 단계다.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "일차함수",
+          "src": "stem",
+          "quote": "일차함수 $y=ax+1$",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "선분",
+          "src": "stem",
+          "quote": "선분 $AB$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "개수",
+          "src": "stem",
+          "quote": "자연수 $a$의 개수",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "매개변수",
+          "src": "stem",
+          "quote": "자연수 $a$의 개수",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "기울기",
+          "src": "solution",
+          "quote": "직선의 기울기는\n$\\dfrac{8-21}{3-2}=-13$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "교점",
+          "src": "solution",
+          "quote": "두 직선의 교점에서",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "연립부등식",
+          "src": "solution",
+          "quote": "$2\\le\\dfrac{46}{a+13}\\le3$",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "자연수",
+          "src": "stem",
+          "quote": "자연수 $a$",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 15,
+      "beforeBucket": 2,
+      "afterBucket": 1,
+      "level": "중",
+      "boundary": "B12",
+      "compatibility": "BORDERLINE_ACCEPTABLE",
+      "decision": "CONFIRMED",
+      "reason": "기준값과 변화율이 주어진 직접 곱셈·뺄셈이며 역산·경우 분류 없음."
+    }
+  ],
+  "revisionNotes": [
+    "Initial sample flagged q19 goal target omission and q15 given/method specificity. Author repaired both and reviewer re-read the exact current slots before hashing.",
+    "Root-directed q16 crossConcept debt change lies outside this 3-item semantic sample; this sample does not attest q16 semantic correctness."
+  ],
+  "reviewedAt": "2026-11-14T08:44:48.859840+00:00",
+  "scope": "Actual source stems, choices, existing solutions and final author metadata/4slots for Q1,Q15,Q19. Q19 source is fully numerical; no source figure needed to interpret it."
+}

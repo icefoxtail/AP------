@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 1,
-  "reviewedQuestions": 24,
-  "remainingExams": 74,
-  "remainingQuestions": 1756,
+  "reviewedExams": 2,
+  "reviewedQuestions": 47,
+  "remainingExams": 73,
+  "remainingQuestions": 1733,
   "nextAction": "CONTINUE_THREE_REVIEWER_QUEUES",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -55,8 +55,108 @@
       "solutionCount": 23,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "status": "REVIEWED_WITH_REMAINING",
+      "reviewedQuestionCount": 23,
+      "fullyJudgedQuestionCount": 22,
+      "finalSourceBlob": "4337ad0d8f3a3cbece4bd90923db78224af494ab",
+      "sourceFieldEditCount": 2,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E002",
+      "independentReviewer": "C",
+      "independentSampleOrdinals": [
+        1,
+        15,
+        19
+      ],
+      "rpmGapOrdinals": [
+        1,
+        2,
+        7,
+        13,
+        15
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "contentDebtOrdinals": [],
+      "unresolved": [
+        {
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_ee20c78dd75b8beaa276176bb8c64661fc4546765d265e0592f9260122ee1fd3",
+          "fields": [
+            "crossConceptKeys"
+          ],
+          "reason": "x:y=3:1을 문자 t 하나로 표현하면 주어진 식에서 해를 정하고 a를 계산한다."
+        }
+      ],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "count": 6,
+          "ordinals": [
+            1,
+            6,
+            11,
+            16,
+            20,
+            21
+          ]
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "count": 1,
+          "ordinals": [
+            17
+          ]
+        },
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "count": 10,
+          "ordinals": [
+            2,
+            3,
+            5,
+            7,
+            9,
+            12,
+            13,
+            14,
+            15,
+            22
+          ]
+        },
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "count": 6,
+          "ordinals": [
+            4,
+            8,
+            10,
+            18,
+            19,
+            23
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER"
     },
     {
       "examId": "E003",
@@ -1255,7 +1355,17 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 24,
-  "updatedAt": "2026-11-14T08:46:05.045860+00:00",
-  "verifiedExamPublications": []
+  "fullyJudgedQuestions": 46,
+  "updatedAt": "2026-11-14T08:48:40.024616+00:00",
+  "verifiedExamPublications": [
+    {
+      "examId": "E003",
+      "commitSha": "300f30430356aed29d0a9e250a4b6dcafdeccb9b",
+      "parentSha": "510cb0c6874ff4e6cabc8c330558ad7bed85387f",
+      "treeSha": "92c11cd2023ca742e1b74438fd8a6e0cc0352d61",
+      "remoteHeadVerified": true,
+      "method": "GitHub connector tree/commit/update_ref with expected previous HEAD; native git ls-remote readback; exact local fast-forward",
+      "verifiedAt": "2026-11-14T08:47:40.464199+00:00"
+    }
+  ]
 }

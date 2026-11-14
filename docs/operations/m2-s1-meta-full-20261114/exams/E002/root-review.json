@@ -1,0 +1,102 @@
+{
+  "sampleReviewer": "C",
+  "decision": "ACCEPT_REVIEW_WITH_REGISTRATION_DEBTS",
+  "targetedSemanticChecks": [
+    {
+      "ordinals": [
+        1,
+        2,
+        7,
+        13,
+        15
+      ],
+      "decision": "ACCEPT_GAP_PROPOSAL",
+      "reason": "기존 좁은 RPM/PT/TPL을 단일 이원식 자연수해, 함수 정의·계수결정, 수직이동 및 변화율 상황에 강제 적용하지 않는다. 제안의 부모·구별 기준·지원 UID를 검토하였다."
+    },
+    {
+      "ordinals": [
+        10,
+        17,
+        19,
+        22
+      ],
+      "decision": "ACCEPT",
+      "reason": "교점-연립 관계는 EQUATION, 총인원/요금 모델링은 WORD, 유한 선분 교점 매개변수는 EQUATION으로 구분한다. Q22는 두 시점이 두 점으로 식을 구하는 실제 핵심이라 현재 BASIC/170 경로를 유지하고 상황을 별도 기록한다."
+    },
+    {
+      "ordinals": [
+        16
+      ],
+      "decision": "ACCEPT_REGISTRATION_DEBT",
+      "reason": "비의 두 값을 공통인자로 표현하는 필요한 보조 개념에 맞는 ACTIVE 정의가 없어 [] 대신 null 및 구체 제안으로 수정했다. 개념 필요성 판단과 등록 미해결을 분리한다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "이미 같은 x계수를 한 번 소거한 뒤 대입하는 직접 표준절차로 B12/1 유지."
+    },
+    {
+      "sourceOrdinal": 15,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "명시된 기준값과 단위당 변화율에 높이를 곱해 빼는 직접 계산이다. 독립 C도2→1, 별도 level중의 B12 호환을 확인."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "세 교점을 밑변과 수평 높이로 해석하여 넓이에 연결한다. B23의 표준 응용3을 보존."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "무수해를 전항 배수 관계로 전환하여 두 매개변수 관계를 얻는 구조 판정이 있다. 계산이 짧아도3/B23 유지."
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "양쪽 식의 배수를 정해 소거·대입하는 표준 가감법이며 서술 형식으로 난도 상향하지 않음."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 4,
+      "decision": "ACCEPT",
+      "reason": "기울기 비에서 매개인자를 소거하여 고정길이를 발견하고 넓이 역산과 점 대입으로 이어지는 비정형 연결이 있다. B34/4 보존."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "유한 선분과 직선의 교점 조건을 매개변수의 범위로 옮기는 방정식 그래프 활용."
+    }
+  ],
+  "notes": [
+    "원본에 없는 difficultyBucket은 소형 제안에 보존하며 sidecar의 검토된 수치 교정은 Codex 등록 대상으로 남긴다.",
+    "기계 검사 PASS는 독립 의미 검토나 등록 PASS를 대신하지 않는다."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E002",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "41c99a9d9bdda01f43966d3422723aec50548bd3",
+  "finalSourceBlob": "4337ad0d8f3a3cbece4bd90923db78224af494ab",
+  "reviewSha256": "b749a5be93f53bd29dfabe0aa7ce24f214b13bcd3c809aa5574e78a171b58361",
+  "independentSha256": "0b2f26cc91504080af34d9aec904c496fb09c18f09958bc981860e2b4eae486f",
+  "reviewedFourSlotSha256": "fc774cdeee1c52ae025e819b37122fc5e9bd710ca800730fe770d92e9c817be7",
+  "finalFourSlotSha256": "eb4d3803fbf610a9b4700a58e655bdd6b385c3c4e9baaed4d7a365c84ab4bd9b",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T08:48:40.024616+00:00"
+}
