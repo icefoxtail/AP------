@@ -34,7 +34,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB에 내린 수선의 발 M을 잡은 그림. 현의 절반 AM과 MB는 같은 파란 표시로 같은 길이이고, AM은 12cm, OM은 5cm이며 OA는 x이다. 점 M에서 직각이다.",
     "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=12cm이다. 직각삼각형 AOM에서 OM=5cm이므로 피타고라스 정리로 x를 구한다. 정답은 13이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -69,7 +78,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 두 현 AB, AC와 현 BC로 이루어진 삼각형 ABC. 중심에서 두 현에 내린 수선 OD, OE는 길이가 같고(파란 표시), 두 현 AB, AC도 길이가 같다(주황 표시). 꼭짓점 A의 각은 44도이고 두 밑각은 같은 초록 표시이다.",
     "solutionImageCaption": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 AB=AC이고, 삼각형 ABC는 이등변삼각형이다. 꼭지각이 44도이므로 두 밑각은 각각 2분의 (180도−44도)이다. 정답은 68도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -104,7 +122,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O 위의 세 점 A, B, P. 점 P에서 두 현 PA, PB가 이루는 원주각은 110도(파란 표시)이고, 중심 O에서 두 반지름 OA, OB가 이루는 각 중 큰 호 AB를 보는 쪽 각이 x(주황 표시)이다.",
     "solutionImageCaption": "원주각 APB=110도가 보는 호는 점 P가 없는 큰 호 AB이다. 호에 대한 중심각은 원주각의 2배이므로 큰 호 AB의 중심각 x는 2×110도이다. 정답은 220도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -139,7 +166,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O에서 현 AB와 반지름 OC가 점 D에서 수직으로 만나는 그림. AD와 DB는 같은 길이(파란 표시)이고 BD는 6cm, CD는 4cm, OB는 반지름 r, OD는 r−4cm이다.",
     "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 AD=BD=6cm이다. 반지름을 r라 하면 OD=r−4이고, 직각삼각형 ODB에서 r²=6²+(r−4)²이다. 이를 풀면 r는 2분의 13이다. 정답은 13π cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -174,7 +210,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에 내접하는 원이 세 변과 만나는 점을 P, Q, R로 나타낸 그림. 한 꼭짓점에서 접점까지의 두 길이가 같은 쌍을 같은 색으로 표시했다. AP와 AR는 x(주황), BP와 BQ는 10−x(파랑), CQ와 CR는 6−x(초록)이고 BC는 12cm이다.",
     "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AP=AR=x, BP=BQ=10−x, CQ=CR=6−x이다. BC=BQ+QC=12이므로 (10−x)+(6−x)=12이다. 정답은 2이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -209,7 +254,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AB인 반원 위의 두 점 C, D와 중심 O. 중심각 COD는 50도이고 호 CD(주황)가 이에 대응한다. 두 할선 AC, BD가 원 밖의 점 P에서 이루는 각이 x(초록)이고, 이 각이 마주 보는 먼 쪽 호 AB(파랑, 지름 아래쪽)는 180도이다.",
     "solutionImageCaption": "두 할선이 이루는 각 안쪽의 먼 호 AB는 지름 AB가 만드는 반원이므로 180도이고, 가까운 호 CD는 중심각 COD와 같은 50도이다. 원 밖의 한 점에서 그은 두 할선이 이루는 각은 두 호의 크기 차의 절반이므로 x는 2분의 (180도−50도)이다. 정답은 65도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -244,7 +298,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O 위의 네 점 A, B, C, P. 호 AB는 3cm(주황)이고 중심각 40도, 호 BC는 9cm(파랑)이고 중심각 120도이다. 점 P에서 두 현 PA, PC가 이루는 원주각이 x(초록)이다.",
     "solutionImageCaption": "호의 길이는 중심각에 비례한다. 호 BC 9cm가 중심각 120도이므로 호 AB 3cm의 중심각은 40도이다. 원주각 APC가 보는 호 ABC의 중심각은 40도+120도=160도이다. 정답은 80도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -279,7 +342,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 접선 AT와 원 위의 세 점 A, B, C로 이루어진 삼각형 ABC. 접선과 현 AB가 이루는 각 BAT는 80도이고, 같은 호를 보는 원주각 ACB도 같은 파란 표시이다. 각 ABC는 40도(주황), 각 BAC는 x(초록)이다.",
     "solutionImageCaption": "접선과 현이 이루는 각은 그 각 안의 호에 대한 원주각과 같으므로 각 ACB=각 BAT=80도이다. 삼각형 ABC의 내각의 합이 180도이므로 x=180도−80도−40도이다. 정답은 60도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -309,7 +381,15 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 네 점 A, B, C, D와 이 점들을 지나는 원. 삼각형 ADC에서 각 ADC는 75도(주황), 각 ACD는 40도(초록)이고 각 DAC는 65도(파랑)이다. 각 DBC도 65도(파랑)이며 두 파란 각은 모두 선분 DC를 본다.",
     "solutionImageCaption": "삼각형 ADC에서 각 DAC=180도−75도−40도=65도이다. 각 DBC도 65도이므로 두 각이 같고, 두 점 A, B는 선분 DC에 대해 같은 쪽에서 같은 크기의 각으로 선분 DC를 본다. 따라서 네 점은 한 원 위에 있다. 정답은 ②이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT"
   },
   {
     "id": 10,
@@ -337,14 +417,23 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 접선의 길이로 직각삼각형을 만들고, 부채꼴의 중심각과 반지름을 구한다.\n같은 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB=3\\sqrt3$이다. 따라서 $\\triangle PAB$는 꼭짓각 $60^\\circ$인 이등변삼각형이고, 밑각도 각각 $60^\\circ$여서 정삼각형이다.\n$OP$는 $\\angle APB$를 이등분하므로 $\\angle APO=30^\\circ$이다. 또한 접점에서 반지름은 접선에 수직이므로 $\\angle OAP=90^\\circ$이다.\n직각삼각형 $OAP$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형이다. $30^\\circ$의 맞은편 변은 $60^\\circ$의 맞은편 변의 $\\dfrac1{\\sqrt3}$배이므로\n$OA=AP\\times\\dfrac1{\\sqrt3}=3\\sqrt3\\times\\dfrac1{\\sqrt3}=3\\rm\\,cm$이다.\n색칠한 부분은 중심각 $\\angle AOB=180^\\circ-\\angle APB=120^\\circ$인 부채꼴이다. 따라서 넓이는\n$\\dfrac{120}{360}\\times\\pi\\times3^2=3\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB(접점 A, B). 두 접선의 길이는 같고(주황 표시) 3√3cm이며 각 APB는 60도이다. 반지름 OA는 3cm이고 접점에서 직각이다. 색칠한 파란 부분은 중심각 AOB가 120도인 부채꼴이다.",
     "solutionImageCaption": "두 접선의 길이가 같으므로 삼각형 PAB는 정삼각형이고 각 APO=30도이다. 직각삼각형 OAP에서 반지름 OA=3cm이고, 각 AOB=180도−60도=120도이다. 부채꼴의 넓이는 3분의 1×π×3²이다. 정답은 3π cm²이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_SECTOR_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -379,7 +468,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 칸 그림. 첫째 칸은 점 P에서 원 O에 그은 두 접선과 선분 AB, OP. 둘째 칸은 직각삼각형 OMA, 셋째 칸은 직각삼각형 OAP를 같은 방향으로 펼친 것이며 대응하는 변은 같은 색(파랑, 주황, 초록)이다.",
     "solutionImageCaption": "직각삼각형 OAP에서 OP=5cm이다. OP는 AB를 수직이등분하므로 직각삼각형 OMA와 OAP는 닮음(대응변은 같은 색)이고, AM=4×(3÷5)=5분의 12cm이다. AB=2AM이므로 정답은 5분의 24cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -414,7 +512,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AC인 원과 점 B에서의 접선 BT. 현 AD는 접선과 평행하고(보라 표시), 접선과 현 BC가 이루는 각 CBT와 현 AB, AC가 이루는 원주각 BAC는 20도(파랑)이다. 호 BC는 40도(파랑), 호 AD는 80도(주황)이며 두 현 AC, BD가 점 P에서 이루는 각 APD가 x(초록)이다.",
     "solutionImageCaption": "접선과 현이 이루는 각 20도에서 호 BC=40도이다. AC가 지름이고 AD가 접선과 평행하므로 호 AD=80도이다. 두 현이 만나서 이루는 각은 마주 보는 두 호의 합의 절반이므로 x는 2분의 (80도+40도)이다. 정답은 60도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_PARALLEL_LINE_ANGLES"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -443,7 +550,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 14,
@@ -478,7 +592,15 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 이모티콘 사용 건수 20개를 나타낸 줄기와 잎 그림, 가운데 두 값 강조",
     "solutionImageCaption": "자료 20개를 작은 값부터 놓으면 10번째 값은 29, 11번째 값은 31이므로 이 두 잎(동그라미)의 평균이 중앙값이다. 38이 세 번 나타나 가장 많으므로 최빈값은 38이다. 정답은 ①(중앙값 30, 최빈값 38)이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -507,7 +629,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -538,7 +669,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 17,
@@ -569,7 +707,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -598,7 +744,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 19,
@@ -629,7 +783,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -658,7 +819,14 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": ["CC_SUM_OF_SQUARES_IDENTITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -688,7 +856,15 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 각 B가 직각인 삼각형 ABC에 내접하는 원과 접점 D, E, F. 꼭짓점에서 접점까지의 길이가 같은 쌍을 같은 색으로 표시했다. AD와 AF는 2cm(주황), BD와 BE는 t cm(파랑), CE와 CF는 3cm(초록)이다.",
     "solutionImageCaption": "접선의 길이가 같으므로 AD=AF=2cm, CE=CF=3cm이고 BD=BE=t cm라 하면 AB=t+2, BC=t+3, AC=5이다. 피타고라스 정리 (t+2)²+(t+3)²=5²에서 t=1이므로 세 변은 3, 4, 5cm이고 내접원의 반지름은 1cm이다. 정답은 2π cm이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_QUADRATIC_EQUATION","CC_TRIANGLE_INCENTER","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 22,
@@ -718,7 +894,16 @@ window.questionBank = [
     "solutionImage": "assets/images/22_향림중_2학기_기말_중3_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AC인 원과 점 B에서의 접선 위의 점 P(A, C, P는 한 직선 위). 각 BAC는 36도이고 접선과 현이 이루는 각 PBC도 36도(파랑)이며, 지름에 대한 원주각 ABC는 직각, 각 ACB는 54도(주황)이다. 삼각형 BCP의 한 각 BPC가 x(초록)이다.",
     "solutionImageCaption": "AC가 지름이므로 각 ABC=90도이고 각 ACB=54도이다. 접선과 현의 성질로 각 PBC=각 BAC=36도이고 각 BCP=180도−54도=126도이다. 삼각형 BCP에서 x=180도−36도−126도이다. 정답은 18도이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -742,7 +927,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -768,6 +962,13 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

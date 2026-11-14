@@ -1,0 +1,215 @@
+[
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "같은 선분을 보는 등각으로 공원성 판정",
+    "reuseDefinition": "각 배치를 읽고 필요한 각을 내각합으로 복원하여 같은 선분을 보는 두 각이 같음을 근거로 네 점이 한 원 위에 있음을 판정한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "distinguishingCriterion": "기존 중심각-원주각 수치 계산은 공원성이 주어진 경우이며 여기서는 원주각 정리의 역으로 공원성 자체를 판정한다.",
+    "supportingQuestionUids": [
+      "qid_v1_1011cf7e8758501ddb962a191efff932dba614d6b22343d53c6614340b2b8fad"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "원 밖의 점에서 그은 두 접선의 접점을 잇는 현의 길이 또는 그 현을 이용한 값을 구하는 유형.",
+    "distinguishingCriterion": "접점의 직각으로 중심거리를 구하고 접점 대칭으로 생긴 두 직각삼각형의 AA닮음에서 반현 길이를 계산한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+    "rpmRecordId": "M3-RPM-072",
+    "supportingQuestionUids": [
+      "qid_v1_940219bb88124e4093b1b5a4303c01cd4d5cf604c249581707277dc0178d8d79"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "생활자료의 음의 상관관계 판정",
+    "reuseDefinition": "여러 생활자료의 두 변량이 반대 방향으로 변화하는 경향을 음의 상관으로 판정한다.",
+    "parentScope": "통계/산포도 또는 산점도와 상관관계",
+    "distinguishingCriterion": "개별 점 좌표나 정확한 함수식을 계산하지 않는 개념 판정이다.",
+    "supportingQuestionUids": [
+      "qid_v1_527166303c9841af44127b71bc754609536d9afa164597e9cf2319bd0c7538aa"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "짝수개 자료의 중앙값과 최빈값",
+    "reuseDefinition": "순서가 있는 유한자료에서 자료수가 짝수이면 두 중앙값의 평균을 취하고 도수가 가장 큰 값을 최빈값으로 구한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "distinguishingCriterion": "M3 중앙값+최빈값 TPL은 홀수 자료의 한가운데 값을 명시하므로 짝수 자료를 강제하지 않는다. 평균까지 모두 계산하는 ALL_STATISTICS와도 구별된다.",
+    "supportingQuestionUids": [
+      "qid_v1_3beb0392eba5132e9ad7fd013c779fedb504294a09850e963dfc83a208419a9c"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+    "distinguishingCriterion": "평균에서두 미지수의 합14를 구하고 중앙값4의 순서 위치로 두 값을 복원한 뒤 a>b로 순서를 정한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "rpmRecordId": "M3-RPM-087",
+    "supportingQuestionUids": [
+      "qid_v1_2dc02ec00fcb45a34f42c548114e466206793b69d570402185bd45f5601f4a02"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_CANDIDATE_PT_AND_NEW_TPL",
+    "nameKo": "미지 편차와 원래 변량 복원",
+    "reuseDefinition": "편차합0으로 누락 편차를 구하고 변량=평균+편차로 원래 자료값을 복원한다.",
+    "distinguishingCriterion": "ACTIVE DISPERSION_DEVIATION_PROPERTIES는 누락편차 뒤 분산·표준편차 계산을 포함한다. 이 문제에는 산포도 계산이 없어 그 부모를 적용하지 않는다.",
+    "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProposalRef": "worker-outputs/b/E008/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_e0a897b66189145ed590a05380ac88796e0eba395e8c4873e8619769c8030e13"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "주어진 평균과 표준편차로 자료 특성 판정",
+    "reuseDefinition": "여러 집단의 평균과 표준편차가 주어졌을 때 중심 크기와 고른 정도를 구분하여 비교 진술을 판단한다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "distinguishingCriterion": "막대그래프 분포에서 산포도를 추론하는 부모와 달리 숫자로 주어진 통계량을 비교한다. 기존 편차부호오류 TPL보다 진술 범위가 넓다.",
+    "supportingQuestionUids": [
+      "qid_v1_328bd81661f928cecddfbe977438e1edfe6f846797b7d95c44ea4a7ab4ed2436"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "편차·분산·평균의 종합 정의 판정",
+    "reuseDefinition": "편차 부호와 합0, 분산의 제곱 평균 및 산포도의 크기를 기본 정의와 대조하여 복수 진술을 판정한다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "distinguishingCriterion": "기존 TPL은 편차 부호를 거꾸로 쓴 진술 선택에 한정되므로 제곱누락·집중도·평균독립 진술을 함께 다루는 골격과 구분한다.",
+    "supportingQuestionUids": [
+      "qid_v1_7618bfdd5a4e24caf13b741c9a29e2b496a6751b1e4208771e17efa3bbec2f62"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표·대소·상관 진술 종합 판정",
+    "reuseDefinition": "표시점 좌표, 두 축 값의 상등과 대소, 집단의 상관 추세를 각 선택 진술과 비교한다.",
+    "parentScope": "통계/산포도 또는 산점도와 상관관계",
+    "distinguishingCriterion": "순수 조건별 점 개수만 요구하는 경우와 달리 실제 양의상관 진술도 포함한다.",
+    "supportingQuestionUids": [
+      "qid_v1_f7c847cdc7e4306cb60215bd2d3af2070bf0fbcee0591c4cd5159559ab02d8f7"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_CANDIDATE_PT_AND_NEW_TPL",
+    "nameKo": "평균과 분산에서 두 미지 자료의 대칭식",
+    "reuseDefinition": "평균으로 두 미지 자료의 합을 구하고 분산의 편차제곱합을 전개해 제곱합을 얻은 뒤 항등식으로 곱 또는 대칭식을 계산한다.",
+    "distinguishingCriterion": "누락편차 합0 뒤 분산을 순방향 계산하는 ACTIVE 부모와 달리 주어진 평균·분산에서 원자료의 대칭식을 역산한다.",
+    "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProposalRef": "worker-outputs/b/E008/proposals.json",
+    "supportingQuestionUids": [
+      "qid_v1_3c47a624ab154909bf644fbcf7b3f1a9d2d0884d582a0d92e043ff70f3bb8af6"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "등접선에서 내접반지름과 원주 역산",
+    "reuseDefinition": "직각삼각형 내접원의 등접선으로 변들을 같은 미지수로 나타내고 피타고라스식에서 허용길이를 구한 뒤 넓이/반둘레로 반지름과 원주를 얻는다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "distinguishingCriterion": "TM_TANGENT_LENGTH의 목표 접선길이가 아니며 TM_TANGENT_CONTACT_CHORD_LENGTH의 접점현 목표도 아니다. E003Q17·B E020Q20의 역산 측정 후보와 원주 목표 및 내접반지름 단계로 구별한다.",
+    "supportingQuestionUids": [
+      "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+    "distinguishingCriterion": "중앙값19의 가운데 두 수가x와20이 되도록 자료 순서를 확인해x를 복원하고 평균을 구한다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "rpmRecordId": "M3-RPM-087",
+    "supportingQuestionUids": [
+      "qid_v1_212eb8ff6fcedc11eb965d07f6d4f6d8792d7c1c5c0a79988b37e90b554f552c"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
+    "nameKo": "원자료의 표준편차를 계산하여 두 집단 비교",
+    "reuseDefinition": "알려진 유한 원자료와 평균에서 편차제곱 평균과 제곱근을 계산하여 두 집단의 변동성을 비교한다.",
+    "parentScope": "통계/산포도 또는 산점도와 상관관계",
+    "distinguishingCriterion": "계급값·도수표, 미지편차 복원, 대칭 막대그래프 추론 또는 원자료 역산 조건이 없다. 해당 ACTIVE 부모들을 강제하지 않는 순방향 원자료 산포도 계산·비교 구조다.",
+    "supportingQuestionUids": [
+      "qid_v1_65fdeab23c90845d224da91e8b056c9930575313197c1d512757f79e6534891a"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

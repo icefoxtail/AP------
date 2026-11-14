@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E036",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "2574638078ac2f6e6023f3c501b0cbcf21dc84e7",
+  "artifactHashes": {
+    "review.json": "b44295b2b03e194a8c859a3fc99e5434d0487c4ca7b12fa4354135219e8cbfbf",
+    "E036.4slot.json": "f663f99dfa61e9f9d0fd82f957042c0b7548e819f60db900f5eb0d36b27fe4ed",
+    "source-patch.json": "ba0573a58865a2568e2df11a2788ecf510f786dd76bc3ff6288b5ce8514cf6f8"
+  },
+  "sampleOrdinals": [
+    10,
+    11,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_e025182322f95beade6bf068fc10f6128a04de16f5e64f57b5b1cbd2e7eab9cd",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "실제 해설은 접선 등길이·OP 각이등분·접점 직각과 특수직각삼각형 변비를 연결하여 반지름을 복원한 뒤 중심각과 넓이를 구한다. 삼각비 method를 특수직각삼각형의변의비 후보로 보완한 최종본은 정확하며, ROOT의 COMPOSITE/RPM080-current168 판정과 일치한다. CC_PYTHAGOREAN은 실제 등록 정의인 직각삼각형 세 변 관계 범위로 사용한 것임을 확인했다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_향림중_2학기_기말_중3_기출/q10.png",
+        "assets/images/22_향림중_2학기_기말_중3_기출/q10-solution.svg"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_940219bb88124e4093b1b5a4303c01cd4d5cf604c249581707277dc0178d8d79",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "접점의 직각에서 OP를 구하고 접점 대칭으로 생긴 두 직각삼각형의 AA 닮음에서 반현 AM을 구하는 기존 풀이를 모두 담았다. GLOBAL ACTIVE TM_TANGENT_CONTACT_CHORD_LENGTH가 접점현 AB 목표를 정확히 포함하며 M3 연결 공백을 새 TPL 필요와 구분한 판단이 타당하다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_향림중_2학기_기말_중3_기출/q11.png",
+        "assets/images/22_향림중_2학기_기말_중3_기출/q11-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 11,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "등접선으로 t+2, t+3, 5를 구성한 뒤 피타고라스·인수분해·허용 길이근·넓이/반둘레에 의한 내접반지름·원주를 연결하는 실제 방법이 빠짐없이 담겼다. 직각·외접 조건 및 음수근 배제도 원문과 일치하며 PT 재사용과 정확 목표 골격의 TPL 공백 구분이 타당하다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_향림중_2학기_기말_중3_기출/q21.png",
+        "assets/images/22_향림중_2학기_기말_중3_기출/q21-solution.svg"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_PRIMARY_AND_METHOD_CORRECTION",
+  "rootAdjudicationRefs": [
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E036.primary-adjudication.json",
+      "sha256": "0bb9091918af99f0f8ba14de9dd6f8d640d0102574aecb39e9f4164dbfa7c095"
+    },
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E036.difficulty-adjudication.json",
+      "sha256": "26f416a152fe32c2132ea3ffc008da98b22e758cfddd01acc3a4f7659bd40cc0"
+    }
+  ],
+  "separateDifficultyRef": "/workspace/scratch/9c9d44bb632b/worker-outputs/a/independent/E036.difficulty.json",
+  "separateDifficultySha256": "eb1a293ef4d44720997db157505464aacf6f85d3f05c6aee513010ea4c8fdf22",
+  "scope": "Metadata and 4slot semantic review only; no new mathematical R1/R2/R3",
+  "newMathematicalVerification": false,
+  "exactQuoteCheckCount": 27,
+  "finalMetadataRebind": "Final nine difficulty acceptance changes checked against Root receipt; unchanged final 4slot and sample decisions retained."
+}
