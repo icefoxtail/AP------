@@ -1,0 +1,481 @@
+{
+  "schemaVersion": "m3-closeout-report-review-v1",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "reviewer": "GPT_AUTHOR_A_00FBAC4C0777",
+  "reviewedAtUtc": "2026-11-14T12:08:45.720163+00:00",
+  "scope": "Read-only closeout report/count/next-action coherence audit. No question mathematics recheck, no existing74 rework, no official validator rerun, no source/Git/shared package mutation.",
+  "primaryDocuments": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/HANDOFF.md",
+      "sha256": "8e7e1954397a796e28d86f701d8b9e1de3adfea758ced0411a0ac97a740ca033",
+      "bytes": 9429,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/completion-summary.json",
+      "sha256": "d2f467f14ef711daeba17326a7919cddaf150d8c312c59f00fc556048eb7e5a9",
+      "bytes": 27706,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/release-queue.json",
+      "sha256": "3908612d1c5e761f3a11c8fc4fa374bac1be75a92cef6e3c480f8e2c53e437b7",
+      "bytes": 79235,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/progress.json",
+      "sha256": "e60e65eb9bda8e956eb13a8eebb9b7efe42220e1d3da294ce570653ecb2669ca",
+      "bytes": 198837,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/PACKAGE_NOTES.md",
+      "sha256": "1e56c57efb8861f01638a2654ff0a1c54f545e7e615c8acdadab9e1b3aac82bd",
+      "bytes": 2577,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/evidence-relocations-applied.json",
+      "sha256": "f2d91ac6ae755cdcd94e92a2a27cc4664de1ca7d4526a181ac6cad0bd4d3d0bf",
+      "bytes": 1113,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/ALL9.official-validation.effective-summary.json",
+      "sha256": "936d79ad8990070aa9689706e0fc7a7a949eeee4dda5a1c5bc3e26586394073f",
+      "bytes": 13149,
+      "stableUntilReviewEnd": true
+    },
+    {
+      "path": "WORKER_CURRENT.md",
+      "sha256": "7d02833eb136024ec76ed888b9cba6d1d7ec8f69d9d0758b5298b09b7532f641",
+      "bytes": 679,
+      "stableUntilReviewEnd": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "campaign_counts",
+      "status": "PASS",
+      "observed": {
+        "exams": 83,
+        "questions": 1958,
+        "reviewed": 1958
+      },
+      "meaning": "Progress per-exam arithmetic reproduces the declared whole-campaign review counts."
+    },
+    {
+      "id": "samples",
+      "status": "PASS",
+      "observed": {
+        "prior": 222,
+        "new": 27
+      },
+      "meaning": "222 reused plus 27 new source-first sample entries total 249; this is an entry/count check, not a repeat sample mathematics review."
+    },
+    {
+      "id": "old_new_separation",
+      "status": "PASS",
+      "observed": {
+        "old": [
+          74,
+          1749
+        ],
+        "new": [
+          9,
+          209
+        ]
+      },
+      "meaning": "Existing 74/1749 and new 9/209 are distinguished."
+    },
+    {
+      "id": "resume_baseline_count",
+      "status": "PASS",
+      "observed": {
+        "completedExamsAtResume": 74,
+        "completedQuestionsAtResume": 1749
+      },
+      "meaning": "Reused count agrees with the actual prior progress snapshot, without reopening those exams for semantic review."
+    },
+    {
+      "id": "unreviewed_zero",
+      "status": "PASS",
+      "observed": {
+        "unreviewedExams": 0,
+        "unreviewedQuestions": 0,
+        "releaseQueue": "docs/operations/m3-s2-meta-full-20261114/release-queue.json",
+        "registrationAndSourcePrerequisitesRemain": true
+      },
+      "meaning": "No outstanding unreviewed exam/question is conflated with release debt."
+    },
+    {
+      "id": "new_field_changes",
+      "status": "PASS",
+      "observed": 2538,
+      "meaning": "New-exam field-change totals agree between summary and progress."
+    },
+    {
+      "id": "new_difficulty_totals",
+      "status": "PASS",
+      "observed": {
+        "2": 100,
+        "3": 67,
+        "1": 38,
+        "UNKNOWN": 2,
+        "4": 2
+      },
+      "meaning": "New209 bucket counts sum correctly, retaining two UNKNOWN values."
+    },
+    {
+      "id": "new_template_fit_total",
+      "status": "PASS",
+      "observed": {
+        "FIT": 133,
+        "NO_PROJECTION": 33,
+        "NATIVE_TEMPLATE_GAP": 43
+      },
+      "meaning": "Template-fit question categories sum to new209."
+    },
+    {
+      "id": "new_current2022_projection_total",
+      "status": "PASS",
+      "observed": {
+        "PROJECTION_BINDING_PENDING": 172,
+        "PROJECTION_UNMATERIALIZED": 25,
+        "NOT_RUN": 3,
+        "EXACT_SEMANTIC_LEAF_UNAVAILABLE": 4,
+        "META_ONLY_COMPATIBILITY_PENDING": 3,
+        "SOURCE_SOLUTION_PREREQUISITE_HOLD": 2
+      },
+      "meaning": "Effective current-2022 projection counts retain binding/unmaterialized/source holds separately."
+    },
+    {
+      "id": "new_source_holds",
+      "status": "PASS",
+      "observed": [
+        [
+          "E064",
+          21
+        ],
+        [
+          "E067",
+          11
+        ],
+        [
+          "E079",
+          18
+        ],
+        [
+          "E079",
+          19
+        ],
+        [
+          "E079",
+          22
+        ]
+      ],
+      "meaning": "Five are explicitly new209 source prerequisites, not all source issues across 83 exams."
+    },
+    {
+      "id": "source_hold_summary_queue_agreement",
+      "status": "PASS",
+      "observed": 5,
+      "meaning": "Summary and release queue identify the same source holds."
+    },
+    {
+      "id": "difficulty_hold_split",
+      "status": "PASS",
+      "observed": {
+        "prior": 10,
+        "new": 2,
+        "total": 12
+      },
+      "meaning": "Twelve whole-campaign difficulty holds are 10 existing plus 2 new, without duplicates."
+    },
+    {
+      "id": "difficulty_holds_summary_queue",
+      "status": "PASS",
+      "observed": true,
+      "meaning": "The two new UNKNOWNs are a subset of the five new source prerequisites."
+    },
+    {
+      "id": "queue_nativeTemplateGapQuestions",
+      "status": "PASS",
+      "observed": {
+        "rows": 43,
+        "uniqueQuestions": 43
+      },
+      "meaning": "Queue count is counted in distinct questions, not new-definition count."
+    },
+    {
+      "id": "queue_activeSourceFieldCompletenessDebts",
+      "status": "PASS",
+      "observed": {
+        "rows": 84,
+        "uniqueQuestions": 84
+      },
+      "meaning": "Queue count is counted in distinct questions, not new-definition count."
+    },
+    {
+      "id": "queue_current2022ExactLeafGaps",
+      "status": "PASS",
+      "observed": {
+        "rows": 4,
+        "uniqueQuestions": 4
+      },
+      "meaning": "Queue count is counted in distinct questions, not new-definition count."
+    },
+    {
+      "id": "effective_official_counts",
+      "status": "PASS",
+      "observed": {
+        "totalCandidateRoutes": 418,
+        "executedRoutes": 404,
+        "notRunRoutes": 14,
+        "resolverStatusCounts": {
+          "PASS": 404,
+          "NOT_RUN": 14
+        },
+        "difficultyStatusCounts": {
+          "PASS": 404,
+          "NOT_RUN": 14
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 359,
+          "FAIL": 45,
+          "NOT_RUN": 14
+        }
+      },
+      "meaning": "Effective route validation counts exactly match the requested 404/359/45/14."
+    },
+    {
+      "id": "per_exam_resolverStatusCounts",
+      "status": "PASS",
+      "observed": {
+        "PASS": 404,
+        "NOT_RUN": 14
+      },
+      "meaning": "Per-exam official counts reproduce the effective total."
+    },
+    {
+      "id": "per_exam_difficultyStatusCounts",
+      "status": "PASS",
+      "observed": {
+        "PASS": 404,
+        "NOT_RUN": 14
+      },
+      "meaning": "Per-exam official counts reproduce the effective total."
+    },
+    {
+      "id": "per_exam_fullFinalizationStatusCounts",
+      "status": "PASS",
+      "observed": {
+        "PASS": 359,
+        "FAIL": 45,
+        "NOT_RUN": 14
+      },
+      "meaning": "Per-exam official counts reproduce the effective total."
+    },
+    {
+      "id": "summary_effective_agreement",
+      "status": "PASS",
+      "observed": true,
+      "meaning": "Completion summary uses the effective rather than obsolete frozen counts."
+    },
+    {
+      "id": "not_run_scope",
+      "status": "PASS",
+      "observed": {
+        "sourceRoutes": 10,
+        "exactLeafGapRoutes": 4
+      },
+      "meaning": "14 not-run routes equal 5 source prerequisites x2 curricula plus 4 current-2022 leaf gaps."
+    },
+    {
+      "id": "failed_route_causes",
+      "status": "PASS",
+      "observed": {
+        "template": 39,
+        "relational": 6
+      },
+      "meaning": "45 full-finalization failures are disjoint 39 template routes plus 6 provenance routes."
+    },
+    {
+      "id": "frozen403_counts",
+      "status": "PASS",
+      "observed": {
+        "resolverStatusCounts": {
+          "PASS": 403,
+          "NOT_RUN": 15
+        },
+        "difficultyStatusCounts": {
+          "PASS": 403,
+          "NOT_RUN": 15
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 358,
+          "FAIL": 45,
+          "NOT_RUN": 15
+        }
+      },
+      "meaning": "Frozen baseline counts remain distinct from the added route."
+    },
+    {
+      "id": "single_overlay",
+      "status": "PASS",
+      "observed": {
+        "routeId": "E065:5:2022",
+        "previousExecutionStatus": "NOT_RUN",
+        "previousReason": "EXACT_COUNTERPART_NOT_FOUND",
+        "effectiveExecutionStatus": "EXECUTED",
+        "frozenBaselineFilesModified": false,
+        "original403OfficialValidationsRerun": false
+      },
+      "meaning": "Effective report explicitly applies exactly one additive override."
+    },
+    {
+      "id": "added_route_actual_results",
+      "status": "PASS",
+      "observed": {
+        "resolver": "PASS",
+        "difficulty": "PASS",
+        "full": "PASS",
+        "projectionDebt": {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2022",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-135"
+        }
+      },
+      "meaning": "The added route is real official PASS while unmaterialized projection debt remains explicit."
+    },
+    {
+      "id": "additive_arithmetic",
+      "status": "PASS",
+      "observed": {
+        "executedDelta": 1,
+        "fullPassDelta": 1,
+        "notRunDelta": -1
+      },
+      "meaning": "403→404,358→359,15→14 is the declared single route."
+    },
+    {
+      "id": "gap_excludes_q5",
+      "status": "PASS",
+      "observed": [
+        {
+          "examId": "E065",
+          "ordinal": 1,
+          "evidenceRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+            "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+          }
+        },
+        {
+          "examId": "E065",
+          "ordinal": 4,
+          "evidenceRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+            "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+          }
+        },
+        {
+          "examId": "E065",
+          "ordinal": 11,
+          "evidenceRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+            "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+          }
+        },
+        {
+          "examId": "E065",
+          "ordinal": 16,
+          "evidenceRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+            "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+          }
+        }
+      ],
+      "meaning": "The exact-leaf debt queue removes Q5 only."
+    },
+    {
+      "id": "source_byte_preservation_against_5aa",
+      "status": "PASS",
+      "observed": {
+        "sourceFiles": 9,
+        "differentFiles": []
+      },
+      "meaning": "All nine source files, including E065 original 2015 metadata, are byte-identical to source package remote snapshot 5aa."
+    },
+    {
+      "id": "e065_frozen_meta_resolver_unchanged",
+      "status": "PASS",
+      "observed": {
+        "filesChecked": 2,
+        "differentFiles": []
+      },
+      "meaning": "E065 meta and original resolver evidence are not rewritten by current-2022 supplement."
+    },
+    {
+      "id": "declared_file_hash_refs",
+      "status": "PASS",
+      "observed": {
+        "distinctPathShaRefs": 105,
+        "errors": []
+      },
+      "meaning": "Only referenced raw file bytes were checked; existing74 question mathematics was not re-reviewed."
+    },
+    {
+      "id": "relocations_applied",
+      "status": "PASS",
+      "observed": {
+        "targets": 10,
+        "errors": []
+      },
+      "meaning": "All ten relocation target files actually exist with declared hashes, despite historical proposal status fields."
+    },
+    {
+      "id": "next_action_identified",
+      "status": "PASS",
+      "observed": {
+        "nextOwner": "CODEX_RELEASE_OWNER_PENDING_ACCEPTANCE",
+        "handoff": "OFFERED_TO_CODEX_PENDING_ACCEPTANCE",
+        "nextActions": [
+          "Accept exact task and verify remote branch plus AWCR parent checkpoint; prior review is not repeated.",
+          "Resolve source prerequisites and independent solution verification for affected items before rerunning their routes.",
+          "Review existing per-question proposals and current binding/template definitions; register only approved exact mappings.",
+          "Resolve legacy validator/current-policy mismatch while retaining observed candidate exposure history.",
+          "Run required registration/consumer checks on affected artifacts; then handle main merge and release under the release workflow."
+        ]
+      },
+      "meaning": "Next owner, unaccepted handoff, prerequisites, affected-only reruns and later merge/release are explicit."
+    },
+    {
+      "id": "no_overall_quality_pass",
+      "status": "PASS",
+      "observed": true,
+      "meaning": "Review completion is distinguished from full quality/release acceptance."
+    }
+  ],
+  "findings": [],
+  "result": {
+    "status": "REPORT_COHERENT",
+    "checks": 34,
+    "passed": 34,
+    "failed": 0,
+    "blockingFindings": 0,
+    "nonblockingFindings": 0,
+    "declaredFileRefsChecked": 105,
+    "sourceFilesByteComparedTo5aa": 9,
+    "documentsStableDuringReview": true,
+    "mathematicalQualityPassClaimed": false,
+    "remotePublicationAndAWCRVerifiedByThisReview": false,
+    "writerStatus": "CLOSED_AFTER_THIS_REPORT"
+  },
+  "limits": [
+    "Prior74 metadata mathematics was not reopened; only prior progress counters and referenced bytes were used.",
+    "The original403 compact files match their current declared frozen hashes and preserve baseline counts. Their historical remote publication commit is not independently certified here.",
+    "Remote final closeout commit, manifest publication and AWCR handoff receipt remain root closeout actions."
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "schemaVersion": "M3S2_OFFICIAL_EFFECTIVE_SUMMARY_v1",
+  "createdAt": "2026-11-14T12:04:19.042Z",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "baselineSummaryRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/closeout/ALL9.official-validation.compact-summary.json",
+    "sha256": "7151d89965996d56ae18d2fa2a48012983660455542abbbef40bb952add58ad6",
+    "bytes": 9600
+  },
+  "supplementalValidationRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.Q5.current2022.official-supplement.json",
+    "sha256": "9341a190afc81e2d0d0c3497cece2d3f1fc798c123ab1ad4425d18fdfbd63536",
+    "bytes": 28663
+  },
+  "semanticSupplementInputRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-supplement.json",
+    "sha256": "2dc3e2dcf9fb47275666fbf923f790432396e9252eb55a09b4a59d642c391817",
+    "bytes": 12008,
+    "field": "input",
+    "objectSha": "sha256:e72f5eb05f81919e37be9d2ca5ed70272a9dbc67be377917dc6a3cdd151344a1"
+  },
+  "replayHelperRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/closeout/replay_current2022_supplement.mjs",
+    "sha256": "4bcca6384e67a00c29141ed3b046652f3f663d237676848549aec5dffbdc160e",
+    "bytes": 27210
+  },
+  "overlay": {
+    "routeId": "E065:5:2022",
+    "previousExecutionStatus": "NOT_RUN",
+    "previousReason": "EXACT_COUNTERPART_NOT_FOUND",
+    "effectiveExecutionStatus": "EXECUTED",
+    "frozenBaselineFilesModified": false,
+    "original403OfficialValidationsRerun": false
+  },
+  "totalQuestions": 209,
+  "totalCandidateRoutes": 418,
+  "executedRoutes": 404,
+  "notRunRoutes": 14,
+  "resolverStatusCounts": {
+    "PASS": 404,
+    "NOT_RUN": 14
+  },
+  "difficultyStatusCounts": {
+    "PASS": 404,
+    "NOT_RUN": 14
+  },
+  "fullFinalizationStatusCounts": {
+    "PASS": 359,
+    "FAIL": 45,
+    "NOT_RUN": 14
+  },
+  "preflightStatusCounts": {
+    "PASS": 359,
+    "FAIL": 45
+  },
+  "finalizationErrors": {
+    "ADVANCED_META_FIELD_MISSING:templateKey": 39,
+    "META_DETERMINISTIC_VALIDATOR_NOT_RUN": 45,
+    "META_FINAL_RELATIONAL_PROVENANCE_INVALID": 6
+  },
+  "projectionStatusCounts": {
+    "PROJECTION_REUSE": 164,
+    "PROJECTION_BINDING_PENDING": 179,
+    "PROJECTION_UNMATERIALIZED": 54,
+    "META_ONLY_COMPATIBILITY_PENDING": 7
+  },
+  "unavailableRoutes": [
+    {
+      "routeId": "E064:21:2015",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "NOT_RUN"
+    },
+    {
+      "routeId": "E064:21:2022",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "NOT_RUN"
+    },
+    {
+      "routeId": "E065:1:2022",
+      "hold": false,
+      "reason": "EXACT_COUNTERPART_NOT_FOUND",
+      "recordedRouteStatus": "EXACT_SEMANTIC_LEAF_UNAVAILABLE"
+    },
+    {
+      "routeId": "E065:4:2022",
+      "hold": false,
+      "reason": "EXACT_COUNTERPART_NOT_FOUND",
+      "recordedRouteStatus": "EXACT_SEMANTIC_LEAF_UNAVAILABLE"
+    },
+    {
+      "routeId": "E065:11:2022",
+      "hold": false,
+      "reason": "EXACT_COUNTERPART_NOT_FOUND",
+      "recordedRouteStatus": "EXACT_SEMANTIC_LEAF_UNAVAILABLE"
+    },
+    {
+      "routeId": "E065:16:2022",
+      "hold": false,
+      "reason": "EXACT_COUNTERPART_NOT_FOUND",
+      "recordedRouteStatus": "EXACT_SEMANTIC_LEAF_UNAVAILABLE"
+    },
+    {
+      "routeId": "E067:11:2015",
+      "hold": true,
+      "reason": "UNKNOWN_DIFFICULTY_WITH_SOURCE_VALIDITY_HOLD",
+      "recordedRouteStatus": "NOT_RUN"
+    },
+    {
+      "routeId": "E067:11:2022",
+      "hold": true,
+      "reason": "UNKNOWN_DIFFICULTY_WITH_SOURCE_VALIDITY_HOLD",
+      "recordedRouteStatus": "NOT_RUN"
+    },
+    {
+      "routeId": "E079:18:2015",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "SOURCE_SOLUTION_PREREQUISITE_HOLD"
+    },
+    {
+      "routeId": "E079:18:2022",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "SOURCE_SOLUTION_PREREQUISITE_HOLD"
+    },
+    {
+      "routeId": "E079:19:2015",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "SOURCE_SOLUTION_PREREQUISITE_HOLD"
+    },
+    {
+      "routeId": "E079:19:2022",
+      "hold": true,
+      "reason": "SOURCE_SOLUTION_PREREQUISITE_NOT_SATISFIED",
+      "recordedRouteStatus": "SOURCE_SOLUTION_PREREQUISITE_HOLD"
+    },
+    {
+      "routeId": "E079:22:2015",
+      "hold": true,
+      "reason": "UNKNOWN_DIFFICULTY_WITH_SOURCE_VALIDITY_HOLD",
+      "recordedRouteStatus": "NOT_RUN"
+    },
+    {
+      "routeId": "E079:22:2022",
+      "hold": true,
+      "reason": "UNKNOWN_DIFFICULTY_WITH_SOURCE_VALIDITY_HOLD",
+      "recordedRouteStatus": "NOT_RUN"
+    }
+  ],
+  "sourceInvalidQuestions": [
+    "E064:21",
+    "E067:11",
+    "E079:18",
+    "E079:19",
+    "E079:22"
+  ],
+  "unknownDifficultyQuestions": [
+    "E067:11",
+    "E079:22"
+  ],
+  "nativeTemplateGapProjectionReusePending": [
+    "E064:6:2015",
+    "E064:20:2015",
+    "E066:4:2015",
+    "E066:13:2015",
+    "E066:14:2015",
+    "E066:17:2015",
+    "E066:21:2015",
+    "E067:6:2015",
+    "E067:12:2015",
+    "E079:4:2015",
+    "E079:11:2015",
+    "E079:14:2015",
+    "E080:13:2015",
+    "E080:14:2015",
+    "E080:15:2015",
+    "E080:16:2015",
+    "E080:17:2015",
+    "E080:18:2015",
+    "E080:20:2015",
+    "E080:22:2015",
+    "E080:23:2015",
+    "E081:6:2015",
+    "E081:10:2015",
+    "E081:14:2015",
+    "E081:18:2015",
+    "E081:20:2015",
+    "E081:24:2015",
+    "E082:9:2015",
+    "E082:14:2015",
+    "E082:15:2015",
+    "E082:23:2015",
+    "E082:24:2015",
+    "E083:3:2015",
+    "E083:4:2015",
+    "E083:10:2015",
+    "E083:11:2015",
+    "E083:18:2015",
+    "E083:19:2015",
+    "E083:20:2015"
+  ],
+  "relationalVisibilityPending": [
+    "E066:3:2015",
+    "E066:3:2022",
+    "E082:19:2015",
+    "E082:19:2022",
+    "E082:21:2015",
+    "E082:21:2022"
+  ],
+  "questionCoverage": {
+    "bothRoutesExecuted": 200,
+    "oneRouteExecuted": 4,
+    "noRouteExecuted": 5,
+    "bothRoutesFullFinalizationPass": 158,
+    "allExecutedRoutesFullFinalizationPass": 162,
+    "anyFullFinalizationFailure": 42
+  },
+  "exams": [
+    {
+      "examId": "E064",
+      "questions": 22,
+      "executedRoutes": 42,
+      "notRunRoutes": 2,
+      "resolverStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 2
+      },
+      "difficultyStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 2
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 40,
+        "FAIL": 2,
+        "NOT_RUN": 2
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E064.official-validation.compact.json",
+        "sha256": "506486e041af7c7ca8ab207fb3a7b7967bf1dc0d9ef40f6a7dc01d3e5f4246e5",
+        "bytes": 610031
+      }
+    },
+    {
+      "examId": "E065",
+      "questions": 24,
+      "executedRoutes": 44,
+      "notRunRoutes": 4,
+      "resolverStatusCounts": {
+        "PASS": 44,
+        "NOT_RUN": 4
+      },
+      "difficultyStatusCounts": {
+        "PASS": 44,
+        "NOT_RUN": 4
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 44,
+        "NOT_RUN": 4
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.official-validation.compact.json",
+        "sha256": "c181a6bbe82ccd3e48f36e49167ff9deeb1315aaf1cb6df6c72e087cf8031d2d",
+        "bytes": 644543
+      }
+    },
+    {
+      "examId": "E066",
+      "questions": 21,
+      "executedRoutes": 42,
+      "notRunRoutes": 0,
+      "resolverStatusCounts": {
+        "PASS": 42
+      },
+      "difficultyStatusCounts": {
+        "PASS": 42
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 35,
+        "FAIL": 7
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E066.official-validation.compact.json",
+        "sha256": "b23d70264e21b4782e6f69f67ff608fcb2b9596d330b617ae59a954daeebe7b6",
+        "bytes": 699015
+      }
+    },
+    {
+      "examId": "E067",
+      "questions": 22,
+      "executedRoutes": 42,
+      "notRunRoutes": 2,
+      "resolverStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 2
+      },
+      "difficultyStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 2
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 40,
+        "FAIL": 2,
+        "NOT_RUN": 2
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E067.official-validation.compact.json",
+        "sha256": "12e55b6ff8cbb6c0d937a92aae2008226ad502064428d212dd66b34b53cd957e",
+        "bytes": 627808
+      }
+    },
+    {
+      "examId": "E079",
+      "questions": 24,
+      "executedRoutes": 42,
+      "notRunRoutes": 6,
+      "resolverStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 6
+      },
+      "difficultyStatusCounts": {
+        "PASS": 42,
+        "NOT_RUN": 6
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 39,
+        "FAIL": 3,
+        "NOT_RUN": 6
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E079.official-validation.compact.json",
+        "sha256": "c428c85051ae212d575c78cc0c775340920794e2fd86f9ef765bd0c7ee04ff6b",
+        "bytes": 608857
+      }
+    },
+    {
+      "examId": "E080",
+      "questions": 23,
+      "executedRoutes": 46,
+      "notRunRoutes": 0,
+      "resolverStatusCounts": {
+        "PASS": 46
+      },
+      "difficultyStatusCounts": {
+        "PASS": 46
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 37,
+        "FAIL": 9
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E080.official-validation.compact.json",
+        "sha256": "20624b4474b0e44470d4c1c42a1428c3a0166e4db3a3756ce4751e35b4ab2e05",
+        "bytes": 724203
+      }
+    },
+    {
+      "examId": "E081",
+      "questions": 24,
+      "executedRoutes": 48,
+      "notRunRoutes": 0,
+      "resolverStatusCounts": {
+        "PASS": 48
+      },
+      "difficultyStatusCounts": {
+        "PASS": 48
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 42,
+        "FAIL": 6
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E081.official-validation.compact.json",
+        "sha256": "af010ab33521191f5716040d04540d56825a6d199728adb8ab4de2bc66dcc961",
+        "bytes": 758696
+      }
+    },
+    {
+      "examId": "E082",
+      "questions": 24,
+      "executedRoutes": 48,
+      "notRunRoutes": 0,
+      "resolverStatusCounts": {
+        "PASS": 48
+      },
+      "difficultyStatusCounts": {
+        "PASS": 48
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 39,
+        "FAIL": 9
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E082.official-validation.compact.json",
+        "sha256": "efd9586b3f2a6de9587195ea07a538de464c710023f1a09ced600bb74f048e97",
+        "bytes": 794689
+      }
+    },
+    {
+      "examId": "E083",
+      "questions": 25,
+      "executedRoutes": 50,
+      "notRunRoutes": 0,
+      "resolverStatusCounts": {
+        "PASS": 50
+      },
+      "difficultyStatusCounts": {
+        "PASS": 50
+      },
+      "fullFinalizationStatusCounts": {
+        "PASS": 43,
+        "FAIL": 7
+      },
+      "baselineCompactRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E083.official-validation.compact.json",
+        "sha256": "66d51a63ce40d1473babe7ad1446050b3b7179c76a9ebfb1757a79bd226d26ff",
+        "bytes": 778885
+      }
+    }
+  ],
+  "interpretation": {
+    "officialResolverReceipts": "403 original receipts plus the single new receipt; original results remain frozen and are aggregated by verified file hashes, not re-executed here.",
+    "notRun": "14 unavailable official route validations: 5 source-invalid questions across 2 curricula, plus E065 Q1/4/11/16 current-2022 exact-leaf gaps. UNKNOWN2 are a subset of the source-invalid5, not extra cases.",
+    "fullFinalization": "Official raw results are preserved. PASS can coexist with recorded projection/binding debt; it is not production deployment approval or complete PT/TPL materialization.",
+    "nativeTemplateGaps": "The 39 intentional native-template omissions against PROJECTION_REUSE remain failed/pending; no template key or definition was changed.",
+    "relationalVisibility": "The 6 historical provenance failures remain unchanged and explicitly reflect actual candidate exposure versus the legacy validator boolean. Current override does not conceal exposure or fabricate validator PASS.",
+    "legacyValidatorNotRunError": "META_DETERMINISTIC_VALIDATOR_NOT_RUN in a failed full check means no PASS preflight receipt was issuable. Both preflight and full validation were executed.",
+    "difficultyOverride": "CURRENT_OVERRIDE_SAME_REVIEWER_SEPARATE_DIFFICULTY_AXIS; actual minimum-solution-burden rationale is independent of semantic keys, with boundary/abnormal legacy adjudications preserved. No new different-reviewer/session/non-exposure condition is imposed."
+  }
+}

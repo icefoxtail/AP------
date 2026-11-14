@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "M3S2_OFFICIAL_COMPACT_SUMMARY_v1",
+  "createdAt": "2026-11-14T11:53:08.753Z",
+  "sourceFrozenSummary": {
+    "fileName": "ALL9.official-validation-summary.json",
+    "sha256": "c1b70b8071fd4cd6438f584173c0a10d7451a3ba319e1f780d3a5992399ad88f"
+  },
+  "repoHead": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+  "replayHelperRef": {
+    "fileName": "replay_compact_official_validation.mjs",
+    "sha256": "afbbdd8f40a7b26f6ae9a165f9e77a9e6ac2ea33b1a15c0db94f8b5b4c249622"
+  },
+  "totalQuestions": 209,
+  "actualRoutes": 403,
+  "unavailableRoutes": 15,
+  "resolverStatusCounts": {
+    "PASS": 403,
+    "NOT_RUN": 15
+  },
+  "difficultyStatusCounts": {
+    "PASS": 403,
+    "NOT_RUN": 15
+  },
+  "fullFinalizationStatusCounts": {
+    "PASS": 358,
+    "FAIL": 45,
+    "NOT_RUN": 15
+  },
+  "finalizationErrors": {
+    "ADVANCED_META_FIELD_MISSING:templateKey": 39,
+    "META_DETERMINISTIC_VALIDATOR_NOT_RUN": 45,
+    "META_FINAL_RELATIONAL_PROVENANCE_INVALID": 6
+  },
+  "sourceInvalidQuestions": [
+    "E064:21",
+    "E067:11",
+    "E079:18",
+    "E079:19",
+    "E079:22"
+  ],
+  "unknownDifficultyQuestions": [
+    "E067:11",
+    "E079:22"
+  ],
+  "nativeTemplateGapProjectionReusePending": [
+    "E064:6:2015",
+    "E064:20:2015",
+    "E066:4:2015",
+    "E066:13:2015",
+    "E066:14:2015",
+    "E066:17:2015",
+    "E066:21:2015",
+    "E067:6:2015",
+    "E067:12:2015",
+    "E079:4:2015",
+    "E079:11:2015",
+    "E079:14:2015",
+    "E080:13:2015",
+    "E080:14:2015",
+    "E080:15:2015",
+    "E080:16:2015",
+    "E080:17:2015",
+    "E080:18:2015",
+    "E080:20:2015",
+    "E080:22:2015",
+    "E080:23:2015",
+    "E081:6:2015",
+    "E081:10:2015",
+    "E081:14:2015",
+    "E081:18:2015",
+    "E081:20:2015",
+    "E081:24:2015",
+    "E082:9:2015",
+    "E082:14:2015",
+    "E082:15:2015",
+    "E082:23:2015",
+    "E082:24:2015",
+    "E083:3:2015",
+    "E083:4:2015",
+    "E083:10:2015",
+    "E083:11:2015",
+    "E083:18:2015",
+    "E083:19:2015",
+    "E083:20:2015"
+  ],
+  "relationalVisibilityPending": [
+    "E066:3:2015",
+    "E066:3:2022",
+    "E082:19:2015",
+    "E082:19:2022",
+    "E082:21:2015",
+    "E082:21:2022"
+  ],
+  "validationSemantics": "Compact reports preserve every frozen official receipt, difficulty/relational evidence and observed failure. They omit duplicate input and recomputed evidence bodies only; the package SHA and route selector reconstruct the full official validation result for validationResultSha checks.",
+  "replayCommand": "node replay_compact_official_validation.mjs --repo-root <repo> --report-dir <compact-directory> [--exam E065] --out <new-replay-json>",
+  "updatePolicy": "A later E065-only route addition must produce a new validated revision for E065 with the new package SHA. Existing frozen reports are immutable; replay --exam E065 limits work to that report without re-running the other eight.",
+  "exams": [
+    {
+      "examId": "E064",
+      "counts": {
+        "questions": 22,
+        "actualRoutes": 42,
+        "unavailableRoutes": 2,
+        "resolverStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 2
+        },
+        "difficultyStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 2
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 40,
+          "FAIL": 2,
+          "NOT_RUN": 2
+        },
+        "preflightStatusCounts": {
+          "PASS": 40,
+          "FAIL": 2
+        },
+        "nativeTemplateGapProjectionReusePending": 2
+      },
+      "compactRef": {
+        "fileName": "E064.official-validation.compact.json",
+        "sha256": "506486e041af7c7ca8ab207fb3a7b7967bf1dc0d9ef40f6a7dc01d3e5f4246e5",
+        "bytes": 610031
+      }
+    },
+    {
+      "examId": "E065",
+      "counts": {
+        "questions": 24,
+        "actualRoutes": 43,
+        "unavailableRoutes": 5,
+        "resolverStatusCounts": {
+          "PASS": 43,
+          "NOT_RUN": 5
+        },
+        "difficultyStatusCounts": {
+          "PASS": 43,
+          "NOT_RUN": 5
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 43,
+          "NOT_RUN": 5
+        },
+        "preflightStatusCounts": {
+          "PASS": 43
+        },
+        "nativeTemplateGapProjectionReusePending": 0
+      },
+      "compactRef": {
+        "fileName": "E065.official-validation.compact.json",
+        "sha256": "c181a6bbe82ccd3e48f36e49167ff9deeb1315aaf1cb6df6c72e087cf8031d2d",
+        "bytes": 644543
+      }
+    },
+    {
+      "examId": "E066",
+      "counts": {
+        "questions": 21,
+        "actualRoutes": 42,
+        "unavailableRoutes": 0,
+        "resolverStatusCounts": {
+          "PASS": 42
+        },
+        "difficultyStatusCounts": {
+          "PASS": 42
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 35,
+          "FAIL": 7
+        },
+        "preflightStatusCounts": {
+          "PASS": 35,
+          "FAIL": 7
+        },
+        "nativeTemplateGapProjectionReusePending": 5
+      },
+      "compactRef": {
+        "fileName": "E066.official-validation.compact.json",
+        "sha256": "b23d70264e21b4782e6f69f67ff608fcb2b9596d330b617ae59a954daeebe7b6",
+        "bytes": 699015
+      }
+    },
+    {
+      "examId": "E067",
+      "counts": {
+        "questions": 22,
+        "actualRoutes": 42,
+        "unavailableRoutes": 2,
+        "resolverStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 2
+        },
+        "difficultyStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 2
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 40,
+          "FAIL": 2,
+          "NOT_RUN": 2
+        },
+        "preflightStatusCounts": {
+          "PASS": 40,
+          "FAIL": 2
+        },
+        "nativeTemplateGapProjectionReusePending": 2
+      },
+      "compactRef": {
+        "fileName": "E067.official-validation.compact.json",
+        "sha256": "12e55b6ff8cbb6c0d937a92aae2008226ad502064428d212dd66b34b53cd957e",
+        "bytes": 627808
+      }
+    },
+    {
+      "examId": "E079",
+      "counts": {
+        "questions": 24,
+        "actualRoutes": 42,
+        "unavailableRoutes": 6,
+        "resolverStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 6
+        },
+        "difficultyStatusCounts": {
+          "PASS": 42,
+          "NOT_RUN": 6
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 39,
+          "FAIL": 3,
+          "NOT_RUN": 6
+        },
+        "preflightStatusCounts": {
+          "PASS": 39,
+          "FAIL": 3
+        },
+        "nativeTemplateGapProjectionReusePending": 3
+      },
+      "compactRef": {
+        "fileName": "E079.official-validation.compact.json",
+        "sha256": "c428c85051ae212d575c78cc0c775340920794e2fd86f9ef765bd0c7ee04ff6b",
+        "bytes": 608857
+      }
+    },
+    {
+      "examId": "E080",
+      "counts": {
+        "questions": 23,
+        "actualRoutes": 46,
+        "unavailableRoutes": 0,
+        "resolverStatusCounts": {
+          "PASS": 46
+        },
+        "difficultyStatusCounts": {
+          "PASS": 46
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 37,
+          "FAIL": 9
+        },
+        "preflightStatusCounts": {
+          "PASS": 37,
+          "FAIL": 9
+        },
+        "nativeTemplateGapProjectionReusePending": 9
+      },
+      "compactRef": {
+        "fileName": "E080.official-validation.compact.json",
+        "sha256": "20624b4474b0e44470d4c1c42a1428c3a0166e4db3a3756ce4751e35b4ab2e05",
+        "bytes": 724203
+      }
+    },
+    {
+      "examId": "E081",
+      "counts": {
+        "questions": 24,
+        "actualRoutes": 48,
+        "unavailableRoutes": 0,
+        "resolverStatusCounts": {
+          "PASS": 48
+        },
+        "difficultyStatusCounts": {
+          "PASS": 48
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 42,
+          "FAIL": 6
+        },
+        "preflightStatusCounts": {
+          "PASS": 42,
+          "FAIL": 6
+        },
+        "nativeTemplateGapProjectionReusePending": 6
+      },
+      "compactRef": {
+        "fileName": "E081.official-validation.compact.json",
+        "sha256": "af010ab33521191f5716040d04540d56825a6d199728adb8ab4de2bc66dcc961",
+        "bytes": 758696
+      }
+    },
+    {
+      "examId": "E082",
+      "counts": {
+        "questions": 24,
+        "actualRoutes": 48,
+        "unavailableRoutes": 0,
+        "resolverStatusCounts": {
+          "PASS": 48
+        },
+        "difficultyStatusCounts": {
+          "PASS": 48
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 39,
+          "FAIL": 9
+        },
+        "preflightStatusCounts": {
+          "PASS": 39,
+          "FAIL": 9
+        },
+        "nativeTemplateGapProjectionReusePending": 5
+      },
+      "compactRef": {
+        "fileName": "E082.official-validation.compact.json",
+        "sha256": "efd9586b3f2a6de9587195ea07a538de464c710023f1a09ced600bb74f048e97",
+        "bytes": 794689
+      }
+    },
+    {
+      "examId": "E083",
+      "counts": {
+        "questions": 25,
+        "actualRoutes": 50,
+        "unavailableRoutes": 0,
+        "resolverStatusCounts": {
+          "PASS": 50
+        },
+        "difficultyStatusCounts": {
+          "PASS": 50
+        },
+        "fullFinalizationStatusCounts": {
+          "PASS": 43,
+          "FAIL": 7
+        },
+        "preflightStatusCounts": {
+          "PASS": 43,
+          "FAIL": 7
+        },
+        "nativeTemplateGapProjectionReusePending": 7
+      },
+      "compactRef": {
+        "fileName": "E083.official-validation.compact.json",
+        "sha256": "66d51a63ce40d1473babe7ad1446050b3b7179c76a9ebfb1757a79bd226d26ff",
+        "bytes": 778885
+      }
+    }
+  ]
+}

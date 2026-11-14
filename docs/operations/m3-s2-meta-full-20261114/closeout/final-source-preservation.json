@@ -1,0 +1,512 @@
+{
+  "schemaVersion": "independent-vm-source-preservation-v1",
+  "reviewer": "GPT_AUTHOR_C_00FBAC4C0777",
+  "checkedAt": "2026-11-14T11:49:32.609Z",
+  "baselineSha": "7a9320064c2daf1eae602fefcf0796e2d1d2226c",
+  "currentSha": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+  "headShaAfterCheck": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+  "headStableDuringCheck": true,
+  "worktreeCleanAtCheck": true,
+  "method": "git show of pinned commits; isolated Node VM structural comparison. Compare all properties at matching question ordinals excluding only the 17 supplied direct question metadata fields. Compare primary source arrays and every exposed derived questionBank view. Compare all remaining VM-visible globals and question-array reference relationships. Audit complete Git path diff. No source/package/Git mutation and no raw-property byte-checker reimplementation.",
+  "allowedMetadataFieldsFile": "/workspace/scratch/00fbac4c0777/root-review/allowed-fields.json",
+  "allowedMetadataFieldsSha256": "7beb9e410a904fbac7a1bd3a977291a660c47d6311f283b51b23b0fabd82558f",
+  "allowedMetadataFieldCount": 17,
+  "scope": {
+    "expectedExamIds": [
+      "E064",
+      "E065",
+      "E066",
+      "E067",
+      "E079",
+      "E080",
+      "E081",
+      "E082",
+      "E083"
+    ],
+    "expectedSourceCount": 9,
+    "expectedQuestionCount": 209,
+    "actualChangedSourceCount": 9,
+    "totalChangedGitPathCount": 158,
+    "changedOperationEvidencePathCount": 149,
+    "unexpectedChangedSources": [],
+    "expectedSourcesWithoutChanges": [],
+    "unexpectedChangedPathsOutsideOperationAndAssignedSources": [],
+    "nonAssignedOperationPaths": [],
+    "protectedPathChanges": {
+      "assets": [],
+      "archiveDataIncludingRegistriesMastersCrosswalksCompiledDatabase": [],
+      "canonicalRulesAndMasters": [],
+      "packageAndRuntimeCode": [],
+      "otherTaskSource": [],
+      "otherTaskOperationEvidence": []
+    },
+    "remoteNotionStateClaimed": false
+  },
+  "counts": {
+    "baselineQuestions": 209,
+    "currentQuestions": 209,
+    "primarySourceQuestionsComparedByOrdinal": 209,
+    "allExposedQuestionViewsComparedByOrdinal": 329,
+    "primarySourceNonMetadataPropertyChecks": 3670,
+    "allQuestionViewNonMetadataPropertyChecks": 4866,
+    "metadataChangedPrimaryQuestionCount": 209,
+    "sourceGlobalContainersCompared": 9,
+    "sourceGlobalDifferences": 0,
+    "nonMetadataDifferences": 0
+  },
+  "identityAndOrder": {
+    "sourcePathsStable": true,
+    "comparisonMode": "Identical source path and ordinal index, with all id/UID/order-related values compared as protected nonmetadata. Derived views compared independently.",
+    "explicitUidFieldsPresent": 46,
+    "explicitUidFieldDifferences": 0,
+    "idFieldsPresent": 209,
+    "idFieldDifferences": 0,
+    "questionOrderPreserved": true
+  },
+  "criticalFieldComparisons": {
+    "question": {
+      "baselinePresent": 120,
+      "currentPresent": 120,
+      "differences": 0
+    },
+    "content": {
+      "baselinePresent": 89,
+      "currentPresent": 89,
+      "differences": 0
+    },
+    "choices": {
+      "baselinePresent": 209,
+      "currentPresent": 209,
+      "differences": 0
+    },
+    "answer": {
+      "baselinePresent": 209,
+      "currentPresent": 209,
+      "differences": 0
+    },
+    "solution": {
+      "baselinePresent": 209,
+      "currentPresent": 209,
+      "differences": 0
+    },
+    "image": {
+      "baselinePresent": 41,
+      "currentPresent": 41,
+      "differences": 0
+    },
+    "solutionImage": {
+      "baselinePresent": 151,
+      "currentPresent": 151,
+      "differences": 0
+    },
+    "solutionImageAlt": {
+      "baselinePresent": 141,
+      "currentPresent": 141,
+      "differences": 0
+    },
+    "solutionImageCaption": {
+      "baselinePresent": 141,
+      "currentPresent": 141,
+      "differences": 0
+    },
+    "solutionImageSize": {
+      "baselinePresent": 141,
+      "currentPresent": 141,
+      "differences": 0
+    },
+    "id": {
+      "baselinePresent": 209,
+      "currentPresent": 209,
+      "differences": 0
+    },
+    "questionUid": {
+      "baselinePresent": 0,
+      "currentPresent": 0,
+      "differences": 0
+    },
+    "uid": {
+      "baselinePresent": 46,
+      "currentPresent": 46,
+      "differences": 0
+    },
+    "sourceOrdinal": {
+      "baselinePresent": 22,
+      "currentPresent": 22,
+      "differences": 0
+    },
+    "ordinal": {
+      "baselinePresent": 0,
+      "currentPresent": 0,
+      "differences": 0
+    },
+    "sourceQuestionNo": {
+      "baselinePresent": 22,
+      "currentPresent": 22,
+      "differences": 0
+    }
+  },
+  "exams": [
+    {
+      "examId": "E064",
+      "sourcePath": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+      "primarySourceContainer": "window.questionBank",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 22,
+      "currentQuestionCount": 22,
+      "progressQuestionCount": 22,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 22,
+          "currentCount": 22,
+          "nonMetadataPropertyChecks": 748,
+          "metadataChangedQuestionCount": 22,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E065",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+      "primarySourceContainer": "window.questionBank",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 24,
+      "currentQuestionCount": 24,
+      "progressQuestionCount": 24,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examMeta",
+        "examTitle",
+        "examUid",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 697,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E066",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+      "primarySourceContainer": "window.questionBank",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 21,
+      "currentQuestionCount": 21,
+      "progressQuestionCount": 21,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 21,
+          "currentCount": 21,
+          "nonMetadataPropertyChecks": 292,
+          "metadataChangedQuestionCount": 21,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E067",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+      "primarySourceContainer": "window.questionBank",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 22,
+      "currentQuestionCount": 22,
+      "progressQuestionCount": 22,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examTitle",
+        "examUid",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 22,
+          "currentCount": 22,
+          "nonMetadataPropertyChecks": 737,
+          "metadataChangedQuestionCount": 22,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E079",
+      "sourcePath": "archive/exams/original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+      "primarySourceContainer": "window.examData.questions",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 24,
+      "currentQuestionCount": 24,
+      "progressQuestionCount": 24,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examData",
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [
+        "title",
+        "totalScore"
+      ],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.examData.questions",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 236,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        },
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": false,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 236,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E080",
+      "sourcePath": "archive/exams/original/middle/m3/2final/16_신흥중_2학기_기말_중3_수학.js",
+      "primarySourceContainer": "window.examData.questions",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 23,
+      "currentQuestionCount": 23,
+      "progressQuestionCount": 23,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examData",
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [
+        "title",
+        "totalScore"
+      ],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.examData.questions",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 23,
+          "currentCount": 23,
+          "nonMetadataPropertyChecks": 230,
+          "metadataChangedQuestionCount": 23,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        },
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": false,
+          "baselineCount": 23,
+          "currentCount": 23,
+          "nonMetadataPropertyChecks": 230,
+          "metadataChangedQuestionCount": 23,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E081",
+      "sourcePath": "archive/exams/original/middle/m3/2final/16_왕의중_2학기_기말_중3_수학.js",
+      "primarySourceContainer": "window.examData.questions",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 24,
+      "currentQuestionCount": 24,
+      "progressQuestionCount": 24,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examData",
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [
+        "title",
+        "totalScore"
+      ],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.examData.questions",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 240,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        },
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": false,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 240,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E082",
+      "sourcePath": "archive/exams/original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+      "primarySourceContainer": "window.examData.questions",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 24,
+      "currentQuestionCount": 24,
+      "progressQuestionCount": 24,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examData",
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [
+        "title",
+        "totalScore"
+      ],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.examData.questions",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 240,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        },
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": false,
+          "baselineCount": 24,
+          "currentCount": 24,
+          "nonMetadataPropertyChecks": 240,
+          "metadataChangedQuestionCount": 24,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "examId": "E083",
+      "sourcePath": "archive/exams/original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+      "primarySourceContainer": "window.examData.questions",
+      "primarySourceContainerUnchanged": true,
+      "baselineQuestionCount": 25,
+      "currentQuestionCount": 25,
+      "progressQuestionCount": 25,
+      "sourceGlobalsCompared": [
+        "window"
+      ],
+      "windowGlobalsCompared": [
+        "examData",
+        "examTitle",
+        "questionBank"
+      ],
+      "examGlobalFieldsCompared": [
+        "title",
+        "totalScore"
+      ],
+      "sourceGlobalsAndQuestionArrayReferencesIdentical": true,
+      "questionCountAndOrderIdentical": true,
+      "questionViews": [
+        {
+          "viewPath": "window.examData.questions",
+          "isPrimarySourceQuestionArray": true,
+          "baselineCount": 25,
+          "currentCount": 25,
+          "nonMetadataPropertyChecks": 250,
+          "metadataChangedQuestionCount": 25,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        },
+        {
+          "viewPath": "window.questionBank",
+          "isPrimarySourceQuestionArray": false,
+          "baselineCount": 25,
+          "currentCount": 25,
+          "nonMetadataPropertyChecks": 250,
+          "metadataChangedQuestionCount": 25,
+          "nonMetadataDifferences": [],
+          "result": "PASS"
+        }
+      ],
+      "result": "PASS"
+    }
+  ],
+  "result": "PASS",
+  "scopeLimitation": "Preservation and Git-scope verification only; no assertion of mathematical correctness, semantic completeness, registration/consumer parity, remote storage or remote Notion state."
+}

@@ -1,0 +1,1926 @@
+{
+  "schemaVersion": "M3S2_RELEASE_QUEUE_v1",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "owner": "CODEX_RELEASE_OWNER_PENDING_ACCEPTANCE",
+  "status": "RELEASE_PENDING",
+  "coverage": "new209 debts enumerated; all12 campaign difficulty holds included; prior74 other registration debts remain in their frozen per-exam packages",
+  "newSourcePrerequisiteHolds": [
+    {
+      "examId": "E064",
+      "ordinal": 21,
+      "questionUid": "qid_v1_ec846662bf38ff19a2a02aa91a9340705df91854c14ac798bf8d164f947e8e7b",
+      "kind": "SOURCE_SOLUTION_REASONING_DEFECT",
+      "reason": "중심각의 정당화가 잘못되어 VERIFIED_FINAL 해설 선결조건이 충족되지 않음.",
+      "nextAction": "원문 해설의 중심각 근거를 중등 범위에서 고치고 별도 검증 후 해당 경로 재실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.meta.json",
+        "sha256": "9b0bbbf976d2861d6d45d4838b0f332c5fe6ccc3aa024ae63b5923dd3e47be2c"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "kind": "SOURCE_DOMAIN_ENDPOINT_AMBIGUITY",
+      "reason": "문항 각 범위에 90°를 포함하면서 tan 증가 진술을 사용하여 정의역·유일 정답이 불명확함.",
+      "nextAction": "원본 대조로 정의역/보기 수정 확정 후 해설과 난도 UNKNOWN 재판정.",
+      "difficultyBucket": "UNKNOWN",
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+        "sha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 18,
+      "questionUid": "qid_v1_3c477e3ec6cd1aaa35b41997e6c7d98649835f9edb15c71f1a7a213429fa3e2e",
+      "kind": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "reason": "현의 길이 곱을 직접 사용한 기존 해설에 중등 AA 닮음 유도가 없음. 정확한 M2 닮음 길이 leaf는 존재함.",
+      "nextAction": "기존 해설에 AA 유도와 대응변을 작성·독립 검증한 뒤 conditional M2-RPM-089/207 경로 실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 19,
+      "questionUid": "qid_v1_2d56e395257d5e5a17e20325527a63c9adde9bddfe4aafdf1a545f129ea8e47b",
+      "kind": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "reason": "두 할선의 곱을 직접 사용한 기존 해설에 중등 AA 닮음 유도가 없음. 정확한 M2 닮음 길이 leaf는 존재함.",
+      "nextAction": "기존 해설에 AA 유도와 대응변을 작성·독립 검증한 뒤 conditional M2-RPM-089/207 경로 실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "kind": "SOURCE_GEOMETRY_CONDITION_INCONSISTENCY",
+      "reason": "접원 사각형의 주어진 길이와 직각 조건이 함께 성립하지 않음. 원본 PNG와 SVG 모두 같은 수치임.",
+      "nextAction": "원본 시험지 대조로 도형 수치 확정 후 문항·해설·난도 UNKNOWN 재검토.",
+      "difficultyBucket": "UNKNOWN",
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    }
+  ],
+  "difficultyHoldsAllCampaign": [
+    {
+      "examId": "E055",
+      "ordinal": 21,
+      "questionUid": "qid_v1_bb32ad8a2727d461903d1e8ff1b61237826b65de11eb7161ff7325ada707194f",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [1, 2]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 22,
+      "questionUid": "qid_v1_98cae8a3879b52bf82d19cffc4411d4ee67c2d3061ce80978988230cf7b25d65",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [1, 4]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 23,
+      "questionUid": "qid_v1_0b49cedc58d2019b9342692ff9a79f3df5e011e030380cb7ad943332349a36a5",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [2, 3]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E059",
+      "ordinal": 13,
+      "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+      "newInThisContinuation": false,
+      "reason": "현해설이 sin120°를 직접 사용하여 중3 범위의 독립풀이검증이 필요하며 원문조건 자체도 불일치한다. 원문PDF대조/수정 및 중등범위의 풀이독립검증후 난도를 재판정한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E059.meta.json",
+        "sha256": "fce9bc37325b8b6650e958e0d9c82b5e8384bd6b99879988b872dda9f76328f1"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 3,
+      "questionUid": "qid_v1_8ee2fe173a6fb105d1b22639ecbdc4f7976278875e065669e411e4ec39d5c3de",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 8,
+      "questionUid": "qid_v1_6469225bfb694b9c0eafde26c38b68ecf5a11b39f3f23111e299becd77459550",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 19,
+      "questionUid": "qid_v1_a38ff4694b903e17e8ed8716a661ec8774c8c20be176e00a0c5ebdcafa850ec9",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 23,
+      "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E074",
+      "ordinal": 17,
+      "questionUid": "qid_v1_146b83c00db6182a3f1b6716f8bfaeb883d0aea09caba4520706f61e5c01fde7",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E074.meta.json",
+        "sha256": "ba26af54b993dbf697ee2433d7da113aa94a4ce690ef21a873da003bd9033c9e"
+      }
+    },
+    {
+      "examId": "E074",
+      "ordinal": 23,
+      "questionUid": "qid_v1_b05dbba9a424e88cb92b4bb7ff617e675153f5b3f11c0c6d2f6eabfca68a4e8e",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E074.meta.json",
+        "sha256": "ba26af54b993dbf697ee2433d7da113aa94a4ce690ef21a873da003bd9033c9e"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "newInThisContinuation": true,
+      "reason": "발문에90°를포함하는각범위를주고tan의증가진술을제시한다. ②가거짓이어도90°정의불가때문에문항전체의유일정답을확정할수없어최종난도는UNKNOWN으로둔다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+        "sha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "newInThisContinuation": true,
+      "reason": "전체외접사각형의조건이모순이다. Pitot으로BC8,BE4,r4이고CE=r라C도직각이다. AB∥CD에서AD²=8²+(10−6)²=80이어야하지만제시AD8은64다. 유효한문항의난도를확정할수없어UNKNOWN이다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    }
+  ],
+  "nativeTemplateGapQuestions": [
+    {
+      "examId": "E064",
+      "ordinal": 6,
+      "questionUid": "qid_v1_5008174f922cc5981e52b44eedcc0cae48ecf7e43312c2f66235aaf98876f6a7",
+      "reason": "접선길이12는 중간수단이며 목표는 두접점·원밖점·중심이만드는 사각형의넓이108이다. 제시TM은 접선길이를구한다는 목표로 한정되어 전체문항과동일하지않다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.template-fit.json",
+        "sha256": "8c478c854d848324b0cce74f5c6c6efaee9964f7bc7060002322ccef5ba95998"
+      }
+    },
+    {
+      "examId": "E064",
+      "ordinal": 20,
+      "questionUid": "qid_v1_27aaba5dbc7423765f163cc410ec3c031530a5fd122e0226e84ed8e2a817c4b6",
+      "reason": "목표는 접선길이수치가아니라 외접사각형의대변합동등을증명하는것이다. 제시TM의접선길이계산목표로강제투영하지않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.template-fit.json",
+        "sha256": "8c478c854d848324b0cce74f5c6c6efaee9964f7bc7060002322ccef5ba95998"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 5,
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "reason": "MULTI_CONDITION의 internalSkeleton은 두 이차함수의 근·부호 조건 복원이고 ROOT_VERTEX는 이동된 꼭짓점 조건을 계수로 전환한다. 이 문항은 y=ax²에 P와Q를 순차 대입할 뿐 근·축·이동 꼭짓점 조건을 결정적으로 쓰지 않으므로 두 후보에 강제 귀속하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E065.template-fit.json",
+        "sha256": "da63d6c1974d26da7da1f9b3329f593e9cc6b868676cd8c8809d417f0b4c6ce5"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 4,
+      "questionUid": "qid_v1_2c4653864ba84a0d7ed70e121de38f78d4c817cae8cc158d07472cd4e6457bcd",
+      "reason": "실제 절차는 삼각비표에서 수치에 대응하는 각의 역검색이다. BASIC_RELATION의 변·각 관계 변환을 하지 않는다. 필요한 정의: 삼각비표 행·열을 읽어 각 또는 근삿값을 찾기.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 9,
+      "questionUid": "qid_v1_17e1e3ae633002ccca08101a78914e2ad1bc3ec5f7677cffe5a6f06a39ca4546",
+      "reason": "목표는 길이·넓이가 아닌sinx이고, 기존 넓이를 두 방식으로 써 sin을 역산한다. DIRECT_MEASURE는 목표량이 다르고 CHAINED_MEASURE는 삼각비→다른 도형량 순서라 역방향이다. 필요한 정의: 동일 넓이의 두 표현으로 미지 삼각비를 역산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 13,
+      "questionUid": "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+      "reason": "접선길이15는 이미 주어져 있고 목표는OP,넓이,합동 등 다중 명제이다. TM_TANGENT_LENGTH의 접선 자체 길이 산출과 다르다. 필요한 정의: 두 접선과 반지름의 성질을 이용한 길이·넓이·합동 명제 종합판정.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 14,
+      "questionUid": "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+      "reason": "접선조각6,3을 합해9와높이차3을 만들지만 최종목표는지름AB이다. 필요한 정의: 평행한 지름끝 접선과 공통접선에서 접선조각·피타고라스로 지름 또는반지름 복원.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 17,
+      "questionUid": "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1",
+      "reason": "현길이를산출하거나수치조건으로다른량을구하지않고정리의동일원전제와진위를판정한다. 필요한정의: 원의현·중심거리·수직이등분선·접선의성질명제판정및적용범위.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E066",
+      "ordinal": 21,
+      "questionUid": "qid_v1_11bced5689739bc24a03be6966d511920818acfd7d53421be0c592fa15fd7750",
+      "reason": "목표는내접원반지름과중심을포함한삼각형둘레이다. 접선길이계산전용후보와달리접선조각을r로두는피타고라스방정식과추가빗변계산이필요하다. 필요한정의: 직각삼각형내접원의접선조각으로반지름을복원하고연결도형량계산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.template-fit.json",
+        "sha256": "6443be45d97b32fbf10c987c9475ec3f4d80c51a17dadd51e6c755adfbe39e60"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 6,
+      "questionUid": "qid_v1_1ab69506a82e75efce94f2bbd1eb5f0de9deb7b24c7b4d13ed0f7c5897856594",
+      "reason": "실제 해설은45°두각의등변성과피타고라스만사용하며삼각비식이나주어진삼각비를사용하지않는다. 목표가길이라는이유로삼각비사용을명시한DIRECT정의에강제투영하지않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.template-fit.json",
+        "sha256": "99ce678fcd124373226ae3d1c417f0718b2e1b1c8a0f210346acf8d2d6fe4cfe"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 12,
+      "questionUid": "qid_v1_944f8c2544014dc9e9c71d87e6c9c75a8d8e0090f948f5362dcea265ffc11d6d",
+      "reason": "표의행·열에서세값을조회하고주어진식에넣는다. 직각삼각형변·각을비로변환하거나한삼각비를다른삼각비로변환하는실제단계가없어BASIC_RELATION의internalSkeleton과맞지않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.template-fit.json",
+        "sha256": "99ce678fcd124373226ae3d1c417f0718b2e1b1c8a0f210346acf8d2d6fe4cfe"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 4,
+      "questionUid": "qid_v1_fd93539379b5daf38abc26e88655978c8261f442f1cb970febc5a3ee936c7848",
+      "reason": "목표는내접원의반지름r이다. 직각꼭짓점의접선구간이r과같다는관계를이용하지만원의밖점에서그은접선자체를목표로묻는TM_TANGENT_LENGTH와목표정의가다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.template-fit.json",
+        "sha256": "040fbca2e15eacf426f61f67aaa672ce6af3734d5bcad875589749ad2b79f047"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 5,
+      "questionUid": "qid_v1_32d80ccc393407a97f00f5c4e1c3289f940e6e2f45d91b7d6f05176ba04e3b29",
+      "reason": "삼각비로구한경사거리25m는중간량이고목표는속력2m/s를적용한소요시간12.5초다. DIRECT의직접기하측정이나SHARED_HEIGHT의공통미지량연립과다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.template-fit.json",
+        "sha256": "040fbca2e15eacf426f61f67aaa672ce6af3734d5bcad875589749ad2b79f047"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 11,
+      "questionUid": "qid_v1_d6d5d616e92f2a7a7a77fed886c32f4c10859ad2b39ba14e5189faa0cf77e325",
+      "reason": "B에서의접선길이t는중간변수이며목표는DE로잘린삼각형의둘레이다. 등접선항의소거로둘레불변량2t를보이는문제를직접접선길이목표의TM으로강제하지않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.template-fit.json",
+        "sha256": "040fbca2e15eacf426f61f67aaa672ce6af3734d5bcad875589749ad2b79f047"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 14,
+      "questionUid": "qid_v1_3dbf6ef42664980017dfcca2694fef5d8d7c868db05f7fa394ddaca196f894c4",
+      "reason": "CENTER_ARC의배수관계로목표각을계산한다는internalSkeleton은중간중심각150°까지만포함한다. 실제목표는원의반지름2와원둘레비를결합한두호길이합5π/3이다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.template-fit.json",
+        "sha256": "040fbca2e15eacf426f61f67aaa672ce6af3734d5bcad875589749ad2b79f047"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 13,
+      "questionUid": "qid_v1_be9d9aa681ecdae38e28e9146f3233959c583a4a1a1c7f27b3936da751526ea9",
+      "reason": "반환후보의 내부골격은 호·중심각·원주각의 배수관계로 목표각 계산이다. 실제 목표는 교차현의 길이이며 같은호각+맞꼭지각→AA닮음→대응변비가 결정단계여서 목표각 템플릿에 부합하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 14,
+      "questionUid": "qid_v1_aafb62db551824b673eba7e55b09f6131277a8516eee072da2830ba676dbbaf0",
+      "reason": "TM_TANGENT_LENGTH는 외부점에서 그은 접선길이 자체를 구한다. 여기서는 각이등분선비·피타고라스로 세 변을 복원하고 접선조각 합차로 내접반지름을 구하므로 반지름 복합골격이 별도로 필요하다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 15,
+      "questionUid": "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+      "reason": "반환후보는 외부점-접선 길이이다. 이 문항은 두 큰원과 작은원의 내접에서 중심거리10−r와 수직이등분선·피타고라스를 결합해 작은원 반지름을 정하므로 후보의 대상·골격이 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 16,
+      "questionUid": "qid_v1_1adc3a86e5eb98066d618eda1e1a31251f77c1f4c1e7aee872ce6c31c622200a",
+      "reason": "접선길이AP를 구하는 중간단계는 있으나 최종현AQ를 얻는 핵심은 두 원에서 동일한 각의 코사인 전달과 현이등분이다. 접선길이만을 목표로 하는 반환후보는 이 복합골격을 포괄하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 17,
+      "questionUid": "qid_v1_69d99cfa06b08949eb759a53e4fe7fcc79f3ab87b052c260f486ba5fe91dbd93",
+      "reason": "원주각을 중심각 합180으로 옮기는 중간단계 뒤 호 길이합을 반원둘레로 재해석해 반지름을 구한다. 목표각을 계산하는 반환후보와 목표 및 후속골격이 달라 각-호길이-반지름형이 필요하다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 18,
+      "questionUid": "qid_v1_00aab9f5f73ff477a65ba9aea9e1200c2da3ee422589662634a4b60f16d4c8a0",
+      "reason": "지름 보조선과 같은호원주각으로 목표삼각비를 직각삼각형의 변비로 계산한다. 반환후보는 목표각의 배수계산만 다루어 지름-삼각비 골격을 덮지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 20,
+      "questionUid": "qid_v1_1943a08cf6a5b9d16efd3d9151628a1aa31e9d838a2cf16b68cb78caaef94813",
+      "reason": "길이 계산으로 원주각45°를 찾아 중심각90°를 얻은 뒤 중심삼각형의 반지름제곱으로 원의넓이를 구한다. 목표각만 계산하는 반환후보로 전체 원주각-반지름-넓이 골격을 대체할 수 없다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 22,
+      "questionUid": "qid_v1_9864680c5fb4eca03bfc2b0031774729ba40c1987cb2728fa186ecdfceeb9f24",
+      "reason": "외접사각형에서 서로 마주보는 두 변의 합과 비를 이용해 전체변AD,BC를 구한다. 외부점에서 접점까지의 한 접선길이를 구하는 반환후보와 달리 대변합 구조를 보존할 템플릿이 필요하다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E080",
+      "ordinal": 23,
+      "questionUid": "qid_v1_02c8b0472b3e9c836b480e39c208159ebe8bcf23af6fa088034cddf48ccfe2a6",
+      "reason": "같은호원주각·이등변 밑각으로 닮음을 만들고 AC²=AB·AE를 거쳐 지름이AC인 원의넓이를 구한다. 목표각 배수관계 템플릿은 닮음비와 길이·넓이 전환을 덮지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.template-fit.json",
+        "sha256": "e371de4ba7eb4abeb6883dcfe30932eb6369ba26814da45aea45ffb0b526633a"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 6,
+      "questionUid": "qid_v1_195e9a7b8156905b4f3ffa0fa2498acee6603ee024368f3adc2c9e9fca63f4e4",
+      "reason": "핵심은 예각에서 sin,tan의 증가와 cos의 감소이며 서로 다른 각에서 값의 대소를 판정한다. BASIC_RELATION은 변·각의 삼각비 변환만 정의한다. 필요한 정의: 예각 삼각비의 단조 변화 및 특수각 값을 이용한 대소 판정.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 10,
+      "questionUid": "qid_v1_c5b0ede91d3bf1498031eccd21db2426f79ddc8d6d9896ac3a6436ea94116d84",
+      "reason": "원주각→중심각60°는 중간값이고 최종 목표는 부채꼴과 삼각형의 넓이 합이다. CENTER_ARC skeleton은 목표각 계산이다. 필요한 정의: 원주각·중심각을 사용한 부채꼴과 삼각형 복합 영역 넓이.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 14,
+      "questionUid": "qid_v1_84c9a0359ca207f99002c2fe61e8ba24657964e30645a0e8177a20d0680ee8a2",
+      "reason": "미지 접선조각BP를 먼저 계산하지만 최종 목표 BC는 접점을 사이에 둔 두 조각의 합이다. 필요한 정의: 삼각형의 내접원 접선조각 및 둘레 조건으로 한 변 길이 결정. 접선 자체 길이만을 명시한 TM_TANGENT_LENGTH로 강제하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 18,
+      "questionUid": "qid_v1_b730b0219059cc129905f3fc44751ac17ce6a54d6346b69e129f6148985255ca",
+      "reason": "접현각을 같은 각으로 옮긴 뒤 AP=AT와 AA닮음을 이용해 PT²=PA·PB라는 길이 관계를 만든다. 후보 skeleton은 목표각 계산이다. 필요한 정의: 접현각→닮음으로 접선·할선 길이 관계를 유도하고 미지 길이 계산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 20,
+      "questionUid": "qid_v1_a7c04eb6b662d652536c91f3afc2d17aadc8a0da3968bc235a6f337e269d0975",
+      "reason": "지름에 대한90° 원주각은 닮음 설정의 중간 조건이고 목표는 AD의 길이이다. CENTER_ARC skeleton의 목표각 계산과 다르다. 필요한 정의: 반원 원주각의 직각으로 닮음을 구성하고 길이 비례식 산출.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E081",
+      "ordinal": 24,
+      "questionUid": "qid_v1_27ad635ea92f045b7be845ad0826430c464324e94714ce958949ecd98f6b1262",
+      "reason": "접현각→AA닮음으로 PX를 구하고 현중점과 두 피타고라스 식 차감으로 반지름을 구한다. 후보의 목표각 계산과 다르다. 필요한 정의: 접선-할선 닮음 및 현 중점·공통수선 소거를 결합한 반지름 역산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.template-fit.json",
+        "sha256": "91eea4f488a9f1ca2c7d430063560ee1345684605d9212e67ed0761f411857a7"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 9,
+      "questionUid": "qid_v1_d3dbb908e07b171b714c35ac02c858225469e2e0e7a371f877c3bdb0e75c5efa",
+      "reason": "원주각에 대응하는 중심각 60°는 중간값이고 최종 목표는 부채꼴에서 삼각형을 뺀 활꼴 넓이이다. CENTER_ARC skeleton은 목표각 계산으로 제한된다. 필요한 정의: 원주각·중심각으로 중심각을 얻어 부채꼴과 삼각형의 넓이 차를 계산하는 원의 부분 영역 넓이.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+        "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 14,
+      "questionUid": "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+      "reason": "PA가 이미 접선으로 주어졌으며 접함 여부나 접할 조건을 찾지 않는다. 접점 직각과 PO=r+1,PA=3으로 반지름을 역산한 뒤 삼각형 넓이를 구한다. 필요한 정의: 접선-반지름 직각삼각형에서 반지름을 역산하고 넓이 등 도형량으로 연결. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+        "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 15,
+      "questionUid": "qid_v1_e20baf4ef82156c717db31272dec95a3d324f624b4024e56c1fdd32d585768d7",
+      "reason": "각 외부점의 두 접선조각이 같음을 여러 번 적용하여 잘린 삼각형 CST의 둘레가 CE+CD=12임을 결정한다. 최종 목표는 한 접선 길이가 아니라 둘레 불변량이다. 필요한 정의: 내접원과 추가 접선이 만든 삼각형의 접선조각 합을 이용한 둘레 계산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+        "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 23,
+      "questionUid": "qid_v1_06b3ae65d59e49005130c6b098ca264dd170282fca254fc48a7477b652ffafd0",
+      "reason": "반지름과 같은 현으로 중심각 60°·원주각 30°를 얻은 뒤 수선 높이 4를 이용해 목표 현 AC=8을 구한다. CENTER_ARC skeleton의 최종 목표각과 다르다. 필요한 정의: 현-반지름의 정삼각형 및 원주각 관계로 특수각을 확보하여 직각삼각형의 길이를 계산.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+        "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 24,
+      "questionUid": "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28",
+      "reason": "접함은 이미 주어진 조건이다. 두 피타고라스 식 차감으로 접선 PB의 길이를 구하고 sin30°로 삼각형 넓이에 연결한다. 필요한 정의: 접선 반지름 직각과 현 중점의 공통 수선으로 접선·할선 길이 관계를 얻어 삼각형 넓이까지 계산. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+        "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "reason": "결정적 진술은 각이 감소할 때 사인·코사인이 어떻게 변하는지이다. BASIC_RELATION의 정의·골격은 변각관계를 비로 직접 변환하거나 한 비에서 다른 비를 계산하는 것이며, 단위원의 증감판정 골격을 명시하지 않아 동일시하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 4,
+      "questionUid": "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02",
+      "reason": "sin10,sin70처럼 비특수각과 특수각의 값을 단조성 및0~1 범위로 정렬한다. BASIC_RELATION의 직접비변환도 특수각값만의 계산도 결정적 크기비교를 덮지 못하므로 삼각비증감·비교형이 필요하다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "reason": "두 공식후보는 삼각비 계산을 요구한다. 실제 기존 해설과 fresh핵심풀이에는 정삼각형·이등변삼각형의 반밑변과 피타고라스 높이만 있고 삼각비 계산을 사용하지 않았다. 같은 숫자의 다른시험 풀이를 보고 삼각비 골격으로 치환하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 10,
+      "questionUid": "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+      "reason": "목표는 접선길이가 아니라 내접사각형에도 대변합조건이 성립한다는 진술을 반례로 배제하는 것이다. TM_TANGENT_LENGTH는 실제로 외부점의 접선길이를 구하는 유형이므로 대상이 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 11,
+      "questionUid": "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+      "reason": "외접사각형 전체 변CD를 대변합과3:5비로 결정한다. 외부점에서 접점까지의 접선길이 자체를 구하는 골격과 다른 대변합 유형이 필요하다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "reason": "반환후보 CENTER_ARC는 배수관계로 목표각을 구한다. 실제는 원주각·맞꼭지각→AA닮음→교차현 길이비로 목표BP를 구하여 대상골격이 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 19,
+      "questionUid": "qid_v1_bd4b81a925d9636569b9cde5dd38bb05fe1e03d7f68565dd908ec43dd518d7c2",
+      "reason": "피타고라스로AP를 보충한 뒤 원주각 닮음으로PC를 얻어 전체현AC를 계산한다. 목표각 배수계산만을 규정한 반환후보와 다르다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    },
+    {
+      "examId": "E083",
+      "ordinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "reason": "같은 두 호의 원주각을 이용한 겹친삼각형 닮음으로 MB²=MP·MQ를 구하는 길이 문제이다. 기존 해설 역시 닮음과제곱식차가 핵심이며 각의 수치배수 계산이 아니라 CENTER_ARC 후보로 강제하지 않는다.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.template-fit.json",
+        "sha256": "cce0dac2d9a9eb99d0e2070817df6a44207b93fe0726dd717f467e9245807f02"
+      }
+    }
+  ],
+  "activeSourceFieldCompletenessDebts": [
+    {
+      "examId": "E064",
+      "ordinal": 5,
+      "questionUid": "qid_v1_2430c5c573ab8eb6315c3de9c3a9643be1584e0a7e1c91134926aabbe37c9b4c",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E064",
+      "ordinal": 6,
+      "questionUid": "qid_v1_5008174f922cc5981e52b44eedcc0cae48ecf7e43312c2f66235aaf98876f6a7",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E064",
+      "ordinal": 17,
+      "questionUid": "qid_v1_a4cd8efac11a2dc5b37c4395bbce8d4804cce6acae9d525b8191aaf54511d894",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E064",
+      "ordinal": 20,
+      "questionUid": "qid_v1_27aaba5dbc7423765f163cc410ec3c031530a5fd122e0226e84ed8e2a817c4b6",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E064",
+      "ordinal": 21,
+      "questionUid": "qid_v1_ec846662bf38ff19a2a02aa91a9340705df91854c14ac798bf8d164f947e8e7b",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E064",
+      "ordinal": 22,
+      "questionUid": "qid_v1_0f68c0a716d12f6afefceba4ee0e580352eb2b128bd249ad336a8020160dcf05",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 1,
+      "questionUid": "qid_v1_ac2a8f30d2e2554ce01baff4bffff07a20f887bd6bf460bf8894af16f0451488",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 2,
+      "questionUid": "qid_v1_9921058446de1f7c3e639b0d2f436948eb6fea018110c252d6285b0e4e69b2df",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 3,
+      "questionUid": "qid_v1_fcd0626b491f711ec12cd2ace36869d723056c54e4d94e4642daf4fb6dbf4b2c",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 4,
+      "questionUid": "qid_v1_6d75c46827bc3f4e820379591b84f243ea96aedc1ca86d7981c84412ecdbbd3e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 5,
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 6,
+      "questionUid": "qid_v1_4db790f96bccec2d9d33c7ab53b7a768625debabbacc2b7526dd4ff7ae9253fc",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 7,
+      "questionUid": "qid_v1_7e2e82628ae8ad0b2ed72e6718b90d19af1a8d8145f3d78f5af7ba1fe4972211",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 8,
+      "questionUid": "qid_v1_225559aa3ab34f1701a3e9ae920ae70e02a584baba1244c0ae350f0931b9424a",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 9,
+      "questionUid": "qid_v1_94bbe83e5696d812e8ce233bfd651292212d9fdc69cd378175f0ed471d78aca7",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 10,
+      "questionUid": "qid_v1_2bd91750663d35aef0ebe2dc5f0e4df90f2048c86d7ebf860fff8b479a0b5ea4",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 11,
+      "questionUid": "qid_v1_7977148d92ea01e4db49f421e57e90ba974137f996ed8cb13919d07203ae4fa6",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 12,
+      "questionUid": "qid_v1_8b3144b57ae0d883a10a088a65f3ff51760916b008256ee9ac97723d9afff472",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 13,
+      "questionUid": "qid_v1_31cfd0b819a9763ce5ae2285b96bd9bd09ee99ea36b299c210ae351d5047d226",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 14,
+      "questionUid": "qid_v1_112f823bafc300f195254d760b19b0dd6277e19a325edffe179883246aa98cc4",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 15,
+      "questionUid": "qid_v1_13ec8cc340c4e7107b25d1f7274c8268a6cd61914c827b3dfc1ab31e70ea1295",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 16,
+      "questionUid": "qid_v1_9d65b21bc5d20be0cd00ed9619b59b9fd406826c6458508d4fc32ddaae16bf6d",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 22,
+      "questionUid": "qid_v1_bbd5b24daef608b0dafa3ae3b6738b28ce6f298689d67df9403fce313938d159",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 23,
+      "questionUid": "qid_v1_f932d2fd04745cbf7f882d9e63104e6653acbd86d9363af812777dfb3eef5002",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E065",
+      "ordinal": 24,
+      "questionUid": "qid_v1_65e3a5806d63880ce623eefee66bdee9f22c446703e15aa17bd7431578fe7819",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 4,
+      "questionUid": "qid_v1_2c4653864ba84a0d7ed70e121de38f78d4c817cae8cc158d07472cd4e6457bcd",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 9,
+      "questionUid": "qid_v1_17e1e3ae633002ccca08101a78914e2ad1bc3ec5f7677cffe5a6f06a39ca4546",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 13,
+      "questionUid": "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 14,
+      "questionUid": "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 16,
+      "questionUid": "qid_v1_09408a4741c7f5b97f42d0b52a8f9c8e57a26893183ae05801b6e21990ac503c",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 17,
+      "questionUid": "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E066",
+      "ordinal": 21,
+      "questionUid": "qid_v1_11bced5689739bc24a03be6966d511920818acfd7d53421be0c592fa15fd7750",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E067",
+      "ordinal": 6,
+      "questionUid": "qid_v1_1ab69506a82e75efce94f2bbd1eb5f0de9deb7b24c7b4d13ed0f7c5897856594",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E067",
+      "ordinal": 12,
+      "questionUid": "qid_v1_944f8c2544014dc9e9c71d87e6c9c75a8d8e0090f948f5362dcea265ffc11d6d",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 4,
+      "questionUid": "qid_v1_fd93539379b5daf38abc26e88655978c8261f442f1cb970febc5a3ee936c7848",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 5,
+      "questionUid": "qid_v1_32d80ccc393407a97f00f5c4e1c3289f940e6e2f45d91b7d6f05176ba04e3b29",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 11,
+      "questionUid": "qid_v1_d6d5d616e92f2a7a7a77fed886c32f4c10859ad2b39ba14e5189faa0cf77e325",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 14,
+      "questionUid": "qid_v1_3dbf6ef42664980017dfcca2694fef5d8d7c868db05f7fa394ddaca196f894c4",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 17,
+      "questionUid": "qid_v1_4a6221e20913b382b1359a16eac474056843795659df21a232b938749078cd52",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 18,
+      "questionUid": "qid_v1_3c477e3ec6cd1aaa35b41997e6c7d98649835f9edb15c71f1a7a213429fa3e2e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 19,
+      "questionUid": "qid_v1_2d56e395257d5e5a17e20325527a63c9adde9bddfe4aafdf1a545f129ea8e47b",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 23,
+      "questionUid": "qid_v1_0b4c6cd7e33eb32a8cd80104ba4b346e19cfae92bdf6950a93b579b3d3cc63d3",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E079",
+      "ordinal": 24,
+      "questionUid": "qid_v1_0583e4498c7b8f091dd890bccedb102d44c29b2acb3041dcd9c1a585fad27410",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 13,
+      "questionUid": "qid_v1_be9d9aa681ecdae38e28e9146f3233959c583a4a1a1c7f27b3936da751526ea9",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 14,
+      "questionUid": "qid_v1_aafb62db551824b673eba7e55b09f6131277a8516eee072da2830ba676dbbaf0",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 15,
+      "questionUid": "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 16,
+      "questionUid": "qid_v1_1adc3a86e5eb98066d618eda1e1a31251f77c1f4c1e7aee872ce6c31c622200a",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 17,
+      "questionUid": "qid_v1_69d99cfa06b08949eb759a53e4fe7fcc79f3ab87b052c260f486ba5fe91dbd93",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 18,
+      "questionUid": "qid_v1_00aab9f5f73ff477a65ba9aea9e1200c2da3ee422589662634a4b60f16d4c8a0",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 19,
+      "questionUid": "qid_v1_030995e4e5c34247c15d823791a8556e11b78383747b9f931339df59da8e3a2e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 20,
+      "questionUid": "qid_v1_1943a08cf6a5b9d16efd3d9151628a1aa31e9d838a2cf16b68cb78caaef94813",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 22,
+      "questionUid": "qid_v1_9864680c5fb4eca03bfc2b0031774729ba40c1987cb2728fa186ecdfceeb9f24",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E080",
+      "ordinal": 23,
+      "questionUid": "qid_v1_02c8b0472b3e9c836b480e39c208159ebe8bcf23af6fa088034cddf48ccfe2a6",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 6,
+      "questionUid": "qid_v1_195e9a7b8156905b4f3ffa0fa2498acee6603ee024368f3adc2c9e9fca63f4e4",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 10,
+      "questionUid": "qid_v1_c5b0ede91d3bf1498031eccd21db2426f79ddc8d6d9896ac3a6436ea94116d84",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 13,
+      "questionUid": "qid_v1_714197335a20265db0058f983c2b9f3dac94e33ab3933f6644096b13005523b5",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 14,
+      "questionUid": "qid_v1_84c9a0359ca207f99002c2fe61e8ba24657964e30645a0e8177a20d0680ee8a2",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 17,
+      "questionUid": "qid_v1_387ffe604b7ef71f88f4edb5c177f7f5e30a163b91ec8bead9cb236a58d55100",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 18,
+      "questionUid": "qid_v1_b730b0219059cc129905f3fc44751ac17ce6a54d6346b69e129f6148985255ca",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 20,
+      "questionUid": "qid_v1_a7c04eb6b662d652536c91f3afc2d17aadc8a0da3968bc235a6f337e269d0975",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E081",
+      "ordinal": 24,
+      "questionUid": "qid_v1_27ad635ea92f045b7be845ad0826430c464324e94714ce958949ecd98f6b1262",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 9,
+      "questionUid": "qid_v1_d3dbb908e07b171b714c35ac02c858225469e2e0e7a371f877c3bdb0e75c5efa",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 13,
+      "questionUid": "qid_v1_37ce1327bc2cf6c7cd45bc233bba9ebf5df5a4f40486d350066aec8d45971af3",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 14,
+      "questionUid": "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 15,
+      "questionUid": "qid_v1_e20baf4ef82156c717db31272dec95a3d324f624b4024e56c1fdd32d585768d7",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 19,
+      "questionUid": "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 20,
+      "questionUid": "qid_v1_bcde790c7d2e0b97755d568713f40b2a8ff5faa4bed30609112608fa86711459",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 21,
+      "questionUid": "qid_v1_99dce2ceff730a186fedd319f8c324127c2a068ee8a67d7316516c90a045c734",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 23,
+      "questionUid": "qid_v1_06b3ae65d59e49005130c6b098ca264dd170282fca254fc48a7477b652ffafd0",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E082",
+      "ordinal": 24,
+      "questionUid": "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 3,
+      "questionUid": "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 4,
+      "questionUid": "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 9,
+      "questionUid": "qid_v1_3e07df76b970253d469d1724c964d05b828072bce17d7e862192730b2283d6d8",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 10,
+      "questionUid": "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 11,
+      "questionUid": "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 16,
+      "questionUid": "qid_v1_b1be8d6f7368365dc3c28bb8adcee35f9da0417245a20f6aed01295e4971616e",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 17,
+      "questionUid": "qid_v1_7d058d46a920a523d6488dd232f2444392bacee3732564947f92d84e3e2e0731",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d04d1568ef3791bd954c42358954ad494445ceb20136818678bc51cc14ebd7a",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 19,
+      "questionUid": "qid_v1_bd4b81a925d9636569b9cde5dd38bb05fe1e03d7f68565dd908ec43dd518d7c2",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 20,
+      "questionUid": "qid_v1_28ed8f1b2acea0f67ca4c8bb9f2c98a1ae710b025bf4963ddb3078c040c4e057",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": true,
+      "activePT": true,
+      "activeTPL": false,
+      "masterTagErrors": []
+    },
+    {
+      "examId": "E083",
+      "ordinal": 24,
+      "questionUid": "qid_v1_79c6a5d01f892965a443cad4c20fcd91af662f3a83c55d4a3277921345ebd95c",
+      "activeValidationStatus": "FAIL",
+      "activeValidationErrors": [
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey",
+        "ADVANCED_META_FIELD_MISSING:templateKey"
+      ],
+      "activeBinding": false,
+      "activePT": false,
+      "activeTPL": false,
+      "masterTagErrors": []
+    }
+  ],
+  "current2022ExactLeafGaps": [
+    {
+      "examId": "E065",
+      "ordinal": 1,
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+        "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 4,
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+        "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 11,
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+        "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+      }
+    },
+    {
+      "examId": "E065",
+      "ordinal": 16,
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+        "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+      }
+    }
+  ],
+  "targetParentAndCrossConceptRegistrationDebts": [
+    {
+      "examId": "E082",
+      "ordinal": 19,
+      "semanticPrimary": "M2-RPM-105/223",
+      "targetCourse": "중3 수학",
+      "targetUnit": "M3-06",
+      "targetSubUnitKey": null,
+      "reason": "M3 circle-circle tangency target parent and exact supporting concept absent; keep prerequisite RPM scope distinct from target M3 scope.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.root-adjudication.json",
+        "sha256": "d87f53e924d14884bb4376bc4190c78150c31a1535fb5bc45d975f95c408c160"
+      }
+    },
+    {
+      "examId": "E082",
+      "ordinal": 21,
+      "semanticPrimary": "M2-RPM-069/189",
+      "targetCourse": "중3 수학",
+      "targetUnit": "M3-06",
+      "targetSubUnitKey": null,
+      "reason": "M3 circle-circle tangency target parent and exact supporting concept absent; keep prerequisite RPM scope distinct from target M3 scope.",
+      "evidenceRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.root-adjudication.json",
+        "sha256": "d87f53e924d14884bb4376bc4190c78150c31a1535fb5bc45d975f95c408c160"
+      }
+    }
+  ],
+  "sourceAssetCropFollowup": [
+    {
+      "examId": "E082",
+      "ordinal": 11,
+      "issue": "Original PNG severely cropped; full text and solution SVG were read for metadata review. Assets unchanged.",
+      "action": "Repair from authorized original source and validate its question identity."
+    },
+    {
+      "examId": "E082",
+      "ordinal": 17,
+      "issue": "Original PNG severely cropped; full text and solution SVG were read for metadata review. Assets unchanged.",
+      "action": "Repair from authorized original source and validate its question identity."
+    }
+  ],
+  "officialValidatorFailures": {
+    "nativeTemplateGapProjectionReuseRoutes": [
+      "E064:6:2015",
+      "E064:20:2015",
+      "E066:4:2015",
+      "E066:13:2015",
+      "E066:14:2015",
+      "E066:17:2015",
+      "E066:21:2015",
+      "E067:6:2015",
+      "E067:12:2015",
+      "E079:4:2015",
+      "E079:11:2015",
+      "E079:14:2015",
+      "E080:13:2015",
+      "E080:14:2015",
+      "E080:15:2015",
+      "E080:16:2015",
+      "E080:17:2015",
+      "E080:18:2015",
+      "E080:20:2015",
+      "E080:22:2015",
+      "E080:23:2015",
+      "E081:6:2015",
+      "E081:10:2015",
+      "E081:14:2015",
+      "E081:18:2015",
+      "E081:20:2015",
+      "E081:24:2015",
+      "E082:9:2015",
+      "E082:14:2015",
+      "E082:15:2015",
+      "E082:23:2015",
+      "E082:24:2015",
+      "E083:3:2015",
+      "E083:4:2015",
+      "E083:10:2015",
+      "E083:11:2015",
+      "E083:18:2015",
+      "E083:19:2015",
+      "E083:20:2015"
+    ],
+    "relationalVisibilityPolicyMismatchRoutes": [
+      "E066:3:2015",
+      "E066:3:2022",
+      "E082:19:2015",
+      "E082:19:2022",
+      "E082:21:2015",
+      "E082:21:2022"
+    ],
+    "handling": "Preserve true visibility. Apply CURRENT policy through an authorized validator update or equivalent explicit compatibility ruling; do not falsify visibility or fill an incompatible template to obtain PASS."
+  },
+  "nextActions": [
+    "Accept exact task and verify remote branch plus AWCR parent checkpoint; prior review is not repeated.",
+    "Resolve source prerequisites and independent solution verification for affected items before rerunning their routes.",
+    "Review existing per-question proposals and current binding/template definitions; register only approved exact mappings.",
+    "Resolve legacy validator/current-policy mismatch while retaining observed candidate exposure history.",
+    "Run required registration/consumer checks on affected artifacts; then handle main merge and release under the release workflow."
+  ],
+  "noAutomaticMainMerge": true,
+  "noDeploymentPerformed": true
+}

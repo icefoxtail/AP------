@@ -1,0 +1,715 @@
+{
+  "schemaVersion": "M3S2_REVIEW_CLOSEOUT_v1",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "workKey": "M3-S2-META-FULL",
+  "owner": "GPT_ROOT_00FBAC4C0777",
+  "branch": "review/m3-s2-meta-full-20261114",
+  "state": "REVIEW_COMPLETE_RELEASE_PENDING",
+  "resumeState": "RESUME_READY",
+  "scopeNote": "Review and branch metadata proposals complete. Registration, source repairs, final consumer acceptance, main merge and deployment are separate; no overall quality PASS.",
+  "resumedRemoteHead": "7a9320064c2daf1eae602fefcf0796e2d1d2226c",
+  "sourcePackageRemoteHead": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+  "latestMainChecked": "9e8e635f6bfefb11287da7a7f499206013ae5e7e",
+  "reused": {
+    "exams": 74,
+    "questions": 1749,
+    "independentSamples": 222,
+    "fullRereviewPerformed": false
+  },
+  "completedThisContinuation": {
+    "exams": 9,
+    "questions": 209,
+    "metadataFieldsChanged": 2538,
+    "newIndependentSamples": 27,
+    "authorToRootDifficultyBucketAdjustments": 23,
+    "existingNonNullLevelChanges": 0,
+    "referencedAssetsReadAndHashManifested": 327,
+    "fourSlotItems": 209,
+    "fourSlotQuotes": 1499,
+    "fourSlotValidatorFailures": 0,
+    "fourSlotValidatorWarnings": 39,
+    "protectedNonMetadataPropertyDifferences": 0,
+    "newUnregisteredKeyInsertions": 0
+  },
+  "campaignRollup": {
+    "reviewedExams": 83,
+    "reviewedQuestions": 1958,
+    "remainingUnreviewedExams": 0,
+    "remainingUnreviewedQuestions": 0,
+    "independentSamples": 249,
+    "explicitDifficultyHoldQuestions": 12,
+    "previousDifficultyHolds": 10,
+    "newDifficultyHolds": 2
+  },
+  "new209": {
+    "difficultyBuckets": {
+      "2": 100,
+      "3": 67,
+      "1": 38,
+      "UNKNOWN": 2,
+      "4": 2
+    },
+    "legacyCompatibility": {
+      "NORMAL": 166,
+      "BORDERLINE_ACCEPTABLE": 39,
+      "STRONG_CONFLICT": 2,
+      "UNKNOWN": 2
+    },
+    "templateFit": {
+      "FIT": 133,
+      "NO_PROJECTION": 33,
+      "NATIVE_TEMPLATE_GAP": 43
+    },
+    "current2022EffectiveProjectionCounts": {
+      "PROJECTION_BINDING_PENDING": 172,
+      "PROJECTION_UNMATERIALIZED": 25,
+      "NOT_RUN": 3,
+      "EXACT_SEMANTIC_LEAF_UNAVAILABLE": 4,
+      "META_ONLY_COMPATIBILITY_PENDING": 3,
+      "SOURCE_SOLUTION_PREREQUISITE_HOLD": 2
+    },
+    "activeSourceFieldCompletenessDebtQuestions": 84,
+    "sourceProblemTypeKeyPopulated": 164,
+    "sourceTemplateKeyPopulated": 125,
+    "newSourcePrerequisiteHolds": 5,
+    "current2022ExactLeafGaps": 4,
+    "registrationCountsOverlap": true,
+    "nativeTemplateGapCountUnit": "43 questions, not 43 distinct new template definitions"
+  },
+  "officialValidation": {
+    "effectiveSummaryRef": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/ALL9.official-validation.effective-summary.json",
+      "sha256": "936d79ad8990070aa9689706e0fc7a7a949eeee4dda5a1c5bc3e26586394073f"
+    },
+    "frozen403SummaryRef": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/ALL9.official-validation.compact-summary.json",
+      "sha256": "7151d89965996d56ae18d2fa2a48012983660455542abbbef40bb952add58ad6"
+    },
+    "frozen403ReplayRef": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/ALL9.official-validation.compact-replay.json",
+      "sha256": "966ca42307b6ded4584e93d22a2a45a983d03161699b5bbb1d3c335496979b0e"
+    },
+    "addedRouteReplayRef": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.Q5.current2022.official-replay.json",
+      "sha256": "522944f7eb8ce4c69e9770cdaa796156ea217db5878e305881bcef6133b81e03"
+    },
+    "unit": "2015/2022 routes; 209 questions x 2 = 418 possible routes",
+    "executedRoutes": 404,
+    "resolverStatusCounts": {
+      "PASS": 404,
+      "NOT_RUN": 14
+    },
+    "difficultyStatusCounts": {
+      "PASS": 404,
+      "NOT_RUN": 14
+    },
+    "fullFinalizationStatusCounts": {
+      "PASS": 359,
+      "FAIL": 45,
+      "NOT_RUN": 14
+    },
+    "completeValidationStatus": "NOT_ALL_PASS",
+    "failureCauses": {
+      "nativeTemplateMismatchMissingTPLRoutes": 39,
+      "relationalVisibilityLegacyValidatorMismatchRoutes": 6
+    },
+    "notRunCauses": {
+      "newSourcePrerequisiteRoutes": 10,
+      "current2022ExactLeafGapRoutes": 4
+    }
+  },
+  "exams": [
+    {
+      "examId": "E064",
+      "sourcePath": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+      "questions": 22,
+      "changedFields": 145,
+      "independentSampleOrdinals": [
+        5,
+        13,
+        22
+      ],
+      "sourceReviewCommit": "46145196e7ee93aa1c29336aacb7fa8e10f0cb84",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+        "sha256": "08ad0c36419dcc85ddfaaa0458d31b0752cde5f31ac206c5d4256a7ff0d150dd"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.meta.json",
+        "sha256": "9b0bbbf976d2861d6d45d4838b0f332c5fe6ccc3aa024ae63b5923dd3e47be2c"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.verification.json",
+        "sha256": "ca558e59e4f86718568be60f63190ea589ca01fd57442bdd462eb3e2609a97db"
+      }
+    },
+    {
+      "examId": "E065",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+      "questions": 24,
+      "changedFields": 148,
+      "independentSampleOrdinals": [
+        5,
+        15,
+        24
+      ],
+      "sourceReviewCommit": "731a0abac9ff38b3305e093f9fc6493b34d1676a",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+        "sha256": "362e0a3e9b7cff10dd8d41782624c8d11c28ad2135b1433aa386f31cee7ad402"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E065.meta.json",
+        "sha256": "9739842a9aa2011941382e584f9849277fcd842f7cef564fd16ad8842c0e4086"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E065.verification.json",
+        "sha256": "559b2b434370d086f2914ed9485690afb0d63ffa51de60fa97e5fab104dd51c4"
+      }
+    },
+    {
+      "examId": "E066",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+      "questions": 21,
+      "changedFields": 195,
+      "independentSampleOrdinals": [
+        3,
+        13,
+        21
+      ],
+      "sourceReviewCommit": "d4798d43cc7f3aba01289ff588d175b7845724c1",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "sha256": "e37734289746916666896d0683b02c487dfa212119b65ce75d6a55e454909f74"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+        "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.verification.json",
+        "sha256": "6a2dec2f56e5b9596b4caf42632e5fda9123714ff02138282daf4aba05c91f3f"
+      }
+    },
+    {
+      "examId": "E067",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+      "questions": 22,
+      "changedFields": 84,
+      "independentSampleOrdinals": [
+        7,
+        16,
+        22
+      ],
+      "sourceReviewCommit": "535fc1999dd0662cfcd0f6ff195438a9a6f22824",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+        "sha256": "fbb802a88299375a43649b03d71c503b214b12ffe784c3404eb4578d6ac7bd91"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+        "sha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.verification.json",
+        "sha256": "e3291d1bf73f7f0df86aebc834609f3134abc500591f3e239f615f8a4322c2db"
+      }
+    },
+    {
+      "examId": "E079",
+      "sourcePath": "archive/exams/original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+      "questions": 24,
+      "changedFields": 391,
+      "independentSampleOrdinals": [
+        6,
+        15,
+        24
+      ],
+      "sourceReviewCommit": "198662dea960d4e5f593c0651279e341895423f1",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+        "sha256": "14ddd8af63a3d325fec4359e4abeb58f3504651c95e949dd58eeae358f116aa1"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.verification.json",
+        "sha256": "feff2447da9d4b49b4ec9d3f48cd9cca042684b4f1565bea5faa0b4c63e1464b"
+      }
+    },
+    {
+      "examId": "E080",
+      "sourcePath": "archive/exams/original/middle/m3/2final/16_신흥중_2학기_기말_중3_수학.js",
+      "questions": 23,
+      "changedFields": 380,
+      "independentSampleOrdinals": [
+        8,
+        17,
+        23
+      ],
+      "sourceReviewCommit": "933f5e4a8b83182734d202c52c9e068ce3a05e2f",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/16_신흥중_2학기_기말_중3_수학.js",
+        "sha256": "eaffd43c628f329cbcb1f3ba53966c4a8f3157dfc9f8f3e89e1f0446cc747da5"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.meta.json",
+        "sha256": "6e9748f755056f3cfbb56dfa9111025002d1e5aef1b8ea0c106ce41c13eb4b03"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E080.verification.json",
+        "sha256": "b2d4c88c207285804eb61561a1f2fa09d840d93102663ab36a5b824890eef177"
+      }
+    },
+    {
+      "examId": "E081",
+      "sourcePath": "archive/exams/original/middle/m3/2final/16_왕의중_2학기_기말_중3_수학.js",
+      "questions": 24,
+      "changedFields": 398,
+      "independentSampleOrdinals": [
+        6,
+        17,
+        24
+      ],
+      "sourceReviewCommit": "4127cd0a84b4c4bb53b6bf0b1c6dd9b780091acd",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/16_왕의중_2학기_기말_중3_수학.js",
+        "sha256": "1b2c8fde43562989d41226113291240ef07f194867909496cea52f3136d89404"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.meta.json",
+        "sha256": "97792096c0a2cf0424d2167f7ab5cdf569988216a072b48bf2a5af4fdf148eba"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E081.verification.json",
+        "sha256": "eccb4afa6021f83d7c537cccc265f33f0f5be37316a4e49a4a43f8c9d3670876"
+      }
+    },
+    {
+      "examId": "E082",
+      "sourcePath": "archive/exams/original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+      "questions": 24,
+      "changedFields": 389,
+      "independentSampleOrdinals": [
+        7,
+        16,
+        24
+      ],
+      "sourceReviewCommit": "439a292143a62768f48b5e8ba05679c7426003d1",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+        "sha256": "7a19958718f2ea516f5ad944cf1bfc1d89d0e0e844f95f10d7232055e176d7a8"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.meta.json",
+        "sha256": "2aabdad49f7ca58fc03d9929ecc7552c9a4cd745fb0c712864daf9c102c50247"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.verification.json",
+        "sha256": "8dc798f9035ca776f58be7d3f84c6cf6027250d95979ef0011ae53c718534e46"
+      }
+    },
+    {
+      "examId": "E083",
+      "sourcePath": "archive/exams/original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+      "questions": 25,
+      "changedFields": 408,
+      "independentSampleOrdinals": [
+        8,
+        18,
+        25
+      ],
+      "sourceReviewCommit": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+      "sourceRef": {
+        "path": "archive/exams/original/middle/m3/2final/15_왕의중_2학기_기말_중3_수학.js",
+        "sha256": "b563ae4416e648ed6717e7d32350914acd38d5a6e56416b3c7f8dbe2610a0cf0"
+      },
+      "metaRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.meta.json",
+        "sha256": "14799de4eea08c7ea813923c48bde5de81eeb6daddcb85dec3a801e160839155"
+      },
+      "verificationRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E083.verification.json",
+        "sha256": "38efab7bf4b88720695e2834d8ff80581d3b147a89b3df0d063f6060df687e56"
+      }
+    }
+  ],
+  "difficultyAdjustments": [
+    {
+      "examId": "E064",
+      "ordinal": 13,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E064",
+      "ordinal": 22,
+      "authorBucket": 4,
+      "finalBucket": 3
+    },
+    {
+      "examId": "E066",
+      "ordinal": 3,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E066",
+      "ordinal": 5,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E066",
+      "ordinal": 15,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E067",
+      "ordinal": 5,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E067",
+      "ordinal": 6,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E067",
+      "ordinal": 7,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "authorBucket": 2,
+      "finalBucket": "UNKNOWN"
+    },
+    {
+      "examId": "E067",
+      "ordinal": 13,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E067",
+      "ordinal": 16,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E079",
+      "ordinal": 17,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E079",
+      "ordinal": 18,
+      "authorBucket": 2,
+      "finalBucket": 3
+    },
+    {
+      "examId": "E079",
+      "ordinal": 19,
+      "authorBucket": 2,
+      "finalBucket": 3
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "authorBucket": 3,
+      "finalBucket": "UNKNOWN"
+    },
+    {
+      "examId": "E080",
+      "ordinal": 9,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E081",
+      "ordinal": 6,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E081",
+      "ordinal": 22,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E082",
+      "ordinal": 1,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E082",
+      "ordinal": 11,
+      "authorBucket": 2,
+      "finalBucket": 1
+    },
+    {
+      "examId": "E082",
+      "ordinal": 14,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E082",
+      "ordinal": 22,
+      "authorBucket": 3,
+      "finalBucket": 2
+    },
+    {
+      "examId": "E083",
+      "ordinal": 6,
+      "authorBucket": 3,
+      "finalBucket": 2
+    }
+  ],
+  "newSourcePrerequisiteHolds": [
+    {
+      "examId": "E064",
+      "ordinal": 21,
+      "questionUid": "qid_v1_ec846662bf38ff19a2a02aa91a9340705df91854c14ac798bf8d164f947e8e7b",
+      "kind": "SOURCE_SOLUTION_REASONING_DEFECT",
+      "reason": "중심각의 정당화가 잘못되어 VERIFIED_FINAL 해설 선결조건이 충족되지 않음.",
+      "nextAction": "원문 해설의 중심각 근거를 중등 범위에서 고치고 별도 검증 후 해당 경로 재실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E064.meta.json",
+        "sha256": "9b0bbbf976d2861d6d45d4838b0f332c5fe6ccc3aa024ae63b5923dd3e47be2c"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "kind": "SOURCE_DOMAIN_ENDPOINT_AMBIGUITY",
+      "reason": "문항 각 범위에 90°를 포함하면서 tan 증가 진술을 사용하여 정의역·유일 정답이 불명확함.",
+      "nextAction": "원본 대조로 정의역/보기 수정 확정 후 해설과 난도 UNKNOWN 재판정.",
+      "difficultyBucket": "UNKNOWN",
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+        "sha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 18,
+      "questionUid": "qid_v1_3c477e3ec6cd1aaa35b41997e6c7d98649835f9edb15c71f1a7a213429fa3e2e",
+      "kind": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "reason": "현의 길이 곱을 직접 사용한 기존 해설에 중등 AA 닮음 유도가 없음. 정확한 M2 닮음 길이 leaf는 존재함.",
+      "nextAction": "기존 해설에 AA 유도와 대응변을 작성·독립 검증한 뒤 conditional M2-RPM-089/207 경로 실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 19,
+      "questionUid": "qid_v1_2d56e395257d5e5a17e20325527a63c9adde9bddfe4aafdf1a545f129ea8e47b",
+      "kind": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "reason": "두 할선의 곱을 직접 사용한 기존 해설에 중등 AA 닮음 유도가 없음. 정확한 M2 닮음 길이 leaf는 존재함.",
+      "nextAction": "기존 해설에 AA 유도와 대응변을 작성·독립 검증한 뒤 conditional M2-RPM-089/207 경로 실행.",
+      "difficultyBucket": 3,
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "kind": "SOURCE_GEOMETRY_CONDITION_INCONSISTENCY",
+      "reason": "접원 사각형의 주어진 길이와 직각 조건이 함께 성립하지 않음. 원본 PNG와 SVG 모두 같은 수치임.",
+      "nextAction": "원본 시험지 대조로 도형 수치 확정 후 문항·해설·난도 UNKNOWN 재검토.",
+      "difficultyBucket": "UNKNOWN",
+      "newInThisContinuation": true,
+      "sourceChanged": false,
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    }
+  ],
+  "difficultyHoldsAllCampaign": [
+    {
+      "examId": "E055",
+      "ordinal": 21,
+      "questionUid": "qid_v1_bb32ad8a2727d461903d1e8ff1b61237826b65de11eb7161ff7325ada707194f",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [1, 2]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 22,
+      "questionUid": "qid_v1_98cae8a3879b52bf82d19cffc4411d4ee67c2d3061ce80978988230cf7b25d65",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [1, 4]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E055",
+      "ordinal": 23,
+      "questionUid": "qid_v1_0b49cedc58d2019b9342692ff9a79f3df5e011e030380cb7ad943332349a36a5",
+      "newInThisContinuation": false,
+      "reason": "두 수준 중 하나만 선택하는 UID에 대안 난도 [2, 3]를 하나의 숫자로 집계하는 공식 규칙이 없다. UID 분리 또는 공식 집계규칙 확정 후 등록한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+        "sha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81"
+      }
+    },
+    {
+      "examId": "E059",
+      "ordinal": 13,
+      "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+      "newInThisContinuation": false,
+      "reason": "현해설이 sin120°를 직접 사용하여 중3 범위의 독립풀이검증이 필요하며 원문조건 자체도 불일치한다. 원문PDF대조/수정 및 중등범위의 풀이독립검증후 난도를 재판정한다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E059.meta.json",
+        "sha256": "fce9bc37325b8b6650e958e0d9c82b5e8384bd6b99879988b872dda9f76328f1"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 3,
+      "questionUid": "qid_v1_8ee2fe173a6fb105d1b22639ecbdc4f7976278875e065669e411e4ec39d5c3de",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 8,
+      "questionUid": "qid_v1_6469225bfb694b9c0eafde26c38b68ecf5a11b39f3f23111e299becd77459550",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 19,
+      "questionUid": "qid_v1_a38ff4694b903e17e8ed8716a661ec8774c8c20be176e00a0c5ebdcafa850ec9",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E070",
+      "ordinal": 23,
+      "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E070.meta.json",
+        "sha256": "4ada171a8c424e346cb6a87b7c0fa22893802d0c4e7a0d3412edac6628200ada"
+      }
+    },
+    {
+      "examId": "E074",
+      "ordinal": 17,
+      "questionUid": "qid_v1_146b83c00db6182a3f1b6716f8bfaeb883d0aea09caba4520706f61e5c01fde7",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E074.meta.json",
+        "sha256": "ba26af54b993dbf697ee2433d7da113aa94a4ce690ef21a873da003bd9033c9e"
+      }
+    },
+    {
+      "examId": "E074",
+      "ordinal": 23,
+      "questionUid": "qid_v1_b05dbba9a424e88cb92b4bb7ff617e675153f5b3f11c0c6d2f6eabfca68a4e8e",
+      "newInThisContinuation": false,
+      "reason": "현재 해설이 중3 교육과정 범위를 벗어나며 범위내 풀이의 검증이 완료되지 않았으므로 단일 난도를 확정하지 않는다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E074.meta.json",
+        "sha256": "ba26af54b993dbf697ee2433d7da113aa94a4ce690ef21a873da003bd9033c9e"
+      }
+    },
+    {
+      "examId": "E067",
+      "ordinal": 11,
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "newInThisContinuation": true,
+      "reason": "발문에90°를포함하는각범위를주고tan의증가진술을제시한다. ②가거짓이어도90°정의불가때문에문항전체의유일정답을확정할수없어최종난도는UNKNOWN으로둔다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E067.meta.json",
+        "sha256": "1af127dde976f80f6cdfa298339525b79e21bda404c5fc7d4faabe3f75ad5ed8"
+      }
+    },
+    {
+      "examId": "E079",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "newInThisContinuation": true,
+      "reason": "전체외접사각형의조건이모순이다. Pitot으로BC8,BE4,r4이고CE=r라C도직각이다. AB∥CD에서AD²=8²+(10−6)²=80이어야하지만제시AD8은64다. 유효한문항의난도를확정할수없어UNKNOWN이다.",
+      "metadataRef": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+        "sha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04"
+      }
+    }
+  ],
+  "e065Current2022Correction": {
+    "ordinal": 5,
+    "recordId": "M3-RPM-135",
+    "source2015MetadataChanged": false,
+    "supersedingEvidence": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-supplement.json",
+      "sha256": "2dc3e2dcf9fb47275666fbf923f790432396e9252eb55a09b4a59d642c391817"
+    },
+    "meaningRecheck": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/E065.current2022-recheck.json",
+      "sha256": "765430abd81d89c52b01c034e4454fce0815b98b80b6d37e2bb3eab29a627a27"
+    }
+  },
+  "protectedScope": {
+    "sourceContentChoicesAnswerSolutionFiguresUidOrder": "PRESERVED",
+    "sharedRegistryMasterCrosswalkRuntimeOtherTaskChanges": 0,
+    "independentTechnicalReportRef": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/closeout/final-source-preservation.json",
+      "sha256": "76856195bf4726e8ff1db09ed937bd74b8ca41fd5e1766edfed9375c94bfe223"
+    }
+  },
+  "registration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
+  "deployment": "NOT_RUN",
+  "nextAction": "Codex release owner accepts this exact task and reviews the release queue, resolves source/registration prerequisites, reruns affected validation, then handles release under the applicable authorization."
+}

@@ -1,0 +1,647 @@
+{
+  "schemaVersion": "m3-current2022-leaf-semantic-recheck-v1",
+  "examId": "E065",
+  "reviewer": "GPT_AUTHOR_A_00FBAC4C0777",
+  "frozenAtUtc": "2026-11-14T11:56:31.126213+00:00",
+  "scope": "Source-first semantic recheck of exact current-2022 leaf availability for ordinals 1,4,5,11,16 only. No source, Git, shared package, or registry mutation.",
+  "provenance": {
+    "packetPath": "/workspace/scratch/00fbac4c0777/packets/E065.student.json",
+    "packetSha256": "d4aae88cec8aebf4d38a59e93cba204584b74abdfa559eb879cd764b2b79844e",
+    "sourcePath": "archive/exams/original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+    "sourceGitBlobSha": "b78a18b29941861b62d267519ae26c6770e3ec36",
+    "sourceSha256": "97de7d909502a1f10fa200cccf173f206ccdb6ed8704e0ed39e544d874425f11",
+    "worktreeHeadAtRead": "5aaec4b716f26d61b95d7f8b2916d777caebd79d",
+    "originMainAtRead": "60159aae8ee398b8b9e807ecb2596efaf1ef7d3f",
+    "authorityRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+        "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-middle-2022/RPM_MIDDLE_2022_PARENTS.md",
+        "sha256": "b155b0277e7d5627e17ac40ff46937b38a6ad6350b6ddf35b153b66894e89e77"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/RPM_PRIMARY_POLICY.md",
+        "sha256": "f3c0ff2082f2aa2ad7f56c6bc9dea1611ff0751096350a4cb7028b6f4d5d50b1"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M3-1.md",
+        "sha256": "c1fefcd45452c3552895cc449539afbcfccb58f4d60bac9c5ffff1cbadfc5a40"
+      },
+      {
+        "path": "docs/operations/rpm-middle-parent-refinement-20261113/m3-parent-placement-audit.json",
+        "sha256": "cba8eae8713d0e88a4e5571049ec3e1ba171958d3dbe4043a7f9c7cb6f5ed489"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+        "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
+      }
+    ],
+    "targetAuthorOrFinalMetadataReopenedDuringThisRecheck": false,
+    "priorExposureNote": "A previous, separately scoped package-structure spotcheck accessed E065 package metadata and frozen-author fields for hash/UID/shape comparisons. This current recheck is source-first and does not reopen those target judgments; it is not represented as a never-exposed blind review.",
+    "canonicalRules": "Use current effective 2022 parents and exact locked L3/L4 identity; compare source mathematical meaning, not 2015/2022 literal labels; prerequisite components alone do not replace the primary target.",
+    "semanticAuthorityNote": "Locked master is authoritative. Generated M3-1.md still labels the underlying design CANONICAL_DRAFT; no claim of a separately verified printed RPM leaf name is made."
+  },
+  "coverage": {
+    "targetQuestions": 5,
+    "originalFiguresActuallyRead": 3,
+    "m3_1_lockedLeafNamesRead": 50,
+    "m3_1_quadraticFunctionLeavesRead": 8,
+    "m1m2_lockedLeafNamesRead": 237,
+    "m3_1_quadraticFunctionLeafInventory": [
+      {
+        "recordId": "M3-RPM-135",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(1)",
+          "l3": "이차함수의 기본 그래프",
+          "l4": "y=ax²"
+        }
+      },
+      {
+        "recordId": "M3-RPM-136",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(1)",
+          "l3": "이차함수의 기본 그래프",
+          "l4": "평행이동"
+        }
+      },
+      {
+        "recordId": "M3-RPM-137",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(1)",
+          "l3": "꼭짓점과 축",
+          "l4": "꼭짓점 좌표"
+        }
+      },
+      {
+        "recordId": "M3-RPM-138",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(1)",
+          "l3": "꼭짓점과 축",
+          "l4": "대칭축"
+        }
+      },
+      {
+        "recordId": "M3-RPM-139",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(2)",
+          "l3": "일반형 그래프",
+          "l4": "완전제곱식 변형"
+        }
+      },
+      {
+        "recordId": "M3-RPM-140",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(2)",
+          "l3": "일반형 그래프",
+          "l4": "그래프 그리기"
+        }
+      },
+      {
+        "recordId": "M3-RPM-141",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(2)",
+          "l3": "최대·최소와 활용",
+          "l4": "최대·최소"
+        }
+      },
+      {
+        "recordId": "M3-RPM-142",
+        "rpmPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수의 그래프(2)",
+          "l3": "최대·최소와 활용",
+          "l4": "조건으로 식 결정"
+        }
+      }
+    ]
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_ac2a8f30d2e2554ce01baff4bffff07a20f887bd6bf460bf8894af16f0451488",
+      "sourceFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a128c7d04aa9e1fe5e61dbe4b2ce0fa4c6768e16b4b9ca20dec19e424158dbe7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff5986d438c5d20bc9b1564383c81e17870367a1d99d638f3e2254261140435f"
+        }
+      ],
+      "status": "EXACT_LEAF_GAP",
+      "exact2022RecordId": null,
+      "current2022RpmPath": null,
+      "primaryMeaning": "식 또는 수량 관계를 y=f(x)로 나타내어 정리한 뒤 이차항의 계수가 0이 아닌지로 이차함수 여부를 판별한다.",
+      "decisiveCalculations": [
+        "②는 (x+3)^2-x^2-3=6x+6으로 이차항이 소거된다.",
+        "① y=x²+5x, ③ y=x², ④ y=x(x-3)/2, ⑤ y=πx²에는 모두 이차항이 남는다. 따라서 답은 ②이다."
+      ],
+      "reason": "현재 2022 M3-1 이차함수의 8 leaf에는 이차함수의 뜻·판별이 없다. y=ax² leaf는 b=c=0인 기본 포물선의 그래프 관계를 다루며 일반식·상황식 전체의 차수 판별을 포괄하지 않는다. 정답 선택지가 일차식으로 정리된다는 사실만으로 문항의 이차함수 판별 목표를 M2 일차함수 판별로 바꾸지 않는다.",
+      "candidateReview": [
+        {
+          "recordId": "M3-RPM-135",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "y=ax²"
+          },
+          "disposition": "REJECT_NOT_SAME_TARGET",
+          "reason": "일부 보기는 y=ax²지만 ①·④처럼 일차항이 있는 이차함수와 이차항이 소거되는 보기를 구별하는 뜻·판별 목표까지 포괄하지 않는다."
+        },
+        {
+          "recordId": "M2-RPM-165",
+          "curriculum": "2022",
+          "scope": "M2-1",
+          "rpmPath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "일차함수 판별"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "②가 일차함수라는 확인에는 기여하지만 전체 보기에서 이차함수 아닌 것을 판별하는 범주 자체의 정확한 대체 leaf는 아니다."
+        },
+        {
+          "recordId": "M3-RPM-107",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "다항식의 곱셈과 인수분해",
+            "midUnit": "다항식의 곱셈",
+            "l3": "곱셈공식",
+            "l4": "합·차의 제곱"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "합의 제곱 전개는 ②를 정리하는 계산이다. 전개 자체가 발문 목표가 아니며 나머지 보기의 함수 분류도 설명하지 못한다."
+        },
+        {
+          "recordId": "M1-RPM-198",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "다각형",
+            "l3": "삼각형·다각형의 각",
+            "l4": "변·대각선 개수"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "④의 대각선 수 식에만 기여한다. 전체 함수 차수 판별의 주 leaf로 삼을 수 없다."
+        }
+      ],
+      "assetsRead": [],
+      "sourceSolutionCheck": {
+        "status": "DECISIVE_STEPS_AND_FINAL_CHECKED",
+        "scope": "Existing solution was checked against the actual statement and necessary figure for this leaf recheck; no R1/R2/R3 certification is claimed."
+      },
+      "requiredMissingMeaning": "식 또는 수량 관계를 y=f(x)로 나타내어 정리한 뒤 이차항의 계수가 0이 아닌지로 이차함수 여부를 판별한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_6d75c46827bc3f4e820379591b84f243ea96aedc1ca86d7981c84412ecdbbd3e",
+      "sourceFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1784cb86d6aca08b4262af869443604b844248cc0d99a23e77d93bd527fe2a63"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9939cf8bbd5295ed2365a0e1e5a02a81f2f173fbecf849372b789227d457954"
+        }
+      ],
+      "status": "EXACT_LEAF_GAP",
+      "exact2022RecordId": null,
+      "current2022RpmPath": null,
+      "primaryMeaning": "y=ax²+q의 개형에서 포물선의 벌어지는 방향과 y절편의 위치를 읽어 a와 q의 부호를 함께 판정한다.",
+      "decisiveCalculations": [
+        "원본 그림에서 포물선은 아래로 열린다. 따라서 a<0이다.",
+        "x=0에서 y=q이고 y절편은 x축 위이다. 따라서 q>0, 답은 ④이다."
+      ],
+      "reason": "필요한 의미는 이동된 기본 포물선의 개형으로 두 계수의 부호를 판정하는 것이다. 이차함수 기본 그래프의 평행이동과 꼭짓점 좌표는 각각 관련 구성요소이나, 여기에는 이동량·이동 후 식·꼭짓점 좌표를 구하는 과제가 없다. 2022의 8 leaf 및 M1/M2 prerequisite를 대조해도 전체 부호 판정을 정확히 수용하는 leaf가 없다.",
+      "candidateReview": [
+        {
+          "recordId": "M3-RPM-135",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "y=ax²"
+          },
+          "disposition": "REJECT_FORM_MISMATCH",
+          "reason": "대상은 q가 있는 y=ax²+q이며 q의 부호 판정이 필수다. 이동이 없는 y=ax² 기본 그래프 leaf만으로 전체 목표를 담지 못한다."
+        },
+        {
+          "recordId": "M3-RPM-136",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "평행이동"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "q를 수직이동량으로 이해할 수 있지만 실제 과제는 주어진 두 그래프의 이동량이나 이동 후 식을 구하는 것이 아니라 a,q의 부호 판정이다."
+        },
+        {
+          "recordId": "M3-RPM-137",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "꼭짓점 (0,q)의 y좌표 부호 해석은 기여하지만 a의 부호를 포함한 계수 부호 판정이 전체 목표다. 정본 정규화 설명도 이 leaf의 목표를 vertex coordinate로 명시한다."
+        },
+        {
+          "recordId": "M3-RPM-140",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "그래프 그리기"
+          },
+          "disposition": "REJECT_NOT_SAME_TARGET",
+          "reason": "주어진 그림의 계수 부호를 읽는 문제이며 일반형의 그래프를 그리는 문제가 아니다."
+        },
+        {
+          "recordId": "M1-RPM-163",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "rpmPath": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "좌표평면",
+            "l4": "점의 좌표 읽기"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "좌표 부호 읽기는 q 판정에 기여하나 개형과 이차항 계수 a의 연결은 중1 점의 좌표 읽기 범위로 대체할 수 없다."
+        }
+      ],
+      "assetsRead": [
+        {
+          "path": "archive/assets/images/20_신흥중_2학기_중간_중3_수학/q04.png",
+          "sha256": "ec39a27aceb57f5bbc8fe9f9402f6cd73b9950c8affdf5f18720d9be0d62cf67",
+          "read": true
+        }
+      ],
+      "sourceSolutionCheck": {
+        "status": "DECISIVE_STEPS_AND_FINAL_CHECKED",
+        "scope": "Existing solution was checked against the actual statement and necessary figure for this leaf recheck; no R1/R2/R3 certification is claimed."
+      },
+      "requiredMissingMeaning": "y=ax²+q의 개형에서 포물선의 벌어지는 방향과 y절편의 위치를 읽어 a와 q의 부호를 함께 판정한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "sourceFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "76db3d6da4145db3053afc8a9041a6c2fb128664931c60c20ef62db61e685958"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7985902dc14afc80240696c8956164233094078381059185ea1f3f0e7dc525b3"
+        }
+      ],
+      "status": "EXACT_LEAF_AVAILABLE",
+      "exact2022RecordId": "M3-RPM-135",
+      "current2022RpmPath": {
+        "curriculum": "2022",
+        "scope": "M3-1",
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(1)",
+        "l3": "이차함수의 기본 그래프",
+        "l4": "y=ax²"
+      },
+      "primaryMeaning": "기본 이차함수 y=ax²의 그래프 위 점 조건을 대입해 계수 a와 다른 점의 함숫값 b를 구한다.",
+      "decisiveCalculations": [
+        "P(2,-8)을 y=ax²에 대입하면 -8=4a이므로 a=-2이다.",
+        "Q(-1,b)에 대입하면 b=(-2)(-1)²=-2이다. 따라서 a+b=-4, 답은 ②이다."
+      ],
+      "reason": "실제 함수 꼴이 정확히 y=ax²이고 결정 계산도 그 그래프의 점과 식의 관계를 두 번 적용한다. 두 점이라고 해서 일반 이차함수 재구성으로 변하는 것이 아니다. P 하나가 유일한 계수 a를 정하고 Q의 b는 그 함수의 종속값이다. 기본 그래프 y=ax² leaf의 의미에 직접 포함되므로 2015 경로의 L3/L4 문자열과 다르다는 이유로 current2022 unavailable을 유지하면 잘못된 공백이 된다.",
+      "candidateReview": [
+        {
+          "recordId": "M3-RPM-135",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "y=ax²"
+          },
+          "disposition": "SELECT_EXACT",
+          "reason": "표준형·조건·결정 계산이 모두 기본 이차함수 y=ax²에 해당한다. 이동, 일반형 완전제곱 변형, 최대·최소가 전혀 필요 없다."
+        },
+        {
+          "recordId": "M3-RPM-142",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "disposition": "NOT_PRIMARY_MORE_SPECIFIC_LEAF_EXISTS",
+          "reason": "조건으로 식을 결정한다는 넓은 관점은 가능하지만 이 문제는 정해진 y=ax² 꼴에 한 점을 대입하는 기본형이다. 별도 일반형 재구성 leaf로 옮기지 않고 정확한 특수형 135를 우선한다."
+        },
+        {
+          "recordId": "M1-RPM-142",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "rpmPath": {
+            "majorUnit": "문자와 식",
+            "midUnit": "문자의 사용과 식의 계산",
+            "l3": "식의 값",
+            "l4": "대입하여 식의 값 구하기"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "대입 계산은 공통 도구이지만 그래프 위 점의 좌표가 y=ax²를 만족한다는 문항의 핵심 대상은 M3-RPM-135가 직접 담는다."
+        }
+      ],
+      "assetsRead": [],
+      "sourceSolutionCheck": {
+        "status": "DECISIVE_STEPS_AND_FINAL_CHECKED",
+        "scope": "Existing solution was checked against the actual statement and necessary figure for this leaf recheck; no R1/R2/R3 certification is claimed."
+      },
+      "requiredMissingMeaning": null
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_7977148d92ea01e4db49f421e57e90ba974137f996ed8cb13919d07203ae4fa6",
+      "sourceFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5aba20beee4a7615d50cc8baba9e113d0ae92b29806fdea352e959a63cb9c1c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0438881e72166e97566bed21d4e7f00ffcbe96e14246036e8d048260149d51db"
+        }
+      ],
+      "status": "EXACT_LEAF_GAP",
+      "exact2022RecordId": null,
+      "current2022RpmPath": null,
+      "primaryMeaning": "y=a(x+p)²-q의 개형에서 벌어지는 방향 및 꼭짓점의 좌우·상하 위치를 이용해 a,p,q의 부호를 역으로 판정한다.",
+      "decisiveCalculations": [
+        "원본 그림은 아래로 열리므로 a<0이다.",
+        "꼭짓점은 y축 왼쪽이므로 -p<0, 따라서 p>0이다.",
+        "꼭짓점은 x축 위이므로 -q>0, 따라서 q<0이다. 답은 ④이다."
+      ],
+      "reason": "꼭짓점 (-p,-q)의 해석이 결정적 도구이지만 발문은 꼭짓점의 좌표를 구하는 것이 아니라 그림에서 세 매개변수의 부호를 판정하는 것이다. 좌표 leaf와 이동 leaf를 계수 부호 판정 전체로 넓히지 않는다. 2022 M3-1 8 leaf에는 이 표준형 개형-매개변수 부호 관계를 직접 담는 leaf가 없고, M1/M2 좌표·그래프 해석만으로 포물선의 a 및 -p,-q와의 연결을 대체할 수 없다.",
+      "candidateReview": [
+        {
+          "recordId": "M3-RPM-137",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "꼭짓점 좌표"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "꼭짓점 좌표 (-p,-q)를 읽는 관계는 필수다. 그러나 a 부호와 좌표 위치로 계수 부호를 역판정하는 전체 목표를 vertex coordinate 산출 leaf로 동일시하지 않는다."
+        },
+        {
+          "recordId": "M3-RPM-136",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "이차함수의 기본 그래프",
+            "l4": "평행이동"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "수평·수직 이동 해석으로 p,q를 이해할 수 있지만 실제 목표는 이동량/이동 후 함수식이 아니라 계수 부호다."
+        },
+        {
+          "recordId": "M3-RPM-138",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(1)",
+            "l3": "꼭짓점과 축",
+            "l4": "대칭축"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "축 x=-p는 p 부호에 기여할 뿐 a,q 부호까지 담지 못한다."
+        },
+        {
+          "recordId": "M3-RPM-140",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "그래프 그리기"
+          },
+          "disposition": "REJECT_NOT_SAME_TARGET",
+          "reason": "이미 제시된 표준형의 그림을 읽는 문제로 일반형 그래프 그리기를 수행하지 않는다."
+        },
+        {
+          "recordId": "M1-RPM-163",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "rpmPath": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "좌표평면",
+            "l4": "점의 좌표 읽기"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "점의 위치 부호만으로는 계수와 표준형 그래프를 연결하는 이차함수 지식을 대체하지 못한다."
+        }
+      ],
+      "assetsRead": [
+        {
+          "path": "archive/assets/images/20_신흥중_2학기_중간_중3_수학/q11.png",
+          "sha256": "20ddb5ea94a50671e0cb047b11e8c422cfd165d794080d5dcc1453cb1770ceda",
+          "read": true
+        }
+      ],
+      "sourceSolutionCheck": {
+        "status": "DECISIVE_STEPS_AND_FINAL_CHECKED",
+        "scope": "Existing solution was checked against the actual statement and necessary figure for this leaf recheck; no R1/R2/R3 certification is claimed."
+      },
+      "requiredMissingMeaning": "y=a(x+p)²-q의 개형에서 벌어지는 방향 및 꼭짓점의 좌우·상하 위치를 이용해 a,p,q의 부호를 역으로 판정한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9d65b21bc5d20be0cd00ed9619b59b9fd406826c6458508d4fc32ddaae16bf6d",
+      "sourceFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "366c6c20b40c615e0610b9880dc063f6b0e1434e5834b6a19184bd5d8a912b90"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58a0e18fa1e6e81d42e3b8ae558b93262f72af3b519eb7caa9dff60981fb0c03"
+        }
+      ],
+      "status": "EXACT_LEAF_GAP",
+      "exact2022RecordId": null,
+      "current2022RpmPath": null,
+      "primaryMeaning": "이차함수와 두 좌표축의 교점을 계산해 x축 위 밑변과 y절편 높이로 삼각형의 넓이를 구한다.",
+      "decisiveCalculations": [
+        "y=0에서 x²+2x-8=(x+4)(x-2)=0, 따라서 A=(-4,0), B=(2,0)이다.",
+        "x=0에서 C=(0,8)이다. AB=6, 높이=8이므로 넓이는 24, 답은 ④이다."
+      ],
+      "reason": "목표는 이차함수의 좌표축 교점으로 만든 도형의 넓이이다. 그래프는 이미 제시되어 있어 그리기가 목표가 아니고, 최대·최소나 함수식 재구성도 하지 않는다. M3 이차방정식 도형 활용은 기하량의 관계를 이차방정식으로 모델링하는 방향과 구별해야 한다. M2 그래프 활용/넓이의 전체 경로는 일차함수 및 일차방정식의 관계이며, 이 문제의 두 x절편을 얻는 이차함수-이차방정식 관계를 그 경로에 넣을 수 없다. 따라서 현재 exact leaf 공백이다.",
+      "candidateReview": [
+        {
+          "recordId": "M3-RPM-140",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "그래프 그리기"
+          },
+          "disposition": "REJECT_NOT_SAME_TARGET",
+          "reason": "그래프를 그리는 문제로 변형하면 축 교점 계산이 들어갈 수 있지만 실제로는 이미 있는 그래프의 교점과 넓이를 구한다."
+        },
+        {
+          "recordId": "M3-RPM-139",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "완전제곱식 변형"
+          },
+          "disposition": "REJECT_NOT_USED",
+          "reason": "해설과 최소 유효풀이 모두 완전제곱식 변형을 필요로 하지 않는다."
+        },
+        {
+          "recordId": "M3-RPM-124",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차방정식",
+            "midUnit": "이차방정식의 풀이",
+            "l3": "인수분해를 이용한 풀이",
+            "l4": "기본 인수분해"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "인수분해로 두 근을 구하는 단계는 정확히 해당한다. 하지만 근을 x절편으로 해석하고 y절편을 높이로 삼아 넓이를 구하는 핵심 통합 목표의 대체 주 leaf는 아니다."
+        },
+        {
+          "recordId": "M3-RPM-131",
+          "curriculum": "2022",
+          "scope": "M3-1",
+          "rpmPath": {
+            "majorUnit": "이차방정식",
+            "midUnit": "이차방정식의 활용",
+            "l3": "도형",
+            "l4": "길이·넓이"
+          },
+          "disposition": "REJECT_SAME_WORD_DIFFERENT_STRUCTURE",
+          "reason": "이차방정식/도형/길이·넓이라는 단어가 겹치지만, 여기서는 길이·넓이 관계에서 방정식을 세워 미지 기하량을 결정하지 않는다. 주어진 함수와 축의 교점으로 넓이를 산출하는 그래프 활용이다."
+        },
+        {
+          "recordId": "M2-RPM-176",
+          "curriculum": "2022",
+          "scope": "M2-1",
+          "rpmPath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 일차방정식의 관계",
+            "l3": "그래프 활용",
+            "l4": "넓이"
+          },
+          "disposition": "REJECT_PARENT_SCOPE_MISMATCH",
+          "reason": "넓이라는 L4만 같을 뿐 전체 경로는 일차함수/일차함수와 일차방정식의 관계이다. 본문의 이차함수에서 두 x절편을 구하는 구조를 선행학년의 일차함수 leaf로 바꾸지 않는다."
+        },
+        {
+          "recordId": "M1-RPM-166",
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "rpmPath": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          },
+          "disposition": "PREREQUISITE_ONLY",
+          "reason": "그래프 해석은 일반 토대일 뿐 함수식의 이차방정식으로 축 교점을 계산하는 특수 구조를 담지 못한다."
+        }
+      ],
+      "assetsRead": [
+        {
+          "path": "archive/assets/images/20_신흥중_2학기_중간_중3_수학/q16.png",
+          "sha256": "496b98f2d460c0c5d45462f991cec735d9e1d5973c5f1d84aca1a74e92f684a7",
+          "read": true
+        }
+      ],
+      "sourceSolutionCheck": {
+        "status": "DECISIVE_STEPS_AND_FINAL_CHECKED",
+        "scope": "Existing solution was checked against the actual statement and necessary figure for this leaf recheck; no R1/R2/R3 certification is claimed."
+      },
+      "requiredMissingMeaning": "이차함수와 두 좌표축의 교점을 계산해 x축 위 밑변과 y절편 높이로 삼각형의 넓이를 구한다."
+    }
+  ],
+  "summary": {
+    "exactLeafAvailableCount": 1,
+    "exactLeafGapCount": 4,
+    "selectedCurrent2022RecordIds": {
+      "5": "M3-RPM-135"
+    },
+    "gapOrdinals": [
+      1,
+      4,
+      11,
+      16
+    ],
+    "keyCorrection": "Q5 is semantically covered by M3-RPM-135 despite the lack of a literally identical 2015 L3/L4 counterpart.",
+    "bindingAndProjection": "No official resolver was run and no PT/TPL was selected in this recheck. M3-RPM-135 has an exact semantic leaf even if ACTIVE projection remains unavailable.",
+    "newDefinitionsOrKeysCreated": false
+  }
+}
