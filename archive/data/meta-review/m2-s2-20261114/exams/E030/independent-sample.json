@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E030",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "a21e4d584eec254307fd1d64488b05d6e6a4f9b4",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "7b812acbca9f8a15437ef64e903798f360a8fab7fa3639a0258b6ac60b01550e",
+  "fourSlotSha256": "53b3d0fe57879174d7ef1c21832d845cc358cfce48a3436826c2682f61eab840",
+  "ordinals": [
+    6,
+    7,
+    24
+  ],
+  "overallConclusion": "PASS",
+  "items": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_ff65d5d8bc6424dbca4e1b65ac6a99059c39e2d5f02183f00c6a3d0bf6f56dbb",
+      "conclusion": "PASS",
+      "reason": "실제 발문은 총량30과 초기량3에서 남은량27을 구하고 일정 공급량0.3에 시간t를 곱한 하나의 식을 세운다. ACTIVE M1 MODEL_QUANTITY 정의의 수량·남은 수 관계를 미지수 하나로 나타내는 골격과 일치한다. 공급률은 바로 이 primary 모델 내부이므로 CC_RATE_OF_CHANGE를 중복할 필요가 없으며 NONE이 맞다. M1 수에 관한 문제/나이·개수/거리/농도/요금·과부족과 M2 연립작업률은 이 일정 유량의 목표시간 leaf를 정확히 명명하지 않아 RPM 공백과 native 재사용을 분리한 판단을 지지한다. 단순 차이와 나눗셈이므로 하1 수용, 4칸 값·시간 목표와 식 근거는 exact이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_ca99d2e92863d967d4e81edaf5f3b985730aefed914af812261841b64930e8e5",
+      "conclusion": "PASS",
+      "reason": "양의 자연수p,q는 x=p,y=q의 축까지 거리가 되어 직사각형 변 길이를 결정한다. PT_COORD_FIGURE_PROPERTIES의 좌표·거리로 미지수 조건을 결정하는 부모 의미와 RPM058 그래프 넓이의 의미에 맞고, 후보쌍의 곱을12와 비교하는 NEW_TPL이 기존 대각선중점/전진사다리꼴넓이와 구별된다. 직사각형 넓이는 제안 primary 내부이므로 별도CC 없음, 자연수 제한은 거리=p,q로 해석하는 실제 조건이라 적용이 맞다. 4칸 대상·목표·방법 및 하1을 지지한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b81d5ac864223213346b312a2049a33e98e3423c6cd8fb53f37c2f83a90fb009",
+      "conclusion": "PASS",
+      "reason": "실제 그림의 두 내각 이등분선이 밑변BC에서 겹치는 EF를 만드는 것을 확인했다. 두 이등변삼각형을 거쳐 BF=CE=6을 얻고 전체BC=10과 겹침을 계산하므로 정확한 MG DOUBLE_BISECTOR native PT/TPL 정의와 완전히 일치한다. generic 이등변 primary보다 구체적인 등록 유형을 재사용한 교정이 타당하며 이등분·평행·이등변과 겹침 계산은 모두 내부 골격이어서 추가CC없음/NONE이다. 4칸의 역할과 exact 인용이 현재 해설에 부합하고 두 보조 삼각형 선택 및 겹침 해석 때문에 상3/medium/B34 수용을 지지한다."
+    }
+  ],
+  "exactQuoteCheck": "PASS",
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
