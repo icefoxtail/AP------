@@ -582,7 +582,19 @@
         "registeredCurrentQfullMatches": 0
       },
       "appliedSourceItemCount": 1,
-      "writerState": "CLOSED"
+      "writerState": "CLOSED",
+      "residualReview": {
+        "status": "RESIDUAL_DECISIONS_RECORDED_PENDING_SHARED_PROPOSAL_BINDING",
+        "author": "META_B",
+        "items": 23,
+        "artifacts": {
+          "residual-review.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/residual-review.json",
+          "residual-checks.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/residual-checks.json"
+        },
+        "sourceEdits": 0,
+        "sourceSha256": "65678eeab75184088f58349691a49630ecc095991223c8965a1f5ae719ba281e",
+        "reusedIndependentSamples": 3
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1mid/17_금당중_1학기_중간_중1_수학.js",
@@ -902,7 +914,7 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T13:51:16.485758+00:00",
+  "updatedAt": "2026-11-14T13:53:55.147262+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1276,8 +1288,8 @@
       "questionCount": 97
     }
   ],
-  "residualExamCount": 7,
-  "residualQuestionCount": 168,
+  "residualExamCount": 8,
+  "residualQuestionCount": 191,
   "resumeRemoteReceipts": [
     {
       "unit": "source-lineage-and-targeted-original-evidence",
@@ -1312,6 +1324,11 @@
     {
       "unit": "previous-residual-exam",
       "remoteHead": "b21e75722dd76c9877729163175cf65b7b784f39",
+      "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
+    },
+    {
+      "unit": "previous-residual-exam",
+      "remoteHead": "45aef4a1fab970b34e17c30946450eaa84d223bf",
       "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
     }
   ]

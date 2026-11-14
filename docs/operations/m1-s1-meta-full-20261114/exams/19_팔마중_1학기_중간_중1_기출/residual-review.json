@@ -1,0 +1,2238 @@
+{
+  "schemaVersion": "M1-S1-RESIDUAL-REVIEW-v2",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "workKey": "M1-S1-META-FULL",
+  "author": "META_B_RESUME",
+  "createdAt": "2026-11-14T13:46:24.046238+00:00",
+  "exam": "19_팔마중_1학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+  "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+  "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+  "sourceOnly": false,
+  "questionCount": 23,
+  "priorReviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+  "priorIndependentReviewSha256": "0ffe476004574c98079c99ab625e1881d86e0c82374552a22856bf828332adc1",
+  "scope": "기존 검토 재사용, 미완 의미판단/원본 의혹만 재개",
+  "newIndependentFullReviewPerformed": false,
+  "status": "PRO_RESIDUAL_SEMANTIC_WORK_COMPLETE_CANONICAL_AND_EVIDENCE_GATES_EXPLICIT",
+  "stats": {
+    "reusedTotal": 23,
+    "residualDecisions": 17,
+    "reusedUnchanged": 6
+  },
+  "sharedRefs": [
+    "registry-proposals.json",
+    "leaf-proposals.json",
+    "source-content-findings.json",
+    "four-slot-patches.json"
+  ],
+  "items": [
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "기존 자식은 소인수·지수 복원 골격과 일치하지만 equality judgment 부모가 불일치. 부모 의미를 확대하지 않는 새 부모·자식 쌍 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_PRIME_POWER_PARAMETER_RECOVERY_DIRECT"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_PRIME_POWER_PARAMETER_RECOVERY",
+      "proposedTemplateKey": "TPL_M1_PRIME_POWER_PARAMETER_RECOVERY_DIRECT",
+      "ordinal": 1,
+      "questionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 1,
+        "questionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c7e3d89f36cb24a9233c19d567beb98f5d3fe3e3453e2378085182d76fc2962b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "278f008af6a0b08a6fa325641d5ebf098285f6127d53a5d36250f842ca03396a"
+          }
+        ],
+        "sourceStemSha256": "e70096587635664ac3cc857fd195330f19b2e2bfb45e761b43ea02ffbf72a7e0",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "180의 표준 소인수분해에서 지정된 기호를 읽어 요구식에 대입한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "TPL은 정확히 재사용 가능. 부모 PT 정의의 진술판정 한정 표현과 실제 계수값계산 범위는 정본 검토 대상."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "소인수분해 후 밑과 지수를 읽어 수치를 넣는 기본 숙달 문항이다.",
+        "bucket": 2,
+        "reason": "기본 소인수분해 후 지수와 밑을 구별하여 짧은 식에 대입한다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_PRIME_POWER_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "priorCanonicalRecordId": "M1-RPM-003",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 2,
+      "questionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 2,
+        "questionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b6be3350e666712f66d89a4302c835525ba42c81c80a6b8ce8ec861d4f849b6b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "139ba5a8d9e6657f04e9f222c93ab57602f7b5cfadfc8a626cb588d519d84f84"
+          }
+        ],
+        "sourceStemSha256": "b0ffc9e119f16e718ffd5c0e9cdbd9d383fb310acaa0fc5d5bf99d1f2b17b677",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "별표 연산을 주어진 일차식 규칙으로 해석하여 두 수를 넣는다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "기호의 뜻이 모두 주어진 상태에서 한 쌍의 수를 대입하는 입문 문항이다.",
+        "bucket": 1,
+        "reason": "새 기호의 뜻은 발문에 전부 제시되어 있고 한 쌍만 직접 대입한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "식의 값",
+        "l4": "대입하여 식의 값 구하기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-029",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "열차들의 처음 다음 동시출발은 독립주기의 최소공배수. 정육면체·출석횟수 PT/TPL 한계를 확인하고 공통주기 후보 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_FIRST_COINCIDENCE"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_SIMULTANEOUS_PERIODIC_EVENT",
+      "proposedTemplateKey": "TPL_M1_SIMULTANEOUS_PERIODIC_EVENT_FIRST_COINCIDENCE",
+      "ordinal": 3,
+      "questionUid": "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 3,
+        "questionUid": "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4ef8933a81c73509af4f4594f9f6c3e5129b2f5d6ae9b12955fde6e6a268cebe"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "20cfc8f61363e47426c4b7753418fa6937bdda9dbfbac04b24ba472822a2ceae"
+          }
+        ],
+        "sourceStemSha256": "38b2f05a2baf4572af9b0fe9d6cb433de3d90c30e77f1517aa24ffcbd3caeedb",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "세 출발 주기의 최소공배수로 경과 시간을 구해 최초 동시 출발 시각에 더한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "기존 최소공배수 응용 PT와 주기 TPL 재사용 우선. 세 열차 다음 동시시각이라는 정확한 범위를 기존 길이/출석횟수 정의와 대조."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "동시 출발을 최소공배수로 모델링하고 실제 시각으로 해석해야 한다.",
+        "bucket": 2,
+        "reason": "동시 출발의 최소 경과 시간을 찾고 분을 시각으로 바꾸는 표준 응용이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_LCM_APPLICATION",
+        "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "최대공약수·최소공배수의 활용",
+        "l4": "주기·배열·묶음 문제"
+      },
+      "priorCanonicalRecordId": "M1-RPM-012",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "일반 소인수 지수에 의한 약수 개수 조건이다. 약수3개 자연수 세기 parent/TPL와 의미 불일치 확정 후 일반 약수지수 후보 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_DIVISOR_EXPONENT_REASONING_MULTIPLIER_COUNT"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+      "proposedTemplateKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_MULTIPLIER_COUNT",
+      "ordinal": 4,
+      "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 4,
+        "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "992f0008e5aa61fffe208cba1744adcaa46fa6a0917761fca0cca207c6347f22"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "14b7591585831304af10c7b523a6dcc921c140cb0b24babd5d3474ea79379570"
+          }
+        ],
+        "sourceStemSha256": "ccb8e81d867f2e90e09f3c5c64e90451c333110bbb863b48a496f4a1276ae0ac",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "곱한 수의 소인수분해를 정리하고 각 지수에1을 더한 수의 곱으로 약수 개수를 확인한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "TRUE_META_HOLD_EXISTING_SEMANTIC_MISMATCH",
+          "reason": "PT_DIVISOR_COUNT/TPL_DIVISOR_COUNT_CORE는 약수3개인 자연수 개수 세기로 정의되어100×□의 약수27개 조건에 재사용 확정할 수 없다. 일반 소인수지수-약수개수 템플릿 정비 필요."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "소인수 지수와 약수 개수 공식을 연결하는 표준 응용이다.",
+        "bucket": 2,
+        "reason": "제시된 후보에 약수 개수 공식을 적용하는 표준 판정으로 새로운 지수 경우분류를 요구하지 않는다.",
+        "confidence": "medium",
+        "boundary": "B23",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_DIVISOR_COUNT",
+        "templateKey": "TPL_DIVISOR_COUNT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "약수의 개수",
+        "l4": "소인수분해를 이용한 약수의 개수"
+      },
+      "priorCanonicalRecordId": "M1-RPM-005",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "기약분수 개수는 분자와 분모의 서로소 조건. 기존 coprime PT/TPL과 공약수 조건으로 수 찾기 leaf가 일치하므로 별도 leaf 분할 필요 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "canonicalReuse": [
+        {
+          "key": "PT_M1_COPRIME_TEST_AND_COUNT",
+          "status": "ACTIVE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "fileSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "definition": "목표는 주어진 정수 구간에서 특정 수와 서로소인 자연수의 개수를 세는 것이다."
+        },
+        {
+          "key": "TPL_M1_COPRIME_TEST_AND_COUNT_CORE",
+          "status": "ACTIVE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "fileSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "definition": "유한 구간의 후보를 열거해 기준 수의 소인수 배수를 배제하여 서로소 개수를 세는 구조이다.",
+          "parentProblemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+          "internalSkeleton": "11부터 19까지 중 3 또는 5의 배수인 12, 15, 18을 제외하면 11, 13, 14, 16, 17, 19의 6개가 남는다."
+        }
+      ],
+      "proposedProblemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+      "proposedTemplateKey": "TPL_M1_COPRIME_TEST_AND_COUNT_CORE",
+      "closedPriorGapTypes": [
+        "RPM_LEAF_SCOPE_NOTE"
+      ],
+      "ordinal": 5,
+      "questionUid": "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 5,
+        "questionUid": "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8c6091f932099537653e92e36cfe589a37a6ba02d4ed432c9faa0d9f051418c9"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "120756d651c44dacb9b2ae31b0a6bb0510f2de39dd4e3f765cc06d1ba9cc256f"
+          }
+        ],
+        "sourceStemSha256": "3381e5ce6606f0b1c8851c506a7d9e23b703c40981c89b42ff7975e4b26a5cd8",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "분자의 범위를 정하고3 또는5의 배수 개수를 중복 조정해 전체에서 제외한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "RPM_LEAF_SCOPE_NOTE",
+          "reason": "공약수 조건으로 수 찾기 leaf 안의 서로소 개수 응용. 더 정확한 기약분수/서로소 개수 하위표제 여부는 후속 검토 가능."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "상",
+        "levelReason": "기약분수를 분자의 서로소 조건으로 바꾸고 겹치는 배수의 중복을 보정해야 한다.",
+        "bucket": 3,
+        "reason": "기약분수→분자 서로소→겹치는 배수 보정이라는 여러 관점의 연결이 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "상",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+        "templateKey": "TPL_M1_COPRIME_TEST_AND_COUNT_CORE",
+        "crossConceptKeys": [
+          "CC_INCLUSION_EXCLUSION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE",
+          "COND_COPRIME_TO_FIXED_INTEGER"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "공약수 조건으로 수 찾기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-008",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "이미 주어진 소인수분해에서 gcd/lcm의 비를 구하는 목표는 미지지수 복원 부모와 구별. min/max비 템플릿 골격 재사용한 새 부모·자식 제안. 최소공배수 leaf를 실제 보조로 기록.",
+      "proposalRefs": [
+        "PROP_TPL_M1_GCD_LCM_VALUE_EVALUATION_MIN_MAX_RATIO"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_GCD_LCM_VALUE_EVALUATION",
+      "proposedTemplateKey": "TPL_M1_GCD_LCM_VALUE_EVALUATION_MIN_MAX_RATIO",
+      "auxiliaryRpmCanonicalRecordIds": [
+        "M1-RPM-009",
+        "M1-RPM-122"
+      ],
+      "ordinal": 6,
+      "questionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 6,
+        "questionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "87d8a4152cb6b2de0592c9f5934d0ab79d4d5a283b1ac772194301ce78929857"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c068361d5bb7bc20629f5fdcf66dbd7a0342393328a90be1fd4f637e5110ea9b"
+          }
+        ],
+        "sourceStemSha256": "1f606258143ba2812619030259f6f2e81eab9100207eccd54b89343eaeb3a9b6",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "세 수의 공통 지수 최솟값과 전체 지수 최댓값으로 최대공약수·최소공배수를 각각 구하고 비를 계산한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "MULTI_LEAF_COVERAGE_NOTE",
+          "reason": "M1-RPM-009/122 최소공배수 구하기가 함께 필요. 하나의 leaf만으로 모든 해설을 대표한다고 주장하지 않는다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "소인수분해가 주어져 최소·최대 지수를 직접 비교하는 기본 적용이다.",
+        "bucket": 2,
+        "reason": "이미 소인수분해된 세 수에서 지수를 비교해 두 양을 구하는 표준 절차이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "소인수분해로 최대공약수 구하기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-007",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "혼합 개념 진술판별이며 기존 실제 해설이 제시한 서로소 근거를 재사용한다. 새 풀이로 모든 진술을 보강하지 않음. 기존 자식의 좁은 부모를 피하는 혼합진술 후보와 횡단leaf 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_MIXED_NUMBER_ASSERTION_AUDIT_CORE"
+      ],
+      "leafProposalRefs": [
+        "LEAF_B_MIXED_NUMBER_ASSERTION"
+      ],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_MIXED_NUMBER_ASSERTION_AUDIT",
+      "proposedTemplateKey": "TPL_M1_MIXED_NUMBER_ASSERTION_AUDIT_CORE",
+      "ordinal": 7,
+      "questionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 7,
+        "questionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "74204f1228612659622f096315f19c963f672f6f58a43ae121333957d37a1388"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "79e403949154736b6a27a7a305bf120987e364affebf9f8de99f2e6897908042"
+          }
+        ],
+        "sourceStemSha256": "2b5d383c7731c6c233652ba09c0887b69ac242b8356544bc0eabf315ccee5ede",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "현재 해설이 선택한 두 수의 최대공약수가1임을 확인하여 서로소임을 판단한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "여러 단원의 수개념 혼합 진술 판별을 정확히 나타내는 M1 leaf 없음. 현재해설의 서로소 근거에 따라 표준세부단원은 유지."
+        },
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "혼합 진술 TPL은 재사용 후보지만 부모 PT의 소수합성수 한정 정의와 구분."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "소수·거듭제곱·대소·약수라는 여러 수 개념의 진술을 구분해야 한다.",
+        "bucket": 2,
+        "reason": "복수의 수 개념 진술을 대조하는 문제지만 해설의 정답 근거는 기본 서로소 판정이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_NUMBER_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": null
+      },
+      "priorCanonicalRecordId": null,
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "수체계 포함·0·유리수 존재 진술을 절댓값 성질 부모와 구별. 수체계 assertion 부모/TPL 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_CORE"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_NUMBER_SYSTEM_ASSERTION_AUDIT",
+      "proposedTemplateKey": "TPL_M1_NUMBER_SYSTEM_ASSERTION_AUDIT_CORE",
+      "ordinal": 8,
+      "questionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 8,
+        "questionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e9a81b5f9c1840135a2976f5948c50be46b2110c5a527a5c371a87a7dba89d1c"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3c4e668d08170edff73642ef754e054fb127f391aaeec767f98661b6e1b58e13"
+          }
+        ],
+        "sourceStemSha256": "d6887a80ac3a031dfbf581b225c444ebdfff95ae1e530de7b17f36d095307711",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "정수에는 최솟값이 없고 유리수에0이 포함된다는 정의로 두 설명의 오류를 확인한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "TRUE_META_HOLD_EXISTING_TEMPLATE_MISMATCH",
+          "reason": "PT_RATIONAL_PROPERTY 계열 재사용 우선 검토. TPL_CORE의 절댓값/개수/음수순서 정의를 수체계 판별로 자동 확대할 수 없다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "정수의 아래로 끝없음과 유리수의0 포함이라는 정의를 확인한다.",
+        "bucket": 2,
+        "reason": "0의 소속과 음의 정수의 무한 연장을 함께 구별하는 기본 개념판정이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수 체계",
+        "l4": "정수와 유리수의 포함 관계"
+      },
+      "priorCanonicalRecordId": "M1-RPM-014",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "기존 해설의 -4≤x≤10/3를 확인. ACTIVE 전역 일차·연립부등식 parent가 해구간 정수조건을 포괄하므로 새 interval PT는 철회하고 M1 boundary-count template/binding 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_INTEGER_INTERVAL_CONSTRAINT_BOUNDED_COUNT"
+      ],
+      "leafProposalRefs": [
+        "LEAF_B_INTEGER_INTERVAL"
+      ],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "proposedTemplateKey": "TPL_M1_INTEGER_INTERVAL_CONSTRAINT_BOUNDED_COUNT",
+      "ordinal": 9,
+      "questionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 9,
+        "questionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ea0d129d64ff905cd312051136726400f94c25250169f6cac9c9ae0112601779"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0bf2a77d80adb9336cbcb8bac0c33797e36fe62facbe6e124336459489dd22fd"
+          },
+          {
+            "scope": "QASSET",
+            "algo": "sha256-file-bytes-v1",
+            "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q9-solution.svg",
+            "value": "52716c52339aa85b106017fa31a2ce905555d777d5349d679a1edf9b68f8e205"
+          }
+        ],
+        "sourceStemSha256": "ae61ade9a6370bb6dc5204e7efac4beb59e7c43cf3dcb76666d29bfa7a7231ff",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "포함되는 양 끝 경계를 부등식으로 옮긴 뒤 허용 정수를 순서대로 나열한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "구간 정수 개수는 점읽기/유리수 대소비교만으로 정확히 표현되지 않는다."
+        },
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "비대칭·닫힌 경계 정수구간을 기존 동일절댓값 열린구간 TPL에 강제하지 않는다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "양 끝의 포함 여부와 분수 경계를 읽어 작은 구간의 정수를 나열한다.",
+        "bucket": 2,
+        "reason": "분수 경계와 등호 포함을 해석해 연속 정수를 세는 표준 구간 판정이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_INTERVAL_INTEGER_COUNT",
+        "templateKey": "TPL_M1_RATIONAL_INTERVAL_INTEGER_COUNT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수직선과 대소 관계",
+        "l4": null
+      },
+      "priorCanonicalRecordId": null,
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "상이값 선택은 extremal 목표와 다름. 기존 정확 outlier skeleton을 일반 값관계 비교 parent에 대응하는 add-only candidate로 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_EVALUATED_EXPRESSION_COMPARISON_OUTLIER"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_EVALUATED_EXPRESSION_COMPARISON",
+      "proposedTemplateKey": "TPL_M1_EVALUATED_EXPRESSION_COMPARISON_OUTLIER",
+      "ordinal": 10,
+      "questionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 10,
+        "questionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "03043fe24396ad82e4673250efea7c43238f014ded4586cf1356c6a308644568"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a68b8d86ff23ea7bdda372e87af9877da44f23048bcd5251a1e616e9dfad0a23"
+          }
+        ],
+        "sourceStemSha256": "c483dc05782438099ac3ef9ded8aa013b15dc38ea785f7d3f95a8493eb0a0583",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "각 보기의 계산값을 구해 같은 네 값과 다른 한 값을 비교한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "TPL은 정확; 부모PT 정의의 극값선택 표현보다 상이값 선택이 넓음."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "부호 있는 분수의 연속 나눗셈과 결과 비교를 함께 처리한다.",
+        "bucket": 2,
+        "reason": "부호와 연속 나눗셈 순서를 지킨 다섯 표준 계산을 비교한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATED_OUTLIER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "곱셈·나눗셈 혼합"
+      },
+      "priorCanonicalRecordId": "M1-RPM-024",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "기존 현재 해설의 중첩괄호·거듭제곱 순서 계산과 소수공통인수 template은 불일치. 일반 계산 parent/우선순위 variant 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_RATIONAL_EXPRESSION_EVALUATION_MIXED_ORDER"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "proposedTemplateKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_MIXED_ORDER",
+      "ordinal": 11,
+      "questionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 11,
+        "questionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c2b0f7893ea885ff7e1f38ebcea8df9ac2948261dd6b0085d73c83b1c3d68966"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2efe01ffdaac42955188c1cf5bae542099297c0a390c0db7ed41cc9c9683d237"
+          }
+        ],
+        "sourceStemSha256": "57cf56d7b4c5c654e3ac67e0fe7b7f7b24d528d4b230e9dbe521c70bb392a9a3",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "거듭제곱과 나눗셈을 먼저 계산하고 괄호 안부터 차례로 정리한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "TRUE_META_HOLD_EXISTING_TEMPLATE_MISMATCH",
+          "reason": "현재 PRODUCT_QUOTIENT는 소수 공통인수 묶기라는 정의라 현재 해설과 불일치."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "거듭제곱과 분수 나눗셈을 겹괄호 안에서 순서대로 수행한다.",
+        "bucket": 2,
+        "reason": "연산 순서와 겹괄호를 유지하는 표준 혼합계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "거듭제곱이 포함된 혼합 계산"
+      },
+      "priorCanonicalRecordId": "M1-RPM-026",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "최대곱만 요구한다. 최댓값·최솟값의 합 parent를 배제하고 선택곱 극값 parent의 maximum variant 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_SUBSET_PRODUCT_EXTREMUM_MAXIMUM"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_SUBSET_PRODUCT_EXTREMUM",
+      "proposedTemplateKey": "TPL_M1_SUBSET_PRODUCT_EXTREMUM_MAXIMUM",
+      "ordinal": 12,
+      "questionUid": "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 12,
+        "questionUid": "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fa04d96139bee4da116e32a3d1522c21b780ffb9c88a2d0612b8340d502e5277"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8b14afd19621bb5d1b1fcc93b23773e9686fccf7a2f8bd89d1b4bb2b53801f01"
+          }
+        ],
+        "sourceStemSha256": "0ecd54dbb59a2e7f17dd5b5eb113aaa1255d2bfeac8c116bc11256bb25ca5079",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "네 수에서 세 개를 고르는 네 가지 곱을 모두 구해 최댓값을 선택한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "최댓값만 묻는 현재목표와 기존TPL의 최대·최소 합 산출이 다르다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "네 개의 선택 경우가 명확하여 부호·곱 크기의 비교로 해결할 수 있다.",
+        "bucket": 3,
+        "reason": "선택 조합별 부호와 크기를 모두 확인하여 극값을 결정하는 유한 경우분류다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+        "templateKey": "TPL_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": "부호가 있는 수의 곱셈"
+      },
+      "priorCanonicalRecordId": "M1-RPM-022",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 13,
+      "questionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 13,
+        "questionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0b2567f599d17465b91dd19d70b9d48692891e11fde419bed8a14846faa74ca4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9e083db06a47cf426825c99c15d54467fbbc3e64bcd27f1b0275ad35974a0262"
+          }
+        ],
+        "sourceStemSha256": "7c4b79667fdc3218269ee9c277536cc67f42ad1f058fd6aa90287a3b714262c7",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "홀수 거듭제곱을 먼저 계산하고 음수 빼기를 덧셈으로 바꾼다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "작은 정수의 거듭제곱과 음수 빼기의 기본 계산이다.",
+        "bucket": 1,
+        "reason": "작은 정수들에 대해 거듭제곱과 음수빼기의 기본 규칙을 곧바로 적용한다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "거듭제곱이 포함된 혼합 계산"
+      },
+      "priorCanonicalRecordId": "M1-RPM-026",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 14,
+      "questionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 14,
+        "questionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c205c26a3ae454bf8917f3809c240c9945dc35ae6769ee638b14bab4329086c8"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "780e93c9d796d3f92efc3515bd609256b09877a1a869e0c5a4c44e3b79a68f97"
+          },
+          {
+            "scope": "QASSET",
+            "algo": "sha256-file-bytes-v1",
+            "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q14.png",
+            "value": "6d80f1dc980d99dc1da919bf3e049a56c777c1075c6bfa748b9f86d439d568d9"
+          }
+        ],
+        "sourceStemSha256": "c156e620b5b3c6695f77d91c7104ae33eff34a3bb54ea8803185735914190c67",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "전체 정수합에서 한 줄의 합을 정하고 중심0을 사이에 둔 두 칸의 합을 사용한다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "전체합과 한 줄 합을 연결하고 반대 칸 관계를 사용해야 한다.",
+        "bucket": 2,
+        "reason": "전체합과 한 줄 합을 연결한 뒤 반대 칸의 덧셈 관계를 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+        "templateKey": "TPL_MAGIC_SQUARE_ENTRY_RECOVERY_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "덧셈·뺄셈 혼합"
+      },
+      "priorCanonicalRecordId": "M1-RPM-021",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "actual 해설이 두 일차부등식의 공통 정수해를 구한다. 전역 ACTIVE 일차·연립부등식 parent 재사용과 additive-sign variant 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_INTEGER_INTERVAL_CONSTRAINT_ADDITIVE_SIGN_BOUND"
+      ],
+      "leafProposalRefs": [
+        "LEAF_B_INTEGER_INTERVAL"
+      ],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "proposedTemplateKey": "TPL_M1_INTEGER_INTERVAL_CONSTRAINT_ADDITIVE_SIGN_BOUND",
+      "ordinal": 15,
+      "questionUid": "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 15,
+        "questionUid": "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8b86c3bd53b1b878f25008a162767e0372b5b55a019d74c74f856d56cfc83335"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "513cfc85b56cb9f5c8bf6a34eeae812a89b8c58b280c95eb00743c9b65dbf861"
+          },
+          {
+            "scope": "QASSET",
+            "algo": "sha256-file-bytes-v1",
+            "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q15-solution.svg",
+            "value": "6b93c85dc00ce362e883c321f14749d6ed32fa8f5b2821bbdc852843d9752ba1"
+          }
+        ],
+        "sourceStemSha256": "0c068a6a96d214b7235e9795c9878969b15704f30a8cba2fa2b79a760d4828f4",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "서로 다른 수를 더한 결과의 부호를 x의 두 경계로 바꾸고 공통 범위의 정수를 나열한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "부호조건에서범위를정한정수개수응용의정확한L4가없다."
+        },
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_CONFLICT",
+          "reason": "비대칭경계·덧셈부호조건은기존대칭구간TPL과구별한다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "두 부호 조건을 한 정수 구간으로 통합하는 관계 해석이 필요하다.",
+        "bucket": 2,
+        "reason": "양수·음수 조건을 각각 경계로 해석하고 공통정수범위를세는표준2단계이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_INTERVAL_INTEGER_COUNT",
+        "templateKey": "TPL_M1_RATIONAL_INTERVAL_INTEGER_COUNT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수직선과 대소 관계",
+        "l4": null
+      },
+      "priorCanonicalRecordId": null,
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 16,
+      "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 16,
+        "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ce899ae2a827317176a8fbe2270eba37d27ece13967432c49fd3537957ed2683"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "480fcc87f13410e8ea088a7b81474d2c783c8c18e4bbc22f12bb726d3fbc1ac0"
+          }
+        ],
+        "sourceStemSha256": "91e77136f18f60df437461600369ab92d1b3870d6197c65fb40ef096a2ab4fe3",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "음수로 나누고 문자를 곱한 식을 분수와 생략된 곱셈 기호로 나타낸다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "곱셈 생략과 분모 묶음의 여러 오개념 보기를 구별해야 한다.",
+        "bucket": 2,
+        "reason": "계수 위치·분모 묶음·연속 나눗셈의 여러 표기 규칙을 구별한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "문자의 사용",
+        "l4": "곱셈·나눗셈 기호 생략"
+      },
+      "priorCanonicalRecordId": "M1-RPM-028",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "(-1)의 거듭제곱은 짝홀 부호의 반대수 쌍으로 합산한다. 소수→분수합 template 대신 일반 계산 parent의 교대쌍 variant 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_RATIONAL_EXPRESSION_EVALUATION_ALTERNATING_POWER_PAIR"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_RATIONAL_EXPRESSION_EVALUATION",
+      "proposedTemplateKey": "TPL_M1_RATIONAL_EXPRESSION_EVALUATION_ALTERNATING_POWER_PAIR",
+      "ordinal": 17,
+      "questionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 17,
+        "questionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5901a74fd44017286d544b0ca01402288308b20faccc25698d20fc34144c645e"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cca987320c43c06f09955b788b9f5ae93729d323204580c9c48e490fe26080db"
+          }
+        ],
+        "sourceStemSha256": "03c51165e731a3f77472d5307e452f1b9d185d0dba1f3fe7069452fee21dce4b",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "연속한 홀수·짝수 지수의두항을묶어0으로만들고남는마지막항을처리한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "TRUE_META_HOLD_EXISTING_TEMPLATE_MISMATCH",
+          "reason": "소수→분수혼합합TPL을교대거듭제곱항쌍소거에재사용할수없다. 기존유리수계산PT안의주기/묶음TPL공백."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "반복되는 거듭제곱의 부호를 관찰해 항을 쌍으로 묶어야 한다.",
+        "bucket": 2,
+        "reason": "반복곱을전수계산하지않고부호의2주기를쌍으로소거하는관찰이필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "crossConceptKeys": [
+          "CC_NUMBER_PARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "거듭제곱이 포함된 혼합 계산"
+      },
+      "priorCanonicalRecordId": "M1-RPM-026",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 18,
+      "questionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 18,
+        "questionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2ae3a7a3c5a9360825f0d52c1ccc3a23364db1f8b48bccdf986ad9278a7535f8"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cbe949e6f5a99e1786a8001a7a6118c31af223610e650beb2b602b100f426a5c"
+          }
+        ],
+        "sourceStemSha256": "cdca3710c3783069b2b9bc94a3a2f54080271afd64220eb73b321525ccc86662",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "각소수의배수를세고제곱의배수에들어있는추가소인수를더한다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "상",
+        "levelReason": "소수의 배수만 세는 것에 그치지 않고 소수제곱의 추가 인수를 세어야 한다.",
+        "bucket": 3,
+        "reason": "일반배수한번세기에서소수제곱에숨은중복을추가해야하는비일률적계수가필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "상",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT",
+        "templateKey": "TPL_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "priorCanonicalRecordId": "M1-RPM-003",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "현재 해설의 서로소 인수쌍 복원과 자릿수 조건→합은 ACTIVE constrained-factor-pair parent에 정확 포함. 기존 미지지수 parent 대신 새 gcd/lcm 축소 variant로 재사용.",
+      "proposalRefs": [
+        "PROP_TPL_CONSTRAINED_FACTOR_PAIR_GCD_LCM_REDUCTION"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_CONSTRAINED_FACTOR_PAIR",
+      "proposedTemplateKey": "TPL_CONSTRAINED_FACTOR_PAIR_GCD_LCM_REDUCTION",
+      "auxiliaryRpmCanonicalRecordIds": [
+        "M1-RPM-010",
+        "M1-RPM-123"
+      ],
+      "ordinal": 19,
+      "questionUid": "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 19,
+        "questionUid": "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1a9b1d87883b4aad5ceb1d5e0e1dba6a26ccdbf5bc8d12ff2b563f481dab1fc0"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e5c39ee12f2e108c5355d03a64d3c714aba35c17d4b0f7594f066f7e72c253df"
+          }
+        ],
+        "sourceStemSha256": "91b871cfda260f516dc6709c6a1ec2c37bcf2a4ab05632e25a0201de46d3b405",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "A,B를최대공약수의배수로나타내고서로소인나머지인수의곱을최소공배수조건으로정한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "MULTI_LEAF_COVERAGE_NOTE",
+          "reason": "공배수조건으로수찾기M1-RPM-010/123도공동제약으로필요."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "상",
+        "levelReason": "최대공약수·최소공배수·두 자리 범위를 결합해 서로소 인수쌍을 정한다.",
+        "bucket": 3,
+        "reason": "두정수의최대공약수·최소공배수를상호제약으로쓰고두자리범위로인수쌍을걸러야한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "상",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "공약수 조건으로 수 찾기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-008",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "8x-11y는 일차식 대입. 기존 literal PT/TPL를 정확 재사용하고 2015 binding을 제안한다.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "canonicalReuse": [
+        {
+          "key": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "status": "ACTIVE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "fileSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "definition": "수나 문자를 일차식에 대입하고 연산 순서에 따라 식의 값을 구한다."
+        },
+        {
+          "key": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+          "status": "ACTIVE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "fileSha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "definition": "주어진 수를 일차식에 대입한 뒤 거듭제곱·부호·곱셈·나눗셈 순서로 식의 값을 구한다.",
+          "parentProblemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "internalSkeleton": null
+        }
+      ],
+      "proposedProblemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "proposedTemplateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "ordinal": 20,
+      "questionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 20,
+        "questionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "055f9faa830ce8794d25b106105dcf2cd03a5c142b4559df469bbf8ce4776085"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "48e1967c171c5bdc2e7f511cbd25a77295551ee5562ea309b65ea7243320fb05"
+          }
+        ],
+        "sourceStemSha256": "657d5e03ebc86d1ba82c5d31fc0dfa2b16e17c3bd1556eadb6920b5b5b5513e4",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "주어진x,y의값을이미정의된일차식에직접대입하고부호를처리한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_BINDING_GAP",
+          "reason": "정확한LITERAL_EXPRESSION PT/TPL은2022binding만존재.기존비표준연산PT/TPL의유지와재사용판정을분리할것."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "이미 주어진 두 음수를 보통 일차식에 직접 대입하는 기본 문항이다.",
+        "bucket": 1,
+        "reason": "두수직접대입과작은정수계산만필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "식의 값",
+        "l4": "대입하여 식의 값 구하기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-029",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "역수 복원 후 합은 wrong-operation parent가 아니다. reciprocal parent/복원합 variant 및 역수leaf 제안.",
+      "proposalRefs": [
+        "PROP_TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_SUM"
+      ],
+      "leafProposalRefs": [
+        "LEAF_B_RECIPROCAL"
+      ],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+      "proposedTemplateKey": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_SUM",
+      "ordinal": 21,
+      "questionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 21,
+        "questionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5cb2546f676be9c163b2e5725a7d4c20a9a7e80cebf967f87a885bb1f0a70f7b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d095050da6ca414d88bcb76f73d135414479b3eb395e63e400d47d353fb6a55e"
+          }
+        ],
+        "sourceStemSha256": "e618b70f491beeb936c5ec6aa97cd61d40d75ba3543a3f39253d5ec8e54ccbc3",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "두수의역수관계로값을정한뒤공통분모로바꾸어합한다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "역수관계에의한수복원과분수합의정확한M1leaf가없음.곱셈/나눗셈leaf로억지대체하지않는다."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "하",
+        "levelReason": "역수의 정의와 두 분수의 통분을 소문항 순서대로 적용한다.",
+        "bucket": 2,
+        "reason": "역수두개를구하고통분해합하는연속기본절차이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "하",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+        "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_RECIPROCAL_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": null
+      },
+      "priorCanonicalRecordId": null,
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "REUSE_PRIOR_REVIEW",
+      "conclusion": "이전 전수검토의 의미판단·난도·4칸을 재사용. 이번 재개에서 새 풀이·전수 재검토 없음.",
+      "proposalRefs": [],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR",
+      "ordinal": 22,
+      "questionUid": "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 22,
+        "questionUid": "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "46340c3dd5f202cd40d0600a44a1c4d5ca2b44181eb59e89961073f840f9ef69"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f14d2f206ac962d9f844d715946f175e74f4952774a3faf19f5d149d5ec6c4c5"
+          },
+          {
+            "scope": "QASSET",
+            "algo": "sha256-file-bytes-v1",
+            "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q22-solution.svg",
+            "value": "006949d976e037ac61396ede7859e4846654a239984df57577fd84b792b4486b"
+          }
+        ],
+        "sourceStemSha256": "e18d6852f2eded747ec990c27e28fa6eff4ed8259e229506e156fe72cc705fae",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "전체횟수에서빠진패수를구하고상대의승패횟수로바꾸어각순이동량을계산한다."
+      },
+      "priorOpenSemanticGaps": [],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "상대 승패 횟수 복원과 두 가중 이동량을 연결하는 표준 응용이다.",
+        "bucket": 3,
+        "reason": "상대승패횟수를복원하고두위치를각각가중합으로계산한뒤차를취해야한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+        "templateKey": "TPL_M1_SIGNED_CHANGE_MODEL_SIGNED_RELATIVE_CHANGE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "부호가 있는 수의 덧셈"
+      },
+      "priorCanonicalRecordId": "M1-RPM-019",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    },
+    {
+      "semanticReviewStatus": "RESIDUAL_DECISION_COMPLETE",
+      "conclusion": "AB+2(-B)^2는 비선형. 앞 검토의 일차식 PT binding-only 진단을 명시적으로 교정하여 일반 수치대입 parent/선행조건 variant 제안. 원문·해설·이전 검토파일은 보존.",
+      "proposalRefs": [
+        "PROP_TPL_M1_NUMERIC_SUBSTITUTION_EVALUATION_CONSTRAINT_THEN_SUBSTITUTE"
+      ],
+      "leafProposalRefs": [],
+      "sourceChangeApplied": false,
+      "difficultyDecision": "REUSE_PRIOR_DIFFICULTY_NO_NEW_SOLVE",
+      "fourSlotDecision": "REUSE_PRIOR_EXCEPT_EXPLICIT_PATCH",
+      "proposedProblemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+      "proposedTemplateKey": "TPL_M1_NUMERIC_SUBSTITUTION_EVALUATION_CONSTRAINT_THEN_SUBSTITUTE",
+      "supersedesPriorSemanticClaim": "PT_M1_LITERAL_EXPRESSION_EVALUATION의 2015 binding만 보완하면 된다는 진단",
+      "ordinal": 23,
+      "questionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788",
+      "sourceEvidence": {
+        "exam": "19_팔마중_1학기_중간_중1_기출",
+        "ordinal": 23,
+        "questionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788",
+        "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+        "sourceBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+        "sourceSha256": "2d80b63d6bce55999825541f2a581b8ad40e06a2da1fffdca01c61039bfa80d2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4fd32be293ba17b5ed6266427022b8d6268e1079df99bb94f0d340d8d65f3471"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "86d6fa0072d266180890db905f181f021d6eb494fbe1f234338bccc1647c45ca"
+          }
+        ],
+        "sourceStemSha256": "523f2636d8396cd3f1b0d35791f1928033520274b5b2667f9b8d8305e00adb2b",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/review.json",
+        "reviewSha256": "85576a625001383aad0ef8362119cc92d467cd66f2adc0f8a1a63a8fe29bec73",
+        "evidenceKind": "EXISTING_SOLUTION_CURRENT_APPROVAL_PENDING",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "수의대소변화로A를정하고절댓값이같은두수중큰수를B로선택한뒤요구식에넣는다."
+      },
+      "priorOpenSemanticGaps": [
+        {
+          "type": "EXISTING_DEFINITION_BINDING_GAP",
+          "reason": "정확한현재ACTIVE일반문자식대입PT/TPL의2015binding과공식Resolver는미완."
+        }
+      ],
+      "priorContentDebt": [],
+      "reusedPriorDifficulty": {
+        "level": "중",
+        "levelReason": "수의 변화량과 절댓값의 큰 후보를 먼저 구한 뒤 문자식에 대입해야 한다.",
+        "bucket": 2,
+        "reason": "A의부호계산과B의절댓값판정이단순하며그값으로표준대입을진행한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SELF_REVIEWED",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": "중",
+        "proposedLearningLevel": "중",
+        "sourceLevelWriteDisposition": "Preserved original level; independent learning-level proposal awaits root review."
+      },
+      "reusedPriorAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "level": "중"
+      },
+      "reusedPriorRpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "식의 값",
+        "l4": "대입하여 식의 값 구하기"
+      },
+      "priorCanonicalRecordId": "M1-RPM-029",
+      "actualFinalResolverStatus": "NOT_PROMOTED",
+      "actualCanonicalKeysWritten": false,
+      "commonUnresolvedEvidenceGate": "CURRENT_QFULL_APPROVAL_REBIND_REQUIRED_ROOT_HANDOFF",
+      "evidenceGateOwner": "ROOT_COMMON_HANDOFF",
+      "nextAction": "정확 proposalRef/binding/leaf를 Codex 검토 인계에 결합하고 실제 source·승인 evidence gate 충족 후에만 canonical key·4칸method를 등록한다."
+    }
+  ],
+  "remainingExternalGates": [
+    "현재QFULL에 대한 승인 지문 재결속",
+    "구체 제안된 정본 등록·binding·leaf·crosswalk 반영 및 공식 Resolver/validator 실행"
+  ],
+  "sourceProtectedFieldsChanged": false,
+  "registryChanged": false
+}
