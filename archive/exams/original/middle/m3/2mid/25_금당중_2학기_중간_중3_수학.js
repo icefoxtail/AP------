@@ -31,7 +31,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -61,7 +70,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -94,7 +112,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q3-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -126,7 +153,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -161,7 +197,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q5-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_SIMILARITY","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -196,7 +241,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q6-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR_THEOREM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -231,7 +285,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q7-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -266,7 +329,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q8-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -295,13 +367,22 @@ window.questionBank = [
     "answer": "④",
     "solution": "$B,C,H$가 한 직선 위에 있으므로 $\\angle ACH=180^\\circ-135^\\circ=45^\\circ$이고, $\\angle AHC=90^\\circ$이므로 $AH=CH$이다.\n$AH=CH=t$라 하면 $BH=4\\sqrt3+t$이다.\n$\\tan30^\\circ=\\dfrac{t}{4\\sqrt3+t}=\\dfrac1{\\sqrt3}$에서 $t(\\sqrt3-1)=4\\sqrt3$이다.\n따라서 $AH=t=2(3+\\sqrt3)\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q9.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q9-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -336,7 +417,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q10-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_AREA_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -365,13 +455,22 @@ window.questionBank = [
     "answer": "①",
     "solution": "$AB=AC$이므로 $\\angle B=\\angle C=75^\\circ$이고 $\\angle A=30^\\circ$이다.\n따라서 $[\\triangle ABC]=\\dfrac12\\cdot4\\sqrt2\\cdot4\\sqrt2\\cdot\\sin30^\\circ=8\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q11-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -406,7 +505,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q12-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PAPER_FOLDING_ANGLES"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 13,
@@ -435,13 +543,22 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "넓이 조건에서 $15\\sqrt3=\\dfrac12\\cdot AB\\cdot6\\cdot\\sin60^\\circ$이므로 $AB=10$이다.\n$AB$의 $BC$ 방향 길이는 $5$, 높이는 $5\\sqrt3$이다.\n따라서 $C$까지 남은 가로 길이는 $1$이고 $AC^2=(5\\sqrt3)^2+1^2=76$이다.\n그러므로 $AC=2\\sqrt{19}\\,\\mathrm{cm}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q13.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q13-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -476,7 +593,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q14-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -511,7 +637,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q15-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -547,7 +682,14 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q16-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "crossConceptKeys": ["CC_CIRCLE_POSITION_RELATION"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 17,
@@ -582,7 +724,15 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q17-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -617,7 +767,15 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q18-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -652,7 +810,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q19-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -687,7 +854,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_SECTOR_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -710,13 +886,22 @@ window.questionBank = [
     "answer": "(1) $4$ (2) $2\\sqrt5$",
     "solution": "(1) $AC=6$은 빗변이고 $\\cos A=\\dfrac{AB}{AC}=\\dfrac23$이므로 $AB=4$이다.\n\n(2) 피타고라스 정리에 의해 $BC^2=6^2-4^2=20$이다.\n따라서 $BC=2\\sqrt5$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q21-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -745,7 +930,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q22-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_INTERCEPTS","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -774,7 +968,16 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q23-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -803,6 +1006,14 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당중_2학기_중간_중3_수학/q24-solution.svg",
     "solutionImageSize": "full",
-    "solutionImageLayout": "fullwidth"
+    "solutionImageLayout": "fullwidth",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

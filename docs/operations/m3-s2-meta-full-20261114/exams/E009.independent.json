@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E009",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "86f03d4267a7c4039b3ea34b64781ea3210de7fe",
+  "artifactHashes": {
+    "review.json": "ded857312844bbe7f682170eab5281a9cd11e74e516a36aa3e7649bcddd3119d",
+    "E009.4slot.json": "b2631ac5840f97c5a72f81fd53a4300b572e4d483f55db876c36a13e7fb2b647",
+    "source-patch.json": "5b6b5b894fdefe9a33c7f9ab24e4539f6fcb175e7830590f6845416941e72de4"
+  },
+  "sampleOrdinals": [
+    7,
+    16,
+    24
+  ],
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_98238fc71e8d920d2a2d3eaf342362fddf2e4fa56bb6f5ed4043f2cb2adccda3",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "45도 직각이등변에서 공통변을 구하고 30도 코사인으로 목표변을 구하는 직접 길이 유형은 정확하다. 단일 삼각비 method도 justification에서 두 단계를 설명하여 유효하다.",
+      "assetsInspected": [],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_99e08e35d9f55ead1415695ae02d1e92bc608ae65086c0e26b0d35885703f3b2",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "실제 5원 배치 그림을 읽었고 중심거리=4를 거쳐 피타고라스로 정사각형 변을 정하는 prior M2 주분류가 타당하다. 이때 두 원의 접촉과 중심거리 연결은 primary 피타고라스 밖의 실제 필수 개념이므로 ACTIVE CC_CIRCLE_POSITION_RELATION 및 SEQUENTIAL 반영을 권고한다. 현행 source M3 envelope와 prior M2 semantic path 분리 debt는 유지한다.",
+      "assetsInspected": [
+        "assets/images/25_금당중_2학기_중간_중3_수학/q16.png"
+      ],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_9fb066b8f38205e481a94c6a1c98dd5f159af8a3e1ea77e8ab5ccfd86d9949f7",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "RHS 합동 후 반현의 같음을 전체 현으로 옮기는 설명과 정확 인용이 타당하다. Primary 원의 중심거리·현 밖에 실제 필요한 ACTIVE CC_RIGHT_TRIANGLE_CONGRUENCE_RHS(또는 동일 정의 CC_TRIANGLE_CONGRUENCE_RHS)와 SEQUENTIAL을 반영해 E001 Q24와 기준을 맞출 것을 권고한다. 두 소문항을 포함하므로 format 소문항 묶음이 더 정확하다.",
+      "assetsInspected": [],
+      "correctionConfirmed": "요청한 조건/보조개념/통합패턴/형식 보완을 최종 산출물에서 확인"
+    }
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only, no new mathematical R1/R2/R3",
+  "priorStatus": "PASS_WITH_MINOR_METADATA_OMISSIONS"
+}

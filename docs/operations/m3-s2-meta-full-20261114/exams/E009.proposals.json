@@ -1,0 +1,151 @@
+[
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+    "distinguishingCriterion": "단위 사분원에서 읽은 사인·코사인·탄젠트 근삿값을 지정한 식에 넣는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_433b470bc72ccb8d66b0e38070ed6a0cfa5779d1de394a5a6771aee700ff6735"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "높이로 나뉜 삼각형의 닮음에서 두 표시각을 원래 삼각형의 예각으로 옮겨 읽고 삼각비의 몫을 정한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "정사각형에서 모서리 삼각형을 빼 삼각형 EBF의 넓이를 구하고 같은 두 변을 복원해 사인값을 얻은 뒤 코사인으로 전환한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_ce908404875d39119a8d396184bf95d567562a8a1a5e84623473ca4825f6705e"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접한 원 배열의 중심거리로 상자 길이",
+    "reuseDefinition": "접하는 같은 원들의 중심거리를 반지름 합으로 바꾸고 정사각형 대칭에서 생기는 직각삼각형으로 외곽 상자의 변을 결정한다.",
+    "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "distinguishingCriterion": "두 변이 수치로 바로 주어진 SIDE_LENGTH나 접기/입체 길이 COMPOSITE와 달리 평면 원 배열의 중심 도형 복원이 필요하다.",
+    "supportingQuestionUids": [
+      "qid_v1_99e08e35d9f55ead1415695ae02d1e92bc608ae65086c0e26b0d35885703f3b2"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 동일 길이에서 삼각형 넓이",
+    "reuseDefinition": "한 외부점의 두 접선 길이가 같음을 사용해 삼각형 두 변을 확보한 뒤 끼인각으로 넓이를 계산한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "distinguishingCriterion": "목표가 접선 길이인 TM_TANGENT_LENGTH와 다르다. E003 Q17과 동일 재사용 골격이다.",
+    "supportingQuestionUids": [
+      "qid_v1_a7a28ed2d0042c682c607fe9525d20191e3dfda454ba197d21399c69e13e96c8"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접원 접선 조각으로 반지름과 둘레 복원",
+    "reuseDefinition": "직각삼각형 내접원의 접선 조각을 미지수로 두고 피타고라스 방정식으로 반지름을 결정한 뒤 중심과 꼭짓점 거리의 둘레를 구한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "distinguishingCriterion": "접선 자체의 길이 산출과 달리 반지름 역산 및 중심 삼각형 둘레의 추가 목표를 갖는다.",
+    "supportingQuestionUids": [
+      "qid_v1_b8da039d9305489dc54d94b68d0ee47675549d7f2cebedd1bb317a023f2bb6db"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+    "distinguishingCriterion": "중심거리와 반지름으로 두 직각삼각형의 변·각을 복원하고 가운데 남은 부채꼴각을 구해 삼각형 둘과 부채꼴 넓이를 합한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "rpmRecordId": "M3-RPM-069",
+    "supportingQuestionUids": [
+      "qid_v1_04adc05ee4d1761f8a35b62c1f5ff1e2680fe04518010a4f48fe323b371153dc"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "일차함수의 축 교점을 구해 좌표축 직각삼각형을 만들고 변의 비로 사인·코사인·탄젠트를 정한 뒤 식에 대입한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_e198032f3c2ec1a939f07ab5e913e53bb77069acd79fdfbe3cd1c632308f2a26"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "중심거리가 같은 두 현의 동일 길이 증명",
+    "reuseDefinition": "반지름과 같은 수선거리를 이용해 두 직각삼각형의 RHS 합동을 보이고 현의 이등분으로 두 전체 현의 길이가 같음을 증명한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "distinguishingCriterion": "수치로 현 길이를 구하는 TM_CIRCLE_CHORD_LENGTH와 달리 동일성 정리 자체의 증명이 목표다.",
+    "supportingQuestionUids": [
+      "qid_v1_9fb066b8f38205e481a94c6a1c98dd5f159af8a3e1ea77e8ab5ccfd86d9949f7"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
