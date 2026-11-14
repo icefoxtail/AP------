@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "m2-author-independent-semantic-supplement-v1",
+  "examId": "E071",
+  "status": "AUTHOR_ACCEPTED_ROOT_NARROW_REVIEW",
+  "createdAt": "2026-11-14T15:08:11.020026+00:00",
+  "originalReviewSha256": "67f296901cac26211309de23e5b4ad1fc36b7072f4f52d63475475a22dfb9a5c",
+  "originalFourSlotSha256": "0042c5041976093c0f688703589b5b1b8d39b81365a155a8f31e91592a2ec20c",
+  "acceptedReviewPath": "/workspace/scratch/14c2c64e43fb/workers/B/E071.accepted-review-r1.json",
+  "acceptedReviewSha256": "3f0f141970f5d9e0cd53d4e6aeb0126ba587065d4249b4ceb3eefbb2aef0f730",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E071.4slot.json",
+  "acceptedFourSlotSha256": "0042c5041976093c0f688703589b5b1b8d39b81365a155a8f31e91592a2ec20c",
+  "reviewOverrides": [
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "발문이 a×10^n 표준형을 먼저 묻고 자릿수를 이어 묻도록 단계를 지정했다. 거듭제곱 곱·반복합을 정리하는 익숙한 변형이며 별도 전략선택 부담이 없어 root 독립2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "발문이 B,C 선계산 후 명시된 중첩괄호식에 넣는 순서를 제공한다. 다항식과 단항식 계산의 여러 단계는 있으나 별도 전략선택 없이 진행하는 정형구조로 root 독립2를 수용한다."
+    }
+  ],
+  "changes": [
+    "Q20/Q21 numeric3→2 only; explicit staged tasks reduce independent strategy selection burden."
+  ],
+  "invariants": [
+    "Original review/four/freeze bytes preserved.",
+    "Both boundaryB23/confidencelow and source-onlymethod23 unchanged.",
+    "Q22UNKNOWN and other21 judgments remain."
+  ]
+}

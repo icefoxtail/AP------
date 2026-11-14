@@ -1,0 +1,600 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E071",
+  "author": "B",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS_AND_SCOPED_SUPPLEMENTS",
+  "createdAt": "2026-11-14T15:13:08.821384+00:00",
+  "sourceGitBlobSha": "603963bf0f61b762a0197dc736652e666f3e2734",
+  "sourceSha256": "3af5315b516e99f8c01a265f5b8a3b41e2e1efbaa6f8464c7f1d117c5af714b5",
+  "reviewSha256": "3f0f141970f5d9e0cd53d4e6aeb0126ba587065d4249b4ceb3eefbb2aef0f730",
+  "fourSlotSha256": "0042c5041976093c0f688703589b5b1b8d39b81365a155a8f31e91592a2ec20c",
+  "sampleOrdinals": [
+    4,
+    13,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 4,
+      "classification": "실제1m끈의 정n각형 한 변이 유한소수인 n의 개수는 RPM120 분모소인수조건.",
+      "binding": "실제 RPM120 NO_ACTIVE_MAPPING을 확인하고 정본등록 전 proposal로 유지한다.",
+      "crossConcept": "둘레의 실제 ACTIVE 정의에 따라 전체길이에서 등변 한 변을 만드는 CC_PERIMETER가 외부 선행구조다.",
+      "condition": "n이10미만 자연수인 실제 제한을 COND_NATURAL_NUMBER/RESTRICTED_INTERVAL 정의에 대조했다.",
+      "integration": "정다각형 한 변→기약분모 조건의 SEQUENTIAL.",
+      "difficulty": "독립2/저자2, 익숙한 두 단계. 기존해설 없어서 low 유지.",
+      "fourSlot": "given길이/정다각형, goal자연수/개수, finite/natural조건 literal 확인. 원해설 없음으로 method[] 유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "classification": "첫 부등식의 해로 두 계수 관계·부호를 판단해 둘째 해를 찾는 RPM141 계수조건.",
+      "binding": "141 NO_ACTIVE_MAPPING 확인. 정확한 scoped binding 또는 resolver를 추정하지 않는다.",
+      "crossConcept": "계수부호와 경계관계는 현재 primary 내부로 CC[] 수용.",
+      "condition": "주어진 첫 해의 구간은 입력조건이며 원문에 없는 별도도메인을 추가하지 않는다.",
+      "integration": "단일 계수조건 primary NONE.",
+      "difficulty": "독립3/저자3, 부호와 계수관계를 선택해 옮기는 전략 부하.",
+      "fourSlot": "일차부등식355 입력/목표 및 해집합83 조건, 실제 인용 일치. method[]의 native debt 유지."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "잘못 바꾼 계수와 공통해로 원계수를 복원하는 RPM151.",
+      "binding": "ACTIVE 계수교환 TPL의 실제 정의를 읽었다. 주어진 잘못된 해→원계수→원연립해 순서는 관련되지만 두 연립식 구성·source-only 증거라 exact확정 유보.",
+      "crossConcept": "연립식의 계수복원과 해찾기는 이 primary 내부이며 CC[] 유지.",
+      "condition": "계수를 맞바꿨다는 실제 설정을 condition에 보존한다.",
+      "integration": "동일계수복원 primary NONE.",
+      "difficulty": "독립3/저자3. 오류구성의 복원과 원래 두식으로의 재적용을 선택해야 한다.",
+      "fourSlot": "given연립일차방정식/잘못된 순서쌍, goal두매개수와 원해 순서쌍, 계수교환 condition literal. 실제해설 없음으로 method[] 유지."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e5b1f0f2f4426b1bc20eced859b6686abb688ac2b7b4aad386dcf43b64060932",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_e5b1f0f2f4426b1bc20eced859b6686abb688ac2b7b4aad386dcf43b64060932",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "비순환과순환부분의자리를맞추는표준차선택구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "비순환부와 순환마디 길이를 맞추는 두10거듭제곱 배율 선택"
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환과순환부분의자리를맞추는표준차선택구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3eeb246beff56c5cc9c9102ea28402ea6c192a2d16bef4ae24cbe4a355d80183",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_3eeb246beff56c5cc9c9102ea28402ea6c192a2d16bef4ae24cbe4a355d80183",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "유한소수·기약분자·진분수조건을결합하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유한소수 조건과 기약분수의 분자·진분수 제한을 연결"
+      },
+      "decision": "ACCEPT",
+      "reason": "유한소수·기약분자·진분수조건을결합하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_1082351ecf5065785f41b8041ed27013b8624ba18543fc540be26dcacdddcaeb",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_1082351ecf5065785f41b8041ed27013b8624ba18543fc540be26dcacdddcaeb",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "유리수/유한/무한/순환의정의진술을비교한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유리수와 순환소수의 포함관계 정의판정"
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수/유한/무한/순환의정의진술을비교한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_0ad204b81a84abf7cdc1fc34b0361d54f7b84760b07ae64fa520e5af269ef312",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_0ad204b81a84abf7cdc1fc34b0361d54f7b84760b07ae64fa520e5af269ef312",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "정다각형가능n범위와1/n의유한소수조건을함께판정하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "정다각형의 변 길이를 둘레/변수로 읽고 유한소수 분모조건과 n범위 결합"
+      },
+      "decision": "ACCEPT",
+      "reason": "정다각형가능n범위와1/n의유한소수조건을함께판정하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_2f987cb8bd6a11cbd4284193a817fe918624b3566f5a0ac6f41511288b6f4064",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_2f987cb8bd6a11cbd4284193a817fe918624b3566f5a0ac6f41511288b6f4064",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "한자리자연수의범위와약분후분모조건을연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환한자리의 분수표현이 약분된 분모3이 되게 하는 자연수자리값 선별"
+      },
+      "decision": "ACCEPT",
+      "reason": "한자리자연수의범위와약분후분모조건을연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_030b8145604b429a3fa4ecf98b6670245e930985eaf7ed5d91a08ba83115926c",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_030b8145604b429a3fa4ecf98b6670245e930985eaf7ed5d91a08ba83115926c",
+        "difficulty": 1,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "각생쥐의보리이삭수로전체배수를직접읽는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각 생쥐당 보리이삭수라는 직접 비율을 읽는 문장과제"
+      },
+      "decision": "ACCEPT",
+      "reason": "각생쥐의보리이삭수로전체배수를직접읽는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a3f0f76a385f282bbe6c42a68a3bba32220f15f2c7d42160cc47fe04d7bb7022",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_a3f0f76a385f282bbe6c42a68a3bba32220f15f2c7d42160cc47fe04d7bb7022",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "여러지수법칙의빈칸을각각정한뒤최댓값선택구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "여러거듭제곱과 계수빈칸을 각각 대응하여 큰값 비교"
+      },
+      "decision": "ACCEPT",
+      "reason": "여러지수법칙의빈칸을각각정한뒤최댓값선택구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_5cad2e3830fe3a8b7b0c43c528d8a576f13db527ac05f5973a508f89e0c6db14",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_5cad2e3830fe3a8b7b0c43c528d8a576f13db527ac05f5973a508f89e0c6db14",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "합을동일항배수로묶고밑의소인수거듭제곱계산으로연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 밑을소인수로 분해하고 반복합을 묶은 지수곱몫 정리"
+      },
+      "decision": "ACCEPT",
+      "reason": "합을동일항배수로묶고밑의소인수거듭제곱계산으로연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3b19eaf9eef1dca46bf4f98bd7397aaaa093f7740d0de94e903272a9d7945f82",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_3b19eaf9eef1dca46bf4f98bd7397aaaa093f7740d0de94e903272a9d7945f82",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "다항식나눗셈의역연산분배구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진몫과제수의 곱으로 원다항식 복원"
+      },
+      "decision": "ACCEPT",
+      "reason": "다항식나눗셈의역연산분배구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8d63c8b0ceea28d25bae459262c6053d9012e6d96a1e108dd0858fadfdef60f7",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_8d63c8b0ceea28d25bae459262c6053d9012e6d96a1e108dd0858fadfdef60f7",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "일차부등식의해범위에서자연수를열거·합하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "일차부등식 해범위에서 자연수들을 모아 합산"
+      },
+      "decision": "ACCEPT",
+      "reason": "일차부등식의해범위에서자연수를열거·합하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_94e2f1d7767af2e5f5c5d02d136970aa2f5f95f975712e6cc2741536561bd808",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_94e2f1d7767af2e5f5c5d02d136970aa2f5f95f975712e6cc2741536561bd808",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "세수의대소에서곱하는수부호의미정과항상참조건을구별한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "세문자의 대소관계에 같은수 더하기와 부호 미정 곱셈을 대조"
+      },
+      "decision": "ACCEPT",
+      "reason": "세수의대소에서곱하는수부호의미정과항상참조건을구별한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7d8b4a78eecdf37165e22bea281979c06dac01ba76929dd05f342188c4ed5ff7",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_7d8b4a78eecdf37165e22bea281979c06dac01ba76929dd05f342188c4ed5ff7",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "분모공배수의정수화와부등호방향판정구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "분모최소공배수로 괄호를 정리한 뒤 음수계수 부등식 풀이"
+      },
+      "decision": "ACCEPT",
+      "reason": "분모공배수의정수화와부등호방향판정구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b89f48022f8388c2d748d0a4c6caa3c916d4592aa0f18f341ae7503fba1e5bed",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_b89f48022f8388c2d748d0a4c6caa3c916d4592aa0f18f341ae7503fba1e5bed",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "기존해방향으로첫계수부호/관계를복원해다른부등식계수와경계를연결하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "첫 부등식의 방향·경계에서 두 매개수 관계와 부호를 얻어 둘째식의 해 결정"
+      },
+      "decision": "ACCEPT",
+      "reason": "기존해방향으로첫계수부호/관계를복원해다른부등식계수와경계를연결하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_6bc065a99d51341264ce3ddf6fe5d99347822ae276251682e52a136b40a4e838",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_6bc065a99d51341264ce3ddf6fe5d99347822ae276251682e52a136b40a4e838",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "제한시간·구간별속력으로거리상한을모델링하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "시각차의 제한시간과 두속력 구간시간을 연결하는 거리상한"
+      },
+      "decision": "ACCEPT",
+      "reason": "제한시간·구간별속력으로거리상한을모델링하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_961d06101f3dbb2413bb85bbcc1fcde55ad11603830139f20c813c4a62af40fd",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_961d06101f3dbb2413bb85bbcc1fcde55ad11603830139f20c813c4a62af40fd",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "두일차방정식의자연수순서쌍을각각제한하여개수를합한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 독립 이변수방정식의 자연수 순서쌍개수를 합산"
+      },
+      "decision": "ACCEPT",
+      "reason": "두일차방정식의자연수순서쌍을각각제한하여개수를합한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b2a0893df8216f11e7d624fa18c357757e296aa12a45603e8b6e68a795ec2700",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_b2a0893df8216f11e7d624fa18c357757e296aa12a45603e8b6e68a795ec2700",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "이항정리한두식의동일비조건으로계수차를구한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "식을 정리한 뒤 무수히많은해의 계수비조건으로 두 계수 복원"
+      },
+      "decision": "ACCEPT",
+      "reason": "이항정리한두식의동일비조건으로계수차를구한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_853811846bce45ca71218e52e1cee833052d891cdfe492052a834a4d87bb6bb8",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_853811846bce45ca71218e52e1cee833052d891cdfe492052a834a4d87bb6bb8",
+        "difficulty": 2,
+        "difficultyBoundary": "B12",
+        "confidence": "low",
+        "reason": "소수·분수계수정수화후연립식풀이구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "소수분수식 정수화 후 연립해를 구하는 정형절차"
+      },
+      "decision": "ACCEPT",
+      "reason": "소수·분수계수정수화후연립식풀이구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_523da05a6a45ca45316f8097598a013354a7eb58cb0c8c5f207cd2afcb7509ae",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_523da05a6a45ca45316f8097598a013354a7eb58cb0c8c5f207cd2afcb7509ae",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "k에대한연립해표현을목표유리식에대입해공통인수를정리한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "매개상수에 대한 연립해를 구해 식의 비에 대입하며 비영조건 적용"
+      },
+      "decision": "ACCEPT",
+      "reason": "k에대한연립해표현을목표유리식에대입해공통인수를정리한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_596b94caba24e71ef03db42e601984ee3be29e162313d1606c76883af2bf7ce1",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_596b94caba24e71ef03db42e601984ee3be29e162313d1606c76883af2bf7ce1",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "두순환소수의차와오류곱의차를역으로연결해원자연수를복원하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "서로 다른 순환소수 오독의 결과차를 자연수배 관계로 연결"
+      },
+      "decision": "ACCEPT",
+      "reason": "두순환소수의차와오류곱의차를역으로연결해원자연수를복원하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_672a880e84a3a99d215b5723ad9b05cbe609c544b510f845ec82ac3c6a4b136f",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_672a880e84a3a99d215b5723ad9b05cbe609c544b510f845ec82ac3c6a4b136f",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "2·5거듭제곱을묶고계수범위와자릿수에연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "발문이 a×10^n 표준형을 먼저 묻고 자릿수를 이어 묻도록 단계를 지정했다. 거듭제곱 곱·반복합을 정리하는 익숙한 변형이며 별도 전략선택 부담이 없어 root 독립2를 수용한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "2·5거듭제곱을묶고계수범위와자릿수에연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_b40839247f0cb17365930eb83495d2d32ccd29ef1391b85c9122fe9faedfe9ff",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_b40839247f0cb17365930eb83495d2d32ccd29ef1391b85c9122fe9faedfe9ff",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "두혼합연산식과기호괄호정리후대입을연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "발문이 B,C 선계산 후 명시된 중첩괄호식에 넣는 순서를 제공한다. 다항식과 단항식 계산의 여러 단계는 있으나 별도 전략선택 없이 진행하는 정형구조로 root 독립2를 수용한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두혼합연산식과기호괄호정리후대입을연결한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_49e35560b77d37f079e616dc2e7c31b3159424c4cf44c8b004d031e4906fd703",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_49e35560b77d37f079e616dc2e7c31b3159424c4cf44c8b004d031e4906fd703",
+        "difficulty": 2,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "3일고정패스비와카드할인요금식을비교해정수탑승횟수경계를정한다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "1일 한정 교통패스인데3일 전체 탑승횟수만 주어지고 실제 탑승일별 분포/매일 패스구매 전제가 미명시되어 총패스비 해석 유보"
+      },
+      "decision": "ACCEPT",
+      "reason": "독립초기2는 지정일 1일권의 3일 전체 적용조건 누락을 충분히 반영하지 못했다. 실제 발문은 일별 탑승 분포나 세 장 구매를 명시하지 않으므로 모델 하나를 발명하지 않고 저자UNKNOWN을 수용한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_dd9a89c59cfbe95d60d1b2b3ee4a29ead62958010650b530674a8d3c643cc213",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_dd9a89c59cfbe95d60d1b2b3ee4a29ead62958010650b530674a8d3c643cc213",
+        "difficulty": 3,
+        "difficultyBoundary": "B23",
+        "confidence": "low",
+        "reason": "바꾼두계수식으로계수를복원하고원래두연립식을각각계산하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 계수맞바꿈 연립식의 공통잘못된해로 원계수를 복원하고 원래두연립을 각각 판단"
+      },
+      "decision": "ACCEPT",
+      "reason": "바꾼두계수식으로계수를복원하고원래두연립식을각각계산하는구조다. 원해설이 없어 실제풀이 검증은 미완이며 구조제안만 남긴다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_AUTHOR_R1_ROOT2",
+      "reason": "발문이 표준형을 먼저 지정하고 자리수를 잇도록 하여 익숙한 변형2."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_AUTHOR_R1_ROOT2",
+      "reason": "B,C를 먼저 구해 제공괄호식에 대입하는 순서가 주어져 정형변환2."
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_UNKNOWN",
+      "reason": "1일패스와3일총탑승만 있어 일별분포/구매모형을 결정할 수 없다."
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E071/initial.json",
+    "sha256": "d87654e23e0abe935aae98611f42c9e14ea774aa66a98bc793f4385b5da3f0c3"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "contentQuestions": 23,
+    "existingSolutions": 0,
+    "sourceOnlyQuestions": 23,
+    "sourceBodyField": "question",
+    "images": []
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "archive/data/meta-foundation/compiled/condition_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "Root actual23source read before author numbers, frozen initial preserved. All23numeric compared; no images or existing solutions.",
+    "Q20/21 r1 numeric correction only; Q22 conditional model not invented. Native method23 remains explicit."
+  ]
+}
