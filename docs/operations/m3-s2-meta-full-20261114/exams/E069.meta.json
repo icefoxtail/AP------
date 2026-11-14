@@ -1,0 +1,4303 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E069",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "m3_b",
+  "rootIntegrator": "GPT_ROOT_9D4541661C34",
+  "independentReviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2final/19_연향중_2학기_기말_중3_수학.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceBeforeBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+  "sourceAfterBlob": "2f78a75c426331506112c5b44abe24b9bdaa5d2c",
+  "sourceAfterSha256": "796ee0ed69c97e890318a47dcd93a38a00475523b21b9674266b1939474280ba",
+  "questionCount": 23,
+  "uidDigest": "2611568a443815f79f05750b7ee95dbd68a354a067b8d100482525f99e50514a",
+  "authorRawReviewSha256": "94bf7416e249f2ee2426ddff088dfd4fde7e58886aed24c4f468496fdfa667aa",
+  "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
+  "authority": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "existingEvidenceRefs": [
+    "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+  ],
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.source-patch.json",
+      "sha256": "5a7759503065aa7ee43f53e4bba3a0b3893738f7c0cbd62e8ab4811e630b10c0"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.4slot.json",
+      "sha256": "8f84b2463b51855eeb8c2adc03f5b47f433d5a18fe01ebe7e701bd3343e57a02"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.proposals.json",
+      "sha256": "69e14677880c72a531e395b57544ba521a6071ae4cc4be6a3410fd236bd7b681"
+    },
+    "image-version-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.image-version-evidence.json",
+      "sha256": "c50cca957f3b53f7847e156b1b8494da5193370adcf28a7249ba7647006ded4c"
+    },
+    "author-decisions.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.author-decisions.json",
+      "sha256": "cd6f5eb7bdc31dd9d802506c4c8c06f5014ed606216ef7d23a2c81c87d98ae83"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.independent.json",
+      "sha256": "993947105452c4e2992aebf7220726c6da3c5087ca6281ee18d226b3f7c5d177"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E069.difficulty-adjudication.json",
+      "sha256": "daafec6e8aac79c2f381d34af8b4eb07f0a208abdb1a2556e0158beadc6e804b"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_0464e0c50e2d3830718ad0326b0f62ec8519e3d2e074f78dc3ee0caf27f7bd68",
+      "sourceQuestionNo": 1,
+      "decision": "CORRECT",
+      "decisiveStep": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-055"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "recordId": "M3-RPM-143",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "빗변 복원과 서로 다른 각의 비 구별을 연결.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "피타고라스로 빗변3을 복원하고 A와 C 각각의 삼각비를 정의에 맞춰 식에 대입한다.",
+        "existing": {
+          "ordinal": 1,
+          "format": "단일 정답",
+          "given": [
+            161,
+            674,
+            675,
+            449
+          ],
+          "goal": [
+            61
+          ],
+          "method": [
+            195,
+            194,
+            53
+          ],
+          "condition": [
+            344
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "9d7ed68da0a6ef321246b4c4177abebbff46f5a523765eed902a6fb0a02e2aff",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "73995063e9349245d4dfc89ec771140cb781b07695a3c161cb2d3130a1b8910b"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_03c4855ef1cd37087221ee85a2a9e92ef285d007e3221f4348170a706c4a84f6",
+      "sourceQuestionNo": 2,
+      "decision": "CORRECT",
+      "decisiveStep": "BC=10을 구한 뒤 DE⊥BC에서 x=90°-B를 알고 sin x=cos B, cos x=sin B로 전환한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "삼각비의 관계",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-056"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "recordId": "M3-RPM-144",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "BC=10을 구한 뒤 DE⊥BC에서 x=90°-B를 알고 sin x=cos B, cos x=sin B로 전환한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "BC=10을 구한 뒤 DE⊥BC에서 x=90°-B를 알고 sin x=cos B, cos x=sin B로 전환한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "여각 대응과 누락 빗변 계산이 필요한 두 단계.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "BC=10을 구한 뒤 DE⊥BC에서 x=90°-B를 알고 sin x=cos B, cos x=sin B로 전환한다.",
+        "existing": {
+          "ordinal": 2,
+          "format": "단일 정답",
+          "given": [
+            161,
+            179
+          ],
+          "goal": [
+            286
+          ],
+          "method": [
+            195,
+            194,
+            610
+          ],
+          "condition": [
+            179
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "1480cd5ee89171b0b486ff8a45ad8489e9adf0a54fb48013000c435ca1a29a10",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "c7583b6606545b86f609d7a85ee4d42554fa5b240c127a9bdc507bb602d58972"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_18061384f962ffa3fd61f53e5561d6c637e649426be997a61e79f300ea0ea5ec",
+      "sourceQuestionNo": 3,
+      "decision": "CORRECT",
+      "decisiveStep": "직육면체 밑면 대각선 EG를 먼저 구하고 AE⊥EG인 단면에서 공간대각선 AG를 구한 뒤 AGE의 삼각비 차를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-055"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "recordId": "M3-RPM-143",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "직육면체 밑면 대각선 EG를 먼저 구하고 AE⊥EG인 단면에서 공간대각선 AG를 구한 뒤 AGE의 삼각비 차를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "직육면체 밑면 대각선 EG를 먼저 구하고 AE⊥EG인 단면에서 공간대각선 AG를 구한 뒤 AGE의 삼각비 차를 계산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "입체에서 사용할 직각단면을 찾고 피타고라스를 두 번 이어야 한다.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "직육면체 밑면 대각선 EG를 먼저 구하고 AE⊥EG인 단면에서 공간대각선 AG를 구한 뒤 AGE의 삼각비 차를 계산한다.",
+        "existing": {
+          "ordinal": 3,
+          "format": "단일 정답",
+          "given": [
+            603,
+            674,
+            675
+          ],
+          "goal": [
+            288
+          ],
+          "method": [
+            195,
+            608,
+            194
+          ],
+          "condition": [],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "b3321f4783da441dc5651de97b30541481a2f20401b8096b956c389378005008",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "f5a427aba5ff56a5ed181a14c326cc564aa0fa5b8ea886cf4916796bc9ed583a"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_baafb2a43feb25d71898460a3a0474e905c582f2f56a5141e98f60f8a42d370d",
+      "sourceQuestionNo": 4,
+      "decision": "CORRECT",
+      "decisiveStep": "30°·45°·60° 삼각비의 기본값으로 네 등식을 각각 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-058"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "recordId": "M3-RPM-146",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "30°·45°·60° 삼각비의 기본값으로 네 등식을 각각 판정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "30°·45°·60° 삼각비의 기본값으로 네 등식을 각각 판정한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "특수각 값의 직접 계산.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "30°·45°·60° 삼각비의 기본값으로 네 등식을 각각 판정한다.",
+        "existing": {
+          "ordinal": 4,
+          "format": "보기(ㄱㄴㄷ) 판정",
+          "given": [
+            674,
+            675,
+            449
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            194,
+            57
+          ],
+          "condition": [],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "9ced04dcecbcc7e9061050eff2bc9a2ff143b0a5df00833824ca1c35fbe07025",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "a87112e6bfaf4f9a41c177b781d9365505ee4b54c0de3fc1aed965ef397b2f5b"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ad5eeb4bd362f49d01bc53395a328a247ec70f377309a36d504675f9b0bc9c5e",
+      "sourceQuestionNo": 5,
+      "decision": "CORRECT",
+      "decisiveStep": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_UNIT_CIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "삼각비의 관계",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-056"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "recordId": "M3-RPM-144",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_UNIT_CIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "단위원 길이 해석과 여각 관계를 연결.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "단위 사분원 OAB에서 sin a=AB, cos a=OB이고 큰 직각삼각형의 b는 a의 여각임을 이용한다.",
+        "existing": {
+          "ordinal": 5,
+          "format": "옳은 것 고르기",
+          "given": [
+            621,
+            674,
+            675,
+            449
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            194,
+            610
+          ],
+          "condition": [
+            129
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "7dc345d8cb0923b632885e6fe53e819a094b739012f00d64a665dee156bfacae",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "da2a5b6c9fdb3bbcc94364086506f428eeea93796781e7b5a5d6de83aba5885f"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_97cf456daa4d1bdf69200d67378b6f6f2c31d19041f482918a284dcb5ba27384",
+      "sourceQuestionNo": 6,
+      "decision": "CORRECT",
+      "decisiveStep": "부러진 부분은20/cos33°, 남은 밑동은20tan33°로 따로 구하고 원래 높이를 두 길이의 합으로 복원한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "측정 문제",
+          "l4": "높이·거리",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-063"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "높이·거리"
+          },
+          "recordId": "M3-RPM-151",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "부러진 부분은20/cos33°, 남은 밑동은20tan33°로 따로 구하고 원래 높이를 두 길이의 합으로 복원한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "부러진 부분은20/cos33°, 남은 밑동은20tan33°로 따로 구하고 원래 높이를 두 길이의 합으로 복원한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "직각삼각형 두 길이와 물리적 전체 높이의 대응.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "부러진 부분은20/cos33°, 남은 밑동은20tan33°로 따로 구하고 원래 높이를 두 길이의 합으로 복원한다.",
+        "existing": {
+          "ordinal": 6,
+          "format": "단일 정답",
+          "given": [
+            161,
+            675,
+            449
+          ],
+          "goal": [
+            218
+          ],
+          "method": [
+            675,
+            449,
+            286
+          ],
+          "condition": [
+            179
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "adc49542a3c5d1d9d3cf1faa780c99c0e7b963b67f3dcac7f77ff3ad7aa6737c",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "f044f1b2febc3d1e355a62090ad4e003ebd7d9899d98684eeeb60daaf2880936"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_ad3ce635e23c4ef1eaccd28d5a4b543192eac5c2150d198479a4622bc3205bd3",
+      "sourceQuestionNo": 7,
+      "decision": "CORRECT",
+      "decisiveStep": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "다각형의 길이·넓이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-062"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "recordId": "M3-RPM-150",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 삼각형 넓이식을 공유 대각선으로 묶는 정형적 역산.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "대각선으로 나눈 삼각형의 넓이 합 S=AC·BD·sin45°/2에서 AC를 역산한다.",
+        "existing": {
+          "ordinal": 7,
+          "format": "단일 정답",
+          "given": [
+            162,
+            310,
+            213
+          ],
+          "goal": [
+            215
+          ],
+          "method": [
+            674,
+            213
+          ],
+          "condition": [],
+          "candidates": [
+            "삼각형의넓이공식"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "75c140b8893b381e61b910f212ad149de3860507a5c71e7e6e940f88eb6931a2",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "cce2030434d8af49927d89d5fa5ecef52d91eb9d8752fa0f973fe4fd56288ce2"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_ee8f98cf113ddd1bf39f72714ea790339f125223c1066ce86536c1aba9f086ed",
+      "sourceQuestionNo": 8,
+      "decision": "CORRECT",
+      "decisiveStep": "이등변삼각형의 밑변 반과 tan30°로 높이를 구하고 변의 길이를 복원하여 넓이=r×반둘레에서 내접반지름을 얻는다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_CIRCLE",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-065"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "보조선 활용"
+          },
+          "recordId": "M3-RPM-153",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "이등변삼각형의 밑변 반과 tan30°로 높이를 구하고 변의 길이를 복원하여 넓이=r×반둘레에서 내접반지름을 얻는다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_INSCRIBED_CIRCLE",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이등변삼각형의 밑변 반과 tan30°로 높이를 구하고 변의 길이를 복원하여 넓이=r×반둘레에서 내접반지름을 얻는다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "삼각비 길이→넓이·둘레→내접반지름의 세 대상량 연결.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "이등변삼각형의 밑변 반과 tan30°로 높이를 구하고 변의 길이를 복원하여 넓이=r×반둘레에서 내접반지름을 얻는다.",
+        "existing": {
+          "ordinal": 8,
+          "format": "단일 정답",
+          "given": [
+            159,
+            185
+          ],
+          "goal": [
+            153
+          ],
+          "method": [
+            159,
+            449,
+            195,
+            213,
+            57
+          ],
+          "condition": [
+            346,
+            720
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "d73eee0ad9bd87d4429f8b98316734cc3b9421399e0fdd1a375075d5dac09ddf",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "6d25c70c86d9d57e47d1a00f55740187c99b1c4bb5b7b68b60a884cff1476537"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_19c8e87f1f3d5f77ccebbf891b03ad3bf9ae5d1e9f3c694a0a26943963dace8f",
+      "sourceQuestionNo": 9,
+      "decision": "CORRECT",
+      "decisiveStep": "한 현의 반을 피타고라스로 구하고 같은 길이의 현은 중심거리가 같음을 이용해 다른 현을 밑변으로 하는 삼각형 넓이를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-069"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "recordId": "M3-RPM-157",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "한 현의 반을 피타고라스로 구하고 같은 길이의 현은 중심거리가 같음을 이용해 다른 현을 밑변으로 하는 삼각형 넓이를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "한 현의 반을 피타고라스로 구하고 같은 길이의 현은 중심거리가 같음을 이용해 다른 현을 밑변으로 하는 삼각형 넓이를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "현 이등분·등현의 중심거리·넓이 세 성질을 연결.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "한 현의 반을 피타고라스로 구하고 같은 길이의 현은 중심거리가 같음을 이용해 다른 현을 밑변으로 하는 삼각형 넓이를 구한다.",
+        "existing": {
+          "ordinal": 9,
+          "format": "단일 정답",
+          "given": [
+            152,
+            154
+          ],
+          "goal": [
+            213
+          ],
+          "method": [
+            154,
+            195,
+            213
+          ],
+          "condition": [
+            179,
+            346
+          ],
+          "candidates": [
+            "현의수직이등분",
+            "현과중심의거리"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "f6c7b4441c9ed05c3d0946d9eca5ed5cdb721d0dec41fe873160f622e706a267",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "16a52efa58cc1ea5e02601a5b8297972fbad5314819bb9fd859df7be6660c18b"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_456ad8e0973274b9e4d0efe0b7d4b5e5a55df61497878e812b93aff04876f7f1",
+      "sourceQuestionNo": 10,
+      "decision": "CORRECT",
+      "decisiveStep": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-069"
+        },
+        "status": "PUBLISHER_LEAF_GAP",
+        "semanticPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+          "l4": "중심거리와 현의 길이 leaf에서 길이를 산출하지 않고 등현으로 이등변삼각형의 각을 정한다. 중심거리·등현의 각 활용 leaf와 native template 필요."
+        },
+        "gapReason": "중심거리와 현의 길이 leaf에서 길이를 산출하지 않고 등현으로 이등변삼각형의 각을 정한다. 중심거리·등현의 각 활용 leaf와 native template 필요."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "중심거리→등현→밑각 대응의 짧은 연결.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다.",
+        "existing": {
+          "ordinal": 10,
+          "format": "단일 정답",
+          "given": [
+            152,
+            154
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            154,
+            159,
+            158
+          ],
+          "condition": [
+            222
+          ],
+          "candidates": [
+            "현과중심의거리",
+            "삼각형의내각의합"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "같은 중심거리에서 두 현 AC,BC의 길이가 같음을 얻고 이등변삼각형의 밑각을 이용해 C각을 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "중심거리와 현의 길이 leaf에서 길이를 산출하지 않고 등현으로 이등변삼각형의 각을 정한다. 중심거리·등현의 각 활용 leaf와 native template 필요."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "cecf02d325d70e5087fd37fe9b2ff9bfda318602f37c476d414944ebf67c2abf",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "a0854ce467b0c395437818898e95ae3a959492295dce0e10ebe6a17ab1d57e44"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_0a14a4b01b36140d1d0c215b248a8434df5576dc339254678e6921b06de8fc16",
+      "sourceQuestionNo": 11,
+      "decision": "CORRECT",
+      "decisiveStep": "B와 C에서 각각 그은 두 접선의 길이가 같아 BC=BD+CF=14+8이다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "한 점에서 그은 두 접선",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-071"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "한 점에서 그은 두 접선"
+          },
+          "recordId": "M3-RPM-159",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TM_TANGENT_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "B와 C에서 각각 그은 두 접선의 길이가 같아 BC=BD+CF=14+8이다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "B와 C에서 각각 그은 두 접선의 길이가 같아 BC=BD+CF=14+8이다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "reason": "같은 접선 길이를 치환한 직접 합.",
+        "boundary": "B12"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "B와 C에서 각각 그은 두 접선의 길이가 같아 BC=BD+CF=14+8이다.",
+        "existing": {
+          "ordinal": 11,
+          "format": "단일 정답",
+          "given": [
+            158,
+            720,
+            719
+          ],
+          "goal": [
+            215
+          ],
+          "method": [
+            448,
+            286
+          ],
+          "condition": [
+            720
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "a04faea79473c7a2028e2b56988bcc769ce687f57c50770b4da272ebe127f2dc",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "30658c0fc8648dfc58d03e94cc9ef8afc4d47fed7c0872486e08b1e7969881b4"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_1cd5187c5d3adbe128b62bdc99dc0703f089083ad0a0a4f37c6c53a88d181977",
+      "sourceQuestionNo": 12,
+      "decision": "CORRECT",
+      "decisiveStep": "접선 조각을 e로 두어 DE=8+e, CE=8-e를 만들고 직각삼각형 DCE의 피타고라스 식으로 e를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-072"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "recordId": "M3-RPM-160",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TM_TANGENT_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "접선 조각을 e로 두어 DE=8+e, CE=8-e를 만들고 직각삼각형 DCE의 피타고라스 식으로 e를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "접선 조각을 e로 두어 DE=8+e, CE=8-e를 만들고 직각삼각형 DCE의 피타고라스 식으로 e를 구한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "그림의 접선 조각들을 한 미지수로 일관되게 연결해야 한다.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "접선 조각을 e로 두어 DE=8+e, CE=8-e를 만들고 직각삼각형 DCE의 피타고라스 식으로 e를 구한다.",
+        "existing": {
+          "ordinal": 12,
+          "format": "단일 정답",
+          "given": [
+            165,
+            152,
+            118
+          ],
+          "goal": [
+            448
+          ],
+          "method": [
+            448,
+            195,
+            65
+          ],
+          "condition": [
+            182
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "c065caed0cda4390962c71b0093de76ac7cc2b88d54b3d3a9c3a04569c9915e7",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "91439bfa7bd12beba7c0c71a40b0056931b74fded61da077bcf60f04c127c835"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_7e2a9a3fb66f464ab39736fe5d2343108ac2933b610aae0510b2808ad9bf0df0",
+      "sourceQuestionNo": 13,
+      "decision": "CORRECT",
+      "decisiveStep": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-072"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "recordId": "M3-RPM-160",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TM_TANGENT_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "접선길이 합과 평행 접선 사이의 직각삼각형 구성이 필요.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "접선 길이의 동일성으로 CD=13을 구하고 두 접선 끝점의 높이 차5를 사용하여 지름2r를 피타고라스로 구한다.",
+        "existing": {
+          "ordinal": 13,
+          "format": "단일 정답",
+          "given": [
+            708,
+            118
+          ],
+          "goal": [
+            153
+          ],
+          "method": [
+            448,
+            180,
+            195
+          ],
+          "condition": [
+            182
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "SOLUTION_WORDING_DEFECT",
+          "reason": "해설의 “두 접선 사이의 수직 간격은 BD-AC=5”는 평행 접선 자체의 간격AB=12와 혼동된다. 실제 계산은 C,D 끝점의 높이 차5를 쓰며 결과는 일치. 원본무수정·문구 정정 출고 인계."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "4ae9abeeb0f9b3b00f4286d9e0c43b31f8cadd742f1cfb9d2e06ccd1f35c1a24",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "b06dc96c1f10d97a373faae96538216c3739d3b08e6ff91be0588cafedd2caf9"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_8b3ba081229a4f8e3b262e613c43eee510617889dcc95a1750e27ee5dbd3e776",
+      "sourceQuestionNo": 14,
+      "decision": "CORRECT",
+      "decisiveStep": "같은 호 AB에 대한 중심각은 원주각55°의 두 배이다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-075"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "recordId": "M3-RPM-163",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "label": "원주각",
+            "order": 13,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "같은 호 AB에 대한 중심각은 원주각55°의 두 배이다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "같은 호 AB에 대한 중심각은 원주각55°의 두 배이다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "직접 배수 관계 한 번 적용.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "같은 호 AB에 대한 중심각은 원주각55°의 두 배이다.",
+        "existing": {
+          "ordinal": 14,
+          "format": "단일 정답",
+          "given": [
+            152,
+            200
+          ],
+          "goal": [
+            724
+          ],
+          "method": [
+            200,
+            724
+          ],
+          "condition": [],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "82b91b11adfcffe388b7313240540ba8e9d53f2911d5536f35a6de470fd8b8ad",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "4315aeacd077c228f44ee94f15ad7e971eac640e55dd82e0aa8a5e40fdb9637e"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f48294436e0fe7862c0cd6a7d28a4f0fffa4702f2f2507828fe8f1adc6b36cdf",
+      "sourceQuestionNo": 15,
+      "decision": "CORRECT",
+      "decisiveStep": "동일한 세 호를 t로 놓고 외부 두 할선 각은 먼 호와 가까운 호 차의 절반임을 써 t를 구한 뒤 남은 호AD의 원주각을 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-080"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "recordId": "M3-RPM-168",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "동일한 세 호를 t로 놓고 외부 두 할선 각은 먼 호와 가까운 호 차의 절반임을 써 t를 구한 뒤 남은 호AD의 원주각을 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "동일한 세 호를 t로 놓고 외부 두 할선 각은 먼 호와 가까운 호 차의 절반임을 써 t를 구한 뒤 남은 호AD의 원주각을 구한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "전체호 합과 외부각 조건을 함께 방정식화하는 추론.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "동일한 세 호를 t로 놓고 외부 두 할선 각은 먼 호와 가까운 호 차의 절반임을 써 t를 구한 뒤 남은 호AD의 원주각을 구한다.",
+        "existing": {
+          "ordinal": 15,
+          "format": "단일 정답",
+          "given": [
+            155,
+            447
+          ],
+          "goal": [
+            200
+          ],
+          "method": [
+            447,
+            155,
+            200
+          ],
+          "condition": [
+            346
+          ],
+          "candidates": [
+            "원밖의두할선이이루는각"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "194a78249fe3b229e99fbdb83a68d8eec083566180506f213063a6c50c022901",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "393f1bd9e5ed8154cf4abc22858b6143b444526e0fd76a05b446eba39e6e4088"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_df5b7b296527adb4e3bd517d03989557172eb09d7f3769e228799f7cce76b6f4",
+      "sourceQuestionNo": 16,
+      "decision": "CORRECT",
+      "decisiveStep": "선택지마다 동일 현을 보는 두 원주각의 일치 또는 지름의 직각 조건을 확인해 네 점의 공원성을 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "네 점이 한 원 위에 있을 조건",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-078"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "네 점이 한 원 위에 있을 조건"
+          },
+          "recordId": "M3-RPM-166",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "선택지마다 동일 현을 보는 두 원주각의 일치 또는 지름의 직각 조건을 확인해 네 점의 공원성을 판정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "선택지마다 동일 현을 보는 두 원주각의 일치 또는 지름의 직각 조건을 확인해 네 점의 공원성을 판정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "각의 위치를 다섯 도형에서 구별하고 ⑤에서는 교점의 직각으로 보조각을 만들어야 한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "선택지마다 동일 현을 보는 두 원주각의 일치 또는 지름의 직각 조건을 확인해 네 점의 공원성을 판정한다.",
+        "existing": {
+          "ordinal": 16,
+          "format": "옳은 것 고르기",
+          "given": [
+            162,
+            344
+          ],
+          "goal": [
+            446,
+            132
+          ],
+          "method": [
+            200,
+            344,
+            180
+          ],
+          "condition": [
+            129
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "선택지마다 동일 현을 보는 두 원주각의 일치 또는 지름의 직각 조건을 확인해 네 점의 공원성을 판정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "4a8c385e87f7e56e6da2813ded211a589f44b547e202f1b3cc2a62a96402941a",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "6d62c21a3b95e862592e95a57076ffee2a9e70aa0cc5e599e97810e959796e7a"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_694b767df7e20c8032661054b52ec06d044f567d8624ed88002243b2019931b6",
+      "sourceQuestionNo": 17,
+      "decision": "CORRECT",
+      "decisiveStep": "원주각25°에서 호AC50°를 구하고 두 현의 교각85°로 호DB120°를 얻은 뒤 호길이의 비로 원둘레를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-080"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "recordId": "M3-RPM-168",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "원주각25°에서 호AC50°를 구하고 두 현의 교각85°로 호DB120°를 얻은 뒤 호길이의 비로 원둘레를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "원주각25°에서 호AC50°를 구하고 두 현의 교각85°로 호DB120°를 얻은 뒤 호길이의 비로 원둘레를 구한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "원주각→교차현각→호길이 비례의 세 단계.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "CORRECTED",
+        "rationale": "원주각25°에서 호AC50°를 구하고 두 현의 교각85°로 호DB120°를 얻은 뒤 호길이의 비로 원둘레를 구한다.",
+        "existing": {
+          "ordinal": 17,
+          "format": "단일 정답",
+          "given": [
+            154,
+            155
+          ],
+          "goal": [
+            214
+          ],
+          "method": [
+            200,
+            154,
+            578
+          ],
+          "condition": [],
+          "candidates": [
+            "원안의두현이이루는각"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "7923d9e752518317d19e4c2687472d7856a3fc37d897028d0b4510968eb99ce3",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "65f8c14e21676453393bafc8dd8282aac24aea6bfcbb6c85546cccac26c0b2be"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_fb3e5a2b5efafe05cc1e42a9f26c77933fb3285fe294a8d4bcd0cb00294034db",
+      "sourceQuestionNo": 18,
+      "decision": "CORRECT",
+      "decisiveStep": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-079"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "접선과 현이 이루는 각"
+          },
+          "recordId": "M3-RPM-167",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "접현각 대응과 내접사각형을 연속 적용해야 한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "접선-현각으로 x와 삼각형의 두 각을 구하고 내접사각형의 대각 보각으로 y를 구한다.",
+        "existing": {
+          "ordinal": 18,
+          "format": "단일 정답",
+          "given": [
+            118,
+            446
+          ],
+          "goal": [
+            286
+          ],
+          "method": [
+            445,
+            200,
+            158,
+            446
+          ],
+          "condition": [
+            182
+          ],
+          "candidates": [
+            "삼각형의내각의합"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "3326ef57940b5ab896f3ff432d8e6272839c8bcd2c9f1c8b86cd478f0f1b9ffd",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "8122937c76688c3debcf8539d0a89bcebf82814ba8cebaa22c791784a9e70305"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_d37a0dfbbe4431c9004f36f39854ce664ad2498b95dc0dcb5552a281eff4ccd7",
+      "sourceQuestionNo": 19,
+      "decision": "CORRECT",
+      "decisiveStep": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-072"
+        },
+        "status": "PUBLISHER_LEAF_GAP",
+        "semanticPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다.",
+          "l4": "접선길이를 단독 산출하는 leaf만으로 두 내접원에서 접점 P와 내접점 B 사이의 현 길이를 보조수선·닮음으로 산출하는 구조를 표시하지 못한다."
+        },
+        "gapReason": "접선길이를 단독 산출하는 leaf만으로 두 내접원에서 접점 P와 내접점 B 사이의 현 길이를 보조수선·닮음으로 산출하는 구조를 표시하지 못한다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_RIGHT_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "rationale": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "중심 관계·접선 직각·보조수선·닮음·피타고라스를 서로 의존하게 결합한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECTED",
+        "rationale": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다.",
+        "existing": {
+          "ordinal": 19,
+          "format": "단일 정답",
+          "given": [
+            152,
+            118
+          ],
+          "goal": [
+            215
+          ],
+          "method": [
+            720,
+            179,
+            195,
+            675,
+            197
+          ],
+          "condition": [
+            182
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "내접한 두 원의 반지름을 복원하고 작은 원 접점의 직각삼각형에 수선을 내려 닮음으로 투영 길이를 정한 뒤 BP를 계산한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "접선길이를 단독 산출하는 leaf만으로 두 내접원에서 접점 P와 내접점 B 사이의 현 길이를 보조수선·닮음으로 산출하는 구조를 표시하지 못한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "0668669b6166bb2cc84a06c7ee3c85bc82c109f9795b72875d06f86ee9b81285",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "30b3c12ba5cd65545f2dcee0bbd263b66831617a958dfd913c47ce4fdb576be2"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_20ad2599e0b400a1a54546f45f119e6ff08a3666ceb5723ad3f9f168ab98cb66",
+      "sourceQuestionNo": 20,
+      "decision": "CORRECT",
+      "decisiveStep": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA_TRIG"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-072"
+        },
+        "status": "PUBLISHER_LEAF_GAP",
+        "semanticPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다.",
+          "l4": "한 점의 두 접선 길이 동일성 leaf와 접선-할선 곱 관계는 다른 골격이므로 접선-할선 정리 leaf/native TPL 등록 필요."
+        },
+        "gapReason": "한 점의 두 접선 길이 동일성 leaf와 접선-할선 곱 관계는 다른 골격이므로 접선-할선 정리 leaf/native TPL 등록 필요."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA_TRIG"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "할선 전체길이를 구분하고 접선-할선 정리에서 삼각비 넓이로 연결.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다.",
+        "existing": {
+          "ordinal": 20,
+          "format": "단일 정답",
+          "given": [
+            118,
+            447
+          ],
+          "goal": [
+            213
+          ],
+          "method": [
+            118,
+            213
+          ],
+          "condition": [
+            182
+          ],
+          "candidates": [
+            "접선과할선정리",
+            "삼각형의넓이공식"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "접선-할선 길이 제곱 관계 PB²=PA·PC로 접선을 구한 뒤 두 변과 끼인각의 삼각형 넓이를 계산한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "한 점의 두 접선 길이 동일성 leaf와 접선-할선 곱 관계는 다른 골격이므로 접선-할선 정리 leaf/native TPL 등록 필요."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "2f65c322c5f95248b1e1ab23d763e14c6f8f4f5e5f0aeb4298690c9f8f63253b",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "9253980f978191e705de34168219f01e384d31672a0ff87d7f1457e0b27f328d"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_dae35d92d3eb8930a39d6e1cfd9212e6be505f38c2ae564dc318a6a21030574e",
+      "sourceQuestionNo": 21,
+      "decision": "CORRECT",
+      "decisiveStep": "주어진 수선으로 두 직각삼각형을 나누고 BAH45°, CAH30°를 정한 뒤 AH=8cos30°, AB=AH√2로 연결한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-065"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "보조선 활용"
+          },
+          "recordId": "M3-RPM-153",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "주어진 수선으로 두 직각삼각형을 나누고 BAH45°, CAH30°를 정한 뒤 AH=8cos30°, AB=AH√2로 연결한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "주어진 수선으로 두 직각삼각형을 나누고 BAH45°, CAH30°를 정한 뒤 AH=8cos30°, AB=AH√2로 연결한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "reason": "문항이 중간 각과 길이를 순서대로 묻는 안내 구조라 숨은 보조선 선택 부담이 없다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "주어진 수선으로 두 직각삼각형을 나누고 BAH45°, CAH30°를 정한 뒤 AH=8cos30°, AB=AH√2로 연결한다.",
+        "existing": {
+          "ordinal": 21,
+          "format": "소문항 묶음",
+          "given": [
+            158,
+            179
+          ],
+          "goal": [
+            174,
+            216
+          ],
+          "method": [
+            158,
+            675,
+            606
+          ],
+          "condition": [],
+          "candidates": [
+            "삼각형의내각의합"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "55c687352e0ad192bfdd3ac43b7b48b5d690f382c272ac39efc9e97aa4305f16",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "72d5954c045f822cc2250e4d827f672633b4f184d8aa4f83eb0a22e26ca2ba80"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_2e139761a3219a8d493129b08d4d26866eae617586f605ec72cffc586886d563",
+      "sourceQuestionNo": 22,
+      "decision": "CORRECT",
+      "decisiveStep": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-069"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "recordId": "M3-RPM-157",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "중심 위치를 미지 반지름과 연결하여 식을 세우는 역문제.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "현의 수직이등분선에 중심을 두고 중심거리 r-20과 반현40을 피타고라스 식 r²=(r-20)²+40²에 넣어 반지름을 역산한다.",
+        "existing": {
+          "ordinal": 22,
+          "format": "서술",
+          "given": [
+            154,
+            179,
+            152
+          ],
+          "goal": [
+            708
+          ],
+          "method": [
+            178,
+            195,
+            53
+          ],
+          "condition": [
+            346,
+            179
+          ],
+          "candidates": []
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "195bc3e7f79a294bdaf3f626a3b7770523004adab1c8d199fa71cf15f852f73a",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "4ec1c08871abfd33b03bcc1d53ef97d7fa8d892a5d1f0310a79cd36374e54334"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_30745c45a3df03a95ff9cee3a3d186e1b849887d72534fa171bb908853fd576d",
+      "sourceQuestionNo": 23,
+      "decision": "CORRECT",
+      "decisiveStep": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-080"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "recordId": "M3-RPM-168",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 호의 크기가 직접 제시된 정리 대입.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "KEEP",
+        "rationale": "외부 두 할선 각을 먼 반원호180°와 가까운 중심각호30° 차의 절반으로 구한다.",
+        "existing": {
+          "ordinal": 23,
+          "format": "서술",
+          "given": [
+            620,
+            724,
+            447
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            447,
+            724
+          ],
+          "condition": [],
+          "candidates": [
+            "원밖의두할선이이루는각"
+          ]
+        }
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "e9e47df5b6e1a01ab045fd496806cc1029065b96",
+        "solutionSha256": "78942f0ef69ece2aca0a8982a44ae850559f8352a0e84d020c8bea71c84af578",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null
+      },
+      "operationalRecordBeforeSha256": "09737574257b191be4bc9e9e157cd0b224915e73448ea4e5620290bfe4be9c6f"
+    }
+  ],
+  "authorSummary": {
+    "items": 23,
+    "decisions": {
+      "CORRECT": 23
+    },
+    "topics": {
+      "삼각비 > 삼각비": 5,
+      "삼각비 > 삼각비의 활용": 4,
+      "원의 성질 > 원과 직선": 8,
+      "원의 성질 > 원주각": 6
+    },
+    "exactDebt": {
+      "CURRICULUM_BINDING_GAP": 23,
+      "NATIVE_TEMPLATE_GAP": 4,
+      "RPM_LEAF_GAP": 3,
+      "SOLUTION_WORDING_DEFECT": 1
+    },
+    "newMathVerification": false
+  },
+  "warningReview": null,
+  "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "semanticPayloadSha256": "c49784a00772f2e1d283adc39f5cb0aed400e59586ac2036e00e10670fefdc7f",
+  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND"
+}
