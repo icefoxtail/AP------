@@ -1993,31 +1993,39 @@
       "primaryMethod": "표의 도수비와 표적의 넓이비 확률",
       "decisiveStep": "첫 소문항은 인원 비, 두 번째는 원 고리 넓이와 전체 넓이의 비를 계산한다.",
       "before": {
-        "crossConceptKeys": []
+        "crossConceptKeys": [],
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
       },
       "beforeSource": {
-        "crossConceptKeys": []
+        "crossConceptKeys": [],
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
       },
-      "beforeMetadata": {},
+      "beforeMetadata": {
+        "templateKey": ""
+      },
       "after": {
         "crossConceptKeys": [
           "CC_CIRCLE_CIRCUMFERENCE"
-        ]
+        ],
+        "templateKey": ""
       },
       "fieldReview": {
         "classification": "확률의 뜻 / 동등가능한 경우: 첫 소문항은 인원 비, 두 번째는 원 고리 넓이와 전체 넓이의 비를 계산한다.",
-        "binding": "ACTIVE 정의와 현행 crosswalk 대조. 표시한 definitionMatch는 등록키의 의미 후보이며 공식 Resolver 실행 영수증을 대신하지 않음.",
+        "binding": "PT_PROBABILITY_PROPERTIES_APPLICATION은 두 소문항의 확률 계산 상위 의미와 맞는다. 기존 BASIC_COUNT_RATIO는 ①의 인원 계수비에 exact. ②의 넓이 측도 변환은 정의의 포괄적 확률의 뜻이라는 표현만으로 exact 골격이라고 확정하지 않고 NEW_TPL 제안한다. 하나의 템플릿 칸에 ①만의 exact key를 전체 대표로 확정하지 않아 template 수정안을 공백으로 둔다.",
         "crossConcept": "두 번째 소문항은 πr²를 이용한 원 고리 넓이가 필요하다. 이 식은 CC_CIRCLE_CIRCUMFERENCE의 실제 정의에 넓이 산출로 명시되어 있다.",
-        "condition": "도형·수치 설정은 4칸에 기록. 별도의 수 범위·표본 제한 COND 없음.",
+        "condition": "②는 표적 밖과 경계 제외가 발문에 있으나 면적에 비례한 균일 명중 가정이 없다. SOURCE_HOLD를 유지하며 가정을 source에 추가하거나 source를 검산하지 않는다.",
         "integration": "보조 개념 결과를 주방법 또는 최종 목표에 순차 연결함.",
         "difficulty": "같은 기본 확률 비를 표와 원 넓이로 표현한 두 익숙한 상황에 적용한다.",
         "fourSlot": "실제 발문·해설과 필요한 그림을 읽고 항목별 용어/인용 검토. 독립 표본 승인 전."
       },
-      "reason": "첫 소문항은 인원 비, 두 번째는 원 고리 넓이와 전체 넓이의 비를 계산한다.",
+      "reason": "첫 소문항은 인원 비, 두 번째는 원 고리 넓이와 전체 넓이의 비를 계산한다. ① 유한 계수비와 ② 균일 영역 넓이비의 하위 골격을 분리하여 템플릿 공백을 제안한다.",
       "registrationDebt": [
-        "OFFICIAL_RESOLVER_RECEIPT_REQUIRED"
+        "OFFICIAL_RESOLVER_RECEIPT_REQUIRED",
+        "NEW_TPL_GEOMETRIC_PROBABILITY"
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "C-E021-TPL-GEOMETRIC-PROBABILITY"
+      ],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 2,
@@ -2028,10 +2036,10 @@
       },
       "activeDefinitionMatch": {
         "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "templateKey": null,
         "problemTypeStatus": "ACTIVE",
-        "templateStatus": "ACTIVE",
-        "templateParent": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateStatus": null,
+        "templateParent": null,
         "exactBindings": [
           {
             "curriculum": "2015",
@@ -2050,7 +2058,22 @@
         "freshMathematicalReverification": false
       },
       "sourceContentStatus": "SOURCE_HOLD",
-      "sourceContentNote": "②의 넓이비 확률에는 표적 내부의 균등 명중 가정이 필요하나 발문에는 영역 밖·경계 제외만 명시되어 있다. 기존 해설을 전제로 한 메타 판정과 별도 확인 대상으로 보존."
+      "sourceContentNote": "②의 넓이비 확률에는 표적 내부의 균등 명중 가정이 필요하나 발문에는 영역 밖·경계 제외만 명시되어 있다. 기존 해설을 전제로 한 메타 판정과 별도 확인 대상으로 보존.",
+      "subquestionDefinitionReview": [
+        {
+          "subquestion": "4-①",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "status": "EXACT_EXISTING",
+          "reason": "유한 인원 중 목표 인원의 수를 전체 인원 수로 나눈다."
+        },
+        {
+          "subquestion": "4-②",
+          "templateKey": null,
+          "proposalRef": "C-E021-TPL-GEOMETRIC-PROBABILITY",
+          "status": "REGISTRATION_PENDING_WITH_SOURCE_HOLD",
+          "reason": "균일한 2차원 영역의 확률을 부분 넓이/전체 넓이로 전환한다. 유한 경우의 수 계수와 다른 측도 변환 골격을 정확히 명시할 필요가 있다."
+        }
+      ]
     }
   ],
   "topicSummary": [
@@ -2235,6 +2258,27 @@
         "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0"
       ],
       "sharedMeaningRef": "E007 Q16 확률 기본 성질 진위 판정 RPM 공백"
+    },
+    {
+      "proposalId": "C-E021-TPL-GEOMETRIC-PROBABILITY",
+      "type": "NEW_TPL",
+      "name": "균일 영역에서 넓이 비로 계산하는 기하적 확률",
+      "definition": "유계 평면 영역에 균일하게 점이 선택된다는 가정 아래, 목표 부분 영역의 넓이를 전체 영역의 넓이로 나누어 확률을 계산한다. 필요한 도형 넓이는 보조 개념으로 산출한다.",
+      "parentProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "discriminator": "유한 결과의 발생 경우를 세는 BASIC_COUNT_RATIO와 구별되는 연속 2차원 측도비 구조이며, 확률밀도함수가 주어진 연속확률변수 적분과도 다르다. 상위 확률 기본 성질 PT는 재사용한다.",
+      "checkedExisting": [
+        "TPL_PROBABILITY_BASIC_COUNT_RATIO: 경우의 수의 비 또는 확률의 정의·기본 성질. 넓이 측도 변환 골격 미명시",
+        "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY: 확률밀도함수와 넓이 해석으로 입력 구조가 다름",
+        "compiled taxonomy ACTIVE 전체의 한국어 기하확률·넓이/영역+확률 및 영문 GEOMETRIC/AREA 의미 검색"
+      ],
+      "ordinals": [
+        24
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27"
+      ],
+      "subquestion": "4-②",
+      "sourceHold": "표적 내부 균일 명중 가정 미명시. 정확한 메타 템플릿 제안과 학생 원문 확인을 분리한다."
     }
   ],
   "notes": [
@@ -2244,6 +2288,7 @@
     "PT/TPL 후보는 activeDefinitionMatch에 별도 기록했고 source에 적용하지 않았다. 기존 승인 증거의 재사용 또는 공식 Resolver 실행/연결 등록은 통합 단계에 남아 있다.",
     "모든 난도는 실제 문항의 요구 사고로 판정했다. 기존 level 및 bucket은 가시 상태였으며 blind 재판정이라고 주장하지 않는다.",
     "ROOT가 실제 발문·선지·기존 해설로 Q1·9·18 하2, Q8 중1, Q5·12·14 상3를 독립 재검해 수용했다. 기존 confidence/boundary를 유지하며 BORDERLINE_ACCEPTABLE로 반영.",
-    "A 독립표본과 ROOT 수납: Q17의 확률 기본성질 진위 목표는 RPM114 계산 leaf로 강제하지 않고 RPM_LEAF_GAP 추가. 4칸 범위 인용은 명칭이 포함된 전체 문구로 보강. Q1·22 표본 PASS 수납."
+    "A 독립표본과 ROOT 수납: Q17의 확률 기본성질 진위 목표는 RPM114 계산 leaf로 강제하지 않고 RPM_LEAF_GAP 추가. 4칸 범위 인용은 명칭이 포함된 전체 문구로 보강. Q1·22 표본 PASS 수납.",
+    "E021 Q24 후속 정의 정밀화: 이전 review SHA f27d17d6f50bcf29d32d49070ff0b14bb90dd774c6c5c5a984e337f4cc2375d1. ① 기존 계수비 템플릿 exact, ②의 균일 영역 넓이비는 NEW_TPL 제안. sourceHold·답·해설·난도는 보존했으며 새 학생 수학 검증은 수행하지 않았다."
   ]
 }
