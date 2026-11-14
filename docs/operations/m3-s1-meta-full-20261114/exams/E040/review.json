@@ -1,0 +1,4367 @@
+{
+  "schemaVersion": "integrated-meta-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E040",
+  "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+  "sourceBlob": "e0a7735ea8820669f2952f489cc5f1b056ee8e56",
+  "reviewer": "meta_a",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_fefabae592d237200b643e304650c695f7b2da35a6768f5b93fdb677d01c1a90",
+      "verdict": "CORRECT",
+      "primaryMethod": "공통인수 추출 후 인수의 조건 확인",
+      "decisiveStep": "두 다항식에서 x+2y를 꺼내고 두 항·x계수1 조건을 확인한다.",
+      "reason": "공통인수 추출 후 인수의 조건 확인; 두 다항식에서 x+2y를 꺼내고 두 항·x계수1 조건을 확인한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-021",
+        "rpm2022RecordId": "M3-RPM-113",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "두 다항식에서 x+2y를 꺼내고 두 항·x계수1 조건을 확인한다.",
+        "level": "중",
+        "levelReason": "두 정형 공통인수 추출과 명시된 모양 조건의 대조이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "두 정형 공통인수 추출과 명시된 모양 조건의 대조이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-021: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-021",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "공통인수 추출은 부모맥락이며 두 식 사이 인수의 항수·계수 제한 판정 exact leaf는 없다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-021",
+        "rpm2022RecordId": "M3-RPM-113",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "두 다항식에서 x+2y를 꺼내고 두 항·x계수1 조건을 확인한다.",
+        "level": "중",
+        "levelReason": "두 정형 공통인수 추출과 명시된 모양 조건의 대조이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "두 정형 공통인수 추출과 명시된 모양 조건의 대조이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 인수분해",
+          "L3": "공통인수",
+          "L4": "공통인수 묶기"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0684b6c6eb53d5024eed5e4d3530d2558734c59ac9996c16843443de13bbc5d2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "06f32b1cb28b6aed4cb0139964a00ca038531359ec574510e91a271ea04bc70e"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_6eb88e37487ebeb00116fe4d3d34861e678acc0b249d852cae23b577e0468eb0",
+      "verdict": "KEEP",
+      "primaryMethod": "전개와 이항 뒤 이차방정식 판정",
+      "decisiveStep": "등호가 있는 식을 정리하여 최고차수가2로 남는지 비교한다.",
+      "reason": "전개와 이항 뒤 이차방정식 판정; 등호가 있는 식을 정리하여 최고차수가2로 남는지 비교한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-029",
+        "rpm2022RecordId": "M3-RPM-121",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "등호가 있는 식을 정리하여 최고차수가2로 남는지 비교한다.",
+        "level": "중",
+        "levelReason": "전개 전처리와 차수 정의 적용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "전개 전처리와 차수 정의 적용이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-029: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-029",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-029",
+        "rpm2022RecordId": "M3-RPM-121",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "등호가 있는 식을 정리하여 최고차수가2로 남는지 비교한다.",
+        "level": "중",
+        "levelReason": "전개 전처리와 차수 정의 적용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "전개 전처리와 차수 정의 적용이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "이차방정식과 해",
+          "L4": "이차방정식 판별"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "71ffeddf76040caccd6b714b6eedde45bff332c1029bb4cb678c66612e963276"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fa04e6d32b851cc8dd0d14bdbc1a5bdf81f70329ebee16f9aff03f9e1809c5d"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_acf6f534502b3f09ff77cdba16b1d372207fa3c369645798fad71e642d54e77c",
+      "verdict": "KEEP",
+      "primaryMethod": "지정 수의 대입으로 해 확인",
+      "decisiveStep": "각 후보를 대입해0이 되지 않는 식을 찾는다.",
+      "reason": "지정 수의 대입으로 해 확인; 각 후보를 대입해0이 되지 않는 식을 찾는다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-030",
+        "rpm2022RecordId": "M3-RPM-122",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "해의 확인"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 후보를 대입해0이 되지 않는 식을 찾는다.",
+        "level": "하",
+        "levelReason": "해의 정의를 그대로 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "해의 정의를 그대로 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-030: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-030",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": null,
+          "level": "하",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-030",
+        "rpm2022RecordId": "M3-RPM-122",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "해의 확인"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 후보를 대입해0이 되지 않는 식을 찾는다.",
+        "level": "하",
+        "levelReason": "해의 정의를 그대로 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "해의 정의를 그대로 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "이차방정식과 해",
+          "L4": "해의 확인"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05cf38031be27a99101738e247b489cb2e9802724d13df687e4c20385a8f419a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15a60a68b5a16bc4deb2b2e64f5519272d38458556420374768b0f118712b622"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_8b209c1e41bc6df7bc7c0d4cc1d1209364945e52df8558020456cf00f1ac3c76",
+      "verdict": "KEEP",
+      "primaryMethod": "제곱식 방정식에 제곱근 적용",
+      "decisiveStep": "x+1=±√24에서 근호를 간단히 하여 x를 구한다.",
+      "reason": "제곱식 방정식에 제곱근 적용; x+1=±√24에서 근호를 간단히 하여 x를 구한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-033",
+        "rpm2022RecordId": "M3-RPM-125",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "제곱근 이용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x+1=±√24에서 근호를 간단히 하여 x를 구한다.",
+        "level": "하",
+        "levelReason": "주어진 제곱식 형태에 직접 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "주어진 제곱식 형태에 직접 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-033: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-033",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": null,
+          "level": "하",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-033",
+        "rpm2022RecordId": "M3-RPM-125",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "제곱근 이용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x+1=±√24에서 근호를 간단히 하여 x를 구한다.",
+        "level": "하",
+        "levelReason": "주어진 제곱식 형태에 직접 적용한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "주어진 제곱식 형태에 직접 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "제곱근·완전제곱식을 이용한 풀이",
+          "L4": "제곱근 이용"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6dc99b5faa0f1384a6c9684bf3afd600192260f60733e82318d9fbc97d15c7d8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "55de37ca09bf09d66eb681d7f903f8b7088c7c708d6b75b4c72e98f4bed63720"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_e0d6c3abbe1f5f26c92a7eb80e68effe887848e5504bfe5d8b661588fdf35c80",
+      "verdict": "KEEP",
+      "primaryMethod": "곱의 상수항 비교",
+      "decisiveStep": "상수항-2a를2와 같게 두어 a를 구한다.",
+      "reason": "곱의 상수항 비교; 상수항-2a를2와 같게 두어 a를 구한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "상수항-2a를2와 같게 두어 a를 구한다.",
+        "level": "하",
+        "levelReason": "상수끼리의 곱을 직접 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "상수끼리의 곱을 직접 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-017: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-017",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": null,
+          "level": "하",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "상수항-2a를2와 같게 두어 a를 구한다.",
+        "level": "하",
+        "levelReason": "상수끼리의 곱을 직접 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "상수끼리의 곱을 직접 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 곱셈",
+          "L3": "곱셈공식",
+          "L4": "두 일차식의 곱"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dc20cebf8a0baf0916cf4e83720d4c0616eefd4f862abc909e68a37c4d450495"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dea930f5a44ebe34c481374a22b0ca77bc7cff5336d5da800d29e5d0b259a977"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_2855e077a8fb68d653358dbb0809fd5bf6265a7b85c770ada16f2b0829d78b74",
+      "verdict": "KEEP",
+      "primaryMethod": "일차항과 상수항의 계수를 등식으로 연결",
+      "decisiveStep": "전개식의3-a와-3a를 같게 두어 일차방정식을 푼다.",
+      "reason": "일차항과 상수항의 계수를 등식으로 연결; 전개식의3-a와-3a를 같게 두어 일차방정식을 푼다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "전개식의3-a와-3a를 같게 두어 일차방정식을 푼다.",
+        "level": "중",
+        "levelReason": "전개 후 명시된 같음 조건을 적용한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "전개 후 명시된 같음 조건을 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-017: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-017",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "전개식의3-a와-3a를 같게 두어 일차방정식을 푼다.",
+        "level": "중",
+        "levelReason": "전개 후 명시된 같음 조건을 적용한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "전개 후 명시된 같음 조건을 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 곱셈",
+          "L3": "곱셈공식",
+          "L4": "두 일차식의 곱"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "379dfa66158ef1079cfce385d1d6b73234d91118cf94a4cf9d0b1373bdb7d570"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "65cb89d3edd16237aacddc53b9fcd48dfc12c95c8b60050fbc487975a7785aab"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_b68a7439e65a4d7890ce54b9239cf655b79372979ce693543e18c12028d2c399",
+      "verdict": "KEEP",
+      "primaryMethod": "제곱식 계수의 순차 비교",
+      "decisiveStep": "중간항10b=-40을 먼저 적용하고 a=b²를 구한다.",
+      "reason": "제곱식 계수의 순차 비교; 중간항10b=-40을 먼저 적용하고 a=b²를 구한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-015",
+        "rpm2022RecordId": "M3-RPM-107",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "합·차의 제곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "중간항10b=-40을 먼저 적용하고 a=b²를 구한다.",
+        "level": "하",
+        "levelReason": "완전제곱식의 계수 두 개를 바로 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "완전제곱식의 계수 두 개를 바로 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-015: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-015",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": null,
+          "level": "하",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-015",
+        "rpm2022RecordId": "M3-RPM-107",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "합·차의 제곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "중간항10b=-40을 먼저 적용하고 a=b²를 구한다.",
+        "level": "하",
+        "levelReason": "완전제곱식의 계수 두 개를 바로 읽는다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "완전제곱식의 계수 두 개를 바로 읽는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 곱셈",
+          "L3": "곱셈공식",
+          "L4": "합·차의 제곱"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d20e5833123a6c58cc583274bea24a3e43b53a9225f05c4724ad86d23a48eef"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d2ad1229cfaa0ea1278b5d56459df135c499e5b7b4f88d2c6b53bc3ee94e1a0"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_ba0a62e68b350c0a64a1c6cf307f15f9d1e692ac6428e5779f94891364087ec7",
+      "verdict": "CORRECT",
+      "primaryMethod": "여러 인수분해 결과의 전개 검산",
+      "decisiveStep": "각 곱을 펼쳐 일차항 부호가 맞지 않는 보기를 찾는다.",
+      "reason": "여러 인수분해 결과의 전개 검산; 각 곱을 펼쳐 일차항 부호가 맞지 않는 보기를 찾는다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 곱을 펼쳐 일차항 부호가 맞지 않는 보기를 찾는다.",
+        "level": "중",
+        "levelReason": "여러 표준 인수분해를 독립적으로 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "여러 표준 인수분해를 독립적으로 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk GAP: None / None. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": null,
+          "mappingStatus": null,
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "서로 다른 인수분해 공식의 결과 비교 exact native leaf가 없다."
+        },
+        {
+          "kind": "RPM2022_EXACT_PATH_PENDING",
+          "reason": "2015 경로와 동일한 2022 정본 leaf가 없어 경로를 임의 복제하지 않았다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 곱을 펼쳐 일차항 부호가 맞지 않는 보기를 찾는다.",
+        "level": "중",
+        "levelReason": "여러 표준 인수분해를 독립적으로 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "여러 표준 인수분해를 독립적으로 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": null,
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2adf57588aa477b7affd6645380975edc62158014fc81777270dd618a0e2efce"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e9efc60a9414e76d899359823690daa786e9e8afa1718e6a73694fb8da49de44"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "EXACT_LEAF_PROPOSAL_PENDING"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0bfbbd548d945d3b770c5a562f77bda699e58bae82cde423f7cde92477a73929",
+      "verdict": "CORRECT",
+      "primaryMethod": "완전제곱식 여부 판정",
+      "decisiveStep": "네 식의 제곱꼴과 실수 제곱이 될 수 없는 음의 최고차계수를 확인한다.",
+      "reason": "완전제곱식 여부 판정; 네 식의 제곱꼴과 실수 제곱이 될 수 없는 음의 최고차계수를 확인한다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B12"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-023",
+        "rpm2022RecordId": "M3-RPM-115",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "네 식의 제곱꼴과 실수 제곱이 될 수 없는 음의 최고차계수를 확인한다.",
+        "level": "중",
+        "levelReason": "제곱식의 기본 형태와 부호 성질에 직접 대조한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "제곱식의 기본 형태와 부호 성질에 직접 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-023: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-023",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-023",
+        "rpm2022RecordId": "M3-RPM-115",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "네 식의 제곱꼴과 실수 제곱이 될 수 없는 음의 최고차계수를 확인한다.",
+        "level": "중",
+        "levelReason": "제곱식의 기본 형태와 부호 성질에 직접 대조한다.",
+        "difficultyBucket": 1,
+        "difficultyReason": "제곱식의 기본 형태와 부호 성질에 직접 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 인수분해",
+          "L3": "인수분해 공식",
+          "L4": "제곱식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff1dfa35c6a48b7cb08660e2bbea29b939fbca8033e33f84cefe416669fa958c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c9a4d2d681bc648d6f1b4dcd091ac5580c7b0bcffb358e07fa90e625ce99953"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B12"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d60fcf354679018925166df5340f38724e392d17059ed704dbd39efcee0c7e00",
+      "verdict": "CORRECT",
+      "primaryMethod": "잘못 읽은 계수를 분리해 원식 복원",
+      "decisiveStep": "각 오답의 보존된 항에서 상수3과 일차항4를 결합한다.",
+      "reason": "잘못 읽은 계수를 분리해 원식 복원; 각 오답의 보존된 항에서 상수3과 일차항4를 결합한다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        },
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 오답의 보존된 항에서 상수3과 일차항4를 결합한다.",
+        "level": "상",
+        "levelReason": "오류의 대상을 구별해 두 정보를 재구성하는 관계 선택이 필요하다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "오류의 대상을 구별해 두 정보를 재구성하는 관계 선택이 필요하다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk GAP: None / None. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": null,
+          "mappingStatus": null,
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "두 오류에서 보존되는 계수를 결합해 원식을 복원하는 exact leaf가 없다."
+        },
+        {
+          "kind": "RPM2022_EXACT_PATH_PENDING",
+          "reason": "2015 경로와 동일한 2022 정본 leaf가 없어 경로를 임의 복제하지 않았다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B34",
+          "conditionKeys": [],
+          "difficultyBucket": 4,
+          "problemTypeKey": null,
+          "level": "상",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "INTERDEPENDENT"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 4,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "INTERDEPENDENT"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "각 오답의 보존된 항에서 상수3과 일차항4를 결합한다.",
+        "level": "상",
+        "levelReason": "오류의 대상을 구별해 두 정보를 재구성하는 관계 선택이 필요하다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "오류의 대상을 구별해 두 정보를 재구성하는 관계 선택이 필요하다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": null,
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "db744414b2c2868260bec78c6904017e947fc94ebf2b6ee451ed4f8a9501229f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a5793859cabbf28b9c3535a75a49d1dab78db42e7054e2577a914d1643cdc0b"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        },
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "EXACT_LEAF_PROPOSAL_PENDING"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_638879257d7fccaf72edee32cfbbfeacf5619ed996c601bba586197c24ccb0ca",
+      "verdict": "CORRECT",
+      "primaryMethod": "넓이의 인수분해로 다른 변과 둘레 계산",
+      "decisiveStep": "(x+2)(2x-5)를 주어진 가로로 나누고 두 변의 합을 두 배한다.",
+      "reason": "넓이의 인수분해로 다른 변과 둘레 계산; (x+2)(2x-5)를 주어진 가로로 나누고 두 변의 합을 두 배한다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [
+            "CC_AREA"
+          ],
+          "after": [
+            "CC_RECTANGLE_AREA"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_POSITIVE"
+          ],
+          "after": []
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-025",
+        "rpm2022RecordId": "M3-RPM-117",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "이차식"
+        },
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "(x+2)(2x-5)를 주어진 가로로 나누고 두 변의 합을 두 배한다.",
+        "level": "중",
+        "levelReason": "넓이와 한 변이 직접 주어지는 익숙한 역산이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "넓이와 한 변이 직접 주어지는 익숙한 역산이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-025: FAMILY_ACTIVE / ACTIVE. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-025",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "인수분해는 계산 경로이며 직사각형의 넓이·한변에서 둘레를 구하는 geometry exact leaf는 없다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [
+            "CC_AREA"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_POSITIVE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [
+            "CC_AREA"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-025",
+        "rpm2022RecordId": "M3-RPM-117",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "이차식"
+        },
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "(x+2)(2x-5)를 주어진 가로로 나누고 두 변의 합을 두 배한다.",
+        "level": "중",
+        "levelReason": "넓이와 한 변이 직접 주어지는 익숙한 역산이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "넓이와 한 변이 직접 주어지는 익숙한 역산이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 인수분해",
+          "L3": "인수분해 공식",
+          "L4": "이차식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "39f577ee0d29d909bbfe92bd5786e30bb8aa9eb1c53d950d1420f864d4837b62"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "061242298e6bfa59f4098ca2249a1463d857196e69bef85d20482c796d2d45ed"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [
+            "CC_AREA"
+          ],
+          "after": [
+            "CC_RECTANGLE_AREA"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_POSITIVE"
+          ],
+          "after": []
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_RECTANGLE_AREA",
+            "definition": "직사각형의 가로와 세로의 길이를 곱하여 넓이를 구하는 것.",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_c74e322cdca670fa28f90bc644a8513ed37718963ee9c3e36a29dfe20a470265",
+      "verdict": "CORRECT",
+      "primaryMethod": "주어진 근으로 계수 결정 후 다른 근 구하기",
+      "decisiveStep": "x=-2를 대입해 a=6을 정한 뒤 기본 인수분해로 다른 근을 찾는다.",
+      "reason": "주어진 근으로 계수 결정 후 다른 근 구하기; x=-2를 대입해 a=6을 정한 뒤 기본 인수분해로 다른 근을 찾는다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-031",
+        "rpm2022RecordId": "M3-RPM-123",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "해가 주어진 이차방정식의 계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x=-2를 대입해 a=6을 정한 뒤 기본 인수분해로 다른 근을 찾는다.",
+        "level": "중",
+        "levelReason": "지정된 근 대입과 인수분해를 순서대로 적용한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "지정된 근 대입과 인수분해를 순서대로 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-031: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-031",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-031",
+        "rpm2022RecordId": "M3-RPM-123",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "해가 주어진 이차방정식의 계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "x=-2를 대입해 a=6을 정한 뒤 기본 인수분해로 다른 근을 찾는다.",
+        "level": "중",
+        "levelReason": "지정된 근 대입과 인수분해를 순서대로 적용한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "지정된 근 대입과 인수분해를 순서대로 적용한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "이차방정식과 해",
+          "L4": "해가 주어진 이차방정식의 계수 결정"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "faf344ba7559352ac0322bd4a794004843c075b0564f5022439ca761c83f44ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c214085c9bc31a0c61eb6a7a9a3152de7f2a5c9de112be9873fb7a2ac389003"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_35f740746e1bfaca975691a8c1a6f0e18a4ae0d7032d86508fbba927827c6e06",
+      "verdict": "CORRECT",
+      "primaryMethod": "중근 조건을 완전제곱식에 적용",
+      "decisiveStep": "완전제곱식의 오른쪽48-3m이0이어야 하는 조건을 세운다.",
+      "reason": "중근 조건을 완전제곱식에 적용; 완전제곱식의 오른쪽48-3m이0이어야 하는 조건을 세운다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-036",
+        "rpm2022RecordId": "M3-RPM-128",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 개수·판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "완전제곱식의 오른쪽48-3m이0이어야 하는 조건을 세운다.",
+        "level": "중",
+        "levelReason": "중근의 정의를 표준 완전제곱식 표현에 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "중근의 정의를 표준 완전제곱식 표현에 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-036: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-036",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-036",
+        "rpm2022RecordId": "M3-RPM-128",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 개수·판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "완전제곱식의 오른쪽48-3m이0이어야 하는 조건을 세운다.",
+        "level": "중",
+        "levelReason": "중근의 정의를 표준 완전제곱식 표현에 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "중근의 정의를 표준 완전제곱식 표현에 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 개수·판별"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d282951efad6aa512dbfaba8168457a039abea1be7ad3a32ddfe85ea02df623b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c36bc14161f6823d4dba752e187ec0f64253acf43fc2fbbbeadb2780ec5e55bc"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_be502bc9597beaf522525239efce33aa6a34da4f135d227dd6ef74b69f4c6d10",
+      "verdict": "CORRECT",
+      "primaryMethod": "완전제곱식 만들기",
+      "decisiveStep": "양변에25를 더해(x-5)²=30을 만들고 a,b를 읽는다.",
+      "reason": "완전제곱식 만들기; 양변에25를 더해(x-5)²=30을 만들고 a,b를 읽는다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 1,
+          "after": 2
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B12"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-034",
+        "rpm2022RecordId": "M3-RPM-126",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "완전제곱식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변에25를 더해(x-5)²=30을 만들고 a,b를 읽는다.",
+        "level": "하",
+        "levelReason": "완전제곱으로 보정하는 정해진 절차이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "완전제곱으로 보정하는 정해진 절차이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-034: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-034",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": null,
+          "level": "하",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 1,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-034",
+        "rpm2022RecordId": "M3-RPM-126",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "완전제곱식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변에25를 더해(x-5)²=30을 만들고 a,b를 읽는다.",
+        "level": "하",
+        "levelReason": "완전제곱으로 보정하는 정해진 절차이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "완전제곱으로 보정하는 정해진 절차이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 풀이",
+          "L3": "제곱근·완전제곱식을 이용한 풀이",
+          "L4": "완전제곱식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f3eadfd6385558558b0792d6723b82b392c93284ce57f6877716fcd4886b319e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb1845c5a4cd8a005387577b7c3f1f8a84bc52c7fb0c0f3213b4cfd98820b60a"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 1,
+          "after": 2
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B12"
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_835a8de3122f9bdd491d4031f91ad304fae124dd0dfa42b6e29dab2abe95b5f2",
+      "verdict": "CORRECT",
+      "primaryMethod": "문자계수 근의 공식 유도 과정 판정",
+      "decisiveStep": "a로 나눈 뒤 제곱 보정·통분·제곱근 단계를 대조하여 근호가 빠진 후보를 제외한다.",
+      "reason": "문자계수 근의 공식 유도 과정 판정; a로 나눈 뒤 제곱 보정·통분·제곱근 단계를 대조하여 근호가 빠진 후보를 제외한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "a로 나눈 뒤 제곱 보정·통분·제곱근 단계를 대조하여 근호가 빠진 후보를 제외한다.",
+        "level": "중",
+        "levelReason": "문자계수 분수와 근호의 동치 변환을 과정 전체에 연결한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "문자계수 분수와 근호의 동치 변환을 과정 전체에 연결한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-035: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-035",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "근의 공식으로 개별 방정식을 푸는 것과 공식 유도과정 빈칸 판정은 구별되므로035는 부모맥락이다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_NONZERO"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "a로 나눈 뒤 제곱 보정·통분·제곱근 단계를 대조하여 근호가 빠진 후보를 제외한다.",
+        "level": "중",
+        "levelReason": "문자계수 분수와 근호의 동치 변환을 과정 전체에 연결한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "문자계수 분수와 근호의 동치 변환을 과정 전체에 연결한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 공식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "399f86b733f9022a5f4974bae581e85081e60a1f70cb582f7176e214e60576a4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d8deaed9f358c318d872b06e7162cf9dc66d8640e7ee1f7bf085fe8c2f6bb6d6"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_NONZERO",
+            "definition": "0 배제 조건이 정의·비퇴화·해 선택 또는 개수 판정에 필요한 경우.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_84b2b80414affa17174ed3c8d27d373d9ffbb8d1047ce37a18c024e1d303bcfb",
+      "verdict": "KEEP",
+      "primaryMethod": "분모 제거 후 근의 공식 적용",
+      "decisiveStep": "양변에6을 곱해 정수계수 방정식을 만든 뒤 공식에 대입한다.",
+      "reason": "분모 제거 후 근의 공식 적용; 양변에6을 곱해 정수계수 방정식을 만든 뒤 공식에 대입한다.",
+      "sourceChanges": {},
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변에6을 곱해 정수계수 방정식을 만든 뒤 공식에 대입한다.",
+        "level": "중",
+        "levelReason": "분수계수의 익숙한 전처리 뒤 직접 공식 적용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "분수계수의 익숙한 전처리 뒤 직접 공식 적용이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-035: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-035",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "NONE",
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "high",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 2,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "양변에6을 곱해 정수계수 방정식을 만든 뒤 공식에 대입한다.",
+        "level": "중",
+        "levelReason": "분수계수의 익숙한 전처리 뒤 직접 공식 적용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "분수계수의 익숙한 전처리 뒤 직접 공식 적용이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 공식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eda2fc78b35cd20d709579e6dc34f53d04f2071bd06bc71a174046b1056b2121"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "61fc5b04659be4b9d8eb0ad51cad82acd6a604483ef0513d11b10e8e73b8f3d7"
+        }
+      ],
+      "sourcePatch": {},
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_11b3c0a0a77546b90d44d84e7f2384d44b9b6f9346fb16b6332b05fede8cc53e",
+      "verdict": "CORRECT",
+      "primaryMethod": "완전제곱식 인식과 구간별 절댓값 처리",
+      "decisiveStep": "근호 안 두 이차식을 제곱꼴로 바꾸고 주어진 구간에서 각각 부호를 정한다.",
+      "reason": "완전제곱식 인식과 구간별 절댓값 처리; 근호 안 두 이차식을 제곱꼴로 바꾸고 주어진 구간에서 각각 부호를 정한다.",
+      "sourceChanges": {
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_PERFECT_SQUARE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "rpmRecordId": "M3-RPM-002",
+        "rpm2022RecordId": "M3-RPM-094",
+        "rpmPath": {
+          "majorUnit": "실수와 그 연산",
+          "midUnit": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질"
+        },
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "근호 안 두 이차식을 제곱꼴로 바꾸고 주어진 구간에서 각각 부호를 정한다.",
+        "level": "중",
+        "levelReason": "제곱식 구조와 구간 조건을 결합해야 한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "제곱식 구조와 구간 조건을 결합해야 한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-002: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-002",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "rpmRecordId": "M3-RPM-002",
+        "rpm2022RecordId": "M3-RPM-094",
+        "rpmPath": {
+          "majorUnit": "실수와 그 연산",
+          "midUnit": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질"
+        },
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "근호 안 두 이차식을 제곱꼴로 바꾸고 주어진 구간에서 각각 부호를 정한다.",
+        "level": "중",
+        "levelReason": "제곱식 구조와 구간 조건을 결합해야 한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "제곱식 구조와 구간 조건을 결합해야 한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "실수와 그 연산",
+          "L2": "제곱근의 뜻과 성질",
+          "L3": "제곱근",
+          "L4": "제곱근의 성질"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "962eba41c030e68fb8671222ed19c6ee34b639a3c6b6a6e968287be6efff9797"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "85326c53d3ee8a72e27fb86334d6043a2cb3436dc73993f3b226dfcd78266fdd"
+        }
+      ],
+      "sourcePatch": {
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_PERFECT_SQUARE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_PERFECT_SQUARE",
+            "definition": "다항식의 제곱 꼴로 나타내어지는 식",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_RANGE",
+            "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_34c95881220f95f0eaed812e5d250141106cae01f4d6dfd6711f55feafab68b2",
+      "verdict": "CORRECT",
+      "primaryMethod": "인수분해와 양의 제곱수 조건으로 주사위 경우 분류",
+      "decisiveStep": "(x-1)(y-3)의 양수 조건으로 범위를 줄이고 각 y에서 제곱수인 x를 센 뒤36으로 나눈다.",
+      "reason": "인수분해와 양의 제곱수 조건으로 주사위 경우 분류; (x-1)(y-3)의 양수 조건으로 범위를 줄이고 각 y에서 제곱수인 x를 센 뒤36으로 나눈다.",
+      "sourceChanges": {
+        "crossConceptKeys": {
+          "before": [
+            "CC_COMBINATORICS_COUNTING"
+          ],
+          "after": [
+            "CC_PROBABILITY_DEFINITION"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_INTEGER",
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DEFINITION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "(x-1)(y-3)의 양수 조건으로 범위를 줄이고 각 y에서 제곱수인 x를 센 뒤36으로 나눈다.",
+        "level": "상",
+        "levelReason": "부호·자연수 제곱·유한 결과공간·조건부 열거를 함께 구성한다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "부호·자연수 제곱·유한 결과공간·조건부 열거를 함께 구성한다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk GAP: None / None. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": null,
+          "mappingStatus": null,
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "인수분해식의 제곱근이 자연수인 주사위 사건 확률의 exact leaf가 없다."
+        },
+        {
+          "kind": "RPM2022_EXACT_PATH_PENDING",
+          "reason": "2015 경로와 동일한 2022 정본 leaf가 없어 경로를 임의 복제하지 않았다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B34",
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 4,
+          "problemTypeKey": null,
+          "level": "상",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [
+            "CC_COMBINATORICS_COUNTING"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_INTEGER",
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 4,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [
+            "CC_COMBINATORICS_COUNTING"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "rpmRecordId": null,
+        "rpm2022RecordId": null,
+        "rpmPath": null,
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DEFINITION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "(x-1)(y-3)의 양수 조건으로 범위를 줄이고 각 y에서 제곱수인 x를 센 뒤36으로 나눈다.",
+        "level": "상",
+        "levelReason": "부호·자연수 제곱·유한 결과공간·조건부 열거를 함께 구성한다.",
+        "difficultyBucket": 4,
+        "difficultyReason": "부호·자연수 제곱·유한 결과공간·조건부 열거를 함께 구성한다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": null,
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8d61f3a4c6873bc72b965cab1016396fe7afad98303cf657008a29c40fa7d0c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f10663d3d02062f986afcb88046d95818bd8f17af830d09fcb6c004c8575337"
+        }
+      ],
+      "sourcePatch": {
+        "crossConceptKeys": {
+          "before": [
+            "CC_COMBINATORICS_COUNTING"
+          ],
+          "after": [
+            "CC_PROBABILITY_DEFINITION"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_INTEGER",
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_PROBABILITY_DEFINITION",
+            "definition": "표본공간의 각 근원사건이 일어날 가능성이 같을 때 사건의 원소 수를 표본공간 전체 원소 수로 나눈 비율",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_NATURAL_NUMBER",
+            "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+            "status": "ACTIVE"
+          },
+          {
+            "conditionKey": "COND_RANGE",
+            "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "EXACT_LEAF_PROPOSAL_PENDING"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_bcb27151c55af55c127efb2a69be27d8d8b69398710165f9a7df0b3c803a77e6",
+      "verdict": "CORRECT",
+      "primaryMethod": "두 정사각형의 변 합과 넓이 합 모델링",
+      "decisiveStep": "x와8-x의 제곱합을34로 두고 AP>BP로 두 해 중5를 고른다.",
+      "reason": "두 정사각형의 변 합과 넓이 합 모델링; x와8-x의 제곱합을34로 두고 AP>BP로 두 해 중5를 고른다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_SQUARE_AREA"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이"
+        },
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "x와8-x의 제곱합을34로 두고 AP>BP로 두 해 중5를 고른다.",
+        "level": "중",
+        "levelReason": "변의 합과 넓이 합이 직접 주어지는 표준 도형 활용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "변의 합과 넓이 합이 직접 주어지는 표준 도형 활용이다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-039: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-039",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이"
+        },
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "x와8-x의 제곱합을34로 두고 AP>BP로 두 해 중5를 고른다.",
+        "level": "중",
+        "levelReason": "변의 합과 넓이 합이 직접 주어지는 표준 도형 활용이다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "변의 합과 넓이 합이 직접 주어지는 표준 도형 활용이다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "도형",
+          "L4": "길이·넓이"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2f2f80002377a1e7a5a529b033dc936a47a23ea3bfc31987f67ddb9492f5123b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "de1206e7d067ed773421ddc147a02650e4220f49435338053fd1f58296adc234"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_SQUARE_AREA"
+          ]
+        },
+        "conditionKeys": {
+          "before": [
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_SQUARE_AREA",
+            "definition": "한 변의 길이의 제곱으로 넓이를 구하거나 역산",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_INEQUALITY_CONSTRAINT",
+            "definition": "둘 이상의 변수 사이에 제시된 대소 관계를 만족하는 값만 해 또는 경우로 인정한다.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_fa9eddc687d4c43de994e6eca4fd97539db1da0cc47ef4b7550e58c25ba0c25e",
+      "verdict": "CORRECT",
+      "primaryMethod": "움직이는 두 길이로 삼각형 넓이 방정식 구성",
+      "decisiveStep": "속력으로 OP=2t,OQ=12-t를 나타내고 넓이20을 만족하는 해 중 이동시간0≤t≤6의 해를 고른다.",
+      "reason": "움직이는 두 길이로 삼각형 넓이 방정식 구성; 속력으로 OP=2t,OQ=12-t를 나타내고 넓이20을 만족하는 해 중 이동시간0≤t≤6의 해를 고른다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-041",
+        "rpm2022RecordId": "M3-RPM-133",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "거리·속력·기타",
+          "l4": "운동 문제"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "속력으로 OP=2t,OQ=12-t를 나타내고 넓이20을 만족하는 해 중 이동시간0≤t≤6의 해를 고른다.",
+        "level": "상",
+        "levelReason": "운동 관계와 삼각형 넓이를 연결해 모델을 만들고 유효시간을 판단한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "운동 관계와 삼각형 넓이를 연결해 모델을 만들고 유효시간을 판단한다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-041: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-041",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B34",
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 4,
+          "problemTypeKey": null,
+          "level": "상",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 4,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-041",
+        "rpm2022RecordId": "M3-RPM-133",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "거리·속력·기타",
+          "l4": "운동 문제"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "속력으로 OP=2t,OQ=12-t를 나타내고 넓이20을 만족하는 해 중 이동시간0≤t≤6의 해를 고른다.",
+        "level": "상",
+        "levelReason": "운동 관계와 삼각형 넓이를 연결해 모델을 만들고 유효시간을 판단한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "운동 관계와 삼각형 넓이를 연결해 모델을 만들고 유효시간을 판단한다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "거리·속력·기타",
+          "L4": "운동 문제"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "04d4decd2ca90d988a0bdd7de0a6958881e27d254177cb8acf04b310ae252644"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1fdaaf1eb2f0fe3a0b38678613002c6298afaa59c52f5451b2056aa36b7f3748"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_REVIEW"
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "SEQUENTIAL"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_TRIANGLE_AREA",
+            "definition": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_RANGE",
+            "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_23ef4ea06c04aeedc53f9174ee4fc14a6c0a1fca6163541dec0d85ce1d1f252d",
+      "verdict": "CORRECT",
+      "primaryMethod": "정수 인수쌍으로 계수 후보 전수 결정",
+      "decisiveStep": "ab=-8의 부호 있는 약수쌍을 열거해 각 합 m을 구한다.",
+      "reason": "정수 인수쌍으로 계수 후보 전수 결정; ab=-8의 부호 있는 약수쌍을 열거해 각 합 m을 구한다.",
+      "sourceChanges": {
+        "subUnitKey": {
+          "before": "M3-02-FACTORIZATION",
+          "after": "M3-02-POLYNOMIAL_MULTIPLICATION"
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "ab=-8의 부호 있는 약수쌍을 열거해 각 합 m을 구한다.",
+        "level": "중",
+        "levelReason": "계수 비교를 정수 후보의 완전한 열거로 연결한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "계수 비교를 정수 후보의 완전한 열거로 연결한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-017: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-017",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "정수 인수쌍의 모든 계수값을 열거하는 구조의 exact leaf가 없어017은 부모맥락이다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_INTEGER"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-02",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "rpmRecordId": "M3-RPM-017",
+        "rpm2022RecordId": "M3-RPM-109",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "ab=-8의 부호 있는 약수쌍을 열거해 각 합 m을 구한다.",
+        "level": "중",
+        "levelReason": "계수 비교를 정수 후보의 완전한 열거로 연결한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "계수 비교를 정수 후보의 완전한 열거로 연결한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 곱셈",
+          "L3": "곱셈공식",
+          "L4": "두 일차식의 곱"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "18443d3d3f2109286bdf0b8a3cd0afe1902ed04d6b590cbb0590621cca456a8f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "02576b0a14a60c10da0916d922058277b66518c0c10fe713481a6e9b17630827"
+        }
+      ],
+      "sourcePatch": {
+        "subUnitKey": {
+          "before": "M3-02-FACTORIZATION",
+          "after": "M3-02-POLYNOMIAL_MULTIPLICATION"
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_INTEGER",
+            "definition": "값이 정수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_a60bcab59572c2a5b49567354a4307ddabf304267272dbb1192de2f9036f5a4e",
+      "verdict": "CORRECT",
+      "primaryMethod": "지정된 유리화와 합차공식으로 식의값 계산",
+      "decisiveStep": "x-y를 유리화하여 두 주어진 식의 차로 y를 구하고 제곱차를 곱으로 계산한다.",
+      "reason": "지정된 유리화와 합차공식으로 식의값 계산; x-y를 유리화하여 두 주어진 식의 차로 y를 구하고 제곱차를 곱으로 계산한다.",
+      "sourceChanges": {
+        "standardUnitKey": {
+          "before": "M3-01",
+          "after": "M3-02"
+        },
+        "subUnitKey": {
+          "before": "M3-01-REAL_NUMBER_OPERATIONS",
+          "after": "M3-02-FACTORIZATION"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_DENOMINATOR_RATIONALIZATION"
+          ]
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-027",
+        "rpm2022RecordId": "M3-RPM-119",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "인수분해를 이용한 식의 값"
+        },
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "x-y를 유리화하여 두 주어진 식의 차로 y를 구하고 제곱차를 곱으로 계산한다.",
+        "level": "중",
+        "levelReason": "사용할 유리화와 인수분해가 명시되고 두 표준 관계로 바로 대입된다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "사용할 유리화와 인수분해가 명시되고 두 표준 관계로 바로 대입된다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-027: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-027",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": "PT_RADICAL_EXPRESSION",
+          "level": "중",
+          "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": "PT_RADICAL_EXPRESSION",
+          "level": null,
+          "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-01",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "rpmRecordId": null,
+          "integrationPattern": "SEQUENTIAL"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "rpmRecordId": "M3-RPM-027",
+        "rpm2022RecordId": "M3-RPM-119",
+        "rpmPath": {
+          "majorUnit": "다항식의 곱셈과 인수분해",
+          "midUnit": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "인수분해를 이용한 식의 값"
+        },
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "auxiliaryReason": "x-y를 유리화하여 두 주어진 식의 차로 y를 구하고 제곱차를 곱으로 계산한다.",
+        "level": "중",
+        "levelReason": "사용할 유리화와 인수분해가 명시되고 두 표준 관계로 바로 대입된다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "사용할 유리화와 인수분해가 명시되고 두 표준 관계로 바로 대입된다.",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "EXACT_NATIVE_LEAF",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "다항식의 인수분해",
+          "L3": "인수분해의 활용",
+          "L4": "인수분해를 이용한 식의 값"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "482753fda6192b4a929dc1281943900671f7fcf0040d0020f7fd3cf8bd63ff47"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "233ad1f5be3f5746018e54e4718e3be62d5c06f9c1e324fad3b04d9fb745c04c"
+        }
+      ],
+      "sourcePatch": {
+        "standardUnitKey": {
+          "before": "M3-01",
+          "after": "M3-02"
+        },
+        "subUnitKey": {
+          "before": "M3-01-REAL_NUMBER_OPERATIONS",
+          "after": "M3-02-FACTORIZATION"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_DENOMINATOR_RATIONALIZATION"
+          ]
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [
+          {
+            "conceptKey": "CC_DENOMINATOR_RATIONALIZATION",
+            "definition": "분모에 있는 근호를 제거하는 변형",
+            "status": "ACTIVE"
+          }
+        ],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": []
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_9c86df89e859a0e41c46a6618720d248023f11570a47abbe3dcaa186e7192df4",
+      "verdict": "CORRECT",
+      "primaryMethod": "주어진 해 표현과 근의 공식 비교",
+      "decisiveStep": "공식 분자에서-m=3을 읽고 근호 안 m²+8을 n과 비교한다.",
+      "reason": "주어진 해 표현과 근의 공식 비교; 공식 분자에서-m=3을 읽고 근호 안 m²+8을 n과 비교한다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "공식 분자에서-m=3을 읽고 근호 안 m²+8을 n과 비교한다.",
+        "level": "중",
+        "levelReason": "공식 결과와 같은 형식의 값을 순차 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "공식 결과와 같은 형식의 값을 순차 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-035: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-035",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "근의 공식 결과의 역비교로 미지계수를 결정하는 exact leaf는 없다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "rpmRecordId": null,
+          "integrationPattern": "NONE"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+        "rpmRecordId": "M3-RPM-035",
+        "rpm2022RecordId": "M3-RPM-127",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "공식 분자에서-m=3을 읽고 근호 안 m²+8을 n과 비교한다.",
+        "level": "중",
+        "levelReason": "공식 결과와 같은 형식의 값을 순차 대조한다.",
+        "difficultyBucket": 2,
+        "difficultyReason": "공식 결과와 같은 형식의 값을 순차 대조한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "근의 공식",
+          "L4": "근의 공식"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6350d032d1132e4027265c6208d498a92f6eaf56537312fd70ec4c3524201835"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b70c4b1bfb981b569a0cb38f15ed63dc821328ef205d462ea0f709b865a0c4ed"
+        }
+      ],
+      "sourcePatch": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": []
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_12ef77bc0ccccb66db1857a29a7ded87a3f11ff644ed239ced89ad97998c63db",
+      "verdict": "CORRECT",
+      "primaryMethod": "잘라 접은 상자의 밑면과 부피 모델링",
+      "decisiveStep": "원래 변 L에서 두쪽3cm를 빼고3(L-6)²=300을 세워 L>6인 해를 고른다.",
+      "reason": "잘라 접은 상자의 밑면과 부피 모델링; 원래 변 L에서 두쪽3cm를 빼고3(L-6)²=300을 세워 L>6인 해를 고른다.",
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        }
+      },
+      "decision": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "원래 변 L에서 두쪽3cm를 빼고3(L-6)²=300을 세워 L>6인 해를 고른다.",
+        "level": "중",
+        "levelReason": "평면 전개도의 길이 감소를 입체 부피식으로 옮겨야 한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "평면 전개도의 길이 감소를 입체 부피식으로 옮겨야 한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP"
+      },
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "reason": "현재 native crosswalk M3-RPM-039: RPM_ONLY / NO_ACTIVE_MAPPING. 공식 resolver 입력의 독립 VERIFIED_FINAL 증거 미생성으로 후보를 확정하지 않는다."
+      },
+      "debts": [
+        {
+          "kind": "PROJECTION_COMPATIBILITY_PENDING",
+          "crosswalkRecordId": "M3-RPM-039",
+          "mappingStatus": "RPM_ONLY",
+          "reason": "공식 resolver 실행 및 독립 VERIFIED_FINAL 영수증은 이 저자 검토에서 생성하지 않았다. native 의미와 실제 binding 상태를 분리 보존한다."
+        },
+        {
+          "kind": "RPM_EXACT_LEAF_GAP",
+          "reason": "길이·넓이 활용039는 부모맥락이다. 전개도 절단 후 직육면체 부피를 이용한 원래 변 역산 exact leaf는 없다."
+        },
+        {
+          "kind": "AUXILIARY_CONCEPT_GAP",
+          "reason": "직육면체 부피=밑넓이×높이의 정확 ACTIVE 개념키가 없어 원기둥·최대부피 모델 키를 오용하지 않는다."
+        }
+      ],
+      "before": {
+        "source": {
+          "difficultyBoundaryFlag": "B23",
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": null,
+          "level": "중",
+          "templateKey": null,
+          "difficultyConfidence": "medium",
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": "NORMAL",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        },
+        "registered": {
+          "difficultyBoundaryFlag": null,
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "difficultyBucket": 3,
+          "problemTypeKey": "",
+          "level": null,
+          "templateKey": "",
+          "difficultyConfidence": null,
+          "curriculum": null,
+          "standardUnitKey": "M3-03",
+          "crossConceptKeys": [],
+          "rpm2022RecordId": null,
+          "legacyLevelCompatibility": null,
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "rpmRecordId": null,
+          "integrationPattern": "CASE_BRANCH"
+        }
+      },
+      "after": {
+        "standardUnitKey": "M3-03",
+        "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+        "rpmRecordId": "M3-RPM-039",
+        "rpm2022RecordId": "M3-RPM-131",
+        "rpmPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "auxiliaryReason": "원래 변 L에서 두쪽3cm를 빼고3(L-6)²=300을 세워 L>6인 해를 고른다.",
+        "level": "중",
+        "levelReason": "평면 전개도의 길이 감소를 입체 부피식으로 옮겨야 한다.",
+        "difficultyBucket": 3,
+        "difficultyReason": "평면 전개도의 길이 감소를 입체 부피식으로 옮겨야 한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmResolution": "PARENT_CONTEXT_CANDIDATE_WITH_EXACT_LEAF_GAP",
+        "curriculum": "2015",
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차방정식",
+          "L2": "이차방정식의 활용",
+          "L3": "도형",
+          "L4": "길이·넓이"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "057a049bfea58c9c382213db7b1fa325707fcb4b9b875433ae71248a1f98a96e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "374d2dcc05e1862e58ce4f2b634f290f6c4fabae09e6d9282dc08dd851093787"
+        }
+      ],
+      "sourcePatch": {
+        "conditionKeys": {
+          "before": [
+            "COND_RANGE"
+          ],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        }
+      },
+      "auxiliaryValidation": {
+        "status": "AUTHOR_STATIC_CHECK",
+        "conceptDefinitions": [],
+        "conditionDefinitions": [
+          {
+            "conditionKey": "COND_INEQUALITY_CONSTRAINT",
+            "definition": "둘 이상의 변수 사이에 제시된 대소 관계를 만족하는 값만 해 또는 경우로 인정한다.",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "resolverExecution": {
+        "status": "NOT_RUN"
+      },
+      "registrationStatus": "RELEASE_PENDING",
+      "contentDebt": [],
+      "rpmResolutionStatus": "RELATED_ROUTE_PROPOSAL_WITH_EXACT_LEAF_GAP"
+    }
+  ],
+  "contentDebt": [],
+  "typeProposals": [],
+  "assetReview": [
+    {
+      "ordinal": 19,
+      "field": "content",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q19.png",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/19-content-1.png",
+      "sha256": "90174573fcd172bec7a6f0646310b81635a8478a8b423506ad9bb2d3fdf8a715",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    },
+    {
+      "ordinal": 19,
+      "field": "solution",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q19_solution.svg",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/19-solution-2.svg",
+      "sha256": "4446fe3f3ee639a981a4caaf2cc458ddfa7114d7cae97933147bb40fe3db5887",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    },
+    {
+      "ordinal": 20,
+      "field": "content",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q20.png",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/20-content-1.png",
+      "sha256": "642a84345e711ef6effda1fd1ef83ed36db1e2ad649667ab8cd94f7bffa0506f",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    },
+    {
+      "ordinal": 20,
+      "field": "solution",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q20_solution.svg",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/20-solution-2.svg",
+      "sha256": "f25945239aede66f272cd2aed19c1ee1d574fa5d433c9ab43c439d9a8ee1c9dc",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    },
+    {
+      "ordinal": 24,
+      "field": "content",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q24.png",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/24-content-1.png",
+      "sha256": "569a91cd8c9506536c84d4770b1e031ee99713d5279bd2e4e48a0b0bd80d8a52",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    },
+    {
+      "ordinal": 24,
+      "field": "solution",
+      "sourcePath": "archive/assets/images/22_향림중_1학기_기말_중3_수학/q24_solution.svg",
+      "localPath": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/24-solution-2.svg",
+      "sha256": "85bd16fa637fc13d4cded957810679167bc8cebc3594ffa1d74aa7317affdaea",
+      "status": "AUTHOR_VISUALLY_INSPECTED"
+    }
+  ],
+  "notes": [
+    "원본/해설6그림을 실제 확인. 정형 단계가 긴 문항11·12·13·19·22·23은 관계선택 부담을 기준으로2로 재판정했다. q18은 제곱수·주사위 다중조건의4/B34, q20은 표준 운동·넓이 연결3/B34로 구별."
+  ],
+  "reviewVersion": "author-resume-20261114",
+  "sourceBaseBlob": "e0a7735ea8820669f2952f489cc5f1b056ee8e56",
+  "sourceFinalBlob": "25bc6e958eea44a0b008c99839ccedaa218c3af2",
+  "sourceBaseSha256": "8d9b87f1ad7a7d3f63351e48575e60b6199a80db45100e81f040a10d6218ae5d",
+  "sourceFinalSha256": "c1e037b88abfc75e1f21c60b5d1d8deb16a15ead459c743b0ed9c6bd46072d3a",
+  "sourcePatches": [
+    {
+      "ordinal": 9,
+      "before": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "ordinal": 10,
+      "before": {
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL",
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "ordinal": 11,
+      "before": {
+        "difficultyBucket": 3,
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ]
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": []
+      }
+    },
+    {
+      "ordinal": 12,
+      "before": {
+        "difficultyBucket": 3,
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "ordinal": 13,
+      "before": {
+        "difficultyBucket": 3
+      },
+      "after": {
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "ordinal": 14,
+      "before": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      }
+    },
+    {
+      "ordinal": 17,
+      "before": {
+        "crossConceptKeys": [],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "ordinal": 18,
+      "before": {
+        "crossConceptKeys": [
+          "CC_COMBINATORICS_COUNTING"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DEFINITION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "ordinal": 19,
+      "before": {
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "crossConceptKeys": [
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "ordinal": 20,
+      "before": {
+        "difficultyBucket": 4,
+        "legacyLevelCompatibility": "NORMAL",
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "integrationPattern": "SEQUENTIAL"
+      }
+    },
+    {
+      "ordinal": 21,
+      "before": {
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "integrationPattern": "NONE"
+      }
+    },
+    {
+      "ordinal": 22,
+      "before": {
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "difficultyBucket": 3,
+        "crossConceptKeys": []
+      },
+      "after": {
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ]
+      }
+    },
+    {
+      "ordinal": 23,
+      "before": {
+        "difficultyBucket": 3
+      },
+      "after": {
+        "difficultyBucket": 2
+      }
+    },
+    {
+      "ordinal": 24,
+      "before": {
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE"
+      }
+    }
+  ],
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "examKey": "E040",
+    "status": "PASS_WITH_PROPOSALS",
+    "author": "meta_a",
+    "reviewer": "GPT_ROOT_0B1AF1898334",
+    "at": "2026-11-14T14:16:39.477804+00:00",
+    "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+    "sourceBlob": "e0a7735ea8820669f2952f489cc5f1b056ee8e56",
+    "inputs": {
+      "review": {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/E040.review.json",
+        "sha256": "4b102563dabce99fe47cbf79280ccf5dae7716ae10291360606394a12a5e13b4"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/E040.4slot.json",
+        "sha256": "dbacd389a202c0ab08e8c3e5511eae7e6e61d2c1e7141ffa1c8c5e21ff9e0c29"
+      }
+    },
+    "sampledOrdinals": [
+      11,
+      18,
+      20,
+      24
+    ],
+    "additionalChangedOrBoundaryOrdinals": [
+      9,
+      10,
+      12,
+      13,
+      14,
+      17,
+      19,
+      21,
+      22,
+      23
+    ],
+    "scope": "Actual stem, choices, existing solution read for listed14questions; four slots directly compared for11/18/20/24; originalPNG19/20/24 viewed. Metadata independent review only.",
+    "findings": [
+      {
+        "ordinal": 9,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "완전제곱식에서 벗어난 음의 최고차항을 직접 식별하므로 bucket1/B12 수용."
+      },
+      {
+        "ordinal": 10,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "잘못 본 일차항·상수항을 두 전개식에서 복원한 뒤 인수분해하는 구조. bucket3 및 정확 leafgap 수용."
+      },
+      {
+        "ordinal": 11,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "직사각형 넓이를 인수분해하여 주어진 가로로 약분하고 둘레를 구한다. 익숙한 역산 bucket2, CC_RECTANGLE_AREA/SEQUENTIAL 수용. 양수조건은 별도 해선택분기가 없어 삭제 수용."
+      },
+      {
+        "ordinal": 12,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "주어진 한 근 대입으로 a를 얻은 뒤 인수분해해 다른 근을 찾는 표준 연결. bucket2 수용."
+      },
+      {
+        "ordinal": 13,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "완전제곱식의 우변이0일 때 중근이라는 실제 해설 경로를 보존한다. bucket2 수용."
+      },
+      {
+        "ordinal": 14,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "정해진 완전제곱 꼴로 이항·보정하는 직접 절차 bucket2/B12 수용."
+      },
+      {
+        "ordinal": 17,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "주어진 범위에서 두 완전제곱근의 절댓값 부호를 결정한다. 보조 완전제곱식과 SEQUENTIAL/bucket3 수용."
+      },
+      {
+        "ordinal": 18,
+        "status": "PASS_AFTER_REVISION",
+        "note": "인수분해식이 양의 완전제곱수가 되는 주사위 순서쌍을 세어 확률을 구한다. 주사위1..6 범위가 결정적이므로 COND_RANGE 삭제취소와4칸 범위 인용 보완 확인. 자연수·유한표본공간·분기열거의 결합으로 상4/B34 수용."
+      },
+      {
+        "ordinal": 19,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "원본 두 정사각형과 AP+BP8을 확인. 넓이합34로 방정식을 세우고 AP>BP로 큰해를 고른다. bucket2와CC_SQUARE_AREA/부등식 조건 수용."
+      },
+      {
+        "ordinal": 20,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "원본 정사각형 변12와 P/Q 경로 확인. 속력으로 OP2t/OQ12−t를 구성하여 삼각형넓이20에 대입하고 0≤t≤6으로 해를선택. bucket3/B34의 상 경계를 독립수용, CC_TRIANGLE_AREA/COND_RANGE/SEQUENTIAL 적합."
+      },
+      {
+        "ordinal": 21,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "ab=−8인 정수쌍에서 합m을 열거하는 계수비교 유형. bucket3·정수조건·정확leafgap 수용."
+      },
+      {
+        "ordinal": 22,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "주어진 합과차를 유리화하고 합차공식·인수분해로 목표식을 계산한다. 인수분해 소단원과 유리화보조/bucket2 수용."
+      },
+      {
+        "ordinal": 23,
+        "status": "PASS_WITH_PROPOSALS",
+        "note": "근의공식으로 얻은 표현에서 미지계수를 비교하는 직접 역산. bucket2·출력표현 exactleafgap 수용."
+      },
+      {
+        "ordinal": 24,
+        "status": "PASS_AFTER_REVISION",
+        "note": "원본 네모서리3cm 절단전개도 확인. 3(L−6)²=300의해 중 L>6으로 선택한다. COND_INEQUALITY_CONSTRAINT 및4칸 부등식 실제해설근거 보완 확인. bucket3·직육면체부피 정확 보조개념gap 및 native exactgap 보존."
+      }
+    ],
+    "correctionRequests": [
+      {
+        "ordinal": 18,
+        "severity": "REQUIRED",
+        "field": "conditionKeys/4slot.condition",
+        "status": "RESOLVED",
+        "reason": "유한 주사위 범위1..6을 결정적 조건으로 복원."
+      },
+      {
+        "ordinal": 24,
+        "severity": "REQUIRED",
+        "field": "conditionKeys/4slot.condition",
+        "status": "RESOLVED",
+        "reason": "L>6이 실제 해 선택을 결정하므로 부등식 조건 복원."
+      }
+    ],
+    "assetReview": [
+      {
+        "ordinal": 19,
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/19-content-1.png",
+        "sha256": "90174573fcd172bec7a6f0646310b81635a8478a8b423506ad9bb2d3fdf8a715",
+        "status": "VIEWED"
+      },
+      {
+        "ordinal": 20,
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/20-content-1.png",
+        "sha256": "642a84345e711ef6effda1fd1ef83ed36db1e2ad649667ab8cd94f7bffa0506f",
+        "status": "VIEWED"
+      },
+      {
+        "ordinal": 24,
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E040/24-content-1.png",
+        "sha256": "569a91cd8c9506536c84d4770b1e031ee99713d5279bd2e4e48a0b0bd80d8a52",
+        "status": "VIEWED"
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sourceMutation": "NONE"
+  },
+  "provenance": {
+    "input": "source-current-Git",
+    "method": "Each statement, choices and existing solution inspected by author; manual semantic specs; source protected fields unchanged. Prior metadata visible under current difficulty policy.",
+    "integratedBy": "GPT_ROOT_0B1AF1898334",
+    "authorArtifactSha256": "4b102563dabce99fe47cbf79280ccf5dae7716ae10291360606394a12a5e13b4",
+    "authorFourSlotSha256": "dbacd389a202c0ab08e8c3e5511eae7e6e61d2c1e7141ffa1c8c5e21ff9e0c29",
+    "independentArtifactSha256": "d03433271f159ec416129a0f27dec9580f655957acdd73b4357e4f0e390a4d73",
+    "comparisonMetadataProjection": "ONLY_RELEVANT_METADATA_FIELDS_RETAINED",
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED"
+  },
+  "sourceWriterDeferred": []
+}
