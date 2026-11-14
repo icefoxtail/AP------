@@ -754,9 +754,9 @@ window.questionBank = [
     "solution": "[키포인트] 그래프에서 이차함수의 두 근과 꼭짓점을 읽어 $f$를 복원한 뒤 합성방정식을 두 경우로 나눈다.\n조건 정리: 그래프의 근은 $-1$, $3$이고 꼭짓점은 $(1,-4)$이다.\n풀이 방향: 그래프 정보로 $f(x)$를 정한 뒤 $f(f(x))=0$에서 $f(x)$가 두 근 중 하나가 되는 경우를 푼다.\n정석 풀이:\n1. 근이 $-1$, $3$이므로 $f(x)=a(x+1)(x-3)$라 둘 수 있다. 꼭짓점 $V(1,-4)$를 대입하면 $-4a=-4$이므로 $a=1$이다. 따라서 $f(x)=x^2-2x-3$이다.\n2. $f(t)=0$의 해가 $t=-1,3$이므로 $(f\\circ f)(x)=0$은 $f(x)=-1$ 또는 $f(x)=3$이다.\n3. $f(x)=-1$이면 $x^2-2x-2=0$이고 두 근의 합은 $2$이다. $f(x)=3$이면 $x^2-2x-6=0$이고 두 근의 합도 $2$이다. 두 방정식의 우변이 달라 근은 서로 겹치지 않는다.\n4. 네 실근의 합은 $4$이고 여기에 $1$을 더하면 $5$이다.\n따라서 정답은 ④이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q19.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q19-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q19.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q19-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -768,7 +768,7 @@ window.questionBank = [
         "vertex"
       ],
       "essentialVisualFacts": "roots (-1,0),(3,0), vertex V(1,-4); function formula is not printed",
-      "assetRef": "reviewed-pass"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q19-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "repair-2026-08-29"
