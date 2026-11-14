@@ -1921,8 +1921,8 @@
     },
     {
       "id": "E040",
-      "owner": "a",
-      "reviewer": "b",
+      "owner": "c",
+      "reviewer": "a",
       "sourcePath": "archive/exams/original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
       "sourceArchiveFile": "original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
       "year": 2022,
@@ -1936,7 +1936,39 @@
       "uidDigest": "dd7fa41aacd05d72c518ee13a3aef8ed3723db7b155f083e299b2dec6a49362d",
       "existing4slotPath": null,
       "existing4slotSourceBlob": null,
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "a",
+        "reviewer": "b"
+      },
+      "reviewedQuestionCount": 21,
+      "decisions": {
+        "CORRECT": 19,
+        "KEEP": 2
+      },
+      "sourceAfterBlob": "710623719913dd7eaa52e54244e05e98b105e704",
+      "sourceAfterSha256": "8b1cce7ce007ee6b05a32984041341b1fedd5ad3002479f8f9b9f78aedadf1a4",
+      "sourceChangedQuestionCount": 19,
+      "sourceChangedFieldCount": 108,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E040.meta.json",
+      "metadataSha256": "d27e4bd8859d9d354be260e018cf677755f6fe352f59872f84fdd7c8b42386b2",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E040.verification.json",
+      "verificationSha256": "44e0a2482242d7028c2c4451ebcd360688f3c280c761cb7217d73fe945ac63a2",
+      "independentSampleOrdinals": [
+        3,
+        11,
+        21
+      ],
+      "independentSampleStatus": "PASS",
+      "fourSlotMode": "NEW_FULL_EVIDENCE",
+      "fourSlotJudgments": {
+        "NEW_AUTHORED_NO_EXISTING_4SLOT": 21
+      },
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 6,
+      "activeFieldSchemaDebtCount": 1,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "e7e45ac0cec702476c751ff84112ceacc9f9fe5a"
     },
     {
       "id": "E041",
@@ -2761,12 +2793,12 @@
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 37,
-    "branchReviewedQuestions": 878,
-    "remainingExams": 46,
-    "remainingQuestions": 1080,
-    "independentSamples": 111,
-    "latestPreparedExam": "E034",
+    "branchReviewedExams": 38,
+    "branchReviewedQuestions": 899,
+    "remainingExams": 45,
+    "remainingQuestions": 1059,
+    "independentSamples": 114,
+    "latestPreparedExam": "E040",
     "mainMerge": "NOT_RUN_USER_EXCLUDED"
   },
   "ownerHistory": [

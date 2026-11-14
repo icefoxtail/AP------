@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E040",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "d77fc60705a7b50c22c1469202e9a2edaebe6951",
+  "sourceSha256": "d3ff86069366632e69a471cc78f4f821f028fbe1b66f4bc2bb83ee283c75c855",
+  "inputSha256": "7bd80d514184709c99b5bfb5f41e0ceb9277c2db1fa53d019c359787395bfdf3",
+  "artifactHashes": {
+    "review.json": "e34ef5ab3c3574231b2c3dad5e6afd62e9d9aadb08b42050b8f42b2e344a3a08",
+    "source-patch.json": "9fdd8d53621bba5ba70ad8fd48777b2a5eae46888d8bcd9a4569c6e60b2643c9",
+    "E040.4slot.json": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+    "difficulty-change-review.json": "1ff99610da8067d2b489dfa14596ffab66216264399e6977e5c96bf1d1b0d711"
+  },
+  "sampleOrdinals": [
+    3,
+    11,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_5e52e3ad4d8b40b378d52ae361c555d52629dc7bfcfdbb892e958821f59fb2bd",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 9,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 그림의 직각A, AB4, AC3 및 A에서 BC로 내린 수선 H를 확인했다. 기존 해설은 피타고라스로 얻는 빗변5를 사용하고 넓이 두 표현으로 AH, AA닮음으로 CH를 복원한 뒤 CH/AH를 탄젠트로 읽는다. 최종 목표가 삼각비 값이므로 GEOMETRIC_DERIVATION 및 RPM055/143이 맞고 길이 목표의 활용 유형과 구분된다. 넓이·닮음·피타고라스는 실제 보조 개념이며 method와 수선 조건의 인용이 현재 그림과 일치한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_연향중_2학기_중간_중3_수학/q03.png"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_dd9a8716d8e508a14d9fc160c9dbe94aa1f0c8bba0e9484f1364c830b9f8aeca",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "현재 본문과 원본 그림의 같은 두 변8 및 밑각75도를 확인했다. 현재 해설은 보조 높이를 만들지 않고 같은 밑각→꼭짓각30도→두 변과 끼인각 넓이공식의 순서이다. GLOBAL ACTIVE TPL_H22A_05_TRIANGLE_AREA_113의 실제 정의와 parent를 직접 읽었으며 이 해설 골격에 정확히 맞는다. 원본2015 교육과정과 중3 RPM061/149는 보존하고 2022 대수 소유 키의 의미 재사용 및 중3 문맥 연결 대기를 별도로 남긴 것이 타당하다. 이등변과 내각합의 보조 CC, method 사인·넓이도 맞으며 새로운 높이구성 해설을 만들어 넣지 않았다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_연향중_2학기_중간_중3_수학/q11.png"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_cb39a8a36a936e17d17f2d5affa33cfc08beb4b54e820ca0aea40138b4fbe460",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 12,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 내접원과 접점D/E/F, 직각A, BE2·CE3를 확인했다. 해설은 내심의 각이등분 및 접점수직으로 AD=r을 정하고 등접선으로 직각변r+2,r+3을 만든 뒤 피타고라스 이차방정식과 양의 근 선택을 거쳐 원넓이에 도달한다. 원과 직선의 접선 Primary RPM072/160 및 TM_TANGENT_LENGTH 재사용이 맞고 원주각 유형이 아니다. 내심·이차방정식·피타고라스·넓이공식의 보조개념이 실제 각 단계에 결속된다. 반지름 양수는 해설에서 사용한 해 선택이므로 method 양수 및 COND_POSITIVE와 연결되며 발문에 없는 수범위를 condition에 새로 쓰지 않은 것도 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_연향중_2학기_중간_중3_수학/s03.png"
+      ],
+      "newMathematicalVerification": false
+    }
+  ],
+  "status": "PASS",
+  "separateDifficultyRef": "/workspace/scratch/6538df266481/worker-outputs/a/independent/E040.difficulty.json",
+  "separateDifficultySha256": "c000d131859ea37b4f1443d3c8d3037d739a1fa0bb9f32741d03bfc16d74bf6a",
+  "scope": "Three non-author four-slot and metadata semantic samples with current source and original embedded images. No new R1/R2/R3.",
+  "newMathematicalVerification": false,
+  "exactQuoteCheckCount": 29,
+  "sampled4slotSha256": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+  "sampledReviewSha256": "e34ef5ab3c3574231b2c3dad5e6afd62e9d9aadb08b42050b8f42b2e344a3a08",
+  "sampledSourcePatchSha256": "9fdd8d53621bba5ba70ad8fd48777b2a5eae46888d8bcd9a4569c6e60b2643c9",
+  "sourceByteVerification": "INPUT_BASELINE_SHA256_MATCH",
+  "assetVersionChecks": [
+    {
+      "ordinal": 3,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/q03.png",
+      "gitBlob": "e3c94136e7946fb0bb152560bc129e24077e8fa4",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    },
+    {
+      "ordinal": 9,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/q09.png",
+      "gitBlob": "14d10fa069c21d5a4464248f1d14af9c619091e9",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    },
+    {
+      "ordinal": 10,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/q10.png",
+      "gitBlob": "efaa129428838fb135e919cec03bff0e5f4ffea2",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    },
+    {
+      "ordinal": 11,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/q11.png",
+      "gitBlob": "f78e7609372a9817f8d346d510bf626692c45ca9",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    },
+    {
+      "ordinal": 19,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/s01.png",
+      "gitBlob": "84ce1baa05fe1ecd10bc4224ddb4ec37f306732b",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    },
+    {
+      "ordinal": 21,
+      "asset": "assets/images/22_연향중_2학기_중간_중3_수학/s03.png",
+      "gitBlob": "fba8978cc7d5ce449d3931646747f3d85543af12",
+      "status": "MATCH_CURRENT_SOURCE_ASSET"
+    }
+  ]
+}
