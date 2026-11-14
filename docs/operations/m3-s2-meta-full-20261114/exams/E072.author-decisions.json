@@ -1,0 +1,2091 @@
+[
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 1,
+    "rpm": 53,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수와 그래프",
+      "standardUnitOrder": 4,
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "완전제곱식으로 꼭짓점형을 얻고 볼록성·증감·절편 부호를 판정해 그래프의 사분면까지 확인한다. 선택 방향이 참인 진술인 점을 반영한다.",
+    "difficulty": "각 진술이 서로 다른 그래프 성질을 요구하고 절편 부호까지 결합한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "HISTORICAL_SOURCE_FIDELITY_UNVERIFIED",
+        "reason": "기존 source는 정답 개수2→3의 candidate 수리 상태이며 printedOriginalPdfVerified=false. 현 수리조건 아래 메타를 판정하되 인쇄원문 대조를 PASS로 보지 않는다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "이차함수",
+          "stem"
+        ],
+        [
+          "그래프",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "판정",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "완전제곱식",
+          "solution:$y=x^2-8x+10=(x-4)^2-6$이므로 꼭짓점은 $(4,-6)$이고 그래프는 위로 열린다. ㄱ은 위로 볼록한 그래프가 아니므로 거짓이고, 아래로 열린 $y=-x^2$의 평행이동도 아니므로 ㄴ도 거짓이다. 축 $x=4$의 왼쪽에서는 $x$가 증가할수록 $y$가 감소하므로 ㄷ은 참이고, 꼭짓점이 $(4,-6)$이므로 ㄹ도 참이다. $x$절편은 $4-\\sqrt6$, $4+\\sqrt6$이고 $0<4-\\sqrt6<4+\\sqrt6$이다. $x<0$과 $0<x<4-\\sqrt6$, $x>4+\\sqrt6$에서 $y>0$이므로 제2사분면과 제1사분면을 지나고, $4-\\sqrt6<x<4+\\sqrt6$에서는 $x>0$, $y<0$이므로 제4사분면을 지난다. 따라서 ㅁ은 참이며, 참인 진술은 ㄷ·ㄹ·ㅁ 세 개다. 원문의 정답 개수 표기만 candidate에서 2개에서 3개로 고쳤다."
+        ],
+        [
+          "꼭짓점",
+          "solution:$y=x^2-8x+10=(x-4)^2-6$이므로 꼭짓점은 $(4,-6)$이고 그래프는 위로 열린다. ㄱ은 위로 볼록한 그래프가 아니므로 거짓이고, 아래로 열린 $y=-x^2$의 평행이동도 아니므로 ㄴ도 거짓이다. 축 $x=4$의 왼쪽에서는 $x$가 증가할수록 $y$가 감소하므로 ㄷ은 참이고, 꼭짓점이 $(4,-6)$이므로 ㄹ도 참이다. $x$절편은 $4-\\sqrt6$, $4+\\sqrt6$이고 $0<4-\\sqrt6<4+\\sqrt6$이다. $x<0$과 $0<x<4-\\sqrt6$, $x>4+\\sqrt6$에서 $y>0$이므로 제2사분면과 제1사분면을 지나고, $4-\\sqrt6<x<4+\\sqrt6$에서는 $x>0$, $y<0$이므로 제4사분면을 지난다. 따라서 ㅁ은 참이며, 참인 진술은 ㄷ·ㄹ·ㅁ 세 개다. 원문의 정답 개수 표기만 candidate에서 2개에서 3개로 고쳤다."
+        ],
+        [
+          "증가감소",
+          "solution:$y=x^2-8x+10=(x-4)^2-6$이므로 꼭짓점은 $(4,-6)$이고 그래프는 위로 열린다. ㄱ은 위로 볼록한 그래프가 아니므로 거짓이고, 아래로 열린 $y=-x^2$의 평행이동도 아니므로 ㄴ도 거짓이다. 축 $x=4$의 왼쪽에서는 $x$가 증가할수록 $y$가 감소하므로 ㄷ은 참이고, 꼭짓점이 $(4,-6)$이므로 ㄹ도 참이다. $x$절편은 $4-\\sqrt6$, $4+\\sqrt6$이고 $0<4-\\sqrt6<4+\\sqrt6$이다. $x<0$과 $0<x<4-\\sqrt6$, $x>4+\\sqrt6$에서 $y>0$이므로 제2사분면과 제1사분면을 지나고, $4-\\sqrt6<x<4+\\sqrt6$에서는 $x>0$, $y<0$이므로 제4사분면을 지난다. 따라서 ㅁ은 참이며, 참인 진술은 ㄷ·ㄹ·ㅁ 세 개다. 원문의 정답 개수 표기만 candidate에서 2개에서 3개로 고쳤다."
+        ],
+        [
+          "사분면",
+          "solution:$y=x^2-8x+10=(x-4)^2-6$이므로 꼭짓점은 $(4,-6)$이고 그래프는 위로 열린다. ㄱ은 위로 볼록한 그래프가 아니므로 거짓이고, 아래로 열린 $y=-x^2$의 평행이동도 아니므로 ㄴ도 거짓이다. 축 $x=4$의 왼쪽에서는 $x$가 증가할수록 $y$가 감소하므로 ㄷ은 참이고, 꼭짓점이 $(4,-6)$이므로 ㄹ도 참이다. $x$절편은 $4-\\sqrt6$, $4+\\sqrt6$이고 $0<4-\\sqrt6<4+\\sqrt6$이다. $x<0$과 $0<x<4-\\sqrt6$, $x>4+\\sqrt6$에서 $y>0$이므로 제2사분면과 제1사분면을 지나고, $4-\\sqrt6<x<4+\\sqrt6$에서는 $x>0$, $y<0$이므로 제4사분면을 지난다. 따라서 ㅁ은 참이며, 참인 진술은 ㄷ·ㄹ·ㅁ 세 개다. 원문의 정답 개수 표기만 candidate에서 2개에서 3개로 고쳤다."
+        ]
+      ],
+      "condition": [
+        [
+          "개수",
+          "stem"
+        ],
+        [
+          "범위",
+          "stem"
+        ]
+      ]
+    },
+    "format": "보기(ㄱㄴㄷ) 판정"
+  },
+  {
+    "image": "READ",
+    "ordinal": 2,
+    "rpm": 54,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수와 그래프",
+      "standardUnitOrder": 4,
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "그림의 꼭짓점(-1,-4)으로 y=a(x+1)²-4를 두고 x절편1을 대입하여 a를 결정한다.",
+    "difficulty": "꼭짓점형 구성 후 한 점 대입.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "이차함수",
+          "stem"
+        ],
+        [
+          "꼭짓점",
+          "solution:그림에서 꼭짓점은 $(-1,-4)$이고 $x$절편 중 하나는 $1$이다. 꼭짓점형을 $y=a(x+1)^2-4$로 놓고 $(1,0)$을 대입하면 $0=4a-4$이므로 $a=1$이다. 따라서 $y=(x+1)^2-4=x^2+2x-3$이고 정답은 ①이다."
+        ],
+        [
+          "x절편",
+          "solution:그림에서 꼭짓점은 $(-1,-4)$이고 $x$절편 중 하나는 $1$이다. 꼭짓점형을 $y=a(x+1)^2-4$로 놓고 $(1,0)$을 대입하면 $0=4a-4$이므로 $a=1$이다. 따라서 $y=(x+1)^2-4=x^2+2x-3$이고 정답은 ①이다."
+        ]
+      ],
+      "goal": [
+        [
+          "함수식",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "표준형",
+          "solution:그림에서 꼭짓점은 $(-1,-4)$이고 $x$절편 중 하나는 $1$이다. 꼭짓점형을 $y=a(x+1)^2-4$로 놓고 $(1,0)$을 대입하면 $0=4a-4$이므로 $a=1$이다. 따라서 $y=(x+1)^2-4=x^2+2x-3$이고 정답은 ①이다."
+        ],
+        [
+          "대입",
+          "solution:그림에서 꼭짓점은 $(-1,-4)$이고 $x$절편 중 하나는 $1$이다. 꼭짓점형을 $y=a(x+1)^2-4$로 놓고 $(1,0)$을 대입하면 $0=4a-4$이므로 $a=1$이다. 따라서 $y=(x+1)^2-4=x^2+2x-3$이고 정답은 ①이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 142
+  },
+  {
+    "image": "READ",
+    "ordinal": 3,
+    "rpm": 52,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수와 그래프",
+      "standardUnitOrder": 4,
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "벽을 제외한 세 변 길이합12로 넓이 x(12-2x)를 세우고 완전제곱식의 꼭짓점이 양의 변 길이 범위에 있음을 확인한다.",
+    "difficulty": "상황의 제약을 이차식으로 모델링한 뒤 최댓값 조건을 적용.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "일반형 최대·최소 leaf와 세 변의 길이 제약에서 넓이함수를 직접 구성하는 실생활 최대화 leaf를 구분해야 한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "rpmLeafGap": "일반형 최대·최소 leaf와 세 변의 길이 제약에서 넓이함수를 직접 구성하는 실생활 최대화 leaf를 구분해야 한다.",
+    "slots": {
+      "given": [
+        [
+          "직사각형",
+          "stem"
+        ],
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ],
+        [
+          "최댓값",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "모델링",
+          "solution:벽을 한 변으로 사용하므로 철망은 길이가 $x$인 양쪽 변 두 개와 나머지 한 변을 만든다. 나머지 변의 길이는 $12-2x$이고 넓이는 $A(x)=x(12-2x)=-2(x-3)^2+18$이다. 두 변의 길이가 양수여야 하므로 $0<x<6$이고, 꼭짓점의 $x$좌표 $3$은 이 범위에 있다. 따라서 넓이가 최대일 때 $x=3$이고 정답은 ②이다."
+        ],
+        [
+          "완전제곱식",
+          "solution:벽을 한 변으로 사용하므로 철망은 길이가 $x$인 양쪽 변 두 개와 나머지 한 변을 만든다. 나머지 변의 길이는 $12-2x$이고 넓이는 $A(x)=x(12-2x)=-2(x-3)^2+18$이다. 두 변의 길이가 양수여야 하므로 $0<x<6$이고, 꼭짓점의 $x$좌표 $3$은 이 범위에 있다. 따라서 넓이가 최대일 때 $x=3$이고 정답은 ②이다."
+        ],
+        [
+          "꼭짓점",
+          "solution:벽을 한 변으로 사용하므로 철망은 길이가 $x$인 양쪽 변 두 개와 나머지 한 변을 만든다. 나머지 변의 길이는 $12-2x$이고 넓이는 $A(x)=x(12-2x)=-2(x-3)^2+18$이다. 두 변의 길이가 양수여야 하므로 $0<x<6$이고, 꼭짓점의 $x$좌표 $3$은 이 범위에 있다. 따라서 넓이가 최대일 때 $x=3$이고 정답은 ②이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 4,
+    "rpm": 83,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "편차의 부호·평균0·분산과 표준편차의 정의를 검토하고 편차 절댓값이 평균에서의 거리라는 설명을 고른다.",
+    "difficulty": "기본 정의의 직접 진위 판정.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "편차의 부호·평균0·분산과 표준편차의 정의를 검토하고 편차 절댓값이 평균에서의 거리라는 설명을 고른다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "편차",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ],
+        [
+          "분산",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ],
+        [
+          "표준편차",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ]
+      ],
+      "goal": [
+        [
+          "판정",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "편차",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ],
+        [
+          "분산",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ],
+        [
+          "표준편차",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ],
+        [
+          "절댓값",
+          "solution:① 편차는 변량에서 평균을 뺀 값이므로, '평균−변량'이라고 한 선택지는 부호가 반대여서 틀리다. 각 변량의 편차를 모두 더하면 0이므로 편차의 평균은 0이다. 따라서 ②의 '구할 수 없다'는 설명은 틀리다. ③ 표준편차는 편차의 평균이 아니라 편차 제곱의 평균인 분산에 제곱근을 씌운 값이므로 틀리다. ④ 분산이 클수록 자료는 평균 주위에 더 모이는 것이 아니라 평균에서 더 흩어진다. ⑤ 편차의 절댓값은 평균과 변량 사이의 거리이므로, 그 값이 클수록 평균에서 더 멀다. 따라서 옳은 것은 ⑤이다."
+        ]
+      ],
+      "condition": []
+    },
+    "format": "옳은 것 고르기",
+    "rpm2022": 169
+  },
+  {
+    "image": "READ",
+    "ordinal": 5,
+    "rpm": 86,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "각 분포의 상대 도수를 기준으로 평균에서 떨어진 양을 비교하며, 비대칭 분포는 평균 이동도 반영해 가장 큰 분산을 고른다.",
+    "difficulty": "눈에 보이는 막대높이만이 아니라 전체도수 비율과 중심을 비교한다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "각 분포의 상대 도수를 기준으로 평균에서 떨어진 양을 비교하며, 비대칭 분포는 평균 이동도 반영해 가장 큰 분산을 고른다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "분포",
+          "solution:세 계급의 중심은 같은 간격으로 놓여 있으므로, 각 그림에서 평균을 기준으로 양 끝 계급에 놓인 자료의 비율을 비교한다. 그림 ②의 막대 높이 비는 양끝:가운데가 $4:2:4$여서 전체의 $\\frac{8}{10}$이 평균에서 한 계급만큼 떨어져 있다. 그림 ③은 $4:4:4$이므로 양끝 자료는 전체의 $\\frac{2}{3}$이고, 그림 ①·④·⑤의 분산은 각각 계급 간격 제곱의 $\\frac{1}{2}$, $\\frac{44}{81}$, $\\frac{2}{7}$배이다. ②의 분산은 계급 간격 제곱의 $\\frac{4}{5}$배로 이들 중 가장 크다. 따라서 정답은 ②이다."
+        ],
+        [
+          "도수",
+          "solution:세 계급의 중심은 같은 간격으로 놓여 있으므로, 각 그림에서 평균을 기준으로 양 끝 계급에 놓인 자료의 비율을 비교한다. 그림 ②의 막대 높이 비는 양끝:가운데가 $4:2:4$여서 전체의 $\\frac{8}{10}$이 평균에서 한 계급만큼 떨어져 있다. 그림 ③은 $4:4:4$이므로 양끝 자료는 전체의 $\\frac{2}{3}$이고, 그림 ①·④·⑤의 분산은 각각 계급 간격 제곱의 $\\frac{1}{2}$, $\\frac{44}{81}$, $\\frac{2}{7}$배이다. ②의 분산은 계급 간격 제곱의 $\\frac{4}{5}$배로 이들 중 가장 크다. 따라서 정답은 ②이다."
+        ]
+      ],
+      "goal": [
+        [
+          "분포",
+          "stem"
+        ],
+        [
+          "산포도",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "평균",
+          "solution:세 계급의 중심은 같은 간격으로 놓여 있으므로, 각 그림에서 평균을 기준으로 양 끝 계급에 놓인 자료의 비율을 비교한다. 그림 ②의 막대 높이 비는 양끝:가운데가 $4:2:4$여서 전체의 $\\frac{8}{10}$이 평균에서 한 계급만큼 떨어져 있다. 그림 ③은 $4:4:4$이므로 양끝 자료는 전체의 $\\frac{2}{3}$이고, 그림 ①·④·⑤의 분산은 각각 계급 간격 제곱의 $\\frac{1}{2}$, $\\frac{44}{81}$, $\\frac{2}{7}$배이다. ②의 분산은 계급 간격 제곱의 $\\frac{4}{5}$배로 이들 중 가장 크다. 따라서 정답은 ②이다."
+        ],
+        [
+          "분산",
+          "solution:세 계급의 중심은 같은 간격으로 놓여 있으므로, 각 그림에서 평균을 기준으로 양 끝 계급에 놓인 자료의 비율을 비교한다. 그림 ②의 막대 높이 비는 양끝:가운데가 $4:2:4$여서 전체의 $\\frac{8}{10}$이 평균에서 한 계급만큼 떨어져 있다. 그림 ③은 $4:4:4$이므로 양끝 자료는 전체의 $\\frac{2}{3}$이고, 그림 ①·④·⑤의 분산은 각각 계급 간격 제곱의 $\\frac{1}{2}$, $\\frac{44}{81}$, $\\frac{2}{7}$배이다. ②의 분산은 계급 간격 제곱의 $\\frac{4}{5}$배로 이들 중 가장 크다. 따라서 정답은 ②이다."
+        ],
+        [
+          "대소비교",
+          "solution:세 계급의 중심은 같은 간격으로 놓여 있으므로, 각 그림에서 평균을 기준으로 양 끝 계급에 놓인 자료의 비율을 비교한다. 그림 ②의 막대 높이 비는 양끝:가운데가 $4:2:4$여서 전체의 $\\frac{8}{10}$이 평균에서 한 계급만큼 떨어져 있다. 그림 ③은 $4:4:4$이므로 양끝 자료는 전체의 $\\frac{2}{3}$이고, 그림 ①·④·⑤의 분산은 각각 계급 간격 제곱의 $\\frac{1}{2}$, $\\frac{44}{81}$, $\\frac{2}{7}$배이다. ②의 분산은 계급 간격 제곱의 $\\frac{4}{5}$배로 이들 중 가장 크다. 따라서 정답은 ②이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 173
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 6,
+    "rpm": 81,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "도수 누적에서16개 자료의8·9번째를 찾아 중앙값을 정하고 최댓도수 동률과 가중평균 가능성을 각 보기에 적용한다.",
+    "difficulty": "도수 누적 순위와 동률 최빈값을 구별한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "자료",
+          "stem"
+        ],
+        [
+          "도수",
+          "solution:도수의 합은 $3+2+4+1+4+2=16$명이다. 크기 순으로 8번째와 9번째 값이 모두 $240\\,\\mathrm{mm}$이므로 중앙값은 $240\\,\\mathrm{mm}$이다. 최댓도수 4는 $240$과 $250$에서 함께 나타나 최빈값은 두 개다. 평균은 도수로 가중해 $(230\\times3+235\\times2+240\\times4+245\\times1+250\\times4+255\\times2)\\div16=\\frac{3875}{16}=242.1875\\,\\mathrm{mm}$로 구할 수 있다. 따라서 옳은 설명은 ③이다."
+        ]
+      ],
+      "goal": [
+        [
+          "대푯값",
+          "stem"
+        ],
+        [
+          "판정",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "누적도수",
+          "solution:도수의 합은 $3+2+4+1+4+2=16$명이다. 크기 순으로 8번째와 9번째 값이 모두 $240\\,\\mathrm{mm}$이므로 중앙값은 $240\\,\\mathrm{mm}$이다. 최댓도수 4는 $240$과 $250$에서 함께 나타나 최빈값은 두 개다. 평균은 도수로 가중해 $(230\\times3+235\\times2+240\\times4+245\\times1+250\\times4+255\\times2)\\div16=\\frac{3875}{16}=242.1875\\,\\mathrm{mm}$로 구할 수 있다. 따라서 옳은 설명은 ③이다."
+        ],
+        [
+          "중앙값",
+          "solution:도수의 합은 $3+2+4+1+4+2=16$명이다. 크기 순으로 8번째와 9번째 값이 모두 $240\\,\\mathrm{mm}$이므로 중앙값은 $240\\,\\mathrm{mm}$이다. 최댓도수 4는 $240$과 $250$에서 함께 나타나 최빈값은 두 개다. 평균은 도수로 가중해 $(230\\times3+235\\times2+240\\times4+245\\times1+250\\times4+255\\times2)\\div16=\\frac{3875}{16}=242.1875\\,\\mathrm{mm}$로 구할 수 있다. 따라서 옳은 설명은 ③이다."
+        ],
+        [
+          "최빈값",
+          "solution:도수의 합은 $3+2+4+1+4+2=16$명이다. 크기 순으로 8번째와 9번째 값이 모두 $240\\,\\mathrm{mm}$이므로 중앙값은 $240\\,\\mathrm{mm}$이다. 최댓도수 4는 $240$과 $250$에서 함께 나타나 최빈값은 두 개다. 평균은 도수로 가중해 $(230\\times3+235\\times2+240\\times4+245\\times1+250\\times4+255\\times2)\\div16=\\frac{3875}{16}=242.1875\\,\\mathrm{mm}$로 구할 수 있다. 따라서 옳은 설명은 ③이다."
+        ],
+        [
+          "평균",
+          "solution:도수의 합은 $3+2+4+1+4+2=16$명이다. 크기 순으로 8번째와 9번째 값이 모두 $240\\,\\mathrm{mm}$이므로 중앙값은 $240\\,\\mathrm{mm}$이다. 최댓도수 4는 $240$과 $250$에서 함께 나타나 최빈값은 두 개다. 평균은 도수로 가중해 $(230\\times3+235\\times2+240\\times4+245\\times1+250\\times4+255\\times2)\\div16=\\frac{3875}{16}=242.1875\\,\\mathrm{mm}$로 구할 수 있다. 따라서 옳은 설명은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "format": "옳은 것 고르기",
+    "rpm2022": "M1-RPM-223-DEFINITION-AUDIT-20261113"
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 7,
+    "rpm": 86,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "평균이 최대인 집단을 성적 우수, 표준편차가 최소인 집단을 성적이 고른 집단으로 각각 고른다.",
+    "difficulty": "두 통계량의 의미를 직접 비교한다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균이 최대인 집단을 성적 우수, 표준편차가 최소인 집단을 성적이 고른 집단으로 각각 고른다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "집단",
+          "stem"
+        ],
+        [
+          "평균",
+          "stem"
+        ],
+        [
+          "표준편차",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "집단",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "평균",
+          "solution:성적이 가장 우수한 반은 평균이 가장 큰 2반($265$점)이다. 성적이 가장 고른 반은 표준편차가 가장 작은 3반($5.3$점)이다. 따라서 2반, 3반인 ④이다."
+        ],
+        [
+          "표준편차",
+          "solution:성적이 가장 우수한 반은 평균이 가장 큰 2반($265$점)이다. 성적이 가장 고른 반은 표준편차가 가장 작은 3반($5.3$점)이다. 따라서 2반, 3반인 ④이다."
+        ],
+        [
+          "대소비교",
+          "solution:성적이 가장 우수한 반은 평균이 가장 큰 2반($265$점)이다. 성적이 가장 고른 반은 표준편차가 가장 작은 3반($5.3$점)이다. 따라서 2반, 3반인 ④이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 173
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 8,
+    "rpm": 84,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "평균5로 누락값b=9를 구한 뒤 평균에서의 편차 제곱을 평균내어 분산을 구한다.",
+    "difficulty": "평균조건으로 자료복원 후 산포도 계산.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균5로 누락값b=9를 구한 뒤 평균에서의 편차 제곱을 평균내어 분산을 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "변량",
+          "stem"
+        ],
+        [
+          "평균",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "분산",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "평균",
+          "solution:평균이 5이므로 $1+3+5+7+b=25$, 따라서 $b=9$이다. 평균 5에서의 편차는 $-4,-2,0,2,4$이고 제곱의 평균은 $(16+4+0+4+16)\\div5=8$이다. 정답은 ③이다."
+        ],
+        [
+          "편차",
+          "solution:평균이 5이므로 $1+3+5+7+b=25$, 따라서 $b=9$이다. 평균 5에서의 편차는 $-4,-2,0,2,4$이고 제곱의 평균은 $(16+4+0+4+16)\\div5=8$이다. 정답은 ③이다."
+        ],
+        [
+          "분산",
+          "solution:평균이 5이므로 $1+3+5+7+b=25$, 따라서 $b=9$이다. 평균 5에서의 편차는 $-4,-2,0,2,4$이고 제곱의 평균은 $(16+4+0+4+16)\\div5=8$이다. 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 171
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 9,
+    "rpm": 84,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_SUM_OF_DEVIATIONS_ZERO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "편차의 도수가중합0으로 누락편차a를 구하고 편차제곱의 가중평균으로 분산b를 계산하여 a+b를 구한다.",
+    "difficulty": "도수로 가중한 편차합과 제곱합의 두 식을 구별한다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "편차의 도수가중합0으로 누락편차a를 구하고 편차제곱의 가중평균으로 분산b를 계산하여 a+b를 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "편차",
+          "stem"
+        ],
+        [
+          "도수",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "합",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "편차",
+          "solution:편차의 도수 가중합은 $0$이다. $(-3)\\times3+a\\times1+(-1)\\times4+2\\times4+3\\times3=0$이므로 $a+4=0$, $a=-4$이다. 전체 도수는 $3+1+4+4+3=15$이고, 분산은 $\\{9\\times3+16\\times1+1\\times4+4\\times4+9\\times3\\}\\div15=90\\div15=6$이다. 따라서 $a+b=-4+6=2$이고 정답은 ②이다."
+        ],
+        [
+          "도수",
+          "solution:편차의 도수 가중합은 $0$이다. $(-3)\\times3+a\\times1+(-1)\\times4+2\\times4+3\\times3=0$이므로 $a+4=0$, $a=-4$이다. 전체 도수는 $3+1+4+4+3=15$이고, 분산은 $\\{9\\times3+16\\times1+1\\times4+4\\times4+9\\times3\\}\\div15=90\\div15=6$이다. 따라서 $a+b=-4+6=2$이고 정답은 ②이다."
+        ],
+        [
+          "분산",
+          "solution:편차의 도수 가중합은 $0$이다. $(-3)\\times3+a\\times1+(-1)\\times4+2\\times4+3\\times3=0$이므로 $a+4=0$, $a=-4$이다. 전체 도수는 $3+1+4+4+3=15$이고, 분산은 $\\{9\\times3+16\\times1+1\\times4+4\\times4+9\\times3\\}\\div15=90\\div15=6$이다. 따라서 $a+b=-4+6=2$이고 정답은 ②이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 171
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 10,
+    "rpm": 86,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "각 변량의 선형변환2x+3에 대해 평균은2배후3추가, 표준편차는2배임을 적용한다.",
+    "difficulty": "평균과 표준편차의 서로 다른 변환법을 비교한다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "각 변량의 선형변환2x+3에 대해 평균은2배후3추가, 표준편차는2배임을 적용한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "평균과 산포도 비교 leaf보다 선형변환에 따른 평균·표준편차의 변화가 정확한 primary이다. 현행에도 변환 leaf가 없다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "rpmLeafGap": "평균과 산포도 비교 leaf보다 선형변환에 따른 평균·표준편차의 변화가 정확한 primary이다. 현행에도 변환 leaf가 없다.",
+    "slots": {
+      "given": [
+        [
+          "변량",
+          "stem"
+        ],
+        [
+          "평균",
+          "stem"
+        ],
+        [
+          "표준편차",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "합",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "평균",
+          "solution:각 변량을 $2x+3$으로 바꾸면 평균은 $m=2\\times5+3=13$이다. 표준편차는 모든 값에 더한 3에는 변하지 않고, 2를 곱한 만큼 커져 $s=|2|\\times2=4$이다. 따라서 $m+s=13+4=17$이고 정답은 ③이다."
+        ],
+        [
+          "표준편차",
+          "solution:각 변량을 $2x+3$으로 바꾸면 평균은 $m=2\\times5+3=13$이다. 표준편차는 모든 값에 더한 3에는 변하지 않고, 2를 곱한 만큼 커져 $s=|2|\\times2=4$이다. 따라서 $m+s=13+4=17$이고 정답은 ③이다."
+        ],
+        [
+          "변환",
+          "solution:각 변량을 $2x+3$으로 바꾸면 평균은 $m=2\\times5+3=13$이다. 표준편차는 모든 값에 더한 3에는 변하지 않고, 2를 곱한 만큼 커져 $s=|2|\\times2=4$이다. 따라서 $m+s=13+4=17$이고 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 173
+  },
+  {
+    "image": "READ",
+    "ordinal": 11,
+    "rpm": "M2-RPM-101",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "subUnit": "피타고라스 정리",
+      "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "직각삼각형 세 변 위 정사각형의 넓이에 피타고라스 관계를 적용해 나머지 넓이29를 구하고 한 변을 제곱근으로 구한다.",
+    "difficulty": "제곱길이와 도형넓이를 대응한 후 길이로 환원.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "직각삼각형",
+          "stem"
+        ],
+        [
+          "정사각형",
+          "stem"
+        ],
+        [
+          "넓이",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:그림에서 넓이 $81\\,\\mathrm{cm}^2$인 정사각형은 직각삼각형의 빗변을 한 변으로 하고, $52\\,\\mathrm{cm}^2$인 것은 한 직각변을 한 변으로 한다. 피타고라스 정리의 넓이 관계에 따라 나머지 정사각형의 넓이는 $81-52=29\\,\\mathrm{cm}^2$이다. 따라서 색칠한 정사각형의 한 변은 $\\sqrt{29}\\,\\mathrm{cm}$이고 정답은 ①이다."
+        ],
+        [
+          "제곱근",
+          "solution:그림에서 넓이 $81\\,\\mathrm{cm}^2$인 정사각형은 직각삼각형의 빗변을 한 변으로 하고, $52\\,\\mathrm{cm}^2$인 것은 한 직각변을 한 변으로 한다. 피타고라스 정리의 넓이 관계에 따라 나머지 정사각형의 넓이는 $81-52=29\\,\\mathrm{cm}^2$이다. 따라서 색칠한 정사각형의 한 변은 $\\sqrt{29}\\,\\mathrm{cm}$이고 정답은 ①이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 12,
+    "rpm": "M2-RPM-101",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+      "subUnit": "피타고라스 정리",
+      "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "그림의 빗변8과 한 직각변7을 피타고라스 식에 넣어 남은 양의 길이를 구한다.",
+    "difficulty": "두 변이 직접 제시된 정리 대입.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "직각삼각형",
+          "solution:직각삼각형에서 빗변이 8, 한 직각변이 7이므로 $x^2+7^2=8^2$이다. $x^2=64-49=15$이고 길이는 양수이므로 $x=\\sqrt{15}$이다. 정답은 ①이다."
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:직각삼각형에서 빗변이 8, 한 직각변이 7이므로 $x^2+7^2=8^2$이다. $x^2=64-49=15$이고 길이는 양수이므로 $x=\\sqrt{15}$이다. 정답은 ①이다."
+        ],
+        [
+          "제곱근",
+          "solution:직각삼각형에서 빗변이 8, 한 직각변이 7이므로 $x^2+7^2=8^2$이다. $x^2=64-49=15$이고 길이는 양수이므로 $x=\\sqrt{15}$이다. 정답은 ①이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 13,
+    "rpm": "M2-RPM-105",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [
+        "CC_REFLECTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "접기에서 보존되는 두 거리를 좌표의 제곱합으로 두고 식을 소거해 접힌 점을 복원한 뒤 선분 비례로 BC와의 교점을 구한다.",
+    "difficulty": "반사점의 선택·이차식 소거·교점 비례가 상호 의존한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "직사각형",
+          "stem"
+        ],
+        [
+          "접기",
+          "stem"
+        ],
+        [
+          "대각선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:직사각형을 좌표로 두어 $B=(0,0), C=(8,0), A=(0,4), D=(8,4)$로 놓는다. 접는 선 $BD$에 대해 접힌 점을 $A\\prime=(u,v)$라 하면 길이가 보존되어 $BA\\prime=BA=4$, $DA\\prime=DA=8$이다. 따라서 $u^2+v^2=16$, $(u-8)^2+(v-4)^2=64$이고 두 식을 정리하면 $2u+v=4$이다. $v=4-2u$를 첫 식에 대입하면 $5u^2-16u=0$, 즉 $u=0$ 또는 $u=\\frac{16}{5}$이다. $u=0,v=4$는 접기 전의 점 $A$이고, 접힌 종이의 새 꼭짓점은 다른 해 $A\\prime=(\\frac{16}{5},-\\frac{12}{5})$이다. $D$에서 $A\\prime$까지 선분의 y좌표가 $4$에서 $-\\frac{12}{5}$로 변하므로 $y=0$에 이르는 비율은 $4/(4+\\frac{12}{5})=\\frac{5}{8}$이다. 따라서 $DE$는 선분 $DA\\prime$의 $\\frac{5}{8}$이고, $x_E=8-(\\frac{24}{5})(\\frac{5}{8})=5$이다. $EC=8-5=3\\,\\mathrm{cm}$이므로 정답은 ②이다."
+        ],
+        [
+          "좌표",
+          "solution:직사각형을 좌표로 두어 $B=(0,0), C=(8,0), A=(0,4), D=(8,4)$로 놓는다. 접는 선 $BD$에 대해 접힌 점을 $A\\prime=(u,v)$라 하면 길이가 보존되어 $BA\\prime=BA=4$, $DA\\prime=DA=8$이다. 따라서 $u^2+v^2=16$, $(u-8)^2+(v-4)^2=64$이고 두 식을 정리하면 $2u+v=4$이다. $v=4-2u$를 첫 식에 대입하면 $5u^2-16u=0$, 즉 $u=0$ 또는 $u=\\frac{16}{5}$이다. $u=0,v=4$는 접기 전의 점 $A$이고, 접힌 종이의 새 꼭짓점은 다른 해 $A\\prime=(\\frac{16}{5},-\\frac{12}{5})$이다. $D$에서 $A\\prime$까지 선분의 y좌표가 $4$에서 $-\\frac{12}{5}$로 변하므로 $y=0$에 이르는 비율은 $4/(4+\\frac{12}{5})=\\frac{5}{8}$이다. 따라서 $DE$는 선분 $DA\\prime$의 $\\frac{5}{8}$이고, $x_E=8-(\\frac{24}{5})(\\frac{5}{8})=5$이다. $EC=8-5=3\\,\\mathrm{cm}$이므로 정답은 ②이다."
+        ],
+        [
+          "소거",
+          "solution:직사각형을 좌표로 두어 $B=(0,0), C=(8,0), A=(0,4), D=(8,4)$로 놓는다. 접는 선 $BD$에 대해 접힌 점을 $A\\prime=(u,v)$라 하면 길이가 보존되어 $BA\\prime=BA=4$, $DA\\prime=DA=8$이다. 따라서 $u^2+v^2=16$, $(u-8)^2+(v-4)^2=64$이고 두 식을 정리하면 $2u+v=4$이다. $v=4-2u$를 첫 식에 대입하면 $5u^2-16u=0$, 즉 $u=0$ 또는 $u=\\frac{16}{5}$이다. $u=0,v=4$는 접기 전의 점 $A$이고, 접힌 종이의 새 꼭짓점은 다른 해 $A\\prime=(\\frac{16}{5},-\\frac{12}{5})$이다. $D$에서 $A\\prime$까지 선분의 y좌표가 $4$에서 $-\\frac{12}{5}$로 변하므로 $y=0$에 이르는 비율은 $4/(4+\\frac{12}{5})=\\frac{5}{8}$이다. 따라서 $DE$는 선분 $DA\\prime$의 $\\frac{5}{8}$이고, $x_E=8-(\\frac{24}{5})(\\frac{5}{8})=5$이다. $EC=8-5=3\\,\\mathrm{cm}$이므로 정답은 ②이다."
+        ],
+        [
+          "비례",
+          "solution:직사각형을 좌표로 두어 $B=(0,0), C=(8,0), A=(0,4), D=(8,4)$로 놓는다. 접는 선 $BD$에 대해 접힌 점을 $A\\prime=(u,v)$라 하면 길이가 보존되어 $BA\\prime=BA=4$, $DA\\prime=DA=8$이다. 따라서 $u^2+v^2=16$, $(u-8)^2+(v-4)^2=64$이고 두 식을 정리하면 $2u+v=4$이다. $v=4-2u$를 첫 식에 대입하면 $5u^2-16u=0$, 즉 $u=0$ 또는 $u=\\frac{16}{5}$이다. $u=0,v=4$는 접기 전의 점 $A$이고, 접힌 종이의 새 꼭짓점은 다른 해 $A\\prime=(\\frac{16}{5},-\\frac{12}{5})$이다. $D$에서 $A\\prime$까지 선분의 y좌표가 $4$에서 $-\\frac{12}{5}$로 변하므로 $y=0$에 이르는 비율은 $4/(4+\\frac{12}{5})=\\frac{5}{8}$이다. 따라서 $DE$는 선분 $DA\\prime$의 $\\frac{5}{8}$이고, $x_E=8-(\\frac{24}{5})(\\frac{5}{8})=5$이다. $EC=8-5=3\\,\\mathrm{cm}$이므로 정답은 ②이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 14,
+    "rpm": "M2-RPM-105",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "같은 길이s가 차례로 직각변에 추가되는 피타고라스 관계를 누적해 AF²=5s²를 구하고 AC²=2s²를 환산한다.",
+    "difficulty": "반복되는 동일 제곱관계를 누적하는 정형적 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "선분",
+          "stem"
+        ],
+        [
+          "상등",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:같은 길이인 선분의 길이를 $s$라 하자. 그림의 연속된 직각삼각형에 피타고라스 정리를 차례로 적용하면 $AC^2=s^2+s^2=2s^2$, $AD^2=AC^2+s^2=3s^2$, $AE^2=AD^2+s^2=4s^2$, $AF^2=AE^2+s^2=5s^2$이다. $AF=10$이므로 $5s^2=100$, $s^2=20$이다. 따라서 $AC^2=40$이고 $AC=2\\sqrt{10}\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          "제곱합",
+          "solution:같은 길이인 선분의 길이를 $s$라 하자. 그림의 연속된 직각삼각형에 피타고라스 정리를 차례로 적용하면 $AC^2=s^2+s^2=2s^2$, $AD^2=AC^2+s^2=3s^2$, $AE^2=AD^2+s^2=4s^2$, $AF^2=AE^2+s^2=5s^2$이다. $AF=10$이므로 $5s^2=100$, $s^2=20$이다. 따라서 $AC^2=40$이고 $AC=2\\sqrt{10}\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          "비례",
+          "solution:같은 길이인 선분의 길이를 $s$라 하자. 그림의 연속된 직각삼각형에 피타고라스 정리를 차례로 적용하면 $AC^2=s^2+s^2=2s^2$, $AD^2=AC^2+s^2=3s^2$, $AE^2=AD^2+s^2=4s^2$, $AF^2=AE^2+s^2=5s^2$이다. $AF=10$이므로 $5s^2=100$, $s^2=20$이다. 따라서 $AC^2=40$이고 $AC=2\\sqrt{10}\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ]
+      ],
+      "condition": [
+        [
+          "상등",
+          "stem"
+        ]
+      ]
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 15,
+    "rpm": 61,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "직각이등변삼각형에서 높이3을 구하고 다른 직각삼각형의 tan60°로 밑변 나머지를 얻어 전체 넓이를 계산한다.",
+    "difficulty": "두 직각삼각형의 서로 다른 비를 공유높이로 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "삼각형",
+          "stem"
+        ],
+        [
+          "수선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "넓이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "직각이등변삼각형",
+          "solution:$AD=BD$이고 $AD\\perp BD$이므로 $\\triangle ABD$는 직각이등변삼각형이다. 빗변 $AB=3\\sqrt2$이므로 두 직각변은 각각 3이다. 따라서 $AD=BD=3$. 직각삼각형 $ADC$에서 $\\angle C=60^\\circ$이므로 $\\tan60^\\circ=AD/DC=\\sqrt3$에서 $DC=\\sqrt3$이다. $BC=BD+DC=3+\\sqrt3$이고 높이는 $AD=3$이므로 넓이는 $\\frac12(3+\\sqrt3)\\times3=\\frac{9+3\\sqrt3}{2}$이다. 정답은 ④이다."
+        ],
+        [
+          "탄젠트",
+          "solution:$AD=BD$이고 $AD\\perp BD$이므로 $\\triangle ABD$는 직각이등변삼각형이다. 빗변 $AB=3\\sqrt2$이므로 두 직각변은 각각 3이다. 따라서 $AD=BD=3$. 직각삼각형 $ADC$에서 $\\angle C=60^\\circ$이므로 $\\tan60^\\circ=AD/DC=\\sqrt3$에서 $DC=\\sqrt3$이다. $BC=BD+DC=3+\\sqrt3$이고 높이는 $AD=3$이므로 넓이는 $\\frac12(3+\\sqrt3)\\times3=\\frac{9+3\\sqrt3}{2}$이다. 정답은 ④이다."
+        ],
+        [
+          "넓이",
+          "solution:$AD=BD$이고 $AD\\perp BD$이므로 $\\triangle ABD$는 직각이등변삼각형이다. 빗변 $AB=3\\sqrt2$이므로 두 직각변은 각각 3이다. 따라서 $AD=BD=3$. 직각삼각형 $ADC$에서 $\\angle C=60^\\circ$이므로 $\\tan60^\\circ=AD/DC=\\sqrt3$에서 $DC=\\sqrt3$이다. $BC=BD+DC=3+\\sqrt3$이고 높이는 $AD=3$이므로 넓이는 $\\frac12(3+\\sqrt3)\\times3=\\frac{9+3\\sqrt3}{2}$이다. 정답은 ④이다."
+        ]
+      ],
+      "condition": [
+        [
+          "수선",
+          "stem"
+        ],
+        [
+          "상등",
+          "stem"
+        ]
+      ]
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 16,
+    "rpm": "M2-RPM-105",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "crossConceptKeys": [
+        "CC_POLYGON_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "주어진 직각삼각형의 나머지 변9를 구한 뒤 큰정사각형에서 네 합동삼각형 넓이를 빼 안쪽정사각형 한변과 둘레를 구한다.",
+    "difficulty": "길이 복원·넓이 차·둘레 환산의 세 대상량 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "정사각형",
+          "stem"
+        ],
+        [
+          "직각삼각형",
+          "stem"
+        ],
+        [
+          "합동",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "둘레",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:$\\triangle ABE$에서 $AB=15$가 빗변이고 $AE=12$이므로 피타고라스 정리에 따라 $BE=\\sqrt{15^2-12^2}=9$이다. 그림처럼 네 합동 직각삼각형은 바깥 정사각형을 덮고 가운데 정사각형만 남긴다. 바깥 정사각형의 넓이는 $15^2=225$, 네 삼각형의 넓이의 합은 $4\\times(12\\times9/2)=216$이므로 안쪽 정사각형의 넓이는 $225-216=9$이다. 따라서 한 변은 $3$이고 둘레는 $4\\times3=12\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          "넓이",
+          "solution:$\\triangle ABE$에서 $AB=15$가 빗변이고 $AE=12$이므로 피타고라스 정리에 따라 $BE=\\sqrt{15^2-12^2}=9$이다. 그림처럼 네 합동 직각삼각형은 바깥 정사각형을 덮고 가운데 정사각형만 남긴다. 바깥 정사각형의 넓이는 $15^2=225$, 네 삼각형의 넓이의 합은 $4\\times(12\\times9/2)=216$이므로 안쪽 정사각형의 넓이는 $225-216=9$이다. 따라서 한 변은 $3$이고 둘레는 $4\\times3=12\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          "제곱근",
+          "solution:$\\triangle ABE$에서 $AB=15$가 빗변이고 $AE=12$이므로 피타고라스 정리에 따라 $BE=\\sqrt{15^2-12^2}=9$이다. 그림처럼 네 합동 직각삼각형은 바깥 정사각형을 덮고 가운데 정사각형만 남긴다. 바깥 정사각형의 넓이는 $15^2=225$, 네 삼각형의 넓이의 합은 $4\\times(12\\times9/2)=216$이므로 안쪽 정사각형의 넓이는 $225-216=9$이다. 따라서 한 변은 $3$이고 둘레는 $4\\times3=12\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ],
+        [
+          "둘레",
+          "solution:$\\triangle ABE$에서 $AB=15$가 빗변이고 $AE=12$이므로 피타고라스 정리에 따라 $BE=\\sqrt{15^2-12^2}=9$이다. 그림처럼 네 합동 직각삼각형은 바깥 정사각형을 덮고 가운데 정사각형만 남긴다. 바깥 정사각형의 넓이는 $15^2=225$, 네 삼각형의 넓이의 합은 $4\\times(12\\times9/2)=216$이므로 안쪽 정사각형의 넓이는 $225-216=9$이다. 따라서 한 변은 $3$이고 둘레는 $4\\times3=12\\,\\mathrm{cm}$이다. 정답은 ⑤이다."
+        ]
+      ],
+      "condition": [
+        [
+          "합동",
+          "stem"
+        ]
+      ]
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 17,
+    "rpm": "M2-RPM-105",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_SIMILARITY",
+        "CC_POLYGON_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "직각삼각형의 닮음으로 수선과 빗변 분할길이를 복원하고 정사각형/삼각형의 합동과 여러 넓이 등식을 각각 판정한다.",
+    "difficulty": "동일 그림에서 합동과 넓이 같은 명제를 분리하여 다섯 진술을 검증한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "직각삼각형",
+          "stem"
+        ],
+        [
+          "정사각형",
+          "stem"
+        ],
+        [
+          "수선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "개수",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:먼저 $\\angle A=90^\\circ$, $AB=8$, $BC=10$이므로 $AC=\\sqrt{10^2-8^2}=6$이다. 점 $L$은 $A$에서 $BC$에 내린 수선의 발이므로, 직각삼각형의 닮음에서 $BL=AB^2/BC=\\frac{64}{10}=\\frac{32}{5}$, $LC=AC^2/BC=\\frac{36}{10}=\\frac{18}{5}$, $AL=AB\\times AC/BC=\\frac{48}{10}=\\frac{24}{5}$이다. $AB$ 위의 정사각형에서 $AB=BE=8$이고 $\\angle ABE=90^\\circ$이므로 $AE=8\\sqrt2$이다. $BC$ 위의 정사각형에서 $BF=BC=10$이다. ㄱ: $\\triangle AEB$의 변은 $8,8,8\\sqrt2$이고 $\\triangle EBC$에는 $BC=10$이 포함된다. $10$은 $\\triangle AEB$의 어떤 변과도 같지 않으므로 합동이 아니다. ㄴ: $\\triangle AEB$의 넓이는 $\\frac12\\times8\\times8=32$이다. $BF\\perp BL$이므로 $\\triangle BFL$의 넓이도 $\\frac12\\times10\\times\\frac{32}{5}=32$이다. 참이다. ㄷ: $AE$는 $AB$ 위 정사각형의 대각선이므로 $AE=8\\sqrt2$이다. 이는 $\\triangle ABC$의 세 변 $6,8,10$ 중 어느 것과도 같지 않으므로 두 삼각형은 합동이 아니다. ㄹ: $AL\\parallel BF$이고 $FG\\parallel BC$이므로 $BFML$은 직사각형이다. 넓이는 $BF\\times BL=10\\times\\frac{32}{5}=64$이다. $\\triangle ABF$의 밑변을 $BF$로 잡고, 점 $A$에서 직선 $BF$에 내린 수선의 발을 $P$라 하자. 그러면 $AP\\perp BF$이고 사각형 $APBL$은 직사각형이므로 $AP=BL=\\frac{32}{5}$이다. 따라서 $\\triangle ABF$의 넓이는 $\\frac12\\times10\\times\\frac{32}{5}=32$이고, $BFML$의 넓이는 그 두 배이므로 참이다. ㅁ: $LMGC$는 직사각형이므로 넓이는 $LC\\times CG=\\frac{18}{5}\\times10=36$이다. $\\triangle ALC$의 넓이는 $\\frac12\\times AL\\times LC=\\frac12\\times\\frac{24}{5}\\times\\frac{18}{5}=\\frac{216}{25}$이다. 그 두 배 $\\frac{432}{25}$는 36과 다르므로 거짓이다. 참인 것은 ㄴ, ㄹ 두 개이며 정답은 ④이다."
+        ],
+        [
+          "닮음",
+          "solution:먼저 $\\angle A=90^\\circ$, $AB=8$, $BC=10$이므로 $AC=\\sqrt{10^2-8^2}=6$이다. 점 $L$은 $A$에서 $BC$에 내린 수선의 발이므로, 직각삼각형의 닮음에서 $BL=AB^2/BC=\\frac{64}{10}=\\frac{32}{5}$, $LC=AC^2/BC=\\frac{36}{10}=\\frac{18}{5}$, $AL=AB\\times AC/BC=\\frac{48}{10}=\\frac{24}{5}$이다. $AB$ 위의 정사각형에서 $AB=BE=8$이고 $\\angle ABE=90^\\circ$이므로 $AE=8\\sqrt2$이다. $BC$ 위의 정사각형에서 $BF=BC=10$이다. ㄱ: $\\triangle AEB$의 변은 $8,8,8\\sqrt2$이고 $\\triangle EBC$에는 $BC=10$이 포함된다. $10$은 $\\triangle AEB$의 어떤 변과도 같지 않으므로 합동이 아니다. ㄴ: $\\triangle AEB$의 넓이는 $\\frac12\\times8\\times8=32$이다. $BF\\perp BL$이므로 $\\triangle BFL$의 넓이도 $\\frac12\\times10\\times\\frac{32}{5}=32$이다. 참이다. ㄷ: $AE$는 $AB$ 위 정사각형의 대각선이므로 $AE=8\\sqrt2$이다. 이는 $\\triangle ABC$의 세 변 $6,8,10$ 중 어느 것과도 같지 않으므로 두 삼각형은 합동이 아니다. ㄹ: $AL\\parallel BF$이고 $FG\\parallel BC$이므로 $BFML$은 직사각형이다. 넓이는 $BF\\times BL=10\\times\\frac{32}{5}=64$이다. $\\triangle ABF$의 밑변을 $BF$로 잡고, 점 $A$에서 직선 $BF$에 내린 수선의 발을 $P$라 하자. 그러면 $AP\\perp BF$이고 사각형 $APBL$은 직사각형이므로 $AP=BL=\\frac{32}{5}$이다. 따라서 $\\triangle ABF$의 넓이는 $\\frac12\\times10\\times\\frac{32}{5}=32$이고, $BFML$의 넓이는 그 두 배이므로 참이다. ㅁ: $LMGC$는 직사각형이므로 넓이는 $LC\\times CG=\\frac{18}{5}\\times10=36$이다. $\\triangle ALC$의 넓이는 $\\frac12\\times AL\\times LC=\\frac12\\times\\frac{24}{5}\\times\\frac{18}{5}=\\frac{216}{25}$이다. 그 두 배 $\\frac{432}{25}$는 36과 다르므로 거짓이다. 참인 것은 ㄴ, ㄹ 두 개이며 정답은 ④이다."
+        ],
+        [
+          "합동",
+          "solution:먼저 $\\angle A=90^\\circ$, $AB=8$, $BC=10$이므로 $AC=\\sqrt{10^2-8^2}=6$이다. 점 $L$은 $A$에서 $BC$에 내린 수선의 발이므로, 직각삼각형의 닮음에서 $BL=AB^2/BC=\\frac{64}{10}=\\frac{32}{5}$, $LC=AC^2/BC=\\frac{36}{10}=\\frac{18}{5}$, $AL=AB\\times AC/BC=\\frac{48}{10}=\\frac{24}{5}$이다. $AB$ 위의 정사각형에서 $AB=BE=8$이고 $\\angle ABE=90^\\circ$이므로 $AE=8\\sqrt2$이다. $BC$ 위의 정사각형에서 $BF=BC=10$이다. ㄱ: $\\triangle AEB$의 변은 $8,8,8\\sqrt2$이고 $\\triangle EBC$에는 $BC=10$이 포함된다. $10$은 $\\triangle AEB$의 어떤 변과도 같지 않으므로 합동이 아니다. ㄴ: $\\triangle AEB$의 넓이는 $\\frac12\\times8\\times8=32$이다. $BF\\perp BL$이므로 $\\triangle BFL$의 넓이도 $\\frac12\\times10\\times\\frac{32}{5}=32$이다. 참이다. ㄷ: $AE$는 $AB$ 위 정사각형의 대각선이므로 $AE=8\\sqrt2$이다. 이는 $\\triangle ABC$의 세 변 $6,8,10$ 중 어느 것과도 같지 않으므로 두 삼각형은 합동이 아니다. ㄹ: $AL\\parallel BF$이고 $FG\\parallel BC$이므로 $BFML$은 직사각형이다. 넓이는 $BF\\times BL=10\\times\\frac{32}{5}=64$이다. $\\triangle ABF$의 밑변을 $BF$로 잡고, 점 $A$에서 직선 $BF$에 내린 수선의 발을 $P$라 하자. 그러면 $AP\\perp BF$이고 사각형 $APBL$은 직사각형이므로 $AP=BL=\\frac{32}{5}$이다. 따라서 $\\triangle ABF$의 넓이는 $\\frac12\\times10\\times\\frac{32}{5}=32$이고, $BFML$의 넓이는 그 두 배이므로 참이다. ㅁ: $LMGC$는 직사각형이므로 넓이는 $LC\\times CG=\\frac{18}{5}\\times10=36$이다. $\\triangle ALC$의 넓이는 $\\frac12\\times AL\\times LC=\\frac12\\times\\frac{24}{5}\\times\\frac{18}{5}=\\frac{216}{25}$이다. 그 두 배 $\\frac{432}{25}$는 36과 다르므로 거짓이다. 참인 것은 ㄴ, ㄹ 두 개이며 정답은 ④이다."
+        ],
+        [
+          "넓이",
+          "solution:먼저 $\\angle A=90^\\circ$, $AB=8$, $BC=10$이므로 $AC=\\sqrt{10^2-8^2}=6$이다. 점 $L$은 $A$에서 $BC$에 내린 수선의 발이므로, 직각삼각형의 닮음에서 $BL=AB^2/BC=\\frac{64}{10}=\\frac{32}{5}$, $LC=AC^2/BC=\\frac{36}{10}=\\frac{18}{5}$, $AL=AB\\times AC/BC=\\frac{48}{10}=\\frac{24}{5}$이다. $AB$ 위의 정사각형에서 $AB=BE=8$이고 $\\angle ABE=90^\\circ$이므로 $AE=8\\sqrt2$이다. $BC$ 위의 정사각형에서 $BF=BC=10$이다. ㄱ: $\\triangle AEB$의 변은 $8,8,8\\sqrt2$이고 $\\triangle EBC$에는 $BC=10$이 포함된다. $10$은 $\\triangle AEB$의 어떤 변과도 같지 않으므로 합동이 아니다. ㄴ: $\\triangle AEB$의 넓이는 $\\frac12\\times8\\times8=32$이다. $BF\\perp BL$이므로 $\\triangle BFL$의 넓이도 $\\frac12\\times10\\times\\frac{32}{5}=32$이다. 참이다. ㄷ: $AE$는 $AB$ 위 정사각형의 대각선이므로 $AE=8\\sqrt2$이다. 이는 $\\triangle ABC$의 세 변 $6,8,10$ 중 어느 것과도 같지 않으므로 두 삼각형은 합동이 아니다. ㄹ: $AL\\parallel BF$이고 $FG\\parallel BC$이므로 $BFML$은 직사각형이다. 넓이는 $BF\\times BL=10\\times\\frac{32}{5}=64$이다. $\\triangle ABF$의 밑변을 $BF$로 잡고, 점 $A$에서 직선 $BF$에 내린 수선의 발을 $P$라 하자. 그러면 $AP\\perp BF$이고 사각형 $APBL$은 직사각형이므로 $AP=BL=\\frac{32}{5}$이다. 따라서 $\\triangle ABF$의 넓이는 $\\frac12\\times10\\times\\frac{32}{5}=32$이고, $BFML$의 넓이는 그 두 배이므로 참이다. ㅁ: $LMGC$는 직사각형이므로 넓이는 $LC\\times CG=\\frac{18}{5}\\times10=36$이다. $\\triangle ALC$의 넓이는 $\\frac12\\times AL\\times LC=\\frac12\\times\\frac{24}{5}\\times\\frac{18}{5}=\\frac{216}{25}$이다. 그 두 배 $\\frac{432}{25}$는 36과 다르므로 거짓이다. 참인 것은 ㄴ, ㄹ 두 개이며 정답은 ④이다."
+        ]
+      ],
+      "condition": [
+        [
+          "직각",
+          "stem"
+        ],
+        [
+          "수선",
+          "stem"
+        ]
+      ]
+    },
+    "format": "보기(ㄱㄴㄷ) 판정"
+  },
+  {
+    "image": "READ",
+    "ordinal": 18,
+    "rpm": "M2-RPM-106",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "하",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "reason": "직육면체 공간대각선의 제곱은 세 모서리 제곱합이라는 관계에서 누락된 세로길이를 역산한다.",
+    "difficulty": "공간대각선에서 세 축 길이의 관계를 읽어야 한다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "직육면체",
+          "stem"
+        ],
+        [
+          "공간대각선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "길이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "피타고라스정리",
+          "solution:직육면체의 공간대각선 $5\\sqrt5$를 빗변으로 하는 직각삼각형에 피타고라스 정리를 적용한다. 세로 변을 $x$라 하면 $x^2+5^2+8^2=(5\\sqrt5)^2=125$이다. 따라서 $x^2=125-25-64=36$, 길이는 양수이므로 $x=6\\,\\mathrm{cm}$이다. 정답은 ①이다."
+        ],
+        [
+          "제곱근",
+          "solution:직육면체의 공간대각선 $5\\sqrt5$를 빗변으로 하는 직각삼각형에 피타고라스 정리를 적용한다. 세로 변을 $x$라 하면 $x^2+5^2+8^2=(5\\sqrt5)^2=125$이다. 따라서 $x^2=125-25-64=36$, 길이는 양수이므로 $x=6\\,\\mathrm{cm}$이다. 정답은 ①이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 19,
+    "rpm": "M2-RPM-106",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "구의 부피로 반지름6을 구하고 중심에서 단면까지 거리4와 단면반지름의 직각삼각형을 이용해 단면 원넓이를 구한다.",
+    "difficulty": "부피→전체반지름→단면반지름→넓이의 공간 연결.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "구",
+          "stem"
+        ],
+        [
+          "단면",
+          "stem"
+        ],
+        [
+          "부피",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "넓이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "부피",
+          "solution:구의 부피가 $288\\pi$이므로 $\\frac43\\pi r^3=288\\pi$, 즉 $r^3=216$이고 구의 반지름은 6 cm이다. 중심에서 단면까지 거리가 4 cm이므로 단면 원의 반지름 $x$에 대해 $x^2+4^2=6^2$이다. $x^2=20$이므로 단면 넓이는 $20\\pi\\,\\mathrm{cm}^2$이고 정답은 ③이다."
+        ],
+        [
+          "피타고라스정리",
+          "solution:구의 부피가 $288\\pi$이므로 $\\frac43\\pi r^3=288\\pi$, 즉 $r^3=216$이고 구의 반지름은 6 cm이다. 중심에서 단면까지 거리가 4 cm이므로 단면 원의 반지름 $x$에 대해 $x^2+4^2=6^2$이다. $x^2=20$이므로 단면 넓이는 $20\\pi\\,\\mathrm{cm}^2$이고 정답은 ③이다."
+        ],
+        [
+          "넓이",
+          "solution:구의 부피가 $288\\pi$이므로 $\\frac43\\pi r^3=288\\pi$, 즉 $r^3=216$이고 구의 반지름은 6 cm이다. 중심에서 단면까지 거리가 4 cm이므로 단면 원의 반지름 $x$에 대해 $x^2+4^2=6^2$이다. $x^2=20$이므로 단면 넓이는 $20\\pi\\,\\mathrm{cm}^2$이고 정답은 ③이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 20,
+    "rpm": "M2-RPM-106",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "원뿔 밑면넓이에서 반지름6을 구하고 모선8·반지름·높이의 직각삼각형에서 높이를 구한다.",
+    "difficulty": "밑면 넓이에서 길이로 환원 후 피타고라스 적용.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "원뿔",
+          "stem"
+        ],
+        [
+          "밑넓이",
+          "stem"
+        ],
+        [
+          "모선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "높이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "반지름",
+          "solution:밑면 넓이 $36\\pi$에서 $\\pi r^2=36\\pi$이므로 반지름은 6 cm이다. 원뿔의 모선 8 cm는 높이, 반지름 6 cm와 이루는 직각삼각형의 빗변이다. 따라서 높이 $h=\\sqrt{8^2-6^2}=\\sqrt{28}=2\\sqrt7\\,\\mathrm{cm}$이고 정답은 ④이다."
+        ],
+        [
+          "피타고라스정리",
+          "solution:밑면 넓이 $36\\pi$에서 $\\pi r^2=36\\pi$이므로 반지름은 6 cm이다. 원뿔의 모선 8 cm는 높이, 반지름 6 cm와 이루는 직각삼각형의 빗변이다. 따라서 높이 $h=\\sqrt{8^2-6^2}=\\sqrt{28}=2\\sqrt7\\,\\mathrm{cm}$이고 정답은 ④이다."
+        ],
+        [
+          "제곱근",
+          "solution:밑면 넓이 $36\\pi$에서 $\\pi r^2=36\\pi$이므로 반지름은 6 cm이다. 원뿔의 모선 8 cm는 높이, 반지름 6 cm와 이루는 직각삼각형의 빗변이다. 따라서 높이 $h=\\sqrt{8^2-6^2}=\\sqrt{28}=2\\sqrt7\\,\\mathrm{cm}$이고 정답은 ④이다."
+        ]
+      ],
+      "condition": []
+    }
+  },
+  {
+    "image": "READ",
+    "ordinal": 21,
+    "rpm": "M2-RPM-106",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "현 ALIVE 조건의 한바퀴 옆면 경로를 가로6π·세로8π인 전개도의 대각선으로 옮겨 피타고라스 길이를 구한다.",
+    "difficulty": "전개도 변환이 핵심이며 회전수·상대위치는 현재 발문에서 모두 지정되었다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "HISTORICAL_SOURCE_FIDELITY_UNVERIFIED",
+        "reason": "기존 원본 도형의 A/B위치·회전수 판독불확실을 ALIVE조건이 보완했다. 현 조건의 메타만 판정하며 원문 의도복원/인쇄원문대조는 미확인."
+      },
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "원기둥",
+          "stem"
+        ],
+        [
+          "모선",
+          "stem"
+        ],
+        [
+          "경로",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "최단거리",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "전개도",
+          "solution:ALIVE 조건에 따라 옆면을 펼쳤을 때 A에서 한 바퀴 돌아 B에 이르는 수평 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$이고, 두 점의 높이 차는 원기둥의 높이 $8\\pi$이다. 이 경로는 전개도에서 가로 $6\\pi$, 세로 $8\\pi$인 직사각형의 대각선이므로 길이는 $\\sqrt{(6\\pi)^2+(8\\pi)^2}=10\\pi\\,\\mathrm{cm}$이다. 정답은 ②이다. 이 조건은 원문 의도의 추정이 아니라 원문만으로 결정되지 않는 경로를 유일하게 하기 위한 ALIVE 수리이다."
+        ],
+        [
+          "원주",
+          "solution:ALIVE 조건에 따라 옆면을 펼쳤을 때 A에서 한 바퀴 돌아 B에 이르는 수평 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$이고, 두 점의 높이 차는 원기둥의 높이 $8\\pi$이다. 이 경로는 전개도에서 가로 $6\\pi$, 세로 $8\\pi$인 직사각형의 대각선이므로 길이는 $\\sqrt{(6\\pi)^2+(8\\pi)^2}=10\\pi\\,\\mathrm{cm}$이다. 정답은 ②이다. 이 조건은 원문 의도의 추정이 아니라 원문만으로 결정되지 않는 경로를 유일하게 하기 위한 ALIVE 수리이다."
+        ],
+        [
+          "피타고라스정리",
+          "solution:ALIVE 조건에 따라 옆면을 펼쳤을 때 A에서 한 바퀴 돌아 B에 이르는 수평 길이는 밑면의 둘레 $2\\pi\\times3=6\\pi$이고, 두 점의 높이 차는 원기둥의 높이 $8\\pi$이다. 이 경로는 전개도에서 가로 $6\\pi$, 세로 $8\\pi$인 직사각형의 대각선이므로 길이는 $\\sqrt{(6\\pi)^2+(8\\pi)^2}=10\\pi\\,\\mathrm{cm}$이다. 정답은 ②이다. 이 조건은 원문 의도의 추정이 아니라 원문만으로 결정되지 않는 경로를 유일하게 하기 위한 ALIVE 수리이다."
+        ]
+      ],
+      "condition": [
+        [
+          "위치",
+          "stem"
+        ],
+        [
+          "개수",
+          "stem"
+        ]
+      ]
+    }
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 22,
+    "rpm": 50,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수와 그래프",
+      "standardUnitOrder": 4,
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "꼭짓점형으로 축·극값을 읽고 x절편두개와 y절편으로 삼각형의 밑변·높이를 구한다.",
+    "difficulty": "각 소문항이 같은 이차식의 표준 계산으로 연결되고 중간목표가 명시되어 있다.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      },
+      {
+        "type": "RPM_LEAF_GAP",
+        "reason": "꼭짓점·극값과 절편삼각형넓이를 함께 묻는 그래프기하 문제는 꼭짓점·축 단일leaf만으로 전 목표를 표시하지 못한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "rpmLeafGap": "꼭짓점·극값과 절편삼각형넓이를 함께 묻는 그래프기하 문제는 꼭짓점·축 단일leaf만으로 전 목표를 표시하지 못한다.",
+    "slots": {
+      "given": [
+        [
+          "이차함수",
+          "stem"
+        ],
+        [
+          "좌표축",
+          "stem"
+        ],
+        [
+          "교점",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "꼭짓점",
+          "stem"
+        ],
+        [
+          "축",
+          "stem"
+        ],
+        [
+          "최댓값",
+          "stem"
+        ],
+        [
+          "넓이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "완전제곱식",
+          "solution:$y=-x^2+2x+3=-(x-1)^2+4$이므로 꼭짓점은 $(1,4)$, 축은 $x=1$, 최댓값은 4이다. $x$절편은 $-(x-3)(x+1)=0$에서 $x=-1,3$이므로 $A=(-1,0),B=(3,0)$이고 $C=(0,3)$이다. 밑변 $AB=4$, 높이는 점 C의 $x$축까지 거리 3이므로 $[ABC]=\\frac12\\times4\\times3=6$이다."
+        ],
+        [
+          "인수분해",
+          "solution:$y=-x^2+2x+3=-(x-1)^2+4$이므로 꼭짓점은 $(1,4)$, 축은 $x=1$, 최댓값은 4이다. $x$절편은 $-(x-3)(x+1)=0$에서 $x=-1,3$이므로 $A=(-1,0),B=(3,0)$이고 $C=(0,3)$이다. 밑변 $AB=4$, 높이는 점 C의 $x$축까지 거리 3이므로 $[ABC]=\\frac12\\times4\\times3=6$이다."
+        ],
+        [
+          "절편",
+          "solution:$y=-x^2+2x+3=-(x-1)^2+4$이므로 꼭짓점은 $(1,4)$, 축은 $x=1$, 최댓값은 4이다. $x$절편은 $-(x-3)(x+1)=0$에서 $x=-1,3$이므로 $A=(-1,0),B=(3,0)$이고 $C=(0,3)$이다. 밑변 $AB=4$, 높이는 점 C의 $x$축까지 거리 3이므로 $[ABC]=\\frac12\\times4\\times3=6$이다."
+        ],
+        [
+          "넓이",
+          "solution:$y=-x^2+2x+3=-(x-1)^2+4$이므로 꼭짓점은 $(1,4)$, 축은 $x=1$, 최댓값은 4이다. $x$절편은 $-(x-3)(x+1)=0$에서 $x=-1,3$이므로 $A=(-1,0),B=(3,0)$이고 $C=(0,3)$이다. 밑변 $AB=4$, 높이는 점 C의 $x$축까지 거리 3이므로 $[ABC]=\\frac12\\times4\\times3=6$이다."
+        ]
+      ],
+      "condition": [
+        [
+          "순서",
+          "stem"
+        ]
+      ]
+    },
+    "format": "소문항 묶음"
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 23,
+    "rpm": 81,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "줄기와잎에서14개 자료를 복원해 최빈도와 가운데 두값 및 합/개수로 세 대푯값을 계산한다.",
+    "difficulty": "자료표현을 읽고 짝수개 중앙값을 적용하는 정형적 계산.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "missingCurricula": [
+          "2015",
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "자료",
+          "stem"
+        ],
+        [
+          "줄기와잎",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "최빈값",
+          "stem"
+        ],
+        [
+          "중앙값",
+          "stem"
+        ],
+        [
+          "평균",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "줄기와잎",
+          "solution:자료를 작은 수부터 쓰면 $10,10,12,16,20,20,22,25,25,25,28,30,30,35$ (천 원)이다. 가장 자주 나온 값은 세 번 나온 25이므로 최빈값은 25천 원이다. 자료가 14개이므로 7번째와 8번째 값의 평균이 중앙값이며 $\\frac{22+25}{2}=23.5$천 원이다. 합은 $308$천 원이므로 평균은 $\\frac{308}{14}=22$천 원이다."
+        ],
+        [
+          "최빈값",
+          "solution:자료를 작은 수부터 쓰면 $10,10,12,16,20,20,22,25,25,25,28,30,30,35$ (천 원)이다. 가장 자주 나온 값은 세 번 나온 25이므로 최빈값은 25천 원이다. 자료가 14개이므로 7번째와 8번째 값의 평균이 중앙값이며 $\\frac{22+25}{2}=23.5$천 원이다. 합은 $308$천 원이므로 평균은 $\\frac{308}{14}=22$천 원이다."
+        ],
+        [
+          "중앙값",
+          "solution:자료를 작은 수부터 쓰면 $10,10,12,16,20,20,22,25,25,25,28,30,30,35$ (천 원)이다. 가장 자주 나온 값은 세 번 나온 25이므로 최빈값은 25천 원이다. 자료가 14개이므로 7번째와 8번째 값의 평균이 중앙값이며 $\\frac{22+25}{2}=23.5$천 원이다. 합은 $308$천 원이므로 평균은 $\\frac{308}{14}=22$천 원이다."
+        ],
+        [
+          "평균",
+          "solution:자료를 작은 수부터 쓰면 $10,10,12,16,20,20,22,25,25,25,28,30,30,35$ (천 원)이다. 가장 자주 나온 값은 세 번 나온 25이므로 최빈값은 25천 원이다. 자료가 14개이므로 7번째와 8번째 값의 평균이 중앙값이며 $\\frac{22+25}{2}=23.5$천 원이다. 합은 $308$천 원이므로 평균은 $\\frac{308}{14}=22$천 원이다."
+        ]
+      ],
+      "condition": []
+    },
+    "format": "소문항 묶음",
+    "rpm2022": "M1-RPM-226"
+  },
+  {
+    "image": "NOT_PRESENT",
+    "ordinal": 24,
+    "rpm": 86,
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-07",
+      "standardUnit": "통계",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "subUnit": "대푯값과 산포도",
+      "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "평균이 다른 두집단 각각의 편차제곱 평균을 구하고 표준편차를 비교해 더 고른 집단을 결정한다.",
+    "difficulty": "각 집단의 평균을 별도로 사용해야 하며 계산량은 난도상승 근거가 아니다.",
+    "compatibility": "NATIVE_TEMPLATE_GAP",
+    "debts": [
+      {
+        "type": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균이 다른 두집단 각각의 편차제곱 평균을 구하고 표준편차를 비교해 더 고른 집단을 결정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": false,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "집단",
+          "stem"
+        ],
+        [
+          "자료",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "집단",
+          "stem"
+        ],
+        [
+          "판정",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "평균",
+          "solution:A의 평균은 $\\frac{5+6+7+8+9}{5}=7$점이다. 편차 제곱합은 $(-2)^2+(-1)^2+0^2+1^2+2^2=10$이므로 분산은 $\\frac{10}{5}=2$, 표준편차는 $\\sqrt2$점이다. B의 평균은 $\\frac{4+5+7+7+7}{5}=6$점이고 편차 제곱합은 $(-2)^2+(-1)^2+1^2+1^2+1^2=8$이므로 분산은 $\\frac{8}{5}$, 표준편차는 $\\sqrt{\\frac{8}{5}}$점이다. $\\sqrt{\\frac{8}{5}}<\\sqrt2$이므로 평균과 관계없이 산포가 더 작은 B 집단의 성적이 더 고르다."
+        ],
+        [
+          "분산",
+          "solution:A의 평균은 $\\frac{5+6+7+8+9}{5}=7$점이다. 편차 제곱합은 $(-2)^2+(-1)^2+0^2+1^2+2^2=10$이므로 분산은 $\\frac{10}{5}=2$, 표준편차는 $\\sqrt2$점이다. B의 평균은 $\\frac{4+5+7+7+7}{5}=6$점이고 편차 제곱합은 $(-2)^2+(-1)^2+1^2+1^2+1^2=8$이므로 분산은 $\\frac{8}{5}$, 표준편차는 $\\sqrt{\\frac{8}{5}}$점이다. $\\sqrt{\\frac{8}{5}}<\\sqrt2$이므로 평균과 관계없이 산포가 더 작은 B 집단의 성적이 더 고르다."
+        ],
+        [
+          "표준편차",
+          "solution:A의 평균은 $\\frac{5+6+7+8+9}{5}=7$점이다. 편차 제곱합은 $(-2)^2+(-1)^2+0^2+1^2+2^2=10$이므로 분산은 $\\frac{10}{5}=2$, 표준편차는 $\\sqrt2$점이다. B의 평균은 $\\frac{4+5+7+7+7}{5}=6$점이고 편차 제곱합은 $(-2)^2+(-1)^2+1^2+1^2+1^2=8$이므로 분산은 $\\frac{8}{5}$, 표준편차는 $\\sqrt{\\frac{8}{5}}$점이다. $\\sqrt{\\frac{8}{5}}<\\sqrt2$이므로 평균과 관계없이 산포가 더 작은 B 집단의 성적이 더 고르다."
+        ],
+        [
+          "대소비교",
+          "solution:A의 평균은 $\\frac{5+6+7+8+9}{5}=7$점이다. 편차 제곱합은 $(-2)^2+(-1)^2+0^2+1^2+2^2=10$이므로 분산은 $\\frac{10}{5}=2$, 표준편차는 $\\sqrt2$점이다. B의 평균은 $\\frac{4+5+7+7+7}{5}=6$점이고 편차 제곱합은 $(-2)^2+(-1)^2+1^2+1^2+1^2=8$이므로 분산은 $\\frac{8}{5}$, 표준편차는 $\\sqrt{\\frac{8}{5}}$점이다. $\\sqrt{\\frac{8}{5}}<\\sqrt2$이므로 평균과 관계없이 산포가 더 작은 B 집단의 성적이 더 고르다."
+        ]
+      ],
+      "condition": []
+    },
+    "rpm2022": 174
+  },
+  {
+    "image": "READ",
+    "ordinal": 25,
+    "rpm": "M2-RPM-106",
+    "after": {
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "standardUnit": "피타고라스 정리",
+      "standardUnitOrder": 7,
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "subUnit": "피타고라스 정리의 활용",
+      "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CIRCUMCENTER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
+    },
+    "reason": "잘린 정삼각형의 세 꼭짓점까지 B의 거리가 같음을 이용해 수선발J가 외심임을 확인하고 정삼각형의 중선2:1 관계와 피타고라스로 BJ를 구한다.",
+    "difficulty": "입체의 수선발을 정삼각형 외심으로 식별하는 핵심 공간추론이 필요.",
+    "compatibility": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+    "debts": [
+      {
+        "type": "CURRICULUM_BINDING_GAP",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "missingCurricula": [
+          "2022"
+        ],
+        "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+      }
+    ],
+    "bindingEvidence": {
+      "2015": true,
+      "2022": false
+    },
+    "slots": {
+      "given": [
+        [
+          "정육면체",
+          "stem"
+        ],
+        [
+          "평면",
+          "stem"
+        ],
+        [
+          "각뿔",
+          "stem"
+        ],
+        [
+          "수선",
+          "stem"
+        ]
+      ],
+      "goal": [
+        [
+          "높이",
+          "stem"
+        ]
+      ],
+      "method": [
+        [
+          "정삼각형",
+          "solution:정육면체의 모서리가 $6\\,\\mathrm{cm}$이므로 $AB=BF=BC=6$이다. $AF, AC, FC$는 각 면의 대각선이므로 모두 $6\\sqrt2$이고, $\\triangle AFC$는 정삼각형이다. $BJ$가 평면 $AFC$에 수직이므로 $\\triangle BAJ$, $\\triangle BFJ$, $\\triangle BCJ$는 모두 J에서 직각이다. 세 직각삼각형의 빗변은 각각 $AB,BF,BC$로 모두 6이고 $BJ$는 공통이므로 피타고라스 정리에 따라 $JA=JF=JC$이다. 따라서 J는 정삼각형 $AFC$의 외심이다. 한 변 $6\\sqrt2$인 정삼각형의 높이는 $\\sqrt{(6\\sqrt2)^2-(3\\sqrt2)^2}=3\\sqrt6$이고, 외심은 중선을 꼭짓점에서부터 $2:1$로 나누므로 $AJ=\\frac23\\times3\\sqrt6=2\\sqrt6$이다. 직각삼각형 $ABJ$에서 $BJ=\\sqrt{6^2-(2\\sqrt6)^2}=2\\sqrt3\\,\\mathrm{cm}$이다."
+        ],
+        [
+          "외심",
+          "solution:정육면체의 모서리가 $6\\,\\mathrm{cm}$이므로 $AB=BF=BC=6$이다. $AF, AC, FC$는 각 면의 대각선이므로 모두 $6\\sqrt2$이고, $\\triangle AFC$는 정삼각형이다. $BJ$가 평면 $AFC$에 수직이므로 $\\triangle BAJ$, $\\triangle BFJ$, $\\triangle BCJ$는 모두 J에서 직각이다. 세 직각삼각형의 빗변은 각각 $AB,BF,BC$로 모두 6이고 $BJ$는 공통이므로 피타고라스 정리에 따라 $JA=JF=JC$이다. 따라서 J는 정삼각형 $AFC$의 외심이다. 한 변 $6\\sqrt2$인 정삼각형의 높이는 $\\sqrt{(6\\sqrt2)^2-(3\\sqrt2)^2}=3\\sqrt6$이고, 외심은 중선을 꼭짓점에서부터 $2:1$로 나누므로 $AJ=\\frac23\\times3\\sqrt6=2\\sqrt6$이다. 직각삼각형 $ABJ$에서 $BJ=\\sqrt{6^2-(2\\sqrt6)^2}=2\\sqrt3\\,\\mathrm{cm}$이다."
+        ],
+        [
+          "중선",
+          "solution:정육면체의 모서리가 $6\\,\\mathrm{cm}$이므로 $AB=BF=BC=6$이다. $AF, AC, FC$는 각 면의 대각선이므로 모두 $6\\sqrt2$이고, $\\triangle AFC$는 정삼각형이다. $BJ$가 평면 $AFC$에 수직이므로 $\\triangle BAJ$, $\\triangle BFJ$, $\\triangle BCJ$는 모두 J에서 직각이다. 세 직각삼각형의 빗변은 각각 $AB,BF,BC$로 모두 6이고 $BJ$는 공통이므로 피타고라스 정리에 따라 $JA=JF=JC$이다. 따라서 J는 정삼각형 $AFC$의 외심이다. 한 변 $6\\sqrt2$인 정삼각형의 높이는 $\\sqrt{(6\\sqrt2)^2-(3\\sqrt2)^2}=3\\sqrt6$이고, 외심은 중선을 꼭짓점에서부터 $2:1$로 나누므로 $AJ=\\frac23\\times3\\sqrt6=2\\sqrt6$이다. 직각삼각형 $ABJ$에서 $BJ=\\sqrt{6^2-(2\\sqrt6)^2}=2\\sqrt3\\,\\mathrm{cm}$이다."
+        ],
+        [
+          "피타고라스정리",
+          "solution:정육면체의 모서리가 $6\\,\\mathrm{cm}$이므로 $AB=BF=BC=6$이다. $AF, AC, FC$는 각 면의 대각선이므로 모두 $6\\sqrt2$이고, $\\triangle AFC$는 정삼각형이다. $BJ$가 평면 $AFC$에 수직이므로 $\\triangle BAJ$, $\\triangle BFJ$, $\\triangle BCJ$는 모두 J에서 직각이다. 세 직각삼각형의 빗변은 각각 $AB,BF,BC$로 모두 6이고 $BJ$는 공통이므로 피타고라스 정리에 따라 $JA=JF=JC$이다. 따라서 J는 정삼각형 $AFC$의 외심이다. 한 변 $6\\sqrt2$인 정삼각형의 높이는 $\\sqrt{(6\\sqrt2)^2-(3\\sqrt2)^2}=3\\sqrt6$이고, 외심은 중선을 꼭짓점에서부터 $2:1$로 나누므로 $AJ=\\frac23\\times3\\sqrt6=2\\sqrt6$이다. 직각삼각형 $ABJ$에서 $BJ=\\sqrt{6^2-(2\\sqrt6)^2}=2\\sqrt3\\,\\mathrm{cm}$이다."
+        ]
+      ],
+      "condition": [
+        [
+          "수선",
+          "stem"
+        ]
+      ]
+    }
+  }
+]
