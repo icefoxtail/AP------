@@ -253,7 +253,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC=2(파랑), CA=3(주황), AB=4(초록)을 나타냈다.",
+    "solutionImageCaption": "파란 변 a=BC는 각 A의 맞은편이고, 주황 b=CA와 초록 c=AB는 각 A의 끼인 변이다. 코사인법칙에서 변의 대응을 확인한다. 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -890,9 +894,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-solution.svg",
-    "solutionImageAlt": "각 A의 이등분선 AP와 BP 대 PC 비를 표시한 삼각형",
-    "solutionImageCaption": "정확한 선분 길이와 각의 위치를 확인한다.",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 변 AB=3, AC=6, 내부 이등분선 AP, 양쪽 60° 각, BP=√7.",
+    "solutionImageCaption": "각 A=120°를 이등분하는 AP와 두 60° 각, 주어진 두 변, 중간값 BP=√7을 표시한다. 이등분선과 각의 대응으로 나머지 물음을 해결한다. 정답은 (1) 2, (2) 2√7, (3) 2√21/3이다.",
     "solutionImageSize": "full"
   },
   {
