@@ -1,0 +1,53 @@
+{
+  "examId": "E034",
+  "reviewPath": "/workspace/scratch/14c2c64e43fb/workers/A/E034/review-r2.json",
+  "fourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/A/E034/four-slot-r2.json",
+  "independentPath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E034.independent-review.json",
+  "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+  "acceptIndependentAdjacentMismatch": [
+    1,
+    3,
+    4,
+    12,
+    16
+  ],
+  "authorSupplementPaths": [
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/review.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/four-slot.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/author-manifest-r2.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/content-only.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/difficulty-content-first-freeze.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/asset-evidence.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E034/mechanical-r2.json"
+  ],
+  "independentSupplementPaths": [
+    "/workspace/scratch/14c2c64e43fb/workers/B/independent/E034.initial.json"
+  ],
+  "reviewItemUpdates": [
+    {
+      "sourceOrdinal": 6,
+      "set": {
+        "contentDebt": [
+          "기존해설 키포인트의 미지수가 포함되지 않은 두 일차방정식은 미정계수가 없는 두 식을 뜻하는 용어오기다. 실제 두 식에는 x,y가 있고 이후 계산은 타당하다. 원문은 수정하지 않는다."
+        ],
+        "reason": "공통해에서 계수 결정가 실제 기존 해설의 결정 단계이며 해당 RPM 요구에 맞는다. 현재 source의 임의 세분단원은 정본 부모로 제안 정규화한다. 미정계수가 없는 두 식을 먼저 풀고 나머지 식에 대입한다."
+      },
+      "reason": "Root actual source read identifies a wording-only source debt; solution structure and difficulty unchanged."
+    }
+  ],
+  "rootAcceptance": {
+    "owner": "GPT_ROOT_14C2C64E43FB",
+    "actualSourceOrdinalsRead": [
+      6,
+      20,
+      23
+    ],
+    "actualImagesViewed": [
+      "workers/A/E034/assets/q20-0.png",
+      "workers/A/E034/assets/q23-0.png",
+      "workers/A/E034/assets/q23-1.png"
+    ],
+    "decision": "ACCEPT_R2_WITH_NAMED_SOURCE_LIMITATIONS",
+    "rationale": "Actual clipped water-graph labels cannot verify the source solution12/15 image claim; low confidence retained. Actual segment figure B has y=-2 while text uses-1 and3-1 target is omitted: UNKNOWN preserved. Existing common-solution process6 is correct but its keypoint confuses unknowns with unspecified coefficients, recorded narrowly. Exact B receipt binds revised metadata and all24difficulty checks."
+  }
+}

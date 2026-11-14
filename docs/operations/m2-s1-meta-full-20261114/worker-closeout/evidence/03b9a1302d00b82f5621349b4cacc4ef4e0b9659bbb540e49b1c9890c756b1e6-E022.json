@@ -1,0 +1,188 @@
+{
+  "examId": "E022",
+  "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/review-r2.json",
+  "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/four-slot-r2.json",
+  "independentPath": "/workspace/scratch/14c2c64e43fb/workers/A/E022/independent-normalized.json",
+  "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+  "proposalAuthor": "A",
+  "proposalStatus": "ROOT_ACCEPTED",
+  "resolvedIndependentAdjudications": [
+    {
+      "sourceOrdinal": 3,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "양수배/음수배의 부등호 방향이라는 기본 성질을 직접 판정한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "n장과 n-1 겹침의 수를 구분해 전체 길이를 만들고 직사각형 넓이 임계값과 자연수 최소를 결합한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "원 둘레2πr와 상대속력 합이 직접 주어지는 마주가기의 기본 관계로 시간=원주/합속력을 적용하고 단위를 변환한다. 원형 경로를 처음 만남의 한 바퀴로 읽는 전처리는 익숙한 한 조건이며 전략 선택이나 경우 분기는 없어2/medium/B23, 학습중이 적절하다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "정답과 등가식 자체는 맞다. 하지만 원 해설은 첫 식에20을 곱하면2x+y=3이라고 서술하여 실제6x+3y=9에서3으로 나누는 단계가 생략되어 있다. 이미 author가 보존한 오기/축약 의심은 §9 low 기준으로 처리하며 numeric2는 유지한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "승패무 세 횟수를 총횟수로 줄여 승패 관계와 민호 변위를 결합한 후 유일의 변위를 복원하는 모델 선택은3에 적합하다. 전략 복잡성은2/3경계이며4를 시사하는 별도 비정형 요구가 없어B23을 권고한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "수직 평행이동만큼 상수항을 더하는 규칙을 그대로 적용한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "하나의 입력에 출력이 하나인지 함수 정의로 판단한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "미정계수가 없는 식 둘이 바로 드러나고 공통해를 구한 뒤 나머지 식에 넣는 표준 공통해 template이다. 연립을 두 번 한다는 계산량으로3으로 올리지 않으며2/medium/B23, 학습중을 제안한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "proposedDisposition": "ACCEPT_EXACT_B_RECOMMENDATION",
+      "reason": "알려진 이동량4로 y=2x+4를 쓴 후 두 점을 대입하면 a,b에 대한 두 일차식이 직접 얻어진다. 좌표가 서로 바뀌어도 별도의 전략 선택은 없어2/medium/B23, 학습중을 제안한다."
+    }
+  ],
+  "reviewOverrides": [
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "양수배/음수배의 부등호 방향이라는 기본 성질을 직접 판정한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "n장과 n-1 겹침의 수를 구분해 전체 길이를 만들고 직사각형 넓이 임계값과 자연수 최소를 결합한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "원 둘레2πr와 상대속력 합이 직접 주어지는 마주가기의 기본 관계로 시간=원주/합속력을 적용하고 단위를 변환한다. 원형 경로를 처음 만남의 한 바퀴로 읽는 전처리는 익숙한 한 조건이며 전략 선택이나 경우 분기는 없어2/medium/B23, 학습중이 적절하다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "difficultyConfidence": "low"
+      },
+      "reason": "정답과 등가식 자체는 맞다. 하지만 원 해설은 첫 식에20을 곱하면2x+y=3이라고 서술하여 실제6x+3y=9에서3으로 나누는 단계가 생략되어 있다. 이미 author가 보존한 오기/축약 의심은 §9 low 기준으로 처리하며 numeric2는 유지한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "승패무 세 횟수를 총횟수로 줄여 승패 관계와 민호 변위를 결합한 후 유일의 변위를 복원하는 모델 선택은3에 적합하다. 전략 복잡성은2/3경계이며4를 시사하는 별도 비정형 요구가 없어B23을 권고한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "수직 평행이동만큼 상수항을 더하는 규칙을 그대로 적용한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "하나의 입력에 출력이 하나인지 함수 정의로 판단한다. 기존 학습수준과 숫자 난도는 인접 경계이며 해당 개념의 함정/모델링 부담으로 기존 수준을 유지할 수 있어 독립 승인한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "미정계수가 없는 식 둘이 바로 드러나고 공통해를 구한 뒤 나머지 식에 넣는 표준 공통해 template이다. 연립을 두 번 한다는 계산량으로3으로 올리지 않으며2/medium/B23, 학습중을 제안한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "알려진 이동량4로 y=2x+4를 쓴 후 두 점을 대입하면 a,b에 대한 두 일차식이 직접 얻어진다. 좌표가 서로 바뀌어도 별도의 전략 선택은 없어2/medium/B23, 학습중을 제안한다."
+    }
+  ],
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/A/E022/accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "b75584d1b3c945a2534acd517e0f9636fb505866060bd62cc73a8db8ff87859f",
+  "acceptedFourSlotBasis": "Recovered A2 r2 bytes and original independent B exact proposals: Q7 inequality-property evidence uses the actual solution n≥11.8 implied division; Q22 constant restriction is preserved in condition. Source and reviewed targets were read by A during recovery. No new independent review is claimed. Root actual acceptance remains required.",
+  "authorSupplementPaths": [
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/author-manifest-r2.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/mechanical-r2.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/difficulty-blind-freeze-r1.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/content-only-r1.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/canonical-evidence-r1.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/A2/E022/blind-source-asset-evidence-r1.json"
+  ],
+  "independentSupplementPaths": [
+    "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E022.independent-review.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E022.independent-initial-freeze.json",
+    "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E022.native-recheck.json",
+    "/workspace/scratch/14c2c64e43fb/workers/A/E022/accepted-four-slot-candidate.json"
+  ],
+  "rootSourceReadRecommendations": [
+    7,
+    9,
+    14,
+    15,
+    22,
+    24
+  ],
+  "recoveryBindings": {
+    "reviewSha256": "33802d1cefff721f650ea1dece153e9b12bda2dcdffe627171404c2aab9620f5",
+    "fourSlotSha256": "c1025c1c03e0050786eeaa088bc4c708bf0a30d2b3e18f028294fe51b3ebedc6",
+    "originalIndependentSha256": "7935f5e1f844483cfffd78d36aea773e49acd404bead73daebcc59280d1a5cbe",
+    "normalizedIndependentSha256": "141dc78c07c3448e998a7616103b605c59d0eb7f8c4b38772a34d1e7d2239b0e",
+    "sourceSha256": "5984df181897bb26cba4d693721a2167fd74ab209e141ab59ef2b832788c2b47",
+    "sourceGitBlobSha": "d2ce568579fafd086eeb2aa98283a4f09e3b7fed"
+  },
+  "notes": [
+    "Original author and independent bytes remain unchanged. Normalized receipt changes schema field names and maps the existing conditional verdict to ROOT_ADJUDICATION_REQUIRED; root must actually decide.",
+    "All 24 source items retain their original student content, choices, answer, solution, assets, UID and order.",
+    "No resolver run, shared taxonomy registration, production inbox write, merge or deployment is implied."
+  ],
+  "rootAcceptance": {
+    "owner": "GPT_ROOT_14C2C64E43FB",
+    "actualSourceOrdinalsRead": [
+      3,
+      7,
+      9,
+      14,
+      15,
+      18,
+      19,
+      22,
+      24
+    ],
+    "decision": "ACCEPT_EXACT_NARROW_INDEPENDENT_RECOMMENDATIONS",
+    "rationale": "Actual source supports Q7 positive-division inequality evidence, Q22 explicit constants, routine Q9/22/24 procedures at bucket2 with B23, Q14 missing division step and low confidence, and Q15 three-outcome modeling at bucket3/B23. Existing author and independent bytes are reused."
+  }
+}

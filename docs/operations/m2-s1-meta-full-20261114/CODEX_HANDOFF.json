@@ -1,0 +1,598 @@
+{
+  "schemaVersion": "m2-s1-codex-handoff-v1",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "workKey": "M2-S1-META-FULL",
+  "branch": "review/m2-s1-meta-full-20261114",
+  "producer": "GPT_ROOT_14C2C64E43FB",
+  "audience": "CODEX_LOCAL",
+  "status": "OFFERED",
+  "acceptanceStatus": "NOT_OBSERVED",
+  "allCurrentWritersClosed": true,
+  "reviewBaseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "sourceHeadBeforePackaging": "675d89518be9e290013094070ecfe8c10a92a939",
+  "finalHeadResolution": "Remote branch HEAD and final immutable AWCR offer, recorded in Notion CURRENT.",
+  "awcrVerifiedPredecessor": {
+    "latestEmbeddedVerifiedRevision": 20,
+    "fileId": "1LzMRjz5ESCr391Hx-euFlgAT8apezSRG",
+    "rawSha256": "e07ce708ad5706c5883a32b0787622f75fde06eed0890e8292449fcbf34ccd04",
+    "rawReadbackVerified": true,
+    "role": "Verified predecessor to the final CODEX_LOCAL offer. The immutable final offer is published after this Git package; its revision/raw hash and package HEAD are recorded in the current Notion task row.",
+    "finalOfferTarget": "CODEX_LOCAL",
+    "finalOfferAcceptance": "NOT_OBSERVED"
+  },
+  "boundedReviewCounts": {
+    "boundedAuthorReview": "75_EXAMS_1780_QUESTIONS_PRESERVED",
+    "independentSamples": 225,
+    "remainingBoundedReviews": 0,
+    "reusedInheritedExams": 25,
+    "reusedInheritedQuestions": 592,
+    "newlyPreservedExamsThisOwner": 50,
+    "newlyPreservedQuestionsThisOwner": 1188,
+    "priorScopedAmendmentsReused": 7,
+    "qualityStatus": "NOT_GLOBAL_PASS",
+    "releaseStatus": "PENDING_NAMED_DEBTS_AND_CODEX_GATES",
+    "priorOwnerTermination": "UNCONFIRMED_USER_DIRECTED_TAKEOVER_PRESERVED"
+  },
+  "counts": {
+    "exams": 75,
+    "questions": 1780,
+    "independentSamples": 225,
+    "nativeFourSlotFailures": 394,
+    "nativeFourSlotWarnings": 1107,
+    "RPM_LEAF_GAP": 316,
+    "REGISTRATION_PENDING": 1768,
+    "SOURCE_CONTENT": 124,
+    "DECLARED_UNRESOLVED": 457,
+    "HISTORICAL_DIFFICULTY_CONFLICT_ADJUDICATED": 3,
+    "SOURCE_METHOD_EVIDENCE": 394,
+    "NUMERIC_DIFFICULTY_UNKNOWN": 38
+  },
+  "mainReadback": {
+    "schemaVersion": "m2-s1-latest-main-check-v1",
+    "reviewBaseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+    "mainSha": "a0ade0103caa0e4edc58f923613112cd792abbd3",
+    "checkedAt": "2026-11-14 15:48:11 UTC",
+    "status": "SCOPED_MAIN_READ_COMPLETE_WITH_ONE_NAMED_SOURCE_DRIFT",
+    "baseline": {
+      "mainSha": "98faf873610cb00ce07bf33a0295348deef00655",
+      "evidence": "main-check/scoped-tree-baseline.json",
+      "comparison": "main-check/scoped-comparison-baseline.json",
+      "verifiedScopedEntries": 181,
+      "sourceBlobs": 75,
+      "taskImageFolders": 64,
+      "canonicalRulesTreeIdentical": true,
+      "unboundedCompareWasCapped": true,
+      "proof": "Direct nonrecursive Git tree entries, not a capped compare file list."
+    },
+    "incrementalComparisons": [
+      {
+        "base": "98faf873610cb00ce07bf33a0295348deef00655",
+        "head": "f5c4c72b36a32eeb9f32f8357dd7f43608e4b3d5",
+        "aheadBy": 21,
+        "files": [
+          {
+            "path": ".archive-meta-register/auto/4slot/last-verification.json",
+            "status": "modified"
+          },
+          {
+            "path": ".archive-meta-register/auto/4slot/receipts/9598dbdd3bda8da22f772a6ce29e557cb9de6294ce55b628e2e9a4a88e7c79ba.json",
+            "status": "added"
+          },
+          {
+            "path": ".archive-meta-register/auto/writer-state.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q21-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/19_왕운중_2학기_기말_중3_기출/q22-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/20_왕의중_1학기_기말_중2_수학/q19-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/21_신흥중_2학기_중간_중3_수학/q23-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/21_왕운중_2학기_기말_중3_기출/q22-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q21-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕운중_1학기_중간_중3_기출/q19-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q07-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q19-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕운중_2학기_중간_중3_유사/q12-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕운중_2학기_중간_중3_유사/q13-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_왕의중_2학기_중간_중1_유사/q22-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/26_왕운중_2학기_중간_중1_유사/q14-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/data/archive2-canonical-input-manifest.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-catalog.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification-index.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/050efb989d358908ed57a5ed56d2f2b303fb2fe4e260ed5704174f149cc9b993.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/06937311c6bcf22905edd0de6a27127c923a7101ca6e0c1518bab85a24b816bd.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/0c40a52d628e451256333e52faf839f38411321c815757f642484d34ded745c0.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/139d0aa6d0253c22200036eb5f1a1dad9e5c154b9c5d3ded3c15a4e6400546ac.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/17740bdc6735fd693b91f39396f13521b430ba5ebf0a701185fde93d29a37dda.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/1f1f61d3fabe359925bde517af8a41532fa1532ef7dcd29070dd04901b815f3b.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/2704a2573e40af0fe58fa321d26ea296980ee8cbfb4dad953c056c995b586b90.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/29377873dc21c4b63632d625bd0496480dc99fb6d809d0cb28bf6ad7ffd14459.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/3d931b25cdac3486f42371fce2244616bb5939466cf050259b9f2b200478a74d.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/3da2c737acc831a78650a3e91146cf4a6052ecfc92623d5b183a9ea2d4f2549e.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/42977a9469b53b51afb2d11077e33ba8d64b2306b23b8e05154c745a617828f0.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/441d8f3f04a9bb9364e84b408215cf891981817ef41872925a2386d1fcf6d16b.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/5351fe8ac50f70c945b8cc58ab90e650d529c6490a1366d2d34d1ff1bf5a6e14.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/56972db5e571f7e9ca9a89b5dafb12f7e6888c64fa3b061897cd14f2ea065c15.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/588035d359803f47a73ff09de23f04e5da591d264aa646bd31f9a98f56eb6261.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/63fb744dbcab1c20bf30e40dc8d97c0c87a41cbc61faaeb13f15d3af3f665924.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/704da714906039c53e2411c76c0b2520aac0adeffb43c5ac441c72e04005a760.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/83a11ccc3c8500690c3fe6f2a09357e3a22f9e3964671400abcd783aa2d7db59.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/845f370936a63b34214518a131802d6ac64a3481ee1e177c8d0235e1c8943641.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/a95fdd59b45c4ae582a03e881c9457bbd5ac405070e55c01b24d0bf8d98c5c33.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/ae00fd83bb132bad6d360293e25e04188dedd35d4adf7e3530022eaf360b4eda.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/b119785ead01d415c4f95337e64a0c4e0ba64e932e42f65008f2601f5a323046.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/dfe389fda0f1ec965b7d9133ff7171c5e976dd4d1efb7859576e5f257792f1cc.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/e4daf9e9dab31016f6d54a57ab02852fc869dc8c37a3622c81f32ef4a090d093.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/e771bc4a616e4ccbb751b1da2ebd9f065161d0431d0b5435c6dcb3f4148ad5d6.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/e84ddc0bd5da95c39bf2792736107f15165b9bfe7ce870aadbd7170c2a0de50b.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/f47285cf505dd2b29c570954309b8c923b0ece274f9786a84039b09bad40ae2f.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/fc56eebfb4ca75940da2e669357342570597050abd3993779a4db88cf2c1bf7b.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/fda1ac235bb1e5cd3330b44fa3bf34a95a90777ae3dc0973fb6e7e2776510550.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/archive2-source-verification/v1/fe0fd175db8e565eecb4fa36cce962e5d16062fb5745262523d16607f27e2d23.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/basic-scope-parent-links.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/item-4slot-index.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+            "status": "modified"
+          },
+          {
+            "path": "archive/data/svg-accessibility-index.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/1mid/25_신흥중_1학기_중간_중3_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사1.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사2.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/question-index-audit.md",
+            "status": "modified"
+          },
+          {
+            "path": "archive/question-index-report.md",
+            "status": "modified"
+          },
+          {
+            "path": "archive/question-index.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/19_동산중_2학기_중간_중3_수학/q21-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/19_왕운중_2학기_기말_중3_기출/q22-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/20_왕의중_1학기_기말_중2_수학/q19-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/21_신흥중_2학기_중간_중3_수학/q23-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/21_왕운중_2학기_기말_중3_기출/q22-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/24_왕운중_2학기_기말_중1_수학/q21-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕운중_1학기_중간_중3_기출/q19-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕운중_2학기_중간_중1_수학_유사A/q07-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕운중_2학기_중간_중1_수학_유사A/q19-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕운중_2학기_중간_중3_유사/q12-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕운중_2학기_중간_중3_유사/q13-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_왕의중_2학기_중간_중1_유사/q22-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/26_왕운중_2학기_중간_중1_유사/q14-problem-v2.config.json",
+            "status": "added"
+          }
+        ],
+        "completeFileList": true
+      },
+      {
+        "base": "f5c4c72b36a32eeb9f32f8357dd7f43608e4b3d5",
+        "head": "a0ade0103caa0e4edc58f923613112cd792abbd3",
+        "aheadBy": 16,
+        "files": [
+          {
+            "path": "archive/assets/images/20_이수중_2학기_중간_중3_수학/q18-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q22-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/23_여수여고_1학기_중간_고1_기출/q16-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/23_여수여고_1학기_중간_고1_기출/q17-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_금당중_2학기_중간_중3_유사/q06-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_금당중_2학기_중간_중3_유사/q07-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_금당중_2학기_중간_중3_유사/q12-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_금당중_2학기_중간_중3_유사/q17-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_금당중_2학기_중간_중3_유사/q19-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/25_연향중_2학기_중간_중1_유사/q21-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_유사/q24-problem-v2.svg",
+            "status": "added"
+          },
+          {
+            "path": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/1mid/1학기_중간평가_중1_단원평가유사1.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+            "status": "modified"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/20_이수중_2학기_중간_중3_수학/q18-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/21_풍덕중_2학기_기말_중3_기출/q22-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/23_여수여고_1학기_중간_고1_기출/q16-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/23_여수여고_1학기_중간_고1_기출/q17-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_유사/q06-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_유사/q07-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_유사/q12-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_유사/q17-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_금당중_2학기_중간_중3_유사/q19-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/25_연향중_2학기_중간_중1_유사/q21-problem-v2.config.json",
+            "status": "added"
+          },
+          {
+            "path": "archive/tools/geometry-equation/production/plans/26_팔마중_2학기_중간_중1_유사/q24-problem-v2.config.json",
+            "status": "added"
+          }
+        ],
+        "completeFileList": true
+      }
+    ],
+    "counts": {
+      "reviewSourceFiles": 75,
+      "sourceFilesUnchangedFromBase": 74,
+      "sourceFilesChangedOnMain": 1,
+      "changedSourceQuestions": 1,
+      "canonicalAuthorityChanges": 0
+    },
+    "sourceOverlap": {
+      "examId": "E057",
+      "sourceOrdinal": 19,
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+      "mainSourceBlob": "85af340e09acb3491b0279857f3e477a131f144a",
+      "sourceFetchedAtMain": "f5c4c72b36a32eeb9f32f8357dd7f43608e4b3d5",
+      "stillCurrentThrough": "a0ade0103caa0e4edc58f923613112cd792abbd3",
+      "changedFields": [
+        "content",
+        "question"
+      ],
+      "deltaEvidence": "main-check/E057-Q19-source-delta.json",
+      "imagePath": "archive/assets/images/20_왕의중_1학기_기말_중2_수학/q19-problem-v2.svg",
+      "imageGitBlob": "60a866bc5bd4edb77749464f893f5618d4a5fd7c",
+      "actualRootReading": [
+        "Exact main file compared against immutable original24questions; only Q19 content/question differ.",
+        "New SVG rendered and viewed; shows general y=ax+b and points(2,0),(3,-1), without explicit final function formula or y-intercept label.",
+        "Existing complete solution unchanged and read; actual canonical RPM048/052 definitions read."
+      ],
+      "impact": "Old bound metadata chose direct coefficient reading and difficulty1 because old SVG disclosed the function. New main no longer supplies that input. Classification/difficulty require scoped re-evaluation; original reviewed branch metadata remains valid only for its saved source variant.",
+      "disposition": "CODEX_RELEASE_HOLD_SCOPED_Q19_REVIEW_AND_E057_REBIND",
+      "nextAction": "Preserve new main figure; narrowly adjudicate Q19 classification/difficulty using actual updated source and unchanged solution, update E057 source/fingerprint/4slot binding, verify changed source only; reuse other completed evidence.",
+      "questionUid": "qid_v1_74ee64d3d28eb489ca2870a2d344812048b0da42659eb078f6cb22ff53b346f0"
+    },
+    "proMutation": "No main merge/rebase and no latest-main source/image imported into original Pro source. Both variants identified explicitly.",
+    "freshnessLimit": "Observed main is pinned to the checkedAt time. Codex must re-read latest main at acceptance/release."
+  },
+  "entryFiles": [
+    "progress.json",
+    "release-queue.json",
+    "artifact-manifest.json",
+    "FINAL_AUDIT.json",
+    "LATEST_MAIN_CHECK.json",
+    "worker-closeout/INDEX.json"
+  ],
+  "nextActionOrder": [
+    "Accept the exact task and closed Pro writer handoff.",
+    "Inspect current main and branch delta; preserve the original review base and all valid source-bound evidence.",
+    "E057 Q19 changed on latest main after review: preserve the updated main figure, narrowly re-evaluate classification/difficulty, regenerate source/fingerprint bindings for E057 and verify only the changed source. Do not overwrite main with the old source image reference.",
+    "Resolve named source-content and missing-method-evidence prerequisites without fabricating solution evidence.",
+    "Resolve declared semantic/difficulty holds and official definition/RPM/binding gaps from the specific review items and proposals.",
+    "Run the applicable official resolver/registration and consumer gates; preserve FAIL/NOT_RUN truthfully.",
+    "Only the authorized Codex release owner may register, merge and deploy under the current project rules."
+  ],
+  "approvalBoundary": "This Pro task delivers reviewed evidence and a Codex release handoff. Registration, resolver/consumer gates, main merge and deployment are not executed or asserted by this package.",
+  "reusePolicy": "Reuse exact valid completed author/independent/root evidence; review only named gaps, changed source, definition/binding conflicts or required gates."
+}

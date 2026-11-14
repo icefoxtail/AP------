@@ -1,152 +1,59 @@
-# M2-S1-META-FULL — 진행 및 Codex 인계
+# M2-S1-META-FULL — Pro 마감 / Codex 출고 인계
 
 ## 현재 상태
 
-**RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_14C2C64E43FB`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
+**PRO_REVIEW_COMPLETE_CODEX_HANDOFF_OFFERED_WITH_NAMED_DEBTS**. Pro 담당 검토는 **75시험지·1,780문항**, 독립 3문항 표본은 **225개**를 보존했으며 지정 큐의 남은 검토는 **0**이다. 실제 서브에이전트 A/B/C와 현재 root writer는 CLOSED다. **Codex 수락은 아직 관측하지 않았다.**
 
-전체 **75시험지 / 1,780문항** 중 **75시험지 / 1,780문항**의 검토 패킷을 보존했다. 잔여는 **0시험지 / 0문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+검토 패킷의 완성과 운영 출고 판정은 별도 상태다. 원해설 없는 394문항은 method를 만들어 채우지 않았으며 native 검사 실패를 그대로 보존했다. 원문·의미·정의·binding·등록 부채가 남아 있으므로 전체 품질 PASS 및 배포 완료를 선언하지 않는다.
 
-이번 인수 시 원격 보존된 25시험지/592문항과 완료된 7건의 좁은 보정을 재사용했다. E022·E027·E032의 미원격 작성본 및 E035 난도 동결본은 이전 작업 폴더에서 실제 바이트와 SHA를 확인하여 복구했다. 이전 writer 종료 여부는 확인되지 않았으며 사용자 직접 인수 지시에 따라 독립 작업 폴더에서 재개했다. 원격 HEAD 사전 확인과 non-force 출판으로 동시 변경을 감지한다. LOCAL_RECOVERY.json의 과거 회수 실패 기록과 이번 실제 회수는 별개다.
+## 정확한 진입점
 
-## 진입점과 증거
-
+- taskId: `d200021a-924b-42a5-ad31-a53818575c78`
+- Pro owner: `GPT_ROOT_14C2C64E43FB`
+- branch: `review/m2-s1-meta-full-20261114`
+- 고정 review base: `0ba1e7de048de3af0771da6c0972409fd46baa75`
+- 마지막 시험지 출판 HEAD: `675d89518be9e290013094070ecfe8c10a92a939`
+- 이 마감 패키지의 최종 SHA는 실제 원격 branch HEAD와 최종 AWCR OFFERED의 git 참조를 따른다. 자기 커밋 SHA를 같은 파일에 요구하지 않는다.
+- Notion CURRENT: https://app.notion.com/p/4180e68bd69f8185950ce1fc23821831
 - 실행 지시서: https://app.notion.com/p/4180e68bd69f81b6a85cc4d829fcc6b3
-- 재개 인덱스: https://app.notion.com/p/4180e68bd69f8185950ce1fc23821831
-- progress.json: 전체 source/담당/판본/미완료/주제별 문항 번호.
-- exams/E###/CURRENT.json이 있으면 그 파일의 유효 review/four-slot/validation 경로를 우선한다. review.json과 author-four-slot.json은 실제 작성자 증거이고 independent.json은 작성자 외 실제 표본 증거다.
-- root-review.json: 원문 근거를 읽은 root 수용, 변경·불확실 난도 재검, source 최소 수정, 원본 내용 보존, 판본 재결속.
-- source-writer-deferred.json: 누락·미지원 source 필드와 아직 운영 반영하지 않은 제안.
-- history/HANDOFF.previous-pause-20261114.md: 재개 전 중단 기록. 현재 상태와 혼동하지 않는다.
 
-## 현재 집계와 한계
+기존 25시험지·592문항과 이미 완료한 좁은 보정 7건을 재사용했고, 이 owner가 남은 50시험지·1,188문항을 추가 보존했다. E022/E027/E032의 실제 미원격 작성본과 E035 동결본을 바이트·SHA 기준으로 회수하여 재사용했다. 이전 owner의 종료는 UNCONFIRMED이며 사용자 직접 인수에 따라 독립 작업 폴더와 expected-parent/non-force 출판을 사용했다. 이전 중단 기록은 history 및 pauseHistory에만 남는다.
 
-독립 3문항 표본 225개, 명시 미판정 457문항, RPM leaf 공백 316문항, 등록 부채 1768문항, 내용 부채 124문항, 필수 method 근거 부채 394문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=1323은 전체 품질 PASS가 아니다.
+## 출고 대기 항목
 
-최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
-
-## 검증과 변경 경계
-
-각 시험지에서 source blob, canonical identity-map UID, 순서, QBODY/QFULL, 허용 필드 외 동일성, 정본 키/부모, literal quote, 후보의 같은-slot 부모, 4칸 native 검사를 시행한다. 독립 검토의 실제 바이트 SHA를 작성본과 대조한다. 기계 검사는 의미 판단을 대신하지 않는다.
-
-정답·해설·그림·레이아웃·UID·순서를 보존한다. 지원되는 기존 source 메타만 값 토큰 단위로 수정한다. 미지원·누락 필드는 결속된 제안에 남긴다. 공용 registry/crosswalk/dictionary/metadata/DB/runtime/production inbox는 수정하지 않는다. **main 병합·공용 등록·배포는 수행하지 않는다.**
-
-## 다음 실행
-
-1. 새 대화/소유권 인수에서는 Notion 필독 라우터, Archive 시작·생명주기, 실행 지시서/재개 인덱스, AWCR bootstrap을 먼저 읽는다. 이 task와 branch의 실제 최신 HEAD를 확인한다. 현재 writer가 RUNNING이면 사용자 직접 인수 지시가 없는 한 겹쳐 인수하지 않는다. 이번 인수는 사용자 직접 지시에 근거하며 이전 종료를 확인했다고 주장하지 않는다.
-2. A는 E022,E025,…E073, B는 E032,E035,…E074, C는 E027,E030,…E075 중 미보존 시험지를 계속 처리한다. 교차 검토는 B→A, C→B, A→C이며 root만 직렬 출판한다.
-3. 독립 표본·변경/불확실 난도 재검·필수 기계 검사를 완료한 시험지마다 commit/push/CAS remote HEAD readback을 한다. 이미 보존된 검토는 필요한 좁은 보정 외 반복하지 않는다.
-4. 전체 검토 후 미판정/근거부채/등록대기와 제안들을 집계한다. 판단과 필수 검사가 모두 끝난 경우만 REVIEW_COMPLETE_RELEASE_PENDING이다. 중단 시 writer를 종료하고 PAUSED_WITH_REMAINING / RESUME_READY 및 immutable AWCR 다음 revision을 저장·검증한다.
-
-## AWCR 최신 검증
-
-**revision 19**, fileId `1QtUI89BnJPOI0_bcEnQFebvnCj6n_IQy`, raw SHA-256 `64b9dbc3d2e36efcd87562115f0bc07475bd4c821baa81087cb580ca06a0a6d5`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
-
-## 이번 재개의 원격 출판 기록
-
-| 단위 | 원격 확인 SHA |
-|---|---|
-| E004_AMENDMENT | `4303c18cde1532e41c4d1d6954c8851d85546ae7` |
-| E002_AMENDMENT | `16f0db963af65b438966b4e5a071f20eeb45998b` |
-| E003_AMENDMENT | `2fcedfbbd6249f9dc4112c25c7f708af57611b0b` |
-| E005_AMENDMENT | `1795713588d73d89dd551894ed545b463f27ba02` |
-| E006_AMENDMENT | `a1d65a5623eb1631b5d0230c303be1f4a1fcd7f8` |
-| E008_AMENDMENT | `31a727f0f4ebce4c3af2891d9df0961737ec20a1` |
-| E009_AMENDMENT | `ddcb14cdfe0dffd7bedeab8289d40fa2519ca02e` |
-| E013 | `dbdda8555a653f7c9938aa29bbafb5b2cf9d2844` |
-| E014 | `222a4cd8cb97e5dc02601dbf9b669b5091053021` |
-| E015 | `caacba16681c49df26d5fe93fced089fc4f0cd32` |
-| E007-prerequisite-scope | `450b261932fa91883817c7227e4b331793de80c3` |
-| E012-scoped-calibration | `6a6830e3b5aa0c957da7af95e7c0c0fef8befb8f` |
-| E014-prerequisite-scope | `6a84b1c374f194f50601dc74e525c63bf5d07a0f` |
-| E015-prerequisite-scope | `21eef4e00aaa030f2c92c3d9bd701acf31f995d8` |
-| E016 | `a627d04d6b8075049bf908d216a7f113402450ea` |
-| E017 | `e2f43bd3112b8efbed2d954d9e49077897f7db3b` |
-| E018 | `6024a1f42c78cfc7d36684a7df7af2bd79fb1d3a` |
-| E019 | `b34cd23dca38f4040675e272851430ee7f01b489` |
-| E020 | `430b049a9283407148a55d18d3267a876b708a59` |
-| E023 | `c96a3a55e60ce2bddcc524bd2dd7128d684d7715` |
-| E020-confidence | `b738283e2f28fedbee1f9ff04cfba1f40a350463` |
-| E013-difficulty | `c87ca4e18dd535d0489c91ee90784d17702ad1d5` |
-| E014-difficulty | `3af2ea2df7f680948394a31ea74de29658973816` |
-| E015-difficulty | `71f246c796960f78e277809d10890e88314dc025` |
-| E016-difficulty | `1cf8cdd518071b8b4e071f30a59a7b9a67ec8bf5` |
-| E017-difficulty | `dadacea1ce21e64ad6a3b7ce53d7abb1cc44e976` |
-| E019-difficulty | `67c88295ffb2de3b9c76c0a7b5356054d5cf1ecd` |
-| E024 | `b7bdc9fde53f523f3fa2f3c3c070b1a8cacae9d1` |
-| E021 | `24a27db803810b7457b8e7711ef012e18984af03` |
-| E026 | `d8ce47f4753cc859595e727295886a610af8c490` |
-| E029 | `e56642c27ba8f60870a1b9dda904db38afaa1ce9` |
-| USER_DIRECTED_TAKEOVER | `3aa1f05bb1cc5e8d84df36537996abc6b0f6e922` |
-| E022 | `7dd37289c10321149c6ae8b26426c5e60232f3b4` |
-| E027 | `7f246d948a2b344cdfbfff425fc7537537813d39` |
-| E032 | `e65de5f91bacf27b4d981c167cf17d6d8c2ccc64` |
-| E025 | `63ef9db34e058064a8d04acdd8b02e540ba0d9d0` |
-| E035 | `5a3795fc0764adfd5cc975b9cf5ea723d89c651b` |
-| E030 | `06de85f32d298b4821b0b94f53b194328b7e027b` |
-| E041 | `a935dc7eff0e14df28e80c73b89bbbf5c900c674` |
-| E028 | `859797895f074dccc4846b8b374fdc79ff53dcbc` |
-| E038 | `bcfdb0cfb2a23fb8dcf6bc60188bb7eb6b691f2d` |
-| E033 | `f2d6bf401bcbc92ad47f0a6f99fdbfed615d00cf` |
-| E044 | `118f603f7613d9be8de388bbbc09e97aa63060d6` |
-| E031 | `20e40205acc22b63ca242e8cffd8269dcc3d2bac` |
-| E047 | `91d0fb00665674b8edcaa34f7c3dc70b494453d5` |
-| E036 | `3ec31cb98570fdbc5710397b73ca1b9141690e64` |
-| E034 | `9c311a4a8cb1963b4aa9df0f7023cc2d2226856f` |
-| E050 | `e2c645986b19dde79f0976e3b91c63b713f95e36` |
-| E037 | `4af0f77d9b20eaa9a089105480a94a78672f2336` |
-| E039 | `e1196fe859394f48720d4d323370c10365478c6a` |
-| E042 | `54628f50371131cedbf80504a5f8f00911364d7f` |
-| E053 | `50b20076f0a294660e8fab112bdd9e7e3ff8dcf9` |
-| E056 | `ed282f91f2aeeecc38157e600762c76169ce92bd` |
-| E040 | `fb524e670305d6ac1bb62894c61cb3b733c9dcc6` |
-| E045 | `f71bfd048a42026dd667636107a19997cb4ce237` |
-| E059 | `2eec976ab2745b60bc4be88b89911b0353aa8629` |
-| E043 | `64d95b98c9a357e4367bf7b8638c14bcc55c8723` |
-| E062 | `cbe12af6d1d934746c1aca601aced3f09a39ba0f` |
-| E046 | `bf944b54e40bd832bed8acf74d4bd4b836f5a2e3` |
-| E048 | `8a0f7f08ced23edefdddbe793d0a1f1260a3704f` |
-| E049 | `c8900f9b5f1cfda68ca547dcdf5f5b7685930050` |
-| E065 | `b26c66d2e97068381dfee752899fd0ed18f24b3a` |
-| E051 | `6d22800674ede052872cb3ee9650cdfefff71419` |
-| E068 | `54cd5c55e3e3bb9c13beae3e9fbf6204e0e1c14f` |
-| E052 | `78c10655137b759e71af541b63d52c4f39a35b7b` |
-| E071 | `b6139b60f9f6d3203a2a0d76074801a5f733d232` |
-| E054 | `0f440a02e4ea6f701224a4de29109a0778da3b3b` |
-| E057 | `05768180ca65df754f1eafece6da3dfa739fb026` |
-| E066 | `03319618da1bbea47d55228141410f4f521c27cb` |
-| E074 | `fb7c2a631426b1ecc0d3dc3e998286d1143161f4` |
-| E063 | `19aba069b83921968fe9e4764ef2f95cdce358b6` |
-| E055 | `697342690ca3e3170579f7ebc5a5413005900e46` |
-| E069 | `ff0f3cced1fb9374cc59b227983b66a2cbac9379` |
-| E058 | `e177d816c27b01b4551f708881b3ffc6de632277` |
-| E072 | `e7aa113578e94ff243088217c1cf9c948e109724` |
-| E061 | `9c46c90b0e221bcdac3658839f612968b37a2c23` |
-| E064 | `7ef5219ac0350dec9ac615f33be860ad323b5a36` |
-| E060 | `c66bdc4034c22ffb28fd15d6079667a0dae5ea17` |
-| E075 | `611a0e0edaa35f543b90e5a6ca1364905c960e9d` |
-| E053-unknown-compatibility | `8e5a98ca793541a31815285e3ed3cdfe5ddf065b` |
-| E062-unknown-compatibility | `a835ce36b9f1fd47cca482737b4bf271f051b81e` |
-| E067 | `167f07c7fa93dee81c2dbd055c1145481281fbb4` |
-| E070 | `cf3010676a236462a8086e24e2a5a34c41756813` |
-
-현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
-
-## 주제별 집계
-
-| subUnitKey | 문항 수 |
+| 구분 | 문항 수 |
 |---|---:|
-| M1-07-SOLID_FIGURE_MEASURE | 2 |
-| M2-01-EXPONENT_LAW | 165 |
-| M2-01-POLYNOMIAL_OPERATIONS | 127 |
-| M2-01-REPEATING_DECIMAL | 201 |
-| M2-02-LINEAR_INEQUALITY | 210 |
-| M2-02-LINEAR_INEQUALITY_WORD | 73 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION | 290 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 87 |
-| M2-04-LINEAR_FUNCTION_BASIC | 333 |
-| M2-04-LINEAR_FUNCTION_EQUATION | 162 |
-| M2-05-QUADRILATERAL_PROPERTIES | 53 |
-| M2-05-TRIANGLE_PROPERTIES | 30 |
-| M2-07-PYTHAGOREAN_APPLICATION | 1 |
-| M2-07-PYTHAGOREAN_THEOREM | 4 |
-| UNRESOLVED | 42 |
+| 원해설 부재에 따른 method 근거 실패 | 394 |
+| 원문·그림·기존 해설 관련 내용 부채 | 124 |
+| 명시 미판정 | 457 |
+| RPM leaf 공백 | 316 |
+| 등록·binding 등 등록 대기 | 1768 |
+| 수치 난도 UNKNOWN | 38 |
+| 미결 강한 난도 충돌 판정 | 0 |
+
+항목별 집계는 중복된다. `release-queue.json`에 시험지, sourceOrdinal, canonical UID, 정확한 유효 review 경로, 원인, 검증 상태를 연결했다. E011 Q18 및 E012 Q19/Q20의 과거 강한 난도 충돌 3건은 이미 판정한 증거를 재사용한다. E053 Q4/Q22/Q24와 E062 Q21은 이미 UNKNOWN으로 합의한 판정을 재사용하여 비교 불가의 legacy 호환성만 UNKNOWN으로 좁게 보정했다.
+
+## 최신 main과의 차이
+
+마감 점검 main: `a0ade0103caa0e4edc58f923613112cd792abbd3`. 읽은 정본·compiled registry는 기존 검토 기준과 동일함을 확인했다. 이후 main 변경에서 **E057 19번**의 `content`/`question` 내 그림 참조와 alt가 변경되었고 새 그림을 실제로 열람했다. 나머지 해당 시험지의 내용·정답·해설 등은 원본 입력과 동일하다.
+
+원래 검토한 SVG에는 함수식과 y절편이 직접 표시되어 있었다. 새 main 그림은 두 점과 일반형만 표시한다. 따라서 기존 E057 Q19의 직접 계수 판독 분류·난도는 새로운 그림에 자동 이식할 수 없다. **Codex는 main의 개선된 그림을 보존하고 이 한 문항의 분류·난도를 좁게 재판정한 뒤 E057의 blob/QBODY/QFULL/4칸 결속을 갱신해야 한다.** `LATEST_MAIN_CHECK.json` 및 `main-check/`에 실제 비교와 참조를 보존했다. 이 Pro 브랜치의 검토 판본은 변경하지 않았다.
+
+## 검증 증거
+
+`FINAL_AUDIT.json`은 75개 JS의 syntax, 1,780개 canonical UID와 순서, 원문·보기·정답·해설·그림 참조·레이아웃을 포함한 비메타 필드 동일성, 기존 허용 메타 필드만 변경했는지, 유효 review/4칸/source SHA 결속 및 branch 변경 범위를 확인했다. 결과는 **PASS_INTEGRITY_ONLY**다. 의미 검토 전체를 다시 실행한 결과로 표현하지 않는다.
+
+`CURRENT.json`이 있는 시험지는 그 파일의 유효 판본을 따른다. 없는 E010/E011은 `release-queue.json`의 정확한 파일·SHA를 따른다. `artifact-manifest.json`은 시험지 증거 파일을, `worker-closeout/INDEX.json`은 실제 세 작업자의 종료와 원래 scratch 참조의 Git 내 바이트 대응 경로를 기록한다. `PROCESS_EVIDENCE.json`의 기존 노출·보완 경위는 그대로 재사용한다.
+
+## Codex의 다음 실행
+
+1. Notion 필독 라우터 → 프로젝트 시작/생명주기 → 이 실행 지시서를 읽고 정확한 task/branch/owner와 최신 사용자 지시를 확인한다.
+2. Notion CURRENT가 가리키는 최종 CODEX_LOCAL OFFERED checkpoint 및 predecessor의 실제 raw bytes를 받아 hash/revision을 확인하고 local adopt-shared로 수락·바인딩한다. 새 scratch record는 보존한다. 다른 task에 주제만 보고 합류하지 않는다.
+3. 실제 최신 main과 branch 차이를 읽고 위 E057 Q19 동시 변경부터 처리한다. 기존 완료 검토는 재사용하고 변경·명명 부채만 검토한다.
+4. release-queue의 원해설 부재, 원문 충돌, 미판정, 정의/RPM/binding 공백을 정확한 문항과 제안별로 해결한다. 새 풀이를 만들어 기존 해설 증거로 가장하지 않는다.
+5. 적용되는 공식 resolver·registrar·consumer 필수 gate를 실제 실행한다. genuine VERIFIED_FINAL 증거가 없으면 NOT_RUN을 유지한다.
+6. Codex 출고 단계의 현행 권한과 gate를 충족한 뒤에만 공용 등록·main 병합·배포를 진행한다. 이 Pro 작업에서는 실행하지 않았다.
+
+## 연속성 기록
+
+이 커밋에 포함된 검증된 predecessor는 **AWCR r20**, fileId `1LzMRjz5ESCr391Hx-euFlgAT8apezSRG`, raw SHA-256 `e07ce708ad5706c5883a32b0787622f75fde06eed0890e8292449fcbf34ccd04`다. 최종 패키지 원격 보존 후 다음 immutable revision을 CODEX_LOCAL/OFFERED로 저장·raw 재조회하며, 정확한 최신 revision과 최종 Git SHA는 Notion CURRENT에서 찾는다. 이는 자기 참조 해시 순환을 피하기 위한 외부 출판 영수증이다. quality는 UNKNOWN이며 수락을 대신 선언하지 않는다.
