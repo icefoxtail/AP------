@@ -426,7 +426,7 @@
     {
       "sourceOrdinal": 5,
       "questionUid": "qid_v1_9f8a851db7b6f12fe225a4687e3c482225fac12b2ce3afdb039c5fe48d9adfc4",
-      "verdict": "CORRECT",
+      "verdict": "REGISTRATION_PENDING",
       "rpmRecordId": "M2-RPM-099",
       "rpmDecision": "CORRECT",
       "primaryMethod": "무게중심에 의한 여섯 등넓이 분할",
@@ -497,7 +497,7 @@
       "after": {
         "curriculum": "2015",
         "problemTypeKey": "PT_COORD_CENTROID",
-        "templateKey": "TPL_CENTROID_APPLICATION",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -521,8 +521,8 @@
         }
       },
       "fieldReview": {
-        "classification": "넓이와 무게중심 / 넓이 분할: 무게중심의 표준 넓이비 직접 적용이다.",
-        "binding": "PT_COORD_CENTROID / TPL_CENTROID_APPLICATION의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "classification": "넓이와 무게중심 / 넓이 분할: 무게중심의 표준 넓이비 직접 적용이다. 순수 무게중심 골격이며 외부 도형 결합은 없음을 현재 원문·해설과 ACTIVE 정의로 재확인하여 TPL만 정확한 공백으로 수리.",
+        "binding": "PT_COORD_CENTROID 부모 의미는 유지. TPL_CENTROID_APPLICATION는 다른 도형 성질 또는 좌표 조건의 결합을 요구하므로 순수 무게중심 등넓이 분할/반복에는 적용하지 않고 B-E035-CENTROID-AREA-PARTITION 공통 NEW_TPL로 등록 대기한다.",
         "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "NONE: 무게중심의 표준 넓이비 직접 적용이다.",
@@ -531,9 +531,12 @@
       },
       "reason": "무게중심의 표준 넓이비 직접 적용이다.",
       "registrationDebt": [
-        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음",
+        "NEW_TPL: 무게중심의 등넓이 분할과 중첩 넓이비"
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "B-E005-CENTROID-AREA-PARTITION"
+      ],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 1,
@@ -2721,6 +2724,26 @@
         "qid_v1_893c41d3f82cfaa4ceba527b58ef0fa25a4c23e919ed1aede00b2cef09293323"
       ],
       "reuseProposalRef": "E013-INVERSE-COUNT"
+    },
+    {
+      "id": "B-E005-CENTROID-AREA-PARTITION",
+      "type": "NEW_TPL",
+      "name": "무게중심의 등넓이 분할과 중첩 넓이비",
+      "definition": "삼각형의 무게중심과 세 꼭짓점을 이으면 생기는 세 등넓이 부분 또는 세 중선의 여섯 등넓이 부분을 이용해 부분·전체 넓이를 구하며 중첩된 무게중심에도 같은 비를 반복한다.",
+      "parent": "PT_COORD_CENTROID",
+      "distinguishingCriteria": "좌표평균이나 다른 도형 성질을 결합하는 APPLICATION과 달리 순수 무게중심 넓이분할만 반복한다.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_DIRECT",
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "ordinals": [
+        5
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_9f8a851db7b6f12fe225a4687e3c482225fac12b2ce3afdb039c5fe48d9adfc4"
+      ],
+      "sharedDefinitionRef": "B-E035-CENTROID-AREA-PARTITION"
     }
   ],
   "notes": [
@@ -2796,6 +2819,16 @@
         14
       ],
       "reason": "E013 독립 교차검토에서 확인한 주어진 확률→미지 개수 역산 목표 경계를 공통 적용. ROOT 동결 해제 승인 후 기존 PT/TPL 및 RPM114 의미 확정을 철회하고 exact 등록 공백으로 정리. 난도/4칸/학생 source 및 다른 모든 문항 판정 유지."
+    },
+    {
+      "type": "TARGETED_TEMPLATE_SCOPE_REPAIR",
+      "ordinal": 5,
+      "authorizedBy": "ROOT",
+      "previousReviewSha256": "fc7ce79d3c6c907e516937592abbcebccae6a29167a5a4d311082ee2f9ede0f2",
+      "previousTemplateDecision": "TPL_CENTROID_APPLICATION",
+      "newTemplateStatus": "NEW_TPL_PENDING",
+      "sharedDefinitionRef": "B-E035-CENTROID-AREA-PARTITION",
+      "note": "현재 발문·보기·기존 해설을 좁게 다시 읽고 순수 무게중심 영역분할 또는 성질진위 목표를 확인했다. 다른 도형의 성질과 결합한 APPLICATION 정의를 넓힌 이전 오류를 수리. source·난도·CC·Condition·Integration·4칸 보존."
     }
   ]
 }

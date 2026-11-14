@@ -7,7 +7,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "92b7137ed19894fb926dad62890400e0bed1a829",
   "sourceSha256": "0a22a4205ca82fb20b0fd529bdb3836ade26df422bb997f4908094c612c879e4",
-  "reviewSha256": "fc7ce79d3c6c907e516937592abbcebccae6a29167a5a4d311082ee2f9ede0f2",
+  "reviewSha256": "74ce0cab2032c462f1bd2dfceab8388d1d3ac38e3c977edf87af489f693567c9",
   "fourSlotSha256": "4e316aeb5f8474959ac73fdc9c15d5054ffd23991633698d7356e2d5f295380c",
   "independentSampleSha256": "8d8aaad49508df2ed0b270f50e3fc3aa0efe3d9da4f06ca66c088c890806594d",
   "sampleInputVersionsPreserved": true,
@@ -74,12 +74,20 @@
   ],
   "notes": [
     "Use existing ACTIVE CC_PYTHAGOREAN, whose definition includes all three side relations; do not duplicate it with a new concept proposal.",
-    "The source independence omission is a content note, not a new mathematical verification claim."
+    "The source independence omission is a content note, not a new mathematical verification claim.",
+    "Template-only follow-up for Q5: the actual stem and solution use only the six equal centroid parts. Reuse the proposed B-E035-CENTROID-AREA-PARTITION definition; TPL_CENTROID_APPLICATION requires an additional figure property or coordinate constraint. Difficulty and four-slot content are unchanged."
   ],
   "sourceContentHolds": [
     {
       "ordinal": 18,
       "reason": "The existing solution multiplies the two pass-event probabilities without an explicit independence assumption in the statement. Metadata classifies that solution conditionally; source correctness is not certified."
     }
-  ]
+  ],
+  "targetedDefinitionFollowup": {
+    "scope": "centroid-template-definition-only",
+    "independentComparison": "workers/C/cross/centroid-definition-consistency.json",
+    "independentComparisonSha256": "78f911d43fb6f8968a99a98597f9554852d82fa9f49ff7dd31efcffd7768747a",
+    "sourceChanged": false,
+    "fourSlotChanged": false
+  }
 }
