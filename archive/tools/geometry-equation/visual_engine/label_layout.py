@@ -25,6 +25,8 @@ TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
 TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
+# The central opening at a shared x-axis crossing can be narrower than a diagonal leader.
+SHARED_ZERO_TICK_CALLOUT_OFFSETS=([8,66],[-8,66],[0,66],[8,-66],[-8,-66],[0,-66])
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
 # Gaps tried from each alternate anchor of a lineFallback label (nearest first; from NEAR_RELOCATION_LEADER_MIN_GAP on, a visible leader is needed).
 LINE_FALLBACK_GAPS=(8,6,10,20,32,48)
@@ -876,7 +878,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
     pending=[label for label in labels if label['id'] in result['unresolved'] and label.get('kind')=='TICK_LABEL' and label.get('tickLabelCallout') is None]
     if pending:
         for target in pending:
-            for offset in TICK_CALLOUT_OFFSETS:
+            for offset in tick_callout_offsets(target):
                 trial=copy.deepcopy(current)
                 for label in trial:
                     if label['id']==target['id']:
@@ -902,6 +904,11 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             except ValueError:retry=None
             if retry is not None and len(retry['unresolved'])<len(result['unresolved']):result=retry
     return result
+
+def tick_callout_offsets(label):
+    if label.get('sharedZeroTick'):
+        return TICK_CALLOUT_OFFSETS+SHARED_ZERO_TICK_CALLOUT_OFFSETS
+    return TICK_CALLOUT_OFFSETS
 
 def tick_ground_line_ids(obstacles,at):
     """Ids of the drawn lines/segments (kind 'line', not an axis) that pass exactly through the tick point `at`."""
@@ -978,7 +985,7 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 or tick_callout.get('schemaVersion')!='TICK_LABEL_OWNER_LEADER_v1'
                 or tick_callout.get('tickId')!=tick_owner.get('id') or tick_callout.get('axis')!=label.get('tickAxis')
                 or tick_callout.get('value')!=label.get('tickValue') or tick_callout.get('sourceAt')!=list(label['at'])
-                or tick_callout.get('offsetUser') not in TICK_CALLOUT_OFFSETS):
+                or tick_callout.get('offsetUser') not in tick_callout_offsets(label)):
                 raise ValueError('TICK_LABEL_CALLOUT_BINDING_INVALID:'+label['id'])
         # lineOwned: an equation written beside its displayed line (kind 'line', id == target); no other label kind takes this path.
         line_owner=next((o for o in obstacles if label.get('lineOwned') and o.get('kind')=='line' and o.get('id')==label.get('target')),None)
