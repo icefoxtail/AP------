@@ -391,9 +391,10 @@ window.questionBank = [
     "solution": "[키포인트] 그래프에서 각 문자 $a,b,c,d,e$를 $x$좌표로 보고 함수값을 읽어 두 번 따라간다.\n정석 풀이:\n1. 그림에서 $x=c$일 때 함수값은 $b$이므로 $f(c)=b$이다.\n2. 다시 $x=b$일 때 함수값은 $d$이므로 $f(b)=d$이다.\n3. 따라서 $(f\\circ f)(c)=f(f(c))=f(b)=d$이다.\n4. 다른 선택지는 그래프를 두 번 읽으면 $a\\mapsto a$, $b\\mapsto c$, $d\\mapsto b$, $e\\mapsto e$가 된다.\n따라서 $(f\\circ f)(k)=d$를 만족하는 값은 $k=c$이므로 정답은 ③이다.",
     "reviewStatus": "candidate_pending",
     "solutionStatus": "plan_locked_pending_independent_review",
-    "image": "assets/images/25_순천고_2학기_기말_고1_유사/q10.svg",
+    "image": "assets/images/25_순천고_2학기_기말_고1_유사/q10-problem-v2.svg",
+    "imageSize": "tall",
     "imageStatus": "new_asset_pending_review",
-    "visualAsset": "assets/images/25_순천고_2학기_기말_고1_유사/q10.svg",
+    "visualAsset": "assets/images/25_순천고_2학기_기말_고1_유사/q10-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
