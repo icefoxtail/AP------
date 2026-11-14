@@ -21,6 +21,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
+    "imageSize": "tall",
     "content": "다음 다섯 그래프 중 함수의 그래프가 아닌 것을 모두 고르시오.",
     "choices": [
       "첫 번째 그래프",
@@ -33,9 +34,9 @@ window.questionBank = [
     "solution": "[키포인트] 수직선 판정법으로 각 그림에 하나의 $x$값이 하나의 $y$값에 대응하는지 확인한다.\n조건 정리: 다섯 그래프 중 함수의 그래프가 아닌 것을 모두 찾는다.\n풀이 방향: 각 그래프에 수직선을 그어 두 점 이상에서 만나는 그래프를 함수가 아닌 것으로 분류한다.\n정석 풀이:\n1. 첫 번째와 네 번째 그래프는 모든 수직선이 그래프와 많아야 한 점에서 만나므로 함수의 그래프이다.\n2. 두 번째, 세 번째, 다섯 번째 그래프는 적절한 수직선이 그래프와 두 점 이상에서 만나므로 함수의 그래프가 아니다.\n3. 따라서 함수의 그래프가 아닌 것은 ②, ③, ⑤이다.\n핵심 확인: 수직선 판정 결과 함수가 아닌 그래프와 함수인 그래프를 각각 모두 확인했다.\n따라서 정답은 ②, ③, ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -46,7 +47,7 @@ window.questionBank = [
         "vertical-line-test"
       ],
       "essentialVisualFacts": "five panels; non-functions are 2,3,5 by vertical-line test",
-      "assetRef": "plan-locked"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -84,9 +85,9 @@ window.questionBank = [
     "solution": "[키포인트] 합성함수는 안쪽 함수부터 적용하므로 대응도를 $f$ 다음 $g$의 순서로 읽는다.\n조건 정리: 대응도에서 $f(2)=4$, $g(4)=3$이다.\n풀이 방향: $(g\\circ f)(2)=g(f(2))$의 순서로 두 대응을 연결한다.\n정석 풀이:\n1. 첫 번째 대응도에서 $f(2)=4$이다.\n2. 두 번째 대응도에서 $g(4)=3$이다.\n3. 따라서 $(g\\circ f)(2)=g(4)=3$이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q02.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q02-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q02.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q02-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -98,7 +99,7 @@ window.questionBank = [
         "composition"
       ],
       "essentialVisualFacts": "f(2)=4, g(4)=3; evaluate g after f",
-      "assetRef": "reviewed-pass"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q02-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "repair-2026-08-29"
@@ -137,9 +138,9 @@ window.questionBank = [
     "solution": "[키포인트] 합성된 형태에서는 안쪽의 $g$를 먼저 읽고, 그 결과를 $f$의 대응에서 거꾸로 추적한다.\n조건 정리: 대응도에서 $g(3)=5$이고 $f(2)=5$이다.\n풀이 방향: $g(3)$을 먼저 구한 뒤 그 값을 만드는 $f$의 입력을 찾는다.\n정석 풀이:\n1. 두 번째 대응도에서 $g(3)=5$이다.\n2. 따라서 $f^{-1}(g(3))=f^{-1}(5)$이다.\n3. 첫 번째 대응도에서 $f(2)=5$이므로 $f^{-1}(5)=2$이다.\n따라서 정답은 ②이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q03.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q03-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q03.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q03-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -151,7 +152,7 @@ window.questionBank = [
         "g"
       ],
       "essentialVisualFacts": "g(3)=5 and f(2)=5; apply g first, then read f backward",
-      "assetRef": "reviewed-pass"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q03-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "repair-2026-08-29"
@@ -218,9 +219,9 @@ window.questionBank = [
     "solution": "[키포인트] 무리함수 그래프의 끝점과 그래프 위의 한 점을 이용해 $a,b,c$를 복원한다.\n조건 정리: 그림에서 끝점은 $E(9,1)$이고 그래프는 점 $P(5,3)$을 지난다.\n풀이 방향: 끝점에서 루트 안의 값과 $c$를 정한 뒤, 점 $P$를 대입하여 $a,b$를 구한다.\n정석 풀이:\n1. 끝점 $E(9,1)$에서 $a+9b=0$이고 $c=1$이다.\n2. 점 $P(5,3)$이 그래프 위에 있으므로 $\\sqrt{a+5b}+1=3$이다. 따라서 $a+5b=4$이다.\n3. $(a+5b)-(a+9b)=4$이므로 $-4b=4$, 즉 $b=-1$이고 $a=9$이다.\n4. 따라서 $f(0)=\\sqrt9+1=4$이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q05.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q05-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q05.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q05-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -232,7 +233,7 @@ window.questionBank = [
         "given_point"
       ],
       "essentialVisualFacts": "endpoint E(9,1), point P(5,3), graph y=sqrt(9-x)+1",
-      "assetRef": "reviewed-pass"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q05-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "repair-2026-08-29"
