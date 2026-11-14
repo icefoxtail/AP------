@@ -1558,7 +1558,7 @@
       },
       "after": {
         "templateKey": "",
-        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
         "standardUnitKey": "M2-04",
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "standardCourse": "중2 수학",
@@ -1570,7 +1570,7 @@
       },
       "fieldReview": {
         "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식: 교점의 한 좌표 대입으로 나머지 좌표와 계수 결정",
-        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "binding": "ACTIVE PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION은 교점을 공통 해로 보고 그 좌표로 요구값을 계산하는 정의라 이 계수복원에 맞다. 현행 native 좌표합TPL은 정방향 교점계산이어서 부분좌표 복원 NEW_TPL은 유지한다. 2015 동일 단원의 ACTIVE binding은 중2-1에만 있어 source의 중2 수학 exact 연결은 대기이다. 공식 Resolver 독립 solution 증거는 미제출.",
         "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
         "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
         "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
@@ -1581,13 +1581,13 @@
       "registrationDebt": [
         {
           "type": "LINK_MISSING",
-          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
           "curriculum": "2015",
           "standardCourse": "중2 수학",
           "standardUnitKey": "M2-04",
           "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-          "definition": "두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.",
-          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+          "definition": "두 일차방정식의 그래프의 교점을 두 방정식을 연립한 해로 보고, 그 좌표를 이용해 요구된 값을 계산하는 과제.",
+          "reason": "native ACTIVE PT의2015/M2-04/M2-04-LINEAR_FUNCTION_EQUATION binding은 standardCourse=중2-1에만 존재한다. source 계약의 중2 수학 exact binding은 없어 LINK_MISSING으로 유지한다."
         },
         {
           "type": "RESOLVER_PROOF_PENDING",
@@ -3779,15 +3779,22 @@
       "type": "NEW_TPL",
       "name": "교점 한 좌표를 통한 미지 계수 결정",
       "definition": "두 직선 교점의 한 좌표를 계수가 알려진 식에 대입하고 얻은 다른 좌표를 미지 계수 식에 대입한다.",
-      "parent": "PT_FUNCTION_GRAPH_INTERSECTION",
-      "distinguishingCriteria": "두 계수가 모두 주어진 교점 직접 계산,한 직선의 두 별도 점을 순차 대입하는 현행 TPL과 다르다.",
+      "parent": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "distinguishingCriteria": "주어진 교점의 한 좌표로 다른 좌표를 먼저 복원한 뒤 미지계수를 결정한다. B-E056-GIVEN-INTERSECTION의 완전한 교점좌표가 주어진 역산과 같은 계열이지만 입력정보 복원 단계가 달라 동일 정의로 합치지 않는다. native 현행 좌표합TPL은 방정식에서 교점을 먼저 계산하는 정방향이다.",
       "existingCandidatesReviewed": [
-        "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
-        "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE"
+        "PT_FUNCTION_GRAPH_INTERSECTION",
+        "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+        "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+        "B-E056-GIVEN-INTERSECTION"
       ],
       "supportingQuestionUids": [
         "qid_v1_b83966c3fcf825feab1a03a4d5e7efe6f2a9158028e16714f6e97a932342e858"
-      ]
+      ],
+      "relatedProposalRef": {
+        "id": "B-E056-GIVEN-INTERSECTION",
+        "relation": "SAME_FAMILY_PARTIAL_COORDINATE_VARIANT_NOT_MERGED"
+      }
     },
     {
       "id": "A-E046-TRAPEZOID-AREA-CC",

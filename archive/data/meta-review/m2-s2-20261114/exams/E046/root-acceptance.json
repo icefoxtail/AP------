@@ -7,7 +7,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "92d0b2d321e5b36d64cad1a66c7a71dbeee9384e",
   "sourceSha256": "939a819ea85a287139e603c924891452881d1dfadfe49d5227d67e4c762df803",
-  "reviewSha256": "d734ef7d7684c7c3f904212c4aa0e60a80682f70fddea4fefc33b9264db4893e",
+  "reviewSha256": "dd9a4c37672ca5d24f5715de271479484653812620366904dc09200986babf17",
   "fourSlotSha256": "6afbcd718e88d91c02c3e714ebda41acbafbb5d8665c593a1829731e3011635c",
   "independentSampleSha256": "3f55f3606d7488a58a6fab2873cc40171f1e90aaa0288f96d30c9badbd960ebc",
   "sampleInputVersionsPreserved": true,
@@ -44,6 +44,22 @@
       "independentSampleSha256": "3f55f3606d7488a58a6fab2873cc40171f1e90aaa0288f96d30c9badbd960ebc",
       "adjudicatedCompatibilityOrdinals": [],
       "resolvedRepairs": []
+    },
+    {
+      "scope": "Q12 only: reuse the exact native ACTIVE graph-intersection type for given-coordinate coefficient recovery. Original source, slots and every difficulty judgment are unchanged; the B sample at9/14/18 is reused.",
+      "inputReviewSha256": "d734ef7d7684c7c3f904212c4aa0e60a80682f70fddea4fefc33b9264db4893e",
+      "finalReviewSha256": "dd9a4c37672ca5d24f5715de271479484653812620366904dc09200986babf17",
+      "independentSampleSha256": "3f55f3606d7488a58a6fab2873cc40171f1e90aaa0288f96d30c9badbd960ebc",
+      "reusedFourSlotSampleOrdinals": [
+        9,
+        14,
+        18
+      ],
+      "fourSlotUnchanged": true,
+      "rootIndependentlyRecheckedOrdinal": 12,
+      "decision": "ACCEPT_EXISTING_ACTIVE_KEY",
+      "officialKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "reason": "독립 root가 Q12 실제 발문·다섯보기 및 빈 정답·해설을 확인했다. 교점의 x=3을 알려진 일차식에 대입해 얻은 y를 미지계수 식으로 전달하는 목표는 native PT의 좌표를 이용한 요구값 계산 정의에 맞는다. 기존 PT_FUNCTION_GRAPH_INTERSECTION의 교점개수·위치·접함 목표와 구별한다. 한 좌표 복원 NEW_TPL과 full-coordinate 제안의 변형관계 및 exact sourceCourse binding 공백은 공통 등록 큐에 남긴다."
     }
   ],
   "difficultyRechecks": [
@@ -468,6 +484,7 @@
   ],
   "notes": [
     "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
-    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task.",
+    "Pinpoint Q12 native ACTIVE type reuse and exact binding debt corrected after source/definition review; prior full exam and independent3-item four-slot evidence reused unchanged."
   ]
 }
