@@ -498,11 +498,29 @@ test('opening refuses a unit that cannot make the mix and a changed question sta
   await h.w.openQuickAssessment([short[0].unit.key]);
   assert.equal(h.published.length, 0, 'a short unit never prints');
   // Review-only HOLD is intentionally usable; a genuine source-integrity failure is not.
-  h.w.state.view = 'monthly-test';
-  h.w.renderQuick();
-  for (const record of data.records) record.sourceIntegrityStatus = 'MISMATCH';
-  await h.w.openQuickAssessment('all');
-  assert.equal(h.published.length, 0, 'stale technically invalid questions are re-checked and dropped');
+  const integrityRecords = [...many(2, 2), ...many(3, 3)].map(record => ({
+    ...record, sourceGrade: '고1', effectiveBrowseGrade: '고1',
+    subject: '공통수학1', standardCourse: '공통수학1',
+    legacyStandardUnitKey: 'H22-C-02', legacyStandardUnit: '항등식과 나머지 정리',
+  }));
+  const integrityData = { ...data, records: [...data.records, ...integrityRecords] };
+  const integrityHarness = harness(integrityData);
+  integrityHarness.w.state.view = 'monthly-test';
+  integrityHarness.w.quickState.grade = '고1';
+  integrityHarness.w.quickState.subject = 'COMMON_MATH_1';
+  integrityHarness.w.renderQuick();
+  const integrityIndex = Unified.buildIndex(integrityData.records, { projectionPolicy: integrityData.projectionPolicy });
+  const monthlyUnits = Quick.unitsFor(Quick.buildPools(integrityIndex), 'monthly-test', '고1', 'COMMON_MATH_1');
+  const monthly = Quick.PRODUCTS['monthly-test'];
+  const monthlyCounts = Object.fromEntries(Quick.BUCKETS.map(bucket => [
+    bucket, monthlyUnits.reduce((sum, unit) => sum + unit.buckets[bucket].length, 0),
+  ]));
+  assert.ok(monthlyUnits.some(unit => unit.unitKey === 'H22-C-02'), 'the added candidates form a second unit');
+  assert.deepEqual(monthlyCounts, { 1: 4, 2: 12, 3: 8, 4: 0 }, 'monthly candidates meet the full 24-question mix');
+  assert.equal(Quick.evaluate(monthlyUnits, monthly, 'standard').ok, true, 'the monthly integrity fixture is publishable before mutation');
+  for (const record of integrityData.records) record.sourceIntegrityStatus = 'MISMATCH';
+  await integrityHarness.w.openQuickAssessment('all');
+  assert.equal(integrityHarness.published.length, 0, 'stale technically invalid questions are re-checked and dropped');
 });
 
 test('the quick products have one navigation tab that stays active on all four views', () => {
