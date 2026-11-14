@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E047",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "31f4c6901c956812124f81f489e5e15c4d080af3",
+  "sourceSha256": "8a8078fa20d89e9cd4d8f77e51348904673b91da426aceb7a0d33fb512dd41ca",
+  "reviewSha256": "c83c4116e8b0b8439a655c9603a85030ba9ebd3fa03ab1db78c93d453760ac7c",
+  "fourSlotSha256": "fa2f13f79a239615609717fcf8f15b4e7f9d5bcbdcb169e07bc5062867e7e09c",
+  "independentSampleSha256": "65c75ade20d4a1f91e9267ee379e3c6ca136fb80fa72039cdc75fc11563d97cb",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d5a7d623d9a356650d37df03955161e82aea38b1ad8303c41e6c4c0921c93d3b",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "필수 한 직각변 길이5cm의 원본 근거"
+      ]
+    }
+  ],
+  "sampleReviewer": "C",
+  "sampleOrdinals": [
+    8,
+    16,
+    22
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "c5cbe9ca96b5581d535e537a103a31c65b877c7e8d3b6c248381e359ba2d73aa",
+      "finalReviewSha256": "c83c4116e8b0b8439a655c9603a85030ba9ebd3fa03ab1db78c93d453760ac7c",
+      "independentSampleSha256": "65c75ade20d4a1f91e9267ee379e3c6ca136fb80fa72039cdc75fc11563d97cb",
+      "adjudicatedCompatibilityOrdinals": [
+        3,
+        8,
+        13,
+        16,
+        22
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "AA 두 각을 명시했고 전체AC→비례식→부분BE의 정형 해석이다. 회전대응 하나로bucket2/B23을 권고한다. 작성자의2/B23 보정 최종본을 재확인했다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_AFTER_PINPOINT"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "여러 분할삼각형의 대응비를 비교해 공통끼인각이 있는 SAS쌍을 선택하는 단계로3/B23을 수용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "높이 비례중항으로DC를 복원하고 대응각·변비·넓이비 진술을 함께 비교하는3/B23이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "무게중심의 중점과2:3을 새 평행 닮음의 두 목표길이에 전달하는 결합으로3/B23을 수용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "중첩 높이비1/9와 별도 밑변1/2을 결합하는 구조여서3/B23, 기존상과경계표시가맞다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "MN에는 중점연결,BE에는 교차삼각형 닮음을 각각 선택해 서로 다른 두 구조를 합하므로3/B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 10,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 원본그림에서 위쪽 가로5cm가 잘려 있고 본문은 x+y만 묻는다. 해설의5cm에 의존한후보2와완전판정을분리해야한다. 작성자가UNRESOLVED/UNKNOWN과candidate2를분리한최종본을재확인했다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_SOURCE_HOLD"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "밑변차7을 얻는 직각삼각형이 드러나며 피타고라스 높이→사다리꼴공식의 정형 연결이므로2.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "대각선10→절반5를 확보하고 회전된AA대응을 골라 둘레를 구성하므로3/B34이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "y=x+1 변환과 눈의 상한6을 한 번 적용하므로2, 기존하와BORDERLINE_REVIEW수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "소문항이AA닮음과 비례식순서를 제시하고 그림자길이비를 직접 적용하므로2.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "두 다른 삼각형의 중선2:1을 공통끼인각의SAS쌍으로 묶는 선택이 있어3/B23을 수용한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "독립확률곱이라는 기존해설모델하에서 다섯 소문항이 여사건·두배반경로를 모두안내하므로2. 독립 가정 원문누락은sourcehold를유지한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CONDITIONAL_MODEL"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 10,
+      "reason": "실제 그림 상단이 잘려 한 직각변5cm가 없고 본문에도 이 길이가 없다. 해설의5cm를 학생 발문에 있는 조건으로 간주할 수 없어 완전 난도를 미판정한다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 19,
+      "reason": "발문은 두 성공확률 또는 반복횟수만 제시하며 상호독립을 명시하지 않는다. 기존 해설의 곱셈은 독립모형을 채택한다. 해당 모형에 대한 메타는 판정하되 원문 확률모형의 완결성은 보류한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 23,
+      "reason": "발문은 두 성공확률 또는 반복횟수만 제시하며 상호독립을 명시하지 않는다. 기존 해설의 곱셈은 독립모형을 채택한다. 해당 모형에 대한 메타는 판정하되 원문 확률모형의 완결성은 보류한다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
