@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E015",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:18:47.963600+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E015",
+    "revisionName": "resume-prerequisite-scope-r1",
+    "namespaceRestores": [
+      14,
+      21
+    ],
+    "semanticScopes": {
+      "14": "M1-2",
+      "21": "M1-1"
+    },
+    "canonicalAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md#1.4.1",
+    "reason": "A lower-prerequisite RPM primary does not authorize changing the target course/L1/L2 namespace. Preserve the existing semantic review and correct only the source/proposal namespace and provenance.",
+    "itemUpdates": [
+      {
+        "sourceOrdinal": 1,
+        "merge": {
+          "semanticDecision": {
+            "bindingCandidate": {
+              "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+              "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+              "status": "WITHDRAWN_UPPER_SCOPE",
+              "activationStatus": "NOT_PROPOSED",
+              "definitionEvidence": {
+                "problemType": "제곱근, 원주율, 순환소수 등 수의 표현을 유리수·무리수의 정의에 따라 분류한다.",
+                "template": "제곱, 원주율, 제곱근 단순화와 순환소수 표현을 확인해 주어진 수의 무리수 여부를 판정한다.",
+                "internalSkeleton": "제곱, 원주율, 제곱근 단순화와 순환소수 표현을 확인해 주어진 수의 무리수 여부를 판정한다."
+              },
+              "withdrawalReason": "Its actual definition invokes square roots and irrational-number classification from M3; lower-only prerequisite scope cannot import this as an M2 semantic candidate. The M2 rational classification leaf/projection debt remains."
+            }
+          },
+          "fieldReview": {
+            "binding": "Withdraw the former M3 real-number candidate under section1.4.1 lower-only prerequisite scope. Preserve the source-grounded M2 rational/cyclic classification and explicit leaf/projection debt."
+          }
+        },
+        "reason": "Canonical upper-scope candidate withdrawal only, as identified by author C after reading section1.4.1."
+      }
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "716df9342d00580872d0dcfe139eb9059dd3a4b5",
+    "currentFourSlotSha256": "358d74730f7e29795dfd2bcf1c7614877f341946927a0654e0264bedcae991ef",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "ab3709bc959110b3c056faafa8ee152caf962a48810bf54898a16e18e2969a92",
+  "previousFourSlotSha256": "358d74730f7e29795dfd2bcf1c7614877f341946927a0654e0264bedcae991ef",
+  "acceptedReviewSha256": "335680d6e857f072644e3965627bd1b1d05c11fef43c998a19cb23c4b4933b26",
+  "acceptedFourSlotSha256": "b3e97b97e42ae690312d5d89a13aa230f193b353ffed81249ed60129574626f9",
+  "reviewedSourceBlob": "716df9342d00580872d0dcfe139eb9059dd3a4b5",
+  "finalSourceBlob": "7060d8d286d124d620fadb049dd2785f66f51b09",
+  "changes": [
+    {
+      "sourceOrdinal": 14,
+      "fields": [
+        "standardCourse",
+        "course",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "category",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "before": {
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardCourse": "중1 수학",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "subUnit": "입체도형의 측정",
+        "course": "중1 수학",
+        "category": "입체도형의 성질"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardCourse": "중2 수학",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙",
+        "course": "중2 수학",
+        "category": "단항식의 계산"
+      },
+      "semanticSourceScope": "M1-2",
+      "basis": "Canonical prerequisite namespace correction only; no whole-item semantic rerun."
+    },
+    {
+      "sourceOrdinal": 21,
+      "fields": [
+        "standardCourse",
+        "course",
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "category",
+        "subUnitKey",
+        "subUnit"
+      ],
+      "before": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "crossConceptKeys": [
+          "CC_REPEATING_DECIMAL_RATIONAL"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardCourse": "중1 수학",
+        "standardUnit": "문자와 식",
+        "standardUnitOrder": 3,
+        "subUnit": "일차방정식의 활용",
+        "course": "중1 수학",
+        "category": "문자와 식"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [
+          "CC_REPEATING_DECIMAL_RATIONAL"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardCourse": "중2 수학",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수",
+        "course": "중2 수학",
+        "category": "서술형 1. 순환소수 활용"
+      },
+      "semanticSourceScope": "M1-1",
+      "basis": "Canonical prerequisite namespace correction only; no whole-item semantic rerun."
+    },
+    {
+      "sourceOrdinal": 1,
+      "merge": {
+        "semanticDecision": {
+          "bindingCandidate": {
+            "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+            "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+            "status": "WITHDRAWN_UPPER_SCOPE",
+            "activationStatus": "NOT_PROPOSED",
+            "definitionEvidence": {
+              "problemType": "제곱근, 원주율, 순환소수 등 수의 표현을 유리수·무리수의 정의에 따라 분류한다.",
+              "template": "제곱, 원주율, 제곱근 단순화와 순환소수 표현을 확인해 주어진 수의 무리수 여부를 판정한다.",
+              "internalSkeleton": "제곱, 원주율, 제곱근 단순화와 순환소수 표현을 확인해 주어진 수의 무리수 여부를 판정한다."
+            },
+            "withdrawalReason": "Its actual definition invokes square roots and irrational-number classification from M3; lower-only prerequisite scope cannot import this as an M2 semantic candidate. The M2 rational classification leaf/projection debt remains."
+          }
+        },
+        "fieldReview": {
+          "binding": "Withdraw the former M3 real-number candidate under section1.4.1 lower-only prerequisite scope. Preserve the source-grounded M2 rational/cyclic classification and explicit leaf/projection debt."
+        }
+      },
+      "reason": "Canonical upper-scope candidate withdrawal only, as identified by author C after reading section1.4.1."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitKey",
+      "before": "M1-07",
+      "after": "M2-01",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnit",
+      "before": "입체도형의 성질",
+      "after": "수와 식",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "standardUnitOrder",
+      "before": 7,
+      "after": 1,
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "category",
+      "before": "입체도형의 성질",
+      "after": "단항식의 계산",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnitKey",
+      "before": "M1-07-SOLID_FIGURE_MEASURE",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "subUnit",
+      "before": "입체도형의 측정",
+      "after": "지수법칙",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnitKey",
+      "before": "M1-03",
+      "after": "M2-01",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnit",
+      "before": "문자와 식",
+      "after": "수와 식",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "standardUnitOrder",
+      "before": 3,
+      "after": 1,
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "category",
+      "before": "문자와 식",
+      "after": "서술형 1. 순환소수 활용",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "subUnitKey",
+      "before": "M1-03-LINEAR_EQUATION_WORD",
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "subUnit",
+      "before": "일차방정식의 활용",
+      "after": "유리수와 순환소수",
+      "reason": "Restore original target namespace under section1.4.1. Preserve the reviewed lower-prerequisite semantic judgment."
+    }
+  ],
+  "evidence": [],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
