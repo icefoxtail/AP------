@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E028",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+  "sourceBlob": "6cf4b6939fdfdd7b0903efd9cb97e7c089616b8d",
+  "target4slotSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+  "targetReviewSha256": "7627efa675060f39c61af14dd9d97c49a392e38847adea69255aa44cb6e1dec5",
+  "sampleRule": "WARN/IMPLIED·GLOBAL 제3원·삼각비에서 호 둘레로 연결하는 경계 우선",
+  "sampleOrdinals": [
+    8,
+    23,
+    24
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_5bc5a8bc2f4fc96492a3c4b1524ba8af440afe74e96ee6ab94e44968947c92a4",
+      "status": "PASS",
+      "independentMeaningReview": "실제 삼각비 표의25도 행·사인 열0.4226을 읽는 직접 조회이다. goal 사인과 method 삼각비가 실제 요구와 맞고 추가 조건은 필요 없다. 단일 방법 WARN을 허용한다.",
+      "quotesChecked": 3,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_연향중_2학기_중간_중3_수학/q08.png",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_90ae56eed6029cb817a5d760d30ef3a4c4847e6076f996cc1eed1bc0c07d3e22",
+      "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+      "independentMeaningReview": "반원Q의 반지름으로 내접 중심거리20−r와 외접 중심거리10+r를 표현하는 제3원 접촉 골격이며 목표는PQ 길이이다. 실제 그림의 수직 표시와 현재 해설의 OP⊥OQ가 condition에 보존되었고 Q의 내접 관계도 전체 식으로 보완되었다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_연향중_2학기_중간_중3_수학/q23.png",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_247da2260d033bf29214cd6a268a9c0ec58a4f9c54df2fcdff375332e8799e90",
+      "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+      "independentMeaningReview": "현재 풀이가 cos 값으로 접점 방향각60도를 정한 다음 감긴 큰 호240도와 두 접선 길이를 합한다. CHAINED_MEASURE의 목표·방법 범위와 일치하며 필수 거리 조건, 큰 호 선택, 전체 인용이 정확하다. 전체 원둘레 CC가 추가되고 별도 호 길이 CC 공백은 debt로 구별되었다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalQuestionImage"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_연향중_2학기_중간_중3_수학/q24.png",
+      "newMathematicalVerification": false
+    }
+  ],
+  "requestedCorrectionsResolved": true,
+  "requestedCorrections": [
+    {
+      "ordinal": 23,
+      "slot": "condition",
+      "change": "OP⊥OQ와 Q의 O에 대한 내접중심거리 전체 식 보존"
+    },
+    {
+      "ordinal": 24,
+      "field": "crossConceptKeys",
+      "change": "CC_CIRCLE_CIRCUMFERENCE 추가, 호 길이 공백 별도 debt"
+    }
+  ],
+  "adjudicationReceiptsObserved": [
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E028.difficulty-adjudication.json",
+      "sha256": "7e45cc9fc3070bcc1cac129985f15f3afbd074f27702f955a9ebd5a63f1ed515"
+    },
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E028.rpm-leaf-gap-adjudication.json",
+      "sha256": "bf7db178e6903c777b0c8d14939e7adb90013ade0323fc367889485598a4bf72"
+    }
+  ],
+  "metadataReceiptConfirmation": "독립 난이도10건과 ROOT 직접재독 Q14/17의2/B23/STRONG_CONFLICT가 최종metadata에 반영됨을 확인했다. 역사level은 보존되고 Q23 수직·내접 조건 및 Q24 원둘레 CC 보완은 최종 슬롯에 그대로 존재한다."
+}

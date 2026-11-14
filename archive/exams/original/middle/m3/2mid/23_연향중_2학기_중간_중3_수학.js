@@ -31,7 +31,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 2,
@@ -61,7 +71,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 3,
@@ -93,7 +113,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_SIMILARITY","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 4,
@@ -125,7 +155,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 5,
@@ -155,7 +195,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 6,
@@ -185,7 +235,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 7,
@@ -217,7 +277,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 8,
@@ -249,7 +319,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 9,
@@ -278,10 +358,20 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "직각삼각형 $ABD$에서 $BD=6\\cos60^\\circ=3$, $AD=6\\sin60^\\circ=3\\sqrt3$이다.\n따라서\n$DC=8-3=5$이다.\n직각삼각형 $ADC$에서 $AC=\\sqrt{(3\\sqrt3)^2+5^2}=\\sqrt{27+25}=2\\sqrt{13}$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 10,
@@ -313,7 +403,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_SLOPE","CC_LINE_EQUATION"],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 11,
@@ -345,7 +445,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 12,
@@ -377,7 +487,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3
   },
   {
     "id": 13,
@@ -406,10 +526,19 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "두 대각선의 교점을 $O$라 하자.\n한 대각선은\n$AO+OC=4$이고,\n다른 대각선은\n$BO+OD=5$이다.\n대각선이 이루는 각이 $60^\\circ$이므로\n네 삼각형의 넓이의 합은\n$\\dfrac12\\sin60^\\circ\n(AO\\cdot BO+BO\\cdot OC+OC\\cdot OD+OD\\cdot AO)$이다.\n괄호 안을 묶으면\n$(AO+OC)(BO+OD)\n=4\\times5\n=20$이다.\n따라서 사각형의 넓이는\n$\\dfrac12\\times20\\times\\dfrac{\\sqrt3}{2}\n=5\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 14,
@@ -441,7 +570,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 15,
@@ -473,7 +612,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 16,
@@ -505,7 +654,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 17,
@@ -537,7 +696,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_GEOMETRIC_FOLDING","CC_PERPENDICULAR_BISECTOR","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 18,
@@ -569,17 +738,27 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_QUADRILATERAL_PROPERTIES"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 19,
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -598,10 +777,20 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$AC=\\sqrt{13^2-12^2}=5\\,\\mathrm{cm}$이다.\n삼각형의 넓이는 $\\dfrac12\\times5\\times12=30\\,\\mathrm{cm^2}$이고 반둘레는 $\\dfrac{5+12+13}{2}=15\\,\\mathrm{cm}$이다.\n내접원의 반지름을 $r$라 하면 넓이 $=r\\times$ 반둘레이므로\n$30=15r$이므로\n$r=2$이다.\n원 $I$의 넓이는 $\\pi r^2=4\\pi\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 20,
@@ -634,7 +823,16 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q20-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3
   },
   {
     "id": 21,
@@ -660,7 +858,17 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 22,
@@ -687,7 +895,17 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/23_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_GEOMETRIC_FOLDING","CC_PARALLEL_LINE_ANGLES","CC_ISOSCELES_TRIANGLE","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3
   },
   {
     "id": 23,
@@ -713,7 +931,17 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+    "problemTypeKey": "PT_TWO_CIRCLES",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3
   },
   {
     "id": 24,
@@ -721,9 +949,9 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -736,9 +964,19 @@ window.questionBank = [
     "choices": [],
     "answer": "$16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$",
     "solution": "단면의 중심을 $O$라 하면\n$OP=8+8=16$이다.\n접점을 $T$라 하면\n$OT\\perp PT$이므로\n$PT=\\sqrt{16^2-8^2}=8\\sqrt3$이다.\n접선은 두 개이므로 접선 부분의 합은 $16\\sqrt3$이다.\n또한 $\\cos\\angle TOP=\\dfrac{OT}{OP}=\\dfrac12$이므로\n$\\angle TOP=60^\\circ$이다.\n두 접점 사이에서 점 $P$ 쪽의 중심각은 $120^\\circ$이므로 실이 감긴 큰 호의 중심각은 $240^\\circ$이다.\n큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{240}{360}=\\dfrac{32\\pi}{3}$이다.\n따라서 실의 길이는 $16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3
   }
 ];
