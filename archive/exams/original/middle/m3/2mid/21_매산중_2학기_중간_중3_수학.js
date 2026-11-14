@@ -82,7 +82,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>"
+      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q2-solution.svg",
+      "solutionImageAlt": "해설 그림: 대표 삼각형의 변 비는 AB=3k, BC=2k, AC=k√5이다. C는 직각이고, 파란 BC는 A의 맞은편, 초록 AC는 이웃, 주황 AB는 빗변이다.",
+      "solutionImageCaption": "sin A=BC/AB=2k/3k=2/3이다. 피타고라스 정리로 AC=k√5이므로 tan A=2k/(k√5)=2√5/5이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 3,
@@ -283,7 +287,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 보라 호는 같은 크기의 B각과 x각이다. 파란 AB·DE와 주황 BC·DC는 닮은 두 삼각형의 대응변이며, 색은 길이가 같다는 뜻이 아니다.",
+      "solutionImageCaption": "BC=√(6²+8²)=10 cm이다. ∠B=x이고 두 직각삼각형은 닮았으므로 cos x=DE/DC=AB/BC=6/10=3/5이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
