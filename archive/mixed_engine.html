@@ -1659,6 +1659,7 @@ function detectChoiceRenderMode(choices) {
     return (isLong || hasBlockPrefix) ? 'block' : 'compact';
 }
 function renderChoicesHTML(q) {
+    if (q.choicesEmbeddedInImage === true || q.sourcePayload?.choicesEmbeddedInImage === true) return '';
     const circled = ['①', '②', '③', '④', '⑤'];
     const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
     if (isSubjective) return '<div class="answer-box"></div>';
