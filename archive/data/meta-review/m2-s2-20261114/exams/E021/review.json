@@ -546,19 +546,24 @@
       "primaryMethod": "원뿔 부피비와 남은 채움 시간",
       "decisiveStep": "작은 원뿔과 전체의 부피비를 전체 시간 비로 바꾸고 이미 흐른 시간을 뺀다.",
       "before": {
-        "integrationPattern": "SEQUENTIAL"
+        "integrationPattern": "SEQUENTIAL",
+        "crossConceptKeys": []
       },
       "beforeSource": {
-        "integrationPattern": "SEQUENTIAL"
+        "integrationPattern": "SEQUENTIAL",
+        "crossConceptKeys": []
       },
       "beforeMetadata": {},
       "after": {
-        "integrationPattern": "REINTERPRETATION"
+        "integrationPattern": "REINTERPRETATION",
+        "crossConceptKeys": [
+          "CC_RATE_OF_CHANGE"
+        ]
       },
       "fieldReview": {
         "classification": "닮음의 활용 / 넓이·부피 비: 작은 원뿔과 전체의 부피비를 전체 시간 비로 바꾸고 이미 흐른 시간을 뺀다.",
         "binding": "ACTIVE 정의와 현행 crosswalk 대조. 표시한 definitionMatch는 등록키의 의미 후보이며 공식 Resolver 실행 영수증을 대신하지 않음.",
-        "crossConcept": "닮음의 도형량 비 밖에서 일정한 유량의 부피-시간 정비례를 사용한다. 정확한 현행 CC가 없어 제안.",
+        "crossConcept": "기존 ACTIVE CC_RATE_OF_CHANGE 정의는 한 양이 다른 양의 변화에 따라 일정하게 변하는 비율이다. 일정 유량에서 부피와 시간의 비례에 정확히 해당하여 재사용하고 새 유량 CC 제안을 철회한다. 닮음 primary의 도형량 비 밖에서 시간으로 옮기는 보조 개념이다.",
         "condition": "도형·수치 설정은 4칸에 기록. 별도의 수 범위·표본 제한 COND 없음.",
         "integration": "도형의 부피비를 일정 유량에서 걸리는 시간의 비로 재해석한다.",
         "difficulty": "높이비의 세제곱을 일정한 채움 속도의 시간으로 한 번 해석한다.",
@@ -566,12 +571,9 @@
       },
       "reason": "작은 원뿔과 전체의 부피비를 전체 시간 비로 바꾸고 이미 흐른 시간을 뺀다.",
       "registrationDebt": [
-        "DEFINITION_REGISTRATION_PENDING",
         "OFFICIAL_RESOLVER_RECEIPT_REQUIRED"
       ],
-      "proposalRefs": [
-        "C-E021-CC-FLOW"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 2,
@@ -2184,24 +2186,6 @@
       ]
     },
     {
-      "proposalId": "C-E021-CC-FLOW",
-      "type": "CC",
-      "name": "일정 유량의 부피와 시간 정비례",
-      "definition": "단위 시간당 유입되는 부피가 일정할 때 채운 부피의 비를 경과 시간의 비와 같게 놓고 전체 또는 남은 시간을 구한다.",
-      "parent": "비례 관계 / 단위율",
-      "discriminator": "도형 자체의 부피비는 primary이다. 이 CC는 부피량을 시간량으로 바꾸는 일정 유량의 물리적 조건을 사용한다.",
-      "checkedExisting": [
-        "CC_RATIO_AND_PROPORTION: 전체 양의 비례배분",
-        "CC_VOLUME_RATIO: 입체 부피의 비 자체"
-      ],
-      "ordinals": [
-        7
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_1a275026191ec3c7abf5dbe60847f6c45fff45c2788ac3b3b66d1427ad8d23cc"
-      ]
-    },
-    {
       "proposalId": "C-E021-PROB-CLAIMS",
       "type": "NEW_PT",
       "name": "확률의 뜻과 기본 성질의 진위 판정",
@@ -2289,6 +2273,7 @@
     "모든 난도는 실제 문항의 요구 사고로 판정했다. 기존 level 및 bucket은 가시 상태였으며 blind 재판정이라고 주장하지 않는다.",
     "ROOT가 실제 발문·선지·기존 해설로 Q1·9·18 하2, Q8 중1, Q5·12·14 상3를 독립 재검해 수용했다. 기존 confidence/boundary를 유지하며 BORDERLINE_ACCEPTABLE로 반영.",
     "A 독립표본과 ROOT 수납: Q17의 확률 기본성질 진위 목표는 RPM114 계산 leaf로 강제하지 않고 RPM_LEAF_GAP 추가. 4칸 범위 인용은 명칭이 포함된 전체 문구로 보강. Q1·22 표본 PASS 수납.",
-    "E021 Q24 후속 정의 정밀화: 이전 review SHA f27d17d6f50bcf29d32d49070ff0b14bb90dd774c6c5c5a984e337f4cc2375d1. ① 기존 계수비 템플릿 exact, ②의 균일 영역 넓이비는 NEW_TPL 제안. sourceHold·답·해설·난도는 보존했으며 새 학생 수학 검증은 수행하지 않았다."
+    "E021 Q24 후속 정의 정밀화: 이전 review SHA f27d17d6f50bcf29d32d49070ff0b14bb90dd774c6c5c5a984e337f4cc2375d1. ① 기존 계수비 템플릿 exact, ②의 균일 영역 넓이비는 NEW_TPL 제안. sourceHold·답·해설·난도는 보존했으며 새 학생 수학 검증은 수행하지 않았다.",
+    "Q7 현재 CC 신규 제안의 중복만 표적 재확인: ACTIVE CC_RATE_OF_CHANGE(한 양이 다른 양의 변화에 따라 일정하게 변하는 비율)를 발견하여 C-E021-CC-FLOW를 제안/refs에서 철회하고 재사용한다. Q24 후속 NEW_TPL와 SOURCE_HOLD는 보존. 이전 SHA e57f8dd5e6901c06d2dae3db58c5727ff3635de1d13f76399078cabb86924478"
   ]
 }
