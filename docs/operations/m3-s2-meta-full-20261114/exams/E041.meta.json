@@ -12,7 +12,7 @@
   "sourceAfterSha256": "d822c7fc6ab1886f19bf9bf4632d55cb111a076d1baf6dc26ee552f2becb8172",
   "questionCount": 24,
   "uidDigest": "593a5b6a61c908245b340bca994fbdc34204c2ac89f0719a5ba8a554970a60a7",
-  "authorRawReviewSha256": "3dd4d250e6e395899d76f92a148685b2b115714334f1560b8142302bc6edc50a",
+  "authorRawReviewSha256": "f9dc499d50854616935b2f1ee9f0c6c7a9bb0163a1f4b0fdeb149149ae109fd2",
   "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
   "authority": {
     "status": "ACTIVE",
@@ -45,7 +45,7 @@
     },
     "resolver-evidence.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.resolver-evidence.json",
-      "sha256": "22a7d54f6ec756c6a22fee33c3a84935fe6085ec2b17f4e722c1cfa9f225d8e6"
+      "sha256": "cf38555b822c542f1fe0a098b39cb1b61fecb82cb191d84a367f83e8b695c633"
     },
     "difficulty-change-review.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.difficulty-change-review.json",
@@ -61,11 +61,11 @@
     },
     "independent": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.independent.json",
-      "sha256": "68b6f4c79030b342e23e97598a0b79fbfa823e07a540d4f2fc5f9026a859772b"
+      "sha256": "0d88557af1fc4fd9fe4cda59fe016cea4173294ca76b6cb717de697f71986cb5"
     },
     "independent.difficulty.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.independent.difficulty.json",
-      "sha256": "dcd57266dae14f07c2eb84feeefc4690eb3b32b333e99c1a1084f9a86baf5a16"
+      "sha256": "da6fc379f1d34d8d140f1db84acac57c8a532a93f41501a541c75dafd62144d2"
     },
     "independent-image-version.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.independent.image-version.json",
@@ -73,7 +73,15 @@
     },
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.difficulty-adjudication.json",
-      "sha256": "df67aed98449358bcac7c16e36f917014218422112a2b0b19bd12bb379128177"
+      "sha256": "9dd16664c74c71f400ba7e06f98d9d104433672cd9fa7072de026e9ac9582a02"
+    },
+    "bindingContextAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.binding-context-amendment.json",
+      "sha256": "2f5627994cbf1e5d7dc33b725d9c0cf77b9570ff0ca1e9b839a0c23b3ce8f17e"
+    },
+    "bindingContextIndependentAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E041.binding-context-independent-amendment.json",
+      "sha256": "c48cf13b2ad021ac7f0490feede7a3003b97731c8df5b019db71726860c723f1"
     }
   },
   "items": [
@@ -2753,8 +2761,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -2943,8 +2951,8 @@
           "detail": "현재 골격에 맞는 기존ACTIVE TPL을 재사용하며 원본RPM row의 PT/TPL 연결 정합화를 인계한다."
         },
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -3123,8 +3131,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -3303,8 +3311,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -3490,8 +3498,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -3674,8 +3682,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -4413,8 +4421,8 @@
       },
       "debts": [
         {
-          "type": "EXACT_ACTIVE_BINDING_MISSING",
-          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
         },
         {
           "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
@@ -4478,7 +4486,7 @@
       "CURRENT_2022_ACTIVE_CONNECTION_GAP": 23,
       "RESOLVER_SOLUTION_PROVENANCE": 24,
       "CIRCLE_LINE_CLAIM_TEMPLATE_SCOPE_GAP": 1,
-      "EXACT_ACTIVE_BINDING_MISSING": 7
+      "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING": 7
     },
     "newMathVerification": false,
     "actualTopics": {
@@ -4531,6 +4539,36 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "66c7fc94388a5144f71967d91c49a10351ce15ab3d7132c9190cb165f44d3a1e",
-  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND"
+  "semanticPayloadSha256": "7dc6714d39ea0e7a1a3e1b35d6ba9c0bebd87f3c48a9fd543d5bf5f4641c23c1",
+  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND",
+  "evidenceAmendments": [
+    {
+      "kind": "EVIDENCE_ONLY_EXACT_CONTEXT_CORRECTION",
+      "previous": {
+        "commit": "32d90f620e2cf565961a4fa2a3ae333b909479cb",
+        "metadataSha256": "cac6ba6a8143520227a122d19e31560081b68094ea7e89ca899c07b29034b244",
+        "verificationSha256": "c7f8a42ee04cb6f9e319f7c99f062537d2658f47ebe9757f17cc437017bff148",
+        "sourceAfterSha256": "d822c7fc6ab1886f19bf9bf4632d55cb111a076d1baf6dc26ee552f2becb8172",
+        "authorRawReviewSha256": "3dd4d250e6e395899d76f92a148685b2b115714334f1560b8142302bc6edc50a"
+      },
+      "changedDebtOrdinals": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        24
+      ],
+      "originalContextCountCorrections": 23,
+      "current2022ContextCountsUnchanged": 24,
+      "sourceAndFourSlotAndDifficultyUnchanged": true,
+      "existingIndependentSamplesReused": [
+        12,
+        14,
+        24
+      ],
+      "independentDeltaStatus": "PASS"
+    }
+  ]
 }

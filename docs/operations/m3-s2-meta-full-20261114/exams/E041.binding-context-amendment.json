@@ -1,0 +1,2035 @@
+{
+  "examId": "E041",
+  "kind": "EVIDENCE_ONLY_EXACT_CONTEXT_CORRECTION",
+  "cause": "RPM row에 없는 standardCourse를 null로 비교하여 실제 존재 binding이0개라고 기록했다. scope M3/M1를 정본 course label로 해석해 정확 문맥을 대조한다.",
+  "compiledBindingPath": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+  "compiledBindingSha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+  "before": {
+    "reviewPath": "/workspace/scratch/6538df266481/worker-outputs/a/E041/review.json",
+    "reviewSha256": "3dd4d250e6e395899d76f92a148685b2b115714334f1560b8142302bc6edc50a",
+    "resolverPath": "/workspace/scratch/6538df266481/worker-outputs/a/E041/resolver-evidence.json",
+    "resolverSha256": "22a7d54f6ec756c6a22fee33c3a84935fe6085ec2b17f4e722c1cfa9f225d8e6"
+  },
+  "after": {
+    "reviewSnapshot": "E041.review.after.json",
+    "reviewSha256": "f9dc499d50854616935b2f1ee9f0c6c7a9bb0163a1f4b0fdeb149149ae109fd2",
+    "resolverSnapshot": "E041.resolver.after.json",
+    "resolverSha256": "cf38555b822c542f1fe0a098b39cb1b61fecb82cb191d84a367f83e8b695c633"
+  },
+  "contextDeltas": [
+    {
+      "ordinal": 1,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 1,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 2,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 2,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 3,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-058",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-058",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 3,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-146",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-146",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 4,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-057",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-057",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 4,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-145",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-145",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 5,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-056",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-056",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 5,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-144",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-144",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 6,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-055",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 6,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-143",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO",
+        "selectedTemplate": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 7,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 7,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 8,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 8,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 9,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 9,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 10,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-065",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-065",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 10,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-153",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-153",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 11,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 11,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 12,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-062",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_H22A_05_TRIANGLE_AREA",
+        "selectedTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "canonicalTemplateOwner": "ALGEBRA_2022"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-062",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_H22A_05_TRIANGLE_AREA",
+        "selectedTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "canonicalTemplateOwner": "ALGEBRA_2022"
+      }
+    },
+    {
+      "ordinal": 12,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-150",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_H22A_05_TRIANGLE_AREA",
+        "selectedTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "canonicalTemplateOwner": "ALGEBRA_2022"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-150",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_H22A_05_TRIANGLE_AREA",
+        "selectedTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "canonicalTemplateOwner": "ALGEBRA_2022"
+      }
+    },
+    {
+      "ordinal": 13,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-062",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-062",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 13,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-150",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-150",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 14,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-071",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": null,
+        "canonicalTemplateOwner": null
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-071",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": null,
+        "canonicalTemplateOwner": null
+      }
+    },
+    {
+      "ordinal": 14,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-159",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": null,
+        "canonicalTemplateOwner": null
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-159",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": null,
+        "canonicalTemplateOwner": null
+      }
+    },
+    {
+      "ordinal": 15,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-067",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-067",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 15,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-155",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-155",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 16,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 16,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": false,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 17,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-071",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-071",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 17,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-159",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-159",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 18,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-072",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-072",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 18,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-160",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-160",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 19,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 19,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 20,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-069",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 20,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-157",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 21,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-059",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 21,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-147",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 22,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-064",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-064",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 22,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-152",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-152",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 23,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-061",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_ACTIVE",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 23,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-149",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "mappingStatus": "FAMILY_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_TRIG_RATIO_APPLICATION",
+        "selectedTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "canonicalTemplateOwner": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "ordinal": 24,
+      "version": "original",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-072",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-072",
+        "context": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 1,
+        "bindingOwners": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "ordinal": 24,
+      "version": "current2022",
+      "before": {
+        "crosswalkRecordId": "M3-RPM-160",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": null,
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      },
+      "after": {
+        "crosswalkRecordId": "M3-RPM-160",
+        "context": {
+          "curriculum": "2022",
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        "mappingStatus": "DIRECT_BINDING_GAP",
+        "selectedPairMatches": true,
+        "exactContextBindingCount": 0,
+        "bindingOwners": [],
+        "selectedProblemType": "PT_CIRCLE_TANGENT",
+        "selectedTemplate": "TM_TANGENT_LENGTH",
+        "canonicalTemplateOwner": "GEOMETRY_EQUATIONS"
+      }
+    }
+  ],
+  "debtDeltas": [
+    {
+      "ordinal": 15,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 16,
+      "before": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "현재 골격에 맞는 기존ACTIVE TPL을 재사용하며 원본RPM row의 PT/TPL 연결 정합화를 인계한다."
+        },
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "현재 골격에 맞는 기존ACTIVE TPL을 재사용하며 원본RPM row의 PT/TPL 연결 정합화를 인계한다."
+        },
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 17,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 18,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 19,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 20,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 24,
+      "before": [
+        {
+          "type": "EXACT_ACTIVE_BINDING_MISSING",
+          "detail": "실제 ACTIVE binding 수와 canonical owner가 다를 수 있으므로 읽기전용 문맥 결과를 resolver-evidence에 기록했다. 기존 정의의 존재와 출고 연결 완료는 별개이다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ],
+      "after": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 M3 exact context ACTIVE binding은 1개이며 owner는 MIDDLE_GEOMETRY이다. canonical PT owner GEOMETRY_EQUATIONS와 crosswalk의 binding 상태 표기를 정합화할 출고 작업이며 binding 부재는 아니다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "現2022 정확경로는 확인했으나 재사용한 타입의 해당 문맥 row/binding 결속은 등록담당 작업이다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "동일source의 기존 META_PIPELINE_AUDIT는 확인했으나 수학 VERIFIED_FINAL 해설 provenance와 같다고 간주하지 않는다. 공식Resolver 새완료/새R1R2R3를 주장하지 않는다."
+        }
+      ]
+    }
+  ],
+  "sourcePatchSha256Unchanged": "5f65dc2f6d2ccd33dd22a774704c04fd9d9f16c8e3259e14c70c8567c8917a11",
+  "fourSlotSha256Unchanged": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+  "difficultyChangeReviewSha256Unchanged": "0081652134a542156149ad2c83ec301c2f97fc7975347a020089e2a6afda9ab2",
+  "independentSampleOrdinalsUnchanged": [
+    12,
+    14,
+    24
+  ],
+  "semanticFieldsExceptDebtUnchanged": true,
+  "studentSourceChanged": false,
+  "previousPacketOrBranchModified": false,
+  "E043Check": "E043.binding-context-no-change.json",
+  "status": "ROOT_REVIEW_AND_TARGETED_COMMIT_PENDING"
+}
