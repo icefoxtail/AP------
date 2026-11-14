@@ -1,0 +1,3301 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E014",
+  "owner": "B",
+  "sourceArchiveFile": "original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 23,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_2db04fd2432b60a995db384053f84311bfcac11e65fe9b7bf11de4f84c6d5b8a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-122",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환마디 자리수에 맞춘 두 배수식의 차로 반복 부분 소거",
+      "decisiveStep": "100x와 x의 소수 반복 부분을 일치시켜 100x−x를 선택한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmRecordId": "M2-RPM-122",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "순환소수를 분수로 표현하는 식을 고르는 문제이며 분수 변환122가 primary이다.",
+        "binding": "현재 RPM crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이다. 해당 해결 단계에 맞는 기존 ACTIVE 정의·골격을 대조하되 genuine VERIFIED_FINAL 및 정확한 scoped binding이 없으므로 등록을 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "두 자리 순환마디가 바로 제시되어100배 후 차를 선택하는 한 가지 익숙한 규칙이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "순환소수를 분수로 표현하는 식을 고르는 문제이며 분수 변환122가 primary이다. 100x와 x의 소수 반복 부분을 일치시켜 100x−x를 선택한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-DECIMAL-OPERATIONS"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 자리 순환마디가 바로 제시되어100배 후 차를 선택하는 한 가지 익숙한 규칙이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6430c9d4d9732fef25df66b9b5ecb5acf4608fa0ad8e44f933ac486aaacb984a"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "82bb1614c8ef2b8e95dcff92c3a2f571cac18ae4b63324b8f4bb13e00cfb7eab"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_2d47081b6a1c7aad81595e81716d11222bc22ee7be12251413e52ea16573ea25",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-121",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환마디와 무한소수 정의를 이용한 설명 판정",
+      "decisiveStep": "4가 계속 반복되므로 무한소수가 아니라는③은 거짓이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmRecordId": "M2-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "반복 부분과 소수 표현 설명 판정이 중심이다. 분수 변환은 다른 보기 확인의 보조이며121에 둔다.",
+        "binding": "현재 RPM crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이다. 해당 해결 단계에 맞는 기존 ACTIVE 정의·골격을 대조하되 genuine VERIFIED_FINAL 및 정확한 scoped binding이 없으므로 등록을 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "계속 반복되는 소수는 무한소수라는 정의만으로 결정된다. 다른 보기 변환을 전부 수행해야 하는 문제로 난도를 높이지 않는다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "반복 부분과 소수 표현 설명 판정이 중심이다. 분수 변환은 다른 보기 확인의 보조이며121에 둔다. 4가 계속 반복되므로 무한소수가 아니라는③은 거짓이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-DECIMAL-OPERATIONS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "계속 반복되는 소수는 무한소수라는 정의만으로 결정된다. 다른 보기 변환을 전부 수행해야 하는 문제로 난도를 높이지 않는다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cbe0bc0ce130afa6cd37f7528ed0c6f63d89be17f073995e9e6f434d87c18c20"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3d8c3f69cd693f8787c62e60a3da9490b4073098dfcafbf1243e3eab9b896762"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bf5e6e8d9204ab22ee4122557c12e7767bc213ae2cb0250ebde1327823b2b2ee",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-121",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분수를 소수로 바꾸어 최소 순환마디 길이를 합함",
+      "decisiveStep": "1/3의 순환마디3 길이1,8/11의72 길이2를 더한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmRecordId": "M2-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "최종 목표가 순환마디의 길이이므로121이며 소수 전환123은 중간 절차이다.",
+        "binding": "현재 RPM crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이다. 해당 해결 단계에 맞는 기존 ACTIVE 정의·골격을 대조하되 genuine VERIFIED_FINAL 및 정확한 scoped binding이 없으므로 등록을 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "대표적인 두 분수의 단순 반복 길이를 세어 더한다. 별도 전략 선택이나 자리 추적은 없다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "최종 목표가 순환마디의 길이이므로121이며 소수 전환123은 중간 절차이다. 1/3의 순환마디3 길이1,8/11의72 길이2를 더한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-DECIMAL-OPERATIONS"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대표적인 두 분수의 단순 반복 길이를 세어 더한다. 별도 전략 선택이나 자리 추적은 없다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cd63bb02d6269c1d50dae679a48c65c66a79f5c445f926077c8251a6c8ffac23"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f5efd2748e2db6b34179d8be944c9ab5568ad40071d9a6ef03b2166c82972b1f"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_5e3ba4e293d3f5033bad378689614b514d729b9a314be1fb78f1a5ff8a407eee",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-121",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환마디의 길이로 자리 번호를 나눈 나머지 판독",
+      "decisiveStep": "길이6인461538에서123=6×20+3이므로 세 번째 자리1이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "rpmRecordId": "M2-RPM-121",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "순환마디의 주기를 이용한 자리 추적이므로121이다. 고교 지수 나머지용CC_MODULO_EXPONENT_REDUCTION을 억지 적용하지 않는다.",
+        "binding": "현재 RPM crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이다. 해당 해결 단계에 맞는 기존 ACTIVE 정의·골격을 대조하되 genuine VERIFIED_FINAL 및 정확한 scoped binding이 없으므로 등록을 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "순환마디를 구하고123을6으로 나눈 나머지를 대조하는 표준 두 단계이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "순환마디의 주기를 이용한 자리 추적이므로121이다. 고교 지수 나머지용CC_MODULO_EXPONENT_REDUCTION을 억지 적용하지 않는다. 길이6인461538에서123=6×20+3이므로 세 번째 자리1이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-DECIMAL-OPERATIONS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "순환마디를 구하고123을6으로 나눈 나머지를 대조하는 표준 두 단계이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "60227f2ad730bb96e9184ba05597f704f88fc3783b754ec755c4f5efbd4fc025"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9a4cc5c898e1c3624f2cc3ac1b194a7c620e63a2a7508c69b85c0873c7eacee2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5c48fbbe18c392783068313f90997b71122e839f7070403ec5529bd85b01ba15",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-120",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "약분 후 분모의 소인수 조건과 한 자리 자연수 범위 결합",
+      "decisiveStep": "7/(20x)에서7은 약분될 수 있고3은 남으므로1,2,4,5,7,8을 합한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmRecordId": "M2-RPM-120",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"유리수와 순환소수\",\"유리수와 순환소수\"]",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "약분한 분모에2,5 외 소인수가 남는지 따지는 유한소수 조건120이다.",
+        "binding": "현재 RPM crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이다. 해당 해결 단계에 맞는 기존 ACTIVE 정의·골격을 대조하되 genuine VERIFIED_FINAL 및 정확한 scoped binding이 없으므로 등록을 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "x는 자연수이며 한 자리로 제한된다. 유한소수가 되어야 한다는 분모 조건과 함께 후보 선택에 직접 쓰인다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "기약분수로 바꾸고 분자의7이 분모의7을 지우는 예외를 함께 고려해 한 자리 후보를 거른다. 단순 분모 소인수 확인보다 조건 결합이 있다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "약분한 분모에2,5 외 소인수가 남는지 따지는 유한소수 조건120이다. 7/(20x)에서7은 약분될 수 있고3은 남으므로1,2,4,5,7,8을 합한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-DECIMAL-OPERATIONS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기약분수로 바꾸고 분자의7이 분모의7을 지우는 예외를 함께 고려해 한 자리 후보를 거른다. 단순 분모 소인수 확인보다 조건 결합이 있다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "739bea9b58050f74aaa8f45c37b33e623df7ba65ad2e6d0c6b00733e9f5a6737"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7fbdbc4b617ca1732dbd283fd05ec5eb5d4c4302b8111542e2821599ce431d32"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_6676afbc09ae6942424219503a896f393e33574257ff9548edc4232c16bf2b01",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-129",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단항식 혼합 연산의 지수법칙으로 결과 비교",
+      "decisiveStep": "각 보기의 결과를a의 거듭제곱으로 정리하면②만a10이고 나머지는a6이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmRecordId": "M2-RPM-129",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateTemplateKeys": [
+            "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+            "TPL_H22A_01_EXPONENT_LAWS_071"
+          ],
+          "status": "REUSE_CANDIDATES_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+            "parentProblemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+            "definition": "각 보기의 계수와 문자 부분을 분리해 거듭제곱의 곱·나눗셈 규칙으로 간단히 한 뒤, 제시된 결과와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+            "parentProblemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+            "definition": "2022 대수 지수법칙의 지수식 계산 풀이 분기. RPM H2-M1-RPM-071 정본 계승.",
+            "internalSkeleton": "지수법칙 → 지수식 계산",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "단항식의 곱·몫·거듭제곱이 함께 있는 혼합 계산129이다.",
+        "binding": "M2 기존 template는 제시된 결과의 오류 판정이고 본 문항은 서로 다른 결과 선택이라는 출력 차이가 있다. H22A generic 지수식 계산의 definition/skeleton은 실제 연산과 맞지만 M2 scoped binding이 없다. 후보 재사용/출력변형 검토로 HOLD한다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "여러 보기마다 익숙한 지수법칙을 순서대로 적용한다. 전략 분기 없이 지수를 비교한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "단항식의 곱·몫·거듭제곱이 함께 있는 혼합 계산129이다. 각 보기의 결과를a의 거듭제곱으로 정리하면②만a10이고 나머지는a6이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-EXPONENT-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여러 보기마다 익숙한 지수법칙을 순서대로 적용한다. 전략 분기 없이 지수를 비교한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e5b8884c2f88a3257cb6c8f8a45744dc0c152231738a27266caa94467dbbdb45"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "39b34d51fca643159526ef7fbd4a5ed4610cecd5e38e895a843fa20c294f5309"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_b4476e39001ba358339b0f43cbd9e80bed86f6b96581d67bc16f698f5939880e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-125",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단위 관계를 연속 적용하고 같은 밑의 지수를 합함",
+      "decisiveStep": "16MB=2⁴×2¹⁰×2¹⁰×2³bit를 계산한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmRecordId": "M2-RPM-125",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateTemplateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+            "parentProblemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+            "definition": "2022 대수 지수법칙의 지수식 계산 풀이 분기. RPM H2-M1-RPM-071 정본 계승.",
+            "internalSkeleton": "지수법칙 → 지수식 계산",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "동일 밑 거듭제곱을 곱하는125의 단위 관계 응용이다.",
+        "binding": "ACTIVE generic H22A 지수식 계산 골격을 후보로 확인했다. 단위 환산 맥락 때문에 새 semantic template를 단정하지 않으며 M2 scoped binding 및 resolver 증거를 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "표의 변환 순서가 주어져 계수를 차례로 곱하고 지수를 더하는 정형 절차이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "동일 밑 거듭제곱을 곱하는125의 단위 관계 응용이다. 16MB=2⁴×2¹⁰×2¹⁰×2³bit를 계산한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-EXPONENT-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "표의 변환 순서가 주어져 계수를 차례로 곱하고 지수를 더하는 정형 절차이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "de35ac4fe83d22ba7855f1975e4990693c98c585bb07386ab9ccdc0202d96370"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3d8d189e9ef2176e5c371f077ab2a84175bd676e9391a4cb321e7f415ace4fa2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_73044fce8f9a05d3d6f27f0a5e0cf93204df40b1baf02d3b5e31ff81b4eb5686",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-126",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "거듭제곱의 밑을3으로 통일하고3⁴=A를 대입",
+      "decisiveStep": "27⁸=3²⁴=(3⁴)⁶=A⁶인 뒤 역수를 취한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "rpmRecordId": "M2-RPM-126",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+          "candidateTemplateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+            "parentProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+            "definition": "'지수법칙 적용' 유형에서 '서로 역수인 거듭제곱 치환과 값 결정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+            "internalSkeleton": "서로 역수인 거듭제곱 치환과 값 결정",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+            "parentProblemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+            "definition": "2022 대수 지수법칙의 지수식 계산 풀이 분기. RPM H2-M1-RPM-071 정본 계승.",
+            "internalSkeleton": "지수법칙 → 지수식 계산",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "거듭제곱의 거듭제곱126이며 역수 표현은 최종 형태이다.",
+        "binding": "기존 ACTIVE 역수 거듭제곱 치환 template의 정의와 골격이 본문3⁴=A 및1/27⁸ 표현에 부합하는 후보이다. 정확 M2 scoped binding이 없으므로 활성 투영을 하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "밑27을3³으로 바꾸고 지수24를4×6으로 정리하는 표준 치환이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "거듭제곱의 거듭제곱126이며 역수 표현은 최종 형태이다. 27⁸=3²⁴=(3⁴)⁶=A⁶인 뒤 역수를 취한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-EXPONENT-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "밑27을3³으로 바꾸고 지수24를4×6으로 정리하는 표준 치환이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "53366ec39372b72c344d204c7b8a503202a95a78f2b414aa47323e6a6eb6b4cf"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "621a3f522f3e364e0dc1ac66e1a348506f2ee1cec3346ce9a92d6b478ed82e5d"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_6e0c850aba7fb53103c1f6e0630f572cf06938444d26d7bbcc6c4e7e7895db86",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-129",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단항식 혼합 계산 뒤 계수와 각 문자의 지수 비교",
+      "decisiveStep": "16x^(2A+3−B)y^(8+2B)에서C16,B5,A4를 순서대로 정한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmRecordId": "M2-RPM-129",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateTemplateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+          "status": "EXISTING_CANDIDATE_SCOPED_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+            "parentProblemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+            "definition": "2022 대수 지수법칙의 조건식 풀이 분기. RPM H2-M1-RPM-072 정본 계승.",
+            "internalSkeleton": "지수법칙 → 조건식",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+            "parentProblemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+            "definition": "각 보기의 계수와 문자 부분을 분리해 거듭제곱의 곱·나눗셈 규칙으로 간단히 한 뒤, 제시된 결과와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "단항식 혼합 연산129에 계수·지수 조건이 붙었다. 지수법칙 하나만의 직접 대입으로 축소하지 않는다.",
+        "binding": "H22A 조건식 template의 정의/골격은 지수조건 사용을 포함하므로 후보로 남긴다. M2 연산 결과 오류 선택 template는 미정 지수 복원까지 정의하지 않아 직접 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "A,B,C는 상수 역할이 명시되나 자연수·정수라고 주어지지 않았다. 정수 조건을 결과에서 역으로 만들어 넣지 않는다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "정리 후 y의 지수로B, x의 지수로A, 계수로C를 읽는 순서가 즉시 정해진다. 식 수가 많아도 추가 전략 선택은 없어2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "단항식 혼합 연산129에 계수·지수 조건이 붙었다. 지수법칙 하나만의 직접 대입으로 축소하지 않는다. 16x^(2A+3−B)y^(8+2B)에서C16,B5,A4를 순서대로 정한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-EXPONENT-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정리 후 y의 지수로B, x의 지수로A, 계수로C를 읽는 순서가 즉시 정해진다. 식 수가 많아도 추가 전략 선택은 없어2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d18bf056c5567b89ab019f2860cbc3b9ec35b4346f5471e6d1c3f78057346d67"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8b433b93b3008c0b5c34eca27eabc122de72ac602f54bdced8524fdadc07f228"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4b5c6feff9fe48425e20102cfbfe34e19815658005ed0c60933119a090ef0b34",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-132",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분배법칙으로 전개하고 동류항 계수를 읽음",
+      "decisiveStep": "전개 결과−a²+6ab에서 두 계수−1과6을 더한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmRecordId": "M2-RPM-132",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "전체 또는 필요한 항만 전개하여 특정 차수의 계수를 구한다.",
+            "internalSkeleton": "TERM_COUNT_FROM_DISTINCT_FACTOR_CHOICES",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "단항식과 다항식의 곱을 전개하는132이며 계수 추출은 요구 출력이다.",
+        "binding": "H1 직접 연산/계수 추출의 definition은 맞지만 internalSkeleton은 각각 BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY와 TERM_COUNT_FROM_DISTINCT_FACTOR_CHOICES여서 정의와 불일치한다. 기존 후보 reconciliation을 먼저 요청하고 새 template를 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "단항식과 다항식의 곱을 전개하는132이며 계수 추출은 요구 출력이다. 전개 결과−a²+6ab에서 두 계수−1과6을 더한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-POLY-DEFINITION-CONFLICT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다.",
+        "authorReason": "두 괄호를 분배하고 부호를 정리한 뒤 지정된 두 계수를 읽는 표준 전처리이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "88983742edbefccaa3827190e4d4bada681f6b065c35a9cb9a5dcdf8849c12ef"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c54b688a2d7307f162655c0d332bc5e553f75b5a377894932ca7e1c6f2f22299"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_01286a4f9bf3174d4f795f67dda51f6ed773867bf7aef6002b94a9d2771d8497",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-132",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "빈칸을 역연산으로 고립시키고 단항식을 분배",
+      "decisiveStep": "P=(15x²y−25xy²)×3x/5로 복원하여 각 항에 곱한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmRecordId": "M2-RPM-132",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+            "parentProblemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+            "definition": "삼각형 넓이 공식을 높이에 대해 정리하고, 넓이의 2배를 밑변의 길이로 나누어 다항식 나눗셈을 수행한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "최종 실제 계산은 단항식을 다항식에 분배하는132이다. 빈칸 역연산을 별도 골격으로 기록한다.",
+        "binding": "기존 H1 직접연산 template의 definition/skeleton 충돌과 M2삼각형 높이 template의 기하조건을 확인했다. 어느 것도 등식 빈칸의 역연산을 정확하게 정의하지 않아 이 골격을 proposal로 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "곱하고 나눈 관계를 반대 연산으로 바꾼 뒤 분배하는 정형 복원이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "최종 실제 계산은 단항식을 다항식에 분배하는132이다. 빈칸 역연산을 별도 골격으로 기록한다. P=(15x²y−25xy²)×3x/5로 복원하여 각 항에 곱한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-POLY-INVERSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "곱하고 나눈 관계를 반대 연산으로 바꾼 뒤 분배하는 정형 복원이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "bfe69e63779044afd5f32207df9afc4f7fb786ebbcc226a628b5ce1ce84ae8d6"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0f5e9030e47d87fc16921a43352f81f2d8707a02eb05b002d0979e6d21ad5aec"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e5f28268fbe3ca266745790a0d92990c312b80e1d18a6a87c8154557fe9d10b5",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "잘못 곱한 식을 나눠 원식을 복원한 뒤 다시 나눔",
+      "decisiveStep": "잘못 적용한−ab/3으로 한 번 나누어 원식−9a+27b, 다시 나누어27/b−81/a이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+            "parentProblemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+            "definition": "잘못 더한 결과에서 더해 버린 식을 두 번 빼거나, 먼저 원래 식을 구한 뒤 빼야 할 식을 빼서 바른 결과를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+            "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+            "definition": "긴 나눗셈·조립제법 표를 구성해 몫·나머지·계수를 직접 계산한다.",
+            "internalSkeleton": "SYNTHETIC_DIVISION_TABLE_COMPLETION",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "다항식÷단항식133이며 잘못 곱하기의 오류 복원이 핵심 순서이다.",
+        "binding": "M2 오류복원 template는 덧셈 대신 뺄셈을 해야 했던 경우를 특정한다. 본 문항은 곱셈 대신 나눗셈 복원으로 역연산 순서가 달라 그대로 reuse하지 않는다. H1 나눗셈은 긴 나눗셈/조립제법을 요구하여 다르다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "해야 할 연산과 잘못한 연산이 모두 명시되어 역연산을 두 번 수행한다. 별도 접근 선택 없이 익숙한 복원 절차라2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "다항식÷단항식133이며 잘못 곱하기의 오류 복원이 핵심 순서이다. 잘못 적용한−ab/3으로 한 번 나누어 원식−9a+27b, 다시 나누어27/b−81/a이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-POLY-INVERSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해야 할 연산과 잘못한 연산이 모두 명시되어 역연산을 두 번 수행한다. 별도 접근 선택 없이 익숙한 복원 절차라2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2c046f08c71824ef29f6bc095efa036a857e0a92566d82631189feb8eadbabd5"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b67994390894cf331b59d7175a20462fd0428c58013a17839571eb31b432006b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_c82d6c8e6941aa1601cdacdd41ae7721573dd30e42efcb57acee78b5047e04aa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다항식을 단항식으로 항별 나눈 뒤 차 정리",
+      "decisiveStep": "각 몫3−x²와6−5x²를 뺀다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+            "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+            "definition": "긴 나눗셈·조립제법 표를 구성해 몫·나머지·계수를 직접 계산한다.",
+            "internalSkeleton": "SYNTHETIC_DIVISION_TABLE_COMPLETION",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "다항식의 각 항을 단항식으로 나누는133이다.",
+        "binding": "H1 나눗셈 template는 조립제법/긴 나눗셈으로 본 항별 단항식 나눗셈과 다르다. H1직접연산은 나눗셈을 definition에 포함하지 않고 skeleton도 충돌한다. 좁은 division 골격을 proposal로 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "두 분수를 각각 단항식으로 나누고 두 결과를 빼는 일상 전처리이다. 부호 추적은 필요하지만 접근 선택은 없다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "다항식의 각 항을 단항식으로 나누는133이다. 각 몫3−x²와6−5x²를 뺀다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-POLY-DIVISION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 분수를 각각 단항식으로 나누고 두 결과를 빼는 일상 전처리이다. 부호 추적은 필요하지만 접근 선택은 없다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "26df5019d62cd4d9ea3684e56fdc7f61b12f5ce753ab6164dc80772ecfd10c00"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2e90cd56ef46eb49a038278eec9c0861a7193e960e9fb91b78de15897a771827"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_2edcbb5f0e092c2a04092ec95db7fab83705293a67637bc7826281934ea9a3ba",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M1-RPM-214",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "원기둥 부피 공식에 반지름·높이 배율을 적용",
+      "decisiveStep": "B의 부피배율3²×1/2=9/2를 구한 뒤 역비A/B=2/9이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산",
+        "category": "14. 입체도형의 부피와 식의 계산"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "수와 식",
+        "standardUnitOrder": null,
+        "subUnit": "다항식의 계산",
+        "category": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산",
+        "category": "14. 입체도형의 부피와 식의 계산",
+        "standardCourse": "중2 수학",
+        "course": "중2 수학"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "원기둥"
+        },
+        "rpmBasePath": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "원기둥"
+        },
+        "rpmRecordId": "M1-RPM-214",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "status": "FAMILY_ACTIVE_EXACT_RATIO_TEMPLATE_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+            "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "definition": "기본 각기둥·원기둥·각뿔·원뿔의 겉넓이·부피 공식에 수치를 대입.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M1_SOLID_FIGURE_ROTATION_VOLUME_COMPARISON",
+            "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "definition": "서로 다른 회전축으로 만들어진 회전체를 원기둥·원뿔 등의 합 또는 차로 나타내 각각의 부피를 구해 비교한다.",
+            "internalSkeleton": "각 회전축에 대해 생성 입체를 원기둥·원뿔의 합이나 차로 분해하고 부피를 계산한 뒤 세 값을 정렬한다.",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+            "parentProblemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+            "definition": "각 회전축에 수직인 변을 반지름, 회전축 방향의 변을 높이로 보아 두 원기둥의 부피를 각각 구하고, 공통 인수를 약분해 부피의 비를 간단히 한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [],
+        "semanticSourceScope": "M1-2",
+        "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+        "targetNamespacePreserved": true
+      },
+      "fieldReview": {
+        "classification": "실제 결정 개념은 M1 원기둥의 부피214이다. 시험 학년이 중2여도 다항식 계산을 primary로 유지하지 않는다. Target course/L1/L2 remain the original M2 namespace under Meta Foundation v1 section1.4.1; lower-grade RPM semantic provenance is separate.",
+        "binding": "M1 원기둥 FAMILY_ACTIVE PT_M1_SOLID_FIGURE_MEASURE는 맞다. standard measure는 절대 수치 대입, 회전체 두 template는 실제 회전축을 전제한다. 본 상대 배율→부피비 골격의 exact template는 확인되지 않아 새 변형 필요성 proposal로 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "반지름의 제곱과 높이 배율을 곱하고 물은 비의 방향을 뒤집는 표준 공식 적용이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "실제 결정 개념은 M1 원기둥의 부피214이다. 시험 학년이 중2여도 다항식 계산을 primary로 유지하지 않는다. B의 부피배율3²×1/2=9/2를 구한 뒤 역비A/B=2/9이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-CYLINDER-RATIO"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "반지름의 제곱과 높이 배율을 곱하고 물은 비의 방향을 뒤집는 표준 공식 적용이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5fba97c60b5da0f54947606273aad195cadc196f9abcc99c4b779ff75fc0600d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cde8c4477b9d285b349f49bb812590924dad42a3eadf4a9e1a1c866d7af49634"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_05aa70ffdfffa5a3865841735fc10433edacf1d3b042a1f7061aa74b47e32726",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "양변 정리 후 일차식인 부등식인지 정의 판정",
+      "decisiveStep": "①은 등식이고⑤는 분모에x가 있어 제외한다.④는x²이 소거되어 일차부등식이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+          "candidateTemplateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_RPM_GAP"
+        },
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+            "definition": "각 부등식의 양변을 정리해 미지수의 최고차항이 소거되는지 확인하고, 일차식만 남는 보기를 모두 선택한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "일차부등식의 정의 판정에 정확한 RPM leaf가 없어 GAP이다. 풀이138이나 성질136으로 강제 배정하지 않는다.",
+        "binding": "M2 ACTIVE identification template는 양변을 정리하여 일차식만 남는 보기 판정과 일치한다. 본문은 그 여집합을 고르는 출력 차이이다. 의미 후보는 보존하고 RPM leaf 및 scoped binding 공백을 분리한다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "부등호 유무와 정리 후 차수를 확인해야 하며④의 이차항 소거를 한 번 검토한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "일차부등식의 정의 판정에 정확한 RPM leaf가 없어 GAP이다. 풀이138이나 성질136으로 강제 배정하지 않는다. ①은 등식이고⑤는 분모에x가 있어 제외한다.④는x²이 소거되어 일차부등식이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-IDENTIFICATION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부등호 유무와 정리 후 차수를 확인해야 하며④의 이차항 소거를 한 번 검토한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "63c30740d4ceeefa0da5af5a4cdfa45f9edd42430e864a0a2eed3db6f900f10e"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3056df087ac840b93cf0647552e3186281788450c6c8782bf0f6d7752ece8961"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0c83bcc298910fc31990c18d7f12d82394da99b8b5fe77726a934da2d76377b2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "문장의 수량 비교와 곱셈을 부등식으로 번역",
+      "decisiveStep": "6권 가격은8000×6이므로⑤의8000+6은 잘못된 대응이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "subUnit": "일차부등식의 활용"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "subUnit": "일차부등식의 활용"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "subUnit": "일차부등식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+            "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+            "definition": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+            "definition": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "부등식의 뜻/문장 표현 판정이다. 해를 구하는 활용142로 강제 매핑하지 않고 RPM leaf gap으로 남기며 sourceWORD를 기본 일차부등식으로 고친다.",
+        "binding": "M2 부등식 성질/풀이/시간활용 template는 문장→부등식의 대응 판정을 정의하지 않는다. RPM leaf와 번역 골격 모두 좁은 proposal로 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "주어진 문장과 연산·부등호의 대응을 직접 확인한다. 가격×수량의 단일 정의 오류로 정답이 결정된다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "부등식의 뜻/문장 표현 판정이다. 해를 구하는 활용142로 강제 매핑하지 않고 RPM leaf gap으로 남기며 sourceWORD를 기본 일차부등식으로 고친다. 6권 가격은8000×6이므로⑤의8000+6은 잘못된 대응이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-TRANSLATION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "주어진 문장과 연산·부등호의 대응을 직접 확인한다. 가격×수량의 단일 정의 오류로 정답이 결정된다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "56ef8ac68031de3939db6c46731630eb1e2ebc0769affed23cba954c777bbe8b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5e4e54fbc03812a32ff47c672a1a398b15093129fd300a8cef00a01b43523057"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_28e95fc765f1612111b94b67ba9d0ff6c96b4d3a3618f831bd13dc51838a8369",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-139",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "소수 계수 정수화 후 부등식 풀이와 최소 정수 선택",
+      "decisiveStep": "10−4x≤2에서x≥2를 얻고 최소 정수2를 고른다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [
+          "CC_INTEGER_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "rpmRecordId": "M2-RPM-139",
+        "crossConceptKeys": [
+          "CC_INTEGER_CONDITION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+            "definition": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+            "definition": "부등식을 풀어 해의 범위를 구한 뒤, 그 범위에 속하는 자연수를 나열하고 모두 더한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_INTEGER_CONDITION",
+            "definition": "부등식의 범위를 만족하는 정수의 개수나 최솟값, 최댓값을 특정하는 이산적 판정"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "소수 계수가 있는 일차부등식 풀이139가 primary이고 정수해의 최소 선택은CC_INTEGER_CONDITION의 실제 정의에 부합한다.",
+        "binding": "기존 소수부등식 template는 제시해 오류 선택이고 자연수 template는 모든 해의 합이다. 본 최소 정수 선택과 출력이 달라 exact template를 확정하지 않는다.",
+        "crossConcept": "CC_INTEGER_CONDITION의 실제 정의는 부등식 범위를 만족하는 정수의 개수·최소·최대의 이산 판정이다. x≥2 이후 최소 정수를 선택하는 별도 단계에 맞는다.",
+        "condition": "정수 조건이 최종 선택을 제한하며 자연수라는 추가 조건은 주어지지 않았다.",
+        "integration": "부등식으로 실수 범위를 구한 뒤 정수 조건으로 최소값을 고르는 순차 연결이다.",
+        "difficulty": "소수 계수 정수화와 음수 나눗셈, 최소 정수 선택까지 익숙한 전처리 순서가 있다.1/2 경계에서2를 제안하며 기존하는 유지한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "소수 계수가 있는 일차부등식 풀이139가 primary이고 정수해의 최소 선택은CC_INTEGER_CONDITION의 실제 정의에 부합한다. 10−4x≤2에서x≥2를 얻고 최소 정수2를 고른다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-MIN-INTEGER"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "소수 계수 정수화와 음수 나눗셈, 최소 정수 선택까지 익숙한 전처리 순서가 있다.1/2 경계에서2를 제안하며 기존하는 유지한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7b121ec02e9be9befdc4d2d944ab8191af6d317a815c946dc93135faf59ed27a"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "679f9c8279e34db24f5ad39c7062b73bf59ec6174a40c64ce1055a0abb77d24b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_9f2168ef1cbf50773727a1f3a13fe169b310dec906f681621992a6a6d10e1f77",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-136",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "양변 음수배의 부등호 반전과 동일 수 덧셈",
+      "decisiveStep": "a<b에서−a>−b,5−a>5−b이므로④는 틀리다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmRecordId": "M2-RPM-136",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "candidateTemplateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+          "status": "EXISTING_EXACT_SEMANTIC_CANDIDATE_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+            "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+            "definition": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "부등식의 성질136을 직접 적용한 진술 판정이다.",
+        "binding": "M2 ACTIVE inequality transformation template의 정의와 실제 음수배·덧셈 추적이 일치한다. RPM136의NO_ACTIVE_MAPPING 및 genuine resolver 증거 공백은 별도 보존한다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "별도 수 체계나 유한 구간을 정답 선택 조건으로 명시하지 않는다. 발문의 주어진 수·식은 given에 기록한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "음수배하면 방향이 바뀐다는 규칙을 각 보기에 확인한다.④는 반전 후 같은 수 덧셈만으로 판단된다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "부등식의 성질136을 직접 적용한 진술 판정이다. a<b에서−a>−b,5−a>5−b이므로④는 틀리다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "음수배하면 방향이 바뀐다는 규칙을 각 보기에 확인한다.④는 반전 후 같은 수 덧셈만으로 판단된다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0a8b846a2c11324b1c7170b94e7e0b93dc10b283d2d573cec2cc33836fadae6b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cebe4239a18f7384d7f69152c7c1c73b07a73efe8adc3b71248aab4a58a011ca"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5f2dba7e727d63873e8f786dd47d16eb0a1c64b3aeef8c9de165e097424601ab",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-141",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 부등식의 해 구간 경계를 같게 놓아 계수 결정",
+      "decisiveStep": "첫 해x<2와 둘째x<5a/4의 끝점을 비교한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmRecordId": "M2-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+            "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+            "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+            "internalSkeleton": "CHAIN_INEQUALITY_SPLIT_AND_INTERSECT",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+            "definition": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "해가 같다는 조건에서 계수를 정하는141이다.",
+        "binding": "H1parameter template의 definition은 지정 해구간 계수 조건을 포함하지만 internalSkeleton은 연쇄부등식 공통구간으로 달라 충돌을 남긴다. M2decimal check는 제시해 오류 선택이라 다르다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "두 해집합이 같다는 관계 조건을4slot에 보존한다. a는 상수이지 정수로 제한되지 않는다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "분수·소수 두 부등식을 정리하고 알려진 두 경계를 같게 두는 표준 역문제이다. 식 수만으로3으로 높이지 않는다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "해가 같다는 조건에서 계수를 정하는141이다. 첫 해x<2와 둘째x<5a/4의 끝점을 비교한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-PARAMETER"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수 두 부등식을 정리하고 알려진 두 경계를 같게 두는 표준 역문제이다. 식 수만으로3으로 높이지 않는다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "350edc64ddfb7f97b093ce34fa821a8d0bea9f99356cd35f075035f712a66650"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2a0c8fb490054c654a21537b945e7a024bfa3872db8e38e46fa99af4b1cf1bc5"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_61ff5f8d23486bb057128cbace5a2f6720b947716da75fecf567c89e8792caf8",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-144",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "왕복 시간과 휴식시간의 합으로 시간 상한 부등식 구성",
+      "decisiveStep": "x/2+1/2+x/3≤2를 풀어 최대 편도거리9/5를 얻는다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmRecordId": "M2-RPM-144",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+          "candidateTemplateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+          "status": "EXISTING_EXACT_SEMANTIC_CANDIDATE_BINDING_PENDING"
+        },
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식의 활용\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+            "definition": "편도 거리를 미지수로 두고 갈 때·올 때의 시간과 머무는 시간을 더한 식을 세워 제한 시간 이하라는 부등식을 풀고 거리 범위를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "거리·속력·시간의 시간 제한144이며 두 속도와 휴식을 합하는 정형 왕복 모델이다.",
+        "binding": "M2 왕복시간 template의 실제 정의가 갈때·올때·머무는 시간의 합과 제한시간 부등식을 포함해 정확히 맞는다. 해당 PT정의의 구매시간은 여기 휴식시간과 동일한 고정 대기시간 역할이다. M2 RPM144 scoped binding은 아직 미확정이다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "2시간 이내라는 상한은 등호를 포함하여 해를 제한한다. 정수거리나 자연수거리 조건을 추가하지 않는다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "동일 편도 거리와 두 속력이 주어져 시간합 모델이 즉시 정해진다. E01220과 같은 정형 모델 기준2/B23을 유지한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "거리·속력·시간의 시간 제한144이며 두 속도와 휴식을 합하는 정형 왕복 모델이다. x/2+1/2+x/3≤2를 풀어 최대 편도거리9/5를 얻는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "동일 편도 거리와 두 속력이 주어져 시간합 모델이 즉시 정해진다. E01220과 같은 정형 모델 기준2/B23을 유지한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "84ed22bc80427e72fb161b6fa921b0dad157676e8d7ad3746d548fb09679dbc1"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a01a46c13b1296d4a28338f3efca2382bd7ba03d6dc03bbd588eafb13d9026a4"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_c2cb5b62b5acc34704d1d2f43c10b43cf6aa3477ce391805564d643c648f08f7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-125",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "같은 거듭제곱 합을 곱셈으로 바꾼 뒤 밑 통일 및 나눗셈",
+      "decisiveStep": "A=2⁴,B=4×4⁵=2¹²를 만든 뒤 몫2⁸이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmRecordId": "M2-RPM-125",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateTemplateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_BINDING_PENDING"
+        },
+        "perPartDecisions": [
+          {
+            "part": "(1)",
+            "rpmRecordId": "M2-RPM-125",
+            "supportingRpmRecordIds": [
+              "M2-RPM-126"
+            ],
+            "goal": "두 수를2의 거듭제곱으로 표현"
+          },
+          {
+            "part": "(2)",
+            "rpmRecordId": "M2-RPM-125",
+            "goal": "두 거듭제곱의 몫"
+          }
+        ],
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"단항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+            "parentProblemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+            "definition": "2022 대수 지수법칙의 지수식 계산 풀이 분기. RPM H2-M1-RPM-071 정본 계승.",
+            "internalSkeleton": "지수법칙 → 지수식 계산",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "두 소문항 모두 거듭제곱 곱·몫125를 중심으로하며 거듭제곱126은 밑 통일 단계이다.",
+        "binding": "H22A generic 지수식 계산 골격이 두 소문항의 계산 절차를 포괄한다. 기존 후보를 보존하고 M2 binding 검토를 남긴다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "지수법칙을 사용한 풀이과정을 쓰라는 방법 제한이 있다. 이는 수체계·범위 conditionKey와 달라4slot condition에 보존한다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "같은 항의 합을 상수배로 바꾸고2의 거듭제곱으로 통일하는 익숙한 전처리이다. 소문항이 절차를 안내한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "두 소문항 모두 거듭제곱 곱·몫125를 중심으로하며 거듭제곱126은 밑 통일 단계이다. A=2⁴,B=4×4⁵=2¹²를 만든 뒤 몫2⁸이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-EXPONENT-REUSE"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "같은 항의 합을 상수배로 바꾸고2의 거듭제곱으로 통일하는 익숙한 전처리이다. 소문항이 절차를 안내한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "28a9da898081cc43407db36b4ce04eab62e53222696dddc6d685f9d6296c309f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "99085677d7c020120940094112f788acc63a147047acbfee2a52004dc7bacd14"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_e19912e0939aa6424dcacb6bbf51399531a5c63d990582afba997d3cef96eb7a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-134",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "항별 나눗셈과 동류항 정리 후 수치 대입",
+      "decisiveStep": "두 나눗셈을−4x+y+2로 정리하여4/5,3을 대입한다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmRecordId": "M2-RPM-134",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "perPartDecisions": [
+          {
+            "part": "(1)",
+            "rpmRecordId": "M2-RPM-133",
+            "goal": "다항식 간단히 정리"
+          },
+          {
+            "part": "(2)",
+            "rpmRecordId": "M2-RPM-134",
+            "goal": "수치 대입한 식의 값"
+          }
+        ],
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+            "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+            "definition": "긴 나눗셈·조립제법 표를 구성해 몫·나머지·계수를 직접 계산한다.",
+            "internalSkeleton": "SYNTHETIC_DIVISION_TABLE_COMPLETION",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "최종 목표는 식의 값134이고 (1)의 polynomial division133은 선행 단계이다.",
+        "binding": "M2 항별 단항식 나눗셈 후 값 대입은 H1 조립제법/긴나눗셈과 다르다. H1직접연산 skeleton 충돌도 남아 있으므로 해당 합성 순서를 proposal로 기록한다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "다항식의 사칙계산을 이용한 과정을 쓰라는 방법 요구를4slot에 보존한다. x=4/5,y=3은 주어진 값이며 별도 정수 조건이 아니다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "각 항을 나눈 뒤 동류항을 정리하고 주어진 값을 넣는 과정이 소문항에 안내되어 있다. 추가 전략 선택 없이 표준2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "최종 목표는 식의 값134이고 (1)의 polynomial division133은 선행 단계이다. 두 나눗셈을−4x+y+2로 정리하여4/5,3을 대입한다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-POLY-DIVISION"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 항을 나눈 뒤 동류항을 정리하고 주어진 값을 넣는 과정이 소문항에 안내되어 있다. 추가 전략 선택 없이 표준2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ed46bcb39d4311f704b155178f033012eb9b535ff4f7e5aa74ec93be91f301e9"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b822081ae4cad351a835ea58737a5c02de9a21f6a415c15a904833702a938ae8"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_52d2c67faafaa51afb1b1c7d7996d4904789dbf10842d474b0230689c7cfd8ad",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-141",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "계수 부호를 이용한 부등식 풀이와 수직선 끝점 비교",
+      "decisiveStep": "a+4<0이므로x≥(b+2)/(a+4); 그림의 닫힌−1과 비교하여a+b=−6이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "2022",
+        "curriculumProvenance": "SOURCE_EXPLICIT_PRESERVED",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmRecordId": "M2-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+            "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+            "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+            "internalSkeleton": "CHAIN_INEQUALITY_SPLIT_AND_INTERSECT",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "원본 그림은 닫힌−1에서 오른쪽 해이다. 해 구간에서 계수 조건을 결정하는141이며 주어진 부호를 반드시 반영한다.",
+        "binding": "H1parameter template는 definition상 지정 해구간을 포함하나 skeleton이 연쇄부등식 교집합이어서 본 단일 계수 역문제와 다르다. 정의/골격 충돌 해결 전 확정하지 않는다.",
+        "crossConcept": "해결에 쓰인 표준 조작은 판정한 primary 내부이며 별도의 외부 결정 개념을 중복 등록하지 않는다.",
+        "condition": "a<−4가 계수a+4의 음수를 보장해 부등호 반전을 결정한다. a,b는 상수라고만 주어졌으므로 정수 조건을 추가하지 않는다.",
+        "integration": "단일 primary의 표준 절차이며 외부 개념의 통합은 없다.",
+        "difficulty": "a<−4로 계수 부호가 미리 정해져 경우분류가 없다. 해의 끝점을 같게 놓고 a+b를 직접 정리하는 정형 역문제로2/B23을 제안한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "원본 그림은 닫힌−1에서 오른쪽 해이다. 해 구간에서 계수 조건을 결정하는141이며 주어진 부호를 반드시 반영한다. a+4<0이므로x≥(b+2)/(a+4); 그림의 닫힌−1과 비교하여a+b=−6이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E014-INEQUALITY-PARAMETER"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "a<−4로 계수 부호가 미리 정해져 경우분류가 없다. 해의 끝점을 같게 놓고 a+b를 직접 정리하는 정형 역문제로2/B23을 제안한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b4951f7a8a831669a67c3fa6e1ecbe896a0d22b2",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f07977e4bab8ec10b84e898bb41238b000cc5bb0aa713d31e863f074c8a69ad1"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "299b618766feb832b074bb7ddca14dffe6599d882bd6975be5c118e6db651456"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    "순환소수를 분수로 표현하는 식을 고르는 문제이며 분수 변환122가 primary이다.",
+    "반복 부분과 소수 표현 설명 판정이 중심이다. 분수 변환은 다른 보기 확인의 보조이며121에 둔다.",
+    "최종 목표가 순환마디의 길이이므로121이며 소수 전환123은 중간 절차이다.",
+    "순환마디의 주기를 이용한 자리 추적이므로121이다. 고교 지수 나머지용CC_MODULO_EXPONENT_REDUCTION을 억지 적용하지 않는다.",
+    "약분한 분모에2,5 외 소인수가 남는지 따지는 유한소수 조건120이다.",
+    "단항식의 곱·몫·거듭제곱이 함께 있는 혼합 계산129이다.",
+    "동일 밑 거듭제곱을 곱하는125의 단위 관계 응용이다.",
+    "거듭제곱의 거듭제곱126이며 역수 표현은 최종 형태이다.",
+    "단항식 혼합 연산129에 계수·지수 조건이 붙었다. 지수법칙 하나만의 직접 대입으로 축소하지 않는다.",
+    "단항식과 다항식의 곱을 전개하는132이며 계수 추출은 요구 출력이다.",
+    "최종 실제 계산은 단항식을 다항식에 분배하는132이다. 빈칸 역연산을 별도 골격으로 기록한다.",
+    "다항식÷단항식133이며 잘못 곱하기의 오류 복원이 핵심 순서이다.",
+    "다항식의 각 항을 단항식으로 나누는133이다.",
+    "실제 결정 개념은 M1 원기둥의 부피214이다. 시험 학년이 중2여도 다항식 계산을 primary로 유지하지 않는다.",
+    "일차부등식의 정의 판정에 정확한 RPM leaf가 없어 GAP이다. 풀이138이나 성질136으로 강제 배정하지 않는다.",
+    "부등식의 뜻/문장 표현 판정이다. 해를 구하는 활용142로 강제 매핑하지 않고 RPM leaf gap으로 남기며 sourceWORD를 기본 일차부등식으로 고친다.",
+    "소수 계수가 있는 일차부등식 풀이139가 primary이고 정수해의 최소 선택은CC_INTEGER_CONDITION의 실제 정의에 부합한다.",
+    "부등식의 성질136을 직접 적용한 진술 판정이다.",
+    "해가 같다는 조건에서 계수를 정하는141이다.",
+    "거리·속력·시간의 시간 제한144이며 두 속도와 휴식을 합하는 정형 왕복 모델이다.",
+    "두 소문항 모두 거듭제곱 곱·몫125를 중심으로하며 거듭제곱126은 밑 통일 단계이다.",
+    "최종 목표는 식의 값134이고 (1)의 polynomial division133은 선행 단계이다.",
+    "원본 그림은 닫힌−1에서 오른쪽 해이다. 해 구간에서 계수 조건을 결정하는141이며 주어진 부호를 반드시 반영한다."
+  ],
+  "proposals": [
+    {
+      "id": "B-E014-DECIMAL-OPERATIONS",
+      "type": "PT_TPL_REGISTRATION_GAP",
+      "definition": "순환마디 표현/자리 추적/분수 변환 및 약분된 분모 소인수 조건의 독립 골격을 검토",
+      "intendedParent": null,
+      "distinguishingRule": "각 RPM121/122/120의 과제를 하나의 포괄 template로 합치지 않는다. 현재 compiled template 목록에 해당 repeating/finite-decimal 골격이 없어 정의별 신규 등록 검토가 필요하다.",
+      "supportingQuestionUids": [
+        "qid_v1_2db04fd2432b60a995db384053f84311bfcac11e65fe9b7bf11de4f84c6d5b8a",
+        "qid_v1_2d47081b6a1c7aad81595e81716d11222bc22ee7be12251413e52ea16573ea25",
+        "qid_v1_bf5e6e8d9204ab22ee4122557c12e7767bc213ae2cb0250ebde1327823b2b2ee",
+        "qid_v1_5e3ba4e293d3f5033bad378689614b514d729b9a314be1fb78f1a5ff8a407eee",
+        "qid_v1_5c48fbbe18c392783068313f90997b71122e839f7070403ec5529bd85b01ba15"
+      ],
+      "sourceOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-EXPONENT-REUSE",
+      "type": "EXISTING_TEMPLATE_BINDING_REVIEW",
+      "definition": "기존 generic 지수식 계산/조건식 및 역수 거듭제곱의 M2 scoped reuse 검토",
+      "intendedParent": null,
+      "distinguishingRule": "학년명만으로 기존 template를 배제하지 않는다. 실제 definition/internalSkeleton의 일치와 출력 차이를 구별한다.",
+      "supportingQuestionUids": [
+        "qid_v1_6676afbc09ae6942424219503a896f393e33574257ff9548edc4232c16bf2b01",
+        "qid_v1_b4476e39001ba358339b0f43cbd9e80bed86f6b96581d67bc16f698f5939880e",
+        "qid_v1_73044fce8f9a05d3d6f27f0a5e0cf93204df40b1baf02d3b5e31ff81b4eb5686",
+        "qid_v1_6e0c850aba7fb53103c1f6e0630f572cf06938444d26d7bbcc6c4e7e7895db86",
+        "qid_v1_c2cb5b62b5acc34704d1d2f43c10b43cf6aa3477ce391805564d643c648f08f7"
+      ],
+      "sourceOrdinals": [
+        6,
+        7,
+        8,
+        9,
+        21
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-POLY-DEFINITION-CONFLICT",
+      "type": "EXISTING_TEMPLATE_DEFINITION_SKELETON_CONFLICT",
+      "definition": "H1 직접연산·계수추출 정의와 internalSkeleton 불일치 해소",
+      "intendedParent": null,
+      "distinguishingRule": "definition은 표준 전개/계수 추출이나 skeleton은 이항전개나 인수선택 항 수로 다르다. 새 key보다 기존 정합성 확인을 먼저 한다.",
+      "supportingQuestionUids": [
+        "qid_v1_4b5c6feff9fe48425e20102cfbfe34e19815658005ed0c60933119a090ef0b34"
+      ],
+      "sourceOrdinals": [
+        10
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-POLY-INVERSE",
+      "type": "PT_TPL_REGISTRATION_GAP",
+      "definition": "다항식×단항식÷단항식의 빈칸 복원 및 곱셈/나눗셈 오류복원",
+      "intendedParent": null,
+      "distinguishingRule": "덧셈-뺄셈 오류복원 template의 연산을 암묵 확장하지 않는다. 각 inverse order를 분리하여 검토한다.",
+      "supportingQuestionUids": [
+        "qid_v1_01286a4f9bf3174d4f795f67dda51f6ed773867bf7aef6002b94a9d2771d8497",
+        "qid_v1_e5f28268fbe3ca266745790a0d92990c312b80e1d18a6a87c8154557fe9d10b5"
+      ],
+      "sourceOrdinals": [
+        11,
+        12
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-POLY-DIVISION",
+      "type": "PT_TPL_REGISTRATION_GAP",
+      "definition": "다항식을 단항식으로 항별 나눈 뒤 동류항 정리 또는 값 대입",
+      "intendedParent": null,
+      "distinguishingRule": "조립제법·긴 나눗셈 template와 구별한다. 값 대입을 최종 목표로 하는22와 단순 식정리13은 결과 단계가 다르다.",
+      "supportingQuestionUids": [
+        "qid_v1_c82d6c8e6941aa1601cdacdd41ae7721573dd30e42efcb57acee78b5047e04aa",
+        "qid_v1_e19912e0939aa6424dcacb6bbf51399531a5c63d990582afba997d3cef96eb7a"
+      ],
+      "sourceOrdinals": [
+        13,
+        22
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-CYLINDER-RATIO",
+      "type": "EXISTING_FAMILY_NEW_TEMPLATE_REVIEW",
+      "definition": "원기둥의 상대 반지름·높이 배율로 부피비 산출",
+      "intendedParent": "PT_M1_SOLID_FIGURE_MEASURE",
+      "distinguishingRule": "회전축/절단/보존조건 없이 두 원기둥 배율만 주어진다. PT_M1_SOLID_FIGURE_MEASURE family는 존재하나 exact ratio skeleton은 미확인.",
+      "supportingQuestionUids": [
+        "qid_v1_2edcbb5f0e092c2a04092ec95db7fab83705293a67637bc7826281934ea9a3ba"
+      ],
+      "sourceOrdinals": [
+        14
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-INEQUALITY-IDENTIFICATION",
+      "type": "RPM_LEAF_GAP",
+      "definition": "일차부등식의 정의에 따른 식 판정",
+      "intendedParent": "2022/M2-1/일차부등식/일차부등식/부등식의 뜻",
+      "distinguishingRule": "최고차항 소거 후 일차식 여부를 판정한다. 직접 해구하기나 부등식 성질과 다르다.",
+      "supportingQuestionUids": [
+        "qid_v1_05aa70ffdfffa5a3865841735fc10433edacf1d3b042a1f7061aa74b47e32726"
+      ],
+      "sourceOrdinals": [
+        15
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-INEQUALITY-TRANSLATION",
+      "type": "RPM_LEAF_GAP",
+      "definition": "문장의 수량 비교를 부등식으로 표현한 대응 판정",
+      "intendedParent": "2022/M2-1/일차부등식/일차부등식/부등식의 뜻",
+      "distinguishingRule": "해의 범위를 구하는 활용leaf142를 강제 적용하지 않는다.",
+      "supportingQuestionUids": [
+        "qid_v1_0c83bcc298910fc31990c18d7f12d82394da99b8b5fe77726a934da2d76377b2"
+      ],
+      "sourceOrdinals": [
+        16
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-INEQUALITY-MIN-INTEGER",
+      "type": "EXACT_TEMPLATE_GAP",
+      "definition": "소수 부등식을 푼 뒤 최소 정수 선택",
+      "intendedParent": "M2-RPM-139",
+      "distinguishingRule": "기존 제시해 오류선택이나 자연수해합 골격과 목표가 다르다.",
+      "supportingQuestionUids": [
+        "qid_v1_28e95fc765f1612111b94b67ba9d0ff6c96b4d3a3618f831bd13dc51838a8369"
+      ],
+      "sourceOrdinals": [
+        17
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-INEQUALITY-REUSE",
+      "type": "EXISTING_TEMPLATE_BINDING_REVIEW",
+      "definition": "부등식 성질 및 왕복 시간 모델의 정확 의미 후보 scoped binding 확인",
+      "intendedParent": null,
+      "distinguishingRule": "기존 ACTIVE template definition과 실제 풀이가 맞으므로 새 semantic template 요구로 바꾸지 않는다.",
+      "supportingQuestionUids": [
+        "qid_v1_9f2168ef1cbf50773727a1f3a13fe169b310dec906f681621992a6a6d10e1f77",
+        "qid_v1_61ff5f8d23486bb057128cbace5a2f6720b947716da75fecf567c89e8792caf8"
+      ],
+      "sourceOrdinals": [
+        18,
+        20
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E014-INEQUALITY-PARAMETER",
+      "type": "EXISTING_TEMPLATE_DEFINITION_SKELETON_CONFLICT",
+      "definition": "지정 해구간의 경계로 단일 일차부등식 계수 결정",
+      "intendedParent": null,
+      "distinguishingRule": "H1 parameter definition은 포괄하지만 skeleton은 연쇄부등식 교집합이다. 직접 활성화 없이 reconciliation 또는 분리 template를 검토한다.",
+      "supportingQuestionUids": [
+        "qid_v1_5f2dba7e727d63873e8f786dd47d16eb0a1c64b3aeef8c9de165e097424601ab",
+        "qid_v1_52d2c67faafaa51afb1b1c7d7996d4904789dbf10842d474b0230689c7cfd8ad"
+      ],
+      "sourceOrdinals": [
+        19,
+        23
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    }
+  ],
+  "notes": [
+    "이전 E014 로컬 review/4slot 경로는 현재 작업공간에 존재하지 않아 옛 SHA의 바이트를 회수하지 못했다. 본 artifact는 현재 source를 전부 읽고 새로 작성한 복원본이며 옛 검토를 복구한 것으로 주장하지 않는다.",
+    "23개 발문·선택지·기존 해설과 필요한 q23 PNG 및 q19 solution SVG를 실제 확인했다. 기존 metadata를 본 상태이므로 blind-first 판정으로 주장하지 않는다.",
+    "모든 유효 legacy level은 유지한다. Q2/Q16/Q18 중/1 및Q17하/2는 독립검토 전 BORDERLINE_REVIEW이다.",
+    "공식 resolver용 VERIFIED_FINAL evidence는 새로 만들거나 꾸미지 않았다. R2 및 정확 scoped binding 미확정은 registration debt로 남긴다.",
+    "Q14의 실제 원기둥 부피 primary를 M1-07로 고치되 시험의 실제 course/standardCourse와 source curriculum2022는 보존한다."
+  ],
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_RESUME",
+    "at": "2026-11-14T10:53:43.551584+00:00"
+  },
+  "sourceAssetEvidence": [
+    {
+      "sourceOrdinal": 19,
+      "sourcePath": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q19-solution.svg",
+      "sourceGitRef": "8e9232777807b9e6bf3bf190123b3de7223d59b9",
+      "rawSha256": "385cc4996c9a68e7d5a63d4c46cff3bb084cee239e27fce4b58a43fde2ac0c1b",
+      "readBy": "B",
+      "findings": "두 수직선의 첫 해x<2의 열린 끝점과 둘째 해의 경계P=5a/4가 같은 가로 위치이다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourcePath": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+      "sourceGitRef": "8e9232777807b9e6bf3bf190123b3de7223d59b9",
+      "rawSha256": "5ba80c17565e096150c68dcc8b09abae047f98a5ff6d01649ef46a5f050290d3",
+      "readBy": "B",
+      "findings": "−1에 닫힌 점, 오른쪽으로 향하는 해 구간을 실제 PNG로 확인했다."
+    }
+  ],
+  "freshDifficultyEvidenceSupplement": {
+    "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+    "worker": "A2",
+    "itemCount": 23,
+    "blindInitialSha256": "719db663d6b412f4bfd0b600a5b17db0e10c3e874e6cfbca5051283d961f741f",
+    "comparisonSha256": "44e5c333751ef12d33d8dd26c8a4fb4b029f24a9f69ec6ae62e92f2e68568fa8",
+    "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+    "historicalOriginalExposurePreserved": true,
+    "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+    "fullQualityPassClaim": false
+  }
+}

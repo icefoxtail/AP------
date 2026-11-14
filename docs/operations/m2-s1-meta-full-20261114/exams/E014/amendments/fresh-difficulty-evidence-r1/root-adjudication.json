@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E014",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:48:14.352780+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E014",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 10,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다."
+      }
+    ],
+    "itemUpdates": [],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E014-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E014-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E014.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 23,
+        "blindInitialSha256": "719db663d6b412f4bfd0b600a5b17db0e10c3e874e6cfbca5051283d961f741f",
+        "comparisonSha256": "44e5c333751ef12d33d8dd26c8a4fb4b029f24a9f69ec6ae62e92f2e68568fa8",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "amendments/resume-prerequisite-scope-r1/accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "amendments/resume-prerequisite-scope-r1/four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "amendments/resume-prerequisite-scope-r1/root-adjudication.json",
+    "validation": "amendments/resume-prerequisite-scope-r1/validation.json",
+    "sourceWriterDeferred": "amendments/resume-prerequisite-scope-r1/source-writer-deferred.json",
+    "currentSourceGitBlobSha": "d45c4430664115da7c265c36ed4069d2b45cac47",
+    "currentFourSlotSha256": "fd51c441a7f0cb99387a5a2df30158d614712a4968d631cf55b9c62e9529e146",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "42b10c5588ad6c070e68c817003c1c6ae4e40d07b729474ef12c9e3d3c78a544",
+  "previousFourSlotSha256": "fd51c441a7f0cb99387a5a2df30158d614712a4968d631cf55b9c62e9529e146",
+  "acceptedReviewSha256": "ee2b1a87e0471fc68e0fdde5a8f48879ae8f361f1f016042f3849f64e063ff33",
+  "acceptedFourSlotSha256": "756f169c65415a31a39f26524a2e74e98a313375687463131222309d1a58778e",
+  "reviewedSourceBlob": "d45c4430664115da7c265c36ed4069d2b45cac47",
+  "finalSourceBlob": "0fe0fcf04524e230e387b34413ea61fb31d7ba9c",
+  "changes": [
+    {
+      "sourceOrdinal": 10,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 괄호를 분배하고 부호를 정리한 뒤 지정된 두 계수를 읽는 표준 전처리이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다.",
+        "authorReason": "두 괄호를 분배하고 부호를 정리한 뒤 지정된 두 계수를 읽는 표준 전처리이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱의 전개와 부호 정리, 지정 계수의 읽기는 정형이다. 직접 전개 1과 표준 전처리 2의 경계이며 기존 2/중을 보존한다. 고난도나 전략 선택으로 해석하지 않는다."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E014-difficulty-blind-freeze-r1.json",
+      "sha256": "719db663d6b412f4bfd0b600a5b17db0e10c3e874e6cfbca5051283d961f741f",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E014-difficulty-comparison-r1.json",
+      "sha256": "44e5c333751ef12d33d8dd26c8a4fb4b029f24a9f69ec6ae62e92f2e68568fa8",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E014.json",
+      "sha256": "9ab88abe6ac2efdd2468a0c5afc896347a509e02691061674dfb10e7ee2b7218",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}

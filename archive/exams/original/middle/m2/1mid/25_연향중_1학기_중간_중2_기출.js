@@ -401,8 +401,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학"
