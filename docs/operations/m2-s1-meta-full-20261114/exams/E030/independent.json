@@ -1,0 +1,783 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E030",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T13:53:13.834750+00:00",
+  "sourceGitBlobSha": "0f6e8dbeac70bf0b62f19e55665b1c8a158162ac",
+  "sourceSha256": "555013180eda50767436b3408029d284ec63767587c4f0d35d006130ccb43631",
+  "reviewSha256": "0f910d0d8f6e160cf478a85d0daeeab3c4693c8cf647f87d0bec7eeedc62ab19",
+  "fourSlotSha256": "9b4c07b9db091d69a4512bffa587a97303ea8c7eed092891f5b9e50914d997fb",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/A/independent/E030/difficulty-content-first-freeze.json",
+  "initialFreezeSha256": "93e01954c6efe28f335ae9fd85794090ed42bb6d051a959c5f040655d6030b10",
+  "actualAssets": [
+    {
+      "sourceOrdinal": 3,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E030/assets/q3.png",
+      "sha256": "b0422c0f2f4fa72c3b71423327f047b12b1fa5f8011b01a5c627d5c83dfc42a4",
+      "observation": "보기③은5의 닫힌점과 오른쪽, 다른보기는−5/5왼쪽/10오른쪽",
+      "actualImageOpened": true
+    },
+    {
+      "sourceOrdinal": 17,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E030/assets/q17.png",
+      "sha256": "b91856e071f600e1f8a62826ba5dfd65aeb3d28f746cba33bb2972444f819b97",
+      "observation": "실제 직선은(0,−4),(3,0)을 통과하는 양의 기울기",
+      "actualImageOpened": true
+    }
+  ],
+  "sampleOrdinals": [
+    5,
+    16,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 5,
+      "verdict": "ACCEPT_WITH_BINDING_DEBT",
+      "fieldReview": {
+        "classification": "현재2015 source에 결속된026의 L1 일차부등식과 연립일차방정식/L2 일차부등식의 활용/L3거리·속력·시간/L4시간제한이 실제왕복+구매모델에 일치한다.",
+        "binding": "round-trip 공식 TPL 정의와 실제 목표를 대조했다. 본문은 부등식선택까지만 요구하므로 거리범위를 푸는 공식 TPL 전체범위와 차이를 명시한 후보보류 수용.",
+        "crossConcept": "시간단위 환산과 거리/속력은 이 모델의 내부요소이므로 별도 CC강제없음.",
+        "condition": "ACTIVE COND_UPPER_BOUND와 실제1시간상한 및 condition범위 보존을 확인.",
+        "integration": "왕복시간 하나의 모델을 세우는 흐름이므로 NONE 수용.",
+        "difficulty": "중2/medium/B23 수용, 단위전처리를 계산량만으로3으로 올리지 않는다.",
+        "fourSlot": "속력·구매시간 조건, 목표 부등식, 왕복모델/분→시간 환산/상한의 세 역할이 실제 해설에 있다. 인용문 모두 원문 대응."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "verdict": "ACCEPT_WITH_MULTI_LEAF_HOLD",
+      "fieldReview": {
+        "classification": "절편·사분면·점포함·수직이동을 각보기로 확인한다. 한 RPM 증가감소로 축소하지 않은 META_ONLY_UNRESOLVED 유지.",
+        "binding": "PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT actualACTIVE정의/부모의 broad재사용후보를 확인했고 resolver미실행을 유지한다.",
+        "crossConcept": "미확정 단일primary와 그래프성질내부개념을 임의추가하지 않은[]는 종속축 미판정해석으로 한정한다.",
+        "condition": "추가domain이나부호조건이 주어지지 않아 condition[] 수용.",
+        "integration": "여러보기 성질검사를 별도의 개념결합으로계수하지 않는다.",
+        "difficulty": "여러표준성질을 구별하는중2/B23 수용. 보기개수 자체는 고난도근거가 아니다.",
+        "fourSlot": "r2에서 실제 x=1 대입 검사를 IMPLIED+정당화로 보완했음을 확인. 절편·사분면·수직이동을 구분하고 목표성질판정 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "verdict": "ACCEPT_WITH_BINDING_AND_SOURCE_EXPRESSION_DEBT",
+      "fieldReview": {
+        "classification": "2015RPM025 최소·최대정수, M2-02-LINEAR_INEQUALITY_WORD 부모와 실제최소개월선택이 부합.",
+        "binding": "비용식비교와 정수선택의 기존골격은 읽었으나 exactscopedACTIVE 미확정으로 registrar부채 유지.",
+        "crossConcept": "비용모델과 자연수선택은해당primary의 내부요소로[] 수용.",
+        "condition": "r2 실제해설의 자연수 제한을 condition슬롯과 ACTIVE COND_NATURAL_NUMBER에 결속했다.",
+        "integration": "비용모델 한흐름의 안내소문항으로NONE 수용.",
+        "difficulty": "월비용대조의 표준부등식과 자연수최소선택으로2/medium/B23 수용.",
+        "fourSlot": "두 비용식목표와 최소개월 개수를 구분, 자연수해선택을 실제해설에서 인용했다. 유리함과≤ 표현은41⅔의 비정수경계에서 같은 자연수최소를 주는 원문표현 한계로 남긴다."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_54776c8d11df004ac8b5b89b297fe116f61dab212924ae61e1a9835d664b62be",
+      "initialIndependent": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_54776c8d11df004ac8b5b89b297fe116f61dab212924ae61e1a9835d664b62be",
+        "actualStemSha256": "b294cfd881583465460e0c7bec7351ac2329e6a2feee2c0047df2a84bdbce7de",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "전개·소거 후 남은 차수를 확인하는 정형 정의 판정이다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "여러 부등식을 정리한 후 미지수 소거와 차수를 구별한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "전개·소거 후 남은 차수를 확인하는 정형 정의 판정이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_2161c1015044b1faccf5d5b573d3f012e675912f007e15d6eb71e552743ce4aa",
+      "initialIndependent": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_2161c1015044b1faccf5d5b573d3f012e675912f007e15d6eb71e552743ce4aa",
+        "actualStemSha256": "a5ddf4eacd3d948a9d6e4ceb6e72f22c7f605319696c6bbb18a040d7d36fe907",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "음수로 나누어 부등식을 풀고 자연수 해를 센다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "일차부등식을 풀고 자연수 해를 세는 짧은 연결이다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "acceptedProposal": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "음수로 나누어 부등식을 풀고 자연수 해를 센다. 낮은 학습단계 하를 유지해도 간단한 음수 나눗셈과 자연수1,2 확인은 기초 요구로 방어되므로 하/2의 인접호환을 승인한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ce680d33f9044420507aa4e3ec1b3c205abcb2cf5cf0a0e7f02b90e7d9f6cc9e",
+      "initialIndependent": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_ce680d33f9044420507aa4e3ec1b3c205abcb2cf5cf0a0e7f02b90e7d9f6cc9e",
+        "actualStemSha256": "2a228be56d124340443e05daa322da037f09f9befecdedc74f1f0e0e7abb57db",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "분수 부등식을 정수화하여 풀고 실제 수직선의 닫힌점과 방향을 대응한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분모를 없앤 부등식을 풀어 수직선의 포함 끝점과 방향으로 바꾼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분수 부등식을 정수화하여 풀고 실제 수직선의 닫힌점과 방향을 대응한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_9682293ca2196be552d3be1a3e7ec7da35315ceba3ce6f6cc007c4490c975f7a",
+      "initialIndependent": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_9682293ca2196be552d3be1a3e7ec7da35315ceba3ce6f6cc007c4490c975f7a",
+        "actualStemSha256": "de92eb5b901ede6f1239ad876da65aa0033957e63fdb9dc6cb959a6cb85a433b",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "두 부등식의 같은 해 경계를 비교해 상수를 정한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 해의 경계를 같게 놓는 익숙한 계수 결정에서 접근 선택의 부가 부담이 작다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두 부등식의 같은 해 경계를 비교해 상수를 정한다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_9a6590b7b1a17f58a9f135d46a7c7c6f7ab2618208f20d66a56dc962d8811763",
+      "initialIndependent": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_9a6590b7b1a17f58a9f135d46a7c7c6f7ab2618208f20d66a56dc962d8811763",
+        "actualStemSha256": "4ff3c7dee7728d5990feee6eb06b3eee80a0b3ad2a7db0de9531cc9eb7731230",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "이동시간과 구매시간의 단위를 통일해 왕복시간 제한식만 세운다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "왕복 거리와 구매 시간을 동일한 시간 단위로 부등식에 모델링한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "이동시간과 구매시간의 단위를 통일해 왕복시간 제한식만 세운다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_57808de58ca094bb900428b58696b21a2223180e81b5422f5e3af87cf266d1a9",
+      "initialIndependent": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_57808de58ca094bb900428b58696b21a2223180e81b5422f5e3af87cf266d1a9",
+        "actualStemSha256": "25de736ed4f250ef607e5de2aa79ecdb79cb4abf4d156d461a96102b9ea4fc35",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "주어진a<0에 따라 정리한계수3a로 나눌 때 부등호를 바꾸는 표준풀이이다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "음수인 문자계수로 나눌 때 부등호 방향을 바꾼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "주어진a<0에 따라 정리한계수3a로 나눌 때 부등호를 바꾸는 표준풀이이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_ac25f60c0aa233c8ae4f84dc4bb1125d92812ea4b442ed8206bb9eb7e46bd2b7",
+      "initialIndependent": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_ac25f60c0aa233c8ae4f84dc4bb1125d92812ea4b442ed8206bb9eb7e46bd2b7",
+        "actualStemSha256": "1f319d12e236df1dc10709ed1eb10edcd4dce73268ea8cfd10c364cc5ce0fa8d",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "x계수 최소공배수6을 만드는 배수와 뺄셈을 직접 고른다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 x계수의 공배수와 빼는 방향을 선택한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "x계수 최소공배수6을 만드는 배수와 뺄셈을 직접 고른다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_c9ec8dadf0efe396b94ce13e0983e8cacd3edbef1006f34d1100dc0460bf4f3b",
+      "initialIndependent": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_c9ec8dadf0efe396b94ce13e0983e8cacd3edbef1006f34d1100dc0460bf4f3b",
+        "actualStemSha256": "44fdc38d92d457dd20185984f3b66b141f8aff5c2c775a1465ba812c3caaef93",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "이미 고립된x식을 다른식에 직접 대입하여 두값을 복원한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이미 한 문자로 정리된 식을 대입하여 연립방정식을 푼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "이미 고립된x식을 다른식에 직접 대입하여 두값을 복원한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_41109be4be20cb879189aa7364678c9739f6446d25e50cf39c176fee69e3e89a",
+      "initialIndependent": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_41109be4be20cb879189aa7364678c9739f6446d25e50cf39c176fee69e3e89a",
+        "actualStemSha256": "a4ab6046e2721003f7758d4d4c37e0cbb16b353b045b44b67143c587357e1397",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "주어진x로 y를 구하고 계수식에 다시 넣는 정형 절차다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해의 성분을 차례로 대입해 미지계수와 차를 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "주어진x로 y를 구하고 계수식에 다시 넣는 정형 절차다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_5a33e2606f85bef873030f47907d48df041e8cef9b5e43521b4433f643bebc6d",
+      "initialIndependent": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_5a33e2606f85bef873030f47907d48df041e8cef9b5e43521b4433f643bebc6d",
+        "actualStemSha256": "707a16821859f9cb54f0fabcf145af69dc76efb16647da30b566fe19d948ea44",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "분수·소수식을 정수화하고 가감 후 두 해를 합한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수 계수를 정수로 바꾸고 가감법으로 해를 계산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분수·소수식을 정수화하고 가감 후 두 해를 합한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_83d42813d2b5334d5a4390cb643188ec12f99a5ef283441735605a78dbb7cae4",
+      "initialIndependent": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_83d42813d2b5334d5a4390cb643188ec12f99a5ef283441735605a78dbb7cae4",
+        "actualStemSha256": "24e6a222ef76307870bc91c6a738eecb0931afff7efeb1aab7a8748c9a712e9a",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "전년 합과 증감률 합으로 연립식을 세우고 올해값으로 다시 환산한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "전년도 성별인원·증감률이라는 주어진 모델에서 두 식을 세우는 정형 절차이다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "전년 합과 증감률 합으로 연립식을 세우고 올해값으로 다시 환산한다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_60ac7d7815591491f41ec5450c5adbfd304bb34f99434af5ded327d68d95d441",
+      "initialIndependent": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_60ac7d7815591491f41ec5450c5adbfd304bb34f99434af5ded327d68d95d441",
+        "actualStemSha256": "ffa1157a9e30c80dfe87839c7315f67e5bb34e51da6564e6748c9c48b1de5dae",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "연쇄등식을 각−1에 같은 두 식으로 바꿔 표준 소거하고 목표식에 대입한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연쇄 등식을 두 일차방정식으로 분리한 해를 별도 식에 대입한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "연쇄등식을 각−1에 같은 두 식으로 바꿔 표준 소거하고 목표식에 대입한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d3429cdb87647e3c1c238dc9732cbc5a63d1ee8f95b8d6518f912bdb0ee9c9e2",
+      "initialIndependent": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_d3429cdb87647e3c1c238dc9732cbc5a63d1ee8f95b8d6518f912bdb0ee9c9e2",
+        "actualStemSha256": "5087046798a134c4058400a108eb8700412cc1bfb9335ffc82a7fba93e990dd7",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "틀리지 않은 식에서x를 복원하고 잘못본계수를 미지수로 역대입한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "오독하지 않은 식에 잘못 구한 y를 넣어 x를 찾은 뒤 계수를 역산하는 방향이 명시적으로 정해진다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "틀리지 않은 식에서x를 복원하고 잘못본계수를 미지수로 역대입한다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a25cc01189a7d7965d1adefde9a04a3e1f4c513147a865186bc76e80964a7ee0",
+      "initialIndependent": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_a25cc01189a7d7965d1adefde9a04a3e1f4c513147a865186bc76e80964a7ee0",
+        "actualStemSha256": "900440cc223bf506d58f613e08e1b26cb72774560a93eacb91a55ab3585bf1c9",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "한입력의 출력이 하나인지 함수 정의로 직접 확인한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 입력에서 출력이 하나로 정해지는 함수 정의를 구분한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "한입력의 출력이 하나인지 함수 정의로 직접 확인한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_8504ef7231a64d3de62fee5088b9f8073b8bb2c0348c6491012d94dde1a5651e",
+      "initialIndependent": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_8504ef7231a64d3de62fee5088b9f8073b8bb2c0348c6491012d94dde1a5651e",
+        "actualStemSha256": "2f5a78d76496bb728102ef1119546f6833a414ae4c9b88a7d59f95d4b3b58e3d",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "두 입력 함숫값을 직접 대입해 뺀다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정해진 함수식에 두 수를 대입하고 함수값의 차를 계산한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두 입력 함숫값을 직접 대입해 뺀다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_58e1eea0bc80e051e30a923fdb9ee1f7a543b994843f0cfb38a5575634589178",
+      "initialIndependent": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_58e1eea0bc80e051e30a923fdb9ee1f7a543b994843f0cfb38a5575634589178",
+        "actualStemSha256": "16854b65ef63021e012604c9f4287ff33dec7c2f7924bcc10523ee920e8b8ab2",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "절편·점·사분면·평행이동의 표준성질을 각각 확인한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "절편·사분면·점의 포함·평행이동을 여러 보기에서 종합 판정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "절편·점·사분면·평행이동의 표준성질을 각각 확인한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_78beb3e5f96ae5555f2c99022424e3cb529b7794911c2a91bcc97c1ac84daae3",
+      "initialIndependent": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_78beb3e5f96ae5555f2c99022424e3cb529b7794911c2a91bcc97c1ac84daae3",
+        "actualStemSha256": "362ec361d29489aae905f7981abdd57babdefa6d2d3da91fd1f107559919dd3b",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "그림의 두 절편을 읽고 변화량 비를 바로 계산한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림에서 두 절편의 좌표를 읽어 변화량 비를 구한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "그림의 두 절편을 읽고 변화량 비를 바로 계산한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6ca7429ec01287aa2f58b78287477ee2d5c814fe15eefe6915efa461d2f6ee66",
+      "initialIndependent": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_6ca7429ec01287aa2f58b78287477ee2d5c814fe15eefe6915efa461d2f6ee66",
+        "actualStemSha256": "aded732915a7280a180658a0ed767a313a66e067c273a5c3ea292d050d9a692f",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "기울기와 두 절편을 읽어 곱하는 짧은 표준 절차다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식에서 기울기와 두 절편을 각각 찾아 곱한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "기울기와 두 절편을 읽어 곱하는 짧은 표준 절차다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5a7ee1296eb5055452690e3f5f04437b10330291ff29638d7752bc302e91216b",
+      "initialIndependent": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_5a7ee1296eb5055452690e3f5f04437b10330291ff29638d7752bc302e91216b",
+        "actualStemSha256": "e471925dd3ce0b171c9eaac3a5940604c222bd74958939870d4c737a8dcb9b71",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "공통교점과두y절편을 구하여 삼각형 밑변·높이를 구성한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "교점과 축절편을 밑변·높이에 바로 대응하는 표준 삼각형 넓이 절차이다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "공통교점과두y절편을 구하여 삼각형 밑변·높이를 구성한다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_5139600c9f5564982928aba117d7a0592993649336625dd9422171d811793046",
+      "initialIndependent": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_5139600c9f5564982928aba117d7a0592993649336625dd9422171d811793046",
+        "actualStemSha256": "c7bacd35e8cb74d1b0a95e20e3c24cc83202e6c5be2f16ea2cad9d4ccfd3067e",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "변화량 비로계수를 정하고 점의값을 대입한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "증감량 비로 기울기 계수를 정하고 주어진 점으로 다른 상수를 결정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "변화량 비로계수를 정하고 점의값을 대입한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_0e2358cc85351d6ccdcda6086a4d5e22cb293b255a84cc20ed33b9ce4bc1173e",
+      "initialIndependent": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_0e2358cc85351d6ccdcda6086a4d5e22cb293b255a84cc20ed33b9ce4bc1173e",
+        "actualStemSha256": "5aab806906398306e40ae5b4a88a4c661d511c27a9c4692ea606d0184c684558",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "비를y=3x로 바꿔 대입하고 목표상수를 구한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해의 비를 y=3x로 바꾸어 첫 식에 대입하고 a를 계산하는 정형 흐름이다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "비를y=3x로 바꿔 대입하고 목표상수를 구한다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_52790d8c816dd8582626d1ffcc2c96b97c3f35eac88e53f4953088fbe7925c0c",
+      "initialIndependent": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_52790d8c816dd8582626d1ffcc2c96b97c3f35eac88e53f4953088fbe7925c0c",
+        "actualStemSha256": "5846c35f1c2a5d604ac8499b07870c1272fd069fe5365fc25385f4ed8d0e213b",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "주어진해를 넣어a,b연립식으로 바꾸어 푼다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "알려진 해를 원 식에 대입해 계수들에 관한 새 연립방정식을 푼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "주어진해를 넣어a,b연립식으로 바꾸어 푼다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_2b95fc99a396c3a305d17d6082f94a5ca9d3f2c150ddfc77cd4534bc2832e866",
+      "initialIndependent": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_2b95fc99a396c3a305d17d6082f94a5ca9d3f2c150ddfc77cd4534bc2832e866",
+        "actualStemSha256": "b7af536fa2fc28406f7160a079a69b6f1d58b27b9102522cf382396324ebd3da",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두 비용식을 비교해 손익 경계를 구하고 자연수 개월의 최소를 읽는다. 유리함의 엄격부등호와 해설의약한부등호 차이는 정수 경계41⅔에서는 결과를 바꾸지 않는 원문표현 부채다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 비용식을 비교한 뒤 자연수 개월을 택하는 표준 일차부등식 모델이다. 최초3은 B23 경계 기록에 남기고 독립 근거를 수용하여2로 보완."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두 비용식을 비교해 손익 경계를 구하고 자연수 개월의 최소를 읽는다. 유리함의 엄격부등호와 해설의약한부등호 차이는 정수 경계41⅔에서는 결과를 바꾸지 않는 원문표현 부채다. 저자 최초3과 비교한 결과, 표준적인 관계 구성과 계산 순서이므로 숫자2/medium/B23의 좁은 보완을 실제 r2에서 확인했다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f04c668dbc67c32d3d0a878144ba4d831d3a1e1641d008be8ac439c5b97be882",
+      "initialIndependent": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_f04c668dbc67c32d3d0a878144ba4d831d3a1e1641d008be8ac439c5b97be882",
+        "actualStemSha256": "3fb420621b17b7d86adf08d168804ddb523e434db9b206a0ab41930004d5b73c",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "수직이동식에 두 점을 차례로 대입해a,b를 복원한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "y축 평행이동식과 두 점의 포함 조건으로 상수 두 개를 결정한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "수직이동식에 두 점을 차례로 대입해a,b를 복원한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "음수로 나누어 부등식을 풀고 자연수 해를 센다. 낮은 학습단계 하를 유지해도 간단한 음수 나눗셈과 자연수1,2 확인은 기초 요구로 방어되므로 하/2의 인접호환을 승인한다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT",
+      "reason": "일차부등식 정의는 해찾기leaf와 구분된다. 실제ACTIVE SELECT_VALID_LINEAR_INEQUALITIES 정의/부모를 읽고 r1/r2 후보보류와 gap을 수용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT",
+      "reason": "최소공배수 배수와 소거 연산을 고르는 실제TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION 후보와2015RPM030 결속 수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT",
+      "reason": "일반함수 정의를 일차함수판별leaf로 강제하지 않고 함수대응판정 공식후보와gap을 분리."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "실제그림(0,−4),(3,0)의 기울기만을 묻는다.2015RPM048이며 TPL_LINE_TWO_POINTS 직선식목표와 exact차이 명시 수용."
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT",
+      "reason": "기울기·두절편의 곱을 구하는2015RPM048. 새직선식을 구하지 않아 LINEtemplate을 강제하지 않는다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_R2_SCOPED_CORRECTION",
+      "reason": "실제증감량에서기울기를정한후 고정절편7 식에(6,b)를 넣는다. r2가053/TPL_LINE_POINT_SLOPE를 exact로보지않고048+ACTIVE CC_POINT_SUBSTITUTION/SEQUENTIAL로 구별했음을 확인."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "수직이동후 두점조건으로 매개변수를 정하는 TT_LINE_TRANSLATION_EQUATION 실제정의를 읽었고 source2015 namespace와RPMgap/미활성화를 함께보존."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "All24 current stems/choices/existing solutions and actual q3/q17 images read. Freeze preceded E030 author review.",
+    "Original author/freeze bytes preserved. r2 narrow changes actually inspected; no fresh solutions created.",
+    "Numeric2 does not mechanically set learning level. Final level/bucket compatibility was checked separately; Q2 borderline approved.",
+    "Source curriculum2015 verified, official candidate definitions compared. ResolverNOT_RUN and registration/RPM gaps preserved.",
+    "Q23 source says more advantageous while solution uses≤. At41⅔ with natural months both select42; source wording retained, not silently repaired."
+  ],
+  "sourceEditsMade": false
+}
