@@ -638,7 +638,7 @@
     {
       "sourceOrdinal": 7,
       "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
-      "verdict": "CORRECT",
+      "verdict": "REGISTRATION_PENDING",
       "rpmRecordId": "M2-RPM-100",
       "rpmDecision": "CORRECT",
       "primaryMethod": "무게중심의 중선비와 여섯 등넓이 판정",
@@ -709,7 +709,7 @@
       "after": {
         "curriculum": "2015",
         "problemTypeKey": "PT_COORD_CENTROID",
-        "templateKey": "TPL_CENTROID_APPLICATION",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -733,8 +733,8 @@
         }
       },
       "fieldReview": {
-        "classification": "넓이와 무게중심 / 무게중심을 이용한 복합도형: 표준 무게중심 성질의 대상과 분모를 구별하는 판정이다.",
-        "binding": "PT_COORD_CENTROID / TPL_CENTROID_APPLICATION의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
+        "classification": "넓이와 무게중심 / 무게중심을 이용한 복합도형: 표준 무게중심 성질의 대상과 분모를 구별하는 판정이다. 순수 무게중심 골격이며 외부 도형 결합은 없음을 현재 원문·해설과 ACTIVE 정의로 재확인하여 TPL만 정확한 공백으로 수리.",
+        "binding": "PT_COORD_CENTROID 부모 의미는 유지. TPL_CENTROID_APPLICATION는 다른 도형 성질 또는 좌표 조건의 결합을 요구하므로 순수 무게중심 성질의 진위판정에는 적용하지 않고 B-E029-CENTROID-PROPERTIES 공통 NEW_TPL로 등록 대기한다.",
         "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 기존 빈 배열 유지.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "NONE: 표준 무게중심 성질의 대상과 분모를 구별하는 판정이다.",
@@ -743,9 +743,12 @@
       },
       "reason": "표준 무게중심 성질의 대상과 분모를 구별하는 판정이다.",
       "registrationDebt": [
-        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+        "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음",
+        "NEW_TPL: 무게중심의 중선·길이비·등적 분할 성질 판정"
       ],
-      "proposalRefs": [],
+      "proposalRefs": [
+        "B-E014-CENTROID-PROPERTIES"
+      ],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 2,
@@ -2796,6 +2799,26 @@
       "supportingQuestionUids": [
         "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc"
       ]
+    },
+    {
+      "id": "B-E014-CENTROID-PROPERTIES",
+      "type": "NEW_TPL",
+      "name": "무게중심의 중선·길이비·등적 분할 성질 판정",
+      "definition": "무게중심이 만드는 중점, 중선2:1, 여섯 삼각형 등적 분할을 이용해 진술을 판정하고 꼭짓점 등거리 등의 다른 중심 성질과 구별한다.",
+      "parent": "PT_COORD_CENTROID",
+      "distinguishingCriteria": "좌표평균/역산 및 다른도형조건 결합APPLICATION와 달리 무게중심 자체의 기본 성질 진위판정.",
+      "existingCandidatesReviewed": [
+        "TPL_CENTROID_DIRECT",
+        "TPL_CENTROID_REVERSE",
+        "TPL_CENTROID_APPLICATION"
+      ],
+      "ordinals": [
+        7
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3"
+      ],
+      "sharedDefinitionRef": "B-E029-CENTROID-PROPERTIES"
     }
   ],
   "notes": [
@@ -2847,6 +2870,16 @@
         25
       ],
       "evidence": "실제 source와 solution을 독립 재검한 ROOT가 현재bucket와 원문level의 인접경계를 수용."
+    },
+    {
+      "type": "TARGETED_TEMPLATE_SCOPE_REPAIR",
+      "ordinal": 7,
+      "authorizedBy": "ROOT",
+      "previousReviewSha256": "c28950b7ab13749ba563b4070e16e3b0333ef4c613d638551dcbe6f88b3dc622",
+      "previousTemplateDecision": "TPL_CENTROID_APPLICATION",
+      "newTemplateStatus": "NEW_TPL_PENDING",
+      "sharedDefinitionRef": "B-E029-CENTROID-PROPERTIES",
+      "note": "현재 발문·보기·기존 해설을 좁게 다시 읽고 순수 무게중심 영역분할 또는 성질진위 목표를 확인했다. 다른 도형의 성질과 결합한 APPLICATION 정의를 넓힌 이전 오류를 수리. source·난도·CC·Condition·Integration·4칸 보존."
     }
   ]
 }
