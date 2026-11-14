@@ -143,6 +143,7 @@
             const value = optionalString(raw, field);
             if (value !== undefined) question[field] = value;
         }
+        if (raw.choicesEmbeddedInImage === true) question.choicesEmbeddedInImage = true;
         const choiceColumns = positiveInteger(raw.choiceColumns);
         if (choiceColumns) question.choiceColumns = choiceColumns;
         if (raw.wide !== undefined) question.wide = raw.wide === true;
