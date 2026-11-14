@@ -251,9 +251,10 @@ window.questionBank = [
     solution: "[키포인트] 대응도에서 화살표를 따라 $f(3)$을 구한 뒤 한 번 더 $f$를 적용한다.\n조건 정리: 대응도에서 $3\\mapsto1$, $1\\mapsto0$, $0\\mapsto2$이다.\n풀이 방향: $(f\\circ f)(3)=f(f(3))$을 먼저 계산한다.\n정석 풀이:\n1. $f(3)=1$이므로 $(f\\circ f)(3)=f(1)=0$이다.\n2. 또 $f(0)=2$이다.\n3. 따라서 $(f\\circ f)(3)+f(0)=0+2=2$이다.\n따라서 정답은 ②이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
-    image: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg",
+    image: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg",
+    imageSize: "full",
     imageStatus: "reviewed_pass",
-    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg",
+    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg",
     visualSpec: {
       visualSpecVersion: "0.1",
       visualDependency: "ESSENTIAL",
@@ -261,7 +262,7 @@ window.questionBank = [
       renderer: "deterministic-svg",
       semanticRoles: ["function", "composition"],
       essentialVisualFacts: "X→X arrows 0→2, 1→0, 2→3, 3→1",
-      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg"
+      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg"
     },
     generationMode: "EXAM_FOLLOWUP_SIMILAR_ONLY",
     sourceGrounding: "plan-2026-08-26"
