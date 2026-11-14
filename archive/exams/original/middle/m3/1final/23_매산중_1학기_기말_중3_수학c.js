@@ -30,7 +30,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 인수는 다항식을 곱의 꼴로 나타냈을 때 곱해진 각각의 식을 의미한다.\\n조건 정리: 다항식이 $a$, $b+1$, $c-2$의 곱으로 인수분해되어 있다.\\n정석 풀이: 주어진 식 $a(b+1)(c-2)$는 $a$, $b+1$, $c-2$를 인수로 가지며, 이들의 곱으로 만들어지는 식들도 인수이다.\\n보기 중에서 주어진 식의 인수인 것은 $b+1$이다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -65,7 +65,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 합이 $x$의 계수, 곱이 상수항이 되는 두 수를 찾아 인수분해한다.\\n조건 정리: $x^2+5x-24$\\n정석 풀이: 곱해서 $-24$가 되고, 더해서 $5$가 되는 두 실수는 $8$과 $-3$이다.\\n따라서 $x^2+5x-24 = (x+8)(x-3)$으로 인수분해된다.\\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -137,7 +137,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $a^2 \\pm 2ab + b^2 = (a \\pm b)^2$ 공식을 이용한다.\\n조건 정리: 주어진 식이 완전제곱식이 되어야 하고, $\\square$는 양수이다.\\n정석 풀이: 주어진 식의 양 끝 항을 제곱 형태로 나타내면\\n$4x^2 = (2x)^2$, $25y^2 = (5y)^2$이다.\\n이 식이 완전제곱식이 되려면 가운데 항은 $\\pm 2 \\times (2x) \\times (5y) = \\pm 20xy$가 되어야 한다.\\n문제에서 구하는 $\\square$ 안의 값은 양수이므로 $20$이다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -173,7 +173,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 수의 계산에서 두 수의 제곱의 차 형태는 합차공식을 이용하면 쉽게 계산할 수 있다.\\n조건 정리: $71^2-29^2$을 계산해야 한다.\\n정석 풀이: 주어진 식은 두 수의 제곱의 차이므로 합차공식인 $a^2-b^2=(a+b)(a-b)$를 이용하면 편리하다.\\n$a=71, b=29$로 생각하여 대입하면\\n$71^2-29^2 = (71+29)(71-29) = 100 \\times 42 = 4200$으로 쉽게 계산된다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -724,14 +724,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$x+7$",
     "solution": "[키포인트] 삼각형의 넓이 공식 $\\dfrac{1}{2} \\times (밑변) \\times (높이)$를 이용하여 높이를 구하는 다항식 방정식을 세운다.\\n조건 정리: 밑변의 길이가 $2x-6$, 넓이가 $x^2+4x-21$이다.\\n정석 풀이: 구하는 삼각형의 높이를 $h$라 하자.\\n삼각형의 넓이 공식에 의해\\n$\\dfrac{1}{2} \\times (2x-6) \\times h = x^2+4x-21$이 성립한다.\\n좌변을 정리하면 $\\dfrac{1}{2} \\times 2(x-3) \\times h = (x-3)h$이다.\\n우변의 다항식을 인수분해하면 $x^2+4x-21 = (x-3)(x+7)$이다.\\n따라서 $(x-3)h = (x-3)(x+7)$이므로 높이 $h = x+7$이다.\\n따라서 구하는 값은 $x+7$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 22,
-    "level": "상",
+    "level": "중",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
@@ -749,7 +749,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$",
     "solution": "[키포인트] 정사각형의 둘레와 넓이 공식을 이용하여 식을 세우고, 제곱의 차 인수분해 공식을 활용한다.\\n조건 정리: 한 변의 길이가 $x, y$인 두 정사각형의 둘레의 합이 $48$, 넓이의 차가 $60$이다. ($x>y$)\\n정석 풀이: 한 변의 길이가 $x$인 정사각형의 둘레는 $4x$, 넓이는 $x^2$이고, 한 변의 길이가 $y$인 정사각형의 둘레는 $4y$, 넓이는 $y^2$이다.\\n첫 번째 조건에서 둘레의 길이의 합이 $48$이므로\\n$4x + 4y = 48$\\n양변을 $4$로 나누면 $x+y = 12 \\dots$ (1)\\n두 번째 조건에서 넓이의 차가 $60$이므로\\n$x^2 - y^2 = 60$\\n이 식의 좌변을 인수분해하면 $(x+y)(x-y) = 60$이다.\\n식 (1)에서 구한 $x+y=12$를 대입하면\\n$12(x-y) = 60$\\n양변을 $12$로 나누면 $x-y = 5$이다.\\n따라서 구하는 값은 $5$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -852,7 +852,7 @@ window.questionBank = [
   },
   {
     "id": 27,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",

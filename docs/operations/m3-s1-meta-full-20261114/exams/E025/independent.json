@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E025",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "dbfafdb9c6dd435b6a2dba26529afc92e06d8fc1",
+  "inputHashes": {
+    "reviewSha256": "f9558cb03b76f22310b4ed2c3ba4af537e0f0bbee368c8c6d608f1bcde1aa0f2",
+    "fourSlotSha256": "6680d77c77fdc790650b51de370841532cc04ee799db2688c48359db90eac5c3"
+  },
+  "sampledOrdinals": [
+    4,
+    10,
+    24
+  ],
+  "additionalReviewedOrdinals": [
+    1,
+    2,
+    5,
+    6,
+    13,
+    14,
+    19,
+    21,
+    22,
+    27
+  ],
+  "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+  "findings": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_61eeb6caa2f4501d6f13fa0ab2e00d98713bda4003d6f948116da70db015029f",
+      "status": "PASS",
+      "note": "인수의 정의를 곱의 꼴에서 읽는 목표이므로 저자 수정 후 FACTORIZATION 확인. exact 정의 leaf gap 유지 적합."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_27fc12810665d4e7c4ced116329f766834ad543268fedb6102f6c868c4edb1b6",
+      "status": "PASS",
+      "note": "합5·곱−24인 정수쌍으로 바로 인수분해. 부단원 교정 및 하1 수용."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_83f71a927daee2eba02d523663829ad2c28dc06a2e8254b55632829b423c38e7",
+      "status": "PASS",
+      "note": "양끝항의 제곱근2x·5y에 중간항2ab를 직접 적용해 양수 선택. 중1/B12의 역사level 경계 수용."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_785c394161e06259aa7cd4a3389de35070d1f1cb8d09905fa9aecd71209065c8",
+      "status": "PASS",
+      "note": "명시된71²−29²의 합차 인수분해 공식 선택. 하1 및 인수분해 부단원 타당."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_5655c4f71750d64adb8d70f81f9b377af758261584315f2f93c712ec08e51c42",
+      "status": "PASS_WITH_DEBT",
+      "note": "그림이 없이9개라는 합계만 있어 조각별 개수가 결정되지 않는다. 기존해설은 보기에서2,5,2를 추측. UNKNOWN·sourcepatch 보류와 exactgap 수용."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_7ffde8c24f6de7985bc7004a4a90cec612f795b838327eba0cc0749c598e38c3",
+      "status": "PASS",
+      "note": "제곱식=0이 이미 제시된 보기를 중근 정의로 바로 판별. bucket1 및 중 역사level의 경계 기록 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_1644f4b752623bc31292643203adf9225f5fe40f17ccf0d8d462ce0a83e6568e",
+      "status": "PASS",
+      "note": "근의 공식 결과를 두 근의 표현과 비교해p,q를 결정. bucket2, 역방향 계수결정 exactgap 타당."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_fbff06efd3a61734a0f817ee5362bdccdb7fe5ad34bc782346ca828794978c65",
+      "status": "PASS",
+      "note": "나이 차4·곱165를x(x+4)로 모델링해 양의 해 선택. 자리수leaf 강제하지 않은 나이관계 exactgap·중2 수용."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_7b3a4985020a54927e7b86a2205598e064adcc7b5c9650bc19e965ac934d283b",
+      "status": "PASS_WITH_DEBT",
+      "note": "핵심 그래프가 source에 결손. 기존해설의 사분면 서술을 원본 확인으로 바꾸지 않은 UNKNOWN·source 보류 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_716bac498aa50c7585f1b0b65423ed92bfa401266791fa05ad3920352fa43870",
+      "status": "PASS",
+      "note": "넓이와 밑변이 텍스트로 충분히 주어져 인수분해·약분으로 높이 결정. 중2, 부모025와 기하 exactgap 분리 수용."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_bea938a37f6b8afcbba32498641404dea7c2bd84e4cfe184aca04d43f502a2de",
+      "status": "PASS",
+      "note": "둘레합48에서x+y=12, 넓이차60을 합차공식에 대입하는 익숙한 절차. 상→중2 교정 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_243d4eb6f0d5383b0b1b737f92200952b1ba028a0160b7007df71b4974db1171",
+      "status": "PASS",
+      "note": "연속 홀수와 제곱차로 두 근을 정하고 인수형 방정식을 전개. bucket3 및 source상 보존 수용. 저자 수정 후 condition 자연수+홀수(간격2) 확인."
+    },
+    {
+      "ordinal": 27,
+      "questionUid": "qid_v1_1528334516611b1996a0aabcc5a386af888a7f3d5bf487ca82d46040cf007212",
+      "status": "PASS",
+      "note": "축으로p, 공통y절편 대입으로q를 직접 구하는 정형 순서. 상→중2 교정 수용."
+    }
+  ],
+  "assetReview": [],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
