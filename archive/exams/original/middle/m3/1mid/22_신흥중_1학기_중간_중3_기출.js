@@ -443,7 +443,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_신흥중_1학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 기호점 a,b,c,d,e는 각각 −4, 1/2, √(1/6), √0.2, −√14를 뜻한다. 수직선은 순서 모식도이며 점 간격은 실제 크기와 비례하지 않는다.",
+    "solutionImageCaption": "기호점은 a=−4, b=1/2, c=√(1/6), d=√0.2, e=−√14를 뜻한다. −4<−√14<√(1/6)<√0.2<1/2이므로 네 번째 수는 √0.2이다. 답: √0.2 (⑤).",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -787,7 +791,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": ["COND_RANGE", "COND_INTEGER"],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_신흥중_1학기_중간_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 두 근호 경계를 정수 눈금과 비교한 수직선 모식도. 경계 사이의 정수 범위를 확인한다.",
+    "solutionImageCaption": "9<13<16, 4<5<9이므로 −3<1−√13<−2, 3<1+√5<4이다. 사이의 정수는 −2,−1,0,1,2,3이므로 보기에서 아닌 수는 −3이다. 답: ① −3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
