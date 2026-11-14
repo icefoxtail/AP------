@@ -517,7 +517,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><path d='M40 100 L120 100 L40 20 Z' fill='none' stroke='black'/><path d='M120 100 L120 80 L40 0 L40 20' fill='none' stroke='black'/><path d='M40 0 L120 80' fill='none' stroke='black'/><path d='M60 100 L60 60 L100 80' fill='none' stroke='black' stroke-dasharray='2'/><text x='75' y='110' font-size='10'>8</text><text x='30' y='60' font-size='10'>10</text><text x='125' y='90' font-size='10'>24</text></svg>",
+    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q19-problem-v2.svg\" style=\"display:block; margin:8px auto; width:270px; max-width:100%; height:auto; max-height:220px; object-fit:contain\" alt=\"밑면의 직각변이 8과 10이고 높이가 24인 삼각기둥 안의 직육면체\">",
     "choices": [
       "360",
       "420",
