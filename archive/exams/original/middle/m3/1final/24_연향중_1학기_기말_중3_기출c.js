@@ -415,7 +415,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_연향중_1학기_기말_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점의 대칭축 x=−4, y절편과 반대편의 대응점.",
+    "solutionImageCaption": "x=0과 x=−8은 대칭축에서 같은 거리이므로 k=5이다. 정답: ④",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -455,7 +459,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -465,13 +469,21 @@ window.questionBank = [
       "조건해석",
       "계산"
     ],
-    "wide": false,
+    "wide": true,
     "content": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
-    "choices": [],
+    "choices": [
+      "<img src=\"assets/images/24_연향중_1학기_기말_중3_기출/q14-choice-1-v2.svg\" alt=\"아래로 볼록하고 꼭짓점이 세로축의 양의 부분에 있는 포물선이다.\" style=\"display:block;width:232px;max-width:100%;height:auto\" />",
+      "<img src=\"assets/images/24_연향중_1학기_기말_중3_기출/q14-choice-2-v2.svg\" alt=\"아래로 볼록하고 꼭짓점이 세로축의 음의 부분에 있는 포물선이다.\" style=\"display:block;width:232px;max-width:100%;height:auto\" />",
+      "<img src=\"assets/images/24_연향중_1학기_기말_중3_기출/q14-choice-3-v2.svg\" alt=\"위로 볼록하고 꼭짓점이 세로축의 양의 부분에 있는 포물선이다.\" style=\"display:block;width:232px;max-width:100%;height:auto\" />",
+      "<img src=\"assets/images/24_연향중_1학기_기말_중3_기출/q14-choice-4-v2.svg\" alt=\"위로 볼록하고 꼭짓점이 원점에 있는 포물선이다.\" style=\"display:block;width:232px;max-width:100%;height:auto\" />",
+      "<img src=\"assets/images/24_연향중_1학기_기말_중3_기출/q14-choice-5-v2.svg\" alt=\"위로 볼록하고 꼭짓점이 세로축의 음의 부분에 있는 포물선이다.\" style=\"display:block;width:232px;max-width:100%;height:auto\" />"
+    ],
+    "choiceColumns": 2,
     "answer": "①",
     "solution": "원래 그래프에서 $a,p$의 부호를 읽는다.\n\n그림이 아래로 볼록하므로 $a>0$, 꼭짓점 $(-p,0)$이 $y$축 왼쪽이므로 $p>0$. 따라서 $y=ax^2+p$는 아래로 볼록하고 꼭짓점이 $y$축의 양의 부분에 있다. 이에 해당하는 것은 ①이다.",
-    "image": "assets/images/24_연향중_1학기_기말_중3_기출/q14-choice1-corrected.svg",
-    "imageSize": "tall",
+    "image": "assets/images/24_연향중_1학기_기말_중3_기출/q14-prompt-v2.svg",
+    "imageAlt": "아래로 볼록한 포물선이 원점 왼쪽에서 가로축과 접하고, 세로축의 양의 부분을 지난다.",
+    "imageSize": "large",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -642,7 +654,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_연향중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 x절편 O/B, 꼭짓점 A와 수직 높이, 넓이 6인 삼각형 OAB.",
+    "solutionImageCaption": "삼각형의 높이는 2이고 a=2/9이므로 a+b+c=−10/9이다. 정답: ①",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -758,6 +774,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_연향중_1학기_기말_중3_기출c/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 예시 포물선, x절편 −3·5, 대칭축 x=1과 양쪽 같은 길이 4.",
+    "solutionImageCaption": "그림은 a=1/4인 경우의 예이다. x절편은 −3, 5이고 꼭짓점의 y좌표는 −16a이다. 또한 축이 x=1이므로 b=−2a이다. 따라서 (b−n)/a=14이다.",
+    "solutionImageSize": "full"
   }
 ];
