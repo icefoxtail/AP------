@@ -1060,7 +1060,11 @@ window.questionBank = [
       "subConcept": "무게중심과 넓이",
       "conditionsUsed": "AC=6, BC=9, ∠C=60°, G는 무게중심.",
       "integrationPatternExplanation": "삼각비로 전체 넓이를 구하고 무게중심 높이 비를 결합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 중선 CM 위에 무게중심 G가 있고 M은 AB의 중점인 삼각형 ABC에서 영역 ABG를 표시한다.",
+    "solutionImageCaption": "△ABC의 넓이는 ½·6·9·sin60°=27√3/2이다. 무게중심 성질에 따라 △ABG의 넓이는 △ABC의 넓이의 1/3이므로 9√3/2 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1108,7 +1112,11 @@ window.questionBank = [
       "subConcept": "산 높이와 두 관측점",
       "conditionsUsed": "BC=60m, ∠B=45°, ∠C=60°.",
       "integrationPatternExplanation": "공통 높이를 두 직각삼각형에서 표현한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 위에 B, C, D가 차례로 놓이고 BC는 60 m이다. B와 C에서 꼭대기 A를 보는 두 시선은 각각 45°와 60°이며, D에서 A까지의 높이를 초록색 수선으로 표시한다.",
+    "solutionImageCaption": "CD=x, AD=h라 두면 tan60°=h/x이므로 h=√3x이다. 또한 tan45°=h/(60+x)=1이므로 h=30(3+√3)m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1268,6 +1276,10 @@ window.questionBank = [
       "subConcept": "두 삼각형의 넓이와 sin",
       "conditionsUsed": "AD=DC=BC=3cm, ∠C=90°, x=∠ABD.",
       "integrationPatternExplanation": "피타고라스 관계와 넓이 공식 두 표현을 결합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: A,D,C가 일직선 위에 있는 직각삼각형 ABC에서 AD, DC, BC는 각각 3 cm이다. AB에 내린 D의 수선의 발 E를 표시한다.",
+    "solutionImageCaption": "피타고라스 정리에 따라 AB=3√5, BD=3√2이다. 넓이로 구한 DE=3/√5를 이용하면 sin x=DE/BD=√10/10이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -1430,7 +1430,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름이 1인 사분원과 그 안의 점 P, 반지름 OA에 내린 수선 PH를 나타낸다. 각 POH는 x이며 직각삼각형의 변 OP, PH, OH를 구별한다.",
+    "solutionImageCaption": "OP=1인 직각삼각형에서 sin x=PH/OP=PH, cos x=OH/OP=OH, tan x=PH/OH이다. sin x=OP라는 설명이 틀렸으므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1709,7 +1713,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D는 BC 위에 있다. BD=8cm, ∠B=30°, ∠ADB=120°를 표시하고, AD=BD 표식과 직각삼각형 ACD의 60°를 구별한다.",
+    "solutionImageCaption": "△ABD에서 AD=BD=8cm이고 ∠ADC=60°이다. 따라서 AC=AD·sin60°=8·√3/2=4√3cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1797,7 +1805,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "The active taxonomy cleanly classifies the trig-ratio step, but no single exact PT/TPL represents the additional angle-bisector theorem chain."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 B각 30도, AB=6cm, AC=3cm를 표시한다. AD는 A각의 이등분선이고 BC의 세 같은 눈금은 BD:DC=2:1을 나타낸다.",
+    "solutionImageCaption": "AC=6sin30°=3cm이다. 각의 이등분선 정리로 BD:DC=AB:AC=6:3=2:1이므로 BD=2/3·3√3=2√3cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -2070,7 +2082,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선의 양쪽 가지, y절편 A, 꼭짓점 B, 수선의 발 C와 원점 O를 표시한다. OABC는 연한 주황 사다리꼴이다.",
+    "solutionImageCaption": "A(0, 4), B(4, 8), C(4, 0)이므로 OA=4, BC=8이고 두 평행변 사이 거리는 4이다. 넓이는 (4+8)÷2×4=24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

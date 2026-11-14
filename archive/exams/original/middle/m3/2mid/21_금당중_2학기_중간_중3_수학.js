@@ -551,7 +551,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=1인 직각삼각형 ADC와 직각삼각형 ABC를 나타낸다. AD와 BD는 같은 길이 2, DC는 √3이며, ∠ADC=30°, ∠ABD=15°이다.",
+    "solutionImageCaption": "△ADC에서 AC=1, ∠D=30°이므로 AD=2, DC=√3이다. △ABD의 밑각은 15°씩이어서 BD=AD=2이다. 따라서 BC=2+√3이고 tan 75°=BC/AC=2+√3이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -728,7 +732,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 사분원에서 OC=OB₃₀=OB₆₀=1인 두 예시를 표시했다. 각각의 현과 OC에 내린 수선, 수직 성분 1/2 및 √3/2가 보인다.",
+    "solutionImageCaption": "예를 들어 x=30°일 때 수직 성분은 sin 30°=1/2이고, x=60°일 때는 sin 60°=√3/2이다. 반지름 OB와 OC는 1로 일정하고, cos x에 해당하는 가로 성분은 √3/2에서 1/2로 작아진다. 중심각이 커질수록 현 BC도 길어진다. 옳은 설명은 ③, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -902,7 +910,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=3/4 x+2의 두 절편 A와 B 및 원점 O를 잇는 직각삼각형이다. AO=8/3, BO=2, AB=10/3이며 각 A와 B를 a°, b°로 표시했다.",
+    "solutionImageCaption": "x절편은 A=(-8/3,0), y절편은 B=(0,2)이므로 AO=8/3, BO=2이다. 피타고라스 정리로 AB=10/3이다. 따라서 cos a=AO/AB=(8/3)/(10/3)=4/5이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -990,7 +1002,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=c는 초록 빗변, AC는 주황 이웃변, BC는 파란 맞은편 변이다. 직각은 C이다.",
+    "solutionImageCaption": "AB=c는 빗변이다. AC는 각 A의 이웃한 변이므로 AC=c cos A이고, BC는 맞은편 변이므로 BC=c sin A이다. 따라서 순서는 c cos A, c sin A이며 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

@@ -126,7 +126,11 @@ window.examData = {
         "$24\\sqrt{3}$"
       ],
       "answer": "②",
-      "solution": "점 $A$에서 직선 $BC$의 $C$쪽 연장선에 수선 $AH$를 내린다.\n$\\angle ACH=180^\\circ-135^\\circ=45^\\circ$이고 $AC=8$ cm이다.\n직각삼각형 $ACH$에서 빗변이 $8$, 예각이 $45^\\circ$이므로 두 직각변은 같고\n$AH=\\dfrac{8}{\\sqrt2}=4\\sqrt2$ cm이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot6\\cdot4\\sqrt2=12\\sqrt2$ cm$^2$이다.\n정답은 ②이다."
+      "solution": "점 $A$에서 직선 $BC$의 $C$쪽 연장선에 수선 $AH$를 내린다.\n$\\angle ACH=180^\\circ-135^\\circ=45^\\circ$이고 $AC=8$ cm이다.\n직각삼각형 $ACH$에서 빗변이 $8$, 예각이 $45^\\circ$이므로 두 직각변은 같고\n$AH=\\dfrac{8}{\\sqrt2}=4\\sqrt2$ cm이다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot6\\cdot4\\sqrt2=12\\sqrt2$ cm$^2$이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: BC=6cm, AC=8cm인 삼각형 ABC와 ∠ACB=135°를 표시한다. C 바깥 연장선의 H에서 AH가 BC에 수직이며 높이 AH=4√2cm이다.",
+      "solutionImageCaption": "∠ACH=45°이므로 직각삼각형 ACH에서 AH=4√2cm이다. 넓이는 1/2×6×4√2=12√2cm²이다. 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
