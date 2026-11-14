@@ -1,0 +1,525 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E006",
+  "sourceBlob": "c3acf27fe459ab5f39b16e6ccefc3417ea1c1390",
+  "sourceSha256": "31d2433e4d4f55773d2a8698e5f18654bada8de4825fa82dcdee06a5522266b9",
+  "reviewSha256": "f735a642888c1bcd877b47d0aaef51ec3f0ea414d1627ea4503bf2d880a9ee2d",
+  "fourSlotSha256": "86be9bdc90821c46f7dd2a9ce99f0dfdf7b6aeedd7589bbe010d1d053298bf54",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#1 only 3 distinct terms",
+    "#2 only 3 distinct terms",
+    "#3 only 2 distinct terms",
+    "#3 method has 1 term",
+    "#4 only 3 distinct terms",
+    "#8 only 3 distinct terms",
+    "#10 only 3 distinct terms",
+    "#11 only 3 distinct terms",
+    "#13 only 4 distinct terms",
+    "#15 only 2 distinct terms",
+    "#16 only 4 distinct terms",
+    "#17 only 4 distinct terms",
+    "#19 only 3 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    22,
+    23,
+    24
+  ],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 136,
+    "fail": 0,
+    "warn": 13
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "c3acf27fe459ab5f39b16e6ccefc3417ea1c1390",
+  "finalSourceBlob": "414797e3ac8115c5824b6f82299eb73c11c1ac96",
+  "finalSourceSha256": "44c882b0bb2ebd649da24058d73085a07409b8f3386e2c18a42b0ae668ac6737",
+  "finalFourSlotSha256": "b588eebcaae0e9713a96f697009d1186a6415e4bd69616fb00808d7f009666fe",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#1 only 3 distinct terms",
+      "#2 only 3 distinct terms",
+      "#3 only 2 distinct terms",
+      "#3 method has 1 term",
+      "#4 only 3 distinct terms",
+      "#8 only 3 distinct terms",
+      "#10 only 3 distinct terms",
+      "#11 only 3 distinct terms",
+      "#13 only 4 distinct terms",
+      "#15 only 2 distinct terms",
+      "#16 only 4 distinct terms",
+      "#17 only 4 distinct terms",
+      "#19 only 3 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 136
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1661761edde06e4c2e0a1b8ab62b7c1310922fe8dea60887582a67f76f5ee5f7",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "선택지의 유한한 표기와 말줄임표를 구별하는 정의 확인이다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1661761edde06e4c2e0a1b8ab62b7c1310922fe8dea60887582a67f76f5ee5f7",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "선택지의 유한한 표기와 말줄임표를 구별하는 정의 확인이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e31bd00b9de11b76c1f7a2dd283f994a69f66d2cae5bf4d8f31ba986c4817722",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "분수의 의미와 한 자리 나눗셈이므로 기존2보다1이 적절하다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e31bd00b9de11b76c1f7a2dd283f994a69f66d2cae5bf4d8f31ba986c4817722",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "분수의 의미와 한 자리 나눗셈이므로 기존2보다1이 적절하다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e31bd00b9de11b76c1f7a2dd283f994a69f66d2cae5bf4d8f31ba986c4817722",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "분수의 의미와 한 자리 나눗셈이므로 기존2보다1이 적절하다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_148ddcd9de883aaf6a52427f48ddabffc2697c9060e4b37ac420bbf61f647180",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "반복 묶음 두 자리를 확인하는 단일 정의 적용이다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_148ddcd9de883aaf6a52427f48ddabffc2697c9060e4b37ac420bbf61f647180",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "반복 묶음 두 자리를 확인하는 단일 정의 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "field": "subUnitKey",
+      "before": "M2-01-POLYNOMIAL_OPERATIONS",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "거듭제곱의 곱셈 지수법칙 직접 적용이다. Exact canonical label for the semantically accepted key. 같은 문자를 모아 지수 두 쌍을 더하면 된다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "field": "subUnit",
+      "before": "다항식의 계산",
+      "after": "지수법칙",
+      "reason": "거듭제곱의 곱셈 지수법칙 직접 적용이다. Exact canonical label for the semantically accepted key. 같은 문자를 모아 지수 두 쌍을 더하면 된다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "거듭제곱의 곱셈 지수법칙 직접 적용이다. Exact canonical label for the semantically accepted key. 같은 문자를 모아 지수 두 쌍을 더하면 된다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "거듭제곱의 곱셈 지수법칙 직접 적용이다. Exact canonical label for the semantically accepted key. 같은 문자를 모아 지수 두 쌍을 더하면 된다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "field": "subUnitKey",
+      "before": "M2-01-POLYNOMIAL_OPERATIONS",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "거듭제곱의 거듭제곱 법칙으로 지수 매개변수를 결정한다. Exact canonical label for the semantically accepted key. b를 먼저 정한 뒤 a,c를 구하는 세 관계 연결이나 범위 분기는 없다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "field": "subUnit",
+      "before": "다항식의 계산",
+      "after": "지수법칙",
+      "reason": "거듭제곱의 거듭제곱 법칙으로 지수 매개변수를 결정한다. Exact canonical label for the semantically accepted key. b를 먼저 정한 뒤 a,c를 구하는 세 관계 연결이나 범위 분기는 없다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "거듭제곱의 거듭제곱 법칙으로 지수 매개변수를 결정한다. Exact canonical label for the semantically accepted key. b를 먼저 정한 뒤 a,c를 구하는 세 관계 연결이나 범위 분기는 없다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "거듭제곱의 거듭제곱 법칙으로 지수 매개변수를 결정한다. Exact canonical label for the semantically accepted key. b를 먼저 정한 뒤 a,c를 구하는 세 관계 연결이나 범위 분기는 없다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "field": "subUnitKey",
+      "before": "M2-01-POLYNOMIAL_OPERATIONS",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "field": "subUnit",
+      "before": "다항식의 계산",
+      "after": "지수법칙",
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_18a91553f9600c0559a7d3f00ea404e8c4c97cdecedd22f9d1aa7c21966ef934",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "양의 계수 두 쌍을 더하는 직접 계산이다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_18a91553f9600c0559a7d3f00ea404e8c4c97cdecedd22f9d1aa7c21966ef934",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "양의 계수 두 쌍을 더하는 직접 계산이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_3a999409efc088990127006ef83707c66b99e29a5781b9196388085f7d0eed4e",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "어떤 식을 되찾는 역연산과 목표 뺄셈을 구분해야 하나 표준 두 단계이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_3a999409efc088990127006ef83707c66b99e29a5781b9196388085f7d0eed4e",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "어떤 식을 되찾는 역연산과 목표 뺄셈을 구분해야 하나 표준 두 단계이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1b219ec3406f0e8c81de3d780f0fee7a1bda1bb243bfca273cfe5506c0770b36",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "음의 분수와 분수 나눗셈이 섞인 여러 계산 단계이나 추가 구조 발견은 필요하지 않다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1b219ec3406f0e8c81de3d780f0fee7a1bda1bb243bfca273cfe5506c0770b36",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "음의 분수와 분수 나눗셈이 섞인 여러 계산 단계이나 추가 구조 발견은 필요하지 않다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1875ab1945607468dcda15416597e35595a4254c280f4f6e9c2a43730fc65e61",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "단순 한 문장의 수량과 부등호를 대응시키는 정의 수준이다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1875ab1945607468dcda15416597e35595a4254c280f4f6e9c2a43730fc65e61",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "단순 한 문장의 수량과 부등호를 대응시키는 정의 수준이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a0ca955f46ae07a1fb627778e06bc29ba771405711037fa5da65fd495e83b7f7",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "선택지마다1을 넣는 직접 검산이며 해 범위 계산이 없다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a0ca955f46ae07a1fb627778e06bc29ba771405711037fa5da65fd495e83b7f7",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "선택지마다1을 넣는 직접 검산이며 해 범위 계산이 없다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a0ca955f46ae07a1fb627778e06bc29ba771405711037fa5da65fd495e83b7f7",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "선택지마다1을 넣는 직접 검산이며 해 범위 계산이 없다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_564d8f9a3aa3d84c1ff45dff816072ea996f05beaf89c341a377559192af72b3",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "같은 수 덧셈·양수곱·음수나눗셈의 핵심 방향 법칙을 직접 확인한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_564d8f9a3aa3d84c1ff45dff816072ea996f05beaf89c341a377559192af72b3",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "같은 수 덧셈·양수곱·음수나눗셈의 핵심 방향 법칙을 직접 확인한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_564d8f9a3aa3d84c1ff45dff816072ea996f05beaf89c341a377559192af72b3",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "같은 수 덧셈·양수곱·음수나눗셈의 핵심 방향 법칙을 직접 확인한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_a81e00c0420efbafa2fb2f80faf824be726829937418c3d924837028b905c669",
+      "field": "level",
+      "before": "중",
+      "after": "하",
+      "reason": "정수계수 두 번의 이항 후 x≤2의 방향·끝점만 확인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_a81e00c0420efbafa2fb2f80faf824be726829937418c3d924837028b905c669",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "정수계수 두 번의 이항 후 x≤2의 방향·끝점만 확인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_a81e00c0420efbafa2fb2f80faf824be726829937418c3d924837028b905c669",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "정수계수 두 번의 이항 후 x≤2의 방향·끝점만 확인한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_83e472d21ec4f3110420f8506a65aa406efead6812e7709dba8473be82f0f283",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "약분 후 필요한 인수3,11을 모아 배수의 순서를 정하는 다단계이지만 표준 공배수 적용이다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_83e472d21ec4f3110420f8506a65aa406efead6812e7709dba8473be82f0f283",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "약분 후 필요한 인수3,11을 모아 배수의 순서를 정하는 다단계이지만 표준 공배수 적용이다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "원기둥·원뿔 부피 공식을 직접 결합하는 교과서형 활용이어서 기존 level중을 유지한다. 두 부피 보존식과 문자식 나눗셈을 연결하는 단계 수 때문에 숫자bucket3을 독립적으로 부여하며 B23 경계로 관리한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "원기둥·원뿔 부피 공식을 직접 결합하는 교과서형 활용이어서 기존 level중을 유지한다. 두 부피 보존식과 문자식 나눗셈을 연결하는 단계 수 때문에 숫자bucket3을 독립적으로 부여하며 B23 경계로 관리한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "원기둥·원뿔 부피 공식을 직접 결합하는 교과서형 활용이어서 기존 level중을 유지한다. 두 부피 보존식과 문자식 나눗셈을 연결하는 단계 수 때문에 숫자bucket3을 독립적으로 부여하며 B23 경계로 관리한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_ff12bc4cd1475844b15d6f254753420cc4efb486c107cb1bc49329f54a46bc02",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 가격식을 세운 뒤 일차부등식을 풀고 엄격 부등식의 정수 하한을 잡는 표준 활용이다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_ff12bc4cd1475844b15d6f254753420cc4efb486c107cb1bc49329f54a46bc02",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "두 가격식을 세운 뒤 일차부등식을 풀고 엄격 부등식의 정수 하한을 잡는 표준 활용이다."
+    }
+  ]
+}

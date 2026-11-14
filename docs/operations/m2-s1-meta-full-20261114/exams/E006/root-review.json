@@ -1,0 +1,365 @@
+{
+  "sampleReviewer": "A",
+  "sampleFile": "E006.sample-revision3.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "sharedMaterial2/3등식에서 나눗셈과 소수표현을 직접대조.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "비순환6 뒤의 반복1을 표시하는 직접정의.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "sharedMaterial의 배수선택과 순환부분소거·약분은 표준절차.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "3의거듭제곱으로b결정후 나머지지수비교, 분기없는 표준연결.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 10,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "계수나눗셈과 문자지수뺄셈의 한 공식 적용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "원식복원역연산후바른뺄셈이라는 익숙한두단계.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "음의분수/괄호나눗셈 연산은 여러단계이나 새로운구조발견없음.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "x1을각부등식에넣는직접성립판정.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "음수곱나눗셈의부등호반전을직접대조.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "풀이전후의연산을성질명칭에대응, 두단계. 단 위치표시부채는 별도유지.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정수계수부등식 기본풀이후닫힌점/왼쪽표현. 실제③그림확인.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두기약분모의필요인수3,11 공배수후두번째배수라는표준활용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두입체부피보존과문자식나눗셈연결로3적합. level중은보존권고.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제표200x,90x+2500 확인. 가격부등식+자연수하한이라는표준활용.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "유한소수표기와0.777…말줄임을 구별하는 정의 바로확인으로 legacy중보다하 적합.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "반복24묶음을 읽는 단일정의라 하, bucket1과 별도로도 최하난도판정.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 8,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "지수의 같은밑곱 한법칙으로 양수지수두쌍을 더하므로 독립level하 적합.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 11,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "부호변환없는 두동류항 계수합만 요구해 하가 적합.",
+      "independentReviewer": "A"
+    },
+    {
+      "sourceOrdinal": 15,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "a에1을더하면7보다크다 한문장을 그대로a+1>7로 옮기는 직접표현이라 하 적합.",
+      "independentReviewer": "A"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "decision": "ACCEPT",
+      "reason": "다항식항정리가아닌같은밑지수곱법칙이므로EXPONENT_LAW/125."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "decision": "ACCEPT",
+      "reason": "거듭제곱의지수비교이므로EXPONENT_LAW/126."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "decision": "ACCEPT",
+      "reason": "단항식나눗셈은EXPONENT_LAW/128정본배치와일치."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "decision": "ACCEPT",
+      "reason": "문자식조작은보조이고두입체의부피보존·원뿔높이가목표이므로M1입체측정/216주분류유지."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "level": "하",
+        "difficultyConfidence": "high"
+      },
+      "reason": "선택지의 유한한 표기와 말줄임표를 구별하는 정의 확인이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "분수의 의미와 한 자리 나눗셈이므로 기존2보다1이 적절하다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "level": "하",
+        "difficultyConfidence": "high"
+      },
+      "reason": "반복 묶음 두 자리를 확인하는 단일 정의 적용이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "level": "하",
+        "difficultyConfidence": "high"
+      },
+      "reason": "거듭제곱의 곱셈 지수법칙 직접 적용이다. Exact canonical label for the semantically accepted key. 같은 문자를 모아 지수 두 쌍을 더하면 된다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "거듭제곱의 거듭제곱 법칙으로 지수 매개변수를 결정한다. Exact canonical label for the semantically accepted key. b를 먼저 정한 뒤 a,c를 구하는 세 관계 연결이나 범위 분기는 없다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "단항식 나눗셈 직접 계산이다. Exact canonical label for the semantically accepted key. 부호나 분배 없이 한 나눗셈의 계수와 지수를 각각 처리한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "level": "하",
+        "difficultyConfidence": "high"
+      },
+      "reason": "양의 계수 두 쌍을 더하는 직접 계산이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "어떤 식을 되찾는 역연산과 목표 뺄셈을 구분해야 하나 표준 두 단계이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "음의 분수와 분수 나눗셈이 섞인 여러 계산 단계이나 추가 구조 발견은 필요하지 않다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "level": "하",
+        "difficultyConfidence": "high"
+      },
+      "reason": "단순 한 문장의 수량과 부등호를 대응시키는 정의 수준이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "선택지마다1을 넣는 직접 검산이며 해 범위 계산이 없다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "같은 수 덧셈·양수곱·음수나눗셈의 핵심 방향 법칙을 직접 확인한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high"
+      },
+      "reason": "정수계수 두 번의 이항 후 x≤2의 방향·끝점만 확인한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "약분 후 필요한 인수3,11을 모아 배수의 순서를 정하는 다단계이지만 표준 공배수 적용이다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "원기둥·원뿔 부피 공식을 직접 결합하는 교과서형 활용이어서 기존 level중을 유지한다. 두 부피 보존식과 문자식 나눗셈을 연결하는 단계 수 때문에 숫자bucket3을 독립적으로 부여하며 B23 경계로 관리한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "두 가격식을 세운 뒤 일차부등식을 풀고 엄격 부등식의 정수 하한을 잡는 표준 활용이다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E006",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "c3acf27fe459ab5f39b16e6ccefc3417ea1c1390",
+  "finalSourceBlob": "414797e3ac8115c5824b6f82299eb73c11c1ac96",
+  "reviewSha256": "f735a642888c1bcd877b47d0aaef51ec3f0ea414d1627ea4503bf2d880a9ee2d",
+  "independentSha256": "6b7c4449fd6e759b6a63c5cbc7d12165f33de971fa94afc40b20beac61a947b4",
+  "reviewedFourSlotSha256": "86be9bdc90821c46f7dd2a9ce99f0dfdf7b6aeedd7589bbe010d1d053298bf54",
+  "finalFourSlotSha256": "b588eebcaae0e9713a96f697009d1186a6415e4bd69616fb00808d7f009666fe",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T08:59:16.148186+00:00",
+  "independentHistory": [
+    {
+      "file": "docs/operations/m2-s1-meta-full-20261114/exams/E006/independent-history/E006.sample-revision2.json",
+      "sha256": "adb46c30aa8da0343a9add9cd51fafb59ae70735cb5ad603b39b3b8add465919"
+    },
+    {
+      "file": "docs/operations/m2-s1-meta-full-20261114/exams/E006/independent-history/E006.sample.json",
+      "sha256": "f0c337cf40fb0a855e1a9f65a78a3ced70e9a512ec4e652264b1060ee1ea2e06"
+    }
+  ]
+}

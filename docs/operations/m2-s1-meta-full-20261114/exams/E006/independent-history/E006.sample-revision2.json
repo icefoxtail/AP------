@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E006",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "sourceGitBlobSha": "c3acf27fe459ab5f39b16e6ccefc3417ea1c1390",
+  "reviewSha256": "f735a642888c1bcd877b47d0aaef51ec3f0ea414d1627ea4503bf2d880a9ee2d",
+  "fourSlotSha256": "86be9bdc90821c46f7dd2a9ce99f0dfdf7b6aeedd7589bbe010d1d053298bf54",
+  "sampleOrdinals": [
+    4,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "status": "PASS_WITH_CONTENT_DEBT",
+      "findings": "goal순환마디와 반복1확인 method가 정확히 구분됨. literal quote모두존재. ④/⑤도 동일수값이라 최소순환마디 표기라는 의도에 대한 내용부채 보존 동의. 난도하/1은 정의 직접확인에 맞음.",
+      "goalMethodInversion": false,
+      "quoteFabricated": false
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "status": "PASS_AFTER_SCOPED_FIX",
+      "findings": "공통자료의 풀이식과 성질선택지를 실제읽음. ㄱㄴ 위치표시 누락 contentDebt는 실제문제이며 가짜미확인부채가 아님. goal이 부등식의성질인 것은 성질이름 자체를 묻기때문에 적합. method부등식의성질의 quote양변4x빼기는 적용행동이지 명칭 직접호출이 아니므로 NAMED→IMPLIED와 구체근거 필요. Revision2: requested evidenceType/level corrections verified; see scopedRevisionReview.",
+      "goalMethodInversion": false,
+      "quoteFabricated": false
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "status": "PASS_AFTER_SCOPED_FIX",
+      "findings": "그림 반지름a/2a와 높이2a-4b를 실제확인. 부피·높이 goal,부피보존·약분·분배 method 분리 적합. 모델링 quote두부피가같다는 이름직접호출이 아니므로 NAMED→IMPLIED 필요. 숫자3은 적합하나 기존중→상은 별도근거부족으로 중보존 권고. Revision2: requested evidenceType/level corrections verified; see scopedRevisionReview.",
+      "goalMethodInversion": false,
+      "quoteFabricated": false
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "evidenceTypeDefects": 0,
+  "status": "PASS_WITH_CONTENT_DEBT",
+  "at": "2026-11-14T08:54:01.105357+00:00",
+  "sourceEvidenceRead": [
+    "sharedMaterial Q2 Q7 Q18 Q21",
+    "source/solution/choices Q2,4,7,8,9,10,12,14,16,17,18,19,21,22,23,24",
+    "actual rendered source assets q19-options,q23-clean,q24-clean"
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e31bd00b9de11b76c1f7a2dd283f994a69f66d2cae5bf4d8f31ba986c4817722",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "sharedMaterial2/3등식에서 나눗셈과 소수표현을 직접대조."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "비순환6 뒤의 반복1을 표시하는 직접정의."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "sharedMaterial의 배수선택과 순환부분소거·약분은 표준절차."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "3의거듭제곱으로b결정후 나머지지수비교, 분기없는 표준연결."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "계수나눗셈과 문자지수뺄셈의 한 공식 적용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_3a999409efc088990127006ef83707c66b99e29a5781b9196388085f7d0eed4e",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "원식복원역연산후바른뺄셈이라는 익숙한두단계."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1b219ec3406f0e8c81de3d780f0fee7a1bda1bb243bfca273cfe5506c0770b36",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "음의분수/괄호나눗셈 연산은 여러단계이나 새로운구조발견없음."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a0ca955f46ae07a1fb627778e06bc29ba771405711037fa5da65fd495e83b7f7",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "x1을각부등식에넣는직접성립판정."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_564d8f9a3aa3d84c1ff45dff816072ea996f05beaf89c341a377559192af72b3",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "음수곱나눗셈의부등호반전을직접대조."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "풀이전후의연산을성질명칭에대응, 두단계. 단 위치표시부채는 별도유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_a81e00c0420efbafa2fb2f80faf824be726829937418c3d924837028b905c669",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정수계수부등식 기본풀이후닫힌점/왼쪽표현. 실제③그림확인."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_83e472d21ec4f3110420f8506a65aa406efead6812e7709dba8473be82f0f283",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두기약분모의필요인수3,11 공배수후두번째배수라는표준활용."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두입체부피보존과문자식나눗셈연결로3적합. level중은보존권고."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_ff12bc4cd1475844b15d6f254753420cc4efb486c107cb1bc49329f54a46bc02",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제표200x,90x+2500 확인. 가격부등식+자연수하한이라는표준활용."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8dc8e1c0c3f074516080067f88045dd0779dec814a13e86d96e98046dd38dc7e",
+      "decision": "ACCEPT",
+      "reason": "다항식항정리가아닌같은밑지수곱법칙이므로EXPONENT_LAW/125."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_73bc4c4313a26b3c796efa8db7245d488551f82283f8837aeb25ed3050389752",
+      "decision": "ACCEPT",
+      "reason": "거듭제곱의지수비교이므로EXPONENT_LAW/126."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_45c10ba1043a978434e2cb6f2be7dabb42c327e8cf631769c5b74f7f06ab8be3",
+      "decision": "ACCEPT",
+      "reason": "단항식나눗셈은EXPONENT_LAW/128정본배치와일치."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "decision": "ACCEPT",
+      "reason": "문자식조작은보조이고두입체의부피보존·원뿔높이가목표이므로M1입체측정/216주분류유지."
+    }
+  ],
+  "requestedCorrections": [],
+  "revision": 2,
+  "priorInputHashes": {
+    "reviewSha256": "1effedc3aff0d048b53ca0a2527b80d28bee5fe47a315d3e7325c01c3e83b702",
+    "fourSlotSha256": "8fb92fbb71d58a3e782c4c12fa0b567308a2224a9cbd94b083501e5168775981"
+  },
+  "scopedRevisionReview": {
+    "scope": "Author reviewed22 method-label atoms across exam and Q23 independent level. All final IMPLIED entries and their literal existing-solution context were read by A; actual concepts/quotes unchanged, method justification grounded in quoted operation.",
+    "result": "Q18 and Q23 requested evidenceType fixes verified; Q23 level중/bucket3 separate reasoning verified. No new quote or solution was fabricated."
+  }
+}
