@@ -453,7 +453,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "legacyLevelCompatibility": "NORMAL",
     "rpmSemanticStatus": "FINAL",
     "rpmPrimaryRecordId": "M2-RPM-169",
     "rpmPrimaryPath": {

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m2-s1-meta-amendment-v1",
+  "examId": "E001",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "f598a18c87f31038006bcf3260bf6a4f8dcf8c33",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "originalReviewSha256": "a9a6537f50359aacfa6d13179cd1df8618f54dbc65bca6198d6004eda0c00024",
+  "originalFourSlotSha256": "e24bb420d3c019337e73797aa8ef94837fd0297a361da9c8108d3a609a40000d",
+  "status": "ROOT_REVIEW_REQUIRED_NEW_COMMIT",
+  "scope": "4slot§10 candidate parent same-slot correction only; sealed author artifacts preserved.",
+  "changes": [
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_11b822731ec90c42c19c0fbf4133d93b5b24eff33eda9e2b9c3b68a2306bcd92",
+      "slot": "condition",
+      "action": "ADD_PARENT_ATOM",
+      "atom": {
+        "term": "조건",
+        "termId": 394,
+        "src": "stem",
+        "quote": "0이 아닌 상수 $a,b$"
+      },
+      "reason": "사전394 조건은 변수값에 따라 참거짓이 결정되는 열린문장이다. a,b의0아님 또는 b≠0은 바로 그 열린조건이므로 원문이 직접 지지한다."
+    }
+  ],
+  "candidateCorrections": [
+    {
+      "term": "0이아님",
+      "beforeParent": "실수",
+      "afterParent": "조건",
+      "reason": "실수라는 수체계는 본문에 명시되지 않는다. 0이아님은 수체계에 걸쳐 성립하는 열린조건이므로 사전394조건을 부모로 삼고 같은condition칸에 함께 둔다. 후보의 비영 조건 의미·정확한 원문 quote는 유지한다."
+    }
+  ],
+  "unchanged": "All student content,UIDs,source fingerprints,other slot terms/quotes,classification,difficulty preserved. No dictionary/shared registry change.",
+  "createdAt": "2026-11-14T09:16:55.572470+00:00"
+}
