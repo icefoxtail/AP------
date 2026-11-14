@@ -9318,12 +9318,150 @@
         24,
         25
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "989f2f47761e0780db675e64a69817bdb584c05cc151c229177f8b5b9ce8a1a1"
+      "uidSetSha256": "989f2f47761e0780db675e64a69817bdb584c05cc151c229177f8b5b9ce8a1a1",
+      "reviewedQuestionCount": 25,
+      "fullyJudgedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 2,
+      "unresolvedOrdinals": [
+        6,
+        9
+      ],
+      "sourceHoldQuestionCount": 5,
+      "sourceHoldOrdinals": [
+        6,
+        9,
+        10,
+        15,
+        22
+      ],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 25,
+      "independentSampleOrdinals": [
+        3,
+        6,
+        24
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 일차방정식의 관계",
+          "ordinals": [
+            1,
+            2,
+            3,
+            22
+          ]
+        },
+        {
+          "rpmL1": "연립일차방정식",
+          "rpmL2": "연립일차방정식",
+          "ordinals": [
+            4
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            5,
+            8,
+            9,
+            10,
+            11,
+            12,
+            23
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            6,
+            7,
+            13,
+            17
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            14,
+            18,
+            19,
+            20,
+            21,
+            24
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            15,
+            16,
+            25
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E062/four-slot.json",
+          "sha256": "8b70f3da98f8442126c445fae6332e9a23b8de2ed433479d166887655b60b302"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E062/independent-sample.json",
+          "sha256": "b9a272b49a83f8349cae2d0bc5a2ebf36bcb1fc7184b925d127eb002c3919502"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E062/mechanical-check.json",
+          "sha256": "b9d023d4648a9629ca1bd8ee138730e752c2b9db6c1288db601bac3141d87b9d"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E062/review.json",
+          "sha256": "83ba9b3eaa86598decbba1963e7ccf86b3e363628c625ddd56f5926f302d8765"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E062/root-acceptance.json",
+          "sha256": "f4e6bc9e3ce5719c7f523701b0ccc1d481cff814f8666f254ba7b24973c7ebb7"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E063",
@@ -9477,7 +9615,7 @@
           "sha256": "d8b9de51384fd926c0c562d1cd94d8113520675a1d6b938c1893e1e16db137b6"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         1,
@@ -9503,7 +9641,8 @@
         21,
         22,
         23
-      ]
+      ],
+      "remoteCommit": "83fd7e242545319b8f041ae71446256c075aa69c"
     },
     {
       "examId": "E064",
@@ -9689,14 +9828,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 61,
-    "reviewedQuestions": 1459,
-    "fullyJudgedQuestions": 1432,
-    "unresolvedQuestions": 27,
-    "remainingExams": 6,
-    "remainingQuestions": 145
+    "reviewedExams": 62,
+    "reviewedQuestions": 1484,
+    "fullyJudgedQuestions": 1455,
+    "unresolvedQuestions": 29,
+    "remainingExams": 5,
+    "remainingQuestions": 120
   },
-  "lastVerifiedExamCommit": "5c66869effb5dd389f5fbc0ac728552c44bc6eee",
+  "lastVerifiedExamCommit": "83fd7e242545319b8f041ae71446256c075aa69c",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
