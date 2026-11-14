@@ -1,0 +1,1971 @@
+{
+  "schemaVersion": "m1-s2-exam-review-handoff-v1",
+  "author": "META_A",
+  "sourceArchiveFile": "original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+  "sourcePath": "archive/exams/original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "baselineSourceBlob": "53b2f69f3c571602f900637eceff41d0e66daff2",
+  "sourceBlob": "13346ae081b7c146e93aaaf78b8747d6a684faff",
+  "sourceSha256": "fb818cffc5aaa85337a06df7a056c1d198ba2ad513987b803ee0bc2774ca12eb",
+  "questionCount": 24,
+  "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
+  "topics": {
+    "좌표평면": [
+      1,
+      2,
+      3,
+      4,
+      21
+    ],
+    "그래프와 관계": [
+      5,
+      6,
+      7
+    ],
+    "점·선·면과 각": [
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23
+    ],
+    "위치 관계": [
+      12,
+      14
+    ],
+    "평면도형의 측정": [
+      24
+    ]
+  },
+  "reusedEvidence": [],
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_e7df4497de96133fa9e59ffa76660e7f183041de0bc69808a9e201922ff6de7c",
+      "meaning": "좌표평면의 가로·세로 방향과 이동량을 순서대로 읽어 점의 좌표 후보를 확인한다. 단순 직접 판독1을 보존한다. RPM050의 읽기 path는 맞지만 현재 native pair와 기계 부모가 좌표넓이/GRAPH로 엇갈려 exact 교차표 부채로 분리한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_READING_LEAF_NATIVE_PARENT_CROSSWALK_MISMATCH"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "하",
+        "bucket": 1,
+        "independentRecheckRequired": false,
+        "reason": "좌표평면의 가로·세로 방향과 이동량을 순서대로 읽어 점의 좌표 후보를 확인한다. 단순 직접 판독1을 보존한다. RPM050의 읽기 path는 맞지만 현재 native pair와 기계 부모가 좌표넓이/GRAPH로 엇갈려 exact 교차표 부채로 분리한다."
+      },
+      "fingerprints": {
+        "QBODY": "6148b9c5301ba822687cfba9151fe4215458e780a86620114e6da6928eed4789",
+        "QFULL": "9eb526a886e79d62fd5d33effe9d4c21f0e6f7607e4be1d6e5380131c4c11c94"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "좌표평면",
+            "l4": "점의 좌표 읽기"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_f23bf9a8a10f728ea613721c50af879fb26284fdb5aa0670c8b0f92812841f20",
+      "meaning": "같은 순서쌍의 두 성분을 각각 같게 놓아 독립 일차방정식을 풀고 문자 곱을 구한다. 기존 exact TPL 골격이며 이 내부 순서만으로 SEQUENTIAL을 주지 않는다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_ORDERED_PAIR_EQUALITY_LEAF_MISSING",
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "같은 순서쌍의 두 성분을 각각 같게 놓아 독립 일차방정식을 풀고 문자 곱을 구한다. 기존 exact TPL 골격이며 이 내부 순서만으로 SEQUENTIAL을 주지 않는다."
+      },
+      "fingerprints": {
+        "QBODY": "377f12590ff33aff7a7387f92f040ee1c9238d8a286696f70c7da1cb6821444f",
+        "QFULL": "7dc2afe4a9576ba86234e4d09c9493cf9d166980a3df74e25bbab280b1b220e1"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7b362191f4369068431de0f6f9640a1452f22775841190a3cf01d9537d03b65e",
+      "meaning": "각 좌표축 위에 있는 점에서 반대쪽 좌표가0이라는 조건으로 두 문자를 정한다. 같은 좌표쌍의 성분 일치만을 말한 부모 정의는 축 조건도 포함하도록 정비한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_AXIS_COORDINATE_CONSTRAINT_LEAF_MISSING",
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "각 좌표축 위에 있는 점에서 반대쪽 좌표가0이라는 조건으로 두 문자를 정한다. 같은 좌표쌍의 성분 일치만을 말한 부모 정의는 축 조건도 포함하도록 정비한다."
+      },
+      "fingerprints": {
+        "QBODY": "1f5850d7469ffcfc62c0e3583ef72d80abbb263078a5e534bda5314bec94bb61",
+        "QFULL": "03c91fadcc334a35a2883f4921b0be6f49fc677bf5cf87644c45d1610602a1fe"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_82082aca0e2ab84229a01b4f35f99b444de7206f2d861407d7a1483b11f90f83",
+      "meaning": "주어진 사분면의 부호를 몫과 음의 부호에 전파하여 변환된 점의 사분면을 정한다. 실제 양·음 부호 제약을 보존한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {
+          "COND_POSITIVE": true,
+          "COND_NEGATIVE": true
+        }
+      },
+      "gaps": [
+        "RPM_QUADRANT_SIGN_DEDUCTION_LEAF_MISSING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "주어진 사분면의 부호를 몫과 음의 부호에 전파하여 변환된 점의 사분면을 정한다. 실제 양·음 부호 제약을 보존한다."
+      },
+      "fingerprints": {
+        "QBODY": "dac3a700deb3ce10fedbd09123805bfb3cddb12d25ecfbfa30e49f5301f9a0b6",
+        "QFULL": "3616b008cf3d336ece0d63ac936cd8f05316ab7817cc3b5c393606b1bef03a6e"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_e7051426ea590184b3d8100e2dccc27babd0eae2b98c5c4e0633f71c55d47ed3",
+      "meaning": "일정한 유량에서 수위 그래프의 기울기 증가를 단면 넓이 감소로 해석하여 그릇 모양을 고른다. 해당 해석 자체가 primary 정의이므로 NONE으로 정리한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "일정한 유량에서 수위 그래프의 기울기 증가를 단면 넓이 감소로 해석하여 그릇 모양을 고른다. 해당 해석 자체가 primary 정의이므로 NONE으로 정리한다."
+      },
+      "fingerprints": {
+        "QBODY": "e85b7b97f63ef215f0b9399fc4142e3852fa0b7cb797189d9d1ce5b057df6423",
+        "QFULL": "012156a0e775c1334afa2303a7f40b01884b6b053db4c8e2908440da3f6ab216"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-053",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "REINTERPRETATION",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-053"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_5701f00a55e0b9f8502fd63cc7736f30ce996f1100cc79e3ab60f5509bc7e602",
+      "meaning": "두 거리-시간 그래프에서 같은 시각의 같은 거리를 교점으로 찾아 만남 시각을 읽는다. 거리 그래프 사실 판독 기존 TPL의 교점 시각 사례로 재사용하고 정의에 명시하는 정비를 제안한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING",
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "두 거리-시간 그래프에서 같은 시각의 같은 거리를 교점으로 찾아 만남 시각을 읽는다. 거리 그래프 사실 판독 기존 TPL의 교점 시각 사례로 재사용하고 정의에 명시하는 정비를 제안한다."
+      },
+      "fingerprints": {
+        "QBODY": "b1749445aa4d39356162bc1d4fbf6ec781bed77d6a2804c55cb573189fc4e551",
+        "QFULL": "1baa1b13d495a28d8e13a44d7b4e0504e3a5695ee8208cf658d53dc14ef771d8"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-053",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-053"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_20ba66f038b43a1810b3d13daca8cff6e8d4069a93aba69c5a362d03c3c28ebb",
+      "meaning": "기온 그래프에서 시각별 값, 차, 최고·최저를 읽어 진술을 검토한다. 단순 좌표 한 점보다 복수 정보 판독인2를 보존하고 하2 인접 허용을 독립 확인한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "하",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "기온 그래프에서 시각별 값, 차, 최고·최저를 읽어 진술을 검토한다. 단순 좌표 한 점보다 복수 정보 판독인2를 보존하고 하2 인접 허용을 독립 확인한다.",
+        "independentVerdict": "Root 실제풀이 독립 판정 수용"
+      },
+      "fingerprints": {
+        "QBODY": "d6b122efe630d7134e45e918b0759aee4ee8648fc36c33d52acfce675964d29a",
+        "QFULL": "553950901f2dbb6482480c65e585969f77e3b3de35f52622d0e89075a30a3bde"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-053",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-053"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "좌표평면과 그래프",
+            "midUnit": "좌표와 그래프",
+            "l3": "그래프",
+            "l4": "그래프 해석"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_c974d3715eee24172d2c51fa7004092e4cdaf6901cb0809dc8b1f96df0ab33d5",
+      "meaning": "한 직선 위 점의 순서에서 선분·직선·반직선의 동일성 정의를 직접 대조한다. 별도 조건 해석이나 전략 선택이 없어 독립 검토에 따라2→1로 교정하고 기존 하와 NORMAL을 보존한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "change",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": true,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [],
+      "difficulty": {
+        "decision": "CORRECT",
+        "level": "하",
+        "bucket": 1,
+        "independentRecheckRequired": false,
+        "reason": "한 직선 위 점의 순서에서 선분·직선·반직선의 동일성 정의를 직접 대조한다. 별도 조건 해석이나 전략 선택이 없어 독립 검토에 따라2→1로 교정하고 기존 하와 NORMAL을 보존한다.",
+        "independentVerdict": "Root 실제풀이 독립 판정 수용"
+      },
+      "fingerprints": {
+        "QBODY": "6b300caff1f535505536ed44c282cb3c75793a2dc104fd79da9a928aef419675",
+        "QFULL": "5778f634973dcd98fddd1389cdad1310e1c64c2bb54eca324d0bdf99bb8d0c9a"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-060",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        },
+        "legacyLevelCompatibility": {
+          "before": "BORDERLINE_ACCEPTABLE",
+          "after": "NORMAL"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-060"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "직선·반직선·선분"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_eac6c9869eaf5ba3079b8a3466ae4986c1d0be969195633ef9acf152522a4d95",
+      "meaning": "두 중점을 거꾸로 따라 전체 AB를 복원하고 AB:BC의 비로 이웃 구간을 구해 AC를 합한다. 중점과 비를 함께 쓰는 현 TPL 정의에 정확히 해당한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "두 중점을 거꾸로 따라 전체 AB를 복원하고 AB:BC의 비로 이웃 구간을 구해 AC를 합한다. 중점과 비를 함께 쓰는 현 TPL 정의에 정확히 해당한다."
+      },
+      "fingerprints": {
+        "QBODY": "156b8629ffee9c9b94650d5c8e2cf62b9a35c9c6987f9d702442138f2458d796",
+        "QFULL": "63e0888d02c5db0abcc154278444131bdec2d20af20d294dbf27ea8439b6643f"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-061",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-061"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "점·선·면",
+            "l4": "두 점 사이의 거리와 중점"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_451f670098f34961b21c1612c15d799cd5ecf98e5aeee2d8375ec679fa6b2a29",
+      "meaning": "직각과30도를 합한 각을 맞꼭지각으로 옮긴다. 해석 부담이 거의 없는 직접 적용1을 보존한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": true,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "하",
+        "bucket": 1,
+        "independentRecheckRequired": false,
+        "reason": "직각과30도를 합한 각을 맞꼭지각으로 옮긴다. 해석 부담이 거의 없는 직접 적용1을 보존한다."
+      },
+      "fingerprints": {
+        "QBODY": "a46f4ef8e7dc6727f34723bd8f43b19f2c1f68c9ffba17b9d3ccc6776ead4eaa",
+        "QFULL": "871ed12427cf3731115414cd091d1a17d023164eadb57f2f7ff127359d280d18"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-063",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-063"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "맞꼭지각"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "FAMILY_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57",
+      "meaning": "고정된 두 변의 합·차 사이 열린구간으로 세 번째 변 후보를 걸러 개수를 센다. 삼각형 세변조건은 사전의 삼각함수 부등식 id76과 구별하여 후보로 보존한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {
+          "COND_RANGE": true
+        }
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "고정된 두 변의 합·차 사이 열린구간으로 세 번째 변 후보를 걸러 개수를 센다. 삼각형 세변조건은 사전의 삼각함수 부등식 id76과 구별하여 후보로 보존한다."
+      },
+      "fingerprints": {
+        "QBODY": "3a54232ea2983ef977a57cd1570abdb1e6df51e18d3b80ee77a15ac85d6020a5",
+        "QFULL": "7181de6003e5131c5e668f4c24f2ae968512d229173f1af361708a090e64e63e"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-075",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-075"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 작도",
+            "l4": "세 변 조건"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_24f2f2cf423b79613a14e85c6ffbf0912816db27608343057aa26263536ab6f8",
+      "meaning": "직육면체 그림에서 꼬인 모서리, 수직, 점-평면 수선거리와 평면의 평행을 진술별로 검토한다. 입체 종류보다 위치 관계를 묻기 때문에 2015 M1-05/POSITION 부모로 정리하고 혼합공간관계 leaf 공백을 남긴다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "gap",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": false,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_MIXED_SPATIAL_RELATION_LEAF_MISSING",
+        "EXACT_BINDING_MISSING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "직육면체 그림에서 꼬인 모서리, 수직, 점-평면 수선거리와 평면의 평행을 진술별로 검토한다. 입체 종류보다 위치 관계를 묻기 때문에 2015 M1-05/POSITION 부모로 정리하고 혼합공간관계 leaf 공백을 남긴다."
+      },
+      "fingerprints": {
+        "QBODY": "eeff562d5b0ca715bcc773347c93d3741a4076c5e8052dbd323288d2d5b16925",
+        "QFULL": "c906ed081f4d59c6bf83f1699aab49f5ba71a4a9832ce0b568d80f8a41804d28"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "standardUnitKey": {
+          "before": "M1-07",
+          "after": "M1-05"
+        },
+        "standardUnit": {
+          "before": "입체도형의 성질",
+          "after": "기본도형"
+        },
+        "standardUnitOrder": {
+          "before": 7,
+          "after": 5
+        },
+        "subUnitKey": {
+          "before": "M1-07-SOLID_FIGURE",
+          "after": "M1-05-POSITION_RELATION"
+        },
+        "subUnit": {
+          "before": "입체도형",
+          "after": "위치 관계"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_25cbb2897f352abb6788b1a79c9a30bfe250b83a855c493cc4627dceb58beeca",
+      "meaning": "평행 보조선을 기준으로 위쪽40도와 꺾임30도를 결합하고 아래쪽30도를 더한다. 표준 방향각 이동2를 보존하되 기존 상과의 강한 차이를 독립 확인한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "평행 보조선을 기준으로 위쪽40도와 꺾임30도를 결합하고 아래쪽30도를 더한다. 표준 방향각 이동2를 보존하되 기존 상과의 강한 차이를 독립 확인한다.",
+        "independentVerdict": "Root 실제풀이 독립 판정 수용"
+      },
+      "fingerprints": {
+        "QBODY": "54656c07899895a5b860256d4e46efa11ca3f9bcfdc58762d1e76a077138cb1e",
+        "QFULL": "8854f68c12394bcae379811b15212043577a613c1b30738c16fee0b9c14c5fbb"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-064",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-064"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "평행선과 각",
+            "l4": "동위각·엇각"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "FAMILY_BINDING_GAP"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0",
+      "meaning": "공간의 직선·평면 평행·수직 명제를 적용하고 만나지 않을 수 있는 직선 등 반례로 보편진술을 배제한다. 공간의 직선-평면 관계 leaf를 고르고 상3 인접 허용을 독립 확인한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "공간의 직선·평면 평행·수직 명제를 적용하고 만나지 않을 수 있는 직선 등 반례로 보편진술을 배제한다. 공간의 직선-평면 관계 leaf를 고르고 상3 인접 허용을 독립 확인한다.",
+        "independentVerdict": "Root 실제풀이 독립 판정 수용"
+      },
+      "fingerprints": {
+        "QBODY": "c69e2260f7099209d2a382801c1a1abf06ce8d09c06cc1ec4a27f4fc0b407ca3",
+        "QFULL": "6349e5253390d3ae5c0194b6a4d2252906e455a2c99f83859b1d5d9ac864e65f"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-068",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-068"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "위치 관계",
+            "l3": "공간에서의 위치 관계",
+            "l4": "직선과 평면의 위치 관계"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_4877ea99dc183fe96916a71d6f790f3696d78b19d4218f08c7446b9a7d97552b",
+      "meaning": "접기 반사각의 이등분과 직각을 연결하여18도에서36도를 얻고 삼각형 내각으로58도를 얻는 고정 연쇄이다. 새로운 보조선이나 경우 구성 없이 표준 관계를 연결하므로 독립 검토에 따라4→3/B34로 교정하고 상/3은 인접 허용한다. 기존 글로벌 접기 TPL의 내부골격18·50·94와 일치하므로 native 재분류는 유지한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "change",
+        "ccConditionIntegration": "change",
+        "difficulty": "change",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_FOLDING_ANGLE_LEAF_MISSING",
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "CORRECT",
+        "level": "상",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "접기 반사각의 이등분과 직각을 연결하여18도에서36도를 얻고 삼각형 내각으로58도를 얻는 고정 연쇄이다. 새로운 보조선이나 경우 구성 없이 표준 관계를 연결하므로 독립 검토에 따라4→3/B34로 교정하고 상/3은 인접 허용한다. 기존 글로벌 접기 TPL의 내부골격18·50·94와 일치하므로 native 재분류는 유지한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "43fe945eeed34e7365590f777d82154635b6c14add62cb92ebcc2d8156486bef",
+        "QFULL": "ccaea904d82063ea190aacf6cd528996c19c55103459d049b7223eb834978b22"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "problemTypeKey": {
+          "before": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+          "after": "PT_MOVE_FOLDING_REFLECTION"
+        },
+        "templateKey": {
+          "before": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+          "after": "TPL_MOVE_FOLDING_REFLECTION_CORE"
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_ad6472a07f6a6a4a193634c3afd3934a4417af62c2c2a071bc91b3ec7f582f01",
+      "meaning": "원호 반지름과 현을 옮겨 같은 엇각을 만드는 작도에서 보장되는 길이와 작도 순서를 확인한다. 실제 작도·평행의 역을 판정하는 기존 TPL이 정확하다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "gap",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": false,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "EXACT_BINDING_MISSING",
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "원호 반지름과 현을 옮겨 같은 엇각을 만드는 작도에서 보장되는 길이와 작도 순서를 확인한다. 실제 작도·평행의 역을 판정하는 기존 TPL이 정확하다."
+      },
+      "fingerprints": {
+        "QBODY": "0736a3a1786bf17a75434adbda2cb4ba09aba8fa28edb7c23c64ef9d70de6e87",
+        "QFULL": "ea3cc887d9f4e3af594f1f421a4e0e122cc1a4ec993f14de71610a76c5b98aac"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-065",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "subUnitKey": {
+          "before": "M1-05-POSITION_RELATION",
+          "after": "M1-05-BASIC_FIGURE"
+        },
+        "subUnit": {
+          "before": "위치 관계",
+          "after": "점·선·면과 각"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-065"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "평행선과 각",
+            "l4": "평행선 조건"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_BINDING_GAP"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
+      "meaning": "한 변과 양 끝각으로 삼각형이 결정되는 자료를 고르고 삼각형 불가능·각만 주어진 자료·SSA를 구분한다. C23연향중간Q12와 같은 표준 유일조건 판별이므로4→2를 제안한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "change",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_MIXED_TRIANGLE_UNIQUENESS_LEAF_MISSING"
+      ],
+      "difficulty": {
+        "decision": "CORRECT",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "한 변과 양 끝각으로 삼각형이 결정되는 자료를 고르고 삼각형 불가능·각만 주어진 자료·SSA를 구분한다. C23연향중간Q12와 같은 표준 유일조건 판별이므로4→2를 제안한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "32b09269c9429327219eeda56bec6580d3b11b48c77c2e3812853d1dd4ffe1f7",
+        "QFULL": "6246019f8ce129272f704379709ef2cb37433884f0f041d3e0d7acadd2409cdf"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 4,
+          "after": 2
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B34",
+          "after": "B23"
+        },
+        "legacyLevelCompatibility": {
+          "before": "BORDERLINE_ACCEPTABLE",
+          "after": "NORMAL"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_a6ceeb35b7ba09a5b00052f47c6b595650b768aea85ae5008b3e5899db678bb0",
+      "meaning": "한 대응변이 같은 상황에서 두 추가조건이 SSS·SAS·ASA를 완성하는지 확인해 SSA를 제외한다. 접근 선택보다 익숙한 합동조건 확인이므로3→2를 제안한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "change",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_CONGRUENCE_CRITERIA_COMPARISON_LEAF_MISSING"
+      ],
+      "difficulty": {
+        "decision": "CORRECT",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "한 대응변이 같은 상황에서 두 추가조건이 SSS·SAS·ASA를 완성하는지 확인해 SSA를 제외한다. 접근 선택보다 익숙한 합동조건 확인이므로3→2를 제안한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "2b13f215a8de549d20140d6f7eddefaba07ec9ec0dbc017f8f4e753c830ced95",
+        "QFULL": "39d9902020805d19d1c16a1e10a2e737c2673f3c634d75a6867cc6663cb50098"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_c9a477acd78ede0dce4978e6cfeb2363c7bf2674a48bc870b16aa5a2f5123b91",
+      "meaning": "정사각형의 같은 변·직각과 주어진 같은 부분변으로 SAS를 만들고 대응각15도를 옮긴다. 직각 차로 목표각을 구하는 현 TPL에 이미 정사각형 성질이 포함되어 중복 CC를 제거한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "정사각형의 같은 변·직각과 주어진 같은 부분변으로 SAS를 만들고 대응각15도를 옮긴다. 직각 차로 목표각을 구하는 현 TPL에 이미 정사각형 성질이 포함되어 중복 CC를 제거한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "a5f610c69f89958bcd8fec2d99daa96a1d4121a79a0f4a6ac3e3fb22aaa6df2f",
+        "QFULL": "3a1a13091f3691b70265766fee1fc9d9aa95bad17e1ddf9fdd5d972e9ac5a45a"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-079",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "crossConceptKeys": {
+          "before": [
+            "CC_SQUARE"
+          ],
+          "after": []
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-079"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "SAS 합동"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_b47f2fc2289348b787e2f71a5ae1d786c327cd82781026dbeeeb03c90304b6ae",
+      "meaning": "두 정삼각형의 같은 변과60도에서 보조삼각형 SAS를 만들고 대응각을 같은 alpha로 표현한 뒤 삼각형 내각합에서 소거한다. 현 TPL 내부골격과 정확히 같아4를 보존하며 NONE으로 정리한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 4,
+        "independentRecheckRequired": false,
+        "reason": "두 정삼각형의 같은 변과60도에서 보조삼각형 SAS를 만들고 대응각을 같은 alpha로 표현한 뒤 삼각형 내각합에서 소거한다. 현 TPL 내부골격과 정확히 같아4를 보존하며 NONE으로 정리한다."
+      },
+      "fingerprints": {
+        "QBODY": "762a803fe9acd0c6f303ad0d50dbb62bfd3a56e6572ba6cf90bd24933f2f8645",
+        "QFULL": "1d9a4df272c213dfaf9f030a24a6b37fc7c201b723eeb48efde01b708d82e605"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-079",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-079"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "삼각형의 합동",
+            "l4": "SAS 합동"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+      "meaning": "좌표 차로 수직 밑변의 길이와 수평 높이를 구해 삼각형 넓이를 계산한다. 단순 점 좌표 읽기 RPM050과는 다른 면적계산 leaf 공백이다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "keep",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_COORDINATE_TRIANGLE_AREA_LEAF_MISSING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "중",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "좌표 차로 수직 밑변의 길이와 수평 높이를 구해 삼각형 넓이를 계산한다. 단순 점 좌표 읽기 RPM050과는 다른 면적계산 leaf 공백이다."
+      },
+      "fingerprints": {
+        "QBODY": "63bb1fbcc0126c6a1c1c664667b110b916d5559788b12d38338821de3b0f3245",
+        "QFULL": "d905202b745f628da92195b2ef9d1b06c97176e7871e2b14620e1dd811e54b3f"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_0e7ca2acc2e284db79f22c603bfdd6ff59d05ea407d20d8f882ba630661fd909",
+      "meaning": "맞꼭지각을 옮겨 평각180도 방정식으로 x를 구하고 직각에서 빼 목표각을 얻는다. 식의 선택이 직접적인 표준2를 보존하고 상2 강한 차이를 독립 확인한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": true,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 2,
+        "independentRecheckRequired": false,
+        "reason": "맞꼭지각을 옮겨 평각180도 방정식으로 x를 구하고 직각에서 빼 목표각을 얻는다. 식의 선택이 직접적인 표준2를 보존하고 상2 강한 차이를 독립 확인한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "667334f85c612dbc11d23c21a7b3be5ee1083bfdd77b86bdd6d4033662b2c229",
+        "QFULL": "cf8f131af8ae1dc470ae170447fee93971f505c2db0fb2d0e06af2982d214b51"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-063",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-063"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "맞꼭지각"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "FAMILY_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_b0e72da851709131c0f398f5a65d94d8617d16cfbd9f859ccf075e2d864832fe",
+      "meaning": "수직으로 얻은90도와 첫 각의 배수관계를 일차식으로 묶고 평각 및 둘째 비 조건으로 목표각을 정한다. 조건을 순서대로 연결하는3을 보존하며 상3 인접 허용을 독립 확인한다.",
+      "axes": {
+        "rpm": "change",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "keep",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "effectiveRpmParent": null,
+        "rpmNativeExactBridge": false,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "ACTIVE_DEFINITION_NORMALIZATION_PENDING",
+        "RPM_NATIVE_BRIDGE_REGISTRATION_PENDING"
+      ],
+      "difficulty": {
+        "decision": "KEEP",
+        "level": "상",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "수직으로 얻은90도와 첫 각의 배수관계를 일차식으로 묶고 평각 및 둘째 비 조건으로 목표각을 정한다. 조건을 순서대로 연결하는3을 보존하며 상3 인접 허용을 독립 확인한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "30720782b1604af6ed9f8968888f0c2e181c0ca4bb19c6f61478cf553b746817",
+        "QFULL": "8a712bc6d1f5facfa0e120a9aca4903d00c2032d39003da0b9a78fca796abd2e"
+      },
+      "rpmSemanticReview": {
+        "chosenRecord": "M1-RPM-062",
+        "meaning": "실제 결정 단계와 목표를 해당 L3/L4의 일반 의미에 대응한 판정이며 native projection의 exact 여부는 별도 검사.",
+        "sourceCurriculum": "2015",
+        "referenceCurriculum": "2015"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-062"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "기본 도형",
+            "midUnit": "기본 도형",
+            "l3": "각",
+            "l4": "각의 크기"
+          }
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "FAMILY_ACTIVE"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_f1bd6587483700dbf5fbda6b6f4a67b9720041a49332e37e9e536248a1cc6f7c",
+      "meaning": "원그림(1)이 지정한 두 삼각형에서 주어진 같은 변, 맞꼭지각과 엇각으로 ASA를 증명한 뒤 대응변을 밑변합에 치환한다. 접근 대상이 안내된 표준 합동→넓이 연결이므로 독립 검토에 따라4→3/B34로 교정하고 상/3은 인접 허용한다. 기존 TRAPEZOID_AREA TPL을 그대로 재사용한다.",
+      "axes": {
+        "rpm": "gap",
+        "ptTpl": "keep",
+        "ccConditionIntegration": "change",
+        "difficulty": "change",
+        "fourSlot": "change"
+      },
+      "registryCheck": {
+        "ptActive": true,
+        "tplActive": true,
+        "tplParentMatches": true,
+        "exactBinding": true,
+        "rpmRecordExists": false,
+        "rpmPathMatches": false,
+        "effectiveRpmParent": null,
+        "crossConceptActive": {},
+        "conditionActive": {}
+      },
+      "gaps": [
+        "RPM_CONGRUENCE_TO_TRAPEZOID_AREA_LEAF_MISSING"
+      ],
+      "difficulty": {
+        "decision": "CORRECT",
+        "level": "상",
+        "bucket": 3,
+        "independentRecheckRequired": false,
+        "reason": "원그림(1)이 지정한 두 삼각형에서 주어진 같은 변, 맞꼭지각과 엇각으로 ASA를 증명한 뒤 대응변을 밑변합에 치환한다. 접근 대상이 안내된 표준 합동→넓이 연결이므로 독립 검토에 따라4→3/B34로 교정하고 상/3은 인접 허용한다. 기존 TRAPEZOID_AREA TPL을 그대로 재사용한다.",
+        "independentVerdict": "B 실제풀이 독립 판정 수용 및 최종 source/4칸 재읽기 결속 완료"
+      },
+      "fingerprints": {
+        "QBODY": "3f4a0c8692e4acc4b0d2bf6751294a472f08c032ae1500318b1d3bf5dda33507",
+        "QFULL": "8a45e998c1f203b30aa09d0fe5c68b532c68099221570af25aaede4a64f64ccb"
+      },
+      "integrationMeaning": "primary taxonomy의 내부 적용만으로 완결된다. 단계 수가 많다는 이유만으로 개념 결합을 부여하지 않는다.",
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "NORMAL",
+          "after": "BORDERLINE_ACCEPTABLE"
+        },
+        "curriculum": {
+          "before": null,
+          "after": "2015"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": null
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": null
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "EVIDENCE_DEBT"
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-2"
+        }
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "kind": "ACTIVE_DEFINITION_NORMALIZATION",
+      "ordinals": [
+        2,
+        3
+      ],
+      "parentProblemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+      "existingTemplateKey": null,
+      "definition": "순서쌍의 같음 또는 좌표축 위에 놓이는 위치 조건을 좌표 성분의 등식으로 바꾸어 미지수를 결정한다.",
+      "distinction": "현재 활성 자식 AXIS_ZERO_COMPONENT도 부모 문장이 포함해야 한다.",
+      "supportingQuestionUids": [
+        "qid_v1_f23bf9a8a10f728ea613721c50af879fb26284fdb5aa0670c8b0f92812841f20",
+        "qid_v1_7b362191f4369068431de0f6f9640a1452f22775841190a3cf01d9537d03b65e"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    },
+    {
+      "kind": "ACTIVE_DEFINITION_NORMALIZATION",
+      "ordinals": [
+        6
+      ],
+      "parentProblemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "existingTemplateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
+      "definition": "거리-시간 그래프의 시작점·좌표값·교점을 읽어 출발·도달·만남 시각과 거리 사실을 판정한다.",
+      "distinction": "단일 그래프의 값뿐 아니라 같은 시각의 같은 거리를 나타내는 두 그래프 교점 시각도 포함한다. 방정식을 연립해 교점을 계산하는 문제와 구별한다.",
+      "supportingQuestionUids": [
+        "qid_v1_5701f00a55e0b9f8502fd63cc7736f30ce996f1100cc79e3ab60f5509bc7e602"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    },
+    {
+      "kind": "ACTIVE_DEFINITION_NORMALIZATION",
+      "ordinals": [
+        15
+      ],
+      "parentProblemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "existingTemplateKey": null,
+      "definition": "종이 접기를 대칭이동으로 해석하여 대응점·선분·각 또는 넓이의 관계로 목표값을 구한다.",
+      "distinction": "현재 ACTIVE 자식의 각이등분·대응각 이동 골격을 부모 정의에서 누락하지 않는다. PT owner GEOMETRY_EQUATIONS와 ACTIVE MIDDLE1 binding owner는 동일할 필요가 없다.",
+      "supportingQuestionUids": [
+        "qid_v1_4877ea99dc183fe96916a71d6f790f3696d78b19d4218f08c7446b9a7d97552b"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    },
+    {
+      "kind": "ACTIVE_DEFINITION_NORMALIZATION",
+      "ordinals": [
+        22,
+        23
+      ],
+      "parentProblemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "existingTemplateKey": null,
+      "definition": "교차 직선의 맞꼭지각·평각·직각과 주어진 각의 식·비를 이용하여 목표각을 결정한다.",
+      "distinction": "30도와 직각의 단일 합 사례를 넘어 현재 활성 ANGLE_EQUATION/ANGLE_RATIO 자식을 포함한다.",
+      "supportingQuestionUids": [
+        "qid_v1_0e7ca2acc2e284db79f22c603bfdd6ff59d05ea407d20d8f882ba630661fd909",
+        "qid_v1_b0e72da851709131c0f398f5a65d94d8617d16cfbd9f859ccf075e2d864832fe"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    },
+    {
+      "kind": "EXISTING_TYPE_EXACT_BINDING_REGISTRATION",
+      "ordinals": [
+        12
+      ],
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+      "parent": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION"
+      },
+      "definition": "다면체에서 면의 모양, 모서리·면·꼭짓점의 관계, 한 꼭짓점에 모이는 면의 성질과 공간 관계를 진술별로 판단한다.",
+      "distinction": "기존 ACTIVE 의미키가 있으므로 새 PT보다 정확한 교육과정·부모 tuple의 binding 누락을 우선 보완한다.",
+      "supportingQuestionUids": [
+        "qid_v1_24f2f2cf423b79613a14e85c6ffbf0912816db27608343057aa26263536ab6f8"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    },
+    {
+      "kind": "EXISTING_TYPE_EXACT_BINDING_REGISTRATION",
+      "ordinals": [
+        16
+      ],
+      "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+      "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+      "parent": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE"
+      },
+      "definition": "평행선 작도의 기하 근거와 보장되는 길이 관계를 판정한다.",
+      "distinction": "기존 ACTIVE 의미키가 있으므로 새 PT보다 정확한 교육과정·부모 tuple의 binding 누락을 우선 보완한다.",
+      "supportingQuestionUids": [
+        "qid_v1_ad6472a07f6a6a4a193634c3afd3934a4417af62c2c2a071bc91b3ec7f582f01"
+      ],
+      "status": "PENDING_CANONICAL_OWNER"
+    }
+  ],
+  "contentDebt": [],
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/1MK9McrCPF3X4wdcnvQP-FdoY033P2eC_/view?usp=drivesdk",
+    "fileId": "1MK9McrCPF3X4wdcnvQP-FdoY033P2eC_",
+    "sha256": "2aad4b5c75c8d9d0588bb6aef9c079289f898e01c13af0d6b5d7f710d1db6210",
+    "readbackVerified": true,
+    "originalSourceBlob": "13346ae081b7c146e93aaaf78b8747d6a684faff",
+    "protectedPayloadSame": true
+  },
+  "independent": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_중간_중1_기출.json",
+      "sha256": "25b05f0652c52c33c1c12b99ab6f0467a95126be74eec04f379c91004870a3ba",
+      "reviewer": "/root/meta_b",
+      "status": "ACCEPTED_AFTER_TARGETED_DIFFICULTY_AND_CONDITION_READBACK"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_중간_중1_기출-supplement-1.json",
+      "sha256": "112b31b2bce49deb9ef21b58b5bfbd3655cf125f2ca4703cd8ab1dc12f9875b4",
+      "reviewer": "GPT_ROOT_64695B8EDE31",
+      "status": "ACCEPTED_WITH_ONE_METADATA_CORRECTION"
+    }
+  ],
+  "independentInputBinding": {
+    "status": "SAMPLE_SCOPE_REVIEWED",
+    "reviewedRawSha256": null,
+    "currentRawSha256": "2aad4b5c75c8d9d0588bb6aef9c079289f898e01c13af0d6b5d7f710d1db6210"
+  },
+  "validation": {
+    "syntax": "PASS",
+    "uidOrder": "PASS",
+    "protectedFieldChanges": 0,
+    "changedQuestions": 24,
+    "raw4slot": {
+      "fail": [],
+      "warn": [
+        "#1 only 3 distinct terms",
+        "#1 method has 1 term",
+        "#4 only 4 distinct terms",
+        "#10 only 3 distinct terms",
+        "#13 only 3 distinct terms",
+        "#21 only 4 distinct terms"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 175
+      }
+    },
+    "compactParity": "PASS",
+    "sourceBlobRebinding": "EXACT"
+  },
+  "scopeLimits": [
+    "No full mathematical R1/R2/R3 performed.",
+    "Shared registration, main merge and deployment are outside this stage."
+  ]
+}
