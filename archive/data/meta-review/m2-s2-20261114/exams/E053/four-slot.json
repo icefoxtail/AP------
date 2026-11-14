@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_65adbcb0c5bdeac6d01c9215a9b452110b1ea19247b777809841ac0ef8b713d6",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "639ccc49c3aafeb9db54a8cb513b43cfaa5a3a020440f22e497bbe4bb7d90f34"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26017ae8aa37f1b70c19069d37cd26276aadfcf7ead4cb90dfd148d06f4e43bd"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "다음 보기 중 일차함수인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수인 것은 모두 몇 개"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "일차함수인 것은 모두 몇 개"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "일차함수는 $y=ax+b$ 꼴이고",
+            "evidenceType": "IMPLIED",
+            "justification": "각 식이 일차함수의 정의를 만족하는지 확인한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$y=-x(x+1)+x^2=-x^2-x+x^2=-x$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "전개와 동류항 소거 후 y=ax+b,a≠0에 맞는 식만 세어 합한다.",
+      "reasons": {
+        "review": "식에 겉으로 보이는 이차항을 정리하는 전처리 뒤 정의를 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_aa31419dee4be5cf1f08bf2c9be87a19ce49d3fc23505f38c13c8ac88daa410a",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ae5a80c503093a2302a1737ad7db7ebfd99951871556cc58d6d9037ccfa6ac4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "32442af31c1261aba2237a07e887ec1d32a5c1cf6fc2d23ecc8ce46cbc026457"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=-2x$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "이동한 그래프 위에 있는 점은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "방향으로 $3$만큼 평행이동하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각 점의 좌표를 대입한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "방향으로 3만큼 평행이동한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "상수항을3만큼 올린 식에 각 점을 대입하여 등식성립을 확인한다.",
+      "reasons": {
+        "review": "이동을 식으로 한 번 바꾼 뒤 표준 좌표대입을 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ceefff868164d9db3b3d09ba9a72988b9aaaef34bd8f110a1be626c12157c69e",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5df48b397bd0bcec89128eebc168b3f7897ca5e9c1d94d0c074f684b41208948"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e2d917ed4fdde35e282f1e81286ac0f68a3e1d622fdc16c50900ecb800062932"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=3x-3$"
+          },
+          {
+            "term": "좌표축",
+            "src": "stem",
+            "quote": "$x$축과 만나는 점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "두 점 $A$, $B$의 좌표를"
+          },
+          {
+            "term": "절편",
+            "src": "stem",
+            "quote": "두 점 $A$, $B$의 좌표를"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "축과 만날 때에는 $y=0$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 축에서 다른 좌표를 0으로 놓아 절편을 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "축과 만날 때에는 $x=0$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "축 조건을 식에 대입해 교점을 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 좌표축에서 다른좌표를0으로 놓아 두절편을 정한다.",
+      "reasons": {
+        "review": "절편 정의를 주어진 식에 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_c53349b5d6caaf89b8a63c1f553e7c97914a31cad980fc9e6f8093945960ee89",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a60ec9452412322c91cba647b22497a2db2f6deb01a845d628fd38cceaa3a0b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccbf708b7cacfa54270c9859c304df945cda3a5da49acedfc336e4d8f7671714"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "세 점 $(a,a+5)$"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "위에 있기 위한 $a$의 값"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$의 값을 구하면?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$a$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "직선의 기울기를 구한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직선의방정식",
+            "src": "solution",
+            "quote": "직선의 식은 $y=-2x-4$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 고정점을 지나는 직선식을 정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a+5=-2a-4$",
+            "evidenceType": "IMPLIED",
+            "justification": "고정점에서정한 직선에 세번째 미지좌표점을 대입하는 마지막결정단계이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "stem",
+            "quote": "한 직선 위에 있기 위한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 고정점의 직선식을 정하고 미지좌표점이 그 식을 만족하게 한다.",
+      "reasons": {
+        "review": "공선조건을 직선식으로 바꾸고 매개변수를 한 번 대입하는 정형구조이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "92b071785065edc7d3966bad0fb1fc7dc2538c5995cbc12d0779763a5e351cc2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e0773a5e50924dbfe4d8a3ae5a2f067788bac5ce0e6dd3fa6276d956d416776e"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "171574d8d24bafdc27d8b8b731e21e1f0e2a8819b6293589c75cc6d85e493abf"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y="
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그림의 그래프와 평행할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$k$의 값은?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는\n$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 두 축 절편에서 기울기를 계산한다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행 조건에서",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 두 직선의 기울기를 같게 놓는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "그림의 그래프와 평행할 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "실제 두절편의 기울기3을 k/2와 같게 놓는다.",
+      "reasons": {
+        "review": "그림에서 두점을 읽어 기울기로 바꾸는 전처리가 필요하다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8524800c5ca487fb926a287076153417223bd9e9217718a99ed1882792178bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6a10756dd292f9d782a99f5d9a920f49465b54f03eb52c873437fd89caec8e29"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "3dbd3c903bd8bd7989833ce063fcc40806211b4c8bce751a8fce2c3eba19ca48"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "다음 그래프에 대한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는\n$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 절편에서 기울기를 구한다."
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x$절편은 $4$, $y$절편은 $2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 그래프는 평행하다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=2$일 때 $y=",
+            "evidenceType": "IMPLIED",
+            "justification": "점의 좌표가 식을 만족하는지 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "두절편에서 직선식을 정해 기울기,통과점,증가량과 평행 여부를 대조한다.",
+      "reasons": {
+        "review": "하나의 그래프를 식으로 옮긴 뒤 정형적인 성질들을 비교한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "82108bb7a2933a6ac87d2898e1afd8b8d4ebc14e517179f0748050a9cb3182ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "158cf49a43bbb0752e22fe7b06dc3ac929f5259d82274cfbd378f526c8077d70"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "두 점 $(-1,3)$, $(5,9)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수의 식은?"
+          },
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "일차함수의 식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "직선의 기울기는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 좌표의 변화량의 비로 기울기를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$(-1,3)$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "를 지나는 직선을 그래프로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 좌표의 변화량비로 기울기를 구한 뒤 한점을 대입한다.",
+      "reasons": {
+        "review": "명시된 두점을 표준 두점식에 바로 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf50be0468ab57c4519e18fc86e162ff4a443f10f7959d0745cfcd8e00190ced"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2938decf40ac733d9fe49c52018680da771e184578de5f7f9ee4e07745c5c81e"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "2e263072f7ad37806f37d0870cc59af0fdcbda7caeef5495a988aa6ea04cd5aa"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $2x+3y-6=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "의 그래프는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$3y=-2x+6$",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식의x항을넘겨 일차함수꼴로 정리한다."
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "따라서 기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$y$절편은 $2$, $x$절편은 $3$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "주어진 방정식을 y에 관해 정리하고 x절편3,y절편2를 가지는 보기를 찾는다.",
+      "reasons": {
+        "review": "식 정리 후 두절편을 실제 그래프와 대응하는 전처리이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "84357640d084a90f8c22b98c26873297156b5977a68c5c4465e4383992f2c587"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d95a0e685545bdef849b5e16c9f4f7643ede83e35837a8fa4428e463a90a34ed"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선 $y=-2x+1$ 위의 점"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "위의 점 $(a,0)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "직선의 방정식을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "점 $(a,0)$은 $y=-2x+1$ 위에",
+            "evidenceType": "IMPLIED",
+            "justification": "y=0인 점을 대입해 x절편을 구한다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "축에 평행한 직선은 $x$좌표가 일정",
+            "evidenceType": "IMPLIED",
+            "justification": "y축 평행선은 x가 일정하다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "축에 평행한 직선의 방정식"
+          },
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "위의 점 $(a,0)$을 지나고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "주어진 직선에서 y=0인 x값을 구하고 모든점의x가같은 수직선식으로 옮긴다.",
+      "reasons": {
+        "review": "축위 통과점의 값을 먼저 구해 y축평행식에 넣는 표준 전처리이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2cd0c511b612494e29b052e754f6c9dc897190dce96505f97c4e4f75fb0ee4ce"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bd75b3b147fdfe926a3bc1e183182451521560351040fcf2ad14d476c60c426f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "두 수 $a$, $b$의 조건"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "두 수 $a$, $b$의 조건"
+          },
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "조건을 각각 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기 비교에서 $a=2$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "절편이 다르려면",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 평행 직선이 되도록 y절편을 다르게 둔다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "의 해가 없을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두식을 y형태로 정리하고 기울기는 같되 y절편은 다르게 만든다.",
+      "reasons": {
+        "review": "계수와 상수항의 역할을 구별하는 표준 해없음 조건해석이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_07a58ebb91ee57882b397c714bb74b9a1b0d19447374ab012ad0ae0c00f13a52",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "314cc06488e94dca46d3590f4ec09b2bb0910637a4ecf104bafa702748c84635"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "685611d32cfa5abcf052b1f25c30374853dd6d3104dfbe52238e33c0a43dbe6e"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "눈의 수가 6의 약수일"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "한 개의 주사위를 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수는? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$6$의 약수는 $1,2,3,6$",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위 눈 중 6의 약수를 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "눈의 수가 6의 약수일"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "가능한 눈 가운데6을 나누어떨어지게 하는 값을 나열한다.",
+      "reasons": {
+        "review": "작은 유한표본의 단일조건을 직접 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7fbaf6a2b97c68a1f9e3de2b0f458b3c10fc76aaadf19a1dbab074ac2d8c563e",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c97e9f837ff8d3f095e1b951f20860df224fe7052202aef225034194837bc64"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "96da3e58d604fcfc6de5e74fff16c78d5f57f8e3c1b8389f4dda496bc294e12a"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "두 사람이 가위바위보를 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "비길 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "가위-가위",
+            "evidenceType": "IMPLIED",
+            "justification": "가위, 바위, 보를 양쪽이 똑같이 내는 경우를 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "두 사람이 같은 것을 내야 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 사람이 같은것을 낸 세쌍을 나열한다.",
+      "reasons": {
+        "review": "대표적인 세 동일선택을 곧바로 센다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_34627561d3a30a10f460d14a219ae0f39eb50fa719a06e5af3a41a9a4d27ed33",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4aae98bba4f4099c31ebec0b843b9d1dcf1510b0e22bb053c28025d30363fc6d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e4fc5893a665a5b92fce1e38d6e9281010271031f8e665f1e23a947e775faa0"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "b83a62d97a5110beed5c168f6b5ef346733886dacd503522fe46394cf90a5990"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "3의 배수 또는 5의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "나올 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$3,6,9,12,15$로 $5$개",
+            "evidenceType": "IMPLIED",
+            "justification": "각 배수 집합의 원소를 나열한다."
+          },
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "두 목록에 함께 있으므로 한 번만 센다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 배수 집합에 공통인 15를 한 번 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1부터 15까지의 수가"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "3의배수와5의배수를 센 뒤 공통15를 한 번 제외한다.",
+      "reasons": {
+        "review": "표준 두 집합 중복을 한 번 보정한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_e0439e605592af02078e4d0efd85f039f68080b4b36ac41f916fd9417c371d95",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7381bd0051c28f4b92d26d6a80a5dc9ee4b1e823f213df4359593e04098726d4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fec74a9f5f0e9a8bc0983125579e2d187216b2a643e028ae4f8004a8d9dd3201"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "af301a528dd452e783e5ae59d1c86df8852277808b332eacfb34267f18491230"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "한 가지와 주스, 우유, 생수 중에서 한 가지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "선택할 수 있는 모든 경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$3\\times3=9$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "중에서 한 가지와"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "각 간식마다 음료3개가 가능하여 범주선택수를 곱한다.",
+      "reasons": {
+        "review": "곱의법칙의 직접형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c595bf425aef2a369c47d6863d9c09289ccdea6feb6596aa8e3b52dccd606ddb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d3c569472a66d6de696ebda5d0a95aa8ec6c6a8d44c93e88d745470be1209e4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "게임을 하는 중에 현우가 부른 수"
+          },
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "세 자리의 수를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "세 자리의 수를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "표의 판정 조건을 후보에 차례대로 적용한다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 후보의 숫자와 자리의 일치 여부를 세 판정과 대조한다."
+          },
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "표의 판정 조건을 후보에 차례대로 적용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완성후보마다같은자리수와 다른자리숫자수를 비교한다. 풀이가 새로운전체순열을 나누어세는 경우분류는 아니다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "원 스트라이크, 투 볼"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "주어진 다섯 후보의 숫자 포함과 같은자리수를 세 판정에 대조한다.",
+      "reasons": {
+        "review": "후보가 이미 주어져 표의 피드백을 차례로 적용하는 조건해석이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_173b09a750d57ef9e08392b7d812306c376b2e435bedbebbb337ea15e41c6778",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4dee1736bfa2832200c5ca83a7daa8a0ae2525e1516777c0357dd41541835597"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00a1cc877451d33a011895de4287df87913c053faa2f5b31cc90a276f3f9fcfe"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "불량품 3개를 포함하여 100개의 제품"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "불량품이 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "전체 제품은 $100$개이고, 불량품은 $3$개",
+            "evidenceType": "IMPLIED",
+            "justification": "불량품 수를 전체 제품 수로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "유리한제품3개를 전체100개와 비교한다.",
+      "reasons": {
+        "review": "확률정의의 직접대입이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_4c8975e362f7e931799f157b4841f62594ef5e4302ae4a99592214d04c6b157f",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "23ebba5592a83a0cc9e9e7266b75b8ed75c38d60ba9fb362e5920ed160ffce0d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9befc76c2bfc5572865f1a99f15722146391b3f263b43185f3da1bf041562f80"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "동전 한 개와 주사위 한 개를 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "배수가 나올 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "배수는 $2,4,6$",
+            "evidenceType": "IMPLIED",
+            "justification": "주사위 눈 중 2의 배수를 센다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "두 조건이 함께 일어날 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "동전과 주사위 결과의 확률을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "주사위는 2의 배수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "동전앞면확률과 주사위짝수확률을 각각 구해 곱한다.",
+      "reasons": {
+        "review": "각 실험의 사건을 먼저 정하고 표준 독립곱을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_5500af064a8f7fb30ccd4b1872fc348c41fefb75f91d47d7efb1ad33afe324f6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73625a9b2e128674a26fa5fbbf6a52f45000358a1b2e233f23d29103e2a274dd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4c7876decf1d3c0c69bfe93927047b8552bcf020b7a02b23dad6155278f5311"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "94fae7c66b7368940a0caa5d3b122e6a2669ede452f0f7ca6dd80cdec4515cf8"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "바늘이 소수를 가리킬 확률"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "10등분한 원판이 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "소수를 가리킬 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "소수는 $2,3,5,7$",
+            "evidenceType": "IMPLIED",
+            "justification": "원판의 1부터 10까지 중 소수를 센다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "크기가 같은 $10$개의 칸",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한 4개 칸을 전체 10개로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "10등분한 원판"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "1부터10의 소수4개칸을 전체10칸과 비교한다.",
+      "reasons": {
+        "review": "유리한칸의 직접열거와 확률정의이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9f7e019f726b8ab23e81652f7e3538d0755cd922eee165459cc1052fa57447e6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "309f821d7120e05ff326476494bc4d324dd2a84c9fcf93df7dd302de9524e450"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1f96ea98bfd66e7d7ef03a4d795b13a0584beab026db91e9dd1c09db9afbc258"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "두 개의 동전을 동시에 던질 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "앞면이 적어도 한 번 나올 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "앞앞, 앞뒤, 뒤앞, 뒤뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "두 동전의 네 결과 중 유리한 세 결과를 센다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$3$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한 결과 수를 전체 네 결과로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "적어도",
+            "src": "stem",
+            "quote": "앞면이 적어도 한 번"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두동전의 네순서있는 결과를 열거하고 앞면이있는 세결과를 센다.",
+      "reasons": {
+        "review": "네가지 작은표본을 직접 열거한다. 기존풀이가 여사건을 사용하지 않는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_bcd29d74ada8f43d7916376dbfeabe7abd32e86859a3414c83b8bfc601a7d85d",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ed4ba22c2d65784b9a2e655c00d473d8f5461a7865996bba5705eee5bcb737a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7028ca47f1a0d57cf6f05b69f04ff18f06606c9b36e18135cc7d22c9e7faa1cb"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "1f9090e5e60ad0f90d6927ce2f5cef92dcb4c5cc712766df0a2dedfccda23c38"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "각 혈액형이 나오는 유전인자는 다음 그림과 같다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "자녀가 AB형일 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "아버지의 유전인자는 $A$ 또는 $O$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 부모로부터 한 인자를 선택해 네 가지 조합을 만든다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "AB형은 $AB$ 한 가지",
+            "evidenceType": "IMPLIED",
+            "justification": "네 가지 동등한 조합 중 AB 한 가지의 비를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "아버지가 A(AO)형, 어머니가 B(BO)형"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "부모의 두인자씩을 짝지어 표의혈액형으로 바꾸고 AB한경우를 고른다.",
+      "reasons": {
+        "review": "표의 의미를 표본쌍으로 바꾸는 전처리 후 확률비를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_844ab6e6aa590ac2f6f986e77d5eecf400cc14d410d2a5f6ef628967b1518169",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cc72ebf51ac1baecf6f55848740153ee6e8eed29d904c10b301bd17797ac8c61"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "277bf796b8529968837d144648e1db003b99a42d2d6fd3caa04dd9a6ae863a99"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "A가 두 번 이기고 B가 한 번 이긴 상태"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "96만 원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "나누어 가질 상금을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "다음 경기에서 A가 이기면 즉시",
+            "evidenceType": "IMPLIED",
+            "justification": "즉시 A 승리와 B가 먼저 이긴 뒤 A 승리를 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times\\dfrac12=\\dfrac14$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "B의 승리 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "B의 최종 승률은 A 승리의 여사건이다."
+          },
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "이 확률에 비례해 나누면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "먼저 세 번 이긴 사람이"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "즉시승리와 다음경기 뒤 승리경로를 합쳐 최종승률을 구하고 상금에 비례배분한다.",
+      "reasons": {
+        "review": "경기종료시점이 다른 경로를 나누어 미래승률로 공정배분을 모델링한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_b96ae32c80a0ce1003ec00ffedf028fd4290e59a3ff4793f76df73212a4f19e9",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fda557ad82afe609ce80dd1d9c78667077b67fb3f0ac41f60610e718300c39ac"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7eba7afaa40d3fd4d1bc3b00678bce33d208164e2c00f9b5e121810d8e0d0b38"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "지상으로부터 $90\\text{ m}$ 높이"
+          },
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "초속 $3\\text{ m}$로 내려오는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "$y$를 $x$에 대한 식으로"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "출발한 지 몇 초 후인지"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "매초 높이가 $3\\text{ m}$씩 줄어든다",
+            "evidenceType": "IMPLIED",
+            "justification": "시간과 높이의 관계를 일차식으로 나타낸다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$30=90-3x$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "초기높이90과 매초감소량3으로 식을 쓰고 목표높이에 역대입한다.",
+      "reasons": {
+        "review": "소문항이 식작성과 목표값대입을 안내하는 표준모형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be15efe40016691fe06c1f22d62c554df7a75b8f6589736850a6c39053198d87"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4fcc5b8fce3afaccc64da6c50c6a524b6f809ddfcde5c8d269a8a467590683d8"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "두 일차방정식 $2x+y-2=0$"
+          },
+          {
+            "term": "좌표축",
+            "src": "stem",
+            "quote": "그래프와 $y$축과 둘러싸인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "개략적인 그래프를 그리시오"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점의 좌표를 구하시오"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 도형의 넓이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "$x$절편은 $1$, $y$절편은 $2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "교점에서는 두 식의 $y$값이 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직선의 식을 같게 놓아 교점을 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형의 밑변은",
+            "evidenceType": "IMPLIED",
+            "justification": "y축의 절편 차와 교점의 x좌표를 밑변과 높이로 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "두직선을 그리고 교점을 정한 뒤 y축절편의차와 교점의x를 밑변·높이에 사용한다.",
+      "reasons": {
+        "review": "소문항이 그래프→교점→넓이 경로를 모두 안내한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c27139df2fe68f5e85625598d54346e1a8fa0cd88769dfdc3b1b2700b5079e87",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b7288ecb385cacdec4de2528db7529264dbfce74ff56e2de969d89532a92c533"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d830c9ccbed7ed2d6c7fdb8c3edb60f9d5e256c0f1c8440415ab829f94242ac6"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "나오는 눈의 수를 $a$"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "한 개의 주사위를 두 번 던져"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "한 점에서 만날 확률을 구하시오"
+          },
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "한 점에서 만날 조건을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "두 직선이 한 점에서 만나려면 기울기가 달라야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 직선의 기울기가 서로 다른 조건을 계수에 적용한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "$ab=6$인 순서쌍은",
+            "evidenceType": "IMPLIED",
+            "justification": "한 점에서 만나지 않는 계수 쌍을 전체에서 제외한다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(1,6),(2,3),(3,2),(6,1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱이 6인 눈의 순서쌍을 나열한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$36-4=32$가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 순서쌍을 전체 36개로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "처음에 나오는 눈의 수를"
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "처음 눈 $a$는 $6$가지, 나중 눈 $b$도 $6$가지"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$(1,6),(2,3),(3,2),(6,1)$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "서로다른 기울기 조건을 ab≠6으로 바꾸고 제외되는 네순서쌍을 전체36에서 뺀다.",
+      "reasons": {
+        "review": "직선관계 조건을 표본쌍의 곱제약으로 바꾸는 결정적 모델전환이 있다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_d76e8c97a00513870a460488c9dfd82bbc90f65a3ba7da7e13da61cf1b15cf61",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "18dc5e89b4c7de7343b8402e2dba11e31d1278cd61b24db7165ed9ad6e49ece9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9bf18c8e2d65eb051cfc812449426e084917a54fb36ea77942bae26706820bee"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "흰 공이 4개, 검은 공이 6개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "같은 색의 공을 꺼낼 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "처음 흰 공을 꺼내고 다음에도 흰 공",
+            "evidenceType": "IMPLIED",
+            "justification": "둘 다 흰 공과 둘 다 검은 공으로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "처음 검은 공을 꺼내고 다음에도 검은 공",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 추출에 따른 다음 추출 확률을 곱한다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "두 경우를 합한다",
+            "evidenceType": "IMPLIED",
+            "justification": "배반인 두 색의 확률을 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비복원추출",
+            "src": "stem",
+            "quote": "꺼낸 공은 다시 넣지 않는다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "첫색에 따라 두번째색의 분자와전체수가 하나씩 줄어드는 곱을 두배반색경로에서 더한다.",
+      "reasons": {
+        "review": "비복원이라는 한 조건을 반영해 두 정형 경로를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E053.4slot.json",
+        "sourceBlob": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E053",
+  "reviewer": "ROOT",
+  "author": "B",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+  "reviewSha256": "62647cd02bbc8051a4e6311fa9a6ef2cd1ab1f892aba7f6d67009fa9401cf05b",
+  "fourSlotSha256": "7319051b0cf19163ad2b640bce32476ecb04aca9b85dc449281b326ab5661039",
+  "ordinals": [
+    4,
+    15,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_c53349b5d6caaf89b8a63c1f553e7c97914a31cad980fc9e6f8093945960ee89",
+      "verdict": "PASS",
+      "reason": "두 고정점과 미지좌표점 given, 매개변수결정 goal, 기울기·직선식·대입 method, 공선 condition이 원문 및 기존해설과 일치한다. 기존 두점직선 TPL은 직선식 자체가 목표이므로 추가 매개변수목표의 TPL공백을 유지한다.",
+      "quotesExact": true,
+      "quoteCount": 8,
+      "imageViewed": false,
+      "imageRequiredForThisSample": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df",
+      "verdict": "PASS",
+      "reason": "숫자야구 피드백과 세자리수 given, 수의결정 goal, 완성후보의 제약대조 method, 피드백개수 condition이 실제문항에 맞는다. ACTIVE 논리제약퍼즐 TPL과 PT부모는 맞고 중2 binding/RPM은 공백으로 보존한다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": false,
+      "imageRequiredForThisSample": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c27139df2fe68f5e85625598d54346e1a8fa0cd88769dfdc3b1b2700b5079e87",
+      "verdict": "PASS",
+      "reason": "주사위눈 계수의 연립식 given, 유일교점조건과 확률 goal, 기울기조건→여사건쌍열거→확률비 method, 순서·자연수·범위 condition이 원문과 맞는다. 확률 Primary와 평행조건·약수쌍 CC를 분리한 순차통합을 수용한다.",
+      "quotesExact": true,
+      "quoteCount": 12,
+      "imageViewed": false,
+      "imageRequiredForThisSample": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_aa31419dee4be5cf1f08bf2c9be87a19ce49d3fc23505f38c13c8ac88daa410a",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "평행이동을 식으로 한 번 바꾼 뒤 주어진 후보좌표를 대입한다. 직접 대입형과의 B12 경계를 받아들인다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_f96313b59175ab99118b4dbb4bf054cfabf5e231d8c2a5ea85d56fa4a58977c5",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "실제 그래프의 두 절편을 먼저 읽어 기울기로 바꾸고 계수를 비교하는 한 단계 전처리이다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_d7122eb981684caf430c54bdcb1d6bd77650f24babcb2a864fa24c4b2d4ff740",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "하나의 그래프를 직선식으로 바꾼 뒤 기울기·절편·평행·증가량을 정형적으로 비교한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_4c5e1baa8d1c9a3719e9850e78fb57d0d8df2a76ee5e32cb063499bfbeb782ae",
+      "bucket": 1,
+      "decision": "ACCEPT",
+      "reason": "명시된 두 점을 기울기와 한 점 공식에 직접 넣는 기본형이다. 중이라는 기존 문자열과 bucket1의 인접 차이를 별도로 수용한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_4590e2a67002547c3215c175c640a22ae1b95a38d3f2d9dfe78cbfc10ece3729",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 식에서 두 절편을 구하고 실제 다섯 그래프 선택지와 대응한다. 그림을 읽는 전처리가 있으나 전략선택은 없다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0e97fe2ef575b0afa7abd8f8b860e21db58d16604927fe2a7b7ed52def5eb3b2",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 직선의 x절편을 먼저 정한 뒤 그 점을 지나는 수직선의 식을 만든다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_afdc347ed91092a9bb0b9f04b84b6431e8286ae1a330dc9d8143576f52226577",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 식의 계수비와 상수항을 구별해 기울기는 같고 절편은 다른 조건을 적용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "완성된 다섯 후보에 세 피드백을 차례로 대조하는 정형 조건검증이다. 원본상의 STRONG_CONFLICT와 해설 숫자지칭 오류를 유지한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_4c8975e362f7e931799f157b4841f62594ef5e4302ae4a99592214d04c6b157f",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "동전과 주사위의 각 사건을 정한 후 통상 독립시행의 곱을 적용한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_bcd29d74ada8f43d7916376dbfeabe7abd32e86859a3414c83b8bfc601a7d85d",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "제시된 AO와 BO 유전인자 모형을 네 표본쌍으로 옮기는 전처리와 확률비 계산이다. 기존 해설의 이상적인 유전모형에 대한 메타 판단이다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_844ab6e6aa590ac2f6f986e77d5eecf400cc14d410d2a5f6ef628967b1518169",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "종료시점이 다른 두 승리경로를 나누고 미래승률을 상금배분으로 바꾼다. 비슷한 실력을 동일승률·독립으로 구체화한 기존 모형의 sourceHold는 유지한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_b96ae32c80a0ce1003ec00ffedf028fd4290e59a3ff4793f76df73212a4f19e9",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소문항이 감소율로 식을 세우고 목표높이를 대입하는 순서를 안내한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_e6dd0dc9bd4a656b94076000c4a31ac7e583ed0a7d2b87e59163292f9e3ef8bb",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소문항이 절편그래프·교점·넓이 경로를 모두 안내하는 정형 연속계산이다. 원본상과 bucket2 강한충돌을 숨기지 않는다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_c27139df2fe68f5e85625598d54346e1a8fa0cd88769dfdc3b1b2700b5079e87",
+      "bucket": 3,
+      "decision": "ACCEPT",
+      "reason": "직선의 유일한 교점 조건을 두 주사위 눈의 곱제약으로 전환한 뒤 제외쌍을 세는 핵심 모델전환이 있다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_d76e8c97a00513870a460488c9dfd82bbc90f65a3ba7da7e13da61cf1b15cf61",
+      "bucket": 2,
+      "decision": "ACCEPT",
+      "reason": "비복원 조건을 반영한 같은색 두 경로의 표준 곱과 합이다. 분모변화만으로 bucket3으로 올리지 않는다."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "imageEvidenceViewed": [
+    "workers/B/images/E053-contact0.png"
+  ],
+  "notes": [
+    "Author-independent full source/answer/existing-solution reads were limited to these three samples and listed changed or boundary/conflict difficulty exceptions. Normal items were not re-solved.",
+    "Exact ACTIVE definitions and parent/binding records were compared in the compiled taxonomy, concept, condition, and curriculum binding registries. No common registry was edited."
+  ]
+}

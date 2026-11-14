@@ -7704,9 +7704,10 @@
           "sha256": "70caf742bc6b4ab1ac1d6a4e8a3d5f136fe3194dea3ba9c99c64a0e4230222da"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "e14d2c1686fcdbdd1b79fcc11fb2de2509082a95"
     },
     {
       "examId": "E051",
@@ -7834,12 +7835,118 @@
         24,
         25
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "94d8e97887d8e7b3d0c4ac36cdd9202219673e1c41c02fa7c6eaedde141ae54b"
+      "uidSetSha256": "94d8e97887d8e7b3d0c4ac36cdd9202219673e1c41c02fa7c6eaedde141ae54b",
+      "reviewedQuestionCount": 25,
+      "fullyJudgedQuestionCount": 25,
+      "registrationPendingQuestionCount": 25,
+      "unresolvedQuestionCount": 0,
+      "unresolvedOrdinals": [],
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        15,
+        21
+      ],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 25,
+      "independentSampleOrdinals": [
+        4,
+        15,
+        24
+      ],
+      "independentReviewer": "ROOT",
+      "topicSummary": [
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 그 그래프(1)",
+          "ordinals": [
+            1,
+            2,
+            3,
+            6
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 그 그래프(2)",
+          "ordinals": [
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "rpmL1": "일차함수",
+          "rpmL2": "일차함수와 일차방정식의 관계",
+          "ordinals": [
+            8,
+            9,
+            22,
+            23
+          ]
+        },
+        {
+          "rpmL1": "연립일차방정식",
+          "rpmL2": "연립일차방정식",
+          "ordinals": [
+            10
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            24,
+            25
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E053/four-slot.json",
+          "sha256": "7319051b0cf19163ad2b640bce32476ecb04aca9b85dc449281b326ab5661039"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E053/independent-sample.json",
+          "sha256": "2cacc0a6ea8083a2a19b9dfa9403db533311ae2f87d4af223f50fab72dca8185"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E053/mechanical-check.json",
+          "sha256": "d37c1e478e5d4a44b624e5f6f522e6416676d5173b781571e034f129fe0f5032"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E053/review.json",
+          "sha256": "3a7c0c4a887b28561915bb3817fe646fc06cbfdcd8f911ce518c9baf8a1bc6ef"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E053/root-acceptance.json",
+          "sha256": "1209188699040e8760483c8ca633ab932b7687d7a01bb24b4a198cdb37a3a98f"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E054",
@@ -8464,14 +8571,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 50,
-    "reviewedQuestions": 1195,
-    "fullyJudgedQuestions": 1180,
+    "reviewedExams": 51,
+    "reviewedQuestions": 1220,
+    "fullyJudgedQuestions": 1205,
     "unresolvedQuestions": 15,
-    "remainingExams": 17,
-    "remainingQuestions": 409
+    "remainingExams": 16,
+    "remainingQuestions": 384
   },
-  "lastVerifiedExamCommit": "44c2cdce39b825638aae4521574ac62aa9506efb",
+  "lastVerifiedExamCommit": "e14d2c1686fcdbdd1b79fcc11fb2de2509082a95",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
