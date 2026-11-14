@@ -1,0 +1,610 @@
+{
+  "schemaVersion": "A2-INDEPENDENT-DIFFICULTY-CONTENT-FIRST-1",
+  "examId": "E027",
+  "owner": "GPT_ROOT_59E0F5BD3A77/A2",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "frozenAt": "2026-11-14T12:16:23.386614+00:00",
+  "itemCount": 24,
+  "inputContentOnly": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/C/E027/content-only.json",
+    "sha256": "c3376d227741d98c17e75a734ef0989d3b9a2120be000e52bd8e2486eb1827b4"
+  },
+  "sourceEvidence": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/content-asset-evidence-r1.json",
+    "sha256": "216e2e994800f512bc319481ee1861e22718be9fcc3ebb0f4b9f5d0a949f3fde",
+    "sourceSha256": "62a2ac9b5eb35d2b139474fcb61a07cc2ca3ad1b1c48b111ed9e2f72958f98dd",
+    "inputPackSha256": "cce8697c1eb1b873b4e671d5349cb4695f3697f1126fe911ce5d5dd2e1640796"
+  },
+  "authorityRefs": [
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md §§7–8"
+  ],
+  "chronology": {
+    "contentAll24AndFiveOriginalFiguresActuallyInspected": true,
+    "freezeAfterFinalVisualInspection": true,
+    "oldSourceLevelBucketOrAuthorVerdictsExposedBeforeFreeze": false,
+    "role": "independent reviewer; original author remains C",
+    "scope": "difficulty and learning-level initial evidence only"
+  },
+  "contextDebt": [
+    "24개 기존 해설·정답 공백: 모든 method 검증은 기존 해설 확보 전 불가. numeric는 제시문 구조에 대한 low confidence 수동 검토 후보이다.",
+    "실제 stem 필드는 question이다. ops의 content 중심 QBODY/QFULL만으로 stem 보호를 주장하지 않고 전체 raw source SHA 및 question→content 정확 비교, 항목별 actualStemSha256을 함께 고정한다.",
+    "Q22의 합 7 문구가 다소 어색하나 조건 문구를 보존한다."
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_52400eb5a3f360a01ae3f00780786ac6220bff115e4e337b0efef57fe630373e",
+      "fingerprints": {
+        "QBODY": "294008e601afd2b85b694690704d5dc8a7b345ac588ac627b4b5adc9487bf0e5",
+        "QFULL": "06db8898a454dc597f060f57c0c9dc19100648437945d30708efe1623a73a3e0"
+      },
+      "actualStemSha256": "5bff64dcbb570b25085e7a7ac8d93ba4c38022e6271ee4f6bbbc21710858f222",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "전개·동류항 정리 뒤 실제로 남은 두 미지수와 차수를 확인하는 정형 판정이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "겉모양과 정리 후 차수를 구별하는 기본 전처리가 있다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_1c4c67adf6764dee93ef5608f64ed70974983814b36f739fafd01bfd1f7eccf7",
+      "fingerprints": {
+        "QBODY": "5048ad201ddf6ca1fb753969c98e5eb49fb3d7d019758bb9675deab07fe269ce",
+        "QFULL": "64bdc500334f07ebd295c6f4bf9b75b5f02a5088c59f3a494ba60a6d5e2a1e04"
+      },
+      "actualStemSha256": "17b334a5622a458da2c988fdff5d994ba8fae1c76a6aecb12d1a8feb983ea9cb",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 순서쌍을 한 일차방정식에 대입하여 계수의 일차식을 정리하는 정형 절차이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "해의 뜻을 문자 순서쌍에 적용하고 부호를 처리한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_a3ffd06c6425e4eb1fb26874c39ebed5aaed4b3e6bd5ed2d56544f943f569255",
+      "fingerprints": {
+        "QBODY": "c7b3a4ebf1c2aeab1690dcfedca27650dea9a393f8b22f6a8e204ddd6d12104f",
+        "QFULL": "c06cd92759bc36c0555c8e267fa4694c41e109ad9f8b7383c0457e770b640950"
+      },
+      "actualStemSha256": "5075ff5899130ad94e9fa40e076f2b6e31d55ab1cf7e1367f02b52387182aedc",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "해·미지수 개수·대입·소거에 관한 독립된 기본 명제들을 확인한다. 문항 수가 많다는 이유로 상향하지 않는다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "여러 기본 개념과 대입의 부호를 구별하는 복합 개념 확인이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_375b6c02e129e1cc564d40bbec744dade24c8d3f76131b42d5a41090e5895c39",
+      "fingerprints": {
+        "QBODY": "3e9b1290296b8d5671c855d8a23b5f14e2deba930a9a80feef8549b98e0eab2a",
+        "QFULL": "b328f9c7bdfb98be92c7e8801c7acd994bd241d70926b92fa4e31136f4b962da"
+      },
+      "actualStemSha256": "ecc285c2a4f0a8a968e631c90e55cf274202545ea37e8858b1a8e1ea7e493a94",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "그림이 같은 우유 항을 없애는 금액 차이를 직접 안내하며 남은 샌드위치 개수로 환산하는 표준 모델이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "실제 금액을 식으로 대응하고 제거의 의미를 이해한다."
+      },
+      "assetEvidence": [
+        {
+          "sourceOrdinal": 4,
+          "assetRef": "archive/assets/images/23_순천여중_1학기_기말_중2_수학/q04.png",
+          "sha256": "0f6f4c82b8626d36e84bb2eb9fd04efc4b7f89746b2272ab2d200b0bfcd7601b",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/q4-q04.png",
+          "actualVisualInspection": true,
+          "visualObservation": "가격 차이와 같은 우유 항 제거를 그림에서 직접 확인함."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_306f00251d1f32a172fac55248c4193807dacc6ef03728adff4c70463a3f3b81",
+      "fingerprints": {
+        "QBODY": "e36ba3434ee2b1d0f10df7cfd43cc042b10d7fc4ab7691b5c0e7d1b59af26700",
+        "QFULL": "ce996d91d34c35c602589ef1a7d5d754b9fde313969fd74191bd05faf8bc263b"
+      },
+      "actualStemSha256": "c5f02cd7bd1890f54e20ef152beb29d253c7a6afec01a59939020e08310c1000",
+      "initialDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "이미 제시된 두 해 표에서 공통 순서쌍을 읽는 직접 정의 적용이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "하",
+        "reason": "연립방정식 해의 기본 의미만 직접 확인한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1a0cf0ab931b0ae79bf50e97d56122689b565327d92806f5dbcff7b8b864dfe9",
+      "fingerprints": {
+        "QBODY": "3e6a55384dd83099f0d72ae3ae4522dc3f809855d6bd7d4602f68f96cd548c9a",
+        "QFULL": "4189dbf74916d01123fc61d23ea8cd0c1e61a738ae7065ffe55fc52aa60efcc1"
+      },
+      "actualStemSha256": "2079f11ffca23685cf4034f5492c0f7bbd101c6b51c714c22a702fef00072585",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 미지수의 주어진 비를 식에 반영한 후 계수를 회수하는 정형 결합이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "비 조건과 연립식의 역할을 연결하는 일반 조건 해석이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_bc95af86af3c755c0bd8ad7ea0ea301edb4d1a1d719b1cc66e4579baf62f1ef2",
+      "fingerprints": {
+        "QBODY": "3e6a55384dd83099f0d72ae3ae4522dc3f809855d6bd7d4602f68f96cd548c9a",
+        "QFULL": "4189dbf74916d01123fc61d23ea8cd0c1e61a738ae7065ffe55fc52aa60efcc1"
+      },
+      "actualStemSha256": "3c899846c96f766c1ffd447ebdc839d8f733610459e5f016e428120fb254d99c",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 화살표 그림의 곱셈과 덧셈을 식으로 옮긴 뒤 두 일차식을 사용하는 명확한 절차이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "표현 변환과 보통 연립식 처리를 연결한다."
+      },
+      "assetEvidence": [
+        {
+          "sourceOrdinal": 7,
+          "assetRef": "archive/assets/images/23_순천여중_1학기_기말_중2_수학/q07.png",
+          "sha256": "29abcecfd62adf7772e661514d35de9f3b1387776abc587657f43f8be8281383",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/q7-q07.png",
+          "actualVisualInspection": true,
+          "visualObservation": "A의 합 3, B의 x×3 및 y×(-1), 최종 합 1 화살표를 직접 확인함."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a0a84b405e8f7347383b9adf57c20cf1ebe17c82cf43d2df85d7a5f172ad06b9",
+      "fingerprints": {
+        "QBODY": "92d4b3d7b98aa2593da8cfc0c4e1308e97dbdd836d71bc686b4a8b662db40f86",
+        "QFULL": "b1c61cfac1dfe96bea45d791c45502a05a53923d240b95c4aebeb9d12dc44f03"
+      },
+      "actualStemSha256": "726a8d0993062fdb70d239f8aefec707455e18a3c40ba943943a62985e0372e6",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "동일한 연립식에 대한 가감·대입 설명의 배수와 부호를 비교하는 표준 오류 판정이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "대입과 소거의 의미를 설명 수준에서 구별해야 한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d2a2a1ee253058dc7c376053edee87e1442fe0968780d3bd032fe9b16d5c31da",
+      "fingerprints": {
+        "QBODY": "c76078ad497b446434466554c3be6fbbdf164ca327d271a7a41d61b33407358a",
+        "QFULL": "5dfdf9fefffe4349672a0a99bc3c919f5b5fb87dd66d7d088741ad155d1013df"
+      },
+      "actualStemSha256": "23a33dc3d10195d21771ce0c5e35c182e096dccf001523a8d9926a8ccc70e54b",
+      "initialDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "서로 다른 두 연립식에서 미정계수 없는 식을 연결하는 관계 선택이 핵심이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "공통해 조건을 읽고 식 사이 역할을 연결하지만 별도 경우 분기는 없다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9f6e307c2170d90a48edb4c7812d2127a911a091be204a5af1b5165509db5934",
+      "fingerprints": {
+        "QBODY": "bc28ffb3b8c66881f551719d84900431b15ae51ec4da6b541f397db965b9b9a0",
+        "QFULL": "95d73071e57eaf0692779b0995bb17f56d9d4d2ac26cd8beff5b3efac2214e42"
+      },
+      "actualStemSha256": "161e31d2bcc92c3e1878eef3f04219f007f376ea816559c42ffd62480fda1077",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "알려진 해의 한 성분에서 다른 성분과 계수를 차례로 회수하는 직접 역대입 구조이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "해의 뜻과 두 식의 순서를 연결하는 표준 적용이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_67680ee13458db8c039837b02db86c9e0719c4b5ed403f291108989f34509aa8",
+      "fingerprints": {
+        "QBODY": "87a5f94dc9f99334d51e6e1d1e3c86c0245ea02b02faa377fbfb28602253522d",
+        "QFULL": "e3dc4dadc1efbd9b79152e9b5fc63117a3b9e0b6e99364f13027cb992b0a096a"
+      },
+      "actualStemSha256": "96a6016b39edc351efa3f7def9713afb870418fc564329370165e748c51b3ff8",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 시점의 나이에 같은 경과 연수를 적용하여 합과 배수 조건을 모델링하는 전형 문제이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "과거·이후 시점을 구별하여 조건을 연결한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_26e4eff7f9eb1234999fa1f95db29243544618ec4d915e1d193b19d9673d1b08",
+      "fingerprints": {
+        "QBODY": "460a5e9829af04eb5f2eadea0c3e29710cde9761a2be74665e7fef482f5c385c",
+        "QFULL": "7a02ea82accff807968c03e7899003bf9b9c0e2923003d223cda9863d74ff8b4"
+      },
+      "actualStemSha256": "2d6cea379a08f865b7beb70f631bc98b9d48e11a8d3097ed1fb119b29e445fa9",
+      "initialDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "각 대응에서 입력 하나에 출력 하나인지 함수 정의로 직접 판정한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "하",
+        "reason": "정의에 대한 기본 개념 확인이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_ff681f29832372508ed077e2500389820f141244e9a8f4d5ce0c11e966aadcf7",
+      "fingerprints": {
+        "QBODY": "23bb940a25fac64b77b8d4a5b8f74c5c734cceaa26b6502c2a75b001fa0611d3",
+        "QFULL": "fe672544650aebac567d3ea3a31990eb03e8b4e05243c3918334b15884cb3df3"
+      },
+      "actualStemSha256": "90cc5fbf9ecde4dd8ba69912f85cb2fe26570a3da4089868edcf8a7187251699",
+      "initialDifficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "함숫값·대응·절편·기울기의 직접 정의를 각 선지에 적용하는 기본 확인이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "하",
+        "reason": "독립 기본 사실을 직접 읽으며 구조를 새로 구성하지 않는다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_712f3a1e7c5600d1b419417cb4730217be39dc9d66f26716fde30bf64c142ca5",
+      "fingerprints": {
+        "QBODY": "a20e7bb134c3257297f60e54e0091bffd55e01af57f8aa3f88e16e6f07a2c206",
+        "QFULL": "ff85ba421eeeb4250e7acb3c589f4507e65974401874f79ab793ca051dd8ecfb"
+      },
+      "actualStemSha256": "f357cef7ab571eed0260669420a39e46dbf40437a70d60680c750530764ea450",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "같은 일차함수의 점 소속·기울기·절편·이동 설명을 표준 관계로 확인한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "한 식을 여러 그래프 성질로 번역하는 일반 응용이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_fda9fa4d124e217936fa5a255a32e8f6c3826ea6b1b566bc247701afc07653ce",
+      "fingerprints": {
+        "QBODY": "e0e7849291d88b6fcb9d20a637bed20ab6f50284f5f47dd73ca41c7af39b48c5",
+        "QFULL": "1ba72e7494c011ccc9ed9f2ccba06aff90a735ce7425fa972bfcd249f5bb7c8d"
+      },
+      "actualStemSha256": "23f6dbe8896b511d078e5392ddb64602f456ba80b356f0607147939ffa455510",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 격자 그림에서 절편과 변화율을 읽어 일차함수식에 대응하는 표준 판독이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "하",
+        "reason": "기초 그래프의 두 수치 정보를 읽어 식을 고르는 기본 수준이다."
+      },
+      "assetEvidence": [
+        {
+          "sourceOrdinal": 15,
+          "assetRef": "archive/assets/images/23_순천여중_1학기_기말_중2_수학/q15.png",
+          "sha256": "0c046acbb0c8255cc622ca7909e306dc73b8e9949885c6bfd02e8d59763f4748",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/q15-q15.png",
+          "actualVisualInspection": true,
+          "visualObservation": "격자와 축 눈금, 양의 기울기 및 절편 위치를 직접 확인함."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_59bf7f86a435593d75a109dbb3eef08f895b555a5bf9072de1fb10462fdc1db5",
+      "fingerprints": {
+        "QBODY": "ae94d6fac2f80f582a9ed89f68191219bc9377ddc83320c6e44f60d1a8184c1d",
+        "QFULL": "4448b64a24db91631f518950e8e761027452f7acfbb86bc53094a59a1da00927"
+      },
+      "actualStemSha256": "70077ca07c9c06e7247945c2f1b329c3a1d84d29a52ff7bb5de0d15aa93028f9",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "알려진 세로 이동을 식에 반영한 다음 x절편 조건을 사용하는 짧은 정형 결합이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "이동과 절편이라는 두 기본 성질을 순차로 연결한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_6519361d211b0ae772c5254b2fdae373a08c0f7fe14e6dd2a94c108f0de548ae",
+      "fingerprints": {
+        "QBODY": "6418269af9c26cc3e5f291601b4932311beaebc25b44a5107bb2a328c2e0434e",
+        "QFULL": "5458e17e1c315fa055f6e82f407a0baadfe10eabd5c3b23d362d89a3e2b3f79c"
+      },
+      "actualStemSha256": "e997f24f059e15864bda9a99f2bb2b3e841c97e7f6270b1f1f1d7820db786f4c",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "평행한 직선의 같은 기울기를 두 점의 좌표에 적용하는 표준 역산이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "평행 조건을 좌표 관계로 변환하는 일반 적용이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_9375dcfe2efdf86f1f1d9f7f41a3ee31a76f39dfec12b540256123f989326fff",
+      "fingerprints": {
+        "QBODY": "fabe9fe660eea72d735f24311f64cb671a3351e6f46e1e799c40237002264ed2",
+        "QFULL": "5a6cd9cd5020f1f53940eece59a438a4a7c1680a8b1eee31dbeea8e69d0ea4a7"
+      },
+      "actualStemSha256": "5e4fb62204dee0a9e321961f9bc9b0d0cf6d6969d1471bcba976b5aafd61c9b2",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제 그림의 기울기·절편 부호를 읽고 계수 부호가 바뀐 식의 사분면을 판정한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "부호와 그래프 위치의 대응을 두 단계로 연결한다."
+      },
+      "assetEvidence": [
+        {
+          "sourceOrdinal": 18,
+          "assetRef": "archive/assets/images/23_순천여중_1학기_기말_중2_수학/q18.png",
+          "sha256": "5b1c38b0ee34b0eceb00c47a350de8b621fcb36aebdc228cfde775400fe54c9c",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/q18-q18.png",
+          "actualVisualInspection": true,
+          "visualObservation": "y=ax-b의 양의 기울기와 음의 y절편을 직접 확인함."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_680ac4c8e457cbee91c4b21ad0eae80a4a54ec8254e22d7106eeb28315245b55",
+      "fingerprints": {
+        "QBODY": "8450d3901df2aa3d52753196f26def06792d507252d44508cc98349d3292e83d",
+        "QFULL": "c877c8d9b2953e8d076d5a67b11cfd99d6b16964915348b3111e4884e2edf384"
+      },
+      "actualStemSha256": "a4e434941d7fdede554efa15ba95f5050a92414c45a2c34f1d61c836f6bafff1",
+      "initialDifficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "공통 x절편으로 위치를 잡고 그림의 세로 변·높이·삼각형 넓이를 연결하여 계수 조건을 회수해야 한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "좌표와 넓이의 관계 선택이 필요한 연계 응용이나 복잡한 경우 분기는 보이지 않는다."
+      },
+      "assetEvidence": [
+        {
+          "sourceOrdinal": 19,
+          "assetRef": "archive/assets/images/23_순천여중_1학기_기말_중2_수학/q19.png",
+          "sha256": "60268c0166c49184f6b4b89ab404712a35ebea3b522be2f971803153f7577170",
+          "localPath": "/workspace/scratch/59e0f5bd3a77/workers/A2/E027/q19-q19.png",
+          "actualVisualInspection": true,
+          "visualObservation": "공통 x축 교점 A, y축 위 B와 C, 두 직선 및 b>1 대응을 직접 확인함."
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e6ab3a02468df64c026ca8615a70da508375249002c23ff0635bebdf817a2b2f",
+      "fingerprints": {
+        "QBODY": "6eb10e4b783f91e7f9a776a0e84ca54fff66a3d5a2260ca6acc19ab3b07bde13",
+        "QFULL": "8af2fc59939de674abfdb2e124bf7f565e6c236935411303d20354da23cbd98e"
+      },
+      "actualStemSha256": "b196f363b1d4865bb318a4fea0871dbeb10d91920522730f8a15cd8b41ced958",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "단위 무게당 변화량과 처음 길이를 결합하는 명확한 선형 모델이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "비례 증가량과 초기값을 구별하여 적용한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_d6b9e6896d6ee2404559b1e149460635eff82eb460bd1d59dfa3be74304afa92",
+      "fingerprints": {
+        "QBODY": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "QFULL": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+      },
+      "actualStemSha256": "d0bdb0f8ba9df1652a1b776ff594619c4be41173ab45bd7e2ff07cc2ffc318ca",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분수·소수 계수를 정수화하여 연립식을 처리하고 합을 보고하는 전형 계산이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "계수 전처리와 표준 연립식의 순차 적용이며 소문항이 경로를 안내한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_274245bb7bffa3295089464656df226d6a687118cf2a7ff41ce7e8c6da2fb083",
+      "fingerprints": {
+        "QBODY": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "QFULL": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+      },
+      "actualStemSha256": "ef51480930f8c53bb03b41f53876bafa6220249243c38603c033a828218474dd",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "자리값과 자리 교환의 차이를 연립식으로 표현하는 정형 모델이며 소문항이 미지수·모델·해결 단계를 안내한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "문장 조건과 자리값을 연결하는 일반 응용이다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_61c84e4c2475e5409be49227430b41c2025bd80075e15434f878d455bb2e8d24",
+      "fingerprints": {
+        "QBODY": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "QFULL": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+      },
+      "actualStemSha256": "8f6b25f3c88f0cf4fddb7b4165ddc9a6374ad94ef6daba265a3e129780a6e4e6",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 두 점에서 기울기와 절편을 순서대로 회수하는 표준 절차이다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "소문항 순서에 따라 같은 직선의 기본 요소를 연결한다."
+      },
+      "assetEvidence": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_47048e2e77ed26fe08364729b3611a7b3e0f846d9bdc0ebaeeb47dec9a12b746",
+      "fingerprints": {
+        "QBODY": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "QFULL": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+      },
+      "actualStemSha256": "5ea8e49dff43190758e6a5ca778e914b3e5a9685e69a2a5d8a3f0eba689bee99",
+      "initialDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "연비의 역수를 단위 소비량으로 바꾸고 초기 연료량·잔량식을 순서대로 구성한다. 소문항이 필요한 중간 목표를 모두 제시한다.",
+        "evidenceLimit": "기존 정답·해설이 모두 비어 있어 실제 기존 풀이 경로는 확인하지 못했다. 제시문과 실제 그림의 요구 구조만을 평가했으며 새 풀이·정답은 작성하지 않았다.",
+        "manualReviewRequired": true
+      },
+      "initialLearningLevel": {
+        "level": "중",
+        "reason": "단위율과 일차함수 모델을 연결하는 일반 응용이며 별도 전략 탐색은 제한적이다."
+      },
+      "assetEvidence": []
+    }
+  ],
+  "immutable": true
+}
