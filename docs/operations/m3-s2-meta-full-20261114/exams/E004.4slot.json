@@ -1,0 +1,1823 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "cf5e209ab185771c1b0b99629dcb57fe1838b00c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "review_a:manual-full-exam-semantic-review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "작은 호의 크기는 $134^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각의 크기는 그 중심각이 보는 호",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각은 같은 호에 대한 중심각의 절반",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "그림의 중심각이 보는 작은 호의 여호를 구해 해당 호의 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "작은 중심각의 보각이 아니라 전체 360°에서 뺀 큰 호의 중심각을 만들고 그 절반을 원주각으로 읽는다.",
+      "questionUid": "qid_v1_7ddf5a40fd66a46555a3163a1915d62543cde5f98936b556b600460f6854adc1",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3f082b5df7c0c4bf0a7ecf03089b747e24ebf9bba0df92b1fac9f87869144c76"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19287e93f02edd0972b9ab22c43569fca5dd7f0f1af928a66d871d7c1ef65ac9"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각 $\\angle BOC=100^\\circ$"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle AQC=80^\\circ$가 보는 호"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle APB$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 $AB$를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각 $\\angle BOC=100^\\circ$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호 $AB$의 크기는",
+            "evidenceType": "IMPLIED",
+            "justification": "한 원주각의 호에서 주어진 중심각의 호를 빼 목표 호를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원주각과 중심각으로 두 호의 크기를 구해 차를 구한 뒤 그 호의 원주각을 찾는다."
+      },
+      "steps": [],
+      "scenarioNote": "원주각에서 전체 호 AC를 복원하고 중심각이 정한 호 BC를 빼서 호 AB의 절반을 구한다.",
+      "questionUid": "qid_v1_2f1c5a1c5eb8f02c71b6de3feeb051166061fde8a3a269f92a4041bc6767756c",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68497a69cd9056b7a99bd6d4ab66c8aa090482133118e119a11268fbaac803e6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e8e460b18bf30c9e47f3c0ce28e65e2806729ad8221b48433950f3056e983ca"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "\\wideparen{AB}:\\wideparen{BC}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle C$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "세 호의 비가 $3:5:7$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원 전체 360도를 주어진 세 호의 비로 배분한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 $AB$를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "\\wideparen{CA}=3:5:7$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "호의 비로 호 AB의 각도를 구하고 같은 호의 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원 전체를 3:5:7로 비례배분해 호 AB의 중심각을 구한 뒤 원주각의 절반 관계를 적용한다.",
+      "questionUid": "qid_v1_e4cb347d93c065e7b5ec6a83da08b25662820f16d4f5d8ee27d62e5281128b25",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ae75ea8e4e956b1d32e5bd643b2ad6e11032b24e4880c321f6597d98d9b9251e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ae2620c845982fb5534e189473911367661c5caf06216991b05319239d071366"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\wideparen{AB}$의 길이는 원주의 길이"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle APB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례",
+            "src": "solution",
+            "quote": "호 $AB$의 길이가 원주의",
+            "evidenceType": "IMPLIED",
+            "justification": "원주에 대한 호의 길이 비에서 호의 각도를 구한다."
+          },
+          {
+            "term": "원안에서두현이이루는각",
+            "src": "solution",
+            "quote": "마주 보는 두 호의 크기 합의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 내부에서 만나는 두 현의 각은 마주 보는 두 호 크기의 합의 절반이다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원 안에서 두 현이 만날 때 생기는 각",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 교차각을 원주각과 호의 관계로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\dfrac{1}{5}$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "호의 길이 비를 각도로 변환하고 원 안 두 현의 교차각 공식을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "주어진 원주 비와 호 길이 비를 중심각으로 바꾸고, 교차하는 두 현의 각을 대하는 두 호 합의 절반으로 계산한다.",
+      "questionUid": "qid_v1_e88de51c21b517c71edb363cb84f4f8395814e7dba8e86c9cb9496fc922f836c",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9434cff110b5ce499b5b3ef9737b658c16962c08c50ab617662bc3a4f23fa0e1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58cf2b408204af05a4f2b0c06532228f46dd8dac71fde2c8713f3a958b8ff606"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $O$의 지름이다"
+          },
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "점 $C$에서 그은 두 할선"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "$\\angle DOE=50^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ACB$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각 $\\angle DOE=50^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원밖에서두할선이이루는각",
+            "src": "solution",
+            "quote": "두 호의 크기 차의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 바깥 두 할선의 각은 대응하는 두 호의 크기 차의 절반이다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "두 할선이 이루는 바깥각은",
+            "evidenceType": "IMPLIED",
+            "justification": "바깥 할선의 각을 호에 대한 원주각 관계로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $O$의 지름이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "지름에 대한 반원과 주어진 중심각의 두 호의 차를 이용해 바깥 할선의 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "지름이 정한 180°의 호와 중심각 50°의 작은 호의 차를 두 할선의 바깥각으로 바꾼다.",
+      "questionUid": "qid_v1_aa2152836380cf64e52bd50d0f5003e42d62cd8f2444b66c793867d676cd477c",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b4555c044f081bbcc57ac266a3451847efe01e8669429e2f9a2d6565c6038de9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "afdc2168a1359e08d4517fdf7e74085e7f7552eae857b997475b22db26ae304d"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "$\\angle A=60^\\circ$"
+          },
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "점 $O$는 원의 중심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "$\\angle BOC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle EDC=140^\\circ$가 보는",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각이 보는 호의 크기를 각각 두 배로 구한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "나머지 작은 호 $EDC$의 크기",
+            "evidenceType": "IMPLIED",
+            "justification": "360도에서 큰 호를 빼고 호 BCDE에서 공통 부분을 뺀다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각 $\\angle BOC$의 크기는 호",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 원주각이 보는 호의 여호와 차로 BC의 호를 구하고 같은 크기의 중심각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 원주각이 보는 큰 호와 작은 호를 구분하여 여집합 호를 구한 후 필요한 호의 차에서 중심각을 얻는다.",
+      "questionUid": "qid_v1_a648a0c72f64d65cb15fd9efb6c9c417d994a13d895a7097a3acc57dbbfdd5fc",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6747da4208b03197e0a2cd145c426b155af08c41bb862d6ff6985bc7862628f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ddabd1061c4e4b572d3a1e967d11f6c14276a0ea673a6867a524208aebf6e48b"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$는 원에 내접하고"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$\\overline{PC}$는 원의 접선이다"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ADC$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$AB=AC$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 변의 맞은편 밑각을 같게 둔다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선 $PC$와 현 $BC$가 이루는 각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "마주 보는 두 각의 합은 $180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 마주 보는 각이 보각임을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}$"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "$\\overline{PC}$는 원의 접선이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이등변 밑각과 접현각을 삼각형의 각 관계에 넣고 내접사각형의 대각의 합을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "이등변삼각형의 밑각을 β로 두고 접현각과 삼각형 내각합으로 β를 정한 뒤 내접사각형 대각의 합을 쓴다.",
+      "questionUid": "qid_v1_a6aad8410d4054414cf17875be93409f2ede79d1aa4041636d84389eb9ed1cd2",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1782905de2cf0ccd1033d10d1eec1c7d1acdcdbf4278b49166443aa6922857bd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8876716f983002145e2c19513aa778b53950ccb58a2415d1ebe38710750f7f80"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "네 점 $A,B,C,D$가 한 원 위에"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현 $AC$, $BD$의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$2\\angle x-\\angle y$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 $BC$의 크기는",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 원주각으로 호 AB와 BC를 구하고 목표 호의 원주각을 구한다."
+          },
+          {
+            "term": "원안에서두현이이루는각",
+            "src": "solution",
+            "quote": "\\wideparen{BC}+\\wideparen{AD}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "원 전체에서",
+            "evidenceType": "IMPLIED",
+            "justification": "원 전체의 호에서 알려진 호를 빼 남은 호를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "네 점 $A,B,C,D$가 한 원 위에"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원주각으로 두 호를 구하고 현 교차각의 호의 합을 이용해 나머지 호와 x, y를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "원주각으로 두 호를 정한 다음 교차현의 각에서 미지 호를 복원하고 전체 호의 합으로 나머지 호를 얻어 2x−y를 계산한다.",
+      "questionUid": "qid_v1_af915e8311ee3443936d0e65c4ca4ad1886484c3fc43f4e04087981343295665",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bbf1ff12eae536dc68ce790617860bbca84950dc12fb829917e0c0182b93451f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "89a5bbd2fa9e0e0e1af15947a98ebcf65a27439847a220cb05857b786da27903"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "점 $A$에서 내접하는 두 원"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "작은 원과 점 $D$에서 접하고"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\angle ABC=50^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "공통접선",
+            "src": "solution",
+            "quote": "큰 원과 작은 원에 공통으로 그은 직선",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 접점 A에서 공통 접선을 도입한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 $AB$가 이루는 각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 $AED$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 내각의 합으로 x를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "작은 원과 점 $D$에서 접하고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 원의 공통 접선과 접현각을 이용해 삼각형 AED의 세 각을 x로 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": "내접한 두 원의 공통접선을 보조로 세워 접현각을 두 원 사이에 옮기고, 작은 원의 접현각과 삼각형 각합으로 x의 식을 만든다.",
+      "questionUid": "qid_v1_1ab115f9959ad3ef912912757e7dcecc9577859286f1138f4780dd042adbd915",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "038e7a2bd3b505b5083dbceabb9ceb35d4f6e46c9d0b67806f0769c1add4476f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ceceb5f3eda262f557bc44fde359e9644e2eae4f77f53184757a2a8cebf0934"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "$9,\\ 6,\\ 7,\\ x,\\ 8,\\ 11"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "자료의 평균이 $8$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "이 자료의 중앙값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 $8$이므로 전체 합은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "가운데 두 값 $7$, $8$의 평균",
+            "evidenceType": "IMPLIED",
+            "justification": "정렬한 여덟 자료의 가운데 두 값을 평균한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "자료의 평균이 $8$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평균으로 미지수를 정한 뒤 자료를 정렬해 가운데 두 값의 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "평균으로 자료의 미지수 x를 먼저 복원하고 정렬한 짝수 개 자료의 가운데 두 값 평균을 구한다.",
+      "questionUid": "qid_v1_919b6be1662970b6dc14eced5091bdf760d97a39d4b63f41247d11550d18dd65",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88549838663db624209c0f48003632ec5ea9dea8ce54dbce9a161f5e27b25c6a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dc433827e1b320e62c0adebe4154e6463af56f4f8773ade37ccccaeda0f44989"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "줄기와잎",
+            "src": "stem",
+            "quote": "줄기와 잎 그림은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$b-a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "8번째와 9번째 값의 평균",
+            "evidenceType": "IMPLIED",
+            "justification": "정렬된 16개 자료의 두 가운데 값을 평균한다."
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "가장 많이 나타나는 값은 $34$",
+            "evidenceType": "IMPLIED",
+            "justification": "가장 많이 나타난 값을 줄기와 잎에서 찾는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "줄기와 잎을 자료로 읽어 중앙값과 최빈값을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "줄기와 잎의 16개 변량에서 8·9번째 값의 평균과 가장 많은 값 34를 각각 구해 차를 계산한다.",
+      "questionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7b4d200513dc855d7730a58e025987202eb6ed02c0369b2b20e4abb10f6637d9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "465893b7968b2a6886f9de29cd139a941d60e3dbf51561b2ce131d735776def5"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다음 자료 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "중심적인 경향을 더 잘 나타내는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이상치",
+            "src": "solution",
+            "quote": "다른 값들과 크게 떨어진 $33$",
+            "evidenceType": "IMPLIED",
+            "justification": "나머지 자료에서 멀리 떨어진 값이 평균을 크게 바꾸는지 본다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "$33$ 때문에 평균이 크게 올라간다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값이 더 잘 나타내므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "극단적으로 큰 값이 평균을 끌어올려 중앙값이 다수 자료의 중심을 더 잘 나타냄을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "다른 변량과 크게 떨어진 33이 평균을 끌어올리는 데 비해 중앙값은 중심 위치를 유지함을 판정한다.",
+      "questionUid": "qid_v1_4490f377ce8daba62e7001106cba3fa31912fafced4e91c2f68c938ed0a7af86",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05675e04ae35a5a1ed72d9487024b1cc63417410989d62789aeef709a76b32bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "88cf4b7e4a12350ad17cecd93dc07742466b8eb47f9e9a0f3c602b214deef35d"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "$a,\\ 8,\\ 9,\\ 18,\\ 19,\\ 14$"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "중앙값이 $15$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "가운데 두 값이 $14$, $a$",
+            "evidenceType": "IMPLIED",
+            "justification": "정렬된 여섯 자료의 가운데 두 값의 평균을 15로 둔다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$14+a=30$",
+            "evidenceType": "IMPLIED",
+            "justification": "중앙값 조건으로 세운 일차방정식을 푼다."
+          },
+          {
+            "term": "순서",
+            "src": "solution",
+            "quote": "이 배열 조건을 만족한다",
+            "evidenceType": "IMPLIED",
+            "justification": "구한 a가 중간 위치에 놓이는지 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "중앙값이 $15$일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "정렬된 여섯 값의 중앙 두 수를 확인해 평균 조건으로 a를 구하고 순서 조건을 검증한다."
+      },
+      "steps": [],
+      "scenarioNote": "중앙값 15가 되도록 미지수를 14와 18 사이에 놓고 가운데 두 값의 평균 식에서 a를 복원한다.",
+      "questionUid": "qid_v1_3e407e59611ede535b710ae7745493d1f7234e52a73a905cf7df9cd50019b386",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c2c377d9c7eda759483a1f860e2da348226f3623c2f114229746314607f6246d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ffe185bcb8a929bd9e3150ed17b53b5c16ba81e5f14d5f5efdab508779834d1"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "$7,\\ 9,\\ 8,\\ 6,\\ 11,\\ 7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "변량 $5$의 편차는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료는 $8$개이므로 평균은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "각 변량에서 평균을 뺀 값",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "자료의 평균을 구하고 변량 5에서 뺀다."
+      },
+      "steps": [],
+      "scenarioNote": "자료 평균을 구하고 목표 변량 5에서 평균 7을 빼는 편차의 정의를 적용한다.",
+      "questionUid": "qid_v1_8e728a7c737d0b1224dd70910204b7b41f2cff76baf3810fc861b8ec0f4100e8",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "241f8a21110e85a4ff5b7231a38bdaabe5d2e0590dc85544864bb257ff9a43d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f381e67767a1231bba0f17bf5931b7721cb1736f6319516412c670fe7d25fc64"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "분산",
+            "src": "choices",
+            "quote": "분산이 클수록 변량들이 평균"
+          },
+          {
+            "term": "표준편차",
+            "src": "choices",
+            "quote": "표준편차는 분산의 양의 제곱근"
+          },
+          {
+            "term": "편차",
+            "src": "choices",
+            "quote": "편차의 총합은 항상 $0$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산이 클수록 변량들은 평균에서 더 넓게",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 합은 항상 $0$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 분산의 양의 제곱근",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "편차 합, 표준편차의 정의, 분산의 크기와 산포의 관계를 보기별로 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "편차·분산·표준편차의 정의를 보기마다 대조하여 분산이 클수록 퍼짐이 크다는 성질을 거꾸로 쓴 진술을 찾는다.",
+      "questionUid": "qid_v1_8f6ca9e0b64b831c43ae6024fe78fbab07eef087bf941f0c67cef5b04a4d52e6",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00dba8e432266e2be756e4a1c4e4bd3cc92764c6b6c71d42038309d654ac4c3b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5876791e25be63b4d9044e8d8cf692a618c817320c78823fb0fcf943bb8f850a"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "다음 그래프는 한 종류의 컴퓨터 모니터"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "만족도의 평균은 $6$점으로 모두 같았다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "평균 $6$에 대한 편차는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "편차의 제곱의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "편차 제곱의 평균으로 반응 속도 만족도의 분산을 계산한다."
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 $0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균은 $6$점으로 모두 같았다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "그림에서 각 만족도를 읽고 편차 제곱의 평균 및 표준편차 성질로 보기를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "그래프의 다섯 반응속도 값을 읽고 주어진 평균에서 편차 제곱합을 구해 5로 나누어 분산 진술을 판정한다.",
+      "questionUid": "qid_v1_773c156d87b16cf01c9325adb7aa6a61c1ef6c4a174016f3403eac89ddad9bf7",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "50c8c643ef57fdf95fe02c4304301374d371ec61ef2d253c6bbcab22876f203c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e2c1bcd8ef3d9a09380ce1e0d896b551631dbb123479c7a4bf08e12ae0b3fdb0"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도수분포표",
+            "src": "stem",
+            "quote": "<th>점수(점)</th>"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "청결도 점수의 분산을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균 $3$에 대한 편차의 제곱",
+            "evidenceType": "IMPLIED",
+            "justification": "도수로 가중한 자료의 합을 전체 도수로 나눈다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 제곱에 각 도수를 곱하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "따라서 분산은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "도수로 가중한 평균을 구하고 편차 제곱의 도수 가중 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "도수를 가중한 평균을 구하고 편차제곱×도수의 합을 전체 도수로 나누어 분산을 계산한다.",
+      "questionUid": "qid_v1_0bff84730bfa584139049ea52c4c76555081d3795a870f1102c100b3be0ea753",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d2b807c010f170b43430c06f60c71c7da5d55d58aa81b50b44c9022ac61729ca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87b1b99b1b022a9ef21e24cdffda68c158657f1dfb03888df1e1fc74655bfc0b"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "$3,\\ 7,\\ 9,\\ 10,\\ x,\\ y$"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 $6$, 분산이 $8$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 $6$, 분산이 $8$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$xy$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 $6$이고 자료가 $6$개",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산이 $8$이므로 편차의 제곱의 합",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "$(x+y)^2=x^2+y^2+2xy$",
+            "evidenceType": "IMPLIED",
+            "justification": "합과 제곱합으로 두 미지수의 곱을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 $6$, 분산이 $8$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 $6$, 분산이 $8$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평균으로 x+y를, 분산으로 x²+y²를 구한 뒤 제곱의 전개로 xy를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "평균에서 x+y, 분산에서 x²+y²를 복원한 뒤 합의 제곱식을 이용해 xy를 결정한다.",
+      "questionUid": "qid_v1_19ad6b2648447796a2189d4c7b831df4ccc388e1dfaa847d08c8507d438a0cd9",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d1a2dd08a3df7f7301e609ad5309048cb011868e335319e3d14965374718440"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be2c6e20305309c708191da604683f9f12c32e76d7137300c77345914da311d4"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "수학 성적과 과학 성적에 대한 산점도"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "양의 상관관계가 있다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "가로축은 수학 성적, 세로축은 과학 성적",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 각 점의 가로와 세로 위치를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "산점도의 각 학생 좌표와 전체 점의 상승 경향을 읽어 보기를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "산점도의 두 축과 점의 위치를 읽어 학생 간·과목 간 성적을 비교하고 전체 양의 상관 추세를 판정한다.",
+      "questionUid": "qid_v1_21a4d3a0893d43b44b275b39530dfd6353a6379371cd8581b0b3eeb8423b9181",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38f8e9fc965d5d180bf1b792ddaea40122ee92821a73b5bbd3bd9dd10b1e9b05"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8f50a2488c8d2019f8f5df1b1a2512c647305c5490136c509afcc75c3d468a3e"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "오른쪽 산점도는 학생 $10$명의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 설명 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "양의 상관관계가 있다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "격자점",
+            "src": "solution",
+            "quote": "국어 점수가 영어 점수보다 높은 점은",
+            "evidenceType": "IMPLIED",
+            "justification": "산점도에서 두 점수의 대소와 구간 조건을 만족하는 점을 센다."
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "따라서 그 비율은",
+            "evidenceType": "IMPLIED",
+            "justification": "조건을 만족하는 학생 수를 해당 전체 학생 수로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "choices",
+            "quote": "점수가 $60$점 이상인 학생 중에서 영어점수가 $80$"
+          },
+          {
+            "term": "상등",
+            "src": "choices",
+            "quote": "두 과목의 점수가 같은 학생들의 비율은 $\\df"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "산점도의 추세와 좌표를 읽어 각 비교 조건에 맞는 학생 수와 비율을 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "산점도의 점을 과목 대소·같음·하한 조건에 따라 세고 해당 조건집단을 분모로 삼아 비율을 판정한다.",
+      "questionUid": "qid_v1_d1842da393d94c3c51b3ed646e47e0d0233a93157dac44d0e0b6c33f0643dd23",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a4f9f39632b098e907b709a169f0c3c5e82c1fd036e6c558c8e02aa77cb3ab20"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "35f7e4c4c881b4e7a82a88c0ee8cf365036552d1b99202b3ddebcbbf9b9304e9"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "점 $A$를 지나는 접선 $AT$"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "평행한 현 $BC$가 있다"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$가 이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "이등변삼각형임을 설명하는 풀이 과정"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BAT$의 크기가 몇 도일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "$AT\\parallel BC$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 접선과 현에 횡단하는 AB가 만드는 엇각이 같다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각의 성질에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "그 맞은편 변의 길이가 같아",
+            "evidenceType": "IMPLIED",
+            "justification": "두 밑각이 같아 맞은편 두 변이 같음을 보인다."
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "세 내각이 모두 $60^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "정삼각형의 한 각이 60도임을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "접선 $AT$와 평행한 현 $BC$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행선의 엇각과 접현각으로 밑각을 같게 하여 이등변임을 보이고 정삼각형의 내각을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "접선과 평행한 현으로 옮긴 각과 접현각이 같음을 연결하여 두 밑각이 같음을 보이고, 정삼각형이 되는 각 60°를 정한다.",
+      "questionUid": "qid_v1_1d54adefc00dc675affa923d916410f8f5c2b56fdcfee14350acf452455939a5",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "805754d8c8dc61dfd23d8c24ea81d4a1c0468a6886e659d7b3c33393c8ce1957"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0b77cb0b54fa55ed7659a551f7ab3b83be7203d81b3e3f700b8b4fa15b5003b1"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "직선 $TC$는 반지름의 길이가"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "$16\\,\\mathrm{cm}$인 원 $O$"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "지름에 대한 원주각이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ACB$의 넓이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각의 성질에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "지름에 대한 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "30도 직각삼각형의 변의 비로 두 직각변을 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그러므로 넓이는",
+            "evidenceType": "IMPLIED",
+            "justification": "직각을 낀 두 변의 곱의 절반으로 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "점 $C$는 접점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각과 지름에 대한 원주각으로 30도 직각삼각형을 얻고 두 직각변으로 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "접현각에서 30°를 얻고 지름에 대한 원주각 90°를 확보한 뒤 특수각의 두 직각변으로 삼각형 넓이를 구한다.",
+      "questionUid": "qid_v1_b84004e3bc2a05d6ea00514e1051f48d78d3776666ee16f15932eb311b06fbf1",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c314455e029e26b141f2ae9e226f388085ca4b0aa6f2cbbe539f29e89914306e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef063539390c12da79eb7d83c8d3b502d0b2e96c6a40725f506d461f7f5ee14f"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "학생 $10$명의 제기차기 횟수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "제기차기 횟수의 평균을"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "제기차기 횟수의 중앙값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "학생은 $10$명이므로 평균은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "가운데 두 값 $8$, $9$의 평균",
+            "evidenceType": "IMPLIED",
+            "justification": "자료를 정렬한 뒤 가운데 두 값의 평균을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합을 자료 수로 나누어 평균을 구하고 정렬해 두 가운데 값의 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원자료의 합을 개수로 나눠 평균을 구하고 정렬한 10개 자료의 가운데 두 값 평균으로 중앙값을 구한다.",
+      "questionUid": "qid_v1_f9f36239de48866cbd5b2f5f496bb8a17d75b7880becad771713478ed70fe725",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40b7cc8434448e3a577018c05f369574f7df807e63b5da089ccc9e992f1a9611"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "709ec032c4f244fb5aec98f935b5569fcd80b54b56d2ffb0338fd6ab138d840d"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "자료 ‘$a,b,c$’의 평균"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 $6$이고 분산이 $4$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 $6$이고 분산이 $4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균과 분산을 각각"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균과 분산을 각각"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "새 자료 $a,b,c,3,7,8$의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 세 값의 합과 새 값 세 개를 더해 여섯 개의 평균을 구한다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "새로 더해진 세 수의 평균 $6$에 대한 편차",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "여섯 자료의 편차 제곱의 합은",
+            "evidenceType": "IMPLIED",
+            "justification": "기존과 추가된 자료의 편차 제곱합을 합해 자료 수로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 $6$이고 분산이 $4$"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 $6$이고 분산이 $4$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "기존 합과 편차 제곱합을 구하고 추가 세 자료를 합산해 새 평균과 분산을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "기존 집단의 합·편차제곱합을 평균·분산에서 복원하고, 추가 자료 때문에 평균이 변하지 않음을 확인하여 제곱합을 합산한다.",
+      "questionUid": "qid_v1_7d6f033859cf8bda81b737421e98488efea5ca28ba40048044e856e7416933c7",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d261f61488926473e69b731a93e0f9f5109b0a8ca179f74ef786a601e39b2a50"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "910c18756986d3d5dc54d923f0620ac67c8daac65def220081d9e8de48bb6949"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "원안에서두현이이루는각",
+      "en": "ANGLE_OF_INTERSECTING_CHORDS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "원주각",
+      "note": "원 내부에서 교차하는 두 현의 각은 마주 보는 두 호의 크기 합의 절반이다.",
+      "usedIn": [
+        4,
+        8
+      ]
+    },
+    {
+      "term": "원밖에서두할선이이루는각",
+      "en": "ANGLE_OF_TWO_SECANTS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "원주각",
+      "note": "원 외부에서 만나는 두 할선의 각은 두 호의 크기 차의 절반이다.",
+      "usedIn": [
+        5
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allItemsRead": true,
+    "historicalEvidenceShaVerified": true,
+    "studentPayloadAllMatches": true,
+    "independentReview": "PENDING"
+  },
+  "reuseEvidence": {
+    "branch": "work/4slot-annotate-v1",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.4slot.json",
+    "originalSha256": "5d524ec5ca586ee4d434f9761818e9b96da96345c993cc821b362d0076f6bd77",
+    "importDelta": {
+      "baseSourceGitBlobSha": "cf5e209ab185771c1b0b99629dcb57fe1838b00c",
+      "authoringSnapshot": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+      "reviewRecord": {
+        "branch": "ops/4slot-bulk-publish-20261105",
+        "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+        "path": "tools/4slot/bulk-delta-overrides.json",
+        "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+      }
+    }
+  }
+}

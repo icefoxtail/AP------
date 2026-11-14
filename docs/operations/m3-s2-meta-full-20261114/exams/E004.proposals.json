@@ -1,0 +1,129 @@
+[
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "짝수 자료의 중앙값과 최빈값 결합",
+    "definition": "짝수 n개 자료의 n/2와 n/2+1번째 평균 및 최빈값을 구해 결합값 계산",
+    "distinction": "기존 M3 TPL은 홀수 개 자료만 명시하여 그대로 재사용할 수 없음",
+    "parent": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_8e728a7c737d0b1224dd70910204b7b41f2cff76baf3810fc861b8ec0f4100e8",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "주어진 자료의 개별 편차",
+    "definition": "자료 평균을 구한 후 지정 변량에서 평균을 뺀다.",
+    "distinction": "기존 TPL은 편차 합0으로 미지 편차를 복원한 뒤 표준편차까지 구하는 구조",
+    "parent": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_8f6ca9e0b64b831c43ae6024fe78fbab07eef087bf941f0c67cef5b04a4d52e6",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "산포도의 정의와 퍼짐 진술 판정",
+    "definition": "편차·분산·표준편차와 평균 주위의 퍼짐에 대한 설명을 판정한다.",
+    "distinction": "기존 TPL은 편차 부호를 거꾸로 쓴 선지에 특화됨",
+    "parent": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_773c156d87b16cf01c9325adb7aa6a61c1ef6c4a174016f3403eac89ddad9bf7",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원자료 그래프의 분산 수치 판정",
+    "definition": "원자료 그래프에서 변량을 읽고 분산을 직접 계산해 수치 진술의 진위를 판정",
+    "distinction": "도수 그래프 중앙값 판정이나 대칭 막대 분포 비교와 다름",
+    "parent": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_19ad6b2648447796a2189d4c7b831df4ccc388e1dfaa847d08c8507d438a0cd9",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "평균·분산 조건에서 미지수의 대칭식",
+    "definition": "자료의 평균과 분산으로 미지 두 변량의 합 및 제곱합을 복원하고 곱 등 대칭식을 계산",
+    "distinction": "직접 산포도 계산이나 각 변량의 일차변환과 달리 자료의 숨은 두 변수 조건 추론",
+    "parent": null,
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_21a4d3a0893d43b44b275b39530dfd6353a6379371cd8581b0b3eeb8423b9181",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표와 상관관계 진술 판정",
+    "definition": "개별 점의 두 값과 전체 점의 추세를 읽어 비교 진술을 판정",
+    "distinction": "산포도 계산이나 자료의 중앙값·최빈값과 다른 두 변량 관계 해석",
+    "parent": null,
+    "searchedGlobalActive": true,
+    "nearestTemplates": [],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_d1842da393d94c3c51b3ed646e47e0d0233a93157dac44d0e0b6c33f0643dd23",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도의 조건별 개수와 비율",
+    "definition": "산점도에서 명시된 두 축 조건을 만족하는 점을 세고 해당 집단의 비율을 계산",
+    "distinction": "추세 방향만 판정하는 상관관계 해석과 구분",
+    "parent": null,
+    "searchedGlobalActive": true,
+    "nearestTemplates": [],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 23,
+    "questionUid": "qid_v1_f9f36239de48866cbd5b2f5f496bb8a17d75b7880becad771713478ed70fe725",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "평균과 중앙값의 병렬 계산",
+    "definition": "같은 자료에서 평균과 중앙값을 각각 계산하여 답한다.",
+    "distinction": "세 대푯값 전체 결합 TPL 또는 중앙값만 구하는 TPL과 범위가 다름",
+    "parent": "PT_M1_CENTRAL_TENDENCY",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_7d6f033859cf8bda81b737421e98488efea5ca28ba40048044e856e7416933c7",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "자료 추가 후 평균과 분산",
+    "definition": "원자료를 개별 복원하지 않고 기존 합·편차제곱합과 추가 자료로 새 평균 및 분산을 계산",
+    "distinction": "각 변량을 k배 하는 일차변환 통계와 다른 집단 결합",
+    "parent": null,
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
