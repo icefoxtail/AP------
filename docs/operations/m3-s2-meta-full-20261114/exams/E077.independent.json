@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E077",
+  "author": "m3_c",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+  "targetReviewSha256": "e7d371b6c63d8b7be0cf3478de5e2eb47be47d7bb11facd702821203230b827b",
+  "target4slotSha256": "5ef67e06079f54be5fef0bc3bf1f21ad092f807cfdade8b79c09e8452cb66c3a",
+  "sampledSourcePatchSha256": "2ac3ba9fb2489b205e04bc4454c0205edbf6324d15a24eef43029e64caa8dbaf",
+  "sampleOrdinals": [
+    5,
+    18,
+    20
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_3de0aa8407ad1ed8a9d37cb9b8d2dea26eea22246e70891eeff0f59c044924cf",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "평균조건으로a+b6,분산조건으로제곱합26을독립확인했다. 두변량을따로구하지않고합의제곱항등식으로ab5를추출하므로 편차성질 PT와SUM_OF_SQUARES_IDENTITY CC,SEQUENTIAL이맞다. 4칸평균·분산given/곱goal/곱셈공식method를확인하고정확TPL/현행leaf등록공백을수용한다.",
+      "quotesChecked": 6,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_825391e3b0296142046415c667c4a79e07b444543d4b2f0e6e66b752a593f0e4",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본구의반지름5와원뿔모선3√10을확인했다. 축단면에서같은r,h를쓰는두피타고라스식의차로h9,r²9를얻어부피로연결한다. Pythagorean composite TPL,연립방정식·원뿔부피 CC 및식구성→소거→부피의SEQUENTIAL이맞으며4칸은그경로를빠짐없이기록한다.",
+      "quotesChecked": 6,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e020183f6d4ce970a4870075afcf89dc2c7ffedf45404ef6117f6273e18c8fe8",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재source그림의모선12,밑면반지름2,모선중점M 및옆면한바퀴조건을확인했다. 원주와호길이로전개각60을정하고맞은절선의M′6을골라특수각성분과피타고라스로최단선분을구한다. Pythagorean composite,원주·삼각비 CC 및범위condition이맞고4칸에전개도·최단goal·한바퀴범위가보존된다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 16,
+      "type": "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA",
+      "reason": "원본 가장자리 label과하단치수잘림/흐림. 본문등변12및D삼등분조건과현해설의E정의로메타판정가능."
+    },
+    {
+      "ordinal": 22,
+      "type": "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA",
+      "reason": "원본 하단a표기가부분잘림. 현해설에두직각변a,b 명시."
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "14a90c6a0283435379a3aa57220166956c9738ffcd0ca7d0dd3393e1c1e2ff39"
+}

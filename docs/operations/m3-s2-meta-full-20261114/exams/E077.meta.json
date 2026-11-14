@@ -1,0 +1,3846 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E077",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "m3_c",
+  "rootIntegrator": "GPT_ROOT_9D4541661C34",
+  "independentReviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceBeforeBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+  "sourceAfterBlob": "7f47711194e42a41c9f5dc7ce0b37f2e0ba4a875",
+  "sourceAfterSha256": "a1c4386130b6afe67c82521f1bb8a4ecedbf7008253d14e3848fdd6a87b6e545",
+  "questionCount": 23,
+  "uidDigest": "409c5e8430cc740fcea1be894064f45ceab209585c89130bc9c3dc4f5413eadd",
+  "authorRawReviewSha256": "e7d371b6c63d8b7be0cf3478de5e2eb47be47d7bb11facd702821203230b827b",
+  "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
+  "authority": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "existingEvidenceRefs": [
+    "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+  ],
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.source-patch.json",
+      "sha256": "2ac3ba9fb2489b205e04bc4454c0205edbf6324d15a24eef43029e64caa8dbaf"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.4slot.json",
+      "sha256": "5ef67e06079f54be5fef0bc3bf1f21ad092f807cfdade8b79c09e8452cb66c3a"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.proposals.json",
+      "sha256": "29163d67a04d788e7db158f12c66a450d68d9e9908ba7ad9c981f8836be3a7df"
+    },
+    "image-version-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.image-version-evidence.json",
+      "sha256": "679cef7aa6350d966071e55182c24e5cca9453a92c2e51aa5ec1e28457c902d2"
+    },
+    "content-defects.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.content-defects.json",
+      "sha256": "93edbc778d1cb122fbd30ba550c6bb3aca245ae595b62a67cf8cec13d483ae2e"
+    },
+    "author-decisions.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.author-decisions.json",
+      "sha256": "12db0a9c4e9be98351c6479299b4e3952626eed7424945000447a1f806ae171a"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.independent.json",
+      "sha256": "5898e402b80a858deae0774dc6069c5ce4f94252b169887c4626a6d001cf8c90"
+    },
+    "independent.independent-images.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.independent.independent-images.json",
+      "sha256": "66d81ca79c204cf3cb8530e078e0227c74c93143877e82bf118d19846153b550"
+    },
+    "independent.source-first-notes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.independent.source-first-notes.json",
+      "sha256": "14a90c6a0283435379a3aa57220166956c9738ffcd0ca7d0dd3393e1c1e2ff39"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E077.difficulty-adjudication.json",
+      "sha256": "4bdaaa3bdc1eb522ae961d6ef17d96d3d72fd71c5fdcfc337f3b0283a6ec2cc2"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_efed9fdfaa3d2a6215cfcfc1492a1b48993ab78cc964e7df07eed44501d2eb36",
+      "sourceQuestionNo": 1,
+      "decision": "CORRECT",
+      "decisiveStep": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-081"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "학습 하: 기본 정의의 직접 확인이다. 실전 1: 추가 자료나 계산 없이 보기를 읽어 결정한다.",
+        "boundary": "NONE",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "e7d0a82e5a3545aa5c656c675f80693afa276a485f1a08331d39e18aa9242a51",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "c8d0bdd961e1ae26a8c7d06d5aaab44a952bf91f89499368d1e33dc9010d26bc"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c659532a56a6d3b857d50aed15c6967a01bc077277f49eb7ab2a4dc23dd1ef72",
+      "sourceQuestionNo": 2,
+      "decision": "CORRECT",
+      "decisiveStep": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 중앙값의 홀짝 정의와 자료 순서를 함께 사용한다. 실전 3: a의 가능한 위치를 먼저 가려 식을 세워야 한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "324c50d728ce4eb1734ca9e63e482b4baa551a9fc6d86d1c3114524c022714ad",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "f97ce592e56038194d78cc18bcbbafa6edd5ab5fe388de653c798fd170600934"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_a194b6f6a74ba7b10df2d4567f3e1e59e8bd27ae9b8d186a7c3869b377eab64f",
+      "sourceQuestionNo": 3,
+      "decision": "CORRECT",
+      "decisiveStep": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 중앙값을 평균 조건에 연결한다. 실전 2: 주어진 정렬 순서 때문에 추가 경우 구분 없이 일차식 하나로 결정한다.",
+        "boundary": "B12",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "a44c9f439ffa243f94743b802afc54750114c323c4d6b8b60e70b2787c8ff287",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "87ba507ea4b2239478f640700d1332faa4cc47fc7ddac06d8ac3b9e7edd356ac"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_90a40672f09b8a66684ae19a925469ad51866271d39272cbdec9f89c71db1752",
+      "sourceQuestionNo": 4,
+      "decision": "CORRECT",
+      "decisiveStep": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "표준편차",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-085"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 분산의 분모와 편차 기준을 이해해야 한다. 실전 3: 같은 평균 조건을 이용해 두 집단의 분산을 가중 결합하는 관계가 필요하다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "d97c720550e7f29f0456b42902eb3efe9aa538d3b09a36135bee54f7c4ab0696",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "263752d9f45c759c267b30e873fb6e066e08688f3390e7639455e625e63b0df7"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_3de0aa8407ad1ed8a9d37cb9b8d2dea26eea22246e70891eeff0f59c044924cf",
+      "sourceQuestionNo": 5,
+      "decision": "CORRECT",
+      "decisiveStep": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_SUM_OF_SQUARES_IDENTITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_SUM_OF_SQUARES_IDENTITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 평균·분산의 정의와 곱셈공식을 연계한다. 실전 3: 두 미지수를 따로 풀지 않고 합·제곱합을 목표 곱으로 변환해야 한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "72403cfd3c56ec33a895b6391981764225a7332e32e85d73f7d04138f35d76b5",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "2bcb1aa5f29488350f00fce6fd28336efca1642a7829a7c43fd05f8821c9af3c"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_35bc7176086ba53bc9e87532262381cc34cf614a887b32405bb75910c4356490",
+      "sourceQuestionNo": 6,
+      "decision": "CORRECT",
+      "decisiveStep": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-083"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 편차와 실제 변량을 구별하고 두 근을 모두 추적한다. 실전 3: 편차 합에서 이차식을 만들고 두 결과로 분기한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "5efcc80da80d6bc6ca019a02313e1577c90677082437e330fca7a4e8738fe1a7",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "47f5c461d423281a32157b3ac455b9ff37f91739a846c0ff36ebb2bfaf1fa33e"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_29552f2253bcbd7bc4c618ad6fb95c7c8ff1594de689e0778a3cd8ce06b3ebec",
+      "sourceQuestionNo": 7,
+      "decision": "CORRECT",
+      "decisiveStep": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-086"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 평균·산포도·자료 수의 역할을 구별한다. 실전 2: 표의 수치 비교와 정의 확인으로 각 보기가 결정된다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "a2e8a183b178bccfab9b872a1a0a196059ec6c7e9da30ad0f0e75f197fae6ec2",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "643e56e10836a2a2111e776812ce5b32f9bb88771e0a2125e26f9a2c7cc38641"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_062e59316b013295185bc650a0453608b833041cec48ee25728e6791114e84a7",
+      "sourceQuestionNo": 8,
+      "decision": "CORRECT",
+      "decisiveStep": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리",
+        "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-101"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          },
+          "recordId": "M2-RPM-219",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 빗변 식과 길이의 양수 조건을 연계한다. 실전 2: 제곱식 전개·인수분해와 불가능한 길이 배제로 경로가 고정된다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "8e7c8dffc16d9d3489a77018879c9e790534456791c34df2dd2fc226c3a46d58",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "404d84f6eefc840fd8547123ec870595ddc4a48862ea16f1ff00c7c9320ce6d4"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_ac56003e3dd05c38a7541abbbf4ecdc687b46f5224c5d16fd4e2aa14c974b522",
+      "sourceQuestionNo": 9,
+      "decision": "CORRECT",
+      "decisiveStep": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 앞 삼각형의 빗변을 다음 삼각형의 직각변으로 읽는다. 실전 2: 도형의 직각 표시가 적용 순서를 고정하며 경우 선택은 없다.",
+        "boundary": "NONE",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "fb302ebf14ba235116f4e08c6c2664220d94606969d3be744cd15aa913d501be",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "58f850742dc66e86b4f60fe07ab19bc6e37383f23da1cdfd6d4caf27e9096115"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d2ee9eef203c176ad880bce8286634d6eccd6708c50e31d000abebed55d08ec7",
+      "sourceQuestionNo": 10,
+      "decision": "CORRECT",
+      "decisiveStep": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 길이 산출과 합동인 영역의 넓이를 연결한다. 실전 2: 모든 모서리가 같은 구성이고 한 번의 길이 계산을 반복 이용한다.",
+        "boundary": "NONE",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "3582f2d2373edb71b2854a42ef8d59fcbc72931b59ab52375825fdbee99ace60",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "16a3298350dc03ac098244e34b949cb52ad33d8349cf093a69cb4160e318471c"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5428c0c4677aaf7bcaaa2f77bed68217416892d1ebf100e8fa92a9bd424b5609",
+      "sourceQuestionNo": 11,
+      "decision": "CORRECT",
+      "decisiveStep": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "recordId": "M1-RPM-079"
+        },
+        "status": "PUBLISHER_LEAF_GAP",
+        "semanticPath": {
+          "majorUnit": "기본도형",
+          "midUnit": "점·선·면과 각",
+          "l3": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다.",
+          "l4": "합동은 증명할 조건이 아니라 이미 주어진 사실이다. 대응변으로 복원한 사다리꼴에서 두 삼각형을 빼는 정확한 RPM leaf가 없어 SAS leaf는 비교 위치만 보존한다."
+        },
+        "gapReason": "합동은 증명할 조건이 아니라 이미 주어진 사실이다. 대응변으로 복원한 사다리꼴에서 두 삼각형을 빼는 정확한 RPM leaf가 없어 SAS leaf는 비교 위치만 보존한다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": true
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 합동의 대응변과 전체에서 부분을 빼는 넓이 분해를 사용한다. 실전 2: 두 대응길이가 바로 정해지고 넓이 공식 적용 순서도 고정된다.",
+        "boundary": "NONE",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "합동은 증명할 조건이 아니라 이미 주어진 사실이다. 대응변으로 복원한 사다리꼴에서 두 삼각형을 빼는 정확한 RPM leaf가 없어 SAS leaf는 비교 위치만 보존한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "89b322fe5408745ad3bd96a8623a88f14e019c188e80e91f1eb9d1555dea062d",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "966604cf70fabf969f7be3792ca61c6cc6c67921715fac935271fecb348ae66b"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_17d07800129789e6ed95ffb21aaf082fb1c6460493c4d80bf67db3bb74b68c4e",
+      "sourceQuestionNo": 12,
+      "decision": "CORRECT",
+      "decisiveStep": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리",
+        "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "삼각형의 각 판정",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-104"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리의 역",
+            "l4": "삼각형의 각 판정"
+          },
+          "recordId": "M2-RPM-222",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 피타고라스 관계의 크기 비교로 예각을 판정한다. 실전 2: 가장 긴 변이 명시되어 구간의 교집합을 바로 계산한다.",
+        "boundary": "NONE",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "2e791f0544bd4514e4a901c5cf89711b70e1d18ae0c2c2eef495fe31e8d365d6",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "df5f2fc6e790edb25967ddd5f6571340ffc9448fae692fe94808b7d13f04e810"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_b10fc6de3135f733fa4b138772253ff0d816197f23f25abf31ddd640f5c7a682",
+      "sourceQuestionNo": 13,
+      "decision": "CORRECT",
+      "decisiveStep": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "삼각형의 높이·넓이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-061"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "삼각형의 높이·넓이"
+          },
+          "recordId": "M3-RPM-149",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 특수각의 변비와 공통 높이를 결합한다. 실전 3: 수선을 새로 선택하고 두 부분 길이의 합 관계를 구성해야 한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "74e0ea095cdb663111c2ff3b4a65d312dee476a9603282c96355931893ec084a",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "e68942a241e57783de3cb60ebbebd340bd28091ce80abcbb7a24cd220e2d5ba1"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_1eb294a904913aa4560f5b97cb5d183ac7084b96eb3b69f397e3d9563eab7b51",
+      "sourceQuestionNo": 14,
+      "decision": "CORRECT",
+      "decisiveStep": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 함수 교점 좌표를 길이의 두 직각 성분으로 바꾼다. 실전 3: 방정식으로 두 점을 복원하고 거리 단계로 연결해야 한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "aa6bd09b20d76abda3aceab469f42f7de40e26e67c897f624a246aca067d0411",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "1aabd5853b813852e9d3f175061d0f8c801929df1b30751262a2377e4e65e3ea"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_aa72c31c182347df0e113f9a2b9fee73c1ebd07e582c2126dad1fb023a6ed8db",
+      "sourceQuestionNo": 15,
+      "decision": "CORRECT",
+      "decisiveStep": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TT_SHORTEST_ONE_LINE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 대칭을 통해 최단거리를 직선으로 바꾸는 발상이 필요하다. 실전 3: 반사점 선택 뒤 범위 안에서 등호가 실현됨을 확인해야 한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "4734534bb1083727ddcf16baf69dfd0b8d73cc3129d2e2a1945166eaf8779849",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "a3503d97fded99bd352ebad144034dace9b5c4d5fe90946e5ba1bd033ab58869"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_5daa8adab5f739dc2e6df58dc6da3f7096bd1761072a9a0a5d655d10d98e2ab1",
+      "sourceQuestionNo": 16,
+      "decision": "CORRECT",
+      "decisiveStep": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ",
+        "imageLimitation": "원본 그림의 A/B/E/C 표기와 아래쪽 치수가 잘리거나 매우 흐리다. 현재 본문·기존 해설의 관계로 메타 판단은 가능하나 원본 자산의 가독성 확인은 미완료다."
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_FOLDING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_FOLDING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 접기에서 보존되는 거리와 직각삼각형 관계를 연결한다. 실전 3: 같은 길이를 12−x와 빗변으로 각각 표현하는 모델링이 필요하다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA",
+          "reason": "원본 그림의 A/B/E/C 표기와 아래쪽 치수가 잘리거나 매우 흐리다. 현재 본문·기존 해설의 관계로 메타 판단은 가능하나 원본 자산의 가독성 확인은 미완료다.",
+          "assetPath": "assets/images/18_연향중_2학기_중간_중3_수학/q16.png",
+          "nextAction": "원본 PDF와 대조하여 표기·치수가 모두 포함되도록 자산을 복구하고 독립 확인한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "0147a77d17d52661515c31aa5cb4f63266ebda2c72715e19e86921eb1752c91e",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "e0e68b0b613ff2540aded054ee0aacb86b6a8d24927ec45de7fe1f21b6bf8e0f"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_0588c228e46034ac462376195e39ee9069cda4e932cde924809cd766c4e860c8",
+      "sourceQuestionNo": 17,
+      "decision": "CORRECT",
+      "decisiveStep": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 입체의 경로를 전개한 평면으로 옮긴다. 실전 3: 통과 모서리에 맞는 두 면과 전개 후 가로 길이를 선택해야 한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "09d9e7bc8287f991e63ddd47518f849cb9da662c2862242ae267d49f35c268af",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "b9744525ee3503e2b2f2233913c74bbc18828d63702710bdc1b66f59ee21d84b"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_825391e3b0296142046415c667c4a79e07b444543d4b2f0e6e66b752a593f0e4",
+      "sourceQuestionNo": 18,
+      "decision": "CORRECT",
+      "decisiveStep": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION",
+          "CC_CONE_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION",
+          "CC_CONE_VOLUME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "학습 상: 구의 중심과 밑면의 위치 관계를 변수로 모델링한다. 실전 4: 보이지 않는 축 단면을 구성하고 공유 변수 소거를 선택해야 한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "99a6ab72b1246387335243b37c20caeca26859aa5501ac67d9b9ac7b86e05d7c",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "ff5e387b06ed1c12772b7af30af93a1e13c217f54c5b683122bc1837fd7c9561"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_ad950dd07639aa2b0542553ec0a307cd84171ba6485b3b9082163b97a7332064",
+      "sourceQuestionNo": 19,
+      "decision": "CORRECT",
+      "decisiveStep": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 입체 안의 세 직각삼각형과 목표 평면 삼각형을 구별한다. 실전 3: 공간 길이를 복원한 뒤 이등변삼각형의 높이를 선택해야 한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "364c75f2887f966d716ea20b95b1fe519b2c0b5036b98aee9a82d7fff9ee6830",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "6f6b65f6dcf80e45f8039f4e41bf6065df0fd161035f1d385a5b49fd1be0539f"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e020183f6d4ce970a4870075afcf89dc2c7ffedf45404ef6117f6273e18c8fe8",
+      "sourceQuestionNo": 20,
+      "decision": "CORRECT",
+      "decisiveStep": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIG_RATIO",
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIG_RATIO",
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "학습 상: 한 바퀴 조건을 서로 다른 절선의 두 점으로 바꾸어야 한다. 실전 4: 전개 각, 중점 위치, 최단 직선의 범위를 함께 설계하고 확인해야 한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "444202c435d506ae3cee90858750783dea844583a77702c7cb99c044210654d1",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "independentFeedbackApplied": "root의 현재 원본·해설 독립 확인에 따라 primary 밖의 결정적 보조 개념 CC_CIRCLE_CIRCUMFERENCE를 추가한다.",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "83da4434a09383547fa9b3cbe28392ad37d116f8c425c7440d8028deb6131d3a"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_c6c2f678e192986a952154937889d43310d78abd47a8522fc2d76152c2d1477a",
+      "sourceQuestionNo": 21,
+      "decision": "CORRECT",
+      "decisiveStep": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-083"
+        },
+        "current2022": {
+          "status": "NO_EXACT_2022_LEAF",
+          "reason": "원본 교육과정의 의미를 보존하며 현행 부모 아래 분류 연결은 별도 검토한다."
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "학습 중: 실제 점수와 편차를 오가며 정의를 적용한다. 실전 2: 표에서 평균이 바로 정해지고 나머지 값은 선형 관계로 순차 결정된다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "b7442023fa2f8f10f383cbfdb2bca3ed6a0a7c0dcc9c55c33ab7b0718bb7c2eb",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "0a408fe706cf90b8126505307bc7ced4355134ce5b020b16cf6695b6e418c6f8"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_8c5c53c61f64e3a2a25f11f0b2366608ecfa3d34bf0b798d46ec4958ee0fe22e",
+      "sourceQuestionNo": 22,
+      "decision": "CORRECT",
+      "decisiveStep": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ",
+        "imageLimitation": "원본 그림의 하단 a 표기 일부가 자산 경계에서 잘려 있다. 현재 본문·기존 해설로 메타 판단은 가능하지만 자산 경계 복구가 필요하다."
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_SUM_OF_SQUARES_IDENTITY"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_SUM_OF_SQUARES_IDENTITY"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 넓이·변 제곱합을 곱셈공식에 결합한다. 실전 3: a와 b를 따로 구하지 않고 합의 제곱을 만드는 변형을 선택해야 한다.",
+        "boundary": "B23",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA",
+          "reason": "원본 그림의 하단 a 표기 일부가 자산 경계에서 잘려 있다. 현재 본문·기존 해설로 메타 판단은 가능하지만 자산 경계 복구가 필요하다.",
+          "assetPath": "assets/images/18_연향중_2학기_중간_중3_수학/s02.png",
+          "nextAction": "원본 PDF와 대조하여 표기·치수가 모두 포함되도록 자산을 복구하고 독립 확인한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "653982c586a0cd5a155395770f99f19685cf0e41c6c49e24f46acd5dde20a695",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "a84b3c1746d9fa3f9d03f00f5cb5dd7752b9ec13da3fec6ea41b860b2d6fff10"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_3750e28aea1c0cae6bb08b6cb4f2fec79531a313f1b4b65f8ceb0d28bb471af0",
+      "sourceQuestionNo": 23,
+      "decision": "CORRECT",
+      "decisiveStep": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": null,
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다.",
+        "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "학습 중: 공간의 직각 단면과 삼각형 넓이의 밑변·높이 교환을 사용한다. 실전 3: 필요한 단면을 고르고 넓이 동일성을 목표 수선 길이로 연결한다.",
+        "boundary": "B34",
+        "learningLevelProvenance": "AUTHOR_JUDGMENT_SOURCE_LEVEL_ABSENT"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+        "solutionSha256": "29e5b91fb2e3d8987897197534139cff0359d9f07da2bd6cdb47a6f1b36b3773",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalRecordBeforeSha256": "693b3b0da0e6fb35885899dd717024408a7fbfbf02802ba6490f70fa07b5447d"
+    }
+  ],
+  "authorSummary": {
+    "items": 23,
+    "decisions": {
+      "CORRECT": 23
+    },
+    "topics": {
+      "통계 > 대푯값과 산포도": 8,
+      "도형의 닮음과 피타고라스 정리 > 피타고라스 정리": 13,
+      "기본 도형 > 작도와 합동": 1,
+      "삼각비 > 삼각비의 활용": 1
+    },
+    "exactDebt": {
+      "CURRICULUM_BINDING_GAP": 22,
+      "NATIVE_TEMPLATE_GAP": 7,
+      "RPM_LEAF_GAP": 1,
+      "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA": 2
+    },
+    "newMathVerification": false
+  },
+  "warningReview": null,
+  "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "semanticPayloadSha256": "301d94507e2efc89534d54473a5d8cfe2f18fbeab7a817de728259f725e3b2bd",
+  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND"
+}

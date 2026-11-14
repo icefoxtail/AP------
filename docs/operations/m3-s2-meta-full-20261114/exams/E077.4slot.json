@@ -1,0 +1,1371 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "33d4d0bcc58f009032497c7fb34a851e92d620dc",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_M3_C_9D4541661C34",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_efed9fdfaa3d2a6215cfcfc1492a1b48993ab78cc964e7df07eed44501d2eb36",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "choices",
+            "quote": "평균은 극단적인 값에 영향을 받는다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균은 모든 변량의 합을 자료의 개수로 나눈 값",
+            "evidenceType": "IMPLIED",
+            "justification": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다."
+          },
+          {
+            "term": "산포도",
+            "src": "solution",
+            "quote": "분산·표준편차는 흩어진 정도를 나타내는 산포도",
+            "evidenceType": "IMPLIED",
+            "justification": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다.",
+        "method": "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균의 정의와 극단값 민감성을 대푯값·산포도의 역할과 구별해 진술의 참거짓을 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c659532a56a6d3b857d50aed15c6967a01bc077277f49eb7ab2a4dc23dd1ef72",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "자료 $\\mathrm{A}$의 중앙값은 16이고"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "자료 $\\mathrm{B}$의 중앙값은 14"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값이 14가 되려면 a≥14",
+            "evidenceType": "IMPLIED",
+            "justification": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "14≤a<18에서 A를 크기순으로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "(a+18)/2=16",
+            "evidenceType": "IMPLIED",
+            "justification": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "14≤a<18"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다.",
+        "method": "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "홀수 자료 B의 중앙값으로 a≥14를 정하고 짝수 자료 A의 중앙 두 값의 평균이 16인 조건을 겹쳐 a를 복원한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a194b6f6a74ba7b10df2d4567f3e1e59e8bd27ae9b8d186a7c3869b377eab64f",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "2, 4, 5, 7, $x$"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균과 중앙값이 같다고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "세 번째 값 5",
+            "evidenceType": "IMPLIED",
+            "justification": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "(2+4+5+7+x)/5=5",
+            "evidenceType": "IMPLIED",
+            "justification": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "크기순으로 나열"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다.",
+        "method": "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "크기순인 다섯 자료에서 중앙값 5를 읽고 평균도 5임을 합 조건으로 바꾸어 마지막 자료를 구한 뒤 순서를 확인한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_90a40672f09b8a66684ae19a925469ad51866271d39272cbdec9f89c71db1752",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균은 같고"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "분산은 각각 12, 8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "전체 40명의 표준편차는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "전체 평균에 대한 편차의 제곱의 합은 25×12+15×8",
+            "evidenceType": "IMPLIED",
+            "justification": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다."
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 분산의 양의 제곱근",
+            "evidenceType": "IMPLIED",
+            "justification": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다.",
+        "method": "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 집단의 평균이 같아서 편차 기준점도 같음을 확인하고 인원수×분산으로 각 제곱합을 복원하여 합친 뒤 전체 인원으로 나눠 표준편차를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3de0aa8407ad1ed8a9d37cb9b8d2dea26eea22246e70891eeff0f59c044924cf",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 5회이고"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "분산이 10"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "a+b=6",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "a²+b²=26",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "(a+b)²=a²+b²+2ab",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다.",
+        "method": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 합의 제곱 항등식에서 ab를 추출한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_35bc7176086ba53bc9e87532262381cc34cf614a887b32405bb75910c4356490",
+      "sourceOrdinal": 6,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "편차를 나타낸 것"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 70"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "모든 $C$의 값을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 합은 0",
+            "evidenceType": "IMPLIED",
+            "justification": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x²+3x−10=0",
+            "evidenceType": "IMPLIED",
+            "justification": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "C=70+50+3",
+            "evidenceType": "IMPLIED",
+            "justification": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다.",
+        "method": "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "편차 합 0으로 이차방정식을 만들고 두 실근 각각을 C의 편차에 대입한 뒤 평균 70을 더해 가능한 변량을 모두 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_29552f2253bcbd7bc4c618ad6fb95c7c8ff1594de689e0778a3cd8ce06b3ebec",
+      "sourceOrdinal": 7,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균과 표준편차를 나타낸 것"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "평균과 표준편차를 나타낸 것"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차를 비교하면 √3<2<√7<6<9",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "학생 수×분산",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 가장 큰 반이 4반",
+            "evidenceType": "IMPLIED",
+            "justification": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다.",
+        "method": "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균으로 성취 수준, 표준편차로 고른 정도를 따로 비교하고 학생 수가 없는 제곱합 순위는 결정할 수 없음을 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_062e59316b013295185bc650a0453608b833041cec48ee25728e6791114e84a7",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형이 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(x−3)²+(x+4)²=(x+5)²",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x(x−8)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "AC=x−3이 음수가 되므로 제외"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다.",
+        "method": "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "직각 조건에서 AB를 빗변으로 두어 세 길이식의 제곱 관계를 세우고 인수분해한 두 근 중 양의 변 길이를 만드는 근을 고른다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ac56003e3dd05c38a7541abbbf4ecdc687b46f5224c5d16fd4e2aa14c974b522",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형을 이어 그릴 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "OC²=OB²+BC²=8+4²=24",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "OE²=OD²+DE²=60+8²=124",
+            "evidenceType": "IMPLIED",
+            "justification": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다.",
+        "method": "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "연속한 직각삼각형에서 이전 빗변 제곱에 새 직각변 제곱을 더하는 관계를 끝까지 이어 OE를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d2ee9eef203c176ad880bce8286634d6eccd6708c50e31d000abebed55d08ec7",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 10인 정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "AQ=√(10²−6²)=8",
+            "evidenceType": "IMPLIED",
+            "justification": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형 ABQ의 넓이는 (1/2)×6×8=24",
+            "evidenceType": "IMPLIED",
+            "justification": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "네 모서리 삼각형이 합동",
+            "evidenceType": "IMPLIED",
+            "justification": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다.",
+        "method": "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "모서리 직각삼각형에서 피타고라스로 한 변을 정하고 부분 길이 차로 중앙 정사각형의 변을 구한다. 삼각형·중앙 사각형·전체 넓이 관계를 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5428c0c4677aaf7bcaaa2f77bed68217416892d1ebf100e8fa92a9bd424b5609",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "는 합동이고"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "한 직선 위에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "AC=DE=8, CD=AB=4",
+            "evidenceType": "IMPLIED",
+            "justification": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "높이가 AD인 사다리꼴",
+            "evidenceType": "IMPLIED",
+            "justification": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "72−(4×8/2)−(4×8/2)",
+            "evidenceType": "IMPLIED",
+            "justification": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다.",
+        "method": "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "이미 주어진 합동에서 대응 직각변을 옮겨 사다리꼴 전체의 높이를 복원하고, 전체 넓이에서 합동인 두 모서리 삼각형 넓이를 뺀다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_17d07800129789e6ed95ffb21aaf082fb1c6460493c4d80bf67db3bb74b68c4e",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "세 변의 길이가 각각 $1, 3, a$인 삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "a²<1²+3²=10",
+            "evidenceType": "IMPLIED",
+            "justification": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다."
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "삼각형의 성립 조건은 3−1<a<3+1",
+            "evidenceType": "IMPLIED",
+            "justification": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$a>3$"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다.",
+        "method": "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "a>3으로 가장 긴 변을 확정하고 예각의 제곱 부등식 a²<1²+3²을 삼각형 성립 조건과 함께 확인해 범위를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_b10fc6de3135f733fa4b138772253ff0d816197f23f25abf31ddd640f5c7a682",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "인 $\\triangle\\mathrm{ABC}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "A에서 BC에 내린 수선의 발을 H",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "CH=h이고, ∠B=60°이므로 BH=h/√3",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "h/√3+h=6",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "BC×AH/2",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다.",
+        "method": "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "삼각형 꼭짓점에서 높이를 내려 45도·60도 두 직각삼각형의 밑변을 공통 높이 h로 표현하고 두 밑변의 합이 6인 식에서 높이와 넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_1eb294a904913aa4560f5b97cb5d183ac7084b96eb3b69f397e3d9563eab7b51",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-3x$"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=2x-4$"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "두 교점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x²−5x+4=0",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "교점은 (1,−2), (4,4)",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "PQ=√(3²+6²)",
+            "evidenceType": "IMPLIED",
+            "justification": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다.",
+        "method": "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "이차함수와 일차함수의 값을 같게 둔 방정식에서 두 교점을 구한 뒤 가로·세로 좌표 차를 피타고라스 관계로 합쳐 선분 길이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_aa72c31c182347df0e113f9a2b9fee73c1ebd07e582c2126dad1fb023a6ed8db",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분 $\\overline{\\mathrm{BD}}$ 위를 움직인다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "대하여 점 $\\mathrm{C}$와 대칭인 점",
+            "evidenceType": "IMPLIED",
+            "justification": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+          },
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "직선 $\\mathrm{AC\\prime}$와",
+            "evidenceType": "IMPLIED",
+            "justification": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "\\sqrt{15^2+8^2}",
+            "evidenceType": "IMPLIED",
+            "justification": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "이 점은 선분 $\\overline{\\mathrm{BD}}$ 안에 있다"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다.",
+        "method": "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "C를 BD에 대칭이동하여 꺾인 경로를 AC′ 직선거리로 바꾸고, AA 닮음으로 등호가 성립하는 교점이 허용 선분 안에 있음을 확인한 뒤 길이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5daa8adab5f739dc2e6df58dc6da3f7096bd1761072a9a0a5d655d10d98e2ab1",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "오도록 접은 것"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각 이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "EA=ED",
+            "evidenceType": "IMPLIED",
+            "justification": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(12−x)²=x²+64",
+            "evidenceType": "IMPLIED",
+            "justification": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "BD×EB/2",
+            "evidenceType": "IMPLIED",
+            "justification": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다.",
+        "method": "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "삼등분 조건으로 BD를 정하고 접는 선 위 E에서 EA=ED임을 이용해 EB=x를 둔 피타고라스 식을 세운다. 얻은 EB를 높이로 넓이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0588c228e46034ac462376195e39ee9069cda4e932cde924809cd766c4e860c8",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{ABC}=90^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 짧은 거리는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "AB=√(5²−4²)=3",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+          },
+          {
+            "term": "전개도",
+            "src": "solution",
+            "quote": "두 옆면 ABED와 BCEF를 펼치면",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+          },
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "두 점을 잇는 직선이 가장 짧고",
+            "evidenceType": "IMPLIED",
+            "justification": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "모서리 $\\mathrm{BE}$를 지나"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다.",
+        "method": "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "밑면의 빠진 변을 피타고라스로 구하고 지정 모서리 BE를 공유하는 두 옆면을 펼쳐 가로 AB+BC, 높이 BE인 직사각형의 대각선으로 최단 경로를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_825391e3b0296142046415c667c4a79e07b444543d4b2f0e6e66b752a593f0e4",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "구",
+            "src": "stem",
+            "quote": "반지름의 길이가 5인 구"
+          },
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔이 내접"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "원뿔의 부피를"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "r²+(h−5)²=25",
+            "evidenceType": "IMPLIED",
+            "justification": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "두 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "원뿔의 부피는 πr²h/3",
+            "evidenceType": "IMPLIED",
+            "justification": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다.",
+        "method": "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "구와 내접 원뿔의 축 단면에서 r²+(h−5)²=25, r²+h²=90을 세우고 두 관계를 빼 공통 반지름을 소거한다. 높이와 밑면 반지름을 복원한 뒤 원뿔 부피를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ad950dd07639aa2b0542553ec0a307cd84171ba6485b3b9082163b97a7332064",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "BM²=BC²+CM²",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "BM=BN인 이등변삼각형",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "B에서 MN에 내린 높이를 h",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다.",
+        "method": "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "정육면체의 수직인 모서리들로 BM·BN·MN을 구하고 BM=BN에서 목표 삼각형이 이등변임을 읽어 밑변의 절반과 빗변으로 높이를 다시 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e020183f6d4ce970a4870075afcf89dc2c7ffedf45404ef6117f6273e18c8fe8",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔에서"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 짧은 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개도",
+            "src": "solution",
+            "quote": "원뿔의 옆면을 한 바퀴 펼치면",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+          },
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "6\\cos60^\\circ=3",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "9^2+(3\\sqrt3)^2",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다.",
+        "method": "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "옆면 한 바퀴를 부채꼴로 펼쳐 중심각을 원주와 모선으로 정한다. 맞은편 절선의 중점 M′를 잡아 수선 성분을 계산하고 B와 M′의 직선거리가 허용된 최단 경로인지 확인한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c6c2f678e192986a952154937889d43310d78abd47a8522fc2d76152c2d1477a",
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "수학 점수와 편차"
+          },
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "학생 5명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a+b-c$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균은 $76-(-5)=81$",
+            "evidenceType": "IMPLIED",
+            "justification": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "다섯 편차의 합은 0",
+            "evidenceType": "IMPLIED",
+            "justification": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "$b=81+c=77$",
+            "evidenceType": "IMPLIED",
+            "justification": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다.",
+        "method": "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "점수와 편차의 차에서 공통 평균을 복원하고 편차 합 0으로 남은 편차를 정한 뒤 점수=평균+편차로 두 변량을 구해 식을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_8c5c53c61f64e3a2a25f11f0b2366608ecfa3d34bf0b798d46ec4958ee0fe22e",
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "ab/2=8",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "a²+b²=8²=64",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "(a+b)²=a²+b²+2ab",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "a+b>0"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다.",
+        "method": "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "넓이 조건으로 ab를, 피타고라스로 a²+b²를 구하고 (a+b)² 항등식에서 목표 합을 산출하여 길이의 양수 부호를 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3750e28aea1c0cae6bb08b6cb4f2fec79531a313f1b4b65f8ceb0d28bb471af0",
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "내린 수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "BH=√(BF²+FH²)",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "BF×FH/2=BH×FM/2",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다.",
+        "method": "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "정육면체에서 면 대각선 FH와 공간 대각선 BH를 피타고라스로 구한 뒤 직각삼각형 BFH의 넓이를 두 밑변으로 표현해 공간 대각선에 내린 높이 FM을 결정한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 133,
+    "quotesNotFound": 0,
+    "notes": "직접 본문·선택지·기존 해설을 읽고 각 문항의 분류·난도·4칸 의미를 판정했다. 기존 4칸은 현 버전과 대조 후 재사용/수정. 독립 검증은 root 담당으로 아직 미완료."
+  }
+}
