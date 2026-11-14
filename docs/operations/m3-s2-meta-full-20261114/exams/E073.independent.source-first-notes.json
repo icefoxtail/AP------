@@ -1,0 +1,27 @@
+{
+  "examId": "E073",
+  "reviewer": "root",
+  "scope": "Independent current source, choices, existing solution and required source figure inspection. No fresh blind exposure claim.",
+  "observations": {
+    "8": "편차 -2,-1,0,1,2의 도수3,6,5,4,2에서 가중편차합이 -4임을 직접 확인했다. 실제 편차표는 성립하지 않으므로 원문 QA HOLD를 유지한다. 의도된 풀이 구조는 도수가중 제곱합의 평균이며 FREQUENCY_TABLE PT와 4칸은 그 의도를 정확히 기록한다. 기존 2009 canonical null을 유지하고 의미 후보만 별도 등록 요청하는 것이 맞다.",
+    "18": "원본 정육면체와 AFH 평면에 대한 E의 높이를 확인했다. 쉬운 EAH 밑면으로 부피를 구한 뒤 정삼각형 AFH 밑면으로 바꾸어 같은 부피에서 높이를 역산한다. SOLID_FIGURE_MEASURE에 Pythagoras·삼각형넓이 CC를 연결하고 정확 TPL 공백을 보류한 판단을 수용한다.",
+    "22": "원본 정팔면체 모서리6과 대칭된 두 사각뿔을 확인했다. 정사각형 중심에서 꼭짓점까지 거리3√2, 사각뿔 높이3√2를 구해 두 부피를 합하는 실제 경로가 COMPOSITE_VOLUME_SUM TPL과 Pythagoras CC, SEQUENTIAL에 맞다. 4칸 분할/각뿔/높이 method가 빠지지 않았다."
+  },
+  "difficultyObservations": {
+    "20": [
+      3,
+      "정사면체 두 면의 2:1 분할에서 BE=BF=4√7, EF=8을 골라 단면 삼각형 높이를 구한다. 표준 단면 선택 한 번과 피타고라스 연결의 3/B34."
+    ]
+  },
+  "sourceCaveats": [
+    {
+      "ordinal": 8,
+      "type": "SOURCE_DATA_CONTRADICTION",
+      "reason": "도수가중 편차합 -4는 0이어야 하는 편차표 조건을 위반한다."
+    },
+    {
+      "ordinals": "1–23",
+      "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+    }
+  ]
+}

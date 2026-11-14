@@ -1,0 +1,4710 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E073",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "m3_b",
+  "rootIntegrator": "GPT_ROOT_9D4541661C34",
+  "independentReviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceBeforeBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+  "sourceAfterBlob": "d86cb3afce9957850a7f67be42e18cc9bbf05b90",
+  "sourceAfterSha256": "50690bef47993bc137e0107e9b1f10ad16003c08948a35a09b9fd68f15e28498",
+  "questionCount": 23,
+  "uidDigest": "b7c4a99e9512c6cd02d9c44c1ab62988cc7190466bef647d9240d3da33475342",
+  "authorRawReviewSha256": "2575153a7db394cb9a87f170d97cae7bc1305cbd695c1389031b3556ebac4603",
+  "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
+  "authority": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "existingEvidenceRefs": [
+    "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+  ],
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.source-patch.json",
+      "sha256": "a4c8841017be4e33d52295425cde5b31063ed0918fd394bfb3829b21bd44ad93"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.4slot.json",
+      "sha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.proposals.json",
+      "sha256": "d2c7bc4a7fd56f089f3c7bbb4eee1dd0dc75c33130c8d26057d8d17586d8c703"
+    },
+    "image-version-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.image-version-evidence.json",
+      "sha256": "a419c4a3334dfdb3b75cb1156604654e49d4e6ba5709278cb041b8dfeb17c64d"
+    },
+    "author-decisions.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.author-decisions.json",
+      "sha256": "40e951a0d6f822ed7d9847180d4c57d2a130210276939df32490b0a9ea68b315"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.independent.json",
+      "sha256": "16726f55936aad160849703a19b8bf456864d7669022daf3052f6447d1954a82"
+    },
+    "independent.independent-images.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.independent.independent-images.json",
+      "sha256": "f513600fea69f20670934190f27d175be6aec5e16497485087289342f871c866"
+    },
+    "independent.source-first-notes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.independent.source-first-notes.json",
+      "sha256": "36dbea39c82d9160065aad81a84e9e0a24c3f99810125ddb51a7775cc57f707c"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.difficulty-adjudication.json",
+      "sha256": "ec343dc8b9028b1c1f77c65a3ff3cf6852d0f7a109b18d3b974192dee162f40d"
+    },
+    "primaryAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.primary-adjudication.json",
+      "sha256": "f7f2b600ec85e14c1605670564d06677a0c2902f63094af6555628041a5dbde8"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_2a86d9c38bae118bcb96212bb3c423739a33cd0f018d2a728e9288a4ef3363ea",
+      "sourceQuestionNo": 1,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "자료의 중심경향·순서의 가운데·최대빈도라는 세 정의를 대푯값·중앙값·최빈값에 직접 대응한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "대푯값의 정의",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "대푯값의 정의",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "recordId": "M1-RPM-223-DEFINITION-AUDIT-20261113",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "unitKey": "RPM22-M1-L1-08",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "통계",
+            "L2": "대푯값",
+            "label": "대푯값",
+            "order": 17,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-081"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "자료의 중심경향·순서의 가운데·최대빈도라는 세 정의를 대푯값·중앙값·최빈값에 직접 대응한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "자료의 중심경향·순서의 가운데·최대빈도라는 세 정의를 대푯값·중앙값·최빈값에 직접 대응한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "정의의 단순 확인이며 추가 계산이나 경우분기가 없다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "자료의 중심경향·순서의 가운데·최대빈도라는 세 정의를 대푯값·중앙값·최빈값에 직접 대응한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "자료의 중심경향·순서의 가운데·최대빈도라는 세 정의를 대푯값·중앙값·최빈값에 직접 대응한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "903b2c92b688c902d763c6403deb9d9fe205d7f2edf68b1a8694e4548e63baa5",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "c37c7f96dbc180ac29a42edfeedc9314931c2b035d1cb33221888ff3370a0551"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_6d3ecec0345d0b9d1fb01142cc955a67c29ca96f42f08576058d8337b2a3841b",
+      "sourceQuestionNo": 2,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "신발사이즈별 출현 횟수를 세어 최다빈도4회인240을 최빈값으로 정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "최빈값",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "최빈값",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "최빈값"
+          },
+          "recordId": "M1-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "unitKey": "RPM22-M1-L1-08",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "통계",
+            "L2": "대푯값",
+            "label": "대푯값",
+            "order": 17,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-081"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "신발사이즈별 출현 횟수를 세어 최다빈도4회인240을 최빈값으로 정한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "신발사이즈별 출현 횟수를 세어 최다빈도4회인240을 최빈값으로 정한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "한 통계량을 정의에 따라 직접 계산한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "신발사이즈별 출현 횟수를 세어 최다빈도4회인240을 최빈값으로 정한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "신발사이즈별 출현 횟수를 세어 최다빈도4회인240을 최빈값으로 정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "63e2ad534965991d5ffaac50fbe5500d7d2d4fdc73df0313e57576027584299b",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "106fb12f2ec785d89dc7d51fbaecdb9d94347c6d8ef0b3fbb27b5bb82f2d799e"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_6921d3a96340c518f0ebd2e5ff635da7f3f4322c6210077e21ccedf21360d3c7",
+      "sourceQuestionNo": 3,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "일곱 자료를 오름차순 정렬하고 네 번째 값12를 중앙값으로 택한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "중앙값",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "중앙값",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "recordId": "M1-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "unitKey": "RPM22-M1-L1-08",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "통계",
+            "L2": "대푯값",
+            "label": "대푯값",
+            "order": 17,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-081"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "일곱 자료를 오름차순 정렬하고 네 번째 값12를 중앙값으로 택한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "일곱 자료를 오름차순 정렬하고 네 번째 값12를 중앙값으로 택한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "정렬 후 가운데 위치를 직접 선택한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "일곱 자료를 오름차순 정렬하고 네 번째 값12를 중앙값으로 택한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "ae2929526242064c086cd02f4a07a1aae0d081ff526c28fa84ff016cc883a04b",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "ed259663fc76b13cb1944a2d8c5fd70d65b42422c78ad20e53b021a3e746a3e2"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_27ccc52acc9f02c0352c384f8d8b56efcd400edbf66781bb1c66164856463fdc",
+      "sourceQuestionNo": 4,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "이미 크기순인 다섯 자료의 중앙값6을 평균과 같게 두어 누락값a=8을 구하고 순서조건과 맞는지 확인한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균과 중앙값의 관계",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균과 중앙값의 관계",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "평균",
+            "l4": "평균을 이용한 미지수"
+          },
+          "recordId": "M1-RPM-222",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "unitKey": "RPM22-M1-L1-08",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "통계",
+            "L2": "대푯값",
+            "label": "대푯값",
+            "order": 17,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "이미 크기순인 다섯 자료의 중앙값6을 평균과 같게 두어 누락값a=8을 구하고 순서조건과 맞는지 확인한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "이미 크기순인 다섯 자료의 중앙값6을 평균과 같게 두어 누락값a=8을 구하고 순서조건과 맞는지 확인한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "중앙값 결정 후 평균식을 세우는 정형적 두 단계.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "이미 크기순인 다섯 자료의 중앙값6을 평균과 같게 두어 누락값a=8을 구하고 순서조건과 맞는지 확인한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "7b167dc2068fe376b2f4ca16bf3d74d545249a83a687d386ffd61ae47bec56de",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "d481dbe707aac0fa10dd3522e2d67e02ea53ba55ffa29b20c847b1388da42ae9"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_a5943b957627d06a11c90ad93a6af125ce4301f912a5797d2a6078fb524a7560",
+      "sourceQuestionNo": 5,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균과 편차",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균과 편차",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-083"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+        "semanticPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다.",
+          "l4": "중심화 후 같은 상수로 나눈 세 변량의 평균을 구하는 선형변환 골격은 편차 개념leaf만으로 정확히 표시되지 않는다."
+        },
+        "gapReason": "중심화 후 같은 상수로 나눈 세 변량의 평균을 구하는 선형변환 골격은 편차 개념leaf만으로 정확히 표시되지 않는다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "평균의 합 관계를 문자식의 공통분모에 적용한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "평균m에서 x+y+z=3m을 얻고 세 중심화변량의 합0을 공통분모3a로 나누어 평균0을 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "중심화 후 같은 상수로 나눈 세 변량의 평균을 구하는 선형변환 골격은 편차 개념leaf만으로 정확히 표시되지 않는다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "b211eb976a827c4b2412bdac41a3a13240163711d31e838d94c398772a53a290",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "decf92b78135098ddc21ee668cdb28e4387a7fa68201a933a5c631e2ed83ca43"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_069de587bf2a9bec0808a648599dfaa90f2bde1d3740683f2ce7ae3825cab725",
+      "sourceQuestionNo": 6,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "총도수20과 가중평균3.5에서 두 미지 도수a,b의 연립일차방정식을 세워 a+2b를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "도수분포표의 평균",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "도수분포표의 평균",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_EQUATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "평균",
+            "l4": "평균을 이용한 미지수"
+          },
+          "recordId": "M1-RPM-222",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+            "unitKey": "RPM22-M1-L1-08",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "통계",
+            "L2": "대푯값",
+            "label": "대푯값",
+            "order": 17,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "총도수20과 가중평균3.5에서 두 미지 도수a,b의 연립일차방정식을 세워 a+2b를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "총도수20과 가중평균3.5에서 두 미지 도수a,b의 연립일차방정식을 세워 a+2b를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "독립인 두 명시조건을 두 선형식으로 옮겨 해를 구한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "총도수20과 가중평균3.5에서 두 미지 도수a,b의 연립일차방정식을 세워 a+2b를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "missingCurricula": [
+            "2015",
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "0c80f4025a6e1839cb12bcd48aec4fd250857166e1b74bc029467f3d724c8b85",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "f06ce9a3c50df172e69285330a6d7b14ca09063bf03b24677cf50673e6de38bb"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_05ebd824aeb9cb66da2e26085e048be2e1b04cc412f3c1c563efbceb09b9a1db",
+      "sourceQuestionNo": 7,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "편차의 합0으로 D의 편차-2를 복원한 뒤 평균72를 더해 원점수70을 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "편차와 원점수",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "편차와 원점수",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "편차",
+            "l4": "편차의 합"
+          },
+          "recordId": "M3-RPM-170",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "unitKey": "RPM22-M3-L1-07",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "통계",
+            "L2": "산포도",
+            "label": "산포도",
+            "order": 15,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-07"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-083"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "편차의 합0으로 D의 편차-2를 복원한 뒤 평균72를 더해 원점수70을 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "편차의 합0으로 D의 편차-2를 복원한 뒤 평균72를 더해 원점수70을 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "누락편차 복원과 변량 환산의 두 정형적 단계.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "편차의 합0으로 D의 편차-2를 복원한 뒤 평균72를 더해 원점수70을 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "편차의 합0으로 D의 편차-2를 복원한 뒤 평균72를 더해 원점수70을 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "572bfb328b337750dbb374b4ee49d3f3be7bf1e762bafd5d0782372cc06317ea",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "9464e26afe1acab1fe66908b3eaa3cdaf23ccc7a9e8c8b4f5ddd1faffbe267e8"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1",
+      "sourceQuestionNo": 8,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "주어진 표를 편차표로 해석하는 출제 의도는 편차제곱의 도수가중평균 계산이지만, 가중편차합-4로 편차의 필수조건0을 위반하여 원문 성립을 보류한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "편차와 분산",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "편차와 분산",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "분산과 표준편차",
+            "l4": "분산 계산"
+          },
+          "recordId": "M3-RPM-171",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "unitKey": "RPM22-M3-L1-07",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "통계",
+            "L2": "산포도",
+            "label": "산포도",
+            "order": 15,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-07"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-084"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "주어진 표를 편차표로 해석하는 출제 의도는 편차제곱의 도수가중평균 계산이지만, 가중편차합-4로 편차의 필수조건0을 위반하여 원문 성립을 보류한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "주어진 표를 편차표로 해석하는 출제 의도는 편차제곱의 도수가중평균 계산이지만, 가중편차합-4로 편차의 필수조건0을 위반하여 원문 성립을 보류한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "정상 편차표라면 직접 가중제곱평균인 표준형이며 자료 결함 자체를 난도상승 근거로 삼지 않는다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "주어진 표를 편차표로 해석하는 출제 의도는 편차제곱의 도수가중평균 계산이지만, 가중편차합-4로 편차의 필수조건0을 위반하여 원문 성립을 보류한다."
+      },
+      "debts": [
+        {
+          "type": "CONTENT_STATISTICAL_DATA_INCONSISTENCY",
+          "reason": "편차(-2,-1,0,1,2)의 도수(3,6,5,4,2)에 대한 가중편차합은 -2×3-1×6+0×5+1×4+2×2=-4로0이 아니다. 따라서 실제 평균에 대한 편차표가 될 수 없다. source는 제곱가중평균1.5를 답으로 제시하지만 전제가 불가능하다. 원문/PDF 수치 확인 전 출고 보류."
+        },
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "주어진 표를 편차표로 해석하는 출제 의도는 편차제곱의 도수가중평균 계산이지만, 가중편차합-4로 편차의 필수조건0을 위반하여 원문 성립을 보류한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "1172c3d4722fc394b903dcd8d0f4ad7303554c29dcdbc40281dce7aff60b6001",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "8297d6ad0aa4cce177b51e9d725c5359b7aeca4744de7d04a0f7ed74c517a83a"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_0f983ac6aa03550dc423d1e6f1a7f55f83d0da9b1bdbc6bcfca9314b19d0424b",
+      "sourceQuestionNo": 9,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균·표준편차 조건과 역수의 합",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "평균·표준편차 조건과 역수의 합",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-087"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+        "semanticPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다.",
+          "l4": "평균·표준편차로 두 미지 변량의 곱과 역수합을 복원하는 결합leaf가 확인되지 않아 일반 자료추론은 비교항으로만 남긴다."
+        },
+        "gapReason": "평균·표준편차로 두 미지 변량의 곱과 역수합을 복원하는 결합leaf가 확인되지 않아 일반 자료추론은 비교항으로만 남긴다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "통계조건을 두 독립 대수식으로 바꾸고 목표에 필요한 곱을 간접 복원해야 한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "평균으로 x+y를, 표준편차로 중심화제곱합을 얻은 뒤 대칭식 항등식으로 xy를 복원하여 역수합을 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "평균·표준편차로 두 미지 변량의 곱과 역수합을 복원하는 결합leaf가 확인되지 않아 일반 자료추론은 비교항으로만 남긴다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "f72af8ac29dbecf99ce2b0af52b7f980820e38c30312e0d13648fa00a9ec3094",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "ad1c76022bf5266629d84d657a75a3320d116206cfd6514bc95c677ef2e92e6f"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d16f3363516fe494e67303a2597fee03a6a3da07697d063449a63d9c9b7f33e5",
+      "sourceQuestionNo": 10,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "자료 전체에 상수를 더할 때",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "자료 전체에 상수를 더할 때",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-086"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+        "semanticPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다.",
+          "l4": "상수 가산에 대한 통계량의 불변성은 단순 집단 산포도 비교와 구별되는 정확leaf가 필요하다."
+        },
+        "gapReason": "상수 가산에 대한 통계량의 불변성은 단순 집단 산포도 비교와 구별되는 정확leaf가 필요하다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "동일한 상수 추가의 기본 통계 성질을 직접 적용한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "전체 점수에5를 더할 때 평균도5 증가하므로 각 편차는 불변이고 분산·표준편차가 그대로임을 판정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "상수 가산에 대한 통계량의 불변성은 단순 집단 산포도 비교와 구별되는 정확leaf가 필요하다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "4c75496a40c9cd6b617527edfec80776b9b75285cdcbdf1aaef49871fca35d08",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "9933ece246495f3855e890e1afbd04161c24b8a37a6d0b098d836d711e65901c"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_6b127a7387558b364dc302f8e683f1ad82afed20a9c108a035c5a6cb663ad45e",
+      "sourceQuestionNo": 11,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "직사각형 대각선의 피타고라스 제곱합으로 외접원과 네 반원의 넓이합이 같음을 보이고 공통활꼴을 제거해 색칠넓이=직사각형넓이를 얻는다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직사각형에 붙은 반원과 외접원의 넓이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_CIRCUMCIRCLE",
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직사각형에 붙은 반원과 외접원의 넓이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_CIRCUMCIRCLE",
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "직사각형 대각선의 피타고라스 제곱합으로 외접원과 네 반원의 넓이합이 같음을 보이고 공통활꼴을 제거해 색칠넓이=직사각형넓이를 얻는다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_POLYGON_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "직사각형 대각선의 피타고라스 제곱합으로 외접원과 네 반원의 넓이합이 같음을 보이고 공통활꼴을 제거해 색칠넓이=직사각형넓이를 얻는다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "서로 다른 원 영역의 공통부분을 동일하게 제거하는 관찰이 핵심이며 공식 대입만으로 목표가 바로 나오지 않는다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "직사각형 대각선의 피타고라스 제곱합으로 외접원과 네 반원의 넓이합이 같음을 보이고 공통활꼴을 제거해 색칠넓이=직사각형넓이를 얻는다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "d0d606ea9017bc549cfa2d9681a721a35175d4e9f9aa48263e46b75db0307ea9",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+        "crossConceptKeys": [
+          "CC_POLYGON_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "69054580ef1e6c526dd05ad5d82b6c3e157efaa2448f4de48d609a2c2319a438"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_bc3b8d87f189e64570c8f3bd83d779247d1e795444bcaaabbad04809ae4b0331",
+      "sourceQuestionNo": 12,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "피타고라스로 AE=6을 구하고 EG와AD의 수직을 확인한 뒤 빗변 수선의 닮음 AE²=AF·AD로 AF를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직각삼각형의 빗변과 높이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직각삼각형의 빗변과 높이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          },
+          "recordId": "M2-RPM-207",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"도형의 닮음\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"도형의 닮음\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "도형의 닮음",
+            "label": "도형의 닮음",
+            "order": 15,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-089"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "피타고라스로 AE=6을 구하고 EG와AD의 수직을 확인한 뒤 빗변 수선의 닮음 AE²=AF·AD로 AF를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "피타고라스로 AE=6을 구하고 EG와AD의 수직을 확인한 뒤 빗변 수선의 닮음 AE²=AF·AD로 AF를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "주어진 수선이 빗변의 높이임을 판독하고 정형적 닮음 길이식을 적용한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "피타고라스로 AE=6을 구하고 EG와AD의 수직을 확인한 뒤 빗변 수선의 닮음 AE²=AF·AD로 AF를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "612f653f91f6b0a95c48b65a690a5dcfc66fe9124415439975314f97199ac735",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_FIGURE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "c17818f3717ed62053dc88b94ecefc4f236c5bbc712982beb8973d946545cbde"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_d039ee0f6e0429ef22c4300beac56b2c44631ab40d880f2080ce4b7626551849",
+      "sourceQuestionNo": 13,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "정육각형을 중심과 여섯 꼭짓점을 이은 정삼각형으로 분할하여 외접반지름=한변1임을 보고 마주보는 꼭짓점 거리=지름2를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정육각형의 대각선",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_REGULAR_HEXAGON",
+          "CC_CIRCUMCIRCLE",
+          "CC_DIAMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정육각형의 대각선",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_REGULAR_HEXAGON",
+          "CC_CIRCUMCIRCLE",
+          "CC_DIAMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "평면도형",
+            "midUnit": "다각형",
+            "l3": "정다각형",
+            "l4": "정다각형의 성질"
+          },
+          "recordId": "M1-RPM-199",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+            "unitKey": "RPM22-M1-L1-06",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "평면도형",
+            "L2": "다각형",
+            "label": "다각형",
+            "order": 13,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-1-06"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "정다각형의 성질",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "recordId": "M1-RPM-086"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "정육각형을 중심과 여섯 꼭짓점을 이은 정삼각형으로 분할하여 외접반지름=한변1임을 보고 마주보는 꼭짓점 거리=지름2를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "정육각형을 중심과 여섯 꼭짓점을 이은 정삼각형으로 분할하여 외접반지름=한변1임을 보고 마주보는 꼭짓점 거리=지름2를 구한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "정육각형의 기본 대칭·정삼각형 구조를 직접 읽는다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정육각형을 중심과 여섯 꼭짓점을 이은 정삼각형으로 분할하여 외접반지름=한변1임을 보고 마주보는 꼭짓점 거리=지름2를 구한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "정육각형을 중심과 여섯 꼭짓점을 이은 정삼각형으로 분할하여 외접반지름=한변1임을 보고 마주보는 꼭짓점 거리=지름2를 구한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "16b44c2ad97f1d33a8afd5a7e4424a203498e05510efeb4f23e587f5ea28733d",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "686604d1fd03ce133bfc6bfc941b20aa187364ebdfcc91b1c18d13f3be328c8a"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_659dd7508f4a6cc9e661654cd4e8a64c1684857893b8303ca07e1aa15c2fd218",
+      "sourceQuestionNo": 14,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "30-60-90 직각삼각형에서 첫 길이와 공유변을 구하고 연결된45-45-90 직각삼각형에서 두번째 길이를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "특수각을 포함한 두 직각삼각형",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "특수각을 포함한 두 직각삼각형",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비와 길이",
+            "l4": "각을 이용한 길이"
+          },
+          "recordId": "M3-RPM-148",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비와 길이",
+          "l4": "각을 이용한 길이",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-060"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "30-60-90 직각삼각형에서 첫 길이와 공유변을 구하고 연결된45-45-90 직각삼각형에서 두번째 길이를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "30-60-90 직각삼각형에서 첫 길이와 공유변을 구하고 연결된45-45-90 직각삼각형에서 두번째 길이를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "서로 다른 특수각 비를 공유변으로 한 번 연결한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "30-60-90 직각삼각형에서 첫 길이와 공유변을 구하고 연결된45-45-90 직각삼각형에서 두번째 길이를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "8f3407c686ba119639479abf8b685b47be6bde380e3be26aa116e70f77df93c8",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "c46f15bf921640fb98e1bf20c6851742b730d7412624e827f224367397193356"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_b581b17bde44c662b8ccfa09adeaf2822e1fa4bd9cb6f56fce52803de9ffc7ee",
+      "sourceQuestionNo": 15,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "접기 대칭과 평행선의 각으로 FB=FD를 도출하고 AF=x로 둔 피타고라스식에서 x를 구한 뒤 삼각형 넓이를 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직사각형 접기와 반사",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_REFLECTION",
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직사각형 접기와 반사",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_REFLECTION",
+          "CC_RIGHT_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "접기 대칭과 평행선의 각으로 FB=FD를 도출하고 AF=x로 둔 피타고라스식에서 x를 구한 뒤 삼각형 넓이를 계산한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_REFLECTION",
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "rationale": "접기 대칭과 평행선의 각으로 FB=FD를 도출하고 AF=x로 둔 피타고라스식에서 x를 구한 뒤 삼각형 넓이를 계산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "반사·각 전이로 숨은 등변관계를 찾아 길이 방정식에 결합해야 한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "접기 대칭과 평행선의 각으로 FB=FD를 도출하고 AF=x로 둔 피타고라스식에서 x를 구한 뒤 삼각형 넓이를 계산한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "658867a61e718a299ca4ee1b5acdbf7a7e58029182917a65b32fca7bf3d7794c",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_REFLECTION",
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "6f720b51b243508ed26efcd4414788b154cea2614a0f6546d3acafa87c964498"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_567728bef2f6718337448505336dba083df7055980f6a556dcb6601eca53cc88",
+      "sourceQuestionNo": 16,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "이등변삼각형과 수선 거리의 합",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "이등변삼각형과 수선 거리의 합",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+        "semanticPath": {
+          "majorUnit": "피타고라스 정리",
+          "midUnit": "피타고라스 정리의 활용",
+          "l3": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다.",
+          "l4": "동일한 두 변을 밑변으로 한 넓이의 가법성으로 내부점의 두 수선거리 합을 구하는 정확leaf가 없다. 피타고라스 활용은 전체넓이 계산의 비교경로이다."
+        },
+        "gapReason": "동일한 두 변을 밑변으로 한 넓이의 가법성으로 내부점의 두 수선거리 합을 구하는 정확leaf가 없다. 피타고라스 활용은 전체넓이 계산의 비교경로이다."
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "움직이는 점의 두 길이를 각각 구하지 않고 넓이 가법성으로 합을 한 번에 복원해야 한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "피타고라스로 이등변삼각형의 전체높이와 넓이를 구하고 두 부분삼각형 넓이의 합에서 공통밑변5를 묶어 두 수선길이 합을 얻는다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "동일한 두 변을 밑변으로 한 넓이의 가법성으로 내부점의 두 수선거리 합을 구하는 정확leaf가 없다. 피타고라스 활용은 전체넓이 계산의 비교경로이다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "60a16de80d59bac0bd2a8f52c3ec1713c9fb2e7648e4abbfa27452d15f592c7f",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "37bf6f4fa61380fa00bacd7da362ae20835d235d9ebf807f7830530f73bb6e85"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_22e297193c6bb1b5e01150bb9917b342753e4901bd8f6ef7d41e6848ea9f1bdf",
+      "sourceQuestionNo": 17,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "두 좌표의 가로차3과 세로차-2를 직각변으로 삼아 피타고라스 거리√13을 계산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "좌표평면의 두 점 사이 거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "기하",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "좌표평면의 두 점 사이 거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_DISTANCE_TWO_POINTS",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "recordId": "M2-RPM-223",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-105"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "두 좌표의 가로차3과 세로차-2를 직각변으로 삼아 피타고라스 거리√13을 계산한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "두 좌표의 가로차3과 세로차-2를 직각변으로 삼아 피타고라스 거리√13을 계산한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "직각변 두 개를 좌표차로 바로 읽는 기본 계산.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "두 좌표의 가로차3과 세로차-2를 직각변으로 삼아 피타고라스 거리√13을 계산한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "a96514c0b13706454de34a8380e985cc893ee14f47a6c7ca02437f35723aec36",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "f516297f280678573f42f8c827551a3f2215122156039929d37b149351d3f3e5"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_62c77e5b3185cdeb5cbe69fab9aa4f47ddaa9bc9cb061f6b39c5cccaea5a81ec",
+      "sourceQuestionNo": 18,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "사면체를 EAH밑면으로 보아 쉬운 부피를 먼저 구하고 AFH밑면의 정삼각형넓이를 구한 뒤 같은 부피식에서 원하는 높이를 역산한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정육면체 꼭짓점과 평면 사이 거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정육면체 꼭짓점과 평면 사이 거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 겉넓이와 부피",
+            "l3": "뿔의 겉넓이와 부피",
+            "l4": "각뿔"
+          },
+          "recordId": "M1-RPM-215",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+            "unitKey": "RPM22-M1-L1-07",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "입체도형",
+            "L2": "입체도형의 겉넓이와 부피",
+            "label": "입체도형의 겉넓이와 부피",
+            "order": 16,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-1-07"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "뿔의 겉넓이와 부피",
+          "l4": "각뿔",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "recordId": "M1-RPM-102"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "사면체를 EAH밑면으로 보아 쉬운 부피를 먼저 구하고 AFH밑면의 정삼각형넓이를 구한 뒤 같은 부피식에서 원하는 높이를 역산한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": true
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "사면체를 EAH밑면으로 보아 쉬운 부피를 먼저 구하고 AFH밑면의 정삼각형넓이를 구한 뒤 같은 부피식에서 원하는 높이를 역산한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "같은 사면체의 밑면을 바꾸어 알려진 높이와 원하는 높이를 연결하는 공간추론이 필요.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "사면체를 EAH밑면으로 보아 쉬운 부피를 먼저 구하고 AFH밑면의 정삼각형넓이를 구한 뒤 같은 부피식에서 원하는 높이를 역산한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "사면체를 EAH밑면으로 보아 쉬운 부피를 먼저 구하고 AFH밑면의 정삼각형넓이를 구한 뒤 같은 부피식에서 원하는 높이를 역산한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "f8ea639cc4f27dbd93174c9957e1780f19a3f19c1feefa2a2d15c4dbcf288766",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "dd1a83abab6c9bd0ca7029582338e8db3489a5568ecd6ca139cf20fc76a40425"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_0e9d8a33d76c9b26427dad3620ad544eab943ce879d6ca6a4000c7884a883ec5",
+      "sourceQuestionNo": 19,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "정사면체 두 면을 펼쳐 최단경로를 직선으로 옮기고 높이합과 수선발간격으로 거리를 구한 후 교점이 지정 선분 안에 있음을 확인한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정사면체 표면의 최단거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정사면체 표면의 최단거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "정사면체 두 면을 펼쳐 최단경로를 직선으로 옮기고 높이합과 수선발간격으로 거리를 구한 후 교점이 지정 선분 안에 있음을 확인한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "정사면체 두 면을 펼쳐 최단경로를 직선으로 옮기고 높이합과 수선발간격으로 거리를 구한 후 교점이 지정 선분 안에 있음을 확인한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "공간면의 전개·비대칭 시작점의 투영·경로실현 범위 확인이 연속 의존한다.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정사면체 두 면을 펼쳐 최단경로를 직선으로 옮기고 높이합과 수선발간격으로 거리를 구한 후 교점이 지정 선분 안에 있음을 확인한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "620f21c292127149d7115ae1a06bf5c371fe6580f63b3feaf184805bc8129f4c",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "6688c85b00f24dfa29a440358d3435957cbfb1b67e2060bc5ff526fe0e652544"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_d9eea39cb4893fe38be47534a0354f8fb98465fe9717b517f8bf14fb0ea02ef6",
+      "sourceQuestionNo": 20,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "정삼각형 면에서 내분점까지의 거리를 피타고라스로 두 번 구하고 최종 이등변삼각형의 높이와 넓이를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정사면체의 내부분할 삼각형 넓이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정사면체의 내부분할 삼각형 넓이",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "정삼각형 면에서 내분점까지의 거리를 피타고라스로 두 번 구하고 최종 이등변삼각형의 높이와 넓이를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "정삼각형 면에서 내분점까지의 거리를 피타고라스로 두 번 구하고 최종 이등변삼각형의 높이와 넓이를 구한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "면별 직각삼각형을 복원해 동일한 길이계산을 순차 적용하는 복합형.",
+        "boundary": "B34"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정삼각형 면에서 내분점까지의 거리를 피타고라스로 두 번 구하고 최종 이등변삼각형의 높이와 넓이를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "a8850e47c5335fb1d0f2acd4b37e8b98b728cd8b9c32e0de1bd6b667e0c1c6be",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "c3f9ce70d0eaefafc66b9305d45394bc38569c390375ae78decb5070fb9bf129"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9b55ab3e12d5214cdd0e07c0e63a62c82145c916a06112f88b616913042a0236",
+      "sourceQuestionNo": 21,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "두 선수의 평균71을 각각 계산하고 편차제곱평균5와8을 비교하여 분산이 작은A의 기록이 더 고름을 판정한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "NOT_PRESENT",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "두 자료의 평균·분산과 산포 비교",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "통계",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "두 자료의 평균·분산과 산포 비교",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "자료 비교",
+            "l4": "두 집단 비교"
+          },
+          "recordId": "M3-RPM-174",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+            "unitKey": "RPM22-M3-L1-07",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "통계",
+            "L2": "산포도",
+            "label": "산포도",
+            "order": 15,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-07"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "recordId": "M3-RPM-086"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": null,
+        "judgment": "NATIVE_TEMPLATE_GAP",
+        "reason": "두 선수의 평균71을 각각 계산하고 편차제곱평균5와8을 비교하여 분산이 작은A의 기록이 더 고름을 판정한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": false,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "두 선수의 평균71을 각각 계산하고 편차제곱평균5와8을 비교하여 분산이 작은A의 기록이 더 고름을 판정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "소문항에서 평균·분산·비교가 순서대로 지정된 표준 계산.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "두 선수의 평균71을 각각 계산하고 편차제곱평균5와8을 비교하여 분산이 작은A의 기록이 더 고름을 판정한다."
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "reason": "두 선수의 평균71을 각각 계산하고 편차제곱평균5와8을 비교하여 분산이 작은A의 기록이 더 고름을 판정한다. 이 풀이 골격과 정확히 일치하는 ACTIVE TPL이 없어 신규 등록안으로 인계한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "92b2e266227ef15b1614914211d4e1d2e498b4618684540d0d4e08704bbcee3b",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "b63db8f5f90447bd4b3ebc86e25daadaf269e64dc8e3a581e841c2c48d44c07e"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d85892ceefbd2568f6f4dc87fc256a6b2bad1fdf27e036399e6529aed90d53c7",
+      "sourceQuestionNo": 22,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "정팔면체를 같은 정사각형밑면의 두 사각뿔로 나누고 피타고라스로 높이를 구해 각 부피를 더한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정팔면체의 부피",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "정팔면체의 부피",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "입체도형",
+            "midUnit": "입체도형의 겉넓이와 부피",
+            "l3": "복합입체도형",
+            "l4": "붙인 입체"
+          },
+          "recordId": "M1-RPM-220",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+            "parentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+            "unitKey": "RPM22-M1-L1-07",
+            "grade": "중1",
+            "gradeKey": "M1",
+            "curriculumKey": "2022",
+            "courseKey": "M1-2",
+            "L1": "입체도형",
+            "L2": "입체도형의 겉넓이와 부피",
+            "label": "입체도형의 겉넓이와 부피",
+            "order": 16,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-1-07"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "붙인 입체",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "recordId": "M1-RPM-107"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "정팔면체를 같은 정사각형밑면의 두 사각뿔로 나누고 피타고라스로 높이를 구해 각 부피를 더한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": true
+        },
+        "status": "SEMANTIC_COMPLETE"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "정팔면체를 같은 정사각형밑면의 두 사각뿔로 나누고 피타고라스로 높이를 구해 각 부피를 더한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "입체분할과 정사각형의 반대각선을 높이 직각삼각형으로 옮기는 단계가 필요.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "정팔면체를 같은 정사각형밑면의 두 사각뿔로 나누고 피타고라스로 높이를 구해 각 부피를 더한다."
+      },
+      "debts": [
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "e0a417d01cf639996951a0ba1ea8223241ea84fdd7cd96785091ac2b16c21937",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "subUnit": "입체도형의 측정",
+        "conceptClusterKey": "SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "058a6be3abd2f185de3e161035386c696463f8d58533124b76b8c7a2d13eb23e"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_6c554b4ae902f7cfb851e8d71a87fe4bddb60c29160bc10d05ebe34abb70bd42",
+      "sourceQuestionNo": 23,
+      "decision": "REVIEW_COMPLETE_WITH_EXPLICIT_REGISTRATION_HOLD",
+      "decisiveStep": "앞면과 오른쪽면을 지정모서리를 따라 펼쳐 가로24·세로7의 직선을 만들고 모서리내 교점을 확인하여 피타고라스 거리25를 구한다.",
+      "evidenceRead": {
+        "stem": true,
+        "choices": true,
+        "answer": true,
+        "existingSolution": true,
+        "image": "READ",
+        "solutionImage": "NOT_RELIED_ON_EXISTING_TEXT_SOLUTION_READ"
+      },
+      "before": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직육면체 표면을 지나는 최단거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "after": {
+        "curriculum": "2009",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": null,
+        "standardUnit": "입체도형",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": "직육면체 표면을 지나는 최단거리",
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": null,
+        "rpmPrimaryId": null,
+        "rpmL3": null,
+        "rpmL4": null
+      },
+      "rpm": {
+        "originalCurriculum": "2009",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT_SOURCE_CURRICULUM",
+          "sourceField": "curriculum/rpmCurriculum",
+          "value": "2009",
+          "comparisonPathCurriculum": "2015",
+          "note": "2009 원본 canonical fields는 유지한다. 비교용2015행/2022경로와 제안키는 sidecar에만 기록한다."
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "입체도형 거리"
+          },
+          "recordId": "M2-RPM-224",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        },
+        "comparisonOnly": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "입체도형 거리",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "recordId": "M2-RPM-106"
+        },
+        "status": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+      },
+      "compatibility": {
+        "semanticTemplate": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "judgment": "ACTIVE_SEMANTIC_REUSE_BINDING_CHECKED",
+        "reason": "앞면과 오른쪽면을 지정모서리를 따라 펼쳐 가로24·세로7의 직선을 만들고 모서리내 교점을 확인하여 피타고라스 거리25를 구한다.",
+        "sourceWritePolicy": "2009 canonical projection은 source 기존값 보존. 모든 의미 제안키는 proposedMetadata에만 기록하며 등록 담당의 공식 결정을 기다린다.",
+        "bindingEvidence": {
+          "2015": true,
+          "2022": false
+        },
+        "status": "SEMANTIC_COMPLETE_PROJECTION_PENDING"
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "rationale": "앞면과 오른쪽면을 지정모서리를 따라 펼쳐 가로24·세로7의 직선을 만들고 모서리내 교점을 확인하여 피타고라스 거리25를 구한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "지나야 할 모서리가 지정되어 전개 선택이 하나로 정해진 표준 최단경로.",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "AUTHORED",
+        "rationale": "앞면과 오른쪽면을 지정모서리를 따라 펼쳐 가로24·세로7의 직선을 만들고 모서리내 교점을 확인하여 피타고라스 거리25를 구한다."
+      },
+      "debts": [
+        {
+          "type": "CURRICULUM_BINDING_GAP",
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "missingCurricula": [
+            "2022"
+          ],
+          "reason": "전역 ACTIVE 의미 재사용과 해당 교육과정/단원 exact binding을 구분한다."
+        },
+        {
+          "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED",
+          "reason": "원본2009 교육과정의 정확한 canonical curriculum binding이 등록·검증되지 않아 기존 null key를 유지한다.",
+          "nextAction": "2009 정식 curriculum binding을 등록하거나 담당자가 승인한 현행교육과정 투영을 마련한 후, proposedMetadata의 제안키·2015 비교행·2022경로를 재검증하여 일괄 반영한다."
+        }
+      ],
+      "solutionEvidenceProvenance": {
+        "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+        "newR1R2R3": false,
+        "reviewStatus": null,
+        "solutionSource": null,
+        "sourceBlob": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+        "solutionSha256": "fb0f188616370302e1cd4248b903d1eb2b8318fa92aefc6b27aef134c9f04102",
+        "previousEvidenceRefs": [
+          "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        ]
+      },
+      "proposedMetadata": {
+        "curriculum": "2009",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "operationalBeforeDelta": {
+        "standardUnitKey": "",
+        "subUnitKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "secondaryConceptKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null
+      },
+      "operationalRecordBeforeSha256": "c784c0076663298c6ab1a3a835240979497e59abbf743d4bbecf66be3626d77d"
+    }
+  ],
+  "authorSummary": {
+    "items": 23,
+    "decisions": {
+      "CORRECT": 23
+    },
+    "topics": {
+      "통계 > 대푯값과 산포도": 11,
+      "도형의 닮음과 피타고라스 정리 > 피타고라스 정리": 7,
+      "도형의 닮음과 피타고라스 정리 > 도형의 닮음": 1,
+      "평면도형 > 다각형": 1,
+      "삼각비 > 삼각비": 1,
+      "입체도형 > 입체도형의 겉넓이와 부피": 2
+    },
+    "exactDebt": {
+      "NATIVE_TEMPLATE_GAP": 11,
+      "CURRICULUM_BINDING_GAP": 17,
+      "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED": 23,
+      "RPM_LEAF_GAP": 4,
+      "CONTENT_STATISTICAL_DATA_INCONSISTENCY": 1
+    },
+    "newMathVerification": false,
+    "explicitRegistrationHold": 23
+  },
+  "warningReview": null,
+  "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "semanticPayloadSha256": "5f2d82a04c9094129f4edd12103d383b98d33246a2138a3f4dd72683bcd0b760",
+  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND"
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E073",
+  "author": "m3_b",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "41bc3fd1c02259a3bce6553eafa39670303bb451",
+  "targetReviewSha256": "2575153a7db394cb9a87f170d97cae7bc1305cbd695c1389031b3556ebac4603",
+  "target4slotSha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9",
+  "sampledSourcePatchSha256": "a4c8841017be4e33d52295425cde5b31063ed0918fd394bfb3829b21bd44ad93",
+  "sampleOrdinals": [
+    8,
+    18,
+    22
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "편차 -2,-1,0,1,2의 도수3,6,5,4,2에서 가중편차합이 -4임을 직접 확인했다. 실제 편차표는 성립하지 않으므로 원문 QA HOLD를 유지한다. 의도된 풀이 구조는 도수가중 제곱합의 평균이며 FREQUENCY_TABLE PT와 4칸은 그 의도를 정확히 기록한다. 기존 2009 canonical null을 유지하고 의미 후보만 별도 등록 요청하는 것이 맞다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_62c77e5b3185cdeb5cbe69fab9aa4f47ddaa9bc9cb061f6b39c5cccaea5a81ec",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 정육면체와 AFH 평면에 대한 E의 높이를 확인했다. 쉬운 EAH 밑면으로 부피를 구한 뒤 정삼각형 AFH 밑면으로 바꾸어 같은 부피에서 높이를 역산한다. SOLID_FIGURE_MEASURE에 Pythagoras·삼각형넓이 CC를 연결하고 정확 TPL 공백을 보류한 판단을 수용한다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d85892ceefbd2568f6f4dc87fc256a6b2bad1fdf27e036399e6529aed90d53c7",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 정팔면체 모서리6과 대칭된 두 사각뿔을 확인했다. 정사각형 중심에서 꼭짓점까지 거리3√2, 사각뿔 높이3√2를 구해 두 부피를 합하는 실제 경로가 COMPOSITE_VOLUME_SUM TPL과 Pythagoras CC, SEQUENTIAL에 맞다. 4칸 분할/각뿔/높이 method가 빠지지 않았다.",
+      "quotesChecked": 6,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 8,
+      "type": "SOURCE_DATA_CONTRADICTION",
+      "reason": "도수가중 편차합 -4는 0이어야 하는 편차표 조건을 위반한다."
+    },
+    {
+      "ordinals": "1–23",
+      "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "36dbea39c82d9160065aad81a84e9e0a24c3f99810125ddb51a7775cc57f707c"
+}
