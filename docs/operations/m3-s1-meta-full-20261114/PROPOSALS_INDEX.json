@@ -5097,6 +5097,503 @@
       },
       "validationErrors": [],
       "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 5,
+      "questionUid": "qid_v1_b5d218185e2382d0290fc8ad4c4ed4e33224e015809e8e7b028e0d87722edf93",
+      "nativeRpm": "M3-RPM-033",
+      "rpm2022": "M3-RPM-125",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "(x-p)^2=q 꼴로 변형한 뒤 제곱근의 성질로 x=p±√q를 구하고 분모를 유리화하여 해를 정리한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-03",
+              "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+              "status": "ACTIVE",
+              "L1": "이차방정식",
+              "L2": "이차방정식의 풀이"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 8,
+      "questionUid": "qid_v1_ed883442b65ee1cd3b77bb84cb947cd64655b56b27c4740361d1cdc8116252d8",
+      "nativeRpm": "M3-RPM-036",
+      "rpm2022": "M3-RPM-128",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        },
+        {
+          "kind": "CURRICULUM_METHOD_REVIEW",
+          "reason": "현재 solution에 판별식0을 직접 사용한다. 중3 완전제곱식 기반 중근 조건으로 설명할지 출고 작성자가 확인해야 하며 이번 메타 작업은 기존 solution을 바꾸거나 새 수학 PASS를 만들지 않는다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "이차방정식 또는 제곱꼴 방정식이 중근을 갖기 위한 조건을 판정하고, 그 조건을 만족하는 매개변수·상수 값을 결정한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-03",
+              "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+              "status": "ACTIVE",
+              "L1": "이차방정식",
+              "L2": "이차방정식의 풀이"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 11,
+      "questionUid": "qid_v1_c46ae41c7d14bee6da2abd94471160d94a40387684084f00a2ce27b6fa7c3733",
+      "nativeRpm": "M3-RPM-043",
+      "rpm2022": null,
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        },
+        {
+          "kind": "RPM_2022_LEAF_GAP",
+          "reason": "2022 기본 y=ax² 그래프 leaf를 일반식이 이차함수가 될 조건과 동일시하지 않는다. 이차함수의 뜻/판별 leaf 대응이 필요하다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "실생활·도형 관계식이 y=ax^2+bx+c (a≠0) 꼴인지 판별하여 이차함수인 것을 고른다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 12,
+      "questionUid": "qid_v1_33121fa1e34118b7b127ac3eaa61f6b8e105934a6318da8d4a5fd2aae31c2783",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        {
+          "kind": "RPM_LEAF_GAP",
+          "reason": "이차함수 > 이차함수의 활용 > 실생활 이차모형 > 두 일차량의 곱과 함숫값. 중3 그래프(1)/(2) 아래 대응 활용 leaf 검토 필요.",
+          "supportingQuestionUid": "qid_v1_33121fa1e34118b7b127ac3eaa61f6b8e105934a6318da8d4a5fd2aae31c2783"
+        },
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "실생활 상황을 이차함수로 모델링하고 꼭짓점·함숫값을 이용해 최고점·도달 조건을 구한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 13,
+      "questionUid": "qid_v1_7cc55c266e27b4d1eee986eca822ed4e89eadf9f3c6493cf340e020e41ef9894",
+      "nativeRpm": "M3-RPM-045",
+      "rpm2022": "M3-RPM-135",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점·축·y절편·볼록성·폭을 근거로 이차함수 그래프의 공통점·차이를 비교하고 주어진 진술의 참·거짓을 판정한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 14,
+      "questionUid": "qid_v1_34784813225155349d61e202f256ad2bcad7c8bfddb82a53e2e60f37c800bfe9",
+      "nativeRpm": "M3-RPM-049",
+      "rpm2022": "M3-RPM-136",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "y=ax^2의 그래프를 x축·y축 방향으로 평행이동한 식과 이동량을 상호 결정하고, 이동이 만드는 길이·좌표·계수 합을 구한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 15,
+      "questionUid": "qid_v1_694b47bbd536e7bdcff6af286145407ce345e761d6020e826b3bb53da9ae7182",
+      "nativeRpm": "M3-RPM-049",
+      "rpm2022": "M3-RPM-136",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "y=ax^2의 그래프를 x축·y축 방향으로 평행이동한 식과 이동량을 상호 결정하고, 이동이 만드는 길이·좌표·계수 합을 구한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 16,
+      "questionUid": "qid_v1_113f76a077282bd62c63d26efa705aa430ae91e5a591c242cdf54936fa2140ac",
+      "nativeRpm": "M3-RPM-053",
+      "rpm2022": null,
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        },
+        {
+          "kind": "RPM_2022_LEAF_GAP",
+          "reason": "2022 일반형 그래프/그래프 그리기와 계수 부호의 일차함수 전이는 동일한 leaf가 아니므로 대응 leaf 확장을 제안한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "포물선의 볼록성, 꼭짓점의 사분면, x축 교점 개수·절편을 근거로 계수와 상수의 부호 및 함숫값 식의 참·거짓을 판정한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 18,
+      "questionUid": "qid_v1_5043120026643ef9601d7a2dc4ffc5a6631afc48b2cdf50bad4254d266da439e",
+      "nativeRpm": "M3-RPM-050",
+      "rpm2022": "M3-RPM-137",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점과 지나는 점으로 표준형 계수를 결정하거나, 일반형을 표준형으로 변환해 꼭짓점을 읽는다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 20,
+      "questionUid": "qid_v1_ff7f6e6431c46afe926c4bbfdef70b400ed4755aa61668a1b3feeb9200e9c759",
+      "nativeRpm": "M3-RPM-050",
+      "rpm2022": "M3-RPM-137",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "포물선 위의 점과 축 위의 점이 만드는 삼각형·사각형의 넓이·둘레 조건으로 계수나 좌표를 결정한다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 23,
+      "questionUid": "qid_v1_99498f2432453bd23b36867fdff51f10754ef83dc16213fa7343fda3dbb5b638",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점과 지나는 점으로 표준형 계수를 결정하거나, 일반형을 표준형으로 변환해 꼭짓점을 읽는다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E008",
+      "ordinal": 24,
+      "questionUid": "qid_v1_977ca42209cbb2878d8106e7f5273929dbbed261f0fbc7406fb41067a3395ad4",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        {
+          "kind": "TEMPLATE_SCOPE_GAP",
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+        }
+      ],
+      "projection": {
+        "status": "NOT_RUN",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "templateKey": null,
+        "reason": "현재 canonical 정의 및2015/표준단원/subUnit binding을 검토했다. 새 독립검증 VERIFIED_FINAL을 만들지 않았으므로 resolver NOT_RUN; root ACTIVE 검사 및 scope 확정 필요.",
+        "canonicalDefinitionEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점과 지나는 점으로 표준형 계수를 결정하거나, 일반형을 표준형으로 변환해 꼭짓점을 읽는다.",
+          "templateStatus": null,
+          "templateDefinition": null,
+          "bindingMatches": [
+            {
+              "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+              "curriculum": "2015",
+              "standardCourse": "중3-1",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+              "status": "ACTIVE",
+              "L1": "이차함수",
+              "L2": "이차함수 y=ax²+bx+c의 그래프"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
     }
   ],
   "typeAndTermCandidates": [
@@ -6021,6 +6518,201 @@
         "reason": "native 2015 leaf에 정확 대응하는 2022 leaf가 확인되지 않았다. 점 소속/좌표 계산 또는 그래프 위치를 그래프그리기로 강제 전환하지 않는다.",
         "ordinal": 23,
         "questionUid": "qid_v1_4c07e80399fcf042be24aa35d134ddad3af631d3861b71ac6695a68a2a17da69"
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "비영조건",
+        "en": "nonzero condition",
+        "synonyms": [
+          "0이 아닌 조건",
+          "영이 아닌 조건"
+        ],
+        "kind": "조건",
+        "parent": "실수",
+        "note": "문자 또는 상수가0이 아니라고 명시되어 비·약분·정의역의 허용성을 보장하는 제한. 단순 상수 선언과 구분한다. 현재 사전에 명확한 비영 조건어가 없어 제안한다.",
+        "usedIn": [
+          {
+            "sourceArchiveFile": "original/middle/m3/1final/25_왕운중_1학기_기말_중3_기출c.js",
+            "sourceOrdinal": 18,
+            "slot": "condition"
+          }
+        ]
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_b5d218185e2382d0290fc8ad4c4ed4e33224e015809e8e7b028e0d87722edf93",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_ed883442b65ee1cd3b77bb84cb947cd64655b56b27c4740361d1cdc8116252d8",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_ed883442b65ee1cd3b77bb84cb947cd64655b56b27c4740361d1cdc8116252d8",
+        "kind": "CURRICULUM_METHOD_REVIEW",
+        "reason": "현재 solution에 판별식0을 직접 사용한다. 중3 완전제곱식 기반 중근 조건으로 설명할지 출고 작성자가 확인해야 하며 이번 메타 작업은 기존 solution을 바꾸거나 새 수학 PASS를 만들지 않는다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_c46ae41c7d14bee6da2abd94471160d94a40387684084f00a2ce27b6fa7c3733",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_c46ae41c7d14bee6da2abd94471160d94a40387684084f00a2ce27b6fa7c3733",
+        "kind": "RPM_2022_LEAF_GAP",
+        "reason": "2022 기본 y=ax² 그래프 leaf를 일반식이 이차함수가 될 조건과 동일시하지 않는다. 이차함수의 뜻/판별 leaf 대응이 필요하다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_33121fa1e34118b7b127ac3eaa61f6b8e105934a6318da8d4a5fd2aae31c2783",
+        "kind": "RPM_LEAF_GAP",
+        "reason": "이차함수 > 이차함수의 활용 > 실생활 이차모형 > 두 일차량의 곱과 함숫값. 중3 그래프(1)/(2) 아래 대응 활용 leaf 검토 필요.",
+        "supportingQuestionUid": "qid_v1_33121fa1e34118b7b127ac3eaa61f6b8e105934a6318da8d4a5fd2aae31c2783"
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_33121fa1e34118b7b127ac3eaa61f6b8e105934a6318da8d4a5fd2aae31c2783",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_7cc55c266e27b4d1eee986eca822ed4e89eadf9f3c6493cf340e020e41ef9894",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_34784813225155349d61e202f256ad2bcad7c8bfddb82a53e2e60f37c800bfe9",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_694b47bbd536e7bdcff6af286145407ce345e761d6020e826b3bb53da9ae7182",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_113f76a077282bd62c63d26efa705aa430ae91e5a591c242cdf54936fa2140ac",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_113f76a077282bd62c63d26efa705aa430ae91e5a591c242cdf54936fa2140ac",
+        "kind": "RPM_2022_LEAF_GAP",
+        "reason": "2022 일반형 그래프/그래프 그리기와 계수 부호의 일차함수 전이는 동일한 leaf가 아니므로 대응 leaf 확장을 제안한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_5043120026643ef9601d7a2dc4ffc5a6631afc48b2cdf50bad4254d266da439e",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_ff7f6e6431c46afe926c4bbfdef70b400ed4755aa61668a1b3feeb9200e9c759",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_99498f2432453bd23b36867fdff51f10754ef83dc16213fa7343fda3dbb5b638",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
+      }
+    },
+    {
+      "examKey": "E008",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_977ca42209cbb2878d8106e7f5273929dbbed261f0fbc7406fb41067a3395ad4",
+        "kind": "TEMPLATE_SCOPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "reason": "기존 PT의 의미는 맞으나 현재 TPL 중 이 결정 골격 전체와 직접 일치하는 값을 확정하지 못하여 후보 확장을 요청한다."
       }
     }
   ],

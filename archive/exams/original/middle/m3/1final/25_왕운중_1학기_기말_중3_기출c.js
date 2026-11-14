@@ -14,13 +14,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "다항식",
       "이차방정식",
-      "최대최소",
-      "지수",
-      "일차방정식",
-      "조건해석",
-      "계산"
+      "정의",
+      "차수"
     ],
     "wide": false,
     "content": "다음 중에서 이차방정식인 것을 고르면?",
@@ -122,11 +118,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "완전제곱식",
-      "계수비교",
       "이차방정식",
-      "판별식",
-      "원",
-      "대입"
+      "중근",
+      "계수비교"
     ],
     "wide": false,
     "content": "다음 이차방정식 $x^2+12x+a-4=0$이 중근을 가질 때, 상수 $a$의 값과 중근을 차례로 구하면?",
@@ -195,13 +189,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근",
-      "근호",
-      "전개",
-      "계수비교",
       "이차방정식",
-      "최대최소",
-      "정수조건"
+      "근의공식",
+      "전개",
+      "근호"
     ],
     "wide": false,
     "content": "이차방정식 $\\dfrac{(x-3)(x+1)}{3}=\\dfrac{x(x+2)}{4}-\\dfrac{5}{12}$의 해를 구하면?",
@@ -303,12 +294,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
+      "이차방정식",
+      "인수분해",
       "전개",
       "계수비교",
-      "이차방정식",
-      "대입",
-      "조건해석",
-      "계산"
+      "비"
     ],
     "wide": false,
     "content": "이차방정식 $ax^2+bx+c=0$의 해가 $x=-\\dfrac{1}{2}$ 또는 $x=-3$일 때, $a+b:b+c$를 구하면? (단, $a$, $b$, $c$는 상수)",
@@ -328,7 +318,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "상",
+    "level": "중",
     "category": "이차방정식",
     "originalCategory": "이차방정식",
     "standardCourse": "중3 수학",
@@ -339,12 +329,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
       "이차방정식",
-      "지수",
-      "사각형",
+      "인수분해",
+      "정사각형",
       "넓이",
-      "표해석"
+      "식세우기"
     ],
     "wide": false,
     "content": "조선시대 수학자 홍정하가 쓴 '구일집'에는 다음과 같은 문제가 실려 있다. 큰 정사각형의 한 변의 길이를 구하면?\\n\\n크고 작은 두 개의 정사각형이 있다. 두 정사각형의 넓이의 합은 466평방자이고, 작은 정사각형의 한 변의 길이는 큰 정사각형의 한 변의 길이보다 16자만큼 짧다. 큰 정사각형의 한 변의 길이는 얼마인가?\\n※ 평방자: 전통적인 한국의 면적 단위로, 한 변의 길이가 1자인 정사각형의 면적",
@@ -487,12 +476,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근",
-      "근호",
-      "이차방정식",
       "이차함수",
-      "함수",
-      "표해석"
+      "평행이동",
+      "이차방정식",
+      "제곱근"
     ],
     "wide": false,
     "content": "이차함수 $y=-3x^2$의 그래프를 $y$축의 방향으로 $1$만큼 평행이동하면 점 $(k, -8)$을 지날 때, 모든 $k$의 값의 곱을 구하면?",
@@ -623,7 +610,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -634,12 +621,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "완전제곱식",
       "이차함수",
-      "함수",
-      "표해석",
+      "완전제곱식",
+      "꼭짓점",
       "좌표",
-      "오류판별"
+      "비"
     ],
     "wide": false,
     "content": "이차함수 $y=2x^2-16ax+4a^2$과 $y=3x^2-6bx+4a$의 그래프의 꼭짓점이 서로 일치할 때, $\\dfrac{a}{b}$의 값을 구하면? (단, $a$, $b$는 0이 아닌 상수)",
@@ -674,12 +660,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "계수비교",
       "이차함수",
-      "함수",
-      "표해석",
-      "좌표",
-      "조건해석"
+      "평행이동",
+      "계수비교",
+      "꼭짓점"
     ],
     "wide": false,
     "content": "이차함수 $y=a(x-p)^2+7$의 그래프는 이차함수 $y=-2x^2$의 그래프를 평행이동한 것이고, 꼭짓점의 좌표가 $(3, r)$이다. 이 때, $a+p-r$의 값을 구하면? (단, $a$, $p$는 상수)",
@@ -783,8 +767,8 @@ window.questionBank = [
     "solution": "[키포인트] 긴 부분을 $x$로 두고 비례식을 세운다.\n$1:x=x:(x+1)$에서 $x^2-x-1=0$.\n길이는 양수이므로 $x=(1+\\sqrt5)/2$이다.",
     "image": "assets/images/25_왕운중_1학기_기말_중3_기출/q22.png",
     "imageSize": "medium",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
