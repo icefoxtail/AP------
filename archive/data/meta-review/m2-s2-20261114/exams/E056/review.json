@@ -687,7 +687,9 @@
         "standardCourse": "중2 수학",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
         "templateKey": "TPL_ISOSCELES_CONVERSE",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "standardUnitKey": "M2-05",
@@ -712,7 +714,7 @@
       "fieldReview": {
         "classification": "이등변삼각형의 판정 / 두 각 조건: 한 단계 각계산 뒤 이등변삼각형의 역을 적용한다.",
         "binding": "PT_ISOSCELES_TRIANGLE / TPL_ISOSCELES_CONVERSE의 ACTIVE 정의·parent 대조. 해당 curriculum binding ACTIVE.",
-        "crossConcept": "외각60에서 C30을 빼 A30을 만드는 외각정리가 선행한다. 내각합CC와 관련되지만 exact외각정의가 없어 제안한다.",
+        "crossConcept": "ACTIVE CC_SUPPLEMENTARY_ANGLES는 삼각형 외각이 두 비인접내각의 합임을 정확히 포함한다. 외각60과 C30에서 A30을 얻는 선행 단계에 기존 키를 재사용한다.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "SEQUENTIAL: 한 단계 각계산 뒤 이등변삼각형의 역을 적용한다.",
         "difficulty": "한 단계 각계산 뒤 이등변삼각형의 역을 적용한다.",
@@ -720,12 +722,9 @@
       },
       "reason": "한 단계 각계산 뒤 이등변삼각형의 역을 적용한다.",
       "registrationDebt": [
-        "CC: 삼각형 외각과 두 비인접내각의 합의 정확정의 등록대기",
         "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
       ],
-      "proposalRefs": [
-        "B-E056-EXTERIOR-ANGLE"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "하",
         "difficultyBucket": 2,
@@ -3542,23 +3541,6 @@
       ],
       "supportingQuestionUids": [
         "qid_v1_1e12cfdfb30b9876d792946367b1ff9f41d40c9ac74558e829cf1142c624b1fe"
-      ]
-    },
-    {
-      "id": "B-E056-EXTERIOR-ANGLE",
-      "type": "CC",
-      "name": "삼각형 외각과 비인접 두내각의 합",
-      "parent": "CC_TRIANGLE_ANGLE_SUM",
-      "definition": "삼각형의 한 외각이 이웃하지않는 두내각의 합임을 이용하여 각을 구한다.",
-      "distinguishingCriteria": "내각합과 관련된 파생정리이나 현재 정확 외각정의가없다. Primary는 같은각에서 이등변판정이다.",
-      "existingCandidatesReviewed": [
-        "CC_TRIANGLE_ANGLE_SUM"
-      ],
-      "ordinals": [
-        5
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_1c3c2bfd29e306cd7d27932176808446f88de7337a059c5552622f8fc98097cb"
       ]
     },
     {
