@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "m2-author-independent-semantic-supplement-v1",
+  "examId": "E041",
+  "status": "AUTHOR_ACCEPTED_ROOT_NARROW_REVIEW",
+  "originalReviewSha256": "a765a8176a2b4e92810bffbfd0de6cf49d5df627e5df3194ee118892505b65d1",
+  "originalFourSlotSha256": "4775b0e9ec7b00ac2e40d180a6430eb727b5acee793cc16753b74ba02ab4da7b",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E041.accepted-four-slot-candidate.json",
+  "acceptedFourSlotSha256": "b16ebc2d04cf31621961ba803d95e5f9a4652b76622b1e06befcd76acfb5177c",
+  "reviewOverrides": [
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "difficultyConfidence": "low"
+      },
+      "reason": "실제 그림 하단의 인접보기 식 조각이라는 표현부채가 남으므로 confidence만 low로 낮춘다. 초기 숫자2/B12는 보존한다."
+    }
+  ],
+  "reviewItemUpdates": [
+    {
+      "sourceOrdinal": 21,
+      "set": {
+        "rpmRecordId": null,
+        "rpmDecision": "RPM_LEAF_GAP"
+      },
+      "merge": {
+        "semanticDecision": {
+          "rpmRecordId": null,
+          "rpmPath": null,
+          "rpmBasePath": null,
+          "rpmEffectiveParentKey": null,
+          "supportingRpmRecordIds": [
+            "M2-RPM-172"
+          ]
+        },
+        "fieldReview": {
+          "classification": "단일 이변수 일차방정식의 두 순서쌍 성분을 대입으로 정한다. 그래프가 목표인172를 exact로 정하지 않고 관련경로만 보존한다.",
+          "binding": "단일 이변수식 두 해의 좌표복원에 대한 exact RPM leaf/scopedTPL은 미확정이다. 현재 M2-04/EQUATION target과 관련 점대입 후보는 보존한다."
+        }
+      },
+      "registrationDebtAdd": [
+        "RPM_LEAF_GAP"
+      ],
+      "reason": "동일 핵심인 E028Q3의 독립판정과 현재 실발문을 비교하여 그래프 목표없는172 확정을 철회하고 좁게 유보한다."
+    }
+  ],
+  "changes": [
+    "Q10절편공식 이름과 표준식이 실해설에 명시되어NAMED",
+    "Q10표현부채confidence low",
+    "Q21single-equation coordinate exactleafgap"
+  ],
+  "invariants": [
+    "원review/four/freeze불변",
+    "학생콘텐츠·UID·순서불변",
+    "숫자difficulty24 모두보존"
+  ]
+}
