@@ -1,0 +1,279 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E045",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "f81d03613bba923457493ab990e30066d88393bd",
+  "sourceSha256": "a7a85734fa419f02355828eee53206cd7018a5bfbf78998c7c3bbe77502f2af5",
+  "reviewSha256": "77c611d114b04ed32608ac6656dd16cadfd793effd73bda52ccdf817f17a4812",
+  "fourSlotSha256": "9ae375da788c46db36050f52d09cff2846855792e92299ecc38965041bf947fa",
+  "independentSampleSha256": "6c97d2e8721c7012d9ab86308452ad2c35207902f37af2c693a4545076c486d8",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_367e012776642d6e80755d48a5fb420cbc1af507280a4627110830e2dab502f4",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_84b8f337f11de70b4e5f78556667435b68bc7c497c81341cf06b8cf84a5a40d6",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_16d7f39f001c81db4788b40d7f16b55ff87a124b24e334570872b58338ab717f",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_8a8022ea4db53d559711e09960cdae09bccae92129b0877d05c83e9bc986d945",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_1bd38d319596bd53d3cf63517f7e0fcdcb3f943689c22e48a6a5155388c6e18c",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_39d8117846b4f90aa0324a084694153a16a445097d2732572b3b5905ef778448",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3ace257ad3afd1bde0589c7d9c45a52309a789010770032226a28a7816be50ab",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    }
+  ],
+  "sampleReviewer": "A",
+  "sampleOrdinals": [
+    10,
+    18,
+    25
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "a7a68582b54b5585ae7090b47c130c6a4688dfcf97cf1d527de6b41b0545def5",
+      "finalReviewSha256": "77c611d114b04ed32608ac6656dd16cadfd793effd73bda52ccdf817f17a4812",
+      "independentSampleSha256": "6c97d2e8721c7012d9ab86308452ad2c35207902f37af2c693a4545076c486d8",
+      "adjudicatedCompatibilityOrdinals": [
+        1,
+        5,
+        9,
+        13
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "식을 실제로 정리하여 x²항이 상쇄되는 보기와 곱xy가 남는 보기를 구별해야 한다. 단순 외형 정의 판정보다 전처리가 한 번 있어 bucket2를 수용하고 기존 하는 B12 경계로 남긴다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "대입할 변수와 순서가 학생본문의 빈칸 구조로 이미 주어졌다. 전개와 부호의 직접 점검이므로 bucket1 수용, 기존 중은 인접 경계로 보존한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "입력 하나의 출력 유일성뿐 아니라 자연수 x=1에서 자연수 출력이 존재하지 않는 선지까지 확인한다. 정의의 한 단계 해석이 필요하여 bucket2 수용, 기존 하 경계 유지.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 11,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "현재 그림에서 대응 길이비를 정할 하단 수치가 잘려 수치 선지들을 모두 검증할 수 없다. 닮음/합동의 언어적 차이만으로 문항 전체를 확정하지 않고 UNKNOWN과 해설모델 후보를 나눈 결정을 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "실제 두 사각기둥의 대응 높이4와8을 읽고 닮음비1:2의 세제곱을 주어진 부피에 직접 적용한다. bucket1 수용, 기존 중과의 경계는 유지한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 16,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 그림은 수선의 발·빗변 분할2·목표x가 하단에서 사라졌다. 해설의 높이제곱 관계는 후보로만 읽을 수 있으므로 최종 UNKNOWN/원문복구 대기가 적절하다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 17,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 q17에는 도형이 없고 일부 문장만 남았다. 본문에 없는 세 길이를 해설에서만 받아 넓게 확정할 수 없어 UNKNOWN 유지가 적절하다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 18,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "사다리꼴이 아닌 다른 그림 조각이 연결되어 필수 수치와 목표 위치가 없다. 중점선 차의 중/bucket2는 해설모델 후보에 한정하고 최종 UNKNOWN을 수용한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 19,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 q19는 무게중심 G가 아니라 사다리꼴 M,P,Q이다. 학생그림에 D의 중점 위치가 없어 1/6 넓이 후보를 원문 확정값으로 볼 수 없으며 UNKNOWN 유지가 맞다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 20,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "그림에서 D가 BC 중점인지와 두 중선의 위치를 확인할 수 없다. 해설모델의 2:1 반복 후보 중/bucket2는 합리적이나 최종 UNKNOWN 유지가 맞다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 21,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "본문만으로 E의 중점과 F의 위치가 없고 actual 그림은 거의 빈 문구 조각이다. alt의 FE가 G를 지남은 목표 GEF를 퇴화시켜 해설의 구조와도 충돌한다. 후보 상/bucket3의 중점·무게중심 분할 비교를 확정하지 않고 최종 UNKNOWN/원문복구 대기가 적절하다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_UNKNOWN_HOLD"
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "길이비의 세제곱을 총 개수에 한 번 연결하는 익숙한 실생활 해석이며 경로선택이나 비정형 통찰이 없다. bucket2를 수용하되 원본 상과의 STRONG_CONFLICT는 그대로 남겨 학습수준 기존값 승인과 분리한다.",
+      "independentReviewer": "A",
+      "independentDecision": "ACCEPT_BUCKET_KEEP_STRONG_CONFLICT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 11,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 16,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 17,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 18,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 19,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 20,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 21,
+      "reason": "기존 해설모델에 의한 후보이며 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
