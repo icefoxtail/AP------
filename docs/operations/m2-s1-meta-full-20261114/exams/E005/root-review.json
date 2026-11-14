@@ -1,0 +1,188 @@
+{
+  "sampleReviewer": "C",
+  "sampleFile": "E005.sample.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 정수계수를 맞춰 소거하고 다른 미지수를 대입하는 표준 연결이므로2. sidecar 문자열하는 잘못된 자료형이고 source숫자2와 구분하여 교정했다. legacy하/B12 경계 유지 수용.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "공통해에 사용할 미지계수 없는 두 식을 고른 뒤 분모 제거·대입을 수행하는 정형적 연결이다. 기존3→2와B23 경계에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "총시간과 총거리 두 합 조건을 세워 해를 구한 뒤 구간거리로 돌아가는 표준 속력 활용이다. 추가 경우 분류가 없어3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "세 사분면 통과 조건을 기울기 양수·절편 음수로 바꾸고 두 일차부등식을 풀면 된다. 주어진 값이 독립적이라3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "실제 원그림15cm×8cm와 B→C 운동 확인. 남은 길이15−3x를 삼각형 차넓이로 바꾸는 모델링이 추가되나 반복 경우 분류는 없어source4/sidecar상에서3으로 판정한 것이 타당.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "한 점과 기울기의 식을 구한 뒤 상수항 배수를 맞추는 동일 직선식 변형이다.3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 고정선의 교점을 구해 제3선에 한 번 대입하는 전형적 공점 조건이다.3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "세 교점에서 수평 밑변과 수직 높이를 고르는 그래프-기하 연결로3이 적절하다. source4 및 sidecar상 자료형을 별도 보존한 점 확인.",
+      "independentReviewer": "C"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "운동거리로 도형의 넓이함수를 구성하는 생활 활용이다. 그래프 교점이나 일차방정식 그래프 관계가 중심이 아니므로 source EQUATION→BASIC 및 활용 leaf gap에 동의한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "초기 두 방정식 그래프에서 얻은 계수가 최종 연립방정식의 해 개수 판단에 사용된다. 중심 목표가 해 상태이므로 M2-03/155와 기울기·절편 CrossConcept에 동의한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "conditionKeys",
+      "decision": "ACCEPT_AFTER_CORRECTION",
+      "reason": "COND_RATIONAL ACTIVE in canonical+compiled registry, explicit source a,b rational restriction."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 4,
+      "after": {
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "계수 맞추기와 해 대입의 통상 두 단계로 bucket2; 기존 level하는 B12 경계에서 유지한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "분모와 소수 정리는 선행 계산이고 공통해용 식 선택 이후 절차가 정형적이므로 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "총시간·총거리 두 조건을 모델링하고 구한 시간에 속력을 곱한다. 정형적 단계이므로 기존3보다2."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "통과사분면을 두 계수 부호로 읽고 각각 일차부등식을 푸는 표준 절차라 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "움직이는 점과 도형넓이의 일차함수 활용이다. 그래프 교점 자체가 없어 source EQUATION을 BASIC으로 제안하며 정확한 활용 leaf는 gap. Exact canonical label for the semantically accepted key. 거리3x→남은 길이15−3x→삼각형 차넓이→시간 역산의 기하 모델링이 추가되어 bucket3이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "기울기식 결정 후 상수항을 맞추는 배수 조정은 정형 계산이라 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "교점 계산 후 한 매개변수를 대입하는 정형적 연결이므로 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "교점 세 개를 얻어 적절한 밑변·높이를 선택하는 표준 기하 응용으로 bucket3이며 기존 level상 유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "category": "연립일차방정식",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식"
+      },
+      "reason": "최종 해 개수 판단이 주 목표여서 그래프 선행자료는 보조이고 M2-03 특수연립155로 분류 제안. Exact canonical label for the semantically accepted key."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E005",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "3078cdbe85f67dfca2ba4ff717955ec1ee9e14f5",
+  "finalSourceBlob": "9690448c2e992c776e189c14852065de2c7c71ed",
+  "reviewSha256": "22d379fae33ef90ed96480cb7f8bf54ed7b5e7497666bf41ac8e3aeb4e35e9bc",
+  "independentSha256": "01eed94384281abf9391f7bd8d363e4872bfa426fa14e9778d2b45f001d2f33a",
+  "reviewedFourSlotSha256": "630433b07001d2ebb286427084fa0390e5c9a48f7981eafff670ae2cd5f41295",
+  "finalFourSlotSha256": "38dbf30ebf0a3aab35e152c474b1f1f159de3811f01e440ad94e41aa9f10f07e",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T08:57:28.337495+00:00",
+  "independentHistory": []
+}

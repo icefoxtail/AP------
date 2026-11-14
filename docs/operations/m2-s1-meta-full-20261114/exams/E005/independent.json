@@ -1,0 +1,289 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E005",
+  "author": "B",
+  "reviewer": "C",
+  "independent": true,
+  "sourceGitBlobSha": "3078cdbe85f67dfca2ba4ff717955ec1ee9e14f5",
+  "reviewSha256": "22d379fae33ef90ed96480cb7f8bf54ed7b5e7497666bf41ac8e3aeb4e35e9bc",
+  "fourSlotSha256": "630433b07001d2ebb286427084fa0390e5c9a48f7981eafff670ae2cd5f41295",
+  "sampleOrdinals": [
+    4,
+    16,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_9e0f0470c24a1abde9adb77f0016a270d3b651cf09a584170ab45b2e0943ed27",
+      "classification": "정수계수 두 식에서 y계수를6으로 맞춘 뒤 빼므로 M2-RPM-148 가감법에 동의한다.",
+      "binding": "연산 배수 선택만을 묻는 ACTIVE 유형과 해 자체 계산의 목표 차이를 적절히 구분했다.",
+      "fourSlot": "given 연립식, goal 해+합, method 가감법+대입이 분리되며 모든 literal이 실제 해설에 있다.",
+      "status": "PASS",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "연립일차방정식",
+          "src": "stem",
+          "quote": "연립방정식",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "해",
+          "src": "stem",
+          "quote": "해를 $(a,b)$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "합",
+          "src": "stem",
+          "quote": "$a+b$의 값",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "가감법",
+          "src": "solution",
+          "quote": "두 식에서 $y$의 계수를 같게 만들어 없앤다.",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "대입",
+          "src": "solution",
+          "quote": "이를 $3x+2y=16$에 대입하면",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1",
+      "classification": "운동거리로 도형의 넓이함수를 구성하는 생활 활용이다. 그래프 교점이나 일차방정식 그래프 관계가 중심이 아니므로 source EQUATION→BASIC 및 활용 leaf gap에 동의한다.",
+      "binding": "기존 그래프 아래 면적 template와 이동점의 남은 삼각형 빼기 모델은 다르다.",
+      "fourSlot": "B→C 이동구간 누락을 지적해 범위 조건이 복구되었고, BP=3x·60-12x·120-(60-12x)의 실제 해설 연산을 다시 읽었다. goal의 값은 시간 단위가 인용에 명시된다.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "직사각형",
+          "src": "stem",
+          "quote": "직사각형 $ABCD$",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "속력",
+          "src": "stem",
+          "quote": "초속 3 cm로 움직이고",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "값",
+          "src": "stem",
+          "quote": "몇 초 후인가",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "거리",
+          "src": "solution",
+          "quote": "$BP=3x$이므로",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "삼각형",
+          "src": "solution",
+          "quote": "=60-12x",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "차",
+          "src": "solution",
+          "quote": "120-(60-12x)",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "범위",
+          "src": "stem",
+          "quote": "점 $B$를 출발하여 점 $C$까지",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_698d18f52df9dd4116ce54309aee65ac8259ed4f64b9ce927cbd81b284aebbfa",
+      "classification": "초기 두 방정식 그래프에서 얻은 계수가 최종 연립방정식의 해 개수 판단에 사용된다. 중심 목표가 해 상태이므로 M2-03/155와 기울기·절편 CrossConcept에 동의한다.",
+      "binding": "무해 계수역산 template와 다르므로 해 상태판정 절차를 새로 제안한 것은 타당하다.",
+      "fourSlot": "해+개수, 계수합+매개변수의 두 목표가 보존된다. 원문 유리수 제한은 사전에 있고 메타의 COND_RATIONAL도 canonical/compiled ACTIVE 실제 항목 확인 후 정정되었다.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "일차방정식",
+          "src": "stem",
+          "quote": "일차방정식",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "연립일차방정식",
+          "src": "stem",
+          "quote": "연립방정식",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "해",
+          "src": "stem",
+          "quote": "해의 개수",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "개수",
+          "src": "stem",
+          "quote": "해의 개수",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "합",
+          "src": "stem",
+          "quote": "$a+b$의 값",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "매개변수",
+          "src": "stem",
+          "quote": "$a+b$의 값",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "기울기",
+          "src": "solution",
+          "quote": "두 직선의 기울기",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "y절편",
+          "src": "solution",
+          "quote": "$y$절편 $b=20$",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "대입",
+          "src": "solution",
+          "quote": "$a=-12$, $b=20$을 대입하면",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "유리수",
+          "src": "stem",
+          "quote": "$a,b$는 유리수",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 정수계수를 맞춰 소거하고 다른 미지수를 대입하는 표준 연결이므로2. sidecar 문자열하는 잘못된 자료형이고 source숫자2와 구분하여 교정했다. legacy하/B12 경계 유지 수용."
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "공통해에 사용할 미지계수 없는 두 식을 고른 뒤 분모 제거·대입을 수행하는 정형적 연결이다. 기존3→2와B23 경계에 동의."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "총시간과 총거리 두 합 조건을 세워 해를 구한 뒤 구간거리로 돌아가는 표준 속력 활용이다. 추가 경우 분류가 없어3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "세 사분면 통과 조건을 기울기 양수·절편 음수로 바꾸고 두 일차부등식을 풀면 된다. 주어진 값이 독립적이라3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "실제 원그림15cm×8cm와 B→C 운동 확인. 남은 길이15−3x를 삼각형 차넓이로 바꾸는 모델링이 추가되나 반복 경우 분류는 없어source4/sidecar상에서3으로 판정한 것이 타당."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "한 점과 기울기의 식을 구한 뒤 상수항 배수를 맞추는 동일 직선식 변형이다.3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 고정선의 교점을 구해 제3선에 한 번 대입하는 전형적 공점 조건이다.3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "세 교점에서 수평 밑변과 수직 높이를 고르는 그래프-기하 연결로3이 적절하다. source4 및 sidecar상 자료형을 별도 보존한 점 확인."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "운동거리로 도형의 넓이함수를 구성하는 생활 활용이다. 그래프 교점이나 일차방정식 그래프 관계가 중심이 아니므로 source EQUATION→BASIC 및 활용 leaf gap에 동의한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT",
+      "reason": "초기 두 방정식 그래프에서 얻은 계수가 최종 연립방정식의 해 개수 판단에 사용된다. 중심 목표가 해 상태이므로 M2-03/155와 기울기·절편 CrossConcept에 동의한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "conditionKeys",
+      "decision": "ACCEPT_AFTER_CORRECTION",
+      "reason": "COND_RATIONAL ACTIVE in canonical+compiled registry, explicit source a,b rational restriction."
+    }
+  ],
+  "figureEvidence": [
+    {
+      "sourceOrdinal": 16,
+      "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q16.png",
+      "observation": "직사각형 가로15cm·세로8cm, P는 밑변BC의 B쪽에서 C쪽으로 이동; 음영은 ABPD. 실제 그림을 직접 보았다."
+    }
+  ],
+  "revisionNotes": [
+    "초기 Q16 이동구간 condition 누락과 약한 method 인용, Q24 잘못된 유리수 registry 부재 주장 및 goal 대상 누락을 저자에게 전달했다.",
+    "수정 후 실제 final slots·conditionKeys를 다시 읽은 정확한 bytes에 결속한다."
+  ],
+  "reviewedAt": "2026-11-14T08:54:43.063670+00:00"
+}
