@@ -2512,7 +2512,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
       // The registrar itself treats course names that differ only by whitespace as the same course.
       const same = f === "courseKey" && typeof c[f] === "string" && typeof r[f] === "string"
         ? courseCompact(c[f]) === courseCompact(r[f]) : eq(consumerValue, r[f]);
-      if (!same) fail("Consumer metadata mismatch: " + r.questionUid + "." + f);
+      if (!same) fail("Consumer metadata mismatch: " + r.questionUid + "." + f + " (request " + JSON.stringify(r[f]) + " != consumer " + JSON.stringify(c[f]) + ")");
     }
     lanes[usedLane ? "usableMetaLane" : "canonical"]++;
     const typeHold = isTypeHoldRecord(r);
