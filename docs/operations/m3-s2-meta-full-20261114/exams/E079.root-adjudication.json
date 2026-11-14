@@ -1,0 +1,155 @@
+{
+  "examId": "E079",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "items": {
+    "17": {
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "difficultyReason": "네 점의 공원성 판정틀은 정해져 있고 각 보기의 보각·내각합·외각을 표준 전처리한다. 다섯 그림의 반복량으로3을 주지 않아2/B23."
+      },
+      "reason": "네 점의 공원성 판정틀은 정해져 있고 각 보기의 보각·내각합·외각을 표준 전처리한다. 다섯 그림의 반복량으로3을 주지 않아2/B23.",
+      "reviewBasis": "Frozen independent review and root actual source/required figure reread; original author file preserved."
+    },
+    "18": {
+      "resolverBlockedReason": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "candidateAfterSourceRepair": {
+        "primaryMethod": "같은 호를 보는 원주각과 맞꼭지각으로 두 삼각형의 AA 닮음을 보이고 대응변의 비에서 현의 곱 관계를 유도하여 OP를 계산한다.",
+        "decisiveStep": "AC와 BD를 잇는다. ∠APC=∠DPB(맞꼭지각), ∠ACP=∠DBP(같은 호 AD의 원주각)이므로 △APC∽△DPB. AP/DP=CP/PB에서 AP·PB=CP·DP=6. OP=x이면 (4+x)(4−x)=6, x²=10, x>0이므로 x=√10.",
+        "exactRpmLeafAvailable": true,
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+        "targetScope": "M3-2",
+        "semanticSourceScope": "M2-2",
+        "semanticSourceStandardUnitKey": "M2-06",
+        "semanticSourceSubUnitKey": "M2-06-SIMILAR_FIGURE",
+        "rpmRecordIdByCurriculum": {
+          "2015": "M2-RPM-089",
+          "2022": "M2-RPM-207"
+        },
+        "rpmPathByCurriculum": {
+          "2015": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          },
+          "2022": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        },
+        "equivalent2015CrosswalkBindingRow": {
+          "recordId": "M2-RPM-238",
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "note": "Same locked semantic path with another binding parent; not a different primary leaf. Root official resolver must select exact target binding rather than copy an M2 binding into M3."
+        },
+        "exactFitReason": "목표는 닮음을 판정하는 것 자체가 아니라 AA 닮음의 대응변 비로 미지 길이를 구하는 것이다. 이 단계는 locked M2 닮음의 활용>길이에 직접 해당한다. M1의 원·부채꼴 기본/넓이 leaf는 곱 관계 유도의 주방법을 설명하지 못한다.",
+        "routeFinalizationStatus": "CONDITIONAL_ON_STUDENT_SOLUTION_COMPLETION",
+        "currentSolutionAlreadyImplementsThisRoute": false
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyReason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+        "debts": [
+          {
+            "type": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+            "field": "solution",
+            "reason": "현재 텍스트는 현의 곱 관계의 성립 이유를 제시하지 않는다. 원문/해설 그림에도 보조선 AC,BD나 닮은 삼각형 대응이 없다. 곱셈공식 이후 산술은 상세하지만 결정적인 기하식 설정의 근거가 빠져 있다.",
+            "requiredRepair": "AC,BD를 잇는 보조선 선택, 맞꼭지각 한 쌍, 같은 호 AD의 원주각 한 쌍, △APC∽△DPB의 대응 및 AP/DP=CP/PB를 명시하면 이후 기존 계산으로 이어진다.",
+            "existingExactLowerScopeCandidate": {
+              "2015": "M2-RPM-089",
+              "2022": "M2-RPM-207"
+            },
+            "newRpmLeafRequired": false
+          }
+        ]
+      },
+      "reason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+      "semanticReason": "정확한 M2 닮음활용 길이 경로는 존재한다. 현재 학생용 최종해설이 그 경로를 구현하지 않아 source 검증 전에는 RPM FINAL로 승격하지 않는다. 기존 author leaf-gap proposal은 이 판단으로 대체한다."
+    },
+    "19": {
+      "resolverBlockedReason": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+      "candidateAfterSourceRepair": {
+        "primaryMethod": "같은 원주각과 P의 공통각으로 두 삼각형의 AA 닮음을 보이고 길이 비례식으로 지름을 결정한 뒤 원의 넓이를 구한다.",
+        "decisiveStep": "AD와 BC를 잇는다. ∠APD=∠CPB(P의 두 할선이 이루는 같은 각), ∠PDA=∠PBC(각각 ∠CDA,∠ABC이며 같은 호 AC의 원주각)이므로 △PAD∽△PCB. PA/PC=PD/PB에서 PA·PB=PC·PD. PB=3+5=8, 3·8=2·PD이므로 PD=12, CD=PD−PC=10, r=5, 넓이25π.",
+        "exactRpmLeafAvailable": true,
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+        "targetScope": "M3-2",
+        "semanticSourceScope": "M2-2",
+        "semanticSourceStandardUnitKey": "M2-06",
+        "semanticSourceSubUnitKey": "M2-06-SIMILAR_FIGURE",
+        "rpmRecordIdByCurriculum": {
+          "2015": "M2-RPM-089",
+          "2022": "M2-RPM-207"
+        },
+        "rpmPathByCurriculum": {
+          "2015": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          },
+          "2022": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        },
+        "equivalent2015CrosswalkBindingRow": {
+          "recordId": "M2-RPM-238",
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "note": "Same locked semantic path with another binding parent; not a different primary leaf. Root official resolver must select exact target binding rather than copy an M2 binding into M3."
+        },
+        "exactFitReason": "목표는 닮음을 판정하는 것 자체가 아니라 AA 닮음의 대응변 비로 미지 길이를 구하는 것이다. 이 단계는 locked M2 닮음의 활용>길이에 직접 해당한다. M1의 원·부채꼴 기본/넓이 leaf는 곱 관계 유도의 주방법을 설명하지 못한다.",
+        "routeFinalizationStatus": "CONDITIONAL_ON_STUDENT_SOLUTION_COMPLETION",
+        "currentSolutionAlreadyImplementsThisRoute": false
+      },
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyReason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+        "debts": [
+          {
+            "type": "SOURCE_SOLUTION_CORE_DERIVATION_MISSING",
+            "field": "solution",
+            "reason": "현재 해설 첫 문장이 곧바로 할선 곱 식이며 이를 중3 학생이 원주각과 닮음으로 유도하는 핵심 연결이 없다. PNG와 SVG에도 AD,BC 보조선이나 닮음 대응이 표현되어 있지 않다.",
+            "requiredRepair": "AD,BC를 잇고 P의 공통각과 같은 호 AC의 원주각을 명시하여 △PAD∽△PCB, PA/PC=PD/PB를 보여 주면 이후 기존 계산으로 자연스럽게 연결된다.",
+            "existingExactLowerScopeCandidate": {
+              "2015": "M2-RPM-089",
+              "2022": "M2-RPM-207"
+            },
+            "newRpmLeafRequired": false
+          }
+        ]
+      },
+      "reason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+      "semanticReason": "정확한 M2 닮음활용 길이 경로는 존재한다. 현재 학생용 최종해설이 그 경로를 구현하지 않아 source 검증 전에는 RPM FINAL로 승격하지 않는다. 기존 author leaf-gap proposal은 이 판단으로 대체한다."
+    },
+    "22": {
+      "after": {
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyReason": "전체외접사각형의조건이모순이다. Pitot으로BC8,BE4,r4이고CE=r라C도직각이다. AB∥CD에서AD²=8²+(10−6)²=80이어야하지만제시AD8은64다. 유효한문항의난도를확정할수없어UNKNOWN이다."
+      },
+      "reason": "전체외접사각형의조건이모순이다. Pitot으로BC8,BE4,r4이고CE=r라C도직각이다. AB∥CD에서AD²=8²+(10−6)²=80이어야하지만제시AD8은64다. 유효한문항의난도를확정할수없어UNKNOWN이다.",
+      "intendedPathDifficulty": {
+        "authorBucket": 3,
+        "status": "CONDITIONAL_INTENDED_PATH_ONLY_NOT_FINAL_DIFFICULTY"
+      },
+      "resolverBlockedReason": "SOURCE_GEOMETRIC_INCONSISTENCY_REQUIRES_REPAIR"
+    }
+  },
+  "policy": "Original author decisions remain frozen; this file records explicit root adjudications."
+}

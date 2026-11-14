@@ -1,0 +1,124 @@
+{
+  "examId": "E079",
+  "sourceArchiveFile": "original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+  "author": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "inspectedProblemAssets": [
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q01.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q04.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q05.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q06.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q07.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q08.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q09.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q10.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q11.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q12.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q13.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q14.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q15.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q16.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q17.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q18.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q19.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q20.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/s01.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/s02.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/s03.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/s04.png"
+  ],
+  "sourceIssues": [
+    {
+      "ordinal": 22,
+      "observed": "대변합으로BC=8이고CE4에서BE4=r이다. B=(0,0),A=(0,6),C=(8,0),I=(4,4)로놓으면C의다른접선x=8과A의다른접선y=3x/4+6의교점은D=(8,12)이다. 따라서AD=10,CD=12가강제되어제시AD=8,CD=10과모순이다. 해설의16π는일부필요조건으로계산한값이며주어진전체외접사각형은존재하지않는다.",
+      "action": "원문수정없이소스수리debt로인계",
+      "blocksVerifiedProjection": true
+    },
+    {
+      "ordinal": 10,
+      "severity": "notation-note",
+      "observed": "본문은선분AB표기와원의일부분이라는표현을함께쓴다. 실제그림에는A-P-B원호와현AB가분리되어있고반지름8과HP2가확인된다.",
+      "action": "도형의미는판독가능하여메타판단진행,원문미변경",
+      "blocksVerifiedProjection": false
+    }
+  ],
+  "selfCheckWarnings": [
+    {
+      "ordinal": 15,
+      "warning": "only 4 distinct terms",
+      "decision": "유지",
+      "reason": "주어진 두 원주각을 각기 두 배한 뒤 더하는 단순 문제다. 원주각·중심각·각·합 4개가 실제 구조를 모두 담는다."
+    },
+    {
+      "ordinal": 23,
+      "warning": "only 4 distinct terms",
+      "decision": "유지",
+      "reason": "내접사각형·원주각·외각·각 4개로 세 소문항의 결정 관계가 모두 보존된다. 단순 수 계산을 새 방법으로 부풀리지 않는다."
+    }
+  ],
+  "unresolvedFields": [
+    {
+      "ordinal": 18,
+      "field": "rpmRecordId/locked L3-L4",
+      "status": "EXACT_RPM_LEAF_GAP",
+      "requiredDefinition": "원안의점P에서교차하는현AB,CD에대하여PA·PB=PC·PD를사용하는길이관계. 중심O,반지름r가주어진경우PA=r+OP,PB=r−OP를연결해중심-교점거리·현분할길이를구한다.",
+      "reason": "locked M3-2 L3/L4에교차현곱leaf가없다.단순중심거리-현길이,원주각,닮음leaf로강제매핑하지않고rpmRecordId부재를보존한다.",
+      "blocksSemanticMetadata": false,
+      "blocksOfficialResolver": true
+    },
+    {
+      "ordinal": 19,
+      "field": "rpmRecordId/locked L3-L4",
+      "status": "EXACT_RPM_LEAF_GAP",
+      "requiredDefinition": "원밖의점P에서그은두할선PAB,PCD에대하여PA·PB=PC·PD를사용하는길이관계. 외부부분과전체길이를구분하여현·지름·반지름을복원한다.",
+      "reason": "locked M3-2 L3/L4에두할선곱leaf가없다.실제해설은AA닮음이나원주각을유도하지않고곱정리를바로쓰므로rpmRecordId부재로보존한다.",
+      "blocksSemanticMetadata": false,
+      "blocksOfficialResolver": true
+    },
+    {
+      "ordinal": 22,
+      "field": "source configuration and verified projection prerequisite",
+      "status": "SOURCE_INCONSISTENCY",
+      "reason": "대변합으로BC=8이고CE4에서BE4=r이다. B=(0,0),A=(0,6),C=(8,0),I=(4,4)로놓으면C의다른접선x=8과A의다른접선y=3x/4+6의교점은D=(8,12)이다. 따라서AD=10,CD=12가강제되어제시AD=8,CD=10과모순이다. 해설의16π는일부필요조건으로계산한값이며주어진전체외접사각형은존재하지않는다.",
+      "blocksSemanticMetadata": false,
+      "blocksVerifiedProjection": true
+    }
+  ],
+  "candidateTerms": [
+    {
+      "term": "보각",
+      "status": "CANDIDATE",
+      "parent": "각",
+      "usedIn": [
+        "E079#7",
+        "E079#17"
+      ]
+    },
+    {
+      "term": "방멱정리",
+      "status": "CANDIDATE",
+      "parent": "곱",
+      "usedIn": [
+        "E079#18",
+        "E079#19",
+        "E079#20"
+      ]
+    },
+    {
+      "term": "소요시간",
+      "status": "CANDIDATE",
+      "parent": "값",
+      "usedIn": [
+        "E079#5"
+      ]
+    }
+  ],
+  "validation": {
+    "tool": "node tools/4slot/validate-4slot.cjs",
+    "items": 24,
+    "examItems": 24,
+    "quotes": 174,
+    "fail": 0,
+    "warn": 2,
+    "allWarningsIndividuallyReviewed": true
+  }
+}

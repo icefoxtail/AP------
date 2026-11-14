@@ -4018,8 +4018,8 @@
     },
     {
       "id": "E079",
-      "owner": "a",
-      "reviewer": "b",
+      "owner": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+      "reviewer": "GPT_ROOT_00FBAC4C0777",
       "sourcePath": "archive/exams/original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
       "sourceArchiveFile": "original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
       "year": 2017,
@@ -4033,7 +4033,43 @@
       "uidDigest": "140ec2db00fd9bb4417041e2e84c05d37ddbc5259ce2de768a1ccb7336576613",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.4slot.json",
       "existing4slotSourceBlob": "89d8bd50d57263317c90e50fa5c487250a0165e2",
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "a",
+        "reviewer": "b"
+      },
+      "reviewedQuestionCount": 24,
+      "decisions": {
+        "CORRECT": 21,
+        "REVIEW_COMPLETE_WITH_SOURCE_PREREQUISITE_HOLD": 3
+      },
+      "sourceAfterBlob": "47266fd5e6f32e6d2f4b66375bc4baaea9877b06",
+      "sourceAfterSha256": "14ddd8af63a3d325fec4359e4abeb58f3504651c95e949dd58eeae358f116aa1",
+      "sourceChangedQuestionCount": 24,
+      "sourceChangedFieldCount": 391,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E079.meta.json",
+      "metadataSha256": "c5431adf52e857ee561b947b3309db7d47f53e59832a38b60f9988f3f1141b04",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E079.verification.json",
+      "verificationSha256": "feff2447da9d4b49b4ec9d3f48cd9cca042684b4f1565bea5faa0b4c63e1464b",
+      "independentSampleOrdinals": [
+        6,
+        15,
+        24
+      ],
+      "independentSampleStatus": "PASS_FINAL_METADATA_BOUND",
+      "fourSlotMode": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 2,
+      "activeFieldSchemaDebtCount": 10,
+      "exactRpmSemanticHoldQuestionCount": 0,
+      "exactRpmSemanticHoldQuestionUids": [],
+      "sourceSolutionPrerequisiteHoldQuestionCount": 3,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "c7e9cd00ed834797413a8c32cc793b7a386adaa2",
+      "explicitDifficultyHoldQuestionCount": 1,
+      "explicitDifficultyHoldQuestionUids": [
+        "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e"
+      ]
     },
     {
       "id": "E080",
@@ -4117,14 +4153,14 @@
   "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 78,
-    "branchReviewedQuestions": 1838,
-    "remainingExams": 5,
-    "remainingQuestions": 120,
-    "independentSamples": 234,
-    "latestPreparedExam": "E067",
+    "branchReviewedExams": 79,
+    "branchReviewedQuestions": 1862,
+    "remainingExams": 4,
+    "remainingQuestions": 96,
+    "independentSamples": 237,
+    "latestPreparedExam": "E079",
     "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
-    "explicitDifficultyHoldQuestions": 11,
+    "explicitDifficultyHoldQuestions": 12,
     "exactRpmSemanticHoldQuestions": 0
   },
   "ownerHistory": [

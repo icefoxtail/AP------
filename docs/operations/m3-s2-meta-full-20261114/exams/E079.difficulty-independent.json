@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "author-c-targeted-difficulty-recheck-v1",
+  "examId": "E079",
+  "author": "author_c",
+  "ownerTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "frozenAt": "2026-11-14T11:25:52.922026+00:00",
+  "reviewKind": "SOURCE_ONLY_TARGETED_DIFFICULTY_RECHECK",
+  "independence": {
+    "otherAuthorJudgmentsRead": false,
+    "otherAuthorFitsRead": false,
+    "legacyDifficultyRead": false,
+    "inputs": "Only supplied source-only packet, actual source/solution figures, and CURRENT difficulty v1.3 contract before freeze."
+  },
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "sourceArchiveFile": "original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+  "sourcePacketSha256": "5088746abf6853505bbb4e6f94df616118eb8b56029b3efa331ad0f37dc16322",
+  "items": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_4a6221e20913b382b1359a16eac474056843795659df21a232b938749078cd52",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d157842be62242712b4bd48c9df6c02e88875704316f2b2410286b7398434160"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40270dfc93807ffff38901c93b50a249187496b284ed9d0cc6b5687863cf5b8e"
+        }
+      ],
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "difficultyConfidence": "high",
+      "reviewStatus": "INDEPENDENT_RECHECK_FROZEN",
+      "difficultyReason": "한 원 위의 네 점 판정이 목표이므로 같은 현을 바라보는 각을 비교하는 틀은 바로 결정된다. ③~⑤에서 이웃각·삼각형 내각·외각의 표준 전처리 후 같은 기준을 반복한다. 다섯 도형의 반복 분량만으로 3으로 올리지 않으며, 각 위치 대응이 있는 점을 B23으로 남긴다.",
+      "decisiveCalculation": "① ∠BAC=∠BDC=48° 성립. ② ∠BDA45°≠∠BCA47° 불성립. ③ 교점 X에서 ∠CXD100°, ∠BDC40°≠∠BAC35° 불성립. ④ ∠BXC80°이므로 ∠CBD50°≠∠CAD40° 불성립. ⑤ ∠DAC=∠APC+∠PCA=35°+15°=50°=∠DBC, 성립. 정답 ①,⑤.",
+      "sourceSolutionVerified": true,
+      "solutionCheck": {
+        "status": "INDEPENDENTLY_CHECKED_DECISIVE_STEPS_AND_FINAL",
+        "scope": "Metadata routing/difficulty evidence only; not a new blind R1/R2/R3 certificate.",
+        "reason": "① ∠BAC=∠BDC=48° 성립. ② ∠BDA45°≠∠BCA47° 불성립. ③ 교점 X에서 ∠CXD100°, ∠BDC40°≠∠BAC35° 불성립. ④ ∠BXC80°이므로 ∠CBD50°≠∠CAD40° 불성립. ⑤ ∠DAC=∠APC+∠PCA=35°+15°=50°=∠DBC, 성립. 정답 ①,⑤."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q17.png",
+          "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q17-solution.svg"
+        ]
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9cf8210165644b082c5f78ce37d6a752ae6b48d34fe07f08ac7328d173e6cdc2"
+        }
+      ],
+      "difficultyBucket": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "reviewStatus": "HOLD",
+      "difficultyReason": "주어진 모든 조건을 동시에 만족하는 원의 외접사각형이 존재하지 않는다. 정상적인 원문 문항의 확정 난도값으로 처리하지 않는다. 해설이 의도한 국소 계산의 난도는 별도 conditional 필드에만 기록한다.",
+      "intendedRouteDifficultyBucket": 2,
+      "intendedRouteDifficultyBoundaryFlag": "B23",
+      "intendedRouteDifficultyConfidence": "high",
+      "intendedRouteDifficultyReason": "원의 외접사각형 대변합으로 BC를 구하고, 직각 꼭짓점의 접선 길이=반지름을 적용하는 직접적인 두 표준 성질의 결합이다. 존재성 오류를 발상형 문제로 간주해 난도를 올리지 않는다.",
+      "decisiveCalculation": "필요조건만 쓰면 BC=AB+CD−AD=6+10−8=8, BE=8−CE=4. ∠B90°이므로 r=BE=4이고 E는 BC의 중점이다. C에서도 CE=r=4이므로 두 접선의 끼인각 C=90°가 강제되어 AB∥CD. 따라서 실제 AD²=BC²+(CD−AB)²=8²+(10−6)²=80이어야 하지만 주어진 AD²=64여서 모순이다.",
+      "sourceSolutionVerified": false,
+      "solutionCheck": {
+        "status": "SOURCE_CONDITIONS_INCONSISTENT",
+        "localAlgebraChecked": true,
+        "globalGeometryVerified": false,
+        "reason": "기존 해설의 BC8→BE4→r4→16π는 가정이 성립한다면 필요한 국소 계산이지만 모든 주어진 길이를 만족하는 전체 도형이 없다. 그러므로 최종 해답을 일관된 원문의 정답으로 검증했다고 선언할 수 없다.",
+        "coordinateCrossCheck": "B=(0,0), C=(8,0), O=(4,4), A=(0,6). C에서 BC 외의 원 접선은 x=8이므로 D=(8,10). AD=√80=4√5≠8. 또한 직선 AD: x−2y+12=0과 O 사이 거리=8/√5<4여서 원을 가른다."
+      },
+      "sourceIntegrityIssue": {
+        "type": "INCONSISTENT_TANGENTIAL_QUADRILATERAL_DIMENSIONS",
+        "sourceChanged": false,
+        "affectedSourceValues": [
+          "AB=6",
+          "AD=8",
+          "CD=10",
+          "CE=4",
+          "∠B=90°",
+          "ABCD circumscribed about O"
+        ],
+        "requiredAction": "Retain original unchanged; route to source/solution issue review before VERIFIED_FINAL projection or finalized difficulty."
+      },
+      "visualEvidence": {
+        "status": "READ",
+        "assets": [
+          "archive/assets/images/17_팔마중_2학기_기말_중3_수학/s02.png",
+          "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q22-solution.svg"
+        ],
+        "observation": "원 PNG와 해설 SVG 모두 AB6, AD8, CD10, CE4 및 B의 직각을 표시한다. 텍스트 전사 한 곳만의 불일치가 아니다."
+      }
+    }
+  ]
+}

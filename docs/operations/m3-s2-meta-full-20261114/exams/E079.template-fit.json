@@ -1,0 +1,207 @@
+{
+  "examId": "E079",
+  "author": "GPT_ROOT_00FBAC4C0777_SUBAGENT_A",
+  "at": "2026-11-14T11:27:09.330417+00:00",
+  "basis": "official candidates and exact definitions compared after own fresh judgment freeze; supplemental canonical definitions read only for precise registration-gap proposals",
+  "items": [
+    {
+      "ordinal": 1,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "여각에서cosA=sinB로한삼각비를다른삼각비로변환하는기본관계다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 2,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "reason": "tanA를sinA/cosA로바꾸어목표식을sinA로환원하는정확한삼각비변환이다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 3,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "reason": "특수각의값을대입하여계산진술을판정하므로정의와일치한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 4,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "debtSubtype": "NATIVE_TARGET_DEFINITION_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TM_TANGENT_LENGTH"
+      ],
+      "reason": "목표는내접원의반지름r이다. 직각꼭짓점의접선구간이r과같다는관계를이용하지만원의밖점에서그은접선자체를목표로묻는TM_TANGENT_LENGTH와목표정의가다르다.",
+      "requiredDefinition": "삼각형세변과등접선조각·직각접점관계를이용하여내접반지름또는내접원의넓이를구하는정의",
+      "inspectedButNotSelectedAlternative": {
+        "templateKey": "TM_CIRCLE_INCIRCLE",
+        "parentProblemTypeKey": "PT_CIRCLE_EQUATION",
+        "reason": "내접반지름이라는개별정의는맞지만parent가원의방정식이고이문항에는좌표·원방정식풀이가없다. 별도parent/binding검토없이우회투영하지않는다."
+      }
+    },
+    {
+      "ordinal": 5,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "debtSubtype": "OFFICIAL_ROUTE_FAMILY_MEMBER_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "TPL_TRIG_APPLICATION_SHARED_HEIGHT"
+      ],
+      "reason": "삼각비로구한경사거리25m는중간량이고목표는속력2m/s를적용한소요시간12.5초다. DIRECT의직접기하측정이나SHARED_HEIGHT의공통미지량연립과다르다.",
+      "requiredDefinition": "삼각비로구한길이를거리-속력-시간관계에넣어소요시간을구하는연쇄측정",
+      "existingRegisteredSemanticAlternative": {
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+        "fitReason": "거리에서시간이라는다른대상량으로이어지는실제경로에적합하다. 그러나공식height-distance family의이문항후보에없으므로선택을강제하지않고binding검토제안으로만남긴다.",
+        "authority": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json"
+      }
+    },
+    {
+      "ordinal": 6,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "등변성질로얻은끼인각30°의삼각비값을삼각형넓이로연결한다. 목표가넓이여서DIRECT의길이·높이측정과구분한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 7,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "삼각비로높이2를얻은뒤평행사변형넓이2√3으로연결한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 8,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "대각선끼인각60°의삼각비로두삼각형높이를표현한뒤사각형넓이를합산한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 9,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "중심에서현에내린수선이현을이등분하는성질로등현·등호·합동진술을판정한다. 정의는성질이용을포괄하여목표가진술판정이어도맞는다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 10,
+      "status": "FIT",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "reason": "현의중점수직선상에그림밖중심을복원하여OH=6을정하는것이핵심이다. 이성질이용을포괄하는정의에맞고최종넓이는추가계산이다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 11,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "debtSubtype": "NATIVE_TARGET_DEFINITION_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TM_TANGENT_LENGTH"
+      ],
+      "reason": "B에서의접선길이t는중간변수이며목표는DE로잘린삼각형의둘레이다. 등접선항의소거로둘레불변량2t를보이는문제를직접접선길이목표의TM으로강제하지않는다.",
+      "requiredDefinition": "내접원에접하는추가직선으로잘린다각형의둘레를등접선쌍의합·차소거로계산하는정의"
+    },
+    {
+      "ordinal": 12,
+      "status": "FIT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "reason": "원밖P에서원에그은접선PA의길이를직접구하므로정의와정확히맞는다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 13,
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "reason": "원밖삼각형내각과중심각·원주각을미지각x로연결한뒤등반지름삼각형각을구하는복합원각관계다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 14,
+      "status": "NATIVE_TEMPLATE_GAP",
+      "debtSubtype": "OFFICIAL_ROUTE_FAMILY_MEMBER_GAP",
+      "templateKey": null,
+      "rejectedTemplateKeys": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC"
+      ],
+      "reason": "CENTER_ARC의배수관계로목표각을계산한다는internalSkeleton은중간중심각150°까지만포함한다. 실제목표는원의반지름2와원둘레비를결합한두호길이합5π/3이다.",
+      "requiredDefinition": "원주각에서중심각을복원한뒤중심각/360과원둘레를이용하여호길이또는여러호의길이합을계산하는정의",
+      "existingRegisteredSemanticAlternative": {
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+        "fitReason": "중심각150°,반지름2에서호길이를계산하는실제목표와맞는다. 하지만현재공식RPMleaf의후보는CENTER_ARC하나여서off-route재사용을강제하지않는다.",
+        "authority": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json"
+      }
+    },
+    {
+      "ordinal": 15,
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "reason": "두원주각을대응중심각으로두배하여목표중심각104°를구한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 16,
+      "status": "FIT",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "reason": "원주각세개에서남은호를복원하고반원직각·내접외각·교차삼각형각을연쇄해두목표각의합을구한다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 17,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "네점의공원성을원주각의역으로판정하는leaf에공식투영후보가없다."
+    },
+    {
+      "ordinal": 18,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "실제결정방법교차현곱에대한정확한locked L3/L4가없어공식resolver를실행할진입경로가없다. 별도leaf-gap-proposals참조."
+    },
+    {
+      "ordinal": 19,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "실제결정방법두할선곱에대한정확한locked L3/L4가없어공식resolver진입경로가없다. 원주각유도가실제해설에없는데그leaf로대체하지않는다."
+    },
+    {
+      "ordinal": 20,
+      "status": "FIT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "reason": "접현각과등변관계로할선부분을확보한뒤접선PT의길이를구한다. 계산수단이접선-할선곱이어도이정의의목표접선길이와정확히맞는다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 21,
+      "status": "FIT",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "AC8에서공통높이AH를직접구하고다른직각삼각형에서AB를이어구한다. 두관측점공통미지량의동시연립이없으므로SHARED_HEIGHT가아닌DIRECT다.",
+      "bindingNote": "semantic fit only; exact2022 binding remains official resolver debt"
+    },
+    {
+      "ordinal": 22,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "전체외접사각형의길이조건이기하적으로모순되어source-verified prerequisite를보류한다. source수리전공식투영을진행하지않는다."
+    },
+    {
+      "ordinal": 23,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "내접사각형의각leaf에공식투영후보가없다. 기존유효해설과의미판단은보존하나등록경로를만들지않는다."
+    },
+    {
+      "ordinal": 24,
+      "status": "NO_PROJECTION",
+      "templateKey": null,
+      "reason": "접선조건으로각구하기leaf에공식투영후보가없다."
+    }
+  ]
+}

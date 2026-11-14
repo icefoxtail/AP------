@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "author-c-independent-semantic-gap-review-v1",
+  "examId": "E079",
+  "author": "GPT_AUTHOR_C_00FBAC4C0777",
+  "frozenAt": "2026-11-14T11:35:46.041153+00:00",
+  "reviewKind": "SOURCE_FIRST_INDEPENDENT_EXACT_GAP_RECHECK",
+  "sourceArchiveFile": "original/middle/m3/2final/17_팔마중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "87cc1b96935de40ea6d83927e62cdb1010d70798",
+  "sourceSha256": "ea80f05141171dd734f6e18c1e9ef0cf190e645fe490e7685015268a51807395",
+  "packetSha256": "0377cff1947d55d9532ccd178daaff673406036898db240cb57eaa55857ebc1c",
+  "independence": {
+    "otherAuthorJudgmentsRead": false,
+    "otherAuthorTemplateFitsRead": false,
+    "sourceFirst": true,
+    "actualSourceAndSolutionAssetsViewedBeforeCanonicalPathLookup": true,
+    "metadataOrDifficultyValuesCopied": false
+  },
+  "authority": [
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+      "sha256": "79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "sha256": "80c6ac583351320043e50fe504456b0383140b75d51ba7a9b579357e725bcff9"
+    },
+    {
+      "path": "docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md",
+      "sha256": "50697aaa838dc5415bb926b284091ff19946ad756b50b65864d0506e1b488777"
+    }
+  ],
+  "scopePolicy": "Current M3-2 target may use lower-only M1/M2 prerequisite semantic paths; semantic source parents and target current parents remain separate. No source/solution/asset mutation performed.",
+  "summary": {
+    "mathematicalAnswersVerified": 2,
+    "exactPrerequisiteStudentRoutesFound": 2,
+    "currentStudentSolutionPrerequisiteIssues": 2,
+    "newRPMLeafRequiredForProposedStudentRoute": false,
+    "notClaimed": "Do not treat an independently reconstructed proof as if it already exists in the saved student solution. No VERIFIED_FINAL resolver prerequisite or new R1/R2/R3 certification is asserted."
+  },
+  "items": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3c477e3ec6cd1aaa35b41997e6c7d98649835f9edb15c71f1a7a213429fa3e2e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "65f2da5395099bf31bd6724c0bc54acf787a591338618a201041b9781850a094"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ffda5926ac30b844a0d8cdb6d2ad53fdee6e715a92cef556c73dc392a4ba39f7"
+        }
+      ],
+      "conclusion": "EXACT_LOWER_SCOPE_ROUTE_AVAILABLE_BUT_CURRENT_SOLUTION_DERIVATION_INCOMPLETE",
+      "currentSavedSolution": {
+        "actualPrimaryMethod": "교차하는 두 현의 나뉜 선분 곱이 같다는 관계 AP·PB=CP·DP를 유도 없이 직접 적용한다.",
+        "criticalQuote": "두 현이 교점 P에서 나뉜 선분의 길이끼리 곱하면 그 곱은 서로 같으므로 $AP\\times PB=CP\\times DP$이다.",
+        "namesPowerOfPointExplicitly": false,
+        "usesPowerOfPointIdentityDirectly": true,
+        "includesSimilarityDerivation": false,
+        "mathematicsAndFinalAnswerVerified": true,
+        "studentReproducibilityVerified": false,
+        "verifiedFinalPrerequisiteForResolver": false
+      },
+      "mathematicalVerification": "위 AA 유도로 현의 곱 관계가 직접 증명된다. 별도 검산: CD 중점을 M이라 하면 CM=DM=5/2, PM=1/2, OM²=4²−(5/2)²=39/4이므로 OP²=OM²+MP²=10. 정답 ② √10은 맞고 조건도 일관된다.",
+      "availableStudentRoute": {
+        "primaryMethod": "같은 호를 보는 원주각과 맞꼭지각으로 두 삼각형의 AA 닮음을 보이고 대응변의 비에서 현의 곱 관계를 유도하여 OP를 계산한다.",
+        "decisiveStep": "AC와 BD를 잇는다. ∠APC=∠DPB(맞꼭지각), ∠ACP=∠DBP(같은 호 AD의 원주각)이므로 △APC∽△DPB. AP/DP=CP/PB에서 AP·PB=CP·DP=6. OP=x이면 (4+x)(4−x)=6, x²=10, x>0이므로 x=√10.",
+        "exactRpmLeafAvailable": true,
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+        "targetScope": "M3-2",
+        "semanticSourceScope": "M2-2",
+        "semanticSourceStandardUnitKey": "M2-06",
+        "semanticSourceSubUnitKey": "M2-06-SIMILAR_FIGURE",
+        "rpmRecordIdByCurriculum": {
+          "2015": "M2-RPM-089",
+          "2022": "M2-RPM-207"
+        },
+        "rpmPathByCurriculum": {
+          "2015": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          },
+          "2022": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        },
+        "equivalent2015CrosswalkBindingRow": {
+          "recordId": "M2-RPM-238",
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "note": "Same locked semantic path with another binding parent; not a different primary leaf. Root official resolver must select exact target binding rather than copy an M2 binding into M3."
+        },
+        "exactFitReason": "목표는 닮음을 판정하는 것 자체가 아니라 AA 닮음의 대응변 비로 미지 길이를 구하는 것이다. 이 단계는 locked M2 닮음의 활용>길이에 직접 해당한다. M1의 원·부채꼴 기본/넓이 leaf는 곱 관계 유도의 주방법을 설명하지 못한다.",
+        "routeFinalizationStatus": "CONDITIONAL_ON_STUDENT_SOLUTION_COMPLETION",
+        "currentSolutionAlreadyImplementsThisRoute": false
+      },
+      "sourcePrerequisiteIssue": {
+        "status": "STUDENT_REPRODUCIBLE_FAIL",
+        "reasonCodes": [
+          "LOGIC_JUMP"
+        ],
+        "reason": "현재 텍스트는 현의 곱 관계의 성립 이유를 제시하지 않는다. 원문/해설 그림에도 보조선 AC,BD나 닮은 삼각형 대응이 없다. 곱셈공식 이후 산술은 상세하지만 결정적인 기하식 설정의 근거가 빠져 있다.",
+        "minimumRequiredEvidence": "AC,BD를 잇는 보조선 선택, 맞꼭지각 한 쌍, 같은 호 AD의 원주각 한 쌍, △APC∽△DPB의 대응 및 AP/DP=CP/PB를 명시하면 이후 기존 계산으로 이어진다.",
+        "curriculumClaimLimit": "여기서는 방멱정리가 어느 모든 교육과정에서 절대 금지라는 일반 명제를 주장하지 않는다. 제공된 현재 해설에는 해당 곱 관계를 중3 범위의 원주각·AA 닮음으로 재현하는 증명 또는 별도 허용 전제의 근거가 없음을 기록한다.",
+        "recommendedDisposition": "SOLUTION_PREREQUISITE_REVIEW; do not keep as NO_EXACT_RPM_LEAF if the supplied AA proof is adopted and verified as final student solution.",
+        "sourceChanged": false
+      },
+      "visualEvidence": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q18.png",
+          "repositoryPath": "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q18.png",
+          "status": "READ",
+          "sha256": "e8cd12643511363485b7e8a27b1db05b3c4cc568500d238f37751f3cec057b99"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q18-solution.svg",
+          "repositoryPath": "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q18-solution.svg",
+          "status": "READ",
+          "sha256": "a4f7714c0688003e3e675098780822096b729cdaf97da265d88d7101e5374c28"
+        }
+      ],
+      "alternativeVerificationNotAssignedAsCurrentPrimary": "현의 중점·중심의 수선과 피타고라스로도 중3 범위에서 풀 수 있지만, 이것은 현재 저장 해설의 곱 관계 경로와 다른 해설 선택이므로 현행 주방법으로 덮어쓰지 않는다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_2d56e395257d5e5a17e20325527a63c9adde9bddfe4aafdf1a545f129ea8e47b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5a3fe836d5026026b8c98da2deedb855149d473ca6a0f9025fb26abab85a0c41"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "273ec57dff010901ab3abce8744a003ba33cd9a8de84e97b1f1c23d1bf9fd0e0"
+        }
+      ],
+      "conclusion": "EXACT_LOWER_SCOPE_ROUTE_AVAILABLE_BUT_CURRENT_SOLUTION_DERIVATION_INCOMPLETE",
+      "currentSavedSolution": {
+        "actualPrimaryMethod": "원 밖의 P에서 그은 두 할선의 곱 관계 PA·PB=PC·PD를 유도 없이 직접 적용한 뒤 지름과 원의 넓이를 구한다.",
+        "criticalQuote": "점 P에서 원에 그은 두 할선에 대해 $PA\\times PB=PC\\times PD$이다.",
+        "namesPowerOfPointExplicitly": false,
+        "usesPowerOfPointIdentityDirectly": true,
+        "includesSimilarityDerivation": false,
+        "mathematicsAndFinalAnswerVerified": true,
+        "studentReproducibilityVerified": false,
+        "verifiedFinalPrerequisiteForResolver": false
+      },
+      "mathematicalVerification": "위 AA 유도로 할선의 곱 관계를 증명하고 3·8=2·12, CD=12−2=10, π(10/2)²=25π를 재계산했다. 정답 ①은 맞다. P의 중심거리 OP=PC+r=7이고 OP²−r²=49−25=24=PA·PB여서 주어진 길이에도 모순이 없다.",
+      "availableStudentRoute": {
+        "primaryMethod": "같은 원주각과 P의 공통각으로 두 삼각형의 AA 닮음을 보이고 길이 비례식으로 지름을 결정한 뒤 원의 넓이를 구한다.",
+        "decisiveStep": "AD와 BC를 잇는다. ∠APD=∠CPB(P의 두 할선이 이루는 같은 각), ∠PDA=∠PBC(각각 ∠CDA,∠ABC이며 같은 호 AC의 원주각)이므로 △PAD∽△PCB. PA/PC=PD/PB에서 PA·PB=PC·PD. PB=3+5=8, 3·8=2·PD이므로 PD=12, CD=PD−PC=10, r=5, 넓이25π.",
+        "exactRpmLeafAvailable": true,
+        "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+        "targetScope": "M3-2",
+        "semanticSourceScope": "M2-2",
+        "semanticSourceStandardUnitKey": "M2-06",
+        "semanticSourceSubUnitKey": "M2-06-SIMILAR_FIGURE",
+        "rpmRecordIdByCurriculum": {
+          "2015": "M2-RPM-089",
+          "2022": "M2-RPM-207"
+        },
+        "rpmPathByCurriculum": {
+          "2015": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          },
+          "2022": {
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        },
+        "equivalent2015CrosswalkBindingRow": {
+          "recordId": "M2-RPM-238",
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "note": "Same locked semantic path with another binding parent; not a different primary leaf. Root official resolver must select exact target binding rather than copy an M2 binding into M3."
+        },
+        "exactFitReason": "목표는 닮음을 판정하는 것 자체가 아니라 AA 닮음의 대응변 비로 미지 길이를 구하는 것이다. 이 단계는 locked M2 닮음의 활용>길이에 직접 해당한다. M1의 원·부채꼴 기본/넓이 leaf는 곱 관계 유도의 주방법을 설명하지 못한다.",
+        "routeFinalizationStatus": "CONDITIONAL_ON_STUDENT_SOLUTION_COMPLETION",
+        "currentSolutionAlreadyImplementsThisRoute": false
+      },
+      "sourcePrerequisiteIssue": {
+        "status": "STUDENT_REPRODUCIBLE_FAIL",
+        "reasonCodes": [
+          "LOGIC_JUMP"
+        ],
+        "reason": "현재 해설 첫 문장이 곧바로 할선 곱 식이며 이를 중3 학생이 원주각과 닮음으로 유도하는 핵심 연결이 없다. PNG와 SVG에도 AD,BC 보조선이나 닮음 대응이 표현되어 있지 않다.",
+        "minimumRequiredEvidence": "AD,BC를 잇고 P의 공통각과 같은 호 AC의 원주각을 명시하여 △PAD∽△PCB, PA/PC=PD/PB를 보여 주면 이후 기존 계산으로 자연스럽게 연결된다.",
+        "curriculumClaimLimit": "여기서는 방멱정리가 어느 모든 교육과정에서 절대 금지라는 일반 명제를 주장하지 않는다. 제공된 현재 해설에는 해당 곱 관계를 중3 범위의 원주각·AA 닮음으로 재현하는 증명 또는 별도 허용 전제의 근거가 없음을 기록한다.",
+        "recommendedDisposition": "SOLUTION_PREREQUISITE_REVIEW; do not keep as NO_EXACT_RPM_LEAF if the supplied AA proof is adopted and verified as final student solution.",
+        "sourceChanged": false
+      },
+      "visualEvidence": [
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q19.png",
+          "repositoryPath": "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q19.png",
+          "status": "READ",
+          "sha256": "5c8a0b7f3399894ec6879832c74788554959d2f977c2b626919e2c77b618e8cd"
+        },
+        {
+          "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/17_팔마중_2학기_기말_중3_수학/q19-solution.svg",
+          "repositoryPath": "archive/assets/images/17_팔마중_2학기_기말_중3_수학/q19-solution.svg",
+          "status": "READ",
+          "sha256": "806679731d6229f7d7a7750f06c283a994c2d097ed99d8e5a0964e1f490a2aec"
+        }
+      ],
+      "leafDisambiguation": "최종 목표가 넓이여도 닮음의 넓이·부피 비를 쓰지 않는다. 닮음으로 CD라는 길이를 구한 뒤 일반 원 넓이 공식만 적용하므로 M2의 닮음 활용>길이가 정확하며 넓이·부피 비 leaf(090/208)는 부적합하다."
+    }
+  ]
+}

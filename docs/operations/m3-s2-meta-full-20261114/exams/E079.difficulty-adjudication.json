@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "M3S2_TARGETED_DIFFICULTY_ADJUDICATION_v1",
+  "examId": "E079",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "reviewedAt": "2026-11-14T11:35:18.724437+00:00",
+  "sourceReviewMode": "Independent peer source-only review frozen before comparison. Root compared actual source/figures on disputed decisions and original 3 source-first samples.",
+  "independentReviewRef": "E079.difficulty-independent.json",
+  "independentReviewSha256": "c04a30881460fbe529647a23ff4702689204702b9df00b3fdaf1842c8a3c3fee",
+  "items": [
+    {
+      "ordinal": 17,
+      "status": "RESOLVED",
+      "authorBucketBefore": 3,
+      "independentBucket": 2,
+      "finalBucket": 2,
+      "reason": "네 점의 공원성 판정틀은 정해져 있고 각 보기의 보각·내각합·외각을 표준 전처리한다. 다섯 그림의 반복량으로3을 주지 않아2/B23.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 18,
+      "status": "RESOLVED_WITH_SOURCE_DERIVATION_REPAIR",
+      "authorBucketBefore": 2,
+      "independentBucket": null,
+      "finalBucket": 3,
+      "reason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+      "independentEvidence": "E079.semantic-gap-independent.json: source-first AA derivation",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 19,
+      "status": "RESOLVED_WITH_SOURCE_DERIVATION_REPAIR",
+      "authorBucketBefore": 2,
+      "independentBucket": null,
+      "finalBucket": 3,
+      "reason": "원본 해설은 현/할선 곱식을 유도 없이 사용하지만, 중3에서 정당화할 최소 경로는 새 현을 잇고 같은호 원주각+AA닮음으로 비례식을 만드는 것이다. E083Q18과 같은 구조로3/B23이며, 곱공식을 이미 주어진 것으로 가정한2는 채택하지 않는다. 현재 학생해설의 유도 누락은 별도 보완한다.",
+      "independentEvidence": "E079.semantic-gap-independent.json: source-first AA derivation",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    },
+    {
+      "ordinal": 22,
+      "status": "EXPLICIT_VALIDITY_HOLD",
+      "authorBucketBefore": 3,
+      "independentBucket": "UNKNOWN",
+      "finalBucket": "UNKNOWN",
+      "reason": "전체외접사각형의조건이모순이다. Pitot으로BC8,BE4,r4이고CE=r라C도직각이다. AB∥CD에서AD²=8²+(10−6)²=80이어야하지만제시AD8은64다. 유효한문항의난도를확정할수없어UNKNOWN이다.",
+      "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+    }
+  ]
+}
