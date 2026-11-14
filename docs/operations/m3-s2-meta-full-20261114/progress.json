@@ -87,7 +87,31 @@
       "uidDigest": "362d3d8341599d9f87c08c337e5925179e86f8e18b142c481f439f6cde341876",
       "existing4slotPath": null,
       "existing4slotSourceBlob": null,
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "reviewedQuestionCount": 24,
+      "decisions": {
+        "CORRECT": 24
+      },
+      "sourceAfterBlob": "e2d774c99dcbe2fc924c5f146d868589e9baafe2",
+      "sourceAfterSha256": "ca6872ab970bff9c7d2f432515eb52b106524358ca128107cff4007ed10c5d38",
+      "sourceChangedQuestionCount": 24,
+      "sourceChangedFieldCount": 101,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E003.meta.json",
+      "metadataSha256": "f5f60ffa552e3f2a66c4e65e441ebdf50912fc3340cff98d0b7eb35878fb06fa",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E003.verification.json",
+      "verificationSha256": "84ed1f99a377a7d02d9adf1fe5fe9acb3b85c272079f3a4454cba442938c40e5",
+      "independentSampleOrdinals": [
+        3,
+        12,
+        21
+      ],
+      "independentSampleStatus": "PASS_AFTER_Q12_CONDITION_CORRECTION",
+      "fourSlotMode": "NEW_FULL_EVIDENCE",
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 6,
+      "activeFieldSchemaDebtCount": 4,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "ac3cbe342d88278ec3256599fb2465db820b0777"
     },
     {
       "id": "E004",
@@ -1613,5 +1637,14 @@
   "storageMethod": "GitHub connected writer; local HTTPS push unavailable",
   "registration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
-  "deployment": "NOT_RUN_USER_EXCLUDED"
+  "deployment": "NOT_RUN_USER_EXCLUDED",
+  "rollup": {
+    "branchReviewedExams": 1,
+    "branchReviewedQuestions": 24,
+    "remainingExams": 82,
+    "remainingQuestions": 1934,
+    "independentSamples": 3,
+    "latestPreparedExam": "E003",
+    "mainMerge": "NOT_RUN_USER_EXCLUDED"
+  }
 }

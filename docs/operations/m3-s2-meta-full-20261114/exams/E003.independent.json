@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E003",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "scope": "Three metadata/4slot semantic samples; no mathematical R1/R2/R3 verification",
+  "sourceGitBlobSha": "281961d21495f6ea653cc80d62d5b36996b6980f",
+  "artifactHashes": {
+    "review.json": "3104473ae29ca54423887fa5134101589fd79daea8557eba730f6482f0795fac",
+    "E003.4slot.json": "e4c4a8538c34ddc306c99cdfdd264f3ecea8a29ee41032a14bf634d770f122df",
+    "source-patch.json": "a964e5ce38b7c18600daca763ee410de145a2e65a9712537ff39c377b4cd8f0c"
+  },
+  "sampleOrdinals": [
+    3,
+    12,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_6fac6d0524ca20509a079a0ce36916caed73f78a59951bd518ace2da5cf23131",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "difficulty": "ACCEPTABLE_BOUNDARY",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "judgment": "삼각비 항등 관계가 실제 기존 해설의 결정 단계이다. exact quote와 예각 조건이 모두 일치한다. method 한 개/용어 네 개 경고는 내용상 충분하다. 난이도 2/3 경계는 있으나 보존 가능한 판단이다.",
+      "assetsInspected": []
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_27d6fad6da8fa87d7043f380040bf4103cd774ac885837c9e1db6f33f1b3f1d9",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "difficulty": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "judgment": "주분류 기본 삼각비와 GEOMETRIC_DERIVATION, 닮음 높이정리의 IMPLIED 연결은 타당하다. 다만 그림의 DE⊥AC는 높이정리 적용에 필수인 독립 명시 조건인데 condition이 비어 있다. condition에 직각 또는 수선을 기존 해설의 DE\\perp AC 정확 인용으로 추가해야 한다. AE=8, EC=2도 given 길이로 보완 권고한다.",
+      "assetsInspected": [
+        "assets/images/26_팔마중_2학기_중간_중3_기출/q12_question-v2.png"
+      ],
+      "correctionConfirmed": "필수 DE⊥AC와 given AE=8이 exact source quote로 보완됨"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_39a009be8d7a45b4dec37d7780baee890e62724f9d7fc5f8a89268bc6f207df4",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "difficulty": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "judgment": "면·공간대각선을 피타고라스로 복원하고 sin·tan을 읽는 결정 단계로 기본 삼각비 매핑이 타당하다. 정육면체의 고유 직각/등변 조건을 별도 condition에 반복할 필요는 없다. 정확 인용과 골격이 일치한다.",
+      "assetsInspected": [
+        "assets/images/26_팔마중_2학기_중간_중3_기출/q21_question-v2.png"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_Q12_CONDITION_CORRECTION",
+  "nextAction": "Root integrate reviewed packet",
+  "priorStatus": "CHANGES_REQUESTED_Q12_CONDITION"
+}

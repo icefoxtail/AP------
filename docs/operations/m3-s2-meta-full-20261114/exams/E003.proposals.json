@@ -1,0 +1,141 @@
+[
+  {
+    "type": "NEW_TPL_OR_MULTI_PRIMARY_MAPPING_PROPOSAL",
+    "nameKo": "독립 도식의 현 길이와 접선 거리 합산",
+    "reuseDefinition": "서로 독립인 원 도식에서 같은 중심거리의 현 길이와 접선-반지름 직각삼각형의 거리를 각각 구한 뒤 그 결과를 합한다.",
+    "distinguishingCriterion": "한 도식에서 현 길이만 구하는 TM_CIRCLE_CHORD_LENGTH나 한 점의 접선 길이만 구하는 TM_TANGENT_LENGTH와 달리 두 독립 계산을 한 문항 결과에 합산한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "componentRpmRecordIds": [
+      "M3-RPM-069",
+      "M3-RPM-072"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_4d0cb2885e031503eb6006303c69b228ec72f6695643f37ea691fa6dd556d3db"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "nearestTemplates": [
+        "TM_CIRCLE_CHORD_LENGTH",
+        "TM_TANGENT_LENGTH"
+      ],
+      "exactCompositeFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비 식의 변형·부호·범위·항등 관계를 정리한다.",
+    "distinguishingCriterion": "주어진 탄젠트값을 구한 뒤 sin A cos A를 tan A의 유리식으로 바꾸는 항등 관계가 결정 단계다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "rpmRecordId": "M3-RPM-056",
+    "supportingQuestionUids": [
+      "qid_v1_6fac6d0524ca20509a079a0ce36916caed73f78a59951bd518ace2da5cf23131"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "삼각비표·근삿값·역조회로 값을 비교하거나 각을 찾는다.",
+    "distinguishingCriterion": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "rpmRecordId": "M3-RPM-056",
+    "supportingQuestionUids": [
+      "qid_v1_a29247d96d66eb3fbe39214f57af540423577a0f2de12ad0ded4af097f27f30d"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_27d6fad6da8fa87d7043f380040bf4103cd774ac885837c9e1db6f33f1b3f1d9"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_ACTIVE_ADD_CROSSWALK",
+    "reuseDefinition": "보조선·좌표·평면/입체 도형의 길이 관계를 복원한 뒤 삼각비를 구한다.",
+    "distinguishingCriterion": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "rpmRecordId": "M3-RPM-055",
+    "supportingQuestionUids": [
+      "qid_v1_39a009be8d7a45b4dec37d7780baee890e62724f9d7fc5f8a89268bc6f207df4"
+    ],
+    "globalActiveSearch": {
+      "allActiveTemplatesSearched": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "selectedStatus": "ACTIVE"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "넓이에서 끼인각 역산",
+    "reuseDefinition": "두 변과 넓이로 sin A를 구한 뒤 명시된 예각/둔각 범위로 각의 가지를 선택한다.",
+    "distinguishingCriterion": "정방향 길이·높이·거리 직접 측정과 구분한다.",
+    "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "supportingQuestionUids": [
+      "qid_v1_81da5259e35dca07269ec2288d9f13fe9a1ea871c9388ecd037b5a08651330e0"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "exactFitFound": false,
+      "registryRef": "archive/data/meta-foundation/compiled/taxonomy_registry.json"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 동일 길이에서 삼각형 넓이",
+    "reuseDefinition": "한 외부점의 두 접선 길이가 같음을 사용해 삼각형 두 변을 확보한 뒤 끼인각의 삼각비 넓이를 계산한다.",
+    "distinguishingCriterion": "접선 길이 자체가 목표인 TM_TANGENT_LENGTH와 구분한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "supportingQuestionUids": [
+      "qid_v1_accc49ec5702f68c413d32cc8f5878a6b40854ca96986f9ba10caf8e36d08baf"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "exactFitFound": false,
+      "registryRef": "archive/data/meta-foundation/compiled/taxonomy_registry.json"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 관계에서 원 넓이 복원",
+    "reuseDefinition": "접선 길이 합과 높이 차를 직각삼각형으로 연결해 반지름 제곱을 구하고 원 또는 반원 넓이로 연결한다.",
+    "distinguishingCriterion": "접선 길이 자체가 목표인 TM_TANGENT_LENGTH 및 현 길이와 구분한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "supportingQuestionUids": [
+      "qid_v1_1ee0d219f9a293f870226905fa5528fc7a81382e3f195254fea45e2b002a55b8"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "exactFitFound": false,
+      "registryRef": "archive/data/meta-foundation/compiled/taxonomy_registry.json"
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
