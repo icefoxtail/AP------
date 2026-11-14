@@ -1,0 +1,629 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E028",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T13:59:22.896227+00:00",
+  "sourceGitBlobSha": "5d5349d0f3aa15e21257439cbd8d863647b9144f",
+  "reviewSha256": "e2d14564bcd04b13b1c3919548dd95d4d3122f2e626a349220be0e1a1d721891",
+  "fourSlotSha256": "64c26e00cc98a42ddc5d799930933c26720ac76eca0ac3836953fa0a8b1ee29f",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E028.initial.json",
+  "initialFreezeSha256": "08f6442277b294c59aa6ab2699247d35d5e64b822e392724aedce6c304947a46",
+  "sampleOrdinals": [
+    3,
+    16,
+    21
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 3,
+      "classification": "단일 이변수 일차방정식의 두 해 성분 대입이다. graph또는simultaneous 목표로 강제하지 않은 sourceM2-03/RPMgap 수용.",
+      "binding": "현재M2의 해가주어진연립식 leaf와 다른 목표라 exact binding미확정 유지.",
+      "crossConcept": "대입은 primary 자체여서 CC[] 수용.",
+      "condition": "두 주어진 순서쌍은 입력자료이며 별도수범위는 없다.",
+      "integration": "직접대입의 반복이며 외부통합NONE.",
+      "difficulty": "독립1/author2는 B12인접차, 원author2유지수용.",
+      "fourSlot": "r2는 a,b를 매개변수대신 실제 누락좌표로 표시하고 차 목표를 함께保존했다. literal 확인."
+    },
+    {
+      "sourceOrdinal": 16,
+      "classification": "이동량이 실제미지수인 수직이동모델. exactRPM이없어leafgap유지.",
+      "binding": "ACTIVE TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT 정의를 직접확인: 상수항에이동량추가→점좌표대입→이동량결정 모두포함. semantic후보수용, targetbindingNOT_RUN유지.",
+      "crossConcept": "r2에서 template정의내부의점대입CC중복을제거한것이옳다.",
+      "condition": "주어진점은모델입력이며숫자범위조건을만들지않는다.",
+      "integration": "하나의이동량결정primary라NONE으로보정수용.",
+      "difficulty": "중/2B12 표준모델과짧은식풀이.",
+      "fourSlot": "실제평행이동식과점대입식이 별도IMPLIED method로제시되고literal일치한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "classification": "M2-RPM143 최소최대정수. 안내소문항들이단일비용비교목표로연결된다.",
+      "binding": "sourcecurriculum누락·genuine resolver미확정과 semantic판정구분수용.",
+      "crossConcept": "비용식모델링과자연수선택은primary내부라CC중복없음.",
+      "condition": "실제해설의자연수장수제한이엄격부등식경계다음정수선택에필수. COND_NATURAL_NUMBER수용.",
+      "integration": "한정형모형풀이로NONE.",
+      "difficulty": "중/2B23 안내된모델과최소정수선택.",
+      "fourSlot": "r2 given을구하라는식에서실제가입비/장당단가/장수입력으로수정하고(2)부등식/해집합goal추가. literal전부확인."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_fa891efa463f4784d122f4def6516fb766dc5830c31e056c6582353174379be0",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "소수 일차부등식을 풀고 열린끝점과 방향을 수직선에 대응"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "소수 부등식을 음수로 나누어 풀고 열린점과 방향을 실제 수직선 보기에 대응한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT",
+      "reason": "소수 일차부등식을 풀고 열린끝점과 방향을 수직선에 대응"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9f8bb7274524ac2108808edb05c63089453123adc71480f104f8b98148989ba",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "해의 실수최댓값으로 매개변수 경계를 일치"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "부등식 상한을 정리해 주어진 최대값3과 맞춘다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "해의 실수최댓값으로 매개변수 경계를 일치"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_49b85b50cf362b5411a0e97cb313483e37e669c938e78658854eed61217c89ba",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 순서쌍을 일차식에 직접 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두 순서쌍을 각각 일차방정식에 대입해 구한 두 값을 뺀다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "두 순서쌍을 일차식에 직접 대입; 기본 직접적용1과 두 단계 변환·비교를 포함한 정형2의 B12 인접차이며 저자의 경계2를 유지할 수 있다. 상향고정 규칙을 만든 것은 아니다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_810ec169d0e7f151d40ee7b0a7d2e0e899143b75ea79f26967c8e1cf815d8f2e",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "주고받은 뒤의 두 나이관계를 각각 모델링"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "나이를 주고받은 두 상황의 변화된 두 사람 나이를 따로 모델링한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT",
+      "reason": "주고받은 뒤의 두 나이관계를 각각 모델링"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1d3cd5d8728202eaa986b284aa5086682b7d550116490f9234684953d271a107",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 좌표를 두 식에 대입해 해 확인"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "독립 최초 하/1과 현행 중을 비교했다. Q5은 기본 정의·대입의 직접 적용이라 숫자1을 유지하며 여러보기/표현구별의 학습중은 인접수준으로 보존한다. 독립 호환 승인을 요청한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "주어진 좌표를 두 식에 대입해 해 확인; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_6157fafee0f9837b3ab38877bf59d2bc070e656f2a04bc3af9f989e76fd9533a",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "한 좌표로 다른 좌표를 구하고 계수를 복원"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "하나의 해값으로 다른 좌표를 구하고 다음 식에 넣어 계수를 찾는다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "한 좌표로 다른 좌표를 구하고 계수를 복원"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a063a3448f2f7bfb4fe738c24453947be29ace6e50090b3711b57cf195cf4a2b",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "각 식에 상수분모 공배수를 곱하는 지정된 기본 변형"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분모 최소공배수 배수와 괄호 전개로 동치 정수계수식을 만든다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "각 식에 상수분모 공배수를 곱하는 지정된 기본 변형; 기본 직접적용1과 두 단계 변환·비교를 포함한 정형2의 B12 인접차이며 저자의 경계2를 유지할 수 있다. 상향고정 규칙을 만든 것은 아니다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b356aa7f6c441a8e7325a8a9df8c776f2cee945a6f7ae89d70deca6a6d9c05fe",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "무수해 조건으로 두 식이 같도록 계수 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "무수히 많은 해의 같은 식 조건을 적용해 한 식을 정규화한 뒤 계수를 비교한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "무수해 조건으로 두 식이 같도록 계수 비교"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d5319d2ed28465edbbd1145dc340bfd71f11ec0ed39ade11cf8e52f8f01c6f56",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "출력의 유일성으로 일반함수 직접 판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "독립 최초 하/1과 현행 중을 비교했다. Q9은 기본 정의·대입의 직접 적용이라 숫자1을 유지하며 여러보기/표현구별의 학습중은 인접수준으로 보존한다. 독립 호환 승인을 요청한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "출력의 유일성으로 일반함수 직접 판정; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_1d727c16435296544923cfd3c0600a026d15ac61a04f40666399f7416bab869f",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "함숫값으로 계수를 구한 뒤 다른 입력 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 함숫값으로 상수를 정한 뒤 요구 입력의 값을 대입한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT",
+      "reason": "함숫값으로 계수를 구한 뒤 다른 입력 대입"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7ff68e7793b136ae9f22e03d06769d8b5605ce6b524c6add42d9811dbbbc0fdc",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "일차함수 정의를 식종류에 직접 적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "독립 최초 하/1과 현행 중을 비교했다. Q11은 기본 정의·대입의 직접 적용이라 숫자1을 유지하며 여러보기/표현구별의 학습중은 인접수준으로 보존한다. 독립 호환 승인을 요청한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "일차함수 정의를 식종류에 직접 적용; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_81ca1ec53d0364dd4d3af816976a668dba19331be4ae5d67ff0f6bdf6ae01f06",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 증가량 비의 기울기를 주어진 식에서 고른다"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "변화량의 비로 기울기를 구해 식의 계수와 대응한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "두 증가량 비의 기울기를 주어진 식에서 고른다; 기본 직접적용1과 두 단계 변환·비교를 포함한 정형2의 B12 인접차이며 저자의 경계2를 유지할 수 있다. 상향고정 규칙을 만든 것은 아니다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_a4575362623302bfe1b83ec207608a0739028d53b05999b0c726e5b3c8105bf4",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "실제 두 절편에서 기울기와 절편 복원"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 그림의 절편 두 점에서 기울기를 구해 식을 쓴다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "실제 두 절편에서 기울기와 절편 복원"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_cad3ca0ceb8a5723279b6dbdb90fdddeb5f4fc30cd463c9e770290c8b8fa2934",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "한 절편점으로 미지계수 복원후 다른 절편"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "x절편 좌표로 계수를 구하고 x=0의 값을 읽는다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "한 절편점으로 미지계수 복원후 다른 절편"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_2002a3d0014092e5d61ba8ccf12712d42ad6535ef852cfc9fee58d1e78673832",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "수직이동량을 상수항에 반영해 두 계수 직접 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "이동 후 상수항을 바꾼 식에서 두 계수를 비교하고 곱한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "수직이동량을 상수항에 반영해 두 계수 직접 비교; 기본 직접적용1과 두 단계 변환·비교를 포함한 정형2의 B12 인접차이며 저자의 경계2를 유지할 수 있다. 상향고정 규칙을 만든 것은 아니다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_658145888a76ea4da4bf8fe61db18d0aaadb56f0adbb131347564747edc61941",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "미지이동량의 식을 세우고 점 좌표 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "이동식에 주어진 점을 대입하는 표준 일차식 역산이다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT",
+      "reason": "미지이동량의 식을 세우고 점 좌표 대입"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_6142fd717e2528b747a06839bee54e5ffe227023d8c7e149d88e47141232854b",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "평행기울기와 한 점으로 식결정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "평행조건으로 기울기를 정하고 한 점으로 절편을 구한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT",
+      "reason": "평행기울기와 한 점으로 식결정"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_a09483618a36072fad223bca5c6074a4fd764a9be83ec8e79dbc7de69944cb86",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "기울기·절편·점·이동의 표준성질을 보기별 적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "점 대입·기울기 부호·절편·평행이동의 표준 성질을 보기별로 확인한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT",
+      "reason": "기울기·절편·점·이동의 표준성질을 보기별 적용"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0cec61d532150db202eb012b5c151b91872b075c4d42a73371550d92159f59a8",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 부호에서 그래프 방향과 절편 위치 직접 선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "독립 최초 하/1과 현행 중을 비교했다. Q19은 기본 정의·대입의 직접 적용이라 숫자1을 유지하며 여러보기/표현구별의 학습중은 인접수준으로 보존한다. 독립 호환 승인을 요청한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "주어진 부호에서 그래프 방향과 절편 위치 직접 선택; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_7e6276756015df31c3c33325b38188d377008df5506126e1544f928ebfcf512a",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "단위온도변화율의 일차모델에 목표온도 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분당 변화량으로 선형 온도식을 세우고 끓는온도에 대입한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT",
+      "reason": "단위온도변화율의 일차모델에 목표온도 대입"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_4f83b0fdec92a150c3b06f1fba8d70be05f35565c166986e9720f52188dde0b5",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "안내소문항에 따라 비용 비교식을 만들고 최소자연수선택"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "안내된 비용식과 엄격부등식을 차례로 세운 뒤 자연수의 최소를 정한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "안내소문항에 따라 비용 비교식을 만들고 최소자연수선택"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_1d78d5b96922e91bd39211bd7c81e149cef30c7f0a7e14db2404b1d6f34e604d",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "한 식 배수로 계수를 맞춘 뒤 가감법"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "지정된 가감법대로 한 식을2배하고 더하는 가장 기본 연립계산이다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "한 식 배수로 계수를 맞춘 뒤 가감법"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_ca025ca68f6626e3b68567031d541d6389e010853784957efd2f324551c2d5b5",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 점 기울기와 한 점 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두 점의 기울기를 구한 뒤 한 점으로 절편을 정한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT",
+      "reason": "두 점 기울기와 한 점 대입"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_a2b8558509a9a81bd2f338da2d30660e7d2cb68ad7f41ccfcc6b00cbb0cdfb74",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 좌표축 절편 정의 직접 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "독립 최초 하/1과 현행 중을 비교했다. Q24은 기본 정의·대입의 직접 적용이라 숫자1을 유지하며 여러보기/표현구별의 학습중은 인접수준으로 보존한다. 독립 호환 승인을 요청한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "두 좌표축 절편 정의 직접 대입; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "주어진 좌표를 두 식에 대입해 해 확인; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "출력의 유일성으로 일반함수 직접 판정; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "일차함수 정의를 식종류에 직접 적용; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "주어진 부호에서 그래프 방향과 절편 위치 직접 선택; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "두 좌표축 절편 정의 직접 대입; 여러 보기의 정의/부호 구분 또는 두 절편의 병렬확인 요구로 학습중은 방어되며 숫자1과 B12 인접호환이다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "실제24문항·기존해설·세그림먼저읽고독립snapshot동결후저자비교.",
+    "Q1 choices는실제이미지에있으며열린3/오른쪽③확인. Q13절편2,-3;Q19음기울기양y절편④실제확인.",
+    "남은leafgap/goalmeasuretermgap/공식bindingresolver부채는해소되었다고주장하지않는다."
+  ]
+}
