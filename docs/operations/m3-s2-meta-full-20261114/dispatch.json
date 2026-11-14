@@ -4,31 +4,37 @@
   "writerPolicy": "ROOT_ONLY_CONNECTED_GIT_WRITER",
   "current": {
     "a": {
-      "authoring": "E046",
-      "nextAuthoring": "E050",
-      "independentQueue": []
+      "authoring": "E050",
+      "nextAuthoring": null,
+      "independentQueue": [
+        "E052"
+      ]
     },
     "b": {
-      "authoring": "E045",
-      "nextAuthoring": "E049",
-      "independentQueue": []
+      "authoring": "E049",
+      "nextAuthoring": null,
+      "independentQueue": [
+        "E046"
+      ]
     },
     "c": {
-      "authoring": "E047",
-      "nextAuthoring": "E051",
+      "authoring": "E051",
+      "nextAuthoring": null,
       "independentQueue": [
-        "E042"
+        "E045"
       ]
     },
     "root": {
       "authoredAwaitingIndependent": [],
       "integrationQueue": [
-        "E042"
+        "E047",
+        "E045",
+        "E046"
       ],
       "independentQueue": [
-        "E047",
         "E051"
-      ]
+      ],
+      "authoring": "E052"
     }
   }
 }

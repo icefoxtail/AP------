@@ -1,0 +1,1562 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/21_신흥중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "bc969165cafb5071eb89dbf8e1d6e394921b7b7c",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_C",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1e127b7c3f1f799b3a766718193933e25ad2127e60902341d57f9247e1abf869",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle ADC=42^\\circ$, $\\angle BOC=48^\\circ$일 때, $\\angle x$의 크기는? (3점)"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle ADC=42^\\circ$, $\\angle BOC=48^\\circ$일 때, $\\angle x$의 크기는? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle ADC=42^\\circ$, $\\angle BOC=48^\\circ$일 때, $\\angle x$의 크기는? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 $AC$를 보는 원주각이므로\n$\\widehat{AC}=2\\times42^\\circ=84^\\circ$이다.\n\n중심각 $\\angle BOC$가 $48^\\circ$이므로\n$\\widehat{BC}=48^\\circ$이다.\n\n따라서\n$\\widehat{AB}=84^\\circ-48^\\circ=36^\\circ$이다.\n\n$\\angle AEB$도 호 $AB$를 보는 원주각이므로\n$x=\\dfrac{36^\\circ}{2}=18^\\circ$이다.\n\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "같은 호 $AC$를 보는 원주각이므로\n$\\widehat{AC}=2\\times42^\\circ=84^\\circ$이다.\n\n중심각 $\\angle BOC$가 $48^\\circ$이므로\n$\\widehat{BC}=48^\\circ$이다.\n\n따라서\n$\\widehat{AB}=84^\\circ-48^\\circ=36^\\circ$이다.\n\n$\\angle AEB$도 호 $AB$를 보는 원주각이므로\n$x=\\dfrac{36^\\circ}{2}=18^\\circ$이다.\n\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다.",
+        "method": "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은 호의 원주각·중심각 관계로 호 AC와 BC를 읽고 차인 호 AB를 구해 원주각으로 돌려놓는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0b7893649cd9b179238acbd26014df09591438f943b6b69001b7d712b2c4bcb2",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          },
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "중심 $O$에서 현 $BC$에 수선 $OM$을 내리면 현의 수직이등분선 성질로\n$BM=\\dfrac{BC}{2}=\\dfrac52$이다.\n\n그림처럼 $\\angle BOM=\\angle A$이므로 직각삼각형 $OBM$에서\n$\\sin A=\\dfrac{BM}{OB}=\\dfrac{\\frac{5}{2}}{R}$이다.\n\n주어진 $\\sin A=\\dfrac58$을 대입하면\n$\\dfrac58=\\dfrac{5}{2R}$,\n$10R=40$,\n$R=4$이다.\n\n따라서 원 $O$의 반지름은 $4\\rm\\,cm$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$에 내접하는 $\\triangle ABC$에서 $\\overline{BC}=5\\rm\\,cm$이고 $\\sin A=\\dfrac58$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다.",
+        "method": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_090ad9513d5a97a39bf9688dac2f40a4ee126a97b99124a5a361f3a0ba1a31bd",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "다음 그림에서 호 $AB$의 길이는 원주의 $\\dfrac16$이고, 호 $CD$의 길이는 원주의 $\\dfrac14$일 때, $\\angle x$의 크기는? (4점)"
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "다음 그림에서 호 $AB$의 길이는 원주의 $\\dfrac16$이고, 호 $CD$의 길이는 원주의 $\\dfrac14$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 호 $AB$의 길이는 원주의 $\\dfrac16$이고, 호 $CD$의 길이는 원주의 $\\dfrac14$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "호 $AB$는 원주의 $\\dfrac16$이므로\n$\\widehat{AB}=360^\\circ\\times\\dfrac16=60^\\circ$이다.\n\n호 $CD$는 원주의 $\\dfrac14$이므로\n$\\widehat{CD}=360^\\circ\\times\\dfrac14=90^\\circ$이다.\n\n원 안에서 만나는 두 현이 이루는 각은 마주 보는 두 호의 합의 절반이다.\n따라서\n$x=\\dfrac{\\widehat{AB}+\\widehat{CD}}2=\\dfrac{60^\\circ+90^\\circ}{2}=75^\\circ$이다.\n\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다."
+          },
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "호 $AB$는 원주의 $\\dfrac16$이므로\n$\\widehat{AB}=360^\\circ\\times\\dfrac16=60^\\circ$이다.\n\n호 $CD$는 원주의 $\\dfrac14$이므로\n$\\widehat{CD}=360^\\circ\\times\\dfrac14=90^\\circ$이다.\n\n원 안에서 만나는 두 현이 이루는 각은 마주 보는 두 호의 합의 절반이다.\n따라서\n$x=\\dfrac{\\widehat{AB}+\\widehat{CD}}2=\\dfrac{60^\\circ+90^\\circ}{2}=75^\\circ$이다.\n\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "호 $AB$는 원주의 $\\dfrac16$이므로\n$\\widehat{AB}=360^\\circ\\times\\dfrac16=60^\\circ$이다.\n\n호 $CD$는 원주의 $\\dfrac14$이므로\n$\\widehat{CD}=360^\\circ\\times\\dfrac14=90^\\circ$이다.\n\n원 안에서 만나는 두 현이 이루는 각은 마주 보는 두 호의 합의 절반이다.\n따라서\n$x=\\dfrac{\\widehat{AB}+\\widehat{CD}}2=\\dfrac{60^\\circ+90^\\circ}{2}=75^\\circ$이다.\n\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
+        "method": "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "원주에 대한 두 호의 비율을 각각60도와90도로 바꾸고 원 내부 두 현의 교점각=대응 호 각도합의 절반을 직접 적용한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_a0962120ecf8080826409d1746208f34bfa925fa986dc68017ac172608b06b6a",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$의 두 현 $AB$와 $CD$가 점 $P$에서 만나고 $\\angle APD=60^\\circ$이다. 호 $AD=3\\pi$, 호 $BC=5\\pi$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$의 두 현 $AB$와 $CD$가 점 $P$에서 만나고 $\\angle APD=60^\\circ$이다. 호 $AD=3\\pi$, 호 $BC=5\\pi$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$의 두 현 $AB$와 $CD$가 점 $P$에서 만나고 $\\angle APD=60^\\circ$이다. 호 $AD=3\\pi$, 호 $BC=5\\pi$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $O$의 두 현 $AB$와 $CD$가 점 $P$에서 만나고 $\\angle APD=60^\\circ$이다. 호 $AD=3\\pi$, 호 $BC=5\\pi$일 때, 원 $O$의 반지름의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "두 현이 원 안에서 만날 때\n$\\angle APD=\\dfrac12(\\widehat{AD}+\\widehat{BC})$이다.\n\n따라서 두 호에 대응하는 중심각의 합은\n$\\widehat{AOD}+\\widehat{BOC}=2\\times60^\\circ=120^\\circ$이다.\n\n호의 길이는 중심각에 비례하므로 두 호의 길이 $8\\pi$는 원주의\n$\\dfrac{120^\\circ}{360^\\circ}=\\dfrac13$에 해당한다.\n\n$8\\pi=\\dfrac13\\cdot2\\pi r$,\n$24\\pi=2\\pi r$,\n$r=12$이다.\n\n따라서 원 $O$의 반지름의 길이는 $12$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "두 현이 원 안에서 만날 때\n$\\angle APD=\\dfrac12(\\widehat{AD}+\\widehat{BC})$이다.\n\n따라서 두 호에 대응하는 중심각의 합은\n$\\widehat{AOD}+\\widehat{BOC}=2\\times60^\\circ=120^\\circ$이다.\n\n호의 길이는 중심각에 비례하므로 두 호의 길이 $8\\pi$는 원주의\n$\\dfrac{120^\\circ}{360^\\circ}=\\dfrac13$에 해당한다.\n\n$8\\pi=\\dfrac13\\cdot2\\pi r$,\n$24\\pi=2\\pi r$,\n$r=12$이다.\n\n따라서 원 $O$의 반지름의 길이는 $12$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "두 현이 원 안에서 만날 때\n$\\angle APD=\\dfrac12(\\widehat{AD}+\\widehat{BC})$이다.\n\n따라서 두 호에 대응하는 중심각의 합은\n$\\widehat{AOD}+\\widehat{BOC}=2\\times60^\\circ=120^\\circ$이다.\n\n호의 길이는 중심각에 비례하므로 두 호의 길이 $8\\pi$는 원주의\n$\\dfrac{120^\\circ}{360^\\circ}=\\dfrac13$에 해당한다.\n\n$8\\pi=\\dfrac13\\cdot2\\pi r$,\n$24\\pi=2\\pi r$,\n$r=12$이다.\n\n따라서 원 $O$의 반지름의 길이는 $12$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다."
+          },
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "두 현이 원 안에서 만날 때\n$\\angle APD=\\dfrac12(\\widehat{AD}+\\widehat{BC})$이다.\n\n따라서 두 호에 대응하는 중심각의 합은\n$\\widehat{AOD}+\\widehat{BOC}=2\\times60^\\circ=120^\\circ$이다.\n\n호의 길이는 중심각에 비례하므로 두 호의 길이 $8\\pi$는 원주의\n$\\dfrac{120^\\circ}{360^\\circ}=\\dfrac13$에 해당한다.\n\n$8\\pi=\\dfrac13\\cdot2\\pi r$,\n$24\\pi=2\\pi r$,\n$r=12$이다.\n\n따라서 원 $O$의 반지름의 길이는 $12$이다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다.",
+        "method": "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "내부 교차현각60도의 두 배로 두 호의 중심각 합120도를 구하고, 호길이 합8π가 원주2πr의120/360임을 이용해 반지름을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_dd93a35103fdfca60744d10b58e4b43a3ff41372a8cab5407b8f7f0ba2befe74",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고 $\\angle BAE=80^\\circ$, $\\angle EDC=140^\\circ$일 때, $\\angle BOC$의 크기는? (3점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고 $\\angle BAE=80^\\circ$, $\\angle EDC=140^\\circ$일 때, $\\angle BOC$의 크기는? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고 $\\angle BAE=80^\\circ$, $\\angle EDC=140^\\circ$일 때, $\\angle BOC$의 크기는? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각 $\\angle BAE=80^\\circ$가 호 $BCDE$를 보므로\n$\\widehat{BCDE}=2\\times80^\\circ=160^\\circ$이다.\n\n$\\angle EDC=140^\\circ$가 보는 호 $EABC$는\n$2\\times140^\\circ=280^\\circ$이다.\n따라서 나머지 호 $EDC$의 크기는\n$360^\\circ-280^\\circ=80^\\circ$이다.\n\n그러므로\n$\\widehat{BC}=\\widehat{BCDE}-\\widehat{EDC}=160^\\circ-80^\\circ=80^\\circ$이다.\n\n중심각은 같은 호의 크기와 같으므로\n$\\angle BOC=80^\\circ$이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "원주각 $\\angle BAE=80^\\circ$가 호 $BCDE$를 보므로\n$\\widehat{BCDE}=2\\times80^\\circ=160^\\circ$이다.\n\n$\\angle EDC=140^\\circ$가 보는 호 $EABC$는\n$2\\times140^\\circ=280^\\circ$이다.\n따라서 나머지 호 $EDC$의 크기는\n$360^\\circ-280^\\circ=80^\\circ$이다.\n\n그러므로\n$\\widehat{BC}=\\widehat{BCDE}-\\widehat{EDC}=160^\\circ-80^\\circ=80^\\circ$이다.\n\n중심각은 같은 호의 크기와 같으므로\n$\\angle BOC=80^\\circ$이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고 $\\angle BAE=80^\\circ$, $\\angle EDC=140^\\circ$일 때, $\\angle BOC$의 크기는? (3점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다.",
+        "method": "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 원주각이 보는 큰 호와 작은 호를 구별해 보완 호 EDC를 만든 뒤 BCDE에서 빼서 목표 중심각 BOC를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_f96b65d7adf6e284f26a5a6950a8fee9154af6389ef9b204cbd03d64b3c4d22e",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          },
+          {
+            "term": "자취",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자취",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다."
+          },
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다."
+          },
+          {
+            "term": "자취",
+            "src": "solution",
+            "quote": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다."
+          },
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "한 변을 이루는 두 꼭짓점을 $U,V$라 하자.\n$\\angle UPV=90^\\circ$이므로 탈레스 정리에 따라 $P$는 지름 $UV$인 원 위에 있다.\n\n그중 정사각형 바깥에 놓이는 자취는 각 변마다 반원 하나이다.\n반원 하나의 반지름은\n$r=\\dfrac a2$,\n길이는\n$\\pi r=\\dfrac{\\pi a}{2}$이다.\n\n네 변에서 생기는 반원의 길이를 모두 더하면\n$4\\cdot\\dfrac{\\pi a}{2}=2\\pi a$이다.\n\n따라서 점 $P$가 움직인 거리는 $2\\pi a$이고,\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          },
+          {
+            "term": "밖",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "다음은 한 변의 길이가 $a$인 정사각형 $ABCD$이다. 이 정사각형 $ABCD$의 외부에서 움직이는 점 $P$에 대하여 점 $P$와 이웃하는 두 꼭짓점을 각각 연결한 두 선분은 직각이 될 때, 점 $P$가 움직인 거리는? (단, 점 $P$는 네 꼭짓점을 지나지 않는다.) (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다.",
+        "method": "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "직각 UPV의 자취를 UV가 지름인 원으로 바꾸고 정사각형 외부 조건으로 각 변의 바깥쪽 반원만 남긴 뒤 네 반원의 길이를 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_aa5b8c3e6e1710864f370f4caa9893d2a8529ac6c3eb38e4c24d45ecc1a26d6f",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고 $\\angle E=36^\\circ$, $\\angle F=46^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고 $\\angle E=36^\\circ$, $\\angle F=46^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고 $\\angle E=36^\\circ$, $\\angle F=46^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "점 $E$에서 만나는 두 할선이 이루는 각으로부터\n$\\widehat{AB}-\\widehat{CD}=2\\times36^\\circ=72^\\circ$이다.\n\n점 $F$에서 만나는 두 할선에 대해서는\n$\\widehat{BC}-\\widehat{AD}=2\\times46^\\circ=92^\\circ$이다.\n\n두 식을 더하면\n$(\\widehat{AB}+\\widehat{BC})-(\\widehat{CD}+\\widehat{AD})=164^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$\\widehat{AB}+\\widehat{BC}=262^\\circ$,\n$\\widehat{CD}+\\widehat{AD}=98^\\circ$이다.\n\n$x=\\angle ABC$는 호 $ADC$를 보는 원주각이므로\n$x=\\dfrac{98^\\circ}{2}=49^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "점 $E$에서 만나는 두 할선이 이루는 각으로부터\n$\\widehat{AB}-\\widehat{CD}=2\\times36^\\circ=72^\\circ$이다.\n\n점 $F$에서 만나는 두 할선에 대해서는\n$\\widehat{BC}-\\widehat{AD}=2\\times46^\\circ=92^\\circ$이다.\n\n두 식을 더하면\n$(\\widehat{AB}+\\widehat{BC})-(\\widehat{CD}+\\widehat{AD})=164^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$\\widehat{AB}+\\widehat{BC}=262^\\circ$,\n$\\widehat{CD}+\\widehat{AD}=98^\\circ$이다.\n\n$x=\\angle ABC$는 호 $ADC$를 보는 원주각이므로\n$x=\\dfrac{98^\\circ}{2}=49^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "점 $E$에서 만나는 두 할선이 이루는 각으로부터\n$\\widehat{AB}-\\widehat{CD}=2\\times36^\\circ=72^\\circ$이다.\n\n점 $F$에서 만나는 두 할선에 대해서는\n$\\widehat{BC}-\\widehat{AD}=2\\times46^\\circ=92^\\circ$이다.\n\n두 식을 더하면\n$(\\widehat{AB}+\\widehat{BC})-(\\widehat{CD}+\\widehat{AD})=164^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$\\widehat{AB}+\\widehat{BC}=262^\\circ$,\n$\\widehat{CD}+\\widehat{AD}=98^\\circ$이다.\n\n$x=\\angle ABC$는 호 $ADC$를 보는 원주각이므로\n$x=\\dfrac{98^\\circ}{2}=49^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "점 $E$에서 만나는 두 할선이 이루는 각으로부터\n$\\widehat{AB}-\\widehat{CD}=2\\times36^\\circ=72^\\circ$이다.\n\n점 $F$에서 만나는 두 할선에 대해서는\n$\\widehat{BC}-\\widehat{AD}=2\\times46^\\circ=92^\\circ$이다.\n\n두 식을 더하면\n$(\\widehat{AB}+\\widehat{BC})-(\\widehat{CD}+\\widehat{AD})=164^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$\\widehat{AB}+\\widehat{BC}=262^\\circ$,\n$\\widehat{CD}+\\widehat{AD}=98^\\circ$이다.\n\n$x=\\angle ABC$는 호 $ADC$를 보는 원주각이므로\n$x=\\dfrac{98^\\circ}{2}=49^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고 $\\angle E=36^\\circ$, $\\angle F=46^\\circ$일 때, $\\angle x$의 크기는? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다.",
+        "method": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_806c8b503f78691dd23f66611f992ddfe7e4f68d86245bc2d3f43d3aa1dc7b98",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$TA=AB$이므로 이등변삼각형 $TAB$에서\n$\\angle TBA=\\angle BTA=25^\\circ$이다.\n\n따라서\n$\\angle TAB=180^\\circ-25^\\circ-25^\\circ=130^\\circ$이다.\n\n접선과 현 $TB$가 이루는 각에서 접선-현의 각 성질을 쓰면\n$\\angle PTB=\\angle TAB=130^\\circ$이다.\n\n삼각형 $PBT$에서\n$\\angle PBT=180^\\circ-40^\\circ-130^\\circ=10^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "$TA=AB$이므로 이등변삼각형 $TAB$에서\n$\\angle TBA=\\angle BTA=25^\\circ$이다.\n\n따라서\n$\\angle TAB=180^\\circ-25^\\circ-25^\\circ=130^\\circ$이다.\n\n접선과 현 $TB$가 이루는 각에서 접선-현의 각 성질을 쓰면\n$\\angle PTB=\\angle TAB=130^\\circ$이다.\n\n삼각형 $PBT$에서\n$\\angle PBT=180^\\circ-40^\\circ-130^\\circ=10^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "$TA=AB$이므로 이등변삼각형 $TAB$에서\n$\\angle TBA=\\angle BTA=25^\\circ$이다.\n\n따라서\n$\\angle TAB=180^\\circ-25^\\circ-25^\\circ=130^\\circ$이다.\n\n접선과 현 $TB$가 이루는 각에서 접선-현의 각 성질을 쓰면\n$\\angle PTB=\\angle TAB=130^\\circ$이다.\n\n삼각형 $PBT$에서\n$\\angle PBT=180^\\circ-40^\\circ-130^\\circ=10^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$TA=AB$이므로 이등변삼각형 $TAB$에서\n$\\angle TBA=\\angle BTA=25^\\circ$이다.\n\n따라서\n$\\angle TAB=180^\\circ-25^\\circ-25^\\circ=130^\\circ$이다.\n\n접선과 현 $TB$가 이루는 각에서 접선-현의 각 성질을 쓰면\n$\\angle PTB=\\angle TAB=130^\\circ$이다.\n\n삼각형 $PBT$에서\n$\\angle PBT=180^\\circ-40^\\circ-130^\\circ=10^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $PQ$는 원 $O$의 접선이고 점 $T$는 그 접점이다. $\\overline{TA}=\\overline{AB}$이고 $\\angle BPT=40^\\circ$, $\\angle BTA=25^\\circ$일 때, $\\angle PBT$의 크기는? (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다.",
+        "method": "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "등변 TA=AB의 밑각으로 TAB를 구하고 접현각으로 PTB에 옮긴 뒤 삼각형 PBT의 내각합에서 PBT를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_2f747c8541606924035acf2576c2a839c1820de88bee88a847f1b5f58e0e1a3d",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 $PA$, $PB$는 원 $O$의 접선이고 $\\angle P=64^\\circ$일 때, $\\angle PAC+\\angle PBC$의 값은? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $PA$, $PB$는 원 $O$의 접선이고 $\\angle P=64^\\circ$일 때, $\\angle PAC+\\angle PBC$의 값은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $PA$, $PB$는 원 $O$의 접선이고 $\\angle P=64^\\circ$일 때, $\\angle PAC+\\angle PBC$의 값은? (4점)"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "다음 그림에서 $PA$, $PB$는 원 $O$의 접선이고 $\\angle P=64^\\circ$일 때, $\\angle PAC+\\angle PBC$의 값은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현의 각 성질로\n$\\angle PAC=\\angle ABC$,\n$\\angle PBC=\\angle BAC$이다.\n\n따라서 구하는 합은 삼각형 $ABC$의 두 각의 합이다.\n\n중심 $O$에서 두 접점에 그은 반지름은 접선과 수직이므로\n$\\angle AOB=180^\\circ-\\angle APB=180^\\circ-64^\\circ=116^\\circ$이다.\n\n점 $C$는 작은 호 $AB$ 위에 있으므로 $\\angle ACB$가 보는 큰 호의 크기는\n$360^\\circ-116^\\circ=244^\\circ$이다.\n따라서\n$\\angle ACB=\\dfrac{244^\\circ}{2}=122^\\circ$이다.\n\n그러므로\n$\\angle PAC+\\angle PBC=\\angle ABC+\\angle BAC$\n$=180^\\circ-122^\\circ=58^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접선과 현의 각 성질로\n$\\angle PAC=\\angle ABC$,\n$\\angle PBC=\\angle BAC$이다.\n\n따라서 구하는 합은 삼각형 $ABC$의 두 각의 합이다.\n\n중심 $O$에서 두 접점에 그은 반지름은 접선과 수직이므로\n$\\angle AOB=180^\\circ-\\angle APB=180^\\circ-64^\\circ=116^\\circ$이다.\n\n점 $C$는 작은 호 $AB$ 위에 있으므로 $\\angle ACB$가 보는 큰 호의 크기는\n$360^\\circ-116^\\circ=244^\\circ$이다.\n따라서\n$\\angle ACB=\\dfrac{244^\\circ}{2}=122^\\circ$이다.\n\n그러므로\n$\\angle PAC+\\angle PBC=\\angle ABC+\\angle BAC$\n$=180^\\circ-122^\\circ=58^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "접선과 현의 각 성질로\n$\\angle PAC=\\angle ABC$,\n$\\angle PBC=\\angle BAC$이다.\n\n따라서 구하는 합은 삼각형 $ABC$의 두 각의 합이다.\n\n중심 $O$에서 두 접점에 그은 반지름은 접선과 수직이므로\n$\\angle AOB=180^\\circ-\\angle APB=180^\\circ-64^\\circ=116^\\circ$이다.\n\n점 $C$는 작은 호 $AB$ 위에 있으므로 $\\angle ACB$가 보는 큰 호의 크기는\n$360^\\circ-116^\\circ=244^\\circ$이다.\n따라서\n$\\angle ACB=\\dfrac{244^\\circ}{2}=122^\\circ$이다.\n\n그러므로\n$\\angle PAC+\\angle PBC=\\angle ABC+\\angle BAC$\n$=180^\\circ-122^\\circ=58^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "접선과 현의 각 성질로\n$\\angle PAC=\\angle ABC$,\n$\\angle PBC=\\angle BAC$이다.\n\n따라서 구하는 합은 삼각형 $ABC$의 두 각의 합이다.\n\n중심 $O$에서 두 접점에 그은 반지름은 접선과 수직이므로\n$\\angle AOB=180^\\circ-\\angle APB=180^\\circ-64^\\circ=116^\\circ$이다.\n\n점 $C$는 작은 호 $AB$ 위에 있으므로 $\\angle ACB$가 보는 큰 호의 크기는\n$360^\\circ-116^\\circ=244^\\circ$이다.\n따라서\n$\\angle ACB=\\dfrac{244^\\circ}{2}=122^\\circ$이다.\n\n그러므로\n$\\angle PAC+\\angle PBC=\\angle ABC+\\angle BAC$\n$=180^\\circ-122^\\circ=58^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림에서 $PA$, $PB$는 원 $O$의 접선이고 $\\angle P=64^\\circ$일 때, $\\angle PAC+\\angle PBC$의 값은? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다.",
+        "method": "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "구하는 두 접현각을 원주각 두 개의 합으로 바꾼다. 접점의 반지름 수직으로 작은 중심각116도를 구하고 큰 호에 대한 원주각122도를 삼각형 내각합에서 뺀다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e08ab0c946668ab4facc0d38acd26a2a1cf6d746fea222b60ad79cbc8355678a",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고, 직선 $ET$는 접선이다. $\\overline{AD}\\parallel\\overline{ET}$, $\\angle CBT=20^\\circ$일 때, $\\angle EBD$의 크기는? (5점)"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고, 직선 $ET$는 접선이다. $\\overline{AD}\\parallel\\overline{ET}$, $\\angle CBT=20^\\circ$일 때, $\\angle EBD$의 크기는? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고, 직선 $ET$는 접선이다. $\\overline{AD}\\parallel\\overline{ET}$, $\\angle CBT=20^\\circ$일 때, $\\angle EBD$의 크기는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$AC$가 지름이므로\n$\\angle ABC=90^\\circ$이다.\n\n주어진 $\\angle CBT=20^\\circ$와 합치면\n$\\angle ABT=90^\\circ+20^\\circ=110^\\circ$이다.\n\n$AD\\parallel ET$이고 $E,B,T$는 한 직선 위에 있으므로\n$AD\\parallel BT$이다.\n따라서\n$\\angle BAD=180^\\circ-\\angle ABT=70^\\circ$이다.\n\n접선-현의 각 성질로\n$\\angle DBT=\\angle BAD=70^\\circ$이다.\n$BE$와 $BT$는 반대 방향의 한 직선이므로\n$\\angle EBD=180^\\circ-70^\\circ=110^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$AC$가 지름이므로\n$\\angle ABC=90^\\circ$이다.\n\n주어진 $\\angle CBT=20^\\circ$와 합치면\n$\\angle ABT=90^\\circ+20^\\circ=110^\\circ$이다.\n\n$AD\\parallel ET$이고 $E,B,T$는 한 직선 위에 있으므로\n$AD\\parallel BT$이다.\n따라서\n$\\angle BAD=180^\\circ-\\angle ABT=70^\\circ$이다.\n\n접선-현의 각 성질로\n$\\angle DBT=\\angle BAD=70^\\circ$이다.\n$BE$와 $BT$는 반대 방향의 한 직선이므로\n$\\angle EBD=180^\\circ-70^\\circ=110^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "$AC$가 지름이므로\n$\\angle ABC=90^\\circ$이다.\n\n주어진 $\\angle CBT=20^\\circ$와 합치면\n$\\angle ABT=90^\\circ+20^\\circ=110^\\circ$이다.\n\n$AD\\parallel ET$이고 $E,B,T$는 한 직선 위에 있으므로\n$AD\\parallel BT$이다.\n따라서\n$\\angle BAD=180^\\circ-\\angle ABT=70^\\circ$이다.\n\n접선-현의 각 성질로\n$\\angle DBT=\\angle BAD=70^\\circ$이다.\n$BE$와 $BT$는 반대 방향의 한 직선이므로\n$\\angle EBD=180^\\circ-70^\\circ=110^\\circ$이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고, 직선 $ET$는 접선이다. $\\overline{AD}\\parallel\\overline{ET}$, $\\angle CBT=20^\\circ$일 때, $\\angle EBD$의 크기는? (5점)"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고, 직선 $ET$는 접선이다. $\\overline{AD}\\parallel\\overline{ET}$, $\\angle CBT=20^\\circ$일 때, $\\angle EBD$의 크기는? (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다.",
+        "method": "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "지름에 대한 원주각90도에20도를 더하고, 평행선의 각으로 BAD를 구해 접현각 DBT에 옮긴 뒤 한 직선의 보각으로 EBD를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d5e6c49b47b467f1043c1b8b6d17af282add31a0da7e08826893d173c51b9d93",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다음 자료 중에서 중앙값이 평균보다 자료의 중심적인 경향을 더 잘 나타내는 것은? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 자료 중에서 중앙값이 평균보다 자료의 중심적인 경향을 더 잘 나타내는 것은? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이상치",
+            "src": "solution",
+            "quote": "자료의 중심을 비교할 때 큰 값 하나가 평균을 끌어올리면 중앙값이 자료의 전형적인 위치를 더 잘 나타낼 수 있다.\n\n④의 자료를 작은 순서로 배열하면\n$1,2,2,3,4,4,5,32$이다.\n\n중앙값은 가운데 두 수의 평균이므로\n$\\dfrac{3+4}{2}=3.5$이다.\n평균은\n$\\dfrac{1+2+2+3+4+4+5+32}{8}=\\dfrac{53}{8}=6.625$이다.\n\n큰 값 $32$가 평균을 올려 자료의 중심을 덜 잘 나타내므로 이 자료에서는 중앙값이 더 적절하다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "자료의 중심을 비교할 때 큰 값 하나가 평균을 끌어올리면 중앙값이 자료의 전형적인 위치를 더 잘 나타낼 수 있다.\n\n④의 자료를 작은 순서로 배열하면\n$1,2,2,3,4,4,5,32$이다.\n\n중앙값은 가운데 두 수의 평균이므로\n$\\dfrac{3+4}{2}=3.5$이다.\n평균은\n$\\dfrac{1+2+2+3+4+4+5+32}{8}=\\dfrac{53}{8}=6.625$이다.\n\n큰 값 $32$가 평균을 올려 자료의 중심을 덜 잘 나타내므로 이 자료에서는 중앙값이 더 적절하다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료의 중심을 비교할 때 큰 값 하나가 평균을 끌어올리면 중앙값이 자료의 전형적인 위치를 더 잘 나타낼 수 있다.\n\n④의 자료를 작은 순서로 배열하면\n$1,2,2,3,4,4,5,32$이다.\n\n중앙값은 가운데 두 수의 평균이므로\n$\\dfrac{3+4}{2}=3.5$이다.\n평균은\n$\\dfrac{1+2+2+3+4+4+5+32}{8}=\\dfrac{53}{8}=6.625$이다.\n\n큰 값 $32$가 평균을 올려 자료의 중심을 덜 잘 나타내므로 이 자료에서는 중앙값이 더 적절하다.\n정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다.",
+        "method": "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "극단값32가 평균을 올리는 자료에서 실제 중앙값3.5와 평균6.625를 비교해 중앙값이 더 적절한 자료를 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_162c0b9622739b5c3e40e1e96b6fb4a586229910c1db70c6111ba30f929581cf",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "자료 $a,18,11,9,15$의 중앙값은 $a$이고, 자료 $12,16,a,8,13$의 중앙값은 $12$가 되도록 하는 모든 자연수 $a$값의 합은? (5점)"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "자료 $a,18,11,9,15$의 중앙값은 $a$이고, 자료 $12,16,a,8,13$의 중앙값은 $12$가 되도록 하는 모든 자연수 $a$값의 합은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "자료 $a,18,11,9,15$의 중앙값은 $a$이고, 자료 $12,16,a,8,13$의 중앙값은 $12$가 되도록 하는 모든 자연수 $a$값의 합은? (5점)"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "자료 $a,18,11,9,15$의 중앙값은 $a$이고, 자료 $12,16,a,8,13$의 중앙값은 $12$가 되도록 하는 모든 자연수 $a$값의 합은? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "첫 자료 $a,18,11,9,15$를 작은 순서로 놓는다.\n$a\\le10$이면 가운데 수는 $11$이고, $a\\ge16$이면 가운데 수는 $15$이므로 중앙값이 $a$가 될 수 없다.\n\n$11\\le a\\le15$이면 가운데 수가 $a$이므로 첫 조건은\n$a=11,12,13,14,15$를 허용한다.\n\n둘째 자료를 정렬하면, $a\\le12$일 때 가운데 수는 $12$이고\n$a\\ge13$일 때 가운데 수는 $13$이다.\n따라서 두 조건을 모두 만족하는 값은\n$a=11,12$이다.\n\n모든 가능한 값의 합은\n$11+12=23$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "첫 자료 $a,18,11,9,15$를 작은 순서로 놓는다.\n$a\\le10$이면 가운데 수는 $11$이고, $a\\ge16$이면 가운데 수는 $15$이므로 중앙값이 $a$가 될 수 없다.\n\n$11\\le a\\le15$이면 가운데 수가 $a$이므로 첫 조건은\n$a=11,12,13,14,15$를 허용한다.\n\n둘째 자료를 정렬하면, $a\\le12$일 때 가운데 수는 $12$이고\n$a\\ge13$일 때 가운데 수는 $13$이다.\n따라서 두 조건을 모두 만족하는 값은\n$a=11,12$이다.\n\n모든 가능한 값의 합은\n$11+12=23$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다."
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "첫 자료 $a,18,11,9,15$를 작은 순서로 놓는다.\n$a\\le10$이면 가운데 수는 $11$이고, $a\\ge16$이면 가운데 수는 $15$이므로 중앙값이 $a$가 될 수 없다.\n\n$11\\le a\\le15$이면 가운데 수가 $a$이므로 첫 조건은\n$a=11,12,13,14,15$를 허용한다.\n\n둘째 자료를 정렬하면, $a\\le12$일 때 가운데 수는 $12$이고\n$a\\ge13$일 때 가운데 수는 $13$이다.\n따라서 두 조건을 모두 만족하는 값은\n$a=11,12$이다.\n\n모든 가능한 값의 합은\n$11+12=23$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자료 $a,18,11,9,15$의 중앙값은 $a$이고, 자료 $12,16,a,8,13$의 중앙값은 $12$가 되도록 하는 모든 자연수 $a$값의 합은? (5점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다.",
+        "method": "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "첫 자료의 중앙값 a 조건에서11≤a≤15를, 둘째 자료의 중앙값12 조건에서a≤12를 얻어 자연수 교집합11,12를 합한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5816ea57f10068ee5f71d91c2ca662996cdc153ed3e84793a75671994523b3d4",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "동진이네 반 학생 10명의 키의 평균을 구하는데 키가 $173\\rm\\,cm$인 동진이의 키를 잘못 측정하였더니 평균이 $1\\rm\\,cm$ 낮게 나왔다. 이때 동진이의 키를 얼마로 측정한 것인가? (5점)"
+          },
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "동진이네 반 학생 10명의 키의 평균을 구하는데 키가 $173\\rm\\,cm$인 동진이의 키를 잘못 측정하였더니 평균이 $1\\rm\\,cm$ 낮게 나왔다. 이때 동진이의 키를 얼마로 측정한 것인가? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "동진이네 반 학생 10명의 키의 평균을 구하는데 키가 $173\\rm\\,cm$인 동진이의 키를 잘못 측정하였더니 평균이 $1\\rm\\,cm$ 낮게 나왔다. 이때 동진이의 키를 얼마로 측정한 것인가? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "10명의 평균이 $1\\rm\\,cm$ 낮아졌으므로 전체 키의 합은\n$10\\times1=10\\rm\\,cm$ 낮아졌다.\n\n잘못 측정한 동진이의 키는 실제 키보다 $10\\rm\\,cm$ 작으므로\n$173-10=163\\rm\\,cm$이다.\n정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "10명의 평균이 $1\\rm\\,cm$ 낮아졌으므로 전체 키의 합은\n$10\\times1=10\\rm\\,cm$ 낮아졌다.\n\n잘못 측정한 동진이의 키는 실제 키보다 $10\\rm\\,cm$ 작으므로\n$173-10=163\\rm\\,cm$이다.\n정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "10명의 평균이 $1\\rm\\,cm$ 낮아졌으므로 전체 키의 합은\n$10\\times1=10\\rm\\,cm$ 낮아졌다.\n\n잘못 측정한 동진이의 키는 실제 키보다 $10\\rm\\,cm$ 작으므로\n$173-10=163\\rm\\,cm$이다.\n정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다.",
+        "method": "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균의1cm 감소를10명 전체 합의10cm 감소로 바꾸고 다른 아홉 명이 같으므로 잘못 측정한 한 학생의 키를173−10으로 복원한다."
+      ],
+      "scenarioNote": "10명의 키 중 한 학생의 잘못 측정된 키 복원"
+    },
+    {
+      "questionUid": "qid_v1_a7aef9fa67e1ad24edd999e50c0dfb0693ac8c54c299f754da8064ce6ebab6b4",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산포도",
+            "src": "stem",
+            "quote": "다음 중에서 산포도에 대한 설명으로 옳은 것은? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중에서 산포도에 대한 설명으로 옳은 것은? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 각 자료의 편차를 제곱한 값들의 평균이다.\n\n따라서 옳은 설명은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산포도 진술을 편차·분산·표준편차의 정의에 대조하여 편차 제곱의 평균이 분산이라는 참진술을 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "산포도 진술을 편차·분산·표준편차의 정의에 대조하여 편차 제곱의 평균이 분산이라는 참진술을 선택한다.",
+        "method": "산포도 진술을 편차·분산·표준편차의 정의에 대조하여 편차 제곱의 평균이 분산이라는 참진술을 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "산포도 진술을 편차·분산·표준편차의 정의에 대조하여 편차 제곱의 평균이 분산이라는 참진술을 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_35f2d7a17024e4d66a164683e2ff53068a527aa854dfc2d7e58d3e27f16a6eb1",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "다음 표는 5회에 걸쳐 평가한 예성이의 영어 성적의 편차를 나타낸 것이다. 이 자료의 평균이 85점일 때, 3회의 성적은 몇 점인가? (3점)\n| 회 | 1 | 2 | 3 | 4 | 5 |\n| 편차(점) | 5 | -6 | $x-1$ | 3 | -1 |"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "다음 표는 5회에 걸쳐 평가한 예성이의 영어 성적의 편차를 나타낸 것이다. 이 자료의 평균이 85점일 때, 3회의 성적은 몇 점인가? (3점)\n| 회 | 1 | 2 | 3 | 4 | 5 |\n| 편차(점) | 5 | -6 | $x-1$ | 3 | -1 |"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "다음 표는 5회에 걸쳐 평가한 예성이의 영어 성적의 편차를 나타낸 것이다. 이 자료의 평균이 85점일 때, 3회의 성적은 몇 점인가? (3점)\n| 회 | 1 | 2 | 3 | 4 | 5 |\n| 편차(점) | 5 | -6 | $x-1$ | 3 | -1 |"
+          }
+        ],
+        "method": [
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 합은 항상 $0$이다.\n\n표에 주어진 편차의 합을 쓰면\n$5+(-6)+(x-1)+3+(-1)=0$이다.\n\n정리하면\n$x=0$이다.\n3회의 편차는 $x-1=-1$이므로 3회 성적은\n$85+(-1)=84$점이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "편차의 합은 항상 $0$이다.\n\n표에 주어진 편차의 합을 쓰면\n$5+(-6)+(x-1)+3+(-1)=0$이다.\n\n정리하면\n$x=0$이다.\n3회의 편차는 $x-1=-1$이므로 3회 성적은\n$85+(-1)=84$점이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "편차의 합은 항상 $0$이다.\n\n표에 주어진 편차의 합을 쓰면\n$5+(-6)+(x-1)+3+(-1)=0$이다.\n\n정리하면\n$x=0$이다.\n3회의 편차는 $x-1=-1$이므로 3회 성적은\n$85+(-1)=84$점이다.\n\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다.",
+        "method": "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "편차합0에서 미지 편차 x−1을 정하고 알려진 평균85에 더해 세 번째 원자료84를 복원한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_1fd21aa00e4866a4b6ecdfa85a60234b82bb538084c3f8522b546fdf310c46df",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "다음 표는 5명의 학생 $A,B,C,D,E$의 일주일 동안의 운동 시간에 대한 편차를 나타낸 것이다. 운동 시간의 분산은? (4점)\n| 학생 | A | B | C | D | E |\n| 편차(시간) | -6 | -10 | 11 | 9 | -4 |"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "다음 표는 5명의 학생 $A,B,C,D,E$의 일주일 동안의 운동 시간에 대한 편차를 나타낸 것이다. 운동 시간의 분산은? (4점)\n| 학생 | A | B | C | D | E |\n| 편차(시간) | -6 | -10 | 11 | 9 | -4 |"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 편차 제곱의 평균이다.\n\n따라서 분산은\n$\\dfrac{(-6)^2+(-10)^2+11^2+9^2+(-4)^2}{5}$\n$=\\dfrac{36+100+121+81+16}{5}$\n$=\\dfrac{354}{5}=70.8$이다.\n\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이미 모두 주어진 다섯 편차를 각각 제곱하여 더한 뒤 자료 수5로 나누어 분산을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "이미 모두 주어진 다섯 편차를 각각 제곱하여 더한 뒤 자료 수5로 나누어 분산을 구한다.",
+        "method": "이미 모두 주어진 다섯 편차를 각각 제곱하여 더한 뒤 자료 수5로 나누어 분산을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "이미 모두 주어진 다섯 편차를 각각 제곱하여 더한 뒤 자료 수5로 나누어 분산을 구한다."
+      ],
+      "scenarioNote": "운동 시간 자료이나 입력은 다섯 편차가 이미 완전히 제시된 표다."
+    },
+    {
+      "questionUid": "qid_v1_7a9ce9daed1ed2b168f24f1c7922279989e59082450c143317eaa0a7a94d9fa6",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "5개의 변량 $4,3,x,2,y$의 평균이 $3$이고 표준편차가 $2$일 때, $x^2+y^2$의 값은? (5점)"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "5개의 변량 $4,3,x,2,y$의 평균이 $3$이고 표준편차가 $2$일 때, $x^2+y^2$의 값은? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱합",
+            "src": "stem",
+            "quote": "5개의 변량 $4,3,x,2,y$의 평균이 $3$이고 표준편차가 $2$일 때, $x^2+y^2$의 값은? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 $3$이므로 다섯 변량의 합은\n$5\\times3=15$이다.\n따라서\n$4+3+x+2+y=15$,\n$x+y=6$이다.\n\n표준편차가 $2$이므로 분산은 $4$이다.\n평균 $3$에서 각 자료가 떨어진 편차를 제곱해 평균을 내면\n$\\dfrac{(4-3)^2+(3-3)^2+(x-3)^2+(2-3)^2+(y-3)^2}{5}=4$이다.\n\n정리하면\n$2+(x-3)^2+(y-3)^2=20$이다.\n$x+y=6$이므로 $y-3=-(x-3)$이고\n$2+2(x-3)^2=20$이다.\n$(x-3)^2=9$이므로\n$x=0$ 또는 $6$이고, $x,y$는 $0,6$의 순서만 바뀐다.\n\n따라서\n$x^2+y^2=0^2+6^2=36$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "평균이 $3$이므로 다섯 변량의 합은\n$5\\times3=15$이다.\n따라서\n$4+3+x+2+y=15$,\n$x+y=6$이다.\n\n표준편차가 $2$이므로 분산은 $4$이다.\n평균 $3$에서 각 자료가 떨어진 편차를 제곱해 평균을 내면\n$\\dfrac{(4-3)^2+(3-3)^2+(x-3)^2+(2-3)^2+(y-3)^2}{5}=4$이다.\n\n정리하면\n$2+(x-3)^2+(y-3)^2=20$이다.\n$x+y=6$이므로 $y-3=-(x-3)$이고\n$2+2(x-3)^2=20$이다.\n$(x-3)^2=9$이므로\n$x=0$ 또는 $6$이고, $x,y$는 $0,6$의 순서만 바뀐다.\n\n따라서\n$x^2+y^2=0^2+6^2=36$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "평균이 $3$이므로 다섯 변량의 합은\n$5\\times3=15$이다.\n따라서\n$4+3+x+2+y=15$,\n$x+y=6$이다.\n\n표준편차가 $2$이므로 분산은 $4$이다.\n평균 $3$에서 각 자료가 떨어진 편차를 제곱해 평균을 내면\n$\\dfrac{(4-3)^2+(3-3)^2+(x-3)^2+(2-3)^2+(y-3)^2}{5}=4$이다.\n\n정리하면\n$2+(x-3)^2+(y-3)^2=20$이다.\n$x+y=6$이므로 $y-3=-(x-3)$이고\n$2+2(x-3)^2=20$이다.\n$(x-3)^2=9$이므로\n$x=0$ 또는 $6$이고, $x,y$는 $0,6$의 순서만 바뀐다.\n\n따라서\n$x^2+y^2=0^2+6^2=36$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "평균이 $3$이므로 다섯 변량의 합은\n$5\\times3=15$이다.\n따라서\n$4+3+x+2+y=15$,\n$x+y=6$이다.\n\n표준편차가 $2$이므로 분산은 $4$이다.\n평균 $3$에서 각 자료가 떨어진 편차를 제곱해 평균을 내면\n$\\dfrac{(4-3)^2+(3-3)^2+(x-3)^2+(2-3)^2+(y-3)^2}{5}=4$이다.\n\n정리하면\n$2+(x-3)^2+(y-3)^2=20$이다.\n$x+y=6$이므로 $y-3=-(x-3)$이고\n$2+2(x-3)^2=20$이다.\n$(x-3)^2=9$이므로\n$x=0$ 또는 $6$이고, $x,y$는 $0,6$의 순서만 바뀐다.\n\n따라서\n$x^2+y^2=0^2+6^2=36$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다.",
+        "method": "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "평균에서x+y=6을 얻고 표준편차2를 분산4의 편차제곱합 식으로 바꾼다. 두 편차가 서로 반대라는 관계를 써 이차방정식의 해0,6을 구하고 목표 제곱합을 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_054a64146ba7b269d7639282827cfe996612bb1d51203b650dbf61ed77fe64df",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "상관관계",
+            "src": "stem",
+            "quote": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)"
+          },
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)"
+          },
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "다음 중 비행기가 비행한 거리와 남은 연료의 양 사이의 음의 상관관계를 나타내는 산점도는? (단, $x$는 비행한 거리, $y$는 남은 연료의 양이다.) (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "비행한 거리 $x$가 커질수록 남은 연료의 양 $y$는 줄어든다.\n따라서 두 변량은 음의 상관관계이고, 산점도는 오른쪽으로 갈수록 아래로 모여야 한다.\n\n그림에서 이 관계를 나타내는 것은 ③이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "발문에 명시된 음의 상관관계를 오른쪽으로 갈수록 아래로 모이는 산점도에 대응해 그림③을 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "발문에 명시된 음의 상관관계를 오른쪽으로 갈수록 아래로 모이는 산점도에 대응해 그림③을 선택한다.",
+        "method": "발문에 명시된 음의 상관관계를 오른쪽으로 갈수록 아래로 모이는 산점도에 대응해 그림③을 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "발문에 명시된 음의 상관관계를 오른쪽으로 갈수록 아래로 모이는 산점도에 대응해 그림③을 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_295b26bf234a5049d035c11b924863e911bf18c0275b8865ad67f33e570834aa",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "오른쪽 산점도는 학생 15명의 사회 점수와 과학 점수를 조사하여 나타낸 것이다. 과학 점수보다 사회 점수가 높은 학생의 비율은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "오른쪽 산점도는 학생 15명의 사회 점수와 과학 점수를 조사하여 나타낸 것이다. 과학 점수보다 사회 점수가 높은 학생의 비율은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "직선의방정식",
+            "src": "solution",
+            "quote": "산점도에서 사회 점수가 과학 점수보다 높은 경우는 점의 좌표가 $x>y$인 경우, 즉 직선 $y=x$ 아래에 놓인 점이다.\n\n그림에서 이 조건을 만족하는 점은 $6$개이고, 전체 학생은 $15$명이다.\n\n따라서 비율은\n$\\dfrac6{15}=\\dfrac25$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다."
+          },
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "산점도에서 사회 점수가 과학 점수보다 높은 경우는 점의 좌표가 $x>y$인 경우, 즉 직선 $y=x$ 아래에 놓인 점이다.\n\n그림에서 이 조건을 만족하는 점은 $6$개이고, 전체 학생은 $15$명이다.\n\n따라서 비율은\n$\\dfrac6{15}=\\dfrac25$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다."
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "산점도에서 사회 점수가 과학 점수보다 높은 경우는 점의 좌표가 $x>y$인 경우, 즉 직선 $y=x$ 아래에 놓인 점이다.\n\n그림에서 이 조건을 만족하는 점은 $6$개이고, 전체 학생은 $15$명이다.\n\n따라서 비율은\n$\\dfrac6{15}=\\dfrac25$이다.\n정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "오른쪽 산점도는 학생 15명의 사회 점수와 과학 점수를 조사하여 나타낸 것이다. 과학 점수보다 사회 점수가 높은 학생의 비율은? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다.",
+        "method": "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "산점도에서 사회x가 과학y보다 큰 점, 즉y=x 아래의 점6개를 고른 뒤 전체15개에 대한 비율을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c2e3794b87bdff50a36cc8d73b7249be79ec77031d3772ac83356b5375f0eab3",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "사회 점수가 85점 이상인 학생 중에서 과학 점수가 90점 이상인 학생의 비율은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "사회 점수가 85점 이상인 학생 중에서 과학 점수가 90점 이상인 학생의 비율은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소의개수",
+            "src": "solution",
+            "quote": "사회 점수가 $85$점 이상인 점들을 먼저 센다.\n그 조건을 만족하는 학생은 $8$명이다.\n\n그중 과학 점수가 $90$점 이상인 점은 $5$개이다.\n\n따라서 구하는 비율은\n$\\dfrac58$이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다."
+          },
+          {
+            "term": "부분집합",
+            "src": "solution",
+            "quote": "사회 점수가 $85$점 이상인 점들을 먼저 센다.\n그 조건을 만족하는 학생은 $8$명이다.\n\n그중 과학 점수가 $90$점 이상인 점은 $5$개이다.\n\n따라서 구하는 비율은\n$\\dfrac58$이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다."
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "사회 점수가 $85$점 이상인 점들을 먼저 센다.\n그 조건을 만족하는 학생은 $8$명이다.\n\n그중 과학 점수가 $90$점 이상인 점은 $5$개이다.\n\n따라서 구하는 비율은\n$\\dfrac58$이다.\n정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "사회 점수가 85점 이상인 학생 중에서 과학 점수가 90점 이상인 학생의 비율은? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다.",
+        "method": "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "사회 점수85 이상인8명을 기준집단으로 정한 다음 그 안에서 과학 점수90 이상인5명을 세어 조건부 집단의 비율5/8을 구한다."
+      ],
+      "scenarioNote": "사회 점수85점 이상인 부분집단에서 과학 점수90점 이상인 학생의 비율. 원본 문항 그림의 좌표 산점도를 함께 읽었다."
+    },
+    {
+      "questionUid": "qid_v1_d42c974dc9c9a2f9951cf9227ce9146987c8f2f9cdd319a821223c2b651903d4",
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정오각형",
+            "src": "stem",
+            "quote": "서술형 1. 아래 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $AC$, $BE$의 교점을 $F$라 할 때, $\\angle BFC$의 크기를 구하시오. (6점)"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "서술형 1. 아래 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $AC$, $BE$의 교점을 $F$라 할 때, $\\angle BFC$의 크기를 구하시오. (6점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "서술형 1. 아래 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $AC$, $BE$의 교점을 $F$라 할 때, $\\angle BFC$의 크기를 구하시오. (6점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "정오각형의 이웃한 두 꼭짓점이 보는 원의 중심각은\n$\\dfrac{360^\\circ}{5}=72^\\circ$이다.\n\n원 안에서 두 현 $AC$, $BE$가 만날 때\n$\\angle BFC=\\dfrac12(\\widehat{BC}+\\widehat{AE})$이다.\n\n$BC$와 $AE$는 각각 이웃한 꼭짓점 사이의 호이므로\n$\\angle BFC=\\dfrac12(72^\\circ+72^\\circ)=72^\\circ$이다.\n\n답: $72^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다."
+          },
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "정오각형의 이웃한 두 꼭짓점이 보는 원의 중심각은\n$\\dfrac{360^\\circ}{5}=72^\\circ$이다.\n\n원 안에서 두 현 $AC$, $BE$가 만날 때\n$\\angle BFC=\\dfrac12(\\widehat{BC}+\\widehat{AE})$이다.\n\n$BC$와 $AE$는 각각 이웃한 꼭짓점 사이의 호이므로\n$\\angle BFC=\\dfrac12(72^\\circ+72^\\circ)=72^\\circ$이다.\n\n답: $72^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "정오각형의 이웃한 두 꼭짓점이 보는 원의 중심각은\n$\\dfrac{360^\\circ}{5}=72^\\circ$이다.\n\n원 안에서 두 현 $AC$, $BE$가 만날 때\n$\\angle BFC=\\dfrac12(\\widehat{BC}+\\widehat{AE})$이다.\n\n$BC$와 $AE$는 각각 이웃한 꼭짓점 사이의 호이므로\n$\\angle BFC=\\dfrac12(72^\\circ+72^\\circ)=72^\\circ$이다.\n\n답: $72^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "서술형 1. 아래 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $AC$, $BE$의 교점을 $F$라 할 때, $\\angle BFC$의 크기를 구하시오. (6점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다.",
+        "method": "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "내접 정오각형의 이웃 호는 원주를5등분하므로72도이다. 두 대각선의 교점각을 대응 호 두 개 합의 절반으로 직접 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0a99861fafbc5f2e372a24120d08ce30697a0f29f94e0937bca6cfceaa94675b",
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AB=12$, $AH=9$이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "(1) $AB$가 지름이므로\n$\\angle ACB=90^\\circ$이다.\n또 $AH\\perp CT$이고 $CH$는 $CT$ 위에 있으므로\n$\\angle AHC=90^\\circ$이다.\n두 삼각형은 한 각이 같고 다른 한 각이 직각이므로\n$\\triangle ABC\\sim\\triangle ACH$이다.\n\n(2) 닮음에서 대응변의 비를 쓰면\n$\\dfrac{AB}{AC}=\\dfrac{AC}{AH}$이다.\n$AB=12$, $AH=9$이므로\n$AC^2=12\\times9=108$,\n$AC=6\\sqrt3\\rm\\,cm$이다.\n\n직각삼각형 $ACH$에서 피타고라스 정리를 적용하면\n$CH^2=AC^2-AH^2$\n$=(6\\sqrt3)^2-9^2$\n$=108-81=27$이다.\n$CH=3\\sqrt3\\rm\\,cm$이다.\n\n답: $3\\sqrt3\\rm\\,cm$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "(1) $AB$가 지름이므로\n$\\angle ACB=90^\\circ$이다.\n또 $AH\\perp CT$이고 $CH$는 $CT$ 위에 있으므로\n$\\angle AHC=90^\\circ$이다.\n두 삼각형은 한 각이 같고 다른 한 각이 직각이므로\n$\\triangle ABC\\sim\\triangle ACH$이다.\n\n(2) 닮음에서 대응변의 비를 쓰면\n$\\dfrac{AB}{AC}=\\dfrac{AC}{AH}$이다.\n$AB=12$, $AH=9$이므로\n$AC^2=12\\times9=108$,\n$AC=6\\sqrt3\\rm\\,cm$이다.\n\n직각삼각형 $ACH$에서 피타고라스 정리를 적용하면\n$CH^2=AC^2-AH^2$\n$=(6\\sqrt3)^2-9^2$\n$=108-81=27$이다.\n$CH=3\\sqrt3\\rm\\,cm$이다.\n\n답: $3\\sqrt3\\rm\\,cm$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(1) $AB$가 지름이므로\n$\\angle ACB=90^\\circ$이다.\n또 $AH\\perp CT$이고 $CH$는 $CT$ 위에 있으므로\n$\\angle AHC=90^\\circ$이다.\n두 삼각형은 한 각이 같고 다른 한 각이 직각이므로\n$\\triangle ABC\\sim\\triangle ACH$이다.\n\n(2) 닮음에서 대응변의 비를 쓰면\n$\\dfrac{AB}{AC}=\\dfrac{AC}{AH}$이다.\n$AB=12$, $AH=9$이므로\n$AC^2=12\\times9=108$,\n$AC=6\\sqrt3\\rm\\,cm$이다.\n\n직각삼각형 $ACH$에서 피타고라스 정리를 적용하면\n$CH^2=AC^2-AH^2$\n$=(6\\sqrt3)^2-9^2$\n$=108-81=27$이다.\n$CH=3\\sqrt3\\rm\\,cm$이다.\n\n답: $3\\sqrt3\\rm\\,cm$",
+            "evidenceType": "IMPLIED",
+            "justification": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "두 삼각형은 한 각이 같고 다른 한 각이 직각이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 원·접선 그림에서 ∠ABC와 ∠ACH가 접현각 관계로 같다. 기존 해설의 한 각이 같다는 AA 근거를 읽어 낸 것이며 새로운 풀이 문장은 source에 추가하지 않는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "서술형 2. 다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오. (7점)\n(1) 닮은 두 삼각형을 찾으시오. (4점)\n(2) $\\overline{CH}$의 길이를 구하시오. (3점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다.",
+        "method": "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "지름 원주각과 접선·수선 도형에서 AA 닮음인 ABC와 ACH를 확인하고 AB:AC=AC:AH로 AC를 복원한다. 그 길이를 피타고라스에 전달해 목표 CH를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_da31a77da09b5cb5247290bf38c9133d68abd050a9684acf5ffadc5172e2a6a0",
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "서술형 3. 자료 $a,b,c$의 평균이 $10$이고 표준편차가 $\\sqrt2$일 때, 자료 $2a+1,2b+1,2c+1$의 평균과 분산을 각각 구하시오. (7점)"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "서술형 3. 자료 $a,b,c$의 평균이 $10$이고 표준편차가 $\\sqrt2$일 때, 자료 $2a+1,2b+1,2c+1$의 평균과 분산을 각각 구하시오. (7점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "서술형 3. 자료 $a,b,c$의 평균이 $10$이고 표준편차가 $\\sqrt2$일 때, 자료 $2a+1,2b+1,2c+1$의 평균과 분산을 각각 구하시오. (7점)"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "서술형 3. 자료 $a,b,c$의 평균이 $10$이고 표준편차가 $\\sqrt2$일 때, 자료 $2a+1,2b+1,2c+1$의 평균과 분산을 각각 구하시오. (7점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료 $a,b,c$의 평균이 $10$이므로\n$\\dfrac{a+b+c}{3}=10$이다.\n\n새 자료의 평균은\n$\\dfrac{(2a+1)+(2b+1)+(2c+1)}{3}$\n$=2\\cdot\\dfrac{a+b+c}{3}+1$\n$=2\\times10+1=21$이다.\n\n각 자료에 같은 수를 더하면 편차는 변하지 않고, 모든 자료를 $2$배 하면 편차도 $2$배가 된다.\n따라서 표준편차는 $2\\sqrt2$이고 분산은\n$(2\\sqrt2)^2=8$이다.\n\n답: 평균 $21$, 분산 $8$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다."
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "자료 $a,b,c$의 평균이 $10$이므로\n$\\dfrac{a+b+c}{3}=10$이다.\n\n새 자료의 평균은\n$\\dfrac{(2a+1)+(2b+1)+(2c+1)}{3}$\n$=2\\cdot\\dfrac{a+b+c}{3}+1$\n$=2\\times10+1=21$이다.\n\n각 자료에 같은 수를 더하면 편차는 변하지 않고, 모든 자료를 $2$배 하면 편차도 $2$배가 된다.\n따라서 표준편차는 $2\\sqrt2$이고 분산은\n$(2\\sqrt2)^2=8$이다.\n\n답: 평균 $21$, 분산 $8$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "자료 $a,b,c$의 평균이 $10$이므로\n$\\dfrac{a+b+c}{3}=10$이다.\n\n새 자료의 평균은\n$\\dfrac{(2a+1)+(2b+1)+(2c+1)}{3}$\n$=2\\cdot\\dfrac{a+b+c}{3}+1$\n$=2\\times10+1=21$이다.\n\n각 자료에 같은 수를 더하면 편차는 변하지 않고, 모든 자료를 $2$배 하면 편차도 $2$배가 된다.\n따라서 표준편차는 $2\\sqrt2$이고 분산은\n$(2\\sqrt2)^2=8$이다.\n\n답: 평균 $21$, 분산 $8$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "자료 $a,b,c$의 평균이 $10$이므로\n$\\dfrac{a+b+c}{3}=10$이다.\n\n새 자료의 평균은\n$\\dfrac{(2a+1)+(2b+1)+(2c+1)}{3}$\n$=2\\cdot\\dfrac{a+b+c}{3}+1$\n$=2\\times10+1=21$이다.\n\n각 자료에 같은 수를 더하면 편차는 변하지 않고, 모든 자료를 $2$배 하면 편차도 $2$배가 된다.\n따라서 표준편차는 $2\\sqrt2$이고 분산은\n$(2\\sqrt2)^2=8$이다.\n\n답: 평균 $21$, 분산 $8$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다.",
+        "method": "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "각 변량의2배+1에 따라 평균은2배+1로 바뀐다. 같은 수의 덧셈은 편차를 바꾸지 않고2배는 편차를2배 하므로 분산을4배 한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {
+      "term": "원내부에서만나는두현의각",
+      "en": "ANGLE_OF_INTERSECTING_CHORDS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 내부에서 교차하는 두 현이 이루는 각은 대응하는 두 호 크기 합의 절반이다.",
+      "usedIn": [
+        3,
+        4,
+        21
+      ]
+    },
+    {
+      "term": "원밖두할선이이루는각",
+      "en": "ANGLE_OF_TWO_SECANTS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 밖 한 점에서 그은 두 할선의 각은 먼 호와 가까운 호의 차의 절반이다.",
+      "usedIn": [
+        7
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 163,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}
