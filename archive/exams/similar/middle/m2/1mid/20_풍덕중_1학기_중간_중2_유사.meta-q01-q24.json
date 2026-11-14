@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-20-pungdeok-m2-1mid-candidate-v1",
+  "examUid": "20_풍덕중_1학기_중간_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/20_풍덕중_1학기_중간_중2_유사.js",
+  "expectedSourceBlobSha1": "09fcdc4fdc3d18431fc5ffcd93f2e18e096314c7",
+  "expectedSourceSha256": "76115f56f97105770e8006a5889db6af0cc3a8ea53b0c0505ae99cb713590fd9",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+    "sourceBlobSha1": "98901e820cbdaa99551ac9251845779d34026ad0",
+    "sourceMDFileId": "14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs",
+    "sourceRevision": "AHj4eMQSrEYlfNcyTFLZi9HXfh3xYVEn2ZfIfEC1I2nzsTiNWozaTQk0eR7lf9fxHU9CCDefuav0hXa1fR32PL_Mz2LtHTeLiGQVtPhJOCQ",
+    "driveCreatedAt": "2026-11-14T04:40:12.662Z",
+    "driveModifiedAt": "2026-11-14T04:40:14.405Z",
+    "mdHeaderGeneratedAt": "2026-11-14",
+    "declaredQuestionCount": 24,
+    "declaredTotalScore": 100,
+    "verifiedItemScoreTotal": 101,
+    "sourceRevisionRead": "Direct native Google Docs read; all 24 prompts, options, keyed answers, solutions and item metadata read.",
+    "note": "Candidate similar exam only; original source unchanged. Q5 explicitly requests two correct statements and is converted to combination choices preserving all five statements. Q10 clarifies positive lengths x,y; Q22 clarifies nonzero denominator variables. Header declares 100 points, but the 24 displayed item points sum to 101. No point was changed without source evidence. This is unresolved; do not report a verified 100-point total. Independent review, official registration, author plans/harness release gate, and visual QA remain pending. Draft harness was run and is blocked by both the 101-vs-100 displayed-score invariant and the absent author plans directory; no points were changed. 4-slot candidate validation ran on all 24 items with 0 FAIL and 30 WARN. Independent semantic review, official registration, and visual QA remain NOT_RUN."
+  },
+  "items": [
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q01",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "sourceQid": 1,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_DECIMAL_NOTATION",
+        "primaryMethod": "소수점 아래 반복되는 숫자 배열을 읽어 순환마디의 시작과 끝 위치에 점이 찍혔는지 확인한다.",
+        "decisiveStep": "1.482482...의 순환마디가 2가 아니라 482임을 파악한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환소수 점 표기 오류 찾기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환마디의 첫 자리와 끝 자리 점 표기만 확인하는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "순환소수"
+          ],
+          "goal": [
+            "순환마디"
+          ],
+          "method": [
+            "순환소수"
+          ],
+          "condition": [
+            "순환마디"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q02",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "sourceQid": 2,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-FINITE_DECIMAL_TEST",
+        "primaryMethod": "각 분수를 기약분수로 약분한 뒤 분모의 소인수가 2와 5뿐인지 판별한다.",
+        "decisiveStep": "ㄴ의 21/3 = 7과 ㄹ의 18/120 = 3/20을 약분하여 분모의 3이 소거됨을 확인한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "유한소수 판별 다중 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "약분 후 분모의 소인수분해만 확인하면 되는 기초 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "기약분수"
+          ],
+          "goal": [
+            "유한소수"
+          ],
+          "method": [
+            "약분",
+            "소인수분해"
+          ],
+          "condition": [
+            "유한소수"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q03",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "sourceQid": 3,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_CONDITION_SUM",
+        "primaryMethod": "10 이하의 자연수 중 분자 5와 약분되지 않으면서 분모에 2, 5 외의 소인수를 남기는 수를 찾아 합한다.",
+        "decisiveStep": "순환소수 조건을 만족하는 x = 3, 6, 7, 9를 빠짐없이 골라 합한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환소수가 되는 10 이하 자연수 합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "1부터 10까지의 자연수에 대해 기약분수 약분과 소인수 조건을 분류해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "자연수"
+          ],
+          "goal": [
+            "합"
+          ],
+          "method": [
+            "소인수분해",
+            "약분"
+          ],
+          "condition": [
+            "순환소수",
+            "자연수"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q04",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "sourceQid": 4,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_TO_FRACTION_SETUP",
+        "primaryMethod": "소수점 아래 비순환 자리 1개와 순환마디 2개를 고려해 1000x와 10x의 차를 선택한다.",
+        "decisiveStep": "1000x와 10x의 소수점 아래가 모두 .1818...로 일치함을 확인한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환소수 분수 변환 식 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "비순환 자릿수와 순환마디 길이에 따른 10의 거듭제곱 배수만 정하면 된다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "순환소수"
+          ],
+          "goal": [
+            "순환소수"
+          ],
+          "method": [
+            "순환소수"
+          ],
+          "condition": [
+            "순환마디"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q05",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "sourceQid": 5,
+        "variationType": "CONDITION",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-RATIONAL_DECIMAL_CLASSIFICATION",
+        "primaryMethod": "유리수, 유한소수, 순환소수, 무한소수 사이의 분류 성질을 비교해 참인 명제 2개를 고른다.",
+        "decisiveStep": "순환소수는 모두 유리수이고 정수가 아닌 유리수는 유한·순환소수로 나뉨을 확인한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "유리수와 소수 관계 참인 것 2개 고르기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "유리수와 소수의 분류 체계에 대한 기본 개념 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "유리수",
+            "무한소수"
+          ],
+          "goal": [
+            "조건"
+          ],
+          "method": [
+            "유한소수",
+            "순환소수"
+          ],
+          "condition": [
+            "유리수"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q06",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "sourceQid": 6,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-EXPONENT_BASIC_LAWS",
+        "primaryMethod": "다섯 개의 지수법칙 계산식을 각각 검산하여 옳은 것의 개수를 센다.",
+        "decisiveStep": "ㄷ은 1/a^2, ㅁ은 밑이 다른 a^6 b^8임을 걸러내어 3개를 센다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "지수법칙 옳은 식 개수 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "기본 지수법칙 5개를 단순 검산하는 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "거듭제곱"
+          ],
+          "goal": [
+            "개수"
+          ],
+          "method": [
+            "지수법칙"
+          ],
+          "condition": [
+            "거듭제곱"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q07",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "sourceQid": 7,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-EXPONENT_SUBSTITUTION",
+        "primaryMethod": "분모의 밑 16을 2^4으로 바꾼 뒤 지수를 2^3의 거듭제곱으로 묶어 A를 대입한다.",
+        "decisiveStep": "16^3 = 2^{12} = (2^3)^4 = A^4으로 변형하여 분모에 대입한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "거듭제곱 역수를 문자로 표현"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "밑 변환과 지수 재그룹핑을 거쳐 분모에 치환해야 하는 2단계 문항이다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "거듭제곱"
+          ],
+          "goal": [
+            "식의값"
+          ],
+          "method": [
+            "지수법칙",
+            "대입"
+          ],
+          "condition": [
+            "거듭제곱"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q08",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "sourceQid": 8,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-EXPONENT_COEFF_MATCH",
+        "primaryMethod": "첫째 식에서 a를 먼저 구해 둘째 식에 대입한 뒤 지수법칙으로 b, c를 구해 합한다.",
+        "decisiveStep": "5a = 15에서 a = 3을 얻어 c = 4a = 12와 b = 12를 구한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "연쇄 지수 등식에서 미지수 합 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "분수의 거듭제곱 법칙을 두 식에 차례로 적용하면 바로 풀리는 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "거듭제곱",
+            "자연수"
+          ],
+          "goal": [
+            "합"
+          ],
+          "method": [
+            "지수법칙",
+            "대입"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q09",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "sourceQid": 9,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "conceptClusterKey": "M2-01-MONOMIAL_MIXED_CHECK",
+        "primaryMethod": "단항식의 곱셈과 나눗셈 식에서 계수의 부호와 문자 지수를 검산하여 틀린 식을 찾는다.",
+        "decisiveStep": "①에서 양수와 음수의 곱 부호가 +가 아니라 -20x^5임을 확인한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "단항식 계산 오류 찾기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "단항식 곱셈의 부호 처리만 확인하면 바로 답을 찾을 수 있다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "단항식"
+          ],
+          "goal": [
+            "단항식"
+          ],
+          "method": [
+            "지수법칙"
+          ],
+          "condition": [
+            "단항식"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q10",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "sourceQid": 10,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "conceptClusterKey": "M2-01-TRIANGLE_AREA_HEIGHT",
+        "primaryMethod": "삼각형 넓이 공식 (1/2)*(밑변)*(높이)에 식을 대입한 뒤 단항식 나눗셈으로 높이를 구한다.",
+        "decisiveStep": "넓이에 2를 곱한 72x^2y^7을 밑변 12x^3y로 나누어 6y^6/x를 얻는다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "삼각형 넓이 공식에서 단항식 나눗셈으로 높이 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "삼각형 넓이 공식과 단항식 나눗셈 한 번으로 풀리는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "넓이",
+            "길이"
+          ],
+          "goal": [
+            "단항식"
+          ],
+          "method": [
+            "약분",
+            "지수법칙"
+          ],
+          "condition": [
+            "삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q11",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "sourceQid": 11,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-ISOSCELES_BASE_ANGLE",
+        "primaryMethod": "이등변삼각형의 두 밑각이 같음을 이용해 180도에서 꼭짓각 50도를 빼고 2로 나눈다.",
+        "decisiveStep": "(180° - 50°) ÷ 2 = 65°를 계산한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "이등변삼각형 밑각 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "이등변삼각형의 밑각 성질을 바로 적용하는 기초 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "이등변삼각형",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "이등변삼각형"
+          ],
+          "condition": [
+            "이등변삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q12",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "sourceQid": 12,
+        "variationType": "CONDITION",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-36_72_72_ISOSCELES",
+        "primaryMethod": "밑각 72도와 이등분각 36도를 구해 △ABD와 △BCD의 내각과 변의 길이를 모두 판별한다.",
+        "decisiveStep": "∠ADB = 180° - 72° = 108°임을 계산해 ③의 114°가 틀렸음을 확인한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 판정",
+          "l4": "두 각 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "꼭짓각 36도 이등변삼각형 분할 성질 판별"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "분할된 두 삼각형의 각도를 모두 계산해 이등변삼각형 판정까지 확인해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "이등변삼각형",
+            "이등분선",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "이등변삼각형",
+            "이등분선"
+          ],
+          "condition": [
+            "이등변삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q13",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "sourceQid": 13,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "conceptClusterKey": "M2-07-HYPOTENUSE_BASIC",
+        "primaryMethod": "피타고라스 정리 x^2 = 9^2 + 12^2을 계산해 양수 x를 구한다.",
+        "decisiveStep": "81 + 144 = 225 = 15^2에서 빗변 15를 구한다.",
+        "rpm": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "피타고라스 정리로 빗변 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "3:4:5 피타고라스 수를 바로 적용하는 기초 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "직각삼각형",
+            "길이"
+          ],
+          "goal": [
+            "길이"
+          ],
+          "method": [
+            "피타고라스정리"
+          ],
+          "condition": [
+            "직각삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q14",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "sourceQid": 14,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "conceptClusterKey": "M2-07-SQUARE_AREAS_PYTHAGORAS",
+        "primaryMethod": "직각삼각형의 세 변 위 정사각형 넓이 관계(빗변 정사각형 = 나머지 두 정사각형 넓이 합)를 적용한다.",
+        "decisiveStep": "빗변 AB 위 정사각형 넓이 68에서 BC 위 정사각형 넓이 29를 뺀다.",
+        "rpm": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "직각삼각형 세 변의 정사각형 넓이 관계"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "피타고라스 정리의 기하학적 넓이 관계식을 뺄셈 한 번으로 적용하는 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "직각삼각형",
+            "넓이"
+          ],
+          "goal": [
+            "넓이"
+          ],
+          "method": [
+            "피타고라스정리"
+          ],
+          "condition": [
+            "직각삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q15",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "sourceQid": 15,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "conceptClusterKey": "M2-07-ACUTE_TRIANGLE_TEST",
+        "primaryMethod": "가장 긴 변의 제곱과 나머지 두 변의 제곱의 합을 비교해 a^2 + b^2 > c^2인 것을 찾는다.",
+        "decisiveStep": "5^2 + 6^2 = 61 > 7^2 = 49임을 확인해 예각삼각형 ⑤를 고른다.",
+        "rpm": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "삼각형의 각 판정"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "세 변의 길이로 예각삼각형 판정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "변 길이 제곱 비교만으로 예각삼각형을 바로 판정하는 기초 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "길이"
+          ],
+          "goal": [
+            "삼각형"
+          ],
+          "method": [
+            "피타고라스정리"
+          ],
+          "condition": [
+            "삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q16",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "sourceQid": 16,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-INCENTER_ANGLE",
+        "primaryMethod": "내심의 각 성질 ∠BIC = 90° + (1/2)∠A에 115°를 대입해 ∠A를 역산한다.",
+        "decisiveStep": "(1/2)∠A = 115° - 90° = 25°에서 ∠A = 50°를 구한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "내심 각도에서 꼭짓각 역산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "내심 각 공식에 값을 대입해 일차방정식을 푸는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "내심",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "내심"
+          ],
+          "condition": [
+            "내심"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q17",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "sourceQid": 17,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-INCIRCLE_PERIMETER_TANGENT",
+        "primaryMethod": "각 꼭짓점에서 내접원 접점까지의 거리가 쌍으로 같음을 이용해 둘레 방정식 2(AD+DB+EC)=26을 푼다.",
+        "decisiveStep": "둘레의 절반이 AD + DB + EC = 13임을 이용해 EC = 4 cm를 구한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "내심과 거리"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "내접원 접점 길이와 삼각형 둘레"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "세 쌍의 접선 길이를 둘레 공식으로 묶어 미지 선분을 역산해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "내심",
+            "접점",
+            "둘레",
+            "길이"
+          ],
+          "goal": [
+            "길이"
+          ],
+          "method": [
+            "내심"
+          ],
+          "condition": [
+            "접점"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q18",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "sourceQid": 18,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-CIRCUMCENTER_ANGLE",
+        "primaryMethod": "∠A = 25° + 35° = 60°에서 외심 각 성질로 ∠BOC = 120°를 구하고 이등변삼각형 OBC의 밑각을 구한다.",
+        "decisiveStep": "∠BOC = 2∠A = 120°와 OB = OC를 결합해 (180°-120°)/2 = 30°를 얻는다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "외심 각 성질과 이등변삼각형 밑각 결합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외심의 중심각 2배 성질과 △OBC가 이등변삼각형임을 연속으로 적용해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "외심",
+            "각"
+          ],
+          "goal": [
+            "각"
+          ],
+          "method": [
+            "외심",
+            "이등변삼각형"
+          ],
+          "condition": [
+            "외심"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q19",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "sourceQid": 19,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "conceptClusterKey": "M2-02-EQUAL_SOLUTION_INEQUALITIES",
+        "primaryMethod": "두 일차부등식을 각각 x에 대하여 푼 뒤 해의 경계값이 같다고 놓고 상수 a를 구한다.",
+        "decisiveStep": "첫째 부등식의 해 x >= 4와 둘째 부등식의 해 x >= a + 1에서 a + 1 = 4를 세운다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "해가 같은 두 일차부등식의 상수 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 일차부등식을 모두 정리해 경계값을 등치시켜야 하는 2단계 문항이다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "일차부등식"
+          ],
+          "goal": [
+            "미지수"
+          ],
+          "method": [
+            "분배법칙",
+            "이항"
+          ],
+          "condition": [
+            "범위"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q20",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "sourceQid": 20,
+        "variationType": "CONTEXT",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-CIRCUM_INCENTER_TRUE_FALSE",
+        "primaryMethod": "외심의 위치와 내심의 정의에 관한 명제를 순서대로 참·거짓 판별하며 분기 경로를 따라간다.",
+        "decisiveStep": "둔각삼각형의 외심이 삼각형 외부에 있음을 확인해 [질문 3]에서 '아니오' 경로로 분기한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "외심·내심 성질 진위 순서도"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외심과 내심의 기본 성질 3가지를 순서대로 O/X 판별하는 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "외심",
+            "내심"
+          ],
+          "goal": [
+            "조건"
+          ],
+          "method": [
+            "외심",
+            "내심"
+          ],
+          "condition": [
+            "외심",
+            "내심"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q21",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "sourceQid": 21,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-NTH_DIGIT_REPEATING",
+        "primaryMethod": "순환마디 142857의 길이 6을 구한 뒤 100을 6으로 나눈 나머지 4로 자릿수 숫자를 찾는다.",
+        "decisiveStep": "100 = 6*16 + 4에서 4번째 숫자 8을 읽는다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환마디와 100번째 자리 숫자 구하기 서술형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환마디 길이로 100을 나눈 나머지만 구하면 되는 기본 서답형 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "순환소수"
+          ],
+          "goal": [
+            "순환마디"
+          ],
+          "method": [
+            "순환마디"
+          ],
+          "condition": [
+            "순환소수"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q22",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "sourceQid": 22,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "conceptClusterKey": "M2-01-MONOMIAL_ERROR_CORRECTION",
+        "primaryMethod": "잘못 곱한 식에서 단항식 A를 나눗셈으로 먼저 구한 뒤 A를 3a^2b로 다시 나눈다.",
+        "decisiveStep": "A = 6a^2b^2을 구한 뒤 3a^2b로 한 번 더 나누어 2b를 얻는다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "잘못 곱한 단항식 바르게 나누기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "단항식 A를 역산한 뒤 다시 나눗셈을 수행해야 하는 2단계 서답형 문항이다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "단항식"
+          ],
+          "goal": [
+            "단항식"
+          ],
+          "method": [
+            "지수법칙",
+            "약분"
+          ],
+          "condition": [
+            "단항식"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q23",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "sourceQid": 23,
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-RIGHT_TRIANGLE_CIRCUM_INCIRCLE",
+        "primaryMethod": "직각삼각형 외접원 반지름은 빗변의 절반으로, 내접원 반지름은 삼각형 넓이 공식으로 각각 구한다.",
+        "decisiveStep": "R = 10/2 = 5 cm와 24 = 12r에서 r = 2 cm를 구한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "직각삼각형 외접원·내접원 반지름 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외심의 빗변 중점 성질과 내접원 넓이 공식을 함께 적용해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "직각삼각형",
+            "외심",
+            "내심",
+            "길이"
+          ],
+          "goal": [
+            "반지름"
+          ],
+          "method": [
+            "외심",
+            "내심"
+          ],
+          "condition": [
+            "직각삼각형"
+          ]
+        },
+        "hold": ""
+      }
+    },
+    {
+      "questionUid": "candidate:14GiSI85FXCUwW1ZFdwq0YHn6g27WnTwXsBU0IKn-RTs:Q24",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "sourceQid": 24,
+        "variationType": "CONTEXT",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "conceptClusterKey": "M2-05-CIRCUMCENTER_CONSTRUCTION",
+        "primaryMethod": "세 꼭짓점까지 거리가 같은 점이 외심이며, 외심은 세 변의 수직이등분선의 교점임을 서술한다.",
+        "decisiveStep": "세 변의 수직이등분선의 교점이 외심임을 명확히 연결한다.",
+        "rpm": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "수직이등분선과 외심"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "외심의 작도 및 성질 실생활 서술"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외심의 정의와 작도 원리를 그대로 서술하는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "삼각형",
+            "외심"
+          ],
+          "goal": [
+            "외심"
+          ],
+          "method": [
+            "수직이등분선",
+            "외심"
+          ],
+          "condition": [
+            "외심"
+          ]
+        },
+        "hold": ""
+      }
+    }
+  ]
+}
