@@ -1558,7 +1558,8 @@
         "conditionKeys": null,
         "integrationPattern": null,
         "difficultyBoundaryFlag": "B34",
-        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "subUnit": "사각형의 성질"
       },
       "after": {
         "templateKey": "TPL_ISOSCELES_CONVERSE",
@@ -1571,7 +1572,8 @@
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "subUnit": "삼각형의 성질"
       },
       "fieldReview": {
         "classification": "겉모양은 마름모지만 목표 대각선 길이를 새로 결정하는 단계는 두 각 동등에서 이등변삼각형 판정. RPM062/삼각형 성질로 제안.",
@@ -1619,11 +1621,13 @@
       },
       "beforeSource": {
         "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질"
       },
       "beforeMetadata": {
         "templateKey": "",
-        "problemTypeKey": ""
+        "problemTypeKey": "",
+        "subUnit": "사각형의 성질"
       }
     },
     {
@@ -2084,6 +2088,13 @@
         23
       ],
       "note": "ROOT 원문·기존 해설 독립 독해와 Q15/Q23 그림 대조, B Q11/Q17/Q23 표본을 반영했다. 인접 난도 7문항은 수용, Q15/Q23 상/2 STRONG_CONFLICT는 보존. Q17은 공통높이만 사용하여 source 삼각형 성질 유지와 RPM_LEAF_GAP으로 수리. Q23 각이등분선 명칭을 구체화."
+    },
+    {
+      "type": "CANONICAL_KEY_LABEL_ALIGNMENT",
+      "ordinals": [
+        20
+      ],
+      "note": "ROOT 허용 범위에서 js_archive_tag_master.json의 공식 labelKo를 선택한 unit/subUnit key와 결속했다. beforeSource/beforeMetadata는 입력 pack 원값을 따로 보존. 학생 원문 및4칸은 불변."
     }
   ]
 }
