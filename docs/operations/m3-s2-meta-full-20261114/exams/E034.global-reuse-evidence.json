@@ -1,0 +1,97 @@
+{
+  "examId": "E034",
+  "scope": "GLOBAL_ACTIVE_DEFINITION_AND_EXACT_ROW_CHECK",
+  "problemTypeDefinitions": [
+    {
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "원주각·중심각과 원의 각 관계",
+      "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "대푯값의 해석과 조건 복원",
+      "definition": "평균·중앙값·최빈값을 계산·비교하고 대푯값 조건으로 자료의 누락값을 복원한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    }
+  ],
+  "templateDefinitions": [
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "canonicalLabelKo": "원주각과 중심각",
+      "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+      "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "canonicalLabelKo": "복합 원의 각 관계",
+      "definition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+      "internalSkeleton": "복수의 원의 각 관계를 연쇄해 목표각·길이·넓이를 결정한다.",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "canonicalLabelKo": "접선과 현이 이루는 각",
+      "definition": "접선-현각과 원주각·호 관계를 이용한다.",
+      "internalSkeleton": "접선·현·호·원주각 관계를 대응시켜 목표각을 구한다.",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "canonicalLabelKo": "대푯값 조건으로 자료 복원",
+      "definition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+      "internalSkeleton": null,
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+      "canonicalLabelKo": "두 자료의 평균·중앙값·최빈값 비교",
+      "definition": "두 자료 집합의 평균·중앙값·최빈값을 각각 구하고 자료 사이의 차이에 관한 진술을 비교한다.",
+      "internalSkeleton": "각 집합을 정렬해 합과 중앙값, 최빈값을 구한 뒤 선택지의 비교 진술을 수치와 대조한다.",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    }
+  ],
+  "exactMedianReconstructionRow": {
+    "id": "M1-RPM-223-MEDIAN-RECONSTRUCTION-20261113",
+    "curriculum": "2022",
+    "scope": "M1-2",
+    "rpmPath": {
+      "majorUnit": "통계",
+      "midUnit": "대푯값",
+      "l3": "중앙값과 최빈값",
+      "l4": "중앙값"
+    },
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-08",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "mappingStatus": "DIRECT_ACTIVE",
+    "bindingStatus": "ACTIVE",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "problemTypeLabelKo": "대푯값의 해석과 조건 복원",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "templateLabelKo": "대푯값 조건으로 자료 복원",
+    "ownerPack": "MIDDLE1",
+    "bindingOwnerPack": "MIDDLE1",
+    "binding": {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "ownerPack": "MIDDLE1"
+    }
+  },
+  "sourceCurriculumAndCoursePreserved": true
+}

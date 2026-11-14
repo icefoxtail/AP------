@@ -1,0 +1,623 @@
+{
+  "schemaVersion": "difficulty-change-review-v1",
+  "examId": "E034",
+  "author": "review_a",
+  "sourceGitBlobSha": "0350a9bf0f91b22f4651f054f47bda81b9f75af2",
+  "status": "AUTHOR_COMPLETE_INDEPENDENT_EXCEPTIONS_PENDING",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_7066d139739ae9c4b2fb16b4a772e952fa8f6143475934c317643980919abc8b",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "같은 현·호 관계를 먼저 확인한 뒤 원주각을 계산한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "호 BC=호 CD=60°에서 호 BCD를 보는 원주각 x=60°를 계산한다.",
+        "primaryConcept": "같은 호에 대한 원주각",
+        "primaryConceptReason": "같은 현을 보는 원주각과 같은 현 길이에서 호를 비교해 x를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.1.1.3"
+        ],
+        "difficultyReason": "같은 현·호 관계를 먼저 확인한 뒤 원주각을 계산한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "같은 호의 길이 조건을 합치는 한 번의 전처리 후 원주각을 정하므로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_0bdbb9d2ce4f341a9d117bcf188d05e143790a9637d0a50d598f0e15dbafe4a6",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "두 원주각에서 호를 복원한 뒤 내접사각형 각과 외각을 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "호 AD=118°, BC=CD=68°에서 ∠ABC=93°, 외각 EBA=87°를 구한다.",
+        "primaryConcept": "내접사각형의 각",
+        "primaryConceptReason": "원주각으로 호를 구하고 내접사각형·일직선 각으로 외부 각을 결정한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.2.2.1"
+        ],
+        "difficultyReason": "두 원주각에서 호를 복원한 뒤 내접사각형 각과 외각을 결합한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "주어진 동일 호와 각을 차례로 옮겨 합·보각을 구하는 정형 연계이며 보조선이나 미지수 모델 선택은 없어2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_7c79820d88c11aef337163cec75f347205403c7f8e7b67035dcc91e0e02a0122",
+      "historicalLevel": "상",
+      "bucketBefore": 3,
+      "bucketAfter": 3,
+      "reasonBefore": "세 종류의 각 관계를 순차 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "x=55°에서 y=125°를 얻어 y−x=70°를 계산한다.",
+        "primaryConcept": "접선과 현이 이루는 각",
+        "primaryConceptReason": "접선-현 정리, 이등변삼각형, 내접사각형 각 관계를 순차 사용한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.1.2.4"
+        ],
+        "difficultyReason": "세 종류의 각 관계를 순차 결합한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "목표y에 사용할 이등변삼각형의 밑각을 먼저 연결하는 표준 관계 선택이 필요하므로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_c32668aa2b2154aa78729796280b217d09bd39192ef30100931b02dd96efc488",
+      "historicalLevel": "상",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "내접사각형·외부 삼각형·접선-현·내부 삼각형을 연쇄한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "∠ADC=97°, ∠ADP=83°, ∠PAD=50°, ∠ACD=50°에서 ∠CAD=33°를 구한다.",
+        "primaryConcept": "접선과 현이 이루는 각",
+        "primaryConceptReason": "내접사각형 각과 접선-현 정리를 결합해 삼각형의 나머지 각을 구한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.2.2.4"
+        ],
+        "difficultyReason": "내접사각형·외부 삼각형·접선-현·내부 삼각형을 연쇄한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "원 밖 삼각형을 거쳐 다시 원 안 삼각형으로 각을 전달할 경로를 선택하는 표준 각 추론이므로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 2,
+      "reasonBefore": "원주 비율을 각도로 변환한 뒤 외부 각 관계로 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "호 AB=144°, CD=36°에서 x=(144−36)/2=54°를 구한다.",
+        "primaryConcept": "외부 할선의 복합 각 추론",
+        "primaryConceptReason": "두 호의 길이를 원주 비율로 바꾸고 외부 할선각의 호 차 절반 관계를 적용한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.2.1.2"
+        ],
+        "difficultyReason": "원주 비율을 각도로 변환한 뒤 외부 각 관계로 결합한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "비율→호 각도로 한 번 환산한 뒤 단일 정리를 대입하는 정형 계산으로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_55930b3d0fc2a8cce684c54cc2471649b40dbba7fff48e8cc721e86f82290d41",
+      "historicalLevel": "상",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "세 관계를 순차 연결해 미지 원주각을 얻는다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "큰 호 ACB=224°에서 호 AC=64°, ∠ABC=32°를 계산한다.",
+        "primaryConcept": "접선각·호비·원주각의 복합 추론",
+        "primaryConceptReason": "두 접선의 외각으로 큰 호를 정하고 호의 비로 AC를 분리한 뒤 원주각을 구한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.2.2.3"
+        ],
+        "difficultyReason": "세 관계를 순차 연결해 미지 원주각을 얻는다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "주어진 비가 적용되는 큰 호를 선택하고 그 부분호를 목표각과 연결하는 표준 표현 선택으로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876",
+      "historicalLevel": "상",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "두 외부각 조건을 호 변수로 바꾸고 전체 합과 연립한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "d−b=96°, c−a=60°, a+b+c+d=360°를 결합해 x=51°를 구한다.",
+        "primaryConcept": "외부 할선·호 연립의 복합 추론",
+        "primaryConceptReason": "두 외부 할선각에서 호의 차를 얻고 원 전체의 호 합과 함께 연립한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.2.2.3"
+        ],
+        "difficultyReason": "두 외부각 조건을 호 변수로 바꾸고 전체 합과 연립한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "각 호를 개별적으로 구하지 않고 목표a+b에 맞게 세 관계식을 결합하는 표현 선택으로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_c0e1f59be8499e6f2f4fd0d4bf07911c922b5ab3861139c80cd91fd8d6dff631",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "지름·반원·교차현·중심각을 순차 연결한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "119°=1/2(호 AD+180°)에서 호 AD=58°를 얻어 중심각을 구한다.",
+        "primaryConcept": "교차현·지름·중심각의 복합 추론",
+        "primaryConceptReason": "두 직각으로 지름과 원을 확인하고 교차하는 두 현의 각에서 호를 구해 중심각을 결정한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-2.1.1.1"
+        ],
+        "difficultyReason": "지름·반원·교차현·중심각을 순차 연결한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "원 그림이 없는 원본에서 공통 원과 중심을 복원하는 보조도형 선택이 있어3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_3b9a97d0e38425c4541d273565037cbc08aec89d1fff820378d3e4fa73e96aa0",
+      "historicalLevel": "하",
+      "bucketBefore": 1,
+      "bucketAfter": 1,
+      "reasonBefore": "평균 정의와 합의 역산을 직접 적용한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "13×5−(13+14+7+16)=15를 계산한다.",
+        "primaryConcept": "평균으로 자료값 추론",
+        "primaryConceptReason": "평균과 자료 개수로 전체 합을 구한 뒤 알려진 자료를 빼서 미지 자료를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-3.1.1.2"
+        ],
+        "difficultyReason": "평균 정의와 합의 역산을 직접 적용한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "기존 개별 근거인 평균 정의와 합의 역산을 직접 적용한다는 판단을 수용한다. 알려진 평균·자료 수와 나머지 네 값에서 누락된 책 수를 바로 빼는 한 식이며 숨은 조건 해석이나 방법 선택이 없어 기존 bucket 1을 보존한다.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_741af29b3f3afac08a4e0f005d05f23d8d4adf439f3bbb2cef272de3252289fd",
+      "historicalLevel": "하",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "평균 조건을 합으로 바꾸고 선형변환의 상수항을 반영한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "a+b+c=27, 변형 합=2·27−3=51에서 평균 17을 구한다.",
+        "primaryConcept": "평균의 선형변환 추론",
+        "primaryConceptReason": "원자료의 합을 평균 조건으로 복원한 뒤 변형된 세 자료의 평균을 계산한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-3.1.2.3"
+        ],
+        "difficultyReason": "평균 조건을 합으로 바꾸고 선형변환의 상수항을 반영한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "자료별 상수 변화의 합을 한 번 정리한 뒤 평균 정의를 적용하는 정형 식 변환으로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 1,
+      "reasonBefore": "짝수 자료 정렬과 공동 최빈값 판정을 함께 수행한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "중앙값 a=13, 최빈값 합 b=24에서 a−b=−11을 계산한다.",
+        "primaryConcept": "대표값 계산",
+        "primaryConceptReason": "정렬된 자료에서 중앙값과 공동 최빈값을 각각 계산해 차이를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-3.1.3.1"
+        ],
+        "difficultyReason": "짝수 자료 정렬과 공동 최빈값 판정을 함께 수행한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "여덟 자료를 정렬하여 가운데 두 값의 평균과 가장 잦은 두 값을 정의대로 구한다. 최빈값의 합과 중앙값에서의 차도 목표식으로 주어져 있어 추가 조건 복원이나 전략 선택은 없다. E026 Q15와 같은 직접 정의 적용에 산술 조합만 더해진 형태이므로 1을 제안하고 중 문자열과의 인접 차이는 독립 검토한다.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_07414851ca558cfe09e6605f7d5b3eb9d416ae4b39d280809e09a71884704599",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "두 자료를 정렬하고 세 대표값을 각각 비교해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "A/B의 평균 6·6.5, 중앙값 5.5, 최빈값 5를 비교해 ④를 판정한다.",
+        "primaryConcept": "대푯값 비교",
+        "primaryConceptReason": "두 역의 평균·중앙값·최빈값을 각각 계산해 보기의 대표값 관계를 비교한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-3.1.3.2"
+        ],
+        "difficultyReason": "두 자료를 정렬하고 세 대표값을 각각 비교해야 한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "이미 주어진 두 자료에서 세 기본 통계량을 계산·비교하는 표준 절차이며 별도 모델 선택은 없어2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9c3fbb238f1f12984ea17b1497973cd36d48e7d52461783bc4bfe6d2f59237c2",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "자료 정렬의 경우를 나누고 중앙값 조건을 연쇄 적용한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "a=7을 먼저 확정하고 7<b<12에서 (9+b)/2=10을 풀어 b=11을 얻는다.",
+        "primaryConcept": "중앙값 조건으로 자료 추론",
+        "primaryConceptReason": "두 자료의 중앙값 조건을 경우별로 검토해 a와 b의 값을 확정한다.",
+        "rejectedAlternativeConcepts": [
+          "L4-3.1.1.2"
+        ],
+        "difficultyReason": "자료 정렬의 경우를 나누고 중앙값 조건을 연쇄 적용한다.",
+        "finalMotherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "두 자료의 정렬 순서를 상호 대조하고 한 가지 후보를 배제하는 표준 조건 복원 전략으로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_e488ebe1a519fac3552c9e3dbe1f1912fa1f2ad152a857734edd660aaf303c70",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "평균 합 조건과 차 조건을 연립한 뒤 최빈값을 판정한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "a+b=16과 a−b=2를 연립해 a=9,b=7을 얻고 최빈값 7을 선택한다.",
+        "primaryConcept": "평균 조건으로 최빈값 추론",
+        "primaryConceptReason": "평균과 a−b 조건으로 a,b를 구한 뒤 자료에서 최빈값을 확인한다.",
+        "rejectedAlternativeConcepts": [
+          "조건으로 자료 추론: 미지수는 있지만 최종 유형은 대표값 중 최빈값을 구하는 것이다."
+        ],
+        "difficultyReason": "평균 합 조건과 차 조건을 연립한 뒤 최빈값을 판정한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "평균 조건을 합으로 한 번 바꾼 뒤 주어진 선형 조건을 정형 연립하여 자료를 확인하므로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "편차 조건을 이차식으로 만들고 정수해를 선택한 뒤 점수로 변환한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "2x²+x−3=0에서 정수해 x=1을 선택해 A+B=77을 구한다.",
+        "primaryConcept": "편차 조건으로 미지값 추론",
+        "primaryConceptReason": "편차의 합이 0이라는 성질로 정수 x를 정하고 점수와 편차를 계산한다.",
+        "rejectedAlternativeConcepts": [
+          "분산: 편차 제곱 평균을 구하지 않고 편차 합 조건을 사용한다."
+        ],
+        "difficultyReason": "편차 조건을 이차식으로 만들고 정수해를 선택한 뒤 점수로 변환한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "편차 조건을 이차식으로 표현하고 정수 제한을 적용한 뒤 서로 다른 목표값을 구별하는 표준 조건 복원으로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_f356e2d9ce1aea574b14dbdc938583cf7ffdf6d693e746af0babdafaf7c06322",
+      "historicalLevel": "하",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "평균·편차 제곱·분산·양의 제곱근을 순차 적용한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "분산 2m²에서 m>0을 사용해 표준편차 √2m을 얻는다.",
+        "primaryConcept": "표준편차",
+        "primaryConceptReason": "평균에서의 편차 제곱 평균으로 분산을 구하고 양의 제곱근을 취한다.",
+        "rejectedAlternativeConcepts": [
+          "분산: 분산은 중간 계산이고 질문의 최종 요구는 표준편차다."
+        ],
+        "difficultyReason": "평균·편차 제곱·분산·양의 제곱근을 순차 적용한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "자료에 문자가 있어도 평균·편차·제곱평균·제곱근의 정형 정의 적용이므로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_fd5404eccb4d1b0708c1cb2f1809afbe9d89257c8d58a08d39a78d4b4f9a146e",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "평균·분산을 각각 식으로 만들고 두 조건을 대수적으로 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "a+b=9, a²+b²=45에서 81=45+2ab를 사용해 ab=18을 구한다.",
+        "primaryConcept": "평균·분산 조건으로 자료 추론",
+        "primaryConceptReason": "평균으로 a+b를, 분산으로 a²+b²를 구한 뒤 제곱의 합 공식으로 ab를 추론한다.",
+        "rejectedAlternativeConcepts": [
+          "분산: 분산 계산은 조건을 만드는 단계이고 미지 자료 추론이 최종 유형이다."
+        ],
+        "difficultyReason": "평균·분산을 각각 식으로 만들고 두 조건을 대수적으로 결합한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "두 미지수 자체를 풀지 않고 목표 곱에 맞는 합·제곱합 표현을 선택해야 하므로3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1faaa4e7d60d063b5e0b9687655a1bdb29031ede1f021e57be7ef2d0a67842f3",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "분모와 분자의 조건을 각각 산점도 좌표로 변환해 센다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "x≥5인 14점 중 y<7인 7점을 세어 1/2을 구한다.",
+        "primaryConcept": "조건부 산점도 읽기",
+        "primaryConceptReason": "1회 횟수 조건을 만족하는 점을 분모로 잡고 2회 횟수 조건을 추가해 분자를 센다.",
+        "rejectedAlternativeConcepts": [
+          "양의·음의 상관관계: 전체 경향이 아니라 조건 영역의 점 개수다."
+        ],
+        "difficultyReason": "분모와 분자의 조건을 각각 산점도 좌표로 변환해 센다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "명시된 두 문턱을 좌표의 부분집합으로 해석해 정형적으로 세고 나누므로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_2f02a4d768cb89d678913711010fecc8d6784600146acbefa948e88188eb9cf8",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 1,
+      "reasonBefore": "여러 사례의 증가·감소 방향을 각각 해석한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "위도-평균기온, 생산량-가격, 높이-산소량을 음의 상관으로 선택한다.",
+        "primaryConcept": "음의 상관관계",
+        "primaryConceptReason": "한 변량이 증가할 때 다른 변량이 감소하는 사례를 골라 음의 상관관계를 판정한다.",
+        "rejectedAlternativeConcepts": [
+          "산점도 읽기: 개별 좌표가 아니라 변량 간 방향을 분류한다."
+        ],
+        "difficultyReason": "여러 사례의 증가·감소 방향을 각각 해석한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "자료 계산이나 식 구성이 없이 증가·감소의 정의를 보기별로 직접 적용하므로1.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "historicalLevel": "중",
+      "bucketBefore": 4,
+      "bucketAfter": 2,
+      "reasonBefore": "원주각·호·중심각·접선의 수직을 순차 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "큰 호 252°에서 작은 호 108°를 얻고 사각형 AOBP에서 ∠P=72°를 계산한다.",
+        "primaryConcept": "접선 조건으로 각 구하기",
+        "primaryConceptReason": "원주각으로 대응 호와 중심각을 구한 뒤 접점 반지름의 수직으로 두 접선각을 결정한다.",
+        "rejectedAlternativeConcepts": [
+          "한 점에서 그은 두 접선: 두 접선의 존재보다 원주각-중심각과 접선각 계산이 핵심이다."
+        ],
+        "difficultyReason": "원주각·호·중심각·접선의 수직을 순차 결합한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "원본 그림에서 중심각-원주각 관계를 사용하라고 지정했으며 큰 호/작은 호의 한 번 해석 뒤 표준 각 관계를 순서대로 대입하므로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_64661daf2fea0bc0430a163d82c8fbb7340274320504caa149dc5927fd0411c6",
+      "historicalLevel": "상",
+      "bucketBefore": 4,
+      "bucketAfter": 3,
+      "reasonBefore": "미지각 β를 도입하고 접선·내각·이등분 조건을 연쇄한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "∠ADE=58°−β와 ∠DAE=64°+β를 합해 x=58°를 얻는다.",
+        "primaryConcept": "접선·삼각형·각의 이등분 복합 추론",
+        "primaryConceptReason": "접선-현 각, 삼각형 내각, 외각 이등분을 결합해 x를 소거한다.",
+        "rejectedAlternativeConcepts": [
+          "접선과 현이 이루는 각: 단일 접선각 계산을 넘어 이등분·삼각형을 결합한다."
+        ],
+        "difficultyReason": "미지각 β를 도입하고 접선·내각·이등분 조건을 연쇄한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "모르는 각을 문자로 두고 각이등분 후 목표각에서 소거하는 표준 표현 선택이 있어3.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 1,
+      "reasonBefore": "평균·편차·제곱·합·나눗셈을 순서대로 수행한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "평균 14에서 편차 제곱합 78을 6으로 나누어 분산 13을 구한다.",
+        "primaryConcept": "분산",
+        "primaryConceptReason": "평균을 구하고 편차 제곱의 평균으로 분산을 직접 계산한다.",
+        "rejectedAlternativeConcepts": [
+          "표준편차: 질문의 최종 요구가 분산이다."
+        ],
+        "difficultyReason": "평균·편차·제곱·합·나눗셈을 순서대로 수행한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "이미지 소문항이 편차와 분산을 순서대로 요구하며 원자료도 모두 주어져 있다. 평균14, 여섯 편차, 제곱의 평균을 정의대로 계산하는 직접 적용이다. 계산량이나 서술형 형식은 조건 해석·전략 선택을 만들지 않으므로 E032 Q22와 같은 bucket 1을 제안하고 중 문자열과의 인접 차이는 독립 검토한다.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentRequired": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_23d51282f0586ab9f9e83cad07d8a0a004fa251c5bcec6f637e9338a78d64ac2",
+      "historicalLevel": "중",
+      "bucketBefore": 3,
+      "bucketAfter": 2,
+      "reasonBefore": "두 자료군의 분산 정보를 통합해 전체 표준편차를 구한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "제곱합 3과 9를 합해 전체 분산 2, 표준편차 √2를 얻는다.",
+        "primaryConcept": "두 자료의 표준편차",
+        "primaryConceptReason": "평균이 0인 두 자료군의 제곱합을 합산해 전체 분산과 표준편차를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "분산: 분산은 중간 계산이고 최종 요구는 표준편차다."
+        ],
+        "difficultyReason": "두 자료군의 분산 정보를 통합해 전체 표준편차를 구한다.",
+        "finalMotherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "reasonAfter": "소문항이 각 집단 제곱합→전체 제곱합의 경로를 명시하므로 새로운 합성 전략을 선택할 필요 없이 정형적으로2.",
+      "previousReasonAssessment": "이전 문항별 수학 구조 근거를 그대로 보존하고 실제 현재 해설에서 조건 해석 또는 전략 선택이 필요한지를 구별했다. 현재 판단의 개별 이유는 reasonAfter에 기록했다.",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "independentRequired": false,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sameTypeCalibration": [
+    {
+      "ordinal": 13,
+      "relatedExam": "E026",
+      "relatedOrdinal": 15,
+      "scope": "both even-sized median and multiple modes use definitions directly; explicit final arithmetic does not add strategy",
+      "reference": "../E026/review.json"
+    },
+    {
+      "ordinal": 24,
+      "relatedExam": "E032",
+      "relatedOrdinal": 22,
+      "scope": "raw-data variance with all data and prescribed calculation sequence",
+      "reference": "../../c/E032/review.json"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "m3-s2-resume-adjudication-v1",
+  "examId": "E034",
+  "author": "review_a",
+  "inputSha256": "ac29a3976105c56e1810ca2964743cf9f881bff639693fa58c5dfec40cd68fc8",
+  "sourceBlob": "0350a9bf0f91b22f4651f054f47bda81b9f75af2",
+  "sourceSha256": "8141360be7eb2905d2b432e4d11ddbef47f9c32798a514da31973fc5e6f70c7e",
+  "sourceUnchanged": true,
+  "allQuestionJudgmentsReadCount": 25,
+  "originalImagesReadCount": 22,
+  "existingSolutionImagesReadCount": 18,
+  "visualEvidenceContacts": [
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-1.jpg",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-2.jpg",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-3.jpg",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-4.jpg",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-5.jpg",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E034/assets-sheet-6.jpg"
+  ],
+  "priorEvidencePolicy": "Old full-v0 differs only by 18 subsequently added solution SVG fields. The old evidence and its individual added-asset review remain recorded; no old independent sample is promoted to a new version by hash alone.",
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_55930b3d0fc2a8cce684c54cc2471649b40dbba7fff48e8cc721e86f82290d41",
+      "fields": [
+        "crossConceptKeys",
+        "integrationPattern"
+      ],
+      "reason": "실제 해설의 큰 호 2:5 비례배분 누락을 ACTIVE CC_RATIO_AND_PROPORTION으로 보완했다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_3b9a97d0e38425c4541d273565037cbc08aec89d1fff820378d3e4fa73e96aa0",
+      "fields": [
+        "difficultyBucket",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "4slot.goal"
+      ],
+      "reason": "기존 정상 bucket 1의 유효 개별 근거를 보존했다. 목표는 누락된 학생의 변량으로 구체화했다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+      "fields": [
+        "problemTypeKey",
+        "difficultyBucket",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "4slot.goal"
+      ],
+      "reason": "짝수 중앙값을 포괄하는 ACTIVE M1 PT 재사용, 직접 정의 난도1 제안, 중앙값·복수 최빈값 합이라는 실제 목표를 보완했다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9c3fbb238f1f12984ea17b1497973cd36d48e7d52461783bc4bfe6d2f59237c2",
+      "fields": [
+        "rpm.current2022.recordId",
+        "conditionKeys",
+        "4slot.goal"
+      ],
+      "reason": "이미 등록된 중앙값 조건 복원 exact row를 사용하고 a<b를 정확한 대소제약 Condition으로 수정했다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+      "fields": [
+        "4slot.goal"
+      ],
+      "reason": "최종 합 A+B를 이루는 실제 성적 변량 A와 편차 B의 구별을 보완했다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_fd5404eccb4d1b0708c1cb2f1809afbe9d89257c8d58a08d39a78d4b4f9a146e",
+      "fields": [
+        "4slot.goal"
+      ],
+      "reason": "곱의 대상인 미지 자료 a,b를 명시하되 개별 자료값을 반드시 복원해야 한다고 바꾸지 않았다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1faaa4e7d60d063b5e0b9687655a1bdb29031ede1f021e57be7ef2d0a67842f3",
+      "fields": [
+        "4slot.method"
+      ],
+      "reason": "범위 판독과 비율 사이의 실제 점 개수 집계를 보완했다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+      "fields": [
+        "difficultyBucket",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility"
+      ],
+      "reason": "단계가 많은 정의 대입이라는 이유만으로 bucket2를 주지 않고 현재 canonical 직접 절차 기준1로 보정했다."
+    }
+  ],
+  "newR1R2R3": false,
+  "officialResolver": "NOT_RUN_VERIFIED_FINAL_SOLUTION_PROVENANCE_ABSENT",
+  "commonRegistryMutation": false
+}

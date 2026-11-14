@@ -1,0 +1,80 @@
+{
+  "examId": "E034",
+  "sourceGitBlobSha": "0350a9bf0f91b22f4651f054f47bda81b9f75af2",
+  "mode": "READ_ONLY_GLOBAL_ACTIVE_DEFINITION_LOOKUP",
+  "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+  "bindingsSha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+  "globalReusedTemplates": [
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "canonicalLabelKo": "대푯값 조건으로 자료 복원",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "definition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "두 자료의 평균·중앙값·최빈값 비교",
+      "definition": "두 자료 집합의 평균·중앙값·최빈값을 각각 구하고 자료 사이의 차이에 관한 진술을 비교한다.",
+      "internalSkeleton": "각 집합을 정렬해 합과 중앙값, 최빈값을 구한 뒤 선택지의 비교 진술을 수치와 대조한다.",
+      "status": "ACTIVE"
+    }
+  ],
+  "rejectedExactCandidates": [
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "평균·중앙값·최빈값을 함께 구해 결합",
+      "definition": "한 자료 집합에서 평균·중앙값·최빈값을 각각 구하고 요구된 결합값을 계산한다.",
+      "internalSkeleton": "자료의 합과 개수로 평균을 구하고, 정렬한 자료에서 중앙값을 구한 뒤 빈도 최댓값의 자료값을 최빈값으로 정해 세 통계량을 결합한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "canonicalLabelKo": "이산 자료의 중앙값·최빈값 계산",
+      "definition": "홀수 개 변량의 (n+1)/2번째 값을 중앙값으로, 도수가 가장 큰 값을 최빈값으로 계산한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "canonicalLabelKo": "k배 변량의 평균·분산 계산",
+      "definition": "변량을 k배 하면 평균은 k배, 분산은 k²배가 됨을 이용해 새 평균과 분산을 구한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "canonicalLabelKo": "서술형: 미지 편차와 표준편차",
+      "definition": "편차 합 0에서 미지 편차를 구하고 제곱합을 개수로 나눈 분산의 제곱근으로 표준편차를 서술한다.",
+      "status": "ACTIVE"
+    }
+  ],
+  "bindingRows": [
+    {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "curriculum": "2022",
+      "course": null,
+      "standardUnitKey": "M1-08",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION",
+      "status": "ACTIVE"
+    },
+    {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "curriculum": "2022",
+      "course": null,
+      "standardUnitKey": "M1-08",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION",
+      "status": "ACTIVE"
+    }
+  ],
+  "decisions": {
+    "Q11_Q15_Q16": "대푯값 조건으로 누락자료 복원이라는 exact GLOBAL 골격 재사용. current2022 M1 경로와 원본2015 M3를 분리.",
+    "Q14": "두 집단의 세 대푯값 비교 exact GLOBAL TPL 재사용, 현재2022 publisher leaf225를 강제하지 않는다.",
+    "Q13": "홀수 개 명시 M3 TPL이나 평균까지 포함한 M1 세통계량 결합을 짝수 개 중앙값+최빈값 둘에 과용하지 않는다.",
+    "Q17_Q18_Q19_Q24_Q25": "좁은 편차 부모를 일반 분산·조건 역추론·합성 유형으로 확장하지 않고 신규 등록 debt로 분리한다."
+  },
+  "newOperationalKeysInserted": false
+}

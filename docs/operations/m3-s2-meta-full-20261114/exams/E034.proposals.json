@@ -1,0 +1,163 @@
+[
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원 밖 두 할선각 정리 직접 적용",
+    "definition": "원 밖에서 만나는 두 할선의 끼인각을 두 호의 크기 차의 절반으로 직접 계산한다.",
+    "distinction": "기존 해설이 증명을 새로 전개하거나 복수 원각관계를 연쇄하지 않아 COMPOSITE의 전체 골격과 구분된다. GLOBAL 원각·할선·교점각 정의 검색에서 exact TPL 없음.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "E031 Q20 내부 두 현 직접정리와 구분되는 외부 할선 분기"
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_741af29b3f3afac08a4e0f005d05f23d8d4adf439f3bbb2cef272de3252289fd",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "공통 배율과 서로 다른 상수 이동 뒤 평균",
+    "definition": "자료를 같은 배율로 바꾸면서 항목마다 다른 상수를 더하거나 빼는 경우 전체 합의 변화를 모아 새 평균을 구한다.",
+    "distinction": "등록 k배 평균·분산 TPL은 동일 배율에 따른 분산까지의 변환을 다루고, 동일 상수 이동을 전제하는 골격으로 항목별 다른 이동을 대신 보장하지 않는다.",
+    "parent": "PT_M1_CENTRAL_TENDENCY",
+    "nearestTemplates": [
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "짝수 개 자료의 중앙값과 복수 최빈값 결합",
+    "definition": "짝수 개 자료의 중앙값을 가운데 두 값의 평균으로 구하고 모든 최빈값을 모아 요구된 합·차를 계산한다.",
+    "distinction": "GLOBAL M3 중앙값·최빈값 TPL은 홀수 개 변량을 명시한다. M1 세 통계량 결합 TPL은 평균까지 세 통계량이 필수이므로 이 두 통계량 골격을 exact로 대체하지 않는다. 상위 PT는 짝수 중앙값까지 포괄하는 ACTIVE M1 대푯값 PT를 재사용하고 원본2015 M3 연결은 별도 기록한다.",
+    "parent": "PT_M1_CENTRAL_TENDENCY",
+    "nearestTemplates": [
+      "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "편차 합 조건의 미지수와 실제 변량 복원",
+    "definition": "편차의 합0을 방정식으로 나타내어 명시 정수·범위 조건을 만족하는 미지 편차를 정하고 평균과 연결해 원자료를 복원한다.",
+    "distinction": "기존 편차 성질 PT/TPL은 미지 편차 후 분산·표준편차까지 계산하는 골격이다. 현재 문제에는 분산/표준편차 단계가 없어 별도 PT/TPL로 분리한다.",
+    "parent": null,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E036 Q16의 미지편차→변량 복원 분기"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_f356e2d9ce1aea574b14dbdc938583cf7ffdf6d693e746af0babdafaf7c06322",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "원자료에서 분산과 표준편차 직접 계산",
+    "definition": "주어진 유한 원자료의 평균과 각 편차를 구하고 편차 제곱의 평균 및 그 제곱근으로 분산·표준편차를 계산한다.",
+    "distinction": "도수분포표·미지 편차 합0·확률변수 분산의 기존 PT와 다르다. 실제 해설은 원자료 계산 절차이며 k배 변량의 변환 법칙을 쓰지 않는다.",
+    "parent": null,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "TPL_VARIANCE_STANDARD_DEVIATION"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "기존 raw-data dispersion 신규 제안과 병합 가능"
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_fd5404eccb4d1b0708c1cb2f1809afbe9d89257c8d58a08d39a78d4b4f9a146e",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "평균·분산 조건의 자료 합과 곱 추론",
+    "definition": "평균·분산으로 미지 자료의 합과 제곱합을 표현하고 대칭 항등식으로 요구된 합·곱·제곱합을 결정한다.",
+    "distinction": "미지 편차 합0 뒤 분산을 구하는 기존 dispersion PT와 목표·방향이 다르므로 좁은 부모를 재사용하지 않는다.",
+    "parent": null,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E006 Q17 semantic-amendment 및 c/E036 Q20과 동일 제안 가족"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_1faaa4e7d60d063b5e0b9687655a1bdb29031ede1f021e57be7ef2d0a67842f3",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 조건별 부분집합 비율",
+    "definition": "산점도의 점을 명시된 좌표 범위로 나누어 분모 집단과 그 안의 분자 집단을 세고 비율을 계산한다.",
+    "distinction": "상관관계 추세 판정이나 확률변수 계산은 실제 풀이에 없다. GLOBAL ACTIVE 산점도/상관관계 검색에서 exact PT/TPL을 확인하지 못했다.",
+    "parent": null,
+    "nearestTemplates": [],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E022 Q20 및 c/E006 Q19 조건집계 제안"
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_2f02a4d768cb89d678913711010fecc8d6784600146acbefa948e88188eb9cf8",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "실생활 상황의 상관관계 방향 판정",
+    "definition": "두 변수가 증가·감소하는 경향을 상황별로 읽어 양·음 또는 무상관을 판정한다.",
+    "distinction": "관측값 집계·회귀·인과 추론과 구분되는 상관관계 정의의 직접 적용이다.",
+    "parent": null,
+    "nearestTemplates": [],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "기존 질적 상관관계 판정 신규 제안과 병합 가능"
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+    "type": "NEW_CC_PROPOSAL",
+    "nameKo": "사각형 내각의 합",
+    "definition": "한 사각형의 네 내각의 합360도를 사용하여 목표각을 구한다.",
+    "distinction": "삼각형 내각 합180 및 정다면체 꼭짓점의 면각합 조건과 구별한다.",
+    "parent": "평면도형의 각",
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "원자료에서 분산과 표준편차 직접 계산",
+    "definition": "주어진 유한 원자료의 평균과 각 편차를 구하고 편차 제곱의 평균으로 분산을 계산한다.",
+    "distinction": "미지 편차나 도수분포표 없이 원자료에 분산 정의를 직접 적용한다.",
+    "parent": null,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "E034 Q18과 같은 원자료 계산 PT, 분산 목표 TPL 분기"
+  },
+  {
+    "ordinal": 25,
+    "questionUid": "qid_v1_23d51282f0586ab9f9e83cad07d8a0a004fa251c5bcec6f637e9338a78d64ac2",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "공통 평균을 갖는 집단의 분산 합성",
+    "definition": "같은 평균인 두 자료 집단의 크기와 분산으로 편차 제곱합을 더하여 합친 집단의 분산·표준편차를 구한다.",
+    "distinction": "편차 합0에서 미지 편차를 복원하는 기존 부모와 다르며, 평균이 다른 집단의 추가 평균이동 보정은 별도 분기다.",
+    "parent": null,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E024 Q23 공통평균 분산합성 제안"
+  }
+]
