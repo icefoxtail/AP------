@@ -1,0 +1,397 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E067",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "59f2f1d04f746e8b7a0b1d69b282eb4b1bd472df",
+  "sourceSha256": "ae8dc085f858e507dfe1d937c1865180b4ab3fd7b6aa35e3858e8a177c4ed038",
+  "reviewSha256": "531e6e81d50c6a1492760aedbdd8536619a9ef4fe8d07212b91f4208ed819501",
+  "fourSlotSha256": "f9345fece04f05f10a2fb71af8e2b418dca68b5ea35422790d32bcd09c9f494d",
+  "independentSampleSha256": "37ff6fc8979679d4dd946f11d10f914c59bd5d984083b427b8c131cc8089a711",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b91045524e4a13e5c4465bd497aa69622ba0186ca58aab74fc4204dbdcb6c519",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3e2915ca0d650e815da2c14f7c485556b1de06fa1ccbe31f4a62be4ac9e3f50e",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_951164b70d75fc3e2b5f83343b70d96f4789fc3c16761ec67cf4c54857093182",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    }
+  ],
+  "sampleReviewer": "M2_CLOSEOUT_INDEPENDENT",
+  "sampleOrdinals": [
+    10,
+    13,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "531e6e81d50c6a1492760aedbdd8536619a9ef4fe8d07212b91f4208ed819501",
+      "finalReviewSha256": "531e6e81d50c6a1492760aedbdd8536619a9ef4fe8d07212b91f4208ed819501",
+      "independentSampleSha256": "37ff6fc8979679d4dd946f11d10f914c59bd5d984083b427b8c131cc8089a711",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두 방정식을 기울기·절편형으로 바꾸고 기울기 같음과 다른 절편을 확인하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "y=-2x/3+4로 고친 뒤 기울기·절편·사분면·증감을 판별하는 정형 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "우상향과 음의 y절편을 y=ax-b의 a와 -b에 대응시켜 b 부호를 뒤집는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "본문의 세 직선식만으로 A(0,6), B(3,3), C(3,9)를 결정하고 밑변·높이에 연결하므로 2/B12이다. crop은 비차단이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "각 보기의 작은 실험 결과를 직접 곱하거나 나열하는 1/B12이다. 다섯 번 반복은 별도 난도 상승 근거가 아니다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "십의 자리0 배제 후 32이상 조건을 십의 자리3/4의 두 경우로 나눠 분자·분모를 만드는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "여러 기본 실험의 유리한 결과와 전체 결과를 구별해 분수 확률로 비교하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "실제 그림에 보이는 뒷줄 다섯 좌석을 본문의45석과 비로 놓는 직접형 1/B12이다. 버스 반대편 crop이 이 개수비를 막지 않는다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "적어도 하나를 모두 검정인 여사건으로 바꾸고 두 주머니의 기본 선택 확률을 곱하므로 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 10,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "개별 두 명중률은 실패의 결합확률을 정하지 못하며 독립은 해설에만 있다. UNKNOWN·등록차단을 유지하고 독립 복구 때만 2/중의 조건부 후보를 수용한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두 등변 조건을 큰 ABC와 작은 DAB에 나누어 적용해 밑각의 차를 구하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "외각112의 보각을 ACD의 밑각으로 옮긴 뒤 ABC의 두 밑각 합에 연결하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제 이미지 하단이 없어 C·F 직각과 B/C/E/F 대응을 확인할 수 없으므로 UNKNOWN 유지다. 각만 같음은 합동을 보장하지 않는다는 조건부 판정이지 합동 불가능은 아니다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 14,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "직각C·ED수직AB는 본문에 있지만 D와 E의 소속선분/목표x 배치가 실제 crop에서 충분히 복구되지 않는다. RHS 후보와 2/중은 조건부로 보존하고 UNKNOWN 유지한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "같은 세 반지름과 세 수직이등분선 그림을 외심 정의에 바로 대응하는 1/B12이다. 보기⑤를 내심으로 설명한 원해설 오류는 별도 보류다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "빗변 중점M을 외심으로 읽고 AM=BM의 밑각을 외각으로 합하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "원주각58에서 중심각을 얻고 OA=OB인 밑각으로 다시 옮기는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "주어진 두 내심 반각을 두 배로 바꾸고 내각합에서 빼는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "한 점 주위360도를7:6:5로 배분한 뒤 내심각 관계를 역산하는 2/B23이다. 본문만으로 필수 배치가 완결된다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "현재 발문은 I를 OBC의 내심이라고 명시하고 목표의 맞은편 각BOC100을 직접 주므로 1/B12·하 후보이다. ABC로 임의 교체한 해설/선택지는 별도 SOURCE_HOLD로 유지한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "A의 같은 접선 길이2를 두 변6·5에서 빼고 B·C의 두 접선 조각을 BC로 옮겨 더하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "소문항이 표의 변화율·초기값·함수식·역대입을 차례로 안내하는 2/B12이다. 긴 지문을 이유로 높이지 않는다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "경기는 두 팀, 선수는 남은 세 명의 순서 없는 선택이며 앞 소문항의 전체/남자만 결과로 여사건을 계산하는 안내형 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "실제 그림의 AO5·IE2를 확인했다. 접선 조각 합→둘레→넓이를 세 소문항이 안내하므로 2/B23이다. 숫자 원시level3을 학습수준 상으로 자동 해석하지 않고 중 후보를 수용한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 4,
+      "reason": "x=0과 x=3을 대입해 A·B·C를 구하고 BC의 y좌표 차와 A에서 x=3까지의 거리를 쓴다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 8,
+      "reason": "우측이 잘린 그림에서도 뒷줄의 다섯 좌석 왼쪽 윤곽을 세어 확인했다. 45인승 버스의 관행만으로 뒷줄 수를 보충하지 않았다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 10,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 13,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 14,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 15,
+      "reason": "세 꼭짓점까지 같은 거리 또는 세 변의 수직이등분선을 나타내는 그림을 고른다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 19,
+      "reason": "한 바퀴360을 7:6:5로 배분해 AIB를 구하고 내심각 관계로 C를 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 20,
+      "reason": "발문은 OBC의 내심으로 명시하고 해설은 ABC의 내심으로 바꾼다. 현재 발문의 방법·난도는 판정 가능하므로 SOURCE_HOLD이며, 정답·선지 정합은 별도 미결이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 21,
+      "reason": "A의 같은 접선 길이를 두 변에서 빼고 B·C의 접선 조각을 BC로 옮겨 더한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 24,
+      "reason": "빗변을 지름으로 바꾸고 접선 조각의 합 및 직각 꼭짓점의 반지름을 이용해 둘레를 구하여 S=rs에 넣는다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

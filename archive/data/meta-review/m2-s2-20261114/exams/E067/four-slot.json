@@ -1,0 +1,1746 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "59f2f1d04f746e8b7a0b1d69b282eb4b1bd472df",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / actual source and solution semantic review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_8c64340eddeb10ca51ce1eee8afc1f5dc0f6bcb285fc9471ac5748b425c77fe0",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "두 일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기를 비교합니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "절편은 각각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "서로 평행할 때"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "64f819a56be05065418381ea0c8521df7cd7f5e9d860003e317298cffc0bb82e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c51082c8a38793ea9cb053dda8530623b5f4caa145ef0d63ebddfd0032b2cff4"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_9ce753d83a60f670bf7cc203665b71c627ac63d4925ee5d0a1744adc646fad71",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<u>옳은</u> 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "x절편",
+            "src": "solution",
+            "quote": "$x$절편:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "$y$절편:",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "사분면 판정",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "증감 상태",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "35ab3a17abac6b077d296413c703d15fabe11026f1280177206b452122b02d56"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "181b95567b963028cc401309c2c3c7eb3f98853e610b56b0b0946d922791409c"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5f654a80a534680b14726cdf9880ae5dc414b08c9ee44223162b902e986b9b89",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 다음 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$, $b$의 부호"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "부호는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기 $a$의 부호",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "$y$절편 $-b$의 부호",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "양변에 $-1$을 곱하면 부등호 방향이 바뀌므로",
+            "evidenceType": "IMPLIED",
+            "justification": "음의 절편 -b에서 계수 b의 부호를 역으로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00892d7dc813d1024cb5fe2140bb2fe8d0d1582f7fdc63b4a61a2b3eac05d33e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ce3c62a44f595313604cfaf8bc9b32dab1b73d4ed1bfef2000224449fd7e582"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_de06ac7db6ab2ef3ec5cc805bfbe5e9ff0b1fedfdaf9ef67c5ac5146c46e60cd",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=x+6$"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=3$ 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "각 점의 좌표를 계산",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "밑변",
+            "evidenceType": "IMPLIED",
+            "justification": "수직인 BC의 길이를 두 y좌표의 차로 구한다."
+          },
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "수직 거리가 높이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "직선 $x=3$의 교점을 각각"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1acaea3212ce0ca034ee57a24b0f470c742e241eee614c3a5648e4354fdf11c5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "128fadac80af34e1599aca419906de148aedebf6f5fd0f0f8c76ea39cd87ae97"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_995e1dbbb1696c4f38a46073ceadb7a0c81b44639e188d648ba93e632acfcfcf",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "다음 사건"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(1, 4), (2, 3), (3, 2), (4, 1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "눈의 합을 만족하는 네 순서쌍을 빠짐없이 나열한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "16 > 9 > 8 > 6 > 4",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 사건의 개수를 같은 척도로 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "choices",
+            "quote": "서로 다른 동전 3개"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bff5f7e38105c1e97eb906d0e27595dcd7f0fdec87fa9cb55aa6d13f4b2dfc20"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dafd68a2b56b2377f83a2b9fb84c014e8a317d695de08606144499a880d1b445"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_2178b84e54f06163c52abe0a7bf68d17daea35897c926e2f80f5c8c82fbb0c4d",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "두 자리 정수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "4 \\times 5 = 20",
+            "evidenceType": "IMPLIED",
+            "justification": "십의 자리와 일의 자리 선택 수를 곱해 전체를 센다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "십의 자리가 3인 경우",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "\\frac{8}{20}",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한 정수 수를 전체 정수 수로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "32 이상"
+          },
+          {
+            "term": "중복허용",
+            "src": "stem",
+            "quote": "같은 수를 두 번 사용하여도 된다"
+          },
+          {
+            "term": "자리제한",
+            "src": "stem",
+            "quote": "두 자리 정수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$0$, $1$, $2$, $3$, $4$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9d644deb325ef2d8c5f3084030b4ecc2e9e606e1c15279f12190741b8360434b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d34bf8b1fdb49eb58ae3f08ed8ace81934eb71ed5996b0dadc2eef89c492c83b"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_1a9f1a96e53d8247938fbbb16e16df7fd7781201262469afdfc9b52f124f9e4e",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "사건은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률이"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰"
+          }
+        ],
+        "method": [
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "수학적 확률",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "\\frac{2!}{3!}",
+            "evidenceType": "IMPLIED",
+            "justification": "A의 첫 자리를 고정한 배치 수를 전체 순열 수로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "\\frac{1}{2} \\times \\frac{1}{2}",
+            "evidenceType": "IMPLIED",
+            "justification": "독립인 동전과 주사위의 사건 확률을 곱한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "크기순으로 나열",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자리제한",
+            "src": "choices",
+            "quote": "맨 앞에 온다"
+          },
+          {
+            "term": "배수",
+            "src": "choices",
+            "quote": "2의 배수의 눈"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b6adb4c3e25559ea933e228dd3b5087c3fc576cbbe021cbde97d20a8359c34b1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4f780b6eaa6671b1fc35abe19c44d9726f45fd4436293720d376e2f29faaafc0"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_20b5b76d464119bb81a4ff52071917d1f341db0199f5928e68399160cb0d0034",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배정",
+            "src": "stem",
+            "quote": "버스의 좌석을 제비뽑기하여 앉는다고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "가장 뒷줄에 연속하여 배치된 좌석의 수는 5개",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림의 오른쪽 끝에서 다섯 좌석 윤곽을 확인하여 유리한 좌석을 센다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "\\frac{5}{45}",
+            "evidenceType": "IMPLIED",
+            "justification": "각 좌석이 같은 확률로 배정되므로 유리한 좌석 수의 비를 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "좌석의 수는 45"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40a48d907042baf3e48235f164b0f02b062ffba9ba69a751f0f24be599ea746a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5b3285d3b0bff188c0478b4aa0e17b86528fc3bcd9d87a2f2f73d3fdc2f6933"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_355b18e1a46911a41f823f5591ff07d246e4e8cfacd5606f530e10d9efefe871",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "각각 한 개씩 공을 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "\\frac{1}{4} \\times \\frac{3}{5}",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 주머니에서 모두 검은 공인 사건의 확률을 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "각각 한 개씩"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "적어도 1개의 흰 공"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4c7070bbb7bc41054b586624e3e65e57a9ed14efce1e83ad4fdf7ffe1c35a75"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40421d6a8eb3539acf6e5444d2bd34e7184f62ff59843bbd033733c9c01275b3"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b91045524e4a13e5c4465bd497aa69622ba0186ca58aab74fc4204dbdcb6c519",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "명중률이 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "명중시키지 못할 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "1 - (\\text{명중률})",
+            "evidenceType": "IMPLIED",
+            "justification": "각 성공률을 실패 확률로 바꾸는 후보 단계이다."
+          },
+          {
+            "term": "독립사건",
+            "src": "solution",
+            "quote": "결과는 서로 독립적이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "\\frac{1}{4} \\times \\frac{2}{5}",
+            "evidenceType": "IMPLIED",
+            "justification": "독립이 복구된 경우에만 두 실패 확률을 곱할 수 있다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "한 번씩 쏘았을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceEvidence": "개별 명중률만으로 두 선수의 실패 결합확률을 정할 수 없다. 해설이 추가한 독립 조건 아래의 방법·숫자 난도·학습수준은 후보로만 남기며 최종 판정은 UNKNOWN이다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "37250d063d6895188abb0ef8e0d74260a5718cbe17eda4bf6517acb7e2be8ec0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee1e3f8821fae3717e69d71040c6c41e9ceb086e033f3c6bd93e0d2ea474b815"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "sourceCondition"
+      ],
+      "methodCandidateOnly": true
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_1103d4e85337694bbee9858aa5395d060d786005dc64703675f8cfa7008f323f",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "\\overline{\\text{AB}}=\\overline{\\text{AC}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x$의 값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형이므로 밑각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "65^\\circ - 50^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 밑각에서 작은 삼각형의 밑각을 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{DA}}=\\overline{\\text{DB}}"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ced8f7fff89b96f2eda4cdd847d67c6baab770c6156831c271817cfde59489a4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e6080265830ec67b80a4776b2c456570b3bb31e6933251d649f526e9a4e01995"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_65bfd46c24a21fb9f7713bd4c04bebe987d941e859b40d68f44100a5fad704f0",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "\\overline{\\text{AB}}=\\overline{\\text{AC}}=\\overline{\\text{CD}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "두 밑각의 크기는 같습니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "외각의 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "2x + 112^\\circ = 180^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "한 직선 위의 이웃한 두 각의 합을 평각으로 놓는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "점 $\\text{B}, \\text{A}, \\text{D}, \\text{E}$가 한 직선 위"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d5f8299fc01714180575cc890a55720ccc6a3db6914393d2d9dda1cfcaea0c69"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26088e61604a103233cbdd9d17c9e7e267fae3083740b1fa94b2d0b9ca422b01"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3e2915ca0d650e815da2c14f7c485556b1de06fa1ccbe31f4a62be4ac9e3f50e",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "두 직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "합동이 될 수"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "<u>없는</u> 경우"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "직각삼각형의 합동 조건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "세 각의 크기만 같은 경우",
+            "evidenceType": "IMPLIED",
+            "justification": "각만 같으면 크기가 결정되지 않는 닮음 관계라는 조건부 메타이다. 합동이 불가능하다는 해설 문구 자체는 승인하지 않는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "각 $\\text{C}$와 각 $\\text{F}$가 각각 $90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceEvidence": "실제 이미지에 두 삼각형의 하단 전체가 없어 직각 꼭짓점과 대응 라벨을 확인할 수 없다. alt·해설의 C/F직각 배치를 단독 근거로 확정하지 않고 그 배치 아래의 메타만 후보로 남긴다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa089aa11882460ca42a36ad051e94de67aae47fc3520f9ef7f0b8b5af730d37"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7731f4f3e13605e938add3a1e4a52e4789e3c22c187369052b63f3bd847d44d1"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "sourceCondition"
+      ],
+      "methodCandidateOnly": true
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_951164b70d75fc3e2b5f83343b70d96f4789fc3c16761ec67cf4c54857093182",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "$\\text{RHS}$ 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선입니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "세 내각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{ED}}=\\overline{\\text{EC}}"
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "\\overline{\\text{ED}} \\perp \\overline{\\text{AB}}"
+          },
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "점 $\\text{E}$는 변 $\\text{AC}$ 위의 점"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceEvidence": "필수 B·C·D 및 수선·점위치 배치가 실제 그림에서 잘렸다. E∈AC와 D∈AB인 해설 모델을 원문 근거로 확정할 수 없어 합동·각계산·난도를 최종 승인하지 않는다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c89d59b57b092b8e2f3f243a981f0434832c1172d0b2bec6438b1e08807b068"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9fbf0aace00d99f6b2d820066994883dcdcd6afd5c2a97b21e702ef55de34083"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "sourceCondition"
+      ],
+      "methodCandidateOnly": true
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_449fe5f753d40f1231f30d7ea46acf35783956ead66d2ed86d2953fceaee2efb",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심을 나타낸"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "세 꼭짓점에 이르는 거리는",
+            "evidenceType": "IMPLIED",
+            "justification": "외심에서 세 꼭짓점까지의 거리 같음을 도형의 표시와 대조한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "세 변의 수직이등분선의 교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "세 내각의 이등분선",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceHold": "⑤의 실제 중선·무게중심 표시와 해설의 내심 설명은 불일치한다. 외심 정의와 수직이등분선에 관한 유효한 문장만 4칸 근거로 남겼다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8832fa722df855984028748daf78fd135baa9de12e54dda6049c31608e76af6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9b5c402da65a6ec908f15483f0317025e8e5fdfc263738b2fe8ab97b637b4f62"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_9cfb7d9e0fc9403acf2fee01977310e0eb906e832e7dd2a03296ce8685654762",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "빗변의 중점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "직각삼각형의 외심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "한 외각의 크기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "\\overline{\\text{BM}}=\\overline{\\text{CM}}"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bd02652fd841ec0a4b5c7fa5d79eb4f9878cc88e0203b655150c69e1f2b4dc49"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53ea0b9d9d498abeb860be06efd88fdbacd1b264a175cbebf8360e64bb65b007"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_30068331e0fe9757539b86e3de31b1dd5f823138ca110e6ada6f4a1e445c1c5c",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BAO}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각의 크기는 원주각의 2배",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "\\overline{\\text{OA}}=\\overline{\\text{OB}}",
+            "evidenceType": "IMPLIED",
+            "justification": "외심에서 두 꼭짓점까지 같은 반지름을 쓴다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형입니다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e8df80dbefff55b6a0b69efc6ecc580779d8fdb2d6b54910c14c94d4bc1a4c22"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40a5816f22b03c3fbcf263ac21881f30cfbbb5268213f2d3def0993ce2c48834"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_3552c573cfbb25e7466157c8145236dd37f7a55b6edd458828403ef86ff1c47e",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{A}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "세 내각의 합은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20690bb9834df30c1638ae2b21756e24cd2d66f2541527bdf05e781a43581f88"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "465d6babc3723b7e94ea6a3f09f4d1a8fd9f309f5d08589ad8ef53d918246945"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef2475f02ec7f5d43794bcc0210d748f8a2f8304e4e89821a211bba72d651784",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{ACB}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "= 360^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "내심을 둘러싼 세 각은 한 바퀴이므로 합이 360도이다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "비례배분을 이용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "= 7 : 6 : 5"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2166bed24cb05dbaa7c4bc145c65b7c49f6bf618d44897c2dea2c0cfbce2682b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b9c909f61f954839463c01005942932e62e50e27d68d25c336c4b52b3aea4da2"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_7b47f41a6dc5d6e381855996fcab054a8b2734fa47ea62b99252e7f0fba06df4",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$\\triangle\\text{OBC}$의 내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BIC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\triangle\\text{OBC}$의 내심",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 발문대로 I는 OBC의 B·C 내각 이등분선의 교점이다. ABC의 내심으로 바꾼 해설 경로는 채택하지 않는다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "90^\\circ + \\frac{1}{2}(100^\\circ)",
+            "evidenceType": "IMPLIED",
+            "justification": "해설의 참고 계산 중 현재 발문에 맞는 OBC의 반각·내각합 관계만 근거로 쓴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다.",
+        "sourceHold": "현재 발문의 삼각형 OBC를 유지한다. 해설의 ABC 내심 해석과 기존 선지·정답은 별도 불일치 상태이며 메타의 방법 근거가 아니다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0b233167e3551d1a3df0237108f20c5ae2b49d0bb011f209eb835ed47470677f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b0677a82fd810473e1299dce5fdc1075261c5bc42236d0fdd1bff3582857519c"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2f5d7b770c343121ecd1b12b09f8fa91e8dd00f8a8507059044ad4012dcf2830",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이고"
+          },
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "두 접선의 길이는 서로 같습니다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "\\overline{\\text{AD}} = \\overline{\\text{AF}}",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 꼭짓점에서 내접원으로 그은 접선 조각을 옮긴다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "6 - 2 = 4",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 전체 변에서 접선 부분을 뺀다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "4 + 3 = 7",
+            "evidenceType": "IMPLIED",
+            "justification": "B와 C에서 옮긴 접선 조각을 합쳐 BC를 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "각각 내접원의 접점"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b3208365553a9dc68324fcc9423e8265893db4470e2c7a28d9ee6a6c38f277bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d92a02d900abf076c015d95e8b505deba916d60be11f6eef4afb08e60669cf4"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_af87ca221985ef8462c9303953aaf10c5edbaab842ce03febefa28b8539b62d6",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "위의 표에서"
+          },
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차 함수가 된다고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "src": "stem",
+            "quote": "$\\dfrac{(y\\text{값의 증가량})}{(x\\text{값의 증가량})}$"
+          },
+          {
+            "term": "y절편",
+            "src": "stem",
+            "quote": "$x=0$일 때, $y$의 값"
+          },
+          {
+            "term": "함수식",
+            "src": "stem",
+            "quote": "관계를 함수로 나타내어라"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "횟수를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "일차함수의 기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "src": "solution",
+            "quote": "$y$절편",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$y=60$을 대입하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "일차방정식을 풀어",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d867673123f9fa563e9423c104011abd99918cf8a27e5d512e424a0a0049f71"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_27fd76313fde6ec1aa689b3863415eac4bb93443946d60c62de58f1e4c60db47",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "4개 반이 모두 참여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "선발하는 조합의 수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 원리를 적용하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "120 - 20 = 100",
+            "evidenceType": "IMPLIED",
+            "justification": "앞 소문항에서 구한 전체 선택에서 남자만인 선택을 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "이들과 한 팀을 이룰 선수 3명은 지원자 중 선발"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "적어도 1명은 여학생"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "063a1294cc8eae077a11e5c1b813437193f9dac79a07b59211a7150b67dfb6bb"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_ba4a6c9ffd2a29392269ef7d941a3e17ba3725a25a7c6af0e795adbc3c771f68",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심과"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}}+\\overline{\\text{EC}}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이를 구하여라"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레 길이를"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하려고"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중점이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "그은 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "S = \\frac{1}{2}r(\\text{둘레})",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변을 밑변으로 하고 내접반지름을 공통 높이로 한 삼각형 넓이의 합이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "접점일 때"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문의 대상·제약과 해설의 결정적 방법을 직접 구분했다."
+      },
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d792de35dd5583814cfe26002421a08ab4bada8698bbf1bcf3bd59f863994e8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c32c9f2fe47c758f415c55d7c09056113840228927b82884947172685ec1c9b0"
+        }
+      ],
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceItemsRead": 24,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  },
+  "review": {
+    "status": "UNREVIEWED"
+  },
+  "judgedAt": "2026-11-14T06:29:41.860195+00:00"
+}
