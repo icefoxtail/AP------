@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E053",
+  "author": "m3_a",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "90ab399eac1b401e35871cfd02df37f6ea350e96",
+  "targetReviewSha256": "011787c458f1bfc63de0f62da31ef576d0d89d53af33f48a50523969344f2b33",
+  "target4slotSha256": "2352076135b53f4dfcb99f88d8bc7a1c8b52bd6013f265388aebbdd21de889e5",
+  "sampledSourcePatchSha256": "c476bead3d5b1601cafb49031f6a0c854ce9281cea5b7b79fa1dbe78951d5f57",
+  "sampleOrdinals": [
+    5,
+    8,
+    24
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_97a0e6cfa94ec7e5ce66e009437556e98844f56cfb4cba5745a41823525381d1",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "인수분해로 나온 두 근 가운데 예각범위가 tan양수를 강제함을 읽어2/3을 선택하고 변비2:3 및피타고라스로 sin cos곱을 구한다. PT_TRIG_RATIO/BASIC_RELATION은 다른 삼각비값 관계로의 변환을 포괄하며 CC_QUADRATIC_EQUATION·CC_PYTHAGOREAN,COND_RANGE,SEQUENTIAL 및4칸goal사인/코사인/곱이 실제과정과일치한다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_459ce0cd913c975dcfa4f18a0191520a7500615f439ec39b4b096a5bc4acbb8f",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 사분원의 각증가에 따른 수직성분과sin증가·cos감소 판단을 읽고 given사분원/각,goal증가감소판정,method삼각비증감,range조건을확인했다. 단조성 exactTPL 부재를null+후보로명시한것이정확하다. 하단O,C,x라벨크롭과해설의BC현/OC반지름표현불일치를독립확인했으므로원본/정답품질PASS는하지않고HOLD인계한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_10b861e5078f0d6b072a04dcadf7306c8a45f4a47cb0361a1166fc4a507427cd",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본의O-M-C순서·수선·45도·MC3을직접확인했다. 반현x에서OA=√2x,OM=x로표현해√2x=x+3 후현2x를구한다. 현길이조건을이용하는ACTIVE TPL과CC등변/유리화·SEQUENTIAL,4칸의계수/미지수/현길이목표및일차방정식/유리화/수직이등분method가실제하위문항을포괄한다.",
+      "quotesChecked": 12,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 7,
+      "type": "SOURCE_DIAGRAM_REQUIRED_LABELS_CROPPED",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 8,
+      "type": "SOURCE_SOLUTION_DIAGRAM_MISMATCH",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 13,
+      "type": "SOURCE_SOLUTION_CURRICULUM_SCOPE_DEBT",
+      "release": "HOLD_MIDDLE_SOLUTION_REWRITE"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "4edd578e298d1c938f2c854c176b9fd065c126b4a59c3e6621f0d410d29e634d"
+}
