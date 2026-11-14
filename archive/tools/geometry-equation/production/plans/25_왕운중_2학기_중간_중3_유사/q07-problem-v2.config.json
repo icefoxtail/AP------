@@ -1,0 +1,261 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "questionId": 7,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "K",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "88",
+                    "denominator": "137"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "105",
+                    "denominator": "137"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "88",
+                    "denominator": "137"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "105",
+                    "denominator": "88"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "B",
+          "U",
+          "K",
+          "C",
+          "T"
+        ],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "ob",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "ou",
+            "refs": [
+              "O",
+              "U"
+            ]
+          },
+          {
+            "id": "ot",
+            "refs": [
+              "O",
+              "T"
+            ]
+          },
+          {
+            "id": "bt",
+            "refs": [
+              "B",
+              "T"
+            ]
+          },
+          {
+            "id": "ac",
+            "refs": [
+              "K",
+              "C"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleO",
+              "refs": [
+                "B",
+                "O",
+                "T"
+              ],
+              "value": 50,
+              "label": "50",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "arcs": [
+            {
+              "id": "quarter",
+              "circle": "circ",
+              "center": "O",
+              "from": "B",
+              "to": "U",
+              "side": "CCW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "labelA",
+              "at": [
+                0.75,
+                0.84
+              ],
+              "text": "A",
+              "anchor": "CENTER",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 660,
+          "height": 570
+        },
+        "caption": "반지름이 1인 사분원과 각 50도를 이루는 반직선",
+        "newVisualInformation": [],
+        "hiddenPointNames": [
+          "U",
+          "K"
+        ],
+        "unmarkedPointNames": [
+          "U"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 33,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
