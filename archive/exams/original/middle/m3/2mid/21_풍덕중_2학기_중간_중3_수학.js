@@ -186,7 +186,11 @@ window.examData = {
         "$12\\sqrt{3}\\,\\mathrm{cm}^2$"
       ],
       "answer": "①",
-      "solution": "정육각형은 한 변이 $3$인 정삼각형 6개로 나뉜다.\n정삼각형의 높이는 $\\sqrt{3^2-(\\frac32)^2}=\\dfrac{3\\sqrt3}{2}$이다.\n한 조각의 넓이는 $\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n전체 넓이는 $6\\cdot\\dfrac{9\\sqrt3}{4}=\\dfrac{27\\sqrt3}{2}$ cm$^2$이므로 정답은 ①이다."
+      "solution": "정육각형은 한 변이 $3$인 정삼각형 6개로 나뉜다.\n정삼각형의 높이는 $\\sqrt{3^2-(\\frac32)^2}=\\dfrac{3\\sqrt3}{2}$이다.\n한 조각의 넓이는 $\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n전체 넓이는 $6\\cdot\\dfrac{9\\sqrt3}{4}=\\dfrac{27\\sqrt3}{2}$ cm$^2$이므로 정답은 ①이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 한 변이 3cm인 정육각형을 중심 O에서 꼭짓점으로 이은 여섯 정삼각형으로 나누고, 같은 색으로 표시했다.",
+      "solutionImageCaption": "한 조각의 넓이는 1/2×3×(3√3/2)=9√3/4cm²이다. 여섯 조각의 넓이는 27√3/2cm²이다. 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -200,7 +204,11 @@ window.examData = {
         "$20(\\sqrt{2}-1)$"
       ],
       "answer": "③",
-      "solution": "$30^\\circ$인 쪽에서 수선의 발까지의 거리를 $u$, $45^\\circ$인 쪽의 거리를 $v$라 하자.\n$\\tan30^\\circ=\\dfrac h u$이므로 $u=\\sqrt3h$이고, $\\tan45^\\circ=\\dfrac h v$이므로 $v=h$이다.\n두 사람 사이가 $40$ m이므로 $u+v=40$, 즉 $(\\sqrt3+1)h=40$이다.\n따라서 $h=\\dfrac{40}{\\sqrt3+1}=20(\\sqrt3-1)$ m이고 정답은 ③이다."
+      "solution": "$30^\\circ$인 쪽에서 수선의 발까지의 거리를 $u$, $45^\\circ$인 쪽의 거리를 $v$라 하자.\n$\\tan30^\\circ=\\dfrac h u$이므로 $u=\\sqrt3h$이고, $\\tan45^\\circ=\\dfrac h v$이므로 $v=h$이다.\n두 사람 사이가 $40$ m이므로 $u+v=40$, 즉 $(\\sqrt3+1)h=40$이다.\n따라서 $h=\\dfrac{40}{\\sqrt3+1}=20(\\sqrt3-1)$ m이고 정답은 ③이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: A와 B가 40m 떨어져 있고 섬 C의 수선의 발 H는 두 사람 사이에 있다. 시선각은 A에서 30도, B에서 45도이며 높이 CH=h이다.",
+      "solutionImageCaption": "u=√3h, v=h이고 u+v=40이므로 h=40/(√3+1)=20(√3−1)m이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -214,7 +222,11 @@ window.examData = {
         "$4\\sqrt{2}\\,\\mathrm{cm}$"
       ],
       "answer": "③",
-      "solution": "큰 원의 반지름은 $\\sqrt6$ cm이고, 중심에서 현까지의 거리는 작은 원의 반지름 $2$ cm이다.\n중심에서 현에 내린 수선은 현을 이등분한다. 현의 반을 $t$라 하면\n$t^2+2^2=(\\sqrt6)^2$, 따라서 $t^2=2$, $t=\\sqrt2$이다.\n현의 길이는 $2t=2\\sqrt2$ cm이므로 정답은 ③이다."
+      "solution": "큰 원의 반지름은 $\\sqrt6$ cm이고, 중심에서 현까지의 거리는 작은 원의 반지름 $2$ cm이다.\n중심에서 현에 내린 수선은 현을 이등분한다. 현의 반을 $t$라 하면\n$t^2+2^2=(\\sqrt6)^2$, 따라서 $t^2=2$, $t=\\sqrt2$이다.\n현의 길이는 $2t=2\\sqrt2$ cm이므로 정답은 ③이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심 O가 같은 두 원에서 큰 원의 반지름은 √6cm, 작은 원의 반지름은 2cm이다. 현 AB가 작은 원에 M에서 접하고 OM⊥AB, AM=MB=t이다.",
+      "solutionImageCaption": "직각삼각형 OMA에서 t²+2²=(√6)²이므로 t=√2cm이다. 따라서 AB=2t=2√2cm이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,

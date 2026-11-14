@@ -346,7 +346,11 @@ window.examData = {
       "question": "[서술형 4]<br>다음 그림과 같이 눈의 높이가 $1.8\\,\\mathrm{m}$인 사람이 번지 점프대로부터 $20\\,\\mathrm{m}$ 떨어진 곳에 서 있다. 이 사람이 점프대의 꼭대기 지점 $\\mathrm{C}$를 올려다본 각의 크기가 $43^\\circ$일 때, 번지 점프대의 높이를 구하시오. (단, $\\sin 43^\\circ = 0.68$, $\\cos 43^\\circ = 0.73$, $\\tan 43^\\circ = 0.93$으로 계산한다.) [5점]<br><img src=\"assets/images/21_향림중_2학기_중간_중3_수학/s04.png\" />",
       "choices": [],
       "answer": "$20.4\\,\\mathrm{m}$",
-      "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다."
+      "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q25-solution.svg",
+      "solutionImageAlt": "해설 그림: 눈 위치 A는 지면보다 1.8m 높고, 점프대 밑 B까지 수평 거리는 20m이다. 시선 AC는 수평 눈높이 AH와 43°를 이룬다.",
+      "solutionImageCaption": "높이 차는 20tan43°≈20·0.93=18.6m이다. 눈높이 1.8m를 더하면 점프대 높이는 20.4m이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

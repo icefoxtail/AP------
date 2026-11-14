@@ -1295,6 +1295,10 @@ window.questionBank = [
       "subConcept": "접선 조건으로 길이 구하기",
       "conditionsUsed": "∠A=90°, 내접원 O와 접점, AC=8cm, BC=10cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원과 접점 D,E,F를 나타낸다. AC=8cm, BC=10cm이고 중심 O에서 C까지의 선분 OC를 보인다.",
+    "solutionImageCaption": "AB=√(10²−8²)=6cm이다. 넓이 24cm²와 반둘레 12cm에서 내접원 반지름은 2cm이다. CE=8−AE=6cm이고 OE=2cm, ∠OEC=90°이므로 OC=√(6²+2²)=2√10cm이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -86,7 +86,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이고, 각 A의 맞은편 변 BC=a는 파랑, 이웃한 변 AC=b는 주황, 빗변 AB=c는 초록으로 표시했다.",
+    "solutionImageCaption": "삼각형 ABC의 직각은 C이다. AB=c는 빗변, BC=a는 각 A의 맞은편 변, AC=b는 각 A의 이웃한 변이므로 sin A=a/c, cos A=b/c, tan A=a/b이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -187,7 +191,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 ∠C=90°, AB=5 cm, BC=3 cm, CA=4 cm이다. 각 A의 맞은편 변 BC는 파랑, 이웃한 변 CA는 주황, 빗변 AB는 초록으로 표시했다.",
+    "solutionImageCaption": "sin A=BC/AB=3/5이고 cos A=CA/AB=4/5이다. 따라서 sin A×cos A=(3/5)(4/5)=12/25이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -361,7 +369,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 D는 AB 위에 있고 CD는 AB에 수직이다. △BCD와 △BAC는 B의 공통각과 두 직각을 가져 닮음이며, BC=15와 중간값 AB=25를 표시했다.",
+    "solutionImageCaption": "△BCD∼△BAC이다. BC/BA=BD/BC이므로 BA=15²/9=25이다. 따라서 sin A=BC/BA=15/25=3/5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -447,7 +459,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예각 A에서 맞은편 변은 2, 이웃한 변은 3이며 빗변은 √13인 직각삼각형을 나타낸다. 각 C가 직각이다.",
+    "solutionImageCaption": "이차방정식의 근은 2/3, −1이고 A가 예각이므로 tan A=2/3이다. 대표 삼각형에서 sin A=2/√13, cos A=3/√13이므로 cos A×sin A=6/13이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,

@@ -1157,7 +1157,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=12, AC=5, BC=13인 직각삼각형에 BC와 수직인 DE를 그리고, ∠BDE=x와 ∠ACB를 같은 색으로 표시한다. D/E 위치는 대표 배치이다.",
+    "solutionImageCaption": "13cos x=13cos C=13·(AC/BC)=13·5/13=5이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -2238,6 +2242,10 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: AB=30, AC=40, ∠A=60°인 삼각형에서 C에서 AB로 내린 높이 CH를 표시한다. AH=20, BH=10, CH=20√3이며 두 직각삼각형을 색으로 구별한다.",
+    "solutionImageCaption": "BH=10, CH=20√3이므로 BC=√(10²+(20√3)²)=10√13이다. 정답은 10√13이다.",
+    "solutionImageSize": "full"
   }
 ];
