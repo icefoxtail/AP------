@@ -7091,11 +7091,12 @@
       ],
       "uidSetSha256": "fff776916d3acac6c3d267dffd2445b0793b86f5b8ae7000766934b570df8176",
       "reviewedQuestionCount": 23,
-      "fullyJudgedQuestionCount": 22,
-      "registrationPendingQuestionCount": 22,
-      "unresolvedQuestionCount": 1,
+      "fullyJudgedQuestionCount": 21,
+      "registrationPendingQuestionCount": 21,
+      "unresolvedQuestionCount": 2,
       "unresolvedOrdinals": [
-        10
+        10,
+        23
       ],
       "sourceHoldQuestionCount": 3,
       "sourceHoldOrdinals": [
@@ -7183,18 +7184,18 @@
         },
         "mechanical-check.json": {
           "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/mechanical-check.json",
-          "sha256": "4f61659d40b42e0d9359f07d3541e4834e0589681894430857bc0ed6bfbbc2d5"
+          "sha256": "7b6fff6d12340ff5b400d1b8d6840b4948b61ce764519f50dc306b3846abcfb8"
         },
         "review.json": {
           "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/review.json",
-          "sha256": "c83c4116e8b0b8439a655c9603a85030ba9ebd3fa03ab1db78c93d453760ac7c"
+          "sha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef"
         },
         "root-acceptance.json": {
           "path": "archive/data/meta-review/m2-s2-20261114/exams/E047/root-acceptance.json",
-          "sha256": "72a50d1d33b92c482fcff1560c36a83740b600ab8df591776dcde27984b33b43"
+          "sha256": "09caad0ce370f98bf9b5fa3cbad20d8b7d45dbf31f13e2c4d3c1cc38a8d298c6"
         }
       },
-      "remoteSaveState": "VERIFIED",
+      "remoteSaveState": "PENDING_READBACK",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [],
       "remoteCommit": "dbb3cc5ae8817f27920284827466b453d1c2d7cd"
@@ -8000,9 +8001,10 @@
           "sha256": "bc6a1cde401c1bee99e42e578d522d90616b8405f52c86a445b020ef7648cfa4"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "241d64fef55b27bbaa7f8ab3c1f70f4e0cbf7219"
     },
     {
       "examId": "E053",
@@ -8847,7 +8849,7 @@
     },
     {
       "examId": "E067",
-      "owner": "A",
+      "owner": "B",
       "sourcePath": "archive/exams/original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
       "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
       "sourceBlob": "59f2f1d04f746e8b7a0b1d69b282eb4b1bd472df",
@@ -8898,12 +8900,12 @@
   "progressCounts": {
     "reviewedExams": 54,
     "reviewedQuestions": 1292,
-    "fullyJudgedQuestions": 1277,
-    "unresolvedQuestions": 15,
+    "fullyJudgedQuestions": 1276,
+    "unresolvedQuestions": 16,
     "remainingExams": 13,
     "remainingQuestions": 312
   },
-  "lastVerifiedExamCommit": "a09f3df06a29a55bd51950a18430c56790925d92",
+  "lastVerifiedExamCommit": "241d64fef55b27bbaa7f8ab3c1f70f4e0cbf7219",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
@@ -8929,7 +8931,17 @@
       "registryBlobsEqual": 8,
       "referencedImages": 1903,
       "imageBlobsEqual": 1903
-    }
+    },
+    "assignmentTransfers": [
+      {
+        "examId": "E067",
+        "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
+        "from": "A",
+        "to": "B",
+        "reason": "Balance remaining full-exam work; A explicitly confirmed no source, image, or metadata review had begun.",
+        "status": "EXCLUSIVE_B"
+      }
+    ]
   },
   "countSemantics": {
     "reviewed": "Every item was inspected; unresolved evidence is counted separately and is not accepted metadata.",

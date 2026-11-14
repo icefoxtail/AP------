@@ -2909,8 +2909,8 @@
       "sourceContentStatus": "SOURCE_HOLD",
       "conditionalMetadataJudgment": "COMPLETE_FOR_EXISTING_SOLUTION_ASSUMPTIONS",
       "sourceHold": {
-        "status": "INDEPENDENCE_NOT_STATED",
-        "reason": "발문은 두 성공확률 또는 반복횟수만 제시하며 상호독립을 명시하지 않는다. 기존 해설의 곱셈은 독립모형을 채택한다. 해당 모형에 대한 메타는 판정하되 원문 확률모형의 완결성은 보류한다."
+        "status": "INDEPENDENCE_ASSUMPTION_ABSENT",
+        "reason": "소문항(1),(2)의 개별 여사건확률은 결정되지만 발문에 독립 또는 결합확률 조건이 없어 (3)~(5)의 결합사건확률과 완전문항의 최종난도를 확정할 수 없다. 기존해설의 곱셈은 추가 독립가정이다."
       },
       "semanticRpm": {
         "rpmRecordId": "M2-RPM-118",
@@ -2934,7 +2934,7 @@
       },
       "sourceOrdinal": 23,
       "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
-      "verdict": "CORRECT",
+      "verdict": "UNRESOLVED",
       "rpmRecordId": "M2-RPM-118",
       "rpmDecision": "CORRECT",
       "primaryMethod": "하나만 맞히는 두 배반 경로 확률",
@@ -3008,7 +3008,6 @@
         "standardUnit": "확률",
         "subUnitKey": "M2-08-PROBABILITY_BASIC",
         "subUnit": "확률의 뜻과 성질",
-        "difficultyBucket": 2,
         "rpmL1": "확률",
         "rpmL2": "확률",
         "rpmL3": "확률의 활용",
@@ -3026,8 +3025,8 @@
         "crossConcept": "Primary 풀이 골격 밖의 별도 결정 개념이 없어 crossConceptKeys=[]로 판정. 기존 값과의 차이는 beforeSource/beforeMetadata와 after에 기록.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "CASE_BRANCH: 하나만 성공하려는 두 배반 경로를 나누어 각각의 독립곱을 계산한다.",
-        "difficulty": "다섯 소문항이 실패확률과 두 경로계산 순서를 모두 안내한다.",
-        "fourSlot": "원본과 prior full 4slot의 실제 용어·정확 인용을 문항별 대조한 뒤 유효 슬롯 유지."
+        "difficulty": "소문항(1),(2)의 개별 여사건확률은 결정되지만 발문에 독립 또는 결합확률 조건이 없어 (3)~(5)의 결합사건확률과 완전문항의 최종난도를 확정할 수 없다. 기존해설의 곱셈은 추가 독립가정이다.",
+        "fourSlot": "원본과 prior full 4slot의 실제 용어·정확 인용을 문항별 대조한 뒤 유효 슬롯 유지. 원본인용과4칸파일은 보존하며 기존해설의 곱셈방법은 독립조건을 추가한 후보로 한정한다."
       },
       "reason": "다섯 소문항이 실패확률과 두 경로계산 순서를 모두 안내한다.",
       "registrationDebt": [
@@ -3035,12 +3034,36 @@
       ],
       "proposalRefs": [],
       "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "소문항(1),(2)의 개별 여사건확률은 결정되지만 발문에 독립 또는 결합확률 조건이 없어 (3)~(5)의 결합사건확률과 완전문항의 최종난도를 확정할 수 없다. 기존해설의 곱셈은 추가 독립가정이다."
+      },
+      "candidateDifficulty": {
         "level": "중",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "reason": "다섯 소문항이 실패확률과 두 경로계산 순서를 모두 안내한다."
+        "reason": "다섯 소문항이 실패확률과 두 경로계산 순서를 모두 안내한다.",
+        "basis": "학생발문에 없는 두신호 판단의 독립을 추가한 기존해설 모형에서만 유효한 후보"
+      },
+      "primaryCandidateOnly": true,
+      "metadataRegistrationStatus": "BLOCKED_SOURCE_EVIDENCE",
+      "uncertainty": "소문항(1),(2)의 개별 여사건확률은 결정되지만 발문에 독립 또는 결합확률 조건이 없어 (3)~(5)의 결합사건확률과 완전문항의 최종난도를 확정할 수 없다. 기존해설의 곱셈은 추가 독립가정이다.",
+      "unresolvedFields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "소문항(3)~(5)의 필수 독립 또는 결합확률 조건"
+      ],
+      "pinpointRevision": {
+        "requestedBy": "ROOT",
+        "reason": "E056 Q24와 같은 임의 두신호의 주변확률만 주어진 구조에서 기존 sourceHold를 최종UNKNOWN 후보분리로 좁혀 보완.",
+        "scope": "E047 Q23 review envelope only; source, fourSlot, all other items unchanged"
       }
     }
   ],

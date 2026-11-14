@@ -7,7 +7,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "31f4c6901c956812124f81f489e5e15c4d080af3",
   "sourceSha256": "8a8078fa20d89e9cd4d8f77e51348904673b91da426aceb7a0d33fb512dd41ca",
-  "reviewSha256": "c83c4116e8b0b8439a655c9603a85030ba9ebd3fa03ab1db78c93d453760ac7c",
+  "reviewSha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
   "fourSlotSha256": "fa2f13f79a239615609717fcf8f15b4e7f9d5bcbdcb169e07bc5062867e7e09c",
   "independentSampleSha256": "65c75ade20d4a1f91e9267ee379e3c6ca136fb80fa72039cdc75fc11563d97cb",
   "sampleInputVersionsPreserved": true,
@@ -28,6 +28,17 @@
         "difficultyConfidence",
         "difficultyBoundaryFlag",
         "필수 한 직각변 길이5cm의 원본 근거"
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "소문항(3)~(5)의 필수 독립 또는 결합확률 조건"
       ]
     }
   ],
@@ -51,6 +62,21 @@
         22
       ],
       "resolvedRepairs": []
+    },
+    {
+      "scope": "Pinpoint source-model hold at Q23 after cross-exam consistency finding; no other item and no four-slot content changed. The three-item C sample at Q8/Q16/Q22 remains valid for identical source and slots and is reused.",
+      "inputReviewSha256": "c83c4116e8b0b8439a655c9603a85030ba9ebd3fa03ab1db78c93d453760ac7c",
+      "finalReviewSha256": "c7ec654bc0e7203e8681ba61a5c4392425a5dbefa4fa9da19d17b6e6ba1158ef",
+      "independentSampleSha256": "65c75ade20d4a1f91e9267ee379e3c6ca136fb80fa72039cdc75fc11563d97cb",
+      "reusedFourSlotSampleOrdinals": [
+        8,
+        16,
+        22
+      ],
+      "fourSlotUnchanged": true,
+      "rootIndependentlyRecheckedOrdinal": 23,
+      "decision": "HOLD",
+      "reason": "독립 root가 Q23 발문·다섯 소문항·기존정답·해설을 실제 대조했다. 개별 실패확률은 결정되지만 서로 다른 두 신호의 결합확률을 정할 독립/조건부 가정이 없어 (3)~(5)의 완전문항 판정을 보류한다. 기존2·중은 추가가정하의 후보로만 보존한다."
     }
   ],
   "difficultyRechecks": [
@@ -164,12 +190,12 @@
     },
     {
       "ordinal": 23,
-      "decision": "ACCEPT",
-      "bucket": 2,
-      "level": "중",
-      "reason": "독립확률곱이라는 기존해설모델하에서 다섯 소문항이 여사건·두배반경로를 모두안내하므로2. 독립 가정 원문누락은sourcehold를유지한다.",
-      "independentReviewer": "C",
-      "independentDecision": "ACCEPT_CONDITIONAL_MODEL"
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "독립 root가 Q23 발문·다섯 소문항·기존정답·해설을 실제 대조했다. 개별 실패확률은 결정되지만 서로 다른 두 신호의 결합확률을 정할 독립/조건부 가정이 없어 (3)~(5)의 완전문항 판정을 보류한다. 기존2·중은 추가가정하의 후보로만 보존한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "HOLD_SOURCE_EVIDENCE"
     }
   ],
   "sourceContentHolds": [
@@ -185,12 +211,13 @@
     },
     {
       "ordinal": 23,
-      "reason": "발문은 두 성공확률 또는 반복횟수만 제시하며 상호독립을 명시하지 않는다. 기존 해설의 곱셈은 독립모형을 채택한다. 해당 모형에 대한 메타는 판정하되 원문 확률모형의 완결성은 보류한다.",
-      "metadataJudgmentUnresolved": false
+      "reason": "소문항(1),(2)의 개별 여사건확률은 결정되지만 발문에 독립 또는 결합확률 조건이 없어 (3)~(5)의 결합사건확률과 완전문항의 최종난도를 확정할 수 없다. 기존해설의 곱셈은 추가 독립가정이다.",
+      "metadataJudgmentUnresolved": true
     }
   ],
   "notes": [
     "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
-    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task.",
+    "Q23 only was changed to explicit UNRESOLVED after independent root review of the omitted joint-probability assumptions; complete prior exam review was not repeated. Q19 retains an explicit conditional-model source hold for the standard repeated-trial interpretation."
   ]
 }
