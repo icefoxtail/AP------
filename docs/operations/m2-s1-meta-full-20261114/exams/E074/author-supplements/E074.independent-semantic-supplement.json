@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "m2-author-independent-semantic-supplement-v1",
+  "examId": "E074",
+  "status": "AUTHOR_ACCEPTED_ROOT_NARROW_REVIEW",
+  "createdAt": "2026-11-14T15:16:43.740453+00:00",
+  "originalReviewSha256": "c9f471d8809017ad78c9014cd20d7f984a0d172646febc46c1bb6a48098ff14d",
+  "originalFourSlotSha256": "57bb5b863e051efc94ea319806261c4b4a2297c4841e1709d4b68a7947220dae",
+  "acceptedReviewPath": "/workspace/scratch/14c2c64e43fb/workers/B/E074.accepted-review-r1.json",
+  "acceptedReviewSha256": "2b4277fff3dd41da2e0ecefec6812b8c4c3ea5831a27809afd0a1c5c45202f86",
+  "acceptedFourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E074.4slot.json",
+  "acceptedFourSlotSha256": "57bb5b863e051efc94ea319806261c4b4a2297c4841e1709d4b68a7947220dae",
+  "reviewOverrides": [
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "터널·다리를 열차 전체가 통과하는 거리와 시간 단위변환은 정형적인 두 관계의 연립모델이다. 여러 입력을 연결하지만 독립적인 전략선택 부담이 크지 않아 root 독립2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "작년 총수와 성별 증감률로 올해 인원을 정하는 표준 증감률 모델이다. 마지막 올해남학생수 변환까지 익숙한 절차로 이어지므로 root 독립2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "주어진 교집합의 두 끝을 각각의 일차부등식 경계에 대조하는 정형적 계수결정이다. 서로 다른 경계 대응은 있으나 별도 전략선택이 크지 않아 root 독립2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "분수·소수 일차부등식의 공통해구간에서 정수 끝값을 선택하는 익숙한 변형이다. 최대·최소 합의 후속단계가 새로운 전략을 요구하지 않아 root 독립2를 수용한다."
+    }
+  ],
+  "changes": [
+    "Q9/Q10/Q13/Q17 numeric3→2 only; standard models and given boundary/scaffold reduce independent strategy-selection burden."
+  ],
+  "invariants": [
+    "Original review/four/freeze bytes preserved.",
+    "All four boundaryB23/confidencelow and source-only method24 unchanged.",
+    "Q20UNKNOWN and other20 judgments remain."
+  ]
+}
