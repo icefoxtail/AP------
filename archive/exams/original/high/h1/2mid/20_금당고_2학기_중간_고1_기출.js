@@ -899,7 +899,6 @@ window.questionBank = [
     "difficultyReason": "필요조건을 진리집합의 포함으로 해석한 뒤 삼각형 안의 최대 원을 거리 조건으로 결정한다.",
     "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q18-solution-v4.svg",
     "originalCategory": "필요조건과 삼각형 안의 원",
-    "image": "assets/images/20_금당고_2학기_중간_고1_기출/q18-problem.svg",
     "questionUid": "qid_v1_7f3bb5181f16cd47489ba32a5f1a5abac53cba7f3bb02a51e2ca16002aa02cf3",
     "sourceQid": 18,
     "sourceOrdinal": 18,

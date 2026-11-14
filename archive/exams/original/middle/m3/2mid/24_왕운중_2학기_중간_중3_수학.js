@@ -121,7 +121,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 y=−2/3x²와 x축 대칭인 y=2/3x², 공통 꼭짓점 O와 축 x=0.",
+    "solutionImageCaption": "축은 x=0이고 두 곡선은 x축 대칭이므로 옳지 않은 설명은 ③, ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -153,7 +157,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: a=−1인 예시이다. 같은 높이 y=−3에서 y=−3/2 x²와 예시 y=−x²의 폭을 비교한다.",
+    "solutionImageCaption": "y=ax²의 계수는 −3/2보다 크고 0보다 작으므로 −3/2<a<0이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -270,11 +278,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "첫 그래프를 평행이동하면\n$y=-2(x-p)^2+3$이다.\n\n직선 $y=5$에 대하여 대칭이면\n같은 $x$에서 두 $y$좌표의 합이 $10$이므로\n대칭된 그래프는\n$y=10-\\{-2(x-p)^2+3\\}$\n$=2(x-p)^2+7$이다.\n\n$y=2(x-1)^2+q$와 비교하면\n$p=1,\\ q=7$.\n\n따라서 $p+q=8$이고\n정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q9-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 큰 포물선 두 개가 수평선 y=5에 대하여 대칭이고 꼭짓점은 같은 x좌표에 있다.",
+    "solutionImageCaption": "대칭 조건에서 p=1, q=7이므로 p+q=8이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -304,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 사분면 조건을 나타내는 대표 포물선: 위로 열리고 꼭짓점은 제4사분면, y절편은 양수.",
+    "solutionImageCaption": "a>0, p<0, q<0, ap²+q≥0이므로 ㄴ, ㄷ이 옳다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -334,7 +349,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 축 범위의 두 패널에서 아래로 열린 ㄱ·ㄹ과 위로 열린 ㄴ·ㄷ의 축·폭을 비교한다.",
+    "solutionImageCaption": "ㄷ의 꼭짓점은 (0,5)로 x축 위가 아니다. 따라서 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -490,7 +509,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: y=3x²와 y=x²/3의 두 같은 높이 점쌍 사이에 각각 수평거리 6이 표시된다.",
+    "solutionImageCaption": "두 경우에서 A의 x좌표는 ±3, ±3/2이므로 곱은 81/4이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -519,11 +542,14 @@ window.questionBank = [
     "answer": "③",
     "solution": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac35$이므로\n$BC:AC=3:5$이다.\n\n직각삼각형에서\n$AB=\\sqrt{5^2-3^2}=4$이므로\n$AB:BC:AC=4:3:5$이다.\n\n따라서\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac45$.\n\n정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q17.png",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q17-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각 B인 3-4-5 삼각형에서 각 A에 대한 맞은편·이웃변·빗변을 구분한다.",
+    "solutionImageCaption": "cos A=AB/AC=4/5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -585,11 +611,14 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "한 모서리의 길이가 $1$이다.\n\n밑면의 대각선\n$EG=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n또 $AE=1$이고 $AE\\perp EG$이므로\n직각삼각형 $AEG$에서\n$AG=\\sqrt{1^2+(\\sqrt2)^2}=\\sqrt3$이다.\n\n$x=\\angle AGE$에서\n$\\tan x=\\dfrac{AE}{EG}$\n$=\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q19.png",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q19-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 단위 정육면체에서 만든 직각삼각형 AEG: AE=1, EG=√2, 직각은 E, 각 x는 꼭짓점 G에 있다.",
+    "solutionImageCaption": "tan x=AE/EG=1/√2=√2/2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -669,11 +698,14 @@ window.questionBank = [
     "answer": "$3$",
     "solution": "꼭짓점을 구하도록 완전제곱식으로 바꾼다.\n$y=-\\dfrac12x^2-2x+3$\n$=-\\dfrac12(x^2+4x)+3$\n$=-\\dfrac12\\{(x+2)^2-4\\}+3$\n$=-\\dfrac12(x+2)^2+5$.\n\n따라서 $A=(-2,5)$이다.\n$y$축과의 교점은 $x=0$이므로\n$B=(0,3)$이다.\n\n$OB=3$,\n점 $A$에서 $y$축까지의 거리는 $2$이므로\n$[\\triangle AOB]=\\dfrac12\\times3\\times2=3$.\n\n따라서 넓이는 $3$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q22.png",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q22-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 A와 y절편 B, 삼각형 AOB의 높이 AH=2와 밑변 OB=3.",
+    "solutionImageCaption": "[AOB]=1/2×3×2=3이다. 정답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -696,10 +728,13 @@ window.questionBank = [
     "answer": "$\\sin A=\\dfrac{2\\sqrt{13}}{13},\\ \\cos A=\\dfrac{3\\sqrt{13}}{13},\\ \\tan A=\\dfrac{2}{3}$",
     "solution": "그림에서 $AB=3$, $BC=2$, $\\angle B=90^\\circ$이다.\n\n피타고라스 정리로\n$AC=\\sqrt{3^2+2^2}=\\sqrt{13}$이다.\n\n각 $A$를 기준으로\n맞은편 변은 $BC=2$,\n이웃한 변은 $AB=3$이다.\n\n따라서\n$\\sin A=\\dfrac2{\\sqrt{13}}=\\dfrac{2\\sqrt{13}}{13}$,\n$\\cos A=\\dfrac3{\\sqrt{13}}=\\dfrac{3\\sqrt{13}}{13}$,\n$\\tan A=\\dfrac23$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q23.png",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q23-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 직각 B인 삼각형에서 AB=3, BC=2, 빗변 AC=√13을 나타낸다.",
+    "solutionImageCaption": "sin A=2/√13=2√13/13, cos A=3/√13=3√13/13, tan A=2/3이다.",
+    "solutionImageSize": "full"
   }
 ];

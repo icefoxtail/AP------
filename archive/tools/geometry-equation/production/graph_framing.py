@@ -297,6 +297,7 @@ def _fit_overview_family(plan):
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
+    if 'asymptoteOnly' in plan and plan.get('family')!='rational':raise ValueError('ASYMPTOTE_ONLY_REQUIRES_RATIONAL')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
     if plan.get('family')=='sqrt-affine':
         if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
@@ -602,6 +603,14 @@ def _fit_rational_overview(plan):
     # verticalAsymptoteLabelAt (G13a): TOP_LEFT | TOP_RIGHT | BOTTOM_LEFT | BOTTOM_RIGHT puts the label x=p on that side of the dashed vertical asymptote, at its top or bottom end; NONE draws
     # no automatic label (the author writes it, for example as a callout). The default place is kept without the field.
     if 'verticalAsymptoteLabelAt' in plan and plan['verticalAsymptoteLabelAt'] not in VERTICAL_ASYMPTOTE_LABEL_PLACES:raise ValueError('VERTICAL_ASYMPTOTE_LABEL_AT_INVALID')
+    asymptote_only='asymptoteOnly' in plan
+    if asymptote_only:
+        if plan['asymptoteOnly'] is not True:raise ValueError('ASYMPTOTE_ONLY_INVALID')
+        if numerator[1]==0:raise ValueError('ASYMPTOTE_ONLY_REQUIRES_LINEAR_NUMERATOR')
+        if (plan.get('hideLabels')!=['formula'] or plan.get('axisTickValues',{'x':[],'y':[]})!={'x':[],'y':[]} or
+            any(key in plan for key in ('axisTitles','formulaTex','formulaLabel','overlays','regions','asymptoteLabelAt','verticalAsymptoteLabelAt')) or
+            plan.get('requiredPoints',[])!=[]):
+            raise ValueError('ASYMPTOTE_ONLY_REQUIRES_ASYMPTOTES_WITHOUT_OTHER_LABELS')
     if numerator[1]==0:return _rational_inverse_regions(plan,_fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport),numerator[0],denominator)
     if 'regions' in plan:raise ValueError('GRAPH_REGION_REQUIRES_INVERSE_PROPORTION')   # regions of a rational: the inverse proportion y=k/(d0+d1*x) only (the shaded stretch must not meet a second asymptote or the x-intercept)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
@@ -611,6 +620,7 @@ def _fit_rational_overview(plan):
     numerator_root=-numerator[0]/numerator[1]
     horizontal=numerator[1]/denominator[1]
     is_hole=(numerator[0]+numerator[1]*pole_or_hole)==0
+    if asymptote_only and is_hole:raise ValueError('ASYMPTOTE_ONLY_REQUIRES_VERTICAL_POLE')
     if is_hole:
         singularity={'kind':'REMOVABLE_HOLE','x':_fraction_text(pole_or_hole),'y':_fraction_text(horizontal)}
         x_intercept=None
