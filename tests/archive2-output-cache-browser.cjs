@@ -12,6 +12,7 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const H = require('./archive2-solution-loading-browser.cjs');
 const P = require('./archive2-output-performance-browser.cjs');
+const { loadQualificationFixtures } = require('./archive2-output-qualification-fixtures.cjs');
 
 const root = path.resolve(__dirname, '..');
 const reportDir = path.resolve(process.env.ARCHIVE_CACHE_REPORT_DIR || path.join(os.tmpdir(), 'archive-output-cache'));
@@ -1009,7 +1010,9 @@ async function runCase(browser, server, fixture, name, work, params = {}, initia
 async function main() {
   const chrome = process.env.CHROME_BIN;
   requireThat(chrome && fs.existsSync(chrome), 'REAL_CHROME_BIN_REQUIRED');
-  const questions = H.realFixture(root).slice(0, 8);
+  const pinned = loadQualificationFixtures(root);
+  const { questions } = pinned.fixtures.find(fixture => fixture.id === 'envelope8');
+  const full = pinned.fixtures.find(fixture => fixture.id === 'envelope50');
   requireThat(questions.length === 8, 'CACHE_REAL_FIXTURE_INCOMPLETE');
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.fixture = { questions: questions.length, inputSha256: hash(JSON.stringify(questions)),
@@ -1017,16 +1020,16 @@ async function main() {
   const envelope = { id: 'cache-real8', kind: 'envelope', questions, sources: [H.sourceFiles[0]] };
   const legacy = { ...envelope, id: 'cache-editor-real8', kind: 'legacy' };
   const real50 = { id: 'known-clipping-real50-qpp4', kind: 'envelope', qpp: 4,
-    questions: H.realFixture(root), sources: H.sourceFiles };
+    questions: full.questions, sources: full.sources.map(source => source.file) };
   report.knownIssue = { id: 'REAL50_QPP4_REMINDER_IMAGE_CLIPPING', status: 'UNRESOLVED', guardPass: false,
     qualityPass: false, fixture: real50.id, questionCount: real50.questions.length, qpp: real50.qpp,
-    inputSha256: hash(JSON.stringify(real50.questions)), sourceFile: H.sourceFiles[0],
-    sourceSha256: hash(fs.readFileSync(path.join(root, H.sourceFiles[0]))),
+    inputSha256: full.inputSha256, sourceFile: full.sources[0].file,
+    sourceSha256: full.sources[0].sha256,
     sourceUid: real50.questions[16]._sourceQuestionUid || real50.questions[16].sourceQuestionUid,
     expectedFailureCode: 'PDF_CONTENT_CLIPPED', observedCauses: [] };
   let browser, server;
   try {
-    server = await H.serve(root);
+    server = await H.serve(root, root, pinned.sourceOverlay);
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
     await runCase(browser, server, envelope, 'strict-cache-reuse-and-print', reuseAndPrint);

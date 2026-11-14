@@ -154,6 +154,8 @@ class VennTamper(unittest.TestCase):
         svg=svg.replace('ry="70" fill="none"','ry="70" fill="none" stroke="#111" stroke-width="1.4"')
         valid=self.audit(svg,plan)
         self.assertEqual(valid['status'],'PASS',valid['errors'])
+        with self.assertRaisesRegex(ValueError,'SD_UNIVERSAL_LABEL_OUTSIDE_INVALID'):
+            self.audit(svg,{**plan,'universeLabelOutside':True})
         self.assertIn('SD_UNIVERSAL_RECT_UNEXPECTED',self.audit(svg.replace('</svg>','<g><rect fill="none" stroke="black"/></g></svg>'),plan)['errors'])
         self.assertIn('SD_UNIVERSAL_LABEL_UNEXPECTED',self.audit(svg.replace('</svg>',label('extra','extra',(20,20,12,14),'U')+'</svg>'),plan)['errors'])
         self.assertIn('SD_SET_NOT_A_CIRCLE:A',self.audit(svg.replace('cx="120" cy="170" rx="70" ry="70"','cx="120" cy="170" rx="70" ry="65"'),plan)['errors'])

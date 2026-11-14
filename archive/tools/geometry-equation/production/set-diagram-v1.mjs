@@ -129,7 +129,7 @@ const countNameTex=(name,count)=>`n(${name})=${count}`;
 
 // --- exact regions: the atomic cells of 1-3 sets -------------------------------------------------------------------------------------------
 function solveVenn(venn){
-  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle','labelGap','showUniverse'],'SET_DIAGRAM_PLAN_INVALID');
+  onlyKeys(venn,['kind','sets','elements','shade','subset','disjoint','universe','countStyle','labelGap','showUniverse','universeLabelOutside'],'SET_DIAGRAM_PLAN_INVALID');
   if(venn.showUniverse!==undefined&&typeof venn.showUniverse!=='boolean')bad('SET_SHOW_UNIVERSE_INVALID');
   const hideUniverse=venn.showUniverse===false;
   if(hideUniverse&&venn.universe!==undefined)bad('SET_HIDDEN_UNIVERSE_DECLARED');
@@ -183,6 +183,7 @@ function solveVenn(venn){
     if(countStyle==='n'&&sets.some(set=>set.count!==undefined&&!labelMath(set.name)))bad('SET_COUNT_INVALID');
   }
   // labelGap (opt-in): a set's name stands at least this many px clear of every circle's line (and, for the inner set of a subset pair, wholly inside the outer circle).
+  if(venn.universeLabelOutside!==undefined&&(venn.universeLabelOutside!==true||venn.universe!==undefined||hideUniverse))bad('SET_UNIVERSE_LABEL_OUTSIDE_INVALID');
   let labelGap;
   if(venn.labelGap!==undefined){
     if(!Number.isInteger(venn.labelGap)||venn.labelGap<2||venn.labelGap>12)bad('SET_LABEL_GAP_INVALID');
@@ -225,7 +226,7 @@ function solveVenn(venn){
     cells.push({mask,region:members.length?members.join('∩'):'OUTSIDE',members,shade:shade?shade.cells.includes(mask):false,
       elements:elements.filter(e=>e.cell===mask).map(e=>e.index)});
   }
-  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(hideUniverse?{showUniverse:false}:{}),...(universe?{universe}:{}),...(countStyle?{countStyle}:{}),...(labelGap?{labelGap}:{})};
+  return {schemaVersion:MODEL_VERSION,kind:'VENN',layout:subset?'SUBSET':chain?'CHAIN':disjoint?'DISJOINT':'OVERLAP',sets,subset,...(chain?{chain}:{}),...(disjoint?{disjoint}:{}),elements,cells,shade,...(hideUniverse?{showUniverse:false}:{}),...(universe?{universe}:{}),...(countStyle?{countStyle}:{}),...(labelGap?{labelGap}:{}),...(venn.universeLabelOutside?{universeLabelOutside:true}:{})};
 }
 // A mapping element is a short Hangul/alphanumeric text (up to 4 characters, as always) or, since G17, a signed number, a fraction or a short root
 // (-2, 1/2, -1/2, √2, 2√3; up to 6 characters). The typed hyphen-minus is shown as the real minus sign U+2212; the figure writes it as a math label.
@@ -713,7 +714,8 @@ function vennSpec(model,layout){
   // U (40명) in the corner: the headcount is a separate text label set right after the name (resolveVenn); n(U)=40 replaces the name instead
   if(model.showUniverse!==false)labels.push(universe&&style==='n'
     ?math('universal-name','universal-name','universal',countNameTex('U',universe.count),countNameTex('U',universe.count),'start','middle',U.x+12,U.y+13,{})
-    :math('universal-name','universal-name','universal','U','U','start','middle',U.x+12,U.y+13,{}));
+    :math('universal-name','universal-name','universal','U','U','start',
+      model.universeLabelOutside?'bottom':'middle',U.x+12,U.y+(model.universeLabelOutside?-6:13),{}));
   if(universe){
     const text=countLabelText(style,universe.count,universe.countUnit);
     if(text)labels.push(textLabel('universal-count','universal-count','universal',text,'start','middle',U.x+12,U.y+13,{}));
