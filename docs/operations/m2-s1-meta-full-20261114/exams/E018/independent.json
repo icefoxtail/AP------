@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E018",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "at": "2026-11-14T11:21:24.912903+00:00",
+  "sourceGitBlobSha": "7594cb9f6a69f2754673d1b0f65c91bfd9e102e4",
+  "sourceSha256": "e354fee6ba8945307081b62cbb47f93ef90565eb7189464f21c7b50df3dc8e33",
+  "reviewSha256": "229903e16abf61fa86484a2e24fccf4573fc19ccf007471c6146bc8f7f245f0d",
+  "fourSlotSha256": "6563e8776ff5882a828219399fc0763e088c7f8b3aabe6975be631e6f9159d38",
+  "sampleOrdinals": [
+    17,
+    20,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9c78234b852078d755a6cda2a139e2c4bf126473755a3661b4fb4e4d9dc40205",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "실제 그림의 교점 (1,2)를 확인했다. 새 교점 좌표를 계산하는 174보다 이미 주어진 공통해에서 계수를 정하는 150이 decisive step에 맞는다. CC_POINT_SUBSTITUTION의 실제 정의인 그래프 위 점의 좌표 대입과 REINTERPRETATION은 그래프의 공통점을 두 식의 공통해로 읽는 단계에 대응한다. 조건은 새로 추가하지 않고, goal 식의값과 solution의 대입 및 해석 IMPLIED를 분리했다. 한 식의 두 점을 사용하는 기존 PT/TPL을 exact로 강제하지 않은 binding debt를 수용한다.",
+      "sourceRead": "Full sample stem, choices, existing solution and final submitted review/4slots, plus required actual source figure. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_b4c1b043a25fcec3f19e1d5ab696f6fbee834710d760a44db918bd4bbb1eed7d",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "세 직선의 교점은 (-1,5), (9,5), (3,1)이며 실제 그림도 세 직선이 둘러싼 삼각형을 나타낸다. 최종 넓이를 구하는 RPM176과 축평행식, 연립 교점 계산, 삼각형 넓이의 CC 및 SEQUENTIAL을 수용한다. given 점/평행/직선식, goal 넓이, method 대입/대입법/삼각형/공식의 원문 근거를 확인했다. 대입법은 이름이 없어도 기존 해설의 x=4-y 및 2(4-y)-3y-3=0이라는 표준 대입 과정이 전체 해설에 존재하므로 NAMED를 수용한다. 두 좌표축을 사용하는 다른 면적 template의 exact 활성화를 유보한 것이 타당하다.",
+      "sourceRead": "Full sample stem, choices, existing solution and final submitted review/4slots, plus required actual source figure. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_1f28e93c50cbf17370faca3d9604d520e6d2d06994457c166af59039f90e7044",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "실제 그래프에서 세 직선의 점을 읽고 식, 두 교점, 평행 여부를 확인했다. 수정본은 소문항별 필수 출력인 두 점의 식 170, 교점 좌표 174, 평행 판정 175를 보존한다. 넓은 projection TPL의 정의로 RPM175 의미를 확장하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY를 Meta-only unresolved로 남기는 것이 §1.4.1#9에 맞다. 원래 target 부모는 유지하고 single primary에 종속된 CC/Integration 패치는 유보한다. given 직선의방정식을 실제 주어진 직선143으로 고쳐 goal의 직선식 산출과 구별했다. solution의 기울기 공식, 대입, 두 식의 동치 계산, 평행 판정은 실제 인용에 근거한다.",
+      "sourceRead": "Full sample stem, choices, existing solution and final submitted review/4slots, plus required actual source figure. No independent VERIFIED_FINAL solver receipt claimed.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "정해진 x=1,y=3을 각 식에 직접 대입해 해의 정의를 확인한다. 연립식을 새로 풀거나 방법을 선택하지 않아 1/B12가 맞다. 학습 level 하도 이 직접 확인 구조로 독립 판정한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "자연수 조건에서 x=1,2,3,4로 후보를 좁히고 y의 자연수 여부를 확인하여 (1,3),(4,1)을 찾는다. 정형 범위 제한과 직접 확인의 2/B23이다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "입력 하나에 출력 하나라는 함수 정의를 적용한다. 소인수 대응은 x=6에 2와 3이 대응하는 직접 반례이므로 1/B12 및 level 하를 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "주어진 함수식에 -1과 2를 넣어 -5,1을 얻고 더한다. 추가 전처리나 전략 선택이 없는 1/B12이며 level 하도 별도로 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "일차함수 y=ax+b, a≠0의 정의를 다섯 표현에 직접 대조한다. 1/B12 및 level 하를 수용한다. 보기①에 y=가 빠진 presentation debt는 실제 원문 및 기존 해설과 대조했으며 그대로 남긴다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "reason": "실제 여섯 그래프를 보고 양의 기울기와 음의 절편인 ㄴ, 음의 기울기와 영 절편인 ㅁ을 확인했다. 두 부호의 직접 대응이므로 1/B12 및 level 하를 수용한다. 그림 개수 자체는 3의 근거가 아니다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "승패 횟수를 두 미지수로 두어 3x-2y=5, -2x+3y=10을 세우고 비긴 5회를 더하는 정형 모델이다. 2/B23을 수용한다. 기존 해설은 구체적인 소거 또는 대입 과정을 생략했으므로 특정 solver를 추가하지 않은 METHOD_DETAIL_DEBT가 맞다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "평행 조건으로 기울기 -5/2를 유지하고 (4,-5)를 대입해 절편5를 구한 뒤 실제 그림③과 대응한다. 직접적인 두 개념 연결인 2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "명시된 y=2x를 첫 식에 넣어 x=1,y=2를 얻은 뒤 둘째 식에서 k=-0.3을 구한다. 풀이 순서가 정형적이며 분수와 소수의 표기만으로 3을 부여하지 않아 2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "x축과 y축의 교점 조건으로 (3,0),(0,2)를 얻고 직선식의 a,b를 정한다. 조건에 풀이 접근이 명시된 정형 결합으로 2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "실제 직사각형 그림에서 BP=12-x, 높이8을 읽어 y=48-4x를 세우고 y=36을 넣는다. 남은 길이와 넓이 공식을 직접 잇는 정형 모델로 2/B23을 수용한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "세 교점 좌표를 구하고 수평 변의 길이10과 높이4로 재구성해야 하므로 3/B23을 수용한다. 수평선 y=5가 발문에 직접 유도되어 별도 전략 분기나 숨은 조건 결합은 적다. level 중 역시 이 표준 좌표-넓이 구조를 근거로 독립 판정한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "소문항이 절편 읽기, 직선식, 기울기와 방향 설명의 순서를 제공한다. 실제 그래프의 -3,7과 양의 기울기를 직접 연결하는 2/B23이다. 여러 L4 출력은 난도와 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "reason": "각 직선식, 교점이 있는 쌍, 평행한 쌍을 차례로 묻는 명시적 소문항이 접근 순서를 제공한다. 점 두 개의 기울기 및 절편, 두 식의 연립, 같은 기울기와 다른 절편의 비교는 각각 정형적이다. 분수 계산과 쌍별 반복의 양만으로 높은 전략 난도를 부여하지 않아 2/B23 및 level 중을 독립적으로 수용한다."
+    }
+  ],
+  "legacyLevelRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "정해진 x=1,y=3을 각 식에 직접 대입해 해의 정의를 확인한다. 연립식을 새로 풀거나 방법을 선택하지 않아 1/B12가 맞다. 학습 level 하도 이 직접 확인 구조로 독립 판정한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "입력 하나에 출력 하나라는 함수 정의를 적용한다. 소인수 대응은 x=6에 2와 3이 대응하는 직접 반례이므로 1/B12 및 level 하를 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "주어진 함수식에 -1과 2를 넣어 -5,1을 얻고 더한다. 추가 전처리나 전략 선택이 없는 1/B12이며 level 하도 별도로 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "일차함수 y=ax+b, a≠0의 정의를 다섯 표현에 직접 대조한다. 1/B12 및 level 하를 수용한다. 보기①에 y=가 빠진 presentation debt는 실제 원문 및 기존 해설과 대조했으며 그대로 남긴다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "beforeLevel": "중",
+      "afterLevel": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "실제 여섯 그래프를 보고 양의 기울기와 음의 절편인 ㄴ, 음의 기울기와 영 절편인 ㅁ을 확인했다. 두 부호의 직접 대응이므로 1/B12 및 level 하를 수용한다. 그림 개수 자체는 3의 근거가 아니다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "beforeLevel": "상",
+      "afterLevel": "중",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "세 교점 좌표를 구하고 수평 변의 길이10과 높이4로 재구성해야 하므로 3/B23을 수용한다. 수평선 y=5가 발문에 직접 유도되어 별도 전략 분기나 숨은 조건 결합은 적다. level 중 역시 이 표준 좌표-넓이 구조를 근거로 독립 판정한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "beforeLevel": "상",
+      "afterLevel": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT_INDEPENDENT_LEVEL_CORRECTION",
+      "reason": "각 직선식, 교점이 있는 쌍, 평행한 쌍을 차례로 묻는 명시적 소문항이 접근 순서를 제공한다. 점 두 개의 기울기 및 절편, 두 식의 연립, 같은 기울기와 다른 절편의 비교는 각각 정형적이다. 분수 계산과 쌍별 반복의 양만으로 높은 전략 난도를 부여하지 않아 2/B23 및 level 중을 독립적으로 수용한다."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "실제 그림의 교점 (1,2)를 확인했다. 새 교점 좌표를 계산하는 174보다 이미 주어진 공통해에서 계수를 정하는 150이 decisive step에 맞는다. CC_POINT_SUBSTITUTION의 실제 정의인 그래프 위 점의 좌표 대입과 REINTERPRETATION은 그래프의 공통점을 두 식의 공통해로 읽는 단계에 대응한다. 조건은 새로 추가하지 않고, goal 식의값과 solution의 대입 및 해석 IMPLIED를 분리했다. 한 식의 두 점을 사용하는 기존 PT/TPL을 exact로 강제하지 않은 binding debt를 수용한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT",
+      "reason": "세 직선의 교점은 (-1,5), (9,5), (3,1)이며 실제 그림도 세 직선이 둘러싼 삼각형을 나타낸다. 최종 넓이를 구하는 RPM176과 축평행식, 연립 교점 계산, 삼각형 넓이의 CC 및 SEQUENTIAL을 수용한다. given 점/평행/직선식, goal 넓이, method 대입/대입법/삼각형/공식의 원문 근거를 확인했다. 대입법은 이름이 없어도 기존 해설의 x=4-y 및 2(4-y)-3y-3=0이라는 표준 대입 과정이 전체 해설에 존재하므로 NAMED를 수용한다. 두 좌표축을 사용하는 다른 면적 template의 exact 활성화를 유보한 것이 타당하다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_REVISED_MULTIPART_SPAN",
+      "reason": "실제 절편/식/성질의 독립 출력을 166/170/169로 보존한다. 단일 RPM이 표현하지 못하는 기존 문제를 새 canonical leaf 생성 요구로 바꾸지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY로 명시한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_REVISED_MULTIPART_SPAN",
+      "reason": "실제 그래프에서 세 직선의 점을 읽고 식, 두 교점, 평행 여부를 확인했다. 수정본은 소문항별 필수 출력인 두 점의 식 170, 교점 좌표 174, 평행 판정 175를 보존한다. 넓은 projection TPL의 정의로 RPM175 의미를 확장하지 않고 MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY를 Meta-only unresolved로 남기는 것이 §1.4.1#9에 맞다. 원래 target 부모는 유지하고 single primary에 종속된 CC/Integration 패치는 유보한다. given 직선의방정식을 실제 주어진 직선143으로 고쳐 goal의 직선식 산출과 구별했다. solution의 기울기 공식, 대입, 두 식의 동치 계산, 평행 판정은 실제 인용에 근거한다."
+    }
+  ],
+  "revisionReadback": {
+    "previousReviewSha256": "037f02c990c2c92ad99d8198d9554005508205b65015c14041a4c55037d9e60e",
+    "previousFourSlotSha256": "57e9aef5d6e35055c70c5d49494f76225dbe9a47e949a4c3b33e79f7d6da6800",
+    "changedScope": [
+      "Q23 given object role",
+      "Q23 single RPM/CC/Integration and explicit per-part semantics",
+      "Q21 explicit multi-L4 span; no new RPM leaf proposal"
+    ],
+    "status": "EXACT_FINAL_BYTES_REVIEWED"
+  },
+  "figureEvidence": [
+    {
+      "path": "workers/C/E018/assets/q12.png",
+      "sha256": "bac778c86b7d273bb5b4eee72ea9f7157d1690dd119e0036e48cbd3f0b1a4b71",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q14.png",
+      "sha256": "ac6e45bacc8cfdd39ebcff7e7f71fac56981aa6e7a8c6b8c04bf65619ef34a85",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q17.png",
+      "sha256": "b7eaa34671e94dbe7316b095c0a001e4dea4d9c3b45b65ed75656f7b7a196889",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q19.png",
+      "sha256": "8c73926e824cfa31ea72404e20bb009678fe11abddd70351b886f26280e17579",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q20.png",
+      "sha256": "373404ce84ae73c79dd7333f5f8dbf33a28189c300c62858159e9cdb20e3a198",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q21.png",
+      "sha256": "cf90ccb6d935bd4efa84f30d66c4add0a5fcbb36f79edffeb73904038d38d76f",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    },
+    {
+      "path": "workers/C/E018/assets/q23.png",
+      "sha256": "bc9b6f68fb503c92361c14bbc4d4b34994a24470d929b0b19637f817a39406c4",
+      "inspection": "ACTUAL_IMAGE_VIEWED"
+    }
+  ],
+  "definitionEvidence": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "sha256": "f24566984b8d7bc9fdeb43f36cddc8d643ed4b36e3c85dd595e81b5e6ee79ac9"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+    }
+  ],
+  "mechanicalChecks": {
+    "native": {
+      "fail": [],
+      "warn": [
+        "#4 only 4 distinct terms",
+        "#5 only 4 distinct terms",
+        "#6 only 3 distinct terms",
+        "#6 method has 1 term",
+        "#11 only 4 distinct terms",
+        "#13 only 4 distinct terms",
+        "#15 only 4 distinct terms"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 150
+      }
+    },
+    "identityFingerprintFailures": [],
+    "meaning": "Literal and schema validation only; not a semantic or official resolver PASS."
+  },
+  "difficultyProcessDisclosure": {
+    "authorBlindInitialPath": "workers/C/E018/blind-initial.json",
+    "authorBlindInitialSha256": "f55cba8a9f4b627d87b1a404dde64097dfdc10cad065f1cef9a3895552cb9832",
+    "authorProtocol": "Source text initial judgments were saved before existing difficulty fields were read; all9 images were viewed before metadata comparison. See blind-initial.json. Final independent review remains separate.",
+    "independentReviewProtocol": "A received flagged proposals and previous levels before this requested cross-check; this receipt is an independent source-based review, not a new blind first pass."
+  },
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "scopeLimits": [
+    "Targeted independent three-sample plus identified difficulty and semantic rechecks; not repeated full-exam authorship.",
+    "Multi-L4 representation and projection/resolver debts remain explicit. No source text, assets, shared registry or runtime was modified by this reviewer.",
+    "Learning level corrections are independently explained above; no automatic mapping from numerical bucket to learning level was used."
+  ]
+}
