@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E022",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "c29473e34d5971708a5d9da11b0aa6a86e37053d",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "f83ca99fb63db88fafc35f951bbbd571a528bbfe0cdc182b30a40fa3ed431b4e",
+  "fourSlotInputSha256": "a493beb0c1029cc59d3acebd144cdbe74df8ce439b9e5ede68c5468c910d4f26",
+  "sampleOrdinals": [
+    6,
+    21,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_8c9535880521d324e6e2771362f4dbd68ae6a6b1226d46c851807130aac6de40",
+      "verdict": "PASS",
+      "metadataReview": "그림의 직각 A와 AD 수선, AD9·BD6을 확인했다. AD²=BD·CD는 AA 닮음의 높이 비례중항이며 Pyth 제곱합이 아니다. ACTIVE PT_TRIANGLE_SIMILARITY/TPL_TRIANGLE_SIMILARITY_APPLICATION와 M2-RPM-238(2015, 현행2022 대응207) 정의에 맞는다. 이 관계 내부 닮음과 비례식은 추가 CC 대상이 아니고 도형 입력은 별도 canonical 값제한이 아니다.",
+      "fourSlotReview": "given 직각삼각형·수선의발, goal 길이, method 비례중항 NAMED 및 비례식 IMPLIED, condition 직각·수선 모두 실제 원문 인용과 일치한다.",
+      "difficultyReview": "높이와 빗변 두 조각의 대응을 해석한 뒤 직접 비례식을 적용하는2, medium/B12 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E022-06.png"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+      "verdict": "REPAIR",
+      "metadataReview": "그림 DE∥BC가 주어진 가정이고 AD:DB=AE:EC는 증명 목표다. 지정한 EF 보조선에서 AA를 확인하고 평행사변형 대변 EF=DB를 대응비에 치환하므로, 알려진 비례를 사용하는 계산형과 방향이 다르다. NEW_PT E022-PARALLEL-RATIO-PROOF 및 결정 AA M2-RPM-086 수용. 증명 골격에 포함한 AA·평행선각·평행사변형 대변은 중복 CC 없이 NONE으로 처리하는 것이 타당하다.",
+      "fourSlotReview": "모든 인용이 현재 본문·해설에 정확히 있다. 보조선·닮음조건·평행사변형과 증명/닮음조건 goal은 타당하다. 다만 method 비례식의 quote $AD:EF=AE:EC$이다는 식만 제시되어 NAMED가 아니므로 IMPLIED로 바꾸고 대응변 비례식 사용 설명을 붙여야 한다. given의 비례식은 증명할 명제라는 점을 scenarioNote에서 명확히 하면 입력 가정과 혼동을 줄일 수 있다.",
+      "difficultyReview": "보조선·닮은 두 삼각형·평행사변형 치환 단계가 발문에 모두 안내되어2/medium B23 수용. 원문 상과의 STRONG_CONFLICT는 그대로 보존한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 8,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E022-21.png"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d4a8f0510fc695382c4cd988820b0fcb5980968392cd18d650f44b350ca027db",
+      "verdict": "PASS",
+      "metadataReview": "그림의 직사각형 가로8·세로6 및 AE⊥BD를 확인했다. Pyth는 중간 밑변 BD10을 얻는 보조 단계이고 목표 AE는 동일 삼각형 넓이24=5AE에서 구한다. B-E023-AREA-REBASE 공통 NEW_PT 및 정확 RPM leaf 공백 수용. 빗변에 실제 적용한 CC_PYTHAGOREAN_THEOREM 정의와 SEQUENTIAL도 맞는다.",
+      "fourSlotReview": "직사각형·대각선·수선의발 given, 길이 goal, 명명된 피타고라스와 두 넓이 표현 method, 수선 condition을 모두 실제 현재 인용과 대조했다.",
+      "difficultyReview": "정형적인 빗변 계산 뒤 밑변 변경을 연결하는2 수용. 넓이의 두 표현을 스스로 선택해야 한다는 점에서는3 경계도 설명 가능하므로 medium/B23 보강은 선택사항이다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E022-22.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

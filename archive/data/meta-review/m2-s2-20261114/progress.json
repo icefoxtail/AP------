@@ -3044,8 +3044,8 @@
           "sha256": "a20641fcf687908618ce198f6c12d3b89ef6b6771acea1d035465cbed4575a58"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
-      "remoteCommit": "ad2fe3b954674e02d6badca385f9b5dde5a1e74c"
+      "remoteSaveState": "VERIFIED",
+      "remoteCommit": "7d8d25dd1ea7df1768d95e28de77707bccb358ef"
     },
     {
       "examId": "E022",
@@ -3083,12 +3083,110 @@
         22,
         23
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "94f5b19fca37b3113fafebc457caafce17ad9859aff6a7e3b08089ef4abaa54b"
+      "uidSetSha256": "94f5b19fca37b3113fafebc457caafce17ad9859aff6a7e3b08089ef4abaa54b",
+      "reviewedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 23,
+      "fourSlotQuestionCount": 23,
+      "independentSampleOrdinals": [
+        6,
+        21,
+        22
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            18,
+            19,
+            21
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            7,
+            8,
+            9,
+            10,
+            13,
+            20
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            11,
+            12
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            14
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            15,
+            22
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            16,
+            17,
+            23
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/four-slot.json",
+          "sha256": "28a8ca28bfc802d099c89063781a2a8df12708d1a25f59037e25e869432472d2"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/independent-sample.json",
+          "sha256": "d1836a0b635bf2fa88bd7f6e03a2f17c906760b08a49c8636bf0a93e6f05a982"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/mechanical-check.json",
+          "sha256": "62bcf626e0ff1c83fdabe7b55223706c8dfca1cc1d4f27042252b55504ea0df2"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/review.json",
+          "sha256": "606d5bd27bf33d04c84de46390702d9fcfa7630b9c85284b4cde20b500cb939d"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E022/root-acceptance.json",
+          "sha256": "25a5724608a2e902342a97ef86c3b9c02bbaebd33001b306941af9edaca93bc4"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": []
     },
     {
       "examId": "E023",
@@ -5613,11 +5711,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 26,
-    "reviewedQuestions": 619,
+    "reviewedExams": 27,
+    "reviewedQuestions": 642,
     "unresolvedQuestions": 0,
-    "remainingExams": 41,
-    "remainingQuestions": 985
+    "remainingExams": 40,
+    "remainingQuestions": 962
   },
-  "lastVerifiedExamCommit": "1dd6d377cc26374eb84c99e036b6af3fccb9db1b"
+  "lastVerifiedExamCommit": "7d8d25dd1ea7df1768d95e28de77707bccb358ef"
 }
