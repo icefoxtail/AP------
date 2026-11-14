@@ -138,7 +138,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 공통인수로 묶어내는 방법으로 다항식을 인수분해한다.\\n풀이 방향: 항이 4개인 식은 두 항씩 짝을 지어 공통인수를 찾아 묶어낸다.\\n정석 풀이:\\n주어진 식의 앞의 두 항과 뒤의 두 항을 각각 묶으면\\n$ma - mb - na + nb$\\n$= m(a - b) - n(a - b)$\\n이제 $(a - b)$가 공통인수이므로 이를 앞으로 묶어내면\\n$= (a - b)(m - n)$\\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -173,7 +173,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $A^2 + 2AB + B^2 = (A+B)^2$ 의 완전제곱식 형태를 이해한다.\\n풀이 방향: 주어진 식을 $(Ax + By)^2$ 꼴과 비교하여 $\\square$ 의 값을 구한다.\\n정석 풀이:\\n주어진 식이 완전제곱식이 되려면 $(2x + ky)^2$ 의 형태가 되어야 한다.\\n$(2x + ky)^2 = 4x^2 + 4kxy + k^2y^2$\\n이 식이 $4x^2 + 12xy + \\square y^2$ 과 같아야 하므로 $xy$ 의 계수를 비교하면\\n$4k = 12$에서 $k = 3$이다.\\n따라서 상수항 부분인 $\\square = k^2 = 3^2 = 9$가 된다.\\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -209,7 +209,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $x^2 + (a+b)x + ab = (x+a)(x+b)$ 의 꼴로 인수분해한다.\\n조건 정리: 곱해서 $-6$이 되고, 더해서 $-5$가 되는 두 정수를 찾는다.\\n정석 풀이:\\n곱이 $-6$인 두 정수 중 합이 $-5$인 경우는 $1$과 $-6$이다.\\n따라서 주어진 식은 다음과 같이 인수분해된다.\\n$x^2 - 5x - 6 = (x + 1)(x - 6)$\\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -323,7 +323,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "상",
+    "level": "중",
     "category": "이차방정식",
     "originalCategory": "이차방정식",
     "standardCourse": "중3 수학",
@@ -352,7 +352,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 주어진 관계식에 값을 대입하여 이차방정식을 세우고 해를 구한다.\\n조건 정리: $x$초 후의 높이가 $45x - 5x^2$이고, 이 높이가 $90$이 되어야 한다.\\n풀이 방향: $45x - 5x^2 = 90$이라는 이차방정식을 세우고 $x$의 값을 구한다.\\n정석 풀이:\\n물체의 높이가 $90$m가 되어야 하므로\\n$45x - 5x^2 = 90$\\n양변을 $-5$로 나누어 식을 정리하면\\n$x^2 - 9x = -18$\\n$x^2 - 9x + 18 = 0$\\n좌변을 인수분해하면\\n$(x - 3)(x - 6) = 0$\\n$x = 3$ 또는 $x = 6$\\n핵심 확인: 던져 올린 후 처음 $90$m에 도달하는 시간은 $3$초 후이고, 더 올라갔다가 내려오면서 다시 $90$m 지점을 지나는 시간은 $6$초 후이다. 따라서 둘 다 조건을 만족한다.\\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -732,7 +732,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$10\\sqrt{30}$",
     "solution": "[키포인트] 합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 이용하여 근호 안의 식을 인수분해한다.\\n정석 풀이:\\n근호 안의 식에 합차 공식을 적용하면\\n$\\sqrt{65^2 - 35^2}$\\n$= \\sqrt{(65+35)(65-35)}$\\n$= \\sqrt{100 \\times 30}$\\n$= \\sqrt{3000}$\\n$= \\sqrt{100 \\times 30} = 10\\sqrt{30}$\\n따라서 구하는 값은 $10\\sqrt{30}$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -757,7 +757,7 @@ window.questionBank = [
     "choices": [],
     "answer": "2",
     "solution": "[키포인트] 폭이 일정한 길을 가장자리로 밀어내어 직사각형 모양으로 만들어 땅의 넓이를 구한다.\\n조건 정리: 길의 폭을 $x\\mathrm{m}$라고 하면, 길을 제외한 땅을 모아놓은 모양은 가로가 $(20-x)\\mathrm{m}$, 세로가 $(15-x)\\mathrm{m}$인 직사각형이 된다.\\n정석 풀이:\\n길의 폭을 $x$라고 하자. (단, $0 \\lt x \\lt 15$)\\n길을 제외한 땅의 넓이는 가로의 길이가 $(20-x)\\mathrm{m}$, 세로의 길이가 $(15-x)\\mathrm{m}$인 직사각형의 넓이와 같으므로\\n$(20-x)(15-x) = 234$\\n식을 전개하여 정리하면\\n$300 - 20x - 15x + x^2 = 234$\\n$x^2 - 35x + 66 = 0$\\n인수분해하면 $(x-2)(x-33) = 0$\\n$x = 2$ 또는 $x = 33$\\n이때 $0 \\lt x \\lt 15$이어야 하므로 $x = 2$이다.\\n따라서 구하는 길의 폭은 $2\\mathrm{m}$이므로 구하는 값은 $2$이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
