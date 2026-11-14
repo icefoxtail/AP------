@@ -1,0 +1,1717 @@
+{
+  "schemaVersion": "m1-s2-exam-review-handoff-v1",
+  "author": "META_C",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "sourcePath": "archive/exams/original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "baselineSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
+  "sourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
+  "sourceSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+  "questionCount": 24,
+  "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
+  "topics": {
+    "소수·소인수·거듭제곱": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      22
+    ],
+    "서로소·최대공약수·최소공배수": [
+      8,
+      9
+    ],
+    "수 체계·수직선·절댓값·대소": [
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "유리수 계산·연산 해석·오계산 복원": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      23
+    ],
+    "부호 조건 추론": [
+      21,
+      24
+    ]
+  },
+  "reusedEvidence": [
+    {
+      "kind": "PREVIOUS_VALUES_ONLY",
+      "path": "archive/data/question_metadata.json",
+      "reason": "기존 B14 approval path는 확인했지만 현재 판본과 결속한 원시 근거 파일이 없어 PASS를 재사용하지 않고 전 문항 본문·해설에서 새로 판단했다."
+    }
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443",
+      "meaning": "소수의 정의를 각 수의 약수 구조에 직접 적용한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "소수의 정의를 각 수의 약수 구조에 직접 적용한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "소수의 정의를 각 수의 약수 구조에 직접 적용한다."
+      },
+      "sourceChanges": {
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-114"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수·합성수 판별"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3315df648ddacba7f64f5def3cf1ede2a056f231b780235215d1cd25cc819676",
+      "meaning": "소수·합성수의 약수 정의와 유일한 짝수 소수2의 예외를 이용해 각 일반 진술을 판정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "소수·합성수의 약수 정의와 유일한 짝수 소수2의 예외를 이용해 각 일반 진술을 판정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "소수·합성수의 약수 정의와 유일한 짝수 소수2의 예외를 이용해 각 일반 진술을 판정한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-115"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소수와 합성수",
+            "l4": "소수의 성질 활용"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65",
+      "meaning": "거듭제곱의 밑·지수·값을 정의로 읽고 요구된 합을 구한다.",
+      "axes": {
+        "rpm": "GAP_MEANING_JUDGED",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "CHANGE",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "밑·지수의 뜻과 작은 거듭제곱 값을 직접 읽는 정의 적용으로 bucket1이 타당하여2에서1로 교정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "RPM_LEAF_GAP-3"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "거듭제곱의 밑·지수·값을 정의로 읽고 요구된 합을 구한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        },
+        "difficultyConfidence": {
+          "before": "medium",
+          "after": "high"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        },
+        "legacyLevelCompatibility": {
+          "before": "BORDERLINE_ACCEPTABLE",
+          "after": "NORMAL"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f9e5f95bad562e5731c7a50c3d342d206f627e6e19bd70f81b6a7797d4a72782",
+      "meaning": "주어진 수를 소수만의 곱으로 나타내야 한다는 소인수분해 정의로 올바른 표현을 판정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "주어진 수를 소수만의 곱으로 나타내야 한다는 소인수분해 정의로 올바른 표현을 판정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "주어진 수를 소수만의 곱으로 나타내야 한다는 소인수분해 정의로 올바른 표현을 판정한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-116"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "자연수의 소인수분해"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_d3ef745a896e642249c37367c710188fafc6679dbedb316a613be75eb83bdcb5",
+      "meaning": "각 자연수를 소인수분해하여 지수의 크기와 구별되는 서로 다른 소인수 집합을 비교한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "각 자연수를 소인수분해하여 지수의 크기와 구별되는 서로 다른 소인수 집합을 비교한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_FACTOR_STRUCTURE",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "각 자연수를 소인수분해하여 지수의 크기와 구별되는 서로 다른 소인수 집합을 비교한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-116"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "자연수의 소인수분해"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9",
+      "meaning": "소인수의 종류와 각 지수의 상하 관계를 동시에 비교하여 주어진 수의 약수와 배수를 구분한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "소인수의 종류와 각 지수의 상하 관계를 동시에 비교하여 주어진 수의 약수와 배수를 구분한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "소인수의 종류와 각 지수의 상하 관계를 동시에 비교하여 주어진 수의 약수와 배수를 구분한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-117"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "소인수분해를 이용한 약수의 구조"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9cdef7dabe3516dd2cd6747c23c3cb93e1f16accc0cb97010ad4aee1bb61ad92",
+      "meaning": "서로 다른 소수 세 개의 작은 곱과 기존 소인수의 지수를 늘린 곱을 함께 비교하여 세 번째 자연수를 정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "CHANGE",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "소수 교체와 지수 증가 두 후보군을 비교하는 표준 탐색이다. 기존4를3으로 낮추고 level중과 정상 대응시킨다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_FACTOR_STRUCTURE",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "서로 다른 소수 세 개의 작은 곱과 기존 소인수의 지수를 늘린 곱을 함께 비교하여 세 번째 자연수를 정한다."
+      },
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NATURAL_NUMBER"
+          ]
+        },
+        "difficultyBucket": {
+          "before": 4,
+          "after": 3
+        },
+        "legacyLevelCompatibility": {
+          "before": "BORDERLINE_ACCEPTABLE",
+          "after": "NORMAL"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-116"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "소인수분해",
+            "l3": "소인수분해",
+            "l4": "자연수의 소인수분해"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_164c620ea13ef9a65e047ee262ef8e9a7df560afc8cf9a5ebd0add4f93259b2a",
+      "meaning": "25의 소인수5를 포함하는 수를 제외하면 서로소이므로 두 자리 자연수의 범위에서5의 배수를 빼서 센다.",
+      "axes": {
+        "rpm": "GAP_MEANING_JUDGED",
+        "primaryParent": "CHANGE",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "25의 소인수5를 포함하는 수를 제외하면 서로소이므로 두 자리 자연수의 범위에서5의 배수를 빼서 센다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_COPRIME_TEST_AND_COUNT",
+        "parentMatches": true,
+        "exactBindingCount": 0,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "RPM_LEAF_AND_BINDING_GAP-8"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "25의 소인수5를 포함하는 수를 제외하면 서로소이므로 두 자리 자연수의 범위에서5의 배수를 빼서 센다."
+      },
+      "sourceChanges": {
+        "subUnitKey": {
+          "before": "M1-01-PRIME_FACTORIZATION",
+          "after": "M1-01-GCD_LCM"
+        },
+        "subUnit": {
+          "before": "소인수분해",
+          "after": "최대공약수와 최소공배수"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NATURAL_NUMBER",
+            "COND_RANGE",
+            "COND_COPRIME_TO_FIXED_INTEGER"
+          ]
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1",
+      "meaning": "최대공약수와 최소공배수가 주는 소인수 지수의 하한·상한을 교차시켜 후보를 열거하고 이미 주어진 두 수를 제외한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "CHANGE",
+        "ptTpl": "GAP_MEANING_JUDGED",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "최대공약수와 최소공배수가 주는 소인수 지수의 하한·상한을 교차시켜 후보를 열거하고 이미 주어진 두 수를 제외한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "parentMatches": true,
+        "exactBindingCount": 0,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "EXACT_BINDING_GAP-9",
+        "TPL_DEFINITION_GAP-9",
+        "CONDITION_DEFINITION_GAP-9-20"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "최대공약수와 최소공배수가 주는 소인수 지수의 하한·상한을 교차시켜 후보를 열거하고 이미 주어진 두 수를 제외한다."
+      },
+      "sourceChanges": {
+        "subUnitKey": {
+          "before": "M1-01-PRIME_FACTORIZATION",
+          "after": "M1-01-GCD_LCM"
+        },
+        "subUnit": {
+          "before": "소인수분해",
+          "after": "최대공약수와 최소공배수"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NATURAL_NUMBER"
+          ]
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-124"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "소인수분해",
+            "midUnit": "최대공약수와 최소공배수",
+            "l3": "최대공약수·최소공배수의 활용",
+            "l4": "나누어떨어짐 조건"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965",
+      "meaning": "금액의 크기는 그대로 두고 수입과 반대인 지출을 음의 부호로 나타낸다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "금액의 크기는 그대로 두고 수입과 반대인 지출을 음의 부호로 나타낸다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_SIGNED_CHANGE_MODEL",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "금액의 크기는 그대로 두고 수입과 반대인 지출을 음의 부호로 나타낸다."
+      },
+      "sourceChanges": {
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-126"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "양수·음수 분류"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6",
+      "meaning": "자연수·정수·유리수의 포함 관계, 양음의 부호와 구간 내 정수 개수를 정의로 판정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "자연수·정수·유리수의 포함 관계, 양음의 부호와 구간 내 정수 개수를 정의로 판정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "자연수·정수·유리수의 포함 관계, 양음의 부호와 구간 내 정수 개수를 정의로 판정한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-127"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수 체계",
+            "l4": "정수와 유리수의 포함 관계"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_cf49e4d1f9459afcd0cbf913119e66ebba1d55f05b21fce5277c7a12b0fe5bc4",
+      "meaning": "수직선의 단위구간이 몇 등분되었는지 읽고 기준 정수에서 단위분수만큼 이동하여 점의 수를 대응시킨다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "GAP_MEANING_JUDGED",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "수직선의 단위구간이 몇 등분되었는지 읽고 기준 정수에서 단위분수만큼 이동하여 점의 수를 대응시킨다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "PT_TPL_DEFINITION_GAP-12"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "수직선의 단위구간이 몇 등분되었는지 읽고 기준 정수에서 단위분수만큼 이동하여 점의 수를 대응시킨다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-128"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "수직선 위의 수"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_5febd470aaa0329190ac999734c062a9d0e62bf4d59aabfc43a56f025a65b847",
+      "meaning": "절댓값이 같고 부호가 반대인 두 점은 원점 대칭이므로 두 점 사이 거리의 반을 절댓값으로 정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "절댓값이 같고 부호가 반대인 두 점은 원점 대칭이므로 두 점 사이 거리의 반을 절댓값으로 정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "절댓값이 같고 부호가 반대인 두 점은 원점 대칭이므로 두 점 사이 거리의 반을 절댓값으로 정한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-131"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "절댓값",
+            "l4": "절댓값 조건으로 수 찾기"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8",
+      "meaning": "양수·0·음수의 순서를 적용하고 두 음수에서는 절댓값이 큰 쪽이 작다는 관계를 사용한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "양수·0·음수의 순서를 적용하고 두 음수에서는 절댓값이 큰 쪽이 작다는 관계를 사용한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "양수·0·음수의 순서를 적용하고 두 음수에서는 절댓값이 큰 쪽이 작다는 관계를 사용한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-129"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수",
+            "l3": "수직선과 대소 관계",
+            "l4": "유리수의 대소 비교"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2",
+      "meaning": "음수의 덧셈과 뺄셈을 부호 변경 및 절댓값의 합·차로 계산하여 결과를 판정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "음수의 덧셈과 뺄셈을 부호 변경 및 절댓값의 합·차로 계산하여 결과를 판정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_ARITHMETIC",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "음수의 덧셈과 뺄셈을 부호 변경 및 절댓값의 합·차로 계산하여 결과를 판정한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-134"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "덧셈·뺄셈 혼합"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+      "meaning": "뺄셈을 음수의 덧셈으로 바꾸고 절댓값의 차에 큰 절댓값을 갖는 수의 부호를 붙인다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "뺄셈을 음수의 덧셈으로 바꾸고 절댓값의 차에 큰 절댓값을 갖는 수의 부호를 붙인다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_ARITHMETIC",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "뺄셈을 음수의 덧셈으로 바꾸고 절댓값의 차에 큰 절댓값을 갖는 수의 부호를 붙인다."
+      },
+      "sourceChanges": {
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-133"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "부호가 있는 수의 뺄셈"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e",
+      "meaning": "더 큰 수·더 작은 수라는 문장을 부호 있는 덧셈·뺄셈으로 번역해 두 값을 구한 뒤 차를 구한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "더 큰 수·더 작은 수라는 문장을 부호 있는 덧셈·뺄셈으로 번역해 두 값을 구한 뒤 차를 구한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_SIGNED_CHANGE_MODEL",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "더 큰 수·더 작은 수라는 문장을 부호 있는 덧셈·뺄셈으로 번역해 두 값을 구한 뒤 차를 구한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-134"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "덧셈·뺄셈 혼합"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c",
+      "meaning": "돌과 풍선의 추가·제거를 부호 있는 수의 덧셈·뺄셈에 대응시켜 뺄셈의 부호 변경 규칙을 읽는다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "GAP_MEANING_JUDGED",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "돌과 풍선의 추가·제거를 부호 있는 수의 덧셈·뺄셈에 대응시켜 뺄셈의 부호 변경 규칙을 읽는다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "TPL_DEFINITION_GAP-18"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "돌과 풍선의 추가·제거를 부호 있는 수의 덧셈·뺄셈에 대응시켜 뺄셈의 부호 변경 규칙을 읽는다."
+      },
+      "sourceChanges": {
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-133"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "부호가 있는 수의 뺄셈"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+      "meaning": "곱셈·나눗셈에서 부호를 먼저 결정하고 분수의 나눗셈은 역수 곱셈으로 바꾸어 결과를 확인한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "곱셈·나눗셈에서 부호를 먼저 결정하고 분수의 나눗셈은 역수 곱셈으로 바꾸어 결과를 확인한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RATIONAL_ARITHMETIC",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "곱셈·나눗셈에서 부호를 먼저 결정하고 분수의 나눗셈은 역수 곱셈으로 바꾸어 결과를 확인한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "CASE_BRANCH",
+          "after": "NONE"
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-137"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "곱셈·나눗셈 혼합"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d",
+      "meaning": "서로 다른 두 수의 곱을 최소화하려면 반대 부호를 선택하고 각 부호군에서 절댓값이 가장 큰 수를 선택한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "GAP",
+        "integration": "KEEP",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "서로 다른 두 수의 곱을 최소화하려면 반대 부호를 선택하고 각 부호군에서 절댓값이 가장 큰 수를 선택한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "CONDITION_DEFINITION_GAP-9-20"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "서로 다른 두 수의 곱을 최소화하려면 반대 부호를 선택하고 각 부호군에서 절댓값이 가장 큰 수를 선택한다."
+      },
+      "sourceChanges": {
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-135"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "곱셈과 나눗셈",
+            "l4": "부호가 있는 수의 곱셈"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "RPM_ONLY"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c",
+      "meaning": "두 곱의 부호로 같은 부호군과 반대 부호군을 정하고 차의 양수 조건으로 각 부호를 확정한 뒤 항등적으로 참인 진술을 고른다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "두 곱의 부호로 같은 부호군과 반대 부호군을 정하고 차의 양수 조건으로 각 부호를 확정한 뒤 항등적으로 참인 진술을 고른다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "두 곱의 부호로 같은 부호군과 반대 부호군을 정하고 차의 양수 조건으로 각 부호를 확정한 뒤 항등적으로 참인 진술을 고른다."
+      },
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_845fd38ec6376ee46bf813d32426ce4f31335134cd9a2d7589a687e2cb78e682",
+      "meaning": "소인수 지수의 짝수 조건으로 허용 곱수 a를5배의 자연수 제곱 꼴로 나타내고 두 번째 항에서 a와 b를 정한다.",
+      "axes": {
+        "rpm": "GAP_MEANING_JUDGED",
+        "primaryParent": "KEEP",
+        "ptTpl": "GAP_MEANING_JUDGED",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "소인수 지수의 짝수 조건으로 허용 곱수 a를5배의 자연수 제곱 꼴로 나타내고 두 번째 항에서 a와 b를 정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_PRIME_FACTOR_STRUCTURE",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [
+        "PT_TPL_RPM_GAP-22"
+      ],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "소인수 지수의 짝수 조건으로 허용 곱수 a를5배의 자연수 제곱 꼴로 나타내고 두 번째 항에서 a와 b를 정한다."
+      },
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NATURAL_NUMBER"
+          ]
+        },
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4d4a77b01b0bef5c71d1f615a48f9710a929675fe91a01faa413dcfdba0e1aa9",
+      "meaning": "잘못된 뺄셈 결과에서 역연산으로 원래 수를 복원한 뒤 의도한 덧셈을 수행한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "KEEP",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "CHANGE",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "역연산으로 원래 값 회수 후 바른 연산이라는 익숙한 두 단계이며 복잡한 경로 선택이 없어3에서2로 교정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "잘못된 뺄셈 결과에서 역연산으로 원래 수를 복원한 뒤 의도한 덧셈을 수행한다."
+      },
+      "sourceChanges": {
+        "integrationPattern": {
+          "before": "SEQUENTIAL",
+          "after": "NONE"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "rpmPrimaryRecordId": {
+          "before": null,
+          "after": "M1-RPM-134"
+        },
+        "rpmPrimaryPath": {
+          "before": null,
+          "after": {
+            "majorUnit": "정수와 유리수",
+            "midUnit": "정수와 유리수의 계산",
+            "l3": "덧셈과 뺄셈",
+            "l4": "덧셈·뺄셈 혼합"
+          }
+        },
+        "rpmScope": {
+          "before": null,
+          "after": "M1-1"
+        },
+        "rpmCrosswalkStatus": {
+          "before": null,
+          "after": "DIRECT_ACTIVE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d677e4d05ceda6281b9c7bafeb6bd266e076e4324de88801b7a067aa556b9783",
+      "meaning": "두 곱의 부호로 세 수 사이 부호 관계를 정하고 a>b라는 차의 조건으로 양음의 방향을 확정한다.",
+      "axes": {
+        "rpm": "ADD_OFFICIAL_PATH",
+        "primaryParent": "KEEP",
+        "ptTpl": "KEEP_CORE_STRUCTURE",
+        "cc": "KEEP_EMPTY_PRIMARY_COVERS",
+        "condition": "CHANGE",
+        "integration": "CHANGE",
+        "level": "KEEP",
+        "bucket": "KEEP",
+        "fourSlot": "ADD"
+      },
+      "difficultyReason": "두 곱의 부호로 세 수 사이 부호 관계를 정하고 a>b라는 차의 조건으로 양음의 방향을 확정한다.",
+      "officialRegistryCheck": {
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "templateParent": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+        "parentMatches": true,
+        "exactBindingCount": 1,
+        "ccUnknown": [],
+        "conditionUnknown": []
+      },
+      "registrationPending": [],
+      "unjudged": false,
+      "fourSlotDecision": {
+        "status": "RAW_AND_COMPACT_BOUND",
+        "reason": "두 곱의 부호로 세 수 사이 부호 관계를 정하고 a>b라는 차의 조건으로 양음의 방향을 확정한다."
+      },
+      "sourceChanges": {
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_INEQUALITY_CONSTRAINT"
+          ]
+        },
+        "integrationPattern": {
+          "before": "INTERDEPENDENT",
+          "after": "NONE"
+        }
+      },
+      "independentDifficulty": {
+        "status": "ACCEPTED",
+        "ref": {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25-dongsan-mid-q24-difficulty.json",
+          "sha256": "0e9e5331831daef211fc4bb4dd16b9e850f9698c41e428dd27354f955304f7f7",
+          "reviewer": "GPT_ROOT_64695B8EDE31",
+          "status": "ACCEPTED"
+        }
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "id": "RPM_LEAF_GAP-3",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "거듭제곱의 밑·지수·값을 정의로 읽거나 계산한다.",
+      "parent": "M1-01 > M1-01-PRIME_FACTORIZATION",
+      "distinction": "소수 판별이나 소인수분해와 다른 거듭제곱의 뜻이다. 공식 leaf에서 정확한 경로가 없어 새 leaf 확인이 필요하다.",
+      "existingKeyReview": null,
+      "supportingQuestionUids": [
+        "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "RPM_LEAF_AND_BINDING_GAP-8",
+      "kind": "RPM_LEAF_AND_BINDING_GAP",
+      "definition": "고정 수와 서로소인 자연수를 유한 범위에서 센다.",
+      "parent": "M1-01 > M1-01-GCD_LCM",
+      "distinction": "소인수분해 실행 자체보다 gcd=1 조건의 배수 제외가 결정적이다. 2015 GCD_LCM binding은 있으나2022 동일 부모 binding은 없다.",
+      "existingKeyReview": "PT_M1_COPRIME_TEST_AND_COUNT / TPL_M1_COPRIME_TEST_AND_COUNT_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_164c620ea13ef9a65e047ee262ef8e9a7df560afc8cf9a5ebd0add4f93259b2a"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "EXACT_BINDING_GAP-9",
+      "kind": "EXACT_BINDING_GAP",
+      "definition": "최대공약수·최소공배수 조건을 소인수 지수의 최소·최대 제한으로 함께 적용한다.",
+      "parent": "M1-01 > M1-01-GCD_LCM",
+      "distinction": "source의 소인수분해 부모를 GCD_LCM으로 바로잡았다. 현재2022 binding은 PRIME_FACTORIZATION에만 존재한다.",
+      "existingKeyReview": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "supportingQuestionUids": [
+        "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "TPL_DEFINITION_GAP-9",
+      "kind": "TPL_DEFINITION_GAP",
+      "definition": "고정된 두 자연수와 미지 자연수의 gcd·lcm으로 미지수의 소인수 지수 범위를 정하고 가능한 값을 열거한다.",
+      "parent": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "distinction": "현재 THIRD_CANDIDATE 정의는 gcd로 나눈 인수쌍·자릿수 필터라 현 세 번째 수 지수 열거와 다르다. 다른 PARAMETER_RECOVERY도 단일 지수값 결정이므로 기존 정의 정규화 우선, 불가하면 재사용 가능한 새 TPL을 등록한다.",
+      "existingKeyReview": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE",
+      "supportingQuestionUids": [
+        "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "PT_TPL_DEFINITION_GAP-12",
+      "kind": "PT_TPL_DEFINITION_GAP",
+      "definition": "수직선의 단위구간 등분 눈금을 읽어 지정 점의 유리수 값을 결정한다.",
+      "parent": "M1-02 > M1-02-INTEGER_RATIONAL_NUMBER",
+      "distinction": "현재 SIGNED_NUMBER_ORDER는 가장 오른쪽 수 선택이고 PT도 극값 비교이므로 점 좌표 읽기와 목표·골격이 다르다. 기존 PT 정의 확장을 먼저 확인하고 불가하면 수직선 좌표읽기 PT/TPL을 신설한다.",
+      "existingKeyReview": "PT_M1_RATIONAL_VALUE_COMPARISON / TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+      "supportingQuestionUids": [
+        "qid_v1_cf49e4d1f9459afcd0cbf913119e66ebba1d55f05b21fce5277c7a12b0fe5bc4"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "TPL_DEFINITION_GAP-18",
+      "kind": "TPL_DEFINITION_GAP",
+      "definition": "양·음의 양을 추가·제거하는 구체 모형에서 부호 있는 수의 덧셈·뺄셈 법칙을 해석한다.",
+      "parent": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "distinction": "기존 CORE는 계산 단계에 붙인 법칙 이름 판정이다. 모형의 동등 효과에서 뺄셈 규칙을 추출하는 재해석 골격이 아니므로 일반화 정의 확인 후 새 TPL을 등록한다.",
+      "existingKeyReview": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "PT_TPL_RPM_GAP-22",
+      "kind": "PT_TPL_RPM_GAP",
+      "definition": "정수를 곱하여 완전제곱수가 되게 하는 모든 자연수 곱수의 꼴을 구하고 작은 순서의 특정 항을 결정한다.",
+      "parent": "M1-01 > M1-01-PRIME_FACTORIZATION; proposed family PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "distinction": "현재 CONSTRAINED_NUMBER_RECOVERY는 세 소수와 상한 조건의 수 회수이다. 기존 최소 제곱곱수 PT/TPL은 최소값만 정의하므로 두 번째 이상 순서 항까지 일반화 허용을 먼저 확인하고 새 ordered-square-multiplier TPL을 등록한다.",
+      "existingKeyReview": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE / TPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_845fd38ec6376ee46bf813d32426ce4f31335134cd9a2d7589a687e2cb78e682"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "id": "CONDITION_DEFINITION_GAP-9-20",
+      "kind": "CONDITION_DEFINITION_GAP",
+      "definition": "선택하거나 구하는 여러 수의 값이 서로 같지 않아야 한다.",
+      "parent": "CONDITION_CORE",
+      "distinction": "현재 DISTINCT_DIGITS/POINTS/CATEGORY는 자릿수·점·범주에 한정되어 일반 수의 중복 제외를 대체하지 못한다. 일반 pairwise-distinct-values 조건을 등록한다.",
+      "existingKeyReview": null,
+      "supportingQuestionUids": [
+        "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1",
+        "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "unjudged": false
+    },
+    {
+      "kind": "DEFINITION_NORMALIZATION_REUSE",
+      "registrationStatus": "PENDING_CANONICAL_OWNER",
+      "supportingQuestionUids": [
+        "qid_v1_f9e5f95bad562e5731c7a50c3d342d206f627e6e19bd70f81b6a7797d4a72782",
+        "qid_v1_d3ef745a896e642249c37367c710188fafc6679dbedb316a613be75eb83bdcb5",
+        "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9",
+        "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965",
+        "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6",
+        "qid_v1_5febd470aaa0329190ac999734c062a9d0e62bf4d59aabfc43a56f025a65b847",
+        "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8",
+        "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2",
+        "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+        "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e",
+        "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+        "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d",
+        "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c",
+        "qid_v1_4d4a77b01b0bef5c71d1f615a48f9710a929675fe91a01faa413dcfdba0e1aa9",
+        "qid_v1_d677e4d05ceda6281b9c7bafeb6bd266e076e4324de88801b7a067aa556b9783"
+      ],
+      "definition": "현 PT/TPL의 실제 공유 결정 단계는 유지하되 특정 숫자·선택지 수·최솟값/최댓값을 함께 묻는지 등의 개별 예시 문장을 일반화한다.",
+      "parent": "현재 source PT/TPL 가족",
+      "distinction": "단순 수치나 답의 표현만 달라지는 경우에는 새 PT/TPL을 만들지 않는다. Q12·18·22 및 Q9는 목표나 골격의 실질 차이로 별도 공백에 분리했다."
+    },
+    {
+      "kind": "DEFINITION_NORMALIZATION_REUSE",
+      "existingProblemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "existingTemplateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT",
+      "definition": "부호 있는 유리수의 곱셈과 나눗셈에서 부호 및 역수 관계를 적용하여 계산하거나 계산식의 옳고 그름을 판정한다.",
+      "parent": "PT_M1_RATIONAL_ARITHMETIC",
+      "distinction": "현 정의의 소수·공유인수 예시를 일반화한다. alias FIND_INCORRECT_RATIONAL_MULTIPLICATION_DIVISION 및 현 지원 UID가 해당 판단을 뒷받침하므로 새 키 대신 기존 키 정의를 정규화한다.",
+      "supportingQuestionUids": [
+        "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08"
+      ],
+      "registrationStatus": "PENDING_CANONICAL_OWNER"
+    }
+  ],
+  "contentDebt": [
+    {
+      "kind": "FILE_SCOPE_NOTE",
+      "note": "파일은2학기 중간 위치에 등록되어 있으나 내용은1학기 수와 연산이다. 사용자 전체 범위 지시대로 제외하지 않고 실제 내용으로 분류했다."
+    }
+  ],
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/1vFsSPmzF-sOJqYLdPdexcskYaQjTKQhH/view?usp=drivesdk",
+    "fileId": "1vFsSPmzF-sOJqYLdPdexcskYaQjTKQhH",
+    "sha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+    "readbackVerified": true,
+    "originalSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
+    "protectedPayloadSame": true
+  },
+  "independent": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_중간_중1_수학.json",
+      "sha256": "b0eee3a02351b4a0f75c4233632615c41a595fe4e3d2dbd70a6f7da8ba3efc32",
+      "reviewer": "meta-a",
+      "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/25-dongsan-mid-q24-difficulty.json",
+      "sha256": "0e9e5331831daef211fc4bb4dd16b9e850f9698c41e428dd27354f955304f7f7",
+      "reviewer": "GPT_ROOT_64695B8EDE31",
+      "status": "ACCEPTED"
+    }
+  ],
+  "independentInputBinding": {
+    "status": "EXACT_RAW_SHA_AFTER_PARENT_TAG_TECHNICAL_READBACK",
+    "reviewedRawSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+    "currentRawSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+    "originalSemanticVerdictsRetained": true
+  },
+  "validation": {
+    "syntax": "PASS",
+    "uidOrder": "PASS",
+    "protectedFieldChanges": 0,
+    "changedQuestions": 24,
+    "raw4slot": {
+      "fail": [],
+      "warn": [
+        "sourceGitBlobSha 6deb8328fecdeae6008a0611d36f937ad3ec4a67 != current exam blob a984b1302f3595b09284378987a3127d14e2a52a",
+        "#1 only 3 distinct terms",
+        "#4 only 3 distinct terms",
+        "#5 only 3 distinct terms",
+        "#10 only 3 distinct terms",
+        "#15 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#16 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#17 only 4 distinct terms",
+        "#18 only 3 distinct terms",
+        "#19 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#23 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)"
+      ],
+      "stats": {
+        "items": 24,
+        "examItems": 24,
+        "quotes": 151
+      }
+    },
+    "compactParity": "PASS",
+    "sourceBlobRebinding": "METADATA_ONLY_DIFFERENCE_PROTECTED_PAYLOAD_VERIFIED"
+  },
+  "scopeLimits": [
+    "No full mathematical R1/R2/R3 performed.",
+    "Shared registration, main merge and deployment are outside this stage."
+  ],
+  "raw4slotHistory": [
+    {
+      "url": "https://drive.google.com/file/d/17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd/view?usp=drivesdk",
+      "fileId": "17RzU3lolIEApIdGFFaGj9YkN2OMRNLRd",
+      "sha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+      "readbackVerified": true,
+      "originalSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
+      "protectedPayloadSame": true
+    }
+  ],
+  "fourSlotTechnicalFollowups": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/followups/4slot-parent-supplement/25_동산중_2학기_중간_중1_수학.json",
+      "changes": 1,
+      "sourceUnchanged": true
+    }
+  ],
+  "authorReadEvidence": {
+    "sourceContentAndSolutionRead": true,
+    "basis": "Author full-source metadata review; no mathematical R1/R2/R3 claim",
+    "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+    "protectedSourceBlob": "6deb8328fecdeae6008a0611d36f937ad3ec4a67",
+    "authorReviewSha256": "7a4c194c26e94d51474c74f72f5e51606a4ea3af0f0ec6235562ced1920ed8e1",
+    "imageCount": 4,
+    "images": [
+      {
+        "ordinal": 12,
+        "role": "image",
+        "repoPath": "archive/assets/images/25_동산중_2학기_중간_중1_수학/q12-source-repaired.svg",
+        "gitBlobSha": "bb2949478a42307385ca56f93c19b537c82dcb36",
+        "sha256": "51beb37d43d9f5ffe0c4c98fb1ac008e96ee24efd60c42b780e0a3e23fe78eb5",
+        "actualViewed": true
+      },
+      {
+        "ordinal": 12,
+        "role": "solutionImage",
+        "repoPath": "archive/assets/images/25_동산중_2학기_중간_중1_수학/q12-solution.svg",
+        "gitBlobSha": "12cc7b4f67e402b89231c3ace78a2da65fbbe85b",
+        "sha256": "3c5652304f922091fdae3b034c961095af24cc2f2a4447a0e1f20fcf9965f460",
+        "actualViewed": true
+      },
+      {
+        "ordinal": 13,
+        "role": "solutionImage",
+        "repoPath": "archive/assets/images/25_동산중_2학기_중간_중1_수학/q13-solution.svg",
+        "gitBlobSha": "1aaf64fc01341f6561d4fdcccb8bee0f96797666",
+        "sha256": "f06d5d101bdb46c3058b0aa10bb5d3d8ee6d552f554649263add1405890dc96a",
+        "actualViewed": true
+      },
+      {
+        "ordinal": 14,
+        "role": "solutionImage",
+        "repoPath": "archive/assets/images/25_동산중_2학기_중간_중1_수학/q14-solution.svg",
+        "gitBlobSha": "fa191307d09e011c14cce69352e8abc631891cf8",
+        "sha256": "88cfb44432c3a4abb6a5c1482ced6e21dd0960a88a43ceed0e50af2b9357c14d",
+        "actualViewed": true
+      }
+    ],
+    "sourcePayloadVerifiedUnchanged": true
+  }
+}

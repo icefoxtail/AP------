@@ -36,7 +36,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 2,
@@ -80,7 +84,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나고, 마주 보는 두 각을 같은 빨간 호로 표시해 110°인 각과 a가 맞꼭지각 관계임을 보여 준다.",
     "solutionImageCaption": "마주 보는 두 각(맞꼭지각)은 크기가 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-063",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "맞꼭지각"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 3,
@@ -117,14 +130,23 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m을 한 직선이 가로지르고, 45°로 표시한 각과 a를 같은 빨간 호로 표시해 두 각이 엇각 관계임을 보여 준다.",
     "solutionImageCaption": "l∥m이므로 엇각의 크기는 서로 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-064",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP"
   },
   {
     "id": 4,
@@ -154,14 +176,23 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-087",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "정다각형",
+      "l4": "조건으로 정다각형 찾기"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 5,
@@ -169,9 +200,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -189,15 +220,15 @@ window.questionBank = [
     "answer": "①",
     "solution": "오른쪽 밑각의 바깥각이 $120^\\circ$이므로 안쪽 각은\n$180^\\circ-120^\\circ=60^\\circ$\n\n오른쪽 작은 삼각형에서 밑변 위 점의 각을 $y$라 하면\n$40^\\circ+60^\\circ+y=180^\\circ$\n$y=80^\\circ$\n\n$\\angle x$는 $y$와 한 직선 위의 이웃한 각이므로\n$x=180^\\circ-80^\\circ=100^\\circ$\n\n따라서 정답은 ①이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q5.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -205,7 +236,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 밑변 위의 한 점에서 꼭대기로 그은 선이 삼각형을 나누고, 오른쪽 밑점의 바깥각 120°와 이웃한 안쪽 각 60°, 꼭대기 40°, 직선 위에서 서로 이웃한 두 각 x와 y를 표시한다.",
     "solutionImageCaption": "직선 위의 이웃한 두 각 x, y와 오른쪽 밑점의 바깥각·안쪽 각을 표시한 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 6,
@@ -241,7 +281,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -249,7 +289,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 오각형의 네 내각 110°, 110°, 120°, 78°를 표시하고, 나머지 꼭짓점에서 내각 y와 바깥쪽 이웃각 x가 한 직선 위에 이웃해 있음을 보여 준다.",
     "solutionImageCaption": "오각형의 나머지 내각 y와 직선 위에서 이웃한 각 x를 표시한 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-081",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "다각형의 내각과 외각",
+      "l4": "내각의 합"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 7,
@@ -285,7 +334,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -293,7 +342,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q7-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, M, B, N, C에서 AM=18cm와 BC=24cm를 치수선으로 표시하고, 중점 M, N 때문에 같은 구간을 같은 눈금으로 나타내며 구하는 MN 구간을 빨간 굵은 선으로 보여 준다.",
     "solutionImageCaption": "중점으로 나뉜 같은 길이의 구간(같은 눈금)과 AM=18cm, BC=24cm, 구하는 MN 구간(빨간 선)을 표시한 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-061",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "두 점 사이의 거리와 중점"
+    },
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 8,
@@ -329,7 +387,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -337,7 +395,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 두 개의 그림. 왼쪽은 OE⊥AB로 직각 EOB 안에서 ∠EOD=48°와 ∠DOB를 나타내고, 오른쪽은 OF⊥CD로 직각 DOF, ∠DOB, 구하는 ∠AOF를 점 O 둘레에 표시한다.",
     "solutionImageCaption": "수선 OE, OF를 이용해 ∠DOB를 거쳐 구하는 ∠AOF를 두 그림으로 보인 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-062",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 9,
@@ -345,9 +412,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -365,23 +432,27 @@ window.questionBank = [
     "answer": "③",
     "solution": "삼각기둥에서 $\\overline{BC}$와\n만나는 모서리: $\\overline{AB},\\overline{AC},\\overline{BE},\\overline{CF}$\n평행한 모서리: $\\overline{EF}$\n\n이들을 제외하고 만나지도 않고 평행하지도 않는 모서리는\n$\\overline{AD},\\overline{DE},\\overline{DF}$\n의 $3$개이다.\n\n따라서 정답은 ③이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q9.png",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF에서 모서리 BC(굵은 선)와 만나는 모서리 AB, AC, BE, CF, 평행한 모서리 EF, 꼬인 위치의 모서리 AD, DE, DF를 세 그림에 각각 빨간색으로 보여 준다.",
     "solutionImageCaption": "BC와 만나는 모서리와 평행한 모서리를 빼면 AD, DE, DF가 꼬인 위치에 있다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 10,
@@ -409,8 +480,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "점 $D$와 직선 $AC$ 사이의 거리는\n$D$에서 $AC$에 내린 수선분의 길이이다.\n\n그림에서\n$DE\\perp AC,\\quad DE=2\\,\\mathrm{cm}$\n\n따라서 점 $D$와 $\\overline{AC}$ 사이의 거리는\n$2\\,\\mathrm{cm}$이고 정답은 ②이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q10.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
@@ -421,7 +492,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-071",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "위치 관계",
+      "l3": "수직과 거리",
+      "l4": "점과 직선 사이의 거리"
+    },
+    "rpmCrosswalkStatus": "DIRECT_BINDING_GAP"
   },
   {
     "id": 11,
@@ -454,8 +534,11 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT_SAS",
+    "crossConceptKeys": [
+      "CC_SEGMENT_MIDPOINT",
+      "CC_VERTICAL_ANGLES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -465,7 +548,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 점 M이 두 대각선의 중점인 사각형 ABCD에서 같은 길이 눈금과 맞꼭지각 표시로 삼각형 AMB와 CMD, 삼각형 AMD와 CMB가 각각 합동임을 두 그림으로 보여 준다.",
     "solutionImageCaption": "두 대각선의 중점 M에서 생기는 두 쌍의 합동 삼각형(SAS)을 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 12,
@@ -498,7 +590,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -506,7 +598,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 한 꼭짓점에서 두 대각선(빨강)을 그어 다각형이 삼각형 두 개와 사각형 한 개로 나누어진 모양을 영역별 색으로 구분해 보여 준다.",
     "solutionImageCaption": "한 꼭짓점에서 그은 두 대각선이 다각형을 삼각형 둘과 사각형 하나로 나눈다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-085",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "변·대각선 개수"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 13,
@@ -543,7 +644,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_TESSELLATION_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -551,7 +652,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 한 꼭짓점 둘레에 정사각형의 내각 90°, 정육각형의 내각 120°, 정n각형의 내각 150°가 모여 한 바퀴를 이루는 모습을 색이 다른 호로 구분해 보여 주고, 붙은 변은 같은 길이 눈금으로 나타낸다.",
     "solutionImageCaption": "한 점 둘레에 모인 정사각형·정육각형·정n각형의 세 내각을 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-087",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "정다각형",
+      "l4": "조건으로 정다각형 찾기"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 14,
@@ -587,15 +697,24 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 정구각형의 두 변 AB, DC를 연장해 만나는 점 J를 잡으면 삼각형 BJC가 생기고, 두 밑각 ∠JBC와 ∠BCJ가 정구각형의 한 외각인 40°로 같으며 꼭지각 ∠BJC가 x임을 보여 준다.",
     "solutionImageCaption": "변의 연장선이 만든 삼각형 BJC의 같은 두 밑각 40°와 꼭지각 x를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-083",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "다각형의 내각과 외각",
+      "l4": "정다각형의 각"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 15,
@@ -603,9 +722,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -623,13 +742,16 @@ window.questionBank = [
     "answer": "①",
     "solution": "$D$가 $R$에 겹치도록 접었으므로\n접는 선 $PQ$는 $\\angle DPR$을 이등분한다.\n\n$AD\\parallel BR$이고\n$\\angle PRB=68^\\circ$이므로\n$\\angle DPR=68^\\circ$\n\n따라서\n$\\angle DPQ=\\angle QPR=\\dfrac{68^\\circ}{2}=34^\\circ$\n\n직사각형에서\n$\\angle PDQ=90^\\circ$\n\n$\\triangle PDQ$에서\n$\\angle DQP=180^\\circ-90^\\circ-34^\\circ=56^\\circ$\n\n접기에 의해\n$\\angle PQR=\\angle DQP=56^\\circ$\n\n따라서 정답은 ①이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q15.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -639,7 +761,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 점 D가 R에 겹치도록 PQ를 접은 직사각형에서 같은 길이 눈금과 두 직각으로 삼각형 PDQ와 PRQ의 대응을 보이고, 엇각 ∠DPR=∠PRB=68°와 PQ가 이등분한 같은 두 각 34°, ∠DQP=∠PQR 표시를 보여 준다.",
     "solutionImageCaption": "접은 삼각형 PRQ와 PDQ의 대응, 엇각 68°, 이등분된 같은 두 각 34°를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 16,
@@ -647,9 +778,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -667,15 +798,15 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "모서리 $CG$와 만나지도 않고 평행하지도 않는 모서리는\n$AD,AF,EF,EH$의 $4$개이므로\n$a=4$\n\n면 $CGHD$와 만나지 않는 평행한 모서리는\n$AE,EF,AF$의 $3$개이므로\n$b=3$\n\n면 $ACD$는 원래 직육면체의 윗면과 같은 평면이므로\n그 면에 수직인 모서리는\n$AE,CG,DH$의 $3$개이다.\n$c=3$\n\n따라서\n$a+b+c=4+3+3=10$\n\n정답은 ⑤이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q16.png",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE",
+    "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -683,7 +814,11 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 직육면체를 세 꼭짓점 A, C, F를 지나는 평면으로 잘라 꼭짓점 B 쪽을 떼어 낸 입체 세 개. 첫째는 CG(빨강)와 꼬인 위치의 모서리 AD, AF, EF, EH를, 둘째는 면 CGHD(주황)와 평행한 모서리 AE, EF, AF를, 셋째는 면 ACD(주황)와 수직인 모서리 AE, CG, DH를 굵게 나타냈다.",
     "solutionImageCaption": "잘라 낸 입체에서 꼬인 위치·평행·수직인 모서리를 굵게 나타낸다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 17,
@@ -719,7 +854,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -727,7 +862,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: l∥m 사이에서 꺾인 선의 두 꺾인 점을 지나 l, m과 평행한 보조선(점선)을 그어, 엇각인 30°·α°·x°가 옮겨지고 각 x−10°와 x+20°가 각각 30°+α°, α°+x°로 나뉘는 모양을 색 호로 보여 준다.",
     "solutionImageCaption": "평행한 보조선으로 엇각을 옮겨 꺾인 두 점의 각을 나눈 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-064",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmCrosswalkStatus": "FAMILY_BINDING_GAP"
   },
   {
     "id": 18,
@@ -760,11 +904,20 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 원탁에 앉은 7명을 정칠각형의 꼭짓점인 점 7개로 나타내고 서로 가위바위보를 하는 모든 두 사람을 선분으로 이은 그림이다. 굵은 선분은 변 7개이고 가는 선분은 대각선 14개이다.",
     "solutionImageCaption": "7명을 점으로, 가위바위보를 하는 모든 쌍을 선분으로 이으면 변 7개와 대각선 14개가 된다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "templateKey": "TPL_COMBINATION_SELECTION",
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 19,
@@ -772,9 +925,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -792,15 +945,15 @@ window.questionBank = [
     "answer": "②",
     "solution": "아래의 작은 삼각형에서 안쪽 꼭짓점의 각은 $120^\\circ$이다.\n큰 삼각형의 오른쪽 꼭짓점에서\n바깥쪽과 안쪽 선 사이의 각은 $30^\\circ$이다.\n\n네 점으로 이루어진 오목한 사각형의 안쪽 각을 보면\n안쪽 꼭짓점의 사각형 각은\n$360^\\circ-120^\\circ=240^\\circ$\n\n따라서\n$x+55^\\circ+30^\\circ+240^\\circ=360^\\circ$\n$x=35^\\circ$\n\n정답은 ②이다.",
     "image": "assets/images/24_향림중_2학기_중간_중1_기출/q19.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -808,7 +961,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 위쪽 꼭짓점의 각 55°, 왼쪽 꼭짓점의 각 x, 오른쪽 꼭짓점의 각 30°를 표시한 오목사각형(굵은 선)이다. 안쪽 꼭짓점에는 작은 삼각형 쪽의 120°와 그 바깥쪽 큰 각 240°가 함께 표시되어 있다.",
     "solutionImageCaption": "오목사각형의 네 각은 55°, x, 30°와 안쪽 꼭짓점의 큰 각 240°(=360°-120°)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 20,
@@ -845,15 +1007,24 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE",
+    "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B45",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 별 모양에서 다섯 개의 끝 삼각형을 연한 색으로 칠하고, 삼각형마다 끝각 하나(빨간 호)와 밑각 둘(검은 호)을 표시했다. 열 개의 밑각에 a부터 j까지 이름이 붙어 있다.",
     "solutionImageCaption": "별 끝의 삼각형 5개마다 끝각 하나와 밑각 둘이 있고, 밑각 열 개가 a~j이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 21,
@@ -884,7 +1055,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -892,7 +1063,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 점 A, B, C가 한 직선 위에 있고 D, E가 그 위쪽에 있는 그림이다. A, B, C를 잇는 세 쌍은 빨간 직선 하나로 겹치고, 반직선 AB와 AC, 반직선 CA와 CB는 각각 같은 반직선(빨간 화살표)으로 겹친다.",
     "solutionImageCaption": "AB, BC, CA는 같은 직선이고, 반직선 AB=AC, 반직선 CA=CB는 겹친다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-060",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "직선·반직선·선분"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 22,
@@ -918,14 +1098,23 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_SELECT_THREE_LENGTHS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-075",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 작도",
+      "l4": "세 변 조건"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 23,
@@ -954,16 +1143,27 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "crossConceptKeys": ["CC_PARALLEL_LINES"],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_향림중_2학기_중간_중1_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: AD∥BC, AD=BC=4인 사각형 ABCD에서 대각선 BD로 나눈 △ABD(연한 색)와 △CDB(진한 색)를 보여 준다. AD와 CB에 같은 눈금과 4, BD에 '공통' 표시, 엇각 ∠ADB와 ∠CBD에 같은 빨간 호가 있다.",
     "solutionImageCaption": "AD=CB, BD는 공통, 엇각 ∠ADB=∠CBD이므로 △ABD와 △CDB는 SAS 합동이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   }
 ];

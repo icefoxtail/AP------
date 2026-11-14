@@ -35,7 +35,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -43,7 +43,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 두 직선 l, m이 만나 이루는 각 61°와 그 보각 x=119°, m에 수직인 선과 l 사이의 각 y=29°를 각 표식으로 나타낸 그림",
     "solutionImageCaption": "61°의 보각이 x=119°이고, m에 수직인 선과 l이 이루는 각이 y=29°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-062",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 2,
@@ -83,7 +92,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-060",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "직선·반직선·선분"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 3,
@@ -120,14 +138,18 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 윗변 AD=3cm, 아랫변 BC=5cm, 넓이 16cm²인 사다리꼴 ABCD에서 BC에 수직인 변 CD를 높이 h로 강조하고 두 직각을 표시한 그림",
     "solutionImageCaption": "CD가 BC에 수직이므로 D와 변 BC 사이의 거리는 사다리꼴의 높이 h이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 4,
@@ -163,7 +185,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -171,7 +193,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: AB=16일 때 수직선 위에 A=0, E=6, C=8, D=12, B=16의 위치를 나타내어 EC=2, CD=4, AE=ED임을 눈금 값으로 읽게 한 그림",
     "solutionImageCaption": "AB=16이면 C는 AB의 중점(8), D는 CB의 중점(12), E는 AD의 중점(6)이므로 EC=2, CD=4이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-061",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "두 점 사이의 거리와 중점"
+    },
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 5,
@@ -179,9 +210,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -199,8 +230,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "삼각기둥에서 $\\overline{DF}$와 점 $D$에서 만나는 모서리 중 하나는 $\\overline{DE}$이다.\n\n또 $\\overline{AB}$와 $\\overline{EF}$는\n만나지 않고 평행하지도 않으며 같은 평면 위에 있지 않으므로\n꼬인 위치이다.\n\n따라서 올바른 짝은\n$\\overline{DE},\\ \\overline{EF}$\n이고 정답은 ①이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
@@ -215,7 +246,11 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 두 개 나란히 그려, 왼쪽에는 모서리 DF와 DE가 점 D에서 만나는 모양을, 오른쪽에는 모서리 AB와 EF가 만나지도 평행하지도 않는 꼬인 위치임을 빨간색 모서리로 나타낸 그림.",
     "solutionImageCaption": "삼각기둥에서 DF와 DE는 한 점 D에서 만나고, AB와 EF는 만나지도 평행하지도 않아 꼬인 위치이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 6,
@@ -223,9 +258,9 @@ window.questionBank = [
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [],
@@ -240,8 +275,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "ㄱ.\n$l\\parallel m,\\ l\\parallel n$이면\n$m,n$도 같은 방향이고 한 평면 위에 놓이므로\n$m\\parallel n$이다.\n\nㄴ.\n$P\\perp Q,\\ Q\\perp R$이라고 해서\n$P\\parallel R$인 것은 아니다.\n\nㄷ.\n$P\\parallel Q$이고 $l\\perp P$이면\n$l\\perp Q$이다.\n\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ④이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -256,7 +291,11 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 직육면체의 한 꼭짓점에서 만나는 세 면 P(앞면), Q(윗면), R(오른쪽 옆면)을 서로 다른 색으로 칠한 그림으로, P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않고 수직으로 만나는 모습",
     "solutionImageCaption": "P와 Q, Q와 R이 각각 수직이어도 P와 R은 평행하지 않다. 직육면체의 한 꼭짓점에서 만나는 세 면이 그 예이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 7,
@@ -264,9 +303,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -284,13 +323,15 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$PO\\parallel AB$이다.\n\n$\\angle PQR=116^\\circ$이므로\n접는 선 $QR$과 수평선이 이루는 예각은\n$180^\\circ-116^\\circ=64^\\circ$\n\n따라서\n$b=64^\\circ$\n\n접으면 직선 $AB$의 상이 $QR$을 기준으로 대칭이므로\n원래 $AB$와 접힌 $AB$가 이루는 작은 각은\n$180^\\circ-2\\times64^\\circ=52^\\circ$\n\n따라서\n$a=52^\\circ,\\quad b=64^\\circ$\n\n정답은 ②이다.",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -300,7 +341,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: PO∥AB인 직사각형 종이를 QR로 접은 그림에서 ∠PQR=116°와 그 보각 64°, 접힌 AB와 이루는 각 a, b와 평행 표시를 나타낸 그림",
     "solutionImageCaption": "PO∥AB이므로 QR과 수평선이 이루는 예각은 116°의 보각 64°이고, 접힌 AB 때문에 각 a, b가 생긴다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 8,
@@ -345,7 +395,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 두 평행한 직선 l, m과 한 직선이 만나는 그림에서 l 아래쪽의 118°와 m 위쪽의 62°를 같은 쪽 내각으로 표시하고 두 직선의 평행 표시를 나타낸 그림",
     "solutionImageCaption": "같은 쪽 내각 118°와 62°의 합이 180°이므로 l와 m은 평행하다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-065",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "평행선 조건"
+    },
+    "rpmCrosswalkStatus": "DIRECT_BINDING_GAP"
   },
   {
     "id": 9,
@@ -378,11 +437,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-077",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 작도",
+      "l4": "한 변과 양 끝각 조건"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 10,
@@ -411,15 +479,17 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직선 $m$ 위의 점 $C$에서 만든 각을 점 $P$로 그대로 옮겨\n같은 크기의 엇각을 만드는 작도이다.\n\n작도 결과\n$CD=PG$\n\n$\\angle DCE=\\angle FPG$\n\n따라서 엇각의 크기가 같으므로\n$l\\parallel m$\n\n도식의 실제 작도 순서와 일치하지 않는 설명은 ④이다.",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_CONVERSE_ANGLE_CHECK",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -431,7 +501,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 평행선 작도 그림: 직선 m 위의 C를 중심으로 한 호가 D, E를 잡고 같은 반지름으로 P를 중심으로 F, G를 잡아 CD=CE=PF=PG, DE=FG와 엇각 ∠DCE=∠FPG를 표시한 그림",
     "solutionImageCaption": "같은 반지름과 DE=FG로 엇각 ∠DCE=∠FPG를 옮겨 l∥m이 되는 작도이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-072",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "기본 작도",
+      "l4": "선분·각의 이동"
+    },
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 11,
@@ -470,7 +549,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 12,
@@ -504,10 +587,19 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
     "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-075",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 작도",
+      "l4": "세 변 조건"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 13,
@@ -542,9 +634,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -552,7 +646,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 보기 ㄴ과 ㅂ 두 삼각형에서 길이 4cm인 변을 굵게 나타내고, 그 양 끝 각 60°(빨간 한 겹 호)와 50°(파란 두 겹 호)가 같음을 보인 그림. ㄴ의 나머지 각은 70°이다.",
     "solutionImageCaption": "ㄴ은 세 번째 각이 180°-60°-70°=50°이므로, ㄴ과 ㅂ은 길이가 4cm인 변의 양 끝 각이 60°, 50°로 각각 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-080",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "ASA 합동"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 14,
@@ -586,7 +689,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_SEGMENT_MIDPOINT",
+      "CC_PYTHAGOREAN_THEOREM",
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -596,7 +703,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 두 대각선이 점 O에서 수직으로 만나는 마름모 ABCD에서 OA=OC=3cm, OB=OD=4cm, 네 변이 같음을 표시하고 대응하는 삼각형 OBC와 ODA를 색칠한 그림.",
     "solutionImageCaption": "두 대각선이 서로를 수직이등분하므로 △OBC와 △ODA는 OB=OD, ∠BOC=∠DOA=90°, OC=OA이다(B↔D, C↔A가 대응).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 15,
@@ -632,7 +748,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -640,7 +756,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 턱걸이 횟수 히스토그램에서 큰 계급부터 12~14회 1명(연한 회색), 10~12회 5명(진한 회색)을 세고 두 계급 합 6명까지를 괄호로 묶어, 위에서 6번째까지의 위치를 보여 준다.",
     "solutionImageCaption": "큰 쪽부터 차례로 세어 위에서 6번째까지의 학생이 어느 계급에 있는지 보여 주는 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-113",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "자료 해석",
+      "l4": "자료에서 정보 추론"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 16,
@@ -677,7 +802,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -685,7 +810,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 큰 값부터 250, 245 세 개, 240, 235 두 개, 그리고 8번째 잎까지 동그라미를 치고 1~8의 순번을 붙여 큰 쪽에서 8번째 위치를 보여 준다.",
     "solutionImageCaption": "큰 신발 크기부터 잎을 차례로 세어 8번째 잎까지 번호를 붙인 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-113",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "자료 해석",
+      "l4": "자료에서 정보 추론"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 17,
@@ -721,7 +855,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -729,7 +863,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 신발 크기 줄기와 잎 그림에서 22줄기와 23줄기의 잎 10개에 동그라미를 치고, 220·225·230·235mm 값의 도수 2, 3, 3, 2를 괄호로 묶어 보여 준다.",
     "solutionImageCaption": "220mm 이상 240mm 미만인 잎 10개를 값별 도수로 묶어 센 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-110",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "상대도수",
+      "l4": "상대도수 계산"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 18,
@@ -757,19 +900,28 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "도수분포표에서\n\n$50\\sim60$:4명\n$60\\sim70$:5명\n$70\\sim80$:7명\n$80\\sim90$:8명\n$90\\sim100$:6명\n\n① 계급의 크기 10점 — 옳다.\n② 계급 5개 — 옳다.\n③ 70점 이상 80점 미만 7명 — 옳다.\n④ 70점 미만은 $4+5=9$명,\n$\\dfrac{9}{30}\\times100=30\\%$ — 옳다.\n\n성적이 9번째로 좋은 학생은\n상위 6명이 있는 $90\\sim100$ 다음인\n$80\\sim90$ 계급에 속한다.\n이 계급의 도수는 8명이다.\n\n따라서 ⑤가 옳지 않다.",
-    "subUnitKey": "M1-08-DATA_INTERPRETATION",
-    "subUnit": "자료의 해석",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-108",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 19,
@@ -797,15 +949,15 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "도수분포다각형에서 학생 수는\n\n$50\\sim60$:2명\n$60\\sim70$:7명\n$70\\sim80$:15명\n$80\\sim90$:9명\n$90\\sim100$:7명\n\n전체 40명이다.\n\n하위 $25\\%$는\n$40\\times0.25=10$명\n\n70점 미만은\n$2+7=9$명으로 $25\\%$ 미만이다.\n\n하위 10번째 학생은 70점 미만 9명 바로 다음이므로\n70점 이상 80점 미만 계급에 속한다.\n\n따라서 70점 이상 80점 미만을 받아도\n보충 수업 대상이 될 수 있으므로\n보충 수업을 받지 않기 위해서는\n적어도 80점 이상이어야 한다.\n\n정답은 ④이다.",
-    "subUnitKey": "M1-08-DATA_INTERPRETATION",
-    "subUnit": "자료의 해석",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -813,7 +965,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 영어 성적 도수분포다각형에서 50~70점의 두 계급 도수 2, 7을 묶어 9명으로 표시하고, 바로 다음인 70점 이상 80점 미만 계급의 꼭짓점을 크게 표시한다.",
     "solutionImageCaption": "70점 미만 학생 9명을 센 뒤 그다음 계급이 70점 이상 80점 미만임을 보여 주는 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-109",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "히스토그램·도수분포다각형"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 20,
@@ -841,23 +1002,32 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "전체 학생 수는 50명이다.\n\n그래프에서 3만 원 미만인 학생 수는\n$0+2+3=5$명\n\n따라서\n$\\dfrac{5}{50}\\times100=10\\%$\n\n그러므로 옳은 설명은\n“3만 원 미만인 학생은 전체의 $10\\%$이다.”\n\n정답은 ④이다.",
-    "subUnitKey": "M1-08-DATA_INTERPRETATION",
-    "subUnit": "자료의 해석",
+    "subUnitKey": "M1-08-DATA_ORGANIZATION",
+    "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 저축 금액 도수분포다각형에서 찢어져 보이지 않는 4만~5만 원 계급은 꼭짓점 없이 끊어 두고, 3만 원 미만 두 계급의 도수 2, 3을 묶어 합 5명을 보여 준다.",
     "solutionImageCaption": "3만 원 미만인 두 계급의 도수를 묶어 합을 구하는 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-109",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "히스토그램·도수분포다각형"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 21,
@@ -888,7 +1058,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -896,7 +1066,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 일직선 AOB 위의 점 O에서 반직선 OC, OD, OE를 그리고 ∠AOC의 직각 표시와 ∠COD=45°, ∠DOE=15°, ∠EOB=30°를 나타낸 그림.",
     "solutionImageCaption": "평각 AOB에서 ∠AOC=90°이면 ∠COD=45°이고, ∠DOB=45°를 1:2로 나누면 ∠DOE=15°, ∠EOB=30°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-062",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 22,
@@ -924,14 +1103,23 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-108",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 23,
@@ -958,9 +1146,11 @@ window.questionBank = [
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": null,
+    "crossConceptKeys": [
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -970,6 +1160,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중1_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 BDE에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE를 같은 표시로 나타내고 AB=BD=5cm, BC=DE=3cm 및 구하는 선분 CD를 빨간색으로 강조한 그림.",
     "solutionImageCaption": "△ACB와 △BED에서 ∠BAC=∠DBE=31°, ∠ACB=∠BED=59°, AC=BE이므로 합동이고, 따라서 BD=AB=5cm, BC=DE=3cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-080",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "ASA 합동"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "metaNullReason": "의미판정 완료: M1 ASA 증명 후 대응변·선분차 TPL 정식 등록 대기."
   }
 ];

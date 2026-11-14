@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "m1s2-targeted-followup-v1",
+  "owner": "GPT_ROOT_64695B8EDE31",
+  "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+  "sourceBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+  "ordinal": 19,
+  "questionUid": "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d",
+  "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+  "decision": "REUSE_EXISTING_NATIVE_FAMILY_WITH_DEFINITION_CLARIFICATION",
+  "meaning": "표에 모든 도수가 주어져 있다. 계급·도수를 직접 읽고 경계 아래의 인원을 누적하여 전체 대비 백분율과 진술을 검증한다.",
+  "reviewedAxes": {
+    "rpm": "KEEP_M1_RPM_227_CLASS_FREQUENCY",
+    "primary": "KEEP_M1_08_DATA_ORGANIZATION",
+    "native": "EXISTING_KEYS_REUSE_PROPOSED",
+    "auxiliary": "KEEP_EMPTY_CC_CONDITION_AND_NONE",
+    "difficulty": "KEEP_1_LOW_B12_AFTER_DIRECT_REVIEW",
+    "fourSlot": "REUSE_VALID_EXISTING_DIRECT_QUOTES_AND_COMPACT"
+  },
+  "proposedMetadata": {
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT"
+  },
+  "searchOrder": [
+    {
+      "step": "EXISTING_KEY",
+      "result": "Frequency audit covers the decisive threshold-bin accumulation; its aliases also include tail/lower-range percentage."
+    },
+    {
+      "step": "CONNECTION",
+      "result": "Exact 2022/중1 수학/M1-08/M1-08-DATA_ORGANIZATION PT binding is present. RPM227 is RPM_ONLY and needs a reviewed native connection."
+    },
+    {
+      "step": "NEW_TPL",
+      "result": "Not required if the existing definition is clarified to its already represented frequency/percentage audit scope."
+    },
+    {
+      "step": "NEW_PT",
+      "result": "Not required."
+    }
+  ],
+  "proposal": {
+    "kind": "DEFINITION_CLARIFICATION_AND_CROSSWALK_CONNECTION",
+    "parent": {
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-08",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+    },
+    "reusableDefinition": "도수분포표의 계급별 도수와 경계를 읽고 조건에 해당하는 계급의 도수를 누적한다. 누적인원 또는 전체 대비 비율을 구해 도수·계급·백분율 진술을 검증한다.",
+    "distinction": "값이 누락된 표 복원(MISSING_FREQUENCY), 순위가 속하는 계급 판정(CUMULATIVE_CUTOFF), 줄기잎→도수표 변환과 구별한다. 이 문항은 이미 완성된 표의 인원·비율 진술 검증이다.",
+    "supportingQuestionUids": [
+      "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d"
+    ],
+    "canonicalDebt": "PT label/aliases cover a broad frequency-reading family but the current English definition describes only missing-frequency recovery. Preserve source null until the owner reconciles this shared definition.",
+    "proposedKeyStatus": "NO_UNREGISTERED_ACTIVE_KEYS_WRITTEN"
+  },
+  "evidence": [
+    {
+      "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json"
+    },
+    {
+      "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json"
+    },
+    {
+      "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
+    },
+    {
+      "commit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/a1-exam1.review.json"
+    }
+  ],
+  "studentContentModified": false
+}

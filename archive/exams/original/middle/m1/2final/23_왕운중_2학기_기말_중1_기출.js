@@ -39,8 +39,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:5a5cff9d22b6dfdd4a99530fd64d310e318db45663ff79bed90a1b68f42540f7",
-      "difficultyEvidenceSha": "sha256:4aa6bb0d0e610ca4ef3089a0c6b3f754d14b30b9ad7943ae3cb8d075a8c256d1"
+      "difficultyEvidenceSha": "sha256:4aa6bb0d0e610ca4ef3089a0c6b3f754d14b30b9ad7943ae3cb8d075a8c256d1",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-095",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "다면체",
+      "l4": "각기둥·각뿔"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 2,
       "level": "중",
@@ -87,8 +98,19 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:1eca0c415fa870acd995faf6b01db1681749c528ef317d591bdc0bf8871dbbc0",
       "solutionImageAlt": "해설 그림: 원 O에서 중심각 40°인 부채꼴(호 8cm)과 중심각 80°인 부채꼴(호 x cm)을 서로 떨어뜨려 색칠하고, 각 호의 길이를 표시한 그림.",
       "solutionImageCaption": "같은 원에서 호의 길이는 중심각에 비례하므로 8 : x = 40 : 80이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-089",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "부채꼴의 호의 길이"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 3,
       "level": "중",
@@ -135,8 +157,19 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:99cf2c8947f594124132a2a0c19df4496aff54d1f4601459ef2871674b9284a5",
       "solutionImageAlt": "해설 그림: 삼각형의 두 변을 연장해 세 꼭짓점의 외각 x°, (x-14)°, 124°를 호로 표시하고, 오른쪽 아래 내각 56°의 외각이 124°임을 보인 그림.",
       "solutionImageCaption": "삼각형의 세 외각의 합은 360°이고 오른쪽 아래 외각은 180°-56°=124°이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 4,
       "level": "중",
@@ -183,8 +216,19 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:5ee2bfdb9e122191d795a09a89ab13e669bdae098426f79e76829c64dd560727",
       "solutionImageAlt": "해설 그림: 오각형의 내각 85°, 110°, 2x°, 직각, (195-x)°를 표시하고, 위쪽 꼭짓점에서 변을 연장해 외각 (x-15)°를 호로 보인 그림.",
       "solutionImageCaption": "위쪽 꼭짓점의 외각이 (x-15)°이므로 그 내각은 (195-x)°이고 다섯 내각의 합은 540°이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-081",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "다각형의 내각과 외각",
+      "l4": "내각의 합"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 5,
       "level": "하",
@@ -224,8 +268,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:38d34c005bf4556156e9a66bcda25b97596e21a045b856e63909927d8b521481",
-      "difficultyEvidenceSha": "sha256:34c16443b1a508d1b1f85b9a239b2864a9947ec519d47d84af1437b24b1b2758"
+      "difficultyEvidenceSha": "sha256:34c16443b1a508d1b1f85b9a239b2864a9947ec519d47d84af1437b24b1b2758",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-084",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "각의 크기 계산"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 6,
       "level": "중",
@@ -270,8 +325,19 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q6-solution.svg",
       "solutionImageAlt": "해설 그림: 정구각형의 각 꼭짓점에서 한 변을 연장해 아홉 외각을 모두 40°로 표시하고, 한 꼭짓점의 내각 140°를 함께 보인 그림.",
       "solutionImageCaption": "정구각형의 외각은 모두 40°이고 한 내각은 180°-40°=140°이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-083",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "다각형의 내각과 외각",
+      "l4": "정다각형의 각"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 7,
       "level": "중",
@@ -311,8 +377,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:931b26ec93d5ddcc788a052fef02c63b5279505c2ca908db132eb663a27e71e8",
-      "difficultyEvidenceSha": "sha256:a65c88ef909e8e29d4d119f6a7f54d0124b07019904fd157adb625c2d1accc9f"
+      "difficultyEvidenceSha": "sha256:a65c88ef909e8e29d4d119f6a7f54d0124b07019904fd157adb625c2d1accc9f",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-097",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "정다면체",
+      "l4": "면·모서리·꼭짓점 관계"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 8,
       "level": "중",
@@ -353,8 +430,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:bfc2616500055fab00fea2c4022a03ec3f8282c01cb1277ea58f0e7096ee007c",
-      "difficultyEvidenceSha": "sha256:254d47b2065f8cdcdb57c9f37b5efe2b9f40ddd211805a9adaa710c3db6dec93"
+      "difficultyEvidenceSha": "sha256:254d47b2065f8cdcdb57c9f37b5efe2b9f40ddd211805a9adaa710c3db6dec93",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-088",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "중심각·호·현"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 9,
       "level": "중",
@@ -390,8 +478,25 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q9-solution.svg",
       "solutionImageAlt": "해설 그림: 원탁의 7명을 정칠각형의 꼭짓점으로 나타내고, 한 꼭짓점에서 양옆(점선)을 뺀 나머지 네 꼭짓점으로 가는 악수 상대 4명을 선 ①~④로 보인 그림.",
       "solutionImageCaption": "한 사람은 자신과 양옆의 두 사람을 뺀 4명과 악수한다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B23",
+    "curriculum": "2015",
+    "integrationPattern": "NONE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "rpmPrimaryRecordId": "M1-RPM-085",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "변·대각선 개수"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 10,
       "level": "중",
@@ -433,8 +538,19 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q10-solution.svg",
       "solutionImageAlt": "해설 그림: 회전축에서 떨어진 삼각형을 회전시킨 입체의 축 단면은 가운데가 빈 두 삼각형이고, 그림의 입체의 단면은 축까지 꽉 찬 마름모임을 나란히 비교한 그림.",
       "solutionImageCaption": "삼각형이 회전축과 떨어져 있으면 회전축 둘레에 빈 공간이 생겨 그림처럼 축까지 채워진 입체가 되지 않는다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-098",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "회전체",
+      "l4": "회전체의 생성"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 11,
       "level": "중",
@@ -478,8 +594,14 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q11-solution.svg",
       "solutionImageAlt": "해설 그림: 원뿔대를 회전축에 수직인 평면으로 자르면 나타나는 단면 원과 두 밑면의 원은 반지름이 서로 다르고, 옆면을 만드는 모선과 두 밑면 사이의 높이는 서로 다른 선분임을 보여 주는 그림",
       "solutionImageCaption": "원뿔대의 수직 단면 두 원은 반지름이 다르고, 모선과 높이는 서로 다른 선분이다.",
-      "solutionImageSize": "medium"
-    },
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 12,
       "level": "하",
@@ -522,8 +644,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:2a9dbe8b03319f5b1700e1b1bf1598083fa0165bc128c0802135edf600dce013",
-      "difficultyEvidenceSha": "sha256:51a165c4f48e6dbfc7564288bed76a064707a983bca88ed420f3b92e29309f47"
+      "difficultyEvidenceSha": "sha256:51a165c4f48e6dbfc7564288bed76a064707a983bca88ed420f3b92e29309f47",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-102",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "뿔의 겉넓이와 부피",
+      "l4": "각뿔"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 13,
       "level": "중",
@@ -570,8 +703,19 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q13-solution.svg",
       "solutionImageAlt": "해설 그림: 정사각형(한 변 6cm)에서 네 모서리의 반지름 3cm 사분원을 빼면 색칠한 부분 36-9π이고, 네 사분원의 합은 반지름 3cm인 원 하나(넓이 9π)와 같음을 두 그림으로 비교한다.",
       "solutionImageCaption": "정사각형에서 사분원 4개를 빼고, 사분원 4개를 원 1개로 모아 비교한다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-093",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "복합도형",
+      "l4": "부채꼴을 포함한 넓이"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 14,
       "level": "중",
@@ -614,8 +758,20 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:a39dad61ee0c3eecf2aa6fc9dab51500c40538b9d7cf8955d6e3d273439f1669",
-      "difficultyEvidenceSha": "sha256:a67f35cf8e063da152ddb751af62eb6ca8331976f957ebf36009d62f714abf62"
+      "difficultyEvidenceSha": "sha256:a67f35cf8e063da152ddb751af62eb6ca8331976f957ebf36009d62f714abf62",
+    "integrationPattern": "NONE",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-108",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 15,
       "level": "상",
@@ -662,8 +818,24 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:7dda12841f3ae8cce3eb6a94a933a757944018ca964f28fcf5bd8026cee2b3ca",
       "solutionImageAlt": "해설 그림: 원 O에서 지름 AB, BD∥OC 표시, ∠COA=∠OBD=∠ODB=50°, ∠BOD=80°, OB=OD와 호 AC=5cm, 호 BD를 보여 준다.",
       "solutionImageCaption": "BD∥OC이므로 ∠OBD=50°, ∠ODB=50°, ∠BOD=80°이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-089",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "부채꼴의 호의 길이"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 16,
       "level": "상",
@@ -710,8 +882,22 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q16-solution.svg",
       "solutionImageAlt": "해설 그림: 한 변 9cm인 정삼각형 ABC에서 A, B, C를 중심으로 반지름 9cm, 18cm, 27cm인 중심각 120° 부채꼴 P, Q, R이 나선 모양으로 이어지고 호의 길이는 6π, 12π, 18π(cm)이다.",
       "solutionImageCaption": "세 부채꼴의 반지름은 9cm, 18cm, 27cm로 커지고 중심각은 모두 120°이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-089",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "부채꼴의 호의 길이"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 17,
       "level": "중",
@@ -758,8 +944,19 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:189decc9f0c0295ffa8f46b6e0502acc53feb2661c08a0834fb59b89afa2b63c",
       "solutionImageAlt": "사다리꼴 밑면의 윗변 3 cm, 아랫변 7 cm, 높이 3 cm와 기둥 높이 8 cm인 사각기둥",
       "solutionImageCaption": "두 밑면의 넓이와 밑면 둘레×기둥 높이를 더한다.",
-      "solutionImageSize": "large"
+      "solutionImageSize": "large",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-100",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "기둥의 겉넓이와 부피",
+      "l4": "각기둥"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 18,
       "level": "상",
@@ -806,8 +1003,21 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:982a215c3ce18f2f1694fde6fa6b35f41218fbb1a34e21db939e159e4dd06221",
       "solutionImageAlt": "해설 그림: 반지름 3cm인 세 캔의 중심이 한 변 6cm인 정삼각형을 이루고, 테이프의 직선 부분 3개(각 6cm)와 중심각 120°인 호 부분 3개를 보여 준다.",
       "solutionImageCaption": "테이프는 직선 부분 3개(각 6cm)와 120°씩인 호 부분 3개로 이루어진다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-092",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "복합도형",
+      "l4": "부채꼴을 포함한 둘레"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 19,
       "level": "중",
@@ -854,8 +1064,20 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q19-solution.svg",
       "solutionImageAlt": "해설 그림: 원기둥 케이스를 축을 지나는 평면으로 자른 단면에서 반지름 r인 공 3개가 폭 2r, 높이 6r인 직사각형 안에 꼭 맞게 쌓여 있다.",
       "solutionImageCaption": "케이스의 폭은 2r, 높이는 공 세 개의 지름의 합 6r이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "templateKey": "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-105",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "구",
+      "l4": "구의 부피"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 20,
       "level": "상",
@@ -903,8 +1125,22 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:472b62e2a2c00a1ce79176feafa77c844b4b7fc7c7b4472440a387e9c12fb4f7",
       "solutionImageAlt": "해설 그림: 직선 l을 축으로 직사각형(가로 3, 세로 6, 축에서 2 떨어짐)을 회전시켜 생긴 속 빈 원기둥의 축을 지나는 단면(두 직사각형, 바깥 반지름 5, 높이 6)과 위·아래 면인 고리 모양(안쪽 반지름 2, 바깥 반지름 5)",
       "solutionImageCaption": "속 빈 원기둥의 단면은 두 직사각형이고 위·아래 면은 고리 모양이다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_SOLID_OF_REVOLUTION"
+    ],
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-106",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "잘라낸 입체"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 21,
       "level": "중",
@@ -947,8 +1183,19 @@ window.questionBank = [
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:703137863b3f6344fddd0affd0018da564a117493bd4ddbf886cb25a938f6956",
-      "difficultyEvidenceSha": "sha256:f35e10896183634154d14f2a58376d6a5a89709bee8d1b4630c948d36d0393a0"
+      "difficultyEvidenceSha": "sha256:f35e10896183634154d14f2a58376d6a5a89709bee8d1b4630c948d36d0393a0",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-109",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "히스토그램·도수분포다각형"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 22,
       "level": "중",
@@ -990,8 +1237,19 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q22-solution.svg",
       "solutionImageAlt": "해설 그림: 점 O에서 호 AB, BC, CD의 길이의 비 10:6:3, 각 ∠AOD=114°, ∠BOC=36°, ∠COD=18°를 보여 주는 부채꼴 그림이다.",
       "solutionImageCaption": "호의 길이의 비는 중심각의 비와 같다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-088",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "중심각·호·현"
     },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 23,
       "level": "중",
@@ -1031,8 +1289,19 @@ window.questionBank = [
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q23-solution.svg",
       "solutionImageAlt": "해설 그림: 정다각형의 한 꼭짓점에서 내각 3k와 외각 k가 한 직선 위에서 이루는 평각, 그리고 같은 정다각형의 한 꼭짓점에서 다른 꼭짓점으로 그은 대각선들과 한 외각 k를 나타낸 두 그림",
       "solutionImageCaption": "한 꼭짓점에서 내각 3k와 외각 k의 합은 180°이고, 정다각형의 한 꼭짓점에서는 대각선을 여러 개 그을 수 있다.",
-      "solutionImageSize": "medium"
+      "solutionImageSize": "medium",
+    "integrationPattern": "NONE",
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-085",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "다각형",
+      "l3": "삼각형·다각형의 각",
+      "l4": "변·대각선 개수"
     },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "rpmScope": "M1-2"
+  },
     {
       "id": 24,
       "level": "상",
@@ -1074,6 +1343,20 @@ window.questionBank = [
       "difficultyEvidenceSha": "sha256:d8cfcc87c32c861608ea8a9481129794a6418b90cf75a7ad2629339baf35f79a",
       "solutionImageAlt": "해설 그림: 원뿔대의 축을 지나는 단면을 연장한 보조 원뿔(높이 4, 모선 5와 15, 직각 표시)과, 같은 배율로 그린 전개도의 옆면(안쪽 반지름 5·바깥 반지름 15·중심각 216도의 고리 모양 부채꼴)과 반지름 9와 3인 두 밑면 원",
       "solutionImageCaption": "보조 원뿔의 모선 5·15와, 같은 배율로 나타낸 전개도의 옆면(고리 모양 부채꼴)·두 밑면을 나타낸 그림이다.",
-      "solutionImageSize": "medium"
-    }
+      "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_SOLID_OF_REVOLUTION"
+    ],
+    "difficultyBucket": 4,
+    "curriculum": "2015",
+    "rpmPrimaryRecordId": "M1-RPM-106",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "잘라낸 입체"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "rpmScope": "M1-2"
+  }
   ];
