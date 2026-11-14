@@ -1,0 +1,2037 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "5014377db5dfd4542dbda8e897b40edd1d62cc81",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "review_a:manual-semantic-review",
+  "items": [
+    {
+      "questionUid": "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
+      "sourceOrdinal": 1,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dc62969878b1581454642f13dad5a8316a7c38fdd55471086b8d3278ecc74fe5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58c26a7e2b4e313acbc752b1625e13c86805848ea68ea505f486b3736969644c"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 ABC에서 ∠A, ∠C의 삼각비의 값"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "BC에서 ∠A, ∠C의 삼각비의 값으로 옳은 것은? (3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": " ∠C의 삼각비의 값으로 옳은 것은? (3점)"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": " 값으로 옳은 것은? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$이다.\n피타고라스 정리에 따라 $AB=\\sqrt{5^2",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": " 대하여 맞은편 변은 $AB=3$, 이웃한 변은 $BC=",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다.",
+      "reasons": {
+        "primary": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
+      "sourceOrdinal": 2,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1e69b63cb7ec75483ef97cb0e3e2e649a4d67649ac74c7559fb1e951d59c14ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d5dbee68dcd7ec7378f104fa227313d00834ae312c989c307482d0f512f38866"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "(2 sin 30° + 2 cos 30°)(2 cos"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": " cos 60° − tan 60°)의 값은? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "0°)의 값은? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin30^\\circ=\\dfrac12$, $\\c",
+            "evidenceType": "IMPLIED",
+            "justification": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "rt3)=1-3=-2$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다.",
+      "reasons": {
+        "primary": "30°, 60°의 삼각비를 넣은 뒤 켤레 형태의 두 근호식을 합차공식으로 계산한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+      "sourceOrdinal": 3,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b95bc1f354f2cb48776ac47dcf9008811964795dbf1ba58a797b2d309cfbdb0b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8da0b762aeb6caeb63e1d8fec6dbcd58f12096606adc6d92bc09d5dc2ae58317"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 O에서 현의 길이가 24cm이고, 원의 중심"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": " O에서 현의 길이가 24cm이고, 원의 중심에서 현에 "
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": " 이르는 거리가 9cm일 때, 원 O의 둘레의 길이는? "
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주",
+            "src": "stem",
+            "quote": "원 O의 둘레의 길이는? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분한다. 따라서 현의 절반은 $12\\r",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "형에서\n$r^2=12^2+9^2=225$이므로 $r=15",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다."
+          },
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "$이다.\n원의 둘레는 $2\\pi r=30\\pi\\rm\\,c",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다.",
+      "reasons": {
+        "primary": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
+      "sourceOrdinal": 4,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "adef04e4942c1f3202365bdfec45401c509519958dc0631c7a79d1b895fc0098"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21196f6ea2137d6f0f3b236aeab6d677366cb9a121e199994f35668b89db4049"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "90°인 직각삼각형 ABC에서 tan A=3일 때, si"
+          },
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "BC에서 tan A=3일 때, sin B의 값은? (4점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "일 때, sin B의 값은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "이므로 $AC=x$, $BC=3x$라 하자.\n피타고라스 ",
+            "evidenceType": "IMPLIED",
+            "justification": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": " 하자.\n피타고라스 정리에서 $AB=\\sqrt{x^2+9",
+            "evidenceType": "IMPLIED",
+            "justification": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "∠C=90°인 직각삼각형 ABC에서 tan A="
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다.",
+      "reasons": {
+        "primary": "tan A=3을 두 직각변 x, 3x로 표현하고 피타고라스로 빗변을 정해 다른 예각 B의 sin 값을 구한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+      "sourceOrdinal": 5,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8fff958687e69899d44e5eedee74aa26af008fa901c0de3e18380dad1b45501d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f8d48b603eb0b7e5a985d6829f1ab680fae120655bec5e53eabe89a3745f202c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 ABC에서 AB=2, ∠A=42°일 "
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "BC에서 AB=2, ∠A=42°일 때, AC+BC의 값은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "일 때, AC+BC의 값은? (단, 주어진 삼각비의 표를"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "변이다. 표에서 $\\cos42^\\circ=0.7431$,",
+            "evidenceType": "IMPLIED",
+            "justification": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "circ=2(0.7431)=1.4862$이고\n$BC=AB",
+            "evidenceType": "IMPLIED",
+            "justification": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비의 표를 이용하여라.) (4점)"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다.",
+      "reasons": {
+        "primary": "한 직각삼각형의 빗변 2에 표의 cos42°, sin42°를 각각 곱하여 두 직각변의 합을 구한다. 복합 측량이 아닌 삼각비 기본 길이 항목이다.",
+        "constraintCoverage": [
+          "주어진 삼각비 표 사용"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+      "sourceOrdinal": 6,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "272d4f093e3b8172ad7488c51a95fbc3aedea608f02b9b640b176a9e3d7d2c6e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "380b2308fb8bf687aa463341a323d78b66c459262b8f97094c4eba64f29408b0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "□ABCD에서 ∠A=45°, ∠C=60°, ∠A"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "CD에서 ∠A=45°, ∠C=60°, ∠ABD=∠BDC="
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "BCD의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "에서\n$\\tan60^\\circ=\\dfrac{BD}{DC}",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$이다.\n사각형의 넓이는 $[ABD]+[BCD]$이므로\n",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다."
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "넓이는 $[ABD]+[BCD]$이므로\n$\\dfrac12(",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "60°, ∠ABD=∠BDC=90°일 때, □ABCD의 넓"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다.",
+      "reasons": {
+        "primary": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
+      "sourceOrdinal": 7,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4954d946880fc951e49d698566275dcbf687c4635441ba7fc17073ee8c122839"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7d76730b0835b350d988ef58870aa1d982bca380b5174c287b47ee0a07f31dd1"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비의 값에 대한 학생들의 설명으로 옳은 것은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명으로 옳은 것은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\tan0^\\circ=0$이므로 학생1의 설명은 ",
+            "evidenceType": "IMPLIED",
+            "justification": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": " 않다. 닮은 직각삼각형의 대응변 비는 같으므로 학생4도",
+            "evidenceType": "IMPLIED",
+            "justification": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다."
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": " 않다.\n직각이등변삼각형의 예각은 $45^\\circ$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다.",
+      "reasons": {
+        "primary": "0°의 tan, 삼각비 표의 근삿값, 닮음에서 대응변 비 불변과 45° 값을 함께 판정한다. 정답 선지의 특수각만으로 유형을 좁히지 않고 삼각비의 관계를 주분류로 잡는다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+      "sourceOrdinal": 8,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "49c0e02cc376228a2bf3fb372b5cc69445f93c59d02e5801461643d48dbf21f3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1f647291051d2d2db72d81474c442b1c7859584458f119955d5143625e5cab97"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 ABC에서 ∠C=90°, ∠A=a°이"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "a°이고 빗변 AB의 길이가 √13이다. (단, a≠45"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": ") 이때 BC의 길이를 삼각비로 나타낸 것은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "\n따라서 사인비를 이용하면\n$\\sin a^\\circ=\\d",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "$이다.\n양변에 $\\sqrt{13}$을 곱하면\n$BC=\\",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "BC에서 ∠C=90°, ∠A=a°이고 빗변 AB의 길이가"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": " (단, a≠45°) 이때 BC의 길이를 삼각비로 나타낸"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다.",
+      "reasons": {
+        "primary": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다.",
+        "constraintCoverage": [
+          "a≠45°"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
+      "sourceOrdinal": 9,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3b6918fe1311c52c8d3cf418789ec7d3ef365f68c0f8dc176d695129d59f03e1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "645b242781240bce9cbfd499f6fbc0384c77b7623262beac3cb420d6a9c0c656"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": " 3m인 직사각형 모양의 공간이다. A지점에서 30°의 "
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "수 있는 높이가 3m인 직사각형 모양의 공간이다. A지점"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "지점에서 30°의 각도로 거울이 있는 벽면의 B지점에 빛"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": " C지점 사이의 거리는? (단, 입사각과 반사각의 크기는"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "벽까지의 수평거리는 $2\\cot30^\\circ=2\\sqr",
+            "evidenceType": "IMPLIED",
+            "justification": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "그림에서 반대 방향으로 이어져 $AC$의 수평 성분은 $",
+            "evidenceType": "IMPLIED",
+            "justification": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "3$이고 수직 성분은 $3$이므로 $AC=\\sqrt{(\\",
+            "evidenceType": "IMPLIED",
+            "justification": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": " (단, 입사각과 반사각의 크기는 같다.) (4점)"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다.",
+      "reasons": {
+        "primary": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다.",
+        "constraintCoverage": [
+          "입사각=반사각"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
+      "sourceOrdinal": 10,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "84c5eb1f722c3e1497adfbe37261f160492a8770a2945410fea7fa93228d3ed9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "595f1b9a3f5c89346c321a7da01307ba1644f8d692bb9b50ec66a4d652cd0327"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "A지점의 높이는 2.5m, 네트의 높이는 2m일 때, 공"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "후 모두 직선으로 날아가며, 다른 외부 요인은 무시한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": " 이동한 총거리는? (단, 공은 D지점에 닿기 전과 후 "
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": ".5}{\\sin30^\\circ}=1\\rm\\,m$이다.\n$",
+            "evidenceType": "IMPLIED",
+            "justification": "높이 차로 AD, 네트 높이로 DB를 각각 사인비에서 구한 뒤 꺾인 경로 길이를 합산한다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "거리는 $AD+DB=1+2\\sqrt2\\rm\\,m$이고 정",
+            "evidenceType": "IMPLIED",
+            "justification": "높이 차로 AD, 네트 높이로 DB를 각각 사인비에서 구한 뒤 꺾인 경로 길이를 합산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "후 모두 직선으로 날아가며, 다른 외부 요인은 무시한다."
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "아가며, 다른 외부 요인은 무시한다.) (4점)"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "높이 차로 AD, 네트 높이로 DB를 각각 사인비에서 구한 뒤 꺾인 경로 길이를 합산한다.",
+      "reasons": {
+        "primary": "높이 차로 AD, 네트 높이로 DB를 각각 사인비에서 구한 뒤 꺾인 경로 길이를 합산한다.",
+        "constraintCoverage": [
+          "전후 이동은 직선",
+          "다른 외부 요인 무시"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+      "sourceOrdinal": 11,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58be9944ee242e27a3ea619eaf93c9d86dce4035efe3841a9faad62df08115b2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6af6ac111f2d35e1106910ddd00a09d5506da67377a9927fb78a22998f6d8adc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "△ABC의 넓이가 3√3cm²일 때, BC의 길"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "ABC의 넓이가 3√3cm²일 때, BC의 길이는? (4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "일 때, BC의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "삼각형의 넓이 공식에 대입하면\n$3\\sqrt3=\\dfra",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "AB$에 수선을 내려 그 발을 $H$라 하자. $\\tri",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "이다.\n\n삼각비를 이용하면\n$CH=AC\\times\\sin",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "HC$에 피타고라스 정리를 적용하면\n$\\begin{ali",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다.",
+      "reasons": {
+        "primary": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da",
+      "sourceOrdinal": 12,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "45bfae8e4a984baf998955d61eb1f6bab3a50927ff79614cc09907805a13978c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7dd82813274d2283fdf86ea065b5a5fa0b2197d5910f2d175f6af13e73a14842"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 ABCD에서 두 대각선의 교점을 O라"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "CD에서 두 대각선의 교점을 O라고 하자. ∠A:∠B=5"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": " 하자. ∠A:∠B=5:10이고, BC=12cm, CD="
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "일 때, 색칠된 부분의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "dot8\\sin60^\\circ=48\\sqrt3\\rm\\,c",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다."
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "사변형을 넓이가 같은 네 삼각형으로 나누므로 마주 보는 ",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다.",
+      "reasons": {
+        "primary": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+      "sourceOrdinal": 13,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6e45b461961f944ac21115317b230c705ff08286156ac23c7b8343c59bc0dc2e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34c666ec94a32a995b1c8a78193d0c7b2bb9a2d05f08f011119758e2904013ab"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "□ABCD에서 AB=4√2, BC=4√3, CD"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "CD에서 AB=4√2, BC=4√3, CD=6√2−2√6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "BCD의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "를 그어 두 삼각형의 넓이를 더한다.\n$AB=AD=4\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "BD]=\\dfrac12(4\\sqrt2)^2\\sin120^",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "2)^2\\sin120^\\circ=8\\sqrt3$이다.\n삼",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": 2,
+      "scenarioNote": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다.",
+      "reasons": {
+        "primary": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
+      "sourceOrdinal": 14,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a0658ac93a9a705d6b14cc7e3417bda67b0f6c7069c695f457e6d217738f15af"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "59cb3c2bb24897204914654b1c7800f4ae6f4ea4d59a8c290005b3404e9114fc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 O에서 현 AB는 반지름 OC를 수직이등분한"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": " O에서 현 AB는 반지름 OC를 수직이등분한다. AB="
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "분한다. AB=18cm일 때, 원 O의 반지름의 길이는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "원 O의 반지름의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "$이고, 현의 절반은 $9$이다.\n직각삼각형에서 $r^2",
+            "evidenceType": "IMPLIED",
+            "justification": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "형에서 $r^2=9^2+(r/2)^2$이다.\n$3r^2/",
+            "evidenceType": "IMPLIED",
+            "justification": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": " AB는 반지름 OC를 수직이등분한다. AB=18cm일 "
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다.",
+      "reasons": {
+        "primary": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+      "sourceOrdinal": 15,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6e2f5f97fc0bb5d4f7c8f68bdec6fa9eeba61d9a233f1040fd61acbc5bc3f18d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d2e00d910a5c09c91f852990fcd5f2492219280b0bb23aad4a43900e05e7e214"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 O에서 AB⊥OM이고 AB=CD이다. OD="
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "D이다. OD=8cm, OM=6cm일 때, △OCD의 넓"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "8cm, OM=6cm일 때, △OCD의 넓이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "일 때, △OCD의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분한다. 직각삼각형 $OMA$에서 $O",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AM=\\sqrt{8^2-6^2}=2\\sqrt7$이다. ",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": " 거리도 같은 길이의 현이므로 $6$이다. 그러므로\n$[",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "러므로\n$[OCD]=\\dfrac12(4\\sqrt7)(6)",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "OM이고 AB=CD이다. OD=8cm, OM=6cm일 때"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": " O에서 AB⊥OM이고 AB=CD이다. OD=8cm, O"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다.",
+      "reasons": {
+        "primary": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+      "sourceOrdinal": 16,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5fd179dc6447d1e1de689daff7f83fee94fb19f651b767b5a5b16d3e153d4987"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "53fff04cd06630729defb1b026d1ca987f5af50ceab69ea96abc17611df6f52e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": " 평행한 현 AB, CD와 현 EF, GH가 있다. 현 "
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": " 사이의 거리는 10cm, 두 현 EF, GH 사이의 거"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "m이다. AB=24cm일 때, EF의 길이는? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "일 때, EF의 길이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "r$은 $r^2=12^2+5^2=169$, 즉 $r=13",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "두 쌍의 평행한 현 AB, CD와 현 EF, GH가 있다"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": " 내부에 길이가 각각 같은 두 쌍의 평행한 현 AB, C"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": " EF는 서로 수직이고, 두 현 AB, CD 사이의 거리"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다.",
+      "reasons": {
+        "primary": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+      "sourceOrdinal": 17,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "306b669d24f5784e9124bfbbf72f3dbbac872dc5277d87fedc73720ed6680bfe"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f8e33cfbde7bb315ca96946c2242f6b8d70fc96b24ac721624a3b26423a99c5f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "원 O의 접선일 때, AD=18cm, AC=15cm, A"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "일 때, AD=18cm, AC=15cm, AB=13cm,"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "3cm, ∠ACB=60°일 때, △ACB의 넓이는? (4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "일 때, △ACB의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 같다. $AD=18$, $AB",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "(BC)\\sin60^\\circ=\\dfrac12(15)(8",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": ", F를 접점으로 하는 원 O의 접선일 때, AD=18c"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다.",
+      "reasons": {
+        "primary": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
+      "sourceOrdinal": 18,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27e56ffdfccbe01dfd27fb00ccaf08302015d6ae3a6e7ac1cd943c236335b2fa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f2d92cf5ec0e98b7889815ba2e0375c2b62524b190b6628cecdb9cc4c619fec"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "=AC인 이등변삼각형 ABC에서 BC=1, ∠A=36°이"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "C=1, ∠A=36°이고, ∠B의 이등분선과 AC의 교점"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "°이고, ∠B의 이등분선과 AC의 교점을 D라고 할 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "할 때, sin18°의 값은? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "°이므로 BD=BC=1이다. 삼각형 ABD에서 ∠BAD=",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분선과 이등변삼각형의 각·변 관계를 복원하여 AC를 sin18°의 두 식으로 표현하고 이차방정식을 세워 삼각비 값을 결정한다. 목표와 결정식이 삼각비의 값 유도이므로 길이 측량 활용에서 기본 삼각비로 바로잡는다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "2이므로 sin18°=1/(2AC), 즉 AC=1/(2s",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분선과 이등변삼각형의 각·변 관계를 복원하여 AC를 sin18°의 두 식으로 표현하고 이차방정식을 세워 삼각비 값을 결정한다. 목표와 결정식이 삼각비의 값 유도이므로 길이 측량 활용에서 기본 삼각비로 바로잡는다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": " 따라서 4x²+2x−1=0이다. 양수해는 x=(√5−1",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분선과 이등변삼각형의 각·변 관계를 복원하여 AC를 sin18°의 두 식으로 표현하고 이차방정식을 세워 삼각비 값을 결정한다. 목표와 결정식이 삼각비의 값 유도이므로 길이 측량 활용에서 기본 삼각비로 바로잡는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "AB=AC인 이등변삼각형 ABC에서 BC=1, "
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "BC에서 BC=1, ∠A=36°이고, ∠B의 이등분선과 "
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "각이등분선과 이등변삼각형의 각·변 관계를 복원하여 AC를 sin18°의 두 식으로 표현하고 이차방정식을 세워 삼각비 값을 결정한다. 목표와 결정식이 삼각비의 값 유도이므로 길이 측량 활용에서 기본 삼각비로 바로잡는다.",
+      "reasons": {
+        "primary": "각이등분선과 이등변삼각형의 각·변 관계를 복원하여 AC를 sin18°의 두 식으로 표현하고 이차방정식을 세워 삼각비 값을 결정한다. 목표와 결정식이 삼각비의 값 유도이므로 길이 측량 활용에서 기본 삼각비로 바로잡는다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+      "sourceOrdinal": 19,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fc4af0b68c1789c3ce57d3f2ff8ddc089ccab5e46b911944324b0ebd7d9cdde1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a5174b679c93b913e50c736f41f0b49666113eda10eaa59f1ec4dcd81054216"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "=16인 정삼각형 ABC에 대하여 지름 AH와 BC가 직"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "과 같이 반지름의 길이가 4√3인 원과 AB=16인 정삼"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "인 원과 AB=16인 정삼각형 ABC에 대하여 지름 AH"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "할 때, 색칠된 부분의 넓이는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "qrt3\\sin30^\\circ=2\\sqrt3$이고, $A",
+            "evidenceType": "IMPLIED",
+            "justification": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "이고, $AP=2\\sqrt{(4\\sqrt3)^2-(2\\s",
+            "evidenceType": "IMPLIED",
+            "justification": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "OP$인 이등변삼각형이므로 $\\angle OPA=30^\\",
+            "evidenceType": "IMPLIED",
+            "justification": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다."
+          },
+          {
+            "term": "부채꼴넓이공식",
+            "src": "solution",
+            "quote": "합이다. 부채꼴 $POQ$의 넓이는 $\\dfrac{120",
+            "evidenceType": "IMPLIED",
+            "justification": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다."
+          },
+          {
+            "term": "분할",
+            "src": "solution",
+            "quote": "는 원의 부분은 부채꼴 $POQ$와 $\\triangle ",
+            "evidenceType": "IMPLIED",
+            "justification": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": " BC가 직교할 때, 색칠된 부분의 넓이는? (5점)"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다.",
+      "reasons": {
+        "primary": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+      "sourceOrdinal": 20,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cc558efb5654b4eb5795184ad1f14717b0314a6f36b9dfa2462cd9a8c3523755"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a64501c5a42311ecd71596ebd2f236fd97f277b177d66ffb6404e4b92074fc54"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "90°인 직각삼각형 ABC의 내접원이고 세 점 D, E,"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "ABC의 내접원이고 세 점 D, E, F는 접점이다. B"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "점이다. BD=5, CE=12일 때, OA+OB+OC는?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "일 때, OA+OB+OC는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "접선 길이 성질에서 $BE=BD=5$, $CF=",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$이다.\n피타고라스 정리에 따라 $(x+5)^2+(x+1",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "이므로 $x^2+17x-60=0$, 양수해는 $x=3$이",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "원 O는 ∠A=90°인 직각삼각형 ABC의 내접원이고 세"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": ", F는 접점이다. BD=5, CE=12일 때, OA+O"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다.",
+      "reasons": {
+        "primary": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
+      "sourceOrdinal": 21,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "188bc0c616087612fbe3616e4a04ddf24463cd976f58b1cb250f5ec2a8b636a2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "84709693a51ebc6d7e43b17b270487d662aae5cb859c70eb37ed256f7f05531a"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정삼각형",
+            "src": "stem",
+            "quote": "과 같이 정삼각형 모양의 종이를 EF를 접는 선으로 하여"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "로 하여 접었더니 CF=1cm, ∠CDF=90°이었다. "
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "접었더니 CF=1cm, ∠CDF=90°이었다. 이 때 E"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": " 이 때 EF의 길이를 구하고, 풀이 과정을 서술하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "2이다.\nA가 D로 접혀 옮겨졌으므로 접는 선 위의 F에",
+            "evidenceType": "IMPLIED",
+            "justification": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": " F에서 ∠AFD를 이등분한다. 따라서 ∠AFE=75°이",
+            "evidenceType": "IMPLIED",
+            "justification": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "FG에서\nFG=AF sin60°=(√3/2)(√3/2)=",
+            "evidenceType": "IMPLIED",
+            "justification": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "\n따라서 EF=√(EG²+FG²)=√(9/16+9/16)",
+            "evidenceType": "IMPLIED",
+            "justification": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "1cm, ∠CDF=90°이었다. 이 때 EF의 길이를 구"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다.",
+      "reasons": {
+        "primary": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다.",
+        "constraintCoverage": []
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
+      "sourceOrdinal": 22,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4a9c7173fddb9a52ae2348474184288dc28353c7c0e161e68f675fce36603264"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "03b2cdde44206656e5864528d44512c99dcbca730342dda796774e7fd4dea9e2"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": " 사이의 거리는 60m이고, 피사의 사탑이 기울어진 정도"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": " 사탑이 기울어진 정도는 4°라고 할 때, A지점에서 피"
+          },
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "C지점을 올려다본 각의 크기가 45°이다. 지면에서 C지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": " 피사의 사탑의 높이를 구하고 그 과정을 서술하시오. ("
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "에 내린 수선의 발을 D라 하면 CD가 구하는 높이이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 높이 CD를 86°의 tan식과 45°에서 AD=CD라는 식으로 표현하고, 두 수평거리의 합 60을 이용해 일차방정식을 푼다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "CD에서 tan86°=CD/BD=14이므로 CD=14BD",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 높이 CD를 86°의 tan식과 45°에서 AD=CD라는 식으로 표현하고, 두 수평거리의 합 60을 이용해 일차방정식을 푼다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "\n따라서 CD=14(60−CD), 15CD=840, CD",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 높이 CD를 86°의 tan식과 45°에서 AD=CD라는 식으로 표현하고, 두 수평거리의 합 60을 이용해 일차방정식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": " (단, tan86°=14로 계산한다.) (5점, 부분점"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "공통 높이 CD를 86°의 tan식과 45°에서 AD=CD라는 식으로 표현하고, 두 수평거리의 합 60을 이용해 일차방정식을 푼다.",
+      "reasons": {
+        "primary": "공통 높이 CD를 86°의 tan식과 45°에서 AD=CD라는 식으로 표현하고, 두 수평거리의 합 60을 이용해 일차방정식을 푼다.",
+        "constraintCoverage": [
+          "높이는 지면에서 C까지의 수직거리",
+          "tan86°=14로 계산"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+      "sourceOrdinal": 23,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6385f5de4a27df445d40f0b664bcb7d5c733ef0c4695826dd73b55386a1e1e8f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9323c96730f3f869d152e1a3423edb4387d5155c341bae42a21d05d67b169464"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "> 다음 △ABC와 △ADE에 대하여 AC:AE=2:1,"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": " 대하여 AC:AE=2:1, AB:AD=1:3이고 △AB"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "ABC의 넓이가 28√5일 때, △ADE의 넓이를 구하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "일 때, △ADE의 넓이를 구하고, <조건>에 맞게 풀이"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": " 하자. 삼각형의 넓이 공식으로\n[△ABC]=1/2·AB",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 넓이에 공통 끼인각의 sin을 써 넓이비를 두 변의 비의 곱으로 바꾸고 주어진 넓이에 3/2를 곱한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "ABC]=(AD/AB)(AE/AC)=3·1/2=3/2이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 넓이에 공통 끼인각의 sin을 써 넓이비를 두 변의 비의 곱으로 바꾸고 주어진 넓이에 3/2를 곱한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": " 넓이를 삼각비를 이용한 식으로 나타낼 것. (단, 문자"
+          },
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "할 때는 문자가 무엇을 뜻하는지 반드시 표현할 것.) △"
+          },
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": " 사이의 관계식을 풀이과정에 포함할 것. (4점, 부분점"
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "두 삼각형 넓이에 공통 끼인각의 sin을 써 넓이비를 두 변의 비의 곱으로 바꾸고 주어진 넓이에 3/2를 곱한다.",
+      "reasons": {
+        "primary": "두 삼각형 넓이에 공통 끼인각의 sin을 써 넓이비를 두 변의 비의 곱으로 바꾸고 주어진 넓이에 3/2를 곱한다.",
+        "constraintCoverage": [
+          "삼각비 넓이 식 사용",
+          "문자의 의미 명시",
+          "두 넓이 관계식 포함"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+      "sourceOrdinal": 24,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5eb0b1f2996886e14490dfb1d341c6554f8cd96f916d9ec6359d9cfd5ed55aae"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e8a62c15338cc22e445d7909fee9f707de6f53827b241ee28cd376be6cc68ba"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "수막새로 원 모양이었으나 현재는 일부가 깨져 있다. 이 "
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "이었으나 현재는 일부가 깨져 있다. 이 수막새를 복원하기"
+          },
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "현’, ‘원의 중심’을 포함하여 서술할 것.) (2) 원"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "수막새의 중심을 작도하는 방법을 각각 한 문장으로 서술하"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "활용하여 논리적으로 설명하시오. (4점) <조건> 삼각형"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "에 대해 수직이등분선을 작도한 뒤, 두 수직이등분선의 교",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
+          },
+          {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "같으므로 RHS 합동이다. 대응하는 변이 같아 AM=BM",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "술할 때 반드시 ‘현’, ‘원의 중심’을 포함하여 서술할"
+          },
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "삼각형의 합동조건을 포함하여 서술할 것. <그림>에 제시"
+          },
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": " 제시된 기호만 사용하여 서술할 것."
+          }
+        ]
+      },
+      "steps": 2,
+      "scenarioNote": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다.",
+      "reasons": {
+        "primary": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다.",
+        "constraintCoverage": [
+          "현/원의 중심 용어 포함",
+          "합동조건 포함",
+          "그림의 기호만 사용"
+        ]
+      },
+      "judgedBy": "review_a:manual-semantic-review",
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "현의수직이등분성질",
+      "en": [
+        "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+      "usedIn": [
+        "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+        "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+        "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761"
+      ]
+    },
+    {
+      "term": "삼각형넓이공식",
+      "en": [
+        "TRIANGLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다.",
+      "usedIn": [
+        "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+        "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+        "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+        "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+        "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+        "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e"
+      ]
+    },
+    {
+      "term": "같은현의중심거리",
+      "en": [
+        "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "한 원에서 같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 거리를 옮기는 단계.",
+      "usedIn": [
+        "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+        "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b"
+      ]
+    },
+    {
+      "term": "접선길이의성질",
+      "en": [
+        "EQUAL_TANGENTS_FROM_EXTERNAL_POINT"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "접선의길이",
+      "note": "원 밖의 같은 점에서 그은 두 접선 길이가 같다는 성질을 길이 식으로 사용한다.",
+      "usedIn": [
+        "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+        "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb"
+      ]
+    },
+    {
+      "term": "부채꼴넓이공식",
+      "en": [
+        "SECTOR_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "부채꼴",
+      "note": "반지름과 중심각으로 원의 넓이 중 차지하는 비율을 정하는 공식.",
+      "usedIn": [
+        "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6"
+      ]
+    },
+    {
+      "term": "RHS합동",
+      "en": [
+        "RHS_CONGRUENCE"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "합동",
+      "note": "두 직각삼각형의 빗변과 다른 한 변이 각각 같음을 근거로 하는 합동 조건.",
+      "usedIn": [
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allItemsRead": true,
+    "sourceContentAnswerSolutionUnchanged": true,
+    "allExplicitConstraintsReviewed": true,
+    "semanticReviewOnly": true,
+    "independentReview": "PENDING"
+  }
+}

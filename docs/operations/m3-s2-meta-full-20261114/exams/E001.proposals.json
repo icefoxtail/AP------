@@ -1,0 +1,55 @@
+[
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+    "type": "CONDITION_CANDIDATE",
+    "term": "특정 각 값 제외",
+    "definition": "예각의 특정 값을 제외하여 동치인 삼각비 표현의 중복을 피하는 제한",
+    "distinction": "0 배제 COND_NONZERO와 달리 45° 등 특정 비영값을 배제함",
+    "parent": "Condition",
+    "searchedGlobalActive": true,
+    "existingNearest": [
+      "COND_NONZERO",
+      "COND_RANGE"
+    ],
+    "status": "UNREGISTERED_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 동일 길이에서 삼각형 넓이",
+    "definition": "같은 외부점에서 그은 접선 길이의 같음을 사용해 삼각형 변을 확보한 뒤 끼인각의 삼각비 넓이를 계산한다.",
+    "distinction": "접선 길이 자체가 목표인 TM_TANGENT_LENGTH와 달리 확보한 길이로 삼각형 넓이까지 연쇄 계산한다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH",
+      "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "parallelSupport": "E003 Q17"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
+    "type": "EXISTING_ACTIVE_LINK_GAP",
+    "existingTemplate": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "parent": "PT_TRIG_RATIO",
+    "definition": "보조선 및 도형의 길이 관계를 복원한 후 최종 삼각비 값을 유도",
+    "distinction": "단순 sin·cos·tan 비 환산 BASIC_RELATION과 달리 비특수각 값을 기하·방정식으로 유도",
+    "searchedGlobalActive": true,
+    "action": "기존 ACTIVE 재사용 및 RPM 056 세부 연결 검토; 신규 PT/TPL 생성 불필요"
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+    "type": "BOUNDARY_REVIEW",
+    "parent": "M3-RPM-069",
+    "existingTemplate": "TM_CIRCLE_CHORD_LENGTH",
+    "definition": "현의 길이 복원 뒤 삼각형과 부채꼴 영역을 합·차로 계산",
+    "distinction": "원 그림 때문이 아니라 해설에서 AP=12를 복원해야 두 삼각형 넓이가 확정됨. 기존 TPL_CIRCLE_ANGLE_SECTOR_MEASURE는 부채꼴 계산의 보조 경로로 보존 가능",
+    "searchedGlobalActive": true,
+    "action": "후속 교차검토에서 현길이/복합넓이 경계 확인; 신규 키 삽입 없음"
+  }
+]
