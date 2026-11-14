@@ -398,7 +398,7 @@ window.questionBank = [
       "표해석"
     ],
     "wide": false,
-    "image": "assets/images/25_매산고_1학기_중간_고2_대수/q11.svg",
+    "image": "assets/images/25_매산고_1학기_중간_고2_대수/q11-problem-v2.svg",
     "imageAlt": "사인함수의 그래프에 최댓값 3과 최솟값 -1, 이웃한 최고점의 x좌표 π/2와 3π/2를 표시한 그림",
     "imageSize": "full",
     "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수/q11-solution.svg",
