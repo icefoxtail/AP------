@@ -2752,8 +2752,8 @@
     },
     {
       "id": "E055",
-      "owner": "a",
-      "reviewer": "b",
+      "owner": "m3_a",
+      "reviewer": "root",
       "sourcePath": "archive/exams/original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.js",
       "sourceArchiveFile": "original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.js",
       "year": 2021,
@@ -2767,7 +2767,45 @@
       "uidDigest": "da934709bc67cdf0ac46339f0fa10547b70999c22f7bbe815ba13ef7dda1eedd",
       "existing4slotPath": null,
       "existing4slotSourceBlob": null,
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "a",
+        "reviewer": "b"
+      },
+      "reviewedQuestionCount": 24,
+      "decisions": {
+        "CORRECT": 21,
+        "REVIEW_COMPLETE_WITH_EXPLICIT_DIFFICULTY_HOLD": 3
+      },
+      "sourceAfterBlob": "6db1025a78c081d2e98b5f657e73d1937d5cc9fc",
+      "sourceAfterSha256": "92b09555119e50ba87ce0d6819c46a8b99ef1d48a18557333f569679cab8b922",
+      "sourceChangedQuestionCount": 24,
+      "sourceChangedFieldCount": 170,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E055.meta.json",
+      "metadataSha256": "4a8bacd6976a82fc167480aa5014adabbe61ea60ea053d8e602ee654e97cbf81",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E055.verification.json",
+      "verificationSha256": "7fea35c90fad6d52fde5d9c3f4f99b1b47d1cf48f7d300d5b1e32379c6e74fe0",
+      "independentSampleOrdinals": [
+        9,
+        22,
+        24
+      ],
+      "independentSampleStatus": "PASS_FINAL_METADATA_BOUND",
+      "fourSlotMode": "NEW_FULL_EVIDENCE",
+      "fourSlotJudgments": {
+        "AUTHORED": 24
+      },
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 3,
+      "activeFieldSchemaDebtCount": 4,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "867b84d804bf95ee6b1188be5f8c750418e40bc9",
+      "explicitDifficultyHoldQuestionCount": 3,
+      "explicitDifficultyHoldQuestionUids": [
+        "qid_v1_bb32ad8a2727d461903d1e8ff1b61237826b65de11eb7161ff7325ada707194f",
+        "qid_v1_98cae8a3879b52bf82d19cffc4411d4ee67c2d3061ce80978988230cf7b25d65",
+        "qid_v1_0b49cedc58d2019b9342692ff9a79f3df5e011e030380cb7ad943332349a36a5"
+      ]
     },
     {
       "id": "E056",
@@ -3402,13 +3440,14 @@
   "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 57,
-    "branchReviewedQuestions": 1353,
-    "remainingExams": 26,
-    "remainingQuestions": 605,
-    "independentSamples": 171,
-    "latestPreparedExam": "E071",
-    "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF"
+    "branchReviewedExams": 58,
+    "branchReviewedQuestions": 1377,
+    "remainingExams": 25,
+    "remainingQuestions": 581,
+    "independentSamples": 174,
+    "latestPreparedExam": "E055",
+    "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
+    "explicitDifficultyHoldQuestions": 3
   },
   "ownerHistory": [
     {

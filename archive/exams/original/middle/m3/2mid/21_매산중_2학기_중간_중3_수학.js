@@ -38,7 +38,12 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AC}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AB}}=5$일 때, 다음 중 옳은 것은?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AC}}=3$, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AB}}=5$일 때, 다음 중 옳은 것은?",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 2,
@@ -71,12 +76,17 @@ window.examData = {
       "subUnit": "삼각비",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>"
+      "content": "다음 그림에서 $\\angle \\mathrm{C} = 90^\\circ$이고 $\\sin A = \\frac23$일 때, $\\tan A$의 값은?<br>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 3,
@@ -115,7 +125,12 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 식의 값을 구하면?<br><table border=\"1\" style=\"border-collapse:collapse; padding:4px;\"><tr><td>$\\tan 60^\\circ \\div \\cos 0^\\circ - \\tan 45^\\circ \\times \\sin 60^\\circ$</td></tr></table>"
+      "content": "다음 식의 값을 구하면?<br><table border=\"1\" style=\"border-collapse:collapse; padding:4px;\"><tr><td>$\\tan 60^\\circ \\div \\cos 0^\\circ - \\tan 45^\\circ \\times \\sin 60^\\circ$</td></tr></table>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 4,
@@ -154,7 +169,12 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "삼각비의 표를 이용하여 다음 값을 구하면?<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center;\"><tr><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr><tr><td>$42^\\circ$</td><td>0.6691</td><td>0.7431</td><td>0.9004</td></tr><tr><td>$43^\\circ$</td><td>0.6820</td><td>0.7314</td><td>0.9325</td></tr><tr><td>$44^\\circ$</td><td>0.6947</td><td>0.7193</td><td>0.9657</td></tr></table><br><table border=\"1\" style=\"border-collapse:collapse; padding:4px;\"><tr><td>$\\tan 44^\\circ - \\cos 42^\\circ = $</td></tr></table>"
+      "content": "삼각비의 표를 이용하여 다음 값을 구하면?<br><table border=\"1\" style=\"border-collapse:collapse; text-align:center;\"><tr><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr><tr><td>$42^\\circ$</td><td>0.6691</td><td>0.7431</td><td>0.9004</td></tr><tr><td>$43^\\circ$</td><td>0.6820</td><td>0.7314</td><td>0.9325</td></tr><tr><td>$44^\\circ$</td><td>0.6947</td><td>0.7193</td><td>0.9657</td></tr></table><br><table border=\"1\" style=\"border-collapse:collapse; padding:4px;\"><tr><td>$\\tan 44^\\circ - \\cos 42^\\circ = $</td></tr></table>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 5,
@@ -188,12 +208,17 @@ window.examData = {
       "subUnit": "삼각비",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\angle A=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BC}}$, $y=\\overline{\\mathrm{AC}}$라 할 때, $(x,y)$는?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\angle A=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$이다. $x=\\overline{\\mathrm{BC}}$, $y=\\overline{\\mathrm{AC}}$라 할 때, $(x,y)$는?",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 6,
@@ -227,12 +252,17 @@ window.examData = {
       "subUnit": "삼각비",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?"
+      "content": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [],
+      "conditionKeys": ["COND_RANGE"],
+      "integrationPattern": "NONE"
     },
     {
       "id": 7,
@@ -267,11 +297,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 6$, $\\overline{\\mathrm{AC}} = 8$이다. 변 $\\mathrm{AC}$ 위의 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$, $\\angle \\mathrm{CDE} = x^\\circ$라고 할 때, $\\cos x^\\circ$의 값은?<br>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 8,
@@ -305,12 +340,17 @@ window.examData = {
       "subUnit": "삼각비의 활용",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 2,
+      "difficultyBucket": 1,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】한 변의 길이가 $2\\,\\text{cm}$이고 예각이 $60^\\circ$인 합동인 마름모 6장을 겹치지 않게 붙였다. 이 도형 전체의 넓이는?"
+      "content": "【대체 문항】한 변의 길이가 $2\\,\\text{cm}$이고 예각이 $60^\\circ$인 합동인 마름모 6장을 겹치지 않게 붙였다. 이 도형 전체의 넓이는?",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 9,
@@ -345,11 +385,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": ["CC_PYTHAGOREAN","CC_ISOSCELES_TRIANGLE"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 10,
@@ -388,7 +433,12 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q10_altitude.png\" />"
+      "content": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q10_altitude.png\" />",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 11,
@@ -424,11 +474,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "은행과 병원 사이의 수평 거리는 $20\\,\\text{m}$이다. 은행의 꼭대기 $\\mathrm{A}$지점에서 병원의 꼭대기 $\\mathrm{B}$지점을 올려다본 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $\\mathrm{C}$지점을 내려다본 각의 크기가 $45^\\circ$일 때, 병원의 높이는?<br>"
+      "content": "은행과 병원 사이의 수평 거리는 $20\\,\\text{m}$이다. 은행의 꼭대기 $\\mathrm{A}$지점에서 병원의 꼭대기 $\\mathrm{B}$지점을 올려다본 각의 크기가 $60^\\circ$이고, 병원의 아랫부분 $\\mathrm{C}$지점을 내려다본 각의 크기가 $45^\\circ$일 때, 병원의 높이는?<br>",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 12,
@@ -461,12 +516,17 @@ window.examData = {
       "subUnit": "삼각비",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 일차방정식 $x - 2y + 4 = 0$의 그래프가 $x$축의 양의 방향과 이루는 각의 크기를 $a$라 할 때, $\\tan a$의 값을 구하면?<br>"
+      "content": "다음 그림과 같이 일차방정식 $x - 2y + 4 = 0$의 그래프가 $x$축의 양의 방향과 이루는 각의 크기를 $a$라 할 때, $\\tan a$의 값을 구하면?<br>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": ["CC_LINEAR_FUNCTIONS"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 13,
@@ -496,16 +556,21 @@ window.examData = {
         "피타고라스 정리"
       ],
       "wide": false,
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "subUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{BC}}=6$, $\\tan A=\\frac34$일 때, $\\overline{\\mathrm{AB}}$의 길이는?"
+      "content": "【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{BC}}=6$, $\\tan A=\\frac34$일 때, $\\overline{\\mathrm{AB}}$의 길이는?",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 14,
@@ -540,11 +605,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$의 반지름은 $13\\,\\text{cm}$이고, 현 $AB$까지의 수선의 길이는 $OM=5\\,\\text{cm}$이다. $OM\\perp AB$일 때, 현 $AB$의 길이는?"
+      "content": "【대체 문항】원 $O$의 반지름은 $13\\,\\text{cm}$이고, 현 $AB$까지의 수선의 길이는 $OM=5\\,\\text{cm}$이다. $OM\\perp AB$일 때, 현 $AB$의 길이는?",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 15,
@@ -579,11 +649,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$의 현 $AB$의 길이가 $16\\,\\text{cm}$이고, $OM\\perp AB$이며 $OM=6\\,\\text{cm}$이다. 원의 반지름 $OA$의 길이는?"
+      "content": "【대체 문항】원 $O$의 현 $AB$의 길이가 $16\\,\\text{cm}$이고, $OM\\perp AB$이며 $OM=6\\,\\text{cm}$이다. 원의 반지름 $OA$의 길이는?",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 16,
@@ -618,11 +693,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】점 $P$에서 원에 그은 두 접선의 접점을 각각 $A,B$라 하자. $PA=2x+3$, $PB=5x-6$일 때, $x$의 값은?"
+      "content": "【대체 문항】점 $P$에서 원에 그은 두 접선의 접점을 각각 $A,B$라 하자. $PA=2x+3$, $PB=5x-6$일 때, $x$의 값은?",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
     },
     {
       "id": 17,
@@ -657,11 +737,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?"
+      "content": "【대체 문항】두 원의 중심은 같고 큰 원의 현 하나가 작은 원에 접한다. 큰 원의 그 현의 길이가 $10\\,\\text{cm}$일 때, 두 원 사이의 고리 모양 영역의 넓이는?",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": ["CC_PYTHAGOREAN","CC_AREA"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 18,
@@ -696,11 +781,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】원 $O$가 삼각형 $ABC$의 내접원이며, 세 변 $AB,BC,CA$와의 접점을 각각 $D,E,F$라 하자. $AB=13\\,\\text{cm}$, $BC=14\\,\\text{cm}$, $CA=15\\,\\text{cm}$일 때, $AD$의 길이는?"
+      "content": "【대체 문항】원 $O$가 삼각형 $ABC$의 내접원이며, 세 변 $AB,BC,CA$와의 접점을 각각 $D,E,F$라 하자. $AB=13\\,\\text{cm}$, $BC=14\\,\\text{cm}$, $CA=15\\,\\text{cm}$일 때, $AD$의 길이는?",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 19,
@@ -739,7 +829,12 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】점 $P$에서 원 $O$에 그은 접선이 원과 $A$에서 만난다. $OA=5\\,\\text{cm}$, $OP=13\\,\\text{cm}$일 때, 접선 $PA$의 길이는?"
+      "content": "【대체 문항】점 $P$에서 원 $O$에 그은 접선이 원과 $A$에서 만난다. $OA=5\\,\\text{cm}$, $OP=13\\,\\text{cm}$일 때, 접선 $PA$의 길이는?",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 20,
@@ -774,11 +869,16 @@ window.examData = {
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>"
+      "content": "다음 그림과 같이 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접하고, $\\angle \\mathrm{B} = 90^\\circ$, $\\overline{\\mathrm{AB}} = 4\\,\\text{cm}$, $\\overline{\\mathrm{AC}} = 2\\sqrt13\\,\\text{cm}$, $\\overline{\\mathrm{AD}} = 3\\,\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면?<br>",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": ["CC_PYTHAGOREAN"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 21,
@@ -806,12 +906,16 @@ window.examData = {
       "subUnit": "삼각비의 활용",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br>"
+      "content": "【서답형 1】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 1-①】</b> (4점)<br>【대체 문항】삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=8\\,\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\text{cm}$, $\\angle \\mathrm{BAC}=30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이를 구하시오.<br><br><b>【수준별 1-②】</b> (5점)<br>다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8$, $\\overline{\\mathrm{AC}} = 10$이고 $\\cos B = \\frac14$일 때, $\\sin C$의 값을 구하시오.<br>",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 22,
@@ -840,12 +944,16 @@ window.examData = {
       "subUnit": "삼각비",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>"
+      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM","CC_QUADRATIC_EQUATION"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 23,
@@ -858,9 +966,9 @@ window.examData = {
       "category": "원의 성질",
       "originalCategory": null,
       "standardCourse": "중3 수학",
-      "standardUnitKey": "M3-06",
-      "standardUnit": "원의 성질",
-      "standardUnitOrder": 6,
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "standardUnitOrder": 5,
       "questionType": "서술형",
       "layoutTag": "text",
       "tags": [
@@ -870,16 +978,21 @@ window.examData = {
         "넓이"
       ],
       "wide": false,
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "subUnit": "원과 직선",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오."
+      "content": "【서답형 3】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 3-①】</b> (4점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=6\\,\\text{cm}$, $BC=8\\,\\text{cm}$이다. 원 $O$가 삼각형 $ABC$의 내접원일 때, 원 $O$의 반지름을 구하시오.<br><br><b>【수준별 3-②】</b> (5점)<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $AC=15\\,\\text{cm}$, $BC=20\\,\\text{cm}$이다. 원 $I$는 삼각형 $ABC$의 내접원이며, 변 $AB,BC,CA$와의 접점은 각각 $D,E,F$이다. 사각형 $DBEI$의 넓이를 구하시오.",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_INCIRCLE",
+      "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_AREA"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     },
     {
       "id": 24,
@@ -892,9 +1005,9 @@ window.examData = {
       "category": "원의 성질",
       "originalCategory": null,
       "standardCourse": "중3 수학",
-      "standardUnitKey": "M3-06",
-      "standardUnit": "원의 성질",
-      "standardUnitOrder": 6,
+      "standardUnitKey": "M2-05",
+      "standardUnit": "도형의 성질",
+      "standardUnitOrder": 5,
       "questionType": "서술형",
       "layoutTag": "text",
       "tags": [
@@ -904,16 +1017,21 @@ window.examData = {
         "삼각형의 높이"
       ],
       "wide": false,
-      "subUnitKey": "M3-06-CIRCLE_LINE",
-      "subUnit": "원과 직선",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "subUnit": "삼각형의 성질",
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
       "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이"
+      "content": "【서답형 4】 [서술형]<br>【대체 문항】직각삼각형 $\\mathrm{ABC}$에서 $\\angle C=90^\\circ$, $\\overline{\\mathrm{AB}}=13\\,\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\,\\text{cm}$이다. $F$는 $C$에서 $AB$에 내린 수선의 발이고, 삼각형 $ABC$의 내접원은 변 $AC,BC$에 각각 $D,E$에서 접한다. 다음을 차례로 구하시오.<br>(1) $\\overline{\\mathrm{AC}}$의 길이<br>(2) $\\overline{\\mathrm{BF}}$의 길이<br>(3) $\\overline{\\mathrm{CF}}$의 길이<br>(4) $\\overline{\\mathrm{CD}}$의 길이<br>(5) $\\overline{\\mathrm{DE}}$의 길이",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_INCIRCLE",
+      "crossConceptKeys": ["CC_PYTHAGOREAN","CC_RIGHT_TRIANGLE_SIMILARITY","CC_TRIANGLE_AREA"],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
     }
   ]
 };

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E055",
+  "author": "m3_a",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "c92b7ae89a1e42629a36447497545956d6eb41b1",
+  "targetReviewSha256": "b600f51e4b86f8435c0e8f47d3f61c4989c246c1019ce4bb9530cd1d0ca45498",
+  "target4slotSha256": "a6a193586a72e37ad397eb652e6a0402e5ec94e4d5e007bf5dfa4105a5dfecec",
+  "sampledSourcePatchSha256": "1f7b1232c3653c05727ab399923af801d9a4a941172b9abe946bcebd81464309",
+  "sampleOrdinals": [
+    9,
+    22,
+    24
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_6c73da7feb3a9eb17f0e30a1130139afe0dc64a6bf9bbadef1d3ad8eed3a57ab",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "정사면체의 명시된BC중점E와 두 정삼각형 면으로 AE=DE=2√3을 복원하고 ADE의 등변성에서 AD중점에 높이를 내려 sin값을 구한다. 본문만으로 대상이 완전히 정의되며 별도 image참조는없다. 4칸의 정사면체/중점 given, 사인 goal, 정삼각형·피타고라스·등변·수선 method와 geometric derivation TPL,두CC,SEQUENTIAL을 확인했다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_98cae8a3879b52bf82d19cffc4411d4ee67c2d3061ce80978988230cf7b25d65",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "한 UID에 나무높이 직접측정과 이등변72도에서 cos36을 유도하는 서로다른 선택대안이 있음을 확인했다. 두 대안의 given/goal/method를4칸이 모두 포함하고 singleTPL을null로보류한것이 맞다. 더 높은 난도를 임의로UID확정값에사용하는 근거가없어 원저자에 canonical UNKNOWN과대안별1/4분리증거를요청했다. UID분리 또는공식집계정책확정전 등록/자동출제는보류한다.",
+      "quotesChecked": 14,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_c2da6ff9f6d0a733f73edb7e4504f371e2b16811bfeb8095b9167f0651d38455",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "AC 피타고라스, BF 직각닮음, CF 넓이등식, 내접반지름K/반둘레, CD45도와 DE피타고라스의 다섯요청량을 원문에서 확인했다. 최종내심반지름복원이라는 Primary와 TM_CIRCLE_INCIRCLE 전역재사용 및 세CC/SEQUENTIAL,4칸의 다방법길이계산이맞다. 명시 조건이원문에완결되어별도그림을가정하지않았다.",
+      "quotesChecked": 12,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 6,
+      "type": "CONTENT_QUESTION_IMAGE_REFERENCE_MISMATCH",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 21,
+      "type": "ALTERNATIVE_SUBQUESTION_DIFFICULTY_POLICY_GAP",
+      "release": "HOLD_OFFICIAL_AGGREGATION_OR_UID_SPLIT"
+    },
+    {
+      "ordinal": 22,
+      "type": "ALTERNATIVE_SUBQUESTION_DIFFICULTY_POLICY_GAP",
+      "release": "HOLD_OFFICIAL_AGGREGATION_OR_UID_SPLIT"
+    },
+    {
+      "ordinal": 23,
+      "type": "ALTERNATIVE_SUBQUESTION_DIFFICULTY_POLICY_GAP",
+      "release": "HOLD_OFFICIAL_AGGREGATION_OR_UID_SPLIT"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "7963bfcbcb321ea6e28e3a1aa3fe86a7b5fcad0afa259353203b15e0dfb850b3"
+}
