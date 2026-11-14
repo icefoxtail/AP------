@@ -282,9 +282,9 @@
 | Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q10 | PRESENT | PRESENT | The verified native 6x7 square-root approximation table is already embedded in the candidate stem as a Markdown table; the same table supports the solution. No separate SVG asset is needed.
 | Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | NEED | NEED | A cuboid sketch would help students follow the spatial relationships used in the stem and solution. SVG/asset not created; pending later batch.
 | Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
@@ -313,9 +313,9 @@
 | Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q10 | PRESENT | PRESENT | The verified native 6x7 square-root approximation table is already embedded in the candidate stem as a Markdown table; the same table supports the solution. No separate SVG asset is needed.
 | Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | NEED | NEED | A cuboid sketch would help students follow the spatial relationships used in the stem and solution. SVG/asset not created; pending later batch.
 | Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
@@ -344,9 +344,9 @@
 | Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q10 | PRESENT | PRESENT | The verified native 6x7 square-root approximation table is already embedded in the candidate stem as a Markdown table; the same table supports the solution. No separate SVG asset is needed.
 | Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | NEED | NEED | A cuboid sketch would help students follow the spatial relationships used in the stem and solution. SVG/asset not created; pending later batch.
 | Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
@@ -375,9 +375,9 @@
 | Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q10 | PRESENT | PRESENT | The verified native 6x7 square-root approximation table is already embedded in the candidate stem as a Markdown table; the same table supports the solution. No separate SVG asset is needed.
 | Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | NEED | NEED | A cuboid sketch would help students follow the spatial relationships used in the stem and solution. SVG/asset not created; pending later batch.
 | Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
@@ -406,9 +406,9 @@
 | Q07 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q08 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q09 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q10 | NEED | NEED | A square-root approximation table is essential data for comparing lookup access; preserve its native 6x7 structure (rendered as TeX array). Asset not created; visual status remains pending.
+| Q10 | PRESENT | PRESENT | The verified native 6x7 square-root approximation table is already embedded in the candidate stem as a Markdown table; the same table supports the solution. No separate SVG asset is needed.
 | Q11 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
-| Q12 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
+| Q12 | NEED | NEED | A cuboid sketch would help students follow the spatial relationships used in the stem and solution. SVG/asset not created; pending later batch.
 | Q13 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q14 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
 | Q15 | EXEMPT | EXEMPT | Question and solution are algebraic/numeric and self-contained in text and formulas; no distinct diagram/table is required for student understanding.
