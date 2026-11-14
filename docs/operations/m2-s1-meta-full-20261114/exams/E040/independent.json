@@ -1,0 +1,668 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E040",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:37:07.679882+00:00",
+  "sourceGitBlobSha": "36de9b765b15d00af694646b891dbcbc4b48277f",
+  "reviewSha256": "bfb7349b8300c649df039bd0a6c53988a131e7bbafa78657d25b2de736d1d0a4",
+  "fourSlotSha256": "db4b6db307cbb48838153406b0ea312d64cb638fd05db1c3e1bd6a02fefb7ac7",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E040.initial.json",
+  "initialFreezeSha256": "8f294d170ec3e05b8440273babcf5427c9a61922af73fcf2a7b6ba3560ab91d7",
+  "sampleOrdinals": [
+    8,
+    17,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 8,
+      "classification": "수치가 확정된 두 식으로 공통해를 먼저 구하고 계수식에 대입하므로 RPM151 계수결정이 맞다.",
+      "binding": "실제 ACTIVE COMMON_SOLUTION PT 및 FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION TPL 정의·부모를 읽고 실제 순서와 일치함을 확인했다. source curriculum 및 scopedbinding 미확정은 유지.",
+      "crossConcept": "공통해 선계산과 대입은 candidate primary 내부로 CC를 중복하지 않는다.",
+      "condition": "두 연립방정식의 해가 같다는 조건을 해78로 실제 인용했다. 별도 부호/범위 제한 없음.",
+      "integration": "한 공통해 유형 내부의 선계산·후대입이라 NONE 수용.",
+      "difficulty": "중2/B23, 정형 공통해를 먼저 구하는 두 단계 절차이며 독립초기와 같다.",
+      "fourSlot": "주어진 두 연립식, 목표 a,b와 합, 실제 가감법 및 공통해 대입의 literal을 확인했다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "classification": "실제 거리-시간 두 직선의 교점시각이므로 RPM174와 motion-graph 후보가 맞다.",
+      "binding": "ACTIVE 운동 그래프 교점 PT/TPL의 두점독해→직선식→만나는시각 정의를 실제 읽고 원해설과 대조했다. 서술형후보와 객관식 표현 차이는 scopedbinding미확정으로 남긴다.",
+      "crossConcept": "그래프의 기울기·식 구성은 동일 운동교점 candidate 내부 단계이므로 별도 중복 CC 없음.",
+      "condition": "200m 선행출발은 실제 주어진 위치 입력이며 임의의 도메인 조건을 추가하지 않았다.",
+      "integration": "한 운동 그래프 교점문제로 NONE.",
+      "difficulty": "실제그림과 기존해설은 일치하나 alt가 다른 수치를 제시하므로 중2/low B23 조건부판정을 수용한다.",
+      "fourSlot": "거리/그래프 given, 경과시간 candidate와 같은goal 값131 parent를 확인했다. 기울기와 일차방정식은 실제 해설의 암묵 절차로IMPLIED가 맞다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "3-1은 축평행직선의 직사각형넓이,3-2는 두직선과좌표축의삼각형넓이차로 RPM176 넓이묶음이다.",
+      "binding": "ACTIVE 두직선·좌표축 넓이 PT/TPL의 실제 정의를 읽었으며 큰삼각형−작은삼각형 기존해설과 맞는다.",
+      "crossConcept": "CC_TRANSLATION 실제정의는 primary 밖에서 필요한 이동이다. 넓이계산 전에 두번째직선식을 이동으로 정하므로 포함가능.",
+      "condition": "−6 수직평행이동은 실제발문 조건으로 인용했다. 별도 수범위 조건은 없다.",
+      "integration": "직선이동식을 먼저 얻은 뒤 영역넓이를 계산하는 SEQUENTIAL이 맞다.",
+      "difficulty": "중2/low B23이며 실제음영판독이불확실한점은부채로 유지한다.",
+      "fourSlot": "원문 그래프그리기 목표와 넓이 목표를 모두 보존했다. R2는 그리기결과·절차가 기존해설에 없는 근거부채를 명시했다. 실제 삼각형차·평행이동식 literal확인."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_b4c903b40ef312b1a483e2eca0bfccf44a01c72e640c2544e1261e55f542f2be",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "전개와 소거 후 두 미지수의 일차방정식 정의를 보기별 판단"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "전개·소거 후 두 미지수 일차방정식인지 여러 식의 차수를 확인한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "전개와 소거 후 두 미지수의 일차방정식 정의를 보기별 판단; 하의 기본정의와 전개·소거를 포함한2는 B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_04cb5b1bdf37f44b48ecca09da1552dab426aaa0d47a4fc8d535afbbef2d5333",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "순서쌍을 한 일차방정식에 직접 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 순서쌍을 하나의 식에 직접 대입한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "순서쌍을 한 일차방정식에 직접 대입"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8a4669ff73df712d687d5d2d87a575cd8d74e45b24a5ed2d19ea79cfc512b479",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "연쇄등식을 두 방정식으로 분리하여 풂"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "연속 등식의 두 식을 분리한 뒤 가감법을 적용한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "연쇄등식을 두 방정식으로 분리하여 풂; 하의 가감법 기본학습과 연속등식을 분리하는2는 B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_6b58245463a1f362e55cfff23da69d8b13439cac759782a8d0b45ae7748cdae8",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 해를 각 연립방정식에 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "지정된 해를 각 연립방정식에 직접 대입해 판정한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 해를 각 연립방정식에 대입"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_7753e6cfc7b474e18c54e7631a0d90dbe0da91a9d7223d5a46b700867aadb731",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "보기의 순서쌍을 소수계수 식에 대입하고 분수식에도 확인하는 실제 해설"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기존 해설은 소수·분수식을 일반 풀이하지 않고 선택지 순서쌍을 직접 대입해 확인한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "보기의 순서쌍을 소수계수 식에 대입하고 분수식에도 확인하는 실제 해설; 중의 소수·분수표현에도 실제해설은 보기대입의 직접1이므로B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_66f1267100e0d0e6420c084fa43d52d84171143f405c38e019725f485a8835b7",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "계수비가 같은 두 직선을 직접 선별"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "무수히 많은 해를 위한 계수비 일치를 직접 비교한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "계수비가 같은 두 직선을 직접 선별"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_585be3259c062b960275f3f8f6ed5d1c2cbef633d5142bbff0f9421d66648e8c",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "승패 횟수 두 변수로 계단 이동량을 모델링"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "승패 횟수와 위치 변화 두 관계를 세우는 정형 모델링.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT",
+      "reason": "승패 횟수 두 변수로 계단 이동량을 모델링"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_2eead93ad98ce576d7cb26a231a2b3a3b1cbb2632d09b9c721b97ec053f50261",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "공통해의 수치 두 식을 먼저 풀고 매개변수 식에 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "미정계수가 없는 두 식으로 공통해를 구하고 남은 계수를 복원한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "공통해의 수치 두 식을 먼저 풀고 매개변수 식에 대입"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b1e8b87558e486c4b9425e9abec11c551dd2baff3a3b34154fd3ac961f7ffa27",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "연립방정식 해를 구한 뒤 추가 계수 조건에 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "연립방정식의 해를 구한 뒤 추가 계수식에 대입한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "연립방정식 해를 구한 뒤 추가 계수 조건에 대입"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b857d65c6e70fa83e7ae26f69ee4012a3eb51be3f1a6fcc238248751ff7cae1e",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "실제 상황의 관계식을 구성해 이차식을 제외"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯 실제 관계를 식으로 표현해 일차인지 구별한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "실제 상황의 관계식을 구성해 이차식을 제외; 하의 일차함수정의와 실제문장관계를 각각식으로옮기는2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_015e32126294c7c26716be25955b5465c1a4923d7332fd24bab546cf335245c4",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 함숫값에서 상수 결정 후 다른 함숫값 대입"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "한 함수값으로 상수를 정하고 다른 함수값을 대입한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "주어진 함숫값에서 상수 결정 후 다른 함숫값 대입; 하의 함숫값기본과 상수복원후대입2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d2cb7137d486830f6c152279de18ebe6fd6ed2f4aebec8fb9aea2e3b1ed01786",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "수직 평행이동 후 주어진 점을 대입해 계수 결정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "수직이동한 식을 만들고 점 대입으로 기울기 매개변수를 정한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "수직 평행이동 후 주어진 점을 대입해 계수 결정; 하의 수직이동기본과 이동후점대입2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b4d3d0324ba317a99063191bed21f3bed85624ccad404b65eed8880aa8677e56",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "기울기·절편·증감·평행의 그래프 성질을 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "점·절편·평행·이동 등 여러 일차함수 성질을 보기별로 구별한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "기울기·절편·증감·평행의 그래프 성질을 비교; 하의 그래프기본성질과 복수성질판정2는 인접호환. B23의 상위경계보존."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_123fc08bcf351bf4e7591635ae53854d002311f24dbed527186bb06c99994699",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "증가량 비에서 기울기를 구하고 주어진 점의 좌표를 계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "증가량 비로 기울기를 얻고 주어진 점을 대입하여 목표 계수식을 계산한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "증가량 비에서 기울기를 구하고 주어진 점의 좌표를 계산"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ff2e3c86f4b7f401238bc51e36e097110b7bff052a53e9ad45be5859ef0cb0ae",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "계수합과 곱의 부호로 두 계수 부호를 정해 그래프 고름"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두 계수의 합과 곱 부호에서 각각의 부호를 판단해 실제 그림을 선택한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "계수합과 곱의 부호로 두 계수 부호를 정해 그래프 고름"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8f6059df33625159a3fab426fdd72f17f82ba4bfb5056632a1d85c7350a39174",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "직선식의 기울기와 y절편을 계수와 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "표준형 정리 뒤 기울기와 절편을 두 계수 조건으로 대응한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT",
+      "reason": "직선식의 기울기와 y절편을 계수와 비교"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제 그림의 두 속력과 출발거리 차로 교점시각을 구함. alt의8x/40은그림·해설과충돌"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제그림의 두 직선과 한 교점방정식은 정형 활용이라 source상3 대신 중2/low 제안. alt 충돌 부채를 보존하며 독립검토를 요청한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "실제 그림의 두 속력과 출발거리 차로 교점시각을 구함. alt의8x/40은그림·해설과충돌"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ce42438bd92c96478a2779d2252edb8618fada4777fac23f1db2012ff73f9bb9",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "y축에 수직인 직선의 y좌표 상수식"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "y축에 수직인 직선의 일정한 y좌표를 직접 쓴다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT",
+      "reason": "y축에 수직인 직선의 y좌표 상수식"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_5ab21156e6dbc2a03265131a47dd14bfaded86a2d24537ff8bc3c031e8cb352b",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "두 그래프의 교점 좌표를 읽어 연립방정식 해 결정"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "실제 세 직선 중 해당 두 그래프를 선택해 교점을 읽는다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "두 그래프의 교점 좌표를 읽어 연립방정식 해 결정"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_1441e03de4002cca777bfbefde86aa2bdd077b478e290a0416bdcac610d84a7b",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "무수히 많은 교점의 계수비 일치 적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "두 식의 기울기와 절편 일치 조건으로 무수히 많은 교점의 계수 관계를 얻는다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT",
+      "reason": "무수히 많은 교점의 계수비 일치 적용"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_9f2a15d63dbcc893e43ce92cca496df233da7db740093b3eac696ed1cce91ef8",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "주어진 해를 계수 미지수 연립식으로 바꾸어 계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "수준별 직접 계수 대입과 두 단계 계수 복원을 구분하여 수행한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 해를 계수 미지수 연립식으로 바꾸어 계산"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2d811e3246f55c9380936e6dfe3586e416fba1c9186dae90adf8a18fffcf5c05",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "자연수 순서쌍 열거와 연립해의 조건으로 계수 결정의 소문항 묶음"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "자연수해 나열 부분과 두 배 관계에서 계수 복원 부분의 정형 절차를 각각 수행한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "자연수 순서쌍 열거와 연립해의 조건으로 계수 결정의 소문항 묶음"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b33a5e6831583bc0f52b6011c39172eea78f6829d9248b5fc3c5e5b22af0ae11",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "좌표평행선의 직사각형넓이와 수직이동한 두직선 사이 삼각형넓이 차. 실제음영경계불명확"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "안내된직사각형과두삼각형차의표준넓이계산이라 source상3 대신 중2/low 제안. 실제음영판독한계는별도부채로유지.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "좌표평행선의 직사각형넓이와 수직이동한 두직선 사이 삼각형넓이 차. 실제음영경계불명확"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "그래프 기울기와 절편 읽기 후 평행·사분면 조건을 계수 부등식으로 변환. 실제그림절편−2와해설−3충돌"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "기울기일치후사분면배제의한경계조건을얻는표준유형으로source상3 대신중3/low 제안. 실제그림과해설좌표의불일치는보존한다.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "그래프 기울기와 절편 읽기 후 평행·사분면 조건을 계수 부등식으로 변환. 실제그림절편−2와해설−3충돌; 저자3/독립2는 두조건 연결의 B23 인접으로 저자3을 보존한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 기본정의와 전개·소거를 포함한2는 B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 3,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 가감법 기본학습과 연속등식을 분리하는2는 B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "중의 소수·분수표현에도 실제해설은 보기대입의 직접1이므로B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 일차함수정의와 실제문장관계를 각각식으로옮기는2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 함숫값기본과 상수복원후대입2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 수직이동기본과 이동후점대입2는B12 인접호환."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "하의 그래프기본성질과 복수성질판정2는 인접호환. B23의 상위경계보존."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "Actual24 contents and solutions plus five PNGs inspected before author review. Disclosed target values recorded honestly in initial freeze.",
+    "R2 only adds actual missing graph-output evidence Q23 and parallel/coincident convention debt Q24. Source, initial snapshot and original review remain unchanged.",
+    "Q24 actual-image yintercept−2 vs existing-solution−3 conflict and Q17 alt conflict remain. No new solution/answer constructed.",
+    "RPM leaf gaps, unresolved single primary13/22/24, source curriculum and scopedbinding/resolver debt remain explicit."
+  ]
+}
