@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "m2-s1-meta-author-supplement.v1",
+  "examId": "E020",
+  "author": "worker_b",
+  "createdAt": "2026-11-14T11:32:20.414731+00:00",
+  "status": "AUTHOR_ACCEPTED_NARROW_REVIEW_AMENDMENTS",
+  "originalReviewSha256": "5af0ee08f32bb445d51577e3299833aafabb66afec48fb037e8febc7153501b7",
+  "originalFourSlotSha256": "06efa2b23438ed6da03fa0876de2f4c789c86c7a60e065e1fc96d0043b2453e8",
+  "ruleReference": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md §1.4.1 판정규칙9",
+  "evidenceAction": "Actual current Q21/Q23 stem and full existing solution reread; canonical MULTI-L4 rule read. Original author files remain immutable.",
+  "items": [
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_bc6c6c64a39ec298f047c55f9ec65751ffe7f33ef2a222427e1aeb45bbe029e7",
+      "perPartDecisions": [
+        {
+          "part": "(1)",
+          "rpmRecordId": "M2-RPM-151",
+          "goal": "a,b계수복원"
+        },
+        {
+          "part": "(2)",
+          "rpmRecordId": "M2-RPM-149",
+          "goal": "복원한원식해"
+        }
+      ],
+      "acceptedNarrowChange": {
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "reasonCode": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "singleRpmRecordId": null,
+        "dependentCrossConceptDecision": "META_ONLY_UNRESOLVED",
+        "dependentIntegrationDecision": "META_ONLY_UNRESOLVED",
+        "preservePerPartSemantics": true,
+        "preserveSourceTargetNamespace": true,
+        "suppressSinglePrimarySourcePatch": true
+      },
+      "reason": "Q21 separately requires recovered coefficients a,b (151) and the restored system solution (149). Although the second calculation uses the first output, the author has not established an order-independent unique overarching L4 that represents both mandatory outputs.",
+      "unchangedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "unchangedFourSlotLiteralEvidence": true,
+      "noExamLevelHold": true
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_85a386c0475968de8cd560ebcf573052fbe6de50f879edd10ba3bc1532243502",
+      "perPartDecisions": [
+        {
+          "part": "(1)",
+          "rpmRecordId": "M2-RPM-170",
+          "goal": "물통A직선식"
+        },
+        {
+          "part": "(2)",
+          "rpmRecordId": "M2-RPM-170",
+          "goal": "물통B직선식"
+        },
+        {
+          "part": "(3)",
+          "rpmRecordId": "M2-RPM-174",
+          "goal": "같은남은양의시각"
+        }
+      ],
+      "acceptedNarrowChange": {
+        "singlePrimaryStatus": "META_ONLY_UNRESOLVED",
+        "reasonCode": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+        "singleRpmRecordId": null,
+        "dependentCrossConceptDecision": "META_ONLY_UNRESOLVED",
+        "dependentIntegrationDecision": "META_ONLY_UNRESOLVED",
+        "preservePerPartSemantics": true,
+        "preserveSourceTargetNamespace": true,
+        "suppressSinglePrimarySourcePatch": true
+      },
+      "reason": "Q23 separately requires tank A and B line equations (170/170), then the equal-volume time (174). Selecting the last output as overarching primary was based on subpart order; no order-independent unique overarching L4 was established.",
+      "unchangedDifficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "unchangedFourSlotLiteralEvidence": true,
+      "noExamLevelHold": true
+    }
+  ]
+}
