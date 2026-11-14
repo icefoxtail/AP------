@@ -184,7 +184,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><svg viewBox=\"0 0 300 210\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"30,160 270,160 30,40\" stroke=\"#000\" fill=\"none\" stroke-width=\"1.5\"/><polyline points=\"30,140 48,140 48,160\" stroke=\"#000\" fill=\"none\" stroke-width=\"1\"/><rect x=\"30\" y=\"100\" width=\"120\" height=\"60\" stroke=\"#000\" fill=\"white\" stroke-width=\"1\" stroke-dasharray=\"4,2\"/><text x=\"2\" y=\"107\" font-size=\"11\" fill=\"#000\">30cm</text><text x=\"138\" y=\"178\" font-size=\"11\" fill=\"#000\">60cm</text><text x=\"82\" y=\"136\" font-size=\"11\" fill=\"#000\">a</text></svg>",
+    "content": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><img src=\"assets/images/25_효천고_1학기_기말_고1_유사1/q07-problem-v1.svg\" alt=\"30cm와 60cm인 직각변이 있는 직각삼각형 안의 직사각형, 세로 변의 길이는 a cm\">",
     "choices": [
       "$5$",
       "$10$",

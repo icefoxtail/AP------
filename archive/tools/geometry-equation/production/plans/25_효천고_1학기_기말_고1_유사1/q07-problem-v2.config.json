@@ -1,0 +1,278 @@
+{
+  "sourcePath": "archive/exams/similar/high/h1/1final/25_효천고_1학기_기말_고1_유사1.js",
+  "questionId": 7,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "30"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "60"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "44"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "44"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "T",
+          "R",
+          "L",
+          "Q",
+          "F"
+        ],
+        "hiddenPointNames": [
+          "O",
+          "T",
+          "R",
+          "L",
+          "Q",
+          "F"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "leg-a-lower",
+            "refs": [
+              "O",
+              "L"
+            ]
+          },
+          {
+            "id": "leg-a-upper",
+            "refs": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "id": "base-a-lower",
+            "refs": [
+              "O",
+              "F"
+            ]
+          },
+          {
+            "id": "base-a-upper",
+            "refs": [
+              "F",
+              "R"
+            ]
+          },
+          {
+            "id": "hypotenuse",
+            "refs": [
+              "T",
+              "R"
+            ]
+          },
+          {
+            "id": "rectangle-top",
+            "refs": [
+              "L",
+              "Q"
+            ]
+          },
+          {
+            "id": "rectangle-right",
+            "refs": [
+              "Q",
+              "F"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "right-at-O",
+            "refs": [
+              "T",
+              "O",
+              "R"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 540
+        },
+        "planeMarks": {
+          "pathLabels": [
+            {
+              "id": "leg30",
+              "points": [
+                "O",
+                "L",
+                "T"
+              ],
+              "label": "30",
+              "unit": "cm",
+              "value": "30",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "base60",
+              "points": [
+                "O",
+                "F",
+                "R"
+              ],
+              "label": "60",
+              "unit": "cm",
+              "value": "60",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "a-side",
+              "ownerSegment": "rectangle-right",
+              "text": "a",
+              "unit": "cm",
+              "labelAt": "MID",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "직각삼각형 안에 놓인 직사각형",
+        "sourceQuote": "세로의 길이가 $a\\text{cm}$인 직사각형",
+        "sourceConditions": [
+          "직각을 낀 두 변의 길이는 30 cm와 60 cm이고, 직사각형의 세로 길이는 a cm이다.",
+          "도형은 직사각형의 임의 위치를 보여 주는 개략도이다."
+        ],
+        "newVisualInformation": [
+          "직각삼각형 안에서 높이 a인 직사각형을 나타낸다."
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "requestedSizeClass": "full",
+        "displayScale": 0.4391059027777778,
+        "cssTargetFontPx": 12.25,
+        "fontFloorCssPx": 11,
+        "comfortCssPx": 0.25,
+        "minimumBaseFontPx": 11,
+        "maximumBaseFontPx": 40,
+        "baseFontPx": 27.9,
+        "rounding": "CEIL_TO_TENTH_BASE_PX"
+      }
+    }
+  ]
+}
