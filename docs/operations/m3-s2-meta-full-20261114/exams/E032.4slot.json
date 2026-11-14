@@ -1,0 +1,1466 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_C",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_591b7da905fb1096580e24b5e2177af6b2d91ae8345d5f3f64ce64ef7389ab56",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "아래 그림은 반지름의 길이가 $6\\rm\\,cm$인 원모양 접시 위에 길이가 $8\\rm\\,cm$인 나무 막대기의 양 끝이 가장자리 위에 있도록 놓은 모습이다. 나무 막대기의 중점과 접시의 중심 사이의 거리를 구하면? (단, 젓가락의 두께는 무시한다.) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "접시의 중심과 막대기의 중점 사이의 거리를 $d$라 하면 피타고라스 정리에 의해 $d^2+4^2=6^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다.",
+        "method": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
+      "sourceOrdinal": 2,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "⑤ AM=CN, OA=OC이고 두 삼각형은 직각삼각형이므로 RHS 합동으로 설명할 수 있어 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{CD}$에 내린 수선의 발을 각각 $M$과 $N$이라고 하자. 이때 $\\overline{AB}=\\overline{CD}$이면 $\\overline{OM}=\\overline{ON}$임을 설명한 것이다. 다음 중 옳지 않은 것을 모두 고르면? (정답2개) (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다.",
+        "method": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_05e6edfa6a0170fbcc06329f25bb82927039a99a1902afa71d8cd792aea1c3ef",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같고 $\\angle A=52^\\circ$일 때 $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같고 $\\angle A=52^\\circ$일 때 $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같으므로 $\\overline{AB}=\\overline{AC}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "따라서 $\\triangle ABC$는 이등변삼각형이고 $\\angle B=\\angle C$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle B=\\angle C=\\dfrac{180^\\circ-52^\\circ}{2}=64^\\circ$이므로 $x=64^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같이 원 $O$의 중심에서 두 현 $\\overline{AB}$와 $\\overline{AC}$에 이르는 거리가 같고 $\\angle A=52^\\circ$일 때 $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
+        "method": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_67598608037fbc106b773f2da0bfa142ca0e72bb7d95d9c998263f2f60ff23b2",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$\\overline{OA}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$이므로 직각삼각형 $OAM$에서 $AM=\\sqrt{10^2-8^2}=6\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "그러므로 $\\triangle OCD$의 넓이는 $\\dfrac12\\times12\\times8=48\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{AB}\\perp\\overline{OM}$이고 $\\overline{AB}=\\overline{CD}$이다. $\\overline{OD}=10\\rm\\,cm$, $\\overline{OM}=8\\rm\\,cm$일 때, $\\triangle OCD$의 넓이를 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다.",
+        "method": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e17d5c99a9e89d34be31bed204ed768d957141e2d5a54334009576e8dab12a7f",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 세 점 $P,Q,R$는 접점일 때, $\\triangle ABC$의 둘레의 길이를 구하면? (3점)"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 세 점 $P,Q,R$는 접점일 때, $\\triangle ABC$의 둘레의 길이를 구하면? (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 세 점 $P,Q,R$는 접점일 때, $\\triangle ABC$의 둘레의 길이를 구하면? (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "둘레는 $16+19+21=56\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 세 점 $P,Q,R$는 접점일 때, $\\triangle ABC$의 둘레의 길이를 구하면? (3점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다.",
+        "method": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d2cbc30d9662df1b4c91db360ec96239648c4658ac184c83ebe9d4cca29134f9",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점일 때, 부채꼴 $OAB$의 넓이를 구하면? (4점)"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점일 때, 부채꼴 $OAB$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점일 때, 부채꼴 $OAB$의 넓이를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "$OA\\perp PA$, $OB\\perp PB$이고 $PA=PB=6\\rm\\,cm$이다. 또한 $\\angle APB=60^\\circ$이므로 대칭에 의해 $\\angle APO=30^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "직각삼각형 $AOP$에서 $OA=PA\\tan30^\\circ=6\\times\\dfrac1{\\sqrt3}=2\\sqrt3\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "사각형 $OAPB$의 각의 합에서 $\\angle AOB=360^\\circ-90^\\circ-90^\\circ-60^\\circ=120^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "따라서 부채꼴의 넓이는 $\\dfrac{120}{360}\\pi(2\\sqrt3)^2=4\\pi\\rm\\,cm^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점일 때, 부채꼴 $OAB$의 넓이를 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다.",
+        "method": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_2d5560cffe24a01ac5500b2a0d79f3d6bb095112280885ab23e145a98af6abfc",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 정사각형 안에 반지름의 길이가 $1\\rm\\,cm$인 원 4개와 작은 원 1개가 꼭 맞게 들어 있다. 작은 원의 반지름의 길이를 구하면? (5점)"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 정사각형 안에 반지름의 길이가 $1\\rm\\,cm$인 원 4개와 작은 원 1개가 꼭 맞게 들어 있다. 작은 원의 반지름의 길이를 구하면? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림과 같이 정사각형 안에 반지름의 길이가 $1\\rm\\,cm$인 원 4개와 작은 원 1개가 꼭 맞게 들어 있다. 작은 원의 반지름의 길이를 구하면? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "[키포인트] 큰 원 네 개의 중심을 이으면 한 변이 $2\\rm\\,cm$인 정사각형이 되고, 작은 원의 중심은 그 정사각형의 중심이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "서로 이웃한 큰 원의 중심 사이의 거리는 $2\\rm\\,cm$이다. 큰 원의 중심과 가운데 점 사이의 거리는 한 변 $2$인 정사각형의 대각선의 절반이므로 $\\sqrt2\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다."
+          },
+          {
+            "term": "접함",
+            "src": "solution",
+            "quote": "작은 원의 반지름을 $r$라 하면 큰 원과 작은 원이 접하므로 중심 사이의 거리는 $1+r$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
+        "method": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3e34a906bcd2b1361b6b3dfc22a919cf4611a1a66085c75579968c39ad4b85ed",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고 $\\angle ACD=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고 $\\angle ACD=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{AC}$는 원 $O$의 지름이고 $\\angle ACD=50^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "반원",
+            "src": "solution",
+            "quote": "$AC$가 지름이므로 호 $ADC$의 크기는 $180^\\circ$이고, 따라서 호 $DC$의 크기는 $180^\\circ-100^\\circ=80^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle x=\\angle DBC$는 호 $DC$에 대한 원주각이므로 $x=40^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다.",
+        "method": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_936677bd380ed2ca24ecd556a5e559142af276bc12d4c0f3341037d20763276f",
+      "sourceOrdinal": 9,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다섯 명의 학생이 의자 한 개를 가운데에 놓고 ‘둥글게 둥글게’ 노래를 부르며 돌다가 사회자가 갑자기 호루라기를 불면 먼저 의자에 앉는 사람이 이기는 게임이다. 다음 그림과 같은 상태에 있을 때 설명한 것으로 옳은 것을 모두 고르면? (정답2개) (4점)\\n(단, 의자에서 보검이와 서준이까지의 거리는 각각 같고, 다섯명의 속력은 고려하지 않는다.)"
+          },
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "다섯 명의 학생이 의자 한 개를 가운데에 놓고 ‘둥글게 둥글게’ 노래를 부르며 돌다가 사회자가 갑자기 호루라기를 불면 먼저 의자에 앉는 사람이 이기는 게임이다. 다음 그림과 같은 상태에 있을 때 설명한 것으로 옳은 것을 모두 고르면? (정답2개) (4점)\\n(단, 의자에서 보검이와 서준이까지의 거리는 각각 같고, 다섯명의 속력은 고려하지 않는다.)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다섯 명의 학생이 의자 한 개를 가운데에 놓고 ‘둥글게 둥글게’ 노래를 부르며 돌다가 사회자가 갑자기 호루라기를 불면 먼저 의자에 앉는 사람이 이기는 게임이다. 다음 그림과 같은 상태에 있을 때 설명한 것으로 옳은 것을 모두 고르면? (정답2개) (4점)\\n(단, 의자에서 보검이와 서준이까지의 거리는 각각 같고, 다섯명의 속력은 고려하지 않는다.)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "의자를 O라 하면 중심각이 80도이므로 같은 현을 보는 원주각은 40도이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다."
+          },
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "③ 지민이의 각은 42도로 40도보다 커서 원 안쪽이므로 서준이와 같은 거리가 아니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다."
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "④ 지민이는 원 안쪽에 있어 보검이보다 의자에 가까우므로 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "다섯 명의 학생이 의자 한 개를 가운데에 놓고 ‘둥글게 둥글게’ 노래를 부르며 돌다가 사회자가 갑자기 호루라기를 불면 먼저 의자에 앉는 사람이 이기는 게임이다. 다음 그림과 같은 상태에 있을 때 설명한 것으로 옳은 것을 모두 고르면? (정답2개) (4점)\\n(단, 의자에서 보검이와 서준이까지의 거리는 각각 같고, 다섯명의 속력은 고려하지 않는다.)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다.",
+        "method": "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "의자를 중심으로 두 학생을 지나는 원의 기준 원주각40을 정하고, 같은 현을 보는40·42·38의 비교로 원 위·안·밖을 판단하여 의자까지 거리를 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e67c9f7101932ac3e5afca14c41045941187380e9ff1e05a748de39eda1a1be7",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "할선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle P=40^\\circ$, $\\angle BQD=80^\\circ$일 때, $\\angle x$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원내부에서만나는두현의각",
+            "src": "solution",
+            "quote": "두 현 $AD$, $BC$가 원 안의 점 $Q$에서 만나고 $\\angle BQD=80^\\circ$이므로 $u+v=160^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 풀면 $u=120^\\circ$, $v=40^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle x=\\angle CDA$는 호 $CA$에 대한 원주각이므로 $x=\\dfrac{40^\\circ}{2}=20^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다.",
+        "method": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_88df42bfe42ca3ea7e4f82e7fe256ccb0d4c29c35fe44b81614db1798903f203",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\wideparen{AB}=\\wideparen{BC}$일 때, $\\angle ABD$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\wideparen{AB}=\\wideparen{BC}$일 때, $\\angle ABD$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\wideparen{AB}=\\wideparen{BC}$일 때, $\\angle ABD$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "그림에서 $\\angle ADB=30^\\circ$이므로 호 $AB$의 크기는 $60^\\circ$이다. $\\wideparen{AB}=\\wideparen{BC}$이므로 호 $BC$도 $60^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "따라서 나머지 호 $AD$의 크기는 $360^\\circ-(60^\\circ+60^\\circ+134^\\circ)=106^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\wideparen{AB}=\\wideparen{BC}$일 때, $\\angle ABD$의 크기를 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다.",
+        "method": "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "동일한 두 호AB·BC를 각각60으로 정하고 주어진 다른 원주각에서 호DC를134로 얻어 전체360에서 뺀 나머지 호AD를 반으로 나눈다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+      "sourceOrdinal": 12,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "수심",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 각 꼭지점에서 대변에 수선을 각각 내리면 세 수선은 한 점 $H$에서 만나고 이를 수심이라고 한다. 이 때, 다음 중 원에 내접하는 사각형이 아닌 것을 고르면? (4점)"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 각 꼭지점에서 대변에 수선을 각각 내리면 세 수선은 한 점 $H$에서 만나고 이를 수심이라고 한다. 이 때, 다음 중 원에 내접하는 사각형이 아닌 것을 고르면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 각 꼭지점에서 대변에 수선을 각각 내리면 세 수선은 한 점 $H$에서 만나고 이를 수심이라고 한다. 이 때, 다음 중 원에 내접하는 사각형이 아닌 것을 고르면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "[키포인트] 두 맞은각의 합이 180도이면 한 원에 내접한다. 높이의 발에서 생기는 직각을 이용한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다."
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "① AFHE: 두 맞은각이 각각 90도이므로 내접한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다.",
+        "method": "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "수심과 수선의 발이 만드는 직각을 각 사각형의 맞은각으로 대응시켜 합이180이 되는지 확인한다. FDCE는 필요한 맞은 직각 쌍이 형성되지 않는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_8d73433bf2f68582efc50f3aae348dc967b55bd54606b3dc4b09019348b3ce98",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $BE$는 원의 접선이고, 점 $B$는 접점이다. $\\angle DAB=105^\\circ$, $\\angle DBC=40^\\circ$일 때, $\\angle CBE$의 크기를 구하면? (4점)"
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $BE$는 원의 접선이고, 점 $B$는 접점이다. $\\angle DAB=105^\\circ$, $\\angle DBC=40^\\circ$일 때, $\\angle CBE$의 크기를 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $BE$는 원의 접선이고, 점 $B$는 접점이다. $\\angle DAB=105^\\circ$, $\\angle DBC=40^\\circ$일 때, $\\angle CBE$의 크기를 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "사각형 $ABCD$가 원에 내접하므로 $\\angle DCB=180^\\circ-105^\\circ=75^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\triangle DBC$에서 $\\angle DBC=40^\\circ$이므로 $\\angle BDC=180^\\circ-75^\\circ-40^\\circ=65^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 $BC$가 이루는 각 $\\angle CBE$는 현 $BC$에 대한 원주각 $\\angle BDC$와 같으므로 $65^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림에서 직선 $BE$는 원의 접선이고, 점 $B$는 접점이다. $\\angle DAB=105^\\circ$, $\\angle DBC=40^\\circ$일 때, $\\angle CBE$의 크기를 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다.",
+        "method": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7859ec53bd889fdea8d35f22e7323df9bd1b658aa0d8c94fadad7249ffca57ad",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "그림과 같이 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle BOC=60^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? (4점)"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "그림과 같이 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle BOC=60^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "따라서 $2(x+y)=360^\\circ+60^\\circ=420^\\circ$이다."
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "그림과 같이 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle BOC=60^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$2x$는 점 $A$를 포함하지 않는 호 $BE$, 즉 호 $BC+CD+DE$의 크기이고, $2y$는 점 $D$를 포함하지 않는 호 $CE$, 즉 호 $CB+BA+AE$의 크기이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "따라서 $2(x+y)=360^\\circ+60^\\circ=420^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "그림과 같이 오각형 $ABCDE$는 원 $O$에 내접하고 $\\angle BOC=60^\\circ$일 때, $\\angle x+\\angle y$의 값을 구하면? (4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다.",
+        "method": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3da7f339456d6832d4bea5ad5754b563f936d5bffc2debc3f3e88bac47d2bec7",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle x$의 크기를 구하면? (4점)\\n(단, 직선 $AT$는 원 $O$의 접선이다.)"
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "직선 $AB$가 중심 $O$를 지나므로 원과 만나는 가까운 점을 $C$라 하면 $CB$는 지름이다. 따라서 $\\angle CTB=90^\\circ$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle x$의 크기를 구하면? (4점)\\n(단, 직선 $AT$는 원 $O$의 접선이다.)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "직선 $AB$가 중심 $O$를 지나므로 원과 만나는 가까운 점을 $C$라 하면 $CB$는 지름이다. 따라서 $\\angle CTB=90^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "따라서 $\\angle ATC=110^\\circ-90^\\circ=20^\\circ$이다. 접선과 현의 성질에 의해 $\\angle CBT=20^\\circ$이고, $A,C,B$는 한 직선 위이므로 $\\angle ABT=20^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\triangle ABT$에서 $x=180^\\circ-110^\\circ-20^\\circ=50^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서 $\\angle x$의 크기를 구하면? (4점)\\n(단, 직선 $AT$는 원 $O$의 접선이다.)"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다.",
+        "method": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ac46f1ab88c21417faaa3afafbd6775acee63ed186e6faa6101677d8e5260e8b",
+      "sourceOrdinal": 16,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "[서술형1]\\n(1) 다음 순서대로 원에 그림을 그리시오. (3점)\\n① 중심이 $O$인 원에 지름이 아닌 현 $AB$를 그립니다.\\n② 중심 $O$에서 현 $AB$에 내린 수선을 그리고 수선의 발을 $M$이라고 합니다.\\n③ 두 반지름 $OA$, $OB$를 그립니다."
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "[서술형1]\\n(1) 다음 순서대로 원에 그림을 그리시오. (3점)\\n① 중심이 $O$인 원에 지름이 아닌 현 $AB$를 그립니다.\\n② 중심 $O$에서 현 $AB$에 내린 수선을 그리고 수선의 발을 $M$이라고 합니다.\\n③ 두 반지름 $OA$, $OB$를 그립니다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "작도",
+            "src": "stem",
+            "quote": "[서술형1]\\n(1) 다음 순서대로 원에 그림을 그리시오. (3점)\\n① 중심이 $O$인 원에 지름이 아닌 현 $AB$를 그립니다.\\n② 중심 $O$에서 현 $AB$에 내린 수선을 그리고 수선의 발을 $M$이라고 합니다.\\n③ 두 반지름 $OA$, $OB$를 그립니다."
+          },
+          {
+            "term": "증명",
+            "src": "solution",
+            "quote": "따라서 두 직각삼각형은 RHS 합동이므로 대응변의 길이가 같아 $AM=BM$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "따라서 두 직각삼각형은 RHS 합동이므로 대응변의 길이가 같아 $AM=BM$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다."
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "따라서 두 직각삼각형은 RHS 합동이므로 대응변의 길이가 같아 $AM=BM$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "[서술형1]\\n(1) 다음 순서대로 원에 그림을 그리시오. (3점)\\n① 중심이 $O$인 원에 지름이 아닌 현 $AB$를 그립니다.\\n② 중심 $O$에서 현 $AB$에 내린 수선을 그리고 수선의 발을 $M$이라고 합니다.\\n③ 두 반지름 $OA$, $OB$를 그립니다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다.",
+        "method": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_5bb62b9f0239c580b74b94a61b9d75d9c0cc8672478d082cd49af9c6bf1aadd3",
+      "sourceOrdinal": 17,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "[서술형2] 다음과 같은 원의 중심을 찾으려고 한다. 두 개의 현을 이용하여 원의 중심을 찾는 방법을 서술하시오. (4점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "[서술형2] 다음과 같은 원의 중심을 찾으려고 한다. 두 개의 현을 이용하여 원의 중심을 찾는 방법을 서술하시오. (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "[서술형2] 다음과 같은 원의 중심을 찾으려고 한다. 두 개의 현을 이용하여 원의 중심을 찾는 방법을 서술하시오. (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "각 현의 수직이등분선을 각각 그린다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다."
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 수직이등분선의 교점은 두 현의 양 끝점에서 같은 거리에 있으므로 원의 중심과 일치한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다."
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "두 수직이등분선의 교점은 두 현의 양 끝점에서 같은 거리에 있으므로 원의 중심과 일치한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다.",
+        "method": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4cc23117a4c07a00f19a570d5e20ff96f7ba309cce759e05631547d20e5d6f6b",
+      "sourceOrdinal": 18,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다."
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 $x\\rm\\,cm$라 하면 현에서 원의 아래쪽 끝까지의 길이가 $2\\rm\\,cm$이므로 중심에서 현까지의 거리는 $(x-2)\\rm\\,cm$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "현의 절반 길이는 그림에서 $4\\rm\\,cm$이다. 따라서 직각삼각형에서 $x^2=(x-2)^2+4^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "정리하면 $x^2=x^2-4x+4+16$이므로 $4x=20$, 따라서 $x=5$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다.",
+        "method": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794",
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "[서술형4] 다음 사각형이 ①원에 내접하는지 판단하고 ②그 이유를 설명하시오. (3점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "[서술형4] 다음 사각형이 ①원에 내접하는지 판단하고 ②그 이유를 설명하시오. (3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "② 이유: 오른쪽 아래 120도는 외각이므로 그 내각은 60도이다. 맞은편 110도와의 합이 170도로 180도가 아니므로 원에 내접하지 않는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다."
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "[키포인트] 원에 내접하는 사각형의 맞은각의 합은 180도이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다.",
+        "method": "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "외각120을 내각60으로 먼저 바꾸고 맞은편110과의 합170을 내접사각형의 필요충분조건180과 비교해 부정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0a194189dbc9b3a75044897909418f355a1bd4c0abddd39e56398e5c35cc3dd1",
+      "sourceOrdinal": 20,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "[서술형5] 원 $O$위의 점 $A$를 지나는 접선 $AT$와 현 $AB$가 이루는 각인 $\\angle BAT$가 둔각인 경우에 $\\angle BAT=\\angle BCA$임을 설명하는 과정이다."
+          },
+          {
+            "term": "둔각",
+            "src": "stem",
+            "quote": "[서술형5] 원 $O$위의 점 $A$를 지나는 접선 $AT$와 현 $AB$가 이루는 각인 $\\angle BAT$가 둔각인 경우에 $\\angle BAT=\\angle BCA$임을 설명하는 과정이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "solution",
+            "quote": "따라서 빈칸은 차례대로 $90$, $90$, $90$, $BCD$이고 $\\angle BAT=\\angle BCA$이다."
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "stem",
+            "quote": "[서술형5] 원 $O$위의 점 $A$를 지나는 접선 $AT$와 현 $AB$가 이루는 각인 $\\angle BAT$가 둔각인 경우에 $\\angle BAT=\\angle BCA$임을 설명하는 과정이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "(1) $A$를 지나는 지름 $AD$를 그리고 $C$와 $D$를 잇는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "또 $\\angle BAD$와 $\\angle BCD$는 같은 호 $BD$에 대한 원주각이므로 서로 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "(2) $AD$가 지름이므로 $\\angle DCA=90^\\circ$이고, 접선 $AT$는 반지름 $OA$와 수직이므로 $\\angle DAT=90^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "둔각",
+            "src": "stem",
+            "quote": "[서술형5] 원 $O$위의 점 $A$를 지나는 접선 $AT$와 현 $AB$가 이루는 각인 $\\angle BAT$가 둔각인 경우에 $\\angle BAT=\\angle BCA$임을 설명하는 과정이다."
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "[서술형5] 원 $O$위의 점 $A$를 지나는 접선 $AT$와 현 $AB$가 이루는 각인 $\\angle BAT$가 둔각인 경우에 $\\angle BAT=\\angle BCA$임을 설명하는 과정이다."
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다.",
+        "method": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_fd24ec3d7ff3ff05d22f2e730fff0473aaccfbfe1a0340aa45b7fd58a1626922",
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "[서술형6] 다음은 학생 10명의 제기차기 횟수를 조사하여 나타낸 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다."
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다."
+          },
+          {
+            "term": "대푯값",
+            "src": "solution",
+            "quote": "② 대표값: 78 때문에 평균은 지나치게 크고 최빈값은 네 개이다. 중앙값 8은 극단값의 영향을 거의 받지 않아 가장 적절하다."
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다."
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "① 평균·중앙값·최빈값: 합은 150이므로 평균은 15이다. 정렬하면 5,5,7,7,8,8,10,11,11,78이므로 중앙값은 8, 최빈값은 5,7,8,11이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다."
+          },
+          {
+            "term": "이상치",
+            "src": "solution",
+            "quote": "② 대표값: 78 때문에 평균은 지나치게 크고 최빈값은 네 개이다. 중앙값 8은 극단값의 영향을 거의 받지 않아 가장 적절하다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다.",
+        "method": "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "한 자료의 평균·중앙값·최빈값을 계산한 뒤 극단값78이 평균을 키우고 최빈값이 여러 개라는 점을 비교하여 중앙값을 대표값으로 선택한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ee1f13e625dbbceaa53719dcc0ff1dc4de65323d3e314c0a5c300db4623a4f80",
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "[서술형7] 다음은 어느 버스 정류장을 지나는 5개의 버스 노선에 대하여 각 배차 간격을 조사하여 나타낸 것이다. 배차 간격의 분산과 표준편차를 구하시오. (8점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "[서술형7] 다음은 어느 버스 정류장을 지나는 5개의 버스 노선에 대하여 각 배차 간격을 조사하여 나타낸 것이다. 배차 간격의 분산과 표준편차를 구하시오. (8점)"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "[서술형7] 다음은 어느 버스 정류장을 지나는 5개의 버스 노선에 대하여 각 배차 간격을 조사하여 나타낸 것이다. 배차 간격의 분산과 표준편차를 구하시오. (8점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균은 $(6+8+7+10+4)\\div5=35\\div5=7$분이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다."
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "평균과의 편차는 $-1,1,0,3,-3$이고, 그 제곱은 $1,1,0,9,9$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "따라서 분산은 $(1+1+0+9+9)\\div5=4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다."
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 분산의 양의 제곱근이므로 $\\sqrt4=2$분이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다.",
+        "method": "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "완전한 다섯 원자료의 평균7을 구하고 각 편차의 제곱을 평균내어 분산4, 그 제곱근으로 표준편차2를 직접 계산한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [
+    {
+      "en": [
+        "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+      "term": "현의수직이등분성질",
+      "usedIn": [
+        1,
+        2,
+        4,
+        18
+      ]
+    },
+    {
+      "en": [
+        "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "한 원에서 같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 거리를 옮기는 단계.",
+      "term": "같은현의중심거리",
+      "usedIn": [
+        4
+      ]
+    },
+    {
+      "term": "원밖두할선이이루는각",
+      "en": "ANGLE_OF_TWO_SECANTS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 밖 한 점에서 그은 두 할선의 각은 먼 호와 가까운 호의 차의 절반이다.",
+      "usedIn": [
+        10
+      ]
+    },
+    {
+      "term": "원내부에서만나는두현의각",
+      "en": "ANGLE_OF_INTERSECTING_CHORDS",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 내부에서 교차하는 두 현의 각은 대응하는 두 호 크기 합의 절반이다.",
+      "usedIn": [
+        10
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 22,
+    "quotesChecked": 146,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}

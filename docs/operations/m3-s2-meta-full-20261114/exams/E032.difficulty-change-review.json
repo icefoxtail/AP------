@@ -1,0 +1,519 @@
+{
+  "schemaVersion": "difficulty-change-review-v1",
+  "examId": "E032",
+  "author": "review_c",
+  "status": "ROOT_ADJUDICATION_PENDING",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 미완성 증명의 주어진 대응변과 결론 사용 순서를 점검하는 정형 합동 판별이다. 새로운 보조선이나 숨은 경우 분기는 없다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "복수 명제를 현의 이등분과 RHS 합동 관계에 각각 대조해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "AM=CN과 OA=OC, 두 직각을 사용해 두 삼각형을 비교하여 OM=ON을 확인한다.",
+        "primaryConcept": "같은 현과 중심거리의 관계",
+        "primaryConceptReason": "같은 현의 길이와 중심에서 현에 내린 수선의 관계를 이용해 OM=ON을 검증한다.",
+        "rejectedAlternativeConcepts": [
+          "현의 수직이등분선과 중심: 수직성 자체보다 같은 현과 중심거리의 결론이 핵심이다."
+        ],
+        "difficultyReason": "복수 명제를 현의 이등분과 RHS 합동 관계에 각각 대조해야 한다.",
+        "finalMotherAdjudication": "A/B의 세부 L4가 달랐다. 결론 OM=ON을 결정하는 중심거리-현 길이 관계를 확정했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 미완성 증명의 주어진 대응변과 결론 사용 순서를 점검하는 정형 합동 판별이다. 새로운 보조선이나 숨은 경우 분기는 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_67598608037fbc106b773f2da0bfa142ca0e72bb7d95d9c998263f2f60ff23b2",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 현의 길이와 중심거리 보존을 차례로 적용하는 정형 계산이며 별도 전략 선택 없이 밑변·높이가 정해진다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "한 현에서 얻은 길이를 같은 현으로 전달하고 넓이로 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "AM=6에서 AB=12, 같은 현의 중심거리 OM=8을 사용해 1/2·12·8을 계산한다.",
+        "primaryConcept": "같은 현의 중심거리와 넓이",
+        "primaryConceptReason": "한 현의 반과 반지름으로 길이를 구하고 같은 현의 중심거리를 옮겨 삼각형 넓이를 계산한다.",
+        "rejectedAlternativeConcepts": [
+          "중심에서 현에 내린 수선: 수선은 현의 반을 얻는 보조 관계다."
+        ],
+        "difficultyReason": "한 현에서 얻은 길이를 같은 현으로 전달하고 넓이로 결합한다.",
+        "finalMotherAdjudication": "A/B path는 세부 표현만 달랐고 중심거리-현 관계로 확정했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 현의 길이와 중심거리 보존을 차례로 적용하는 정형 계산이며 별도 전략 선택 없이 밑변·높이가 정해진다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_e17d5c99a9e89d34be31bed204ed768d957141e2d5a54334009576e8dab12a7f",
+      "level": "하",
+      "difficultyBucket": 1,
+      "reason": "하 유지·1: 표시된 접선 조각을 등접선 성질로 그대로 복사해 더한다. 산술 합의 반복은 추가 추론을 만들지 않는다.",
+      "boundary": "B12",
+      "previousOperationalBucket": 2,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "동일 정리를 세 꼭짓점에 반복 적용하고 길이를 합산한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "AP=AR, BP=BQ, CR=CQ로 AB=16, BC=19, CA=21을 만든다.",
+        "primaryConcept": "한 점에서 그은 두 접선",
+        "primaryConceptReason": "삼각형 각 꼭짓점에서 원에 그은 두 접선 길이가 같음을 이용해 세 변과 둘레를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "접선 조건으로 길이 구하기: 최종 둘레보다 동일 외부점 접선 정리가 결정 원리다."
+        ],
+        "difficultyReason": "동일 정리를 세 꼭짓점에 반복 적용하고 길이를 합산한다.",
+        "finalMotherAdjudication": "A/B의 L4는 일치했다. B의 직접 적용 난도를 채택했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "하 유지·1: 표시된 접선 조각을 등접선 성질로 그대로 복사해 더한다. 산술 합의 반복은 추가 추론을 만들지 않는다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_2d5560cffe24a01ac5500b2a0d79f3d6bb095112280885ab23e145a98af6abfc",
+      "level": "상",
+      "difficultyBucket": 3,
+      "reason": "상 유지·3: 중심을 잇는 정사각형을 보조 도형으로 선택하고 외접 중심거리와 대각선 정보를 연결하는 표준 모델링이다.",
+      "boundary": "B34",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": false,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "reasonBefore": "보조 정사각형 중심을 구성한 뒤 두 원의 접점 거리 관계를 연결한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "큰 원 중심과 작은 원 중심 사이 거리 √2와 1+r=√2를 연결해 r=√2−1을 구한다.",
+        "primaryConcept": "두 원의 외접 접점과 중심거리",
+        "primaryConceptReason": "큰 원 중심 네 개의 정사각형 대각선으로 중심거리를 구하고 두 원이 접한다는 관계 1+r=√2를 사용한다.",
+        "rejectedAlternativeConcepts": [
+          "접선 조건으로 길이 구하기: 이 문항은 접선이 아니라 두 원의 외접 접점 관계다.",
+          "피타고라스 결합: 대각선은 보조 계산이고 두 원의 접점 조건이 핵심이다."
+        ],
+        "difficultyReason": "보조 정사각형 중심을 구성한 뒤 두 원의 접점 거리 관계를 연결한다.",
+        "finalMotherAdjudication": "B의 M3-05 fallback과 A의 M3-06 fallback 모두 거부했다. 두 원의 접점 유형은 현재 canonical gap이다. Parent path schema-normalized from frozen A/B evidence; no L4 or difficulty change. Explicit GAP provenance wrapper schema-normalized.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "REUSE_PRIOR_STRUCTURE_AND_BUCKET",
+        "basis": "상 유지·3: 중심을 잇는 정사각형을 보조 도형으로 선택하고 외접 중심거리와 대각선 정보를 연결하는 표준 모델링이다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_936677bd380ed2ca24ecd556a5e559142af276bc12d4c0f3341037d20763276f",
+      "level": "상",
+      "difficultyBucket": 3,
+      "reason": "상 유지·3: 원을 기준 집합으로 세운 뒤 원주각의 등호·대소를 반지름과의 거리 관계로 해석해야 한다. 복잡한 경우 분기나 비정형 구성은 없다.",
+      "boundary": "B34",
+      "previousOperationalBucket": 4,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "reasonBefore": "기준 원을 설정하고 각도 비교로 원 위·내부·외부를 구분해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "BS를 보는 원주각 40°와 각 학생의 40°·42°·38°를 비교한다.",
+        "primaryConcept": "네 점이 한 원 위에 있을 조건",
+        "primaryConceptReason": "같은 현을 보는 기준각과 각 학생의 각을 비교해 원 위·안·밖의 위치를 판단한다.",
+        "rejectedAlternativeConcepts": [
+          "중심거리와 현의 길이: 거리 계산이 아니라 같은 원 위 여부와 안팎 판정이다."
+        ],
+        "difficultyReason": "기준 원을 설정하고 각도 비교로 원 위·내부·외부를 구분해야 한다.",
+        "finalMotherAdjudication": "A/B 모두 circle reasoning을 확인했지만 L4가 달랐다. 동일 원 위 여부를 직접 묻는 조건 path를 채택했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "상 유지·3: 원을 기준 집합으로 세운 뒤 원주각의 등호·대소를 반지름과의 거리 관계로 해석해야 한다. 복잡한 경우 분기나 비정형 구성은 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_e67c9f7101932ac3e5afca14c41045941187380e9ff1e05a748de39eda1a1be7",
+      "level": "상",
+      "difficultyBucket": 3,
+      "reason": "상 유지·3: 호의 합·차 두 관계를 같은 미지수로 놓는 표준 연립 모델이며 추가 도형 구성이나 숨은 해 선택이 없다.",
+      "boundary": "B34",
+      "previousOperationalBucket": 4,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "reasonBefore": "호의 차·합을 별도로 모델링하고 마지막에 원주각으로 환산한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "u−v=80°와 u+v=160°를 풀어 v=40°, x=20°를 구한다.",
+        "primaryConcept": "외부 할선·내부 교차현의 복합 각 추론",
+        "primaryConceptReason": "외부 할선의 호 차와 내부 교차현의 호 합을 각각 식으로 세워 x를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "중심각과 원주각: 단일 호-각 변환이 아니라 외부·내부 관계를 함께 조정한다."
+        ],
+        "difficultyReason": "호의 차·합을 별도로 모델링하고 마지막에 원주각으로 환산한다.",
+        "finalMotherAdjudication": "A/B의 path와 난도는 일치했다. foundation 플래그가 붙은 A 기록은 canonical composite가 있으므로 해제했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "상 유지·3: 호의 합·차 두 관계를 같은 미지수로 놓는 표준 연립 모델이며 추가 도형 구성이나 숨은 해 선택이 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_88df42bfe42ca3ea7e4f82e7fe256ccb0d4c29c35fe44b81614db1798903f203",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 원주각과 호의 배수 대응을 반복하고 전체 호에서 나머지를 빼는 정형 절차다. 반복 횟수 때문에3으로 올리지 않는다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "여러 호를 관리해 원주각을 계산하는 중간 난도이나 source contradiction으로 production hold다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "해설의 67°를 사용하면 호 AD=106°이고 ∠ABD=53°가 된다.",
+        "primaryConcept": "같은 호에 대한 원주각",
+        "primaryConceptReason": "같은 호의 원주각과 호의 동일 조건으로 마지막 호를 구해 ∠ABD를 결정한다.",
+        "rejectedAlternativeConcepts": [
+          "복합 각 추론: 의도된 수학 유형은 같은 호 원주각이지만 source evidence가 충돌한다."
+        ],
+        "difficultyReason": "여러 호를 관리해 원주각을 계산하는 중간 난도이나 source contradiction으로 production hold다.",
+        "finalMotherAdjudication": "B의 실제 시각 확인과 source defect를 채택했다. semantic intent는 기록하되 production status는 CONFLICT_HOLD다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 원주각과 호의 배수 대응을 반복하고 전체 호에서 나머지를 빼는 정형 절차다. 반복 횟수 때문에3으로 올리지 않는다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+      "level": "상",
+      "difficultyBucket": 2,
+      "reason": "상 유지·2: 그림의 수선 발을 추적해 동일한 내접 조건을 각 후보에 적용한다. 후보가 여럿이라는 사실만으로 사고 단계를 높이지 않는다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "reasonBefore": "그림의 여러 직각을 각 사각형의 맞은각 조건에 대조한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "AFHE·FBCE·EHDC·EABD는 두 직각으로 내접하고 FDCE는 조건을 만족하지 않는다.",
+        "primaryConcept": "네 점이 한 원 위에 있을 조건",
+        "primaryConceptReason": "수심에서 생긴 직각들의 맞은각 합 180° 여부로 각 사각형의 원주성을 판정한다.",
+        "rejectedAlternativeConcepts": [
+          "내접사각형의 각: 각을 계산하는 것이 아니라 내접 가능 조건을 판정한다."
+        ],
+        "difficultyReason": "그림의 여러 직각을 각 사각형의 맞은각 조건에 대조한다.",
+        "finalMotherAdjudication": "A/B의 path와 난도는 일치했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "상 유지·2: 그림의 수선 발을 추적해 동일한 내접 조건을 각 후보에 적용한다. 후보가 여럿이라는 사실만으로 사고 단계를 높이지 않는다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_8d73433bf2f68582efc50f3aae348dc967b55bd54606b3dc4b09019348b3ce98",
+      "level": "중",
+      "difficultyBucket": 3,
+      "reason": "중 유지·3: 사각형→삼각형→접선·현각으로 목표각을 옮기는 세 관계 연결을 선택해야 한다. 원래4를 요구하는 비정형 조건 결합은 없다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 4,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "내접사각형 각, 삼각형 내각, 접선-현 정리를 순차 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "∠DCB=75°, ∠BDC=65°를 얻고 접선-현 정리로 ∠CBE=65°를 결정한다.",
+        "primaryConcept": "접선과 현이 이루는 각",
+        "primaryConceptReason": "내접사각형의 각으로 ∠BDC를 먼저 구한 뒤 접선과 현이 이루는 각 정리로 ∠CBE를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "내접사각형의 각: 중간 계산이며 최종 answer를 결정하는 정리는 접선-현이다."
+        ],
+        "difficultyReason": "내접사각형 각, 삼각형 내각, 접선-현 정리를 순차 결합한다.",
+        "finalMotherAdjudication": "A/B는 모두 접선-현 path를 제시했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·3: 사각형→삼각형→접선·현각으로 목표각을 옮기는 세 관계 연결을 선택해야 한다. 원래4를 요구하는 비정형 조건 결합은 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_7859ec53bd889fdea8d35f22e7323df9bd1b658aa0d8c94fadad7249ffca57ad",
+      "level": "상",
+      "difficultyBucket": 3,
+      "reason": "상 유지·3: x와y를 따로 구하는 대신 대응호의 합을 선택하는 전략이 필요하지만 한 번의 중복 호 계산으로 끝난다.",
+      "boundary": "B34",
+      "previousOperationalBucket": 4,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "reasonBefore": "두 원주각의 대응 호를 중복 없이 구조화해 식으로 합산해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "2(x+y)=360°+60°에서 x+y=210°를 계산한다.",
+        "primaryConcept": "오각형의 복합 원주각 추론",
+        "primaryConceptReason": "두 원주각이 보는 호를 합하면 원 전체에 중심각으로 주어진 호가 한 번 더 더해진다는 구조를 이용한다.",
+        "rejectedAlternativeConcepts": [
+          "중심각과 원주각: 단일 변환보다 오각형 호의 중복 합산이 결정적이다."
+        ],
+        "difficultyReason": "두 원주각의 대응 호를 중복 없이 구조화해 식으로 합산해야 한다.",
+        "finalMotherAdjudication": "A/B의 path와 난도는 일치했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "상 유지·3: x와y를 따로 구하는 대신 대응호의 합을 선택하는 전략이 필요하지만 한 번의 중복 호 계산으로 끝난다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_3da7f339456d6832d4bea5ad5754b563f936d5bffc2debc3f3e88bac47d2bec7",
+      "level": "중",
+      "difficultyBucket": 3,
+      "reason": "중 유지·3: 지름·접선 방향·접현각의 여러 위치를 읽어 한 삼각형의 두 각으로 옮긴다. 표준 관계 연쇄로4의 비정형 복합 추론까지는 없다.",
+      "boundary": "B34",
+      "previousOperationalBucket": 4,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "지름의 반원 조건과 접선-현 정리를 삼각형 각 계산에 결합한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "CB가 지름이어서 90°를 만들고 접선-현 관계로 ∠ABT=20°, x=50°를 얻는다.",
+        "primaryConcept": "접선과 현이 이루는 각",
+        "primaryConceptReason": "접선과 현의 각 정리, 지름에 대한 원주각, 삼각형 내각 합을 결합해 x를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "접선 조건으로 각 구하기: 접선 영역의 표현보다 원주각 활용에서 접선-현 정리가 핵심이다."
+        ],
+        "difficultyReason": "지름의 반원 조건과 접선-현 정리를 삼각형 각 계산에 결합한다.",
+        "finalMotherAdjudication": "A/B가 서로 다른 L2를 제시했다. 실제 결정 정리가 접선-현이므로 원주각 활용 path를 채택했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·3: 지름·접선 방향·접현각의 여러 위치를 읽어 한 삼각형의 두 각으로 옮긴다. 표준 관계 연쇄로4의 비정형 복합 추론까지는 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_ac46f1ab88c21417faaa3afafbd6775acee63ed186e6faa6101677d8e5260e8b",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 안내된 작도와 주어진 증명 빈칸에서 두 변의 대응을 확인한다. 서술·작도 형식 자체는 난도를 높이지 않는다.",
+      "boundary": "B12",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "작도 순서와 RHS 합동을 함께 사용해 성질을 증명한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "OM⊥AB, OA=OB, OM 공통으로 △OAM≡△OBM을 세워 AM=BM을 얻는다.",
+        "primaryConcept": "현의 수직이등분선과 중심",
+        "primaryConceptReason": "중심에서 현에 내린 수선을 그리고 두 반지름과의 RHS 합동으로 현의 중점을 확인한다.",
+        "rejectedAlternativeConcepts": [
+          "중심에서 현에 내린 수선: 수선은 작도 조건이고 수직이등분선과 중심 관계가 최종 유형이다."
+        ],
+        "difficultyReason": "작도 순서와 RHS 합동을 함께 사용해 성질을 증명한다.",
+        "finalMotherAdjudication": "A/B가 중심-현 영역에서 합의했으며 proof의 결론인 수직이등분선과 중심을 채택했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 안내된 작도와 주어진 증명 빈칸에서 두 변의 대응을 확인한다. 서술·작도 형식 자체는 난도를 높이지 않는다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_5bb62b9f0239c580b74b94a61b9d75d9c0cc8672478d082cd49af9c6bf1aadd3",
+      "level": "하",
+      "difficultyBucket": 1,
+      "reason": "하 유지·1: 현의 수직이등분선과 중심의 성질을 주어진 두 현에 바로 적용하는 작도 설명이다.",
+      "boundary": "B12",
+      "previousOperationalBucket": 2,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "두 수직이등분선을 작도하고 교점의 등거리 성질을 적용한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "두 현의 수직이등분선을 그려 그 교점을 원의 중심으로 정한다.",
+        "primaryConcept": "두 현의 수직이등분선과 원의 중심",
+        "primaryConceptReason": "서로 다른 두 현의 수직이등분선의 교점이 양 끝점에서 같은 거리를 갖는 원의 중심임을 이용한다.",
+        "rejectedAlternativeConcepts": [
+          "중심에서 현에 내린 수선: 한 현의 수선이 아니라 두 수직이등분선의 교점이 핵심이다."
+        ],
+        "difficultyReason": "두 수직이등분선을 작도하고 교점의 등거리 성질을 적용한다.",
+        "finalMotherAdjudication": "A/B의 path와 난도는 일치했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "하 유지·1: 현의 수직이등분선과 중심의 성질을 주어진 두 현에 바로 적용하는 작도 설명이다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_4cc23117a4c07a00f19a570d5e20ff96f7ba309cce759e05631547d20e5d6f6b",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 활꼴 높이를 중심거리x−2로 바꾸는 표준 전처리 뒤 피타고라스 관계를 적용한다. 정리 후 일차식이며 별도 근 선택이 없다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "미지수가 양변에 있는 중심거리 식을 세우고 정리해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "x²=(x−2)²+4²에서 x=5를 계산한다.",
+        "primaryConcept": "중심거리와 현의 길이",
+        "primaryConceptReason": "현의 절반과 중심에서 현까지의 거리 x−2로 직각삼각형을 만들어 반지름 x를 푼다.",
+        "rejectedAlternativeConcepts": [
+          "중심에서 현에 내린 수선: 수선은 구성 조건이고 미지 반지름과 중심거리의 관계가 핵심이다."
+        ],
+        "difficultyReason": "미지수가 양변에 있는 중심거리 식을 세우고 정리해야 한다.",
+        "finalMotherAdjudication": "A/B가 중심-현 영역에 합의했고, 목표가 반지름 계산이므로 중심거리와 현의 길이를 확정했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 활꼴 높이를 중심거리x−2로 바꾸는 표준 전처리 뒤 피타고라스 관계를 적용한다. 정리 후 일차식이며 별도 근 선택이 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794",
+      "level": "하",
+      "difficultyBucket": 2,
+      "reason": "하 유지·2: 주어진 각이 외각임을 해석하는 한 번 전처리 뒤 내접조건을 직접 적용하므로 기존2를 보존한다.",
+      "boundary": "B12",
+      "previousOperationalBucket": 2,
+      "changedFromOperational": false,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+      "reasonBefore": "외각 변환과 맞은각 합 비교를 직접 적용한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "외각 120°를 내각 60°로 바꾸고 60°+110°가 180°가 아님을 확인한다.",
+        "primaryConcept": "네 점이 한 원 위에 있을 조건",
+        "primaryConceptReason": "맞은각의 합이 180°인지 계산해 사각형의 원주성을 판정한다.",
+        "rejectedAlternativeConcepts": [
+          "내접사각형의 각: 개별 각을 구하는 문제가 아니라 내접 여부 조건을 판정한다."
+        ],
+        "difficultyReason": "외각 변환과 맞은각 합 비교를 직접 적용한다.",
+        "finalMotherAdjudication": "A/B path는 일치했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "REUSE_PRIOR_STRUCTURE_AND_BUCKET",
+        "basis": "하 유지·2: 주어진 각이 외각임을 해석하는 한 번 전처리 뒤 내접조건을 직접 적용하므로 기존2를 보존한다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_fd24ec3d7ff3ff05d22f2e730fff0473aaccfbfe1a0340aa45b7fd58a1626922",
+      "level": "중",
+      "difficultyBucket": 2,
+      "reason": "중 유지·2: 대표값 정의의 직접 계산 뒤 명시적 극단값 한 개의 영향을 설명한다. 복잡한 자료 복원이나 분포 비교 모델은 없다.",
+      "boundary": "B23",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "세 대표값을 계산하고 극단값의 영향까지 해석해야 한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "평균 15, 중앙값 8, 여러 최빈값을 구해 극단값에 덜 영향을 받는 중앙값을 선택한다.",
+        "primaryConcept": "대푯값 비교",
+        "primaryConceptReason": "극단값이 포함된 자료에서 평균·중앙값·최빈값을 직접 계산해 대표값의 적절성을 비교한다.",
+        "rejectedAlternativeConcepts": [
+          "평균·중앙값·최빈값: 정의 계산을 넘어서 적절성을 비교하는 문항이다."
+        ],
+        "difficultyReason": "세 대표값을 계산하고 극단값의 영향까지 해석해야 한다.",
+        "finalMotherAdjudication": "A/B path는 일치했고 A의 HARD 표기를 직접 검토 후 중간 난도 3으로 확정했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "중 유지·2: 대표값 정의의 직접 계산 뒤 명시적 극단값 한 개의 영향을 설명한다. 복잡한 자료 복원이나 분포 비교 모델은 없다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_ee1f13e625dbbceaa53719dcc0ff1dc4de65323d3e314c0a5c300db4623a4f80",
+      "level": "하",
+      "difficultyBucket": 1,
+      "reason": "하 유지·1: 주어진 원자료에 평균·분산·표준편차 정의를 순서대로 대입한다. 계산 단계 수와8점 서술형 형식은 난도 상승 근거가 아니다.",
+      "boundary": "NONE",
+      "previousOperationalBucket": 3,
+      "changedFromOperational": true,
+      "levelPolicy": "historical source level string preserved; independent numeric bucket judgment",
+      "legacyLevelCompatibility": "NORMAL",
+      "reasonBefore": "평균·편차·제곱·평균화·제곱근을 순차 수행한다.",
+      "previousFirstPassEvidence": {
+        "method": "DIRECT_CANONICAL_TAGGING_V1.2",
+        "decisiveSolutionStep": "평균 7, 편차 제곱합 20에서 분산 4와 표준편차 2를 계산한다.",
+        "primaryConcept": "분산",
+        "primaryConceptReason": "평균에서의 편차 제곱을 합해 자료 수로 나누어 분산을 구한 뒤 표준편차를 구한다.",
+        "rejectedAlternativeConcepts": [
+          "표준편차: 표준편차는 분산의 후속 제곱근 계산이다."
+        ],
+        "difficultyReason": "평균·편차·제곱·평균화·제곱근을 순차 수행한다.",
+        "finalMotherAdjudication": "A/B path와 난도는 일치했다.",
+        "evidenceSource": "Frozen A/B packets plus AB_DIFF plus Mother source content/choices/answer/solution adjudication"
+      },
+      "previousReasonAssessment": {
+        "decision": "ACCEPT_PRIOR_MATHEMATICAL_STRUCTURE_REASSESS_BUCKET_UNDER_CURRENT_RULE",
+        "basis": "하 유지·1: 주어진 원자료에 평균·분산·표준편차 정의를 순서대로 대입한다. 계산 단계 수와8점 서술형 형식은 난도 상승 근거가 아니다.",
+        "authority": "latest metadata.md definition/formula direct=1; standard preprocessing/relationship vs strategic composite judged on actual current solution; no lowering merely from repetition"
+      }
+    }
+  ]
+}

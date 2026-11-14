@@ -1,0 +1,100 @@
+[
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "같은 현을 보는 각의 대소로 원 안·위·밖 거리 비교",
+    "definition": "중심과 현의 양끝점으로 기준 원주각을 정하고 같은 현을 보는 각이 크거나 같거나 작은 경우를 원 안·위·밖에 대응시켜 중심까지 거리의 대소를 판단한다.",
+    "distinction": "원 위의 원주각 계산이나 두 각의 단순 등호를 통한 네 점의 공원성보다 위치 대소의 해석이 추가된다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      9
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_936677bd380ed2ca24ecd556a5e559142af276bc12d4c0f3341037d20763276f"
+    ],
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "nameKo": "수선 발의 직각 쌍으로 내접사각형 판별",
+    "definition": "실제 사각형의 두 맞은각이180도인지 또는 같은 현을 보는 각이 같은지 그림의 수직 관계와 대조하여 내접 여부를 판정한다.",
+    "distinction": "일반적인 복합각 계산에 과대 매핑하지 않고 개별 배치의 내접 조건을 판정한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      12
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd"
+    ],
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "worker-outputs/b/E014/proposals.json TPL_CYCLIC_QUADRILATERAL_CONFIGURATION_AUDIT"
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "nameKo": "외각을 내각으로 바꾸어 사각형의 공원성 판별",
+    "definition": "표시된 외각을 내각으로 바꾼 뒤 맞은각 합이180도인지 확인하여 원에 내접하는지 판정한다.",
+    "distinction": "새 각 연쇄가 아니라 내접사각형의 한 판정 조건이다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      19
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794"
+    ],
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "worker-outputs/b/E014/proposals.json TPL_CYCLIC_QUADRILATERAL_CONFIGURATION_AUDIT"
+  },
+  {
+    "type": "REUSE_CANDIDATE_TPL",
+    "nameKo": "대푯값 계산 후 적절성 선택",
+    "definition": "한 자료의 평균·중앙값·최빈값을 구하고 이상치에 대한 민감도와 최빈값의 복수성을 고려해 적절한 대푯값을 선택한다.",
+    "distinction": "ALL_STATISTICS_COMBINATION의 통계량 결합값 계산 및 DEFINITION_CLAIM_AUDIT의 독립 진술 판정과 목표가 다르다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "supportOrdinals": [
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_fd24ec3d7ff3ff05d22f2e730fff0473aaccfbfe1a0340aa45b7fd58a1626922"
+    ],
+    "nearestTemplates": [
+      "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "worker-outputs/a/E007/proposals.json ordinal24; a/E025 ordinal5"
+  },
+  {
+    "type": "REUSE_CANDIDATE_PT_TPL",
+    "nameKo": "원자료의 분산·표준편차 직접 계산",
+    "definition": "완전한 유한자료에서 평균·편차·편차제곱평균·표준편차를 직접 계산한다.",
+    "distinction": "미지편차 복원·도수분포 가중계산·확률변수 모델이 없는 기본 원자료 계산이다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      22
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_ee1f13e625dbbceaa53719dcc0ff1dc4de65323d3e314c0a5c300db4623a4f80"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "TPL_VARIANCE_STANDARD_DEVIATION"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "worker-outputs/a/E022/proposals.json ordinal18; a/E025 ordinal24; b/E023 TPL_FINITE_DATA_STANDARD_DEVIATION"
+  }
+]

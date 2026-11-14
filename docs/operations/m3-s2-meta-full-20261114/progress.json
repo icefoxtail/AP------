@@ -1266,8 +1266,8 @@
     },
     {
       "id": "E026",
-      "owner": "b",
-      "reviewer": "c",
+      "owner": "a",
+      "reviewer": "b",
       "sourcePath": "archive/exams/original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
       "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
       "year": 2023,
@@ -1309,7 +1309,11 @@
       "fourSlotValidatorWarnings": 9,
       "activeFieldSchemaDebtCount": 11,
       "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
-      "commitParent": "63029ae2264b55f723daa39560810b5268f8de81"
+      "commitParent": "63029ae2264b55f723daa39560810b5268f8de81",
+      "previousAssignment": {
+        "owner": "b",
+        "reviewer": "c"
+      }
     },
     {
       "id": "E027",
@@ -1543,8 +1547,8 @@
     },
     {
       "id": "E032",
-      "owner": "b",
-      "reviewer": "c",
+      "owner": "c",
+      "reviewer": "a",
       "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
       "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
       "year": 2022,
@@ -1558,7 +1562,38 @@
       "uidDigest": "a26d77743ad50b5309ff890d9ec14a780700df6d5c5db9a229fa0cb810370aeb",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.4slot.json",
       "existing4slotSourceBlob": "2a4eb07cd775acd4186ccc21d14f51e3dd6c83e4",
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "b",
+        "reviewer": "c"
+      },
+      "reviewedQuestionCount": 22,
+      "decisions": {
+        "CORRECT": 22
+      },
+      "sourceAfterBlob": "300bce88086c7c8139d199f08a817ec3586fe4c7",
+      "sourceAfterSha256": "385e479b2f42290d69e92550c1257c8cfbbcfd22f51313787eae81e7ac521cfc",
+      "sourceChangedQuestionCount": 22,
+      "sourceChangedFieldCount": 156,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E032.meta.json",
+      "metadataSha256": "16a41f48ae317563074dd63fa5e14e92b8b1e8d2258e96cbb39c42c59a0f9299",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E032.verification.json",
+      "verificationSha256": "7d7650e7d89a5f5f6277ec105d9d0e35bb3738c0302853dd07e1a4382e99ff6d",
+      "independentSampleOrdinals": [
+        6,
+        7,
+        21
+      ],
+      "independentSampleStatus": "PASS",
+      "fourSlotMode": "EXISTING_REVIEWED_WITH_CORRECTIONS",
+      "fourSlotJudgments": {
+        "CURRENT_SOLUTION_REBOUND_WITH_TARGETED_CORRECTION": 22
+      },
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 4,
+      "activeFieldSchemaDebtCount": 5,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "6965e648396af0c9530f135a1eef6976134236e3"
     },
     {
       "id": "E033",
@@ -2592,12 +2627,12 @@
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 33,
-    "branchReviewedQuestions": 781,
-    "remainingExams": 50,
-    "remainingQuestions": 1177,
-    "independentSamples": 99,
-    "latestPreparedExam": "E026",
+    "branchReviewedExams": 34,
+    "branchReviewedQuestions": 803,
+    "remainingExams": 49,
+    "remainingQuestions": 1155,
+    "independentSamples": 102,
+    "latestPreparedExam": "E032",
     "mainMerge": "NOT_RUN_USER_EXCLUDED"
   },
   "ownerHistory": [

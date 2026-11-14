@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "rpm-leaf-gap-review-v1",
+  "examId": "E032",
+  "author": "review_c",
+  "sourceBlob": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+  "sourceRawSha256": "588bb2374c6d77704eff68b7f074bbeb320c165cefb4167420f7d203fd25e9fa",
+  "status": "AUTHOR_REVIEW_ROOT_ADJUDICATION_PENDING",
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_2d5560cffe24a01ac5500b2a0d79f3d6bb095112280885ab23e145a98af6abfc",
+      "reason": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "recordId": null,
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": null,
+          "l4": null,
+          "status": "EXACT_LEAF_GAP",
+          "reason": "작은 원과 큰 원의 외접 중심거리가 핵심이다. M3-RPM-070은 원과 직선의 접점 반지름 관계라 의미가 다르고, 071/072의 한 외부점 등접선도 해당하지 않는다."
+        },
+        "current2022": {
+          "recordId": null,
+          "status": "CURRENT2022_EXACT_LEAF_GAP",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          },
+          "reason": "2022 원과 직선의 기존 leaf에도 복수 원의 외접 중심거리와 대칭 중심에 접하는 원의 반지름을 정하는 골격은 없다."
+        },
+        "rejectedAdjacentBaseRecord": "M3-RPM-070"
+      },
+      "activeTemplate": {
+        "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+        "parentProblemTypeKey": "PT_TWO_CIRCLES",
+        "definition": "주어진 두 원에 동시에 접하는 제3의 원을 결정하는 유형.",
+        "internalSkeleton": "주어진 두 원에 동시에 접하는 제3의 원을 결정하는 유형.",
+        "status": "ACTIVE",
+        "ownerPack": "GEOMETRY_EQUATIONS"
+      },
+      "rejectedAdjacentLeaves": [
+        "M3-RPM-070",
+        "M3-RPM-071",
+        "M3-RPM-072"
+      ],
+      "semanticReuseReason": "정사각형의 대칭으로 작은 원의 중심이 확정된다. 큰 원과 작은 원의 중심거리=반지름의 합을 적용하여 주어진 원들과 접하는 새 원의 반지름을 정하므로 GLOBAL ACTIVE 두 원 접하는 제3원 TPL의 반복 가능한 골격을 재사용한다. 원과 직선의 수직·등접선 leaf로 대체하지 않는다."
+    }
+  ]
+}

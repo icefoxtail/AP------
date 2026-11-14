@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E032",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+  "sourceSha256": "588bb2374c6d77704eff68b7f074bbeb320c165cefb4167420f7d203fd25e9fa",
+  "inputSha256": "50b003c99b85551a2537f826c0e81156542e7d6d95abe33087416854f9b8306d",
+  "artifactHashes": {
+    "review.json": "38dab3dd39ea8293b159c5f0c4caa4d0209ab0aa40032ed183a405102f990a92",
+    "source-patch.json": "7f2f2c4862181a913d28b74b411d5333e937e82447b788a8af95c4fcd117ecb5",
+    "E032.4slot.json": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+    "difficulty-change-review.json": "d473ee4e66e00ab748c92a6605c490109764e55f049501ea564bc0960edcc452"
+  },
+  "sampleOrdinals": [
+    6,
+    7,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_d2cbc30d9662df1b4c91db360ec96239648c4658ac184c83ebe9d4cca29134f9",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "접선 길이 6과 사이각 60도의 원본 그림 및 현재 해설 그림을 확인했다. 두 접점의 반지름 직각과 두 접선의 대칭으로 30도 직각삼각형을 얻고 tan30으로 반지름을 복원한 뒤 중심각 120도와 부채꼴 넓이를 결합한다. method의 탄젠트 보완은 현재 해설의 실제 식에 정확히 맞는다. RPM070/158은 접점 반지름 관계라는 주제를 나타내고 ACTIVE sector template은 반지름·중심각으로 넓이를 구하는 목표 골격을 포함하므로 기존 정의 재사용과 crosswalk 연결 공백을 구분한 판단을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q6.png",
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q6-solution-v2.svg"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_2d5560cffe24a01ac5500b2a0d79f3d6bb095112280885ab23e145a98af6abfc",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 6,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 그림의 네 큰 원과 가운데 작은 원의 접촉 배치를 확인했다. 큰 원 네 중심이 이루는 정사각형의 반대각선과 외접하는 두 원의 중심거리 1+r를 연결한다. method의 정사각형·피타고라스정리·접함은 실제 기존 해설의 결정 관계와 맞는다. PT_TWO_CIRCLES 및 TM_TWO_CIRCLES_TANGENT_CIRCLE의 GLOBAL ACTIVE 정의는 주어진 원들에 접하는 추가 원을 결정하는 골격을 재사용할 수 있으며 대칭으로 네 접촉 조건이 같은 중심거리로 정리된다. 원과 직선의 접점 직각이나 한 외부점의 등접선 정리가 주제가 아니므로 RPM070/071/072에 억지 배정하지 않고 원과 직선 부모 아래 정확 leaf 공백을 남긴 판단을 수용한다. 신규 PT/TPL을 만들지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q7.png",
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q7-solution-v2.svg"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_fd24ec3d7ff3ff05d22f2e730fff0473aaccfbfe1a0340aa45b7fd58a1626922",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 9,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "문제 이미지에 있는 10개 자료와 소문항 두 개를 직접 읽었다. 첫 목표는 평균·중앙값·모든 최빈값 계산이고, 둘째는 적절한 대푯값 선택 및 다른 두 값이 적절하지 않은 이유 설명이다. 현재 goal 네 항목과 method의 평균·중앙값·최빈값·이상치가 이 두 목표와 실제 기존 해설을 담는다. 텍스트 stem에 없는 이미지 소문항을 가짜 stem 인용으로 옮기지 않고 현재 해설의 정확한 문장으로 결속했다. 2015 원본 M3의 대푯값 비교와 2022 M1의 적절한 대푯값 선택을 구분했다. ACTIVE PT_M1_CENTRAL_TENDENCY는 재사용하되 단일 자료의 계산 후 적절성 선택은 두 자료 비교·진술 판정·통계량 조합 템플릿과 다르므로 세부 TPL 등록 공백을 남긴 판단을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q21.png",
+        "assets/images/22_신흥중_2학기_기말_중3_기출/q21-solution.svg"
+      ],
+      "newMathematicalVerification": false
+    }
+  ],
+  "status": "PASS",
+  "separateDifficultyRef": "/workspace/scratch/6538df266481/worker-outputs/a/independent/E032.difficulty.json",
+  "separateDifficultySha256": "663cf92568adddc7c373b15481f20be60b37d8e9edfa7e804e7e9af7db874931",
+  "scope": "Metadata and four-slot semantic review only, with three non-author samples. Exact RPM leaf gaps and registration debt remain explicit.",
+  "newMathematicalVerification": false,
+  "exactQuoteCheckCount": 23,
+  "globalDefinitionsInspected": [
+    "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "PT_TWO_CIRCLES",
+    "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+    "PT_M1_CENTRAL_TENDENCY"
+  ],
+  "sampled4slotSha256": "253fecdee763b36506774eed1fe101fecef022cc63d8de74bec5d449d03b207b",
+  "sampledReviewSha256": "38dab3dd39ea8293b159c5f0c4caa4d0209ab0aa40032ed183a405102f990a92",
+  "sampledSourcePatchSha256": "7f2f2c4862181a913d28b74b411d5333e937e82447b788a8af95c4fcd117ecb5",
+  "sourceByteVerification": "INPUT_BASELINE_SHA256_MATCH",
+  "finalMetadataRebind": "최종 작성본의 여섯 난도 예외 수용값이 독립 영수증과 정확히 일치함을 확인했다. Q11 선행 CONFLICT_HOLD 출고 미결은 별도로 보존하고 해제나 새 수학 검증을 주장하지 않는다. 4slot 세 표본 의미는 불변이다."
+}

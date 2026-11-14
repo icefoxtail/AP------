@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "m3-s2-rpm-leaf-gap-adjudication-v1",
+  "examId": "E032",
+  "reviewer": "GPT_ROOT_6538DF266481",
+  "sourceGitBlobSha": "dd9d5490f2abff2196fb21bac02e2f2a3538e5f0",
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_2d5560cffe24a01ac5500b2a0d79f3d6bb095112280885ab23e145a98af6abfc",
+      "status": "SEMANTIC_COMPLETE_PUBLISHER_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
+      "method": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
+      "effectiveParentPath": [
+        "2022",
+        "M3-2",
+        "원의 성질",
+        "원과 직선"
+      ],
+      "activeProblemTypeKey": "PT_TWO_CIRCLES",
+      "nativeTemplateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+      "activeSearch": "GLOBAL ACTIVE PT_TWO_CIRCLES / TM_TWO_CIRCLES_TANGENT_CIRCLE 정의 및 parent 관계 확인. 정사각형 대칭으로 주어진 네 원과 중앙 원의 접촉을 같은 중심거리=반지름합 조건으로 환원한다. 기존 TPL의 주어진 원에 접하는 새 원 결정 골격을 재사용하되 현재 M3 publisher leaf의 원-직선 수직/등접선과 구별한다.",
+      "canonicalSearch": [
+        "M3-RPM-067 through 080",
+        "M3-RPM-155 through 168"
+      ],
+      "newNativeTemplateRequired": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalImage",
+        "GLOBAL_ACTIVE_definitions"
+      ],
+      "sourceCurriculumMustRemainUnchanged": true,
+      "newUnregisteredKeysAllowedInSource": false,
+      "newMathematicalVerification": false,
+      "nextOwner": "CODEX_RELEASE_OWNER",
+      "nextAction": "Reuse existing two-circle template; resolve publisher leaf and exact-context binding separately."
+    }
+  ]
+}
