@@ -86,8 +86,6 @@ window.questionBank = [
       "객관식",
       "인수분해",
       "이차방정식",
-      "지수",
-      "원",
       "대입",
       "조건해석"
     ],
@@ -125,8 +123,7 @@ window.questionBank = [
       "무리수",
       "유리수",
       "인수분해",
-      "이차방정식",
-      "판별식"
+      "이차방정식"
     ],
     "wide": false,
     "content": "다음 이차방정식 중 해가 유리수가 아닌 것은?",
@@ -230,9 +227,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "전개",
-      "계수비교",
       "이차방정식",
-      "근과계수",
       "대입",
       "조건해석",
       "계산"
@@ -266,11 +261,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "절댓값",
       "이차함수",
       "함수",
       "도형",
-      "원",
       "범위"
     ],
     "wide": false,
@@ -394,7 +387,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "이차함수",
-      "함수판별",
       "개념",
       "오답선별",
       "조건해석"
@@ -461,9 +453,7 @@ window.questionBank = [
       "이차함수",
       "그래프",
       "축",
-      "좌표대입",
-      "조건해석",
-      "계산"
+      "조건해석"
     ],
     "wide": false,
     "content": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
@@ -520,8 +510,6 @@ window.questionBank = [
       "객관식",
       "이차함수",
       "꼭짓점",
-      "완전제곱식",
-      "계수비교",
       "조건해석",
       "계산"
     ],
@@ -556,9 +544,7 @@ window.questionBank = [
       "객관식",
       "완전제곱식",
       "이차함수",
-      "지수",
       "함수",
-      "표해석",
       "좌표"
     ],
     "wide": false,
@@ -658,7 +644,6 @@ window.questionBank = [
     "tags": [
       "객관식",
       "이차함수",
-      "최대최소",
       "오답선별",
       "개념",
       "조건해석"
@@ -709,21 +694,17 @@ window.questionBank = [
   {
     "id": 22,
     "level": "중",
-    "category": "이차함수와 그래프",
+    "category": "이차방정식",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-04",
-    "standardUnit": "이차함수와 그래프",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "M3-03",
+    "standardUnit": "이차방정식",
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "계수비교",
       "이차함수",
       "함수",
-      "표해석",
-      "좌표",
       "대입"
     ],
     "wide": false,
@@ -731,10 +712,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$4$",
     "solution": "$f(p)=p$를 이차방정식으로 바꿔 직접 푼다.\n\n$\\dfrac12p^2-p+1=p$에서 $p^2-4p+2=0$, 즉 $(p-2)^2=2$. 따라서 $p=2\\pm\\sqrt2$이고 모든 값의 합은 4이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 그래프",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,

@@ -8694,6 +8694,652 @@
       "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
     },
     {
+      "examKey": "E015",
+      "ordinal": 1,
+      "questionUid": "qid_v1_fa4066c384d4871bc0c55101d4afa2bfbbd91acf6daaf74f6529c30f264201e3",
+      "nativeRpm": "M3-RPM-029",
+      "rpm2022": "M3-RPM-121",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 2,
+      "questionUid": "qid_v1_94468afb1ee4c75c4b4c0f3abf496e752d99dfd9e1035d02f4ecba2ef2818c77",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        "RPM_LEAF_GAP_ROOT_EXPRESSION_EVALUATION",
+        "TYPE_GAP_ROOT_POLYNOMIAL_EVALUATION",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 3,
+      "questionUid": "qid_v1_72835d61495a93f86769df51c5426bf7e42bce6ce14956db38844b1d2f48137c",
+      "nativeRpm": "M3-RPM-031",
+      "rpm2022": "M3-RPM-123",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 4,
+      "questionUid": "qid_v1_b66f59c02b7baeb5456aca93b38301583258f7ae44e09a26744e983ce1de804c",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        "RPM_LEAF_GAP_RATIONAL_IRRATIONAL_ROOT_JUDGMENT",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT은 판별식을 직접 사용하는 정의라서 현재 해설의 직접 근 계산에 자동 투영하지 않는다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 5,
+      "questionUid": "qid_v1_5ac47b60ab70229211837a7c4b1f877e1f984a929c12372c58558f2b4f964959",
+      "nativeRpm": "M3-RPM-035",
+      "rpm2022": "M3-RPM-127",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 6,
+      "questionUid": "qid_v1_0335fc6c85c4a1f7d1341c5f3f88ba062d3ce95b748e97c4389e5bafc6a5de78",
+      "nativeRpm": "M3-RPM-036",
+      "rpm2022": "M3-RPM-128",
+      "debts": [
+        "CONTENT_DEBT_DISCRIMINANT_WORDING",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 중근조건으로 매개변수, 그때의 근을 얻어 두 값을 빼는 TPL의 골격이 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "이차방정식 또는 제곱꼴 방정식이 중근을 갖기 위한 조건을 판정하고, 그 조건을 만족하는 매개변수·상수 값을 결정한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "중근 조건으로 k를, 그때의 근으로 a를 구한 뒤 두 값을 뺀다.",
+          "templateParent": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-03",
+              "subUnitKey": "M3-03-QUADRATIC_EQUATION"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 7,
+      "questionUid": "qid_v1_bd8ea3e3ceda7326ed6b7107b3d30d8b9fd32893a44bc53ec06c81592a6eb12a",
+      "nativeRpm": "M3-RPM-032",
+      "rpm2022": "M3-RPM-124",
+      "debts": [
+        "CONDITION_GAP_ROOT_ORDER",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 8,
+      "questionUid": "qid_v1_deee0c85e6505cfeeb47046921e51a1e2abaf743b79831e5be16fff0ac48f9e2",
+      "nativeRpm": "M3-RPM-045",
+      "rpm2022": "M3-RPM-135",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE y=ax²의 기본 성질 진술 판정 정의와 일치한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점·축·y절편·볼록성·폭을 근거로 이차함수 그래프의 공통점·차이를 비교하고 주어진 진술의 참·거짓을 판정한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "y=ax^2의 꼭짓점·축·치역·사분면 성질을 각 진술에 적용해 옳은 것을 고른다.",
+          "templateParent": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 9,
+      "questionUid": "qid_v1_a70168724133a3d790d2c3cc1e93e86d65b6fed77423afdbe58299632c29c0dd",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        "RPM_LEAF_GAP_PARABOLA_RECTANGLE_AREA_PERIMETER",
+        "TEMPLATE_GAP_PARABOLA_RECTANGLE_AREA_PERIMETER",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 도형의 넓이·둘레로 좌표를 정하는 PT 범위에는 맞지만 내접직사각형 넓이→둘레 exact TPL은 없다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "포물선 위의 점과 축 위의 점이 만드는 삼각형·사각형의 넓이·둘레 조건으로 계수나 좌표를 결정한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 10,
+      "questionUid": "qid_v1_8ffc1fc23659f17290210e1906e7f6ada495e3466ba7723f5c52260376462a41",
+      "nativeRpm": "M3-RPM-049",
+      "rpm2022": "M3-RPM-136",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH",
+        "CONDITION_GAP_SEGMENT_PARALLEL_TO_AXIS"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+        "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 같은 x의 두 포물선 y값 차로 수직선분 길이를 구하는 정의가 정확히 일치한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "y=ax^2의 그래프를 x축·y축 방향으로 평행이동한 식과 이동량을 상호 결정하고, 이동이 만드는 길이·좌표·계수 합을 구한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "같은 x에서 두 포물선의 y좌표 차를 계산해 y축 평행 선분의 길이를 구한다.",
+          "templateParent": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 11,
+      "questionUid": "qid_v1_5f374c67f48eec9d1eac6173bc43006a4b6e8fc2f0c5352d2ea9c5f78ffc3e6f",
+      "nativeRpm": "M3-RPM-043",
+      "rpm2022": null,
+      "debts": [
+        "RPM2022_LEAF_GAP_QUADRATIC_DEFINITION",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE PT는 정의판정 의미이지만 현 상황모델링 TPL과 식만의 판정은 구별한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "실생활·도형 관계식이 y=ax^2+bx+c (a≠0) 꼴인지 판별하여 이차함수인 것을 고른다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 12,
+      "questionUid": "qid_v1_5cd50a5db37339ab537d12fa92f8cd12d033c02a60e6e99414deb2d2ea960d1c",
+      "nativeRpm": "M3-RPM-047",
+      "rpm2022": "M3-RPM-138",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 함수그래프 대칭성 골격과 일치하며 2022대응은 대칭축 leaf138이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "`함수 그래프의 성질` 안에서 '함수 그래프의 대칭성'을 핵심 풀이 골격으로 사용하는 유형.",
+          "templateParent": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 13,
+      "questionUid": "qid_v1_31dfacf737876ef21cd24126398f5d0cf017e2d20ba154f3234e49998b3062e4",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근·축·꼭짓점·한 점에서 함수식을 복원하는 정의와 맞는 후보다. M3 exact binding과 RPM route는 root 검증 전이므로 승인 projection으로 표기하지 않는다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+          "templateParent": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 14,
+      "questionUid": "qid_v1_be6fc85b1599193df6d83a1c9d0eff08781445d56bc13da87a5dc92c2706c7df",
+      "nativeRpm": "M3-RPM-053",
+      "rpm2022": null,
+      "debts": [
+        "RPM2022_LEAF_GAP_COEFFICIENT_SIGNS",
+        "TEMPLATE_GAP_PARAMETER_SIGN_GRAPH_TRANSFER",
+        "PRIOR_QBODY_MISMATCH",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 계수 부호와 그래프 위치 PT의 범위이며 두 식 사이 매개변수 재해석 exact TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "포물선의 볼록성, 꼭짓점의 사분면, x축 교점 개수·절편을 근거로 계수와 상수의 부호 및 함숫값 식의 참·거짓을 판정한다.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 15,
+      "questionUid": "qid_v1_1ca583fb349d6435b89c6c2cb93ba93b05b7b47a3aae545abb26f52784ad8ca4",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근·축·꼭짓점·한 점에서 함수식을 복원하는 정의와 맞는 후보다. M3 exact binding과 RPM route는 root 검증 전이므로 승인 projection으로 표기하지 않는다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+          "templateParent": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 16,
+      "questionUid": "qid_v1_1068521c170db3b6a0088017e870a965f107baf886d482a63b733b526c7754ee",
+      "nativeRpm": "M3-RPM-050",
+      "rpm2022": "M3-RPM-138",
+      "debts": [
+        "TEMPLATE_GAP_AXIS_AFTER_POINT_SUBSTITUTION",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "TYPE_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 그래프 성질 PT에 맞지만 점으로 계수결정 후 축을 구하는 exact TPL은 미확정이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "templateStatus": null,
+          "templateParent": null,
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 17,
+      "questionUid": "qid_v1_48051bf8c388af6ca1ef63cd2d32d02215f64def1b68976ab1d7bacba6fc4874",
+      "nativeRpm": "M3-RPM-049",
+      "rpm2022": "M3-RPM-136",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 평행이동으로 그래프 관계를 읽는 정의가 맞다. M3 binding 미확정 상태를 유지한다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "평행이동·대칭이동으로 함수 그래프 사이의 관계를 해석하는 문제 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동'을 핵심 풀이 골격으로 사용하는 유형.",
+          "templateParent": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 18,
+      "questionUid": "qid_v1_05111dc91b379ecc00c8bd5fb12921f992d3f1494e715501177f309bbd24bc80",
+      "nativeRpm": null,
+      "rpm2022": null,
+      "debts": [
+        "RPM_LEAF_GAP_GENERAL_PARABOLA_PROPERTIES",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 꼭짓점형에서 여러 성질을 확인해 틀린 진술을 고르는 골격과 맞다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "꼭짓점·축·y절편·볼록성·폭을 근거로 이차함수 그래프의 공통점·차이를 비교하고 주어진 진술의 참·거짓을 판정한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "표준형에서 꼭짓점·축·볼록성을 확인하고 y절편을 계산해 지나는 사분면을 판정한 뒤 틀린 진술을 고른다.",
+          "templateParent": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 19,
+      "questionUid": "qid_v1_3243379d002503a3ea61753c1ac1db1a7af5f865c5e8d27dba78f909c70649f7",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        "CONTENT_DEBT_SHADED_REGION_NOT_TRIANGLE",
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근·축·꼭짓점·한 점에서 함수식을 복원하는 정의와 맞는 후보다. M3 exact binding과 RPM route는 root 검증 전이므로 승인 projection으로 표기하지 않는다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+          "templateParent": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 20,
+      "questionUid": "qid_v1_f32884a2676a6f120b06d154ac41a273d01b147c44892350ec54ef55e173b0ca",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 근·축·꼭짓점·한 점에서 함수식을 복원하는 정의와 맞는 후보다. M3 exact binding과 RPM route는 root 검증 전이므로 승인 projection으로 표기하지 않는다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "교점·축·꼭짓점·함숫값 등의 조건으로 이차함수 식이나 계수를 복원하는 유형.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "근, 축, 꼭짓점, 한 점 조건으로 함수식을 복원한다.",
+          "templateParent": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "matchingBindings": []
+        }
+      },
+      "validationErrors": [
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID"
+      ],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 21,
+      "questionUid": "qid_v1_a5c6743e433bd3079e1701e17e698dd7f7425e6e41f644fe23ab3a5dfa905473",
+      "nativeRpm": "M3-RPM-039",
+      "rpm2022": "M3-RPM-131",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "지정한 RPM leaf와 현재 ACTIVE PT/TPL 정의를 비교했으나 정확한 승인 projection은 없다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 22,
+      "questionUid": "qid_v1_b61fc190207a7821b1109deec31836d3e323d05bbbba316c38374636b5ddce7f",
+      "nativeRpm": "M3-RPM-034",
+      "rpm2022": "M3-RPM-126",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "RPM_ONLY",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "기존 RPM034/126의 완전제곱식 풀이 leaf가 실제 방법을 덮는다. 현재 ACTIVE exact PT/TPL은 찾지 못했으므로 승인 projection을 만들지 않는다."
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
+      "examKey": "E015",
+      "ordinal": 23,
+      "questionUid": "qid_v1_2499583cb4f6ada9643289be25fdb828ddbbf9d27bc38386a1af78de6acff188",
+      "nativeRpm": "M3-RPM-054",
+      "rpm2022": "M3-RPM-142",
+      "debts": [
+        "PRIOR_QFULL_MISMATCH"
+      ],
+      "projection": {
+        "status": "BINDING_PENDING",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
+        "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
+        "resolverStatus": "NOT_RUN_VERIFIED_FINAL_NOT_ESTABLISHED",
+        "reason": "ACTIVE 대칭축과 절편 거리로 절편을 구하고 식에 대입해 상수를 정하는 골격이다. 현재 목표는 상수들의 정규화된 비이므로 exact 목표형 승격은 root 검토 대상이다.",
+        "registryEvidence": {
+          "problemTypeStatus": "ACTIVE",
+          "problemTypeDefinition": "대칭축과 두 x절편의 대칭성을 이용해 교점 좌표를 정하고, 두 교점 사이 거리 조건으로 상수를 결정한다.",
+          "templateStatus": "ACTIVE",
+          "templateDefinition": "대칭축 x=2에서 좌우로 3만큼 떨어진 절편 -1, 5를 구해 함수식에 대입하고 k를 구한다.",
+          "templateParent": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
+          "matchingBindings": [
+            {
+              "standardCourse": "중3-1",
+              "curriculum": "2015",
+              "status": "ACTIVE",
+              "standardUnitKey": "M3-04",
+              "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH"
+            }
+          ]
+        }
+      },
+      "validationErrors": [],
+      "nextAction": "CODEX_CLASSIFICATION_AND_BINDING_ADJUDICATION"
+    },
+    {
       "examKey": "E016",
       "ordinal": 1,
       "questionUid": "qid_v1_a2bd7121bfed5143d30b707c2e95f27668f0bf896f046af80e70c736214c7ce6",
@@ -10790,6 +11436,165 @@
         "desiredScope": "완전제곱식에서 도출한 n=km²의 자연수 범위·최댓값 추론(k가 정수인 경우 포함)",
         "distinction": "현 정의의 b=3/2 a² 및 그 정수성 제약이 예시인지 제한인지 정본 소유자의 명확화가 필요하다.",
         "registration": "NOT_REGISTERED"
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "직사각형넓이공식",
+        "en": "RECTANGLE_AREA_FORMULA",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "넓이",
+        "note": "가로×세로로 직사각형의 넓이를 구한다.",
+        "usedIn": [
+          "qid_v1_a70168724133a3d790d2c3cc1e93e86d65b6fed77423afdbe58299632c29c0dd"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "이차함수의꼭짓점형",
+        "en": "QUADRATIC_VERTEX_FORM",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "이차함수",
+        "note": "y=a(x-p)²+q 형태로 축·꼭짓점·통과점 조건을 연결한다.",
+        "usedIn": [
+          "qid_v1_31dfacf737876ef21cd24126398f5d0cf017e2d20ba154f3234e49998b3062e4"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "이차함수의대칭축공식",
+        "en": "QUADRATIC_AXIS_FORMULA",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "축",
+        "note": "일반형 이차함수의 대칭축 x=−b/(2a).",
+        "usedIn": [
+          "qid_v1_1068521c170db3b6a0088017e870a965f107baf886d482a63b733b526c7754ee"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "삼각형넓이공식",
+        "en": "TRIANGLE_BASE_HEIGHT_AREA",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "넓이",
+        "note": "밑변×높이÷2.",
+        "usedIn": [
+          "qid_v1_3243379d002503a3ea61753c1ac1db1a7af5f865c5e8d27dba78f909c70649f7"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "FOUR_SLOT_TERM_CANDIDATE",
+      "proposal": {
+        "term": "원넓이공식",
+        "en": "CIRCLE_AREA_FORMULA",
+        "synonyms": [],
+        "kind": "방법",
+        "parent": "넓이",
+        "note": "원 넓이 πr².",
+        "usedIn": [
+          "qid_v1_a5c6743e433bd3079e1701e17e698dd7f7425e6e41f644fe23ab3a5dfa905473"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "RPM_LEAF_GAP",
+        "ordinals": [
+          2
+        ],
+        "desiredPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "이차방정식의 해 활용",
+          "l4": "근을 이용한 식의 값"
+        },
+        "distinction": "근을 구하거나 계수를 결정하지 않고 근의 관계식으로 다항식 값을 대체한다.",
+        "status": "PROPOSED_NOT_REGISTERED",
+        "supportingQuestionUids": [
+          "qid_v1_94468afb1ee4c75c4b4c0f3abf496e752d99dfd9e1035d02f4ecba2ef2818c77"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "RPM_LEAF_GAP",
+        "ordinals": [
+          4
+        ],
+        "desiredPath": {
+          "majorUnit": "이차방정식",
+          "midUnit": "이차방정식의 풀이",
+          "l3": "근의 성질",
+          "l4": "유리근과 무리근 판별"
+        },
+        "distinction": "근의 개수가 아니라 근이 속하는 수체계를 판정한다.",
+        "status": "PROPOSED_NOT_REGISTERED",
+        "supportingQuestionUids": [
+          "qid_v1_b66f59c02b7baeb5456aca93b38301583258f7ae44e09a26744e983ce1de804c"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "RPM_LEAF_GAP",
+        "ordinals": [
+          9
+        ],
+        "desiredPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프의 도형 활용",
+          "l4": "내접 직사각형의 넓이와 둘레"
+        },
+        "distinction": "넓이에서 변 길이를 역산해 둘레를 구하며 최댓값 문항이 아니다.",
+        "status": "PROPOSED_NOT_REGISTERED",
+        "supportingQuestionUids": [
+          "qid_v1_a70168724133a3d790d2c3cc1e93e86d65b6fed77423afdbe58299632c29c0dd"
+        ]
+      }
+    },
+    {
+      "examKey": "E015",
+      "kind": "TYPE_OR_BINDING_PROPOSAL",
+      "proposal": {
+        "kind": "RPM_LEAF_GAP",
+        "ordinals": [
+          18
+        ],
+        "desiredPath": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형 그래프",
+          "l4": "그래프 성질 비교·판정"
+        },
+        "distinction": "일반형 그래프의 여러 성질을 함께 판정한다.",
+        "status": "PROPOSED_NOT_REGISTERED",
+        "supportingQuestionUids": [
+          "qid_v1_05111dc91b379ecc00c8bd5fb12921f992d3f1494e715501177f309bbd24bc80"
+        ]
       }
     },
     {
