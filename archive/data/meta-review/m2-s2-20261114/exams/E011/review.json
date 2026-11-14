@@ -336,7 +336,7 @@
       "after": {
         "curriculum": "2015",
         "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
-        "templateKey": "",
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
         "crossConceptKeys": [
           "CC_TRIANGLE_AREA"
         ],
@@ -355,7 +355,7 @@
       },
       "fieldReview": {
         "classification": "그래프 활용 / 넓이: 두직선의 교점을 넓이의 높이로 연결하는 선택이 필요하다.",
-        "binding": "ACTIVE PT_FUNCTION_GRAPH_GEOMETRY는 함수그래프와점·선·넓이관계를 함께 분석하는 문제유형이므로 parent 적합. exact교점높이TPL및2015중2바인딩은제안대기.",
+        "binding": "ACTIVE PT_FUNCTION_GRAPH_GEOMETRY와 TPL_GRAPH_AREA_BY_SYMMETRY의 definition·internalSkeleton·parent를 실제 대조했다. 키명과 달리 대칭을 필수로 요구하지 않고 함수 그래프와 직선으로 둘러싸인 넓이를 포괄하므로 두 일차식·y축이 만드는 삼각형에도 정확히 적용한다. 2015 중2 curriculum binding과 Resolver proof는 별도 대기.",
         "crossConcept": "두직선의 교점·절편을 밑변높이로 해석하는 삼각형넓이 단계.",
         "condition": "도형의 주어진 관계는 4칸 condition에 보존. 별도 값의 허용범위를 제한하는 canonical 조건은 없어 conditionKeys=[] 유지.",
         "integration": "SEQUENTIAL: 두직선의 교점을 넓이의 높이로 연결하는 선택이 필요하다.",
@@ -364,14 +364,10 @@
       },
       "reason": "두직선의 교점을 넓이의 높이로 연결하는 선택이 필요하다.",
       "registrationDebt": [
-        "NEW_TPL: 교점과 좌표축 절편의 삼각형넓이",
-        "PT/TPL 의미 대응의 공식 등록 대기",
         "LINK_MISSING: 2015/중2 수학/M2-04/M2-04-LINEAR_FUNCTION_EQUATION → PT_FUNCTION_GRAPH_GEOMETRY",
         "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
       ],
-      "proposalRefs": [
-        "B-E011-TPL-GRAPH-AREA"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "중",
         "difficultyBucket": 3,
@@ -2467,22 +2463,6 @@
       ]
     },
     {
-      "proposalId": "B-E011-TPL-GRAPH-AREA",
-      "type": "NEW_TPL",
-      "name": "두 직선의 교점과 좌표축 절편으로 삼각형 넓이",
-      "definition": "두 직선의 좌표축 절편 차를 밑변,두직선교점에서 해당축까지의거리를 높이로 하여 둘러싸인 삼각형의 넓이를 계산한다.",
-      "parent": "PT_FUNCTION_GRAPH_GEOMETRY",
-      "distinction": "M2_LINEAR_FUNCTIONS_ENCLOSED_AREA parent는 두좌표축과넓이차 과제에한정되어불일치. 함수그래프와넓이관계를포괄하는ACTIVE parent아래 교점높이계산의새골격을제안.",
-      "supportingQuestionUids": [
-        "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0"
-      ],
-      "reviewedCandidates": [
-        "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
-        "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
-        "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA"
-      ]
-    },
-    {
       "proposalId": "B-E011-TPL-SYMMETRIC-AREA",
       "type": "NEW_TPL",
       "name": "평행사변형 중심대칭과 대각선의 부분넓이판정",
@@ -2606,6 +2586,31 @@
         25
       ],
       "reason": "ROOT 승인으로 이용/증명 목표 경계를 교정. 새 증명형 PT/TPL 공백과 공식 M1 SAS 선수 의미, source M2 보존. 난도3/상 ACCEPTABLE 및 4칸 불변."
+    },
+    {
+      "type": "TARGETED_EXISTING_TEMPLATE_REUSE",
+      "ordinal": 4,
+      "authorizedBy": "ROOT",
+      "previousReviewSha256": "b3539f1ab6eaef4f45b2d4a4d48a3402656e720742b0dc4551d552c6d6f68ba7",
+      "previousTemplateKey": "",
+      "newTemplateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "withdrawnProposal": {
+        "proposalId": "B-E011-TPL-GRAPH-AREA",
+        "type": "NEW_TPL",
+        "name": "두 직선의 교점과 좌표축 절편으로 삼각형 넓이",
+        "definition": "두 직선의 좌표축 절편 차를 밑변,두직선교점에서 해당축까지의거리를 높이로 하여 둘러싸인 삼각형의 넓이를 계산한다.",
+        "parent": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "distinction": "M2_LINEAR_FUNCTIONS_ENCLOSED_AREA parent는 두좌표축과넓이차 과제에한정되어불일치. 함수그래프와넓이관계를포괄하는ACTIVE parent아래 교점높이계산의새골격을제안.",
+        "supportingQuestionUids": [
+          "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0"
+        ],
+        "reviewedCandidates": [
+          "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+          "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA"
+        ]
+      },
+      "reason": "원문 두 일차방정식과 y축이 만드는 넓이 목표 및 기존 해설의 절편·교점·높이 계산을 재대조했다. ACTIVE template definition과 internalSkeleton에 대칭 요건이 없으므로 신규 교점높이 TPL 제안을 철회하고 기존 키를 재사용한다. 다른 메타 필드·난도·4칸은 이번 좁은 수리의 범위 밖으로 보존했다."
     }
   ]
 }
