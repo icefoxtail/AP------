@@ -1141,7 +1141,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "legacyLevelCompatibility": "NORMAL",
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "sourceType": "기출",
