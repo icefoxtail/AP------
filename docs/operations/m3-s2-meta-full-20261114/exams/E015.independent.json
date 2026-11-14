@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E015",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+  "artifactHashes": {
+    "review.json": "5ba2e8b2c1a7462d28f1b20b2cd5a89fec7c053b8a096ad3221fbe84ae556d34",
+    "E015.4slot.json": "a741436562b2e07c713fdb868c25c10c88812acfd66e6ce14ac9b127f15b910a",
+    "source-patch.json": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3"
+  },
+  "sampleOrdinals": [
+    6,
+    18,
+    21
+  ],
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "접점 수직과 반지름 이등변의 각 연쇄이며 원주각 성질을 실제로 사용하지 않는다는 분류가 타당하다. 필수 보조개념 CC_ISOSCELES_TRIANGLE 보완을 최종본에서 확인했다.",
+      "assetsInspected": [
+        "assets/images/24_연향중_2학기_기말_중3_기출/q6.png"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_c198a84b609a9851a2b8231c24e7ed9e89bc93661acec4868472f4e6bda4d93c",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "실제 이미지 하단 질문은 듣기 점수의 최빈값이다. 도수 최대값을 정하는 목표·방법과 두 축10점 만점 범위가 보존됐다. 현행 M1 mode crosswalk의 누락값복원 TPL은 단순 최빈값 읽기와 달라 새 TPL gap 분리가 적절하다.",
+      "assetsInspected": [
+        "assets/images/24_연향중_2학기_기말_중3_기출/q18.png"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_98c1533342130614eb1cc426f8298f77bbb285e6383d3edf97c823b41dcc096c",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "접한 두 변으로 정한 중심위치에서 중심거리·반현의 피타고라스 방정식을 만들며, 해선택 r<10을 명시한 condition이 적절하다. 실제 그림과 최종 conditionReason의 큰 근 배제 근거도 일치한다.",
+      "assetsInspected": [
+        "assets/images/24_연향중_2학기_기말_중3_기출/q21.png"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3",
+  "reboundMetadataNote": "Q5 Root 난이도 receipt 반영으로 metadata SHA만 바뀜. 표본 Q6/18/21 내용 및 4slot SHA 불변 확인."
+}

@@ -1,0 +1,3296 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E015",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "c",
+  "rootIntegrator": "GPT_ROOT_9C9D44BB632B",
+  "independentReviewer": "a",
+  "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "sourceBeforeBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+  "sourceAfterBlob": "2652fba7e7967dc8da54bb37886b63c7a26174e7",
+  "sourceAfterSha256": "9b665bf39de2f499ed9c686f839449a0b48ae7bc97b58a7e65348125e1f84f9c",
+  "questionCount": 23,
+  "uidDigest": "0d61ebe8601281508aaad12f4a0eb7ff61dbf88535690a36e13c42c414e561f4",
+  "authorRawReviewSha256": "5ba2e8b2c1a7462d28f1b20b2cd5a89fec7c053b8a096ad3221fbe84ae556d34",
+  "compactionPolicy": "Shared operational snapshots are represented by differences and record hashes; redundant resolver recomputed expansions are omitted. Semantic decisions and exact 4slot evidence are preserved.",
+  "authority": {
+    "status": "ACTIVE",
+    "sha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "existingEvidenceRefs": [
+    "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+    "archive/data/r2e-intake/m3/24_연향중_2학기_기말_중3_기출.meta-review2.meta-v2.payload.json"
+  ],
+  "artifactRefs": {
+    "sourcePatch": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.source-patch.json",
+      "sha256": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3"
+    },
+    "fourSlot": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot.json",
+      "sha256": "a741436562b2e07c713fdb868c25c10c88812acfd66e6ce14ac9b127f15b910a"
+    },
+    "proposals": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.proposals.json",
+      "sha256": "bd669cd9573ef66d1a5ad768fdeaf4a24a125725d693bd504430884cffe461ad"
+    },
+    "4slot-reuse-evidence.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot-reuse-evidence.json",
+      "sha256": "efc8c8054ea7a249764c5d7eaf42f0531b23d87f9886175c3d2f703d0f5de1be"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.independent.json",
+      "sha256": "5235c2b0f18febb86ea4d55b4254053902290b0fe7998bf0ab3a6ae5fabe26e9"
+    },
+    "difficultyAdjudication": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.difficulty-adjudication.json",
+      "sha256": "4bac0dc4710b238ac007b658b13eb15ef6686adc57d379ec0f7c1800b4bd673f"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_2b145ea17d1845b6cc4b6729b16f2417f4c4934657d4faf840968c844bc9c686",
+      "sourceQuestionNo": 1,
+      "decision": "CORRECT",
+      "decisiveStep": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-069",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-157",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "현의 절반이라는 한 번의 해석 뒤 표준 길이 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 중심과 현",
+        "L4": "중심거리와 현의 길이",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "acbaa4133b3b3355360bdd5bb6464d1aaab0cee963340dc78dfb03801c1e9079"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_3d81a351ac3e9b43bbdf93a491c893e373882bf821af0ac92cd4567e4523975c",
+      "sourceQuestionNo": 2,
+      "decision": "CORRECT",
+      "decisiveStep": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-072",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-160",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "selectedTemplateKey": "TM_TANGENT_LENGTH",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "두 길이가 주어져 접선 길이의 피타고라스 계산 방향이 즉시 결정된다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 접선",
+        "L4": "접선 조건으로 길이 구하기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "be38d26b5c2656beb621785eefc6af8713e4db69864a2eb5097aca43e7997bdc"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_1b199abf421337dda0c41d7d3a522cf58f4d9abc63be744893b82e300570efbd",
+      "sourceQuestionNo": 3,
+      "decision": "CORRECT",
+      "decisiveStep": "같은 점의 접선 길이를 옮겨 두 세로변 합을 위쪽 접선 전체 길이와 같게 하고 지름을 더해 둘레를 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-072",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-160",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "접선 조각을 합으로 묶는 표준 변형이 한 번 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 같은 점의 접선 길이를 옮겨 두 세로변 합을 위쪽 접선 전체 길이와 같게 하고 지름을 더해 둘레를 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 접선",
+        "L4": "한 점에서 그은 두 접선",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "3bc39b9d404b2fe5a1cb47a2672ce7b8012c928d4ae8376bee56dc366070e0d8"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_1df2366d1de336f1eafb2c8eaf9d15ae263e4ddf68779694a8f3b5ec675c00b3",
+      "sourceQuestionNo": 4,
+      "decision": "CORRECT",
+      "decisiveStep": "외부 삼각형의 내각 합과 일직선 각으로 내접사각형 한 내각을 구한 뒤 대각의 보각 관계를 적용한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-077",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "내접사각형의 각"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-165",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "내접사각형의 각"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각의 활용",
+            "l3": "원주각의 활용",
+            "l4": "내접사각형의 각"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "표준 외각과 내접사각형의 대각 합을 순서대로 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 외부 삼각형의 내각 합과 일직선 각으로 내접사각형 한 내각을 구한 뒤 대각의 보각 관계를 적용한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원주각",
+        "L3": "원주각의 활용",
+        "L4": "내접사각형의 각",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "ed721bc411a82c7ec41fd97d8fc3e3d732c5a561eb815b2b85c055eddb0e39da"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6a1361f9eb0f176534755fa7c2f70bfa204c0d368d5c3f2ec323a4e4a98c5782",
+      "sourceQuestionNo": 5,
+      "decision": "CORRECT",
+      "decisiveStep": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-069",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-157",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "그려지지 않은 중심 위치와 반지름의 중복 표현을 선택해야 한다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "independentAdjudicationRef": "/workspace/scratch/9c9d44bb632b/root-validation/E015.difficulty-adjudication.json",
+        "independentAdjudicationSha256": "4bac0dc4710b238ac007b658b13eb15ef6686adc57d379ec0f7c1800b4bd673f"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 중심과 현",
+        "L4": "현의 수직이등분선과 중심",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "da0fe97065a4a1857c9e26af97362352cb81c0fd929a53b4f1d47bcab53f03dc"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "sourceQuestionNo": 6,
+      "decision": "CORRECT",
+      "decisiveStep": "접점 반지름의 수직으로 중심각을 구하고 같은 반지름의 이등변삼각형 밑각을 얻어 접선과 현 사이 각을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-073",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 각 구하기"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-161",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 각 구하기"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 각 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "삼각형·접점 사각형·반지름 삼각형의 각을 연쇄해야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 접점 반지름의 수직으로 중심각을 구하고 같은 반지름의 이등변삼각형 밑각을 얻어 접선과 현 사이 각을 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "실제 질문 그림의 x가 접현각인 것은 확인했다. 제공 풀이가 원주각 성질을 사용하지 않는 점을 RPM73의 tangent-angle gap으로 기록한다."
+      ],
+      "operationalBeforeDelta": {
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-2.2.1.2"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 접선",
+        "L4": "접선 조건으로 각 구하기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "bd26943c986ee87068fa1bdc577fbf77ac2067f673f3b1555493beb653bcedba"
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_e726aebb44233c3f7ffdbbac637aad529999d4b77c215762a12672132d3f34e7",
+      "sourceQuestionNo": 7,
+      "decision": "CORRECT",
+      "decisiveStep": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-080",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-168",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각의 활용",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "selectedTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "반원 원주각·동일 호의 중심각·접선각을 이어야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_TANGENCY"
+        ],
+        "secondaryConceptKeys": [
+          "L4-2.2.1.3"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원주각",
+        "L3": "원주각의 활용",
+        "L4": "복합 각 추론",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "75c289e33ccaebb8c517af48cd0269211aa485b804e9fe13792ad8f950e2a62c"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_5dcb8542cf6691de45932898df65d47b17d7dfc5e47676fda9e0086721caa47b",
+      "sourceQuestionNo": 8,
+      "decision": "CORRECT",
+      "decisiveStep": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_TRIG_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-072",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-160",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "selectedTemplateKey": "TM_TANGENT_LENGTH",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "직접 알려지지 않은 반지름과 중심거리를 한 관계식으로 복원한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-1.1.2.1"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 접선",
+        "L4": "접선 조건으로 길이 구하기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "e8915c9d03fd6e62b23a5689fbe1f7d56f690af780d1f57054a778c5b39bf1e6"
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_8fdc1f3cc10f5adf05b8b9c59eed329f50450d5cff598e604c3e68f78ba545f1",
+      "sourceQuestionNo": 9,
+      "decision": "CORRECT",
+      "decisiveStep": "피타고라스로 남은 변을 구하고 내접원 접선 조각을 반지름으로 표현해 빗변 합에서 반지름을 결정한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-072",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-160",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_CIRCLE_TANGENT",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "직각삼각형 길이와 접선 조각의 합을 연결해 넓이로 진행한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 피타고라스로 남은 변을 구하고 내접원 접선 조각을 반지름으로 표현해 빗변 합에서 반지름을 결정한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 접선",
+        "L4": "한 점에서 그은 두 접선",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "918f1aa2e29dc90df17ce997a5de655d46a30cd9f23b187374c7a8f504d7d67f"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_7fd1d0df93f12b2bf0cba4d8acce363ee93d04accde5c02af4a2a688531fc5a8",
+      "sourceQuestionNo": 10,
+      "decision": "CORRECT",
+      "decisiveStep": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-075",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-163",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "selectedTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "같은 호의 분할과 원주각의 절반 관계를 직접 연결한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원주각",
+        "L3": "원주각과 중심각",
+        "L4": "중심각과 원주각",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "34169d96949efcccd5824c29bac15450555e03635fa86af5f9b4dde3f9e20ee7"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_a491e76571259129b6269808997ea780f8329cd28b9f1f8b1051c0f3b1b570a2",
+      "sourceQuestionNo": 11,
+      "decision": "CORRECT",
+      "decisiveStep": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-080",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-168",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각의 활용",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "selectedTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_SIMILARITY"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "서로 다른 두 삼각형의 대응을 선택해 원의 반지름으로 연결하는 전략이 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_SIMILARITY"
+        ],
+        "secondaryConceptKeys": [
+          "L4-2.2.1.3"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원주각",
+        "L3": "원주각의 활용",
+        "L4": "복합 각 추론",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "24756d763cbbd368b430a30633f873a2fd164d161b604de456099062aa73ac6d"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_4200efa4630909faeda7350f7983fbc00590f0c0b91c0b49f78595e89edf3126",
+      "sourceQuestionNo": 12,
+      "decision": "CORRECT",
+      "decisiveStep": "한 자료의 극단값이 평균을 크게 바꾸는 반면 중앙값은 덜 변한다는 성질로 적절한 대푯값을 고른다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-082",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "대푯값",
+            "l4": "대푯값 비교"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M1-RPM-225",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "대푯값의 선택",
+            "l4": "자료에 적절한 대푯값"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "대푯값의 선택",
+            "l4": "자료에 적절한 대푯값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "selectedTemplateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "평균의 민감도, 짝수 개 자료의 중앙값, 동률 최빈값 등 대표값의 기본 정의를 보기별로 판정한다.",
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "눈에 띄는 이상값과 대푯값의 민감도를 직접 판단한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 한 자료의 극단값이 평균을 크게 바꾸는 반면 중앙값은 덜 변한다는 성질로 적절한 대푯값을 고른다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "대푯값",
+        "L4": "대푯값 비교",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "db5205f7d0254f42f6d8114cd2bb0645d3f0bd97dfb0730c4ba328864c1f3ebd"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_e66df3f9df67900f96ec72d10205d1c6ac8403993d3e4e3b6e2391ad116d5bc7",
+      "sourceQuestionNo": 13,
+      "decision": "CORRECT",
+      "decisiveStep": "누적도수에서 25번째와 26번째 값을 읽어 중앙값을 정하고 최대 도수의 최빈값과 더한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-081",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "대푯값",
+            "l4": "평균·중앙값·최빈값"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M1-RPM-223",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "도수표를 순서 통계량으로 바꾸는 한 단계가 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 누적도수에서 25번째와 26번째 값을 읽어 중앙값을 정하고 최대 도수의 최빈값과 더한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "대푯값",
+        "L4": "평균·중앙값·최빈값",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "e21014f60b3c0a9d1e7a71d9e57c3803045207b4b93af1ad45ec4f46f5e16af0"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_f50a5fd904ccd1a3ba4ed6d5b4caf469d5ef1064a10f1bcd07f03b9e98ceaf91",
+      "sourceQuestionNo": 14,
+      "decision": "CORRECT",
+      "decisiveStep": "최솟값·최빈값의 출현 횟수로 세 자료를 고정하고 평균으로 나머지 값을 구한 뒤 정렬 순서에서 중앙값을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-087",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "자료 비교",
+            "l4": "조건으로 자료 추론"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M1-RPM-223",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "selectedTemplateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "세 통계 조건이 자료 배치를 제한하므로 미지 자료와 위치를 함께 복원한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 최솟값·최빈값의 출현 횟수로 세 자료를 고정하고 평균으로 나머지 값을 구한 뒤 정렬 순서에서 중앙값을 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "자료 비교",
+        "L4": "조건으로 자료 추론",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "d2e55f750dce19494c32a1fcbb335c2aef6345b6d263a6264cf6f8f45bcd00fe"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9d0795b4b39b5cbd3bb0305b9704f978c1d02c7b118c57ba567870ac94312fc5",
+      "sourceQuestionNo": 15,
+      "decision": "CORRECT",
+      "decisiveStep": "평균을 구한 뒤 평균보다 큰 자료를 직접 세고 편차 제곱합·분산·표준편차 수치 진술을 확인한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_MEAN"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-085",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "산포도",
+            "l4": "표준편차"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-172",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "분산과 표준편차",
+            "l4": "표준편차 계산"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "분산과 표준편차",
+            "l4": "표준편차 계산"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [
+        "CC_MEAN"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "정의에 따른 여러 계산을 구별하지만 풀이 방향은 명확하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 평균을 구한 뒤 평균보다 큰 자료를 직접 세고 편차 제곱합·분산·표준편차 수치 진술을 확인한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-3.1.2.1",
+          "L4-3.1.2.2",
+          "L4-3.1.2.3"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "474eda3c52f446f4444f1e4150b170085db5d38fc155107d49da53ba12142cd0"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_07791f58bce33236f7b00f9d3e81cfd5f502ec14c65800c43b062c581c1711e8",
+      "sourceQuestionNo": 16,
+      "decision": "CORRECT",
+      "decisiveStep": "편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-083",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "산포도",
+            "l4": "편차"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-170",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "편차",
+            "l4": "편차의 합"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "편차",
+            "l4": "편차의 합"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "편차 합과 변량=평균+편차를 바로 적용하는 두 단계다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "산포도",
+        "L4": "편차",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "2bc87290cc6c4488288003ec75031a70fd3eb6206c7a2fe346ce528247eb7648"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9d24dcd6a040a4bbc8c8e9fe04d261fd599d4f95d7d22e2f44d37176581ded46",
+      "sourceQuestionNo": 17,
+      "decision": "CORRECT",
+      "decisiveStep": "첫 중앙값 조건으로 a의 위치를 제한하고 두 번째 중앙값으로 b를 고정한 뒤 b에 의존하는 평균식으로 a를 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-087",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "자료 비교",
+            "l4": "조건으로 자료 추론"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M1-RPM-223",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "selectedTemplateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "두 자료의 순서 제약을 공유 미지수로 연결해 해를 좁혀야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 첫 중앙값 조건으로 a의 위치를 제한하고 두 번째 중앙값으로 b를 고정한 뒤 b에 의존하는 평균식으로 a를 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "자료 비교",
+        "L4": "조건으로 자료 추론",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "ade1f09cfe5596b21924fb89c0a6a2ddbdd5189f28bbc9a31ead06a9aa2e627e"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_c198a84b609a9851a2b8231c24e7ed9e89bc93661acec4868472f4e6bda4d93c",
+      "sourceQuestionNo": 18,
+      "decision": "CORRECT",
+      "decisiveStep": "산점도에서 같은 듣기 좌표를 갖는 점의 도수를 세어 그 도수가 최대인 값을 최빈값으로 고른다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-081",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "대푯값",
+            "l4": "평균·중앙값·최빈값"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M1-RPM-224",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "최빈값"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "최빈값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "한 축의 빈도만 읽는 직접 최빈값 정의 적용이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 산점도에서 같은 듣기 좌표를 갖는 점의 도수를 세어 그 도수가 최대인 값을 최빈값으로 고른다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [
+        "원문 content에는 공통 산점도 안내만 있고 실제 최빈값 질문은 q18.png 하단에 있다. 실제 그림을 읽어 목표를 확인했다. 학생 source는 보존."
+      ],
+      "operationalBeforeDelta": {
+        "subUnit": "대푯값과 산포도",
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-3.2.1.1"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "상관관계",
+        "L3": "산점도",
+        "L4": "산점도 읽기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "0dbf8bf53ff7d424cb3bb05e240393bbd36e54e9258124a54b65924de315598a"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_befdd0da65a59ec4fe3ee2d0400f292922b5301b97642a1ac5971ee99506a3e8",
+      "sourceQuestionNo": 19,
+      "decision": "CORRECT",
+      "decisiveStep": "두 점수가 모두 8점 이상인 영역의 점을 세어 합격 인원을 결정한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-088",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "상관관계",
+            "l3": "산점도",
+            "l4": "산점도 읽기"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": null,
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "상자그림과 산점도",
+            "l3": "산점도",
+            "l4": null
+          },
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": null,
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": true,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "reason": "같은 하한이 주어진 두 축의 오른쪽 위 영역을 직접 읽는다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 두 점수가 모두 8점 이상인 영역의 점을 세어 합격 인원을 결정한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "상관관계",
+        "L3": "산점도",
+        "L4": "산점도 읽기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "8224ad197633eb597b725b8c727e8860c76a459e0fafa4d9900809030e0f78ab"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7ad6687c8a1958870cd000b46051c41eda3f3da4d80d43c4fe2aa4382d5467dc",
+      "sourceQuestionNo": 20,
+      "decision": "CORRECT",
+      "decisiveStep": "과학 점수가 사회 점수보다 크다는 조건을 y>x로 바꾸어 대각선 위쪽 점을 센 뒤 전체 대비 비율을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+        "subUnit": "통계 자료 해석",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-088",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "상관관계",
+            "l3": "산점도",
+            "l4": "산점도 읽기"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": null,
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "상자그림과 산점도",
+            "l3": "산점도",
+            "l4": null
+          },
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": null,
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": true,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "두 좌표의 비교를 산점도 영역으로 옮기는 한 번의 해석이 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 과학 점수가 사회 점수보다 크다는 조건을 y>x로 바꾸어 대각선 위쪽 점을 센 뒤 전체 대비 비율을 구한다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "통계",
+        "L2": "상관관계",
+        "L3": "산점도",
+        "L4": "산점도 읽기",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "ada45aef087bde4f787dfaf569a09d9a675e82bf364e25fb6853ca51324d3a1d"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_98c1533342130614eb1cc426f8298f77bbb285e6383d3edf97c823b41dcc096c",
+      "sourceQuestionNo": 21,
+      "decision": "CORRECT",
+      "decisiveStep": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-069",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-157",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "selectedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "selectedTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionReason": "반지름이 정사각형 한 변 10보다 작다는 위치 조건으로 이차방정식의 큰 근을 배제한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "세 거리를 같은 반지름으로 모델링하고 가능한 근을 도형 위치로 제한한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "CORRECT_TARGETED_SLOTS",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TANGENCY"
+        ],
+        "secondaryConceptKeys": [
+          "L4-2.1.1.3"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원과 직선",
+        "L3": "원의 중심과 현",
+        "L4": "중심거리와 현의 길이",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "0369b94652a145a3c20d0ffbcc6c825292bfe6c5434101795c2bcd11e1ca16d2"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_8c842cd9db3e25366ee1889251600e84ed61e03c1e7759346515c20148488d59",
+      "sourceQuestionNo": 22,
+      "decision": "CORRECT",
+      "decisiveStep": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-080",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-168",
+          "basePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectivePath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각의 활용",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_REUSE",
+        "selectedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "selectedTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "listedCrosswalkTemplate": true,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+        "reuseAssessment": "ACTIVE 정의 재사용",
+        "newPTRequired": false,
+        "newTPLRequired": false
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "conditionKeys": [],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "호와 외각의 관계를 변수식으로 묶은 다음 다시 내부 각으로 전환해야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다."
+      },
+      "debt": [],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-2.2.1.1"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "L1": "원의 성질",
+        "L2": "원주각",
+        "L3": "원주각의 활용",
+        "L4": "복합 각 추론",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "d2b199d03e7d12d6bc64cd8f1c417a2b33bd1d5691b5851fd4062db844223592"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_fb0a2cfd59df99eef301f4aafeedb083622ebb7e002903b6eabad727db75af72",
+      "sourceQuestionNo": 23,
+      "decision": "CORRECT",
+      "decisiveStep": "평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다.",
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "standardUnit": "통계",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "subUnit": "대푯값과 산포도",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "rpm": {
+        "originalCurriculum": null,
+        "curriculumPreserved": true,
+        "comparisonBasis": "2015 RPM exact leaf; source curriculum is not inferred or overwritten",
+        "base": {
+          "recordId": "M3-RPM-084",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값과 산포도",
+            "l3": "산포도",
+            "l4": "분산"
+          },
+          "mappingStatus": "RPM_ONLY"
+        },
+        "current2022": {
+          "recordId": "M3-RPM-171",
+          "basePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "분산과 표준편차",
+            "l4": "분산 계산"
+          },
+          "effectivePath": {
+            "majorUnit": "통계",
+            "midUnit": "산포도",
+            "l3": "분산과 표준편차",
+            "l4": "분산 계산"
+          },
+          "effectiveParentKey": "[\"2022\",\"M3-2\",\"통계\",\"산포도\"]",
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "mappingStatus": "RPM_ONLY"
+        }
+      },
+      "resolver": {
+        "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
+        "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
+        "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "selectedProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "selectedTemplateKey": null,
+        "listedCrosswalkTemplate": false,
+        "globalActiveSearched": true,
+        "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+        "activeDefinition": null,
+        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
+        "newPTRequired": false,
+        "newTPLRequired": true
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "conditionReason": "별도 수치 범위 제한이 없는 경우 조건키를 비우고 기하 관계는 4칸에 기록한다.",
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "reason": "평균이 미지수에 의존하는 자료를 편차식으로 바꾸고 근의 조건을 함께 검토한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "fourSlot": {
+        "status": "REAFFIRMED_WITH_NEW_EXACT_QUOTE_EVIDENCE",
+        "existingSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+        "sourceBlobMatch": true,
+        "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다."
+      },
+      "debt": [
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+      ],
+      "reviewNotes": [],
+      "operationalBeforeDelta": {
+        "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+        "crossConceptKeys": [],
+        "secondaryConceptKeys": [
+          "L4-3.1.2.1",
+          "L4-3.1.1.1"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": "통계",
+        "L2": "대푯값과 산포도",
+        "L3": "산포도",
+        "L4": "분산",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2"
+      },
+      "operationalRecordBeforeSha256": "7c0863cd1a9d93cc883fa00e275279f6fbce68bbb309e62bf368db7bb8768f84"
+    }
+  ],
+  "authorSummary": {
+    "questionCount": 23,
+    "decisions": {
+      "CORRECT": 23
+    },
+    "topicCounts": {
+      "원과 직선": 8,
+      "원주각": 5,
+      "대푯값과 산포도": 8,
+      "상관관계": 2
+    },
+    "sourcePatchItems": 23,
+    "officialResolverStatus": "NOT_RUN_NO_FALSE_SOLUTION_VERIFICATION",
+    "studentPayloadModified": false
+  },
+  "warningReview": {
+    "fail": 0,
+    "warn": 8,
+    "warnings": [
+      "#4 only 4 distinct terms",
+      "#12 only 4 distinct terms",
+      "#14 only 4 distinct terms",
+      "#16 only 3 distinct terms",
+      "#18 only 4 distinct terms",
+      "#19 only 4 distinct terms",
+      "#19 method has 1 term",
+      "#20 only 4 distinct terms"
+    ],
+    "disposition": "단순 정의/단일 성질 문항의 용어 수·단일method 경고를 검토해 불필요한 태그를 추가하지 않았다. 독립3표본은 대기."
+  },
+  "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "mainMerge": "NOT_RUN_USER_EXCLUDED",
+  "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
+  "semanticPayloadSha256": "16d02ef7cfb39baf98031f13986d4d79c469e250b47f728eada27132616790ed",
+  "independentFinalStatus": "PASS_AFTER_REQUESTED_CORRECTIONS"
+}
