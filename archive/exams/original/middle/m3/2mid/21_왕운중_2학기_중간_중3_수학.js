@@ -827,7 +827,11 @@ window.questionBank = [
       "subConcept": "두 지점의 앙각과 공통 높이",
       "conditionsUsed": "두 지점 거리 100m, 앙각 45°,60°.",
       "integrationPatternExplanation": "같은 높이를 두 관측점의 거리와 연결한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면의 A,B 두 지점은 100m 떨어져 있고, 수선의 발 D는 그 사이에 있다. C까지의 시선각은 A에서 45°, B에서 60°이며 높이 수치는 표시하지 않는다.",
+    "solutionImageCaption": "AD=x, CD=x이므로 tan60°=x/(100−x). 이를 풀면 x=CD=50(3−√3)m이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

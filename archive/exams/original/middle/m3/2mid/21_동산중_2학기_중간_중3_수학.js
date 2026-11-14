@@ -1848,7 +1848,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE; selected family template fits the decisive operation"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 변이 각각 4√3인 마름모에서 끼인각 60°와 수직 높이 DH=6을 표시했다.",
+    "solutionImageCaption": "넓이는 밑변×높이=4√3×6=24√3이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -2112,7 +2116,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: C에서 직각인 삼각형 ABC에서 D는 BC 위에 있다. 삼각형 ACD를 연하게 칠하고 AB=6, AD=4, CD=2를 표시했다.",
+    "solutionImageCaption": "AC=2√3, BC=2√6이므로 cos B=BC/AB=√6/3이다. 답은 √6/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

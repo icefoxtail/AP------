@@ -375,7 +375,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>"
+      "content": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 정사면체에서 두 파란 선분 AE와 DE의 길이가 같고 E에서 AD로 내린 수선 EF를 주황색으로 표시했다.",
+      "solutionImageCaption": "AE=DE=2√3이고 F는 AD의 중점이므로 DF=2이다. 직각삼각형 DEF에서 EF=2√2이다. 따라서 sin x=EF/DE=√6/3이며 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,

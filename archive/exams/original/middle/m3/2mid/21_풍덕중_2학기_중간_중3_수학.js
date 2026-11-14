@@ -131,7 +131,7 @@ window.examData = {
     {
       "id": 10,
       "score": 4.0,
-      "question": "다음 그림과 같이 $10\\,\\mathrm{m}$ 떨어진 지점 $\\mathrm{C}$와 지점 $\\mathrm{D}$에서 타워의 꼭대기 지점 $\\mathrm{A}$를 올려본각의 크기가 각각 $60^\\circ$, $30^\\circ$일 때, 타워의 높이 $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q10.png\" />",
+      "question": "다음 그림과 같이 $10\\,\\mathrm{m}$ 떨어진 지점 $\\mathrm{C}$와 지점 $\\mathrm{D}$에서 타워의 꼭대기 지점 $\\mathrm{A}$를 올려본각의 크기가 각각 $60^\\circ$, $30^\\circ$일 때, 타워의 높이 $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q10-problem-v2.svg\" />",
       "choices": [
         "$5\\,\\mathrm{m}$",
         "$5\\sqrt{2}\\,\\mathrm{m}$",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 4.0,
-      "question": "오른쪽 그림에서 $\\square\\mathrm{ABCD}$는 원 $\\mathrm{O}$에 외접하고 네 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$, $\\mathrm{S}$는 그 접점일 때, $x$의 값을 구하면? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q17.png\" /><br>단, $x$는 $\\overline{AP}$의 길이(cm)이며, $P,Q,R,S$는 각각 선분 $AB,BC,CD,DA$ 위의 접점이다. $\\overline{AD}=8\\,\\mathrm{cm}$, $\\overline{CD}=10\\,\\mathrm{cm}$, $\\overline{BP}=6\\,\\mathrm{cm}$, $\\overline{BC}=11\\,\\mathrm{cm}$이다.",
+      "question": "오른쪽 그림에서 $\\square\\mathrm{ABCD}$는 원 $\\mathrm{O}$에 외접하고 네 점 $\\mathrm{P}$, $\\mathrm{Q}$, $\\mathrm{R}$, $\\mathrm{S}$는 그 접점일 때, $x$의 값을 구하면? (4점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/q17-problem-v2.svg\" /><br>단, $x$는 $\\overline{AP}$의 길이(cm)이며, $P,Q,R,S$는 각각 선분 $AB,BC,CD,DA$ 위의 접점이다. $\\overline{AD}=8\\,\\mathrm{cm}$, $\\overline{CD}=10\\,\\mathrm{cm}$, $\\overline{BP}=6\\,\\mathrm{cm}$, $\\overline{BC}=11\\,\\mathrm{cm}$이다.",
       "choices": [
         "$2$",
         "$2.5$",

@@ -1257,7 +1257,11 @@ window.questionBank = [
       "reason": "발문은 삼각형의 넓이를 묻는데 선택지 단위가 cm로 적혀 있어 차원상 불일치. 숫자와 수식은 보존하고 면적 단위 지수만 바로잡음."
     },
     "replacementReason": "발문은 삼각형의 넓이를 묻는데 선택지 단위가 cm로 적혀 있어 차원상 불일치. 숫자와 수식은 보존하고 면적 단위 지수만 바로잡음.",
-    "replacementStage": "CREATE"
+    "replacementStage": "CREATE",
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 O, 현의 중점 H, 호점 P가 일직선이며 HP=2cm이다. 삼각형 APB는 연하게 채우고 AH=HB를 같은 표식으로 표시했다.",
+    "solutionImageCaption": "반지름 10cm와 HP=2cm에서 OH=8cm, AH=6cm이므로 AB=12cm이다. 넓이는 ½·12·2=12cm²이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1336,7 +1340,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "28542dda213b5ce8af76564ffae9a241c51bab8c"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: AB와 CD의 같은 길이 표식, OM=ON=4cm, 넓이 12cm²인 삼각형 OCD와 현의 중점 N을 표시했다.",
+    "solutionImageCaption": "AB=CD이므로 CD=6cm이고 ND=3cm이다. 직각삼각형 OND에서 OD=√(4²+3²)=5cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1498,7 +1506,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "02d8aa0d745694ff07a3abf9e305d47bfc4cdff2"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: P에서 원 O에 그은 접선 PA, PB와 반지름 OA, OB를 표시하고, OP를 대칭축으로 하여 현 AB를 M에서 이등분한다.",
+    "solutionImageCaption": "∠AOP=60°이므로 AM=6sin60°=3√3cm, AB=2AM=6√3cm이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

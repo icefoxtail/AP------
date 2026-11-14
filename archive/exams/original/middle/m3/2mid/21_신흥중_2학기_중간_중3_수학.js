@@ -707,7 +707,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "AB⊥OM, AB=8cm, MC=2cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 현 AB=8cm와 중심 수선 OM을 나타낸다. M은 AB의 중점이며 C는 OM 위에서 MC=2cm 떨어져 있다.",
+    "solutionImageCaption": "M은 AB의 중점이므로 MB=4cm이다. 반지름을 r이라 두면 OM=r−2이고 직각삼각형 OMB에서 r²=(r−2)²+4²이므로 r=5cm이다. 따라서 원의 넓이는 25πcm², 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -761,7 +765,11 @@ window.questionBank = [
       "subConcept": "같은 호에 대한 원주각",
       "conditionsUsed": "∠BAC=65°, OM=ON=2.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A가 65도인 원의 내접삼각형이다. 두 길이 2인 수선 OM과 ON은 파란 한 눈금이고, 두 현 AC와 BC는 주황 두 눈금이다. 각 C에 x가 표시된다.",
+    "solutionImageCaption": "OM=ON=2이고 두 현에 수직이므로 AC=BC이다. 같은 원에서 이에 대응하는 원주각도 같아 ∠ABC=∠BAC=65°이다. 따라서 x=180°−65°−65°=50°, 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -821,7 +829,11 @@ window.questionBank = [
       "subConcept": "중심거리와 현의 길이",
       "conditionsUsed": "반지름 4cm, AB는 접는 선, 접은 뒤 짧은 호 AB가 O를 지난다.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 4cm인 원 O에서 접는 선 AB를 기준으로 접기 전 파란 짧은 호와 접은 뒤 주황 짧은 호를 나타낸다. 접힌 호는 O를 지난다.",
+    "solutionImageCaption": "접힌 호가 O를 지나므로 반사된 중심 Q와 O의 거리는 반지름 4cm이다. 접는 선은 OQ의 수직이등분선이므로 O에서 AB까지 거리는 2cm이다. 직각삼각형에서 현의 반은 √(4²−2²)=2√3cm이므로 AB=4√3cm, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
