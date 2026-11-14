@@ -2,11 +2,11 @@
 
 ## 현재 상태
 
-**RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_59E0F5BD3A77`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
+**RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_14C2C64E43FB`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
 전체 **75시험지 / 1,780문항** 중 **25시험지 / 592문항**의 검토 패킷을 보존했다. 잔여는 **50시험지 / 1,188문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
-기존 E001–E012 검토는 재사용했고, PENDING_AMENDMENTS.json의 7건은 원본·독립 증거를 보존한 채 좁은 보정을 적용·검증하여 각각 원격 출판했다. 이전 미원격 로컬 파일의 실제 바이트는 찾지 못했다. LOCAL_RECOVERY.json의 역사적 SHA를 새 작성본의 복구 SHA로 주장하지 않는다.
+이번 인수 시 원격 보존된 25시험지/592문항과 완료된 7건의 좁은 보정을 재사용했다. E022·E027·E032의 미원격 작성본 및 E035 난도 동결본은 이전 작업 폴더에서 실제 바이트와 SHA를 확인하여 복구했다. 이전 writer 종료 여부는 확인되지 않았으며 사용자 직접 인수 지시에 따라 독립 작업 폴더에서 재개했다. 원격 HEAD 사전 확인과 non-force 출판으로 동시 변경을 감지한다. LOCAL_RECOVERY.json의 과거 회수 실패 기록과 이번 실제 회수는 별개다.
 
 ## 진입점과 증거
 
@@ -32,14 +32,14 @@
 
 ## 다음 실행
 
-1. 새 대화/소유권 인수에서는 Notion 필독 라우터, Archive 시작·생명주기, 실행 지시서/재개 인덱스, AWCR bootstrap을 먼저 읽는다. 이 task와 branch의 실제 최신 HEAD를 확인한다. 현재 writer가 RUNNING이면 겹쳐 인수하지 않는다.
-2. A는 E013,E016,…E073, B는 E014,E017,…E074, C는 E015,E018,…E075 중 미보존 시험지를 계속 처리한다. 교차 검토는 B→A, C→B, A→C이며 root만 직렬 출판한다.
+1. 새 대화/소유권 인수에서는 Notion 필독 라우터, Archive 시작·생명주기, 실행 지시서/재개 인덱스, AWCR bootstrap을 먼저 읽는다. 이 task와 branch의 실제 최신 HEAD를 확인한다. 현재 writer가 RUNNING이면 사용자 직접 인수 지시가 없는 한 겹쳐 인수하지 않는다. 이번 인수는 사용자 직접 지시에 근거하며 이전 종료를 확인했다고 주장하지 않는다.
+2. A는 E022,E025,…E073, B는 E032,E035,…E074, C는 E027,E030,…E075 중 미보존 시험지를 계속 처리한다. 교차 검토는 B→A, C→B, A→C이며 root만 직렬 출판한다.
 3. 독립 표본·변경/불확실 난도 재검·필수 기계 검사를 완료한 시험지마다 commit/push/CAS remote HEAD readback을 한다. 이미 보존된 검토는 필요한 좁은 보정 외 반복하지 않는다.
 4. 전체 검토 후 미판정/근거부채/등록대기와 제안들을 집계한다. 판단과 필수 검사가 모두 끝난 경우만 REVIEW_COMPLETE_RELEASE_PENDING이다. 중단 시 writer를 종료하고 PAUSED_WITH_REMAINING / RESUME_READY 및 immutable AWCR 다음 revision을 저장·검증한다.
 
 ## AWCR 최신 검증
 
-**revision 8**, fileId `1-X9sNLo-ayBaCa3rWj_j8-R5MJR7lGZs`, raw SHA-256 `0076f946d69829c9f4b31acdd97e1a0889b1970d80f072ff903e926f6b996d1c`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
+**revision 9**, fileId `1IwtrrUa8PO9r9d4uxdFk045g1S5cV5rN`, raw SHA-256 `04288ea2ae1c8751d5abad9c9291273001aa45d9b427bf32ab17019b0e4f0ce2`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
 
 ## 이번 재개의 원격 출판 기록
 
@@ -75,6 +75,7 @@
 | E024 | `b7bdc9fde53f523f3fa2f3c3c070b1a8cacae9d1` |
 | E021 | `24a27db803810b7457b8e7711ef012e18984af03` |
 | E026 | `d8ce47f4753cc859595e727295886a610af8c490` |
+| E029 | `e56642c27ba8f60870a1b9dda904db38afaa1ce9` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 

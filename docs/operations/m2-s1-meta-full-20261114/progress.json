@@ -1,7 +1,7 @@
 {
   "workKey": "M2-S1-META-FULL",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
-  "owner": "GPT_ROOT_59E0F5BD3A77",
+  "owner": "GPT_ROOT_14C2C64E43FB",
   "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
   "branch": "review/m2-s1-meta-full-20261114",
   "createdAt": "2026-11-14T08:34:21.789Z",
@@ -4166,7 +4166,7 @@
     }
   ],
   "fullyJudgedQuestions": 549,
-  "updatedAt": "2026-11-14T12:15:57.269848+00:00",
+  "updatedAt": "2026-11-14T13:41:28.544970+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -4303,35 +4303,8 @@
     {
       "owner": "A",
       "status": "RUNNING",
-      "scope": [
-        "E001",
-        "E004",
-        "E007",
-        "E010",
-        "E013",
-        "E016",
-        "E019",
-        "E022",
-        "E025",
-        "E028",
-        "E031",
-        "E034",
-        "E037",
-        "E040",
-        "E043",
-        "E046",
-        "E049",
-        "E052",
-        "E055",
-        "E058",
-        "E061",
-        "E064",
-        "E067",
-        "E070",
-        "E073"
-      ],
-      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
-      "agent": "/root/worker_a2",
+      "sessionOwner": "GPT_ROOT_14C2C64E43FB",
+      "agent": "/root/reviewer_a",
       "authorScope": [
         "E022",
         "E025",
@@ -4352,30 +4325,14 @@
         "E070",
         "E073"
       ],
-      "numericOnlyRepairScope": [
-        "E013",
-        "E014",
-        "E015",
-        "E016",
-        "E017",
-        "E019"
-      ],
-      "previousAgent": "/root/worker_a"
+      "independentReviewFor": "C"
     },
     {
       "owner": "B",
       "status": "RUNNING",
-      "scope": [
-        "E002",
-        "E005",
-        "E008",
-        "E011",
-        "E014",
-        "E017",
-        "E020",
-        "E023",
-        "E026",
-        "E029",
+      "sessionOwner": "GPT_ROOT_14C2C64E43FB",
+      "agent": "/root/reviewer_b",
+      "authorScope": [
         "E032",
         "E035",
         "E038",
@@ -4392,21 +4349,14 @@
         "E071",
         "E074"
       ],
-      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
-      "agent": "/root/worker_b"
+      "independentReviewFor": "A"
     },
     {
       "owner": "C",
       "status": "RUNNING",
-      "scope": [
-        "E003",
-        "E006",
-        "E009",
-        "E012",
-        "E015",
-        "E018",
-        "E021",
-        "E024",
+      "sessionOwner": "GPT_ROOT_14C2C64E43FB",
+      "agent": "/root/reviewer_c",
+      "authorScope": [
         "E027",
         "E030",
         "E033",
@@ -4425,14 +4375,13 @@
         "E072",
         "E075"
       ],
-      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
-      "agent": "/root/worker_c"
+      "independentReviewFor": "B"
     }
   ],
   "awcr": {
-    "latestVerifiedRevision": 8,
-    "fileId": "1-X9sNLo-ayBaCa3rWj_j8-R5MJR7lGZs",
-    "rawSha256": "0076f946d69829c9f4b31acdd97e1a0889b1970d80f072ff903e926f6b996d1c",
+    "latestVerifiedRevision": 9,
+    "fileId": "1IwtrrUa8PO9r9d4uxdFk045g1S5cV5rN",
+    "rawSha256": "04288ea2ae1c8751d5abad9c9291273001aa45d9b427bf32ab17019b0e4f0ce2",
     "rawReadbackVerified": true,
     "nextAction": "Append immutable next revision after meaningful completed units."
   },
@@ -4562,14 +4511,160 @@
       "acceptedBy": "GPT_ROOT_59E0F5BD3A77",
       "awcrRevision": 4,
       "awcrRawSha256": "3130aaee9be6be822fb7156c40ec2fb51d533d8869e959e094b1708ddce33b76"
+    },
+    {
+      "at": "2026-11-14T13:41:28.544970+00:00",
+      "previousOwner": "GPT_ROOT_59E0F5BD3A77",
+      "previousState": "RUNNING",
+      "previousWriterState": "RUNNING",
+      "previousWriterTermination": "UNCONFIRMED",
+      "previousWorkerStates": [
+        {
+          "owner": "A",
+          "status": "RUNNING",
+          "scope": [
+            "E001",
+            "E004",
+            "E007",
+            "E010",
+            "E013",
+            "E016",
+            "E019",
+            "E022",
+            "E025",
+            "E028",
+            "E031",
+            "E034",
+            "E037",
+            "E040",
+            "E043",
+            "E046",
+            "E049",
+            "E052",
+            "E055",
+            "E058",
+            "E061",
+            "E064",
+            "E067",
+            "E070",
+            "E073"
+          ],
+          "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+          "agent": "/root/worker_a2",
+          "authorScope": [
+            "E022",
+            "E025",
+            "E028",
+            "E031",
+            "E034",
+            "E037",
+            "E040",
+            "E043",
+            "E046",
+            "E049",
+            "E052",
+            "E055",
+            "E058",
+            "E061",
+            "E064",
+            "E067",
+            "E070",
+            "E073"
+          ],
+          "numericOnlyRepairScope": [
+            "E013",
+            "E014",
+            "E015",
+            "E016",
+            "E017",
+            "E019"
+          ],
+          "previousAgent": "/root/worker_a"
+        },
+        {
+          "owner": "B",
+          "status": "RUNNING",
+          "scope": [
+            "E002",
+            "E005",
+            "E008",
+            "E011",
+            "E014",
+            "E017",
+            "E020",
+            "E023",
+            "E026",
+            "E029",
+            "E032",
+            "E035",
+            "E038",
+            "E041",
+            "E044",
+            "E047",
+            "E050",
+            "E053",
+            "E056",
+            "E059",
+            "E062",
+            "E065",
+            "E068",
+            "E071",
+            "E074"
+          ],
+          "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+          "agent": "/root/worker_b"
+        },
+        {
+          "owner": "C",
+          "status": "RUNNING",
+          "scope": [
+            "E003",
+            "E006",
+            "E009",
+            "E012",
+            "E015",
+            "E018",
+            "E021",
+            "E024",
+            "E027",
+            "E030",
+            "E033",
+            "E036",
+            "E039",
+            "E042",
+            "E045",
+            "E048",
+            "E051",
+            "E054",
+            "E057",
+            "E060",
+            "E063",
+            "E066",
+            "E069",
+            "E072",
+            "E075"
+          ],
+          "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+          "agent": "/root/worker_c"
+        }
+      ],
+      "remoteHead": "e56642c27ba8f60870a1b9dda904db38afaa1ce9",
+      "authorization": "USER_DIRECTED_TAKEOVER",
+      "acceptedBy": "GPT_ROOT_14C2C64E43FB",
+      "awcrRevision": 9,
+      "awcrRawSha256": "04288ea2ae1c8751d5abad9c9291273001aa45d9b427bf32ab17019b0e4f0ce2",
+      "scope": "Reuse remotely preserved 25 exams/592 questions and recovered exact local bytes; continue remaining 50 exams/1188 questions.",
+      "concurrencyControl": "Independent worktree; prior folder read-only; root alone serial publication with expected parent and non-force update."
     }
   ],
   "mainReadbackAtResume": {
-    "sha": "7132fdf909cf593bade285270ccc91429782a676",
+    "sha": "83273a9744fd306ca5a03182b01298205bf84de8",
     "targetSourceChangesSinceBase": 0,
     "canonicalRulesCompiledChangesSinceBase": 0,
+    "changedFileCount": 268,
+    "commitsSinceBase": 98,
     "generatedRuntimeReceiptChanged": true,
-    "action": "READ_ONLY; no merge/rebase/reset"
+    "action": "READ_ONLY; retain existing review base; no merge/rebase/reset"
   },
   "resumePublicationReceipts": [
     {
