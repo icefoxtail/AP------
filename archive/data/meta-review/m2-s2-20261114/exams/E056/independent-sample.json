@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E056",
+  "examiner": "C",
+  "author": "B",
+  "createdAt": "2026-11-14T05:48:06.512392+00:00",
+  "sourceArchiveFile": "original/middle/m2/2mid/20_왕의중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "fd52a77661f6f854e1f141fba933c8bb7ed3e561",
+  "reviewSha256": "111187e8c1694b20ee911f9ccf1156bc3ca9716964223200db2c5d0884c0eb21",
+  "fourSlotSha256": "4eb91a5424645bd3b58b734ad2e37f042118d8f05c3ce559ef8ec83e3849b3aa",
+  "ordinals": [
+    3,
+    7,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_1e12cfdfb30b9876d792946367b1ff9f41d40c9ac74558e829cf1142c624b1fe",
+      "verdict": "PASS",
+      "reason": "실제 좌표그림의 점(3,1)을 확인했다. 이를 두 식의 공통해로 해석하여 a→b로 대입하는 방법과 목표값은4칸에 분리되어 있다. 기존 GRAPH_INTERSECTION 부모는 공통교점의 해 의미를 포함하고, 정방향 교점계산과 다른 새 역산 TPL 제안이 타당하다. 원본상과2의 강한충돌을 별도로 남긴다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "imageNotRequired": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_de3c3556767c35f25e26898f7bb39ee5977477585ffb63aeec18c78fcc6e1dea",
+      "verdict": "PASS",
+      "reason": "원도에서D/E/F의 수선과 내심I를 확인했다. 각이등분·세변등거리·RHA합동은 실제 보기 판단에 쓰이며 꼭짓점 등거리와 구별되어 있다. CENTERS_SEMANTIC과 보조RHA, 복수성질 비교의 RPM gap 및4칸의수선조건 분리가 타당하다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "imageNotRequired": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+      "verdict": "PASS_WITH_SOURCE_HOLD",
+      "reason": "실제 발문은 두 주변확률만 제공하며 독립을 주지 않는다. 해설의 독립곱은 조건부 후보로만4칸에 표시하고 최종UNKNOWN/등록차단을 둔 것을 수용한다. 정확히한성공의 두 배반경로·여사건·곱셈·덧셈 슬롯은 그 후보모형의 구조로만 수용한다. raw최상은 정규화하지 않는다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": false,
+      "imageNotRequired": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ec9365635d80db95c581d0354a1454fb09333358b984e4eb5496d36b667faf88",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "축평행을y계수0으로 바꾸고 주어진점에 대입하는 한 전처리이므로2/B12."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_1e12cfdfb30b9876d792946367b1ff9f41d40c9ac74558e829cf1142c624b1fe",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "주어진 교점좌표를 읽어 두 식에 순차 대입하는 고정경로2/B12. 원본상과 STRONG_CONFLICT를 유지하고 학습중을 제안한다.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_cd2ce05fe5bda36d99d07341441e04fcb84e26e5ce5f8c2ed815e699bce9563d",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "곱의부호에서 기울기·절편의 부호를 읽은 뒤 사분면을 판정하는 정형해석2/B12."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1c3c2bfd29e306cd7d27932176808446f88de7337a059c5552622f8fc98097cb",
+      "difficultyBucket": 2,
+      "level": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "외각60에서내각30을 얻고 두등각의대변을 같게보는 한연결2/B12. 원본하와 인접차이 유지."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_4a67c206a7d0d9c1688ef7600f729948c29c2ec9bd0e0f72e983f0ae52f9d419",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "주어진수선과직각이등변의 두빗변을 묶어 여각동치→RHA→변합으로 가는 표준배치2/B23. 보조선 추가선택이 없다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_de3c3556767c35f25e26898f7bb39ee5977477585ffb63aeec18c78fcc6e1dea",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "내심의각·거리·합동보기를 기본성질별로 확인하고 외심성질 혼입을 배제하는2/B23."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_5ed62574a56d8a430b860555ecc84882f79c108e8f6c6a73ca30f59336023141",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "꼭지각이등분선의수직이등분성질로중점·직각·SAS를 순차판정하는 정형2/B23. 원본상 강한충돌과 학습중후보 수용.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_17e6e3319761302b9053587dc754f990132c2d06a46c0c10972c498ac43d411a",
+      "difficultyBucket": 2,
+      "level": "하",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "이미 그려진AE를 공통빗변으로RHS를 적용하고45도등변을 연결하는2/B23. 원본하와 인접차이 유지."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_a8a7223f1fc66d8142121c56270d8b2c57809709e46475bcb21e0077c82dc6ba",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "외심각의절반과내심각90+절반을 직접 순서대로 연결하는2/B12."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_806048a50a696f33239325ac5971069199abca670b3e7dbbbcace741edd7e5aa",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "한바퀴각360을2:4:3으로배분한뒤 해당각의절반을구하는2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_cdd09c93abc949055dcd2564e509b447baa9d03f3b1ce295d6a4d278eecbd393",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "내심이등분각과명시된평행의엇각으로 양쪽이등변을 각각 만들어진술을비교하는2/B23. 원본상 강한충돌과 학습중후보 수용.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_fdfc839f5adc63e95961aa61d6f4f18582e754abedf709b033e4dea714c0fd73",
+      "difficultyBucket": 2,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "매경기한명탈락을 총탈락자수로 해석해 최소4·최대7을 정하는 한조건해석2/B23."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_6aab0e86fa6835f3b23c61f0b432f907eac4e58d4d9e580108ff574193bd4b19",
+      "difficultyBucket": 3,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "세동전개수의각각0..5상한과금액식을 동시에 유지해야 하며100원개수를분기축으로 정하여 모든허용쌍을 세는3/B23."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fbda725c4e6f582b3b3330d3ce10388024c0ed181f8d86d34c93c2c1433edbc3",
+      "difficultyBucket": 1,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "한개사탕의서로다른맛은배반이며주어진두확률의직접합1. 원본중은BORDERLINE_REVIEW로보존."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b8539a3e0e472d0d66feff4f53782218c23b0e2dd0fc485a341c3328dca24e87",
+      "difficultyBucket": 1,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "확률의범위·필연·불가능·여사건·배반합의기본진술을 직접비교하는1. 원본중 인접차이 유지."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c7dec3cb3d51a0145495c47d9ad9ecdb4f8496deca8b6190b62131a611e99de1",
+      "difficultyBucket": 3,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "자연수근 조건을(4-b)/a의양수·약수조건으로바꾼뒤 순서쌍을분기하는3/B23. 원본상과인접차이 수용."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+      "difficultyBucket": "UNKNOWN",
+      "level": null,
+      "decision": "ACCEPT_UNRESOLVED",
+      "reason": "서로다른날의강수 주변확률만으로동시무강수확률을정할수없다. 독립이발문에없으므로UNKNOWN/low 차단이필요하다. 독립추가후에는 여사건둘의곱 후보2이다.",
+      "candidateDifficultyBucket": 2,
+      "proposedLevel": "중",
+      "proposalConditionalOn": "독립 또는 충분한 결합확률 조건의 원문 확인"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2e6469be1e5556171fdd6eac6c431cbed8d373294ac331390538bbe162b23bca",
+      "difficultyBucket": 1,
+      "level": "중",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "수평선위두y좌표가같다는성질로일차식하나를직접푸는1. 원본중 인접차이 유지."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_054b0b59afa1d5fe210bf33c7bc6102bf70b26875c9b46e8babbb735c060b5aa",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "계수가완성된두직선교점→세번째식대입이라는표준경로2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f9435015ee49286f29328d230d24f34d8cf585ef9492e1608607290a2ee94f53",
+      "difficultyBucket": 2,
+      "level": "상",
+      "decision": "ACCEPT_CANDIDATE",
+      "reason": "외심등거리로2R+8=20을세우는전처리뒤원주공식직접대입2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "proposedLevel": "중"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+      "difficultyBucket": "UNKNOWN",
+      "level": null,
+      "decision": "ACCEPT_UNRESOLVED",
+      "reason": "두신호의인식확률만으로정확히한개인식의확률을정할수없다. 해설에만독립이추가되어UNKNOWN/low 차단수용. raw최상은비정본값으로보존하고독립모형일때만중/2 후보이다.",
+      "candidateDifficultyBucket": 2,
+      "proposedLevel": "중",
+      "proposalConditionalOn": "독립 또는 충분한 결합확률 조건의 원문 확인"
+    }
+  ],
+  "overallStatus": "PASS_WITH_EXPLICIT_SOURCE_HOLD",
+  "independent": true,
+  "selfApproval": false,
+  "notes": [
+    "실제발문·해설·필요그림과 ACTIVE정의를 읽어3문항4칸및변경·경계·호환충돌·UNKNOWN 난도예외21항만 확인했다.",
+    "Q20/24는검토커버리지에 포함되지만 완전메타판정은 미결이다. 조건부난도2를 최종값으로 승인하지 않는다.",
+    "표본의표시부모와2015기계경로를 구분하고 미등록TPL/RPMgap/binding debt를 승인완료와 혼동하지 않는다.",
+    "B의 master표시명/legacy계약키 국소보정과 root의6항compat중재만 확인하여 최신SHA에재결속했다. 4칸바이트와기검토난도숫자·level은불변이며 원문전수재검토는반복하지 않았다."
+  ],
+  "priorReviewedReviewSha256": "4ab2da95e2e69e26164f68f90804244303353a667c203bffa2181b7dc6e6e0a1",
+  "metadataOnlyRebind": {
+    "subUnitDisplayMasterAligned": [
+      13,
+      14,
+      15
+    ],
+    "legacyContractKeys": [
+      24
+    ],
+    "rootCompatibilityArbitration": [
+      5,
+      9,
+      17,
+      18,
+      19,
+      21
+    ],
+    "fourSlotBytesUnchanged": true,
+    "allPreviouslyReviewedBucketsAndLevelsUnchanged": true
+  }
+}

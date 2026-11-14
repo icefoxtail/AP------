@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E056",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "fd52a77661f6f854e1f141fba933c8bb7ed3e561",
+  "sourceSha256": "2912a48647cf8b848a906e74d3ca7f9312516c5c195a65f1dce1131b5b3fb0da",
+  "reviewSha256": "111187e8c1694b20ee911f9ccf1156bc3ca9716964223200db2c5d0884c0eb21",
+  "fourSlotSha256": "4eb91a5424645bd3b58b734ad2e37f042118d8f05c3ce559ef8ec83e3849b3aa",
+  "independentSampleSha256": "34a02450451e0541572b9ebdf3cdb3ddf78dc14f0df4735a39e244b3b8eea289",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "필수 독립 또는 결합확률 조건"
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "필수 독립 또는 결합확률 조건"
+      ]
+    }
+  ],
+  "sampleReviewer": "C",
+  "sampleOrdinals": [
+    3,
+    7,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "111187e8c1694b20ee911f9ccf1156bc3ca9716964223200db2c5d0884c0eb21",
+      "finalReviewSha256": "111187e8c1694b20ee911f9ccf1156bc3ca9716964223200db2c5d0884c0eb21",
+      "independentSampleSha256": "34a02450451e0541572b9ebdf3cdb3ddf78dc14f0df4735a39e244b3b8eea289",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "축평행을y계수0으로 바꾸고 주어진점에 대입하는 한 전처리이므로2/B12.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "주어진 교점좌표를 읽어 두 식에 순차 대입하는 고정경로2/B12. 원본상과 STRONG_CONFLICT를 유지하고 학습중을 제안한다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "곱의부호에서 기울기·절편의 부호를 읽은 뒤 사분면을 판정하는 정형해석2/B12.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "외각60에서내각30을 얻고 두등각의대변을 같게보는 한연결2/B12. 원본하와 인접차이 유지.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "주어진수선과직각이등변의 두빗변을 묶어 여각동치→RHA→변합으로 가는 표준배치2/B23. 보조선 추가선택이 없다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "내심의각·거리·합동보기를 기본성질별로 확인하고 외심성질 혼입을 배제하는2/B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "꼭지각이등분선의수직이등분성질로중점·직각·SAS를 순차판정하는 정형2/B23. 원본상 강한충돌과 학습중후보 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "이미 그려진AE를 공통빗변으로RHS를 적용하고45도등변을 연결하는2/B23. 원본하와 인접차이 유지.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "외심각의절반과내심각90+절반을 직접 순서대로 연결하는2/B12.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "한바퀴각360을2:4:3으로배분한뒤 해당각의절반을구하는2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "내심이등분각과명시된평행의엇각으로 양쪽이등변을 각각 만들어진술을비교하는2/B23. 원본상 강한충돌과 학습중후보 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "매경기한명탈락을 총탈락자수로 해석해 최소4·최대7을 정하는 한조건해석2/B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "세동전개수의각각0..5상한과금액식을 동시에 유지해야 하며100원개수를분기축으로 정하여 모든허용쌍을 세는3/B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "한개사탕의서로다른맛은배반이며주어진두확률의직접합1. 원본중은BORDERLINE_REVIEW로보존.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "확률의범위·필연·불가능·여사건·배반합의기본진술을 직접비교하는1. 원본중 인접차이 유지.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "자연수근 조건을(4-b)/a의양수·약수조건으로바꾼뒤 순서쌍을분기하는3/B23. 원본상과인접차이 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 20,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "서로다른날의강수 주변확률만으로동시무강수확률을정할수없다. 독립이발문에없으므로UNKNOWN/low 차단이필요하다. 독립추가후에는 여사건둘의곱 후보2이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_UNRESOLVED"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "수평선위두y좌표가같다는성질로일차식하나를직접푸는1. 원본중 인접차이 유지.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "계수가완성된두직선교점→세번째식대입이라는표준경로2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "외심등거리로2R+8=20을세우는전처리뒤원주공식직접대입2/B12. 원본상 강한충돌과 학습중후보 수용.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE"
+    },
+    {
+      "ordinal": 24,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "두신호의인식확률만으로정확히한개인식의확률을정할수없다. 해설에만독립이추가되어UNKNOWN/low 차단수용. raw최상은비정본값으로보존하고독립모형일때만중/2 후보이다.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_UNRESOLVED",
+      "proposedLevel": "중",
+      "candidateLevelApproved": false
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 20,
+      "reason": "발문에 독립 또는 결합확률 조건이 없어 두사건의 결합확률과 유일정답을 확정할 수 없다. 기존해설의 독립곱은 추가가정이다.",
+      "metadataJudgmentUnresolved": true
+    },
+    {
+      "ordinal": 24,
+      "reason": "발문에 독립 또는 결합확률 조건이 없어 두사건의 결합확률과 유일정답을 확정할 수 없다. 기존해설의 독립곱은 추가가정이다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
