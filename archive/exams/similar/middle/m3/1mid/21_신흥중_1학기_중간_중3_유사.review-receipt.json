@@ -1,0 +1,92 @@
+{
+  "examUid": "21_신흥중_1학기_중간_중3_유사",
+  "sourceDocumentId": "1s2ZGHaxpzW2uaDjJSRlQang5ifvGXks6KhayTgblsg8",
+  "sourceDocumentRevisionId": "AHj4eMRIVa26pSo1mp2kzB39EbmVMA6RLS4KBwXlqUpWuMdQHCNBFVLEEh0spx5QvM67B-PoxBIxpOuS_COBCIphtrVnxX8s88xoBvry2Zo",
+  "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/21_신흥중_1학기_중간_중3_수학.js",
+  "sourceArchiveBlobSha1": "59f33e9c451dcf0441432efb15d9e33bb017423a",
+  "candidateJsBlobSha1": "755dc6ccc746dd278530fda9b7bbd0318b266f1e",
+  "questionCount": 23,
+  "scoreTotal": 100,
+  "overallVerdict": "INCOMPLETE: visual plans/engine evidence and metadata/4-slot review remain open",
+  "modelContext": {
+    "requestedModel": "gpt-6-luna",
+    "requestedEffort": "high",
+    "effectiveContext": "inherited; not independently verified"
+  },
+  "changes": [
+    {
+      "question": 5,
+      "change": "Docs plan의 A/B/C/D와 P/Q 방향을 문장으로 구체화; 답·풀이 유지."
+    },
+    {
+      "question": 8,
+      "change": "Docs plan의 공통 밑변·오름차순 계단 배치를 문장으로 구체화; 답·풀이 유지."
+    },
+    {
+      "question": 19,
+      "change": "넓이 인수분해로 변을 구하도록 풀이를 정리; 임의 타일 배치 미지정."
+    },
+    {
+      "question": 7,
+      "change": "Replaced inaccurate “세 변을 제곱하면” with “양변을 제곱하면”; algebra unchanged."
+    },
+    {
+      "question": 19,
+      "change": "Clarified that the two upper rows are each height 1, matching the stated x×1 and unit tiles and resulting side length x+2."
+    }
+  ],
+  "independentMathReview": {
+    "status": "R1_PASS_AND_R2_PASS_23_OF_23_FINAL_BLOB",
+    "reason": "두 독립 검수자가 최종 JS blob 755dc6ccc746dd278530fda9b7bbd0318b266f1e와 23개 문항·100점을 확인. Q7·Q19 문구 수정 영향 없음을 최종 확인.",
+    "reports": [
+      {
+        "review": "R1 final wording delta",
+        "path": "/workspace/r1-21-shinheung-final-delta.json",
+        "sha256": "30f147a03c3da72ad7b5c6d37dbb2dd4276429a45495855ffbbec1baf19805c4"
+      },
+      {
+        "review": "R2 independent math/format review",
+        "path": "/workspace/r2-21-shinheung-review.json",
+        "sha256": "cdcf373f7dd278fc0158bf4b318ff60e0699716b7e61a055253eaa9a77799cb4"
+      }
+    ]
+  },
+  "metadata": {
+    "status": "UNCLASSIFIED_UNREGISTERED",
+    "reason": "MD 후보 분류 보존; 정본 resolver 검토 및 등록 미완"
+  },
+  "fourSlot": {
+    "status": "EVIDENCE_DEBT",
+    "reason": "후보 파일 준비; 항목별 근거·검수 미완"
+  },
+  "visualReview": {
+    "status": "NOT_RENDERED",
+    "reason": "SVG 제작/렌더/화면 검수 미수행"
+  },
+  "openItems": [
+    "4-slot independent evidence review incomplete; all 23 remain EVIDENCE_DEBT/NOT_RUN.",
+    "Meta canonical resolver/registration incomplete; source candidates preserved unregistered.",
+    "Q5/Q8/Q19 problem/solution visuals require plans with engine evidence/assets; draft harness reports 39 errors; no SVG/render was created by scope."
+  ],
+  "checks": {
+    "nodeSyntax": "PASS",
+    "draftHarness": "FAIL: 39 plan/image/engine-evidence errors across Q5/Q8/Q19 problem/solution plans; no SVG/assets/render were created by scope",
+    "apTables": "Candidate table: PASS (1 table, 0 candidate errors). Repository-wide checker reports one unrelated pre-existing RESIDUAL_PIPE_ROW in archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사.js Q22.",
+    "independentMathReview": "R1 PASS 23/23 and R2 PASS 23/23 on final blob 755dc6ccc746dd278530fda9b7bbd0318b266f1e; Q7/Q19 wording delta confirmed.",
+    "modelContext": {
+      "createInvocation": {
+        "requestedModel": "gpt-6-luna",
+        "requestedEffort": "high"
+      },
+      "r1Invocation": {
+        "requestedModel": "gpt-6-luna",
+        "requestedEffort": "high"
+      },
+      "r2Invocation": {
+        "requestedModel": "gpt-6-luna",
+        "requestedEffort": "xhigh"
+      },
+      "runtimeTelemetry": "not independently exposed by collaboration results; only requested call configuration can be reported, so effective model/effort cannot be verified."
+    }
+  }
+}
