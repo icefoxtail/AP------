@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "m2-s1-immutable-author-supplement-v1",
+  "examId": "E021",
+  "owner": "C",
+  "originalAuthorReviewSha256": "901b54815023cc985b2ed669a5504b87e80d9c41bc0d8959afdbe135ec54107f",
+  "originalAuthorFourSlotSha256": "ff3d4d818adac08fcb8e82aa7d8739b00553595d49693f4b2c8d85523ca47520",
+  "correctedCandidateFourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/C/E021/four-slot-candidate-supplement.json",
+  "correctedCandidateFourSlotSha256": "1d64be1576e74a7432249c9e4c7924de27b7b9149b42182c484396e426d5591d",
+  "changes": [
+    {
+      "sourceOrdinal": 2,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "$k$의 값"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "계수",
+        "termId": 50,
+        "src": "stem",
+        "quote": "$y=ax+b$"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "해",
+        "termId": 78,
+        "src": "stem",
+        "quote": "해가 $(a,b)$"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "x절편",
+        "termId": 648,
+        "src": "stem",
+        "quote": "$x$절편을 $a$"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "y절편",
+        "termId": 649,
+        "src": "stem",
+        "quote": "$y$절편을 $b$"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "두 상수 $a$, $b$"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "두 상수 $a$, $b$"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "상수 $a$의 범위"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "$a$의 값을 구하고"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "매개변수",
+        "termId": 308,
+        "src": "stem",
+        "quote": "$k$의 값을 구하고"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "action": "ADD_CORE_GOAL_BEFORE_ANSWER_FORM",
+      "atom": {
+        "term": "개수",
+        "termId": 129,
+        "src": "stem",
+        "quote": "학생이 몇 명 이상"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "action": "REPLACE_BROAD_GRAPH_CONDITION_WITH_CANONICAL_EQUALITY",
+      "reason": "일치는 사전 상등346의 실제 동의어이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "action": "DECLARE_EXACT_POINT_SYMMETRY_CANDIDATE_WITH_PARENT_IN_SAME_SLOT",
+      "candidate": {
+        "term": "점대칭",
+        "en": [
+          "POINT_SYMMETRY"
+        ],
+        "synonyms": [
+          "중심대칭"
+        ],
+        "kind": "조건",
+        "parent": "대칭성",
+        "note": "한 점을 중심으로180도 회전했을 때 원래 도형과 겹치는 대칭성. 원점에 한정하지 않는다.",
+        "usedIn": [
+          20
+        ],
+        "status": "CANDIDATE"
+      },
+      "atom": {
+        "term": "점대칭",
+        "status": "CANDIDATE",
+        "src": "solution",
+        "quote": "직사각형은 중심에 대하여 점대칭",
+        "evidenceType": "NAMED"
+      }
+    }
+  ],
+  "sourceContentChange": false,
+  "originalAuthorFilesChanged": false,
+  "nativeValidation": {
+    "items": 24,
+    "quotes": 127,
+    "fail": 0,
+    "warn": 19
+  }
+}
