@@ -344,7 +344,11 @@ window.examData = {
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{AC}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=10\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=6\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q09.png\" />"
+      "content": "오른쪽 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{AC}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=10\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=6\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q09.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 내접원 접점 D,E,F를 표시하고 BD와 BE, CE와 CF, AD와 AF를 각각 같은 색 눈금으로 묶었다.",
+      "solutionImageCaption": "BE=BD=6cm, CE=10−6=4cm이므로 CF=4cm이다. 따라서 AF=AC−CF=8cm이고 AD=AF=8cm이다. 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,

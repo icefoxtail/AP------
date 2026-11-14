@@ -911,7 +911,11 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>"
+      "content": "【서답형 2】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 2-①】</b> (4점)<br>다음 그림과 같이 나무의 그림자의 길이는 $10\\,\\text{m}$이고, 그림자의 끝 $A$ 지점에서 나무 꼭대기 $B$ 지점을 올려다본 각도가 $31^\\circ$일 때, 나무의 높이를 구하시오. (단, $\\tan 31^\\circ = 0.6$로 계산한다.)<br><br><br><b>【수준별 2-②】</b> (5점)<br>【대체 문항】$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle B = 72^\\circ$, $\\overline{\\mathrm{BC}} = 6$이다. 점 $\\mathrm{D}$는 선분 $\\overline{\\mathrm{AC}}$ 위에 있고, $\\angle \\mathrm{ABD} = \\angle \\mathrm{DBC}$일 때, $\\cos 36^\\circ$의 값을 구하시오.<br>",
+      "solutionImage": "assets/images/21_매산중_2학기_중간_중3_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 첫 패널은 그림자와 나무의 직각삼각형, 둘째 패널은 각 이등분선과 수선의 발을 나타낸다. 최종 높이와 삼각비 결과는 게시 캡션에만 둔다.",
+      "solutionImageCaption": "2-①: 10×tan31°=10×0.6=6 m. 2-②: cos36°=(1+√5)/4.",
+      "solutionImageSize": "full"
     },
     {
       "id": 23,
