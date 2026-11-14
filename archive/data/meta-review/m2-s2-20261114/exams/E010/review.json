@@ -1402,7 +1402,9 @@
       "after": {
         "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
         "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBoundaryFlag": "NONE",
@@ -1411,7 +1413,7 @@
       "fieldReview": {
         "classification": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA: RHA 합동의 대응요소와 넓이 판단",
         "binding": "ACTIVE PT/TPL 정의와 parent 일치. 해당 source 교육과정 binding 존재. 공식 Resolver 독립 solution 증거는 미제출.",
-        "crossConcept": "RHA 밖에서 사다리꼴 넓이 공식이 필요하지만 정확한 ACTIVE CC가 없어 제안한다. 확률밀도용 CC_TRAPEZOIDAL_AREA_PROPERTY를 대체 사용하지 않음.",
+        "crossConcept": "RHA로 얻은 두 평행변과 거리를 사다리꼴 넓이에 적용하는 단계는 ACTIVE CC_AREA의 일반 도형 넓이 계산 정의에 포함된다.",
         "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
         "integration": "같은 빗변·한 예각으로 두 직각삼각형을 합동시켜 길이를 교환하고 사다리꼴 넓이까지 판정한다.",
         "difficulty": "서로 비스듬한 두 삼각형의 대응을 찾아야 각과 길이의 여러 보기를 판정할 수 있다.",
@@ -1424,9 +1426,7 @@
           "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
         }
       ],
-      "proposalRefs": [
-        "E010-TRAPEZOID-AREA"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 3,
@@ -1461,7 +1461,15 @@
       "beforeMetadata": {
         "templateKey": "",
         "problemTypeKey": ""
-      }
+      },
+      "revisionHistory": [
+        {
+          "scope": "crossConcept-only",
+          "withdrawnProposalRef": "E010-TRAPEZOID-AREA",
+          "replacementConceptKey": "CC_AREA",
+          "reason": "ROOT가 확인한 일반 도형넓이 ACTIVE 정의를 지원 문항 원문·기존 해설과 재대조하여 일치함을 확인했다. 더 좁은 밀도함수용 CC는 사용하지 않는다."
+        }
+      ]
     },
     {
       "sourceOrdinal": 19,
@@ -2005,21 +2013,6 @@
       "supportingQuestionUids": [
         "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f"
       ]
-    },
-    {
-      "id": "E010-TRAPEZOID-AREA",
-      "type": "CC",
-      "name": "사다리꼴 넓이 공식",
-      "definition": "평행한 두 밑변 길이의 합에 높이를 곱해2로 나누어 사다리꼴 넓이를 구한다.",
-      "parent": "도형의 넓이 / 사다리꼴",
-      "distinguishingCriteria": "CC_TRAPEZOID는 도형 정의뿐이며 CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도 전체넓이1이라는 별도 상황에 한정.",
-      "existingCandidatesReviewed": [
-        "CC_TRAPEZOID",
-        "CC_TRAPEZOIDAL_AREA_PROPERTY"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_69881034f7dde819ed1a2eaf0d4de808efbf9c724d6c402bbcfcd9ac4235d250"
-      ]
     }
   ],
   "notes": [
@@ -2095,6 +2088,26 @@
         20
       ],
       "note": "ROOT 허용 범위에서 js_archive_tag_master.json의 공식 labelKo를 선택한 unit/subUnit key와 결속했다. beforeSource/beforeMetadata는 입력 pack 원값을 따로 보존. 학생 원문 및4칸은 불변."
+    }
+  ],
+  "withdrawnProposals": [
+    {
+      "id": "E010-TRAPEZOID-AREA",
+      "type": "CC",
+      "name": "사다리꼴 넓이 공식",
+      "definition": "평행한 두 밑변 길이의 합에 높이를 곱해2로 나누어 사다리꼴 넓이를 구한다.",
+      "parent": "도형의 넓이 / 사다리꼴",
+      "distinguishingCriteria": "CC_TRAPEZOID는 도형 정의뿐이며 CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도 전체넓이1이라는 별도 상황에 한정.",
+      "existingCandidatesReviewed": [
+        "CC_TRAPEZOID",
+        "CC_TRAPEZOIDAL_AREA_PROPERTY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_69881034f7dde819ed1a2eaf0d4de808efbf9c724d6c402bbcfcd9ac4235d250"
+      ],
+      "status": "WITHDRAWN_EXISTING_ACTIVE_REUSE",
+      "replacementConceptKey": "CC_AREA",
+      "withdrawalReason": "RHA로 얻은 두 평행변과 거리를 사다리꼴 넓이에 적용하는 단계는 ACTIVE CC_AREA의 일반 도형 넓이 계산 정의에 포함된다."
     }
   ]
 }
