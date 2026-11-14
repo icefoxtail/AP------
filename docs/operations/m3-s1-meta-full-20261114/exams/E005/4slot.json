@@ -1,0 +1,1628 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/26_연향중_1학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "34dc6ca6751f5d2d6eb5ecc037a59e0505e6433f",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT-6 Astra Pro / meta_b",
+    "run": "M3-S1-META-FULL-B-E005",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_33002cd492366e42e9d118d1e136eb9e0716e005d64ea8832634a8d770741501",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e24e1ad20f5c31c7bbe90a47e0476f08efb4d573642c97f2396da126b944784f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "07ac8a81be1ba7dcbaf8d4b6bfca0f5e2ee89d2b5a266e9a1eb37bf6d1102ff8"
+        }
+      ],
+      "stemEvidenceSha256": "a5264c51bd5de2d65b7ffaae7e4f76e308e33bb54b53e38c4bb99320802f7765",
+      "stemEvidenceField": "question",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$0$의 제곱근은 없다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "제곱근은 제곱해서 그 수가 되는 수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근과√a의 정의를 직접 대조하는 단일 핵심 방법이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f78b67f6683eccb2b9d98c5ed1b272c9bcc69e748e737e1c0e41593d858bca1d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dbfd360d6eacc816fb7abe2ea2329fd0b74bc68b6c128822af31efd660dd31a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e666af21190ca2225c9b6bc19d5a8c4b730d0a4872cb28269ddcde0ae424bfde"
+        }
+      ],
+      "stemEvidenceSha256": "d8e629a2e66f2221b55dc1df6ce91f74512ec0fa0c1c8a38b51626dcfff241c7",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "\\sqrt{(-3)^2}"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-\\sqrt{8})^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "계산한 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{(-3)^2}=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "√(t²)=|t|에서 t=−3의 절댓값을 취한다."
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$(-\\sqrt8)^2=8$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$3+8\\times\\frac14=3+2=5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 계산이 단원 목표 자체이므로 혼합 산술을 방법으로 남긴다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e65aa950e55b7df277ba8265056600ad28d6b55220c459f887fd7c7bfc6522a1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6e6bed54db42c574b98f0d63ca9dcf0da71c3c3a7ff36d43f95af2c2d34f684"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21b34924096557874909a0887fb19af64c12894316562b8363f6d98e73a367d9"
+        }
+      ],
+      "stemEvidenceSha256": "791b285993c4b8600ed0b967640bbdcaf5251714dd42a7c81e0ae07489790b73",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{150x}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "자연수 $x$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$150=2\\cdot3\\cdot5^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "지수를 각각 짝수로 만들어야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "모든 소인수의 지수가 짝수인 제곱수 조건으로 x=6n²를 얻는다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "가능한 $x$는 $6,24,54,96$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수가 되도록"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$100$ 이하"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2063ba02bcf3ca193d6e8d65a971453dbe7dad705ffcb12298c431bf519bd5a6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3640b969bb863308887d7a5f936dad2c3d3b47f034cf4dad5fa1091bc9c7b50f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e27bfa359e06b1c9e9330f9b5b3de3695ec3e48e316672b2cda03007fe453a4"
+        }
+      ],
+      "stemEvidenceSha256": "87c6c9d4a7a76acb364aee55e521f97a734a4c719ddc76ff699baf91ababbec9",
+      "stemEvidenceField": "question",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{7} < 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "대소 관계가 옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "양수인 두 수를 제곱해 비교",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "부호를 바꾸면 $-\\sqrt{23}>-5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_221d868d0004039f09182d27b419a4d1f35a78296ad4f52d7718401e1399ae89",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6e6bed54db42c574b98f0d63ca9dcf0da71c3c3a7ff36d43f95af2c2d34f684"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "010240e49c047d591658e5e028f02a9b74744110e4ce4da78d0e3e4ed73029df"
+        }
+      ],
+      "stemEvidenceSha256": "d70eecd3f8d5ad85dcf1c656668e11691cc40e73ff31c36be222ffd436009327",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "\\sqrt{0.4},\\quad \\pi"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "무리수의 개수"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "무리수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "순환소수 $1.2\\dot4$와 $0$도 유리수",
+            "evidenceType": "IMPLIED",
+            "justification": "유리수의 소수 표현과 제곱근 단순화로 무리수 여부를 판단한다."
+          },
+          {
+            "term": "귀류법",
+            "src": "solution",
+            "quote": "유리수가 되어 모순이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "√3−1을 유리수라고 가정해√3이 유리수라는 모순을 얻으므로 귀류법이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_58dfcf1b6b79ca58f6a29c813a46516c4cf9e36e871242f322a1d6625d3d2cef",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd8e015de85aae65cd44a339b6addd2771bda27a9ee9935006f2f9dfc790ce22"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e85b66184c22f41d6ab3069686bbee2b232dab5515bfb6478673aac5e90f1194"
+        }
+      ],
+      "stemEvidenceSha256": "2f21c5428cd6368ecc7a97c941df0b1ec6306d8e094f52c5fd327b2c7cd0a15d",
+      "stemEvidenceField": "question",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "choices",
+            "quote": "무한소수는 무리수이다."
+          },
+          {
+            "term": "수직선",
+            "src": "choices",
+            "quote": "수직선 위에 나타낼 수 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$\\sqrt4=2$처럼 유리수인 수",
+            "evidenceType": "IMPLIED",
+            "justification": "근호를 쓴 수는 모두 무리수라는 진술에 유리수√4=2를 제시하여 반박한다."
+          },
+          {
+            "term": "수직선",
+            "src": "solution",
+            "quote": "모든 실수는 수직선 위의 한 점에 대응",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_28509db26754fe5f82e1e48c879ced3e4b50ab77a0e313f98f5e4534d3759f65",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d79be7b091eecee48d8737c984515c517eee38377326264d729c24116ac2f181"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff800d9aabe6945e0a11c0dcb7ba581eb7668dfc4fa215b9b32e0f377efdb860"
+        }
+      ],
+      "stemEvidenceSha256": "8cae3e1d5736feb85e0fa27d62e24e419bb3a18f1b3f80e3ca101efcfe9803f1",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리수",
+            "src": "stem",
+            "quote": "$A=2+\\sqrt{6}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "대소 관계로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "양변을 제곱하면 $49<54$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$7-\\sqrt6<2\\sqrt6$, 즉 $7<3\\sqrt6$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근호식의 비교를 양의 수 비교로 정리해 제곱해도 방향이 유지됨을 이용한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_cc1f793d03740717866090af63c604c2ef0101eb943017ccdb997670c472b37f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "49a9e9ac55fa62974a342c3101866055ec802c1167556724ac7e023d5e74afe0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a0fd2920cb6edeca60a337d94180bf699bfca8683f76e55495a3e7377bcd9a9b"
+        }
+      ],
+      "stemEvidenceSha256": "605308f64f2d471fdf46b6f706519738463b3e92a891c1d91d90d9ff0b75a138",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "근삿값",
+            "src": "stem",
+            "quote": "$\\sqrt{4.12}=2.03$"
+          },
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$\\sqrt{412}=a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+100b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{4.12\\times100}=10\\sqrt{4.12}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "20.3+64.2",
+            "evidenceType": "IMPLIED",
+            "justification": "제시된 두 근삿값을 각각10배/1/10배 한 값을 요구식에 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_057ee9077b4238b5ee3c317da1c61b4ee267034ed222cd875cdc523530730d06",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70a62e4b320f873a51fb770be17e1760615e498377bd09efddf54f5222ef576d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e89b08017c41cb870dd73a03a8293045c2a9128fe21352c024e0d75c07eade1"
+        }
+      ],
+      "stemEvidenceSha256": "1fed8ab4a42a2a330743ef11ecb367af7cbd22eb2d49b03faf29e9931f97cc82",
+      "stemEvidenceField": "question",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "choices",
+            "quote": "$6\\sqrt{5}-2\\sqrt{5}=4\\sqrt{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "계산 중 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "같은 근호끼리 계수만 계산",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$0<\\sqrt{15}-\\sqrt{13}<1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b20d50b8c141214911303ccbe029928177fb4b389291c273cdea99a3879f2754",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a6a1e9921e9061dca1ad974b34e676ba8e54c6dfe6baa322a622a6007a380c7c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00237ec2358de6e0be1cf247c139a626d679c1875e9b0a9f388b069028f568a4"
+        }
+      ],
+      "stemEvidenceSha256": "afa2a5ad6ba947e4acdfd2946bb9db51ae3308ec4b6ebb3ff4bbe60009847515",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형과 직사각형"
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "삼각형과 직사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\frac12\\sqrt{35}\\sqrt{24}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$x\\sqrt{10}=\\sqrt{210}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "$x=\\sqrt{21}$",
+            "evidenceType": "IMPLIED",
+            "justification": "√210을√10으로 나누어 근호의 몫을 간단히 한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "넓이가 같을 때"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_64216aa950cde77e78780444dacb992b4046f48ea29ed7e08910b49a7a59e51c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33d5893075fb3a66e1a1707b631228c1a24ccf604010229faaddf955e3282e22"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e123f3d0b69cb909479fcb6eb50d1548ab2cb3d903755b779bbab3ee23870cef"
+        }
+      ],
+      "stemEvidenceSha256": "57c25413e6f7262689cb19030b2b0f13d10c5d0f102b032f5dbdb9bc54e42144",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "a\\sqrt{\\frac{27bc}{a}}"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$abc=36$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "바깥의 인수를 제곱근 안으로 옮길 수 있다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "\\sqrt{27abc}=\\sqrt{27\\cdot36}",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "18\\sqrt3-12\\sqrt3+6\\sqrt3",
+            "evidenceType": "IMPLIED",
+            "justification": "세 항을 같은√3 형태로 만든 뒤 계수만 더하고 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a>0$, $b>0$, $c>0$"
+          },
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$abc=36$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d86aa4c368d4448ee96c7af1175baf704a5f44478565b968f471de67050d3dd3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0fd8912719049bcecccd38218338c6f20d225c74ad08b427e0934149560470ee"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0894c1e92ef361e6b9cb3507e0964e0a48889111bbb0647a34bde5d2897867a0"
+        }
+      ],
+      "stemEvidenceSha256": "56ec51d321a7039a7f1c459fbab40519cebaa2079fed9b4ba0339afbe3083794",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$\\frac{6+\\sqrt{3}}{\\sqrt{6}}-\\frac{\\sqrt{3}+4}{\\sqrt{2}}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "두 분모를 각각 유리화한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "$\\dfrac12\\sqrt6-\\dfrac32\\sqrt2$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리화한 두 식의√6항과√2항을 각각 모아 계수를 읽는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_1a1e9e928bdf28bb11c3daa25df07240319e10f13335b194ae10aaf09ee585e9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8065899cd31cff1cd3aa76bb9690d34af9faacd3f745ec478df52e8b98393711"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "962dc5577472fc882c93f917f5e0812c2183618d838b11b797bbccae7925ce69"
+        }
+      ],
+      "stemEvidenceSha256": "d07f77805033da034596eeaaf95196db7b4ff375eb26f004e59164d8370e1754",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $\\mathrm{ABCD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$\\frac{AD+BC}{2}\\times DC",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\frac72\\sqrt{175}",
+            "evidenceType": "IMPLIED",
+            "justification": "두 밑변을 동류근호로 합하고 높이의 근호와 곱하여 간단히 한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_ef82c5fe36d097e2c8c8c2a045a49fb39dab193d6566c286dda22bb6178bc602",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5bcab92b5d62ded7583d63c806fb8baee953bd39c4b7286cd3ff6bbe16ba55b6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "847eb4615e41ed59e4804af833aab3484cab11a777a78d8785c0f372967f0a8d"
+        }
+      ],
+      "stemEvidenceSha256": "2c12e368729765a755918734ff9cbe841d26e7343ffcc4bc1745e897d3f9b2e3",
+      "stemEvidenceField": "question",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식을 전개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "각 곱을 전개해 비교한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$(a+3)^2=a^2+6a+9$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1198f1f76f0c4759e73fb49765e5e4f8a498e6e673d3119b4d1ba9a5eefc638f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f562172eab1c0db2b02eb603e3255f17dcd3fa625278721ebeb3b6a67f17dac8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2f829b16fe6d9ba4bd4289d108e5b121482db7a92a97fa6eb67d72d0409fa792"
+        }
+      ],
+      "stemEvidenceSha256": "a332bc5dc3fb96cc943c35b5eedaea32cfe04d9942299ddb8ff4e40ae3269bde",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱셈공식",
+            "src": "stem",
+            "quote": "$(a+b)(a-b)=a^2-b^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "가장 편리한 수의 계산"
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "(200+3)(200-3)=200^2-3^2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 합차공식으로 계산할 수 쌍을 선택하는 단일 핵심 방법이다."
+      },
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_d3419c68a75362a43d02bebcc5f6089a72acac45902adc14950d45e8f5a0ad39",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c1b724038fec1b931388b71add7e91ffada4ad3c18ac1cd535ff6630ac73652d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c157d0b8e6cd299cc165a4ecfd0887d900edabb63d655a93fb83e2544959f1f"
+        }
+      ],
+      "stemEvidenceSha256": "d39d49d775046984649cf20175b11d16c55014e7df6ce4a33dce739d163cf978",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "$x=\\frac{1}{\\sqrt{10}+3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱합",
+            "src": "stem",
+            "quote": "$x^2+y^2$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "$x=\\frac1{\\sqrt{10}+3}=\\sqrt{10}-3$",
+            "evidenceType": "IMPLIED",
+            "justification": "켤레식의 곱10−9=1을 사용해 두 분모를 유리화한다."
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "(\\sqrt{10}-3)^2+(\\sqrt{10}+3)^2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ebaf1eecba10baeda9d76ccd46719d6144bbadf5e70e8afaa14f4cf1b26cd004",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "17d41aeba9a54a8c20d9413a2679724adad2e9177cb0bec76bc13d0624988df1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "40e66ff6dbc2f6cf3ab562359eceafb4fd38b90c5f062c00707f073d18b55115"
+        }
+      ],
+      "stemEvidenceSha256": "45c4cc1dd6701393ff524428be0ef49768a6195db274df3f77528c1773f14496",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위에 두 점"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 적용하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "$A$의 수가 $4$이고 $P$가 $A$의 왼쪽",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변 길이를 기준점에서 왼쪽/오른쪽으로 옮겨 좌표 a,b를 정한다."
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(4-2\\sqrt5)(6+\\sqrt5)=24+4\\sqrt5-12\\sqrt5-10",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AP}}$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_14886463cd78538ea5bab2f5dfa0f18215f9b31fe6e3c7d730dcab950ca92ce5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22f5eaa40f67f55f7cd6dd65e88938b03f42dd5396a718fccc5bf0cd4a02319b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "95ff6fea5a67c36590a64224599eaac2d6e113d8041c6aaca91163bd05369406"
+        }
+      ],
+      "stemEvidenceSha256": "6bbfb893153a9d0b85f4b249341048df5ac70f704fa519996b7a3183c4051cef",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2-y^2+4y-4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수분해 한 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$y^2-4y+4=(y-2)^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "제곱의 차 인수분해 공식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_72c534f96eda18ff7f956c62d9658b8e8d1e550ba1d9644b68b10028cfd8570f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5f6176736cda0055ee30b23614c69d56fb0d5ecaa8748c2eb0c0d8083cffce79"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "864849538d631e947cb310bfa58a764224386b7c442c2bf5173477cdbf0e8b80"
+        }
+      ],
+      "stemEvidenceSha256": "454dea2271196ebb330464044e6127118822295a80d989f5b6cb75c52d5c378e",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $9$개"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가 각각 $x^2$, $x$, $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "가로와 세로는 각각 $2x+1$, $x+2$",
+            "evidenceType": "IMPLIED",
+            "justification": "타일을 합친 결과를 두 변수 길이를 가진 하나의 직사각형 모형으로 표현한다. 후보 대수타일재배열의 기존 부모 방법을 함께 기록한다."
+          },
+          {
+            "term": "대수타일재배열",
+            "src": "solution",
+            "quote": "직사각형 네 개를 두 줄로 놓고",
+            "evidenceType": "IMPLIED",
+            "justification": "x²,x,1 타일을 실제로 두 줄 띠로 재배열하여 변의 식을 읽는 절차가 해설에 구체적으로 제시된다."
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "$2\\{(2x+1)+(x+2)\\}=6x+6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배치",
+            "src": "stem",
+            "quote": "겹치지 않게 이어 붙여 하나의 새로운 직사각형"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_2c79ba18e3c71ad424f71f0a6108c58d1e22bfa03a39b3abb8a6cebefd222044",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f10db393925f74ffbfdfa37c98659e4e36f13c16e6a06977c361d517fa11ac89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d17189738c1c8263263a8af834ecb4b9f7234902de1053c9d8a3e4ef62311d41"
+        }
+      ],
+      "stemEvidenceSha256": "a4ab3328f38aa4f36deac2ec001c077c5380a0781895d75107f2f916ba691c2f",
+      "stemEvidenceField": "question",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$(x-3)(x+7)+k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "수 $k$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "$(x-3)(x+7)+k=x^2+4x-21+k$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$(x+2)^2=x^2+4x+4$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식이 되도록"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_0f04e43881ac4c5ea0b3bb26d51fa1e1243e33260c6016d340ecb771d72c09d8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "156c379f53693a5e0db96053f5468277f8b876d846d8c81d9e807409676de294"
+        }
+      ],
+      "stemEvidenceSha256": "72f09bb3330b466167d36acde5f4ac81c28f8862f4a11cc1fbfd5bf24202be7c",
+      "stemEvidenceField": "question",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "\\sqrt{(-a)^2}+\\sqrt{4b^2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "간단히 하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a>0$, $b<0$",
+            "evidenceType": "IMPLIED",
+            "justification": "ab<0과 a>b를 함께 사용하여 각 문자의 부호를 정한다."
+          },
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$\\sqrt{4b^2}=2|b|=-2b$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "$ab < 0$"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "$a > b$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2ca341669f36fdbdf3abba0c0b5d5a6b65fa836de405190e74455b666e754e08",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5049493151026aab980e986ae2d354dd4f912ae13118a66777c61a097014d75"
+        }
+      ],
+      "stemEvidenceSha256": "4468925b4674dabe4851757ecfbd528b40da2f23a6dd061fa0bf1f9a8e9059c1",
+      "stemEvidenceField": "question",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "$\\frac{a^3+a^2b+ab^2+b^3}{a+b}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "의 값을 인수분해와 곱셈공식을 이용하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(a+b)(a^2+b^2)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "주어진 분수를 약분하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "$a^2+b^2=(a-b)^2+2ab$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$a-b=5$, $ab=2$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_620e02f82948cfcca0cdaeb6426b7cee5bf97b7c6e184dd7f4a4fca2c585e32a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bc3810f9a531af7db10f6e4b2ccfcd668efc028d92059c66e05b8dd5ab3d8f2f"
+        }
+      ],
+      "stemEvidenceSha256": "689c7bef9912377d9b1b980ae3a2f652d4657dbe737499660824b3799d083c4c",
+      "stemEvidenceField": "question",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "$x^2-4x+3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "위의 식의 값을 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$x^2-4x+3=(x-1)(x-3)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$x^2-4x+3=(x-2)^2-1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=2+\\sqrt3$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$x=2+\\sqrt{3}$"
+          }
+        ]
+      },
+      "reasons": {},
+      "judgedBy": {
+        "agent": "GPT-6 Astra Pro / meta_b",
+        "run": "M3-S1-META-FULL-B-E005",
+        "at": "2026-11-14"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "대수타일재배열",
+      "en": "algebra tile rearrangement",
+      "synonyms": [
+        "대수 타일 재배열"
+      ],
+      "kind": "방법",
+      "parent": "모델링",
+      "note": "x²,x,1 넓이 타일을 회전·이동하여 한 직사각형을 채우고 두 변의 식을 읽는 방법. 단순 전개나 분할과 달리 실제 재배열 구성이 결정 단계이다.",
+      "usedIn": [
+        {
+          "sourceArchiveFile": "original/middle/m3/1mid/26_연향중_1학기_중간_중3_수학.js",
+          "sourceOrdinal": 19,
+          "slot": "method"
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "items": 23,
+    "quotesChecked": 118,
+    "quotesNotFound": 0,
+    "notes": "All23 current stems/choices/existing solutions and4 embedded PNGs actually read. q.content absent: official raw hash kept; separate actual question-text SHA256 supplied.",
+    "validation": {
+      "tool": "tools/4slot/validate-4slot.cjs",
+      "fail": 0,
+      "warn": 16,
+      "notes": "단일방법 q1/q15, 실제 산술목표 q2, 기초문항의3~4개 distinct terms 경고는 의미에 맞게 유지."
+    }
+  },
+  "reuseAssessment": {
+    "existingCompactSourceBlob": "86601a5d5b8c312ca925bdd2ee4469cee326870e",
+    "exactSourceVersionMatch": false,
+    "action": "REAUTHORED_FROM_CURRENT_STEM_SOLUTION_IMAGES",
+    "reason": "old compact에는 원문 인용이 없고 source blob이 불일치하므로 자동 근거 재사용 또는 이전 review 승계를 하지 않았다."
+  },
+  "reviewedSourceBaseBlob": "83d46b8f1df96c4f17004f6ab608139c2a324db4",
+  "independentReview": {
+    "status": "PASS",
+    "author": "meta_b",
+    "reviewer": "GPT_ROOT_D71839569CD9",
+    "sampledOrdinals": [
+      1,
+      2,
+      19
+    ],
+    "basis": "Sparse q1, arithmetic-method WARN q2 and candidate/visual q19. Current question field, choices, solutions and q19 PNG read.",
+    "findings": [
+      {
+        "ordinal": 1,
+        "status": "PASS",
+        "note": "제곱근 정의를 진술에 적용. 단일method/sparse WARN 수용, fabricated quote 없음."
+      },
+      {
+        "ordinal": 2,
+        "status": "PASS",
+        "note": "제곱근성질·절댓값 적용 후 혼합연산이 문제의 직접 목표. 사칙연산 method 경고는 계산 자체 목표의 명시 예외에 해당, 부풀린 방법어 아님."
+      },
+      {
+        "ordinal": 19,
+        "status": "PASS",
+        "note": "PNG의 x²2개·x5개·단위2개와 재배열 해설 일치. 정확한 대수타일재배열 방법은 구조화 후보로 선언, broad method만으로 대체하지 않음. goal 둘레 적합."
+      }
+    ],
+    "additionalLevelAdjudication": [
+      {
+        "ordinal": 11,
+        "status": "APPROVE_NEW_LEVEL",
+        "level": "중",
+        "bucket": 3,
+        "note": "공통 abc 구조를 드러내는 표준 변환, 복잡한 후보분기나 비정형발상 없음."
+      },
+      {
+        "ordinal": 17,
+        "status": "APPROVE_NEW_LEVEL",
+        "level": "중",
+        "bucket": 3,
+        "note": "PNG의 빗변길이→방향 있는 수직선 좌표→전개는 표준 교과 연결. source 기존level없음, 중으로 신규기재."
+      },
+      {
+        "ordinal": 22,
+        "status": "APPROVE_NEW_LEVEL",
+        "level": "중",
+        "bucket": 3,
+        "note": "공통인수 묶기→분모비영 확인→제곱합 공식의 표준연결. 학습level중·5단계3을 별도로 검토."
+      }
+    ],
+    "mathematicalVerification": "NOT_PERFORMED",
+    "reviewVersion": "M3-S1-META-FULL-v1"
+  }
+}
