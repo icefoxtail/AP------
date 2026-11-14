@@ -362,7 +362,19 @@
         "registeredCurrentQfullMatches": 24
       },
       "appliedSourceItemCount": 0,
-      "writerState": "CLOSED"
+      "writerState": "CLOSED",
+      "residualReview": {
+        "status": "RESIDUAL_DECISIONS_RECORDED_PENDING_SHARED_PROPOSAL_BINDING",
+        "author": "META_B",
+        "items": 24,
+        "artifacts": {
+          "residual-review.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/residual-review.json",
+          "residual-checks.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_왕운중_1학기_기말_중1_수학/residual-checks.json"
+        },
+        "sourceEdits": 0,
+        "sourceSha256": "19396c58c1273b3d184d0b9eaf21478bc71d1c7c852ed4b9e0f9ec7f55bd6cca",
+        "reusedIndependentSamples": 3
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
@@ -881,16 +893,16 @@
     "revision": 4,
     "fileId": "1TkZmWOaOc8TQ6ZN3IMjCAlOvN88fMDj5",
     "rawSha256": "483710a553e80847e7b925605dd8efd348c622feac88d87ce68cc45c8ae606ee",
-    "latestSharedRevision": 5,
-    "latestSharedCheckpointFileId": "194NHWOqiA53ftgFnriLN5w78TO4hzJQd",
-    "latestSharedCheckpointSha256": "25518f05f5cc6dc8103b4792dffb53402439f356e68efb41fc64e52ed190acca"
+    "latestSharedRevision": 6,
+    "latestSharedCheckpointFileId": "17M6V-XiAEaegKtk7Mm_ykTmS9aGgb94Q",
+    "latestSharedCheckpointSha256": "fba6253d89acfa0be4259d06ac285c5c6c8211539ea318ebdfd3bf04b6e739b5"
   },
   "initialVerification": {
     "canonicalUidJoinCount": 286,
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T13:49:21.306417+00:00",
+  "updatedAt": "2026-11-14T13:51:16.485758+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1264,8 +1276,8 @@
       "questionCount": 97
     }
   ],
-  "residualExamCount": 6,
-  "residualQuestionCount": 144,
+  "residualExamCount": 7,
+  "residualQuestionCount": 168,
   "resumeRemoteReceipts": [
     {
       "unit": "source-lineage-and-targeted-original-evidence",
@@ -1295,6 +1307,11 @@
     {
       "unit": "previous-residual-exam",
       "remoteHead": "6b2ea5d0cfc7b1dab481c7ef83914398e5b15439",
+      "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
+    },
+    {
+      "unit": "previous-residual-exam",
+      "remoteHead": "b21e75722dd76c9877729163175cf65b7b784f39",
       "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
     }
   ]
