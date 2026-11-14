@@ -7,7 +7,7 @@
   "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "sourceGitBlobSha": "9c94459ff2cb47b35124dde317b2740c2209b8cd",
   "sourceSha256": "e847e7f300f310aecf54e5b2d22aa68db20f3c4dcdfaa49b303fb16096d6bfe3",
-  "reviewSha256": "86718639f687791d81bd76628f595a3bbabfb02c31e5337aa808d8e03c621b08",
+  "reviewSha256": "b9b259b1eed35ebb0b942b9949af558490c2e80cb384c63273251a83974afe6b",
   "fourSlotSha256": "57bcae79bb78f73b5bb04ba6cd9b4652a6d5a44f42b191bc5ac7745ba62b3542",
   "independentSampleSha256": "af4a6d15376d40eaabd17d3fdb2c14a5e54b9d4bc211664fae0d1cbf33c1122c",
   "sampleInputVersionsPreserved": true,
@@ -85,6 +85,14 @@
   ],
   "notes": [
     "Reuse ACTIVE CC_PYTHAGOREAN for the full three-side relation rather than proposing a duplicate concept.",
-    "Post-publication cyclic-concept correction preserves the earlier commit and supersedes its claim that an exact ACTIVE concept was absent."
-  ]
+    "Post-publication cyclic-concept correction preserves the earlier commit and supersedes its claim that an exact ACTIVE concept was absent.",
+    "Template-only follow-up for Q3: median halving and centroid thirds create two one-sixth regions. This is pure centroid partition, covered by proposed B-E035-CENTROID-AREA-PARTITION; no external geometric application is required. Difficulty and four-slot content are unchanged."
+  ],
+  "targetedDefinitionFollowup": {
+    "scope": "centroid-template-definition-only",
+    "independentComparison": "workers/C/cross/centroid-definition-consistency.json",
+    "independentComparisonSha256": "78f911d43fb6f8968a99a98597f9554852d82fa9f49ff7dd31efcffd7768747a",
+    "sourceChanged": false,
+    "fourSlotChanged": false
+  }
 }
