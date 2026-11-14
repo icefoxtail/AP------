@@ -5,8 +5,8 @@
   "sourcePath": "archive/exams/original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
   "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "baselineSourceBlob": "a1ff1be42b29d1888a65d173ff4baad30855aa90",
-  "sourceBlob": "ef39f3709e39917c0ecff924ebce0f9ea8ceb838",
-  "sourceSha256": "304888fcd72afd585313c1e765ed604d68b75525ca5082102763bfcb0cd70192",
+  "sourceBlob": "3df1dac3212f0ae891fad38085699159039f7d26",
+  "sourceSha256": "99bb9212dedbd79f2662e9b6c22a9196ac60d8a1429333d2a99d9078663648a9",
   "questionCount": 22,
   "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
   "topics": {
@@ -830,7 +830,7 @@
       "meaning": "길이를 옮기는 도구가 눈금 없는 자가 아니라 컴퍼스임을 작도 도구의 기능으로 판정한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "KEEP",
         "condition": "KEEP",
@@ -849,13 +849,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_BASIC_CONSTRUCTION",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "RPM_LEAF_GAP-9",
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21"
+        "RPM_LEAF_GAP-9"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -867,10 +866,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
           "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -880,16 +879,14 @@
           "appliedToSource": false
         }
       },
-      "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        }
-      }
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
+      "sourceChanges": {}
     },
     {
       "sourceOrdinal": 10,
@@ -897,7 +894,7 @@
       "meaning": "동일 반지름의 원호와 현을 옮겨 각을 복사할 때 선행 작도로 생성된 점과 호를 다음 단계에서 쓰는 순서를 판정한다.",
       "axes": {
         "rpm": "ADD_OFFICIAL_PATH",
-        "primaryParent": "CHANGE",
+        "primaryParent": "CHANGE_TO_2015_NATIVE_BASIC_PARENT",
         "ptTpl": "CHANGE_TO_EXISTING_ACTIVE",
         "cc": "KEEP",
         "condition": "KEEP",
@@ -916,12 +913,11 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_BASIC_CONSTRUCTION",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
         "EXACT_RPM_NATIVE_CROSSWALK_PENDING"
       ],
       "unjudged": false,
@@ -934,10 +930,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
           "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
@@ -966,14 +962,21 @@
         }
       },
       "independentEvidence": "THREE_SAMPLE_ACCEPTED_AFTER_MINOR_CORRECTIONS",
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
         "subUnitKey": {
           "before": "M1-05-POSITION_RELATION",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+          "after": "M1-05-BASIC_FIGURE"
         },
         "subUnit": {
           "before": "위치 관계",
-          "after": "작도와 합동"
+          "after": "점·선·면과 각"
         },
         "problemTypeKey": {
           "before": "PT_M1_PARALLEL_ANGLE_TRANSFER",
@@ -1012,7 +1015,7 @@
       "meaning": "주어진 두 변과 비끼인각은 두 배치가 가능하지만 SSS·SAS·ASA 자료는 존재 조건을 충족하면 삼각형을 하나로 결정한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "CHANGE",
         "condition": "KEEP",
@@ -1031,13 +1034,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_UNIQUENESS",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "RPM_LEAF_GAP-11",
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21"
+        "RPM_LEAF_GAP-11"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1049,10 +1051,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
           "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -1062,15 +1064,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "crossConceptKeys": {
           "before": [],
           "after": [
@@ -1086,7 +1087,7 @@
       "meaning": "합동 기호의 꼭짓점 순서에 따라 대응변·대응각을 연결하여 그림에 직접 표시되지 않은 대응 정보를 구분한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "KEEP",
         "condition": "GAP",
@@ -1105,13 +1106,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
         "RPM_LEAF_GAP-12",
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
         "CONDITION_DEFINITION_GAP-12-21"
       ],
       "unjudged": false,
@@ -1124,10 +1124,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
           "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -1137,15 +1137,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "integrationPattern": {
           "before": "SEQUENTIAL",
           "after": "NONE"
@@ -1158,7 +1157,7 @@
       "meaning": "두 고정변의 차와 합 사이의 열린 구간이 나머지 변의 허용 범위이며 그 바깥의 보기를 찾는다.",
       "axes": {
         "rpm": "ADD_OFFICIAL_PATH",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "KEEP",
         "condition": "CHANGE",
@@ -1177,12 +1176,11 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
         "EXACT_RPM_NATIVE_CROSSWALK_PENDING"
       ],
       "unjudged": false,
@@ -1195,10 +1193,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
           "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
@@ -1226,15 +1224,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "conditionKeys": {
           "before": [
             "COND_RANGE"
@@ -1269,8 +1266,8 @@
       "questionUid": "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
       "meaning": "두 정삼각형의 같은 변과 평각에서60도를 뺀 끼인각을 대응시켜 SAS 합동 조건을 식별한다.",
       "axes": {
-        "rpm": "ADD_OFFICIAL_PATH",
-        "primaryParent": "CHANGE",
+        "rpm": "EXACT_2015_NATIVE_CROSSWALK_MATCH",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "CHANGE",
         "condition": "KEEP",
@@ -1281,22 +1278,19 @@
       },
       "difficultyReason": "두 정삼각형의 같은 변과 평각에서60도를 뺀 끼인각을 대응시켜 SAS 합동 조건을 식별한다.",
       "officialRegistryCheck": {
-        "rpmRecordExists": false,
-        "rpmPathMatches": false,
-        "rpmNativePairMatches": false,
-        "rpmMachineParentMatches": false,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "rpmNativePairMatches": true,
+        "rpmMachineParentMatches": true,
         "problemTypeStatus": "ACTIVE",
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_UNIQUENESS",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
-      "registrationPending": [
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
-        "EXACT_RPM_NATIVE_CROSSWALK_PENDING"
-      ],
+      "registrationPending": [],
       "unjudged": false,
       "fourSlotDecision": {
         "status": "RAW_AND_COMPACT_BOUND",
@@ -1307,17 +1301,17 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
           "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
             "l3": "삼각형의 합동",
             "l4": "SAS 합동"
           },
-          "exactRecordId": null
+          "exactRecordId": "M1-RPM-079"
         },
         "reference2022": {
           "role": "REFERENCE_ONLY",
@@ -1344,15 +1338,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "crossConceptKeys": {
           "before": [],
           "after": [
@@ -1362,7 +1355,7 @@
         },
         "rpmPrimaryRecordId": {
           "before": null,
-          "after": null
+          "after": "M1-RPM-079"
         },
         "rpmPrimaryPath": {
           "before": null,
@@ -1379,7 +1372,7 @@
         },
         "rpmCrosswalkStatus": {
           "before": null,
-          "after": "EVIDENCE_DEBT"
+          "after": "DIRECT_ACTIVE"
         }
       }
     },
@@ -1957,8 +1950,8 @@
       "questionUid": "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
       "meaning": "두 평행선 쌍에서 대각선에 대한 엇각 두 쌍을 얻고 공통변과 함께 ASA 합동을 증명한다. 대변 길이 같음을 선결 근거로 쓰지 않는다.",
       "axes": {
-        "rpm": "ADD_OFFICIAL_PATH",
-        "primaryParent": "CHANGE",
+        "rpm": "EXACT_2015_NATIVE_CROSSWALK_MATCH",
+        "primaryParent": "CHANGE_TO_2015_NATIVE_BASIC_PARENT",
         "ptTpl": "KEEP_WITH_DEFINITION_REVIEW",
         "cc": "CHANGE",
         "condition": "GAP",
@@ -1969,22 +1962,20 @@
       },
       "difficultyReason": "두 평행선 쌍에서 대각선에 대한 엇각 두 쌍을 얻고 공통변과 함께 ASA 합동을 증명한다. 대변 길이 같음을 선결 근거로 쓰지 않는다.",
       "officialRegistryCheck": {
-        "rpmRecordExists": false,
-        "rpmPathMatches": false,
-        "rpmNativePairMatches": false,
-        "rpmMachineParentMatches": false,
+        "rpmRecordExists": true,
+        "rpmPathMatches": true,
+        "rpmNativePairMatches": true,
+        "rpmMachineParentMatches": true,
         "problemTypeStatus": "ACTIVE",
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_UNIQUENESS",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
-        "CONDITION_DEFINITION_GAP-12-21",
-        "EXACT_RPM_NATIVE_CROSSWALK_PENDING"
+        "CONDITION_DEFINITION_GAP-12-21"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1996,17 +1987,17 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
           "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
             "l3": "삼각형의 합동",
             "l4": "ASA 합동"
           },
-          "exactRecordId": null
+          "exactRecordId": "M1-RPM-080"
         },
         "reference2022": {
           "role": "REFERENCE_ONLY",
@@ -2034,14 +2025,21 @@
         }
       },
       "independentDifficulty": "ROOT_BORDERLINE_ACCEPTABLE",
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
         "subUnitKey": {
           "before": "M1-05-POSITION_RELATION",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
+          "after": "M1-05-BASIC_FIGURE"
         },
         "subUnit": {
           "before": "위치 관계",
-          "after": "작도와 합동"
+          "after": "점·선·면과 각"
         },
         "crossConceptKeys": {
           "before": [],
@@ -2051,7 +2049,7 @@
         },
         "rpmPrimaryRecordId": {
           "before": null,
-          "after": null
+          "after": "M1-RPM-080"
         },
         "rpmPrimaryPath": {
           "before": null,
@@ -2068,7 +2066,7 @@
         },
         "rpmCrosswalkStatus": {
           "before": null,
-          "after": "EVIDENCE_DEBT"
+          "after": "DIRECT_ACTIVE"
         }
       }
     },
@@ -2215,7 +2213,7 @@
       "id": "RPM_LEAF_GAP-9",
       "kind": "RPM_LEAF_GAP",
       "definition": "컴퍼스와 눈금 없는 자가 할 수 있는 작도 조작을 구분한다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "parent": "M1-05-BASIC_FIGURE",
       "distinction": "선분·각의 이동 실행 순서와 달리 도구 역할의 정의 판정이다. 현재 TOOL_USAGE를 유지한다.",
       "supportingQuestionUids": [
         "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088"
@@ -2226,7 +2224,7 @@
       "id": "RPM_LEAF_GAP-11",
       "kind": "RPM_LEAF_GAP",
       "definition": "삼각형을 존재하게 하며 유일하게 결정하는 변·각 자료를 구분한다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "parent": "M1-05-BASIC_FIGURE",
       "distinction": "한 개의 SSS/SAS/ASA 작도 leaf로 여러 결정조건 판정을 축약하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db"
@@ -2237,27 +2235,10 @@
       "id": "RPM_LEAF_GAP-12",
       "kind": "RPM_LEAF_GAP",
       "definition": "이미 주어진 합동 기호의 꼭짓점 순서로 명시된 대응변·대응각 정보를 옮긴다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "parent": "M1-05-BASIC_FIGURE",
       "distinction": "합동을 새로 증명하는 SSS/SAS/ASA와 다르다. ORDERED_CORRESPONDENCE는 ACTIVE이므로 새 TPL은 불필요하다.",
       "supportingQuestionUids": [
         "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-9-10-11-12-13-14-21",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "기본 작도·삼각형 결정조건·합동 및 대응을2015 작도와 합동 부모에서 사용한다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE",
-      "distinction": "이 문항들의 현재 PT는2015 BASIC_FIGURE 또는 POSITION_RELATION binding만 있다. 본문상 부모를 바로잡되 공식2015 construction binding 추가가 필요하다.",
-      "supportingQuestionUids": [
-        "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
-        "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
-        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
-        "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3",
-        "qid_v1_d91af73670352d7d8c510ced2a05437d57c6cb47c62c250c3e4b50925244d58c",
-        "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
-        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa"
       ],
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
@@ -2349,10 +2330,10 @@
       "baseRecord": "M1-RPM-072",
       "parent": {
         "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE"
+        "subUnitKey": "M1-05-BASIC_FIGURE"
       },
       "definition": "동일 반지름의 원호와 현을 옮겨 각을 복사할 때 선행 작도로 생성된 점과 호를 다음 단계에서 쓰는 순서를 판정한다.",
-      "distinction": "공식 RPM path는 의미에 맞지만 기존 crosswalk의 mapped PT/TPL 또는2015 기계 부모가 실제 native 판단과 다르다. 새 PT/TPL보다 exact crosswalk/binding 추가가 우선이다.",
+      "distinction": "공식2015 path의 의미는 유지되지만 실제 native PT/TPL pair가 crosswalk에 연결되어 있지 않다. BASIC machine parent와 ACTIVE curriculum binding은 복원·확인되었으므로 이 남은 공백을 부모 binding 누락과 혼동하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae"
       ],
@@ -2363,26 +2344,12 @@
       "baseRecord": "M1-RPM-075",
       "parent": {
         "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE"
+        "subUnitKey": "M1-05-BASIC_FIGURE"
       },
       "definition": "두 고정변의 차와 합 사이의 열린 구간이 나머지 변의 허용 범위이며 그 바깥의 보기를 찾는다.",
-      "distinction": "공식 RPM path는 의미에 맞지만 기존 crosswalk의 mapped PT/TPL 또는2015 기계 부모가 실제 native 판단과 다르다. 새 PT/TPL보다 exact crosswalk/binding 추가가 우선이다.",
+      "distinction": "공식2015 path의 의미는 유지되지만 실제 native PT/TPL pair가 crosswalk에 연결되어 있지 않다. BASIC machine parent와 ACTIVE curriculum binding은 복원·확인되었으므로 이 남은 공백을 부모 binding 누락과 혼동하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_d91af73670352d7d8c510ced2a05437d57c6cb47c62c250c3e4b50925244d58c"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "kind": "EXACT_RPM_NATIVE_CROSSWALK_GAP",
-      "baseRecord": "M1-RPM-079",
-      "parent": {
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE"
-      },
-      "definition": "두 정삼각형의 같은 변과 평각에서60도를 뺀 끼인각을 대응시켜 SAS 합동 조건을 식별한다.",
-      "distinction": "공식 RPM path는 의미에 맞지만 기존 crosswalk의 mapped PT/TPL 또는2015 기계 부모가 실제 native 판단과 다르다. 새 PT/TPL보다 exact crosswalk/binding 추가가 우선이다.",
-      "supportingQuestionUids": [
-        "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80"
       ],
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
@@ -2397,20 +2364,6 @@
       "distinction": "공식 RPM path는 의미에 맞지만 기존 crosswalk의 mapped PT/TPL 또는2015 기계 부모가 실제 native 판단과 다르다. 새 PT/TPL보다 exact crosswalk/binding 추가가 우선이다.",
       "supportingQuestionUids": [
         "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "kind": "EXACT_RPM_NATIVE_CROSSWALK_GAP",
-      "baseRecord": "M1-RPM-080",
-      "parent": {
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE"
-      },
-      "definition": "두 평행선 쌍에서 대각선에 대한 엇각 두 쌍을 얻고 공통변과 함께 ASA 합동을 증명한다. 대변 길이 같음을 선결 근거로 쓰지 않는다.",
-      "distinction": "공식 RPM path는 의미에 맞지만 기존 crosswalk의 mapped PT/TPL 또는2015 기계 부모가 실제 native 판단과 다르다. 새 PT/TPL보다 exact crosswalk/binding 추가가 우선이다.",
-      "supportingQuestionUids": [
-        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa"
       ],
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
@@ -2450,6 +2403,12 @@
       "sha256": "10821d2bcfc02265c022a8997e757f604f5f890348954793671d680cfaea5056",
       "reviewer": "GPT_ROOT_64695B8EDE31",
       "status": "ACCEPTED"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/c-2015-parent-followup.json",
+      "sha256": "35fd48fe8e281d3db50eff0f4c2c8192e109e316e5315c01438fecd4d9d17ecf",
+      "reviewer": "meta-a",
+      "status": "PASS_TWO_EXAMS_13_ITEMS"
     }
   ],
   "independentInputBinding": {
@@ -2462,7 +2421,7 @@
     "syntax": "PASS",
     "uidOrder": "PASS",
     "protectedFieldChanges": 0,
-    "changedQuestions": 21,
+    "changedQuestions": 20,
     "raw4slot": {
       "fail": [],
       "warn": [
@@ -2505,5 +2464,8 @@
       "changes": 4,
       "sourceUnchanged": true
     }
+  ],
+  "machineParentFollowups": [
+    "docs/operations/m1-s2-meta-full-20261114/followups/2015-machine-parent/24_연향중_2학기_중간_중1_기출.json"
   ]
 }
