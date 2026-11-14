@@ -1,0 +1,1663 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "98daebc2d8aef7cebd8b17a44d136d9c02a96583",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-14T14:15:22.598826+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_2d5aed6cb23058e70d35328910539d540bff63dfd065b3d9758f798a23bf0200",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ac6dda378666ad67d092817917967c3421146b8bba2f5c294a05df9d1c75c16"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a44b3f08e2eff2eeb76bf5f3294a5b5b23490d13f8d97469247140aea651789a"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{(-3)^2}$은 3이다.",
+            "src": "choices",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 보기 중에서 옳은 것은?",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "① 25를 제곱하면 625이므로 25는 5의 양의 제곱근이 아니다.\n② 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$의 두 수이다.\n③ $\\sqrt{(-3)^2}=|-3|=3$이므로 옳다.\n④ $\\sqrt{36}=6$이고, 6의 제곱근은 $\\pm\\sqrt{6}$이다.\n⑤ 제곱근 7은 $\\sqrt{7}$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√36 자체와6의 두 제곱근을 구별해 정의 진술을 대조한다.",
+            "termId": 22
+          },
+          {
+            "term": "정의",
+            "quote": "① 25를 제곱하면 625이므로 25는 5의 양의 제곱근이 아니다.\n② 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$의 두 수이다.\n③ $\\sqrt{(-3)^2}=|-3|=3$이므로 옳다.\n④ $\\sqrt{36}=6$이고, 6의 제곱근은 $\\pm\\sqrt{6}$이다.\n⑤ 제곱근 7은 $\\sqrt{7}$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√36 자체와6의 두 제곱근을 구별해 정의 진술을 대조한다.",
+            "termId": 369
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 값과 제곱근의 뜻 구별",
+        "condition": "√36 자체와6의 두 제곱근을 구별해 정의 진술을 대조한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3f1512d3fec82e05315cf1c8414efb8face74f97e03d06bb3fdbf2bd2427482c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dfdb2883264a60e85a4135fb94a8e703c5bd4fa025ae0fcbb4ea36ca4d5d4774"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d59968a69faf4b738449a4cca128783cb1d3b80f30e4270b9d3526a849f479b4"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "$\\sqrt{\\frac{1}{2}} \\Box \\sqrt{\\frac{1}{3}}$",
+            "src": "choices",
+            "termId": 5
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "quote": "다음 보기의 두 수를 대소 비교하여 $\\Box$ 안에 부등호를 넣을 때, 부등호 방향이 다른 하나는?",
+            "src": "stem",
+            "termId": 28
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "quote": "각 보기의 두 수를 비교한다.\n① $7<8$이므로 $\\sqrt7<\\sqrt8$\n② $\\sqrt3<\\sqrt{16}=4$\n③ $\\frac12>\\frac13$이므로 $\\sqrt{\\frac12}>\\sqrt{\\frac13}$\n④ $\\sqrt{40}>6$이므로 $-\\sqrt{40}<-6$\n⑤ $\\sqrt2>1$이므로 $5-\\sqrt2<4$\n부등호가 오른쪽 방향인 것은 ③뿐이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 수와 음수 부호·뺄셈을 비교해 반대 방향인 부등호를 찾는다.",
+            "termId": 20
+          },
+          {
+            "term": "부호",
+            "quote": "각 보기의 두 수를 비교한다.\n① $7<8$이므로 $\\sqrt7<\\sqrt8$\n② $\\sqrt3<\\sqrt{16}=4$\n③ $\\frac12>\\frac13$이므로 $\\sqrt{\\frac12}>\\sqrt{\\frac13}$\n④ $\\sqrt{40}>6$이므로 $-\\sqrt{40}<-6$\n⑤ $\\sqrt2>1$이므로 $5-\\sqrt2<4$\n부등호가 오른쪽 방향인 것은 ③뿐이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 수와 음수 부호·뺄셈을 비교해 반대 방향인 부등호를 찾는다.",
+            "termId": 25
+          },
+          {
+            "term": "대소비교",
+            "quote": "각 보기의 두 수를 비교한다.\n① $7<8$이므로 $\\sqrt7<\\sqrt8$\n② $\\sqrt3<\\sqrt{16}=4$\n③ $\\frac12>\\frac13$이므로 $\\sqrt{\\frac12}>\\sqrt{\\frac13}$\n④ $\\sqrt{40}>6$이므로 $-\\sqrt{40}<-6$\n⑤ $\\sqrt2>1$이므로 $5-\\sqrt2<4$\n부등호가 오른쪽 방향인 것은 ③뿐이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 수와 음수 부호·뺄셈을 비교해 반대 방향인 부등호를 찾는다.",
+            "termId": 28
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "다양한 실수 표현의 대소 비교",
+        "condition": "근호 안 수와 음수 부호·뺄셈을 비교해 반대 방향인 부등호를 찾는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0edcceffbc1c7673f86fe598ed424163c5d95fcb3eba8a9c9de28ffd7e713345",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "edb5ff7aa00e613a43f6804e329f39bed52a6147b6e9855c3246200145cf1226"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7fc69aa29b1f11794e8dd3890a8db67944987864d29cd72e4fddebf963424be9"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "식 $(\\sqrt{3})^2 + \\sqrt{5^2}$을 계산한 값은?",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "식 $(\\sqrt{3})^2 + \\sqrt{5^2}$을 계산한 값은?",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "$(\\sqrt3)^2=3$이고 $\\sqrt{5^2}=|5|=5$이다.\n따라서 $3+5=8$이다.\n$\\therefore$ ⑤",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 제곱근 성질로3과5를 읽어 더한다.",
+            "termId": 22
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "$(\\sqrt3)^2=3$이고 $\\sqrt{5^2}=|5|=5$이다.\n따라서 $3+5=8$이다.\n$\\therefore$ ⑤",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 제곱근 성질로3과5를 읽어 더한다.",
+            "termId": 20
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱과 제곱근의 직접 계산",
+        "condition": "두 제곱근 성질로3과5를 읽어 더한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_f7cc72a0c6858ab862d012ab262ee252a95cf2885fa28c4f320cc70be6e57da1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e11b8b48f1cb5e0fb580e0db8e478834d7721f64bb53383b1496cd233ed162ce"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df2574d8ccd560415f64be2d769840b1c04e1f15f294fb91d377cae706840fb0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{20}$을 $a\\sqrt{b}$의 꼴로 나타낼 때 정수 $a, b$에 해당하는 수가 순서대로 옳은 것은?",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "quote": "$\\sqrt{20}$을 $a\\sqrt{b}$의 꼴로 나타낼 때 정수 $a, b$에 해당하는 수가 순서대로 옳은 것은?",
+            "src": "stem",
+            "termId": 50
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "quote": "$\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt5$이다.\n따라서 $a=2$, $b=5$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "20=4×5에서√4를2로 꺼낸다.",
+            "termId": 700
+          },
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt5$이다.\n따라서 $a=2$, $b=5$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "20=4×5에서√4를2로 꺼낸다.",
+            "termId": 22
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "quote": "$\\sqrt{20}$을 $a\\sqrt{b}$의 꼴로 나타낼 때 정수 $a, b$에 해당하는 수가 순서대로 옳은 것은?",
+            "src": "stem",
+            "termId": 2
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱수 인수를 근호 밖으로 추출",
+        "condition": "20=4×5에서√4를2로 꺼낸다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3481a9d1bbe59bb82f0d4430064112126ae3cea5cf9a74ca7cc3310bafab0739",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cee5d0aabcdacec6944b81cef5fedf3c333baaebfa78d9fb1477138098c18c4c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef28a2797f864c4f1db963b7910d24a2a9da3b5bc562319d3c3e47f0e63f1e70"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "다항식 $(x-1)(x+3)$을 바르게 전개한 것은?",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "다항식 $(x-1)(x+3)$을 바르게 전개한 것은?",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "quote": "분배법칙으로 전개하면\n$(x-1)(x+3)=x^2+3x-x-3=x^2+2x-3$이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙으로 네 곱을 계산해 동류항을 모은다.",
+            "termId": 454
+          },
+          {
+            "term": "동류항",
+            "quote": "분배법칙으로 전개하면\n$(x-1)(x+3)=x^2+3x-x-3=x^2+2x-3$이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "분배법칙으로 네 곱을 계산해 동류항을 모은다.",
+            "termId": 698
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 일차식 곱의 전개",
+        "condition": "분배법칙으로 네 곱을 계산해 동류항을 모은다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_3f9bf99a4c2826f6c7de6e09c2222df9a82a1074d280a0c9817c60d76ea1cba0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "787d63a20356c6f5dc9db4bca1b552355ef96a20c70909c20042c15537b3808c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "899f5c28d2ec30eece673ced9c22fa8cf4a90d80278195d919cc3d0458adb2ba"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$2xy-8y$에서 두 항 $2xy, -8y$의 공통인 인수는 $2y$이므로 $2xy-8y=2y(\\Box)$이다. $\\Box$에 알맞은 식은?",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "$2xy-8y$에서 두 항 $2xy, -8y$의 공통인 인수는 $2y$이므로 $2xy-8y=2y(\\Box)$이다. $\\Box$에 알맞은 식은?",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "method": [
+          {
+            "term": "공통인수",
+            "quote": "두 항에서 공통인 $2y$를 묶으면\n$2xy-8y=2y(x-4)$이다.\n따라서 빈칸에는 $x-4$가 들어간다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 공통인수2y를 각 항에서 분리한다.",
+            "termId": 695
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "공통인수로 나눈 나머지 식",
+        "condition": "주어진 공통인수2y를 각 항에서 분리한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_ac3f132f419933a4d76431085ae93c414928e28f6c5a3ecb66112e1dcdeb3ce2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9963ead70d1f5aaa75dbb77fa554b6858d37ccd3d31ac5263fc95e3d92550b3e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f7199ba625505f3a8fda9b330fb61a4ac7cd1e543fa32affe77ad7add781d1dc"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "다음 식의 빈칸에 들어갈 값을 순서대로 바르게 적은 것은?<div class='box'>$(x-6)^2 = x^2 - \\Box x + \\triangle$ <br> $x^2-36 = (x+\\bigcirc)(x-\\bigcirc)$</div>",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "다음 식의 빈칸에 들어갈 값을 순서대로 바르게 적은 것은?<div class='box'>$(x-6)^2 = x^2 - \\Box x + \\triangle$ <br> $x^2-36 = (x+\\bigcirc)(x-\\bigcirc)$</div>",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$(x-6)^2=x^2-12x+36$이므로 $\\Box=12$, $\\triangle=36$이다.\n또 $x^2-36=(x+6)(x-6)$이므로 $\\bigcirc=6$이다.\n따라서 순서는 $12,36,6$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x-6)²의 중간항·상수항과 x²-36의 두 인수 값을 각각 읽는다.",
+            "termId": 59
+          },
+          {
+            "term": "합차공식",
+            "quote": "$(x-6)^2=x^2-12x+36$이므로 $\\Box=12$, $\\triangle=36$이다.\n또 $x^2-36=(x+6)(x-6)$이므로 $\\bigcirc=6$이다.\n따라서 순서는 $12,36,6$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x-6)²의 중간항·상수항과 x²-36의 두 인수 값을 각각 읽는다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱식 전개와 제곱차 인수분해의 기본값",
+        "condition": "(x-6)²의 중간항·상수항과 x²-36의 두 인수 값을 각각 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8b084cd91ce1f242db3f412e6c73d5496297c74361e521ac89ab0b3ddde6daee",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d562c0ed4326af9242a6a6d47e7dfbad72b71683d7cd47502afdfa78a550d22"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e84f6bdfe9c736fcd4e1c79c95964cbe3f4b44ccdcc6197047dfa396b3660bf4"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "quote": "$0<a<3$이므로 $a>0$, $3-a>0$이다.\n따라서\n$\\sqrt{(3-a)^2}+\\sqrt{a^2}=|3-a|+|a|=(3-a)+a=3$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "0<a<3에서a와3-a가 모두 양수임을 적용한다.",
+            "termId": 24
+          },
+          {
+            "term": "부호",
+            "quote": "$0<a<3$이므로 $a>0$, $3-a>0$이다.\n따라서\n$\\sqrt{(3-a)^2}+\\sqrt{a^2}=|3-a|+|a|=(3-a)+a=3$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "0<a<3에서a와3-a가 모두 양수임을 적용한다.",
+            "termId": 25
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "quote": "$0 < a < 3$일 때, $\\sqrt{(3-a)^2} + \\sqrt{a^2}$을 간단히 하면?",
+            "src": "stem",
+            "termId": 296
+          }
+        ]
+      },
+      "reasons": {
+        "method": "구간 조건에서 두 절댓값의 부호 결정",
+        "condition": "0<a<3에서a와3-a가 모두 양수임을 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3e71c7e85edaa2e4c3f07a2220be0584bce0e45f8a6301a5232f25de8d2d9eeb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da9e93d9170e3df8db9b6af27121f7a538b6cba3d984a749f0d61bd4c90b56a0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e9578f5a88ba80ecb14103bb22f94deafc35d52974b2fd99d484de485350dbc"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\frac{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
+            "src": "stem",
+            "termId": 5
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "다음 수의 대소를 비교하여 크기가 작은 수부터 차례로 나열할 때, 3번째로 오는 수는?<div class='box'>$\\sqrt{2}, 1, \\frac{1}{2}, 1-\\sqrt{2}, 5-\\sqrt{2}$</div>",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "quote": "$1<\\sqrt2<2$이므로 $1-\\sqrt2<0$이고, $\\frac12<1<\\sqrt2$이다.\n또 $5-\\sqrt2>3$이므로 $\\sqrt2<5-\\sqrt2$이다.\n따라서\n$1-\\sqrt2<\\frac12<1<\\sqrt2<5-\\sqrt2$.\n세 번째 수는 1이다.\n$\\therefore$ ②",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "1<√2<2를 각 식에 적용하여 음수·분수·1·근호·큰 양수를 배열한다.",
+            "termId": 28
+          },
+          {
+            "term": "범위",
+            "quote": "$1<\\sqrt2<2$이므로 $1-\\sqrt2<0$이고, $\\frac12<1<\\sqrt2$이다.\n또 $5-\\sqrt2>3$이므로 $\\sqrt2<5-\\sqrt2$이다.\n따라서\n$1-\\sqrt2<\\frac12<1<\\sqrt2<5-\\sqrt2$.\n세 번째 수는 1이다.\n$\\therefore$ ②",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "1<√2<2를 각 식에 적용하여 음수·분수·1·근호·큰 양수를 배열한다.",
+            "termId": 297
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 정수 경계로 순서 결정",
+        "condition": "1<√2<2를 각 식에 적용하여 음수·분수·1·근호·큰 양수를 배열한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_df5fb4bd9b555ae0a3b426f5af6288828bc2efd1ce8ed27e20d06e39ab7a3510",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "55fd57f22f848a5add72edbb11cf3c803cc6bcdd4e21856f5eb60f65f2466517"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2eb42f2f30305306dc21433e509eb3ed661ed35f95afdcc6c80addcca27e2e03"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "quote": "다음 보기의 값 중 아래 제곱근표를 보고 구할 수 있는 값이 아닌 것은?<div class='question-table-wrap'><table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>4.5</td><td>2.121</td><td>2.124</td><td>2.126</td><td>2.128</td><td>2.131</td><td>2.133</td></tr><tr><td>4.6</td><td>2.145</td><td>2.147</td><td>2.149</td><td>2.152</td><td>2.154</td><td>2.156</td></tr><tr><td>4.7</td><td>2.168</td><td>2.170</td><td>2.173</td><td>2.175</td><td>2.177</td><td>2.179</td></tr><tr><td>4.8</td><td>2.191</td><td>2.193</td><td>2.195</td><td>2.198</td><td>2.200</td><td>2.202</td></tr><tr><td>4.9</td><td>2.214</td><td>2.216</td><td>2.218</td><td>2.221</td><td>2.223</td><td>2.225</td></tr></table></div><div class='box'>ㄱ. $\\sqrt{4.52}$ ㄴ. $\\sqrt{484}$ ㄷ. $\\sqrt{0.475}$ ㄹ. $\\sqrt{46200}$ ㅁ. $\\sqrt{0.0493}$</div>",
+            "src": "stem",
+            "termId": 561
+          },
+          {
+            "term": "제곱근",
+            "quote": "다음 보기의 값 중 아래 제곱근표를 보고 구할 수 있는 값이 아닌 것은?<div class='question-table-wrap'><table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>4.5</td><td>2.121</td><td>2.124</td><td>2.126</td><td>2.128</td><td>2.131</td><td>2.133</td></tr><tr><td>4.6</td><td>2.145</td><td>2.147</td><td>2.149</td><td>2.152</td><td>2.154</td><td>2.156</td></tr><tr><td>4.7</td><td>2.168</td><td>2.170</td><td>2.173</td><td>2.175</td><td>2.177</td><td>2.179</td></tr><tr><td>4.8</td><td>2.191</td><td>2.193</td><td>2.195</td><td>2.198</td><td>2.200</td><td>2.202</td></tr><tr><td>4.9</td><td>2.214</td><td>2.216</td><td>2.218</td><td>2.221</td><td>2.223</td><td>2.225</td></tr></table></div><div class='box'>ㄱ. $\\sqrt{4.52}$ ㄴ. $\\sqrt{484}$ ㄷ. $\\sqrt{0.475}$ ㄹ. $\\sqrt{46200}$ ㅁ. $\\sqrt{0.0493}$</div>",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 보기의 값 중 아래 제곱근표를 보고 구할 수 있는 값이 아닌 것은?<div class='question-table-wrap'><table class='question-table'><tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>4.5</td><td>2.121</td><td>2.124</td><td>2.126</td><td>2.128</td><td>2.131</td><td>2.133</td></tr><tr><td>4.6</td><td>2.145</td><td>2.147</td><td>2.149</td><td>2.152</td><td>2.154</td><td>2.156</td></tr><tr><td>4.7</td><td>2.168</td><td>2.170</td><td>2.173</td><td>2.175</td><td>2.177</td><td>2.179</td></tr><tr><td>4.8</td><td>2.191</td><td>2.193</td><td>2.195</td><td>2.198</td><td>2.200</td><td>2.202</td></tr><tr><td>4.9</td><td>2.214</td><td>2.216</td><td>2.218</td><td>2.221</td><td>2.223</td><td>2.225</td></tr></table></div><div class='box'>ㄱ. $\\sqrt{4.52}$ ㄴ. $\\sqrt{484}$ ㄷ. $\\sqrt{0.475}$ ㄹ. $\\sqrt{46200}$ ㅁ. $\\sqrt{0.0493}$</div>",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근표",
+            "quote": "표에서 직접 또는 100의 거듭제곱을 이용해 바꿀 수 있는지 확인한다.\nㄱ. $\\sqrt{4.52}$는 표에서 바로 구할 수 있다.\nㄴ. $\\sqrt{484}=10\\sqrt{4.84}$\nㄹ. $\\sqrt{46200}=100\\sqrt{4.62}$\nㅁ. $\\sqrt{0.0493}=\\frac{\\sqrt{4.93}}{10}$\nㄷ. $\\sqrt{0.475}=\\frac{\\sqrt{4.75}}{\\sqrt{10}}$이어서 이 표만으로는 구할 수 없다.\n$\\therefore$ ㄷ, ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "100의 거듭제곱 배율로 표의 범위에 옮길 수 없는0.475를 구별한다.",
+            "termId": 561
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "표에서 직접 또는 100의 거듭제곱을 이용해 바꿀 수 있는지 확인한다.\nㄱ. $\\sqrt{4.52}$는 표에서 바로 구할 수 있다.\nㄴ. $\\sqrt{484}=10\\sqrt{4.84}$\nㄹ. $\\sqrt{46200}=100\\sqrt{4.62}$\nㅁ. $\\sqrt{0.0493}=\\frac{\\sqrt{4.93}}{10}$\nㄷ. $\\sqrt{0.475}=\\frac{\\sqrt{4.75}}{\\sqrt{10}}$이어서 이 표만으로는 구할 수 없다.\n$\\therefore$ ㄷ, ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "100의 거듭제곱 배율로 표의 범위에 옮길 수 없는0.475를 구별한다.",
+            "termId": 20
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근표의 가능한 자리 이동 판정",
+        "condition": "100의 거듭제곱 배율로 표의 범위에 옮길 수 없는0.475를 구별한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ef49ced15121413905afd06d233946b2d13b121d976d824cc65b79450d99ecf9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "324e5c0d338caa8fbfda47ca4dd8c24fe21aab9799225f057a15c2493262b3c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "313cf7df1d3b08221bcb631d650711ee2df90062764120ae5eaaad56a0781a97"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{1.3} \\approx a, \\sqrt{2.9} \\approx b$일 때, $\\sqrt{13000} - \\sqrt{0.029}$를 $a, b$를 사용하여 나타내면?",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "근삿값",
+            "quote": "$\\sqrt{1.3} \\approx a, \\sqrt{2.9} \\approx b$일 때, $\\sqrt{13000} - \\sqrt{0.029}$를 $a, b$를 사용하여 나타내면?",
+            "src": "stem",
+            "termId": 560
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$\\sqrt{1.3} \\approx a, \\sqrt{2.9} \\approx b$일 때, $\\sqrt{13000} - \\sqrt{0.029}$를 $a, b$를 사용하여 나타내면?",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "quote": "$13000=1.3\\times10000$이므로\n$\\sqrt{13000}=100\\sqrt{1.3}=100a$이다.\n또 $0.029=\\frac{2.9}{100}$이므로\n$\\sqrt{0.029}=\\frac{\\sqrt{2.9}}{10}=\\frac{b}{10}$이다.\n따라서 $100a-\\frac{b}{10}$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "13000의10000배와0.029의1/100배를 밖의100배와1/10배로 바꾼다.",
+            "termId": 20
+          },
+          {
+            "term": "대입",
+            "quote": "$13000=1.3\\times10000$이므로\n$\\sqrt{13000}=100\\sqrt{1.3}=100a$이다.\n또 $0.029=\\frac{2.9}{100}$이므로\n$\\sqrt{0.029}=\\frac{\\sqrt{2.9}}{10}=\\frac{b}{10}$이다.\n따라서 $100a-\\frac{b}{10}$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "13000의10000배와0.029의1/100배를 밖의100배와1/10배로 바꾼다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 안 배율을 밖의 배율로 변환",
+        "condition": "13000의10000배와0.029의1/100배를 밖의100배와1/10배로 바꾼다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d95a7a8adf120f3e3385b2d9cbeae4f826985c4b94521952a69920151b5611ab",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21a93bfc0e686e1776bc4f2d9c31d6c8c9cc20cb1e67278ac4fbb62b987f3e1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "756d83507215138f4af1c0ee8c03f24a513c672bcad07831a5da1c6170e579ee"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "quote": "한 직육면체의 각 변의 길이가 $\\sqrt{2}, \\sqrt{5}, 3+\\sqrt{10}$일 때, 겉넓이를 구하면?",
+            "src": "stem",
+            "termId": 327
+          },
+          {
+            "term": "길이",
+            "quote": "한 직육면체의 각 변의 길이가 $\\sqrt{2}, \\sqrt{5}, 3+\\sqrt{10}$일 때, 겉넓이를 구하면?",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "한 직육면체의 각 변의 길이가 $\\sqrt{2}, \\sqrt{5}, 3+\\sqrt{10}$일 때, 겉넓이를 구하면?",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "quote": "직육면체의 세 변을 $\\sqrt2,\\sqrt5,3+\\sqrt{10}$이라 하면 겉넓이는\n$2\\{\\sqrt2\\sqrt5+\\sqrt5(3+\\sqrt{10})+\\sqrt2(3+\\sqrt{10})\\}$이다.\n괄호 안을 정리하면\n$\\sqrt{10}+3\\sqrt5+5\\sqrt2+3\\sqrt2+2\\sqrt5\n=\\sqrt{10}+5\\sqrt5+8\\sqrt2$.\n따라서 겉넓이는 $2\\sqrt{10}+10\\sqrt5+16\\sqrt2$이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 곱을 두 개씩 구하여 두 배한 겉넓이를 계산한다.",
+            "termId": 213
+          },
+          {
+            "term": "분배법칙",
+            "quote": "직육면체의 세 변을 $\\sqrt2,\\sqrt5,3+\\sqrt{10}$이라 하면 겉넓이는\n$2\\{\\sqrt2\\sqrt5+\\sqrt5(3+\\sqrt{10})+\\sqrt2(3+\\sqrt{10})\\}$이다.\n괄호 안을 정리하면\n$\\sqrt{10}+3\\sqrt5+5\\sqrt2+3\\sqrt2+2\\sqrt5\n=\\sqrt{10}+5\\sqrt5+8\\sqrt2$.\n따라서 겉넓이는 $2\\sqrt{10}+10\\sqrt5+16\\sqrt2$이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 곱을 두 개씩 구하여 두 배한 겉넓이를 계산한다.",
+            "termId": 454
+          },
+          {
+            "term": "동류항",
+            "quote": "직육면체의 세 변을 $\\sqrt2,\\sqrt5,3+\\sqrt{10}$이라 하면 겉넓이는\n$2\\{\\sqrt2\\sqrt5+\\sqrt5(3+\\sqrt{10})+\\sqrt2(3+\\sqrt{10})\\}$이다.\n괄호 안을 정리하면\n$\\sqrt{10}+3\\sqrt5+5\\sqrt2+3\\sqrt2+2\\sqrt5\n=\\sqrt{10}+5\\sqrt5+8\\sqrt2$.\n따라서 겉넓이는 $2\\sqrt{10}+10\\sqrt5+16\\sqrt2$이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 곱을 두 개씩 구하여 두 배한 겉넓이를 계산한다.",
+            "termId": 698
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "직육면체의 세 쌍 면적과 근호 계산",
+        "condition": "세 변의 곱을 두 개씩 구하여 두 배한 겉넓이를 계산한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_7468874bd325dfd52313ec67191d790b3ae95cd86cbf928c2b25793d42e49626",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e6b89b58cac5f43beba7ae17353b4b9e1f7b46ae2cdcd6a53da3f9cbef4188a7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3719a37d63133fb5c0b5354cfbb1b1248b891144588421e18709e2b186360d84"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "$\\sqrt{12} \\div \\sqrt{3} = \\sqrt{2}$",
+            "src": "choices",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 계산식 중 옳지 않은 것은?",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "quote": "각 계산을 확인한다.\n① $2\\sqrt3\\times3\\sqrt3=6\\times3=18$\n② $\\sqrt{12}\\div\\sqrt3=\\sqrt4=2$이므로 $\\sqrt2$가 아니다.\n③ $(-\\sqrt2)(-\\sqrt5)=\\sqrt{10}$\n④ $\\sqrt2\\div\\sqrt{\\frac15}=\\sqrt{10}$\n⑤ $-\\sqrt{24}\\times\\sqrt{\\frac16}=-\\sqrt4=-2$\n옳지 않은 것은 ②이다.\n$\\therefore$ ②",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 곱·몫을 바로 계산해√12/√3=2를 확인한다.",
+            "termId": 287
+          },
+          {
+            "term": "제곱근",
+            "quote": "각 계산을 확인한다.\n① $2\\sqrt3\\times3\\sqrt3=6\\times3=18$\n② $\\sqrt{12}\\div\\sqrt3=\\sqrt4=2$이므로 $\\sqrt2$가 아니다.\n③ $(-\\sqrt2)(-\\sqrt5)=\\sqrt{10}$\n④ $\\sqrt2\\div\\sqrt{\\frac15}=\\sqrt{10}$\n⑤ $-\\sqrt{24}\\times\\sqrt{\\frac16}=-\\sqrt4=-2$\n옳지 않은 것은 ②이다.\n$\\therefore$ ②",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 안 곱·몫을 바로 계산해√12/√3=2를 확인한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 곱과 몫 결과 판정",
+        "condition": "근호 안 곱·몫을 바로 계산해√12/√3=2를 확인한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_33be9d1330791ed3f7a0a2af3f7dae4c00d89f50b32a2172f4ae46e8125ae6f3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38e9120e6fa9926017e4f27298422473bf87b9189786ca43b68ff7a7138fa12b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d20e8645ee105cdda0cb13591f25aa29c1346a16ebaeab3ebbaa3e8fade7f9de"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(x+4)(x-5) = x^2+x-20$",
+            "src": "choices",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 식 중에서 바르게 전개되지 않은 것은?",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "① $(2a+b)^2=4a^2+4ab+b^2$\n② $(-a+2b)^2=a^2-4ab+4b^2$\n③ $(-a+2b)(-a-2b)=a^2-4b^2$\n④ $(x+4)(x-5)=x^2-x-20$\n⑤ $(2x-1)(3x-1)=6x^2-5x+1$\n④의 제시식만 전개 결과가 다르다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "각 공식의 중간항과 부호를 확인하여 x일차항 부호의 오류를 찾는다.",
+            "termId": 40
+          },
+          {
+            "term": "전개",
+            "quote": "① $(2a+b)^2=4a^2+4ab+b^2$\n② $(-a+2b)^2=a^2-4ab+4b^2$\n③ $(-a+2b)(-a-2b)=a^2-4b^2$\n④ $(x+4)(x-5)=x^2-x-20$\n⑤ $(2x-1)(3x-1)=6x^2-5x+1$\n④의 제시식만 전개 결과가 다르다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "각 공식의 중간항과 부호를 확인하여 x일차항 부호의 오류를 찾는다.",
+            "termId": 41
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "여러 곱셈공식의 전개 결과 비교",
+        "condition": "각 공식의 중간항과 부호를 확인하여 x일차항 부호의 오류를 찾는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a0054d662e6af144eee4cb30a9b8d2c8acfee104805c6d46b9395f1aa561b98e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8a7b56b921815c7718f1effb9c8444f1749f9bacc1ac7516b55d73a03248aa76"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4e2d3140d6f05d9f2c85e1dcbf9a3a4bb54146b07f7f14915d8839483b4b993"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "$x-2$가 이차식 $x^2-ax-6$의 인수일 때, 상수 $a$의 값을 구하면?",
+            "src": "stem",
+            "termId": 37
+          },
+          {
+            "term": "인수",
+            "quote": "$x-2$가 이차식 $x^2-ax-6$의 인수일 때, 상수 $a$의 값을 구하면?",
+            "src": "stem",
+            "termId": 43
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "$x-2$가 이차식 $x^2-ax-6$의 인수일 때, 상수 $a$의 값을 구하면?",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "$x-2$가 인수이므로\n$x^2-ax-6=(x-2)(x+b)$로 둘 수 있다.\n상수항을 비교하면 $-2b=-6$이므로 $b=3$이다.\n$(x-2)(x+3)=x^2+x-6$이므로 $-a=1$, 따라서 $a=-1$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "다른 일차인수의 상수항을 정하고 일차항 계수를 비교한다.",
+            "termId": 42
+          },
+          {
+            "term": "계수비교",
+            "quote": "$x-2$가 인수이므로\n$x^2-ax-6=(x-2)(x+b)$로 둘 수 있다.\n상수항을 비교하면 $-2b=-6$이므로 $b=3$이다.\n$(x-2)(x+3)=x^2+x-6$이므로 $-a=1$, 따라서 $a=-1$이다.\n$\\therefore$ ③",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "다른 일차인수의 상수항을 정하고 일차항 계수를 비교한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "주어진 인수에 맞는 계수 결정",
+        "condition": "다른 일차인수의 상수항을 정하고 일차항 계수를 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_3c663261dbbb545d3fc681ffc384fa4a1d1994a9473e39e9cbf5cf946270a3fe",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6f1a69c1367ca2cf08a40c899282058d841aa298104fa7f0dab008f756825a9b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "560bf11b1ddfc4a7ef53cac74f251d57dcd107b22d267dd68be4396b86d81d57"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
+            "src": "stem",
+            "termId": 59
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "$(x+4)(x-2)+k=x^2+2x-8+k$이다.\n$x^2+2x$와 같은 앞부분을 갖는 완전제곱식은\n$(x+1)^2=x^2+2x+1$이다.\n따라서 $-8+k=1$이므로 $k=9$이다.\n$\\therefore$ ⑤",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²+2x-8+k의 상수를1로 맞춘다.",
+            "termId": 41
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "$(x+4)(x-2)+k=x^2+2x-8+k$이다.\n$x^2+2x$와 같은 앞부분을 갖는 완전제곱식은\n$(x+1)^2=x^2+2x+1$이다.\n따라서 $-8+k=1$이므로 $k=9$이다.\n$\\therefore$ ⑤",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²+2x-8+k의 상수를1로 맞춘다.",
+            "termId": 59
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "quote": "$(x+4)(x-2)+k$가 완전제곱식이 되기 위한 양수 $k$의 값을 구하면?",
+            "src": "stem",
+            "termId": 396
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전개 후 완전제곱식 상수 보정",
+        "condition": "x²+2x-8+k의 상수를1로 맞춘다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_76b05cbebf8a8ecbd1dc9f0a198b8efa733794271aa501f4cc7d4ac72498dbbf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d595f3ff258631de4837102f1e756f47aed29678c115af602c9836b7711f52fa"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cbdd371fb8a3e381a570e0c72b4fb7afebec3b6203aaf6d669c22729bbc99709"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "$x = \\sqrt{3}-2, y = \\sqrt{3}+2$일 때, $\\frac{y}{x} + \\frac{x}{y}$의 값을 구하면?",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$x = \\sqrt{3}-2, y = \\sqrt{3}+2$일 때, $\\frac{y}{x} + \\frac{x}{y}$의 값을 구하면?",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "통분",
+            "quote": "$x+y=2\\sqrt3$, $xy=(\\sqrt3-2)(\\sqrt3+2)=3-4=-1$이다.\n따라서\n$\\frac{y}{x}+\\frac{x}{y}=\\frac{x^2+y^2}{xy}\n=\\frac{(x+y)^2-2xy}{xy}\n=\\frac{12+2}{-1}=-14$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "통분한 x²+y²를(x+y)²-2xy로 바꾸어 주어진 켤레근호식의 합곱에 연결한다.",
+            "termId": 379
+          },
+          {
+            "term": "곱셈공식",
+            "quote": "$x+y=2\\sqrt3$, $xy=(\\sqrt3-2)(\\sqrt3+2)=3-4=-1$이다.\n따라서\n$\\frac{y}{x}+\\frac{x}{y}=\\frac{x^2+y^2}{xy}\n=\\frac{(x+y)^2-2xy}{xy}\n=\\frac{12+2}{-1}=-14$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "통분한 x²+y²를(x+y)²-2xy로 바꾸어 주어진 켤레근호식의 합곱에 연결한다.",
+            "termId": 40
+          },
+          {
+            "term": "합차공식",
+            "quote": "$x+y=2\\sqrt3$, $xy=(\\sqrt3-2)(\\sqrt3+2)=3-4=-1$이다.\n따라서\n$\\frac{y}{x}+\\frac{x}{y}=\\frac{x^2+y^2}{xy}\n=\\frac{(x+y)^2-2xy}{xy}\n=\\frac{12+2}{-1}=-14$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "통분한 x²+y²를(x+y)²-2xy로 바꾸어 주어진 켤레근호식의 합곱에 연결한다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "목표 분수식을 합곱 항등식으로 변환",
+        "condition": "통분한 x²+y²를(x+y)²-2xy로 바꾸어 주어진 켤레근호식의 합곱에 연결한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_84a3c2fec7ca9bda4b8eb3cbfee97f1e092e5cbc23696be381e27d8909e5b32f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05b298417941354115adc63d44b371709d431a931dfc1e6db5ac761c065fc295"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "109bb6fbb062a108391cbb90f466b0b0d2a56113abddeb6f587e2226cabdd710"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "quote": "식 $2120 \\times 2124 + 4$는 어떤 자연수의 제곱과 같다고 할 때, 이 자연수를 구하면?",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "식 $2120 \\times 2124 + 4$는 어떤 자연수의 제곱과 같다고 할 때, 이 자연수를 구하면?",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "가운데 수를 2122로 잡으면\n$2120\\times2124+4=(2122-2)(2122+2)+4$이다.\n제곱의 차를 이용하면\n$2122^2-4+4=2122^2$.\n따라서 구하는 자연수는 2122이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2122를 중심으로(2122-2)(2122+2)+4를 만든다.",
+            "termId": 40
+          },
+          {
+            "term": "합차공식",
+            "quote": "가운데 수를 2122로 잡으면\n$2120\\times2124+4=(2122-2)(2122+2)+4$이다.\n제곱의 차를 이용하면\n$2122^2-4+4=2122^2$.\n따라서 구하는 자연수는 2122이다.\n$\\therefore$ ④",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2122를 중심으로(2122-2)(2122+2)+4를 만든다.",
+            "termId": 694
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "식 $2120 \\times 2124 + 4$는 어떤 자연수의 제곱과 같다고 할 때, 이 자연수를 구하면?",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 수의 가운데값을 이용한 제곱차",
+        "condition": "2122를 중심으로(2122-2)(2122+2)+4를 만든다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ce10590d2b173e0d52fd51fc4ccda926c0b9baa0cd652a76c9f43b59c497af2f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a45f9b50e069abd8b435f65f7f77c17e770af1c8527533fafc4f82ed954f512d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d0259056aea4833732b983a20767e8e15e716c79914f87cb33234dfc7d92f211"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "$x^2$의 계수가 2인 어떤 이차식을 민준이는 상수항을 잘못 보고 $(x-2)(2x-3)$으로 인수분해 하였고, 민서는 일차항의 계수를 잘못 보고 $(x+3)(2x+1)$로 인수분해 하였다. 처음 이차식을 바르게 인수분해 한 것은?",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "quote": "$x^2$의 계수가 2인 어떤 이차식을 민준이는 상수항을 잘못 보고 $(x-2)(2x-3)$으로 인수분해 하였고, 민서는 일차항의 계수를 잘못 보고 $(x+3)(2x+1)$로 인수분해 하였다. 처음 이차식을 바르게 인수분해 한 것은?",
+            "src": "stem",
+            "termId": 43
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "민준이는 상수항만 잘못 보았으므로\n$(x-2)(2x-3)=2x^2-7x+6$에서 원래 식의 일차항은 $-7x$이다.\n민서는 일차항의 계수만 잘못 보았으므로\n$(x+3)(2x+1)=2x^2+7x+3$에서 원래 식의 상수항은 3이다.\n따라서 원래 식은 $2x^2-7x+3=(2x-1)(x-3)$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 일차항-7x와 둘째의 상수항3을 합쳐 원식을 복원한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "민준이는 상수항만 잘못 보았으므로\n$(x-2)(2x-3)=2x^2-7x+6$에서 원래 식의 일차항은 $-7x$이다.\n민서는 일차항의 계수만 잘못 보았으므로\n$(x+3)(2x+1)=2x^2+7x+3$에서 원래 식의 상수항은 3이다.\n따라서 원래 식은 $2x^2-7x+3=(2x-1)(x-3)$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 일차항-7x와 둘째의 상수항3을 합쳐 원식을 복원한다.",
+            "termId": 696
+          },
+          {
+            "term": "인수분해",
+            "quote": "민준이는 상수항만 잘못 보았으므로\n$(x-2)(2x-3)=2x^2-7x+6$에서 원래 식의 일차항은 $-7x$이다.\n민서는 일차항의 계수만 잘못 보았으므로\n$(x+3)(2x+1)=2x^2+7x+3$에서 원래 식의 상수항은 3이다.\n따라서 원래 식은 $2x^2-7x+3=(2x-1)(x-3)$이다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 오답의 일차항-7x와 둘째의 상수항3을 합쳐 원식을 복원한다.",
+            "termId": 42
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 잘못된 인수형의 보존 계수 결합",
+        "condition": "첫 오답의 일차항-7x와 둘째의 상수항3을 합쳐 원식을 복원한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_a4e166831d4d8ad0c5070ce25400850b20b6a61e7a67c203b096e92e10cfe62d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcefa728c572efccc5e558641d74899414867b6fa8ba1e5dba9c86f1d860bd7f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bcf2789d847137fa227062587daef1626be39ad91236fd2e6285235aa4c818aa"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "정사각형",
+            "quote": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+            "src": "stem",
+            "termId": 166
+          },
+          {
+            "term": "넓이",
+            "quote": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "quote": "정사각형의 한 변의 길이를 자연수 $s$라 하면 넓이가 같으므로\n$s^2=24x$이다.\n즉 $s^2$은 24의 배수여야 한다.\n$24=2^3\\times3$이므로 제곱수의 지수가 모두 짝수가 되게 하는 가장 작은 $s$는\n$s=2^2\\times3=12$이다.\n이때 $x=\\frac{12^2}{24}=6$으로 자연수이므로 조건을 만족한다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "s²=24x를 만족하는 최소 자연수s를 소인수 지수의 짝수 조건으로 결정한다.",
+            "termId": 299
+          },
+          {
+            "term": "소인수분해",
+            "quote": "정사각형의 한 변의 길이를 자연수 $s$라 하면 넓이가 같으므로\n$s^2=24x$이다.\n즉 $s^2$은 24의 배수여야 한다.\n$24=2^3\\times3$이므로 제곱수의 지수가 모두 짝수가 되게 하는 가장 작은 $s$는\n$s=2^2\\times3=12$이다.\n이때 $x=\\frac{12^2}{24}=6$으로 자연수이므로 조건을 만족한다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "s²=24x를 만족하는 최소 자연수s를 소인수 지수의 짝수 조건으로 결정한다.",
+            "termId": 14
+          },
+          {
+            "term": "완전제곱수",
+            "quote": "정사각형의 한 변의 길이를 자연수 $s$라 하면 넓이가 같으므로\n$s^2=24x$이다.\n즉 $s^2$은 24의 배수여야 한다.\n$24=2^3\\times3$이므로 제곱수의 지수가 모두 짝수가 되게 하는 가장 작은 $s$는\n$s=2^2\\times3=12$이다.\n이때 $x=\\frac{12^2}{24}=6$으로 자연수이므로 조건을 만족한다.\n$\\therefore$ ①",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "s²=24x를 만족하는 최소 자연수s를 소인수 지수의 짝수 조건으로 결정한다.",
+            "termId": 700
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "넓이 같음과 자연수 조건으로 최소 제곱배수",
+        "condition": "s²=24x를 만족하는 최소 자연수s를 소인수 지수의 짝수 조건으로 결정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T14:15:22.598826+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "cfa2bf6373f18ec4150d424927dcf17204fcab44",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E046",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-14",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "cfa2bf6373f18ec4150d424927dcf17204fcab44",
+    "inputHashes": {
+      "reviewSha256": "26b54c2cb0431bab3244ee7efe048561708dc176cd64b06a6f275cde1996e953",
+      "fourSlotSha256": "2de0ba56965185566cd9b568c6cdf5d4fb279bd735f34ace413058ecd054373a"
+    },
+    "sampledOrdinals": [
+      7,
+      13,
+      18
+    ],
+    "additionalReviewedOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20
+    ],
+    "basis": "WARN/IMPLIED 또는 난도 경계 우선 표본과 source 변경·불확실·예외의 실제 stem/choices/기존solution 및4칸을 직접 읽음. 아래 문항별 의미판정과 명시된 그림만 독립확인.",
+    "findings": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_2d5aed6cb23058e70d35328910539d540bff63dfd065b3d9758f798a23bf0200",
+        "status": "PASS",
+        "note": "근호값과 두 제곱근 의미 구별 및독립진술 판정. NONE 교정 타당."
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_3f1512d3fec82e05315cf1c8414efb8face74f97e03d06bb3fdbf2bd2427482c",
+        "status": "PASS",
+        "note": "분수근호·음수·상수차의 대소를 각각 비교. 실수대소 부단원 교정과2 수용."
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_0edcceffbc1c7673f86fe598ed424163c5d95fcb3eba8a9c9de28ffd7e713345",
+        "status": "PASS",
+        "note": "(√3)²+√5² 직접계산1. 성질 단원 및NONE 타당."
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_f7cc72a0c6858ab862d012ab262ee252a95cf2885fa28c4f320cc70be6e57da1",
+        "status": "PASS",
+        "note": "√20=2√5의 제곱수 추출1. 명시정수조건 수용."
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_3481a9d1bbe59bb82f0d4430064112126ae3cea5cf9a74ca7cc3310bafab0739",
+        "status": "PASS",
+        "note": "두 일차식 분배법칙 전개1. NONE 타당."
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_3f9bf99a4c2826f6c7de6e09c2222df9a82a1074d280a0c9817c60d76ea1cba0",
+        "status": "PASS",
+        "note": "명시된 공통인수2y로 각항을 나눠 나머지x−4를 읽음.1 수용."
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_ac3f132f419933a4d76431085ae93c414928e28f6c5a3ecb66112e1dcdeb3ce2",
+        "status": "PASS",
+        "note": "완전제곱 전개와제곱차 인수분해의 독립빈칸. 복수공식 exactgap·하1 타당."
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_8b084cd91ce1f242db3f412e6c73d5496297c74361e521ac89ab0b3ddde6daee",
+        "status": "PASS",
+        "note": "명시0<a<3에서 두절댓값 부호를 처리. 성질분류·구간조건 수용."
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_3e71c7e85edaa2e4c3f07a2220be0584bce0e45f8a6301a5232f25de8d2d9eeb",
+        "status": "PASS",
+        "note": "1<√2<2로 다섯수 순서에서셋째를 고름.2 및실수대소 분류 수용."
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_df5fb4bd9b555ae0a3b426f5af6288828bc2efd1ce8ed27e20d06e39ab7a3510",
+        "status": "PASS",
+        "note": "표입력으로100의 거듭제곱배율이 가능한지 판단.표와보기 실제대조,2 수용."
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_ef49ced15121413905afd06d233946b2d13b121d976d824cc65b79450d99ecf9",
+        "status": "PASS",
+        "note": "근호안10000배와1/100배의 자릿수변환.2 및제곱근근삿값 분류 수용."
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_d95a7a8adf120f3e3385b2d9cbeae4f826985c4b94521952a69920151b5611ab",
+        "status": "PASS",
+        "note": "직육면체 겉넓이 세쌍곱 계산. exact입체활용gap·보조공식gap 보존 타당."
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_7468874bd325dfd52313ec67191d790b3ae95cd86cbf928c2b25793d42e49626",
+        "status": "PASS",
+        "note": "각 근호곱·몫에 직접공식 적용.1/B12 및기존중 경계보존 수용."
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_33be9d1330791ed3f7a0a2af3f7dae4c00d89f50b32a2172f4ae46e8125ae6f3",
+        "status": "PASS",
+        "note": "여러 곱셈공식의 부호·계수 독립판정.2/B12 하경계보존 수용."
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_a0054d662e6af144eee4cb30a9b8d2c8acfee104805c6d46b9395f1aa561b98e",
+        "status": "PASS",
+        "note": "지정일차인수로 다른상수 정한뒤계수비교. factor부단원과부모028+gap 수용."
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_3c663261dbbb545d3fc681ffc384fa4a1d1994a9473e39e9cbf5cf946270a3fe",
+        "status": "PASS",
+        "note": "전개하여x²+2x의 상수보정1을 적용.양수조건 및2 수용."
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_76b05cbebf8a8ecbd1dc9f0a198b8efa733794271aa501f4cc7d4ac72498dbbf",
+        "status": "PASS",
+        "note": "분수합을 통분하여 합제곱·곱 항등식에 연결.3 수용; 저자수정method통분 확인."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_84a3c2fec7ca9bda4b8eb3cbfee97f1e092e5cbc23696be381e27d8909e5b32f",
+        "status": "PASS",
+        "note": "가운데2122를 택해 합차곱+4소거.2/B12 및multiplication부단원 수용."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_ce10590d2b173e0d52fd51fc4ccda926c0b9baa0cd652a76c9f43b59c497af2f",
+        "status": "PASS",
+        "note": "두 오독사례에서 보존된서로다른계수를 결합.3 및오류복원 exactgap 수용."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_a4e166831d4d8ad0c5070ce25400850b20b6a61e7a67c203b096e92e10cfe62d",
+        "status": "PASS",
+        "note": "원본내장SVG24×x 및정사각형 확인.같은넓이·자연수최소제곱배수 모델3, 면적보조 수용."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/0b1af1898334/workers/A/assets/E046/20-content-inline1.svg",
+        "sha256": "81a33ed6c9e1ccbbfa7eeebc91e8feaa6c5ed97d5537d595dc4c5b6de76c513b",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}
