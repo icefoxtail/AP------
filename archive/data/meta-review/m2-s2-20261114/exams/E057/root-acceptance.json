@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E057",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "ebe0997b105eac3dfc975d423351ea91f75ba9f4",
+  "sourceSha256": "df4fe7ad9a1930166e44fbd1a9df4233e0efb2a581340991bb0216cc463a1bd7",
+  "reviewSha256": "595a9501573eb4d16481d4236ea3120c352205bc8fdd9d007e22b7f28856076d",
+  "fourSlotSha256": "3d7a9bb9ae34b77e285cb7f3c98274b591dd9e2adf32b510e4f719559a0c41dd",
+  "independentSampleSha256": "5d3a428048e629b0891edc78deed6b24d25002ba10e17c3660ebcb96947dab82",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_04c3d102a777b46c2697761d8705a9914d436b993e7dbd615255b5f5fec48afb",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    }
+  ],
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    13,
+    16,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "050dfedbad90b1c0a3fa751807af62bce3130679c10b2e86b27f144f7b580f56",
+      "finalReviewSha256": "595a9501573eb4d16481d4236ea3120c352205bc8fdd9d007e22b7f28856076d",
+      "independentSampleSha256": "5d3a428048e629b0891edc78deed6b24d25002ba10e17c3660ebcb96947dab82",
+      "adjudicatedCompatibilityOrdinals": [
+        1,
+        11
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "이차항이남거나상쇄되는두식이있어전개와정리뒤일차정의를판정하는2/B12를수용한다.해설의좁은비영계수정의는국소sourceHold로분리되었다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "두간단한일차식의이항과부호를직접비교하는1/B12·학습하후보를수용한다.원본중하의정본정규화는미결로유지한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "제시된3배·2배연산을y계수로옮겨6+2a=0을세우는2/B12·학습중후보를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "소수분수의분모를없애면곧바로한미지수가소거되는표준전처리로2를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "미정계수없는두식을먼저연립하고나머지식에대입하는정형공통해구조로2/B23을수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "서로다른속력구간에서거리합과시간합을동시에모델링하고분단위를맞추는관계선택이있어3/B23을수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "배수·절댓값·속력·직사각형관계를각입력의출력유일성으로옮겨야하므로2/B12·학습중후보를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "대응각을내각합으로보완한뒤대응변비까지비교하는한전처리로2/B12를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "실제그림높이4:8로닮음비를정하고면·모서리·부피진술을비교하는2·학습중후보를수용한다.alt와해설의다른모서리수치는sourceHold로분리한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "순환하는동일표시각을외각정리에연결하여안쪽삼각형의각대응을구성해야하므로3/B34를수용한다.실제8·9·4조건과잘못된해설수치를구분한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "명시된직각과빗변수선에서높이의비례중항으로남은밑변을구하고넓이에대입하는표준2/B23을수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "실제AE8과AD10,DB5의부분비와전체비를각각직접계산하는2·학습중후보를수용한다.기존해설AE6은사용하지않는다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "실제l~n전체15에서l~m6을빼m~n9를얻고대응비2:3을반복하는2/B23을수용한다.y는m~k전체로9+3=12이며x는6이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "명시된각이등분선에주어진8:6과CD3을직접대입하는1/B12·학습하후보를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "교차삼각형의7:3비를전체AB10의분할과내부평행선길이에차례로사용하는정형2/B23을수용한다.기존다른사다리꼴해설은분리한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "두무게중심이명시되어AG에서GD를거쳐G′D를같은2:1로순차계산하는2를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "무게중심1/6넓이와GC중점의절반넓이를곧바로연결하는2를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "순서도의주어진연산을식으로옮기고안내된두식을가감하는2를수용한다.변수모델의선택이추가로필요하지않다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "첫소문항이계수결정을안내하고뒤의함숫값은같은대입을반복하는직접형으로1/B12를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "공통B를끼고큰삼각형의BA,BC와작은삼각형의BD,BA를바꾸어대응시키는선택이필요하여3/B23을수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "실제그림에서B,C,D와밑변이잘려세중선의끝점및중점연결의성립을학생원도에서확인할수없다.최종UNKNOWN/후보2분리를수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT_UNRESOLVED_SOURCE"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 1,
+      "reason": "해설의 ax+by+c=0 정의는 a≠0,b≠0를 각각 요구하여, 수평·수직식을 포함하는 일반 일차방정식의 a,b가 동시에0이아님 조건보다 좁게 쓰였다. 이 문항의 실제 보기 판정과 전개 후 차수 확인 메타는 불변이나 정의 문구는 정본 용어와 대조할 대상이다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 12,
+      "reason": "실제 그림의 높이4:8에서1:2를 얻어 면적1:4와부피1:8을 확인한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 13,
+      "reason": "세 외각을 같은 표시각으로 바꾸어DEF와ABC의 각을 대응시키고 실제그림8:4로 DF를 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 15,
+      "reason": "실제그림AE8에AD:DB=2:1을 적용해x를 얻고2:3으로y를 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 16,
+      "reason": "실제그림의 오른쪽l~m6,l~n15에서m~n9를 구하고2:3을 각 구간에 적용한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 18,
+      "reason": "실제그림AD7,BC3로AF:FC=7:3을 얻고AB10에서AE와EF를 구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 24,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

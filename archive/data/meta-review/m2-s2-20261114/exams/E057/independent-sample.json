@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E057",
+  "owner": "B",
+  "author": "C",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "ebe0997b105eac3dfc975d423351ea91f75ba9f4",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "050dfedbad90b1c0a3fa751807af62bce3130679c10b2e86b27f144f7b580f56",
+  "fourSlotInputSha256": "3d7a9bb9ae34b77e285cb7f3c98274b591dd9e2adf32b510e4f719559a0c41dd",
+  "sampleOrdinals": [
+    13,
+    16,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_90a4ef218e2d68ebb99ba8a8be2c91ddbb52488f8d76df04550ead8c76d3e3fd",
+      "verdict": "PASS_WITH_REGISTRATION_AND_SOURCE_DEBT",
+      "metadataReview": "ACTIVE 삼각형닮음APPLICATION과RPM089는외각으로성립한AA를이용해길이를구하는골격에맞는다.외각전처리의exactCC는B-E056-EXTERIOR-ANGLE 재사용debt+SEQUENTIAL로보완되었으며미등록키는after에넣지않았다.",
+      "fourSlotReview": "외각과AA·대응변방법,세같은각condition은안전한일반원문인용이다.잘못된6·8·3수치인용을채택하지않은4칸을수용한다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 7,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E057-13.png"
+      ],
+      "visualEvidenceSha256": "e0aa1d5cd607872ccd490975d40ac7757a8f1bcfddf12d61f94e10eedea66ef5",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "내부 삼각형과 외부 삼각형의 각 대응을 외각관계에서 구성해야 한다."
+      },
+      "sourceHoldPreserved": true
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_bf02d9290655e07be3222bd897061142c38f80d57db49ed05e7afaf30d9b50f6",
+      "verdict": "PASS_WITH_REGISTRATION_AND_SOURCE_DEBT",
+      "metadataReview": "실제원본15cm호는l~n,6cm호는l~m,ycm호는m~k이다.현재RPM093/평행선일반비후보가정확하고근거없는x8과y구간을쓴기존해설은sourceHold로분리되었다.",
+      "fourSlotReview": "평행선비방법과그림근거의차IMPLIED를확인했다.목표quote만으로차를증명한다고보지않고본표본의실제그림해시와저자의명시적구간justification으로근거를결속한다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 5,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E057-16.png"
+      ],
+      "visualEvidenceSha256": "6a6a2c44ea6e919db312a12dbb036a20a33677a8d456702809cb025366d309b2",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "겹치는 길이표시를 차로 분리한 뒤 같은 대응비를 반복한다."
+      },
+      "sourceHoldPreserved": true
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_04c3d102a777b46c2697761d8705a9914d436b993e7dbd615255b5f5fec48afb",
+      "verdict": "PASS_WITH_SOURCE_UNRESOLVED",
+      "metadataReview": "넓은무게중심·중점연결후보는보존하되필수시각근거결손으로정밀Primary와난도·level은UNRESOLVED다.등록차단과정확unresolvedFields를확인했다.",
+      "fourSlotReview": "입력무게중심·교점,비와길이goal,중점연결·2:1·차method가해설상후보로표시되어있다.PARTIAL_SOURCE_EVIDENCE와그림결손reason을유지한다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 7,
+      "imageViewed": [
+        "/workspace/scratch/87f142347508/workers/B/images/E057-24.png"
+      ],
+      "visualEvidenceSha256": "18d5ceb7b120a35b085b5af27dbc0f79d03f27509279bf98dc5e4e5ce43681bf",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 이미지 하단의B,C,D와밑변이 없어 AD가어느삼각형의중선인지,BE와CF가어느꼭짓점까지연결되는지 확인할 수 없다. 중점연결과2:1로구하는방법·bucket2는해설상후보이며 원그림확보전 완전메타판정을 보류한다."
+      },
+      "sourceHoldPreserved": true
+    }
+  ],
+  "difficultyExceptionScope": "all changed buckets, any non-NONE boundaries, UNKNOWN/noncanonical levels, borderline/strong conflict and low confidence: 21 items",
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "bucket": 2,
+      "level": "하",
+      "proposedLevel": "하",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "이차항이남거나상쇄되는두식이있어전개와정리뒤일차정의를판정하는2/B12를수용한다.해설의좁은비영계수정의는국소sourceHold로분리되었다."
+    },
+    {
+      "ordinal": 5,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "두간단한일차식의이항과부호를직접비교하는1/B12·학습하후보를수용한다.원본중하의정본정규화는미결로유지한다."
+    },
+    {
+      "ordinal": 6,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "제시된3배·2배연산을y계수로옮겨6+2a=0을세우는2/B12·학습중후보를수용한다."
+    },
+    {
+      "ordinal": 7,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "소수분수의분모를없애면곧바로한미지수가소거되는표준전처리로2를수용한다."
+    },
+    {
+      "ordinal": 8,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "미정계수없는두식을먼저연립하고나머지식에대입하는정형공통해구조로2/B23을수용한다."
+    },
+    {
+      "ordinal": 9,
+      "bucket": 3,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "서로다른속력구간에서거리합과시간합을동시에모델링하고분단위를맞추는관계선택이있어3/B23을수용한다."
+    },
+    {
+      "ordinal": 10,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "배수·절댓값·속력·직사각형관계를각입력의출력유일성으로옮겨야하므로2/B12·학습중후보를수용한다."
+    },
+    {
+      "ordinal": 11,
+      "bucket": 2,
+      "level": "하",
+      "proposedLevel": "하",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "대응각을내각합으로보완한뒤대응변비까지비교하는한전처리로2/B12를수용한다."
+    },
+    {
+      "ordinal": 12,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "실제그림높이4:8로닮음비를정하고면·모서리·부피진술을비교하는2·학습중후보를수용한다.alt와해설의다른모서리수치는sourceHold로분리한다."
+    },
+    {
+      "ordinal": 13,
+      "bucket": 3,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B34",
+      "reason": "순환하는동일표시각을외각정리에연결하여안쪽삼각형의각대응을구성해야하므로3/B34를수용한다.실제8·9·4조건과잘못된해설수치를구분한다."
+    },
+    {
+      "ordinal": 14,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "명시된직각과빗변수선에서높이의비례중항으로남은밑변을구하고넓이에대입하는표준2/B23을수용한다."
+    },
+    {
+      "ordinal": 15,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "실제AE8과AD10,DB5의부분비와전체비를각각직접계산하는2·학습중후보를수용한다.기존해설AE6은사용하지않는다."
+    },
+    {
+      "ordinal": 16,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "실제l~n전체15에서l~m6을빼m~n9를얻고대응비2:3을반복하는2/B23을수용한다.y는m~k전체로9+3=12이며x는6이다."
+    },
+    {
+      "ordinal": 17,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_NONCANONICAL_LEVEL_CANDIDATE",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "명시된각이등분선에주어진8:6과CD3을직접대입하는1/B12·학습하후보를수용한다."
+    },
+    {
+      "ordinal": 18,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "교차삼각형의7:3비를전체AB10의분할과내부평행선길이에차례로사용하는정형2/B23을수용한다.기존다른사다리꼴해설은분리한다."
+    },
+    {
+      "ordinal": 19,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "두무게중심이명시되어AG에서GD를거쳐G′D를같은2:1로순차계산하는2를수용한다."
+    },
+    {
+      "ordinal": 20,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "무게중심1/6넓이와GC중점의절반넓이를곧바로연결하는2를수용한다."
+    },
+    {
+      "ordinal": 21,
+      "bucket": 2,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "NONE",
+      "reason": "순서도의주어진연산을식으로옮기고안내된두식을가감하는2를수용한다.변수모델의선택이추가로필요하지않다."
+    },
+    {
+      "ordinal": 22,
+      "bucket": 1,
+      "level": "하",
+      "proposedLevel": "하",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B12",
+      "reason": "첫소문항이계수결정을안내하고뒤의함숫값은같은대입을반복하는직접형으로1/B12를수용한다."
+    },
+    {
+      "ordinal": 23,
+      "bucket": 3,
+      "level": "중",
+      "proposedLevel": "중",
+      "decision": "ACCEPT",
+      "difficultyBoundaryFlag": "B23",
+      "reason": "공통B를끼고큰삼각형의BA,BC와작은삼각형의BD,BA를바꾸어대응시키는선택이필요하여3/B23을수용한다."
+    },
+    {
+      "ordinal": 24,
+      "bucket": "UNKNOWN",
+      "level": null,
+      "proposedLevel": null,
+      "decision": "ACCEPT_UNRESOLVED_SOURCE",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "reason": "실제그림에서B,C,D와밑변이잘려세중선의끝점및중점연결의성립을학생원도에서확인할수없다.최종UNKNOWN/후보2분리를수용한다."
+    }
+  ],
+  "evidenceScope": {
+    "actualStemsAndChoicesRead": 21,
+    "answersAndSolutionsRead": 21,
+    "imagesViewed": 14,
+    "incidentalImageOutsideExceptionScope": [
+      2
+    ],
+    "notFreshFullExamMathematicalReverification": true
+  },
+  "pinpointRepairsConfirmed": [
+    {
+      "ordinal": 1,
+      "reason": "SOURCE_DEFINITION_WORDING note added; classification/difficulty unchanged"
+    },
+    {
+      "ordinal": 13,
+      "reason": "exterior-angle exact CC proposal reuse and SEQUENTIAL added; primary/fourSlot/difficulty unchanged"
+    }
+  ],
+  "approvalScope": "three independent metadata/four-slot samples plus all21 difficulty exceptions; sourceHold/UNKNOWN and registry debt remain separate",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
