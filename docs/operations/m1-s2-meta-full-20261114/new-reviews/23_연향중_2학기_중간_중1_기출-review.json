@@ -5,8 +5,8 @@
   "sourcePath": "archive/exams/original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
   "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
   "baselineSourceBlob": "d040cb5d9fa05b204a672cf749424c54f2d32347",
-  "sourceBlob": "6731b8d49f26d59daf5983f6854613a9f916d636",
-  "sourceSha256": "d470879146f8839c385786fb070ebba6d4ab565dbe4f9767346539ce93f1a248",
+  "sourceBlob": "4ae5beb89c314c4e9e8fced3f85368b3ba7003dc",
+  "sourceSha256": "4ffe99f4d9485cb7ef818cbfbd405dfcaa14d032216f3616bfa6315362c6227c",
   "questionCount": 24,
   "reviewScope": "RPM_PRIMARY_NATIVE_AUXILIARY_LEVEL_DIFFICULTY_4SLOT",
   "topics": {
@@ -998,7 +998,7 @@
       "meaning": "동일 반지름의 원호를 옮기고 현의 길이를 새 호에 옮긴 뒤 마지막 반직선을 긋는 작도 의존 순서를 고른다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "KEEP",
         "condition": "KEEP",
@@ -1017,13 +1017,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_BASIC_CONSTRUCTION",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_RPM_NATIVE_CROSSWALK_GAP-11",
-        "EXACT_BINDING_GAP-11"
+        "EXACT_RPM_NATIVE_CROSSWALK_GAP-11"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1035,10 +1034,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
           "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
@@ -1066,15 +1065,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "integrationPattern": {
           "before": "SEQUENTIAL",
           "after": "NONE"
@@ -1108,7 +1106,7 @@
       "meaning": "한 변과 두 각으로 결정되는 삼각형을 선택하고 각만 주어진 경우·존재하지 않는 세 변·비끼인각 자료를 구분한다. 삼각형 존재와 유일성을 함께 본다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "CHANGE",
         "condition": "KEEP",
@@ -1127,13 +1125,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_UNIQUENESS",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "RPM_LEAF_GAP-12-23",
-        "EXACT_BINDING_GAP-12"
+        "RPM_LEAF_GAP-12-23"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1145,10 +1142,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
           "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -1158,15 +1155,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "crossConceptKeys": {
           "before": [],
           "after": [
@@ -1198,7 +1194,7 @@
       "meaning": "일직선 위의 같은 짧은 두 부분을 더해 긴 대응변을 같게 만들고 공통 끼인각으로 SAS를 완성한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "KEEP",
         "condition": "KEEP",
@@ -1217,13 +1213,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_RPM_NATIVE_CROSSWALK_GAP-13",
-        "EXACT_BINDING_GAP-13"
+        "EXACT_RPM_NATIVE_CROSSWALK_GAP-13"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1235,10 +1230,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
           "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
@@ -1272,15 +1267,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "integrationPattern": {
           "before": "SEQUENTIAL",
           "after": "NONE"
@@ -1376,7 +1370,7 @@
       "meaning": "두 수선으로 생긴 직각삼각형의 빗변과 대응 예각으로 합동을 만들고 대응변AD=CE,AE=BD를 일직선 합 DE에 옮긴다. 기존 해설은 예각의 같음 증명을 생략했다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "KEEP",
         "condition": "KEEP",
@@ -1395,13 +1389,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_RIGHT_TRIANGLE_CONGRUENCE",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "RPM_SCOPE_AND_EXACT_BINDING_GAP-15",
-        "EXACT_BINDING_GAP-15"
+        "RPM_SCOPE_GAP-15"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1413,10 +1406,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
           "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -1426,15 +1419,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "integrationPattern": {
           "before": "SEQUENTIAL",
           "after": "NONE"
@@ -1911,7 +1903,7 @@
       "meaning": "정사각형 밖에 같은 길이의 보조선을 만들어 SAS 합동으로 직각이등변삼각형을 구성하고45도 이등분선·수직이등분선·이등변삼각형의 각 관계를 연쇄 적용한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "CHANGE",
         "condition": "KEEP",
@@ -1930,13 +1922,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "EXACT_RPM_NATIVE_CROSSWALK_GAP-20",
-        "EXACT_BINDING_GAP-20"
+        "EXACT_RPM_NATIVE_CROSSWALK_GAP-20"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -1948,10 +1939,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
           "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": {
             "majorUnit": "기본 도형",
             "midUnit": "작도와 합동",
@@ -1985,15 +1976,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "crossConceptKeys": {
           "before": [
             "CC_SQUARE"
@@ -2264,7 +2254,7 @@
       "meaning": "세 변의 대응과 한 변·양 끝각을 대조하여 SSS·ASA 합동을 판정하고 비끼인각 SSA는 합동을 보장하지 못함을 설명한다.",
       "axes": {
         "rpm": "GAP_MEANING_JUDGED",
-        "primaryParent": "CHANGE",
+        "primaryParent": "KEEP_2015_BASELINE_MACHINE_PARENT",
         "ptTpl": "KEEP",
         "cc": "CHANGE",
         "condition": "KEEP",
@@ -2283,13 +2273,12 @@
         "templateStatus": "ACTIVE",
         "templateParent": "PT_M1_CONGRUENCE_UNIQUENESS",
         "parentMatches": true,
-        "exactBindingCount": 0,
+        "exactBindingCount": 1,
         "ccUnknown": [],
         "conditionUnknown": []
       },
       "registrationPending": [
-        "RPM_LEAF_GAP-12-23",
-        "EXACT_BINDING_GAP-23"
+        "RPM_LEAF_GAP-12-23"
       ],
       "unjudged": false,
       "fourSlotDecision": {
@@ -2301,10 +2290,10 @@
           "curriculum": "2015",
           "standardCourse": "중1 수학",
           "standardUnitKey": "M1-05",
-          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
           "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
           "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-          "exactActiveBindingCount": 0,
+          "exactActiveBindingCount": 1,
           "officialRpmPath": null,
           "exactRecordId": null
         },
@@ -2314,15 +2303,14 @@
           "appliedToSource": false
         }
       },
+      "machineParentCorrection": {
+        "semanticRpmL2": "작도와 합동",
+        "sourceNativeSubUnit": "M1-05-BASIC_FIGURE",
+        "reference2022SubUnit": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "referenceRole": "REFERENCE_ONLY",
+        "followupPath": "/workspace/scratch/64695b8ede31/agent-c/followups/2015-construction-machine-parent-restoration.json"
+      },
       "sourceChanges": {
-        "subUnitKey": {
-          "before": "M1-05-BASIC_FIGURE",
-          "after": "M1-05-CONSTRUCTION_CONGRUENCE"
-        },
-        "subUnit": {
-          "before": "점·선·면과 각",
-          "after": "작도와 합동"
-        },
         "crossConceptKeys": {
           "before": [],
           "after": [
@@ -2495,7 +2483,7 @@
       "id": "RPM_LEAF_GAP-12-23",
       "kind": "RPM_LEAF_GAP",
       "definition": "여러 변·각 정보의 존재·유일성 또는 합동 보장 여부를 판정한다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "parent": "M1-05-BASIC_FIGURE",
       "distinction": "SSS·SAS·ASA 중 한 조건만 시험하는 leaf로 여러 조건 판정을 축약하지 않는다. 기존 UNIQUE_TRIANGLE_DATA/CONGRUENCE_CRITERION_SELECTION을 유지한다.",
       "supportingQuestionUids": [
         "qid_v1_84af768ddb3b17d734bd6f0a01a3c24401cb84f5f93aa707cdf673021f1a7278",
@@ -2515,11 +2503,11 @@
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
     {
-      "id": "RPM_SCOPE_AND_EXACT_BINDING_GAP-15",
-      "kind": "RPM_SCOPE_AND_EXACT_BINDING_GAP",
+      "id": "RPM_SCOPE_GAP-15",
+      "kind": "RPM_SCOPE_GAP",
       "definition": "직각이등변삼각형의 두 꼭짓점에서 직선으로 내린 수선이 만드는 직각삼각형을 합동으로 연결하여 선분 길이를 복원한다.",
-      "parent": "M1-05-CONSTRUCTION_CONGRUENCE / PT_RIGHT_TRIANGLE_CONGRUENCE / TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-      "distinction": "기존 RHA의 의미는 맞지만 중1 2015 공식 RPM 및 exact curriculum binding이 없다. ASA로 정당화 가능한 각 도출을 학생 해설이 생략한 내용부채와 등록부채를 구별한다.",
+      "parent": "M1-05-BASIC_FIGURE / PT_RIGHT_TRIANGLE_CONGRUENCE / TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "distinction": "원래2015 BASIC_FIGURE의 PT_RIGHT_TRIANGLE_CONGRUENCE ACTIVE binding은 실제 존재한다. 남은 것은 이 RHA 골격의 중12015 RPM exact leaf/scope 근거이며, ASA로 정당화 가능한 각 도출을 학생 해설이 생략한 내용 부채와 구별한다.",
       "supportingQuestionUids": [
         "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c"
       ],
@@ -2633,11 +2621,11 @@
       "definition": "동일 반지름의 원호를 옮기고 현의 길이를 새 호에 옮긴 뒤 마지막 반직선을 긋는 작도 의존 순서를 고른다.",
       "parent": {
         "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
         "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
       },
-      "distinction": "공식2015 path M1-RPM-072는 의미 참조로 재사용하지만 현재 mapped native PT/TPL 또는 기계 부모가 다르다.2022 exact mapping이 있더라도2015 결속으로 혼용하지 않는다.",
+      "distinction": "공식2015 path의 의미는 유지되지만 실제 native PT/TPL pair가 crosswalk에 연결되어 있지 않다. BASIC machine parent와 ACTIVE curriculum binding은 복원·확인되었으므로 이 남은 공백을 부모 binding 누락과 혼동하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_a571e0208b75f118764e822827ebcadaeb47c1606dd1c045ed6f3f55aec70895"
       ],
@@ -2649,11 +2637,11 @@
       "definition": "일직선 위의 같은 짧은 두 부분을 더해 긴 대응변을 같게 만들고 공통 끼인각으로 SAS를 완성한다.",
       "parent": {
         "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER"
       },
-      "distinction": "공식2015 path M1-RPM-079는 의미 참조로 재사용하지만 현재 mapped native PT/TPL 또는 기계 부모가 다르다.2022 exact mapping이 있더라도2015 결속으로 혼용하지 않는다.",
+      "distinction": "공식2015 path의 의미는 유지되지만 실제 native PT/TPL pair가 crosswalk에 연결되어 있지 않다. BASIC machine parent와 ACTIVE curriculum binding은 복원·확인되었으므로 이 남은 공백을 부모 binding 누락과 혼동하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_ea1c02c0fc4a3a302541009cdbfdb2e8536ee43bdbda2338742b80857a9eb33a"
       ],
@@ -2713,11 +2701,11 @@
       "definition": "정사각형 밖에 같은 길이의 보조선을 만들어 SAS 합동으로 직각이등변삼각형을 구성하고45도 이등분선·수직이등분선·이등변삼각형의 각 관계를 연쇄 적용한다.",
       "parent": {
         "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
         "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER"
       },
-      "distinction": "공식2015 path M1-RPM-079는 의미 참조로 재사용하지만 현재 mapped native PT/TPL 또는 기계 부모가 다르다.2022 exact mapping이 있더라도2015 결속으로 혼용하지 않는다.",
+      "distinction": "공식2015 path의 의미는 유지되지만 실제 native PT/TPL pair가 crosswalk에 연결되어 있지 않다. BASIC machine parent와 ACTIVE curriculum binding은 복원·확인되었으므로 이 남은 공백을 부모 binding 누락과 혼동하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_56f87fcf14af7ab287a95d89b4c77abbb8d815221cd55bce76e560b88b8cb16f"
       ],
@@ -2806,74 +2794,6 @@
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
     {
-      "id": "EXACT_BINDING_GAP-11",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "동일 반지름의 원호를 옮기고 현의 길이를 새 호에 옮긴 뒤 마지막 반직선을 긋는 작도 의존 순서를 고른다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_a571e0208b75f118764e822827ebcadaeb47c1606dd1c045ed6f3f55aec70895"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-12",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "한 변과 두 각으로 결정되는 삼각형을 선택하고 각만 주어진 경우·존재하지 않는 세 변·비끼인각 자료를 구분한다. 삼각형 존재와 유일성을 함께 본다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_84af768ddb3b17d734bd6f0a01a3c24401cb84f5f93aa707cdf673021f1a7278"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-13",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "일직선 위의 같은 짧은 두 부분을 더해 긴 대응변을 같게 만들고 공통 끼인각으로 SAS를 완성한다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_ea1c02c0fc4a3a302541009cdbfdb2e8536ee43bdbda2338742b80857a9eb33a"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-15",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "두 수선으로 생긴 직각삼각형의 빗변과 대응 예각으로 합동을 만들고 대응변AD=CE,AE=BD를 일직선 합 DE에 옮긴다. 기존 해설은 예각의 같음 증명을 생략했다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
       "id": "EXACT_BINDING_GAP-16",
       "kind": "EXACT_BINDING_GAP",
       "definition": "한 삼각형 내각합으로 교점각을 얻고 맞꼭지각으로 다른 삼각형에 옮겨 남은 각을 구한다.",
@@ -2921,40 +2841,6 @@
       "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
       "supportingQuestionUids": [
         "qid_v1_0d4243828ae864211f7ad293fd342424baa6c3e5f739054e7923a32d575089e8"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-20",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "정사각형 밖에 같은 길이의 보조선을 만들어 SAS 합동으로 직각이등변삼각형을 구성하고45도 이등분선·수직이등분선·이등변삼각형의 각 관계를 연쇄 적용한다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_56f87fcf14af7ab287a95d89b4c77abbb8d815221cd55bce76e560b88b8cb16f"
-      ],
-      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
-    },
-    {
-      "id": "EXACT_BINDING_GAP-23",
-      "kind": "EXACT_BINDING_GAP",
-      "definition": "세 변의 대응과 한 변·양 끝각을 대조하여 SSS·ASA 합동을 판정하고 비끼인각 SSA는 합동을 보장하지 못함을 설명한다.",
-      "parent": {
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
-      },
-      "distinction": "기존 ACTIVE PT/TPL의 의미는 판단되었으나 source 교육과정과 실제 부모의 exact binding이 없다. 공식 registry는 수정하지 않는다.",
-      "supportingQuestionUids": [
-        "qid_v1_6305db876ddf39640d44ae07abbf7aa2ac6c519cb285c3e66c839b03e33901fe"
       ],
       "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING"
     },
@@ -3034,9 +2920,15 @@
   "independent": [
     {
       "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_연향중_2학기_중간_중1_기출.json",
-      "sha256": "140e696f7f07a8d4399b09e82225fe325d797b4baeeb0ec60b34dfe297777d21",
+      "sha256": "9608e17fb05b455a1fde439cda3200619590535abcdeae6ef12d17697f4a9b2c",
       "reviewer": "meta-a",
       "status": "PASS_EIGHT_SAMPLES_AFTER_METADATA_CORRECTIONS"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/independent/c-2015-parent-followup.json",
+      "sha256": "35fd48fe8e281d3db50eff0f4c2c8192e109e316e5315c01438fecd4d9d17ecf",
+      "reviewer": "meta-a",
+      "status": "PASS_TWO_EXAMS_13_ITEMS"
     }
   ],
   "independentInputBinding": {
@@ -3071,5 +2963,8 @@
   "scopeLimits": [
     "No full mathematical R1/R2/R3 performed.",
     "Shared registration, main merge and deployment are outside this stage."
+  ],
+  "machineParentFollowups": [
+    "docs/operations/m1-s2-meta-full-20261114/followups/2015-machine-parent/23_연향중_2학기_중간_중1_기출.json"
   ]
 }

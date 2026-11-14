@@ -2,12 +2,12 @@
   "schemaVersion": "m1-s2-independent-sample-review-v1",
   "reviewer": "meta-a",
   "author": "meta-c",
-  "revision": 2,
+  "revision": 3,
   "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
-  "candidateSourceBlob": "6731b8d49f26d59daf5983f6854613a9f916d636",
-  "candidateSourceRawSha256": "d470879146f8839c385786fb070ebba6d4ab565dbe4f9767346539ce93f1a248",
+  "candidateSourceBlob": "4ae5beb89c314c4e9e8fced3f85368b3ba7003dc",
+  "candidateSourceRawSha256": "4ffe99f4d9485cb7ef818cbfbd405dfcaa14d032216f3616bfa6315362c6227c",
   "raw4slotSha256": "1712b4fad81d4f4ca139b39d0507847039f5077978d6f6074a0879a84ab9b4af",
-  "authorReviewSha256": "e12f6452b988f7715a3fc8498f5885d63bb094b55426ab3a3f88233402883c01",
+  "authorReviewSha256": "607a29c039a20b2a91419221f62031df72252a58b4f76636a7eaa1d2d56145a2",
   "sampled": [
     7,
     10,
@@ -160,6 +160,19 @@
           "ownerPack": "MIDDLE1",
           "parentProblemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
         }
+      },
+      "currentParentReadback": {
+        "ordinal": 12,
+        "exactBindingCount": 1,
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "ownerPack": "MIDDLE1"
+        },
+        "ptDefinitionOwnerPack": "MIDDLE1"
       }
     },
     {
@@ -188,6 +201,19 @@
           "ownerPack": "MIDDLE_GEOMETRY",
           "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE"
         }
+      },
+      "currentParentReadback": {
+        "ordinal": 15,
+        "exactBindingCount": 1,
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "ownerPack": "MIDDLE1"
+        },
+        "ptDefinitionOwnerPack": "MIDDLE_GEOMETRY"
       }
     },
     {
@@ -312,6 +338,19 @@
           "ownerPack": "MIDDLE1",
           "parentProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
         }
+      },
+      "currentParentReadback": {
+        "ordinal": 20,
+        "exactBindingCount": 1,
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+          "ownerPack": "MIDDLE1"
+        },
+        "ptDefinitionOwnerPack": "MIDDLE1"
       }
     }
   ],
@@ -326,7 +365,7 @@
     ],
     "unresolvedSampleDefects": 0
   },
-  "compactSha256": "4a4e55348af662dc0acf943362a0c7538ecb570197578e7b1412daef9332b74c",
+  "compactSha256": "a41238eaf24c339e193933d25418d9305a797a813f0bb4a5809024c90478cf48",
   "technicalReadbacks": [
     {
       "contract": "4slot §10 candidate parent same slot",
@@ -401,6 +440,29 @@
         }
       ],
       "status": "ACCEPTED"
+    },
+    {
+      "kind": "2015_MACHINE_PARENT_RESTORATION",
+      "status": "PASS",
+      "beforeBinding": {
+        "candidateSourceBlob": "6731b8d49f26d59daf5983f6854613a9f916d636",
+        "candidateSourceRawSha256": "d470879146f8839c385786fb070ebba6d4ab565dbe4f9767346539ce93f1a248",
+        "raw4slotSha256": "1712b4fad81d4f4ca139b39d0507847039f5077978d6f6074a0879a84ab9b4af",
+        "authorReviewSha256": "e12f6452b988f7715a3fc8498f5885d63bb094b55426ab3a3f88233402883c01",
+        "compactSha256": "4a4e55348af662dc0acf943362a0c7538ecb570197578e7b1412daef9332b74c"
+      },
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/c-2015-parent-followup-independent.json",
+      "sha256": "35fd48fe8e281d3db50eff0f4c2c8192e109e316e5315c01438fecd4d9d17ecf",
+      "ordinals": [
+        11,
+        12,
+        13,
+        15,
+        20,
+        23
+      ],
+      "rawBytesUnchanged": true,
+      "semanticConclusionsRetained": true
     }
   ]
 }
