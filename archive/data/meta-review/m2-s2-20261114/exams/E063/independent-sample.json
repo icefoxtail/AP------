@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E063",
+  "owner": "B",
+  "author": "C",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "3142a1cae07b73d4ea17656c39ba539f56da04fe",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "f07c33b88cf8bac73687a83180cd09eb308086f015ba0fd8d14f091c5ff2341d",
+  "fourSlotInputSha256": "9fe0e1b50b212b41dc9f79c239a4c6d7f46ec04605ae79b2a8089c969c9424df",
+  "sampleOrdinals": [
+    13,
+    14,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_77447491ea8c33ab2a4a26b1520130eff12e9166334ad254228c8c5046c14543",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "RPM079와 ACTIVE 특수사각형 TPL은 대각선45도·대칭을 이용하는 핵심에 맞는다. SAS 각전달 CC_TRIANGLE_CONGRUENCE와 외각 exact CC_SUPPLEMENTARY_ANGLES를 추가한 SEQUENTIAL 판정을 확인했다. 2015 binding과2022 부모표시를 분리했다.",
+      "fourSlotReview": "정사각형·대각선 given, EDA goal, SAS·대응각·외각 method를 실제 해설에 확인했다. AC 위 E의 전체 발문관계 인용으로 condition 보강된 최종본을 수용한다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 7,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E063-13.png",
+      "visualEvidenceSha256": "dee97891ca627ff69a2e2007d92f7607c1d61d1f50af93a65f2a841134667d29",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진대각선과점E를축으로한표준대칭SAS를확인한뒤각을보완한다."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_3060146e8a64a1f2f173345f2f6034c88cee17bd40555a0afc996f91349abd7c",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "최종 결정단계가 새 직각삼각형의 빗변중점 외심이므로 RPM069/PT_TRIANGLE_CENTERS/TPL_TRIANGLE_CIRCUMCENTER가 적절하다. 선행 ASA와 평행사변형 성질은 CC이며 새 도형의 중심으로 보는 REINTERPRETATION을 수용한다.",
+      "fourSlotReview": "평행사변형·중점·수선발 given과 DF 길이 goal, 연장선·ASA·외심·빗변중점 method가 실제 해설에 있다. AD의 중점 E 및 C에서 BE에 내린 수선발 F의 exact stem 관계2개를 condition에 보강한 최종본이다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 11,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E063-14.png",
+      "visualEvidenceSha256": "9228809e7ec8511c9f6ab546c8e23341375312dfe81448e1d99d8fc37597cf5c",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어지지않은연장교점을도입하여새직각삼각형과그외심을구성해야한다."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b14a129be20fb35af918aec4d3206a599dbb7204c41e72e8b1f7060fad169524",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "metadataReview": "배점4의 AA 판정과 배점2의 길이 계산을 함께 읽었다. RPM086/ACTIVE 닮음판정 TPL이 주목표를 포괄하고 대응비·부분차는 그 후속 내부단계다. 별도 CC·수 범위조건을 강제로 추가하지 않은 판정을 수용한다.",
+      "fourSlotReview": "두 소문항의 닮음조건 설명과 BE 길이 목표를 보존했다. AA·비례식과 전체에서 부분을 빼는 차는 실제 해설 근거이며 차는 IMPLIED로 타당하게 표시했다.",
+      "sourceExactRead": true,
+      "answersAndSolutionsPresent": true,
+      "reviewer": "B",
+      "independentFromAuthor": "C",
+      "quotesChecked": 8,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E063-23.png",
+      "visualEvidenceSha256": "cd4dd4898f233981aeaace0050c5878eba05128443af2ea765af67308e290aff",
+      "observedFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "소문항이닮음확인→대응비→부분차의표준순서를안내한다."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 1,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "같은 두 밑각을 구한 뒤 평각으로 목표 외각을 얻는 한 단계 변환이 있으므로2/B12와 중후보를 수용한다."
+    },
+    {
+      "ordinal": 2,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "수직이등분선의 등거리에서 이등변각을 만들고 각이등분과 직각을 연결하는 정형2/B23이다."
+    },
+    {
+      "ordinal": 3,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "주어진 꼭지각 이등분선의 대칭·수직이등분·SAS를 보기들에 적용하는2이며 임의 P가 언제나 직각이라는 일반화를 거부한다."
+    },
+    {
+      "ordinal": 4,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "떨어진 두 삼각형의 교차 대응을 SAS로 묶은 뒤 평각에서 두 대응각의 합을 빼므로3/B23을 수용한다."
+    },
+    {
+      "ordinal": 5,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 1,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "외심과 내심의 거리성질을 구별하고 두 직각삼각형의 RHS도 확인하여2/B12를 수용한다. 실제 그림의 수선교점 위상 혼동은 sourceHold로 분리된다."
+    },
+    {
+      "ordinal": 6,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "내심각90+A/2의 직접 대입이므로 원시 숫자level2와 별개로 bucket1/하후보가 타당하다."
+    },
+    {
+      "ordinal": 7,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "외심각이 맞은편 각의 두 배라는 직접관계만 적용하므로1/하후보이다."
+    },
+    {
+      "ordinal": 8,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "직각삼각형 넓이와 반둘레로 내접반지름을 구한 뒤 원넓이를 빼는 표준2/B23이다."
+    },
+    {
+      "ordinal": 9,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "명시된 내심과 평행선의 같은각에서 양쪽 등변길이를 옮겨 둘레를 합하는2/B23이다."
+    },
+    {
+      "ordinal": 10,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "외접반지름에서 빗변을 얻고 내접반지름으로 직각변의 합을 복원하여 개별 변 없이 넓이를 얻는 경로 선택을3/B23으로 수용한다."
+    },
+    {
+      "ordinal": 11,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "보기의 숫자·기호를 평행사변형 충분조건과 직접 대조하므로1/B12를 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "두 평행사변형에서 대변길이와 평행을 가져와 삼각형 중점비로 두 길이를 구하는2/B23이다."
+    },
+    {
+      "ordinal": 13,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "대각선 대칭의 SAS를 통해 주어진65도 각을 옮긴 다음 외각에서45도를 빼는 표준2/B23이다."
+    },
+    {
+      "ordinal": 14,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B34",
+      "decision": "ACCEPT",
+      "reason": "그림에 없는 연장교점 G를 도입해 ASA 합동으로 D를 새 직각삼각형 빗변의 중점으로 해석해야 하므로3/B34이다."
+    },
+    {
+      "ordinal": 15,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 1,
+      "boundary": "NONE",
+      "decision": "ACCEPT",
+      "reason": "원·정다각형·직각이등변삼각형의 모양 고정과 일반 이등변삼각형의 각 자유도를 정의로 비교하는1이다."
+    },
+    {
+      "ordinal": 16,
+      "bucket": 1,
+      "level": null,
+      "proposedLevel": "하",
+      "rawSourceLevel": 1,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "닮음과 대응순서·닮음비가 모두 주어져 각 길이를 절반으로 하고 합하는 직접1/B12이다."
+    },
+    {
+      "ordinal": 17,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "AC가 두 다른 대응쌍에 쓰이는 중첩 삼각형의 SAS를 구성하고 전체·부분 비를 정리하므로3/B23이다."
+    },
+    {
+      "ordinal": 18,
+      "bucket": 3,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B34",
+      "decision": "ACCEPT",
+      "reason": "세 동일각 표시를 외각정리로 내부 삼각형의 대응각으로 새로 옮긴 후 둘레비를 적용하는3/B34이다."
+    },
+    {
+      "ordinal": 19,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B12",
+      "decision": "ACCEPT",
+      "reason": "주어진 두 대각선이 만드는 삼각형들에 중점연결을 반복해 내부 둘레를 합하는2/B12이다."
+    },
+    {
+      "ordinal": 20,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "평행사변형의 DF 길이를 선행 복원하고 모래시계 AA의4:5 비례배분을 적용하는2/B23이다."
+    },
+    {
+      "ordinal": 21,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "소문항이 정삼각형 각차와 이등변 밑각 계산을 순서대로 안내하여2/B23이다. 잘린 오른쪽 라벨은 명시된 정사각형·세변같음으로 보완된다."
+    },
+    {
+      "ordinal": 22,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 3,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "내심 반각·외심 중심각·두각 차를 소문항으로 나누어 안내하므로2/B23이다. 꼭짓점40도·등변·명명된 목표가 하단 crop과 무관하게 관계를 정한다."
+    },
+    {
+      "ordinal": 23,
+      "bucket": 2,
+      "level": null,
+      "proposedLevel": "중",
+      "rawSourceLevel": 2,
+      "boundary": "B23",
+      "decision": "ACCEPT",
+      "reason": "AA 판정부터 전체길이·부분차까지 소문항이 안내하므로2/B23이다. 실제 그림에서 D가 AC위, E가 BC위이며 등각 표시가 보여 crop은 비차단이다."
+    }
+  ],
+  "difficultyExceptionScope": "All23 noncanonical numeric source levels; includes every changed bucket/non-NONE boundary/UNKNOWN level. Raw numbers preserved, no normalization applied.",
+  "evidenceScope": {
+    "actualStemsAndChoicesRead": 23,
+    "answersAndSolutionsRead": 23,
+    "imagesViewed": 21,
+    "notFreshFullExamMathematicalReverification": true
+  },
+  "pinpointRepairsConfirmed": [
+    {
+      "ordinal": 5,
+      "reason": "Actual AN/BL/CM apparent orthocenter topology separated into nonblocking sourceHold."
+    },
+    {
+      "ordinal": 13,
+      "reason": "Exact ACTIVE exterior-angle CC retained and full AC-on-E condition quote strengthened."
+    },
+    {
+      "ordinal": 14,
+      "reason": "Midpoint and perpendicular-foot exact stem relation quotes added to condition."
+    }
+  ],
+  "sourceHoldChecks": [
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "그림에 없는 연장교점 G를 도입해 ASA 합동으로 D를 새 직각삼각형 빗변의 중점으로 해석해야 하므로3/B34이다."
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "소문항이 정삼각형 각차와 이등변 밑각 계산을 순서대로 안내하여2/B23이다. 잘린 오른쪽 라벨은 명시된 정사각형·세변같음으로 보완된다."
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "내심 반각·외심 중심각·두각 차를 소문항으로 나누어 안내하므로2/B23이다. 꼭짓점40도·등변·명명된 목표가 하단 crop과 무관하게 관계를 정한다."
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT_NONBLOCKING_CROP",
+      "reason": "AA 판정부터 전체길이·부분차까지 소문항이 안내하므로2/B23이다. 실제 그림에서 D가 AC위, E가 BC위이며 등각 표시가 보여 crop은 비차단이다."
+    }
+  ],
+  "approvalScope": "3 independent metadata/four-slot samples plus23 difficulty exceptions; registry debt and noncanonical historical levels remain separate",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}

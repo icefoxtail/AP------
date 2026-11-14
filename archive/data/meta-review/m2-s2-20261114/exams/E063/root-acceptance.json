@@ -1,0 +1,324 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E063",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "3142a1cae07b73d4ea17656c39ba539f56da04fe",
+  "sourceSha256": "dea955fd53899f20df84c5384f63c514ef23b3276de7da14e4ae67863d2956c3",
+  "reviewSha256": "f07c33b88cf8bac73687a83180cd09eb308086f015ba0fd8d14f091c5ff2341d",
+  "fourSlotSha256": "9fe0e1b50b212b41dc9f79c239a4c6d7f46ec04605ae79b2a8089c969c9424df",
+  "independentSampleSha256": "9fffe316e32530aa012a2a6f60bd11e90f7a20ec638762ac3c65be0635c34c22",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "unresolvedItems": [],
+  "sampleReviewer": "B",
+  "sampleOrdinals": [
+    13,
+    14,
+    23
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "f07c33b88cf8bac73687a83180cd09eb308086f015ba0fd8d14f091c5ff2341d",
+      "finalReviewSha256": "f07c33b88cf8bac73687a83180cd09eb308086f015ba0fd8d14f091c5ff2341d",
+      "independentSampleSha256": "9fffe316e32530aa012a2a6f60bd11e90f7a20ec638762ac3c65be0635c34c22",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "같은 두 밑각을 구한 뒤 평각으로 목표 외각을 얻는 한 단계 변환이 있으므로2/B12와 중후보를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "수직이등분선의 등거리에서 이등변각을 만들고 각이등분과 직각을 연결하는 정형2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "주어진 꼭지각 이등분선의 대칭·수직이등분·SAS를 보기들에 적용하는2이며 임의 P가 언제나 직각이라는 일반화를 거부한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "떨어진 두 삼각형의 교차 대응을 SAS로 묶은 뒤 평각에서 두 대응각의 합을 빼므로3/B23을 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "외심과 내심의 거리성질을 구별하고 두 직각삼각형의 RHS도 확인하여2/B12를 수용한다. 실제 그림의 수선교점 위상 혼동은 sourceHold로 분리된다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "내심각90+A/2의 직접 대입이므로 원시 숫자level2와 별개로 bucket1/하후보가 타당하다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "외심각이 맞은편 각의 두 배라는 직접관계만 적용하므로1/하후보이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "직각삼각형 넓이와 반둘레로 내접반지름을 구한 뒤 원넓이를 빼는 표준2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "명시된 내심과 평행선의 같은각에서 양쪽 등변길이를 옮겨 둘레를 합하는2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "외접반지름에서 빗변을 얻고 내접반지름으로 직각변의 합을 복원하여 개별 변 없이 넓이를 얻는 경로 선택을3/B23으로 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "보기의 숫자·기호를 평행사변형 충분조건과 직접 대조하므로1/B12를 수용한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두 평행사변형에서 대변길이와 평행을 가져와 삼각형 중점비로 두 길이를 구하는2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "대각선 대칭의 SAS를 통해 주어진65도 각을 옮긴 다음 외각에서45도를 빼는 표준2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "그림에 없는 연장교점 G를 도입해 ASA 합동으로 D를 새 직각삼각형 빗변의 중점으로 해석해야 하므로3/B34이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "원·정다각형·직각이등변삼각형의 모양 고정과 일반 이등변삼각형의 각 자유도를 정의로 비교하는1이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "닮음과 대응순서·닮음비가 모두 주어져 각 길이를 절반으로 하고 합하는 직접1/B12이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "AC가 두 다른 대응쌍에 쓰이는 중첩 삼각형의 SAS를 구성하고 전체·부분 비를 정리하므로3/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "세 동일각 표시를 외각정리로 내부 삼각형의 대응각으로 새로 옮긴 후 둘레비를 적용하는3/B34이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "주어진 두 대각선이 만드는 삼각형들에 중점연결을 반복해 내부 둘레를 합하는2/B12이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행사변형의 DF 길이를 선행 복원하고 모래시계 AA의4:5 비례배분을 적용하는2/B23이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "소문항이 정삼각형 각차와 이등변 밑각 계산을 순서대로 안내하여2/B23이다. 잘린 오른쪽 라벨은 명시된 정사각형·세변같음으로 보완된다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "내심 반각·외심 중심각·두각 차를 소문항으로 나누어 안내하므로2/B23이다. 꼭짓점40도·등변·명명된 목표가 하단 crop과 무관하게 관계를 정한다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "AA 판정부터 전체길이·부분차까지 소문항이 안내하므로2/B23이다. 실제 그림에서 D가 AC위, E가 BC위이며 등각 표시가 보여 crop은 비차단이다.",
+      "independentReviewer": "B",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 5,
+      "reason": "꼭짓점등거리와변중점·RHS를확인하고서로다른변까지의거리가항상같다는진술을배제한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 14,
+      "reason": "BE와CD연장교점G를만들어DG=DC를증명하고D를직각삼각형GCF의빗변중점으로본다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 21,
+      "reason": "세변일치로60도를얻어y30을정하고AB=BE의밑각x75를구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 22,
+      "reason": "밑각70에서내심각35와외심관련밑각20을각각구해차15를구한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 23,
+      "reason": "ABC와EDC의AA를설명하고AC8:EC4=2:1로BC12에서EC4를뺀다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
