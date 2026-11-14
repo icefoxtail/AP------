@@ -1,0 +1,4060 @@
+{
+  "schemaVersion": "m1-s1-meta-full-semantic-review-v1",
+  "taskId": "M1-S1-META-FULL",
+  "author": "META_C",
+  "createdAt": "2026-11-14T08:05:57.354Z",
+  "sourceArchiveFile": "original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js",
+  "sourceBlob": "7713112dd12755cfe79c9cce7bb129eca1b70891",
+  "sourceSha256": "16fa4ce4c1ee2312ca707da1064049fdff1508b6da3fa7c6007bcfe5daf8ce4c",
+  "questionCount": 25,
+  "sourceSchema": "examData",
+  "sourceOnly": true,
+  "judgmentPolicy": "Manually read every item. Scripts only serialize explicit judgments, join selected canonical IDs, validate registry membership and exact quotes, and calculate fingerprints. No answer/solution creation.",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_cfa1200cb5c6658b729725110e4aab96be575878f891f96207543a40a2741ab5",
+      "sourceRawId": "Q01",
+      "primaryMethod": "항·계수·상수항·차수의 정의를 다항식 각 항에 대조",
+      "decisiveStep": "음의 항에 붙은 부호까지 계수에 포함하는지 각 진술을 확인한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "문자의 사용과 식의 값"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": null,
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "classificationReason": "주어진 식은 이차식이다. 현행 M1의 일차식 L3/L4를 이차 다항식의 구조 판정에 강제 배정하지 않는다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": null,
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": null,
+        "candidateTemplateKey": null,
+        "problemTypeStatus": null,
+        "templateStatus": null,
+        "exactActiveBindings": [],
+        "templateDefinition": null,
+        "reason": "주어진 식은 이차식이다. 현행 M1의 일차식 L3/L4를 이차 다항식의 구조 판정에 강제 배정하지 않는다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "정의 진술을 묻는 발문이며 별도 변수 범위 제한은 없다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "항·차수·계수라는 기초 정의를 확인하는 학습 단계다.",
+        "reason": "각 항의 부호와 이름을 바로 대응하는 정의 확인이다. 계산·조건 결합이 거의 없다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_LEAF_GAP",
+          "reason": "이차 다항식의 항·계수·상수항 기초 판정을 정확히 수용하는 M1 leaf가 없다."
+        },
+        {
+          "kind": "EXISTING_PT_SCOPE_MISMATCH",
+          "reason": "PT_M1_LINEAR_EXPRESSION_STRUCTURE는 일차식 범위. TPL의 항·계수 확인 절차는 유사하지만 부모 범위를 무단 확대하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "55b1ff58bce0cbb0d61d4756f73121e97c52bb7786e80f96528c9e8528832434",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ad39ef54ddc16e79c9adc82b2b6e20d70d03790a626f5c7a1d6c2b4816e04bc0",
+      "sourceRawId": "Q02",
+      "primaryMethod": "다항식의 두 계수와 상수항을 읽어 합산",
+      "decisiveStep": "a,b,c가 각각 어느 항의 부호 포함 수치인지 대응시킨다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "문자의 사용과 식의 값"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": null,
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "classificationReason": "이차식의 구조를 읽는 것이 핵심이고 x 값 대입 문제가 아니다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": null,
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": null,
+        "candidateTemplateKey": null,
+        "problemTypeStatus": null,
+        "templateStatus": null,
+        "exactActiveBindings": [],
+        "templateDefinition": null,
+        "reason": "이차식의 구조를 읽는 것이 핵심이고 x 값 대입 문제가 아니다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "계수와 상수항을 직접 식별하는 기본 개념 적용이다.",
+        "reason": "계수 세 개를 대응하여 더하는 직접적인 정의 적용으로 추론 부담이 작다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_LEAF_GAP",
+          "reason": "일차식 전용 leaf에 이차식 구조를 강제 배정하지 않는다."
+        },
+        {
+          "kind": "EXISTING_PT_SCOPE_MISMATCH",
+          "reason": "일차식 구조 PT는 절차가 유사하나 부모 범위가 다르다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "df5cb5696d3acd43adf10719e9ae42ced8dc65b50d25bf5289ef3d96b5af2194",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_5ce6d72388b5de44e466d90588a86d5269aa5c3e6212ca57745ea8e359902443",
+      "sourceRawId": "Q03",
+      "primaryMethod": "물건별 단가×수량을 문자로 나타내어 총액 구성",
+      "decisiveStep": "형광펜·수첩의 문자항과 색지의 고정금액을 합한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "문자의 사용과 식의 값"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "문자의 사용",
+        "l4": "문자로 수량 나타내기"
+      },
+      "canonicalRecordId": "M1-RPM-140",
+      "classificationReason": "미지수의 값을 푸는 방정식이 아니라 구매 총액을 문자식으로 나타낸다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-027",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "candidateTemplateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "The template mixes price, age, perimeter, money, and place-value descriptions and asks for the incorrect translation.",
+        "reason": "가격 상황의 문장→문자식 대응이라는 기존 ACTIVE 정의를 재사용할 수 있다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "단가와 수량의 문자 표현을 처음 적용하는 수준이다.",
+        "reason": "세 항의 가격을 구성하는 일상적 직접 번역이며 숨은 조건이 없다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "e04e35c40301874da5bb072f107faeb9bc8c400d9feb71eb644d262848cc4b57",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_87114505506aa9e4c48e84564095561f14477b41d0f228dd76d05b83dd0dd356",
+      "sourceRawId": "Q04",
+      "primaryMethod": "각 분수의 분자를 항별로 나눈 뒤 부호와 동류항 정리",
+      "decisiveStep": "두 번째 분수 앞의 음수를 상수항에도 적용하고 x항끼리 모은다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "문자의 사용과 식의 값"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "일차식의 계산",
+        "l4": "일차식의 덧셈·뺄셈"
+      },
+      "canonicalRecordId": "M1-RPM-146",
+      "classificationReason": "방정식 없이 분수 계수 일차식의 차를 간단히 하는 문제이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-033",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "괄호 앞의 부호를 각 항에 적용하고 동류항을 정리한다.",
+        "reason": "방정식 없이 분수 계수 일차식의 차를 간단히 하는 문제이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "항별 나눗셈과 부호를 안정적으로 연결해야 하는 연습 단계다.",
+        "reason": "분수계수와 괄호 앞 부호를 함께 처리하는 표준 계산 두 단계이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "1dbdc8aa5c482e8e185fb2beeab01d8b6f3b9ca644ba836fd8b9ceeba3072a91",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c7a19a451177bd12fe9268fc714a01a4ce9b7b322bc340965299df46d0403652",
+      "sourceRawId": "Q05",
+      "primaryMethod": "양변을 정리하여 모든 x에서 성립하는 등식인지 판별",
+      "decisiveStep": "특정 x에서만 성립하는 방정식과 항등식을 구별한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식",
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "classificationReason": "등식 변형 단계의 옳고 그름이나 방정식의 해가 아니라 항등식 여부를 요구한다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": null,
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": null,
+        "candidateTemplateKey": null,
+        "problemTypeStatus": null,
+        "templateStatus": null,
+        "exactActiveBindings": [],
+        "templateDefinition": null,
+        "reason": "등식 변형 단계의 옳고 그름이나 방정식의 해가 아니라 항등식 여부를 요구한다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "항등식은 모든 허용 입력에서의 성립을 뜻하나 별도 함수 입력 조건을 요구하는 COND_UNIVERSAL_INPUTS로 과잉 태그하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "항등식의 뜻을 간단한 식에서 확인하는 기본 수준이다.",
+        "reason": "간단한 괄호를 전개해 양변의 일치를 확인하는 정의 수준이다. 여러 선택지를 검사하지만 새로운 전략은 없다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_LEAF_GAP",
+          "reason": "항등식 판별 leaf가 별도로 없고 등식의 성질은 변형 절차 leaf이다."
+        },
+        {
+          "kind": "NEW_TEMPLATE_OR_SCOPE_EXTENSION_REQUIRED",
+          "reason": "기존 TRANSFORMATION_AUDIT를 모든 x 성립 판별로 임의 확대하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "c104ea926d494088e383ebf8e9ea83612cbb64bc1c0885b004cb726e2970230f",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_a7a07934e451083752198b48b81db0bd3f972ed96865da3f5ae0ab66e48c0fe2",
+      "sourceRawId": "Q06",
+      "primaryMethod": "주어진 x를 각 방정식 양변에 대입하여 해 여부 판정",
+      "decisiveStep": "x=-1일 때 두 변의 값이 같은 식을 찾는다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식",
+        "l4": "방정식의 해"
+      },
+      "canonicalRecordId": "M1-RPM-149",
+      "classificationReason": "해가 주어진 계수 복원이 아니라 주어진 수의 해 여부를 검사한다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-036",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "후보 값을 각 방정식에 직접 대입해 등식 성립 여부를 판정한다.",
+        "reason": "해가 주어진 계수 복원이 아니라 주어진 수의 해 여부를 검사한다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "방정식의 해의 뜻을 직접 대입으로 확인한다.",
+        "reason": "작은 정수의 직접 대입과 등식 비교로 해결되는 기본 해의 뜻이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "ad8eadf775f508e2702460689a1e1195338bf4a12e266866d2981440bff861fe",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_760932e361bb3809e2facc9f75fb6dec5117d891a8658cbe50bfc90caff9186b",
+      "sourceRawId": "Q07",
+      "primaryMethod": "등식의 양변에 같은 수를 더하거나 곱하는 과정을 확인",
+      "decisiveStep": "상수항을 없애는 덧셈과 x의 계수를 1로 만드는 곱셈을 식 단계와 대응한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "등식과 방정식",
+        "l4": "등식의 성질"
+      },
+      "canonicalRecordId": "M1-RPM-148",
+      "classificationReason": "제시된 풀이 과정에서 적용한 등식의 성질 자체가 목표이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-035",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "각 변형 단계가 등식의 성질을 보존하는지 양변에 적용된 연산으로 판단한다.",
+        "reason": "제시된 풀이 과정에서 적용한 등식의 성질 자체가 목표이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "등식의 성질 두 가지를 제시된 단계에서 찾아내는 기본 확인이다.",
+        "reason": "풀이 과정과 최종 해가 제시되어 있고 빈칸의 연산 수만 식별한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "STEM_WORKED_STEPS_NOT_SOLUTION_FIELD",
+          "reason": "발문에 풀이 단계가 포함되지만 현행 §8의 해설 근거 method와 구분하여 제안만 보존한다."
+        },
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "e66820839300ea1877dfa3b1d687f67c563e99bb396563051bb02cb51a138482",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_db626bbf04678a681706d7619fdabdc3f7681b3e09608029e821a0f0f647b57a",
+      "sourceRawId": "Q08",
+      "primaryMethod": "이항으로 x항과 상수항을 모아 일차방정식 풀이",
+      "decisiveStep": "양변에 나뉜 x항을 한쪽으로 모은 뒤 계수로 나눈다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "일차방정식의 풀이",
+        "l4": "이항을 이용한 풀이"
+      },
+      "canonicalRecordId": "M1-RPM-150",
+      "classificationReason": "정수계수 일차방정식의 직접 풀이이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-037",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "괄호를 풀고 미지수 항과 상수항을 모아 일차방정식의 해를 구한다.",
+        "reason": "정수계수 일차방정식의 직접 풀이이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "정수계수 일차방정식의 기본 이항 절차를 익히는 수준이다.",
+        "reason": "괄호·분모가 없는 기본 이항과 나눗셈이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_BINDING_GAP_EXISTING_TYPE_REUSE",
+          "reason": "이항 이용 leaf는 RPM_ONLY이나 ACTIVE DIRECT_SOLUTION의 정의는 이 풀이에 재사용 가능하다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "fe8615b05eb4c6ad1b3fbed7b3f08af01f36e85ee16be346be0b4cc1e6c1f9ed",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_f47abd1fc9aa467ccd5e28fe6cba035efe712845d992db5a764f0b67b7e3cf93",
+      "sourceRawId": "Q09",
+      "primaryMethod": "소수·분수 계수를 정리하고 괄호를 풀어 방정식 풀이",
+      "decisiveStep": "분모와 소수 계수를 제거한 동치 방정식에서 x항을 정리한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "일차방정식의 풀이",
+        "l4": "괄호·분수·소수가 있는 방정식"
+      },
+      "canonicalRecordId": "M1-RPM-151",
+      "classificationReason": "소수와 분수 및 괄호가 함께 있는 일차방정식의 풀이이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-038",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "괄호를 풀고 미지수 항과 상수항을 모아 일차방정식의 해를 구한다.",
+        "reason": "소수와 분수 및 괄호가 함께 있는 일차방정식의 풀이이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "분수·소수 계수를 동시에 처리하는 복합 계산 숙련이 필요하다.",
+        "reason": "계수 정수화·분배·이항의 연속 절차와 부호 관리가 필요하지만 비표준 전략은 없다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "b097a08f64cbebf4d861fe65e85ece444aeaec292b4bbcd0c6390ea1349ae5da",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_d5b58c41c292212123c4c19367de5e1edfbd71f39b817ca65f9afa68e0934aee",
+      "sourceRawId": "Q10",
+      "primaryMethod": "남음과 부족을 같은 물고기 총수의 두 표현으로 모델링",
+      "decisiveStep": "3마리씩 줄 때 남는 1마리와 4마리씩 줄 때 부족한 5마리의 부호를 구별한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "subUnit": "일차방정식의 활용",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION_WORD"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식의 활용"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "생활 속 관계식",
+        "l4": "과부족"
+      },
+      "canonicalRecordId": "M1-RPM-162",
+      "classificationReason": "같은 총수를 두 분배 상황으로 표현하는 과부족 유형이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-049",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "수량, 가격, 남은 수 등의 관계를 미지수 하나의 일차방정식으로 나타낸다.",
+        "reason": "같은 총수를 두 분배 상황으로 표현하는 과부족 유형이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "마리 수라는 자연수 의미는 상황에 내재하며 별도 후보해 배제 조건은 없어 conditionKeys를 추가하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "남음과 부족의 수량 관계를 식으로 옮기는 모델링 연습 단계다.",
+        "reason": "남음·부족의 반대 부호로 총수를 두 번 표현해야 하는 모델링 한 단계와 기본 해법이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_BINDING_GAP_EXISTING_TYPE_REUSE",
+          "reason": "과부족 RPM leaf는 RPM_ONLY이나 남은 수를 포함하는 MODEL_QUANTITY 정의를 재사용할 수 있다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "51ebda2376d75008f734cf63ac092d731604e9b8319e8ddf2f018a9b7fe99fa3",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5a89cb85c6cc24148b49dc9dac6dd553337fab538f78186b2069a2a7913c5561",
+      "sourceRawId": "Q11",
+      "primaryMethod": "왕복의 같은 거리에 대한 두 이동 시간을 합하여 방정식 구성",
+      "decisiveStep": "속력이 다른 두 구간의 시간을 거리/속력으로 나타내고 1시간 30분을 같은 단위로 바꾼다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "subUnit": "일차방정식의 활용",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "crossConceptKeys": [
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION_WORD"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식의 활용"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_SPEED_DISTANCE_TIME"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "속력·시간·거리",
+        "l4": "거리 관계식"
+      },
+      "canonicalRecordId": "M1-RPM-156",
+      "classificationReason": "같은 거리를 왕복한 총 시간 관계를 식으로 세우는 거리 관계식이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-043",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "RATE 계열 PT 재사용 가능. 기존 TPL 정의는 이동 차이 조건이라 왕복 시간 합을 정확히 포괄하는지 별도 검토가 필요하다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "주개념은 방정식 모델링이고 보조로 시간=거리/속력 관계를 사용한다.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "속력 관계와 같은 왕복 거리 조건을 방정식 모델로 연결한다.",
+        "reason": "동일 거리를 두 속력으로 나눈 시간을 합하고 시간 단위를 환산하는 표준 모델링이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_SCOPE_REVIEW",
+          "reason": "PT_M1_LINEAR_EQUATION_MODELING 재사용. 기존 MODEL_RATE 정의의 이동 차이와 본문의 시간 합 차이를 임의 동일시하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "d0ff1937d467919662113a8bd4f69c929c8adf551f516d49ee1db753336904ca",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_45c534fb079dd54b0f1309d29642129442533880e3b78424505e9396187e6f9f",
+      "sourceRawId": "Q12",
+      "primaryMethod": "가운데 나이를 기준으로 두 살 차이를 표현하여 세 나이 합 구성",
+      "decisiveStep": "형·나·동생의 상대 나이를 한 미지수로 표현한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "subUnit": "일차방정식의 활용",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_ODD"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION_WORD"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식의 활용"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_ODD"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        },
+        "difficultyConfidence": {
+          "before": "low",
+          "after": "medium"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B23",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      },
+      "canonicalRecordId": "M1-RPM-155",
+      "classificationReason": "세 형제의 나이 차와 합을 이용한 일차방정식 활용이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-042",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "수량, 가격, 남은 수 등의 관계를 미지수 하나의 일차방정식으로 나타낸다.",
+        "reason": "세 형제의 나이 차와 합을 이용한 일차방정식 활용이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "연속 홀수 조건은 Condition으로 기록하며 고등 등차수열 개념으로 확대하지 않는다.",
+        "condition": "세 형제의 나이가 모두 홀수라는 명시 조건을 기록한다. 단순 연속정수가 아니라 차가 2인 홀수들이다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "나이 차와 합을 미지수 하나로 표현하는 활용 단계다.",
+        "reason": "시 형태에서 나이 차와 합을 추출하고 목표가 형의 나이라는 점을 환원하는 표준 두 단계이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_BINDING_GAP_EXISTING_TYPE_REUSE",
+          "reason": "나이·개수 leaf에 직접 mapping이 없지만 수량 관계 MODEL_QUANTITY 구조를 재사용할 수 있다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "ff6da3340b65711413b34745c22224edc31e25e5e2710d5754c3ca672cfcc7b2",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_a53c0b678e0bd79a23ce6315607688235a837ccbf8092d53f9681d928cfbb92b",
+      "sourceRawId": "Q13",
+      "primaryMethod": "각 일차방정식의 해를 구한 뒤 대소 비교",
+      "decisiveStep": "다양한 계수 표현을 정리해 얻은 해 중 최솟값을 선택한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyConfidence": {
+          "before": "low",
+          "after": "medium"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B23",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "일차방정식의 풀이",
+        "l4": "괄호·분수·소수가 있는 방정식"
+      },
+      "canonicalRecordId": "M1-RPM-151",
+      "classificationReason": "분수·소수가 포함된 여러 방정식을 푸는 것이 주절차이고 마지막에 해를 비교한다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-038",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "괄호를 풀고 미지수 항과 상수항을 모아 일차방정식의 해를 구한다.",
+        "reason": "분수·소수가 포함된 여러 방정식을 푸는 것이 주절차이고 마지막에 해를 비교한다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "마지막 대소 비교는 주절차에 붙는 기본 유리수 순서 확인이다. 정수 전용 CC를 유리수 해 전체에 잘못 적용하지 않는다.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "여러 계수 형태의 방정식을 안정적으로 푸는 통합 연습 단계다.",
+        "reason": "보기마다 표준 방정식 풀이를 반복한 뒤 음수·분수 해를 비교한다. 계산량은 있으나 전략 분기는 없다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "d8014644795eb99a910445a466455260bd286cd01c4744d78203a20c8a170751",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_0b945592144a1ef12af5741e4a4762bcf83ddefa6365e1179faf96324903bc9a",
+      "sourceRawId": "Q14",
+      "primaryMethod": "양쪽 접시의 무게가 같은 관계를 일차방정식으로 표현",
+      "decisiveStep": "그림의 공 개수와 두 추의 무게를 각 접시별 합으로 비교한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "subUnit": "일차방정식의 활용",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION_WORD"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식의 활용"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "생활 속 관계식",
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "classificationReason": "평형 저울의 동일 총량을 방정식으로 표현한다. 요금·가격 leaf와는 상황명이 달라 정확한 RPM 대응은 검토 필요하다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": null,
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "수량, 가격, 남은 수 등의 관계를 미지수 하나의 일차방정식으로 나타낸다.",
+        "reason": "평형 저울의 동일 총량을 방정식으로 표현한다. 요금·가격 leaf와는 상황명이 달라 정확한 RPM 대응은 검토 필요하다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "그림의 평형을 미지수식으로 전환하는 모델링 연습 단계다.",
+        "reason": "그림에서 4개 공+15g 두 개와 2개 공+100g을 읽어 같은 질량을 식으로 만들고 목표가 공 2개임을 확인한다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_LEAF_SCOPE_GAP",
+          "reason": "생활 속 관계식 하위가 요금·가격/과부족뿐이므로 무게 평형을 요금·가격 leaf에 확정하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q14.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q14.png",
+        "observation": "왼쪽 공 4개와 15g 추 2개, 오른쪽 공 2개와 100g 추 1개. 평형 수평저울 확인."
+      },
+      "sourceQuestionSha256": "601c4e7f5c9564834f3f528f1a0689c78fcb5e2c676fbc03d85c595f0fb6f610",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_6a0c01b37e5ccb2ba0f16ff8b0ea74a96ea775c416268814c49c15ce3213072b",
+      "sourceRawId": "Q15",
+      "primaryMethod": "격자에서 x좌표와 y좌표 순서대로 읽어 보기와 대조",
+      "decisiveStep": "가로·세로 방향과 좌표축 위 점의 0 좌표를 구별한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "conceptClusterKey": "COORDINATE_PLANE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-COORDINATE_PLANE"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "좌표평면"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "COORDINATE_PLANE"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "좌표평면",
+        "l4": "점의 좌표 읽기"
+      },
+      "canonicalRecordId": "M1-RPM-163",
+      "classificationReason": "도형 넓이가 아닌 점의 좌표 직접 읽기이다. 2015 같은 leaf의 좌표넓이 template와 혼동하지 않는다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-050",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_COORDINATE_POINT_READING",
+        "candidateTemplateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-COORDINATE_PLANE",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-COORDINATE_PLANE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "여러 점의 표기 후보 중 격자상 가로·세로 이동량과 일치하는 한 점을 확인한다.",
+        "reason": "도형 넓이가 아닌 점의 좌표 직접 읽기이다. 2015 같은 leaf의 좌표넓이 template와 혼동하지 않는다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "좌표의 순서와 좌표축의 의미를 직접 읽는 기본 수준이다.",
+        "reason": "눈금 한 칸과 좌표 순서를 직접 대응하는 기본 읽기다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q15.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q15.png",
+        "observation": "A(-3,2), B(0,1), C(4,3), D(3,-2), 원점(0,0)의 위치를 눈금으로 직접 확인."
+      },
+      "sourceQuestionSha256": "6f6ccc6437281a790daea4d84266cb465d0449d06a2572c6aaef1549ce022b72",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_9a7f37108a17e6616a34cafca8e1871a587ecb5603f754f6e0acfbf114a3fb05",
+      "sourceRawId": "Q16",
+      "primaryMethod": "겹쳐 붙이는 수량 규칙을 표와 문자 관계로 대응",
+      "decisiveStep": "공고문을 하나 늘릴 때 압정 하나를 공유하는 규칙으로 x와 y 관계를 판정한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-ALGEBRAIC_EXPRESSION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "문자의 사용과 식의 값"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "ALGEBRAIC_EXPRESSION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyBucket": {
+          "before": 2,
+          "after": 1
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "문자의 사용",
+        "l4": "문자로 수량 나타내기"
+      },
+      "canonicalRecordId": "M1-RPM-140",
+      "classificationReason": "그래프나 일차함수 해법이 아니라 물체 수량 규칙의 문자 표현·표 대응이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-027",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "그래프나 일차함수 해법이 아니라 물체 수량 규칙의 문자 표현·표 대응이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "구체적인 물체 규칙을 간단한 두 변수 관계로 표현한다.",
+        "reason": "첫 항과 일정한 증가량을 그림·표로 보여 주며 다섯 진술을 직접 대조한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_GAP",
+          "reason": "WORD_QUANTITY_TRANSLATION는 가격/나이 등 직접 번역. 본문 그림 규칙→표→관계 진술을 정확히 지원하는 template는 별도 검토 필요."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q16.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q16.png",
+        "observation": "게시판의 공고문이 옆 경계를 공유하며 이어지고 윗부분 압정은 경계별 하나씩 추가됨. 3장에 4개 구조 확인."
+      },
+      "sourceQuestionSha256": "4e9bd219b179c5b45c5e933ae9ae5ff9abbb0f505e1bd9285f91f2a51771d58f",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_28dffb072aeed86bcc72e87f6d1aac95ac1b80710b65dc212b8b9c870134c77a",
+      "sourceRawId": "Q17",
+      "primaryMethod": "시간-속력 그래프의 수평 구간에서 감소 구간으로 바뀌는 시각 읽기",
+      "decisiveStep": "y의 높이가 줄어들기 시작하는 꺾임의 x좌표를 확인한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "그래프",
+        "l4": "그래프 해석"
+      },
+      "canonicalRecordId": "M1-RPM-166",
+      "classificationReason": "물리 운동방정식을 세우지 않고 속력 그래프의 감소 시작점을 읽는다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-053",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "물리 운동방정식을 세우지 않고 속력 그래프의 감소 시작점을 읽는다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "그래프의 수평·하강 구간을 직접 읽는 기초 수준이다.",
+        "reason": "하나의 꺾임을 읽는 기본 그래프 해석으로 연산 없이 축 의미만 대응한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_DIRECTION_GAP",
+          "reason": "CONTEXT_TO_SPEED_GRAPH는 상황→그래프 작성이다. 본문은 그래프→시각 읽기이므로 그 template를 역방향에 강제하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q17.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q17.png",
+        "observation": "0~5초는 y=20 수평, 5초부터 10초까지 감소하여 0에 도달. 축은 x초/y m/s."
+      },
+      "sourceQuestionSha256": "edb8a1c5987d526eeb73a2baa848e63395bb14f12ebc664f154f612fa176cfdf",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_46485c58caa112f6e66031eee1e5b540823f32a8ad706deebae5f5a2990fef5e",
+      "sourceRawId": "Q18",
+      "primaryMethod": "정비례·반비례 식의 상수 부호로 지나는 사분면 판단",
+      "decisiveStep": "x>0일 때 y>0이 되는 보기인지 직접 부호 관계를 확인한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_POSITIVE"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "canonicalRecordId": "M1-RPM-172",
+      "classificationReason": "정비례와 반비례가 섞인 그래프의 사분면 성질 적용이며 한 계수값 계산이 아니다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-059",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "candidateTemplateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "FUNCTIONS_GRAPHS"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "FUNCTIONS_GRAPHS"
+          }
+        ],
+        "templateDefinition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+        "reason": "정비례와 반비례가 섞인 그래프의 사분면 성질 적용이며 한 계수값 계산이 아니다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "정비례와 반비례의 그래프 성질은 이 Primary 활용 leaf 안에서 다루므로 같은 개념을 CrossConcept로 중복 기록하지 않는다.",
+        "condition": "제1사분면을 지나려면 x,y가 양수인 점이 존재해야 한다는 부호 제한이 결정적이다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "정비례와 반비례의 부호·사분면 성질을 함께 익혀 적용한다.",
+        "reason": "직선·쌍곡선 두 종류의 그래프에서 부호와 사분면을 함께 확인하는 기본 개념 결합이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "RPM_BINDING_GAP_EXISTING_TYPE_REUSE",
+          "reason": "혼합 비례 활용 leaf의 현재 전문 mapping은 작업량·격자점·선분분할이며 본문 그래프 성질은 별도 existing type reuse 검토 대상."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "0aff4929ee560781dc150d912a9e0caa18f9a24d08a5c6259fe53b4cd71532b6",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_041e39243cc486c7009eed7af51f9cb336b22bebe4c62ac931ef6bfc7c6d9362",
+      "sourceRawId": "Q19",
+      "primaryMethod": "일정 속력과 이동 시간의 정비례 관계로 시간 역산",
+      "decisiveStep": "거리=0.5×시간의 관계에서 주어진 거리에 대응하는 시간을 구한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_SPEED_DISTANCE_TIME"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "정비례",
+        "l4": "정비례 관계식"
+      },
+      "canonicalRecordId": "M1-RPM-167-DIRECT-TABLE-20261113",
+      "classificationReason": "한 변수가 다른 변수의 일정 배인 정비례 실생활 관계이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-054",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "한 변수가 다른 변수의 일정 배인 정비례 실생활 관계이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "속력·거리·시간 관계를 정비례 모델의 근거로 사용한다.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "일정한 속력의 직접 비례 관계를 기본 연산으로 사용한다.",
+        "reason": "주어진 거리와 일정 속력의 한 번 나눗셈으로 시간을 직접 얻는다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_GAP",
+          "reason": "DIRECT_TABLE_COMPLETION은 여러 표 빈칸 및 곱을 요구하며 본문의 단일 시간 역산과 다르다. PT는 재사용 후보다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "77e60e7a2bb39bb1c2417ceed7040100360be05c847b208300b484dc9f38700a",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_96d702da27a2eeef5d98dd8f2da63afb6b8cc8c1b3ea45e83d8904c3b8009b7f",
+      "sourceRawId": "Q20",
+      "primaryMethod": "기온 그래프에서 오른쪽으로 갈수록 높아지는 구간의 양 끝 시각 읽기",
+      "decisiveStep": "국소 최저 이후 최고까지 이어지는 상승 구간을 x축 눈금과 연결한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "그래프",
+        "l4": "그래프 해석"
+      },
+      "canonicalRecordId": "M1-RPM-166",
+      "classificationReason": "기온 수치의 계산보다 그래프 증가 구간의 해석이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-053",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "기온 수치의 계산보다 그래프 증가 구간의 해석이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "그래프의 증가 구간을 축의 시각에 대응하는 기초 읽기다.",
+        "reason": "단일 상승 구간을 읽는 정성적 그래프 해석이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_SCOPE_REVIEW",
+          "reason": "TIME_SERIES_FACT_AUDIT는 시각별 값·차·최대·동일 높이 판정 정의이다. 증가 구간 읽기를 직접 포괄하는지 검토 후 reuse 또는 범위 보완한다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q20.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q20.png",
+        "observation": "기온은 6시까지 감소, 6시부터 15시까지 증가, 15시 이후 감소. 눈금과 곡선의 최저·최고 위치 직접 확인."
+      },
+      "sourceQuestionSha256": "cd355bbba7d34f03779588c9850736fba2547a29e99bf50735ce20c53f94b364",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_cf034b3908f56a01d1db1f414826f00e97bdc8f75ce6a181f264fcffb8eb5825",
+      "sourceRawId": "Q21",
+      "primaryMethod": "정비례 그래프 위 격자점 좌표를 y=ax에 대입하여 계수 확인",
+      "decisiveStep": "원점 아닌 한 점에서 y/x를 읽어 a를 결정한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "conditionKeys": {
+          "before": [],
+          "after": [
+            "COND_NONZERO"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "low",
+          "after": "medium"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "그래프에서 식 구하기"
+      },
+      "canonicalRecordId": "M1-RPM-171",
+      "classificationReason": "그림에서 관계식의 미정 상수를 얻는 그래프→식 유형이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-058",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "그림에서 관계식의 미정 상수를 얻는 그래프→식 유형이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "a≠0을 발문에서 명시하여 상수 0 그래프를 배제한다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "원점과 한 점을 지나는 정비례 그래프에서 상수를 읽는 기본 적용이다.",
+        "reason": "한 격자점의 부호와 비를 읽는 기본 계수 결정으로 복잡한 연산이 없다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_COUNT_GAP",
+          "reason": "TWO_GRAPH_CONSTANTS는 두 그래프의 두 상수 비교이며 본문은 하나의 직선 계수 결정. 해당 template를 정확 일치로 확정하지 않는다."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q21.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q21.png",
+        "observation": "원점을 지나 우하향하는 직선은 (1,-1), (-1,1) 격자점 통과. 부호와 눈금 확인."
+      },
+      "sourceQuestionSha256": "4a2be3083f6e99e8220530fde7608f81ee182b443f6f0b0e9c2604287df8fa0c",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3cba4021c9d6033be27a4aec3c934eeef9090f096b0060b68ea5c0e303024409",
+      "sourceRawId": "Q22",
+      "primaryMethod": "분배법칙으로 괄호를 풀고 이항하여 일차방정식 풀이",
+      "decisiveStep": "2를 괄호 안 두 항에 적용한 뒤 x항과 상수항을 모은다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "하"
+        },
+        "difficultyConfidence": {
+          "before": "high",
+          "after": "medium"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "NONE",
+          "after": "B12"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "일차방정식의 풀이",
+        "l4": "괄호·분수·소수가 있는 방정식"
+      },
+      "canonicalRecordId": "M1-RPM-151",
+      "classificationReason": "괄호가 있는 일차방정식의 표준 해법이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-038",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "괄호를 풀고 미지수 항과 상수항을 모아 일차방정식의 해를 구한다.",
+        "reason": "괄호가 있는 일차방정식의 표준 해법이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "bucket": 1,
+        "levelReason": "한 번의 분배법칙과 이항을 이용하는 기본 방정식 연습이다.",
+        "reason": "정수 계수의 괄호 하나를 푸는 익숙한 절차이다. 서술형이라는 응답 형식만으로 난이도를 높이지 않는다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "4c847dcad8857875a5eb903a2c4f31dfb6785465a13a27899c68c5c2218591f4",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_db1d5f2075b634b4ce678416b8ced4cc56075c0dba746ff8f28db55630070675",
+      "sourceRawId": "Q23",
+      "primaryMethod": "직사각형의 두 변 관계와 둘레 공식을 일차방정식으로 연결",
+      "decisiveStep": "가로와 세로 차 4cm를 반영하여 둘레 100cm를 한 미지수의 식으로 표현한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "subUnit": "일차방정식의 활용",
+        "conceptClusterKey": "LINEAR_EQUATION_WORD_PROBLEM",
+        "crossConceptKeys": [
+          "CC_PERIMETER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION_WORD"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식의 활용"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION_WORD_PROBLEM"
+        },
+        "crossConceptKeys": {
+          "before": [],
+          "after": [
+            "CC_PERIMETER"
+          ]
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "도형 활용",
+        "l4": "도형의 길이·넓이"
+      },
+      "canonicalRecordId": "M1-RPM-160",
+      "classificationReason": "도형의 길이 관계를 일차방정식으로 모델링하는 활용 유형이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-047",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "candidateTemplateKey": null,
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": null,
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "中1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": null,
+        "reason": "도형의 길이 관계를 일차방정식으로 모델링하는 활용 유형이다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "Primary는 일차방정식 모델링이며 직사각형 둘레의 합 구조가 보조 개념이다.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "도형의 둘레 공식과 일차방정식을 연결하는 활용 단계다.",
+        "reason": "변 길이 차와 둘레 공식을 연결해 식을 만든 뒤 가로길이를 구한다. 소문항이 모델링을 안내한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [
+        {
+          "kind": "EXISTING_PT_TEMPLATE_GAP",
+          "reason": "도형 길이·넓이 leaf는 RPM_ONLY. 수량 모델링 PT는 재사용 가능하나 도형의 둘레를 포함하는 정확 template 범위 확인 필요."
+        }
+      ],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q23.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q23.png",
+        "observation": "김홍도 씨름 그림은 직사각형 사진으로 추가 수치·기하 표시는 없음. 필요한 가로·세로·둘레 조건은 발문에 모두 있다."
+      },
+      "sourceQuestionSha256": "033d3ddc2a887ff2e0565c2f4a031941dff862d2a8a407b44b2fc8d2ed50d806",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_8f783640a24439ca782cc86be5b7094daa2c677408834f7855e0d4f598fcac8a",
+      "sourceRawId": "Q24",
+      "primaryMethod": "첫 일차방정식의 해를 다른 방정식에 대입하여 계수 결정",
+      "decisiveStep": "해가 같다는 조건으로 x를 매개로 두 방정식을 연결한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "subUnit": "일차방정식",
+        "conceptClusterKey": "LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-03"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "문자와 식"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-03-LINEAR_EQUATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "일차방정식"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "LINEAR_EQUATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBucket": {
+          "before": 3,
+          "after": 2
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 풀이",
+        "l3": "해와 조건",
+        "l4": "계수 조건 결정"
+      },
+      "canonicalRecordId": "M1-RPM-153",
+      "classificationReason": "공통 해를 먼저 구한 뒤 미정계수 a를 복원한다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-040",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "candidateTemplateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-03",
+            "subUnitKey": "M1-03-LINEAR_EQUATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "한 방정식의 해를 다른 식에 대입해 미지 계수를 결정한다.",
+        "reason": "공통 해를 먼저 구한 뒤 미정계수 a를 복원한다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "해 대입은 계수 복원 Primary의 정의 그 자체이므로 보조 개념으로 중복 기록하지 않는다.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "공통 해를 두 식 사이의 연결 정보로 활용하는 표준 응용이다.",
+        "reason": "방정식 풀이→대입의 표준 두 단계이며 소문항이 순서를 직접 안내한다. 기존 bucket3은 추론 부담에 비해 높아 2를 제안한다.",
+        "confidence": "medium",
+        "boundary": "B23",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": null,
+      "sourceQuestionSha256": "153b2de70435ade9cde0e40287c8ec7c03f8ab719be4ad4d79f11e8c99dd525f",
+      "existingAnswerSolutionPreserved": true
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_43a0674640c29925da5f73b26814ef092ffc899236da1d8f8b51e48bfe9fb382",
+      "sourceRawId": "Q25",
+      "primaryMethod": "반비례 그래프의 대응값으로 일정한 곱을 확인하고 관계식과 값 결정",
+      "decisiveStep": "그림의 대응점에서 xy가 일정함을 읽어 미지 입력·출력과 식을 연결한다.",
+      "semanticStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "changes": {
+        "standardCourse": {
+          "before": "",
+          "after": "중1 수학"
+        },
+        "standardUnitKey": {
+          "before": "",
+          "after": "M1-04"
+        },
+        "standardUnit": {
+          "before": "",
+          "after": "좌표평면과 그래프"
+        },
+        "subUnitKey": {
+          "before": "",
+          "after": "M1-04-GRAPH_RELATION"
+        },
+        "subUnit": {
+          "before": "",
+          "after": "그래프와 관계"
+        },
+        "conceptClusterKey": {
+          "before": "",
+          "after": "GRAPH_RELATION"
+        },
+        "integrationPattern": {
+          "before": "",
+          "after": "NONE"
+        },
+        "level": {
+          "before": null,
+          "after": "중"
+        },
+        "difficultyBoundaryFlag": {
+          "before": "B12",
+          "after": "NONE"
+        }
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 관계식"
+      },
+      "canonicalRecordId": "M1-RPM-169-INVERSE-SUBSTITUTION-20261113",
+      "classificationReason": "주파수와 파장의 반비례 관계를 그래프에서 읽고 값을 계산하는 문제이다.",
+      "originalMachineContext": {
+        "storedCurriculum": null,
+        "storedCourse": "",
+        "corresponding2015CrosswalkRecord": "M1-RPM-056",
+        "note": "2022 의미 대응을 별도 기록하며 기존 교육과정 machine 값을 일괄 치환하지 않는다. 교육과정 연도 미기재는 시험 연도만으로 확정하지 않는다."
+      },
+      "typeAssessment": {
+        "status": "CANDIDATE_REGISTRY_LOOKUP_NOT_RESOLVER",
+        "candidateProblemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "candidateTemplateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+        "problemTypeStatus": "ACTIVE",
+        "templateStatus": "ACTIVE",
+        "exactActiveBindings": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          },
+          {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "templateDefinition": "Find a from the graph point, then substitute x=−1.",
+        "reason": "숫자 x=-1 자체가 아니라 그래프 점으로 비례상수를 구한 뒤 값을 대입하는 구조를 재사용 후보로 기록한다."
+      },
+      "auxiliaryReasons": {
+        "crossConcept": "추가 독립 개념이 없고 주개념의 정의·기초 연산만 필요하므로 NOT_APPLICABLE.",
+        "condition": "추가로 해 선택을 제한하는 명시 조건이 없어서 NOT_APPLICABLE. 발문에 등장한 모든 수치 자체를 Condition으로 등록하지 않는다.",
+        "integration": "단일 표준 절차이며 미지 조건의 필수 경우 분기나 별개 핵심 개념의 연결을 요구하지 않아 NONE. 선택지별 단순 확인 자체를 CASE_BRANCH로 세지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "levelReason": "그래프·반비례식·대응값을 서로 연결하는 여러 표현의 응용이다.",
+        "reason": "축의 물리량을 구별하고 세 소문항에서 대응값·반비례식을 읽는다. 그림에 필요한 점이 직접 표시되어 있다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "evidenceScope": "stem/choices/required image; solution absent"
+      },
+      "gaps": [],
+      "contentDebt": [
+        {
+          "code": "SOLUTION_EVIDENCE_DEBT",
+          "fields": [
+            "method",
+            "officialResolverProjection"
+          ],
+          "reason": "원본 answer/solution 빈 문자열. 발문으로 전략을 제안했지만 해설의 NAMED/IMPLIED 방법 근거는 없다. 새 풀이 작성은 범위 밖이다."
+        },
+        {
+          "code": "LEGACY_FINGERPRINT_CONTENT_FIELD_GAP",
+          "fields": [
+            "contentFingerprint",
+            "sourceFingerprint"
+          ],
+          "reason": "정본 공식은 content 부재를 null로 계산하므로 legacy question 본문을 포착하지 못한다. 식을 바꾸지 않고 sourceQuestionSha256/UID/ordinal/source blob으로 보완 결속한다."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_METHOD_MISSING",
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_동산중_1학기_기말_중1_수학-q25.png",
+        "sourceAsset": "archive/assets/images/19_동산중_1학기_기말_중1_수학/q25.png",
+        "observation": "x축 주파수 MHz, y축 파장 m. 표시점 (20,15),(30,10),(60,5)와 감소 곡선 직접 확인."
+      },
+      "sourceQuestionSha256": "cb21dcad2780d4c072642d8b610a8d092331a75d26c31495352523cecb9b57b4",
+      "existingAnswerSolutionPreserved": true
+    }
+  ],
+  "topics": [
+    {
+      "topic": "SOURCE_ONLY",
+      "count": 25,
+      "status": "METHOD_EVIDENCE_DEBT",
+      "note": "분류·보조 메타·난이도 제안을 작성했으며 answer/solution을 보완하지 않았다. final method 확정과 공식 Resolver는 해설 근거 필요."
+    },
+    {
+      "topic": "필수 그림",
+      "ordinals": [
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        23,
+        25
+      ],
+      "status": "VIEWED"
+    },
+    {
+      "topic": "RPM leaf 공백",
+      "ordinals": [
+        1,
+        2,
+        5,
+        14
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "workKey": "M1-S1-META-FULL",
+  "rootIntegration": {
+    "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+    "at": "2026-11-14T08:13:02.312Z",
+    "workerArtifactSha256": "b413e263bad71ae934b81e03cf789327c16c81721101b24a70d1a53aabf28d69",
+    "sourceBaselineBlob": "7713112dd12755cfe79c9cce7bb129eca1b70891",
+    "sourceCurrentBlob": "7713112dd12755cfe79c9cce7bb129eca1b70891",
+    "afterIsProposedMetadata": true,
+    "appliedSourcePatches": [],
+    "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run.",
+    "registration": "NOT_RUN",
+    "productionInbox": "NOT_WRITTEN",
+    "officialResolverPrerequisite": "NOT_CONFIRMED_FOR_CURRENT_QFULL",
+    "protectedFields": "UNCHANGED_VERIFIED_BY_ROOT_CHECK",
+    "rootIndependentReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/19_동산중_1학기_기말_중1_수학/independent-review.json"
+  }
+}
