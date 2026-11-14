@@ -1,0 +1,1833 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "aa99f9bff60983ac1f89cf78a2f724aafebf5e56",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "review_a:manual-full-exam-semantic-review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "원 $O$에서 현 $\\overline{AB}$와 현 $\\overline{CD}$에 내린 수선의 발 $M,N$에 대하여 $\\overline{DN}=\\overline{AM}$일 때 잘못된 것을 고르시오. [3점]"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "원 $O$에서 현 $\\overline{AB}$와 현 $\\overline{CD}$에 내린 수선의 발 $M,N$에 대하여 $\\overline{DN}=\\overline{AM}$일 때 잘못된 것을 고르시오. [3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "잘못된 것을 고르시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+          },
+          {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분한다.\n따라서 $AM=BM$, $CN=DN$이고, $DN=AM$이므로 $BM=CN$이다.\n또 $OB=OC=OD$는 모두 반지름이며 $OM\\perp AB$, $ON\\perp CD$이다.\n그래서 $\\triangle OBM$과 $\\triangle OCN$은 $O\\leftrightarrow O$, $B\\leftrightarrow C$, $M\\leftrightarrow N$의 순서로 합동이다.\n①의 $\\triangle OBM\\equiv\\triangle DON$은 대응 순서가 맞지 않으므로 잘못된 표시이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+          },
+          {
+            "term": "대응점",
+            "src": "solution",
+            "quote": "①의 $\\triangle OBM\\equiv\\triangle DON$은 대응 순서가 맞지 않으므로 잘못된 표시이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{DN}=\\overline{AM}$일 때"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "에 내린 수선의 발 $M,N$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중심에서 현에 내린 수선이 현을 이등분함과 직각삼각형의 합동을 이용해 대응 순서를 본다."
+      },
+      "steps": [],
+      "scenarioNote": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다.",
+      "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a5f5d9596bc51e4a10bfad4de794260038df74e0d2cbd994ecff950afaf63a27"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d79171c6ae8e91582cc86f78bd2c2c89cc6ef80ba27c9f3861f68909f2419b06"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "그은 두 접선과 만나는 접점을"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "$OP=5$, $OA=3$이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "의 길이로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접선 $PA$와 수직이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$PA=\\sqrt{5^2-3^2}=4$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "그은 두 접선과 만나는 접점을"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름과 접선이 수직임을 이용해 피타고라스 정리로 접선 길이를 구하고 같은 점에서의 두 접선 길이를 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "접점에서 반지름과 접선이 수직임을 이용해 피타고라스로 PA를 구하고 같은 외부점의 두 접선 등길이로 PB를 결정한다.",
+      "questionUid": "qid_v1_6a32bb95990b7029a8511144cfc6f34cc417a90c578da69129cfcb6991f266af",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0e343982273e89a53dbbeeddc5fcdb81054271593b01f3e6bfd1387ccda117f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62d982f413728e22984889707aefb41cd5a8a90cc9c722ec44499ec815832dd4"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "의 중심각이 $60^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "의 값으로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각은 중심각의 절반이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 호에 대한 원주각이 중심각의 절반임을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "같은 호를 보는 원주각이 중심각의 절반임을 그대로 대입한다.",
+      "questionUid": "qid_v1_81c0dd07af6c996cf0c6f714cc4c74c6835af2ff252ceb0f35cdbef5607be33f",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0c7a25f737e8886157b46d187a7e7e51dce329bfe0f8860f65472dd6da1ca047"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "96a830c97ec67ffa0bf3265549358a7da8401fb3aa963b08ad693e95bd0642fa"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "접하는 직선 $QR$에 대하여"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "접선 $PR$과 현 $PA$가 이루는 각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "적절한 것은? [3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "같은 현 $PA$를 보는 원주각과 같다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "접하는 직선 $QR$에 대하여"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선과 현이 이루는 각과 그 현을 보는 원주각을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "접선 PR과 현 PA 사이의 각에 대응하는 같은 현의 원주각을 찾아 올바른 등식 보기를 고른다.",
+      "questionUid": "qid_v1_d3f6b430c6435c8ea47e3ef28419c695d2f8507c46b380e645f7b82ece7f2ee3",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9aa9b8857c374c26f13f068788b211d8c5a49e2b023d7a6a9c102daafc7a8b79"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f5e12aba5959fcdb052975acd64831da24608b293c0b3a427a569ee4395d6fc8"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "A반 학생의 봉사활동 시간이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "적절한 대푯값과 계산이"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산이 바르게 짝지어 진 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이상치",
+            "src": "solution",
+            "quote": "자료를 작은 순서로 정리하면 $7,7,8,11,11,100$이다.\n$100$은 나머지 값들과 크게 떨어진 값이므로 평균보다 중앙값이 전형적인 크기를 잘 나타낸다.\n자료가 6개이므로 중앙값은 가운데 두 값 $8,11$의 평균인 $9.5$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극단적으로 큰 자료100 때문에 평균보다 중앙값이 적절함을 판단하고 정렬한 가운데 두 값의 평균을 구한다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "자료를 작은 순서로 정리하면 $7,7,8,11,11,100$이다.\n$100$은 나머지 값들과 크게 떨어진 값이므로 평균보다 중앙값이 전형적인 크기를 잘 나타낸다.\n자료가 6개이므로 중앙값은 가운데 두 값 $8,11$의 평균인 $9.5$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "극단적으로 큰 자료100 때문에 평균보다 중앙값이 적절함을 판단하고 정렬한 가운데 두 값의 평균을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "극단값의 영향을 고려해 중앙값을 선택하고 가운데 두 변량의 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "극단적으로 큰 자료100 때문에 평균보다 중앙값이 적절함을 판단하고 정렬한 가운데 두 값의 평균을 구한다.",
+      "questionUid": "qid_v1_dab4ece8021bd06d04e371287ac5e0056130407abdcd9de786c529334bd78683",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2a12bb1ef1a9268f221be1b8744db3fb0b5447236cb27ba9af7f346af80d6c1f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c7cbd9165c4e64dbc5870ef926f4a2e5a49df099913f82c491e8f94c4c1736ce"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "의 두 현 $\\overline{AB},\\ \\overline{CD}$"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "$\\overline{OB}=4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BH=\\sqrt{4^2-2^2}=2\\sqrt3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "현 $CD$까지의 거리도 $2$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 길이의 두 현은 중심에서 같은 거리에 있다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[OCD]=\\dfrac12\\cdot4\\sqrt3\\cdot2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{CD}$"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "에 내린 수선의 발 $H$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반현을 피타고라스 정리로 구하고 길이가 같은 현의 중심까지 거리를 사용해 삼각형 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "현의 중점과 피타고라스로 현AB의 길이를 구하고 같은 현의 중심거리를 CD로 옮겨 삼각형 넓이를 계산한다.",
+      "questionUid": "qid_v1_bfd294b95008c4847e29edeead6ef68af185bda67573af3b502933d5ef1589b3",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f9414f260a465c5be1f3a9b28bff19eec136b7714b86dee36149bc1b0cfc59e9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d81930b0c36b8aea56848e2e45e99c53d270bddaf1c709b4638c062ba737f07"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "접하고 중심이 같은 작은원"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "접어 만들어진 현 $\\overline{AB}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "작은원의 반지름 $r$으로"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접힌 선 $AB$는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "선분의 수직이등분선이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$R^2=(2\\sqrt3)^2+",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "접하고 중심이 같은 작은원"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "원 $O$의 원의 둘레가 원의 중심에 오도록 접어 만들어진 현 $\\overline{AB}$에 접하고 중심이 같은 작은원에 대하여 현 $\\overline{AB}=4\\sqrt{3}$일 때 작은원의 반지름 $r$으로 적절한 것은? [4점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접힌 선이 중심과 원주 위 점을 잇는 선분의 수직이등분선임을 이용하고 직각삼각형을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": "접기 대응으로 접힌 현까지의 중심거리가 큰 반지름의 절반임을 얻고 반현과 반지름의 피타고라스 관계에서 두 반지름을 결정한다.",
+      "questionUid": "qid_v1_c4a376e540879fc952ffc11ad69787cffe02eea257b94686fd0d0a30e2af6bf5",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10b41a80496c97c66041c82f759ad5927ccaf9ea6904896998a6f743c77b1bb0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "528d9ee85389455031260424eb1c3a086df054b25a1cce118b03c45ac3f2e4a6"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$와 내접원의 접점"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원의 접점 $D,E,F$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "반둘레를 $s$라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원의 접점 $D,E,F$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 꼭짓점에서 그은 접선의 길이가 같음을 이용해 반둘레와 대변 길이로 접선 길이를 정한다."
+      },
+      "steps": [],
+      "scenarioNote": "같은 꼭짓점에서의 접선 등길이를 이용한 반둘레 관계에서 BE=s-CA로 목표 접선 길이를 계산한다.",
+      "questionUid": "qid_v1_b75bc7ad531957ce2919891ec55457e1af92dafed67a8938a695aa585e071218",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c4451b05f8ea862a05d8690acd939008554426553448b04f3c3b0ed9eeb0d1d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d61d1ac3ef61757b5068108ca2e671c4269ee28f169187fa859fcc4973c57b97"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "의 두 변의 연장선과 나머지 한 변"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "같은 점에서 원에 그은 두 접선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 풀면 $x=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 합과 차로 얻은 두 방정식을 연립한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "$P,Q,R$에서 접하는 원 $O$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 점에서의 두 접선 길이를 같게 두고 삼각형 변의 길이로 연립하여 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "각 꼭짓점의 두 접선 길이를 x,y로 두고 전체 변의 합 관계와 같은 점 B의 접선 등길이를 연립해 BR을 구한다.",
+      "questionUid": "qid_v1_0f7283b784125bdf1f050712a770dd5edbb2bbabd709f39a8ef3f481238c4842",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8d6356c9f50525e293df59fea70edd69b6a5b7c099c593d37e2d0698b769a3d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bd581b9816bb4ff6ed7305ac15b2dbe2d55add84cb847eb9266f84caabf821a8"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $EGCD$에 대하여"
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "평행한 두 접선 사이의 거리"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "의 둘레의 길이로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "접선의 길이 성질로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$(y-x)^2+8^2=10^2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "$x=2$, $y=8$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 합과 차를 연립해 두 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle DEO=\\angle OGC=90^\\circ$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 길이의 합과 평행선 사이 거리로 만든 직각삼각형에서 차를 구하고 둘레를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 평행 접선 사이 거리2r과 접선 등길이로 x+y,y-x를 정한 뒤 두 직각삼각형의 빗변을 구하여 둘레를 합한다.",
+      "questionUid": "qid_v1_e4b0163ab6052f03c469ac70b1d2e3d2cd84e0544b866e48e4b9097c8a6ea27f",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d0afbbd198f483d6bbf079b4cbacc5545b85b0fb546a021eae872336d88d4cf1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "994861ad96416ddc1ca7dffb7005b6a046f09e84a318d0cc781e198fb1f34e3a"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형 $ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 $AB$를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "점 $A$를 포함하지 않는 호이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원 전체에서 알려진 두 호를 빼어 나머지 호를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원에 내접하는 사각형 $ABCD$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 두 원주각에서 호의 크기를 얻고 나머지 호에 대한 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 원주각을 해당 호의 중심각 크기로 바꾼 뒤 전체360도에서 제외하고 남은 호의 원주각을 구한다.",
+      "questionUid": "qid_v1_b4f67ee82e20fb02934c327c15c870a924218dc764d6b9bdb4ff6ac186688858",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa58b7bc4ea2fc50938eaedaa1814f54ba9a5026e519a3f6accd86d1388867bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6aa2c07cce78c39e7e4affba98b4ac4ec851851bc89e2d115d3a4ac7ce08e3fe"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "현 $\\overline{AB}$의 중점 $M$"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "$\\angle ACB=60^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "원 $O$ 위의 점 $A,B,C$와 현 $\\overline{AB}$의 중점 $M$에 대하여 $\\overline{OM}=2$, $\\angle ACB=60^\\circ$일 때 $\\wideparen{AB}$의 길이로 적절한 것은? [4점]"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "원 $O$ 위의 점 $A,B,C$와 현 $\\overline{AB}$의 중점 $M$에 대하여 $\\overline{OM}=2$, $\\angle ACB=60^\\circ$일 때 $\\wideparen{AB}$의 길이로 적절한 것은? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$\\angle ACB=60^\\circ$이므로 같은 호 $AB$에 대한 중심각 $\\angle AOB=120^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다."
+          },
+          {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "$M$은 현 $AB$의 중점이므로 $OM\\perp AB$이고 $\\angle AOM=60^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다."
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "$M$은 현 $AB$의 중점이므로 $OM\\perp AB$이고 $\\angle AOM=60^\\circ$이다.\n$OM=2$인 직각삼각형 $AOM$에서 $OA=4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 중점 수선으로 얻은 60도 직각삼각형의 변비를 사용한다. 원문에 없는 삼각비 계산을 새로 주장하지 않는다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "따라서 호 $AB$의 길이는 $2\\pi\\cdot4\\cdot\\dfrac{120}{360}=\\dfrac{8\\pi}{3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "현 $\\overline{AB}$의 중점 $M$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "원주각으로 중심각을 정하고 현의 중점에 내린 수선과 삼각비로 반지름을 구한 뒤 호 길이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다.",
+      "questionUid": "qid_v1_5eb43a7628af75cee63c1bd9bc16bfd89d40b6bb9287ec1e8e8b93ddf6b3db7f",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4412aece6eb9708ee55f237dc6646493245fca5e34989cca7f47c2ca4b4735f4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "17f63acb02a4486a1bf80f48ed527baf44f78145249eb88d0b839373b3f7b420"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "내접사각형의 맞은각 관계에서"
+          },
+          {
+            "term": "공통현",
+            "src": "stem",
+            "quote": "두 원의 교점 $E,D$를 연결한 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "내접사각형의 맞은각 관계에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "180^\\circ-95^\\circ-65^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "두 내각을 정한 뒤 삼각형의 내각의 합을 쓴다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 원의 내접사각형에서 대각의 합과 일직선의 각을 연결해 삼각형의 나머지 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 내접사각형의 대각 보각과 일직선의 보각을 순차 적용해 외부 삼각형 두 각을 정하고 남은 각을 구한다.",
+      "questionUid": "qid_v1_23b82fa074fe8a65252992e5581b49dfb79f702b8e218d88c05401e1de335350",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d04f38130e30770a235acf7bf9604efe788849d93313a911d9ceaded74247dc6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "770726e24b634deb792b64cb852290ec50693bac48f73da46946ac86c9dc02e7"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "대푯값에 대한 설명 중"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "틀린 것을 고르시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "최빈값은 가장 많이 나타나는 값이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "최빈값이 둘 이상일 수 있음을 반례 자료로 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": "최빈값은 동률이면 여러 개일 수 있다는 정의로 모든 대푯값이 한 값이라는 진술을 반박한다.",
+      "questionUid": "qid_v1_98e148d9c35a68ab03c434440cb581926ff7f21592852e2b4d7cd0d4aa980170",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "43c65d46b802b8ef56461fe56febba74b05c092ceb5827c2dbd7332bc9f40031"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "431ffe0a918d5f21dab7274c62475c50f79a422bded384776e45b7d9b71d86f0"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "의 평균이 $5$이고 분산이"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 $5$이고 분산이 $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "의 평균으로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산이 $1$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "전개하면 $x^2+y^2+z^2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "제곱한 세 수의 평균은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평균에서 변량 합을, 분산에서 편차 제곱합을 정하고 전개해 제곱한 변량의 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "평균으로 원자료 합을 정하고 편차제곱합을 전개한 식에 대입하여 원자료 제곱합과 그 평균을 구한다.",
+      "questionUid": "qid_v1_86e61741d5cbc2119abe8bc92e55e99eeac06500de173d46c273861cbec71605",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "109311e0ec1d419869aac2cfe287e70fb38ca4d1490759a5f790cdad20651dc1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8e94eb75c48f64b306c86a916a3e34a2394a4261d68678540c2160fc238dd6c5"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "민성이가 풍덕중학교 복도의 원형 유리창을 깨서 깨진 조각을 이용해 유리창의 크기를 구하고 교체하려고 한다. 현 $\\overline{AB}$의 수직이등분 선과 $\\wideparen{AB}$, $\\overline{AB}$이 만나는 점 $C,H$에 대하여 $\\overline{AB}=8$, $\\overline{HC}=2$일 때 유리창의 반지름으로 적절한 것은? [5점]"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "민성이가 풍덕중학교 복도의 원형 유리창을 깨서 깨진 조각을 이용해 유리창의 크기를 구하고 교체하려고 한다. 현 $\\overline{AB}$의 수직이등분 선과 $\\wideparen{AB}$, $\\overline{AB}$이 만나는 점 $C,H$에 대하여 $\\overline{AB}=8$, $\\overline{HC}=2$일 때 유리창의 반지름으로 적절한 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "유리창의 반지름으로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "현 $AB=8$의 중점이 $H$이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$R^2=4^2+(R-2)^2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "현을 이등분해 반현을 구하고 현까지의 거리를 반지름으로 나타내 직각삼각형을 푼다."
+      },
+      "steps": [],
+      "scenarioNote": "현의 중점에서 반현4와 중심거리R-2를 정하고 반지름R을 빗변으로 하는 피타고라스 방정식으로 반지름을 역산한다.",
+      "questionUid": "qid_v1_f9fdcc9e0eb838a09ee8a9ff1b4ed2cd775a691c892f0a6e986835b3d924b0e4",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b3568e2ce8c9693bca7c024ecacca2c5645db39a2c1fa2aacfb8ea8c39ed1d97"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "48a6766544041979671d4b37218acfce6cb8526830a04502ff06275a26d32e09"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "세 변의 길이가 $9,11,4$인"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "삼각형의 내접원"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "동시에 접하는 원 $O$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "사이의 비율 $r:R$"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "삼각형 $ABC$의 세 변의 길이는 $9,11,4$이므로\n반둘레는\n$s=\\dfrac{9+11+4}{2}=12$이다.\n내접원의 반지름을 $r$라 하면\n삼각형의 넓이는\n$[ABC]=sr=12r$이다.\n\n문제의 바깥 원의 반지름을 $R$라 하자.\n이 원은 두 변 $AB,AC$의 연장선과 변 $BC$에 접하므로\n삼각형의 넓이를 접선으로 나누어 보면\n$[ABC]=\\dfrac12(AB+AC-BC)R$이다.\n따라서\n$[ABC]=\\dfrac12(9+11-4)R=8R$이다.\n\n같은 삼각형의 넓이이므로\n$12r=8R$이다.\n따라서\n$r:R=8:12=2:3$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접원과 바깥 접원의 반지름을 각 변까지의 같은 높이로 사용하여 같은 삼각형 넓이를12r과8R로 나타내고 비를 구한다. 접선 등길이 계산은 사용하지 않는다."
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "삼각형 $ABC$의 세 변의 길이는 $9,11,4$이므로\n반둘레는\n$s=\\dfrac{9+11+4}{2}=12$이다.\n내접원의 반지름을 $r$라 하면\n삼각형의 넓이는\n$[ABC]=sr=12r$이다.\n\n문제의 바깥 원의 반지름을 $R$라 하자.\n이 원은 두 변 $AB,AC$의 연장선과 변 $BC$에 접하므로\n삼각형의 넓이를 접선으로 나누어 보면\n$[ABC]=\\dfrac12(AB+AC-BC)R$이다.\n따라서\n$[ABC]=\\dfrac12(9+11-4)R=8R$이다.\n\n같은 삼각형의 넓이이므로\n$12r=8R$이다.\n따라서\n$r:R=8:12=2:3$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 반지름이 각각 접하는 세 직선까지의 수직거리로 같아 삼각형의 넓이를 합·차로 표현한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "세 변의 길이가 $9,11,4$인 $\\triangle ABC$와 삼각형의 내접원, $\\overline{AB},\\ \\overline{AC}$의 연장선과 $\\overline{BC}$에 동시에 접하는 원 $O$에 대하여 내접원의 반지름 $r$과 원 $O$의 반지름 $R$ 사이의 비율 $r:R$로 적절한 것은? [5점]"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내접원과 바깥 접원의 반지름을 각각 높이로 하여 같은 삼각형의 넓이를 두 방식으로 나타낸다."
+      },
+      "steps": [],
+      "scenarioNote": "내접원과 바깥 접원의 반지름을 각 변까지의 같은 높이로 사용하여 같은 삼각형 넓이를12r과8R로 나타내고 비를 구한다. 접선 등길이 계산은 사용하지 않는다.",
+      "questionUid": "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "97039a05d19fc04752811be806cf24482334fcd0c3a8a989b08f450c1635d303"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df0dcbb9613a838fac7572d9adc090b82ec781a486e38fb9171a0e806677e981"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "할선",
+            "src": "solution",
+            "quote": "점 $P$에서 위쪽 원을 지나는 두 할선에 대해 $PA\\cdot PB=PC\\cdot PD$이다.\n아래쪽 원에서도 $PC\\cdot PD=PE\\cdot PF$이므로 $PA\\cdot PB=PE\\cdot PF$가 성립한다.\n또 두 현 $AD$, $BC$가 $G$에서 만나므로 $AG\\cdot GD=BG\\cdot GC$이다.\n반면 $PC$는 접선 길이가 아니므로 일반적으로 $PC^2=PA\\cdot PB$는 성립하지 않는다.\n따라서 정답은 ③이다."
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 원이 만나는 점 $C,D$와 $\\overline{CD}$의 연장선이 현 $\\overline{AB},\\ \\overline{EF}$의 연장선과 동시에 만나는 점 $P$, $\\overline{AD}$와 $\\overline{BC}$의 교점 $G$에 대하여 적절하지 않은 것은? [5점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "적절하지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "방멱정리",
+            "src": "solution",
+            "quote": "점 $P$에서 위쪽 원을 지나는 두 할선에 대해 $PA\\cdot PB=PC\\cdot PD$이다.\n아래쪽 원에서도 $PC\\cdot PD=PE\\cdot PF$이므로 $PA\\cdot PB=PE\\cdot PF$가 성립한다.\n또 두 현 $AD$, $BC$가 $G$에서 만나므로 $AG\\cdot GD=BG\\cdot GC$이다.\n반면 $PC$는 접선 길이가 아니므로 일반적으로 $PC^2=PA\\cdot PB$는 성립하지 않는다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 할선 PA·PB=PC·PD 및 교차현 AG·GD=BG·GC의 명시 곱 관계가 방멱정리의 실제 적용이다. 명칭이 원문에 없으므로 IMPLIED로 기록한다."
+          },
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "점 $P$에서 위쪽 원을 지나는 두 할선에 대해 $PA\\cdot PB=PC\\cdot PD$이다.\n아래쪽 원에서도 $PC\\cdot PD=PE\\cdot PF$이므로 $PA\\cdot PB=PE\\cdot PF$가 성립한다.\n또 두 현 $AD$, $BC$가 $G$에서 만나므로 $AG\\cdot GD=BG\\cdot GC$이다.\n반면 $PC$는 접선 길이가 아니므로 일반적으로 $PC^2=PA\\cdot PB$는 성립하지 않는다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 원에서 할선과 교차현의 선분 곱 관계를 적용하고 실제 접선이 아닌 PC를 접선제곱으로 취급한 진술을 배제한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 원에서 할선의 곱과 교차 현의 곱을 각각 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "각 원에서 할선과 교차현의 선분 곱 관계를 적용하고 실제 접선이 아닌 PC를 접선제곱으로 취급한 진술을 배제한다.",
+      "questionUid": "qid_v1_e792e6be70fd6820a3d1fffa2adb765cc59aae7810e5831781834ad2df285606",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "225e19c6dae27a73dcfe3c020c1089809fc54f8146b81fb546ce74e93f5b6f1f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2bb96184221f2616a01386d9cc4db2388d07bc91e9bf23168ecd273e4ee4b99a"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "사각형 $THBD$는 원에 내접하고"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "점 $A$에서 작은 원에 그은 접선"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "$\\triangle ABT$에서 $26^\\circ+y+(180^\\circ-x)=180^\\circ$이므로 $x-y=26^\\circ$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle DHB$를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 현 $DB$를 보는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접현각의 성질로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "두 식을 풀면 $x=58^\\circ$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형의 각의 합에서 얻은 두 식을 연립한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "점 $B$에서 접하는 작은 원"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "사각형 $THBD$는 원에 내접하고"
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "$CB$가 지름이므로 $\\angle CTB=90^\\circ$, 따라서 $x+y=90^\\circ$이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내접사각형의 같은 호 원주각과 접현각을 연결하고 직각 및 삼각형 내각 관계를 연립한다."
+      },
+      "steps": [],
+      "scenarioNote": "힌트의 내접사각형 같은 현 각과 접현각, 작은 원 지름의 직각을 연결해 x+y=90도와 x-y=26도를 세워 목표각을 구한다.",
+      "questionUid": "qid_v1_6146d6b88882a908bccf959f17c3843fe39912f48f8d61eebf2586af3fc1b427",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c5eba9266984f5d519b682eaa73a0994d96e7fe25fa6bed91981811fa4312360"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21baeb6357bae06bbc1f8b03d90d4d97034c3e9a61ff8f0f0d19569c89ac0ef2"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "$5$명은 평균이 $10$"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "표준편차가 $3$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "학생 전체의 표준편차로 적절한 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 $9$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱합",
+            "src": "solution",
+            "quote": "전체 편차 제곱의 합은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는\n$\\sqrt6$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$3$명은 평균이 $10$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평균이 같은 집단의 편차 제곱합을 합해 전체 분산과 표준편차를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "두 집단 평균10이 같으므로 각 분산에 인원을 곱한 제곱합을 합치고 전체인원으로 나눈 뒤 제곱근을 취한다.",
+      "questionUid": "qid_v1_d22154f43f2854760025f125e2d4ccdb748a0409dd716a8b9a0eecc303a2ee98",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21a015f62553b8e38778b8e3dd11a171ca29ad5b031f87d65e3418d0b69190d5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00a51f00f30797b3e52e11d38339c4eb4e98ee71c45e6e953d474070598d1204"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$ 내부의 사다리꼴"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCE$와 내접원의 접점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이를 구하는 과정을 서술하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "직사각형 $ABCD$에서\n$AB=CD=12$, $BC=AD=15$이다.\n원이 서로 평행한 두 변 $AE$, $BC$에 접하므로\n원의 지름은 두 평행선 사이의 거리 $12$이고,\n반지름은 $6$이다.\n따라서\n$AP=AS=6$,\n$BS=BR=6$이다.\n그러므로\n$RC=BC-BR=15-6=9$이다.\n\n$PE=EQ=x$라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로\n$CQ=CR=9$이다.\n따라서\n$EC=EQ+QC=x+9$이다.\n또\n$AE=AP+PE=6+x$이므로\n$ED=AD-AE=15-(6+x)=9-x$이다.\n\n직각삼각형 $CDE$에서\n$EC^2=CD^2+DE^2$이므로\n$(x+9)^2=12^2+(9-x)^2$이다.\n전개하면\n$x^2+18x+81=144+x^2-18x+81$,\n$36x=144$,\n$x=4$이다.\n따라서\n$ED=9-4=5$이다.\n그러므로\n$[\\triangle CDE]=\\dfrac{1}{2}\\times12\\times5=30$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직사각형 $ABCD$에서\n$AB=CD=12$, $BC=AD=15$이다.\n원이 서로 평행한 두 변 $AE$, $BC$에 접하므로\n원의 지름은 두 평행선 사이의 거리 $12$이고,\n반지름은 $6$이다.\n따라서\n$AP=AS=6$,\n$BS=BR=6$이다.\n그러므로\n$RC=BC-BR=15-6=9$이다.\n\n$PE=EQ=x$라 하자.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로\n$CQ=CR=9$이다.\n따라서\n$EC=EQ+QC=x+9$이다.\n또\n$AE=AP+PE=6+x$이므로\n$ED=AD-AE=15-(6+x)=9-x$이다.\n\n직각삼각형 $CDE$에서\n$EC^2=CD^2+DE^2$이므로\n$(x+9)^2=12^2+(9-x)^2$이다.\n전개하면\n$x^2+18x+81=144+x^2-18x+81$,\n$36x=144$,\n$x=4$이다.\n따라서\n$ED=9-4=5$이다.\n그러므로\n$[\\triangle CDE]=\\dfrac{1}{2}\\times12\\times5=30$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다."
+          },
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle CDE]=\\dfrac{1}{2}\\times12\\times5=30$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCE$와 내접원의 접점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평행한 접선 사이 거리에서 반지름을 정하고 접선 길이와 피타고라스 정리로 직각삼각형의 넓이를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다.",
+      "questionUid": "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "54c5278c4f4db6d041f519a4596769c5ad3179270df342454e3556d2e18e2097"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "379cf809cf5da09a05a2897c31a4b2131676fbccd24d6064af47553ab9369e97"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "$\\angle APB=x$로 나타내는 과정"
+          },
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "지름 $\\overline{PQ}$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "$\\angle AOB$를 $\\angle APB=x$"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "[서술형2] 원 $O$의 호 $\\wideparen{AB}$, 원주상의 점 $P$, 지름 $\\overline{PQ}$에 대하여 $\\angle AOB$를 $\\angle APB=x$로 나타내는 과정을 오른쪽 사실을 이용해 서술하여라. [5점]\n(단, $\\angle QPA=a$, $\\angle QPB=b$)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "$\\angle QOA=180^\\circ-\\angle AOP=2a$",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 외각을 두 밑각의 합으로 나타낸다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "\\angle QOB-\\angle QOA",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중심각의 차와 원주각의 차를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "[서술형2] 원 $O$의 호 $\\wideparen{AB}$, 원주상의 점 $P$, 지름 $\\overline{PQ}$에 대하여 $\\angle AOB$를 $\\angle APB=x$로 나타내는 과정을 오른쪽 사실을 이용해 서술하여라. [5점]\n(단, $\\angle QPA=a$, $\\angle QPB=b$)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "반지름으로 만들어진 이등변삼각형의 외각을 구하고 두 각의 차로 중심각과 원주각 관계를 보인다."
+      },
+      "steps": [],
+      "scenarioNote": "반지름으로 만든 두 이등변삼각형의 외각을2a,2b로 표현하고 두 각의 차에서 중심각=2×원주각의 관계를 설명한다.",
+      "questionUid": "qid_v1_4e9c7f6afb10dbe7454f8508055d5ccd83d4cb7a2e2fc1e398cf262335d2964d",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34fe74a29933959a12394655a48a269236d2860d7a9eb15f3313ccee77f6b8d3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "794ddafbffef2f0ff828193c76c41640bfc72b4de560341ff4cb8e31b13755b3"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "[서술형3] 주어진 원 $O$ 위의 점 $P,Q$와 현 $\\overline{AB}$, 호 $\\wideparen{CD}$에 대하여 $\\overline{AB}=10$, 색칠한 부채꼴의 면적이 $10\\pi$, $\\angle CPD=18^\\circ$일 때 $\\angle AQB$의 크기를 구하는 과정을 서술하여라. [4점]"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "[서술형3] 주어진 원 $O$ 위의 점 $P,Q$와 현 $\\overline{AB}$, 호 $\\wideparen{CD}$에 대하여 $\\overline{AB}=10$, 색칠한 부채꼴의 면적이 $10\\pi$, $\\angle CPD=18^\\circ$일 때 $\\angle AQB$의 크기를 구하는 과정을 서술하여라. [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "의 크기를 구하는 과정을 서술하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "$\\angle CPD=18^\\circ$는 호 $CD$를 보는 원주각이다.\n따라서 같은 호 $CD$를 보는 중심각은\n$\\angle COD=2\\times18^\\circ=36^\\circ$이다.\n원의 반지름을 $r$라 하면\n색칠한 부채꼴의 넓이가 $10\\pi$이므로\n$\\dfrac{36}{360}\\pi r^2=10\\pi$이다.\n따라서\n$\\dfrac1{10}r^2=10$,\n$r^2=100$,\n$r=10$이다.\n\n$OA=OB=10$이고 $AB=10$이므로\n$\\triangle AOB$는 정삼각형이다.\n따라서\n$\\angle AOB=60^\\circ$이다.\n$\\angle AQB$는 같은 호 $AB$를 보는 원주각이므로\n$\\angle AQB=\\dfrac{60^\\circ}{2}=30^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다."
+          },
+          {
+            "term": "부채꼴넓이공식",
+            "src": "solution",
+            "quote": "$\\angle CPD=18^\\circ$는 호 $CD$를 보는 원주각이다.\n따라서 같은 호 $CD$를 보는 중심각은\n$\\angle COD=2\\times18^\\circ=36^\\circ$이다.\n원의 반지름을 $r$라 하면\n색칠한 부채꼴의 넓이가 $10\\pi$이므로\n$\\dfrac{36}{360}\\pi r^2=10\\pi$이다.\n따라서\n$\\dfrac1{10}r^2=10$,\n$r^2=100$,\n$r=10$이다.\n\n$OA=OB=10$이고 $AB=10$이므로\n$\\triangle AOB$는 정삼각형이다.\n따라서\n$\\angle AOB=60^\\circ$이다.\n$\\angle AQB$는 같은 호 $AB$를 보는 원주각이므로\n$\\angle AQB=\\dfrac{60^\\circ}{2}=30^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다."
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "$\\angle CPD=18^\\circ$는 호 $CD$를 보는 원주각이다.\n따라서 같은 호 $CD$를 보는 중심각은\n$\\angle COD=2\\times18^\\circ=36^\\circ$이다.\n원의 반지름을 $r$라 하면\n색칠한 부채꼴의 넓이가 $10\\pi$이므로\n$\\dfrac{36}{360}\\pi r^2=10\\pi$이다.\n따라서\n$\\dfrac1{10}r^2=10$,\n$r^2=100$,\n$r=10$이다.\n\n$OA=OB=10$이고 $AB=10$이므로\n$\\triangle AOB$는 정삼각형이다.\n따라서\n$\\angle AOB=60^\\circ$이다.\n$\\angle AQB$는 같은 호 $AB$를 보는 원주각이므로\n$\\angle AQB=\\dfrac{60^\\circ}{2}=30^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$\\angle CPD=18^\\circ$는 호 $CD$를 보는 원주각이다.\n따라서 같은 호 $CD$를 보는 중심각은\n$\\angle COD=2\\times18^\\circ=36^\\circ$이다.\n원의 반지름을 $r$라 하면\n색칠한 부채꼴의 넓이가 $10\\pi$이므로\n$\\dfrac{36}{360}\\pi r^2=10\\pi$이다.\n따라서\n$\\dfrac1{10}r^2=10$,\n$r^2=100$,\n$r=10$이다.\n\n$OA=OB=10$이고 $AB=10$이므로\n$\\triangle AOB$는 정삼각형이다.\n따라서\n$\\angle AOB=60^\\circ$이다.\n$\\angle AQB$는 같은 호 $AB$를 보는 원주각이므로\n$\\angle AQB=\\dfrac{60^\\circ}{2}=30^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원주각에서 부채꼴 중심각을 얻어 반지름을 구하고 정삼각형과 원주각 관계를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다.",
+      "questionUid": "qid_v1_cc443ce4e5abb28767b87b17032e0491e5be17dfc899fb905e3b74a10d31704b",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "085fa424b63fc702b32e6feec54de0b560e73dc613f70d94b72808e2903068db"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5121e65cf34a50221a63189e4cc3e6df0870179f1a2f8efbfd0e3e346c845b59"
+        }
+      ]
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다음 변량은 학생 $5$명이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "분산과 표준편차를 구하는 과정"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "분산과 표준편차를 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균 $6$에 대한 편차는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 제곱은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "따라서 분산은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는\n$\\sqrt8=2\\sqrt2$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평균에서 각 편차와 편차 제곱합을 구해 분산을 정하고 양의 제곱근을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "원자료 다섯 값의 평균과 편차를 구하고 편차제곱의 평균 및 제곱근으로 분산·표준편차를 계산한다.",
+      "questionUid": "qid_v1_be232c1a96eadeabafbb503b7a64110f0346789e3e7f43d42c13d142003ce2b0",
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "judgedBy": "review_a:manual-semantic-confirmation-of-existing-evidence",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "597e8ac89e7d71e3151c7e9f839415020daeaf9a73b85b29d14da972f3900911"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ac8b08e7f15da98dcc9de1e81366bbc939c0371166679e6ca5b8350bfbf6dcf"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "term": "방멱정리",
+      "en": "POWER_OF_A_POINT",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "곱",
+      "note": "한 점을 지나는 원의 할선 또는 현의 두 선분 길이의 곱 관계.",
+      "usedIn": [
+        18
+      ]
+    },
+    {
+      "term": "현의수직이등분성질",
+      "en": [
+        "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+      "usedIn": [
+        "qid_v1_5eb43a7628af75cee63c1bd9bc16bfd89d40b6bb9287ec1e8e8b93ddf6b3db7f",
+        "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846"
+      ]
+    },
+    {
+      "term": "RHS합동",
+      "en": [
+        "RHS_CONGRUENCE"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "합동",
+      "note": "두 직각삼각형의 빗변과 다른 한 변이 각각 같음을 근거로 하는 합동 조건.",
+      "usedIn": [
+        "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846"
+      ]
+    },
+    {
+      "term": "삼각형넓이공식",
+      "en": [
+        "TRIANGLE_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "넓이",
+      "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다.",
+      "usedIn": [
+        "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+        "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8"
+      ]
+    },
+    {
+      "term": "부채꼴넓이공식",
+      "en": [
+        "SECTOR_AREA_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "부채꼴",
+      "note": "반지름과 중심각으로 원의 넓이 중 차지하는 비율을 정하는 공식.",
+      "usedIn": [
+        "qid_v1_cc443ce4e5abb28767b87b17032e0491e5be17dfc899fb905e3b74a10d31704b"
+      ]
+    }
+  ],
+  "selfCheck": {
+    "allItemsRead": true,
+    "historicalEvidenceShaVerified": true,
+    "studentPayloadAllMatches": false,
+    "independentReview": "PENDING",
+    "changedItemsManuallyRevalidated": [
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_86e61741d5cbc2119abe8bc92e55e99eeac06500de173d46c273861cbec71605",
+        "review": {
+          "type": "MATH_FORMATTING_ONLY",
+          "oldAndCurrentRead": true,
+          "affectedText": "78/3에서 \\frac{78}{3}으로 분수표기만 수정",
+          "semanticDeterminingStepsUnchanged": true,
+          "allReusedQuotesStillExactInCurrentSource": true,
+          "evidence": "historical-source-differences.json",
+          "note": "current source와 historical source의 전체 해설을 직접 읽고 비교했다. 새로운 수학검증을 주장하지 않는다."
+        }
+      }
+    ]
+  },
+  "reuseEvidence": {
+    "branch": "work/4slot-annotate-v1",
+    "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.4slot.json",
+    "originalSha256": "9c2d898bda6c072d529a44d689acd7852fdd251c73ca6519d0767ed3e63b2f0e",
+    "importDelta": {
+      "baseSourceGitBlobSha": "10aadabcf01ae06d89e62d51e59a8e53afb77c85",
+      "authoringSnapshot": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+      "reviewRecord": {
+        "branch": "ops/4slot-bulk-publish-20261105",
+        "commit": "ee358bec56c10d828747edfa9db315b19a9e5f5c",
+        "path": "tools/4slot/bulk-delta-overrides.json",
+        "sha256": "0ea424264025971d832e610700f94acf029701ebe20d8530e5d1af3e42d5551d"
+      }
+    }
+  }
+}

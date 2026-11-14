@@ -1,0 +1,138 @@
+[
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_dab4ece8021bd06d04e371287ac5e0056130407abdcd9de786c529334bd78683",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "극단값 자료의 적절한 대푯값 선택과 계산",
+    "definition": "극단값이 평균에 미치는 영향을 해석해 대푯값을 선택하고 해당 값을 계산한다.",
+    "distinction": "정의 진술을 독립적으로 판정하거나 누락자료를 복원하는 것이 아니라 자료맥락에 적절한 대표값을 선택하는 목표다.",
+    "parent": "PT_M1_CENTRAL_TENDENCY",
+    "nearestTemplates": [
+      "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 10,
+    "questionUid": "qid_v1_e4b0163ab6052f03c469ac70b1d2e3d2cd84e0544b866e48e4b9097c8a6ea27f",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 등길이와 평행 간격으로 삼각형 둘레",
+    "definition": "접점 반지름과 접선 등길이로 필요한 변을 결정한 후 피타고라스를 적용하여 도형의 둘레를 구한다.",
+    "distinction": "TM_TANGENT_LENGTH는 목표가 외부점의 접선 길이인 골격이며 이 문항의 두 중심연결선 둘레까지 보증하지 않는다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E019/proposals.json Q24의 접선 관계→둘레 제안과 병합 검토"
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_86e61741d5cbc2119abe8bc92e55e99eeac06500de173d46c273861cbec71605",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "평균·분산에서 원자료 제곱의 평균 복원",
+    "definition": "자료 평균과 분산의 정의를 전개하여 원자료 제곱합 또는 제곱평균을 역산한다.",
+    "distinction": "편차합0으로 미지편차를 찾는 골격, 도수표의 직접분산, 선형 k배변환, 확률변수 모멘트와 구별한다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "산포도"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_VARIANCE_STANDARD_DEVIATION"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E024/proposals.json Q15와 동일 정의 병합 검토"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_e792e6be70fd6820a3d1fffa2adb765cc59aae7810e5831781834ad2df285606",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "할선·교차현의 곱과 접선제곱 관계 판정",
+    "definition": "한 점을 지나는 원의 할선·현의 길이곱 관계를 적용하고 접선인 경우에만 접선길이의 제곱을 사용할 수 있음을 판정한다.",
+    "distinction": "원주각 또는 닮음을 새로 증명하지 않고 방멱 관계 자체를 적용한다. GLOBAL ACTIVE POWER_OF_POINT/CHORD_PRODUCT/SECANT_TANGENT 및 한글 곱 관계 정의를 검색했으나 exactTPL이 없다.",
+    "parent": "PT_CIRCLE_LINE_RELATION",
+    "nearestTemplates": [
+      "TM_CIRCLE_CHORD_LENGTH",
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_d22154f43f2854760025f125e2d4ccdb748a0409dd716a8b9a0eecc303a2ee98",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "공통평균 두 집단의 표준편차 합성",
+    "definition": "평균이 같은 두 집단에서 분산×인원으로 편차 제곱합을 복원·합산하고 전체 인원으로 나눈 뒤 표준편차를 구한다.",
+    "distinction": "합0에 따른 미지편차 복원·도수표·선형변환·확률변수 분산이 아니며 공통평균이 제곱합 통합의 핵심 조건이다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "산포도"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "c/E024/proposals.json Q23 동일 골격 제안 재사용"
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 등길이와 피타고라스로 접하는 도형의 넓이",
+    "definition": "반지름·접선 등길이와 변의 합차로 직각삼각형의 변을 미지수로 나타내고 피타고라스에서 결정해 넓이를 구한다.",
+    "distinction": "TM_TANGENT_LENGTH의 목표 접선길이와 달리 도형의 넓이가 최종 목표이며 추가 구성·방정식이 필요하다.",
+    "parent": "PT_CIRCLE_TANGENT",
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E001 Q17 및 c/E003 Q17의 접선 관계→넓이 제안과 병합 검토"
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_4e9c7f6afb10dbe7454f8508055d5ccd83d4cb7a2e2fc1e398cf262335d2964d",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "이등변삼각형의 외각으로 중심각·원주각 관계 설명",
+    "definition": "주어진 보조지름으로 두 이등변삼각형의 외각을 정하고 합·차 관계로 중심각이 원주각의 두 배임을 도출한다.",
+    "distinction": "CENTER_ARC는 이미 알려진 중심각·원주각 관계를 적용해 목표각을 구한다. 본문은 해당 관계 자체를 논증하는 서술 목표다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_be232c1a96eadeabafbb503b7a64110f0346789e3e7f43d42c13d142003ce2b0",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "원자료의 분산·표준편차 직접 계산",
+    "definition": "완전한 유한자료에서 평균·편차·편차제곱평균·표준편차를 직접 계산한다.",
+    "distinction": "미지편차 복원이나 도수분포 가중계산·확률변수 모델이 없는 기본 원자료 계산이다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "산포도"
+    ],
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "relatedProposal": "a/E022 Q18 직접 원자료 표준편차 제안 재사용"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E025",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+  "sourceBlob": "aa99f9bff60983ac1f89cf78a2f724aafebf5e56",
+  "target4slotSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+  "targetReviewSha256": "1190e91ce579bed48682dc25af64e38db698ecd24c6f76305c904353b01b099a",
+  "sampleRule": "IMPLIED 및 priorgrade/정확TPL·RPM leaf 경계 우선",
+  "sampleOrdinals": [
+    17,
+    18,
+    21
+  ],
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8",
+      "status": "PASS",
+      "independentMeaningReview": "내접원과 방접원의 반지름을 세 직선까지의 등거리 높이로 사용한 넓이 합·차가 실제 방법이다. AB/AC 연장선과 BC에 동시에 접한다는 조건 전체를 condition이 보존하며 r:R 목표에 맞는다. 중심 관련 등거리의 GLOBAL ACTIVE TPL 재사용과 priorM2 경로를 수용한다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true,
+      "imagePath": "assets/images/23_풍덕중_2학기_기말_중3_기출/q17.png"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_e792e6be70fd6820a3d1fffa2adb765cc59aae7810e5831781834ad2df285606",
+      "status": "PASS",
+      "independentMeaningReview": "두 원의 공통 할선과 각 원의 두 할선, 교차현의 곱 관계를 직접 적용해 PC가 접선이 아님을 구별하는 판정이다. 방멱이라는 이름은 원문에 없어 IMPLIED+구체 곱 관계로 정당화했고 교점·연장선 관계가 전체 발문에 보존되었다.",
+      "quotesChecked": 5,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true,
+      "imagePath": "assets/images/23_풍덕중_2학기_기말_중3_기출/q18.png"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+      "status": "PASS",
+      "independentMeaningReview": "평행한 두 접선 사이 거리로 반지름을 정하고 같은 점의 등접선으로 x+9와9-x를 만들어 피타고라스에서 구한 높이로 삼각형 넓이를 계산한다. 현재 전체 풀이 인용과 넓이 goal이 일치하며 접선길이 목표만의 기존 TPL을 강제하지 않았다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "imageRead": true,
+      "imagePath": "assets/images/23_풍덕중_2학기_기말_중3_기출/q21.png"
+    }
+  ],
+  "requestedMetadataCleanup": [
+    {
+      "ordinal": 18,
+      "field": "debts.recordId",
+      "staleValue": "M3-RPM-069",
+      "reason": "정확 leaf null 판정과 일치하도록 이 인접 후보는 거절된 참조로 명시하거나 stale 연결 debt에서 제거한다."
+    }
+  ],
+  "requestedMetadataCleanupResolved": true,
+  "adjudicationReceiptsObserved": [
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E025.difficulty-adjudication.json",
+      "sha256": "63cd80214a5b800c42525605e3cebb9e9f5416d56a8ffcefe73f436bfdfe4dc4"
+    },
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E025.primary-adjudication.json",
+      "sha256": "b927bda680e85bf2669065c200fd54d24c61b445a3e076fa4663c6bc2290e6bd"
+    },
+    {
+      "path": "/workspace/scratch/9c9d44bb632b/root-validation/E025.rpm-leaf-gap-adjudication.json",
+      "sha256": "d42d4a8d6bbf7cf5202c87b6549ee656972e305f9014df5c5905147f242dfbdb"
+    }
+  ],
+  "metadataReceiptConfirmation": "Q18 정확 RPM leaf 공백과 신규 native TPL 필요를 확인했고 stale069 연결 debt 제거를 확인했다. 표본 Q17/18/21의 슬롯 의미는 기존 독립판정 그대로 유효하며 실제 최종 인용을 다시 대조했다."
+}
