@@ -7172,9 +7172,9 @@
     "sampledOrdinals": [
       2,
       4,
-      20
+      16
     ],
-    "basis": "WARN q2/q4 and reused/modified implied method q20; current source and exact quotes read.",
+    "basis": "WARN 문항을 우선하여 3개 선택하고 실제 현재 source/choices/solution/4칸을 독립대조. 이외 중요문항 추가검토는 별도 보존.",
     "findings": [
       {
         "ordinal": 2,
@@ -7187,9 +7187,9 @@
         "note": "차의 부호 및 양의 두수 제곱비교로 순서판정. method와 goal의 역할 구분 적합."
       },
       {
-        "ordinal": 20,
+        "ordinal": 16,
         "status": "PASS",
-        "note": "공통인수에서 곱을0으로 만드는 대입·공약수 후보·자연수 제약을 포착. 고교 인수정리 명칭 대신 실제 주어진 인수의 성질에 근거."
+        "note": "두학생의 곱셈공식 사용을 비교, 차의제곱/합차공식이 실제 결정단계를 덮는다. goal판정 적합, sparse WARN 수용."
       }
     ],
     "additionalLevelAdjudication": [
@@ -7218,7 +7218,14 @@
       }
     ],
     "mathematicalVerification": "NOT_PERFORMED",
-    "reviewVersion": "M3-S1-META-FULL-v1"
+    "reviewVersion": "M3-S1-META-FULL-v1",
+    "additionalFourSlotChecks": [
+      {
+        "ordinal": 20,
+        "status": "PASS",
+        "note": "공통인수에서 곱을0으로 만드는 대입·공약수 후보·자연수 제약을 포착. 고교 인수정리 명칭 대신 실제 주어진 인수의 성질에 근거."
+      }
+    ]
   },
   "provenance": {
     "baseMain": "0ba1e7de048de3af0771da6c0972409fd46baa75",
