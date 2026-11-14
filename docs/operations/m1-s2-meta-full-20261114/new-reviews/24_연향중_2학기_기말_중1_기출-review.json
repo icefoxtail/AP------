@@ -2365,9 +2365,9 @@
   ],
   "contentDebt": [],
   "raw4slot": {
-    "url": "https://drive.google.com/file/d/1oeXSdWRAnV2vGmyImLQwArlQFg79Urje/view?usp=drivesdk",
-    "fileId": "1oeXSdWRAnV2vGmyImLQwArlQFg79Urje",
-    "sha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
+    "url": "https://drive.google.com/file/d/1N1Hk8GKoRcOok2RsiOwYkl3BDZFV2TER/view?usp=drivesdk",
+    "fileId": "1N1Hk8GKoRcOok2RsiOwYkl3BDZFV2TER",
+    "sha256": "a7656f0747ecec5c96c5b3718cdcc80a6e9bd292c962b32c13e91b4ec75ebf58",
     "readbackVerified": true,
     "originalSourceBlob": "a4c58a191317fe28ceee62858a0681f86397c1b8",
     "protectedPayloadSame": true
@@ -2375,7 +2375,7 @@
   "independent": [
     {
       "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_기말_중1_기출.json",
-      "sha256": "847f86e7b2ff0c86fda04891c2887329bc41f30fe59b12f2a5a9952893541207",
+      "sha256": "8b592f058d23d74d8fc33276f6af485468507ed0b4f096d3a890a94081226f04",
       "reviewer": "meta-a",
       "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS"
     },
@@ -2387,9 +2387,10 @@
     }
   ],
   "independentInputBinding": {
-    "status": "EXACT_RAW_SHA",
-    "reviewedRawSha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
-    "currentRawSha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a"
+    "status": "EXACT_RAW_SHA_AFTER_PARENT_TAG_TECHNICAL_READBACK",
+    "reviewedRawSha256": "a7656f0747ecec5c96c5b3718cdcc80a6e9bd292c962b32c13e91b4ec75ebf58",
+    "currentRawSha256": "a7656f0747ecec5c96c5b3718cdcc80a6e9bd292c962b32c13e91b4ec75ebf58",
+    "originalSemanticVerdictsRetained": true
   },
   "validation": {
     "syntax": "PASS",
@@ -2404,7 +2405,6 @@
         "#3 only 3 distinct terms",
         "#3 method has 1 term",
         "#12 only 4 distinct terms",
-        "#13 only 4 distinct terms",
         "#14 only 4 distinct terms",
         "#17 only 3 distinct terms",
         "#19 only 3 distinct terms",
@@ -2413,7 +2413,7 @@
       "stats": {
         "items": 23,
         "examItems": 23,
-        "quotes": 143
+        "quotes": 145
       }
     },
     "compactParity": "PASS",
@@ -2422,5 +2422,22 @@
   "scopeLimits": [
     "No full mathematical R1/R2/R3 performed.",
     "Shared registration, main merge and deployment are outside this stage."
+  ],
+  "raw4slotHistory": [
+    {
+      "url": "https://drive.google.com/file/d/1oeXSdWRAnV2vGmyImLQwArlQFg79Urje/view?usp=drivesdk",
+      "fileId": "1oeXSdWRAnV2vGmyImLQwArlQFg79Urje",
+      "sha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
+      "readbackVerified": true,
+      "originalSourceBlob": "a4c58a191317fe28ceee62858a0681f86397c1b8",
+      "protectedPayloadSame": true
+    }
+  ],
+  "fourSlotTechnicalFollowups": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/followups/4slot-parent-supplement/24_연향중_2학기_기말_중1_기출.json",
+      "changes": 2,
+      "sourceUnchanged": true
+    }
   ]
 }

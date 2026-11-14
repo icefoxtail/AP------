@@ -5,8 +5,8 @@
   "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
   "candidateSourceBlob": "92c9580da4d07090df5963967de4e51bc2682ffa",
   "candidateSourceRawSha256": "67f373bdadb94197e65b3b23d08160653eef48573dffbd4acb1596385478b905",
-  "raw4slotSha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
-  "authorReviewSha256": "cfdef6eb0d667a58786f94533c04827f147cca9a8b3c46b2600ea1ea5c3587ee",
+  "raw4slotSha256": "a7656f0747ecec5c96c5b3718cdcc80a6e9bd292c962b32c13e91b4ec75ebf58",
+  "authorReviewSha256": "f9037f8a55bd65d8357ef7ad82872cd18593b5fdc82e09eeee315e12a94cf116",
   "sampled": [
     4,
     15,
@@ -102,7 +102,7 @@
   ],
   "sourceModified": false,
   "mathFullR1R2Performed": false,
-  "revision": 2,
+  "revision": 3,
   "finalReadback": {
     "changesDirectlyVerified": [
       "Q4 given 집단",
@@ -111,5 +111,42 @@
       "volume equality generalization proposal"
     ],
     "unresolvedSampleDefects": 0
-  }
+  },
+  "compactSha256": "2245f259e5e8998722f743114af702c81d9c4b2f2ac3286053f75878b4c73e61",
+  "technicalReadbacks": [
+    {
+      "contract": "4slot §10 candidate parent same slot",
+      "beforeBinding": {
+        "candidateSourceBlob": "92c9580da4d07090df5963967de4e51bc2682ffa",
+        "candidateSourceRawSha256": "67f373bdadb94197e65b3b23d08160653eef48573dffbd4acb1596385478b905",
+        "raw4slotSha256": "4a31da3941dac81fc1babcadcbe4135fdcdcd295b3d5bfc8c799c507bc3f798a",
+        "authorReviewSha256": "cfdef6eb0d667a58786f94533c04827f147cca9a8b3c46b2600ea1ea5c3587ee"
+      },
+      "sourceUnchanged": true,
+      "semanticConclusionsRetained": true,
+      "changesDirectlyVerified": [
+        {
+          "exam": "24_연향중_2학기_기말_중1_기출",
+          "ordinal": 4,
+          "slot": "method",
+          "candidate": "중복계산보정",
+          "parent": "개수",
+          "parentDictionaryId": 129,
+          "src": "solution",
+          "quote": "한 번의 악수를 두 사람 쪽에서 각각 한 번씩 세었으므로 $2$로 나눈다"
+        },
+        {
+          "exam": "24_연향중_2학기_기말_중1_기출",
+          "ordinal": 13,
+          "slot": "given",
+          "candidate": "중공원기둥",
+          "parent": "원기둥",
+          "parentDictionaryId": 711,
+          "src": "stem",
+          "quote": "구멍 뚫린 원기둥"
+        }
+      ],
+      "status": "ACCEPTED"
+    }
+  ]
 }
