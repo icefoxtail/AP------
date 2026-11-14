@@ -1,0 +1,739 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E037",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:25:45.029331+00:00",
+  "sourceGitBlobSha": "b3a6f4bd3eaa6ca8b71e51555b9b0ef25cbdcef4",
+  "reviewSha256": "079bc75bfb34b55fb9cbcd0308fafa47e4a5d1a492aec8d54b208a6af60898c3",
+  "fourSlotSha256": "2bdb6e1d049d415fd86d1c817d8d76ed09bc0560bad4834a8e7a994df928563c",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E037.initial.json",
+  "initialFreezeSha256": "43913f2553f3fffd617e339434826f4b50e676b8a128c92c066517d09b9a629c",
+  "sampleOrdinals": [
+    3,
+    12,
+    20
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 3,
+      "classification": "접기 합동으로 넓이가 같은 삼각형을 고르는 결정이므로 단순분배132에 강제로 귀속하지 않은 leafgap을 수용한다.",
+      "binding": "ACTIVE TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES 정의와 부모를 실제 읽었으며 접기 합동→문자밑변·높이→넓이 계산이 기존해설과 같다. source curriculum 및 scoped binding은 미확정으로 보존한다.",
+      "crossConcept": "해당 primary 자체가 접기 합동과 넓이식을 포함하므로 기하 CC를 중복하지 않는다.",
+      "condition": "그림의 2b,3a,2b/3을 실제 확인했다. 별도 허용범위 조건을 만들지 않는다.",
+      "integration": "공식 candidate의 하나의 풀이 구조에 들어가는 단계이며 NONE을 수용한다.",
+      "difficulty": "중/2 B23, 접힌 삼각형의 대응을 알아보고 남은 길이식을 적용하는 정형 구조.",
+      "fourSlot": "실제 삼각형ADE/AFE 합동과 1/2·AD·DE의 해설 literal이 있으며 넓이가 목표다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "classification": "평행사변형의 변·각 성질190으로 판단한다. 그림의 두 각이등분선과 평행에서 두 이등변삼각형을 만드는 과정이 핵심이다.",
+      "binding": "ACTIVE TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS의 엇각·이등분→같은변→겹친 길이 정의를 읽고 실제 해설과 대조했다.",
+      "crossConcept": "동일 후보 내부 이등변삼각형 판정을 별도 CC로 중복하지 않는다.",
+      "condition": "실제 주어진 두 이등분선 조건은 literal로 유지되며 추가 수치범위 조건은 없다.",
+      "integration": "하나의 평행사변형 각이등분선 활용이므로 NONE.",
+      "difficulty": "중/2 B23, 그림에서 6/9와 BF/BE를 구별한 뒤 겹친 EF를 차로 구하는 표준 연결.",
+      "fourSlot": "주어진 이등분선 조건, EF길이 목표, 실제 이등변삼각형 문장과 길이차를 각각 확인했다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "classification": "일반 사다리꼴 대각선분할비와 삼각형 넓이비의 연쇄다. 등변사다리꼴198/중점연결199와 구분한 leafgap이 맞다.",
+      "binding": "ACTIVE TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID의 실제 정의·부모를 읽었다. 밑변비와 대각선분할을 통해 넓이비를 순차 적용하는 원해설과 같다.",
+      "crossConcept": "candidate primary가 두 넓이비 적용을 포함하므로 별도 닮음/넓이 CC 중복 없음.",
+      "condition": "AD∥BC는 실제 평행 조건이며 literal을 확인했다.",
+      "integration": "같은 넓이비 유형 내부의 순차계산은 별도 개념통합이 아니다.",
+      "difficulty": "독립3/저자2는 B23 인접판정이다. 정형 사다리꼴비 학습문제로 저자2를 유지할 수 있다.",
+      "fourSlot": "r2는 명시된 비례식을 NAMED로 보정했다. 주어진35/비2:3, 목표ABO넓이, 실제 비와 넓이식 모두 확인했다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_05ce5c09a7509969adfde9039406da8bae6edbe4a3f5b54aa06b6f1b0b06d6bd",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "단항식 곱몫과 중첩거듭제곱을 보기별 계산"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "여러단항식의거듭제곱·곱·몫을각각정리해오류찾기.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "단항식 곱몫과 중첩거듭제곱을 보기별 계산; 기본 지수법칙 학습 하와 여러 보기 정형계산 숫자2는 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_19d960620b30288e76f690ead3d1dde40f594661c564b36897f89fc8eed7c9ef",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "삼각형 넓이식에서 높이 역산 후 다항식 나눗셈"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "삼각형넓이식을높이에대해정리하여다항식나눗셈.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "삼각형 넓이식에서 높이 역산 후 다항식 나눗셈; 기본 넓이공식 학습 하와 역산·다항식 나눗셈 숫자2는 인접 호환이다. B23은 두단계 연결의 경계를 기록한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "접힌 두 삼각형 넓이 동일성과 남은 변의 식을 이용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "접기합동으로같은넓이삼각형을선택하고문자넓이를계산.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT",
+      "reason": "접힌 두 삼각형 넓이 동일성과 남은 변의 식을 이용"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_db021d814b20d08da2681d6dbaf45ea9d2654a18d5e17a606b8544d67cd9089a",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "잘못 더한 식을 두 번 빼는 역연산"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "잘못더한식을두번빼는정형복원.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "잘못 더한 식을 두 번 빼는 역연산; 잘못 계산한 식의 기본 복원 학습 하와 두번빼기 정형2는 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f0ab5b22193a694a89c232bbddbabadfc931d36f47499b7f7b8c546a11b72e7",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "전개·차수소거 후 일차부등식 정의"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "전개·소거뒤남은차수로일차부등식판정.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "전개·차수소거 후 일차부등식 정의; 정의 직접 적용의 하와 전개·소거 후 판정하는2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_e6656b739caebfe23069d55ce0764d317a83c0dd5c7a8fa7636ca0abb6af6704",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "복수 변형과 음수 곱셈의 방향 확인"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "양변음수연산에따른부등호방향직접판정.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "복수 변형과 음수 곱셈의 방향 확인; 정의 직접회상1과 여러표현 연결2의 B12 인접차이며 저자의1을 수용한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da3c7f2341f14c6a4d8c7e58c6745fd968bc10299fc9cb1a12bb4d14f6b0aa89",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "분수·소수 부등식 풀이 결과 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "정수·소수·분수계수의표준부등식풀이오류찾기.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "분수·소수 부등식 풀이 결과 비교; 익숙한 기본 부등식 학습 하와 분수전처리 비교의2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_5c3a1f3d369f91010f2072df760e54e7c7c9cf25619cc2d7d4409ec8173d653f",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "기본 부등식을 풀고 유한 자연수 해를 합함"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "부등식해범위에서자연수나열후합을구함.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "기본 부등식을 풀고 유한 자연수 해를 합함"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_0a8bde92a417d8fb1deacc811630e357a55dfd14a1a4a3e0db977fe03abd0c23",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "가장 작은 자연수1이 해가 되지 않는 경계"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "최소자연수1도포함되지않는경계조건으로계수범위.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "가장 작은 자연수1이 해가 되지 않는 경계"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6e7f80ca0d802690305d56d21c5efa020588439d2494098acaf7167fb9a6ecfb",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "여유시간에서 체류시간을 반영한 왕복시간 모델"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "왕복+구매시간상한을동일시간단위로세움.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT",
+      "reason": "여유시간에서 체류시간을 반영한 왕복시간 모델"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_ee6b3f2406bf9b9a9a9527cabc40f48be14fb4ebfc72b766988ecf61e99e44eb",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "둘레의 절반을 변의 비로 배분"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "둘레를반으로나눈뒤이웃변비에배분하는정형문제.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "둘레의 절반을 변의 비로 배분; 둘레·비의 기본 성질 학습 하와 두단계 비례배분2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_c56f8d08291cffb89de1583112e9319acfeac879f2f82a1d60951eaeb6d300e1",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "평행과 각이등분선에서 두 이등변삼각형을 얻어 겹친 길이차"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제그림평행과각이등분으로두이등변관계를만들어겹친변계산.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT",
+      "reason": "평행과 각이등분선에서 두 이등변삼각형을 얻어 겹친 길이차"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8ee1cd8663adcbfb43e38ac836e5a2329acddaa21b83c1a54687cc8a40716a09",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "평행사변형 판정조건의 여러 동치 표현 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "평행사변형판정의충분조건을직접비교.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "평행사변형 판정조건의 여러 동치 표현 비교; 정의 직접회상1과 여러표현 연결2의 B12 인접차이며 저자의1을 수용한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_1d200d70d5357c645e8169c12bc2bea9e5b6c3650e3c39c7b163cfa74e7e2b55",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "대변에 선 두 삼각형 넓이합이 전체의 절반인 성질 적용"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "대변쪽삼각형넓이합은전체반이라는학습성질직접대입.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "대변에 선 두 삼각형 넓이합이 전체의 절반인 성질 적용; 정의 직접회상1과 여러표현 연결2의 B12 인접차이며 저자의1을 수용한다.; 평행사변형 넓이 성질의 학습 중과 알려진 공식을 직접 대입하는1이 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "각이등분선의 직각을 얻은 뒤 직사각형 성질 선별"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "내각이등분선이만나직각임을확인한뒤직사각형성질판정.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "각이등분선의 직각을 얻은 뒤 직사각형 성질 선별"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_57a15c359d0e1be6119b2006116f66c9eef6c21e85b8b63beca84b67d23ab70a",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "평행사변형의 직사각형 충분조건을 구별"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "직사각형조건과마름모조건을직접구별.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "평행사변형의 직사각형 충분조건을 구별; 정의 직접회상1과 여러표현 연결2의 B12 인접차이며 저자의1을 수용한다.; 특수사각형 충분조건 구별의 학습 중과 직접 성질 비교1은 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "마름모 대각선 각이등분과 수직성을 이용한 두각합. 기존해설은그림y의각이등분연결설명생략"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "그림B의위각y와아래각전달및대각선직각으로예각합. 실제 y=ABO를 OBC의 예각으로 전달하는 각이등분 연결이 기존해설에서 생략되어 confidence low로 보존한다.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT_CONDITIONAL_LOW_WITH_SOURCE_DEBT",
+      "reason": "마름모 대각선 각이등분과 수직성을 이용한 두각합. 기존해설은그림y의각이등분연결설명생략; 마름모 대각선의 기본 학습 하와 각 위치 전달을 포함한2가 B12 인접 호환이다. 생략부채 low를 보존한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7cd254bca88a1c5ef7c6fc3e149025a5f407e49654c165e8f065b34e4d028d36",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "같은각에서 마름모를 먼저 증명하고 이웃각도 같아 정사각형을 도출"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "같은각에서마름모를보이고이웃각직각으로정사각형판정.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "같은각에서 마름모를 먼저 증명하고 이웃각도 같아 정사각형을 도출; 익숙한 표준도형 절차2와 연결형3의 B23 인접차로 저자의2를 수용한다.; 익숙한 같은각·같은변 정의 학습 하와 정사각형까지 연쇄 판정2는 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0e47687841db96160bfff4231d85301a3bbd520a7ce64c77ba05835a78694201",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "대각선 길이같음 성질을 도형별 직접 회상"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "각사각형의대각선성질을직접분류.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "대각선 길이같음 성질을 도형별 직접 회상"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ff9f4324b5d06f255c852bac1f2dbb88641ebba07809cd76ce3d0ee2dca85c41",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "대각선분할비→밑변비→전체삼각형넓이→부분삼각형넓이의 연결"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "평행밑변비와공통높이넓이비를두번연결하는정형도형활용.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT",
+      "reason": "대각선분할비→밑변비→전체삼각형넓이→부분삼각형넓이의 연결; 익숙한 표준도형 절차2와 연결형3의 B23 인접차로 저자의2를 수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_9a4120c029bbc4cb495be923220b348878dfdc307f47f7ce1f5115304c316083",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "공통삼각형 제거 후 같은밑변 높이 조건 비교"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "공통삼각형을덜어낸뒤같은밑변·높이를평행조건으로옮김.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "공통삼각형 제거 후 같은밑변 높이 조건 비교; 같은밑변·높이 성질의 기본 학습 하와 공통부분 제거를 포함한2는 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_0622e195cd91d697a36aa43e1c5fa8e9d9e937e549fb56f082fbfc6c608a3730",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "회전축별 두원기둥의 반지름·높이를 구분해 부피비 약분"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두회전축에서반지름·높이를구별해부피를나누는정형구조.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "회전축별 두원기둥의 반지름·높이를 구분해 부피비 약분"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_e6095f2fb6f3bff7f906c5fbd830fb9efeb5d5d1d98fae2fca15732221f25fd2",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "보충후 잔량분율로 하한부등식"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "채운뒤남는비율과최소잔량조건의표준부등식모델.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT",
+      "reason": "보충후 잔량분율로 하한부등식"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6b336f85f0c33eee6ee25bc0bbaad9f692ba6e41f33c1d664a7c72540dd839c6",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "평행사변형 다섯 판정조건의 직접 기호화"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯평행사변형판정조건을기호로직접표현.",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "평행사변형 다섯 판정조건의 직접 기호화; 다섯 조건의 기호화를 요구하는 학습 중과 정의 회상의1이 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_23395ed63df72bb131b2d8af13d18c5563a0452b37996fc33161c4e34972ab9e",
+      "independentInitial": {
+        "sourceOrdinal": 25,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "직전 도형에서 다음 도형으로 필요한 추가조건을 구별"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "직전도형에추가되어다음도형이되는조건을흐름도에서구별.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 25
+      },
+      "decision": "ACCEPT",
+      "reason": "직전 도형에서 다음 도형으로 필요한 추가조건을 구별"
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "기본 지수법칙 학습 하와 여러 보기 정형계산 숫자2는 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "기본 넓이공식 학습 하와 역산·다항식 나눗셈 숫자2는 인접 호환이다. B23은 두단계 연결의 경계를 기록한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "잘못 계산한 식의 기본 복원 학습 하와 두번빼기 정형2는 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "정의 직접 적용의 하와 전개·소거 후 판정하는2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "익숙한 기본 부등식 학습 하와 분수전처리 비교의2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "둘레·비의 기본 성질 학습 하와 두단계 비례배분2가 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "평행사변형 넓이 성질의 학습 중과 알려진 공식을 직접 대입하는1이 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "특수사각형 충분조건 구별의 학습 중과 직접 성질 비교1은 B12 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "마름모 대각선의 기본 학습 하와 각 위치 전달을 포함한2가 B12 인접 호환이다. 생략부채 low를 보존한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "익숙한 같은각·같은변 정의 학습 하와 정사각형까지 연쇄 판정2는 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "같은밑변·높이 성질의 기본 학습 하와 공통부분 제거를 포함한2는 인접 호환이다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "다섯 조건의 기호화를 요구하는 학습 중과 정의 회상의1이 B12 인접 호환이다."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 22,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    },
+    {
+      "sourceOrdinal": 25,
+      "decision": "ACCEPT_R2_NARROW_CORRECTION"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "Actual content25, solutions25 and fifteen images read. Similar E031 and exact Q22 official definition evidence reused without repeating completed review.",
+    "R2 goal objects, OPEN_SENTENCE condition394 misuse, polynomial-vs-equation given, response-count condition and NAMED correction were actually compared.",
+    "Q17 actual y is angleABO whereas existing solution directly treats angleOBC; missing bisector bridge is retained as explicit debt and low, without making a new solution.",
+    "Leaf gaps and unconfirmed scoped binding/resolver are not resolved by this receipt."
+  ]
+}
