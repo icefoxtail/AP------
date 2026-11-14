@@ -133,11 +133,78 @@
       "requiredChangesApplied": true
     }
   ],
-  "revision": 2,
+  "revision": 3,
   "reboundInputs": {
     "sourcePath": "0c2e146ce8831541111faa0eb9df2802b7c788e47fda88548bc4f867f44d39a4",
     "rawPath": "d187611ca4d58efc957c46e7106053d5ca0a5dbaca749a8897bd8ab73b3c4e78",
     "reviewPath": "d59894b76c16f4fd71f8437235340c5fde7ca4feb5395ae8e6813beeb4a6c29e"
   },
-  "correctionReadback": "Q4 반지름·순서/직선밖P; Q18 각80°·대응각 및 SAS NAMED; Q21 점순서 직접 재읽기 확인"
+  "correctionReadback": "Q4 반지름·순서/직선밖P; Q18 각80°·대응각 및 SAS NAMED; Q21 점순서 직접 재읽기 확인",
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_PARENT_SAME_SLOT_TECHNICAL_READBACK",
+      "sourceBytesUnchanged": true,
+      "semanticRejudgment": false,
+      "existingIndependentVerdictsRetained": true,
+      "checks": [
+        {
+          "exam": "26_신흥중_2학기_중간_중1_기출",
+          "ordinal": 10,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "parent": "삼각형",
+          "parentDictionaryId": 158,
+          "src": "solution",
+          "quote": "3+4=7$이어서 삼각형을 만들 수 없습니다",
+          "pass": true
+        },
+        {
+          "exam": "26_신흥중_2학기_중간_중1_기출",
+          "ordinal": 11,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "parent": "삼각형",
+          "parentDictionaryId": 158,
+          "src": "solution",
+          "quote": "2+4\\le7$이므로 삼각형이 되지 않습니다",
+          "pass": true
+        },
+        {
+          "exam": "26_신흥중_2학기_중간_중1_기출",
+          "ordinal": 13,
+          "slot": "given",
+          "candidate": "정팔각형",
+          "parent": "정다각형",
+          "parentDictionaryId": 169,
+          "src": "stem",
+          "quote": "정팔각형",
+          "pass": true
+        }
+      ],
+      "quoteValidation": {
+        "count": 170,
+        "fail": 0
+      },
+      "latestInputs": {
+        "source": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/sources/archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+          "blob": "c04b6bcb495b2d1cb4285ea6d83b381c7ee13e13",
+          "sha256": "0c2e146ce8831541111faa0eb9df2802b7c788e47fda88548bc4f867f44d39a4"
+        },
+        "raw": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/evidence/26_신흥중_2학기_중간_중1_기출.4slot.json",
+          "sha256": "dfcd0027a184e4d372bbfd64c02bb266c1cc7f831e79d9136271d01748f8d07a"
+        },
+        "review": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/reviews/26_신흥중_2학기_중간_중1_기출-review.json",
+          "sha256": "4ca0fd10d8d9ffd9adfe021651ea34a70a941d23e44c2bcfd1994d06a90be7ff"
+        },
+        "compact": {
+          "path": "/workspace/scratch/64695b8ede31/agent-c/compact/archive/data/item-4slot/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.4slot.json",
+          "sha256": "9e124d88cf33c3c858ae43e573237bb2b99ca93dddf347416cd11f0ffdb1d0b2"
+        }
+      },
+      "note": "후보와 사전 부모가 같은 슬롯·같은 직접 quote로 유지됨을 실제 raw/source에서 확인했다."
+    }
+  ]
 }
