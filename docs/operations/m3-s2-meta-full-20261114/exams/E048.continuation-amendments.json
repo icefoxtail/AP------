@@ -1,0 +1,56 @@
+{
+  "examId": "E048",
+  "kind": "CANONICAL_FIXED_RATIO_REUSE_CORRECTION",
+  "beforeHashes": {
+    "review.json": "8ca84e448ad01cb4d6838b4f952c7282dd6e90d07f2967277874fec5137f47e4",
+    "source-patch.json": "49093bce67dc66611a60386705d27fde9e474d16f5be3426c9d95e5d7a7d1dfa",
+    "E048.4slot.json": "0950b711389ad17717cc7913153c808d261ee67e5d36ef1e509890a7449a486f"
+  },
+  "changes": [
+    {
+      "ordinal": 4,
+      "decision": "RETRACT_DRAFT_GAP_REUSE_EXISTING_ACTIVE",
+      "baseRecordId": "M3-RPM-059",
+      "currentRecordId": "M3-RPM-147",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "difficultyAndFourSlotUnchanged": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "RETRACT_DRAFT_GAP_REUSE_EXISTING_ACTIVE",
+      "baseRecordId": "M3-RPM-065",
+      "currentRecordId": "M3-RPM-153",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "difficultyAndFourSlotUnchanged": true
+    }
+  ],
+  "retractedDraftProposals": [
+    {
+      "id": "ROOT-E048-1",
+      "kind": "PUBLISHER_PARENT_LEAF_AND_NATIVE_TEMPLATE_GAP",
+      "nameKo": "고정 특수직각삼각형 변비에 따른 길이 복원",
+      "definition": "45-45-90 및30-60-90의 알려진 변비를 사용하여 길이식을 연결한다.",
+      "distinction": "기존 풀이가 삼각비 계산이나 피타고라스 제곱식을 실제 사용하지 않는다. 정확 publisher 부모/leaf와 native PT/TPL을 확정할 근거가 없어 인접분기에 강제하지 않는다.",
+      "supportOrdinals": [
+        4,
+        6
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_fe2892469f6cb3b09186b62baa56c4348c5c105d5f0737e38c3c5be90f0b6da2",
+        "qid_v1_abb2259b6b99b26dc12daa5318bc472693ece0228842c86efe2def78a517235a"
+      ],
+      "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+      "sourceNewStringKeyInserted": false,
+      "reuses": [
+        {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E042.proposals.json",
+          "selector": "Q3/Q9",
+          "status": "SAME_TASK_PENDING_REMOTE_PUBLICATION",
+          "snapshotSha256AtRead": "fccf0e4747566c700e3684555457997665840446411801f7f94e50b6f7403129"
+        }
+      ]
+    }
+  ],
+  "reason": "Independent A found actual existing canonical and final conflict-adjudication support. No notation restriction exists in definition.",
+  "newMathVerification": false
+}

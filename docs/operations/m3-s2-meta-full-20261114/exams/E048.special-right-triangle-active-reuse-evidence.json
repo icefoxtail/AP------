@@ -1,0 +1,194 @@
+{
+  "schemaVersion": "metadata-active-reuse-definition-evidence-v1",
+  "examId": "E048",
+  "compiledBy": "review_a",
+  "requestedBy": "root",
+  "status": "CURRENT_CANONICAL_AND_CURRENT_SOURCE_EVIDENCE_VERIFIED",
+  "scope": "E048 Q4/Q6 특수직각삼각형의 고정변비 표현과 기존 ACTIVE 삼각비 활용 의미범위 대조. 완료 시험지의 재검토나 새 수학검증은 하지 않는다.",
+  "supportingQuestionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+  "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#8",
+  "currentSource": {
+    "path": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+    "recordSelector": "questions/id=8 (sourceOrdinal=8)",
+    "gitBlob": "78b77ff0d68489d13dfeab388de5ec7b9286711b",
+    "sha256": "556b9318a067d4851623e5317e4616200a0e86e8b9a66aa1b0dd3209fcdb537a",
+    "sourceOrdinal": 8,
+    "sourceQuestionId": 8,
+    "actualDecisiveStep": "직각 ABH의45°와 빗변4√2에서 AH=BH=4를 직접 정하고 HC를 뺀 뒤 AHC에 피타고라스를 적용한다. 현 해설에는 sin/cos/tan 표기가 없다.",
+    "solutionSha256": "d844364f800d9c60bca510d558ebffc8a15abc50c4513d1ba06e8b986c00384d",
+    "solutionUsesExplicitSinCosTan": false
+  },
+  "activeRegistry": {
+    "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "recordSelector": "templates[templateKey=TPL_TRIG_APPLICATION_CHAINED_MEASURE].supportingQuestionUids contains qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+    "gitBlob": "5856961e9dcfa71957b8b1b4657a5d3bf92fd12b",
+    "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+    "exactSupportMembership": true,
+    "problemType": {
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY"
+    },
+    "templates": [
+      {
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "두 관측점·두 각에서 공통 높이·거리를 공유하는 식을 세운다.",
+        "internalSkeleton": "공통 미지량에 대한 두 삼각비 식을 세워 연립한다.",
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    ]
+  },
+  "semanticFreeze": {
+    "path": "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+    "recordSelector": "records[questionUid=qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59]",
+    "gitBlob": "9347c7e16d119b48039ee376ab96c3fa3ab2e8e4",
+    "sha256": "74f82314617e8b1cd6ffbc3c6693f7c12ea5714d033f21a0a2e650048f80e4d2",
+    "record": {
+      "questionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+      "grade": "M3",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#8",
+      "sourceFingerprint": "b033d2a0cb2015a2cd586f755494d68ec296f9e4c015a1ffea10302ec3845731",
+      "inputBundleSha": "c1da9938952c52bf9ac896718947b80deb94dbd8f892579b4b220c07beddff29",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4ReviewStatus": "FINAL",
+      "decisiveStep": "45-45-90에서 AH=BH=4, 이어 AHC에서 피타고라스로 AC 계산",
+      "l4SemanticReason": "삼각비 활용 연쇄형이며 피타고라스 정리는 primary 밖의 필수 보조 단계라 CC_PYTHAGOREAN을 유지한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptEvidence": {
+        "CC_PYTHAGOREAN": {
+          "decisiveEvidence": "삼각비 활용 연쇄형이며 피타고라스 정리는 primary 밖의 필수 보조 단계라 CC_PYTHAGOREAN을 유지한다.",
+          "conceptDefinition": "직각삼각형에서 세 변의 길이 관계를 이용하는 개념."
+        }
+      },
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT143_LUNA90_FINAL",
+      "l3ReviewStatus": "FINAL",
+      "l3AuthoritySource": "GPT143_LUNA90_FINAL_APPLICATION_20260923",
+      "authority": "MIDDLE_GEOMETRY_L4_CROSSCONCEPT_SOURCE_SOLUTION_FINAL"
+    }
+  },
+  "conflictAdjudication": {
+    "path": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_conflict_adjudication_final_143_20260923.json",
+    "recordSelector": "records[questionUid=qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59]",
+    "gitBlob": "9ec96a5c58bc23b0ddee194bda4df14bd4a52c67",
+    "sha256": "ae6eaf01d0c6d4c4a8de4d79384922f2b8db44dd28df641b426535461475e380",
+    "record": {
+      "batchSequence": 40,
+      "gptIndex": 412,
+      "lunaIndex": 52,
+      "questionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#8",
+      "sourceFingerprint": "b033d2a0cb2015a2cd586f755494d68ec296f9e4c015a1ffea10302ec3845731",
+      "sourceFileBlobSha": "09d4bb2c31dd46a839eb5147db78be92c9a91c25",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "특수각으로 중간 길이를 구한 뒤 피타고라스로 최종 길이 계산",
+        "decisiveStep": "45-45-90에서 AH=BH=4, 이어 AHC에서 피타고라스로 AC 계산"
+      },
+      "lunaDecision": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M3-05-TRIG_RATIO",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M3-05-TRIG_RATIO_APPLICATION",
+        "L3": "PT_TRIG_RATIO_APPLICATION",
+        "L4": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "CC": [
+          "CC_PYTHAGOREAN"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "삼각비 활용 연쇄형이며 피타고라스 정리는 primary 밖의 필수 보조 단계라 CC_PYTHAGOREAN을 유지한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    "scopeCaveat": "이 기록 자체의 officialCanonicalFinalClaim=false를 보존한다. 독립적으로 현재 ACTIVE registry의 지원 UID 포함과 현재 source·해설을 대조했으며 과거 PASS만으로 현재 상태를 추정하지 않았다."
+  },
+  "definitionInterpretation": {
+    "decision": "NO_EXPLICIT_FUNCTION_NOTATION_REQUIREMENT",
+    "reason": "정형화된30/45/60도 직각삼각형의 변비는 삼각비의 수치 관계를 고정비 형태로 표현한다. 현재 ACTIVE 지원문항과 final semantic freeze가 실제 고정변비 풀이를 삼각비 활용의 출발 단계로 수용하므로 sin/cos/tan 문자열 유무를 분류의 배제조건으로 추가할 근거가 없다. 길이 목표를 가진 E048 Q4는 DIRECT의 목표측정 skeleton, 두 각의 공통높이를 식으로 연결하는 Q6은 SHARED_HEIGHT의 skeleton에 맞는다.",
+    "sourceSolutionPolicy": "실제 source 해설은 고정변비 표현 그대로 보존한다. 새 sin/cos/tan 풀이를 추가하지 않는다.",
+    "fourSlotPolicy": "원래 실제 방법인 직각이등변삼각형·고정변비·공유높이 표현을 유지한다. 표기와 다른 풀이방법을 소급하여 주장하지 않는다.",
+    "E048Recommendations": [
+      {
+        "ordinal": 4,
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "basis": "등변·보각으로45도를 복원한 뒤 하나의45-45-90 삼각형에서 목표 두 직각변을 직접 산출한다."
+      },
+      {
+        "ordinal": 6,
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "basis": "두 특수각에서 공통높이 h에 대한 두 밑변 관계를 세우고 그 합5에 연결한다."
+      }
+    ],
+    "E043Q11PrimaryUnchanged": "각의 이등분선 정리가 최종 목표 조각을 결정하므로 일반 이등분선 PT/TPL Primary는 유지한다."
+  },
+  "auxiliaryConceptRelatedEvidence": {
+    "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+    "recordSelector": "concepts[conceptKey=CC_SPECIAL_ANGLES or CC_ISOSCELES_RIGHT_TRIANGLE]",
+    "gitBlob": "c92d9eb64df0d1173b5f964570ddedf0940b0601",
+    "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+    "definitions": [
+      {
+        "conceptKey": "CC_SPECIAL_ANGLES",
+        "canonicalLabelKo": "특수각의 삼각비",
+        "definition": "30°, 45°, 60° 등 특수각에 대한 정형화된 삼각비 값과 사칙연산",
+        "status": "ACTIVE",
+        "ownerConceptShard": "TRIGONOMETRY"
+      },
+      {
+        "conceptKey": "CC_ISOSCELES_RIGHT_TRIANGLE",
+        "canonicalLabelKo": "직각이등변삼각형의 삼각비",
+        "definition": "두 변의 길이가 같고 직각을 낀 45°-45°-90° 삼각형에서 세 변의 비 1:1:√2를 통한 45° 삼각비",
+        "status": "ACTIVE",
+        "ownerConceptShard": "TRIGONOMETRY"
+      }
+    ],
+    "directSupportLimitation": "위 고정변비 UID의 freeze는 CC_PYTHAGOREAN을 지지하며 CC_SPECIAL_ANGLES까지 직접 명시하지 않는다. 고정비를 CC_SPECIAL_ANGLES 범위에 포함할지는 현재 정의와 고정비/삼각비 의미 대응에 따른 별도 추론이다."
+  },
+  "newMathematicalVerification": false,
+  "sharedRegistryWrites": false
+}

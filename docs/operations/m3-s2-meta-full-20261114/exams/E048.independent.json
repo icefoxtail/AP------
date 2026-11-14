@@ -1,0 +1,350 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E048",
+  "author": "review_root",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "0a4a96522342f3467c38311611bb241d9166035c",
+  "sourceSha256": "3f92700bb696c9b907d4c5be3d8d0433012ab69350dbe772791235f318960f06",
+  "inputSha256": "ca886bf2b6a909fb1fab0bc923b146f01fc93c1be31a0a9d1c05fe42f313c4db",
+  "artifactHashes": {
+    "review.json": "f2244080a9b0007ab70dcea80555c7f5e0720474df320eb2008f00dcdfcf21e1",
+    "source-patch.json": "f8e22bfa3d13bf3f2ed1a112e13f2e1366b83c16776a152ca7564342b723aaf3",
+    "E048.4slot.json": "fce636907cf9006f0bfe7fad3f6677ae69625b3b2ec8b145624870db5571af57",
+    "special-right-triangle-active-reuse-evidence.json": "04aef640205a7a35a4d4c0fec87250a077322b492552c798e6263b9a3f1dc8b7"
+  },
+  "sampleOrdinals": [
+    4,
+    13,
+    19
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_fe2892469f6cb3b09186b62baa56c4348c5c105d5f0737e38c3c5be90f0b6da2",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 9,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "현재 원본 그림의 AD=BD8, ∠ABD22.5°, C의 직각 및 DC/AC의 x/y 목표를 원문·해설SVG와 함께 확인했다. 이등변 밑각과 보각으로 ADC45°를 만든 뒤 고정1:1:√2 변비로 두 목표 길이를 산출하는 실제 방법이다. ACTIVE registry 지원 UID·현재 source·freeze/conflict 결정기록을 직접 대조해 함수 기호가 없다는 이유만으로 삼각비 활용을 배제하지 않음을 확인했다. 최종 DIRECT 및 RPM059/147의 의미 재사용을 수용하며 실제 4칸은 고정변비 표현을 보존한다. 보완된 given 길이/각, goal 선분의 인용은 그림의 입력·대상을 정확히 재진술한다.",
+      "sourceRead": [
+        "source.question",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/q04.png",
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/q04-solution.svg"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_9812e850795ce10a35a9dcfc290bc013a4aab9646cafa0fa3c9c1e13619a2276",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 8,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 그림의 두 교차 현과60° 교각, 서로 마주보는 두 호2π/4π를 확인했다. 현재 해설SVG에는 실제 보조 현AC가 그어져 있다. 기존 해설은 평각/내각합으로 두 원주각의 합을 만든 뒤 호 길이의 비로 나누고 중심각·전체 원주를 거쳐 반지름을 역산한다. 실제 사용한 골격에 맞게 COMPOSITE를 고르고 보조 CC 내각합/보각을 기록한 것이 타당하다. 직접 두현 교각 공식을 새로 삽입하지 않았으며 given의 길이/각 보완과 goal 반지름, method 원주각·비례식·원주의 결속을 수용한다.",
+      "sourceRead": [
+        "source.question",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/q13.png",
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/q13-solution.svg"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_194e8edb2ae2a0b15f830140a90c540952aed44c9a82eba60a6a82bdcb63c892",
+      "status": "PASS",
+      "criticalGoalMethod": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "exactQuoteCount": 12,
+      "explicitConditionCoverage": "PASS",
+      "metadataClassification": "PASS",
+      "judgment": "원본 평행사변형 AD9/CD6/∠ADC60°, M의 중점표식과 교점P/O를 해설SVG의 닮음삼각형 표시까지 대조했다. 실제 해설은 닮음·중점으로 PO:BD를 정하고 sin60으로 높이를 구한 넓이에 같은 높이의 면적비를 적용한다. 길이에서 넓이로 잇는 CHAINED의 실제 골격과 보조 닮음/평행사변형/면적비를 구별한 것이 맞다. 보완된 given 길이/각과 goal 삼각형은 실제 입력·APO 목표를 반영하며 method의 닮음·중점·비·사인·넓이 인용이 현재 해설과 일치한다.",
+      "sourceRead": [
+        "source.question",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalEmbeddedImage",
+        "existingSolutionImage"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/s01.png",
+        "archive/assets/images/21_연향중_2학기_기말_중3_수학/s01-solution.svg"
+      ],
+      "newMathematicalVerification": false
+    }
+  ],
+  "status": "PASS",
+  "separateDifficultyRef": "/workspace/scratch/6538df266481/worker-outputs/a/independent/E048.difficulty.json",
+  "separateDifficultySha256": "b0f50428c7e6fbee7b5dae8ddca3a9275c6a89eb5d57c6687f1056ab1b5dd9fe",
+  "scope": "작성자 외3개 4칸·메타 의미 표본 및 Q6/Q20 좁은 추가 의미검토, 숫자변경6건. 원본 및 기존해설이미지를 실제 읽었으며 새 R1/R2/R3 없음.",
+  "newMathematicalVerification": false,
+  "exactQuoteCheckCount": 29,
+  "sampled4slotSha256": "fce636907cf9006f0bfe7fad3f6677ae69625b3b2ec8b145624870db5571af57",
+  "sampledReviewSha256": "f2244080a9b0007ab70dcea80555c7f5e0720474df320eb2008f00dcdfcf21e1",
+  "sampledSourcePatchSha256": "f8e22bfa3d13bf3f2ed1a112e13f2e1366b83c16776a152ca7564342b723aaf3",
+  "sourceByteVerification": "INPUT_BASELINE_SHA256_MATCH",
+  "assetVersionChecks": [
+    {
+      "ordinal": 3,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q03.png",
+      "gitBlob": "e6413465dcc07f147fad3e828ce425dcb2ed2920",
+      "sha256": "23d72340ae56f76efe588c59674db8b63e9f0a4f122690d5ad09dc3f0c5d9fb0",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/03-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/03-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 3,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q03-solution.svg",
+      "gitBlob": "aa0c98eb7be64b7feb9da419194420aae1d38a51",
+      "sha256": "edcf2a09a5d4ffc32a2e5cc361cfee334ab0ac4ab2f6641ec7bc60c285d69273",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/03-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/03-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 4,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q04.png",
+      "gitBlob": "9804a569dbbc14dede717dc1df2e9cd33f9e9a90",
+      "sha256": "6aa82d0e8d745445f826dbedaaa8bbf51f423346f7695fdd97493388495a7e96",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/04-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/04-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 4,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q04-solution.svg",
+      "gitBlob": "9ae1e18fbc8c1187126b50f7064771cbd881fb48",
+      "sha256": "be3c94c98b8dd0cb8dc8b3354b609f03fe55af2c06c4d54373beef0a2a2730e9",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/04-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/04-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 5,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q05.png",
+      "gitBlob": "f9ff3b7f047bc3a3e8cedf0c50a9db797b5182ab",
+      "sha256": "d396b5cff73d5f758a637db6afaacf10e6f28045ecb5a1f67d0e444a44d071bf",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/05-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/05-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 5,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q05-solution.svg",
+      "gitBlob": "4be59cc88895740fdaf6c512666f30df1a849bf1",
+      "sha256": "91339e145835c09be6c1ad858c4f36bab2346ce0bd4028bd857afd2f1e13658e",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/05-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/05-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 6,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q06.png",
+      "gitBlob": "707ae2e567922b0a22cc73e0e60390cee898b33a",
+      "sha256": "36ef97fff257949becd578d2e3a4e1fb1e0524e123d65bd6a134ea5256c47295",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/06-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/06-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 6,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q06-solution.svg",
+      "gitBlob": "c605aedc908a78c1bc7d7ec7ae4f19fc64f2a8ec",
+      "sha256": "62434a710b708b422ae4810457404815128829d21a6a5cdf88ad500aa2a36c63",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/06-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/06-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 7,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q07.png",
+      "gitBlob": "2e646e617d27394cabf5ecb55f62a6b634203b35",
+      "sha256": "06d1b189d8099aa1d7856bf2eacc861f271e0ff0f5d8b6ed654b64ca224553ea",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/07-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/07-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 7,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q07-solution.svg",
+      "gitBlob": "8b841a08e4d23422ff5f1c3e2dae38e1a7f9c227",
+      "sha256": "d80528405e0f4fba3584c5f6b86704774cf0d4dd5ec6dbc67406d1e4172c369d",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/07-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/07-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 9,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q09.png",
+      "gitBlob": "06c87b15f869dc545fe09b55a1f2a03646cd41d4",
+      "sha256": "b30764b71c313687e9d10282be3f90db705612c2073116931ed4604c90abe76f",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/09-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/09-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 9,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q09-solution.svg",
+      "gitBlob": "1f2473bbc6a6ac602611128b92204053db1d72b3",
+      "sha256": "7d56511943a3ea1866eddb55fed04f72cebd77103f2c4bf7eac833c25ca73fbb",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/09-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/09-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 13,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q13.png",
+      "gitBlob": "86ecf2d3a6b2e205299161f263b60b28943c342e",
+      "sha256": "ea1de7eefc497f1d308f5919cf231b18715cc6c8e207dbe4df56664af8ba825c",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/13-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/13-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 13,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/q13-solution.svg",
+      "gitBlob": "32e869275d1cddc1d2002395f5475d3be86ebec4",
+      "sha256": "00e38afbb8bac40baf6720e3092ecfab171943cf1784084dadd9cde28873aa9c",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/13-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/13-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 19,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/s01.png",
+      "gitBlob": "1e771fd80fd2b8af63620ca0c7f3923f21fa1066",
+      "sha256": "e0c05cb025905ce5d8a054e6891f9ed7244f6b649492ce3479fc607c65217f6c",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/19-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/19-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 19,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/s01-solution.svg",
+      "gitBlob": "55e1dc5ddcafdfc093e3e48dba476409f7e2c220",
+      "sha256": "9a8c4b906c95617319e77bbc432c07cd17c3982718a36644a96d1a41f28ca145",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/19-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/19-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 20,
+      "kind": "original",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/s02.png",
+      "gitBlob": "124669fac5738917096c4bd3254b47d5786c718e",
+      "sha256": "e4a35153c8f8a47c123dc59c935be20a39fbd03dc07ee8c0bf1f70dee21b8a8b",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/20-original-0.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/20-original-0.png",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    },
+    {
+      "ordinal": 20,
+      "kind": "solutionImage",
+      "sourcePath": "archive/assets/images/21_연향중_2학기_기말_중3_수학/s02-solution.svg",
+      "gitBlob": "5cc67bb094a24fe6848ba1e685458c550355750d",
+      "sha256": "3f1fd87d4f6185725b7b71249c4a36ca7bb713b6bc2743a41ea654fe218f6181",
+      "localInspectionPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/20-solutionImage-1.png",
+      "rawPath": "/workspace/scratch/6538df266481/worker-outputs/root/E048/assets/20-solutionImage-1.svg",
+      "independentCurrentBlobCheck": "PASS",
+      "visualRead": true
+    }
+  ],
+  "additionalMeaningChecks": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_abb2259b6b99b26dc12daa5318bc472693ece0228842c86efe2def78a517235a",
+      "status": "PASS",
+      "decision": "EXISTING_ACTIVE_SHARED_HEIGHT_REUSE",
+      "basis": "현재 원문45°/60°/BC5와 원본·해설 수선H를 확인했다. 고정변비 BH=h,CH=h/√3를 두 각이 공유하는 높이의 식으로 연결하는 실제 skeleton은 SHARED_HEIGHT이다. 함수 이름 유무를 배제조건으로 두지 않는 현재 ACTIVE 지원 근거와 일치하며 보조선 RPM065/153 재사용이 타당하다. 실제 해설·4칸 고정변비 표현은 보존한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e8cacc18082642c4046428cce7c7d0ce9341ccfc2fb69edb7bbc33584db51d7c",
+      "status": "PASS",
+      "decision": "SECTOR_MEASURE_M1_RPM089_AND_202_REUSE",
+      "basis": "원본 반원 AD, 각OAB55°/BOC90°와 호CD5를 확인했다. OA=OB 이등변·내각합·반원 평각·호와 중심각 비례만 쓰므로 원이 보인다는 이유로 중3 원주각으로 분류하지 않는다. 현재 ACTIVE SECTOR_MEASURE 정의와 M1 원과부채꼴 leaf089/202의 실제 범위에 맞으며 새 교육과정 출처를 추정하지 않았다."
+    }
+  ],
+  "targetedSlotAmendmentAccepted": [
+    {
+      "ordinal": 4,
+      "givenAdded": [
+        "길이",
+        "각"
+      ],
+      "goalAdded": [
+        "선분"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "givenAdded": [
+        "길이",
+        "각"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "givenAdded": [
+        "길이",
+        "각"
+      ],
+      "goalAdded": [
+        "삼각형"
+      ]
+    }
+  ],
+  "newLevelPolicyAccepted": "전21 source에는 level 문자열이 없고 numeric도 operational metadata에만 있었다. 신규 level 판단을 보완했다는 출처를 명시하며 역사적 수준을 보존했다고 허위 주장하지 않는다."
+}

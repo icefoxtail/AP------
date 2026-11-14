@@ -1,0 +1,1012 @@
+{
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_9e7de9274ebb7395e2b09689c611cd6329aad2dd1f2c08a689c02990724ad583",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-059",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-147",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_fe5d49b0dadd9e739562b8676fbd4c73b49f0fa1b0c865ced42f8e4cffba638f",
+      "problemType": {
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "definition": "2022 대수의 삼각함수의 활용에서 삼각형의 넓이을 주요 풀이 구조로 쓰는 유형.",
+        "ownerPack": "ALGEBRA_2022",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "parentProblemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "definition": "2022 대수 삼각형의 넓이의 두 변과 끼인각 풀이 분기. RPM H2-M1-RPM-113 정본 계승.",
+        "internalSkeleton": "삼각형의 넓이 → 두 변과 끼인각",
+        "ownerPack": "ALGEBRA_2022",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-061",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "globalActiveTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+          "globalActiveProblemType": "PT_H22A_05_TRIANGLE_AREA",
+          "templateCanonicalOwner": "ALGEBRA_2022",
+          "problemTypeCanonicalOwner": "ALGEBRA_2022",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-149",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_H22A_05_TRIANGLE_AREA_113",
+          "globalActiveProblemType": "PT_H22A_05_TRIANGLE_AREA",
+          "templateCanonicalOwner": "ALGEBRA_2022",
+          "problemTypeCanonicalOwner": "ALGEBRA_2022",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_0168e3d4f2ae8423b14d94a5723690b45683406e07f36ef0a44ac4f5206445e4",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "두 관측점·두 각에서 공통 높이·거리를 공유하는 식을 세운다.",
+        "internalSkeleton": "공통 미지량에 대한 두 삼각비 식을 세워 연립한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_LINEAR_EQUATIONS",
+          "definition": "삼각비로 표현된 기하량 사이의 선형 관계식을 미지수 x에 대해 풀어 수치를 확정하는 기법",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+          "definition": "분모에 근호가 포함된 분수에서 분모·분자에 켤레를 곱하여 분모를 유리수로 만드는 변형.",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-064",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-152",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_fe2892469f6cb3b09186b62baa56c4348c5c105d5f0737e38c3c5be90f0b6da2",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_ISOSCELES_TRIANGLE",
+          "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 세 내각의 합이 180도인 성질",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_SUPPLEMENTARY_ANGLES",
+          "definition": "한 직선 위의 평각은 180°이며, 삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-059",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-147",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ba05e9d31f8198acde9ace4ddb5bdee9f7f20f1aabe1196755919a5eb9cfd275",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_SUPPLEMENTARY_ANGLES",
+          "definition": "한 직선 위의 평각은 180°이며, 삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-062",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-150",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_abb2259b6b99b26dc12daa5318bc472693ece0228842c86efe2def78a517235a",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "두 관측점·두 각에서 공통 높이·거리를 공유하는 식을 세운다.",
+        "internalSkeleton": "공통 미지량에 대한 두 삼각비 식을 세워 연립한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+          "definition": "분모에 근호가 포함된 분수에서 분모·분자에 켤레를 곱하여 분모를 유리수로 만드는 변형.",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-065",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-153",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_7debeec4259e3080b3841e611d9bfb1af16479c69ebdea5ed32eb231c0ee2556",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 목표 길이·높이·거리·기본 측정값을 직접 구한다.",
+        "internalSkeleton": "한 개 또는 연결된 직각삼각형에서 목표 측정값을 바로 산출한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-063",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-151",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f3b1714d9908048764e2947dc0256d84fef1429f82987267a0fbf8afe521bead",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-075",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-163",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_f5b38f6e8d819d458350fc1c0f24deacd38b6a229c7eff2051938d929ed17403",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-076",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-164",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_SUPPLEMENTARY_ANGLES",
+          "definition": "한 직선 위의 평각은 180°이며, 삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-074",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-162",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_4149331dd1f0ccd9e5d3053c9ef1f9635bbec1666023a2beda98e9801e7261a8",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-075",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-163",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_d96bacd0094390e185d432f15540c87a0bff579ababdb4fda5de93f9e6c37659",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_SUPPLEMENTARY_ANGLES",
+          "definition": "한 직선 위의 평각은 180°이며, 삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-074",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-162",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_9812e850795ce10a35a9dcfc290bc013a4aab9646cafa0fa3c9c1e13619a2276",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "여러 원주각·중심각·접선·현 관계를 순차 결합한다.",
+        "internalSkeleton": "복수의 원의 각 관계를 연쇄해 목표각·길이·넓이를 결정한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_SUPPLEMENTARY_ANGLES",
+          "definition": "한 직선 위의 평각은 180°이며, 삼각형의 한 외각은 이웃하지 않는 두 내각의 합과 같다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-080",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-168",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_81aae24a168c28b8160a054760b87b9d8045cec0e8bb0e72ba0463848a549a6c",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호의 대응 관계를 이용한다.",
+        "internalSkeleton": "호·중심각·원주각의 배수 관계로 목표각을 계산한다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-076",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-164",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_0f45f5c706fd75c0455381cddeda12299d443326eb77b6cacae822b573dfed7b",
+      "problemType": null,
+      "template": null,
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-091",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-179",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_40227ed5039590f2deb29ae32f5fa8aa54ed414b7eb4179c69efe591e9b63af0",
+      "problemType": null,
+      "template": null,
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-088",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-179",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_ba54188ed94e0e03289ffc7ce4b3a9459bfc02157aee9dc493d0f04fd81e400c",
+      "problemType": null,
+      "template": null,
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-092",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-179",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_229b30647de2da7c189569e6cce4a221730659dda82b11188e6715dd36b3d781",
+      "problemType": null,
+      "template": null,
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_PERCENTAGE_CALCULATION",
+          "definition": "전체 도수에 대한 특정 계급이나 범주의 도수 비율에 100을 곱하여 백분율(%)을 구하는 연산",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-088",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022"
+        }
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_194e8edb2ae2a0b15f830140a90c540952aed44c9a82eba60a6a82bdcb63c892",
+      "problemType": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비를 이용해 길이·높이·거리·넓이 등 다른 기하량을 구하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "parentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "definition": "삼각비로 중간 길이·각을 만든 뒤 넓이·둘레·부피·직선식 등으로 연결한다.",
+        "internalSkeleton": "삼각비 계산 결과를 다른 도형량·대상량의 계산으로 이어간다.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_TRIANGLE_SIMILARITY",
+          "definition": "대응하는 두 각의 크기가 같을 때(AA) 성립하는 삼각형의 닮음 및 대응변의 길이의 비",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_PARALLELOGRAM_PROPERTIES",
+          "definition": "평행사변형의 두 대각선이 서로를 이등분하는 성질을 사용한다.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_AREA_RATIO",
+          "definition": "두 도형의 넓이 사이의 비율 관계.",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-062",
+          "mappingStatus": "FAMILY_ACTIVE",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-150",
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "globalActiveTemplate": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "globalActiveProblemType": "PT_TRIG_RATIO_APPLICATION",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e8cacc18082642c4046428cce7c7d0ce9341ccfc2fb69edb7bbc33584db51d7c",
+      "problemType": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "원주각·중심각·호·내접사각형 및 접선-현의 각 관계를 핵심 전략으로 이용하는 유형.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "template": {
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "definition": "중심각·반지름·호의 길이의 비례로 부채꼴의 호 길이·넓이를 구하거나 부채꼴이 포함된 합성도형의 둘레·넓이를 계산.",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "status": "ACTIVE"
+      },
+      "crossConceptDefinitions": [
+        {
+          "key": "CC_ISOSCELES_TRIANGLE",
+          "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 세 내각의 합이 180도인 성질",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "status": "ACTIVE"
+        }
+      ],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M1-RPM-089",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M1-RPM-202",
+          "mappingStatus": "DIRECT_ACTIVE",
+          "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+          "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+          "exactContextBindingCount": 1,
+          "bindingOwners": [
+            "MIDDLE_GEOMETRY"
+          ]
+        }
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_6da45452565a185143af3045939699f56e923d679651ef8859eaedf1ea344265",
+      "problemType": null,
+      "template": null,
+      "crossConceptDefinitions": [],
+      "contextInspection": [
+        {
+          "role": "original",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-090",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        },
+        {
+          "role": "current2022",
+          "notResolverResult": true,
+          "crosswalkRecordId": "M3-RPM-180",
+          "mappingStatus": "RPM_ONLY",
+          "globalActiveTemplate": null,
+          "globalActiveProblemType": null,
+          "exactContextBindingCount": 0,
+          "bindingOwners": []
+        }
+      ]
+    }
+  ]
+}

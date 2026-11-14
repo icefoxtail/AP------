@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ROOT-E048-2",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "실제 변량쌍의 상관관계 판정",
+    "definition": "실제 변량 맥락의 증가·감소 경향에서 상관관계를 판정한다.",
+    "distinction": "순서통계량이나 좌표 범위 집계와 구별한다.",
+    "supportOrdinals": [
+      15,
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_0f45f5c706fd75c0455381cddeda12299d443326eb77b6cacae822b573dfed7b",
+      "qid_v1_ba54188ed94e0e03289ffc7ce4b3a9459bfc02157aee9dc493d0f04fd81e400c"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+        "sha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+        "selector": "B-E008-REUSE-CANDIDATE-TPL_SCATTERPLOT_CORRELATION_CONTEXT"
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E048-3",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "산점도 상관 방향 비교",
+    "definition": "복수 산점도의 증가·감소 또는 뚜렷한 방향 부재를 구분한다.",
+    "distinction": "정답 개수와 무관한 방향 판정이며 확률변수 분산 유형과 구분한다.",
+    "supportOrdinals": [
+      16
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_40227ed5039590f2deb29ae32f5fa8aa54ed414b7eb4179c69efe591e9b63af0"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+        "sha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+        "selector": "B-E008-TPL_SCATTERPLOT_CORRELATION_DIRECTION_STRENGTH"
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E048-4",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "산점도 좌표조건 인원 비율",
+    "definition": "두 좌표의 동시 범위 조건으로 점을 세고 전체에 대한 비율을 구한다.",
+    "distinction": "상관 방향 해석이 목적이 아니므로 현행179/180에 강제하지 않는다.",
+    "supportOrdinals": [
+      18
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_229b30647de2da7c189569e6cce4a221730659dda82b11188e6715dd36b3d781"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E005.proposals.json",
+        "sha256": "20a0590d2373d844a3ed18e497fbe5f4b82ac4d140c19c4d0e0f354df694e413",
+        "selector": "산점도 조건 집계"
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E048-5",
+    "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+    "nameKo": "산점도 관찰 사실과 근거 제시",
+    "definition": "상관 방향과 좌표의 대소·같은 좌표에 다른값의 존재를 관찰하여 근거와 함께 서술한다.",
+    "distinction": "개별 좌표 집계만으로 축소하지 않으며 인과관계 설명으로 확대하지 않는다.",
+    "supportOrdinals": [
+      21
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_6da45452565a185143af3045939699f56e923d679651ef8859eaedf1ea344265"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E024.proposals.json",
+        "sha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+        "selector": "산점도 관찰 사실"
+      }
+    ]
+  }
+]
