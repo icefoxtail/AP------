@@ -1,0 +1,340 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E044",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "361266b5d8612ea8a28d58dc6aa7dd7f5f5f781a",
+  "sourceSha256": "51899e5c94dbb44d60581681405fe3188ce68cfaf0cc6fa3b8ce2b060cd49a06",
+  "reviewSha256": "db279d6f28d6fa1520fd4070ab45bfa4342b1aee11f82a438e8fbad90b2eb04a",
+  "fourSlotSha256": "14b172946f7496543588446ab980691357f987430724bfc2ea78b0ed3011b752",
+  "independentSampleSha256": "585823a9590587f80186d948e87814662f117b632f7f79717e43d90550f67432",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+      "fields": [
+        "전체 보기의 사실성",
+        "최종 RPM/PT/TPL 확정",
+        "difficultyBucket",
+        "학습 level"
+      ]
+    }
+  ],
+  "sampleReviewer": "C",
+  "sampleOrdinals": [
+    3,
+    18,
+    23
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "db279d6f28d6fa1520fd4070ab45bfa4342b1aee11f82a438e8fbad90b2eb04a",
+      "finalReviewSha256": "db279d6f28d6fa1520fd4070ab45bfa4342b1aee11f82a438e8fbad90b2eb04a",
+      "independentSampleSha256": "585823a9590587f80186d948e87814662f117b632f7f79717e43d90550f67432",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": [
+        {
+          "ordinal": 23,
+          "repairs": [
+            {
+              "path": "items[22].slots.condition",
+              "reason": "P의교점/연장선배치를exactstem인용으로보강"
+            },
+            {
+              "path": "review.items[22].fieldReview.binding / proposals",
+              "reason": "PT_M1_CONGRUENCE_DATA_TRANSFER의현재정의가목표각전달로제한되는parent-definition conflict를명시하고공식등록대기분리"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "같은밑각을 같은대변으로 옮겨x+6=2x-4를 세우는 한 번의 해석이므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "BD=DC=CA와BA=BC의 겹친이등변 구조를 골라 각관계를 전달하므로3/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "RHS,SAS,RHA와 각만같은조건을 실제직각표시와 대조하므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "회전된두삼각형의RHA 대응과사다리꼴 높이를연결하는3/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "외심은세꼭짓점 등거리라는정의를 틀린 ‘세변’과 직접대조하면되어1/하,B12.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CORRECTED_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두작은 직각삼각형RHS에서밑각같음을얻은뒤내각합에연결하므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "외심등거리로꼭지각을복원하고중심각을합하는정형2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "두 각이등분선이만든 두 반각식의 합이나연립을선택하므로3/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "그림의외접원에서내접원을빼는목표가명시되고R=빗변/2와r=(두직각변합-빗변)/2를직접연결한다. 비정형선택없어2/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CORRECTED_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "이웃내각합180도를3:2로배분하는전처리뒤대각을옮기므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "대각선이등분·대변·대각·합동쌍의대응을구분해야하므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "증명줄에대응과합동방향이제시되어잘못된맞꼭지각기호를찾는정형2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행사변형내부점의마주보는삼각형넓이합관계를적용하는정형2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "반대각선등길이를전체대각선등길이로해석하여특수사각형을판정하는2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "일반사각형과평행사변형등추가가정의차이를확인하는조건판정2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "닮음대응이주어지고6과8:12를한비례식에넣는직접1/하.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "작은높이12에닮음비5:4를적용하고주어진밑넓이로부피,세제곱비로작은부피를구하는전형직접연결이므로2/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CORRECTED_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "원본이미지에아래변BC와꼭짓점이잘려전체보기의사실성및최종난도를확정못함. UNKNOWN과low유지.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_HOLD",
+      "proposedLevel": "중",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "직각삼각형사상정리에서전체빗변을구한뒤알려진부분을빼는표준2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "회전된수직삼각형과큰직각삼각형의AA대응을선택하고반대각선길이를반영하므로3/중,B23.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "소문항이밑각→내심반각→외심등거리각→차를순서대로안내하므로2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "한점주위360도를5:6:7로배분후내심각을거꾸로쓰는정형2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "소문항에합동쌍이지정되어중점·엇각·맞꼭지각으로ASA를보이고길이를옮기는2/중.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "접기→이등변판정→수선중점→AA를소문항순서로연결하는3/B34이며학습level상도경계상합리적.",
+      "independentReviewer": "C",
+      "independentDecision": "ACCEPT_CANDIDATE",
+      "proposedLevel": "상",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 18,
+      "reason": "q18.png는 B,C 및 아래쪽 변의 표기를 포함하지 않는다. 알려진6·4·5만으로 ABC와 ADB의 SAS와3:2는 확인되나 모든 보기의 사실성을 확정할 수 없다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
