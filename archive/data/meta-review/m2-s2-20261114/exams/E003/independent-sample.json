@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E003",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "1f0e579edde9dc64e5afa9843d448a15fd82fede",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "cb957d7f269e93bb089423494a418c278da09e474c799d8b60bff08aaf7a3f8f",
+  "fourSlotSha256": "97db9b3123f7bec990ed2c74019bb36cafdbb83746c3a2e588fb712b6eafa559",
+  "ordinals": [
+    1,
+    17,
+    20
+  ],
+  "overallConclusion": "REVISION_REQUIRED",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_8a5018df46a52c5fda4f404418108619c974af453e0cd399073688916dea0496",
+      "conclusion": "REVISION_REQUIRED",
+      "reason": "문제·보기·기존해설과 q1 PNG를 대조했다. RPM178 분류, 난이도2, 4칸 인용은 일치한다. 다만 운영규칙 §5.2에 따라 밑각·꼭짓각 primary에 포함된 내각합을 별도 CC로 기록하면 중복이다. CC_TRIANGLE_ANGLE_SUM를 제거하고 primary 내부 각 계산만 남으므로 integrationPattern은 NONE으로 유지해야 한다.",
+      "requiredCorrection": "CC_TRIANGLE_ANGLE_SUM 추가 취소 및 integrationPattern SEQUENTIAL→NONE. 4칸 method 내각은 그대로 유지 가능."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ee7fcd759ed8e80c1d82757090629edf89b113b9c10327d3896e71ee80187a8d",
+      "conclusion": "REVISION_REQUIRED",
+      "reason": "q17 PNG에서 B,C,E 공선과 AC∥DE 확인. RPM194 등적변형으로의 부모 수정·CC_AREA_RATIO·SEQUENTIAL·bucket3 및 4칸 의미는 맞다. 그러나 현재 ACTIVE PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION 정의 자체가 필요한 평행 조건을 찾는 역문제로 제한되어 있다. 새 TPL만 이 PT 밑에 달면 parent 정의가 직접 넓이계산까지 포함하지 않는다. NEW_PT 직접 등적변형 넓이계산 제안 또는 기존 PT 정의 확장 별도 제안이 필요하며 현재 PT의 의미 일치로 승인할 수 없다. after에는 미등록 키가 없어 source 안전성은 유지된다.",
+      "requiredCorrection": "C-E003-TPL17의 parent 적합성을 재판정하여 NEW_PT 또는 parent 정의확장 승인 대기로 분리. activeDefinitionMatch PT는 candidateOnly/definitionMismatch로 명시.",
+      "optionalClarification": "method 넓이의 quote 밑변의 비는 식을 포함하지 않아 NAMED가 약하다. 비 term 또는 넓이식 exact quote로 보강 권고."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_fdcdadf2ee69dea283e6c37920230d9f534ad9bed20332325dc36de01d5d7ab9",
+      "conclusion": "PASS",
+      "reason": "문제의 점 배치와 기존해설을 읽었다. source image는 null이나 직사각형,DC위 F,두 연장선 교점으로 관계가 충분히 명시된다. 새 AA 닮음을 세워 CE라는 높이비를 만들어야 하므로 M2-06 도형의 닮음으로 옮기는 것이 타당하며 RPM204/CRITERIA는 핵심 관계 발견을 기록한다. 넓이계산 CC와 SEQUENTIAL도 맞다. method의 AA·맞꼭지각·대응비 및 condition의 2DF=3FC 인용이 exact. bucket4는 보조 높이 선정/전달을 반영한 상단 판단으로 허용하되 root 최종 difficulty 경계 결정의 대상이다."
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}

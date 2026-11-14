@@ -1,0 +1,1305 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "1f0e579edde9dc64e5afa9843d448a15fd82fede",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "C / actual source and solution semantic review",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_8a5018df46a52c5fda4f404418108619c974af453e0cd399073688916dea0496",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "밑각이 같아",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "\\angle CBD=180^\\circ-75^\\circ-75^\\circ=30^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "세 내각의 합을 적용한 식."
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "BC=BD"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_2d7c1fefc6af3ecb6d790c892eaae0aeb438e3aa81b29fbe64b43a130c224d72",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle A$의 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x+y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "밑각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "$AD$가 $\\angle A$의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0470b0ba25a19e99470b089e9f52a53a202d917588dfd25044f8c0a54b8869a1",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "두 직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "합동이 되는 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "각 합동조건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "빗변과 한 직각변",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "빗변과 다른 삼각형의 한 변",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변과 직각변의 비대응을 식별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_473e805328911eff8d6a4e9b0922c5422b2f8ffefb2ddeb844ebb3094aae30b8",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle BDE$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각의이등분선정리",
+            "src": "solution",
+            "quote": "BD:DC=AB:AC=10:6=5:3",
+            "evidenceType": "IMPLIED",
+            "justification": "각의 이등분선에 의한 대변 분할비."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12\\times BE\\times DE",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 밑변과 높이 넓이식."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "AB\\perp DE"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_cb950ba3c95fe1bb95c938685582dfe7ad7287bf1d662e44fd3ee3284cae7d98",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "옳은 것만"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심은 삼각형의 세 꼭짓점에서 같은 거리",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현을 이등분하여",
+            "evidenceType": "IMPLIED",
+            "justification": "현에 내린 수선이 현을 이등분한다."
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "합동이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_83b21eb59b645d3b3bff1cad9459a86bc21a404886522d315ec5d5b02ec35445",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle ADB+\\angle BEA"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "\\angle ADB+\\angle BEA"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "180^\\circ-(B+26^\\circ)",
+            "evidenceType": "IMPLIED",
+            "justification": "보조삼각형의 내각합을 두 번 적용."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "만나는 점"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_61f8306124f15611df8697a5d535f9a3c44246cc7765ab17dc22e16de2e92470",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평면도형",
+            "src": "stem",
+            "quote": "평면도형"
+          },
+          {
+            "term": "원",
+            "src": "solution",
+            "quote": "두 원"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형"
+          },
+          {
+            "term": "정육각형",
+            "src": "solution",
+            "quote": "정육각형"
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "직각이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "항상 서로 닮은 도형이 아닌"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응각이 같고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응변의 비가 일정하여",
+            "evidenceType": "IMPLIED",
+            "justification": "일정한 대응변비로 닮음을 판정."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_e9f8f435d42a9a7f540308bf64d73bd82c2700bf78676c4eeed3554d62b91ed5",
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "증명하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "ASA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "서로 다른 것을 이등분",
+            "evidenceType": "IMPLIED",
+            "justification": "증명 목표인 대각선 이등분을 대응변 같음으로 확정."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_1adbc9ab69ce385c8661046e134406578d62dd7f1d89161c3c6746be2999c2ad",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle C$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형의 이웃한 각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle B$의 이등분선"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_54ba1108dc2db9f7f478c5bfb9af2862810aa5066516c0970ef32c69e5c3e8e4",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_566dd64e4d027f007b2ff30119c606b0c2afad32bc896fb9d9a1772c9ad720c7",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$OA$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형의 대각선은 서로를 이등분하고 길이가 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$5x-3=2x$",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 관계를 일차방정식으로 풀음."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_2b91e07a66fc949bb5ee5401b12dd3e43c4d32d92e3624819ba0f66fe74bd5e8",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle BIC+\\angle BOC"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "\\angle BIC+\\angle BOC"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_3723b7803b081b8ff7f13650049fba6c2662f3d6a67018b6ecb86cdc1a776cc0",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle AOD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선은 서로를 이등분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이가 같은 네 삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "서로를 이등분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_517821f2235339814b86b46d179560192f8077998e96ef8d6eed72b2774f5f92",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "제시된 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 대각은 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점"
+          },
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "\\triangle ACM\\cong\\triangle ADM"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_60e9271e9b89f7479dff78a4961ea0136f0dc5339275c6af8ad1b69074bbe8de",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          },
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "닮음비"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle DEF$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비의 제곱",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이의 비",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_afe76b086cef1d14e267d07f9d42e37674e19cbbab20e59ec8054b8c0bfcc5fe",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각뿔",
+            "src": "stem",
+            "quote": "두 삼각뿔"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$x+y-7z$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응하는 각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "\\frac{x}{15}=\\frac{2}{3}",
+            "evidenceType": "IMPLIED",
+            "justification": "모서리 대응비를 비례식으로 쓴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ee7fcd759ed8e80c1d82757090629edf89b113b9c10327d3896e71ee80187a8d",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $ABCD$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "[ACE]=15\\times\\frac23=10\\text{ cm}^2",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이에서 밑변의 비로 넓이를 환산한다."
+          },
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "같은 높이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "AC\\parallel DE",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선 사이의 높이가 같아 넓이를 옮긴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "AC\\parallel DE"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_9fe88cee24bf384aacd59781524171ebdc8d936432aa5ebdd5e2d2b50e030867",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "\\square ABCD"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형이 되는"
+          },
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "마주 보는 두 쌍의 각이 각각 같으므로 평행사변형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "사각형의 내각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_31e9ccc18e55856007add2edecdff5d043e48097b3f295bc2b5c0a2582cc5e4d",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형이 되는 조건"
+          },
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "정사각형이 되는 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선 길이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "같은 직각 조건",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_fdcdadf2ee69dea283e6c37920230d9f534ad9bed20332325dc36de01d5d7ab9",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle DFE$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "AA 닮음",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "맞꼭지각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응하는 변의 비",
+            "evidenceType": "IMPLIED",
+            "justification": "AA로 만든 닮음의 대응비."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "밑변을 $DF$로 잡는다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비례",
+            "src": "stem",
+            "quote": "2DF=3FC"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_7af9f4fb16d9f8531c280d2b7239d8a5257a6e300e0db15b86fd25b48c550d15",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AC$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "마주 보는 변이 같아",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 두 각으로 이등변삼각형을 판정."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 $BDC$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "내각합으로 같은 두 각을 만든다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "일직선 위의 이웃한 각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_11a1cdae264cc0feec49a5783418726bd9478e0cae8573b83fa5f4b59371ef4c",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle A$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHS 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응하는 각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 내각의 합",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "MD=ME"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_339b15d0db9516a08cb0ae05adae90c992b57826541005107731488b68c5a35d",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "접었다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "닮음 조건"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BD$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접은 도형에서 각은 보존",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음조건",
+            "src": "solution",
+            "quote": "(AA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응변의 비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$16=20k+16k$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체길이와 닮음비의 선형 관계식을 풂."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle BDF=\\angle DFE"
+          }
+        ]
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c29bbeac51e96ead7a8c7100c7494e31e31b64692549a17962c8f5be109cf6a8",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          },
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "합동조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "합동(RHA)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 모든 변이 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "review": "발문과 실제 해설의 역할을 구분하여 기록."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceItemsRead": 24,
+    "reviewedBy": "C",
+    "independentSample": {
+      "status": "PENDING_OTHER_WORKER",
+      "sampled": []
+    },
+    "sourceBlindToSimilar": true
+  }
+}
