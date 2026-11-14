@@ -350,9 +350,9 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 같은 축 범위의 두 패널에서 아래로 열린 ㄱ·ㄹ과 위로 열린 ㄴ·ㄷ의 축·폭을 비교한다.",
-    "solutionImageCaption": "ㄷ의 꼭짓점은 (0,5)로 x축 위가 아니다. 따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점을 원점으로 평행이동한 네 포물선이다. 각 패널에서 파랑과 주황, 실선과 점선으로 곡선을 구분한다.",
+    "solutionImageCaption": "포물선을 평행이동해도 열리는 방향과 폭은 같다. 이차항 계수의 절댓값이 가장 큰 ㄱ이 가장 좁다. 원래 그래프에서 ㄱ과 ㄹ의 축은 모두 x=1이고, ㄷ의 꼭짓점은 (0,5)이므로 x축에 있지 않다. 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
