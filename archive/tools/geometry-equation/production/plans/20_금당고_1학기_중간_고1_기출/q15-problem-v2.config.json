@@ -1,0 +1,276 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/20_금당고_1학기_중간_고1_기출.js",
+  "questionId": 15,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "hiddenPointNames": [
+          "D",
+          "E",
+          "F"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "DB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "BF",
+            "refs": [
+              "B",
+              "F"
+            ]
+          },
+          {
+            "id": "FC",
+            "refs": [
+              "F",
+              "C"
+            ]
+          },
+          {
+            "id": "AE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "EC",
+            "refs": [
+              "E",
+              "C"
+            ]
+          },
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "angleB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 385
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "alpha",
+              "from": "A",
+              "to": "B",
+              "label": "α",
+              "side": "LEFT",
+              "style": "BRACE",
+              "extension": "NONE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "beta",
+              "from": "B",
+              "to": "C",
+              "label": "β",
+              "side": "BELOW",
+              "style": "BRACE",
+              "extension": "NONE",
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "square",
+              "fill": "MEDIUM",
+              "shapes": [
+                {
+                  "polygon": [
+                    "B",
+                    "D",
+                    "E",
+                    "F"
+                  ]
+                }
+              ],
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "caption": "직각삼각형 ABC와 그 안의 정사각형, 두 직각변의 길이는 α와 β",
+        "sourceConditions": [
+          "직각삼각형 ABC에서 AB=α, BC=β이다. 정사각형의 두 변은 AB와 BC 위에 있다.",
+          "도형은 주어진 배치를 보여 주는 개략도이다."
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 29,
+        "displayScale": 0.43,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
