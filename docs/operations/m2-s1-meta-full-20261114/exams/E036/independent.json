@@ -1,0 +1,803 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E036",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:15:18.863287+00:00",
+  "sourceGitBlobSha": "f380d8955ce467769abac101955a9ff0493c13da",
+  "sourceSha256": "a83b1cc334f3ce2e9199c4bd9820b5cceb923f78fbeaa2d3825fb10a2185e294",
+  "reviewSha256": "78c938a5663228fcd681dea2e0995ebd16fb395a6b5fdbadbc9d7ed127eada34",
+  "fourSlotSha256": "3a0b2f373017ad71b98b1b12dcb2c1e9bc213dd04f5f851a11c1d92104b4da91",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/A/independent/E036/difficulty-content-first-freeze.json",
+  "initialFreezeSha256": "3cb0f71ddb0c347952cb2587c2133b0cd72d857902f67e84ac5040193abfc438",
+  "actualAssets": [
+    {
+      "sourceOrdinal": 12,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E036/assets/q12.png",
+      "sha256": "bb978c7f599ed4afc07d54116592f4d8db6dc1dfe5b01be45326b4a97781334d",
+      "actualImageOpened": true,
+      "observation": "우상향 직선,음의y절편"
+    },
+    {
+      "sourceOrdinal": 14,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E036/assets/q14.png",
+      "sha256": "55e97cb86018256acbb55a3f2319d2bb49967b3de5b1b1fe88aa550cabf269a1",
+      "actualImageOpened": true,
+      "observation": "①의x절편−3,y절편3;②원점통과;교점(−1,2)"
+    },
+    {
+      "sourceOrdinal": 20,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E036/assets/q20.png",
+      "sha256": "0b15ee72a1a20c09ae4635b1009cca62cc983c98286d168fe4208ce873bc9472",
+      "actualImageOpened": true,
+      "observation": "가로3세로2원래직사각형에위쪽과오른쪽띠추가;오른쪽위모서리빈L자형"
+    },
+    {
+      "sourceOrdinal": 23,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E036/assets/q23.png",
+      "sha256": "d38b1ad441bed9357c979fe861486956f1d487b9769490cbdd9d79dfcb62e24b",
+      "actualImageOpened": true,
+      "observation": "떨어진삼각형3개변과사각형4개변성냥"
+    },
+    {
+      "sourceOrdinal": 24,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E036/assets/q24.png",
+      "sha256": "20ee1bff5d827a9c50cc607b10933449caaab242dcd00597c5da796edb8baae9",
+      "actualImageOpened": true,
+      "observation": "B,C는x축위,A는y=2x,D는y=−x+10위인정사각형"
+    }
+  ],
+  "sampleOrdinals": [
+    11,
+    20,
+    24
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 11,
+      "verdict": "ACCEPT_WITH_REGISTRATION_DEBT",
+      "fieldReview": {
+        "classification": "사분면 배제를 기울기·절편의 허용범위로 바꾸므로 단순증감169나 직선식177의출력과 다르다. RPM gap 수용.",
+        "binding": "공식 특정사분면회피 template는 경계값합 목표이며 이 문항은 기울기최대이다. 입력/부호추론 공통과 최종목표 차이를 구별한related후보 보류수용.",
+        "crossConcept": "사분면회피 primary 내부의 기울기/절편부호를 별도CC로중복하지않음.",
+        "condition": "제2사분면미통과를원문의조건으로보존했다. 최종허용기울기조건을원문명시조건으로역주입하지않음.",
+        "integration": "같은직선조건의범위분석으로NONE 수용.",
+        "difficulty": "중3/medium/B23는전체음수x의금지조건을부호와경계로옮기는판정이라독립초기3과일치.",
+        "fourSlot": "주어진점/직선,목표최대기울기,사분면조건,실제허용부등식 인용을대조했다. r1은원해설의최대y/상한표현한계를부채로보존한다."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "verdict": "ACCEPT_WITH_REGISTRATION_DEBT",
+      "fieldReview": {
+        "classification": "실제이미지상xy모서리가없는L형확장으로확인했다. 길이차와넓이합의연립모델은162 도형조건연립에맞음.",
+        "binding": "해설의도형모델과정본RPM부모에맞고새activekey를추정하지않은등록유보수용.",
+        "crossConcept": "넓이공식은도형연립primary의정의에포함되어별도CC중복없음.",
+        "condition": "가로증가량=세로증가량+2와원면적5배의실제조건이given/condition으로보존됨.",
+        "integration": "L형두띠면적과길이차는동일모델구성으로NONE.",
+        "difficulty": "중2/medium/B23;그림영역판독후정형두식연립이며독립2와일치.",
+        "fourSlot": "직사각형·5배넓이given,목표두길이증가량,길이차condition,실제면적합+대입을method에분리한인용을확인했다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "verdict": "ACCEPT_WITH_REGISTRATION_DEBT",
+      "fieldReview": {
+        "classification": "선행정사각형좌표·넓이를입력으로목표직선방정식을구하므로177 조건식결정수용.",
+        "binding": "ACTIVETPL_LINE_MULTI_CONDITION의두선행조건후점/절편결정과외부CC분리정의를실제대조했다. exactscope/resolver후보보류수용.",
+        "crossConcept": "ACTIVE CC_SQUARE_SIDE_EQUALITY와CC_SQUARE_AREA의정의를읽고가로세로같음으로C좌표/면적을만드는해설과대조했다.",
+        "condition": "정사각형넓이가목표직선y절편이며점D를통과한다는실제제한보존.",
+        "integration": "정사각형좌표와넓이의산출값이목표직선의조건으로넘어가므로SEQUENTIAL.",
+        "difficulty": "중3/medium/B23;정사각형좌표→직선조건→면적→새절편조건이라는연결을요구하여독립3과일치.",
+        "fourSlot": "r1의C=(k+2k,0)=(3k,0)실제줄+IMPLIED같은변근거를확인했다. 좌표/계수/넓이/직선식4개필수목표와기존해설인용이모두보존됨."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1341f5e6b2b12e3edd8220972d3d99ff5e79a913478b7eed99a1ba19c6883b22",
+      "initialIndependent": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_1341f5e6b2b12e3edd8220972d3d99ff5e79a913478b7eed99a1ba19c6883b22",
+        "actualStemSha256": "558c1ef34a691fec00198f87b867e0c54b80f29d6319de772d89778c54c63f12",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "일차함수정의와한식의정리로판정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차함수의 정의로 상수함수와 역비례식을 배제한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "일차함수정의와한식의정리로판정."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6d5298177d7ad1856ff19bb546c627c660abc4c4e029713f8c8398319b246b6b",
+      "initialIndependent": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_6d5298177d7ad1856ff19bb546c627c660abc4c4e029713f8c8398319b246b6b",
+        "actualStemSha256": "6b48d64caa069b31eb0e201dc086e992fdc8c9887bd6dad13b7d8f443d9a88f6",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "y=0직접대입으로다른절편을찾음."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "y=0을 대입해 각 x절편을 직접 비교한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "y=0직접대입으로다른절편을찾음."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5d8bcbfbcabe5ad4e83378ca4deb9641d8b295e55b829b8a3fa6f6a017442335",
+      "initialIndependent": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_5d8bcbfbcabe5ad4e83378ca4deb9641d8b295e55b829b8a3fa6f6a017442335",
+        "actualStemSha256": "75511ab4df7a5970e212b36d5b46f76d7d84c949aa813fe7a83d046def9b2f49",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "미지수가이미설정되어마릿수·다릿수합을각식에직접옮김."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "동물 수와 다리 수를 두 관계식으로 모델링한다. 목표는 식 선택까지다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "독립1↔저자2 차이는식선택/계수비또는그래프전처리의B12인접으로author2수용. 미지수가이미설정되어마릿수·다릿수합을각식에직접옮김."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_e6927787022fcde863d953951ee2da5386ddb00250fbf4f8336bf467a325fd1d",
+      "initialIndependent": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_e6927787022fcde863d953951ee2da5386ddb00250fbf4f8336bf467a325fd1d",
+        "actualStemSha256": "632f839a129b676595a3d7ab4ae9a269f40f4c541502045a26adad634fc0ee22",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "계수2와3의최소공배수로소거연산을고름."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "x계수의 공배수와 부호로 소거할 연산을 고른다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "계수2와3의최소공배수로소거연산을고름."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_dc7d4bc3d83471457f8cb518be8e6bcdf1f04597903cc91e206e5a43d3c1a6f9",
+      "initialIndependent": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_dc7d4bc3d83471457f8cb518be8e6bcdf1f04597903cc91e206e5a43d3c1a6f9",
+        "actualStemSha256": "cb5b4ed4fe24d1fa6d01e0bd1ba5ab90215621488a2b8f24a9e22b3aba93ff83",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "한식을2배해상수모순을직접확인."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수 비가 같으나 상수 비가 다른 식을 찾아 모순을 판단한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "독립1↔저자2 차이는식선택/계수비또는그래프전처리의B12인접으로author2수용. 한식을2배해상수모순을직접확인."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_86d5e7890a6cd4518d23b539469bfcc61ee6c03238719ec284f9ffdaec6c177a",
+      "initialIndependent": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_86d5e7890a6cd4518d23b539469bfcc61ee6c03238719ec284f9ffdaec6c177a",
+        "actualStemSha256": "67fba038137a5ca328312af5bbf3f2cd35825f42b5e2f16b0586625138550204",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "수직이동식에점좌표대입의정형절차."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행이동한 식에 주어진 점을 대입해 이동량을 찾는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "수직이동식에점좌표대입의정형절차."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_99aa0662addae6540816ab9ea1a1353fdd4075d9aa912dd75b8f0af657af454f",
+      "initialIndependent": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_99aa0662addae6540816ab9ea1a1353fdd4075d9aa912dd75b8f0af657af454f",
+        "actualStemSha256": "cedd8e622ab24a71389ab39b3fa8166dd2b19a948dc99999b6bf5a6075777a3a",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "문자계수3-a의음수부호를반영해나누는정형조건."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "매개변수의 부호조건으로 공통인수를 나눌 때 부등호 방향을 뒤집는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "문자계수3-a의음수부호를반영해나누는정형조건."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_2e958a53e34aa23aa2761be2d5b75c654a91ec8b9016e0ddd60e8fbbfb6cfbf6",
+      "initialIndependent": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_2e958a53e34aa23aa2761be2d5b75c654a91ec8b9016e0ddd60e8fbbfb6cfbf6",
+        "actualStemSha256": "72eab89f99205d15182434df7801f2c14b8271efb44cf4db12270f316a10aae4",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "승패횟수에따른두계단증가량을연립모델로구성."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 사람의 상승·하강과 같은 경기 횟수를 연립식으로 연결하는 정형 모델이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "승패횟수에따른두계단증가량을연립모델로구성."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_61cca19fe10338bf11adec6673c1e3bf7ea48d686d587d553fc2910cd997477f",
+      "initialIndependent": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_61cca19fe10338bf11adec6673c1e3bf7ea48d686d587d553fc2910cd997477f",
+        "actualStemSha256": "9bae1f83c110be4ee355abfa9315b205cb59ea734ff3076891a6faa1d88eacb4",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "기울기절댓값의직접크기비교."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기의 절댓값이 가장 작은 그래프를 직접 선택한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "기울기절댓값의직접크기비교."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_aaad6e420c17a969fdeb1c4395952700f925f56791095c32da171ba7a013e63a",
+      "initialIndependent": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_aaad6e420c17a969fdeb1c4395952700f925f56791095c32da171ba7a013e63a",
+        "actualStemSha256": "55dfe925a9282b6d681b32a2d6c4fdd3e093434d5ac0e9e1a52394b158580c78",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두점직선식에세번째점을대입하는연결."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "앞 두 점에서 직선식을 정하고 셋째 점 조건을 대입한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두점직선식에세번째점을대입하는연결."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_51e7662ff26ed70725329e3f521c2dda0d416450842aa0df7b0580019ec1e208",
+      "initialIndependent": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_51e7662ff26ed70725329e3f521c2dda0d416450842aa0df7b0580019ec1e208",
+        "actualStemSha256": "f43379ea8f7e3369c48c7992acf2a291184449c6ff8f5dd0a4d586f61103b9ec",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "사분면미통과를모든x<0의조건으로바꾸고기울기부호및절편경계를판정한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "금지된 사분면에 들어가지 않는 기울기·절편 조건의 경계를 함께 제한한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "사분면미통과를모든x<0의조건으로바꾸고기울기부호및절편경계를판정한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_c4d43a4784a1e7d273f13c800e65aa59b5e832f6e75d6825e0e4eb4dce92aeef",
+      "initialIndependent": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_c4d43a4784a1e7d273f13c800e65aa59b5e832f6e75d6825e0e4eb4dce92aeef",
+        "actualStemSha256": "cf4c235562092387b8f43a3666fc75742be9e49fcd52752e84b0e5d3ce5a86c6",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "분수계수의부호를기울기와절편부호에맞춰연쇄판정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 상승그래프와 음의 y절편을 계수 부호로 역변환한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "분수계수의부호를기울기와절편부호에맞춰연쇄판정."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b65b720c9bede871fe3eb7ee2816dcfaf3a826b67ce7a55d31c9dd0258846cee",
+      "initialIndependent": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_b65b720c9bede871fe3eb7ee2816dcfaf3a826b67ce7a55d31c9dd0258846cee",
+        "actualStemSha256": "88dbd0c99429563d7ad87bbaf6a5b64b8d488e821e26c7444e4f007dd05effc8",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "여러그래프성질의정형보기판정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "하나의 일차방정식을 함수꼴로 정리해 여러 그래프 성질을 판단한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "여러그래프성질의정형보기판정."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_33e0b0ea10cb416d35ed6b6f767d477594af0bf46b56bc89c0ea6a0ba55a1740",
+      "initialIndependent": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_33e0b0ea10cb416d35ed6b6f767d477594af0bf46b56bc89c0ea6a0ba55a1740",
+        "actualStemSha256": "4eed940de8cf4d832cef2f51dae05c74280bd67caa685b8d7aa8a6a2251223f4",
+        "initialLearningLevel": "하",
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "실제그림의x절편과원점통과를각식의상수로직접읽음."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 두 그래프의 축 교점으로 각 식의 상수를 읽는다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "독립1↔저자2 차이는식선택/계수비또는그래프전처리의B12인접으로author2수용. 실제그림의x절편과원점통과를각식의상수로직접읽음."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_22cc23c7988c5846ba1cf14ed01aca7c4bd3e7325e784df19663f77afe51a2f5",
+      "initialIndependent": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_22cc23c7988c5846ba1cf14ed01aca7c4bd3e7325e784df19663f77afe51a2f5",
+        "actualStemSha256": "57976de87ea8307b70e04af38c914f54a77b14037777303fa2ee5c245f8c3619",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "괄호와분수전처리후연립방정식풀이."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호와 분모를 없앤 연립식의 정형 가감 계산이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "괄호와분수전처리후연립방정식풀이."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_2ff0203a1420bc70ae34c7e4e23b103086987f8d06b519490aeb2955f76c8733",
+      "initialIndependent": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_2ff0203a1420bc70ae34c7e4e23b103086987f8d06b519490aeb2955f76c8733",
+        "actualStemSha256": "03edaaf3ecf2fc380364be913f672f0473adc75505bb9c6c9ba9069fd363c979",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "문장해관계를식으로바꿔상수없는식과먼저풀고계수결정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해의 추가 관계를 정수식과 연립해 구한 값을 매개변수식에 대입한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "문장해관계를식으로바꿔상수없는식과먼저풀고계수결정."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9db68e46b5bb9ba39aa703d2463c926d0f0ee86428a37f6f0e594a1f7f5f4eac",
+      "initialIndependent": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_9db68e46b5bb9ba39aa703d2463c926d0f0ee86428a37f6f0e594a1f7f5f4eac",
+        "actualStemSha256": "995bc328bd76865c6034c4bc06b7a3e479759500fb163b08adaad6df0f199972",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "절편·축평행·교점·이동의여러표준보기판정."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "절편식·수평선·교점·평행이동에 대한 별개의 진술을 각각 판단한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "절편·축평행·교점·이동의여러표준보기판정."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_84e675b61e09cac93870f82217d70f8f188e011d97c6b015cb1fa2709a596f27",
+      "initialIndependent": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_84e675b61e09cac93870f82217d70f8f188e011d97c6b015cb1fa2709a596f27",
+        "actualStemSha256": "9c326393d8b22b81d4b7a03da97a5dcad72633a19de0f35d88beeee75756311c",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두자릿수의자리교환조건을표준연립모델로구성."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자리교환과 자리수 관계를 두 식으로 연결하는 정형 두자리수 모델이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "두자릿수의자리교환조건을표준연립모델로구성."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9e0196096ee96fa85e079b186747f05be30f463e39eadf60da02ee442cfa7613",
+      "initialIndependent": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_9e0196096ee96fa85e079b186747f05be30f463e39eadf60da02ee442cfa7613",
+        "actualStemSha256": "289a9be705fd7c12ccc8af5d0ce1e12e9a528c42e67bd5fa0c798d7a5f90e918",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "왕복시간+체류시간상한의표준부등식."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "왕복 시간과 체류 시간을 같은 단위로 합쳐 상한부등식을 푼다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "왕복시간+체류시간상한의표준부등식."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_599cbb16d00e59562d0f0c6333ba220ba22af9bc82ba81a220bc70c9ae5b49d5",
+      "initialIndependent": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_599cbb16d00e59562d0f0c6333ba220ba22af9bc82ba81a220bc70c9ae5b49d5",
+        "actualStemSha256": "3a0ddee83bfd49e5feace2e27c88c3c7c63541d475c5e80c4c02d200ee725b73",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "실제L자영역의합으로면적식을세워연립하는정형활용."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 L자 확장그림에서 새넓이와 두 증가량 관계를 연립한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "실제L자영역의합으로면적식을세워연립하는정형활용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_f24d1a784a50d4614cd7fe7bd670af0e60d0e30ae6f3c428c8b414fd5ce1601e",
+      "initialIndependent": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_f24d1a784a50d4614cd7fe7bd670af0e60d0e30ae6f3c428c8b414fd5ce1601e",
+        "actualStemSha256": "794b1d142e21a63f8183e5e2a255729eefcd0436e564267cc7079cebd067f1b6",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "평행·원점·이동을차례로묻는안내소문항."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행·원점 통과·일치하는 이동량을 연결한 정형 소문항들이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "평행·원점·이동을차례로묻는안내소문항."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_35982cf20103120aa0c3d7612cf9ae42d1e33ab162b52106dd7d4cedc19aa423",
+      "initialIndependent": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_35982cf20103120aa0c3d7612cf9ae42d1e33ab162b52106dd7d4cedc19aa423",
+        "actualStemSha256": "bef6ba86c1a2183e0eedc6e2a58daf92820facdb450513a44e1fb671d8105df4",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "한자루이동전후의두관계를표준연립으로모델링."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "서로 하나씩 옮긴 두 상황의 짐 개수 관계를 연립한다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "한자루이동전후의두관계를표준연립으로모델링."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_590c1da4c27b9362aa8e026235f59747689441db6bfeff832c22d2ac847af7dd",
+      "initialIndependent": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_590c1da4c27b9362aa8e026235f59747689441db6bfeff832c22d2ac847af7dd",
+        "actualStemSha256": "8de7fd4972a343acfdf299adcf9648707e404b11ccc494649d629deea3aba60f",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "도형수와각도형의성냥수두합을연립하는정형활용."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "도형의 개수와 각 도형 성냥개수의 두 관계를 세운다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "도형수와각도형의성냥수두합을연립하는정형활용."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_69b3232970c01fe6e8a23789f3f04163dffd28799c679399333233658802dcbb",
+      "initialIndependent": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_69b3232970c01fe6e8a23789f3f04163dffd28799c679399333233658802dcbb",
+        "actualStemSha256": "8a84a094fbdc02a4288f14bc695f4523b313c4dab7328270282fc53dd924205b",
+        "initialLearningLevel": "중",
+        "initialDifficulty": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "정사각형의좌표를k로표현하고다른직선조건으로크기를결정한후면적을절편으로새직선을구성."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정사각형의 좌표관계→직선 위 점→넓이→목표직선의 절편으로 연결하는 여러 표상 전환이다."
+      },
+      "decision": "ACCEPT",
+      "acceptedProposal": {},
+      "reason": "정사각형의좌표를k로표현하고다른직선조건으로크기를결정한후면적을절편으로새직선을구성."
+    }
+  ],
+  "extraSemanticRechecks": [
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT",
+      "reason": "157마릿수·다릿수모델의식선택목표까지이며실제추가해계산으로난도부풀리지않음."
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT",
+      "reason": "공식수직이동TPL은점대입을포함하므로중복CC없음수용."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT",
+      "reason": "r1두점직선식primary→셋째점대입CC순서설명직접확인. SAMEgoal아닌relatedTPL격리수용."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT",
+      "reason": "일차방정식을y함수식으로옮겨같은그래프성질을판정하는172 경로와실제공식M2graphproperty후보의역할수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT",
+      "reason": "실제그림x절편−3과②원점통과가a,b에직결된다. 교점해174가아닌166보정수용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "여러독립진술로단일primary미판정및CC/integrationnull수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT",
+      "reason": "평행·원점통과·이동량세필수목표의primary보류와null종속축수용."
+    }
+  ],
+  "preservationChecks": {
+    "sourceStemCount": 24,
+    "allActualStemShaMatch": true,
+    "existingSolutionsRead": 24,
+    "actualImageCount": 5,
+    "newSolutionAuthored": false,
+    "studentSourceMutation": false
+  },
+  "rootRecommendations": [],
+  "debts": [
+    "Official genuine resolver/scoped ACTIVE registration remains pending.",
+    "Q11 existing solution calls an unattained supremum a largest y-value for x<0,m>0; this wording issue is retained without changing source or valid final slopebound."
+  ],
+  "notes": [
+    "Currentcontent snapshot precedes C proposals. Priorrelatedpapershavebeenreviewed; no globallyblindclaim.",
+    "Initial independentnumeric1 vs author2 in3/5/14 accepted asB12 adjacent andauthor2preserved.",
+    "Allnewreviewclaimsaremetadataanalysis of existing solutions; no source rewrite."
+  ]
+}
