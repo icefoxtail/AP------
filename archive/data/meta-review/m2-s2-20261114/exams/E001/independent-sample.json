@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E001",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "0c85a4440a3930e64906a4647bd0a17e26b2289b",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "afaa193c781a47a097e38457799b512b36c59f7e8d88f3be00e23e95040c8851",
+  "fourSlotInputSha256": "e543a927a062c891f6ece85e6d4f38337f420818abe938c0bfe3966601cde134",
+  "sampleOrdinals": [
+    8,
+    13,
+    20
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_ff7c626f2bcf6542b6e12a90adbaf568549ad4d0a396b5a8346843a1050809aa",
+      "verdict": "NEEDS_REVISION",
+      "metadataReview": "RPM194와 NEW_PT 등적변형 분리 타당. 기존 PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION은 넓이가 같아질 평행조건을 찾는 역방향 정의이며, 이 문항은 평행이 주어져 목표 넓이를 구하므로 그 parent 아래 NEW_TPL만 추가하면 parent 범위를 벗어난다.",
+      "fourSlotReview": "method 평행/높이/삼각형은 근거는 유효하나 등적변형이라는 decisive 방법이 빠짐. 사전의 등적변형을 [ABD]+[ADE]=[ABD]+[ADC]=[ABC] 또는 높이가 같아 넓이가 같다 인용의 IMPLIED로 보강 권고.",
+      "difficultyReview": "bucket3·legacy상은 합리적 인접경계. 등넓이 삼각형을 찾아 도형을 환원하는 선택이 핵심.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_f5bf3281b65931528e98f8e01329584e9891e6319b92d342e091ce2f3829cf1b",
+      "verdict": "NEEDS_REVISION",
+      "metadataReview": "ACTIVE PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT와 TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS가 평행선 엇각→이등변변길이→겹치는선분 합차의 전체 풀이골격을 정확히 담는다. PT_ISOSCELES_TRIANGLE보다 정확한 기존키를 우선 검토. RPM179의 이등변판정만으로 전체 과제를 표현할지, RPM190 아래 하위 leaf 연결이 필요한지는 등록심의로 분리.",
+      "fourSlotReview": "given 평행사변형/이등분선,goal길이,method이등분선/이등변/엇각은 실제풀이에 맞고 인용 유효. condition직선은 점순서를 넓게 표현하므로 점순서는 scenario/evidence에 보존하면 된다.",
+      "difficultyReview": "두 이등변삼각형과 겹친구간의 위치를 해석하는 bucket3·중 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_6f25a0dbdc503c31ffeb4eda9fa9b154ce42e66033122acce9ca9489594282b8",
+      "verdict": "PASS_WITH_EVIDENCE_REFINEMENT",
+      "metadataReview": "RPM181/RHA 및 TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE이 맞다. 기존 해설의 닮음비1:1은 같은 빗변·예각에서 합동을 얻는 동등한 서술이며, 넓이 계산보다 대응변 교환이 결정 단계이다.",
+      "fourSlotReview": "합동조건 IMPLIED 인용과 정당화 정확. method 넓이의 인용 밑변FG에수직은 이름/공식 자체가 없으므로 evidenceType IMPLIED+밑변높이넓이공식 정당화 또는 실제 넓이공식 인용으로 수정 권고.",
+      "difficultyReview": "대응삼각형을 찾아 길이를 교환한 뒤 차를 밑변으로 사용하는 bucket3이며 legacy상 경계는 독립 수용 가능.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 7
+    }
+  ],
+  "canonicalEvidence": [
+    {
+      "path": "/workspace/scratch/576242ad7339/m2-work/archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "/workspace/scratch/576242ad7339/m2-work/docs/architecture/4slot/term-dictionary-v1.5.json",
+      "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification"
+}
