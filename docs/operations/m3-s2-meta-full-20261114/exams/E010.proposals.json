@@ -1,0 +1,89 @@
+[
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+    "type": "NEW_CROSS_CONCEPT_PROPOSAL",
+    "nameKo": "무게중심의 중선 2:1 내분",
+    "definition": "삼각형 무게중심이 각 중선을 꼭짓점 쪽에서 2:1로 나누는 길이 관계",
+    "distinction": "기존 CC_CENTROID 및 CC_TRIANGLE_CENTROID는 꼭짓점 좌표 평균 정의여서 이 기하적 중선비와 구별",
+    "parent": "CrossConcept",
+    "searchedGlobalActive": true,
+    "existingNearest": [
+      "CC_CENTROID",
+      "CC_TRIANGLE_CENTROID"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+    "type": "NEW_CROSS_CONCEPT_PROPOSAL",
+    "nameKo": "무게중심의 중선 2:1 내분",
+    "definition": "삼각형 무게중심이 각 중선을 꼭짓점 쪽에서 2:1로 나누는 길이 관계",
+    "distinction": "기존 CC_CENTROID 및 CC_TRIANGLE_CENTROID는 꼭짓점 좌표 평균 정의여서 이 기하적 중선비와 구별",
+    "parent": "CrossConcept",
+    "searchedGlobalActive": true,
+    "existingNearest": [
+      "CC_CENTROID",
+      "CC_TRIANGLE_CENTROID"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_54ad11846cf70bd3571b22e27e2dbd7de5f03a717a20f044bfd1a239cac81b33",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 동일 길이로 이등변 밑각",
+    "definition": "두 접선의 길이가 같음을 써서 생긴 이등변삼각형의 각을 계산",
+    "distinction": "접선 길이를 목표로 하는 기존 TPL과 구분",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_279883466c1aec34c93b17b543afdd398e9ea98425f362430a69d328cbb55267",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 길이와 피타고라스에서 삼각형 넓이",
+    "definition": "접선 길이 동일성을 사용해 미지변 식을 세우고 피타고라스 후 넓이를 계산",
+    "distinction": "접선 길이 자체의 직접 계산보다 목표량이 연쇄됨",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_62a0312d26282ef5b5060d609ff9cf383686000a79c24a7e80c67a01b612809e",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접선 길이비에서 닮음으로 높이",
+    "definition": "접선 동일길이의 비를 평행선이 만든 두 직각삼각형의 닮음비로 옮겨 높이를 구함",
+    "distinction": "목표가 접선 길이가 아닌 높이이고 보조선·닮음 연결이 핵심",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENT_LENGTH"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_78d7e7475b76236e3af828b09edc3464bcb9e6ed44756c0a0fb9d4d6bd2e5fdd",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "두 접선의 합동과 부채꼴 차 넓이",
+    "definition": "두 접선 직각삼각형의 합동으로 외부각을 이등분하고 삼각비 반지름을 복원해 접선사각형-부채꼴 넓이를 계산",
+    "distinction": "주어진 중심각·반지름으로 부채꼴만 계산하는 TPL과 구분",
+    "parent": "PT_CIRCLE_TANGENT",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TM_TANGENCY_CONDITION",
+      "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]
