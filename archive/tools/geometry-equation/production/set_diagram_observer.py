@@ -268,7 +268,7 @@ def inside_contours(x, y, contours):
 
 
 # --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
-VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle', 'labelGap')
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle', 'labelGap', 'universeLabelOutside')
 SET_KEYS = ('id', 'name', 'count', 'countUnit')
 UNIVERSE_KEYS = ('name', 'count', 'countUnit')
 COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
@@ -392,6 +392,13 @@ def audit_venn(plan, doc):
     want_universal = 'n(%s)=%s' % (uni['name'], uni['count']) if uni['count'] is not None and style == 'n' else uni['name']
     if len(universal_labels) != 1 or doc.shown_text(universal_labels[0]) != want_universal:
         doc.err('SD_UNIVERSAL_LABEL')
+    if 'universeLabelOutside' in plan:
+        if plan['universeLabelOutside'] is not True or 'universe' in plan:
+            fail('SD_UNIVERSAL_LABEL_OUTSIDE_INVALID')
+        if len(universal_labels) == 1:
+            x, y, width, height = doc.label_box(universal_labels[0])
+            if y + height > rect[1] - 4 or x < rect[0] or x + width > rect[0] + rect[2]:
+                doc.err('SD_UNIVERSAL_LABEL_OUTSIDE_PLACE')
     universal_counts = doc.label_role('universal-count')
     want_universal_count = count_text(style, uni['count'], uni['unit']) if uni['count'] is not None else None
     if want_universal_count is None:
