@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 9,
-    "reviewedQuestions": 213
+    "reviewedExams": 10,
+    "reviewedQuestions": 237
   },
   "duplicateUids": [],
   "exams": [
@@ -940,9 +940,26 @@
           }
         }
       },
-      "status": "PENDING",
+      "status": "REVIEWED_PROPOSAL",
       "assignedTo": "meta_a",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "55a8c833c3e41015d6c8dcccb798d6dedac9646e",
+      "reviewer": "meta_a",
+      "independentReviewer": "meta_b",
+      "integratedBy": "GPT_ROOT_D71839569CD9",
+      "sampledOrdinals": [
+        8,
+        18,
+        24
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E010",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 19,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      }
     },
     {
       "key": "E011",
