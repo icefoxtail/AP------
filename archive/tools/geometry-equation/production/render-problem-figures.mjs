@@ -4,8 +4,9 @@ import { assetIdentity } from './contracts.mjs';
 import { pythonWorker } from './worker.mjs';
 import { composeConstructionCandidate } from './construction-candidate-svg-v1.mjs';
 import { checkSetDiagramPlan, composeSetDiagramFigure, solveDiagram } from './set-diagram-v1.mjs';
-import { captionText, compositePanels, composeCompositeCandidate, isSetPanel } from './composite-candidate-svg-v1.mjs';
+import { captionText, compositePanels, composeCompositeCandidate, isSetPanel, isSolidPanel } from './composite-candidate-svg-v1.mjs';
 import { composeEllipseFigure, solveEllipseFigure } from './ellipse-figure-v1.mjs';
+import { composeSolidFigurePanel, solveSolidFigure } from './solid-figure-v1.mjs';
 import { loadBank } from '../build-visual-render-matrix.mjs';
 import { repoRoot, launchBrowser } from '../visual-browser-runtime.mjs';
 
@@ -24,7 +25,7 @@ for (const { slot, plan, typography } of config.figures) {
   if (seen.has(slot)) throw Error('Duplicate slot: ' + slot);
   seen.add(slot);
   if (!plan?.capability) throw Error('Missing figure plan: ' + slot);
-  if (!['set-diagram-figure-v1', 'composite-panels-v1', 'ellipse-figure-v1'].includes(plan.capability)
+  if (!['set-diagram-figure-v1', 'composite-panels-v1', 'ellipse-figure-v1', 'solid-figure-v1'].includes(plan.capability)
     && !plan.graphPlan && !plan.mathPlan) throw Error('Unsupported problem figure plan: ' + plan.capability);
   if (plan.capability === 'set-diagram-figure-v1') checkSetDiagramPlan(plan);
   if (typeof typography?.baseFontPx !== 'number' || typeof typography?.displayScale !== 'number') throw Error('Typography is required: ' + slot);
@@ -53,16 +54,22 @@ async function composeProblem(plan, identity, typographyPolicy, browser) {
   if (plan.capability === 'ellipse-figure-v1') {
     return composeEllipseFigure({ ...context, plan, model: await solveEllipseFigure(plan) });
   }
+  if (plan.capability === 'solid-figure-v1') {
+    return composeSolidFigurePanel({ ...context, plan, model: solveSolidFigure(plan) });
+  }
   if (plan.capability === 'composite-panels-v1') {
     const panels = [];
     const framed = [];
     for (const panel of compositePanels(plan)) {
-      if (!isSetPanel(panel.plan) && !panel.plan.graphPlan && !panel.plan.mathPlan) {
-        throw Error('Unsupported problem panel: ' + panel.plan.capability);
+      let prepared;
+      if (isSetPanel(panel.plan)) {
+        prepared = { plan: panel.plan, model: solveDiagram(panel.plan.diagram) };
+      } else if (isSolidPanel(panel.plan)) {
+        prepared = { plan: panel.plan, model: solveSolidFigure(panel.plan) };
+      } else {
+        if (!panel.plan.graphPlan && !panel.plan.mathPlan) throw Error('Unsupported problem panel: ' + panel.plan.capability);
+        prepared = await constructionModel({ ...panel.plan, caption: panel.plan.caption ?? captionText(panel.caption) });
       }
-      const prepared = isSetPanel(panel.plan)
-        ? { plan: panel.plan, model: solveDiagram(panel.plan.diagram) }
-        : await constructionModel({ ...panel.plan, caption: panel.plan.caption ?? captionText(panel.caption) });
       panels.push(prepared);
       framed.push({ caption: panel.caption, plan: prepared.plan });
     }
