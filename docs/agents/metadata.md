@@ -119,3 +119,12 @@
 - **학년이 다른 키(`cross_grade_key`):** 중등 범위에 다른 학년 접두어(M1·M2·M3)나 고등 키, 고등 범위에 중등 키가 있으면 근거를 `cross_grade_key`로 표시해야 하고(표시가 없으면 생성기가 실패), 이 표시는 그런 키에만 쓴다. 문항의 소단원 값이 틀렸다는 뜻이라 재판정 라인이 그 학년의 키로 고친다. 묶음표는 값을 고치지 않고 내용이 맞는 소단원에 묶어 보여 줄 뿐이다.
 - **구역(`section`):** 한 단원의 소단원을 머리말로 나누고 싶을 때 단원에 `sections`(이름 목록)를 두고 소단원 묶음에 `section`을 단다. 지금은 공통수학1 "여러 가지 방정식과 부등식"만 "여러 가지 방정식"/"여러 가지 부등식"으로 나눈다. 단원 일반·기타·이동·제외 묶음에는 `section`이 없다.
 - **검사:** `tests/meta-os-subunit-groups.test.mjs`(한 키는 통합 단원당 한 묶음, 표의 키가 정본에 있음, 라벨 한글·비어 있지 않음, 종류별 규칙, `--check` 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
+
+## CURRENT — REVIEW2 등록 완화 (2026-11-13, 사용자 결정)
+
+두 번 독립 판정(REVIEW2) 경로에만 적용한다. 다른 승인 유형(FINAL_QA, META_PIPELINE_AUDIT)과 나머지 검사는 그대로다.
+
+- **원본이 갖지 않은 칸:** 시험지 JS가 `standardCourse`/`standardUnitKey`/`subUnitKey`/`level`을 아예 갖지 않으면 REVIEW2 등록과 검색 투영 검증이 이를 불일치로 보지 않는다. 값이 있는데 다르면 이전처럼 거부한다. `level`은 원본에 없으면 만들어 넣지 않는다(있는데 하·중·상이 아니면 거부).
+- **검수 상태:** 시험지의 `reviewStatus`와 등록 후 `reviewed_pass`의 차이는 REVIEW2에서 소비자 충돌로 거부하지 않는다(`verifyConsumerValues`의 `blockingConflicts`와 `verify-changed-uid-consumer-approval.mjs`의 METADATA_CONFLICT 판정에서 `reviewStatus`만 제외). 시험지 파일은 고치지 않는다.
+- **유형 경로를 정할 수 없는 문항(`typeHold`):** 항목에 `typeHold: true`를 두면 단원·소단원과 판정된 CrossConcept·Condition·Integration만 등록한다. PT/TPL이 둘 다 미등록인 문항에만 쓸 수 있고, `after`에 PT/TPL/L3/L4/rpmL3/rpmL4를 넣으면 거부한다. 결과 행은 `metadataStatus: approved_partial_with_explicit_holds`, `fieldStatus.problemType/template: manual_review_pending`, `metaFoundationHoldReason: TYPE_PATH_UNBOUND_UNIT_SUB_ONLY`이며 런타임 행을 만들지 않는다. 크로스워크·봉인 문서·4칸 사전은 건드리지 않는다.
+- 도구: `_luna/classify-final/register/`의 `select-ready.cjs` → `build-meta-request.mjs` → `verify-batch.mjs` → `install-batch.sh`.
