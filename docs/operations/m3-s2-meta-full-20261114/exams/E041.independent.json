@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E041",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+  "sourceBlob": "89745bc3296e987c6341968398d59bd38644e820",
+  "sourceGitBlobSha": "89745bc3296e987c6341968398d59bd38644e820",
+  "sourcePacketSha256": "23fd70603b8aa016b1c475d5da75324e32e423a83f6b332025bcb2b234598866",
+  "target4slotSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+  "targetReviewSha256": "3dd4d250e6e395899d76f92a148685b2b115714334f1560b8142302bc6edc50a",
+  "sampledSourcePatchSha256": "5f65dc2f6d2ccd33dd22a774704c04fd9d9f16c8e3259e14c70c8567c8917a11",
+  "sampleOrdinals": [
+    12,
+    14,
+    24
+  ],
+  "sampleRule": "사인 넓이의 GLOBAL 재사용·원과 직선 claim 유형 공백·접선 길이 관계망의 기존 유효 정의 재사용을 독립 표본으로 확인",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_f97bd5882b4250fd3c7702fa61f5fc375d31804e152513fb25028e2edc1dab26",
+      "status": "PASS",
+      "independentMeaningReview": "현재 그림의 평행사변형, AD6, BD9, DBC45°를 확인했다. 평행한 AD와 BC의 엇각을 끼인각으로 옮기고 대각선의 등넓이 분할 뒤 두 변·끼인각 사인 넓이를 직접 쓴다. given 평행사변형/대각선/길이/각, goal 평행사변형/넓이, method 평행·엇각·대각선·사인·넓이가 실제 해설에 결속된다. H22A 두 변과 끼인각 ACTIVE 정의 재사용과 원본 M3 RPM062/현행150 보존을 수용한다.",
+      "quotesChecked": 12,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+      "status": "PASS",
+      "independentMeaningReview": "다섯 진술은 현의 최대 길이, 접점 반지름의 수직, 현의 이등분, 같은 중심거리의 현, 외부점의 접선 개수이다. 원주각 관계를 쓰지 않는다. given 원/현/접선, goal 원/판정, method 현의 두 성질과 접선/개수가 모두 보기에 결속된다. 두 후보의 부모 현이 같은 method 안에 있다. PT_CIRCLE_LINE_RELATION 재사용 및 정확 claim TPL 범위·부모 정합화 대기와 bucket1을 수용한다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+      "status": "PASS",
+      "independentMeaningReview": "현재 그림에서 원이 직사각형의 위·왼쪽·아래 변에 접하고 DE15가 사선 접선이며 높이 CD12임을 확인했다. 반지름6, 피타고라스의 CE9, 두 외부점 등접선으로 FE=21−BC와 BC−15를 연결하는 실제 해설을 확인했다. given 직사각형/원/접선/길이, 보완된 goal 선분/길이, method 반지름·피타고라스·접선 길이·일차방정식, 명시 접선 condition이 맞다. TM_TANGENT_LENGTH에 단일 조각 제한은 없고 동일 UID의 ACTIVE CC 및 기존 audit가 이 길이 관계망을 직접 지원하므로 정상 재사용을 수용한다. 새 R1/R2/R3 검증은 수행하지 않았다.",
+      "quotesChecked": 11,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E041-image-version.json",
+    "sha256": "998cac9bfc02a8dcbedfb91d9810a3bb1e84b130e98f77bca30db50324234862",
+    "verifiedAssets": 5
+  },
+  "authorCorrectionsVerified": {
+    "Q24": "goal 선분 추가 및 동일 UID 기존 audit/정본 정의 재사용 근거 보강",
+    "studentSourceAndNumericBucketsUnchanged": true
+  },
+  "tangentReuseEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/a/E041/q24-tangent-template-reuse-evidence.json",
+    "sha256": "ab0b9a5a72c0a52b873289121ad867858e505162ab7a8cfb4952a57acadca016",
+    "rootScopeDecision": "E041 Q24 keeps ACTIVE TM_TANGENT_LENGTH; single-piece-only restriction does not exist in the definition or internalSkeleton.",
+    "sourceAuditPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+    "sourceAuditSha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+  },
+  "newMathematicalVerification": false
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "m3-s2-difficulty-adjudication-v1",
+  "examId": "E041",
+  "author": "a",
+  "reviewer": "b",
+  "sourceGitBlobSha": "89745bc3296e987c6341968398d59bd38644e820",
+  "sourcePacketSha256": "23fd70603b8aa016b1c475d5da75324e32e423a83f6b332025bcb2b234598866",
+  "sampledAuthorReviewSha256": "3dd4d250e6e395899d76f92a148685b2b115714334f1560b8142302bc6edc50a",
+  "sampledSourcePatchSha256": "5f65dc2f6d2ccd33dd22a774704c04fd9d9f16c8e3259e14c70c8567c8917a11",
+  "sampled4slotSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+  "status": "INDEPENDENT_REVIEW_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "scope": "3 historical-level exceptions Q1/Q2/Q8; source, existing solution and each required original image actually read.",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_1b80cb7ffb04ff048660d815eb338733db1dd018294ecc2fa2749dbebed0100c",
+      "historicalLevel": "하",
+      "authorDifficultyBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "현재 그림에서 직각은 B, 두 직각변은4와3이며 빗변은 주어지지 않았다. 피타고라스로5를 복원한 후 C의 코사인3/5를 읽으므로 표준 전처리가 있는2/B12를 수용한다. 역사 level하는 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_6ecb3c6993f32f358588b09ce9f64ae9390600670db78c25e37f17c5f4ed8f4b",
+      "historicalLevel": "하",
+      "authorDifficultyBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "현재 그림의 직각C, 빗변√2, 인접변1을 확인했다. 피타고라스로 다른 직각변1을 복원한 뒤 tanA를 구하는 표준 전처리2/B12이다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_2a2795fc95e65327f92da8ddde402d53d977bea27052332841422c32467ccf48",
+      "historicalLevel": "중",
+      "authorDifficultyBucket": 1,
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "현재 그림은 빗변√3와 각60°가 명시된 직각삼각형이다. 목표 AC에 sin60°를 곧바로 곱하는 직접 적용1/B12를 수용한다. 과거 다른 수치·방법의 설명은 근거로 쓰지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "historicalLevelPreserved": true,
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E041-image-version.json",
+    "sha256": "998cac9bfc02a8dcbedfb91d9810a3bb1e84b130e98f77bca30db50324234862",
+    "verifiedAssets": 5
+  },
+  "newMathematicalVerification": false
+}

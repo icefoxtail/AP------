@@ -1,0 +1,27 @@
+{
+  "status": "EXISTING_ACTIVE_REUSE_CONFIRMED_BY_ROOT_AND_CURRENT_CANONICAL_PROVENANCE",
+  "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+  "templateDefinition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+  "canonicalConceptRef": "archive/data/meta-foundation/compiled/concept_registry.json",
+  "canonicalConceptKey": "CC_RECTANGLE_INSCRIBED_CIRCLE",
+  "sameUidEvidenceProvenance": [
+    {
+      "source": "META_PIPELINE_AUDIT",
+      "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+      "sourceOrdinal": 24,
+      "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_RECTANGLE_INSCRIBED_CIRCLE for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06/M3-06-CIRCLE_LINE.",
+      "decisiveEvidence": "서술형 심화 문항으로서 직사각형에 내접하는 원의 반지름을 구하고, 접선의 길이 성질로 분할 선분들을 표현한 후 직각삼각형을 형성하여 피타고라스 정리로 이차/일차 방정식을 세워 선분의 길이를 완결하는 4단계 복합 킬러 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "auditPackageRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+        "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab"
+      }
+    }
+  ],
+  "auditSourceSha256": "4dcae1fcb4a6a70c457e035d5e5ea5e35556c10af3057bfa300bc9dbd0f331f4",
+  "interpretation": "정본은 원 밖의 점에서 원에 그은 접선의 길이를 대상으로 하며 최종 목표를 접점까지의 한 조각으로 제한하지 않는다. 동일 UID의 기존 META_PIPELINE_AUDIT와 ACTIVE CC_RECTANGLE_INSCRIBED_CIRCLE provenance가 분할 접선의 등식·직사각형 반지름·피타고라스로 전체 BE를 구하는 구조에 PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH 연결을 명시한다. 현재 문제·해설의 BP+PE 전체 목표와 접선 길이 관계망을 확인하여 기존 정상 TM을 보존한다. 공통 정의의 확장이나 신규 유형을 제안하지 않는다.",
+  "rootAdjudication": "2026-11-14 root의 현재 canonical 정의 및 동일 UID audit 대조 판정과 일치. 작성자·독립검토자도 해당 근거를 확인한다.",
+  "studentContentChanged": false,
+  "sharedRegistryChanged": false
+}
