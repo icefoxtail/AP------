@@ -1,6 +1,10 @@
 # M2-S1-META-FULL — Codex 재개·출고 인계
 
-## 현재 판정
+## 재개 현황
+
+**RUNNING / ACTIVE_OWNER — GPT_ROOT_59E0F5BD3A77.** 사용자 직접 지시로 같은 task/브랜치를 인수했다. 이전 중단 기록과 검토 증거는 보존한다. 최신 분모·진도는 progress.json, 적용 전후 보정은 PENDING_AMENDMENTS.json을 따른다. 미원격 로컬 원본은 찾지 못했으며 재구성은 새 증거로 구별한다. AWCR r4 raw readback을 검증했다. main·공용 등록·배포는 하지 않는다.
+
+## 이전 중단 판정
 
 **PAUSED_WITH_REMAINING / RESUME_READY. 전체 검토 미완료, 출고 차단.** 실행환경이 unavailable로 전환되어 파일 접근과 필수 검증을 계속할 수 없었다. A/B/C 세 작업자가 모든 쓰기와 신규 작업을 중지했다고 각각 확인했다. 자동 재시작·예약 실행은 설정하지 않았다.
 

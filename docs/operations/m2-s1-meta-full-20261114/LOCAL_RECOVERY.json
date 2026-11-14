@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m2-s1-local-recovery-v1",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
-  "status": "LOCAL_BYTES_UNAVAILABLE",
+  "status": "OLD_LOCAL_BYTES_NOT_FOUND_AT_RESUME",
   "writerStopConfirmed": [
     "A",
     "B",
@@ -21,7 +21,9 @@
         "Q22 geometry measurement versus symbolic-operation primary needs adjudication with actual canonical definitions.",
         "Q24 is one UID containing four independent error-correction subparts across polynomial division and inequalities; preserve UID and record part decisions, do not force a single primary without policy."
       ],
-      "remotePreserved": false
+      "remotePreserved": false,
+      "resumeRecoveryStatus": "NO_OLD_BYTES_RECOVERED",
+      "nextAction": "Reconstruct only unfinished author artifacts from actual source; preserve old hash records as historical recovery references."
     },
     {
       "examId": "E014",
@@ -66,7 +68,9 @@
         "Q14 cylinder volume ratio proposes M1-RPM-214; preserve original exam identity.",
         "Q12 final author proposal numeric2/B23 requires requested independent confirmation."
       ],
-      "remotePreserved": false
+      "remotePreserved": false,
+      "resumeRecoveryStatus": "NO_OLD_BYTES_RECOVERED",
+      "nextAction": "Reconstruct only unfinished author artifacts from actual source; preserve old hash records as historical recovery references."
     },
     {
       "examId": "E015",
@@ -88,7 +92,9 @@
         "Q22 provisional numeric3 must be rechecked against agreed standard inverse-operation numeric2 calibration; Q18/Q21 also need actual structural review.",
         "Last canonical registry query failed; do not count it as executed."
       ],
-      "remotePreserved": false
+      "remotePreserved": false,
+      "resumeRecoveryStatus": "NO_OLD_BYTES_RECOVERED",
+      "nextAction": "Reconstruct only unfinished author artifacts from actual source; preserve old hash records as historical recovery references."
     },
     {
       "examId": "E017",
@@ -101,7 +107,9 @@
         "Original first-semester exam contains actual second-semester geometry questions. Retain scope, use genuine 2022 M2-2 semantic correspondence separately; no source machine curriculum is established.",
         "Continue after recovering E014 and drafting E017; do not redo verified remote E001–E012."
       ],
-      "remotePreserved": false
+      "remotePreserved": false,
+      "resumeRecoveryStatus": "NO_OLD_BYTES_RECOVERED",
+      "nextAction": "Reconstruct only unfinished author artifacts from actual source; preserve old hash records as historical recovery references."
     }
   ],
   "notes": [
@@ -109,5 +117,8 @@
     "Do not rerun author spec generators over final artifacts: final atom additions may not exist in old generators.",
     "A's E007 goal additions and E010 goal additions are preserved in the remote final artifacts; reuse those hashes and independent samples.",
     "A/B/C retain their original disjoint assignments and rotation: B reviews A, C reviews B, A reviews C."
-  ]
+  ],
+  "resumeCheckedAt": "2026-11-14T10:46:17.018797+00:00",
+  "resumeCheckedBy": "GPT_ROOT_59E0F5BD3A77",
+  "recoveryObservation": "Prior known workspace has no work artifacts. Scratch filename scan did not locate listed E014/E015 exact files. Newly reconstructed artifacts are distinguished from old SHA records."
 }

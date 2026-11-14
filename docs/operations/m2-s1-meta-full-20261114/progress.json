@@ -1,13 +1,13 @@
 {
   "workKey": "M2-S1-META-FULL",
   "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
-  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "owner": "GPT_ROOT_59E0F5BD3A77",
   "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
   "branch": "review/m2-s1-meta-full-20261114",
   "createdAt": "2026-11-14T08:34:21.789Z",
   "schemaVersion": "m2-s1-meta-progress-v1",
-  "status": "PAUSED_WITH_REMAINING",
-  "resumeState": "RESUME_READY",
+  "status": "RUNNING",
+  "resumeState": "ACTIVE_OWNER",
   "sourceScope": [
     "archive/exams/original/middle/m2/1mid/",
     "archive/exams/original/middle/m2/1final/"
@@ -23,7 +23,7 @@
   "reviewedQuestions": 286,
   "remainingExams": 63,
   "remainingQuestions": 1494,
-  "nextAction": "RECOVER_RUNTIME_RECONCILE_SAME_BRANCH_APPLY_PENDING_AMENDMENTS_THEN_CONTINUE_E013_E014_E015",
+  "nextAction": "Apply seven source-bound amendments, complete E013/E014/E015/E017 and remaining disjoint queues; root publishes each exam and verifies remote HEAD.",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
   "deploymentStatus": "NOT_RUN",
@@ -2448,7 +2448,7 @@
     }
   ],
   "fullyJudgedQuestions": 280,
-  "updatedAt": "2026-11-14 09:28:31 UTC",
+  "updatedAt": "2026-11-14T10:46:17.018797+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -2570,7 +2570,7 @@
       "verifiedAt": "2026-11-14T09:24:29.652876+00:00"
     }
   ],
-  "writerState": "STOPPED",
+  "writerState": "RUNNING",
   "pause": {
     "reason": "EXECUTION_ENVIRONMENT_UNAVAILABLE",
     "observedError": "exec-server transport disconnected; failed to resume exec-server session; recovery timed out",
@@ -2584,7 +2584,7 @@
   "workerStates": [
     {
       "owner": "A",
-      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "status": "RUNNING",
       "scope": [
         "E001",
         "E004",
@@ -2611,11 +2611,13 @@
         "E067",
         "E070",
         "E073"
-      ]
+      ],
+      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+      "agent": "/root/worker_a"
     },
     {
       "owner": "B",
-      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "status": "RUNNING",
       "scope": [
         "E002",
         "E005",
@@ -2642,11 +2644,13 @@
         "E068",
         "E071",
         "E074"
-      ]
+      ],
+      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+      "agent": "/root/worker_b"
     },
     {
       "owner": "C",
-      "status": "STOPPED_CONFIRMED_BY_WORKER",
+      "status": "RUNNING",
       "scope": [
         "E003",
         "E006",
@@ -2673,17 +2677,18 @@
         "E069",
         "E072",
         "E075"
-      ]
+      ],
+      "sessionOwner": "GPT_ROOT_59E0F5BD3A77",
+      "agent": "/root/worker_c"
     }
   ],
   "awcr": {
-    "latestVerifiedRevision": 3,
-    "fileId": "1IgFl6xaKIUV1YrlqMuO4act4NvbaSeqq",
-    "rawSha256": "c9658b393deb5952a121a976fa28b10b19d106116007bb0006493b0e0a57b4ec",
+    "latestVerifiedRevision": 4,
+    "fileId": "1VkxWljDR1Rs3Xh-zZ329BBGG4Ri5EDpv",
+    "rawSha256": "3130aaee9be6be822fb7156c40ec2fb51d533d8869e959e094b1708ddce33b76",
     "rawReadbackVerified": true,
-    "latestVerifiedSummary": "9 exams /214 questions; IN_PROGRESS",
-    "pauseRevisionStatus": "SAVE_INCOMPLETE_ENVIRONMENT_UNAVAILABLE",
-    "nextAction": "After runtime recovery, reread bootstrap and exact task latest checkpoint, append next immutable revision and verify raw bytes; do not overwrite revision3."
+    "latestVerifiedSummary": "User-directed exact task resume: 12/75 exams, 286/1780 questions remotely preserved; prior local bytes absent; three active disjoint workers.",
+    "nextAction": "Append immutable next revision after meaningful completed units."
   },
   "pendingAmendmentsReference": "docs/operations/m2-s1-meta-full-20261114/PENDING_AMENDMENTS.json",
   "localRecoveryReference": "docs/operations/m2-s1-meta-full-20261114/LOCAL_RECOVERY.json",
@@ -2703,5 +2708,120 @@
     "targetSourceOverlapCount": 0,
     "canonicalRuleOrCompiledRegistryOverlap": [],
     "action": "Read-only comparison. No merge/rebase/reset performed; original review base remains locked."
+  },
+  "resumeHistory": [
+    {
+      "at": "2026-11-14T10:46:17.018797+00:00",
+      "previousOwner": "GPT_ROOT_6F3D37EEA78A",
+      "previousState": "PAUSED_WITH_REMAINING",
+      "previousWriterState": "STOPPED",
+      "previousWorkerStates": [
+        {
+          "owner": "A",
+          "status": "STOPPED_CONFIRMED_BY_WORKER",
+          "scope": [
+            "E001",
+            "E004",
+            "E007",
+            "E010",
+            "E013",
+            "E016",
+            "E019",
+            "E022",
+            "E025",
+            "E028",
+            "E031",
+            "E034",
+            "E037",
+            "E040",
+            "E043",
+            "E046",
+            "E049",
+            "E052",
+            "E055",
+            "E058",
+            "E061",
+            "E064",
+            "E067",
+            "E070",
+            "E073"
+          ]
+        },
+        {
+          "owner": "B",
+          "status": "STOPPED_CONFIRMED_BY_WORKER",
+          "scope": [
+            "E002",
+            "E005",
+            "E008",
+            "E011",
+            "E014",
+            "E017",
+            "E020",
+            "E023",
+            "E026",
+            "E029",
+            "E032",
+            "E035",
+            "E038",
+            "E041",
+            "E044",
+            "E047",
+            "E050",
+            "E053",
+            "E056",
+            "E059",
+            "E062",
+            "E065",
+            "E068",
+            "E071",
+            "E074"
+          ]
+        },
+        {
+          "owner": "C",
+          "status": "STOPPED_CONFIRMED_BY_WORKER",
+          "scope": [
+            "E003",
+            "E006",
+            "E009",
+            "E012",
+            "E015",
+            "E018",
+            "E021",
+            "E024",
+            "E027",
+            "E030",
+            "E033",
+            "E036",
+            "E039",
+            "E042",
+            "E045",
+            "E048",
+            "E051",
+            "E054",
+            "E057",
+            "E060",
+            "E063",
+            "E066",
+            "E069",
+            "E072",
+            "E075"
+          ]
+        }
+      ],
+      "remoteHead": "8e9232777807b9e6bf3bf190123b3de7223d59b9",
+      "authorization": "EXPLICIT_USER_EXACT_TASK_RESUME_AFTER_WRITER_STOP",
+      "acceptedBy": "GPT_ROOT_59E0F5BD3A77",
+      "awcrRevision": 4,
+      "awcrRawSha256": "3130aaee9be6be822fb7156c40ec2fb51d533d8869e959e094b1708ddce33b76"
+    }
+  ],
+  "mainReadbackAtResume": {
+    "sha": "7132fdf909cf593bade285270ccc91429782a676",
+    "targetSourceChangesSinceBase": 0,
+    "canonicalRulesCompiledChangesSinceBase": 0,
+    "generatedRuntimeReceiptChanged": true,
+    "action": "READ_ONLY; no merge/rebase/reset"
   }
 }
