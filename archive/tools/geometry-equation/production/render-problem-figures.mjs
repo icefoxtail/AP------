@@ -4,7 +4,7 @@ import { assetIdentity } from './contracts.mjs';
 import { pythonWorker } from './worker.mjs';
 import { composeConstructionCandidate } from './construction-candidate-svg-v1.mjs';
 import { checkSetDiagramPlan, composeSetDiagramFigure, solveDiagram } from './set-diagram-v1.mjs';
-import { captionText, compositePanels, composeCompositeCandidate, isSetPanel } from './composite-candidate-svg-v1.mjs';
+import { captionText, compositePanels, composeCompositeCandidate, isSetPanel, isSolidPanel } from './composite-candidate-svg-v1.mjs';
 import { composeEllipseFigure, solveEllipseFigure } from './ellipse-figure-v1.mjs';
 import { composeSolidFigurePanel, solveSolidFigure } from './solid-figure-v1.mjs';
 import { loadBank } from '../build-visual-render-matrix.mjs';
@@ -61,12 +61,15 @@ async function composeProblem(plan, identity, typographyPolicy, browser) {
     const panels = [];
     const framed = [];
     for (const panel of compositePanels(plan)) {
-      if (!isSetPanel(panel.plan) && !panel.plan.graphPlan && !panel.plan.mathPlan) {
-        throw Error('Unsupported problem panel: ' + panel.plan.capability);
+      let prepared;
+      if (isSetPanel(panel.plan)) {
+        prepared = { plan: panel.plan, model: solveDiagram(panel.plan.diagram) };
+      } else if (isSolidPanel(panel.plan)) {
+        prepared = { plan: panel.plan, model: solveSolidFigure(panel.plan) };
+      } else {
+        if (!panel.plan.graphPlan && !panel.plan.mathPlan) throw Error('Unsupported problem panel: ' + panel.plan.capability);
+        prepared = await constructionModel({ ...panel.plan, caption: panel.plan.caption ?? captionText(panel.caption) });
       }
-      const prepared = isSetPanel(panel.plan)
-        ? { plan: panel.plan, model: solveDiagram(panel.plan.diagram) }
-        : await constructionModel({ ...panel.plan, caption: panel.plan.caption ?? captionText(panel.caption) });
       panels.push(prepared);
       framed.push({ caption: panel.caption, plan: prepared.plan });
     }
