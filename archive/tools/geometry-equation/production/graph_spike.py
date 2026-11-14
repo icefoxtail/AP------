@@ -108,6 +108,8 @@ def _produce(plan):
         features=plan.get('trigFeatures',{})
         if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['x'])) for row in features.get('phasePoints',[]))
         elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['x'])))
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1':
+        critical.extend(float(Fraction(x))*math.pi for x in plan['trigDisplayFeatures']['extrema'])
     breaks=[]
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':
         features=plan.get('trigIntervalFeatures',{});factor=math.pi if features.get('axisUnit')=='PI' else 1.0

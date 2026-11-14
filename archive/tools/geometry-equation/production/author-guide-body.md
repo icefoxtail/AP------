@@ -294,6 +294,8 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 정답지: `ops/golden/item154trigabslines`(`y=2|sin2x|`과 세 직선), `item155trigpiticks`(`cosx<−√3/2`, 근호 수평선과 솎은 π 눈금), `item156trigq15color`(색 있는 선, `full`).
 
+**그래프 일부만 주어진 문제.** 사인·코사인 함수의 정의역이 전체 실수이면 그대로 `sourceDomain:{"kind":"ALL_REALS"}`를 쓰고, 보이는 가로 범위는 `displayWindowPi:["-1/4","19/12"]`처럼 0을 사이에 둔 두 정확한 π 배수로 쓴다. 끝점을 뜻하는 점·글자나 주기 표시를 추가하지 않는다. `axisTickPi:true`와 명시한 `axisTickValues:{x:[...],y:[...]}`만 눈금으로 그린다. 원본에 극값의 점선이 있으면 `displayGuides:{x:["1/2","1","3/2"],y:["-1","3"]}`를 추가한다. x 값의 점선은 해당 극값에서 x축까지, y 값의 점선은 해당 극값 높이에서 y축부터 곡선의 오른쪽 표시 끝까지 잇는다. 값은 눈금에도 있어야 하며, 원본에 없는 가이드는 쓰지 않는다. 원점에 O가 쓰여 있으면 `showOriginLabel:true`를 더한다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.

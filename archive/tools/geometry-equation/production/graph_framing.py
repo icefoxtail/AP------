@@ -1781,11 +1781,74 @@ def _fit_trig_axis_crossing_pair(plan):
     return {'graphPlan':fitted,'policy':TRIG_AXIS_CROSSING_PAIR_POLICY,'sourceDomainPreserved':True,
             'displayOnly':True,'features':features,
             'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+TRIG_DISPLAY_WINDOW_POLICY='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1'
+
+def _fit_trig_display_window(plan):
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'} or plan.get('function') not in ('SIN','COS'):
+        raise ValueError('TRIG_DISPLAY_WINDOW_REQUIRES_ALL_REAL_SINE_COSINE')
+    if any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles')):
+        raise ValueError('TRIG_DISPLAY_WINDOW_FIELD_UNSUPPORTED')
+    if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:
+        raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
+    raw=plan['displayWindowPi']
+    if not isinstance(raw,list) or len(raw)!=2:
+        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+    lo,hi=(_piecewise_fraction(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in raw)
+    if not lo<0<hi or max(abs(lo),abs(hi))>100:
+        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+    spec=trig_spec(plan)
+    period=trig_axis_period(spec)
+    if not Fraction(1,4)<=(hi-lo)/period<=TRIG_INTERVAL_MAX_PERIODS:
+        raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    if plan.get('axisTickPi') is not True:
+        raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+    if plan.get('displaySize') not in (None,'medium','full'):
+        raise ValueError('TRIG_DISPLAY_SIZE_INVALID')
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    ticks=trig_pi_ticks(plan,'INTERVAL_PI',x0,x1)
+    y_ticks=[_piecewise_fraction(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
+    a,c=spec['a'],spec['c']
+    low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
+    span=max(1.0,high-low)
+    ypad=.42*span
+    if (len(ticks)!=len(set(ticks)) or len(y_ticks)!=len(set(y_ticks))
+        or any(not value or not low-ypad<float(value)<high+ypad for value in y_ticks)):
+        raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    xpad=max(.1*(x1-x0),.5)
+    left=max(xpad,max(1.0,abs(x0)))
+    viewport=[x0-left,x1+xpad,low-ypad,high+ypad]
+    position_to_phase=lambda value:spec['rate']*value+spec['phase']
+    phase_lo,phase_hi=sorted(map(position_to_phase,(lo,hi)))
+    shift=Fraction(1,2) if spec['function']=='SIN' else Fraction(0)
+    extrema={}
+    for k in range(math.ceil(phase_lo-shift),math.floor(phase_hi-shift)+1):
+        value=(k+shift-spec['phase'])/spec['rate']
+        if lo<value<hi:extrema[value]=c+a*(-1 if k%2 else 1)
+    guides=[]
+    declared=plan.get('displayGuides',{})
+    if not isinstance(declared,dict) or set(declared)-{'x','y'} or any(not isinstance(row,list) for row in declared.values()):
+        raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+    for axis in ('x','y'):
+        values=[_piecewise_fraction(v,'TRIG_DISPLAY_GUIDES_INVALID') for v in declared.get(axis,[])]
+        if len(set(values))!=len(values):raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+        for value in values:
+            if axis=='x' and (value not in ticks or not extrema.get(value)):
+                raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
+            if axis=='y' and (value not in y_ticks or value not in (c-abs(a),c+abs(a))):
+                raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
+            guides.append({'axis':axis,'value':str(value),'level':str(extrema[value] if axis=='x' else value)})
+    features={'windowPi':raw,'extrema':[str(x) for x in extrema],'guides':guides}
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW',
+            'overviewPolicy':TRIG_DISPLAY_WINDOW_POLICY,'trigDisplayFeatures':features}
+    return {'graphPlan':fitted,'policy':TRIG_DISPLAY_WINDOW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,
+            'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def _fit_trigonometric_overview(plan):
     if 'pairedAxisCrossing' in plan:return _fit_trig_axis_crossing_pair(plan)
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    if 'displayWindowPi' in plan:return _fit_trig_display_window(plan)
+    if 'displayGuides' in plan or 'showOriginLabel' in plan:raise ValueError('TRIG_DISPLAY_LABELS_REQUIRE_WINDOW')
     source=plan.get('sourceDomain')
     if isinstance(source,dict) and source.get('kind') in {'INTERVAL_PI','INTERVAL'}:
         legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}
