@@ -182,6 +182,7 @@ bindings의 `bindings/applicabilityRules`, aliases의 `aliases`, concepts의 `co
 다른 시험지의 기존 메타나 Runtime 참조에 영향을 주는 정본 수정·삭제는 차단한다.
 이관 대상 시험지의 변경을 포함하지 않은 채 공유 키부터 제거하지 않는다.
 ACTIVE 부모/키/binding이 없거나 불명확한 경우 실패하며, 키나 의미를 자동 추정하지 않는다.
+단, REVIEW2의 유형 미결합(typeHold) 항목은 단원·소단원·조건·연결 개념 키가 정본 표에 없어도 받아 둔 값 등록부(`archive/data/meta-os/received-values.json`)에 있으면 통과한다. 등록부에도 없으면 이 문장대로 실패한다. 판정 값이 원본이나 승인된 값과 다르면 본칸은 두고 판정은 `fieldCandidates`에 보존한다(규칙: Meta OS 부록 "받아 둔 값 등록부와 후보 칸"). 이 문서는 `docs/rules/MANIFEST.md`에 등재된 봉인 문서가 아니다.
 RPM LOCKED 파일·Generated 전용 registry·그 밖의 임의 경로는 변경 대상 allowlist에 포함하지 않는다.
 
 ## 기록과 운영 경계

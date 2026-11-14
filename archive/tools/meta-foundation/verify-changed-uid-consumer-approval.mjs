@@ -115,6 +115,10 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
       const unchanged = Object.keys(item.after).every(k => same(item.before?.[k], item.after[k])) && item.identityBefore === undefined;
+      // REVIEW2 type-hold item: the consumer deliberately publishes no assignment, PT/TPL or value columns for it yet (they stay in the
+      // registrar's own checks and, once grouped, in the output layer), so only the source binding is verified here. Any other item is unchanged.
+      if (item.typeHold === true && doc.approval?.type === "REVIEW2")
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint, unchanged, gated: false };
       return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
         gated: touchesAssignment(changedKeys(item.before, item.after)) };
     });

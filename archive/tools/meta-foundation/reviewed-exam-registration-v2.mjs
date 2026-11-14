@@ -16,7 +16,75 @@ const RPM_MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
+const RECEIVED = "archive/data/meta-os/received-values.json";
+const RECEIVED_KINDS = new Set(["unit", "subUnit", "rpmPath", "pt", "tpl", "cross", "cond", "term4"]);
+const RECEIVED_STATUS = new Set(["UNGROUPED", "GROUPED", "WITHDRAWN"]);
+const SIX_INTEGRATION = new Set(["NONE", "SEQUENTIAL", "INTERDEPENDENT", "REINTERPRETATION", "CASE_BRANCH", "DEEP_COMPOSITE"]);
+const CANDIDATE_FIELDS = new Set(["standardUnitKey", "subUnitKey", "rpmPath", "crossConceptKeys", "conditionKeys", "integrationPattern"]);
+const CANDIDATE_SOURCES = new Set(["agree", "p3", "p4-luna", "p4-sonnet", "proposed-new", "registered", "source-js"]);
 const json = value => JSON.stringify(value, null, 2) + "\n";
+// Received-values registry: an append-only table beside the sealed canonical tables (which it never rewrites). Missing file = empty registry.
+export function loadReceivedValues(root) {
+  const file = path.join(root, RECEIVED);
+  const map = new Map();
+  if (!fs.existsSync(file)) return map;
+  const doc = JSON.parse(fs.readFileSync(file, "utf8").replace(/^\uFEFF/, ""));
+  if (doc.schemaVersion !== "archive-received-values-v1" || !Array.isArray(doc.records)) fail("received-values schema mismatch");
+  for (const r of doc.records) {
+    if (!RECEIVED_KINDS.has(r.kind)) fail("received-values kind invalid: " + r.kind);
+    for (const k of ["value", "label", "reason", "firstExam", "receivedAt"]) requireText(r[k], "received-values " + k);
+    if (typeof r.parent !== "string") fail("received-values parent required: " + r.value);
+    if (!RECEIVED_STATUS.has(r.status)) fail("received-values status invalid: " + r.value);
+    const key = r.kind + "\0" + r.value;
+    if (map.has(key)) fail("received-values duplicate: " + r.kind + "/" + r.value);
+    map.set(key, r);
+  }
+  return map;
+}
+const receivedActive = (tables, kind, value) => { const r = tables.received?.get(kind + "\0" + value); return r && r.status !== "WITHDRAWN" ? r : null; };
+// A unit/sub-unit key that is not in the sealed master may be a received value (type-hold rows only).
+function masterOrReceivedKey(tables, key, kind) {
+  const m = tables.master.get(key);
+  if (m) return m;
+  const r = receivedActive(tables, kind === "standardUnitKey" ? "unit" : "subUnit", key);
+  if (!r) return null;
+  return { key, keyType: kind, status: "active", labelKo: r.label, standardUnitKey: kind === "subUnitKey" ? r.parent : undefined, received: true };
+}
+let rpmIndexCache = null;
+function rpmPathKnown(root, tables, p) {
+  if (!rpmIndexCache || rpmIndexCache.root !== root) {
+    const set = new Set();
+    if (fs.existsSync(path.join(root, RPM_MASTER))) for (const r of JSON.parse(fs.readFileSync(path.join(root, RPM_MASTER), "utf8")).records || []) set.add([r.majorUnit, r.midUnit, r.l3, r.l4].join("\0"));
+    rpmIndexCache = { root, set };
+  }
+  return rpmIndexCache.set.has([p.majorUnit, p.midUnit, p.l3, p.l4].join("\0")) || Boolean(receivedActive(tables, "rpmPath", [p.majorUnit, p.midUnit, p.l3, p.l4].join(" > ")));
+}
+// Judged values that differ from the main cell (the source JS or an approved value wins there) are kept as candidates, never dropped or overwritten.
+function validateFieldCandidates(root, tables, candidates, questionUid) {
+  if (candidates === null || typeof candidates !== "object" || Array.isArray(candidates)) fail("fieldCandidates must be an object: " + questionUid);
+  for (const [field, list] of Object.entries(candidates)) {
+    if (!CANDIDATE_FIELDS.has(field)) fail("fieldCandidates field not allowed: " + questionUid + "." + field);
+    if (!Array.isArray(list) || !list.length) fail("fieldCandidates list required: " + questionUid + "." + field);
+    for (const c of list) {
+      if (!c || typeof c !== "object" || !CANDIDATE_SOURCES.has(c.source) || !Object.hasOwn(c, "value") || Object.keys(c).some(k => !["value", "source"].includes(k)))
+        fail("fieldCandidates entry malformed: " + questionUid + "." + field);
+      const v = c.value;
+      if (field === "standardUnitKey" || field === "subUnitKey") {
+        const m = masterOrReceivedKey(tables, v, field);
+        if (!m || m.keyType !== field) fail("fieldCandidates value not in master or received registry: " + questionUid + "." + field + "=" + v);
+      } else if (field === "rpmPath") {
+        if (!v || typeof v !== "object" || Object.keys(v).length !== 4 || ["majorUnit", "midUnit", "l3", "l4"].some(k => typeof v[k] !== "string" || !v[k].trim())) fail("fieldCandidates rpmPath malformed: " + questionUid);
+        if (!rpmPathKnown(root, tables, v)) fail("fieldCandidates rpmPath not in RPM master or received registry: " + questionUid);
+      } else if (field === "integrationPattern") {
+        if (!SIX_INTEGRATION.has(v)) fail("fieldCandidates integrationPattern outside the six values: " + questionUid);
+      } else {
+        const map = field === "crossConceptKeys" ? tables.cc : tables.cond, kind = field === "crossConceptKeys" ? "cross" : "cond";
+        if (!Array.isArray(v) || new Set(v).size !== v.length) fail("fieldCandidates " + field + " must be a unique array: " + questionUid);
+        for (const k of v) if (map.get(k)?.status !== "ACTIVE" && !receivedActive(tables, kind, k)) fail("fieldCandidates " + field + " key not canonical or received: " + questionUid + "." + k);
+      }
+    }
+  }
+}
 const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
   ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
 const digest = value => crypto.createHash("sha256").update(value).digest("hex");
@@ -1612,11 +1680,11 @@ function resolve(row, tables, { allowConditionDebt = false } = {}) {
 // Type-hold rows (REVIEW2): validate everything except PT/TPL/binding/pack, which are deliberately absent.
 function resolveUnitOnly(row, tables) {
   const active = (map, key, type) => { const r = map.get(key); if (!r || r.status !== "ACTIVE") fail(`inactive/missing ${type}: ${key}`); return r; };
-  for (const [field, map] of [["crossConceptKeys", tables.cc], ["conditionKeys", tables.cond]]) {
+  for (const [field, map, kind] of [["crossConceptKeys", tables.cc, "cross"], ["conditionKeys", tables.cond, "cond"]]) {
     if (!Array.isArray(row[field]) || new Set(row[field]).size !== row[field].length) fail(`invalid ${field}`);
-    for (const k of row[field]) active(map, k, field);
+    for (const k of row[field]) if (map.has(k) || !receivedActive(tables, kind, k)) active(map, k, field);
   }
-  const unit = tables.master.get(row.standardUnitKey), sub = tables.master.get(row.subUnitKey);
+  const unit = masterOrReceivedKey(tables, row.standardUnitKey, "standardUnitKey"), sub = row.subUnitKey ? masterOrReceivedKey(tables, row.subUnitKey, "subUnitKey") : null;
   if (!unit || unit.keyType !== "standardUnitKey" || !["active", "ACTIVE"].includes(unit.status)) fail(`standard unit missing: ${row.standardUnitKey}`);
   if (row.subUnitKey && (!sub || sub.keyType !== "subUnitKey" || !["active", "ACTIVE"].includes(sub.status))) fail(`subunit missing: ${row.subUnitKey}`);
   if (sub && (sub.standardUnitKey || sub.parentKey) !== row.standardUnitKey) fail(`subunit parent mismatch: ${row.subUnitKey}`);
@@ -1877,6 +1945,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const targetUids = new Set(rows.map(r => r.questionUid));
   const plan = registryPlan(root, req.registryChanges || [], evidenceRefs);
   const tables = lookup(plan);
+  tables.received = loadReceivedValues(root);
   const baseline = req.registryChanges?.length || metaPipelineAudit ? registryPlan(root, [], evidenceRefs) : null;
   const beforeTables = baseline ? lookup(baseline) : null;
   const existingConceptReviews = unique(req.approval.metaPipelineAudit?.existingConceptReviews || [], "conceptKey", "existing CrossConcept review");
@@ -1983,12 +2052,23 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
+    if (patch.fieldCandidates !== undefined) {
+      if (req.approval.type !== "REVIEW2") fail(`fieldCandidates requires REVIEW2: ${current.questionUid}`);
+      validateFieldCandidates(root, tables, patch.fieldCandidates, current.questionUid);
+      // Append-only: nothing already stored is removed or changed; new entries are added.
+      const merged = structuredClone(current.fieldCandidates || {});
+      for (const [field, list] of Object.entries(patch.fieldCandidates)) {
+        merged[field] = merged[field] || [];
+        for (const c of list) if (!merged[field].some(x => eq(x, c))) merged[field].push(c);
+      }
+      final.fieldCandidates = merged;
+    }
     if (req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review" &&
         !eq(final.conditionKeys ?? null, current.conditionKeys ?? null))
       fail(`SOP_v1.2 audit has no Condition evidence; existing conditionKeys must be preserved: ${current.questionUid}`);
     for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
-        // typeHold (REVIEW2): a source that carries an empty PT/TPL placeholder (null/"") is consistent with PT/TPL staying unregistered.
-        !(patch.typeHold === true && req.approval.type === "REVIEW2" && ["problemTypeKey", "templateKey"].includes(f) && (q[f] === null || q[f] === "") && !current[f])) {
+        // REVIEW2: a source that carries an empty PT/TPL placeholder (null/"") is consistent with PT/TPL staying unregistered and with a first registration of a resolved PT/TPL (nothing registered yet to overwrite).
+        !(req.approval.type === "REVIEW2" && ["problemTypeKey", "templateKey"].includes(f) && (q[f] === null || q[f] === "") && !current[f])) {
       const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
         eq(current[f] ?? null, final[f] ?? null);
       const sopAuditedRecord = req.approval.type === "META_PIPELINE_AUDIT" && metaPipelineAudit?.inputAuditVariant === "sop_v12_corrective_review"
@@ -2044,6 +2124,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (current.problemTypeKey || current.templateKey) fail(`typeHold only for unregistered PT/TPL: ${current.questionUid}`);
       for (const k of ["problemTypeKey", "templateKey", "L3", "L4", "rpmL3", "rpmL4"]) if (Object.hasOwn(patch.after, k)) fail(`typeHold must not set ${k}: ${current.questionUid}`);
       const held = resolveUnitOnly(final, tables);
+
       // With a basicScopeParentRef (same evidence the full path accepts) L1/L2 are the verified basic-scope parent labels the Consumer exposes.
       const labels = patch.basicScopeParentRef
         ? (({ L1, L2 }) => ({ L1, L2 }))(labelsFor(root, patch, final, { course: held.course, curriculum: held.curriculum, binding: {}, unit: held.unit, sub: held.sub,
@@ -2395,6 +2476,9 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
     for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
       // A type-hold row has no foundation revision, so the Consumer does not publish PT/TPL nor CrossConcept/Condition for it; those are verified in the registrar (resolveUnitOnly) instead.
       if (isTypeHoldRecord(r) && ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(f)) continue;
+      // A type-hold row has no consumer assignment yet, so the Consumer publishes a blank for the assignment-governed columns; a blank is
+      // not a mismatch (a published value that differs still fails below).
+      if (isTypeHoldRecord(r) && f !== "difficultyBucket" && empty(c[f]) && ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "integrationPattern"].includes(f)) continue;
       // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
       if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
         const runtime = runtimeByUid.get(r.questionUid);

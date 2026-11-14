@@ -2563,10 +2563,13 @@ test("typeHold accepts a source that carries empty PT/TPL placeholders; a resolv
   const f = typeHoldFixture(t);
   rewriteSource(f, q => { q.problemTypeKey = null; q.templateKey = ""; });
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
-  // without typeHold the same null placeholder is still a parity refusal when a type is asserted
+  // REVIEW2 (since the received-values change): the same null placeholder is also consistent with a first registration of a resolved type; other approval types stay strict
   const g = review2(fixture(t));
   rewriteSource(g, q => { q.problemTypeKey = null; });
-  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /metadata parity: uid1.problemTypeKey/);
+  assert.doesNotThrow(() => registerReviewedExamV2({ root: g.root, request: g.request }));
+  const g2 = fixture(t);
+  rewriteSource(g2, q => { q.problemTypeKey = null; });
+  assert.throws(() => registerReviewedExamV2({ root: g2.root, request: g2.request }), /metadata parity: uid1.problemTypeKey/);
   // and a non-empty source value is never waived
   const h = typeHoldFixture(t);
   rewriteSource(h, q => { q.problemTypeKey = "PT_NEW"; });
@@ -2594,4 +2597,85 @@ test("typeHold labels follow a verified basicScopeParentRef; an inconsistent pro
   unbound.put(rel, proof);
   unbound.request.items[0].basicScopeParentRef = { path: rel, sha256: hash(fs.readFileSync(path.join(unbound.root, rel))) };
   assert.throws(() => registerReviewedExamV2({ root: unbound.root, request: unbound.request }), /not evidence-bound/);
+});
+
+// ---- received-values registry (append-only table beside the sealed canonical tables) and fieldCandidates ----
+const RECEIVED_FILE = "archive/data/meta-os/received-values.json";
+const recv = (kind, value, parent = "", extra = {}) => ({ kind, value, label: `받은 ${value}`, parent, reason: "문항을 읽고 판정한 새 값", firstExam: "exam1", receivedAt: "2026-11-14", status: "UNGROUPED", ...extra });
+function writeReceived(f, records) {
+  const file = path.join(f.root, RECEIVED_FILE);
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify({ schemaVersion: "archive-received-values-v1", records }, null, 2) + "\n");
+}
+function receivedFixture(t, records = [recv("unit", "UNIT_RECV"), recv("subUnit", "SUB_RECV", "UNIT_RECV")]) {
+  const f = typeHoldFixture(t);
+  const labels = { standardUnitKey: "UNIT_RECV", standardUnit: "받은 UNIT_RECV", subUnitKey: "SUB_RECV", subUnit: "받은 SUB_RECV" };
+  rewriteSource(f, q => Object.assign(q, labels));
+  Object.assign(f.request.items[0].after, labels);
+  writeReceived(f, records);
+  return f;
+}
+
+test("received registry: a unit/sub-unit key missing from the sealed master is accepted from the registry and the judged value is kept as a candidate", t => {
+  const f = receivedFixture(t);
+  f.request.items[0].fieldCandidates = { standardUnitKey: [{ value: "UNIT_NEW", source: "p3" }], rpmPath: [{ value: { majorUnit: "가", midUnit: "나", l3: "다", l4: "라" }, source: "proposed-new" }] };
+  writeReceived(f, [recv("unit", "UNIT_RECV"), recv("subUnit", "SUB_RECV", "UNIT_RECV"), recv("rpmPath", "가 > 나 > 다 > 라", "가 > 나 > 다")]);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.standardUnitKey, "UNIT_RECV");                       // the main cell keeps the source value
+  assert.deepEqual(row.fieldCandidates.standardUnitKey, [{ value: "UNIT_NEW", source: "p3" }]);
+  assert.equal(row.fieldCandidates.rpmPath[0].value.l4, "라");
+  assert.equal(row.problemTypeKey, undefined);                            // PT/TPL are never written for a received value
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).replay, true);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(f.root, RECEIVED_FILE), "utf8")).records.length, 3);   // the registry is only read by the registrar
+});
+
+test("received registry: a value that is in neither the master nor the registry is still refused", t => {
+  const none = receivedFixture(t, []);
+  assert.throws(() => registerReviewedExamV2({ root: none.root, request: none.request }), /standard unit missing: UNIT_RECV/);
+  const noSub = receivedFixture(t, [recv("unit", "UNIT_RECV")]);
+  assert.throws(() => registerReviewedExamV2({ root: noSub.root, request: noSub.request }), /subunit missing: SUB_RECV/);
+  const wrongParent = receivedFixture(t, [recv("unit", "UNIT_RECV"), recv("subUnit", "SUB_RECV", "UNIT_NEW")]);
+  assert.throws(() => registerReviewedExamV2({ root: wrongParent.root, request: wrongParent.request }), /subunit parent mismatch/);
+  const withdrawn = receivedFixture(t, [recv("unit", "UNIT_RECV", "", { status: "WITHDRAWN" }), recv("subUnit", "SUB_RECV", "UNIT_RECV")]);
+  assert.throws(() => registerReviewedExamV2({ root: withdrawn.root, request: withdrawn.request }), /standard unit missing: UNIT_RECV/);
+  const dup = receivedFixture(t, [recv("unit", "UNIT_RECV"), recv("unit", "UNIT_RECV")]);
+  assert.throws(() => registerReviewedExamV2({ root: dup.root, request: dup.request }), /received-values duplicate/);
+  const bad = receivedFixture(t, [recv("unit", "UNIT_RECV", "", { status: "APPROVED" })]);
+  assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /received-values status invalid/);
+});
+
+test("fieldCandidates: out-of-scope fields, unknown values, bad sources and non-REVIEW2 approvals are refused", t => {
+  const refuse = (mutate, pattern) => {
+    const f = receivedFixture(t); f.request.items[0].fieldCandidates = {}; mutate(f.request.items[0].fieldCandidates, f);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), pattern);
+  };
+  refuse(c => { c.problemTypeKey = [{ value: "PT_X", source: "p3" }]; }, /fieldCandidates field not allowed/);                    // PT/TPL are never written through candidates
+  refuse(c => { c.standardUnitKey = [{ value: "NO_SUCH_UNIT", source: "p3" }]; }, /not in master or received registry/);
+  refuse(c => { c.standardUnitKey = [{ value: "UNIT_NEW", source: "guess" }]; }, /fieldCandidates entry malformed/);
+  refuse(c => { c.integrationPattern = [{ value: "PT_SOMETHING", source: "p3" }]; }, /outside the six values/);
+  refuse(c => { c.rpmPath = [{ value: { majorUnit: "가", midUnit: "나", l3: "다", l4: "라" }, source: "p3" }]; }, /rpmPath not in RPM master or received registry/);
+  refuse(c => { c.crossConceptKeys = [{ value: ["CC_NOT_ANYWHERE"], source: "p3" }]; }, /key not canonical or received/);
+  refuse(c => { c.standardUnitKey = []; }, /fieldCandidates list required/);
+  const final = receivedFixture(t); final.request.approval.type = "FINAL_QA"; delete final.request.approval.reviewPassCount;
+  final.request.items[0].fieldCandidates = { standardUnitKey: [{ value: "UNIT_NEW", source: "p3" }] };
+  assert.throws(() => registerReviewedExamV2({ root: final.root, request: final.request }), /requires REVIEW2|typeHold requires REVIEW2/);
+});
+
+test("received registry: changed source text and a wrong UID are still refused", t => {
+  const drift = receivedFixture(t);
+  const full = path.join(drift.root, `archive/exams/${drift.request.sourceArchiveFile}`);
+  fs.writeFileSync(full, fs.readFileSync(full, "utf8") + "\n// changed after judgment\n");
+  assert.throws(() => registerReviewedExamV2({ root: drift.root, request: drift.request }), /source Git blob drift/);
+  const uid = receivedFixture(t); uid.request.items[0].questionUid = "qid_of_another_question";
+  assert.throws(() => registerReviewedExamV2({ root: uid.root, request: uid.request }), /UID|denominator|ordinal/);
+});
+
+test("REVIEW2: an empty PT/TPL placeholder in the source is consistent with a first registration of a resolved PT/TPL", t => {
+  const f = review2(fixture(t));
+  rewriteSource(f, q => { q.problemTypeKey = ""; q.templateKey = ""; });
+  assert.doesNotThrow(() => registerReviewedExamV2({ root: f.root, request: f.request }));
+  const strict = fixture(t);
+  rewriteSource(strict, q => { q.problemTypeKey = ""; q.templateKey = ""; });
+  assert.throws(() => registerReviewedExamV2({ root: strict.root, request: strict.request }), /source\/approved metadata parity/);   // other approval types keep the strict rule
 });
