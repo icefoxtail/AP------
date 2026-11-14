@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E028",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "a48f66828bdf5aaa4730e3145e1f06bc03f542a3",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "6523bb1f5afbf97650ef4edcbe3fe43c283535e4068707e2e8db045de43fd825",
+  "fourSlotInputSha256": "a7fc34adb279ba11edcd0451fb9a6d67117d84c55b6cdb40dcfa48ddeca6dd60",
+  "sampleOrdinals": [
+    11,
+    15,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6f1de3eb319b36c570361eb3164a980b1f035db257d63c935538f25970ee6018",
+      "verdict": "PASS",
+      "metadataReview": "그림과 원문에서 A,B의 인접 두 이등분선이 서로 반대 평행변 BC,AD에 닿음을 확인했다. MG 겹침선분 유형은 같은 밑변의 겹침 길이, MG rectangle은 네 이등분선 교점 사각형이어서 다르다. 두 등각으로 두 이등변을 새로 판정하는 ISO_CONVERSE/RPM062가 타당하다. 이후 등변 결과로 새 평행사변형을 판정하고 둘레를 구하므로 기록한 평행각·이등분선·판정조건·사각형 관계·둘레 CC와 SEQUENTIAL을 수용한다.",
+      "fourSlotReview": "평행사변형과두 이등분선 입력, 둘레 목표, 이등변/새평행사변형/둘레 방법의 현재 정확인용 모두 수용. 핵심 조건은given에 이미 보존되어 condition 빈 배열 자체는 결함이 아니다.",
+      "difficultyReview": "두 이등변을 각각 만든 뒤 얻은 길이를 새 사각형에 전달하는3/상 인접을 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E028-11.png"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_46068d7e6f98663ed3468fb80a5b065926100512bc0066c800308224203e1fb9",
+      "verdict": "REPAIR",
+      "metadataReview": "그림의 AH⊥BE, E의CD중점 및 각50·20·110을 확인했다. 보조 중점M→빗변중점 등거리→새 BEDM평행사변형→SAS→HD=AD→이등변각이라는 실제 경로이므로 M1-RPM079와 구체 TPL 공백은 타당하다. 다만 ACTIVE PT_M1_CONGRUENCE_DATA_TRANSFER definition은 대응각을 옮겨 목표각을 구하는 것으로 한정되고 실제 결정은 대응변HD=CB 전달이다. 같은 부모 DISTANCE_MEASUREMENT_SAS는 대응변 전달을 포함해 parent-definition과 범위 불일치가 있으므로 이 사실을 기록해 ROOT 의미 심의가 필요하다. parent를 자동 확장하지 않고 필요하면 NEW_PT/parent-definition 검토 부채로 분리한다. 또한 after.semanticSourceScope/semanticScopeRelation은 source 허용 메타 필드가 아닌 review 최상위 의미 근거로 이동해야 한다.",
+      "fourSlotReview": "현재 정확인용은 모두 존재한다. 합동 method의 quote는 합동 기호뿐이므로 IMPLIED로 표시하고 MH=CE,MD=BE,끼인각50의SAS 근거를 justification에 보강하면 명확하다. 빗변 중점 등거리는 실제 중요한 단계이므로 method 외심/중점에 해당 해설 문장을 추가하는 보강도 권고한다.",
+      "difficultyReview": "주어지지 않은 중점을 도입해 떨어진 두 삼각형의 SAS 입력을 만들어야 하므로4/상 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E028-15.png"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a85ea170115ee9b5e9d78bc34aec731eee7a84e57e87664b8b3071f0d7d99ba9",
+      "verdict": "PASS",
+      "metadataReview": "그림의 P∈BC와 PM⊥AB,PN⊥AC를 확인했다. 같은 두 각에서AB=AC를 얻는 CC_ISOSCELES_CONVERSE가 필요하고, 넓이합42=7/2(PM+PN)에서 높이합을 복원하는 구체 골격과 RPM leaf 공백 수용. E023/E022 AREA-REBASE는 동일 한삼각형의 두 밑변 표현을 같게 놓는 것이고 E028은 서로 다른 두 부분삼각형 넓이를 더해 같은 계수를 묶는 것이므로 같은 TPL로 합치면 안 된다. 등록안 수준에서는 공통 상위 유형인 삼각형 넓이등식으로 높이량 복원 아래의 형제 TPL로 묶을 수 있다. 현재 등록되지 않은 상위키를 확정하거나 after에 넣지 않는다.",
+      "fourSlotReview": "삼각형·수선의발 given, 길이합 goal, 부분넓이합 NAMED와 등각→등변 IMPLIED, 등각 condition 모두 실제 인용과 결정 경로에 맞는다.",
+      "difficultyReview": "주어진 넓이와 같은 두 밑변으로 목표 합이 바로 나오도록 한 등식을 구성하는2, medium/B23 수용. 원문 상2 STRONG_CONFLICT 보존.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/B/images/E028-22.png",
+      "registrationFamilyRecommendation": {
+        "status": "SEMANTIC_PROPOSAL_ONLY",
+        "parentCandidateLabel": "삼각형 넓이등식으로 높이 또는 높이합 복원",
+        "parentCandidateDefinition": "알려진 삼각형 넓이를 밑변과 대응높이의 식으로 표현하고 같은 넓이의 다른 표현 또는 부분넓이 합을 이용해 목표 높이량을 역산한다.",
+        "siblingSkeletons": [
+          {
+            "label": "같은 삼각형의 밑변 변경으로 한 높이 복원",
+            "inputs": "한 삼각형의 넓이를 계산할 두 길이와 다른 밑변",
+            "decisiveRelation": "동일 넓이의 두 표현을 등치",
+            "references": [
+              "B-E023-AREA-REBASE",
+              "E022-AREA-REBASE"
+            ]
+          },
+          {
+            "label": "부분삼각형 넓이합으로 높이합 복원",
+            "inputs": "전체넓이, 공통 또는 같은 길이의 부분삼각형 밑변, 각 수선거리",
+            "decisiveRelation": "부분넓이 합의 공통 밑변계수를 묶어 높이합을 역산",
+            "references": [
+              "E028-HEIGHT-SUM-AREA"
+            ]
+          }
+        ],
+        "boundary": "공통 높이를 써 밑변비에서 넓이비를 계산하는 순방향 유형과는 목표가 다르다. 현재 각각 NEW_PT 공백은 유지하면서 후속 공식 등록 심의에서 공통 부모/형제TPL 구조로 통합할 수 있음."
+      }
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "pendingRootSemanticIssue": "Q15 parent correspondence-angle restriction versus side-transfer path and existing side-transfer template definition discrepancy"
+}

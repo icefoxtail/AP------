@@ -3992,12 +3992,124 @@
         23,
         24
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "b99cbdffdbab735d8ec3a45fc1bd09ef6437cc31fbe665249084ef48e1950c8e"
+      "uidSetSha256": "b99cbdffdbab735d8ec3a45fc1bd09ef6437cc31fbe665249084ef48e1950c8e",
+      "reviewedQuestionCount": 24,
+      "registrationPendingQuestionCount": 24,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 0,
+      "sourceHoldOrdinals": [],
+      "changedQuestionCount": 24,
+      "fourSlotQuestionCount": 24,
+      "independentSampleOrdinals": [
+        11,
+        15,
+        22
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            4,
+            13
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 성질",
+          "ordinals": [
+            2,
+            3,
+            7,
+            8,
+            10,
+            11
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            5,
+            17,
+            18
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            6,
+            9,
+            12,
+            16,
+            20,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            14
+          ]
+        },
+        {
+          "rpmL1": "기본 도형",
+          "rpmL2": "작도와 합동",
+          "ordinals": [
+            15
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "평행사변형",
+          "ordinals": [
+            19,
+            21,
+            23
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "이등변삼각형",
+          "ordinals": [
+            22
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/four-slot.json",
+          "sha256": "adde254120663bd1f0ebbb4bc34b1f62cfb3dd08a02afe9273efc10267e48aef"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/independent-sample.json",
+          "sha256": "6f542cd831a7f069fa6058c0839077c1dfc639878a8c3425911def8dddbad5e3"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/mechanical-check.json",
+          "sha256": "7ac9462c0948804e851e6ea356452971db05f7f1644651319fe120fd3490dfa4"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/review.json",
+          "sha256": "acf29cb30ad11c85978806fd8112d4ffa7628ffdfd4953803f2fd87a1cc302a9"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/root-acceptance.json",
+          "sha256": "1d31104d4a0dbff316b5bf8b28293f8d8ac45ed0edb0e95cabc0b6887194f21f"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E029",
@@ -4724,9 +4836,10 @@
           "sha256": "1a8bdeab3597c8adf489fb85c144f35fe075bb26d43a4b6cff5bbc4244a4a486"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "19ef899478d08fbe456611533d4dd5637ed0c0d5"
     },
     {
       "examId": "E036",
@@ -6149,11 +6262,11 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 31,
-    "reviewedQuestions": 736,
+    "reviewedExams": 32,
+    "reviewedQuestions": 760,
     "unresolvedQuestions": 0,
-    "remainingExams": 36,
-    "remainingQuestions": 868
+    "remainingExams": 35,
+    "remainingQuestions": 844
   },
-  "lastVerifiedExamCommit": "1e39a64ebf0bc43b183abcc06c0180f375244f68"
+  "lastVerifiedExamCommit": "19ef899478d08fbe456611533d4dd5637ed0c0d5"
 }
