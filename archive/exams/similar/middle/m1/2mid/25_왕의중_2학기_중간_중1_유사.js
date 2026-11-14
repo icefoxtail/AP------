@@ -839,7 +839,7 @@ window.questionBank = [
   "choices": [],
   "answer": "$21$",
   "points": 4,
-  "image": "assets/images/25_왕의중_2학기_중간_중1_유사/q22.svg",
+  "image": "assets/images/25_왕의중_2학기_중간_중1_유사/q22-problem-v2.svg",
   "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
   "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
   "solution": "[키포인트] 그래프가 지나는 점의 좌표를 관계식에 대입하여 비례상수를 차례로 구한다.\n그림에서 반비례 관계 $y=\\dfrac{b}{x}$의 그래프가 점 $(2,\\,6)$을 지나므로\n$6=\\dfrac{b}{2}$에서 $b=12$이다.\n즉 반비례 관계식은 $y=\\dfrac{12}{x}$이다.\n점 $A$는 두 그래프의 교점이고 $x$좌표가 $4$이므로\n$y=\\dfrac{12}{4}=3$이다.\n따라서 점 $A$의 좌표는 $A(4,\\,3)$이다.\n점 $A$는 정비례 관계 $y=ax$의 그래프 위의 점이기도 하므로\n$3=4a$에서 $a=\\dfrac{3}{4}$이다.\n따라서 구하는 식의 값은\n$12a+b=12 \\times \\dfrac{3}{4}+12=9+12=21$이다.\n[답] $21$",
