@@ -1,0 +1,598 @@
+[
+  {
+    "id": "ROOT-E052-1",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "원주각 성질 진술 판정",
+    "definition": "원주각 대응, 꼭짓점 위치, 반원 성질에 대한 독립 진술을 판정한다.",
+    "distinction": "기본 원 구성요소 정의만의 audit 및 목표각 계산과 구별한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      3
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_5f1940db5c6546ad757478e26ef72376ff61f0b999fc0597d4d74badf1beaef5"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E024.proposals.json",
+        "sha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+        "index": 0,
+        "proposal": {
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "원주각 성질 진술 판정",
+          "reuseDefinition": "같은 호·같은 원주각·호의 길이 및 중심각 배수 관계에 대한 진술을 정리와 대조한다.",
+          "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "distinguishingCriterion": "CENTER_ARC 내부 골격은 목표각 계산이다. 현 문항은 수치 목표각 없이 정리의 배수 방향과 대응 성질을 검토한다.",
+          "supportingQuestionUids": [
+            "qid_v1_8510815903a7c2f219ebd70187837973c0e4ef5692a3892ef4573d71c1e822b8"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-2",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "내접사각형 대각합 활용",
+    "definition": "한 내접사각형의 마주 보는 각의 합180도로 목표각 또는 매개변수를 구한다.",
+    "distinction": "기본 삼각형/일직선 전처리 외 복수 원의 각 연쇄가 없으므로 COMPOSITE를 강제하지 않는다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      4,
+      9,
+      22
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_95d4258669f8ab62d54ed84fe8eb8fa14f4fcdae8a5f9f3983bf7a498dd7223a",
+      "qid_v1_b8be599f9c07ec2074c547d39954e305aec41b3b0638e0c5a6f74585a2503d7e",
+      "qid_v1_d1e08f398ac641e1713c905fb5b294df45f3d13999ec8f841b108500b4eb8226"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.proposals.json",
+        "sha256": "35e46cb0b2bff2378dca25b733cb959648baea35c5f6fa3a541a4cd431918d67",
+        "index": 0,
+        "proposal": {
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "내접사각형의 대각 보각",
+          "reuseDefinition": "내접사각형의 한 내각을 보조 이등변삼각형에서 복원하고 마주 보는 각의 합 180도로 목표각을 결정한다.",
+          "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "distinguishingCriterion": "복수 원주각·접현각을 연쇄하는 COMPOSITE와 달리 핵심 원 성질은 내접사각형의 대각 보각 한 가지다.",
+          "supportingQuestionUids": [
+            "qid_v1_aee304e0166d9a224cdc5ef0dc11e2316d54980a37c266926ece2dff25828c32"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      },
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E031.proposals.json",
+        "sha256": "8abf836060fb7e7479b9e7459355efb45e0bd494563993b4b4241da6c992d915",
+        "index": 4,
+        "proposal": {
+          "ordinal": 17,
+          "questionUid": "qid_v1_49fe6f43168ceb5e690744b48aea25eb5f8b8b3b2c5e7adb290ae7a7446a9b91",
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "내접사각형의 대각과 외각 계산",
+          "definition": "원에 내접한 사각형의 대각 합180도와 한 변의 연장선 각을 이용해 목표각을 계산한다.",
+          "distinction": "CENTER_ARC의 중심각·원주각 배각 대입이나 여러 원각 관계의 COMPOSITE와 구별되는 내접사각형 단일정리 골격이다.",
+          "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+          "nearestTemplates": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "TPL_CIRCLE_ANGLE_COMPOSITE"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "relatedProposal": "c/E033 Q4 내접사각형 각 분기"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-3",
+    "kind": "RPM_LEAF_AND_NATIVE_TEMPLATE_GAP",
+    "nameKo": "원 밖 두 할선각 직접 적용",
+    "definition": "알려진 두 호의 차 절반을 외부할선각으로 대응한다.",
+    "distinction": "원주각 등으로 여러 미지 호를 선행 복원하는 복합 추론과 구별한다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      8
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_edbf2c7a43667aed1aef43f4d59a21d22b3c1effbdac871450005b8bcb230b5c"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+        "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+        "index": 0,
+        "proposal": {
+          "ordinal": 7,
+          "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "원 밖 두 할선각 정리 직접 적용",
+          "definition": "원 밖에서 만나는 두 할선의 끼인각을 두 호의 크기 차의 절반으로 직접 계산한다.",
+          "distinction": "기존 해설이 증명을 새로 전개하거나 복수 원각관계를 연쇄하지 않아 COMPOSITE의 전체 골격과 구분된다. GLOBAL 원각·할선·교점각 정의 검색에서 exact TPL 없음.",
+          "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+          "nearestTemplates": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "TPL_CIRCLE_ANGLE_COMPOSITE"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+          "relatedProposal": "E031 Q20 내부 두 현 직접정리와 구분되는 외부 할선 분기"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-4",
+    "kind": "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
+    "nameKo": "교차현 길이곱의 직접 적용",
+    "definition": "교차현 곱 관계에 준비한 선분 길이를 대입하여 미지 현의 조각을 구한다.",
+    "distinction": "보편 현 길이 조건 정의의 native 재사용을 유지한다. 교차현곱 exact publisher leaf와 연결만 출고 담당에게 인계하며 새 native 유형은 필요하다고 단정하지 않는다.",
+    "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "supportOrdinals": [
+      12
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a"
+    ],
+    "registrationStatus": "PUBLISHER_LEAF_AND_CONNECTION_ONLY_NATIVE_REUSE",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E025.proposals.json",
+        "sha256": "0fe636583ffcb43e06f0c1e6dfbc1e51af3eb92ae0974d08a57d2c139891d3c5",
+        "index": 3,
+        "proposal": {
+          "ordinal": 18,
+          "questionUid": "qid_v1_e792e6be70fd6820a3d1fffa2adb765cc59aae7810e5831781834ad2df285606",
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "할선·교차현의 곱과 접선제곱 관계 판정",
+          "definition": "한 점을 지나는 원의 할선·현의 길이곱 관계를 적용하고 접선인 경우에만 접선길이의 제곱을 사용할 수 있음을 판정한다.",
+          "distinction": "원주각 또는 닮음을 새로 증명하지 않고 방멱 관계 자체를 적용한다. GLOBAL ACTIVE POWER_OF_POINT/CHORD_PRODUCT/SECANT_TANGENT 및 한글 곱 관계 정의를 검색했으나 exactTPL이 없다.",
+          "parent": "PT_CIRCLE_LINE_RELATION",
+          "nearestTemplates": [
+            "TM_CIRCLE_CHORD_LENGTH",
+            "TM_TANGENT_LENGTH"
+          ],
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        },
+        "scope": "Prior publisher-leaf gap support only; old native-template-gap claim is superseded by current broad ACTIVE definition evidence."
+      }
+    ],
+    "existingTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "nativeTemplateProposalWithdrawn": true
+  },
+  {
+    "id": "ROOT-E052-5",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "평균과 중앙값의 병렬 계산",
+    "definition": "한 유한 자료에서 평균과 중앙값을 각각 계산한다.",
+    "distinction": "최빈값을 포함한 세 통계량 결합이나 중앙값 단독 골격을 강제하지 않는다.",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "supportOrdinals": [
+      13
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_23ffc8b96be3f2dcc101cc42461f11520d5cb52f53c0430a650de1d1664a5227"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E004.proposals.json",
+        "sha256": "7f21619d7cc3dcce92ff17509c10b960e240234062aca838855c46af87dd636c",
+        "index": 7,
+        "proposal": {
+          "ordinal": 23,
+          "questionUid": "qid_v1_f9f36239de48866cbd5b2f5f496bb8a17d75b7880becad771713478ed70fe725",
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "평균과 중앙값의 병렬 계산",
+          "definition": "같은 자료에서 평균과 중앙값을 각각 계산하여 답한다.",
+          "distinction": "세 대푯값 전체 결합 TPL 또는 중앙값만 구하는 TPL과 범위가 다름",
+          "parent": "PT_M1_CENTRAL_TENDENCY",
+          "searchedGlobalActive": true,
+          "nearestTemplates": [
+            "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+            "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
+          ],
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-6",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "요약 통계량으로 자료 특성 판정",
+    "definition": "평균·표준편차 표와 정의에 근거하여 고른 정도, 분산, 편차합과 개별값 추론 가능성을 판정한다.",
+    "distinction": "막대그래프 분포 분석이나 편차 부호의 단일 오류 찾기와 다르다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "supportOrdinals": [
+      14
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_b46bce622a23cc57f8f45477932c5035fa7715ba1963e3d7da430aec74c02022"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E036.proposals.json",
+        "sha256": "f604e5a308cfbdb976cdfc5a937402cd18f5c946523947238202799848a29cc5",
+        "index": 6,
+        "proposal": {
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "주어진 평균과 표준편차로 자료 특성 판정",
+          "reuseDefinition": "여러 집단의 평균과 표준편차가 주어졌을 때 중심 크기와 고른 정도를 구분하여 비교 진술을 판단한다.",
+          "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "distinguishingCriterion": "막대그래프 분포에서 산포도를 추론하는 부모와 달리 숫자로 주어진 통계량을 비교한다. 기존 편차부호오류 TPL보다 진술 범위가 넓다.",
+          "supportingQuestionUids": [
+            "qid_v1_328bd81661f928cecddfbe977438e1edfe6f846797b7d95c44ea4a7ab4ed2436"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-7",
+    "kind": "NATIVE_PT_AND_TEMPLATE_GAP",
+    "nameKo": "편차합과 평균에서 누락 원자료 복원",
+    "definition": "누락 편차를 합0으로 구하고 평균에 더해 원자료를 복원한다.",
+    "distinction": "분산·표준편차 계산이 없는 목표이다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      15
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_a9814fbcbec46011135b2a6565dde0555df736780eb46171da33dda72ef6d81d"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E036.proposals.json",
+        "sha256": "f604e5a308cfbdb976cdfc5a937402cd18f5c946523947238202799848a29cc5",
+        "index": 5,
+        "proposal": {
+          "type": "REUSE_CANDIDATE_PT_AND_NEW_TPL",
+          "nameKo": "미지 편차와 원래 변량 복원",
+          "reuseDefinition": "편차합0으로 누락 편차를 구하고 변량=평균+편차로 원래 자료값을 복원한다.",
+          "distinguishingCriterion": "ACTIVE DISPERSION_DEVIATION_PROPERTIES는 누락편차 뒤 분산·표준편차 계산을 포함한다. 이 문제에는 산포도 계산이 없어 그 부모를 적용하지 않는다.",
+          "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+          "parentProposalRef": "worker-outputs/b/E008/proposals.json",
+          "supportingQuestionUids": [
+            "qid_v1_e0a897b66189145ed590a05380ac88796e0eba395e8c4873e8619769c8030e13"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-8",
+    "kind": "NATIVE_PT_AND_TEMPLATE_GAP",
+    "nameKo": "산점도 좌표·상관 진술 판정",
+    "definition": "개별 좌표 비교와 전반적인 상관 방향을 진술별로 판정한다.",
+    "distinction": "좌표계의 추상 사분면 문제나 순수 개수 집계로 축소하지 않는다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      16
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_eae3e4e805f611489436b7f89fa540085f940c8804f71bb743a919515e1997ec"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E036.proposals.json",
+        "sha256": "f604e5a308cfbdb976cdfc5a937402cd18f5c946523947238202799848a29cc5",
+        "index": 8,
+        "proposal": {
+          "type": "NEW_PT_AND_TPL_PROPOSAL",
+          "nameKo": "산점도 좌표·대소·상관 진술 종합 판정",
+          "reuseDefinition": "표시점 좌표, 두 축 값의 상등과 대소, 집단의 상관 추세를 각 선택 진술과 비교한다.",
+          "parentScope": "통계/산포도 또는 산점도와 상관관계",
+          "distinguishingCriterion": "순수 조건별 점 개수만 요구하는 경우와 달리 실제 양의상관 진술도 포함한다.",
+          "supportingQuestionUids": [
+            "qid_v1_f7c847cdc7e4306cb60215bd2d3af2070bf0fbcee0591c4cd5159559ab02d8f7"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-9",
+    "kind": "NATIVE_PT_AND_TEMPLATE_GAP",
+    "nameKo": "실제 변량쌍의 상관 방향 판정",
+    "definition": "두 실제 변량의 동반 변화 방향을 양의 상관관계에 대응한다.",
+    "distinction": "분산 계산 및 인과관계 주장과 구별한다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_30832551689d8debad6bcdc4fe1d3575134680f8c990b24b7f25b47cd73841ed"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+        "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6",
+        "index": 8,
+        "proposal": {
+          "id": "B-E014-REUSE-TPL_SCATTERPLOT_CORRELATION_CONTEXT",
+          "kind": "NEW_TPL",
+          "proposedKey": "TPL_SCATTERPLOT_CORRELATION_CONTEXT",
+          "parentProblemTypeKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+          "definition": "산점도의 방향 또는 실제 변량쌍의 변화 경향으로 양·음·무상관을 판정하고 그 관계를 설명하거나 같은 경향의 맥락을 선택한다.",
+          "internalSkeleton": "분포 방향 → 두 변량 증가·감소 관계 → 같은 경향의 맥락",
+          "distinguishFrom": {},
+          "supportOrdinals": [
+            17
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_64364a0ceed8adf1bdccdbdf66697537cd35ecfdb7936ba5b1dd4e16e487f98f"
+          ],
+          "globalActiveSearch": {
+            "searchedAllActive": true,
+            "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "exactMatch": false
+          },
+          "requiredChanges": [
+            "정식 registryChanges",
+            "지원문항 RPM 잎 crosswalk 연결",
+            "원본2015·현행2022 exact binding 검증"
+          ],
+          "reuseCandidateFrom": "worker-outputs/b/E008/proposals.json",
+          "notRegistered": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-10",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "변량 평행이동의 평균과 표준편차",
+    "definition": "공통 상수 이동에서 평균 이동과 편차·표준편차 불변을 적용한다.",
+    "distinction": "ACTIVE 배율 k의 평균·분산 변화 TPL은 덧셈 이동을 포함하지 않는다.",
+    "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "supportOrdinals": [
+      18
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_f63306952d62b50ef90c2bf395e36e961f061b8ac2f7dd5132bb58b6077b8f3b"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E006.proposals.json",
+        "sha256": "35e46cb0b2bff2378dca25b733cb959648baea35c5f6fa3a541a4cd431918d67",
+        "index": 7,
+        "proposal": {
+          "type": "NEW_TPL_PROPOSAL",
+          "nameKo": "변량 평행이동의 평균·분산",
+          "reuseDefinition": "모든 변량에 상수를 더할 때 평균의 이동과 편차 및 분산의 불변을 결정한다.",
+          "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+          "distinguishingCriterion": "기존 SCALED_DATA는 k배 변환을 명시하므로 더하기만 하는 변환은 별도 정확 골격으로 제안한다.",
+          "supportingQuestionUids": [
+            "qid_v1_986b7a314c55656e4ed15b796b315e61e93ea23a59f75aea6fb039a36df65df2"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-11",
+    "kind": "NATIVE_PT_AND_TEMPLATE_GAP",
+    "nameKo": "공통 평균 두 집단의 분산 합성",
+    "definition": "공통 평균 기준으로 nV를 합해 합친 집단의 분산을 구한다.",
+    "distinction": "도수표의 각 변량이나 확률변수 분포를 주는 유형과 다르다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      19
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_0f84f591c2003142537f6f4f4d98e432b6f210cc86cad591badb78738e4fe9b7"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+        "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6",
+        "index": 3,
+        "proposal": {
+          "id": "B-E014-TPL_STAT_CONSTRAINT_EQUAL_MEAN_POOLED_VARIANCE",
+          "kind": "NEW_TPL",
+          "proposedKey": "TPL_STAT_CONSTRAINT_EQUAL_MEAN_POOLED_VARIANCE",
+          "parentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+          "definition": "평균이 같은 두 유한 집단의 크기와 분산에서 편차 기준의 불변성을 이용해 합친 자료의 분산을 구한다.",
+          "internalSkeleton": "공통 평균 확인 → 각 집단 편차제곱합 nV → 합산 → 전체 크기로 나누기",
+          "distinguishFrom": {
+            "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE": "각 변량의 도수표를 직접 계산하는 것이 아니라 집단 요약 통계와 공통평균 조건을 사용한다.",
+            "PT_EXPECTATION_VARIANCE": "확률변수의 가중 분포가 아닌 유한 자료 집단의 기술통계이다."
+          },
+          "supportOrdinals": [
+            16
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_94146dbc4381d9fbfbd33d20f9d710751908e4e50fa564d0846b4b8e9c987f2b"
+          ],
+          "globalActiveSearch": {
+            "searchedAllActive": true,
+            "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "exactMatch": false
+          },
+          "notRegistered": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-12",
+    "kind": "NATIVE_TEMPLATE_GAP",
+    "nameKo": "다양한 기하 조건의 공원성 판정",
+    "definition": "도형별 등각·대각합·교차현 곱·할선 곱 조건으로 네 점의 공원성을 확인한다.",
+    "distinction": "원 각의 수치 연쇄 계산 목표가 아니라 여러 배치의 판정이다.",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "supportOrdinals": [
+      20
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_1f96f87381c0b965a406c05a6f8146fa7285569c4c71be43957f216fa7d8976b"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+        "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6",
+        "index": 0,
+        "proposal": {
+          "id": "B-E014-TPL_CYCLIC_QUADRILATERAL_CONFIGURATION_AUDIT",
+          "kind": "NEW_TPL",
+          "proposedKey": "TPL_CYCLIC_QUADRILATERAL_CONFIGURATION_AUDIT",
+          "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "definition": "개별 사각형 그림의 대각 보각 또는 같은 현을 보는 각의 같음을 확인하여 네 점의 공원성을 판정한다.",
+          "internalSkeleton": "필요각 복원 → 대각의 보각/동일 현의 등각 조건 적용 → 내접 가능한 그림 선택",
+          "distinguishFrom": {
+            "TPL_CYCLIC_QUADRILATERAL_ALWAYS_CLASSIFICATION": "사각형 종류 전체의 항상 성립이 아니라 개별 그림에 주어진 각 조건의 판정이다.",
+            "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT": "기존 정의·구성요소 진술 검토와 달리 내접 조건의 역을 적용한다."
+          },
+          "supportOrdinals": [
+            2
+          ],
+          "supportingQuestionUids": [
+            "qid_v1_cc7a02e5b43abdc08090ae419119967056e57fec90398ddf3114be3355370ee1"
+          ],
+          "globalActiveSearch": {
+            "searchedAllActive": true,
+            "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+            "exactMatch": false
+          },
+          "notRegistered": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-13",
+    "kind": "NATIVE_PT_AND_TEMPLATE_GAP",
+    "nameKo": "통계 조건에서 두 미지 편차의 곱",
+    "definition": "편차합과 표준편차를 합·제곱합으로 바꾸고 곱을 계산한다.",
+    "distinction": "미지편차 하나를 복원한 뒤 산포도를 순방향 계산하는 ACTIVE 부모와 구별한다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      24
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_b065d79aa7b71e97da4ffec11a2c4420eb8b859f473583254db1e0e5c238df79"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E036.proposals.json",
+        "sha256": "f604e5a308cfbdb976cdfc5a937402cd18f5c946523947238202799848a29cc5",
+        "index": 9,
+        "proposal": {
+          "type": "REUSE_CANDIDATE_PT_AND_NEW_TPL",
+          "nameKo": "평균과 분산에서 두 미지 자료의 대칭식",
+          "reuseDefinition": "평균으로 두 미지 자료의 합을 구하고 분산의 편차제곱합을 전개해 제곱합을 얻은 뒤 항등식으로 곱 또는 대칭식을 계산한다.",
+          "distinguishingCriterion": "누락편차 합0 뒤 분산을 순방향 계산하는 ACTIVE 부모와 달리 주어진 평균·분산에서 원자료의 대칭식을 역산한다.",
+          "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+          "parentProposalRef": "worker-outputs/b/E008/proposals.json",
+          "supportingQuestionUids": [
+            "qid_v1_3c47a624ab154909bf644fbcf7b3f1a9d2d0884d582a0d92e043ff70f3bb8af6"
+          ],
+          "globalActiveSearch": {
+            "searchedGlobalActive": true,
+            "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+            "exactFitFound": false
+          },
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ROOT-E052-14",
+    "kind": "CROSS_CONCEPT_DEFINITION_GAP",
+    "nameKo": "사각형 내각합 보조 개념",
+    "definition": "접점 직각과 원 중심각에서 남은 사각형 각을 계산한다.",
+    "distinction": "원주각·접선 기본 성질과 구분되는 보조 사각형 내각합에 exact ACTIVE CC가 없다.",
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      5
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false,
+    "reuses": [
+      {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+        "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501",
+        "index": 8,
+        "proposal": {
+          "ordinal": 22,
+          "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+          "type": "NEW_CC_PROPOSAL",
+          "nameKo": "사각형 내각의 합",
+          "definition": "한 사각형의 네 내각의 합360도를 사용하여 목표각을 구한다.",
+          "distinction": "삼각형 내각 합180 및 정다면체 꼭짓점의 면각합 조건과 구별한다.",
+          "parent": "평면도형의 각",
+          "searchedGlobalActive": true,
+          "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+        }
+      }
+    ]
+  }
+]

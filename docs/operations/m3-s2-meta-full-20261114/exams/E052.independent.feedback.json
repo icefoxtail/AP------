@@ -1,0 +1,477 @@
+{
+  "schemaVersion": "independent-feedback-v1",
+  "examId": "E052",
+  "reviewer": "a",
+  "author": "root",
+  "sourceSha256": "7ecd73a7243f7e10fd42e210c2c4d8ac5f5acfa4a6edabb47f7bc7abd7a1f304",
+  "boundBefore": {
+    "review.json": "cf8009d011322aeaf449dfd7a0df6099c04810a1cb24fb44d5618d2615bc9800",
+    "source-patch.json": "865ae0527a25a29ab30189b5d21ddf9d6077c033ca73e0e6f19c2752c58656bc",
+    "E052.4slot.json": "ad66a6f2b95536d2967b076f709fdfc542e39b52a79cc8a7ee557885f9d7c13b"
+  },
+  "status": "REQUEST_AUTHOR_DELTA",
+  "fourSlotChanges": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+      "before": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형 $ABC$에서 꼭짓점 $A$에서 밑변 $BC$에 내린 높이 $AE$는 중선도 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "따라서 $BE=EC$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BE=\\sqrt{AB^2-AE^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "교차하는현의정리",
+            "src": "solution",
+            "quote": "$AE\\cdot DE=BE\\cdot EC$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현 $AD$, $BC$가 $E$에서 만나므로",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          }
+        ]
+      },
+      "after": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "그림에서 $AE\\perp BC$이고 $AB=AC=5$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원본 상단이 잘려 AC의 입력은 현재 기존 해설의 명시적 재진술과 해설 그림으로 확인했다. AB=AC는 이등변삼각형을 직접 뜻한다."
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "그림에서 $AE\\perp BC$이고 $AB=AC=5$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 AB=AC=5 및 원본에 보이는 AE=3이 피타고라스 계산의 입력이다. 3은 기존 해설 sqrt(5^2-3^2)와 현재 원본 그림을 함께 확인했다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형 $ABC$에서 꼭짓점 $A$에서 밑변 $BC$에 내린 높이 $AE$는 중선도 된다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "따라서 $BE=EC$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BE=\\sqrt{AB^2-AE^2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "교차하는현의정리",
+            "src": "solution",
+            "quote": "$AE\\cdot DE=BE\\cdot EC$",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현 $AD$, $BC$가 $E$에서 만나므로",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설의 이등변삼각형 높이=중선에서 BE=EC를 정하고 피타고라스로4를 얻은 뒤 교차현 곱 AE·DE=BE·EC로 DE를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 두 삼각형 $ABC$, $ABD$가 원에 내접하고, 점 $E$는 $\\overline{AD}$와 $\\overline{BC}$의 교점일 때, $\\overline{DE}$의 길이를 구하면? (5점)"
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "그림에서 $AE\\perp BC$이고 $AB=AC=5$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 원본 E의 직각 표식과 기존 해설의 AE⊥BC를 확인했다."
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1f96f87381c0b965a406c05a6f8146fa7285569c4c71be43957f216fa7d8976b",
+      "before": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 중 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있지 않은 것은? (4점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있지 않은 것은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 현 $DC$를 보는 두 각이 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "교차하는현의정리",
+            "src": "solution",
+            "quote": "$AE\\cdot EC=2\\cdot6=12$",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현 $AC$, $BD$가 $E$에서 만난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "$\\angle ABC+\\angle ADC=80^\\circ+100^\\circ=180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "삼각형 $PDC$와 $PBA$는 닮음이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 $ADE$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "등변사다리꼴",
+            "src": "solution",
+            "quote": "이등변사다리꼴이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          }
+        ],
+        "condition": []
+      },
+      "after": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 중 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있지 않은 것은? (4점)"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "$\\angle AEB=95^\\circ$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원본 보기 ①의 각 입력과 기존 해설의 재진술이 일치한다."
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AE=2$, $EC=6$, $BE=4$, $ED=3$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원본 보기 ② 및 ⑤의 길이 입력이 서로 다른 원 내접 조건의 판단에 사용된다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "③ 두 밑변이 평행하고 두 옆변의 길이가 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원본 보기 ③의 두 밑변 평행 및 두 옆변 같음 표시를 기존 해설과 함께 확인했다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "다음 중 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있지 않은 것은? (4점)"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 네 점 $A$, $B$, $C$, $D$가 한 원 위에 있지 않은 것은? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 현 $DC$를 보는 두 각이 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "교차하는현의정리",
+            "src": "solution",
+            "quote": "$AE\\cdot EC=2\\cdot6=12$",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 현 $AC$, $BD$가 $E$에서 만난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "$\\angle ABC+\\angle ADC=80^\\circ+100^\\circ=180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "삼각형 $PDC$와 $PBA$는 닮음이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 $ADE$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          },
+          {
+            "term": "등변사다리꼴",
+            "src": "solution",
+            "quote": "이등변사다리꼴이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "다섯 그림에 각각 같은 현 등각, 교차현 곱, 이등변사다리꼴, 대각합, 외부할선 곱 조건을 대응하여 네 점의 공원성을 검토한다."
+          }
+        ],
+        "condition": []
+      }
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+      "before": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$AB=9$이므로 반지름 $OC=4.5$ cm이다.\n$OC$와 접선 $CT$는 수직이고, $AH$도 $CT$와 수직이므로 $AH\\parallel OC$이다.\n\n그림에서 $AH=6$ cm이므로 두 평행선 사이에서 $A$와 $O$의 높이 차는\n$6-4.5=1.5$ cm이다.\n\n직각삼각형에서 $OA=4.5$ cm이고 수평 변은 $CH$이므로\n$CH^2+1.5^2=4.5^2$\n$CH^2=20.25-2.25=18$\n$CH=3\\sqrt2$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름으로 반지름4.5를 얻고 접점 수직과 AH 수직의 평행 관계에서 A와 O의 높이 차1.5를 정한 뒤 반지름OA를 빗변으로 피타고라스를 적용해 접선 위 HC를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=9$이므로 반지름 $OC=4.5$ cm이다.\n$OC$와 접선 $CT$는 수직이고, $AH$도 $CT$와 수직이므로 $AH\\parallel OC$이다.\n\n그림에서 $AH=6$ cm이므로 두 평행선 사이에서 $A$와 $O$의 높이 차는\n$6-4.5=1.5$ cm이다.\n\n직각삼각형에서 $OA=4.5$ cm이고 수평 변은 $CH$이므로\n$CH^2+1.5^2=4.5^2$\n$CH^2=20.25-2.25=18$\n$CH=3\\sqrt2$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름으로 반지름4.5를 얻고 접점 수직과 AH 수직의 평행 관계에서 A와 O의 높이 차1.5를 정한 뒤 반지름OA를 빗변으로 피타고라스를 적용해 접선 위 HC를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          }
+        ]
+      },
+      "after": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AB=9$이므로 반지름 $OC=4.5$ cm이다.\n$OC$와 접선 $CT$는 수직이고, $AH$도 $CT$와 수직이므로 $AH\\parallel OC$이다.\n\n그림에서 $AH=6$ cm이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원본의 AB=9와 AH=6 입력을 기존 해설의 재진술로 정확히 결속했다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$AB=9$이므로 반지름 $OC=4.5$ cm이다.\n$OC$와 접선 $CT$는 수직이고, $AH$도 $CT$와 수직이므로 $AH\\parallel OC$이다.\n\n그림에서 $AH=6$ cm이므로 두 평행선 사이에서 $A$와 $O$의 높이 차는\n$6-4.5=1.5$ cm이다.\n\n직각삼각형에서 $OA=4.5$ cm이고 수평 변은 $CH$이므로\n$CH^2+1.5^2=4.5^2$\n$CH^2=20.25-2.25=18$\n$CH=3\\sqrt2$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름으로 반지름4.5를 얻고 접점 수직과 AH 수직의 평행 관계에서 A와 O의 높이 차1.5를 정한 뒤 반지름OA를 빗변으로 피타고라스를 적용해 접선 위 HC를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=9$이므로 반지름 $OC=4.5$ cm이다.\n$OC$와 접선 $CT$는 수직이고, $AH$도 $CT$와 수직이므로 $AH\\parallel OC$이다.\n\n그림에서 $AH=6$ cm이므로 두 평행선 사이에서 $A$와 $O$의 높이 차는\n$6-4.5=1.5$ cm이다.\n\n직각삼각형에서 $OA=4.5$ cm이고 수평 변은 $CH$이므로\n$CH^2+1.5^2=4.5^2$\n$CH^2=20.25-2.25=18$\n$CH=3\\sqrt2$ cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "지름으로 반지름4.5를 얻고 접점 수직과 AH 수직의 평행 관계에서 A와 O의 높이 차1.5를 정한 뒤 반지름OA를 빗변으로 피타고라스를 적용해 접선 위 HC를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "[서술형 4] 아래 물음에 답하시오. (6점)\n다음 그림과 같이 $\\overline{AB}$가 지름인 원 $O$에서 직선 $CT$는 원 $O$의 접선이고, 점 $C$는 그 접점이다. 점 $A$에서 직선 $CT$에 내린 수선의 발을 $H$라 할 때, $\\overline{CH}$의 길이를 구하시오."
+          }
+        ]
+      }
+    }
+  ],
+  "difficultyChange": {
+    "ordinal": 7,
+    "beforeBucket": 3,
+    "afterBucket": 2,
+    "level": "상",
+    "afterBoundary": "NONE",
+    "afterCompatibility": "STRONG_CONFLICT",
+    "reason": "한 원의 내접사각형에서 대각 75°로 ∠BCD=105°, 이미 그려진 삼각형 BCD에서 주어진 25°로 ∠CBD=50°, 접현각 x=50°이다. 현재 기존 해설 그대로 순차 적용하며 새 보조선이나 전략 선택이 없다. E046 Q6의 동일 직접 연쇄와 같은 bucket2가 적절하다. 역사 문자열 상은 보존한다."
+  },
+  "crossConceptReview": {
+    "ordinal": 12,
+    "proposedAppend": "CC_ISOSCELES_TRIANGLES",
+    "status": "REQUEST_ROOT_SEMANTIC_ADJUDICATION",
+    "canonicalDefinition": "두 변의 길이가 같은 삼각형.",
+    "reason": "ABC의 두 변이 같아 높이 AE가 중선이 된다는 보조 성질을 실제 기존 해설이 사용한다. broad ACTIVE CC_ISOSCELES_TRIANGLES의 의미 재사용 제안이며, CC_ISOSCELES_TRIANGLE은 정의가 밑각과 내각합에 국한되어 따로 확장하지 않았다. 공통 사전 변경은 제안하지 않는다."
+  },
+  "protected": "학생 소스·답·해설·그림·UID·순서 변경 없음. 다른 문항 4칸 및 Q12/20/25의 주 분류·숫자 난도는 수용."
+}

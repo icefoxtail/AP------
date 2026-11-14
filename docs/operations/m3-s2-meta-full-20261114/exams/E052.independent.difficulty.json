@@ -1,0 +1,372 @@
+{
+  "schemaVersion": "m3-s2-difficulty-adjudication-v1",
+  "examId": "E052",
+  "author": "root",
+  "reviewer": "a",
+  "sourceGitBlobSha": "49cfcd0e126665c122c762e9dfc9c25f45555055",
+  "sourceSha256": "7ecd73a7243f7e10fd42e210c2c4d8ac5f5acfa4a6edabb47f7bc7abd7a1f304",
+  "inputSha256": "47bf4430661470e10269995d17bb784d8cd10410da1023ffedd52e5e4d73e2df",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "scope": "역사 문자열 예외9건과 숫자 변경13건의 합집합15문항. Q7은 실제 기존 풀이에 따라 독립 검토에서2로 정정하고 상/STRONG_CONFLICT를 보존했다. 새 풀이·R1/R2/R3 없음.",
+  "targetAuthorReviewSha256": "1ba010ade1c14d8e1e508051d96577dc3d513d5f8240527578390cd26291cbf1",
+  "targetSourcePatchSha256": "40a8b17ed1652b34b65afc53df0c18be5d230dd5defc64fc8014fe79ce8f8c61",
+  "authorDifficultyChangeReviewSha256": "d634581b2e5eff4f2d28edcc6bc5b3cc36baf8cd048a90e8f8bb881dc747afe2",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 1,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "원본의 두 24°와 왼쪽 작은 호4, 목표 화살표가 아래 두 작은 호 전체라는 범위를 직접 보았다. 같은 호 성질의 직접 적용 전에 목표량을 두 호의 합으로 읽는 한 전처리가 있으므로 기존1→2를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q02.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_5f1940db5c6546ad757478e26ef72376ff61f0b999fc0597d4d74badf1beaef5",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 2,
+      "authorProposedBucket": 1,
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "세 학생의 진술은 같은 길이의 호와 원주각, 고정 호에 대한 원주각의 개수, 반원의 원주각을 각각 정의 수준에서 대조한다. 여러 진술 자체가 전략 선택을 늘리지는 않아 2→1/B12를 수용하고 역사 중은 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "assetsInspected": [],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_b7e8271fe9c062cb17a8cc6775d909e0145652686e1731126559dd8d4ff50467",
+      "historicalLevel": "상",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "basis": "원본에 한 원의 내접사각형과 75°·25°가 모두 주어져 있다. 기존 해설은 대각105°→삼각형 내각50°→접현각50°의 직접 연쇄이며 별도 보조선·조건 선택이 없다. E046 Q6의 실제 같은 연쇄와 비교하여 저자초안3을2/NONE로 보정한다. 역사 상은 STRONG_CONFLICT로 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q07.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_edbf2c7a43667aed1aef43f4d59a21d22b3c1effbdac871450005b8bcb230b5c",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "그림의 반원 지름 AB와 중심각 DOC48°를 확인했다. 기존 해설은 반원180°를 확인한 뒤 외부 두 할선 각 공식에 직접 넣는다. 복합 원의 각 관계를 새로 만들지 않으므로 3→2가 맞다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q08.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_b8be599f9c07ec2074c547d39954e305aec41b3b0638e0c5a6f74585a2503d7e",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "원본의 두 원을 보았지만 현재 해설이 쓰는 관계는 PA와 PB의 반대방향을 통한128° 및 왼쪽 내접사각형의 대각합뿐이다. 두 원이라는 외형 때문에3으로 올리지 않고2로 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q09.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+      "historicalLevel": "상",
+      "previousOperationalBucket": 4,
+      "authorProposedBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "실제 기존 해설은 이등변 높이의 중선 성질→BE=EC4를 위한 피타고라스→교차현 곱의 세 연결을 택한다. 어떤 입력 길이를 먼저 복원할지 선택은 있으나 새 비정형 증명은 없으므로4→3/B34, 역사 상 예외를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q12.png",
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q12-solution.svg"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_b46bce622a23cc57f8f45477932c5035fa7715ba1963e3d7da430aec74c02022",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "원본 표의 평균과 표준편차가 본문 전사와 일치한다. 표준편차 크기 비교·편차합0·분산과 표준편차의 순서·두 통계량으로 개별 자료 하한을 단정할 수 없음의 표준 해석이며 누락 자료 복원이나 경우 분기가 없어3→2를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q14.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a9814fbcbec46011135b2a6565dde0555df736780eb46171da33dda72ef6d81d",
+      "historicalLevel": "하",
+      "previousOperationalBucket": 2,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "원본 표의 -4,2,a,7과 평균70을 확인했다. 먼저 편차합0으로 a=-5를 복원하고 원자료는 평균+편차로 변환한다. 단순 정의 한 번을 넘는 정형 전처리이므로2 유지 및 하/B12 예외가 타당하다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q15.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_30832551689d8debad6bcdc4fe1d3575134680f8c990b24b7f25b47cd73841ed",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 2,
+      "authorProposedBucket": 1,
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "정성적 생활 맥락에서 두 변량이 함께 증가하는 예를 고르는 직접 상관 방향 판별이다. 실제 답·해설과 선택지를 대조해 별도 수치 계산이 없으므로2→1/B12, 역사 중 보존을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "assetsInspected": [],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_0f84f591c2003142537f6f4f4d98e432b6f210cc86cad591badb78738e4fe9b7",
+      "historicalLevel": "상",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "두 집단의 평균이 모두6이라 전체 편차의 기준이 바뀌지 않는다는 관계를 먼저 선택하고 집단별 n×분산을 합친다. 단순히 분산 두 수를 더하는 문제가 아니므로3 유지/B34 예외가 타당하다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "assetsInspected": [],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1f96f87381c0b965a406c05a6f8146fa7285569c4c71be43957f216fa7d8976b",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 2,
+      "authorProposedBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "원본 다섯 도형을 각각 해설과 대조했다. 등각으로 공원성, 두 현 곱, 등변사다리꼴, 대각합, 외부 할선 전체 길이와 곱을 선택해야 한다. 보기 개수보다 적용 조건 선택과 전체 할선 복원이 난도 근거이므로2→3을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q20.png",
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q20-solution.svg"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_7825bde9c7d369ee7cae1f75e2390fbe221e5dda9e87ba20176d79fcd45cca65",
+      "historicalLevel": "상",
+      "previousOperationalBucket": 4,
+      "authorProposedBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "BC가 반지름과 같다는 입력을 정삼각형의60° 호로 바꾸고 ACD64°의128° 호와 내부 두 현 교각 공식에 연결한다. 원본의 교점 E 및64°를 확인했으며 표준 도형 관계 선택이어서4→3/B34를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q21.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_d1e08f398ac641e1713c905fb5b294df45f3d13999ec8f841b108500b4eb8226",
+      "historicalLevel": "하",
+      "previousOperationalBucket": 1,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "현재 원본 SVG의 D=(3x-20)°, B=x°가 서로 대각임을 보았다. 직접 한 각도를 읽는 것이 아니라 대각합으로 미지수 방정식을 세우는 한 전처리가 있으므로1→2/B12 및 역사 하 보존을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q22-clean.svg"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_0ab41c3d206f877202c18d6b95e4d22eb9ddcb5f183dd512e984195d08e739a2",
+      "historicalLevel": "중",
+      "previousOperationalBucket": 3,
+      "authorProposedBucket": 2,
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "basis": "원본 표의 여섯 편차와 세 소문항을 확인했다. 미지 편차→분산→표준편차의 순서가 이미 제시되어 있어 경로 선택 부담을 별도로 올리지 않는다. 실제 기존 해설의 -3복원·16/3분산·양의 제곱근에 맞춰3→2를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q23.png"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+      "historicalLevel": "상",
+      "previousOperationalBucket": 4,
+      "authorProposedBucket": 3,
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "basis": "원본의 AB9·AH6 및 현재 해설 그림의 수직/수평 보조 구성을 확인했다. 지름으로 반지름4.5를 얻고 높이 차1.5를 구성한 뒤 OA를 빗변으로 피타고라스를 쓰는 표준 연결이다. 새 원주각·닮음을 추가하지 않고4→3/B34를 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalDiagramOrTable"
+      ],
+      "assetsInspected": [
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q25.png",
+        "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q25-solution.svg"
+      ],
+      "priorReasonEvidenceAssessment": "현재 source·운영 입력에 개별 difficultyReason/firstPassEvidence가 포함되지 않아 기존 수치 자체를 새 근거로 삼지 않았다. 현재 기존 해설과 읽은 원본의 구조를 개별 판단했으며 선행 숫자는 마지막 비교값으로 보존한다.",
+      "status": "INDEPENDENT_ADJUDICATION_ACCEPTED",
+      "newMathematicalVerification": false
+    }
+  ],
+  "status": "INDEPENDENT_DIFFICULTY_ACCEPTED",
+  "newMathematicalVerification": false
+}
