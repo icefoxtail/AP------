@@ -1,0 +1,800 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E039",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:27:36.731556+00:00",
+  "sourceGitBlobSha": "bb178501aa319154d2bc82fcf1f7a5a7b6c344ac",
+  "sourceSha256": "0e7ee2ceb5805fa1061fd463c30dc88d2c63296ff4ded653a519709209ce40a6",
+  "reviewSha256": "2e0f8c20f4051481650d964c2623a6a567f1640c4008edbfb4b7e6bffe3c8a69",
+  "fourSlotSha256": "1427736d4f6bc1df1ac4e3202a234add15651f8c9dffd1897d9b529f8cc1ea4b",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/A/independent/E039/difficulty-content-first-freeze.json",
+  "initialFreezeSha256": "f94504b32fb70b017431fbcadb67b13d500335ee912055617d944aa4020ec054",
+  "actualAssets": [
+    {
+      "sourceOrdinal": 15,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E039/assets/q15.png",
+      "sha256": "df005cc65f9fcacc8c7e292106666ccc58f290f248ef7b9a6c70bcbd74a486ad",
+      "actualImageOpened": true,
+      "observation": "원기둥 반지름3ab·높이6ab, 원뿔 반지름b/a; 높이18a의 지수 흐림을 독립적으로 확인"
+    },
+    {
+      "sourceOrdinal": 20,
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/E039/assets/q20.png",
+      "sha256": "cb0ad3b094417f091f8cb7b9480082302bb99708eb0c0310574865f75f9b4688",
+      "actualImageOpened": true,
+      "observation": "−4/4 끝점과 열린/닫힌 원 및 양 방향 화살표가 보이는 다섯 수직선"
+    }
+  ],
+  "sampleOrdinals": [
+    7,
+    15,
+    24
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 7,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "원래 유리수의 분자·분모를 복원하는 조건문제로006 관련 의미를 수용하되 오독 후 약분 관례가 미명시라 실제 해법의 유일성을 확정하지 않는다.",
+        "binding": "원해설과 genuine resolver 근거가 없어 exact active binding 미확정이다. 조건부 RPM 의미 제안으로만 소비한다.",
+        "crossConcept": "복원 primary를 전제로 한 내부 소수·분수변환은 조건부 내부단계이며 별도 CC 추가하지 않는다. 기존해설 부재를 보존한다.",
+        "condition": "r1 분자582/분모581의 실제 오독 문장과 기약분수 조건을 확인했다. 일반 제약에 OPEN_SENTENCE394를 쓰지 않는다.",
+        "integration": "조건부 복원 구조의 NONE 제안으로만 수용하며 실제 풀이가 검증됐다는 뜻이 아니다.",
+        "difficulty": "독립 초기 UNKNOWN/low와 r1이 일치한다. 명시되지 않은 복원 관례를 새 해설로 보충하여 숫자를 확정하지 않는다.",
+        "fourSlot": "원본의 기약분수/두 순환표현/순환소수 목표를 대조했다. method는 빈칸이며 오독 조건의 두 실제 대상 인용을 보강한 r1을 확인했다."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "원기둥·원뿔 부피비의 문자식 문제이나 높이 지수 미판독과 기존해설 부재로 M1입체부피/M2단항식 중 primary 미판정을 수용한다.",
+        "binding": "실제 ACTIVE M1 standardmeasure는 수치공식대입, M2 두회전원기둥은 회전구성의 두원기둥이므로 현 원기둥/원뿔비와 입력구성이 다르다. 관련후보로만 유지한다.",
+        "crossConcept": "단일 primary 미확정에 따른 CC=null이며 없음 판정이 아니다.",
+        "condition": "입력 외 임의의 수범위나 보이지 않는 높이의 지수를 만들지 않는다.",
+        "integration": "primary 미판정 종속축 null을 그대로 수용한다.",
+        "difficulty": "두 검토자 모두 실제 높이 a 지수 판독불가, 원해설도 없어 r1 UNKNOWN/low 수용.",
+        "fourSlot": "실제 그림을 열어 반지름3ab,b/a와 원기둥높이6ab를 읽었다. 원뿔높이지수는 미확정. given원기둥711/원뿔712, goal부피219/비율650, method빈칸이 맞다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "verdict": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "fieldReview": {
+        "classification": "2와5 거듭제곱의 곱·몫007에 두자리 계수 지정과 십진자릿수가 결합된 의미 제안이다. 자릿수 exactleaf 부채를 남긴 점을 수용한다.",
+        "binding": "범위에 맞는 exact activePT/TPL을 추정하지 않은 등록 유보를 수용한다.",
+        "crossConcept": "지수법칙으로10의거듭제곱을 묶는 핵심 내부 계산에 임의의 별도 CC를 더하지 않는다.",
+        "condition": "ACTIVECOND_NATURAL과 RESTRICTED_INTERVAL의 실제 정의를 읽고 a자연수,10<a<100의 해선택 제한과 대조했다.",
+        "integration": "같은 지수표현을 정규화하여 자릿수에 대응하는 조건부 NONE 제안이다.",
+        "difficulty": "두자리a를 정한 뒤 자릿수에 대응하는 정형 연결로 독립2/low/B23와 author2가 일치한다.",
+        "fourSlot": "실제A식, a/n 목표, 자릿수 목표, 자연수·범위조건 모두 literal로 확인. 원해설 없어 method빈칸 유지."
+      }
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_420759e3288163dde56843e61548e1895d493f37fd5547aaf179bb710a0e33e1",
+      "initialIndependent": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_420759e3288163dde56843e61548e1895d493f37fd5547aaf179bb710a0e33e1",
+        "actualStemSha256": "04c43a72edd55b6f167f88eec8a52ede645949d0f07bd03ffb75241204c8ac84",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "유한/무한 소수의 정의를 각 표기에 직접 적용한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "소수표현에서 무한히 이어지는 것의 개수를 직접 센다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "유한/무한 소수의 정의를 각 표기에 직접 적용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3df50da7d3f229c58e49e3817a0dd7c56adfcec4d8aac5343a7bb2ccbf99c28c",
+      "initialIndependent": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_3df50da7d3f229c58e49e3817a0dd7c56adfcec4d8aac5343a7bb2ccbf99c28c",
+        "actualStemSha256": "caa930466f226c42c7522e7197e88065ee446d363a80af4b4542694a4678ea85",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "약분 후 분모 소인수로 유한소수 여부를 판정한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각 분수를 약분하여 분모의 소인수 조건을 확인한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "약분 후 분모 소인수로 유한소수 여부를 판정한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_cfe7787f82f7507d32237bf570dd3c2bc124315f35ade3a0e1d38c8e603aff4f",
+      "initialIndependent": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_cfe7787f82f7507d32237bf570dd3c2bc124315f35ade3a0e1d38c8e603aff4f",
+        "actualStemSha256": "23872400e0bdf0f457c1da380e77e2c52bf1f973c81a6ecb70056224f628a399",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "수 범위와 기약분수의 분자1 조건을 함께 제한하는 정형 분수 조건."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유한소수·기약분자1·좁은 자연수 범위를 함께 만족시키는 후보를 선별한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "수 범위와 기약분수의 분자1 조건을 함께 제한하는 정형 분수 조건."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_e1ca1ed6c9d4e3940949f777acc9c66f033161ddefc1739525aeeed2a7c67982",
+      "initialIndependent": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_e1ca1ed6c9d4e3940949f777acc9c66f033161ddefc1739525aeeed2a7c67982",
+        "actualStemSha256": "ca1ce2c07e6b078dac9f73d30e32a1b5c51067da07af3e0470dffbc077ff9972",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "반복되는 순환마디와 양 끝 점 표기를 직접 대응한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환마디의 시작과 끝 점표현을 정의로 판단한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "반복되는 순환마디와 양 끝 점 표기를 직접 대응한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_7e5c20673ca96c700056dd68d583945b0156868a3c5c088c83d60c99ef5d44c9",
+      "initialIndependent": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_7e5c20673ca96c700056dd68d583945b0156868a3c5c088c83d60c99ef5d44c9",
+        "actualStemSha256": "84bb3f21e2a4a3a7e38eb6fb994a3d928cdb228a5bdd9be3da2681ac9b34e8e0",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "서로 다른 두 분모의 필요한 소인수 제거를 공통 최소 자연수 조건으로 묶는다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 분모에서2와5이외의 소인수를 없애는 공통 최소 자연수 조건이다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "서로 다른 두 분모의 필요한 소인수 제거를 공통 최소 자연수 조건으로 묶는다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_f71ac4cfebb05e8e3eb76bbf3fada7d40fff7f9775e1f912998196c1595efbe4",
+      "initialIndependent": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_f71ac4cfebb05e8e3eb76bbf3fada7d40fff7f9775e1f912998196c1595efbe4",
+        "actualStemSha256": "13a0a8d4ee59321b5898eeefcc80f49ce6f32aba359eb6c3a59590f76a96fb5e",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "순환마디 자리맞춤 곱셈 후 차의 계수를 확인한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "제시된 변환 과정의10배·100배·뺄셈 계수를 직접 확인한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "순환마디 자리맞춤 곱셈 후 차의 계수를 확인한다. 독립초기와 저자1↔2 차이는 B12 인접으로 저자값을 수용한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_1db2243ba8fef76e33d1c771d3fdaffed65efd7519a07bdcea44af6ec3481be4",
+      "initialIndependent": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_1db2243ba8fef76e33d1c771d3fdaffed65efd7519a07bdcea44af6ec3481be4",
+        "actualStemSha256": "da5b23fac9bd34ae95a975713631940897005c0f3d00c447cbe4c821bb0307fc",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": "UNKNOWN",
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "UNKNOWN",
+          "reason": "분자/분모 오독 후 소수 표현만 있어 오독값·약분 관례의 명시가 부족하다. 유일한 복원 경로를 원해설 없이 확정하지 않는다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "오독한 뒤의약분된표현과실제로읽은분자·분모를동일시하는복원관례가명시되지않고원해설도없어유일한문항난도를확정할수없다. 기존조건부예상구조는초기스냅샷에보존하고정답/해설은추가하지않는다."
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_SOURCE_DEBT",
+      "acceptedProposal": {},
+      "reason": "분자/분모 오독 후 소수 표현만 있어 오독값·약분 관례의 명시가 부족하다. 유일한 복원 경로를 원해설 없이 확정하지 않는다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7a74f0c88cb069471dcb7887ccb62405365b0a714c2ea3e13aded2b56bdd0d7b",
+      "initialIndependent": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_7a74f0c88cb069471dcb7887ccb62405365b0a714c2ea3e13aded2b56bdd0d7b",
+        "actualStemSha256": "148d9d12d2ffafa81c01885583754d169c784289b6dc9e97151ed3a6b9b6ae26",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "유리수·유한·순환·무한소수의 여러 포함관계를 각각 구별한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유리수·유한/무한/순환소수의 포함관계를 여러 진술에 적용한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "유리수·유한·순환·무한소수의 여러 포함관계를 각각 구별한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9243dd6bad0324e5d53dddeff8a48805afa54a4ba0826b4927dc69497ddab358",
+      "initialIndependent": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_9243dd6bad0324e5d53dddeff8a48805afa54a4ba0826b4927dc69497ddab358",
+        "actualStemSha256": "4e61d45c2d3506fa19cc0daaa015c2d5ab44ffc625f684341a8385ffd4090233",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "거듭제곱/곱/몫의 여러 지수법칙을 적용해 비교한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "보기별 곱·몫·거듭제곱 법칙을 적용해 지수를 비교한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "거듭제곱/곱/몫의 여러 지수법칙을 적용해 비교한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4b515a01ef1d09da773ed34479f07a9e97ac26fa500d38a39888d04d26242c67",
+      "initialIndependent": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_4b515a01ef1d09da773ed34479f07a9e97ac26fa500d38a39888d04d26242c67",
+        "actualStemSha256": "d9c0b7a6489e1addcaed89d25afd179eadf768eab6138e16f8b98b494e4805a5",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "밑을 통일하고 A로 지정된 거듭제곱을 목표식에 대체한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "2의 거듭제곱을 A로 표현한 뒤8의 거듭제곱과 연결한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "밑을 통일하고 A로 지정된 거듭제곱을 목표식에 대체한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_07dfe0a5bd9a14a7b8b01cda219608029f60a3a14a9175a2875ff0fc0c10a90a",
+      "initialIndependent": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_07dfe0a5bd9a14a7b8b01cda219608029f60a3a14a9175a2875ff0fc0c10a90a",
+        "actualStemSha256": "22472994da93850e0b4008af5a09b4c636582c80cd938f30cc369a3b9ac12eae",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "곱의 지수를 더한 뒤 주어진 x+y를 직접 넣는다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "같은 밑의 곱에서 지수합을 x+y 조건에 대응한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "곱의 지수를 더한 뒤 주어진 x+y를 직접 넣는다. 독립초기와 저자1↔2 차이는 B12 인접으로 저자값을 수용한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_8463e17faa80af12f04a448c3243dfc0e064726e9668eecd9f999afcf4c7d572",
+      "initialIndependent": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_8463e17faa80af12f04a448c3243dfc0e064726e9668eecd9f999afcf4c7d572",
+        "actualStemSha256": "7451d4022c1509d8fb229ce670a26abc3b1a305e05d16c362c6254dd927859c2",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "혼합 단항식 연산 후 문자별 지수와 계수를 대응한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "단항식의 계수와 두 문자 지수를 정리하여 미지값을 비교한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "혼합 단항식 연산 후 문자별 지수와 계수를 대응한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_8af2067a2d52af464bf98c1ea3c1603536c3a3ae5ec4f2ab797a818f7099c4e9",
+      "initialIndependent": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_8af2067a2d52af464bf98c1ea3c1603536c3a3ae5ec4f2ab797a818f7099c4e9",
+        "actualStemSha256": "f792e8e00ffd743978f1fa611cedab8564fdf52c0e210c46d6d63ea8fc025984",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "괄호의 부호를 차례로 풀고 동류항 계수를 정리한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "중첩괄호의 부호와 분배를 정리하여 x계수만 고른다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "괄호의 부호를 차례로 풀고 동류항 계수를 정리한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a9249658792ef4728eeac7cdfcc97d5be79f6052b1cf510e06b04cee7aa03c0f",
+      "initialIndependent": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_a9249658792ef4728eeac7cdfcc97d5be79f6052b1cf510e06b04cee7aa03c0f",
+        "actualStemSha256": "9c3e16564c2ff3a648d92e956cf1303170f7f88d654ce5c9b34148692d7d3eb0",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "역연산으로 빈 단항식을 복원하는 정형 혼합연산."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "단항식 등식에서 제수 위치의 미지식을 역으로 결정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "역연산으로 빈 단항식을 복원하는 정형 혼합연산."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_714b611ffd3923bc00675f84a6543693c43778947cde2ee88a6366d28923acf0",
+      "initialIndependent": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_714b611ffd3923bc00675f84a6543693c43778947cde2ee88a6366d28923acf0",
+        "actualStemSha256": "051bead94e31457dc7676435312adaa0df080720b40cb4b4d04af0551320aa82",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": "UNKNOWN",
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "UNKNOWN",
+          "reason": "실제 그림의 원기둥/원뿔과 반지름은 보이나 원뿔 높이 a의 지수가 흐려 정확한 문자식 입력 판독을 유보한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두독립검토자모두실제그림의원뿔높이지수를확정판독하지못하고원해설도없으므로숫자난도를미판정으로남긴다. 기존조건부예상구조는초기스냅샷에보존하고정답/해설은추가하지않는다."
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_SOURCE_DEBT",
+      "acceptedProposal": {},
+      "reason": "실제 그림의 원기둥/원뿔과 반지름은 보이나 원뿔 높이 a의 지수가 흐려 정확한 문자식 입력 판독을 유보한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5c192de9bd66c0a97455f508e853c2adc2a4f92fa121d417c5cbfc08fc04c355",
+      "initialIndependent": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_5c192de9bd66c0a97455f508e853c2adc2a4f92fa121d417c5cbfc08fc04c355",
+        "actualStemSha256": "c4915e48db712dbccace442413f0d71785de15b0d1fd2dbe915f0f4a40669df8",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "분배법칙과 단항식 나눗셈 뒤 동류항 정리. 선택지 중복 부채는 별도로 보존한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "분수로 나누는 항을 역수 곱으로 바꾸고 분배·동류항 정리한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "분배법칙과 단항식 나눗셈 뒤 동류항 정리. 선택지 중복 부채는 별도로 보존한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7e7fc1b7bfcbd9f2ee30297faab446b1c11c2062d79e9d27a776b6b29009284f",
+      "initialIndependent": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_7e7fc1b7bfcbd9f2ee30297faab446b1c11c2062d79e9d27a776b6b29009284f",
+        "actualStemSha256": "f6dd8e1c1f277f186733e611f27929691ad220245e2a8bb18cc36bf8db915d26",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "가격·거리·도형·시간의 여러 조건을 부등식으로 번역하여 단위가 맞는지 비교한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "문장의 수량·길이·속력 관계와 부등호를 식으로 대조한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "가격·거리·도형·시간의 여러 조건을 부등식으로 번역하여 단위가 맞는지 비교한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_986894bf15961a30400eab1c37861d5c062811d017366be7b60608fe480e49b2",
+      "initialIndependent": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_986894bf15961a30400eab1c37861d5c062811d017366be7b60608fe480e49b2",
+        "actualStemSha256": "539e6acef3174d08bba0fe14201be39c3a626421fbc9efc893aa631af4a1d1d4",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "부등식의 양변 변형과 음수배 반전 성질을 직접 적용한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "같은 양수배·음수배·가감에 따른 부등호 방향 직접판정이다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "부등식의 양변 변형과 음수배 반전 성질을 직접 적용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_89ee7c66bb02ad845916d5c0dfb93cab639b94b1d0cc0d2da27524478210d378",
+      "initialIndependent": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_89ee7c66bb02ad845916d5c0dfb93cab639b94b1d0cc0d2da27524478210d378",
+        "actualStemSha256": "c4152d6a38000c6f4ec0561bbd2f0fd4d567c078b985cf10a0e676a50b775122",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 1,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "주어진 하한에 양의 선형변환을 적용한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "주어진 일차식에 해당하는 양수배와 상수뺄셈을 부등식 양변에 적용한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "주어진 하한에 양의 선형변환을 적용한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_afe5e60612e5143c056bb1375120247dae8cb6071880a200f93bfaf442e86033",
+      "initialIndependent": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_afe5e60612e5143c056bb1375120247dae8cb6071880a200f93bfaf442e86033",
+        "actualStemSha256": "3a93a813ba789e93ccabcb7e79eb84a0c4730e4c99f53cfd25533225d8fa9012",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "reason": "일차부등식의 음수 나눗셈을 정리하고 실제 수직선 열린/닫힌 끝점을 비교한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "음수로 나누는 부등식 해를 포함 끝점과 방향으로 표상한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "일차부등식의 음수 나눗셈을 정리하고 실제 수직선 열린/닫힌 끝점을 비교한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_6da4a3d644d650190f3ad6bba814474f26de32a01190a82a9aa96dae084dc405",
+      "initialIndependent": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_6da4a3d644d650190f3ad6bba814474f26de32a01190a82a9aa96dae084dc405",
+        "actualStemSha256": "f73d92e8e85407f620c613f764a476b422a1dc9ece040cfc9fa93bfb6299b32a",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "두 부등식의 해 경계를 맞추어 계수를 복원한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두 부등식의 같은 해 경계 조건에서 매개상수를 결정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "두 부등식의 해 경계를 맞추어 계수를 복원한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_29f7d540a773838b602a031650ac36b5fb0bd147f4f32f765b2ca5cd6a0b3bd3",
+      "initialIndependent": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_29f7d540a773838b602a031650ac36b5fb0bd147f4f32f765b2ca5cd6a0b3bd3",
+        "actualStemSha256": "bc45e2b1b41bc29416479578c76dadf12debc6c3daa4b48133ec5bf6fec1e6a8",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "소수·분수의 분모 제거 후 허용 자연수를 세는 정형 절차."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "분수·소수 부등식을 정리한 뒤 자연수 해 개수를 센다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "소수·분수의 분모 제거 후 허용 자연수를 세는 정형 절차."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4ec0520086c3d58aabca7d7a20ad5178bc6b3fc2937c1d8b5055ada1422e9907",
+      "initialIndependent": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_4ec0520086c3d58aabca7d7a20ad5178bc6b3fc2937c1d8b5055ada1422e9907",
+        "actualStemSha256": "0adc9ee122617ff039e88306f11ea4ca0f8842a86cf0ba007989d7dac391b026",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "약분 후 유한소수 조건으로 두 자리 자연수의 배수 조건을 정하고 나열한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "약분된 분모의 필수 소인수 조건과 두자리 자연수 범위를 함께 적용한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "약분 후 유한소수 조건으로 두 자리 자연수의 배수 조건을 정하고 나열한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_16a16cfb896326722a9106cc31e65272ce21dabade1c4b652c40b79e1ad5be5d",
+      "initialIndependent": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_16a16cfb896326722a9106cc31e65272ce21dabade1c4b652c40b79e1ad5be5d",
+        "actualStemSha256": "324e22de5d35ef4ff3b8ff79814c13707f76542151b46e1472580c2d35d5fd20",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "지수법칙으로 10의 거듭제곱과 두 자리 a를 분리하고 자릿수를 대응한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "2와5의 거듭제곱을10의 거듭제곱으로 묶고 지정된 두자리 계수에서 자릿수를 읽는다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "지수법칙으로 10의 거듭제곱과 두 자리 a를 분리하고 자릿수를 대응한다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_79daf0d688f08215e4490c5708a57a1e274b4e8e7257d7f09ecf7196569d9429",
+      "initialIndependent": {
+        "sourceOrdinal": 25,
+        "questionUid": "qid_v1_79daf0d688f08215e4490c5708a57a1e274b4e8e7257d7f09ecf7196569d9429",
+        "actualStemSha256": "06321ad78f8955b324caa56bfed08d2aa32b60005cfad3c48e5f6ae38eaa15df",
+        "initialLearningLevel": null,
+        "initialDifficulty": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "reason": "a<3에서 계수의 음수 부호를 먼저 확인하고 해 경계의 최대정수를 선택한다."
+        }
+      },
+      "authorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "매개변수부호에 따라 부등호를 뒤집고 해 중 최대정수를 선택한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY",
+      "acceptedProposal": {},
+      "reason": "a<3에서 계수의 음수 부호를 먼저 확인하고 해 경계의 최대정수를 선택한다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT",
+      "reason": "원해설없는 소수정의 gap 유지; PRIME9를426/427로 수정한 actual given 확인"
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "유리수·유한·순환의 여러 포함관계는 단일leaf미판정 및 종속축null수용"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT",
+      "reason": "곱·몫/거듭제곱 여러법칙의독립보기로 단일leaf미판정수용"
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT",
+      "reason": "표현에사용하는A는열린문장394가아닌변수744로 정정됨"
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "ACCEPT",
+      "reason": "다섯상황의부등식모델비교로풀이020·특정속력모델로축소하지않은gap수용"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT",
+      "reason": "유한소수 분모조건+두자리자연수006/조건수용"
+    },
+    {
+      "sourceOrdinal": 25,
+      "decision": "ACCEPT",
+      "reason": "a<3의부호를사용하는기본부등식풀이와최대정수. 계수범위를묻는023과구별한020수용"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "25 source-only, method[]25 native failure intentionally remains evidence debt. No new answer/solution written.",
+    "Initial exposure recorded; 6/11 independent1↔2 boundary difference accepted without rewriting initial snapshot.",
+    "Q7 reconstruction premise and Q15 unreadable exponent remain UNKNOWN/low; original question/figure not edited.",
+    "Q1 PRIME9 misuse corrected to actual finite/infinite decimals; Q7 OPEN_SENTENCE394 misuse corrected to numerator/denominator."
+  ]
+}
