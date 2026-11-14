@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E035",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "fb1b49bc4844f3dbdcec8139de63653a79a8b6f3",
+  "reviewSha256": "89d7f98692d52c1396c24327eb7507df12c07f086afe77dd5d684ca18ad7d144",
+  "fourSlotSha256": "2e635817edc0a01ad9c75b7c2fd9e94bba739c90f8a384dbb18ea85dd4acb28b",
+  "ordinals": [
+    10,
+    19,
+    21
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ccffa94b67603b7dea6b2fa4b10ee7fdc617b99235f8bf634ae043fed7991d0c",
+      "verdict": "PASS",
+      "reason": "두 번의 무게중심 삼등넓이를 반복할 뿐 외부 도형 성질·좌표 결합이 없다. PT_COORD_CENTROID는 중선 성질을 포함하지만 현 APPLICATION 정의는 다른 도형 성질 결합을 요구하므로 B-E035-CENTROID-AREA-PARTITION NEW_TPL이 정확하다. 실제 그림에서도 G와 G′의 삼각형 관계를 확인했다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "judgment": "ACCEPT",
+        "reason": "같은 삼등넓이 비를 두 번 잇는 정형 반복이므로2를 수용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2059ebafbbed9f1ba83f04ed2d369bc9fae5b581783a4a5a7a45b7499fe7fe06",
+      "verdict": "PASS",
+      "reason": "E와 F는 동일한 BC 위의 BD·DC 중점이므로 EF는 두 반구간의 합이다. ABC의 중점연결선이라는 기존 해설 명칭은 틀려 SOURCE_HOLD를 유지한다. 두 중선의 같은2/3 내분비와 공통각으로 SAS 닮음을 사용하므로 APPLICATION 및 CC_TRIANGLE_SIMILARITY_SAS 재사용은 맞다. 실제 그림에서 D에 대한 추가 중점 가정은 필요하지 않다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "judgment": "ACCEPT",
+        "reason": "두 반구간의 합과 공통 내분비를 잇는 표준 한 단계 해석이므로2를 수용한다. 하/2의 인접 차이도 실제 사고로 수용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_cef4ec44321a2c976acfd8e6c99c86c53e2fcb1032287980d88a12692a43537a",
+      "verdict": "REPAIR",
+      "reason": "기약분모의 소인수가2·5뿐이라는 판별을3·17의 배수 사건으로 바꾸고 범위 내 교집합을 확인하여 확률을 구한다. 현재 ACTIVE의 순환소수 정의·유리수성·소수계수·약수배수 정의는 유한소수 분모 판별을 포함하지 않아 NEW_CC 공백이 맞다. 기존 CC_NUMBER_DIVISOR_MULTIPLE과 COND_NATURAL_NUMBER/RANGE는 추가 단계와 후보 제한을 정확히 설명한다.",
+      "quotesExact": true,
+      "quoteCount": 10,
+      "imageViewed": false,
+      "fourSlotCriticalDefect": false,
+      "repairs": [
+        {
+          "field": "4slot.given",
+          "instruction": "유한소수가 되는 확률은 이미 고정된 입력의 성질이 아니라 판정할 사건이다. given의 유한소수 항목을 제거하거나 condition으로 옮기고, 입력은 주어진 자연수·시행 또는120/170으로 나누는 분수로 기록한다. 방법의 기약분수·소인수분해 근거는 유지한다."
+        }
+      ],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "judgment": "ACCEPT",
+        "reason": "약분 후 분모 조건을 두 배수 사건으로 재해석하고 범위 안의 교집합 유무를 확인하므로3을 수용한다."
+      }
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "실제 원문·선지·기존 해설과 Q10·Q19 그림을 읽었다. 새 수학 R1/R2/R3나 학생 해설 수정은 수행하지 않았다.",
+    "Q10은 요청된 E005 Q5/E022 Q12/E025 Q18와 같은 순수 넓이분할 경계이다. 별도 centroid-definition-consistency.json에 정의 대조를 보존한다."
+  ]
+}

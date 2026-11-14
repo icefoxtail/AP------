@@ -1,0 +1,1630 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "fb1b49bc4844f3dbdcec8139de63653a79a8b6f3",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_b3eced560a8331edd137bfb61dd969b22dce55ed8ea3cbc060307a18fa04b31e",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a286a08fe8ef6c4bed1557c096371147cab125756c166e0223fe3f332d596d2b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f7733dbb35b857795ea96429cf8fc65af6d50f870a91af50fe34cbddbd512633"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "정다면체",
+            "src": "stem",
+            "quote": "정십이면체 모양의 주사위"
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "수가 12의 약수인 경우의 수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "약수인 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "12의 약수는 $1,2,3,4,6,12$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "12의 약수를 나열하여 해당 면의 수를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "12까지의 자연수가 각각 적힌"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1에서 12까지의 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "1부터12의 면에서12의 약수인 여섯 수를 직접 센다.",
+      "reasons": {
+        "review": "작은 자연수의 약수를 나열하여 바로 개수를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e72c09c608dafdcdf2d3e17e19690e4d5a10ff382b3cf56530b59adb305ec693",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f4dcc1e2f25f0a4f404dc00c83b0f406c6357d77d4f26e872242e4e835c6a78b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cdf8ed1cec5a8eac3c5447174b0ec65d9d644bbab058468e3be10c8484c30fb6"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "choices",
+            "quote": "절대로 일어나지 않는 사건의 확률은 0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "확률은 $0$ 이상 $1$ 이하이다",
+            "evidenceType": "IMPLIED",
+            "justification": "확률의 범위와 양 끝값이 가능한지 확인한다."
+          },
+          {
+            "term": "사건",
+            "src": "solution",
+            "quote": "불가능한 사건은 확률이 $0$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "불가능 사건과 확실한 사건의 확률로 선택지를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "0과1을 포함하는 범위로 두 잘못된 일반 진술을 고른다.",
+      "reasons": {
+        "review": "확률 범위의 정의와 양끝값을 직접 대조한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_4156ab233cfc540790aca573d31d9b43e735299f3418d437bc2383131f7e20b3",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4e468c922fc86cd3bdf109ba939f55c600eac22aa3c3bc9bf42a896f3b0af33"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3bef481b5269faa7481f197e8df2daede455ec4d718e11b16b79593f65a7e658"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "solution",
+            "quote": "평행선 $l,m,n$이 두 사선과 만나므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "각각의 $x$값으로 옳은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행선과선분의길이의비",
+            "src": "solution",
+            "quote": "대응하는 구간의 길이의 비가 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "세 평행선 사이의 대응 구간비를 사용한다."
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$3:6=3.5:x$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체9에서 윗구간3을 제외한6을 대응시켜 비례식을 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$l\\parallel m\\parallel n$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "전체9에서 윗구간3을 빼 아래6을 정하고 두 그림의 대응비로 미지 길이를 구한다.",
+      "reasons": {
+        "review": "전체와 부분 길이를 한 번 구별한 뒤 정형 비례식을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_96696642205a69d965be9bb57f289e3e5463bc02e07a9e38533aac1de70103df",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "52b78e0d18a19930f26814bf92cbb55b2ff7fc2edc792e508c3c6bb042326760"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b54ab483287f512ee7ee842fc9fd5a4b686eab0c6a6ae0a431e11b5390df5085"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "중선 $BE$를 $BG:GE=2:1$로",
+            "evidenceType": "IMPLIED",
+            "justification": "무게중심이 중선을 꼭짓점 쪽에서 2:1로 나눈다."
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점 연결선의 길이는 밑변의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 두 변의 중점을 잇는 선분을 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{BE}\\parallel\\overline{DF}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "BG16과BE24를 구한 뒤 CBE의 중점선 DF12를 합한다.",
+      "reasons": {
+        "review": "무게중심 분할과 중점 연결을 주어진 평행관계대로 한 번씩 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8eee5b443909cd86a65132237b849737c7150a79c397bfeab41b951dfecf9d65",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "96d5419eb45f17d69d598be9150a52da5914779c05076963c46b7da15e3b9287"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ffbd5ef12399e7a24a9992ffe07cc1000bc94819aaaf2e901d62e5d0aa67efb"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형의 넓이가"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이가 $60"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "의 둘레의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이가 $60$이므로 높이를",
+            "evidenceType": "IMPLIED",
+            "justification": "밑변과 넓이로 높이를 구한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "내린 높이는 밑변을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 높이가 밑변을 반으로 나눈다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{AB}=\\overline{AC}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "넓이60과 밑변10에서 높이12를 얻고 이등변 높이의 밑변반5로 같은변13을 구한다.",
+      "reasons": {
+        "review": "높이를 먼저 복원한 뒤 익숙한 직각삼각형으로 둘레를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_92ff217e89c556eddf4798c23a53d4fbf293f0cc3ef33e13365ec748a3e9e1c9",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bcdaef95f0abcc529d52846732634bec42a5abe2775cabab387309a5f7a20e55"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe5eb0c98d36e3844ad4a9b19c387eb7ea57abb9f26fd4950d5da57e1fd9a496"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "는 정사각형이다"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이가 5일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는? (4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이로 $BC$를 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 밑변과 넓이로 높이를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$\\angle ACB=90^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$AC=2$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AC2와 넓이5에서BC5를 얻고 BA²=2²+5²를 정사각형 넓이로 읽는다.",
+      "reasons": {
+        "review": "주어진 삼각형넓이로 한 변을 복원한 뒤 같은 제곱관계를 바로 넓이에 옮긴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_cb9639a7e1c634094e3516ee4ec2df8641c4fa760c88e3a88e611026d1cf9981",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea3d4f34c37bfff0dc44fd44bfda317210106a5ae75d34222b552d9d60b834c0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "86d72729d9f7a9b23663df75e2296a63a734b127f9d8ce26510f9f264fa4c93a"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "6가지 색 중에서 4가지 색"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "선택될 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "나머지 네 색 중에서 두 색을 더 고르면 된다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 지정 색을 고정하고 나머지 네 색에서 둘을 순서 없이 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "포함관계",
+            "src": "stem",
+            "quote": "빨강, 파랑이 선택될"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "빨강·파랑을 고정하고 남은 네 색에서 두 색을 순서 없이 선택한다.",
+      "reasons": {
+        "review": "필수 포함 조건을 먼저 제거하고 나머지 선택의 순서 중복을 처리한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_854e1d29b0869de2751ef3042d3bd9736af55c39be81526b5c6618ea973790d9",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15c8faf33f3fe376ea4042692fb18df06b949e268291f4a0fcbc0ba7481508f4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d267d14744c1b19cce266f862b7921a2109da409ed67d43b04b8c2f6bd6136f7"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "학생 수를 시대별로 조사하여 표로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "만들었을 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "학생 수는\n$7+8=15$명이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 시대의 학생 수를 더한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "전체 학생 30명 중 한 명을 고르므로",
+            "evidenceType": "IMPLIED",
+            "justification": "조건에 맞는 학생 수를 전체 학생 수로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "삼국7과 고려8을 더해 전체30의 비로 계산한다.",
+      "reasons": {
+        "review": "주어진 두 수의 합과 전체에 대한 비를 직접 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_6469a3f5aa5e63e3b924907562348252d4aa42c10afbb6cc6c39a0c9be62909e",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5952cca5667c70b02247195bf1abd8f30261e65385c9e8949fc9c0385c21b576"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "78ab4828209405d8381687cfcff0af99a959fbcc8eeee4b2372873ccf492082a"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 $DBE$에서"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "는 $DB$의 중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "평행한 직선을 그어 $BE$와",
+            "evidenceType": "IMPLIED",
+            "justification": "한 중점을 지나는 평행선을 추가한다."
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "$P$는 $BE$의 중점이다",
+            "evidenceType": "IMPLIED",
+            "justification": "한 변의 중점을 지나는 평행선에서 다른 변의 중점을 구한다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "는 닮음이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$BE:BC=2:3$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "도출한 선분의 등분 관계로 목표 길이를 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{AN}\\parallel\\overline{BC}$"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{AD}=\\overline{AB}$, $\\overline{AM}=\\overline{CM}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "중점 A와M에서 얻는 두 평행선 비례를 연결해 BE가BC의2/3임을 정한다.",
+      "reasons": {
+        "review": "서로 다른 삼각형에 적용할 중점 관계를 선택하고 중간 선분을 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ccffa94b67603b7dea6b2fa4b10ee7fdc617b99235f8bf634ae043fed7991d0c",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e0bc0c9a3457d18ebe94e17383778bbbfa9fae3e0ec493ada1d017356bfabdf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f1990b2ab40d940c2295e35d45ed7877474aae40b3cc0b12708fe77c5b57fd6"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심이고"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이가 $5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "의 넓이는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심이므로 중선이 삼각형을",
+            "evidenceType": "IMPLIED",
+            "justification": "연속된 무게중심에서 생기는 삼각형의 넓이가 각각 3분의 1이다."
+          },
+          {
+            "term": "넓이비",
+            "src": "solution",
+            "quote": "\\dfrac19S$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 단계의 넓이비를 곱한다."
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "\\dfrac19S$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "부분과 전체의 넓이 관계를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "GBC가ABC의1/3이고 GG′C가GBC의1/3임을 연결한다.",
+      "reasons": {
+        "review": "동일한 무게중심 넓이분할 성질을 두 번 반복한 뒤 전체넓이를 역산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_9ecdf6b114dd7b085688428b08abadda08902c06c5a98c309386552f4d2085f2",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1b7ceb00758183084055dcf18132b0816904c0f8c9e260facc66f2b2aea077a0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "93ddb3a5903838b9661f2873efa6f95416aefe2923fcb21a39e59cec021c94b1"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심일 때"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 보기 중 틀린 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "무게중심을 지나는 $BC$와 평행한 선분",
+            "evidenceType": "IMPLIED",
+            "justification": "무게중심의 중선 분할비를 사용한다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비는 $2:3$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이비",
+            "src": "solution",
+            "quote": "넓이비는\n$[ADE]:[ABC]=2^2:3^2=4:9$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "넓이비는\n$[ADE]",
+            "evidenceType": "IMPLIED",
+            "justification": "작은 삼각형과 나머지 사각형의 넓이비를 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "에 평행한 직선이"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "2:3 닮음비를4:9 넓이비로 바꾸고 남은5와작은4를 비교한다.",
+      "reasons": {
+        "review": "중선분할을 도형 전체 닮음비로 옮긴 뒤 나머지 부분의 넓이비를 따로 구성한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9272fea034e8b1fd3fffb2a13febdb9cca02f9285fb90e1f43dc73859effb51a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "537269aaecea442e1915eab14ed8663ac6c6f69e48ebb510bd596964544ace3b"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "인 직각삼각형 $ABC$에서"
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이는? (5점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "중선 $AD$를 $AG:GD=2:1$로",
+            "evidenceType": "IMPLIED",
+            "justification": "무게중심의 분할비로 중선의 길이를 구한다."
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "빗변의 중점까지의 거리는 빗변의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 빗변 중점이 외심이다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle A=90^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "중선AD15를 빗변 절반으로 해석하여BC30을 얻고 직각변AB24를 계산한다.",
+      "reasons": {
+        "review": "무게중심 중선이 외심 반지름이 된다는 관계를 선택해 길이 체계를 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_ed72584240f6e9f69c850f225b161c52556418f815ae396e7f4962c0b2705027",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9b22b21fa44c357bb2a58f0cb694c71148ea3097f5cd6080a9ce64870b166559"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c86f80346ea254a0b32f7136a4057ad9257ebb051874223d50890b8d7f919c40"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "첫 번째 직각삼각형에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "길이의 비를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$OD^2=OC^2+CD^2=3a^2+a^2=4a^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 직각삼각형에서 두 직각변 제곱의 합을 빗변 제곱으로 누적하며 정리 이름은 해설에 직접 나오지 않는다."
+          },
+          {
+            "term": "제곱합",
+            "src": "solution",
+            "quote": "$OB^2=OA^2+AB^2=a^2+a^2=2a^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "이어진 직각삼각형에서 빗변 제곱을 연속 누적한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{OA}=\\overline{AB}=\\overline{BC}=\\overline{CD}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "같은 새 직각변의 제곱을 세 번 더해 마지막 빗변2a를 얻는다.",
+      "reasons": {
+        "review": "주어진 직각표시를 따라 같은 정리를 반복하는 정형 계산이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a5a9a37c3b3520cb1467ef22ee4fe0f56e5c355a8c278b037fae118c58668250",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33e2b624df61f73c8e7c3d7b0af42abf94ec01c881d61d6430618d9e4e87cd61"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "faaeef4716ff11dfaa4b24d0f028f79e0072009160b1daf311f1a38e8a2bc32b"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이길 확률은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "각자 한 번씩 이길 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "향이가 이길 확률은",
+            "evidenceType": "IMPLIED",
+            "justification": "무승부가 없으므로 상대 승률을 1에서 뺀다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "이기는 순서는 연이 다음 향이",
+            "evidenceType": "IMPLIED",
+            "justification": "승패 순서 두 가지로 나눈다."
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "\\times\\dfrac35\\times\\dfrac25",
+            "evidenceType": "IMPLIED",
+            "justification": "각 경기 승률의 곱을 계산하므로 독립을 가정한 확률 곱이다. 발문에 경기 간 독립은 명시되지 않아 source 내용 승인과 구분."
+          }
+        ],
+        "condition": [
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "비기는 경우는 없다고 한다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "무승부가 없으므로 상대승률2/5를 정하고 두 승패순서의 곱을 더한다.",
+      "reasons": {
+        "review": "여사건으로 상대 승률을 얻은 뒤 가능한 두 순서를 반영한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_2c34503d08d783258688db5f638bb5fde0fff19a204cf9d92f5a6d445705bd0a",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "81e5b1b4cc668cb21484272703a28c4fb6e2062a35acfd423d7c7280d30af6ae"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0340876b227082f980930b669ef308afc36aeaa1b6da17ac962019b1de91280f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "일렬로 배열할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "오는 경우의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "묶음",
+            "src": "solution",
+            "quote": "한 묶음 $OR$로 본다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "순열",
+            "src": "solution",
+            "quote": "모두 다섯 항목을 차례로 배열한다",
+            "evidenceType": "IMPLIED",
+            "justification": "순서가 고정된 묶음과 네 문자를 배열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "인접",
+            "src": "stem",
+            "quote": "O가 R 바로 앞에 오는"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "O가 R 바로 앞에 오는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "OR을 한 항목으로 취급하여 다른 네 글자와 배열한다.",
+      "reasons": {
+        "review": "인접한 두 글자의 내부순서가 고정된 묶음이라는 표준 변환이 필요하다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_888dcd071103c2dd7d244385679dbb08be345a949a3012edf85e93974fbc37c8",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1ca66dda58ed031df8b651fa3b304835e85a70e1694f074694f622441c846ef5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c6f1a1c5e9007d235903d8f1cbd1be83a382d11919094768726f03393e907e20"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "동전을 각각 5개씩 갖고 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "동전을 각각 $a,b,c$개 사용한다고",
+            "evidenceType": "IMPLIED",
+            "justification": "각 동전 수로 지불 금액을 식으로 나타낸다."
+          },
+          {
+            "term": "부정방정식",
+            "src": "solution",
+            "quote": "$a+2b+10c=31$",
+            "evidenceType": "IMPLIED",
+            "justification": "동전 개수의 세 미지수에 관한 한 금액등식으로 제한 정수해를 세며 부정방정식이라는 명칭은 원문에 없다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$c=2$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "500원 동전의 수에 따라 가능한 해를 나눈다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(5,3),(3,4),(1,5)$",
+            "evidenceType": "IMPLIED",
+            "justification": "범위 내 정수해를 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$0\\le a,b,c\\le5$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "500원 개수2와3을 나누고 남은 금액식의0~5 정수쌍을 세어 합한다.",
+      "reasons": {
+        "review": "금액 가중합과 재고 상한을 동시에 유지하며 가능한 경우분기를 선택한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_b02d41137aa234354a1cce7c16a311456c145a5ff99d28488ba0097aea2797a5",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "57c994fe5bc6b2475d47de64113ad79bdc0010d1dbe1f5417eadb22b809c654d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c304d96cf6b22a717be63ccbd960fc6236d0f817826b234af9fb62d10b79c2d4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "경로",
+            "src": "stem",
+            "quote": "길을 따라 A지점을 출발하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최단경로",
+            "src": "stem",
+            "quote": "최단 거리로 가는 방법의 수는?"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "최단 거리로 가는 방법의 수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "네 번의 이동 중 위로 가는 두 번의 위치",
+            "evidenceType": "IMPLIED",
+            "justification": "네 이동 중 위쪽 이동 두 자리를 고른다."
+          },
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "$6\\times2=12$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 구간의 경로 선택수를 곱한다. 곱의법칙 이름은 해설에 직접 없다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "B지점을 거쳐 C지점까지"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "A→B의 여섯 경로와B→C의 두 경로를 독립 선택으로 곱한다.",
+      "reasons": {
+        "review": "통과점을 기준으로 길을 둘로 나누고 각 최단 이동순서를 센다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_1df1e4e1d1590f67b6b8a8fb0d75cc1a9ce8e0ce020db304cdd60c31a95bd789",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1e36d68878cae0c4ac0185dab06fd454a1efd271203bcd9dff1b3cec1eda4cb3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e8ac23f31275d2bb922176c8d840e6cff6d1c0df8965338d9907908a4be525dd"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 위에 말을 놓을 수 있는 자리"
+          },
+          {
+            "term": "이동",
+            "src": "stem",
+            "quote": "칸만큼 시계바늘이 도는 방향으로 말을 옮기는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "서로 자리를 바꿀 확률은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "주기",
+            "src": "solution",
+            "quote": "네 자리를 시계 방향으로 보면",
+            "evidenceType": "IMPLIED",
+            "justification": "네 칸의 원형 자리에서 이동 칸 수가 4마다 반복된다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$(3,1),(3,5)$의 2가지이다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 말이 각 상대 자리로 도착하는 눈의 쌍을 나열한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "전체 눈의 순서쌍은 $6\\times6=36$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 유리한 순서쌍을 전체 36가지로 나눈다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "각 말의 상대자리 도착 눈을3과1·5로 바꾸어 두 순서쌍을 센다.",
+      "reasons": {
+        "review": "출발 위치와 시계방향의4주기 복귀를 함께 추적하여 유리한 사건을 구성한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2059ebafbbed9f1ba83f04ed2d369bc9fae5b581783a4a5a7a45b7499fe7fe06",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dba8c81b8f28a53c1f6c1b95b4e72ef91008a553351112e72a543009df4c269d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "01c35c500ce04c583738888895616a51d157d8f374d0c09b3f52d917df1c4d9a"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "의 무게중심이다"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABD$와 $\\triangle ADC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "$E$는 $BD$의 중점이고, 삼각형 $ADC$에서 $F$는 $DC$의 중점이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "E,F는 같은 직선 BC 위의 두 구간 중점이므로 EF=ED+DF=(BD+DC)/2. 해설의 ABC 중점연결선이라는 명칭은 잘못되어 채택하지 않는다."
+          },
+          {
+            "term": "무게중심",
+            "src": "solution",
+            "quote": "각각 중선 $AE,AF$를 꼭짓점에서부터",
+            "evidenceType": "IMPLIED",
+            "justification": "각 중선의 꼭짓점 쪽2/3 지점이다."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "$GG\\prime=\\dfrac23EF$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 꼭짓점각과 두 중선의 같은 내분비로 SAS 닮음을 확인해 대응선분비를 사용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "밑변 위 두 반구간의 합EF15에 공통 중선분할2/3을 적용한다.",
+      "reasons": {
+        "review": "밑변의 두 절반을 더한 뒤 같은 내분비를 연결선 길이로 옮기는 정형 관계이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_8b1bf4c848643c42093be4aed27147eceb6542d5d639d77c0c6335eb0fe0bbaa",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e7d2ffa137d67a65075f8e8242793bb22a1a40f2662adc1155616182d591a5f6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cef4f65ef634dcc05bf8729b8f2bb6ba0e61ce9f7be2d0e79048821d4334b5f0"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림의 $\\triangle ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$5^2+12^2=13^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 변의 제곱관계가 성립하여 직각삼각형임을 판정하는 피타고라스 정리의 역이다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "삼각형의 넓이를 두 방법으로 나타내면",
+            "evidenceType": "IMPLIED",
+            "justification": "직각변과 빗변에 대한 높이로 같은 넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "5²+12²=13²로 직각을 확인하고 두 밑변에 대한 동일 넓이식으로 높이를 구한다.",
+      "reasons": {
+        "review": "직각 판정 뒤 목표 높이에 맞게 밑변을 바꾸는 넓이 등식 전략을 선택한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_cef4ec44321a2c976acfd8e6c99c86c53e2fcb1032287980d88a12692a43537a",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a84877b95853070b149427b39a4dbe2464d2a0f3600211ac0d4e8a958925cf34"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd0c72af4438466b014ed9172ea1a5c992aef1f6a480ae72d8b21d64675ae832"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 50까지의 자연수가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "유한소수가 되는 확률을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "기약분수 $\\dfrac{n}{120}$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "분모의 소인수 3이 약분되어야",
+            "evidenceType": "IMPLIED",
+            "justification": "기약분모가 2와 5만의 소인수를 가지도록 약분한다."
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "$n$은 3의 배수여야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 분모의 다른 소인수를 약분할 분자의 배수 조건을 구한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "$16+2=18$개이고",
+            "evidenceType": "IMPLIED",
+            "justification": "범위 내 교집합이 없음을 확인하고 두 배수 경우 수를 더한다."
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$\\dfrac{18}{50}=\\dfrac9{25}$",
+            "evidenceType": "IMPLIED",
+            "justification": "유리한18개를 전체50개로 나누는 확률 정의를 사용하며 명칭은 원문에 없다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "1부터 50까지의 자연수가"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1부터 50까지의 자연수가"
+          },
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "유한소수가 되는 확률"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "기약분모에 남으면 안 되는3과17을 약분할 분자를 세고 두 사건을 합한다.",
+      "reasons": {
+        "review": "분수 표현 조건을 배수 후보로 바꾸고 범위 안의 중복 여부까지 판단한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      },
+      "reuseRef": {
+        "commit": "e7aab2467ecad89b07442f3e2889ddaa889f5eb1",
+        "artifact": "E035.4slot.json",
+        "sourceBlob": "9b6d7452cc99cfc25971aba5b96457b94ef8c5a1",
+        "semanticReview": "문항의 실제 발문·해설을 읽고 기존 용어·인용 의미를 확인 후 유지"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "넓이비",
+      "en": "AREA_RATIO",
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "비",
+      "note": "두 도형의 넓이의 비",
+      "usedIn": [
+        10,
+        11
+      ]
+    }
+  ],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}
