@@ -303,7 +303,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 칸이 1인 모눈에서 A=-3, E=2를 기준으로 AB=√10과 EF=2√2의 길이를 각각 컴퍼스 호로 수직선에 옮겨 P와 Q를 나타낸다.",
+    "solutionImageCaption": "AB=√10, EF=2√2이므로 P=-3+√10, Q=2+2√2이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -758,7 +762,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_왕운중_1학기_중간_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 땅을 정사각형 A, B, C와 주황색 직사각형 D로 나눈다. A의 한 변 5 m, C의 한 변 √2 m, B의 한 변 5−√2 m이며 D의 가로·세로는 5−2√2 m와 √2 m이다.",
+    "solutionImageCaption": "A의 넓이 25 m²에서 한 변은 5 m, C의 넓이 2 m²에서 한 변은 √2 m이다. 전체 높이로부터 B의 변은 5−√2 m이고, D의 가로는 (5−√2)−√2=5−2√2 m이다. 따라서 D의 넓이는 (5−2√2)√2=5√2−4 m²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
