@@ -1,0 +1,891 @@
+{
+  "schemaVersion": "m2-s1-meta-author-supplement.v1",
+  "examId": "E029",
+  "status": "AUTHOR_PROPOSED_NARROW_GOAL_METHOD_CONDITION_CORRECTION",
+  "originalReviewSha256": "89ec09df48bb3415df482c856ed3d1f8d5c4f518bf9c7247b6e9ff62f29f17f3",
+  "originalFourSlotSha256": "6029305576ac834da7c54d9fcf62620ade4d7086c677df94fdbbfe82a3e01574",
+  "supplementFourSlotPath": "workers/B/E029.4slot-goal-method-supplement.json",
+  "supplementFourSlotSha256": "7f1f110f8daa89fff3fcf48acfd6de4250cb5bf33f2a6aec4e7e1759a5a11efb",
+  "ruleReference": "CURRENT 4slot §§3,3-1,8,10",
+  "changedItems": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_dd6a5d97a9eaf68a3ab9ed120f40de12a4b420e9f6a987a2d841977281c96802",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "함수",
+              "termId": 84,
+              "src": "stem",
+              "quote": "$y$가 $x$의 함수"
+            }
+          ],
+          "goal": [
+            {
+              "term": "함수",
+              "termId": 84,
+              "src": "stem",
+              "quote": "함수가 아닌 것은?"
+            },
+            {
+              "term": "판정",
+              "termId": 132,
+              "src": "stem",
+              "quote": "함수가 아닌 것은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "함수",
+              "termId": 84,
+              "src": "solution",
+              "quote": "하나의 x에 여러 y가 대응할 수 있다.",
+              "evidenceType": "IMPLIED",
+              "justification": "입력하나에여러출력이가능함으로함수의유일대응정의를적용한것이다."
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0bf35f65e2808afe0b87a1da793ccc4e885554fedc972a957aab7416d7dd6afa",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "함수",
+              "termId": 84,
+              "src": "stem",
+              "quote": "$f(x)=5x-2$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "함숫값",
+              "termId": 100,
+              "src": "stem",
+              "quote": "$2f\\left(\\dfrac{3}{5}\\right)-3f(1)$의 값"
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "$2f\\left(\\dfrac{3}{5}\\right)-3f(1)$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$f\\left(\\dfrac35\\right)=5\\cdot\\dfrac35-2=1$",
+              "evidenceType": "IMPLIED",
+              "justification": "함수의입력에3/5를넣은표준대입식이다."
+            },
+            {
+              "term": "함숫값",
+              "termId": 100,
+              "src": "solution",
+              "quote": "$2f\\left(\\dfrac35\\right)-3f(1)=2\\cdot1-3\\cdot3=-7$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_62cbd3126b3c96dc1c93f5869805b0994a5378d9e04a7d31f89ce2003f77408d",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차함수",
+              "termId": 90,
+              "src": "stem",
+              "quote": "$y=5x-3$"
+            },
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "stem",
+              "quote": "기울기를 $a$"
+            },
+            {
+              "term": "절편",
+              "termId": 151,
+              "src": "stem",
+              "quote": "$x$절편을 $b$, $y$절편을 $c$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "stem",
+              "quote": "기울기를 $a$"
+            },
+            {
+              "term": "절편",
+              "termId": 151,
+              "src": "stem",
+              "quote": "$x$절편을 $b$, $y$절편을 $c$"
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "$a\\times b+c$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "절편",
+              "termId": 151,
+              "src": "solution",
+              "quote": "$x$절편은 $0=5x-3$에서 $b=\\dfrac35$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$a\\times b+c=5\\cdot\\dfrac35-3=0$",
+              "evidenceType": "IMPLIED",
+              "justification": "앞에서구한세값을요구식에대입했다."
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_e705fb8b2092f91a9dbc8e93b09c7908d2d3bcc6d6ce29342fd96fea3f288d5c",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차함수",
+              "termId": 90,
+              "src": "stem",
+              "quote": "$y=ax+b$"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프이다."
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "$ab$의 값"
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "$ab$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "solution",
+              "quote": "$a=\\dfrac{-3-(-6)}{6-0}=\\dfrac12$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "y절편",
+              "termId": 649,
+              "src": "solution",
+              "quote": "$y$절편은 그림에서 $b=-6$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_789f1bc017ed30aa1d48d1b6efb7ed5a477dcceda9139d094c22e6d51b7df78c",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차함수",
+              "termId": 90,
+              "src": "stem",
+              "quote": "$y=ax+b$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "일차함수",
+              "termId": 90,
+              "src": "stem",
+              "quote": "$y=ax+b$"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프에 대한 설명"
+            },
+            {
+              "term": "판정",
+              "termId": 132,
+              "src": "stem",
+              "quote": "설명으로 옳은 것"
+            }
+          ],
+          "method": [
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "solution",
+              "quote": "$a>0$이면 x가 증가할 때 y도 증가",
+              "evidenceType": "IMPLIED",
+              "justification": "기울기가양수일때함수값의증가를적용했다."
+            },
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "solution",
+              "quote": "y절편이 양수이고 직선은 제2사분면을 반드시 지나므로 참",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "절편",
+              "termId": 151,
+              "src": "solution",
+              "quote": "x절편은 일반적으로 $a$가 아니라 $-\\dfrac ba$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_feb0caeea4b507c33f036024d83ed74a336c70c325c4b9266a14f06b969e67b5",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "$100\\text{ m}$ 높아질 때마다 기온이 $0.3^\\circ\\text{C}$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "높이",
+              "termId": 218,
+              "src": "stem",
+              "quote": "지면으로부터의 높이"
+            }
+          ],
+          "method": [
+            {
+              "term": "정비례",
+              "termId": 290,
+              "src": "solution",
+              "quote": "$6\\div0.3=20$번의 100m 구간",
+              "evidenceType": "IMPLIED",
+              "justification": "일정한기온감소량과고도증가량이비례하므로단위변화량의반복횟수를구했다."
+            },
+            {
+              "term": "거리",
+              "termId": 216,
+              "src": "solution",
+              "quote": "$20\\cdot100=2000\\text{ m}=2\\text{ km}$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "구간",
+              "termId": 296,
+              "src": "stem",
+              "quote": "지면에서 $10\\text{ km}$까지는"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "기온 감소량과 고도 증가량의 정비례를 이용해 높이 계산",
+          "classification": "기존solution은미지수를둔일차함수식이아니라감소량/단위변화량의비례계산이다. prerequisite2015M1정비례·반비례활용059를쓰고targetM2BASIC은그대로보존한다.",
+          "condition": "원문이 고도-기온 법칙을 지면부터 10 km까지만 제시하므로 유효 구간을 condition에 그대로 보존한다. 이 4slot 보존과 COND_RANGE 메타의 결정적 판정 기준은 별도로 검토한다."
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차방정식",
+              "termId": 64,
+              "src": "stem",
+              "quote": "$4x+ay+b=0$"
+            },
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "stem",
+              "quote": "직선과 평행"
+            },
+            {
+              "term": "점",
+              "termId": 142,
+              "src": "stem",
+              "quote": "$(-1,4)$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "$a+b$의 값"
+            },
+            {
+              "term": "합",
+              "termId": 286,
+              "src": "stem",
+              "quote": "$a+b$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "solution",
+              "quote": "$\\dfrac{-4-0}{0-(-3)}=-\\dfrac43$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "$-\\dfrac4a=-\\dfrac43$",
+              "evidenceType": "IMPLIED",
+              "justification": "평행한직선의기울기가같다는조건을적용했다."
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "점 $(-1,4)$를 대입하면 $4(-1)+3\\cdot4+b=0$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8364be90fa02828cf85e2888ad4a6de6b9d92ca9fd431f2b893a530fb2b142e5",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "$3x-2y=0$"
+            },
+            {
+              "term": "평행이동",
+              "termId": 210,
+              "src": "stem",
+              "quote": "$y$축의 방향으로 $2$만큼 평행이동"
+            },
+            {
+              "term": "점",
+              "termId": 142,
+              "src": "stem",
+              "quote": "$(2,k)$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "$k$의 값"
+            },
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "$k$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "평행이동",
+              "termId": 210,
+              "src": "solution",
+              "quote": "y축의 양의 방향으로 2만큼 이동하면 $y=\\dfrac32x+2$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$k=\\dfrac32\\cdot2+2=5$",
+              "evidenceType": "IMPLIED",
+              "justification": "이동한직선식에x2를대입했다."
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9cc9e058f211a88036e71a3a83461f8fa0b0896039f729d718ba79272a0845ea",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "$2x+3y-4=0$, $ax-6y+9=0$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "상수 $a$의 값"
+            },
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "상수 $a$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "기울기",
+              "termId": 150,
+              "src": "solution",
+              "quote": "$\\dfrac a6=-\\dfrac23$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "교점이 없으려면 기울기가 같아야",
+              "evidenceType": "IMPLIED",
+              "justification": "두직선의절편은이미4/3와3/2로달라기울기가같으면다른평행선이다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "교점",
+              "termId": 181,
+              "src": "stem",
+              "quote": "교점이 존재하지 않을 때"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_3f819be8e7f8a9f4e5d54f768d2f8aaa82ede5dc561cc0da47139834d6877629",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "$2x=0$"
+            },
+            {
+              "term": "일차함수",
+              "termId": 90,
+              "src": "stem",
+              "quote": "$y=ax+4$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "상수 $a$의 값"
+            },
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "상수 $a$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "중심",
+              "termId": 157,
+              "src": "solution",
+              "quote": "중심은 $(3,3)$이다.",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "점대칭",
+              "status": "CANDIDATE",
+              "src": "solution",
+              "quote": "$y=ax+4$가 중심을 지나므로",
+              "evidenceType": "IMPLIED",
+              "justification": "직사각형의 중심을 지나는 임의의 직선이 넓이를 이등분하는 근거는 중심에 대한 180도 회전으로 양쪽 부분이 대응하는 점대칭성이다. 기존 해설은 중심을 지나도록 식을 세우지만 점대칭이라는 이름이나 표준식은 제시하지 않아 IMPLIED로 기록한다."
+            },
+            {
+              "term": "대칭성",
+              "termId": 110,
+              "src": "solution",
+              "quote": "$y=ax+4$가 중심을 지나므로",
+              "evidenceType": "IMPLIED",
+              "justification": "직사각형의 중심을 지나는 임의의 직선이 넓이를 이등분하는 근거는 중심에 대한 180도 회전으로 양쪽 부분이 대응하는 점대칭성이다. 기존 해설은 중심을 지나도록 식을 세우지만 점대칭이라는 이름이나 표준식은 제시하지 않아 IMPLIED로 기록한다."
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$y=ax+4$가 중심을 지나므로 $3=3a+4$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "stem",
+              "quote": "넓이를 이등분"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "중심 좌표를 구하고, 중심에 대한 점대칭으로 넓이를 이등분하는 직선이 중심을 지나야 함을 적용한 뒤 기울기 매개변수를 결정한다.",
+          "classification": "그래프넓이058이며좌표중점으로중심을읽고넓이이등분조건을직선통과조건으로바꾼다.",
+          "condition": "입력수치와좌표는given이며별도정의역·해선택제한을임의로추가하지않는다."
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+      "fields": {
+        "scenarioNote": "목표 문맥: 다훈이의 나이. 나이는 문맥상 측정 대상이나 사전에는 나이 또는 적절한 상위 측정량 용어가 없다. 태어난 시점을 새로 가정해 경과시간으로 바꾸거나 소재를 신규 수학개념으로 등록하지 않는다.",
+        "evidenceDebt": [
+          {
+            "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+            "targetQuote": "다훈이의 나이",
+            "reason": "나이는 문맥상 측정 대상이나 사전에는 나이 또는 적절한 상위 측정량 용어가 없다. 태어난 시점을 새로 가정해 경과시간으로 바꾸거나 소재를 신규 수학개념으로 등록하지 않는다.",
+            "disposition": "정확한 문맥 목표를 scenarioNote와 인용에 보존하며 generic 값만 남은 부분을 완전한 goal 대상 채움으로 주장하지 않는다."
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_8924643ebb0cc9fd3968661e9168d9eec72b0c1957838a34193e3ffa7fb654a9",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "속력",
+              "termId": 704,
+              "src": "stem",
+              "quote": "일정한 속력"
+            },
+            {
+              "term": "거리",
+              "termId": 216,
+              "src": "stem",
+              "quote": "길이 $1700\\text{ m}$인 터널"
+            }
+          ],
+          "goal": [
+            {
+              "term": "길이",
+              "termId": 215,
+              "src": "stem",
+              "quote": "이 기차의 길이"
+            }
+          ],
+          "method": [
+            {
+              "term": "속력",
+              "termId": 704,
+              "src": "solution",
+              "quote": "터널에서의 속력은 $\\dfrac{x+1700}{3}$, 다리에서의 속력은 $\\dfrac{x+1000}{2}$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일차방정식",
+              "termId": 64,
+              "src": "solution",
+              "quote": "$\\dfrac{x+1700}{3}=\\dfrac{x+1000}{2}$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_63d1712aa82d46b6d5554ea1267783c663626d183f2a0f0172b7d6d357e18b63",
+      "fields": {
+        "scenarioNote": "목표 문맥: 생수의 양. 이 발문은 g 단위의 생수 질량을 구한다. 사전에는 질량과 적절한 상위 측정량이 없으며, 추가량이라는 말만으로 signed 변화량을 강제하지 않는다.",
+        "evidenceDebt": [
+          {
+            "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+            "targetQuote": "생수의 양",
+            "reason": "이 발문은 g 단위의 생수 질량을 구한다. 사전에는 질량과 적절한 상위 측정량이 없으며, 추가량이라는 말만으로 signed 변화량을 강제하지 않는다.",
+            "disposition": "정확한 문맥 목표를 scenarioNote와 인용에 보존하며 generic 값만 남은 부분을 완전한 goal 대상 채움으로 주장하지 않는다."
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_3aabf7dd9c33e8674ff140807fac54c1f83a37628dbc1003cb23951a5f3706d8",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "함께 일을 하면 4일"
+            },
+            {
+              "term": "개수",
+              "termId": 129,
+              "src": "stem",
+              "quote": "가희와 나영이"
+            }
+          ],
+          "goal": [
+            {
+              "term": "경과시간",
+              "status": "CANDIDATE",
+              "src": "stem",
+              "quote": "처음부터 끝까지 나영이 혼자 준비한다면 최소 며칠"
+            },
+            {
+              "term": "변화량",
+              "termId": 316,
+              "src": "stem",
+              "quote": "처음부터 끝까지 나영이 혼자 준비한다면 최소 며칠"
+            },
+            {
+              "term": "값",
+              "termId": 131,
+              "src": "stem",
+              "quote": "최소 며칠"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$2(x+y)+3y=1$에 $x+y=\\dfrac14$를 대입하면 $\\dfrac12+3y=1$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "비율",
+              "termId": 650,
+              "src": "solution",
+              "quote": "$1\\div\\dfrac16=6$",
+              "evidenceType": "IMPLIED",
+              "justification": "전체작업량1을일당작업량1/6로나누어일수를구했다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "조건",
+              "termId": 394,
+              "src": "stem",
+              "quote": "매일 같은 양의 일"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ef39d3f4620d11bbef2ec7836295aa5c617b0f9e2c8319fdeac105eccf5b6c15",
+      "fields": {
+        "scenarioNote": "목표 문맥: 한 학생의 반티 값. 학생 수는 개수로 보존하되 1벌의 금액이라는 문맥상 목표에는 적절한 등록 대상과 상위 용어가 없다. 가격 소재를 generic 매개변수나 retired 용어로 우회하지 않는다.",
+        "evidenceDebt": [
+          {
+            "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+            "targetQuote": "한 학생의 반티 값",
+            "reason": "학생 수는 개수로 보존하되 1벌의 금액이라는 문맥상 목표에는 적절한 등록 대상과 상위 용어가 없다. 가격 소재를 generic 매개변수나 retired 용어로 우회하지 않는다.",
+            "disposition": "정확한 문맥 목표를 scenarioNote와 인용에 보존하며 generic 값만 남은 부분을 완전한 goal 대상 채움으로 주장하지 않는다."
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_fb5ad7e381e8961082eb29654a0249bb58a32b4bafa56a5e67c0299a70b304d3",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차방정식",
+              "termId": 64,
+              "src": "stem",
+              "quote": "$x+y+2=0$, $x-y=0$, $ax-y-3=0$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "$a$의 값들의 합"
+            },
+            {
+              "term": "합",
+              "termId": 286,
+              "src": "stem",
+              "quote": "$a$의 값들의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "교점",
+              "termId": 181,
+              "src": "solution",
+              "quote": "교점은 $(-1,-1)$이다.",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "첫째 직선과 평행하면 $a=-1$, 둘째 직선과 평행하면 $a=1$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "termId": 293,
+              "src": "solution",
+              "quote": "가능한 값은 $-2,-1,1$",
+              "evidenceType": "IMPLIED",
+              "justification": "한점교차와두평행경우를나누어모든불성립가능성을합친다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "stem",
+              "quote": "삼각형을 이루지 않도록"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_9d2760bf163ca4f38a922770c07d0ef8edf1c3a576a7e8654fe0c1d1fb07a623",
+      "fields": {
+        "slots": {
+          "given": [
+            {
+              "term": "일차방정식",
+              "termId": 64,
+              "src": "stem",
+              "quote": "$ax-2by=11$과 $(2-a)x+by=-1$"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프가 오른쪽 그림"
+            }
+          ],
+          "goal": [
+            {
+              "term": "매개변수",
+              "termId": 308,
+              "src": "stem",
+              "quote": "$b-a$의 값"
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "$b-a$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "첫째 식에 $(1,4)$를 대입하면 $a-8b=11$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "가감법",
+              "termId": 434,
+              "src": "solution",
+              "quote": "두 식을 더하면 $-4b=8$",
+              "evidenceType": "IMPLIED",
+              "justification": "계수a가소거되도록두식을더한다."
+            }
+          ],
+          "condition": []
+        }
+      }
+    }
+  ],
+  "conditionMetaAssessment": {
+    "sourceOrdinal": 6,
+    "inspectedCondition": "COND_RANGE",
+    "registeredDefinition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+    "proposedConditionKeys": [],
+    "reason": "원문의 지면부터 10 km까지는 모델 적용의 명시 유효 구간이므로 4slot condition에는 반드시 보존한다. 다만 기존 해설은 감소량 6/0.3의 직접 비례로 2 km를 얻고 여러 후보의 해를 유효 구간으로 가르거나 경계를 이용해 답을 정하지 않는다. 이 문제에서 실제 선택·결정 단계를 바꾸는 제약으로 확인되지 않으므로 메타 COND_RANGE로 자동 확장하지 않는다. 구간 밖으로 법칙을 일반화하는 뜻은 아니다.",
+    "rootAdjudication": "PENDING"
+  },
+  "goalContextTermGaps": [
+    14,
+    17,
+    19
+  ],
+  "invariants": [
+    "원 author review와 4slot bytes 보존",
+    "숫자 난도·RPM·CC·통합 및 source 본문/보기/정답/해설/UID 불변",
+    "후보는 로컬 선언만 하며 공용 사전에 등록하지 않는다"
+  ]
+}

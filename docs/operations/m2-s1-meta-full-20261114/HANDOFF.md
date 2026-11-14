@@ -4,7 +4,7 @@
 
 **RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_59E0F5BD3A77`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
-전체 **75시험지 / 1,780문항** 중 **24시험지 / 569문항**의 검토 패킷을 보존했다. 잔여는 **51시험지 / 1,211문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+전체 **75시험지 / 1,780문항** 중 **25시험지 / 592문항**의 검토 패킷을 보존했다. 잔여는 **50시험지 / 1,188문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
 기존 E001–E012 검토는 재사용했고, PENDING_AMENDMENTS.json의 7건은 원본·독립 증거를 보존한 채 좁은 보정을 적용·검증하여 각각 원격 출판했다. 이전 미원격 로컬 파일의 실제 바이트는 찾지 못했다. LOCAL_RECOVERY.json의 역사적 SHA를 새 작성본의 복구 SHA로 주장하지 않는다.
 
@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 72개, 명시 미판정 40문항, RPM leaf 공백 110문항, 등록 부채 557문항, 내용 부채 24문항, 필수 method 근거 부채 24문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=529은 전체 품질 PASS가 아니다.
+독립 3문항 표본 75개, 명시 미판정 43문항, RPM leaf 공백 110문항, 등록 부채 580문항, 내용 부채 24문항, 필수 method 근거 부채 24문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=549은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -74,6 +74,7 @@
 | E019-difficulty | `67c88295ffb2de3b9c76c0a7b5356054d5cf1ecd` |
 | E024 | `b7bdc9fde53f523f3fa2f3c3c070b1a8cacae9d1` |
 | E021 | `24a27db803810b7457b8e7711ef012e18984af03` |
+| E026 | `d8ce47f4753cc859595e727295886a610af8c490` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -87,9 +88,9 @@
 | M2-01-REPEATING_DECIMAL | 61 |
 | M2-02-LINEAR_INEQUALITY | 45 |
 | M2-02-LINEAR_INEQUALITY_WORD | 13 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION | 80 |
-| M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 24 |
-| M2-04-LINEAR_FUNCTION_BASIC | 134 |
-| M2-04-LINEAR_FUNCTION_EQUATION | 67 |
+| M2-03-SIMULTANEOUS_LINEAR_EQUATION | 84 |
+| M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 29 |
+| M2-04-LINEAR_FUNCTION_BASIC | 142 |
+| M2-04-LINEAR_FUNCTION_EQUATION | 73 |
 | M2-05-QUADRILATERAL_PROPERTIES | 13 |
 | UNRESOLVED | 42 |

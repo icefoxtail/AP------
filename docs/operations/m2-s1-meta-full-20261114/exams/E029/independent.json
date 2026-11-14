@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "m2-s1-root-independent-review-v1",
+  "examId": "E029",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "author": "B",
+  "reviewer": "ROOT_INDEPENDENT",
+  "independent": true,
+  "createdAt": "2026-11-14T12:15:56.525352+00:00",
+  "reviewSha256": "89ec09df48bb3415df482c856ed3d1f8d5c4f518bf9c7247b6e9ff62f29f17f3",
+  "fourSlotSha256": "6029305576ac834da7c54d9fcf62620ade4d7086c677df94fdbbfe82a3e01574",
+  "sourceGitBlobSha": "b4081251ca79dfa3ba9eebfff3aad0ebb7398297",
+  "sourceSha256": "73f2d043d13eb9c3b75d49fdaa3b007b3787209f439ad31dd034ca02e988145c",
+  "status": "ACCEPT_WITH_SCOPED_CORRECTIONS_AND_NAMED_GOAL_DEBT",
+  "sampleOrdinals": [
+    6,
+    12,
+    22
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "classification": "Existing solution uses temperature decrease per fixed height increment by proportional arithmetic, matching actual2015 M1-RPM059; original M2 target remains separate.",
+      "binding": "Root read actual ACTIVE temperature-altitude TPL: it explicitly constructs a linear function, which this solution does not do. No exact projection or resolver completion is asserted.",
+      "crossConcept": "Proportion and ordinary unit change are internal to this primary, with no additional CC claim.",
+      "condition": "The stated ground-to10km model domain must appear in four-slot condition. Actual solution does not use an endpoint to select or decide the unique result, so under the read COND_RANGE definition a four-slot-to-meta automatic conversion is rejected. The law is not generalized outside its given domain.",
+      "integration": "Single proportional-model primary supports NONE.",
+      "difficulty": "The stated unit decrement and height conversion directly prescribe a standard procedure2/high.",
+      "fourSlot": "Root verified exact stem and full solution literals; height218 is the specific goal, the model domain is interval296, and proportionality is appropriately IMPLIED with rationale."
+    },
+    {
+      "sourceOrdinal": 12,
+      "classification": "Actual2015 M2-RPM058 graph area covers the requested bisecting-line parameter.",
+      "binding": "Root read actual PT_AREA_BISECTING_LINE and polygon/circle TPL definitions. PT fits; polygon area-partition and circle-specific center templates do not certify exact square-center-shortcut binding. Retain explicit projection debt.",
+      "crossConcept": "CC_MIDPOINT actual definition supports the auxiliary center-coordinate step, without claiming that its definition already includes the entire point-symmetry bisection principle.",
+      "condition": "Area bisection is retained in four-slot, with no invented parameter domain.",
+      "integration": "Reinterpret equal areas as passage through the center; REINTERPRETATION is supported.",
+      "difficulty": "The student must recognize the square from four lines and choose its center as the area-bisection condition. This relation selection supports3/medium/B23, with existing learning level상 an accepted adjacency.",
+      "fourSlot": "Actual goal parameter added. The solution names the center and substitutes it; its implicit point-symmetry principle is now candidate+registered symmetry parent with same-slot provenance and IMPLIED justification."
+    },
+    {
+      "sourceOrdinal": 22,
+      "classification": "Known intersection is input; coefficient recovery is the target and decisive step. ActualM2-RPM033 supports moving M2-04 to M2-03/SYS.",
+      "binding": "No genuine target-bound resolver evidence is present; the semantic decision remains separate from registration.",
+      "crossConcept": "Reading a marked coordinate and ordinary substitution/elimination are primary-internal.",
+      "condition": "Marked coordinates are givens, not an invented new constraint.",
+      "integration": "Single coefficient-recovery primary supports NONE.",
+      "difficulty": "Actual figure directly supplies intersection(1,4). Substitute it into both equations to form the coefficient system and eliminate a; the learning demand is the standard coefficient-recovery exercise, supporting중 separately from numeric2.",
+      "fourSlot": "Root viewed actual source figure and compared all literal atoms. Parameter target is added to the final expression value. Substitution is NAMED; equation addition for elimination remains explicitly justified IMPLIED without a fabricated method name."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT",
+      "reason": "Apply unique-output definition to the actual mappings; multiplicity of multiples is directly visible. Retain1/medium/B12 and existing adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 2,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT",
+      "reason": "Directly substitute two inputs into the supplied function; the fixed arithmetic does not add a strategy. Retain1/high and adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 3,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "Read the slope and calculate intercepts by setting one coordinate zero, then evaluate the prescribed combination. Retain2/high/B12."
+    },
+    {
+      "sourceOrdinal": 7,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "Actual figure marks intercepts−3 and−4. Parallelism fixes the slope, then the supplied point fixes the remaining coefficient through standard sequential substitution. Retain2/high despite original numeric3."
+    },
+    {
+      "sourceOrdinal": 9,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT",
+      "reason": "The explicitly vertical line makes equal x-coordinates the direct criterion; the one linear equation and constant-coordinate line are elementary. Retain1/high/B12 and adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 10,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "Put each equation into slope-intercept form; equal slopes and already distinct intercepts are the standard no-intersection condition. Retain2/medium/B12."
+    },
+    {
+      "sourceOrdinal": 11,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "Actual source graph has negative slope and positive intercept. Rewriting each equation and propagating signs to the new slope/intercept is the prescribed standard learning task; no new strategy or case selection. Independent learning level중 is appropriate separately from numeric2."
+    },
+    {
+      "sourceOrdinal": 12,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT",
+      "reason": "The student must recognize the square from four lines and choose its center as the area-bisection condition. This relation selection supports3/medium/B23, with existing learning level상 an accepted adjacency."
+    },
+    {
+      "sourceOrdinal": 14,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "Use the given common sibling age and fixed age difference in one standard age equation. Retain2/medium/B12; the exact goal-measure vocabulary gap is separately disclosed."
+    },
+    {
+      "sourceOrdinal": 15,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "Complete traversal distance is the train length plus each structure length, and equal speed supplies the standard equation. These are routine taught modeling demands supporting independent learning level중 and numeric2/B23."
+    },
+    {
+      "sourceOrdinal": 16,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "The original and changed totals specify the usual two population equations, followed by applying the given percentage to the recovered prior count. Standard learning level중 is supported without equating percentage notation with advanced demand."
+    },
+    {
+      "sourceOrdinal": 17,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "The final solute mass and existing salt amount determine the added solution by one standard equation, then total mass determines water. This familiar conservation procedure supports independent learning level중; the exact goal-measure term gap remains."
+    },
+    {
+      "sourceOrdinal": 18,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "The statement supplies the two-day joint work and subsequent solo period. Substitute the joint rate and infer the solo completion time through the standard work model; independent learning level중 is appropriate."
+    },
+    {
+      "sourceOrdinal": 19,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "Equate the same total purchase cost under shortage and surplus, then divide the total by the recovered class count. This standard excess/shortage model supports independent learning level중; the missing exact price-measure vocabulary remains a separate goal debt."
+    },
+    {
+      "sourceOrdinal": 20,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT",
+      "reason": "A triangle fails through either of two parallel cases or concurrence at the fixed intersection. Selecting and checking all structural exclusions supports3/medium/B23, with existing상 retained as adjacent."
+    },
+    {
+      "sourceOrdinal": 21,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "The horizontal line is explicitly supplied, so standard intersections directly give a horizontal base and vertical height. Repeated coordinate arithmetic does not add strategy selection; retain numeric2/B23 and independently reassess learning level중."
+    },
+    {
+      "sourceOrdinal": 22,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "Actual figure directly supplies intersection(1,4). Substitute it into both equations to form the coefficient system and eliminate a; the learning demand is the standard coefficient-recovery exercise, supporting중 separately from numeric2."
+    },
+    {
+      "sourceOrdinal": 23,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_AFTER_INDEPENDENT_REVIEW",
+      "reason": "The existing solution uses the ordinary two-quantity system and elimination for the familiar head/leg count model. Neither the written-answer format nor the quantity context adds advanced strategy; independently assessed learning level중 is appropriate."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "Apply unique-output definition to the actual mappings; multiplicity of multiples is directly visible. Retain1/medium/B12 and existing adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "Directly substitute two inputs into the supplied function; the fixed arithmetic does not add a strategy. Retain1/high and adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "The explicitly vertical line makes equal x-coordinates the direct criterion; the one linear equation and constant-coordinate line are elementary. Retain1/high/B12 and adjacent learning level중."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "The student must recognize the square from four lines and choose its center as the area-bisection condition. This relation selection supports3/medium/B23, with existing learning level상 an accepted adjacency."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "A triangle fails through either of two parallel cases or concurrence at the fixed intersection. Selecting and checking all structural exclusions supports3/medium/B23, with existing상 retained as adjacent."
+    }
+  ],
+  "sourceReadScope": {
+    "all23StemsAndExistingSolutionsActuallyRead": true,
+    "allFourOriginalImagesActuallyViewed": true,
+    "sevenAxisSampleCount": 3,
+    "requiredDifficultyCount": 18,
+    "goalCompletenessNarrowReadAll23": true
+  },
+  "visualEvidence": [
+    {
+      "sourceOrdinal": 4,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E029-q4.png",
+      "sha256": "332a1ebabb975838bc3fa8f58f24c8c4ff7216eaecb6535fbf639a951be8e979",
+      "status": "ACTUALLY_VIEWED_BY_ROOT_AND_BYTES_MATCH_CURRENT_GIT"
+    },
+    {
+      "sourceOrdinal": 7,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E029-q7.png",
+      "sha256": "659c49283678b41179395576173da3f7e6a145bd060734a3acaf8f06d9242203",
+      "status": "ACTUALLY_VIEWED_BY_ROOT_AND_BYTES_MATCH_CURRENT_GIT"
+    },
+    {
+      "sourceOrdinal": 11,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E029-q11.png",
+      "sha256": "1774cd6a80f4340fed440412fd0bb3603acb152ec6d3b002cdb03e32700792d6",
+      "status": "ACTUALLY_VIEWED_BY_ROOT_AND_BYTES_MATCH_CURRENT_GIT"
+    },
+    {
+      "sourceOrdinal": 22,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E029-q22.png",
+      "sha256": "f3155d293b8a51d1f87b51db5e49d6db6e65fbf05876ff8277dbaefb8662955a",
+      "status": "ACTUALLY_VIEWED_BY_ROOT_AND_BYTES_MATCH_CURRENT_GIT"
+    }
+  ],
+  "acceptedAuthorSupplement": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/B/E029.4slot-goal-method-supplement.json",
+    "sha256": "7f1f110f8daa89fff3fcf48acfd6de4250cb5bf33f2a6aec4e7e1759a5a11efb",
+    "authorReceiptPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E029.goal-method-author-supplement.json",
+    "authorReceiptSha256": "0a69a0badd4bc37930927ac6c224b507354be73306a7067359e6c311f98029ee",
+    "changedAtomsActuallyRead": true,
+    "unresolvedGoalMeasureOrdinals": [
+      14,
+      17,
+      19
+    ]
+  },
+  "mechanicalEvidence": {
+    "path": "/workspace/scratch/59e0f5bd3a77/root/E029-independent-mechanical.json",
+    "sha256": "5c0b1494f4897e94af4f501630d0e4f84e2e8377bdb2535044489d160ea62742",
+    "nativeFail": 0,
+    "nativeWarnings": 11,
+    "quotes": 138,
+    "identityStudentContent": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+    "uidOrder": "PASS"
+  },
+  "officialResolver": "NOT_RUN_EVIDENCE_INCOMPLETE",
+  "fullQualityPass": false,
+  "blindFirstClaim": false
+}
