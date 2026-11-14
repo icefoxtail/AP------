@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m1s2-final-target-validation-v1",
   "assignmentId": "M1S2-20261114-B01-A",
-  "validatedSourceHead": "6bd5770cf6059acc08b80b3a3c001077abb18346",
+  "validatedSourceHead": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
   "baselineMain": "573fa32804480b2d70f7536b211e240e8d64d5ed",
   "scope": "Exactly four assigned exams; official validation exports reused; no shared metadata/runtime writes",
   "counts": {
@@ -179,21 +179,21 @@
     {
       "examNumber": 3,
       "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
-      "sourceGitBlobSha": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
-      "sourceSha256": "5da677cd437571b6ef94f7cdacf7dad56be667ad950bab482e50d8e3b873618d",
+      "sourceGitBlobSha": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+      "sourceSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
       "questionCount": 24,
       "nodeSyntax": "PASS",
       "protectedPayload": "PASS",
       "uidJoin": "PASS",
       "numericDifficulty1To5": "PASS",
       "compactPath": "archive/data/item-4slot/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
-      "compactSha256": "086f549d6e16f3f408eb9fcb761975829f1edbe6f86ba91d67a2148435c08411",
+      "compactSha256": "26772f7b2f974a116735b73ad66bb0c882bb652ad21766e752e5967ff844bf54",
       "compactSchemaAndTermValidation": "PASS",
       "rawEvidence": {
         "branch": "review/m1-s2-meta-b01-a-20261114",
-        "commit": "63284976c941c9c3bebd56b7f5d2abc8b6b617d7",
+        "commit": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
         "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
-        "sha256": "06c3b40c0124163d4ee3822ca9e28a880aeaf0c29d4f9c56579d8460283296b2"
+        "sha256": "f3763cfd51005ab6c8e71eea1f5780f44b6015eb15fa95bf4bc8bf434e0676b5"
       },
       "rawQuoteValidation": {
         "items": 24,
@@ -203,11 +203,11 @@
         "warn": 10
       },
       "rawDocsSnapshot": {
-        "commit": "63284976c941c9c3bebd56b7f5d2abc8b6b617d7",
+        "commit": "09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb",
         "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.4slot.json"
       },
       "independentSample": {
-        "agent": "GPT_ROOT_54CB21AF3005_A_A1",
+        "agent": "GPT_ROOT_54CB21AF3005_A",
         "at": "2026-11-14",
         "sampled": [
           13,
@@ -360,6 +360,26 @@
       ]
     }
   ],
-  "registration": "Full native request for exam2; reviewed difficulty-only requests for exams1,3,4. Post-merge registration/consumer/deployment receipts remain separate.",
-  "excludedChecks": "Global local tests requiring sparse-omitted exam folders were not repeated; full-checkout required PR CI supplies those checks. No additional Chrome/Pages sweep."
+  "registration": "Native exam2 r3 24 UID; difficulty exam1 r1/exam3 r2/exam4 r1 17 UID. Q13 parent publication 5 fields held pending official shared metadata/runtime transition. Main application and deployment not inferred.",
+  "excludedChecks": "Global local tests requiring sparse-omitted exam folders were not repeated; full-checkout required PR CI supplies those checks. No additional Chrome/Pages sweep.",
+  "publicationHolds": [
+    {
+      "examNumber": 3,
+      "sourceOrdinal": 13,
+      "fields": 5,
+      "status": "PARENT_CORRECTION_DEFERRED",
+      "reference": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json"
+    }
+  ],
+  "latestMainRechecked": {
+    "sha": "0f638ef02303919e82136e4671d0f9f70db436b1",
+    "previousSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+    "newPr": 1975,
+    "changedPaths": [
+      "docs/architecture/JS_Archive_Meta_OS_CURRENT.md",
+      ".archive-meta-register/auto/state.json",
+      ".archive-meta-register/auto/writer-state.json"
+    ],
+    "impact": "Direction principle 6 expands acceptance of newly judged values; the document explicitly says canonical code/registration routes remain unchanged. This assignment continues to preserve exact official keys and hand coordinator named evidence requests. No source, registration implementation, canonical key, or runtime conflict."
+  }
 }

@@ -82,7 +82,7 @@ GAP이 우선인 상호배타적 의미 판정이다. 정상 의미값을 보존
 |---|---|---|
 | 연향중 기말 | `58499a15b018c4bc13d4e90c9dd630f6a458fe2b` | `27a263a24bb36ea0153e981cadc401a52cf55f6e` |
 | 왕운중 기말 | `3b592f8f9c5e04fdf152dc47fed7b5d916937829` | `8837bbab7db868a9552eb372dbcea7a06a56b5ee` |
-| 연향중 중간 | `99cd522479988a1a968228e3d86cd26bfd1d5f3e` | `63284976c941c9c3bebd56b7f5d2abc8b6b617d7` |
+| 연향중 중간 | `5ea211ca5907ad3706105b7f88f593fbc511c151` | `09f970ab2bbbb78ce9ad1d10cecd4aa3db9aecdb` |
 | 왕의중 중간 | `654aa51206cc7eed297cf3c75acc221f1209b25d` | `36d18b5e2ad45381854d38a1061e500a76dd9193` |
 
 정확한 raw path·SHA, 당시 docs raw path, compact hash는 `final-verification.json`에 있다. 전용 원격 브랜치는 squash 병합 후에도 삭제하지 않는다.
@@ -100,3 +100,17 @@ PR #1974의 첫 CI run `43528778641`은 runtime readiness가 manifest 입력을 
 CI run `43530562918`은 재생성 고정점 검사를 통과한 다음 native Consumer 재검에서 중단됐다. 분리된 24문항 표본 환경의 공식 생성기로 `Q2.curriculumKey` 불일치를 재현했고, native L1/L2가 단원 표시명으로 대체된 22문항의 부모 연결 문제를 확인했다. 기존 source RPM 경로에 정확히 일치하는 공식 basic parent 8행을 그대로 발췌해 immutable r3의 `basicScopeParentRef`로 연결했다. 후보가 둘인 native tuple은 전체 대안과 선택 UID를 근거에 함께 남겼다. 새 키·공통 crosswalk·검증기 변경은 없다. Q1·Q21의 정상 부모와 Q23의 4/상·근거 대기는 유지했다.
 
 공식 dry-run 24 PASS, 분리 표본의 apply/replay 및 `--verify-projection` 24 PASS, changed-UID Consumer 24 changed/24 checked/24 passed·미관측 필드 0을 확인했다. 실제 전체 저장소 필수 CI와 main 등록은 아직 별도 확인 대상이다. 현재 요청·근거는 `root-exam2.native-r3-dryrun.json`, `native-parent-registration-verification.json`, `a2-native-r3-audit.json`을 우선한다. r2 dry-run과 기존 `a2-registration-audit.json`은 원격 커밋 `e8fa8be3b342e73fd11a278c3ce542600d47154f` 당시의 역사 기록이며 r3 Consumer 성공을 대신하지 않는다. source/compact/95문항 검증과 최종 KEEP/CORRECT/GAP 집계는 이 등록 요청 보정으로 바뀌지 않았다.
+
+## 연향중 중간 Q13 부모 게시 교정 보류 — 1문항 5필드
+
+의미 판정은 기본 도형의 공간 위치 관계로 확정되어 있으며 기존 GAP/RPM_LEAF_GAP을 유지한다. CI run `43533869947`에서 공용 metadata/runtime의 예전 입체도형 부모와 교정 source의 기본도형 부모가 충돌한 것이 확인됐다. 현재 공식 단일 UID 부모 전환 경로가 없고, 시험지 전체 native 등록은 Q4·20·21의 별도 binding 공백 때문에 보류되어 있다. 사용자 지시에 따라 이 공유 충돌만 총괄에 인계하고 나머지 확정 변경을 계속 반영한다.
+
+Q13의 `standardUnitKey`, `standardUnit`, `standardUnitOrder`, `subUnitKey`, `subUnit` 다섯 게시 필드만 확인한 main 값으로 유지한다. 기존 입체도형 분류를 올바른 판정으로 인정한 것이 아니다. 올바른 M1-05/POSITION_RELATION 교정안은 원격 `a4e8b1c6972161e71262bef93e434a0bb8021b97`과 `q13-parent-publication-hold.json`에 보존했다. Integration NONE, 유효 PT/TPL, 의미 검토 및 4칸은 유지한다. **95문항 검토 완료와 Q13 부모 게시 교정 보류 1건을 구분하며, 95문항의 메타가 전부 정상화됐다고 주장하지 않는다.**
+
+새 source blob에 raw/compact를 공식 importer로 재결속하고, 난이도 2 UID 요청은 `m1s2-b01-a-exam3-difficulty-20261114-r2`로 발행했다. 이전 r1과 원래 교정안·인용 근거는 전용 브랜치의 고정 커밋에 남아 있다. 동일 공식 생성기와 변경하지 않은 화면 분류 비교를 담당 95문항에 적용해 보류 전 1건/보류 후 0건 불일치를 확인했다. 이 검사는 게시 일관성 확인이며 보류된 부모 교정의 운영 반영 성공을 뜻하지 않는다.
+
+동일 CI job은 15분 17초 뒤 cancelled로 끝났으며, 15분 예산과 부합하지만 공식 annotation을 읽을 수 없어 시간제한 원인은 확정하지 않았다. 기존 전체 검사를 끝낼 실행 예산으로 test job만 30분으로 조정했다. trigger·권한·동시성·검사 명령·판정은 그대로다. 같은 workflow 파일을 변경하는 PR #956의 실제 diff는 trigger paths만 포함해 timeout hunk와 겹치지 않으며 해당 브랜치는 수정하지 않았다. `ci-budget-verification.json`에 관측과 범위를 기록했다.
+
+### 최종 게시 직전 main 재조회
+
+최신 `main`은 `0f638ef02303919e82136e4671d0f9f70db436b1`입니다. 이전 `ed83f05220b64f75cbbd5de360a68dd6ddaadd22` 이후 #1975는 Meta OS 방향 원칙 6을 PT/TPL·4칸으로 확장했고, 등록 코드·정본 키·등록 경로는 그대로임을 명시했습니다. 해당 문서 diff와 writer state 변경을 직접 확인했으며 본 배정 소스·공식 요청과의 충돌은 없습니다. 새 값에 관한 이름·상위·이유는 기존 coordinator 요청 근거에 보존하며, 본 배정의 임의 키 생성 금지 및 공용 정의 담당 분리는 유지합니다.

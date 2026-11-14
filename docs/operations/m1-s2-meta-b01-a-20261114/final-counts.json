@@ -5420,7 +5420,7 @@
       "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
       "questionCount": 24,
       "sourceBeforeGitBlobSha": "9d635c26109d3c088e55bd0529884611457d0433",
-      "sourceAfterGitBlobSha": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+      "sourceAfterGitBlobSha": "5ea211ca5907ad3706105b7f88f593fbc511c151",
       "evidenceRefs": [
         {
           "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
@@ -5428,7 +5428,11 @@
         },
         {
           "path": "docs/operations/m1-s2-meta-b01-a-20261114/root-exam3.applied.json",
-          "sha256": "862ab5ea71612f5f067bfb0f00499613f32bcb8c11304f9db4567d162e1cc315"
+          "sha256": "f37c7b45626699a9468e5619c576f08cb8dea3acd69ee7010d8b5c764e155700"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json",
+          "sha256": "29058c14d7cf4c20de82b068c782ba44cd2f28c15f287f965cd05e7b570f2dd9"
         }
       ],
       "semantic": {
@@ -5737,6 +5741,17 @@
             "priorReviewDecision": "GAP",
             "existingSemanticCorrections": [
               {
+                "field": "integrationPattern",
+                "before": "CASE_BRANCH",
+                "after": "NONE",
+                "baseline": "original_source"
+              }
+            ],
+            "gapType": "RPM_LEAF_GAP",
+            "gapBasis": "ACTIVE PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS와 SPATIAL_CLAIM_AUDIT 및 2022 M1-05/POSITION_RELATION binding은 존재. RPM의 공간 L3에는 직선-평면/평면-평면 leaf만 있으며 결정적인 직선-직선 꼬인·평행 판정 exact leaf가 비어 있다. 각기둥·각뿔 leaf를 억지 primary로 삼지 않음.",
+            "topic": "공간 직선·평면 위치관계",
+            "deferredSourceParentCorrections": [
+              {
                 "field": "standardUnitKey",
                 "before": "M1-07",
                 "after": "M1-05",
@@ -5747,17 +5762,10 @@
                 "before": "M1-07-SOLID_FIGURE",
                 "after": "M1-05-POSITION_RELATION",
                 "baseline": "original_source"
-              },
-              {
-                "field": "integrationPattern",
-                "before": "CASE_BRANCH",
-                "after": "NONE",
-                "baseline": "original_source"
               }
             ],
-            "gapType": "RPM_LEAF_GAP",
-            "gapBasis": "ACTIVE PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS와 SPATIAL_CLAIM_AUDIT 및 2022 M1-05/POSITION_RELATION binding은 존재. RPM의 공간 L3에는 직선-평면/평면-평면 leaf만 있으며 결정적인 직선-직선 꼬인·평행 판정 exact leaf가 비어 있다. 각기둥·각뿔 leaf를 억지 primary로 삼지 않음.",
-            "topic": "공간 직선·평면 위치관계"
+            "publicationStatus": "PARENT_CORRECTION_DEFERRED",
+            "publicationHoldRef": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json"
           },
           {
             "sourceOrdinal": 14,
@@ -6286,7 +6294,7 @@
         "compactPath": "archive/data/item-4slot/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
         "baselineExists": false,
         "baselineSha256": null,
-        "finalSha256": "086f549d6e16f3f408eb9fcb761975829f1edbe6f86ba91d67a2148435c08411",
+        "finalSha256": "26772f7b2f974a116735b73ad66bb0c882bb652ad21766e752e5967ff844bf54",
         "existingChanged": {
           "count": 0,
           "ordinals": [],
@@ -7052,7 +7060,7 @@
           ]
         },
         "subUnitKey": {
-          "count": 15,
+          "count": 14,
           "ordinals": [
             3,
             4,
@@ -7061,7 +7069,6 @@
             7,
             8,
             10,
-            13,
             17,
             18,
             19,
@@ -7078,7 +7085,6 @@
             "qid_v1_008e99d3101749b349c08fa5e412c4f59c9bfc8b098e48d8ce26d08a4c8c053a",
             "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
             "qid_v1_f9c54052280ef5a5bf6ebc57c42509083d2d7740770ceceef12adc7d73c700ea",
-            "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
             "qid_v1_26a62a5c2fc811fe37310857f79339211a308a9983b16cec54deb0b0f8f0fb62",
             "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
             "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
@@ -7142,14 +7148,6 @@
               "field": "subUnitKey",
               "before": "M1-05-POSITION_RELATION",
               "after": "M1-05-BASIC_FIGURE",
-              "baseline": "original_source"
-            },
-            {
-              "sourceOrdinal": 13,
-              "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
-              "field": "subUnitKey",
-              "before": "M1-07-SOLID_FIGURE",
-              "after": "M1-05-POSITION_RELATION",
               "baseline": "original_source"
             },
             {
@@ -7281,23 +7279,10 @@
           ]
         },
         "standardUnitKey": {
-          "count": 1,
-          "ordinals": [
-            13
-          ],
-          "questionUids": [
-            "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e"
-          ],
-          "items": [
-            {
-              "sourceOrdinal": 13,
-              "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
-              "field": "standardUnitKey",
-              "before": "M1-07",
-              "after": "M1-05",
-              "baseline": "original_source"
-            }
-          ]
+          "count": 0,
+          "ordinals": [],
+          "questionUids": [],
+          "items": []
         }
       },
       "missingSourceFieldsCompleted": {},
@@ -8248,6 +8233,14 @@
           "sourceOrdinal": 24,
           "questionUid": "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e",
           "topic": "정사각형 배치의 합동과 넓이"
+        }
+      ],
+      "publicationHolds": [
+        {
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+          "heldFieldCount": 5,
+          "evidenceRef": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json"
         }
       ]
     },
@@ -13506,7 +13499,9 @@
     "TPLFieldChanges": 13,
     "existingFourSlotChanges": 19,
     "newFourSlots": 48,
-    "candidateOnlyFourSlotChanges": 1
+    "candidateOnlyFourSlotChanges": 1,
+    "parentPublicationHoldQuestions": 1,
+    "parentPublicationHoldFields": 5
   },
   "integrity": {
     "countingOnly": true,
@@ -13515,6 +13510,7 @@
     "mechanicalCountFaults": [],
     "sourceAndTopicDenominators": "PASS",
     "fourSlotExpectedCounts": "PASS",
-    "status": "PASS"
+    "status": "PASS",
+    "publicationHoldCountRefresh": "Q13 remains GAP; semantic decision and topic unchanged; held parent corrections excluded from applied source deltas."
   }
 }
