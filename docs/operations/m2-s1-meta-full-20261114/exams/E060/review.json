@@ -1,0 +1,2963 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E060",
+  "owner": "C",
+  "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "c9c1215fb889aaaf2f40cf19c4d52771f2f18074",
+  "sourceSha256": "ded3f5d4cd9988020ca0e1fe918e60ade6a800945b45131e6e8c04775b3fdc2a",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 25,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_6af1e9abd2645fa92dc223f569f1a5747a3afdc7bc2a08f4460d441ec5ffb56d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "다항식의 차수에 따른 이차식 판별",
+      "decisiveStep": "차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-POLYNOMIAL_DEGREE",
+        "subUnit": "이차식의 뜻과 판별",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-02-POLYNOMIAL_DEGREE",
+        "subUnit": "이차식의 뜻과 판별",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "보기 5개의 차수를 판정하며 소거되는 최고차항과 두 문자 일차식을 구별한다. 정형 복수진술 판정의 1/2 경계.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E060-Q1-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "보기 5개의 차수를 판정하며 소거되는 최고차항과 두 문자 일차식을 구별한다. 정형 복수진술 판정의 1/2 경계."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_7bcffba17e108627a72bcea64ce3a86b7e71809876549f8651446e7508978b8b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-012",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "동류항 합과 계수 진술 검토",
+      "decisiveStep": "012 같은 문자·차수 항을 묶어 합한 결과와 계수 진술을 비교한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-POLYNOMIAL_ADD",
+        "subUnit": "이차식의 덧셈과 동류항",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-02-POLYNOMIAL_ADD",
+        "subUnit": "이차식의 덧셈과 동류항",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "012 같은 문자·차수 항을 묶어 합한 결과와 계수 진술을 비교한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "다항식 덧셈 후 항·계수·상수항의 다섯 진술을 비교한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "012 같은 문자·차수 항을 묶어 합한 결과와 계수 진술을 비교한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다항식 덧셈 후 항·계수·상수항의 다섯 진술을 비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_198e10b1f2bd10be39258178be7e7ba541020df41453e392332215afb3e0715b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "META_ONLY_UNRESOLVED",
+      "primaryMethod": "학생별 다항식 곱과 나눗셈의 결과 비교",
+      "decisiveStep": "014 분배와015 다항식 나눗셈이 독립 학생 식으로 병렬 등장한다. 단일 primary 미판정이며 실제 그림과 기존 해설의 이름/식 불일치를 부채로 보존한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-EXPANSION_MATCH",
+        "subUnit": "다항식의 전개와 나눗셈 결과 비교",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-02-EXPANSION_MATCH",
+        "subUnit": "다항식의 전개와 나눗셈 결과 비교",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "014 분배와015 다항식 나눗셈이 독립 학생 식으로 병렬 등장한다. 단일 primary 미판정이며 실제 그림과 기존 해설의 이름/식 불일치를 부채로 보존한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "single primary미판정으로CC=null. NONE확정이아니다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "single primary미판정에종속하여integration=null. NONE으로채우지않는다.",
+        "difficulty": "실제 학생별 식은 분배법칙과 다항식 나눗셈의 정형 판단이다. 다만 기존 해설의 현수/세민 이름 및 식이 실제 그림과 달라 원해설 근거부채를 조건부로 분리한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "014 분배와015 다항식 나눗셈이 독립 학생 식으로 병렬 등장한다. 단일 primary 미판정이며 실제 그림과 기존 해설의 이름/식 불일치를 부채로 보존한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_FIGURE_MISMATCH: q03 actual 현수 is (4x^3+x^2)÷(-x), 세민 is (2x^3+3x^2)÷(5/x); existing solution uses different names/expressions. Original solution/answer preserved; no replacement solution.",
+        "META_ONLY_UNRESOLVED: 014 분배와015 다항식 나눗셈이 독립 학생 식으로 병렬 등장한다. 단일 primary 미판정이며 실제 그림과 기존 해설의 이름/식 불일치를 부채로 보존한다.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제 학생별 식은 분배법칙과 다항식 나눗셈의 정형 판단이다. 다만 기존 해설의 현수/세민 이름 및 식이 실제 그림과 달라 원해설 근거부채를 조건부로 분리한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_FIGURE_MISMATCH: q03 actual 현수 is (4x^3+x^2)÷(-x), 세민 is (2x^3+3x^2)÷(5/x); existing solution uses different names/expressions. Original solution/answer preserved; no replacement solution."
+      ]
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_93a2af19c7646027a160d435f591a1c88fd983b9ad7212ec5a33666117c5ccb6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-017",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "잘못 뺀 다항식에서 바른 덧셈 복원",
+      "decisiveStep": "017 잘못된 식의 역연산으로 A를 구하고 바른 덧셈에 사용한다. ACTIVE correction은 반대 방향의 오산이므로 관련 variant만 허용.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-POLYNOMIAL_INVERSE",
+        "subUnit": "어떤 식의 역연산과 바른 계산",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-02-POLYNOMIAL_INVERSE",
+        "subUnit": "어떤 식의 역연산과 바른 계산",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "017 잘못된 식의 역연산으로 A를 구하고 바른 덧셈에 사용한다. ACTIVE correction은 반대 방향의 오산이므로 관련 variant만 허용.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 더해야 할 것을 잘못하여 빼었더니",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "잘못 수행한 뺄셈을 역산해 원식을 복원하고 올바른 덧셈을 실행하는 정형 두 단계.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "017 잘못된 식의 역연산으로 A를 구하고 바른 덧셈에 사용한다. ACTIVE correction은 반대 방향의 오산이므로 관련 variant만 허용.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "잘못 수행한 뺄셈을 역산해 원식을 복원하고 올바른 덧셈을 실행하는 정형 두 단계."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_b0b9d9f83ec6efdcd9f252314fcbc8ce2f3f8e47ac530f2e727265f4dd7aabe6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "수량 비교 문장을 부등식으로 번역",
+      "decisiveStep": "크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SENTENCE_TO_INEQUALITY",
+        "subUnit": "문장을 부등식으로 나타내기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SENTENCE_TO_INEQUALITY",
+        "subUnit": "문장을 부등식으로 나타내기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 크지 않다",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "문장 속 두 수량과 크지 않다의 방향을 부등식으로 직접 표현한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E060-Q5-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "문장 속 두 수량과 크지 않다의 방향을 부등식으로 직접 표현한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_dfe6321a3fa8b0ab945e4b2df4ac38e6db39be2bc2f3213d43614236989b96d7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-020",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "기본 일차부등식과 명시 후보 해 선별",
+      "decisiveStep": "020 기본 변형으로 구한 해집합을 주어진 유한 후보와 비교한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQUALITY_DOMAIN_SOLUTION",
+        "subUnit": "주어진 수 범위에서 부등식의 해 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQUALITY_DOMAIN_SOLUTION",
+        "subUnit": "주어진 수 범위에서 부등식의 해 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "020 기본 변형으로 구한 해집합을 주어진 유한 후보와 비교한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $x$의 값이 $-2, -1, 0, 1, 2$일 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "간단한 일차부등식을 풀고 명시된 다섯 후보 중 해를 선택한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "020 기본 변형으로 구한 해집합을 주어진 유한 후보와 비교한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "간단한 일차부등식을 풀고 명시된 다섯 후보 중 해를 선택한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_9ede37fc00cf1a24a58d7743397e716221d0659106f2b205d7cbb8f974f5d5f3",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-018",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "음수배에서 방향이 달라지는 부등식",
+      "decisiveStep": "018 양·음수 연산에 따른 방향 변화. 실제 ACTIVE 변형성질 판정 후보와 일치.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTY",
+        "subUnit": "부등식의 성질과 방향 판정",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQUALITY_PROPERTY",
+        "subUnit": "부등식의 성질과 방향 판정",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "부등식의 양변에 수를 더하거나 곱하고 나눌 때 성질을 옳게 적용한 보기를 찾는 과제.",
+            "template": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "018 양·음수 연산에 따른 방향 변화. 실제 ACTIVE 변형성질 판정 후보와 일치.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $a > b$일 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "양변에 같은 음수를 곱할 때 방향이 바뀌는 기본 성질을 구분한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "018 양·음수 연산에 따른 방향 변화. 실제 ACTIVE 변형성질 판정 후보와 일치.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "양변에 같은 음수를 곱할 때 방향이 바뀌는 기본 성질을 구분한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7a3680a4c2187579ace8218860d9eeaba01dbaab68a63e73db1a427f51ef41dd",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "정리 후 일차부등식 정의 판정",
+      "decisiveStep": "소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-LINEAR_INEQUALITY_IDENTIFY",
+        "subUnit": "일차부등식의 뜻",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-LINEAR_INEQUALITY_IDENTIFY",
+        "subUnit": "일차부등식의 뜻",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+          "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "여러 부등식을 정리했을 때 미지수의 일차식만 남는지 판별하여 일차부등식을 모두 고르는 과제.",
+            "template": "각 부등식의 양변을 정리해 미지수의 최고차항이 소거되는지 확인하고, 일차식만 남는 보기를 모두 선택한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "각 보기를 정리한 뒤 최고차항 소거 여부와 등식/부등식을 구분하는 복수진술 판단.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E060-Q8-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 보기를 정리한 뒤 최고차항 소거 여부와 등식/부등식을 구분하는 복수진술 판단."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_00d6e4e28ff7e7138e718ff47a76a85678caf92bf25be3fc6870e8ead714e38d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-021",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분수·소수 포함 일차부등식 해 검산",
+      "decisiveStep": "021 소수와 분모 제거를 포함한 다섯 해 진술의 검산. ACTIVE fractional-decimal check 후보 정의와 일치.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SOLVE_BASIC_INEQUALITY",
+        "subUnit": "일차부등식의 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SOLVE_BASIC_INEQUALITY",
+        "subUnit": "일차부등식의 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+          "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "여러 일차부등식의 풀이 결과 중 옳지 않은 것을 찾는 과제.",
+            "template": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "021 소수와 분모 제거를 포함한 다섯 해 진술의 검산. ACTIVE fractional-decimal check 후보 정의와 일치.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "기본·분수·소수 부등식의 제시된 해를 대조한다. 정형 부호반전 검토.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "021 소수와 분모 제거를 포함한 다섯 해 진술의 검산. ACTIVE fractional-decimal check 후보 정의와 일치.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기본·분수·소수 부등식의 제시된 해를 대조한다. 정형 부호반전 검토."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8786665496227d9b2505dc1f773b9a9d166fefc0841515145dd247d28a716e62",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-023",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "수직선의 경계와 상수 결정",
+      "decisiveStep": "023 실제 닫힌3과 오른쪽 구간을 읽고 부등식의 경계계수를 비교한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQUALITY_COEFFICIENT_DETERMINATION",
+        "subUnit": "해의 수직선 표현을 이용한 미정계수 결정",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQUALITY_COEFFICIENT_DETERMINATION",
+        "subUnit": "해의 수직선 표현을 이용한 미정계수 결정",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "023 실제 닫힌3과 오른쪽 구간을 읽고 부등식의 경계계수를 비교한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해가 다음 그림과 같을 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "닫힌 경계 3과 오른쪽 해집합을 읽어 매개계수를 직접 비교한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "023 실제 닫힌3과 오른쪽 구간을 읽고 부등식의 경계계수를 비교한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "닫힌 경계 3과 오른쪽 해집합을 읽어 매개계수를 직접 비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_a73ba380a508e5b52748c296592e679470a2f810dfac5215bf33309750313f26",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-025",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주고받은 사탕 개수의 최대 자연수",
+      "decisiveStep": "025 두 사람의 수량변화를 한 부등식으로 세워 최대 자연수를 선택한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQUALITY_WORD_PROBLEM",
+        "subUnit": "일차부등식의 활용 (개수 비교)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQUALITY_WORD_PROBLEM",
+        "subUnit": "일차부등식의 활용 (개수 비교)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "최소·최대 정수"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "최소·최대 정수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "025 두 사람의 수량변화를 한 부등식으로 세워 최대 자연수를 선택한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $x$는 자연수 / 2배보다 많을 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "사탕을 주고받는 두 양을 부등식으로 모델링하고 자연수 최대값을 고른다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "025 두 사람의 수량변화를 한 부등식으로 세워 최대 자연수를 선택한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "사탕을 주고받는 두 양을 부등식으로 모델링하고 자연수 최대값을 고른다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-074",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대변 길이 조건의 평행사변형 판정과 인접각",
+      "decisiveStep": "실제 그림의 두 쌍 대변 길이 같음이074 판정 입력이다. 기존 해설의 등변사다리꼴 오칭과 평행가정은 보존 부채이며080으로 오분류하지 않는다. 이후 인접각은 판정된 도형 내부 성질.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-ISOSCELES_TRAPEZOID",
+        "subUnit": "등변사다리꼴의 각의 크기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-ISOSCELES_TRAPEZOID",
+        "subUnit": "등변사다리꼴의 각의 크기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "실제 그림의 두 쌍 대변 길이 같음이074 판정 입력이다. 기존 해설의 등변사다리꼴 오칭과 평행가정은 보존 부채이며080으로 오분류하지 않는다. 이후 인접각은 판정된 도형 내부 성질.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "그림의 두 쌍 대변 길이 5/5와7/7에서 도형 성질을 판단해야 한다. 기존 해설의 등변사다리꼴 명칭과 평행의 무근거 가정은 원문부채이며 조건부 난도이다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "실제 그림의 두 쌍 대변 길이 같음이074 판정 입력이다. 기존 해설의 등변사다리꼴 오칭과 평행가정은 보존 부채이며080으로 오분류하지 않는다. 이후 인접각은 판정된 도형 내부 성질.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_SHAPE_MISMATCH: actual q12 labels both opposite side pairs equal (5/5,7/7). Existing alt/solution calls this an isosceles trapezoid and assumes parallelism without deriving the criterion. No new proof supplied.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 두 쌍 대변 길이 5/5와7/7에서 도형 성질을 판단해야 한다. 기존 해설의 등변사다리꼴 명칭과 평행의 무근거 가정은 원문부채이며 조건부 난도이다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_SHAPE_MISMATCH: actual q12 labels both opposite side pairs equal (5/5,7/7). Existing alt/solution calls this an isosceles trapezoid and assumes parallelism without deriving the criterion. No new proof supplied."
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_b2cbf16acefb45c249c08aac5fdb3ced11ae805bad58253764793ef9a53a8918",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-073",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형 대각선 이등분과 삼각형 둘레",
+      "decisiveStep": "073 대각선 반길이와 대변 길이로 삼각형 둘레를 구성한다. 실제 AB4와 해설5 불일치를 해결하거나 새 정답을 생산하지 않고 UNKNOWN 유지.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PARALLELOGRAM_DIAGONAL",
+        "subUnit": "평행사변형 대각선 성질과 삼각형의 둘레",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-PARALLELOGRAM_DIAGONAL",
+        "subUnit": "평행사변형 대각선 성질과 삼각형의 둘레",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "073 대각선 반길이와 대변 길이로 삼각형 둘레를 구성한다. 실제 AB4와 해설5 불일치를 해결하거나 새 정답을 생산하지 않고 UNKNOWN 유지.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "실제 그림 AB=4cm와 기존 해설 AB=5cm가 달라 산출값 근거가 충돌한다. 대각선 성질의 정형 구조는 보이나 현재 수치 난도 확정은 보류한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "073 대각선 반길이와 대변 길이로 삼각형 둘레를 구성한다. 실제 AB4와 해설5 불일치를 해결하거나 새 정답을 생산하지 않고 UNKNOWN 유지.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_NUMBER_MISMATCH: actual q13 AB label is 4cm whereas existing solution uses 5cm. Original answer/solution preserved; numeric difficulty UNKNOWN.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 그림 AB=4cm와 기존 해설 AB=5cm가 달라 산출값 근거가 충돌한다. 대각선 성질의 정형 구조는 보이나 현재 수치 난도 확정은 보류한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_NUMBER_MISMATCH: actual q13 AB label is 4cm whereas existing solution uses 5cm. Original answer/solution preserved; numeric difficulty UNKNOWN."
+      ]
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_832543daf36d2e7b444764dc2e4f838790ac741b4692009f0f252301ea54da30",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-074",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형이 보장되지 않는 조건 판정",
+      "decisiveStep": "074 변·각 조건의 충분성 판정. 같은 쌍의 평행과 길이 조건인지 확인하며 ACTIVE invalid condition 후보와 일치. 되지 않는다는 문구는 보장하지 못한다는 기존 해설의 의미로 한정한다.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PARALLELOGRAM_CONDITION",
+        "subUnit": "평행사변형이 되는 조건의 판별",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-PARALLELOGRAM_CONDITION",
+        "subUnit": "평행사변형이 되는 조건의 판별",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+          "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "제시된 사각형의 조건 중 평행사변형임을 보장하지 않는 것을 찾는 과제.",
+            "template": "평행사변형이 되는 다섯 가지 조건과 비교해 각 보기가 충분조건인지 확인하고, 조건을 만족해도 평행사변형이 아닌 반례가 가능한 보기를 찾는다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "074 변·각 조건의 충분성 판정. 같은 쌍의 평행과 길이 조건인지 확인하며 ACTIVE invalid condition 후보와 일치. 되지 않는다는 문구는 보장하지 못한다는 기존 해설의 의미로 한정한다.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "평행사변형 판정의 충분조건을 다섯 조합으로 확인하고 같은 쌍의 평행·길이 조건인지 구별한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "074 변·각 조건의 충분성 판정. 같은 쌍의 평행과 길이 조건인지 확인하며 ACTIVE invalid condition 후보와 일치. 되지 않는다는 문구는 보장하지 못한다는 기존 해설의 의미로 한정한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행사변형 판정의 충분조건을 다섯 조합으로 확인하고 같은 쌍의 평행·길이 조건인지 구별한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_5c215885f6f9cc69b20fbe9428495d2a2b764cd250403254743c34a565a04b95",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-072",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형 둘레와 이웃한 변의 비",
+      "decisiveStep": "072 대변 길이 성질. 둘레에서 두 변의 합을 구해 비례배분하는 단계는 실제 ACTIVE 비·둘레template 내부이다.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PARALLELOGRAM_SIDE",
+        "subUnit": "평행사변형 둘레와 대변의 길이 비례배분",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-PARALLELOGRAM_SIDE",
+        "subUnit": "평행사변형 둘레와 대변의 길이 비례배분",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+          "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "평행사변형의 둘레와 이웃하는 두 변의 비가 주어졌을 때 특정 변의 길이를 구하는 과제.",
+            "template": "평행사변형의 둘레를 2로 나누어 이웃하는 두 변의 합을 구하고, 주어진 비에 따라 그 합을 비례배분해 각 변의 길이를 구한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "072 대변 길이 성질. 둘레에서 두 변의 합을 구해 비례배분하는 단계는 실제 ACTIVE 비·둘레template 내부이다.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "둘레의 절반과 이웃한 두 변의 비로 필요한 대변을 구하는 정형 직접 적용.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "072 대변 길이 성질. 둘레에서 두 변의 합을 구해 비례배분하는 단계는 실제 ACTIVE 비·둘레template 내부이다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "둘레의 절반과 이웃한 두 변의 비로 필요한 대변을 구하는 정형 직접 적용."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5176d7902b4505314a44d9951c043d78d2d590ebf2089e115ac9ab3a1e3ae84d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-077",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "내부 점을 잇는 마주 보는 삼각형 넓이",
+      "decisiveStep": "077 분할도형. 마주 보는 삼각형 넓이 합이 전체의 절반인 성질로 남은 넓이를 구하는 ACTIVE 내부점template와 일치.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PARALLELOGRAM_INTERNAL_POINT",
+        "subUnit": "평행사변형 내부의 점과 넓이의 성질",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-PARALLELOGRAM_INTERNAL_POINT",
+        "subUnit": "평행사변형 내부의 점과 넓이의 성질",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+          "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "평행사변형 내부의 한 점과 두 대변으로 만든 삼각형의 넓이 관계를 이용해 다른 삼각형의 넓이를 구하는 과제.",
+            "template": "평행사변형 내부의 점에서 마주 보는 두 변에 만든 삼각형의 넓이 합이 전체 넓이의 절반임을 이용해, 주어진 삼각형 넓이를 전체 넓이의 절반에서 빼 원하는 넓이를 구한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "077 분할도형. 마주 보는 삼각형 넓이 합이 전체의 절반인 성질로 남은 넓이를 구하는 ACTIVE 내부점template와 일치.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "내부 점에서 마주 보는 두 삼각형의 넓이 합이 전체의 절반임을 이용한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "077 분할도형. 마주 보는 삼각형 넓이 합이 전체의 절반인 성질로 남은 넓이를 구하는 ACTIVE 내부점template와 일치.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "내부 점에서 마주 보는 두 삼각형의 넓이 합이 전체의 절반임을 이용한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-078",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형에서 마름모가 되는 조건 비교",
+      "decisiveStep": "078 특수사각형의 변·각·대각선 조건을 함께 판단한다. 직사각형 판정 전용template를 강제하지 않고 generic special quadrilateral 후보를 유지한다.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-RHOMBUS_CONDITION",
+        "subUnit": "평행사변형이 마름모가 되는 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-RHOMBUS_CONDITION",
+        "subUnit": "평행사변형이 마름모가 되는 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "평행사변형·직사각형·마름모·사다리꼴 등 사각형의 성질과 판정을 핵심 전략으로 이용하는 유형.",
+            "template": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다."
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "078 특수사각형의 변·각·대각선 조건을 함께 판단한다. 직사각형 판정 전용template를 강제하지 않고 generic special quadrilateral 후보를 유지한다.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "마름모 판정 조건을 다섯 보기에서 구별한다. 단수형 발문이나 저장 정답과 해설은 복수 ②/⑤이며 이 표현 부채를 보존한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "078 특수사각형의 변·각·대각선 조건을 함께 판단한다. 직사각형 판정 전용template를 강제하지 않고 generic special quadrilateral 후보를 유지한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_FORMAT_DEBT: singular-form question has stored multiple answer ②,⑤ and matching existing explanation. Preserve original; no single-answer repair.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "마름모 판정 조건을 다섯 보기에서 구별한다. 단수형 발문이나 저장 정답과 해설은 복수 ②/⑤이며 이 표현 부채를 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_FORMAT_DEBT: singular-form question has stored multiple answer ②,⑤ and matching existing explanation. Preserve original; no single-answer repair."
+      ]
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6ad984010f1bb6cc90bd20fe39da8a3660c74f1b727b79bd19fb296cc1c612dc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직사각형 대각선과 부분각",
+      "decisiveStep": "079 대각선의 같은 길이·이등분으로 부분각을 연결한다. 기존 해설이 실제 x,y와40도 위치를 바꾼 별도 내용부채 때문에 숫자 난도는 UNKNOWN.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-RECTANGLE_DIAGONAL_ANGLE",
+        "subUnit": "직사각형 대각선과 각의 크기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-RECTANGLE_DIAGONAL_ANGLE",
+        "subUnit": "직사각형 대각선과 각의 크기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "평행사변형·직사각형·마름모·사다리꼴 등 사각형의 성질과 판정을 핵심 전략으로 이용하는 유형.",
+            "template": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다."
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "079 대각선의 같은 길이·이등분으로 부분각을 연결한다. 기존 해설이 실제 x,y와40도 위치를 바꾼 별도 내용부채 때문에 숫자 난도는 UNKNOWN.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "실제 그림의 x는 B의 부분각이고 y는 교점 O 오른쪽 각인데 기존 해설은 x를 OBC 중심각, y를 OAB 각으로 바꾸었다. 40도 위치도 일치하지 않아 수치 판정 보류.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "079 대각선의 같은 길이·이등분으로 부분각을 연결한다. 기존 해설이 실제 x,y와40도 위치를 바꾼 별도 내용부채 때문에 숫자 난도는 UNKNOWN.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_ANGLE_POSITION_MISMATCH: q18 actual x at B and y to right of O differ from the solution assigning x at OBC and y at OAB; the given 40-degree location also differs. Numeric difficulty UNKNOWN.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 그림의 x는 B의 부분각이고 y는 교점 O 오른쪽 각인데 기존 해설은 x를 OBC 중심각, y를 OAB 각으로 바꾸었다. 40도 위치도 일치하지 않아 수치 판정 보류."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_ANGLE_POSITION_MISMATCH: q18 actual x at B and y to right of O differ from the solution assigning x at OBC and y at OAB; the given 40-degree location also differs. Numeric difficulty UNKNOWN."
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0e32de0384bf2528d588d8d74f5e8f10c1bb0b9c8769a1dc67737abcac42c1af",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-079",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "정사각형 대각선으로 넓이 계산",
+      "decisiveStep": "079 같은 길이·수직 대각선의 넓이 성질이다. 기존 해설은 대각선 곱 절반이며 피타고라스 새 경로를 만들지 않는다.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-SQUARE_AREA",
+        "subUnit": "정사각형 대각선을 이용한 넓이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-SQUARE_AREA",
+        "subUnit": "정사각형 대각선을 이용한 넓이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "평행사변형·직사각형·마름모·사다리꼴 등 사각형의 성질과 판정을 핵심 전략으로 이용하는 유형.",
+            "template": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다."
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "079 같은 길이·수직 대각선의 넓이 성질이다. 기존 해설은 대각선 곱 절반이며 피타고라스 새 경로를 만들지 않는다.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "정사각형의 같은 길이·수직 대각선으로 대각선 넓이 공식을 직접 적용한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "079 같은 길이·수직 대각선의 넓이 성질이다. 기존 해설은 대각선 곱 절반이며 피타고라스 새 경로를 만들지 않는다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정사각형의 같은 길이·수직 대각선으로 대각선 넓이 공식을 직접 적용한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_138ebcaa6468ff5225baa67336226b408f53503bc83696ef593756ec898f5226",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-076",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선의 등적변형과 밑변비 넓이 배분",
+      "decisiveStep": "076 평행선과넓이. 같은 높이의 넓이 비례까지 primary 내부 흐름으로 읽는다. ACTIVE find-parallel-condition은 현재 주어진평행→넓이와 목표방향이 달라 related variant만 인정.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-PARALLEL_LINE_AREA",
+        "subUnit": "평행선과 삼각형의 넓이 및 선분의 비",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-PARALLEL_LINE_AREA",
+        "subUnit": "평행선과 삼각형의 넓이 및 선분의 비",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "076 평행선과넓이. 같은 높이의 넓이 비례까지 primary 내부 흐름으로 읽는다. ACTIVE find-parallel-condition은 현재 주어진평행→넓이와 목표방향이 달라 related variant만 인정.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "평행선에 의한 등적변형 후 공통 높이 삼각형의 밑변비로 넓이를 배분하는 정형 연결.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "076 평행선과넓이. 같은 높이의 넓이 비례까지 primary 내부 흐름으로 읽는다. ACTIVE find-parallel-condition은 현재 주어진평행→넓이와 목표방향이 달라 related variant만 인정.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행선에 의한 등적변형 후 공통 높이 삼각형의 밑변비로 넓이를 배분하는 정형 연결."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_f9e610e699699c6aff16c9f07140861b7bf115813a8a1b5b4707a2697d461486",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "META_ONLY_UNRESOLVED",
+      "primaryMethod": "여러 사각형의 성질로 미로 경로 결정",
+      "decisiveStep": "평행사변형·특수사각형·등변사다리꼴의 독립 진술이 실제 순서도에 결합되어 단일078/080으로 고정하지 않는다. generic PT는 관련하나 leaf primary 미판정. 실제 이동 화살표와 해설 목적지 연결의 불일치도 보존.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-FLOWCHART_LABYRINTH",
+        "subUnit": "사각형의 성질 순서도 추론",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-FLOWCHART_LABYRINTH",
+        "subUnit": "사각형의 성질 순서도 추론",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "평행사변형·특수사각형·등변사다리꼴의 독립 진술이 실제 순서도에 결합되어 단일078/080으로 고정하지 않는다. generic PT는 관련하나 leaf primary 미판정. 실제 이동 화살표와 해설 목적지 연결의 불일치도 보존.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "single primary미판정으로CC=null. NONE확정이아니다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "single primary미판정에종속하여integration=null. NONE으로채우지않는다.",
+        "difficulty": "실제 미로의 마름모 [예] 오른쪽에는 추가 사다리꼴 명제가 있고 순천은 [아니오] 아래쪽에 있다. 해설의 순천 연결 및 대체 경로가 실제 그림과 달라 최종값 난도 보류.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "평행사변형·특수사각형·등변사다리꼴의 독립 진술이 실제 순서도에 결합되어 단일078/080으로 고정하지 않는다. generic PT는 관련하나 leaf primary 미판정. 실제 이동 화살표와 해설 목적지 연결의 불일치도 보존.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_ROUTE_MISMATCH: actual maze has an additional statement to the right of the rhombus yes arrow, while 순천 is below its no arrow. Existing solution connects yes/right to 순천 and an alternate no route to 순천. No corrected destination generated; UNKNOWN.",
+        "META_ONLY_UNRESOLVED: 평행사변형·특수사각형·등변사다리꼴의 독립 진술이 실제 순서도에 결합되어 단일078/080으로 고정하지 않는다. generic PT는 관련하나 leaf primary 미판정. 실제 이동 화살표와 해설 목적지 연결의 불일치도 보존.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 미로의 마름모 [예] 오른쪽에는 추가 사다리꼴 명제가 있고 순천은 [아니오] 아래쪽에 있다. 해설의 순천 연결 및 대체 경로가 실제 그림과 달라 최종값 난도 보류."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_ROUTE_MISMATCH: actual maze has an additional statement to the right of the rhombus yes arrow, while 순천 is below its no arrow. Existing solution connects yes/right to 순천 and an alternate no route to 순천. No corrected destination generated; UNKNOWN."
+      ]
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ea82ed9f5f7d40aa7d3484988bca8f98ac12a57c3572185d0b2952664a783922",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-016",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다항식 정리 후 주어진 수치의 식값",
+      "decisiveStep": "016 식값을 위한015나눗셈·014분배·012동류항 정리의 연속 내부단계. 기본 수치대입을 외부CC로 중복등록하지 않는다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-EXPRESSION_VALUE",
+        "subUnit": "다항식의 혼합 계산과 식의 값",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "식의 계산",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-02-EXPRESSION_VALUE",
+        "subUnit": "다항식의 혼합 계산과 식의 값",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "016 식값을 위한015나눗셈·014분배·012동류항 정리의 연속 내부단계. 기본 수치대입을 외부CC로 중복등록하지 않는다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $x=2, y=-1$일 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "분배와 다항식 나눗셈으로 식을 간단히 한 뒤 주어진 값을 대입한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "016 식값을 위한015나눗셈·014분배·012동류항 정리의 연속 내부단계. 기본 수치대입을 외부CC로 중복등록하지 않는다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분배와 다항식 나눗셈으로 식을 간단히 한 뒤 주어진 값을 대입한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_3f43802703e355ae6fd03d1753ff132d52f78efe7467e60641b12f34d7c1c096",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-018",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 성질을 순서대로 서술하는 부등식 비교",
+      "decisiveStep": "018 대화 그림의 -3a+2<-3b+2에 가감과 음수나눗셈을 순서대로 적용한다. 객관식 진술판정template는 서술형 목표차를 보존한 related 후보이다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQUALITY_STEP_PROVING",
+        "subUnit": "부등식의 성질을 단계별로 이용한 대소 비교",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQUALITY_STEP_PROVING",
+        "subUnit": "부등식의 성질을 단계별로 이용한 대소 비교",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "018 대화 그림의 -3a+2<-3b+2에 가감과 음수나눗셈을 순서대로 적용한다. 객관식 진술판정template는 서술형 목표차를 보존한 related 후보이다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "대화의 부등식에서 같은 수를 빼고 음수로 나누는 두 성질을 순서대로 설명한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "018 대화 그림의 -3a+2<-3b+2에 가감과 음수나눗셈을 순서대로 적용한다. 객관식 진술판정template는 서술형 목표차를 보존한 related 후보이다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대화의 부등식에서 같은 수를 빼고 음수로 나누는 두 성질을 순서대로 설명한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9e55f0449db6361caac542b9f9f088a08a3b53b0d31f58335d88799d595623f0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-078",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "사각형 포함관계 화살표에 추가 성질 기술",
+      "decisiveStep": "078 여러사각형 성질을 추가해 다음 도형이 되는 포함관계. ACTIVE hierarchy descriptive template와 목표 일치하나 원해설은 실제 화살표 번호에 대응하지 않아 내용부채/UNKNOWN 보존.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-QUADRILATERAL_RELATION",
+        "subUnit": "여러 가지 사각형 사이의 포함 관계와 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-QUADRILATERAL_RELATION",
+        "subUnit": "여러 가지 사각형 사이의 포함 관계와 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+          "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "일반 사각형에서 평행사변형·마름모·직사각형·정사각형으로 발전하는 계통도의 빈칸에 필요한 조건을 쓰는 과제.",
+            "template": "직전 사각형에 어떤 성질을 추가하면 다음 사각형이 되는지 판단해, 각 단계의 포함 관계를 만족시키는 충분조건을 차례로 서술한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "078 여러사각형 성질을 추가해 다음 도형이 되는 포함관계. ACTIVE hierarchy descriptive template와 목표 일치하나 원해설은 실제 화살표 번호에 대응하지 않아 내용부채/UNKNOWN 보존.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "실제 화살표①은 사다리꼴→평행사변형,②는 평행사변형→마름모,④는 마름모→정사각형인데 기존 해설은 다른 단계에 번호를 연결했다. 대응 부채로 수치 난도 보류.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "078 여러사각형 성질을 추가해 다음 도형이 되는 포함관계. ACTIVE hierarchy descriptive template와 목표 일치하나 원해설은 실제 화살표 번호에 대응하지 않아 내용부채/UNKNOWN 보존.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "SOURCE_SOLUTION_ARROW_MISMATCH: actual ① trapezoid→parallelogram,② parallelogram→rhombus,④ rhombus→square differ from existing solution numbering. Original answers preserved; numeric difficulty UNKNOWN.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제 화살표①은 사다리꼴→평행사변형,②는 평행사변형→마름모,④는 마름모→정사각형인데 기존 해설은 다른 단계에 번호를 연결했다. 대응 부채로 수치 난도 보류."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "SOURCE_SOLUTION_ARROW_MISMATCH: actual ① trapezoid→parallelogram,② parallelogram→rhombus,④ rhombus→square differ from existing solution numbering. Original answers preserved; numeric difficulty UNKNOWN."
+      ]
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_8d6c70aeed917af7a5e254ff863edd99807ab5fe7e79ac351f3c66521c3f3d89",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-076",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선 사이 넓이 같음과 공통영역 제거 증명",
+      "decisiveStep": "076 같은 밑변·높이로 큰 두 삼각형의 넓이 같음을 보인 후 공통삼각형을 제거한다. 대각선 길이비 template와 구분한다. 기존 증명만 인용.",
+      "beforeSource": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": 8,
+        "subUnitKey": "M2-08-TRAPEZOID_EQUAL_AREA",
+        "subUnit": "사다리꼴 대각선과 마주 보는 삼각형의 넓이 증명",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "사각형의 성질",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-08-TRAPEZOID_EQUAL_AREA",
+        "subUnit": "사다리꼴 대각선과 마주 보는 삼각형의 넓이 증명",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "076 같은 밑변·높이로 큰 두 삼각형의 넓이 같음을 보인 후 공통삼각형을 제거한다. 대각선 길이비 template와 구분한다. 기존 증명만 인용.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "같은 밑변과 평행선 사이 높이로 넓이가 같음을 보인 뒤 공통 부분을 빼는 두 단계 서술 증명.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "076 같은 밑변·높이로 큰 두 삼각형의 넓이 같음을 보인 후 공통삼각형을 제거한다. 대각선 길이비 template와 구분한다. 기존 증명만 인용.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "같은 밑변과 평행선 사이 높이로 넓이가 같음을 보인 뒤 공통 부분을 빼는 두 단계 서술 증명."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    }
+  ],
+  "topicSummary": [],
+  "proposals": [
+    {
+      "id": "C-E060-Q1-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "다항식의 차수에 따른 이차식 판별",
+      "distinguishingRule": "차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap.",
+      "intendedParent": "M2-01-POLYNOMIAL_OPERATIONS",
+      "sourceOrdinals": [
+        1
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_6af1e9abd2645fa92dc223f569f1a5747a3afdc7bc2a08f4460d441ec5ffb56d"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "c9c1215fb889aaaf2f40cf19c4d52771f2f18074",
+      "evidence": [
+        "차수 정의와 최고차항 소거를 이용한 이차식 판정이다. 동류항 계산012 자체를 목표로 삼지 않는 명확한 definition leaf gap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E060-Q5-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "수량 비교 문장을 부등식으로 번역",
+      "distinguishingRule": "크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY",
+      "sourceOrdinals": [
+        5
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b0b9d9f83ec6efdcd9f252314fcbc8ce2f3f8e47ac530f2e727265f4dd7aabe6"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "c9c1215fb889aaaf2f40cf19c4d52771f2f18074",
+      "evidence": [
+        "크지 않다를 ≤로 직접 바꾸는 정의·표현 과제이다.018 부등식 성질 적용이나024 실제 상황 모델과 구분한 leaf gap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E060-Q8-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "정리 후 일차부등식 정의 판정",
+      "distinguishingRule": "소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY",
+      "sourceOrdinals": [
+        8
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7a3680a4c2187579ace8218860d9eeaba01dbaab68a63e73db1a427f51ef41dd"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "c9c1215fb889aaaf2f40cf19c4d52771f2f18074",
+      "evidence": [
+        "소거 후 일차항이 남는 부등식인가를 판별한다. 해당 RPM018/020와 구분되는 leaf gap이며 ACTIVE identification 후보는 실제 정의와 일치."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    }
+  ],
+  "notes": [
+    "Actual source stems, choices and existing solutions read; no new solution generated.",
+    "Initial content-only difficulty snapshot and actual figures precede legacy comparison. Source bytes/UID/order preserved."
+  ],
+  "sourceVisualEvidence": [
+    {
+      "sourceOrdinal": 3,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q03.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q03.png",
+      "sha256": "e656d4ddd67ee68c9e06b53ff1342307195a8d325ecf605f966e47018a66cc03"
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q10.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q10.png",
+      "sha256": "0509ccd2fc170dd8a6e73ea6a685df54dc03130736d9761c82c22d63913a6c64"
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q12.png",
+      "sha256": "dee2211d2282656d6ba6f1cad5947809c9e1bb640e26d18ff26deb18dea341d7"
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q13.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q13.png",
+      "sha256": "eafb9f78c25c6598cea7fb14d69c856afcb1a027f3cbe1d2f6bd31b89b62aa04"
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q14.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q14.png",
+      "sha256": "925207a70ae15b23a4578dc09ab8afb59c759bd5c4df7f76681dad91393f7e98"
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q15.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q15.png",
+      "sha256": "335d45f9ce93d065308f00234731fb2cbe76bc70028aa0cb35e846dce1529649"
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q16.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q16.png",
+      "sha256": "3f63f1575aa90c096e0f9b7d1f3bb38590c2a05530695809403731c613a83c6f"
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q17.png",
+      "sha256": "d95e4cd955c82b6173ca20254e08d13d1367ccbf65761b4f0a43caf8b6d226f7"
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q18.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q18.png",
+      "sha256": "6e7cb2914d1b7171b3667838d6f2fc70deaba77e7df184f648bfe2104b311f67"
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q19.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q19.png",
+      "sha256": "472e6f9968be967c63275b4dfc342ec5f60e680a2882b66586fd4f09ac285883"
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q20.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q20.png",
+      "sha256": "bd8179f949c4c9b6cf7ca23ab53fe14a32bfa0d2d526a901c7b4c2abc6236b6f"
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/q21.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/q21.png",
+      "sha256": "14b2b6d26bcd05e1fb9c94d31626a66df330535cd4ed7e0c61b94cd91aa90aa3"
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/s02.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/s02.png",
+      "sha256": "73ec4e209a10da1b13f4cc7dfa73661a7e227bb617289aedee421c359441c741"
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/s03.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/s03.png",
+      "sha256": "444468a684dff8b35773bd9b60827d68549660156e89548e9f9b764a2406ccf8"
+    },
+    {
+      "sourceOrdinal": 25,
+      "sourcePath": "assets/images/20_풍덕중_1학기_기말_중2_수학/s04.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E060/assets/s04.png",
+      "sha256": "74e156489bf12e2b22ae18827f7527ae75b7f153485114bb89d65cb02505ec52"
+    }
+  ],
+  "difficultyAssessmentDisclosure": "All current item content and existing solutions plus actual figures were read and initial difficulty frozen before legacy source/metadata fields were compared. Previous exposure is disclosed and does not invalidate valid current evidence.",
+  "difficultyInitialFreeze": {
+    "path": "/workspace/scratch/14c2c64e43fb/workers/C/E060/blind-initial.json",
+    "sha256": "25b0729171c2a6791a71de8a8be22ae7f7497e8b0b9e1c905279c988fe405dc9"
+  },
+  "actualImageReadSupplement": {
+    "imageOrdinals": [
+      3,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "note": "Initial freeze imageObservations lists all15 actually viewed assets. Its imagesActuallyViewed field is an empty serializer argument; chronology and the frozen imageObservations are unchanged. Asset manifest preserves exact bytes."
+  },
+  "narrowRevisionR1": {
+    "previousReviewSha256": "e4f88ade50a131f9ce30aedbfb53d14f789f70df1ad2ef1b8bf3b4377d1dc011",
+    "previousFourSlotSha256": "1dd37530a0b11bc69e5d07d4147cc8d059eeb3fd124fd4c3c0df9e57aada3cbe",
+    "reason": "A literal expansion Q4 both input/result polynomials and Q16 both area givens. Existing source/solution/image debts, numeric UNKNOWNs and initialfreeze unchanged."
+  }
+}
