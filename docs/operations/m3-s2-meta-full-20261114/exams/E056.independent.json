@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E056",
+  "author": "m3_a",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "58785752beb5fd4fa3b7f5e58768c5e3d800b5a7",
+  "targetReviewSha256": "ffe9ab99728647ee1c3f2a6c1e6244920ed44214315698e50f8e94944304f383",
+  "target4slotSha256": "e4e1433a96ee91f409d25fcaf16662c0d5ab9334b7f1b445777ed70cb71f06f0",
+  "sampledSourcePatchSha256": "657ed202de55f63ae657deaae8c10bc2474c601edce554401ff9afdd5810854a",
+  "sampleOrdinals": [
+    6,
+    15,
+    22
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_cfb1686b2b07d2b5b582de035a642c7278fbbfdaa9165a1c4b88991ff5a85cd9",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "그림의A 높이0.5736과 표를 직접 대조해 sin35를 역조회하고 cos35의수평투영0.8192를1에서뺀다. TPL_TRIG_RATIO_TABLE_LOOKUP 및4칸의 좌표/표 given, 선분길이goal, 삼각비·코사인·좌표method가 실제 두열조회 과정을 포괄한다. 버킷2와 별도CC 없는NONE을 수용한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_5adfbf3f0276c64fd0e11a4c51252af1e968844403b8dd9cbd3f9a1743021c97",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "재구성된 현재SVG의 접기 전 짧은호/접힌호와 원문조건을 확인했다. 반사된 원중심과O의거리가반지름4여야하고 현은 그중간선이므로 중심거리2다. 반현피타고라스에서현길이로 가는 ACTIVE현길이TPL, 대칭반사/Pythagoras CC,SEQUENTIAL 및4칸 접기·대칭이동·수직이등분선이 맞다. 원본교정의역사적출처승인을 새로주장하지 않는다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_2ff852c063217321cd0d939d865a751ecc95f52a3c274a7f5d39fea9db1b6b9a",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "본문의정사각형중점두개를관계도형으로읽어 BM=BN=2√5, 남은삼각형넓이6을 구하고 넓이공식을거꾸로써sin을정한다. 실제해설은벡터가아니라피타고라스+넓이차+삼각비다. geometric derivationTPL와세CC,SEQUENTIAL,4칸의사인goal 및길이복원/넓이method를확인했다. 도형이없는본문에서구조를구성하는부담을포함한B34/4를수용한다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 8,
+      "type": "AUTHOR_RECORDED_SOLUTION_FOOT_POINT_TYPO",
+      "release": "HOLD_SOURCE_QA"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "3119f745c1089d2ee29bb7152a734b0027164133766eb112cb77bf4e9f64a00c"
+}
