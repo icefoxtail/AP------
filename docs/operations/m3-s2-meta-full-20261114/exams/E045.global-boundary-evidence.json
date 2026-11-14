@@ -1,0 +1,89 @@
+{
+  "examId": "E045",
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "templates": [
+    {
+      "key": "TM_TANGENT_LENGTH",
+      "parent": "PT_CIRCLE_TANGENT",
+      "definition": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+      "internalSkeleton": "원 밖의 점에서 원에 그은 접선의 길이를 구하는 유형.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TM_CIRCLE_CHORD_DIVISION",
+      "parent": "PT_CIRCLE_LINE_RELATION",
+      "definition": "원과 직선의 두 교점이 이루는 현의 내분점 조건을 이용하는 유형.",
+      "internalSkeleton": "원과 직선의 두 교점이 이루는 현의 내분점 조건을 이용하는 유형.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "원의 중심, 반지름, 현, 호, 활꼴, 부채꼴의 정의와 같은 원에서의 대응 성질을 진술별로 확인한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "parent": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "definition": "홀수 개 변량의 (n+1)/2번째 값을 중앙값으로, 도수가 가장 큰 값을 최빈값으로 계산한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "parent": "PT_M1_CENTRAL_TENDENCY",
+      "definition": "한 자료 집합에서 평균·중앙값·최빈값을 각각 구하고 요구된 결합값을 계산한다.",
+      "internalSkeleton": "자료의 합과 개수로 평균을 구하고, 정렬한 자료에서 중앙값을 구한 뒤 빈도 최댓값의 자료값을 최빈값으로 정해 세 통계량을 결합한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "parent": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "definition": "편차 합 0에서 미지 편차를 구하고 제곱합을 개수로 나눈 분산의 제곱근으로 표준편차를 서술한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "parent": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "definition": "편차의 정의(변량-평균)를 기준으로 각 진술을 검토해 부호를 거꾸로 서술한 것을 고른다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+      "parent": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+      "definition": "여러 집단의 대칭 분포에서 평균이 같음을 확인하고, 평균 근처에 가장 밀집한 집단의 분산·표준편차가 가장 작다고 판정한다.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "parent": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "definition": "계급값·도수 표를 만들어 평균을 구하고 (편차²×도수) 총합을 총도수로 나눈다.",
+      "status": "ACTIVE"
+    }
+  ],
+  "tangentReuse": {
+    "ordinals": [
+      6,
+      7,
+      8
+    ],
+    "rootScopeDecision": "TM_TANGENT_LENGTH에는 목표가 단일 접선 조각이어야 한다는 제한이 없다. 접선 길이 전달·합차·소거의 실제 관계망으로 전체 길이·둘레를 결정하는 기존 정의를 재사용한다.",
+    "supportingAudit": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-isu22-m3-2mid-20261104.audit.json",
+      "sha256": "b05c793145badebbb64f2805d98b124c4fd4513a2f4d5af47dcbbeb79c3c97ab",
+      "questionUid": "qid_v1_2312d310763215029400544c0888892134cacc4b3bc00da3f5502df1644c28ad",
+      "ordinal": 24
+    }
+  },
+  "chordDivisionScope": {
+    "targetOrdinal": 15,
+    "supportingQuestionUid": "qid_v1_85112ba102de21df92ceb2dc415b8bb4c4c7fbcde121508939b8998442fd813e",
+    "currentSourcePath": "archive/exams/original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js",
+    "currentSourceSha256": "2d541e3c0c6c03dda1dd193a563360d48b7391579d65f5dff3fe50acdc451b74",
+    "ordinal": 23,
+    "sourceAndExistingSolutionActuallyRead": true,
+    "supportingMethod": "주어진2:1 내분점의 x좌표 조건과 원·직선 교점의 두 근 합을 연립하여 원의 매개변수를 정한다.",
+    "targetDifference": "Q15는 두 현의 분할 선분 곱 정리가 결정 관계이며 좌표·각이등분선으로 얻은 길이식과 결합한다. 내분점이라는 단어만으로 다른 정리를 같은 exact TPL이라고 선언하지 않는다."
+  },
+  "newMathematicalVerification": false,
+  "sharedRegistryWrites": false
+}

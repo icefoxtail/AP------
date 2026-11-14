@@ -1,0 +1,300 @@
+{
+  "examId": "E045",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "ff57375c7261c857860addf108077e2741a913d3",
+  "sourceRawSha256": "e5355e3479569c5396716b68732b889223b52d7950668cd2905dc8224c780be9",
+  "sourcePacketSha256": "0f1aa82a448fe6b56f5387cea1d028acdc2b466989fb25436694a9592c927185",
+  "sampled4slotSha256": "5a49bd48b62edb907981f82d4c6ec1fb0468e34495c93ffef748bd44c8529765",
+  "sampledReviewSha256": "85f2959f93cf741fd754f23ae2753a2b32c24e68a93bb70e2665d5f7ebdc03e0",
+  "sampledSourcePatchSha256": "637b4dfe98759b9dc5a6159134f72908a60e3dcaef4cede6cd48bbc67cd5c6e8",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    15,
+    18,
+    25
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "sourceImageRead": true,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 13
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 그림의 각이등분 표시, AB9·AC5·DE4 및 내부 교점 D를 읽었다. given의 각이등분선·현·길이, goal의 AD 선분 길이가 실제 입력과 목표를 나타낸다. 기존 해설은 이등분선의9:5 내분비에 좌표(u,v)와k를 도입하여 피타고라스 거리식을 소거하고, 교차현의 길이곱 AD·DE=BD·DC와 결합한다. method의 이등분선 정리·좌표·피타고라스·소거·교차현곱·이차방정식 및 후보 부모 현이 같은 칸에 있으며 양수 condition은 실제−9를 배제하는 길이 제한이다. 현의 각도를 구하는 원주각 유형과 다르고 원과 직선의 현 길이 관계에 해당한다. 현 내분점의 좌표 조건 TPL과 다른 결정적 곱 정리이므로 기존 parent 재사용과 exact template/publisher leaf 공백을 구분한 판단을 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "sourceImageRead": false,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": false,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 10
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "열 자료와 평균10·유일최빈값9·a>b를 직접 읽었다. given의 자료·평균·최빈값과 goal의 미지 변량 결정, method의 총합과 보기별 빈도 확인이 실제 해설에 결속되어 있다. condition의 유일성과 대소비교는 모두 명시된 조건이며 범용 ACTIVE 키가 없는 유일성은4칸에 보존한 것이 적절하다. ACTIVE M1 대푯값 조건복원 정의는 평균식과 빈도를 통한 누락값 결정이므로 원본2015 M3 문맥의 binding 대기와 새 유형 필요를 구별해야 한다. 제안은 그 구별을 지킨다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "sourceImageRead": false,
+      "existingSolutionRead": true,
+      "sourceSolutionImageRead": false,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "완전한 여섯 원자료가 주어지고 목표는 표준편차 하나이다. given 자료·goal 표준편차·method 평균→편차→분산→제곱근의 실제 직접 정의 순서가 정확하다. 추가 부호·정수 조건을 만들지 않은 빈 condition도 타당하다. 누락 편차 복원이나 도수표·확률변수 모델을 요구하지 않으므로 기존 exact native 공백과 원자료 직접 산포도 제안 재사용을 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "sourceCaveats": [],
+  "visualEvidence": [
+    "worker-outputs/b/E045/original-0.png",
+    "worker-outputs/b/E045/original-1.png",
+    "worker-outputs/b/E045/original-2.png",
+    "worker-outputs/b/E045/solution-0.png",
+    "worker-outputs/b/E045/solution-1.png",
+    "worker-outputs/b/E045/solution-2.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 2,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q02.png",
+      "gitBlob": "3a23d2d1b7feabf1d8af344541fdb8bddef014df",
+      "sha256": "d2a24626566941344b8c625a2f2d050f2242a0ce4d6bcf87fa2044f3e6f744b4",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 2,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q2-solution.svg",
+      "gitBlob": "92eb0e5da0f22d96f187e7b1b5fbd54880db1a61",
+      "sha256": "ee78790d7620726735edc22a3ed9dbbf13e99aec12bbbb03a78735ef0f3a3b46",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 4,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q04.png",
+      "gitBlob": "b2f871da14dafab92ab2a81ac43eb217d26dc7a0",
+      "sha256": "1e53afad9bc912ae48cd829e0342c47f9f8a076449982eca9650a93e246a084c",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 4,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q4-solution.svg",
+      "gitBlob": "aeb2d210bf9cb530872cc3842a417913de89ad56",
+      "sha256": "eabedd3b49fffcbc7a775253d4e68cc86ef069e0a34178a26f7d860d534e491c",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q06.png",
+      "gitBlob": "3fe1b3b1fb2939f5b26ff978ea0046f1be9af2b7",
+      "sha256": "8dee6d71831c2dc58c96c35958e4c4234c2061754865e6009db0060bc37a289e",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q6-solution.svg",
+      "gitBlob": "9d6d7a131ecdd88f72815af2f9f97091fa1cfa5b",
+      "sha256": "51d0c56879830ab8e6c27248e2fa3822226ace4735efa427caf0c901b3bbe783",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 7,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q07.png",
+      "gitBlob": "b353e7bba3f1af19d21462e21aa321c96d415be5",
+      "sha256": "8b77e719fe079cc7abf73650694374f0bc1e86d2cbe9c35a16c0016c6534019f",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 7,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q7-solution.svg",
+      "gitBlob": "e6fc1236a0fd823a710272511a3a2f2a1ec06e58",
+      "sha256": "45b4293233b748c90a3600ad49063fb8b968e8aaa91fb19209f9a6786dec4249",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q10.png",
+      "gitBlob": "91ae587fb3e3fae5568b2ac37e229f0e5b7c92ee",
+      "sha256": "de68a2278b56424f3941fc5b26482b234f5e45dea40ade147be608074517a8fa",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q10-solution.svg",
+      "gitBlob": "4fb4209bac2ebbd5f54542bdb98fd800cb4845c0",
+      "sha256": "ec30880eaf3be91bf6e14298a4d2b670a5b3b6bfa4a7b8381a17adf029b866f7",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 11,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q11.png",
+      "gitBlob": "c607e1705be5d7a3c917a5103478d42875feadb2",
+      "sha256": "d1fa604f867768db0dff698acefe17939f5443f24b7823ee620ada5af4c278b9",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 11,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q11-solution.svg",
+      "gitBlob": "46d06ad378f6404ce1286c2516165bc3eb91c27e",
+      "sha256": "9973e72d1cb716acbd56c706da1c1c8c6046ed408b382e5fe44a4a64f3eeb140",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 13,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q13.png",
+      "gitBlob": "b018eab9232939c87a94823096f011fdb22545b4",
+      "sha256": "cd96c7b39ca7079a24ed7268eedfdfc897c4e5d7d3bf85326aa639d96651c233",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 13,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q13-solution.svg",
+      "gitBlob": "921ec3717ed1ff3a4c9967430df22d78f057c456",
+      "sha256": "e7ead257203abb95685747384045ff0ce4273ade3018e757113eeaff4b99934d",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q14.png",
+      "gitBlob": "f237089eb1f1b37447f2f1606b65dff9e60bbd6f",
+      "sha256": "7c75a5eb9f69e09669940b796486d0284cd760789a4b63af3c11a40a18dc6dac",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 14,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q14-solution.svg",
+      "gitBlob": "421bfcff0355a30cb15c08564de88ae5ff49f58e",
+      "sha256": "3f1c88b2a5d51dc82a002801bea2ff9f2c2bfaa76d23dba85a2394a8c4c0e4c5",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q15.png",
+      "gitBlob": "825b0cf3c1755f07fdef7cb50a4856a149a1d379",
+      "sha256": "4e8812bc261ddddd9ab6b3167d2514133a0d7d46c3acf9bec636417871d731a8",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q15-solution.svg",
+      "gitBlob": "03bafdaa23c26af808ee180454bbe3688c8e9166",
+      "sha256": "8c3d0800f3ad5d00f0ce061cded995eeb7db4413cb99adc4e34ccbcd9614b047",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 24,
+      "field": "content",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/s02.png",
+      "gitBlob": "47ffc9fabc213370898f7937e89d84b0e973712c",
+      "sha256": "7e2299c2f23a338f9195314258ed3ea7bbc14c5a7a8d0ece6fd456bb912d98bd",
+      "matchesCurrentBranch": true
+    },
+    {
+      "ordinal": 24,
+      "field": "solutionImage",
+      "path": "archive/assets/images/21_동산중_2학기_기말_중3_수학/q24-solution.svg",
+      "gitBlob": "8ac9c0eb96117f235131f3f1ddc7441e2765738d",
+      "sha256": "66c9da185954cd2e9ec6e2eb2e217222c1f84d86d1ef3de7b6e323faf72dbdc0",
+      "matchesCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab"
+    },
+    {
+      "path": "worker-outputs/b/E045/global-boundary-evidence.json",
+      "sha256": "0d96ffd7981f6ae2c4719130e81c66a02c13c58607dafb980c86cb519d03f1bf"
+    }
+  ],
+  "activeDefinitionsRead": [
+    {
+      "templateKey": "TM_CIRCLE_CHORD_DIVISION",
+      "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "status": "ACTIVE",
+      "definition": "원과 직선의 두 교점이 이루는 현의 내분점 조건을 이용하는 유형."
+    },
+    {
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "parentProblemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "status": "ACTIVE",
+      "definition": "분산·표준편차와 확률변수 변환 관계를 이용하는 반복 가능한 풀이 구조."
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "status": "ACTIVE",
+      "definition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원."
+    },
+    {
+      "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "status": "ACTIVE",
+      "definition": "계급값·도수 표를 만들어 평균을 구하고 (편차²×도수) 총합을 총도수로 나눈다."
+    },
+    {
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "status": "ACTIVE",
+      "definition": "편차 합 0에서 미지 편차를 구하고 제곱합을 개수로 나눈 분산의 제곱근으로 표준편차를 서술한다."
+    }
+  ],
+  "scope": "독립4칸3표본·난도12예외와 표본15의 구조화 난도·native 경계 확인. 새 R1/R2/R3나 source 검증 완료를 주장하지 않는다.",
+  "sourceCaveatRetraction": {
+    "path": "worker-outputs/c/independent/E045.source-caveat-retraction.json",
+    "ordinal": 13,
+    "status": "RETRACTED_OBSERVER_MISREAD",
+    "reason": "개별 그림과 실제 SVG title·좌표 확인 결과 D는 원 바깥이다. 최초 contact sheet의 원주 위라는 시각 판단을 철회한다.",
+    "studentContentAndAuthorPacketUnchanged": true,
+    "sampleAndDifficultyDecisionsUnchanged": true
+  }
+}

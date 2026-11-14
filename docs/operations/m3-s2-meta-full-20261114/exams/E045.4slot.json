@@ -1,0 +1,1905 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/21_동산중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "ff57375c7261c857860addf108077e2741a913d3",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_B",
+    "run": "M3S2_FULL_CONTINUATION_20261114",
+    "at": "2026-11-14",
+    "mode": "REUSE_AND_TARGETED_SEMANTIC_CORRECTION"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "choices",
+            "quote": "현에 내린 수선은 그 현을 이등분한다"
+          },
+          {
+            "term": "원주각",
+            "src": "choices",
+            "quote": "원주각의 크기와 현의 길이는 비례한다"
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "choices",
+            "quote": "원에 내접하는 사각형은 마주보는 두 내각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "틀린</u> 것을 찾으면?"
+          },
+          {
+            "term": "원주각",
+            "src": "choices",
+            "quote": "한 원에서 원주각의 크기와 현의 길이는 비례한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각의 크기는 현의 길이에 일반적으로 정비례하지 않는다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "내접사각형의 마주 보는 각의 합은 180°",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "① 중심에서 현에 내린 수선은 현을 이등분하고, ② 같은 원에서 중심으로부터 같은 거리에 있는 현은 길이가 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 원에서 원주각과 호의 길이는 비례하나 현 길이와 일반적으로 비례하지 않음을 대조하여 틀린 진술을 고른다. 현의 이등분·같은 중심거리·내접사각형 진술도 실제 보기에 포함된다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "현의 길이와 원주각 관계 및 내접사각형 성질을 각각 판정한다.",
+        "targetedCorrection": "같은 원에서 원주각과 호의 길이는 비례하나 현 길이와 일반적으로 비례하지 않음을 대조하여 틀린 진술을 고른다. 현의 이등분·같은 중심거리·내접사각형 진술도 실제 보기에 포함된다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "그림의 원 $\\mathrm{O}$에서"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{AMN}$의 둘레"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이고 $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{AC}}$이다. $\\overline{\\mathrm{AB}}=9$, $\\overline{\\mathrm{BC}}=6$일 때, $\\triangle\\mathrm{AMN}$의 둘레의 길이를 구하면?(3점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q02.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "의 둘레의 길이를 구하면?"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이고 $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{AC}}$이다. $\\overline{\\mathrm{AB}}=9$, $\\overline{\\mathrm{BC}}=6$일 때, $\\triangle\\mathrm{AMN}$의 둘레의 길이를 구하면?(3점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q02.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "중심으로부터 같은 거리에 있는 현의 길이는 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현까지 같은 거리로 현의 길이가 같음을 사용한다."
+          },
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리에 의해 MN=BC/2=3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "같은 원에서 중심으로부터 같은 거리에 있는 현의 길이는 같으므로 AB=AC=9이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리 OM=ON에서 AB=AC를 얻고 수선의 발 M,N이 두 현의 중점임을 확인한 뒤 중점연결로 작은 삼각형 둘레를 구한다."
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "OM⊥AB이므로 M은 AB의 중점, ON⊥AC이므로 N은 AC의 중점이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리 OM=ON에서 AB=AC를 얻고 수선의 발 M,N이 두 현의 중점임을 확인한 뒤 중점연결로 작은 삼각형 둘레를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "OM⊥AB이므로 M은 AB의 중점"
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "OM=ON이므로 중심 O에서 현 AB, AC까지의 거리가 같다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "등거리인 두 현의 길이와 수선발 중점, 중점연결정리를 이용한다.",
+        "targetedCorrection": "같은 중심거리 OM=ON에서 AB=AC를 얻고 수선의 발 M,N이 두 현의 중점임을 확인한 뒤 중점연결로 작은 삼각형 둘레를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "현 $\\mathrm{AB}$는 반지름"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름 $\\mathrm{OC}$의 수직이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "OH=HC=r/2이고 AH=AB/2=6",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선과 반지름의 이등분을 쓴다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "r²=6²+(r/2)²",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "$\\mathrm{OC}$의 수직이등분선이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직이등분 관계로 직각삼각형 변을 표시하고 피타고라스 정리를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d5478717de56fbe7eed31660a4fb93a06a6937fa83c6b8a4187987abf2333826",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$의 지름이고"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "$\\overgroup{\\mathrm{DB}}=3\\pi$"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AB}} // \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ADC}=20^\\circ$, $\\overgroup{\\mathrm{DB}}=3\\pi$일 때, $\\overgroup{\\mathrm{CD}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q04.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AB}} // \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ADC}=20^\\circ$, $\\overgroup{\\mathrm{DB}}=3\\pi$일 때, $\\overgroup{\\mathrm{CD}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q04.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "그 각이 보는 호 AC의 크기는 40°",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각의 두 배로 호의 중심각을 구한다."
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각 ∠DAB=∠ADC=20°",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "27π×100/360=15π/2",
+            "evidenceType": "IMPLIED",
+            "justification": "호의 길이를 중심각에 비례시킨다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "AB∥CD이므로 엇각"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "엇각과 원주각으로 각 호의 크기를 구하고 호 길이 비례를 쓴다.",
+        "targetedCorrection": "평행선의 엇각과 원주각에서 두 작은 호가 각각40°임을 얻고 반원에서 목표 호100°를 정한 뒤 주어진 호길이3π와 비례로 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{BOC}=46^\\circ"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{CED}=21^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각은 같은 호에 대한 중심각의 절반",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호 BC+호 CD=46°+42°=88°",
+            "evidenceType": "IMPLIED",
+            "justification": "인접한 두 호의 크기를 합하여 목표 원주각의 호를 구한다."
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각 ∠BOC=46°이므로 호 BC=46°이다. 원주각 ∠CED=21°가 보는 호 CD의 크기는 42°이다. 따라서 ∠BAD가 보는 호 BD는 호 BC+호 CD=46°+42°=88°이다. 원주각은 같은 호에 대한 중심각의 절반이므로 ∠BAD=44°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각46°의 호와 원주각21°의 호를 합한 뒤 그 호에 대한 원주각을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각각의 호를 구해 더한 뒤 중심각과 원주각의 관계를 쓴다.",
+        "targetedCorrection": "중심각46°의 호와 원주각21°의 호를 합한 뒤 그 호에 대한 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{ABC}$는 원"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$\\overline{\\mathrm{DE}}$는 원의 접선"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{P, Q, R}$는 각각 원 $\\mathrm{O}$의 접점이고 $\\overline{\\mathrm{DE}}$는 원의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=12$, $\\overline{\\mathrm{AC}}=6$일 때, $\\triangle\\mathrm{DBE}$의 둘레의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{P, Q, R}$는 각각 원 $\\mathrm{O}$의 접점이고 $\\overline{\\mathrm{DE}}$는 원의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=12$, $\\overline{\\mathrm{AC}}=6$일 때, $\\triangle\\mathrm{DBE}$의 둘레의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q06.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "의 둘레의 길이를 구하면?"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 외접하고, 세 점 $\\mathrm{P, Q, R}$는 각각 원 $\\mathrm{O}$의 접점이고 $\\overline{\\mathrm{DE}}$는 원의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=12$, $\\overline{\\mathrm{AC}}=6$일 때, $\\triangle\\mathrm{DBE}$의 둘레의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q06.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "B에서 그은 두 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "따라서 △DBE의 둘레는 (8−u)+(8−v)+(u+v)=16이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "변하는 접선 조각u,v가 전체 둘레식의 합에서 각각 소거된다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$에 외접하고"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "각각 원 $\\mathrm{O}$의 접점"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 길이의 등식으로 B에서의 접선 길이를 구하고 작은 삼각형 둘레로 소거한다.",
+        "targetedCorrection": "세 변에서 한 꼭짓점의 등접선 길이8을 정하고 새 접선의 두 조각을 둘레에서 소거하여 잘린 삼각형 둘레16을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $\\mathrm{ABCD}$ 안에"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$와 $\\triangle"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림과 같이 직사각형 $\\mathrm{ABCD}$ 안에 원 $\\mathrm{O}$와 $\\triangle\\mathrm{DEC}$가 접하고 있다. $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AD}}=6$일 때, $\\overline{\\mathrm{EC}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q07.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(4점)"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "그림과 같이 직사각형 $\\mathrm{ABCD}$ 안에 원 $\\mathrm{O}$와 $\\triangle\\mathrm{DEC}$가 접하고 있다. $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{AD}}=6$일 때, $\\overline{\\mathrm{EC}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q07.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "E에서 그은 두 접선이 같아 ER=QE=4−x",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(8−x)²=DC²+CE²=4²+x²",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "원의 반지름은 직사각형 높이 4의 절반인 2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 세 변 접함에서 반지름2를 정하고 등접선으로 DE=8−x를 표현한 뒤 직각삼각형 DCE의 피타고라스로 EC=x를 결정한다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "직각삼각형 DCE에서 (8−x)²=DC²+CE²=4²+x²이다. 전개하면 64−16x+x²=16+x², 따라서 x=3이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 세 변 접함에서 반지름2를 정하고 등접선으로 DE=8−x를 표현한 뒤 직각삼각형 DCE의 피타고라스로 EC=x를 결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "가 접하고 있다. $\\overline"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선 길이로 빗변을 표현하고 직각삼각형의 피타고라스 정리를 쓴다.",
+        "targetedCorrection": "직사각형의 세 변 접함에서 반지름2를 정하고 등접선으로 DE=8−x를 표현한 뒤 직각삼각형 DCE의 피타고라스로 EC=x를 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fb3e9d812af24cca1718ce9cb8958292c459cf96c7f64e211d2422d9264ffb40",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square\\mathrm{ABCD}$가 원"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선이 수직으로 만나는"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "두 대각선이 수직으로 만나는 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접한다. $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{CD}}=4$일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$의 값을 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q08.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "의 값을 구하면?(4점)"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "두 대각선이 수직으로 만나는 $\\square\\mathrm{ABCD}$가 원 $\\mathrm{O}$에 외접한다. $\\overline{\\mathrm{BC}}=6$, $\\overline{\\mathrm{CD}}=4$일 때, $\\overline{\\mathrm{AB}}+\\overline{\\mathrm{AD}}$의 값을 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q08.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "AB²=AP²+BP², BC²=BP²+CP²",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "AB+CD=BC+DA",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형에서 같은 점의 접선 길이가 같아 대변의 합이 같다."
+          },
+          {
+            "term": "합차공식",
+            "src": "solution",
+            "quote": "(AB−DA)(AB+DA)=20",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "두 대각선이 수직으로 만나는"
+          },
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$에 외접한다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "수직 대각선의 제곱 관계와 외접사각형의 대변 합을 결합한다.",
+        "targetedCorrection": "직교 대각선 네 직각삼각형의 피타고라스를 합차하여 AB²−AD²=20을 얻고 등접선에서 AB−AD=2를 얻은 뒤 합차공식으로 목표 합을 결정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "중심이 같은 두 원에서"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "큰 원의 현이고 작은 원의 접선"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림은 중심이 같은 두 원에서 $\\overline{\\mathrm{AB}}$는 큰 원의 현이고 작은 원의 접선이다. $\\overline{\\mathrm{AB}}=16$일 때, 빗금친 부분의 넓이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q09.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "빗금친 부분의 넓이를 구하면?"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "그림은 중심이 같은 두 원에서 $\\overline{\\mathrm{AB}}$는 큰 원의 현이고 작은 원의 접선이다. $\\overline{\\mathrm{AB}}=16$일 때, 빗금친 부분의 넓이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q09.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "R²=r²+8²이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "π(R²−r²)=64π",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 넓이 차를 반지름 제곱의 차로 나타낸다."
+          },
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "AB는 작은 원의 접선이므로 중심에서 현 AB까지의 거리는 r이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 반현8과 작은 원의 접선 수직 관계로 R²−r²=64를 얻고 환형 영역의 넓이 π(R²−r²)를 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "큰 원의 현이고 작은 원의 접선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접점의 수직 반지름과 반현으로 반지름 제곱의 차를 구한다.",
+        "targetedCorrection": "큰 원의 반현8과 작은 원의 접선 수직 관계로 R²−r²=64를 얻고 환형 영역의 넓이 π(R²−r²)를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_2cac2b710a5e579c4aa3f5e2a804472f8cd3d664140a06ac4ec12b96a12cdb58",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $\\overline{\\mathrm{AD}}$"
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호 CD=3호 AB이고"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "그림의 원 $\\mathrm{O}$에서 두 현 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$가 점 $\\mathrm{P}$에서 만나고 $\\angle\\mathrm{CPD}=80^\\circ$이다. $\\overgroup{\\mathrm{CD}}=3\\overgroup{\\mathrm{AB}}$일 때, $\\angle\\mathrm{PBD}$의 크기를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q10.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원내현교각",
+            "src": "solution",
+            "quote": "두 맞은편 호 CD와 AB의 합의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 내부에서 만나는 현의 각을 두 호의 합으로 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "두 맞은편 호 CD와 AB의 합의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현이 이루는 각과 호의 합을 연결한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 CD를 보는 원주각이므로 120°/2=60°",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "solution",
+            "quote": "호 CD=3호 AB이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내부 교각으로 호를 결정하고 그 호를 보는 원주각을 구한다.",
+        "targetedCorrection": "교차현의 각80°에서 두 호 합160°를 구하고 주어진3:1 비로 호CD120°를 정한 뒤 원주각60°로 옮긴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$의 지름이고"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{DAO}=35^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "△AOD는 이등변삼각형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 AD를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "∠DAO=35°이므로 ∠ADO=35°이고, ∠AOD=180°−35°−35°=110°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "OA=OD인 이등변삼각형의 밑각35°에서 중심각110°를 얻고 같은 호의 원주각55°를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "반지름이 같은 이등변삼각형의 중심각에서 원주각을 정한다.",
+        "targetedCorrection": "OA=OD인 이등변삼각형의 밑각35°에서 중심각110°를 얻고 같은 호의 원주각55°를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ce390ee1b42fe0d487820fa375cb4ddd30301fea6aead4d960b51e52317f3e83",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지름",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$의 지름이고"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{COD}=50^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원외할선교각",
+            "src": "solution",
+            "quote": "큰 호와 작은 호의 차의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "원 밖 두 할선의 각을 대응 호의 차의 절반으로 구한다."
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "큰 호와 작은 호의 차의 절반",
+            "evidenceType": "IMPLIED",
+            "justification": "두 할선의 교각과 두 호의 차를 연결한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "지름에 대응하는 반원과 중심각에 대응하는 호의 차로 바깥 교각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle\\mathrm{A}=43^\\circ$"
+          },
+          {
+            "term": "원",
+            "src": "choices",
+            "quote": "점 $\\mathrm{A, B, C, E}$는 한 원위에 있다"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle\\mathrm{A}=43^\\circ$, $\\angle\\mathrm{D}=40^\\circ$, $\\angle\\mathrm{E}=43^\\circ$이다. 다음 중 <u>틀린</u> 것을 고르면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q13.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "틀린</u> 것을 고르면?"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle\\mathrm{A}=43^\\circ$, $\\angle\\mathrm{D}=40^\\circ$, $\\angle\\mathrm{E}=43^\\circ$이다. 다음 중 <u>틀린</u> 것을 고르면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q13.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "두 각이 같은 현 BC를 보므로",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 보는 두 각이 같아 네 점이 한 원 위에 있음을 판정한다."
+          },
+          {
+            "term": "유일성",
+            "src": "solution",
+            "quote": "세 비공선점을 지나는 원은 하나뿐",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "위치관계",
+            "src": "solution",
+            "quote": "원 안의 점에서 원주각보다 커지고 원 밖의 점에서 작아진다",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 보는 각의 크기로 점과 원의 위치를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원주각의 역과 세 점을 지나는 원의 유일성 및 내부 외부 각 크기를 쓴다.",
+        "targetedCorrection": "같은 현에 대한 같은 각으로 네 점의 공원성을 확인하고 각의 대소로 안팎을 비교하되, 세 비공선점을 지나는 원의 유일성으로 두 개 이상이라는 진술을 바로 배제한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$에 내접하는 오각형"
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{COD}=50^\\circ"
+          },
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{ABC}=100^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기를 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 A-E-D-C의 크기는 200°",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에 대응하는 호의 중심각은 두 배이다."
+          },
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "호 AD는 360°−150°=210°",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 원에서 다른 호를 빼서 목표 각이 보는 호를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $\\mathrm{O}$에 내접하는 오각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "주어진 원주각과 중심각으로 호를 분해한 뒤 반대 호의 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_83c868a00a7bd02d053c30f0b88f53c78509312725dd82848b7d3652a917371a",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle\\mathrm{A}$의 이등분 선"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원 안에서 현 AE와 BC가 D에서 만나므로"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{\\mathrm{AE}}$는 $\\angle\\mathrm{A}$의 이등분 선이고 $\\overline{\\mathrm{BC}}$와 $\\overline{\\mathrm{AE}}$가 만나는 점이 $\\mathrm{D}$이다. $\\overline{\\mathrm{AB}}=9$, $\\overline{\\mathrm{AC}}=5$, $\\overline{\\mathrm{DE}}=4$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q15.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "의 길이를 구하면?(4점)"
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "그림에서 $\\overline{\\mathrm{AE}}$는 $\\angle\\mathrm{A}$의 이등분 선이고 $\\overline{\\mathrm{BC}}$와 $\\overline{\\mathrm{AE}}$가 만나는 점이 $\\mathrm{D}$이다. $\\overline{\\mathrm{AB}}=9$, $\\overline{\\mathrm{AC}}=5$, $\\overline{\\mathrm{DE}}=4$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/21_동산중_2학기_기말_중3_수학/q15.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "각의이등분선정리",
+            "src": "solution",
+            "quote": "각의 이등분선 정리로 BD:DC=AB:AC=9:5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 따라 u²+v²=81",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교차하는현의정리",
+            "src": "solution",
+            "quote": "AD·DE=BD·DC=(9k)(5k)=45k²",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원 안에서 현 AE와 BC가 D에서 만나므로",
+            "evidenceType": "IMPLIED",
+            "justification": "교차하는 두 현의 선분 곱이 같다."
+          },
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "AD²+4AD=45",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "BC를 수평축으로 잡아 B=(0,0), D=(9k,0), C=(14k,0), A=(u,v)라 하자.",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분선으로 BD:DC=9:5를 세우고 좌표·피타고라스로 AD²를 만든 뒤 교차현곱 AD·DE=BD·DC와 결합하여 양의 길이를 고른다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "AD²=45−45k²와 4AD=45k²를 더하면 AD²+4AD=45, 즉 (AD−5)(AD+9)=0이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분선으로 BD:DC=9:5를 세우고 좌표·피타고라스로 AD²를 만든 뒤 교차현곱 AD·DE=BD·DC와 결합하여 양의 길이를 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "AD²=45−45k²와 4AD=45k²를 더하면 AD²+4AD=45, 즉 (AD−5)(AD+9)=0이다. AD는 길이이므로 AD=5이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "길이 AD의 양수 조건이 후보−9를 배제하고5를 선택한다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "이등분선의 분할비와 좌표상 피타고라스 관계를 현의 곱 정리와 결합해 이차방정식을 푼다.",
+        "targetedCorrection": "각이등분선으로 BD:DC=9:5를 세우고 좌표·피타고라스로 AD²를 만든 뒤 교차현곱 AD·DE=BD·DC와 결합하여 양의 길이를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "대푯값 중 수량으로 나타내어지기 어렵거나"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "사용하기에 가장 적절한 것은?"
+          },
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "대푯값 중 수량으로 나타내어지기 어렵거나 자료에 비슷한 값이 많은 경우 대푯값으로 사용하기에 가장 적절한 것은?(3점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "가장 자주 나타나는 값인 최빈값",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "최빈값의 뜻과 비수량 자료에 대한 적합성을 판단한다.",
+        "targetedCorrection": "수량으로 나타내기 어렵거나 자주 나타나는 값이 있는 자료에 적절한 대표값으로 최빈값을 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "6, 2, 3, 1, 7, 6, 1, 6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$a \\times b$의 값을 구하면?"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "다음 자료의 중앙값을 $a$, 최빈값을 $b$라고 할 때, $a \\times b$의 값을 구하면?(3점)<br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0; text-align: center;\">6, 2, 3, 1, 7, 6, 1, 6</div>"
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "다음 자료의 중앙값을 $a$, 최빈값을 $b$라고 할 때, $a \\times b$의 값을 구하면?(3점)<br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0; text-align: center;\">6, 2, 3, 1, 7, 6, 1, 6</div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값 a=(3+6)/2=4.5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "최빈값 b=6이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "자료를 정렬해 가운데 두 값의 평균과 최빈값을 구한다.",
+        "targetedCorrection": "짝수8개 자료를 정렬해 가운데 두 값의 평균4.5와 최빈값6을 구하고 지정된 곱27을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "10, 6, 12, 9, $a$, 10, 7, 9, $b$, 13"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "자료의 평균이 10이고 최빈값이 9"
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "최빈값이 9 하나뿐일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$a, b$의 값을 구하면?"
+          },
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "다음 자료의 평균이 10이고 최빈값이 9 하나뿐일 때, $a, b$의 값을 구하면? (단, $a>b$)(4점)<br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0; text-align: center;\">10, 6, 12, 9, $a$, 10, 7, 9, $b$, 13</div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 10이므로 전체 합은 100",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "9가 세 번, 10이 두 번이므로 최빈값이 9 하나뿐",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "① (15,9)는 a+b=24이고",
+            "evidenceType": "IMPLIED",
+            "justification": "선택지를 하나씩 평균과 최빈값 조건에 대조한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유일성",
+            "src": "stem",
+            "quote": "최빈값이 9 하나뿐일 때"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "(단, $a>b$)(4점)"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "평균으로 미지수 합을 구하고 보기별 도수를 대조한다.",
+        "targetedCorrection": "평균10을 자료 합으로 바꾸어 a+b=24를 얻고 최빈값이9 하나뿐이라는 빈도 조건과 a>b를 함께 적용해 누락값을 선택한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "다섯 명의 수학시험 편차를 나타낸 것이다"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 85일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "학생의 수학성적을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 합은 0이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균이 85점이고 B의 편차가 2점",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에 편차를 더하여 원래 변량을 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "편차의 합이 0인 성질로 누락 편차를 정한 후 평균을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "학급 시험 성적",
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "㉠ 평균 &nbsp;&nbsp;&nbsp;&nbsp; ㉡ 중앙값"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "㉣ 분산 &nbsp;&nbsp;&nbsp;&nbsp; ㉤ 표준편차"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "나타낸 값을 모두 고르면?"
+          },
+          {
+            "term": "산포도",
+            "src": "stem",
+            "quote": "다음 중 변량들이 흩어져 있는 정도를 하나의 수로 나타낸 값을 모두 고르면?(3점)<br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0; text-align: center;\">㉠ 평균 &nbsp;&nbsp;&nbsp;&nbsp; ㉡ 중앙값 &nbsp;&nbsp;&nbsp;&nbsp; ㉢ 최빈값<br>㉣ 분산 &nbsp;&nbsp;&nbsp;&nbsp; ㉤ 표준편차</div>"
+          }
+        ],
+        "method": [
+          {
+            "term": "산포도",
+            "src": "solution",
+            "quote": "흩어진 정도를 나타내는 산포도는 분산과 표준편차",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "산포도는 분산과 표준편차이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "자료의 흩어진 정도를 나타내는 산포도는 분산과 표준편차이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대푯값과 산포도를 구별하여 흩어진 정도를 나타내는 분산과 표준편차를 고른다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "대푯값과 산포도를 구분하여 분산 및 표준편차를 고른다.",
+        "targetedCorrection": "대푯값과 산포도를 구별하여 흩어진 정도를 나타내는 분산과 표준편차를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "평균과 표준편차를 조사하여 나타낸 것이다"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균과 표준편차를 조사하여 나타낸 것이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "성적이 가장 고르게 분포된 학급은?"
+          },
+          {
+            "term": "집단",
+            "src": "stem",
+            "quote": "다음 표는 어느 학교 3학년 학생들의 학급별 중간고사 성적의 평균과 표준편차를 조사하여 나타낸 것이다. 성적이 가장 고르게 분포된 학급은?(3점)<br><table border=\"1\" style=\"border-collapse: collapse; text-align: center; margin: 10px auto; width: 85%;\"><tr><th>학급</th><td>1반</td><td>2반</td><td>3반</td><td>4반</td><td>5반</td></tr><tr><th>평균(점)</th><td>82</td><td>83</td><td>84</td><td>82</td><td>85</td></tr><tr><th>표준편차(점)</th><td>3</td><td>4</td><td>$2\\sqrt{2}$</td><td>$\\sqrt{2}$</td><td>$\\sqrt{13}$</td></tr></table>"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차가 작을수록 점수가 평균 주위에 더 모여 있다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 작은 값은 √2인 4반이다",
+            "evidenceType": "IMPLIED",
+            "justification": "각 학급 표준편차의 크기를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "표준편차가 작을수록 고르게 분포함을 이용해 근호 값을 비교한다.",
+        "targetedCorrection": "표준편차가 작을수록 평균 주변에 밀집한다는 정의로 표의 가장 작은 표준편차√2를 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "학급별 성적",
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "$a, b, c$의 평균이 4이고"
+          },
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "표준편차가 $\\sqrt{5}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "$a^2, b^2, c^2$의 평균을 구하면?"
+          },
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "3개의 변량 $a, b, c$의 평균이 4이고 표준편차가 $\\sqrt{5}$일 때, $a^2, b^2, c^2$의 평균을 구하면?(4점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 표준편차의 제곱이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "제곱의평균과분산",
+            "src": "solution",
+            "quote": "분산=제곱의 평균−평균의 제곱",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "표준편차로 분산을 구하고 분산 공식에서 제곱의 평균을 복원한다.",
+        "targetedCorrection": "표준편차√5를 분산5로 바꾸고 분산=제곱의 평균−평균의 제곱을 목표량에 대해 정리한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "revisedBy": "review_b",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "원 모양의 접시의 일부가 깨진 것이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "원의 중심을 찾는 방법을 서술하여라"
+          },
+          {
+            "term": "복원",
+            "src": "stem",
+            "quote": "이를 복원하기 위해 원의 중심을 찾고자"
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "두 쌍의 점을 골라 각각 현을 긋는다",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 원호에서 두 현을 만든다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "두 수직이등분선은 한 점에서 만나며",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "그 교점이 원의 중심이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 현의 수직이등분선 교점이 원의 중심임을 이용한다."
+      },
+      "steps": [
+        "현",
+        "수직이등분선",
+        "교점"
+      ],
+      "scenarioNote": "깨진 원형 접시",
+      "questionUid": "qid_v1_db36359a8341cc5d92e4394e7c514b57e2bd2372bd14b9d867e70358918cb8ab",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $\\mathrm{AB, CD}$의 연장선"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle\\mathrm{BPD}=30^\\circ"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "의 크기와 $\\overgroup"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "를 각각 구하여라. (7점)"
+          }
+        ],
+        "method": [
+          {
+            "term": "원외할선교각",
+            "src": "solution",
+            "quote": "30°=(호 AC−호 BD)/2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원내현교각",
+            "src": "solution",
+            "quote": "60°=(호 AC+호 BD)/2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "두 호의 합은 120°이다",
+            "evidenceType": "IMPLIED",
+            "justification": "내외 교각으로 호의 합과 차를 구한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "연립하면 호 AC=90°, 호 BD=30°",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 BD를 보는 원주각이므로 x=15°",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원 안팎 교각에서 호의 합과 차를 연립한 후 원주각과 호의 비를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4fdf0dacf44463bf4023933e8ec249f4884a19ec3317218355fd8290059c46af",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "12, 3, 4, 15, 16, 10"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "자료의 표준편차를 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "자료의 평균은 (12+3+4+15+16+10)/6=10",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "평균으로부터의 편차는 2, −7, −6, 5, 6, 0",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 150/6=25",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 √25=5이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평균과 편차 제곱의 평균으로 분산을 구하고 제곱근을 취한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "reuseProvenance": {
+        "originalAuthor": {
+          "agent": "Codex-gpt-6.1-terra",
+          "run": "original-101-110",
+          "at": "2026-11-04"
+        },
+        "originalArtifactSha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+        "textAndQuoteParityVerified": true
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "원내현교각",
+      "en": "INTERSECTING_CHORDS_ANGLE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 내부의 두 현이 이루는 각은 대하는 두 호의 합의 절반이다.",
+      "usedIn": [
+        10,
+        24
+      ]
+    },
+    {
+      "term": "원외할선교각",
+      "en": "EXTERIOR_SECANTS_ANGLE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "각",
+      "note": "원 밖의 두 할선이 이루는 각은 대하는 두 호의 차의 절반이다.",
+      "usedIn": [
+        12,
+        24
+      ]
+    },
+    {
+      "term": "교차하는현의정리",
+      "en": "INTERSECTING_CHORDS_THEOREM",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "현",
+      "note": "원 내부에서 교차하는 두 현의 분할 선분의 곱이 같다.",
+      "usedIn": [
+        15
+      ]
+    },
+    {
+      "term": "제곱의평균과분산",
+      "en": "VARIANCE_SECOND_MOMENT",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "분산",
+      "note": "분산은 제곱의 평균에서 평균의 제곱을 뺀 값이다.",
+      "usedIn": [
+        22
+      ]
+    }
+  ],
+  "selfCheck": {
+    "all25QuestionsRead": true,
+    "all25ExistingSolutionsRead": true,
+    "originalImagesRead": 16,
+    "existingSolutionImagesRead": 16,
+    "allQuotesExactInCurrentSource": true,
+    "quotesChecked": 192,
+    "independentReviewStatus": "PENDING_C",
+    "studentPayloadChanged": false,
+    "newR1R2R3": false
+  },
+  "originalAuthor": {
+    "agent": "Codex-gpt-6.1-terra",
+    "run": "original-101-110",
+    "at": "2026-11-04"
+  },
+  "originalEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/E045/reused-4slot-evidence.json",
+    "sha256": "da6f99fb7752419989b22c0bc1c0baf03359059f9e1cfb3360bc5810bfec627f",
+    "sourceGitBlobSha": "cfbff689f69959f2f12e63f20c6b2751d6e49331",
+    "studentTextParityEvidence": "payload-version-diff.json",
+    "reuseScope": "25 unchanged stems/choices/answers/solutions and original images; 16 solution images added since the old slot artifact were separately read."
+  }
+}

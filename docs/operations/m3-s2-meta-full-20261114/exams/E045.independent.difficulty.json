@@ -1,0 +1,264 @@
+{
+  "examId": "E045",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "ff57375c7261c857860addf108077e2741a913d3",
+  "sourceRawSha256": "e5355e3479569c5396716b68732b889223b52d7950668cd2905dc8224c780be9",
+  "sourcePacketSha256": "0f1aa82a448fe6b56f5387cea1d028acdc2b466989fb25436694a9592c927185",
+  "sampled4slotSha256": "5a49bd48b62edb907981f82d4c6ec1fb0468e34495c93ffef748bd44c8529765",
+  "sampledReviewSha256": "85f2959f93cf741fd754f23ae2753a2b32c24e68a93bb70e2665d5f7ebdc03e0",
+  "sampledSourcePatchSha256": "637b4dfe98759b9dc5a6159134f72908a60e3dcaef4cede6cd48bbc67cd5c6e8",
+  "schemaVersion": "m3-s2-difficulty-adjudication-v1",
+  "sourceGitBlobSha": "ff57375c7261c857860addf108077e2741a913d3",
+  "sampledAuthorReviewSha256": "85f2959f93cf741fd754f23ae2753a2b32c24e68a93bb70e2665d5f7ebdc03e0",
+  "status": "INDEPENDENT_REVIEW_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "scope": "역사 level과 숫자bucket 예외12건 전체 실제 읽음. 추가 표본15의 source5→4 변경도 구조 기준으로 확인.",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "historicalLevel": "하",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 2,
+      "basis": "같은 중심거리→같은 현, 수선 발→중점으로 바꾸고 중점연결에 바로 대입한다. 익숙한 전처리2/B12가 맞으며 역사적 하를 보존한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "평행선의 엇각으로 같은 호40도 둘을 찾아 반원에서 나머지 호를 선택한 뒤 길이비를 적용한다. 표준 호 선택이 있는3/B34로 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "같은 접선 조각을 변수로 표시해 둘레에서 변화량이 소거되는 식을 선택한다. 등접선의 표준 소거 구조3/B34이다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_fb3e9d812af24cca1718ce9cb8958292c459cf96c7f64e211d2422d9264ffb40",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "주어진 직사각형의 높이에서 반지름을 정하고 접선 길이식을 한 미지수의 직각삼각형에 전달한다. 정형 관계들을 모델로 구성하는3/B34이다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "historicalLevel": "상",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "authorDifficultyBucket": 2,
+      "basis": "명시된3:1 호비를 내부 교차현각 식에 대입한 다음 목표 원주각으로 절반을 취한다. 보조선이나 비정형 재구성이 없는2/B23이므로 역사적 상과 강한 불일치를 별도로 기록한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ce390ee1b42fe0d487820fa375cb4ddd30301fea6aead4d960b51e52317f3e83",
+      "historicalLevel": "하",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 2,
+      "basis": "등반지름에서 이등변삼각형을 확인해 중심각110도를 만든 뒤 원주각으로 반감한다. 주어진 중심각의 직접 대입보다 전처리가 하나 있어2/B12가 적절하다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "historicalLevel": "중",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 1,
+      "basis": "틀린⑤는 비공선 세 점을 지나는 원의 유일성을 바로 부정하므로 직접 정의·성질 판별1/B12이다. 나머지 참선지의 모든 비교 단계 수를 정답 선택 난도에 합산하지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83c868a00a7bd02d053c30f0b88f53c78509312725dd82848b7d3652a917371a",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "큰 호와 점E를 포함하지 않는 보완 호를 순서대로 선택하여 마지막 원주각에 전달한다. 이 호 해석이 있는 표준3/B34이다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "historicalLevel": "상",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "authorDifficultyBucket": 2,
+      "basis": "평균식a+b=24와 보기의 빈도·대소를 직접 확인한다. 실제 기존 해설은 정형 조건 대조2/B23이며 보기5개의 산술량으로4를 정당화하지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "historicalLevel": "하",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 2,
+      "basis": "편차합0에서 누락 편차를 구하고 알려진 평균에 더한다. 정형 복원2/B12이며 역사적 하를 그대로 둔다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_4fdf0dacf44463bf4023933e8ec249f4884a19ec3317218355fd8290059c46af",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "호의 합과 차 두 관계를 선택해 연립하고 두 원주각 및 호비로 전달한다. 표준 여러 관계 연결3/B34이지7점 또는 답3개로5가 되지 않는다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentOriginalAndSolutionImages"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "historicalLevel": "중",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 1,
+      "basis": "완전한 자료에 표준편차 정의를 직접 적용하며 평균·제곱·합·제곱근은 정의의 산술 절차이다. 추가 전략을 요구하지 않으므로1/B12와 역사적 중 보존을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "decision": "ACCEPT_AUTHOR_BUCKET_PRESERVE_HISTORICAL_LEVEL",
+      "newMathematicalVerification": false
+    }
+  ],
+  "additionalChangedItemChecks": [
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "difficultyBucket": 4,
+      "legacyLevelCompatibility": "NORMAL",
+      "decision": "ACCEPT_AUTHOR_BUCKET",
+      "reason": "비례 변수와 좌표를 자율 도입해 거리식의 보조 변수를 소거하고 두 현의 곱과 연결한다. 실제 해설의 여러 표현 선택이 고난도 구조화4를 지지하며 산술량만으로5를 요구하지 않는다."
+    }
+  ],
+  "outstanding": [],
+  "sourceCaveats": [],
+  "sourceCaveatRetraction": {
+    "path": "worker-outputs/c/independent/E045.source-caveat-retraction.json",
+    "ordinal": 13,
+    "status": "RETRACTED_OBSERVER_MISREAD",
+    "reason": "개별 그림과 실제 SVG title·좌표 확인 결과 D는 원 바깥이다. 최초 contact sheet의 원주 위라는 시각 판단을 철회한다.",
+    "studentContentAndAuthorPacketUnchanged": true,
+    "sampleAndDifficultyDecisionsUnchanged": true
+  }
+}

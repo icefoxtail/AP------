@@ -1,0 +1,1578 @@
+{
+  "schemaVersion": "m3-s2-existing-metadata-sync-v1",
+  "examId": "E045",
+  "status": "AUTHOR_COMPLETE_PENDING_CROSS_REVIEW",
+  "changes": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "rpmPrimaryId",
+      "before": null,
+      "after": "M3-RPM-074",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "rpmPrimaryPath",
+      "before": null,
+      "after": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "같은 호에 대한 원주각"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "rpmL3",
+      "before": null,
+      "after": "원주각과 중심각",
+      "reason": "기존 L3 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "rpmL4",
+      "before": null,
+      "after": "같은 호에 대한 원주각",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 원주각 크기와 현 길이의 비례 관계 점검이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "④의 정비례 진술이 기본 성질과 다름을 직접 판정한다. 별도 길이 계산이나 전략 선택이 없어1이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "metaEvidenceDebt",
+      "before": "M3_PRIMARY_RPM_PATH_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "projectionReason",
+      "before": "M3-06 semantic unit is identified from the source and solution, but no exact primary RPM item for this task is established; no code or L3/L4 label is invented.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "nullReason",
+      "before": "M3_PRIMARY_RPM_PATH_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "M3-06 semantic unit is identified from the source and solution, but no exact primary RPM item for this task is established; no code or L3/L4 label is invented."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-074",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "같은 호에 대한 원주각"
+        },
+        "rpmL3": "원주각과 중심각",
+        "rpmL4": "같은 호에 대한 원주각",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-067",
+      "after": "M3-RPM-069",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심에서 현에 내린 수선"
+      },
+      "after": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심거리와 현의 길이"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "rpmL4",
+      "before": "중심에서 현에 내린 수선",
+      "after": "중심거리와 현의 길이",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 같은 중심거리인 두 현과 중점연결정리이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "중심거리·현의 반분을 중점연결과 직접 이어가는 익숙한 전처리2이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "projectionStatus",
+      "before": "PROJECTION_REUSE",
+      "after": "PROJECTION_UNMATERIALIZED",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "projectionReason",
+      "before": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed.",
+      "after": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 parent PT_CIRCLE_LINE_RELATION를 읽어 재사용했다. canonical owner GEOMETRY_EQUATIONS, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-067",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심에서 현에 내린 수선",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 parent PT_CIRCLE_LINE_RELATION를 읽어 재사용했다. canonical owner GEOMETRY_EQUATIONS, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_d5478717de56fbe7eed31660a4fb93a06a6937fa83c6b8a4187987abf2333826",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 수직이등분선으로 반지름 방정식 세우기이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "r²=(r/2)²+6²의 표준 반현 직각삼각형 모델 한 번으로 해결하므로2이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 호의 각도와 호 길이 비례식이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "반원과 평행 관계 중 어느 호를 빼고 비교할지 정하는 표준 연결이 있어3이며 비정형 조건 재구성4는 없다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NONE",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE TPL_CIRCLE_ANGLE_COMPOSITE와 parent PT_CIRCLE_ANGLE_RELATIONS를 읽어 재사용했다. canonical owner MIDDLE_GEOMETRY, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": null,
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-080",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "복합 각 추론",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-080",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "복합 각 추론",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE TPL_CIRCLE_ANGLE_COMPOSITE와 parent PT_CIRCLE_ANGLE_RELATIONS를 읽어 재사용했다. canonical owner MIDDLE_GEOMETRY, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-074",
+      "after": "M3-RPM-075",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "같은 호에 대한 원주각"
+      },
+      "after": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "field": "rpmL4",
+      "before": "같은 호에 대한 원주각",
+      "after": "중심각과 원주각",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 중심각으로 호를 합산한 뒤 원주각 적용이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "직접 대응하는 중심각·원주각을 같은 호 단위로 바꾸는 표준 변환2이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-074",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "같은 호에 대한 원주각"
+        },
+        "rpmL3": "원주각과 중심각",
+        "rpmL4": "같은 호에 대한 원주각",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-075",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각"
+        },
+        "rpmL3": "원주각과 중심각",
+        "rpmL4": "중심각과 원주각",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-072",
+      "after": "M3-RPM-071",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "after": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "한 점에서 그은 두 접선"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "field": "rpmL4",
+      "before": "접선 조건으로 길이 구하기",
+      "after": "한 점에서 그은 두 접선",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 접선 길이 같음과 반둘레로 둘레 정리이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "접선 조각을 같은 변수로 놓아 변화 부분이 소거되는 둘레식을 구성하는 표준 구조 선택3이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-072",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "접선 조건으로 길이 구하기",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-071",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "한 점에서 그은 두 접선"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "한 점에서 그은 두 접선",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_fb3e9d812af24cca1718ce9cb8958292c459cf96c7f64e211d2422d9264ffb40",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 접선 길이 일치 후 방정식 해결이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "직사각형 가로6과 세로4가 모두 주어져 접선 조각과 한 미지수의 피타고라스 모델을 구성하는 표준 연결3이다. 가로 자체가 미지수인 E041Q24의 두 길이 표현 재구성과 구별한다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-070",
+      "after": "M3-RPM-072",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접점의 반지름과 접선"
+      },
+      "after": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "rpmL4",
+      "before": "접점의 반지름과 접선",
+      "after": "접선 조건으로 길이 구하기",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 접선 사각형과 피타고라스형 변 관계 결합이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "네 제곱식을 상쇄하는 관계를 구성하고 접선의 대변합 조건과 곱 인수분해를 결합해야 하는 복합 구조화4를 유지한다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NONE",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE TM_TANGENT_LENGTH와 parent PT_CIRCLE_TANGENT를 읽어 재사용했다. canonical owner GEOMETRY_EQUATIONS, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": null,
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-070",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접점의 반지름과 접선"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "접점의 반지름과 접선",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-072",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "접선 조건으로 길이 구하기",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE TM_TANGENT_LENGTH와 parent PT_CIRCLE_TANGENT를 읽어 재사용했다. canonical owner GEOMETRY_EQUATIONS, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_2cac2b710a5e579c4aa3f5e2a804472f8cd3d664140a06ac4ec12b96a12cdb58",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 큰 원과 작은 원의 반지름 차의 제곱이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "두 반지름을 각각 구하지 않고 제곱 차를 넓이 목표에 직접 사용하는 표현 선택이 필요하여3을 유지한다. 반지름 차의 제곱이라는 기존 이유 문구는 제곱의 차로 정정한다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 호 관계식을 세운 뒤 원주각으로 변환이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "각-호합 정리에 명시된 비를 넣은 다음 원주각으로 반감하는 직접 연결2이다. 별도 보조선·조건 재구성이 없어 기존상/4를 근거로 유지하지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "field": "projectionStatus",
+      "before": "PROJECTION_REUSE",
+      "after": "PROJECTION_UNMATERIALIZED",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "field": "projectionReason",
+      "before": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed.",
+      "after": "GLOBAL ACTIVE TPL_CIRCLE_ANGLE_COMPOSITE와 parent PT_CIRCLE_ANGLE_RELATIONS를 읽어 재사용했다. canonical owner MIDDLE_GEOMETRY, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-080",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "복합 각 추론",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_DIVISION",
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReason": "Current active target M3 binding plus unique ACTIVE cross-pack PT/TPL pair; semantic classification is evidence-backed."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-080",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "복합 각 추론",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE TPL_CIRCLE_ANGLE_COMPOSITE와 parent PT_CIRCLE_ANGLE_RELATIONS를 읽어 재사용했다. canonical owner MIDDLE_GEOMETRY, 2015 source binding owner MIDDLE_GEOMETRY를 별도로 확인했으며 신규 finalization은 수행하지 않았다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ce390ee1b42fe0d487820fa375cb4ddd30301fea6aead4d960b51e52317f3e83",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 이등변삼각형에서 중심각 계산이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "반지름의 상등을 이용한 익숙한 중심각 전처리 뒤 절반으로 구하므로2이다. 원본075는 중심각과 원주각 leaf로 유효하다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-080",
+      "after": null,
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "after": null,
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "rpmL3",
+      "before": "원주각의 활용",
+      "after": null,
+      "reason": "기존 L3 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "rpmL4",
+      "before": "복합 각 추론",
+      "after": null,
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "semanticScopeRelation",
+      "before": "CURRENT_SCOPE",
+      "after": null,
+      "reason": "정확 publisher leaf 미확정이며 source의 M3/2015 출처와 구별하여 scope 확정을 보류한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 반원 호와 중심각 호의 차이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "한 번의 외부 할선각 정리 적용에서 큰 호를 반원으로 해석하는 표준 전처리2이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "RPM_PUBLISHER_EXACT_LEAF_GAP_AND_NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "실제 풀이의 의미 판단은 완료했으나 정확 publisher leaf와 native TPL이 없어 제안 및 지원 UID를 보존한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "RPM_PUBLISHER_EXACT_LEAF_GAP_AND_NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-080",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "복합 각 추론",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "실제 풀이의 의미 판단은 완료했으나 정확 publisher leaf와 native TPL이 없어 제안 및 지원 UID를 보존한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 같은 현을 보는 원주각 및 세 점의 원 유일성이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "틀린⑤는 서로 일직선 위에 있지 않은 세 점의 원이 유일하다는 기본 성질을 직접 확인하면 된다. 다른 보기의 각 비교 단계 수를 모두 난도에 더하지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-078",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "네 점이 한 원 위에 있을 조건"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "네 점이 한 원 위에 있을 조건",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-078",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "네 점이 한 원 위에 있을 조건"
+        },
+        "rpmL3": "원주각의 활용",
+        "rpmL4": "네 점이 한 원 위에 있을 조건",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83c868a00a7bd02d053c30f0b88f53c78509312725dd82848b7d3652a917371a",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 전체 호에서 뺀 뒤 원주각 적용이며 원본 배점 4.0점과 필요한 추론 수를 반영해 4/5로 분류했다.",
+      "after": "같은 원에서 큰 호·작은 호·여호의 대상을 선택하며 관계를 연쇄하는 표준3이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "semanticScopeRelation",
+      "before": "CURRENT_SCOPE",
+      "after": null,
+      "reason": "정확 publisher leaf 미확정이며 source의 M3/2015 출처와 구별하여 scope 확정을 보류한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 각의 이등분선 정리로 변을 비례식으로 나타내고, 좌표와 피타고라스 정리로 AD²를 만든 뒤 교차하는 현의 정리로 방정식을 마무리하는 것이다. 원본 배점 4.0점과 여러 관계를 순차 연결해야 하는 점을 반영해 5/5로 분류했다.",
+      "after": "비례 변수k와 좌표(u,v)를 도입해 거리 제곱식을 소거하고 교차현곱과 연결하는 학습된 고난도 구조화4이다. 단순 계산량·배점으로5를 부여하지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "metaEvidenceDebt",
+      "before": "M3_PRIMARY_RPM_PATH_UNMATERIALIZED",
+      "after": "RPM_PUBLISHER_EXACT_LEAF_GAP_AND_NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "projectionReason",
+      "before": "M3-06 semantic unit is identified from the source and solution, but no exact primary RPM item for this task is established; no code or L3/L4 label is invented.",
+      "after": "실제 풀이의 의미 판단은 완료했으나 정확 publisher leaf와 native TPL이 없어 제안 및 지원 UID를 보존한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "nullReason",
+      "before": "M3_PRIMARY_RPM_PATH_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "RPM_PUBLISHER_EXACT_LEAF_GAP_AND_NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "M3-06 semantic unit is identified from the source and solution, but no exact primary RPM item for this task is established; no code or L3/L4 label is invented."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "실제 풀이의 의미 판단은 완료했으나 정확 publisher leaf와 native TPL이 없어 제안 및 지원 UID를 보존한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "rpmPrimaryId",
+      "before": "M3-RPM-081",
+      "after": "M3-RPM-082",
+      "reason": "실제 결정 방법과 정본 RPM leaf를 일치시킨다. 직접 정리의 정확 leaf 공백은 인접 경로로 채우지 않는다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "rpmPrimaryPath",
+      "before": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "대푯값",
+        "l4": "평균·중앙값·최빈값"
+      },
+      "after": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "대푯값",
+        "l4": "대푯값 비교"
+      },
+      "reason": "기존2015 비교 경로의 네 계층을 현재 판정의 정본 경로와 결속한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "rpmL4",
+      "before": "평균·중앙값·최빈값",
+      "after": "대푯값 비교",
+      "reason": "기존 L4 alias와 정확 RPM 경로의 일치"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 자료 특성에 적절한 대표값 선택이며 원본 배점 3.0점과 필요한 추론 수를 반영해 1/5로 분류했다.",
+      "after": "최빈값의 기본 용도를 그대로 제시해 대표값 이름을 고르는 직접 확인1이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "projectionStatus",
+      "before": "PROJECTION_UNMATERIALIZED",
+      "after": "PROJECTION_BINDING_PENDING",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-081",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값"
+        },
+        "rpmL3": "대푯값",
+        "rpmL4": "평균·중앙값·최빈값",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-082",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "대푯값 비교"
+        },
+        "rpmL3": "대푯값",
+        "rpmL4": "대푯값 비교",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 자료 정렬 후 중앙값·최빈값 계산이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "중앙값과 최빈값의 정의가 바로 결정되며 마지막 곱은 지정 산술이다. 홀수·짝수 확인 외 전략 선택이 없어1이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "projectionStatus",
+      "before": "PROJECTION_UNMATERIALIZED",
+      "after": "PROJECTION_BINDING_PENDING",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-081",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값"
+        },
+        "rpmL3": "대푯값",
+        "rpmL4": "평균·중앙값·최빈값",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-081",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값"
+        },
+        "rpmL3": "대푯값",
+        "rpmL4": "평균·중앙값·최빈값",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "difficultyReason",
+      "before": "평균식 a+b=24를 세운 뒤 각 보기의 평균과 빈도를 검토해야 하므로 4/5로 분류했다.",
+      "after": "평균식과 보기의 빈도를 직접 대조하는 익숙한 조건 해석2이다. 5개 보기를 확인했다는 계산량만으로4가 되지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "ACTIVE_CONTEXT_BINDING_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "projectionStatus",
+      "before": "PROJECTION_UNMATERIALIZED",
+      "after": "PROJECTION_BINDING_PENDING",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION와 parent PT_M1_CENTRAL_TENDENCY를 읽어 재사용했다. canonical owner MIDDLE1, 2015 source binding owner 미확보를 별도로 확인했으며 신규 finalization은 수행하지 않았다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "ACTIVE_CONTEXT_BINDING_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-087",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "조건으로 자료 추론",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-087",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "조건으로 자료 추론",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION와 parent PT_M1_CENTRAL_TENDENCY를 읽어 재사용했다. canonical owner MIDDLE1, 2015 source binding owner 미확보를 별도로 확인했으며 신규 finalization은 수행하지 않았다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 편차 합 0을 이용해 점수 복원이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "누락 편차를 먼저 복원한 뒤 원점수로 바꾸는 표준 전처리2를 유지한다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-083",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "편차",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-083",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "편차"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "편차",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 흩어진 정도를 나타내는 척도 선택이며 원본 배점 3.0점과 필요한 추론 수를 반영해 1/5로 분류했다.",
+      "after": "계산 없이 산포도의 정의에 맞는 척도 두 개를 선택하는 직접 확인1이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "projectionStatus",
+      "before": "PROJECTION_UNMATERIALIZED",
+      "after": "PROJECTION_BINDING_PENDING",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-086",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "평균과 산포도 비교",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-086",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "평균과 산포도 비교",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 표준편차 최솟값 비교이며 원본 배점 3.0점과 필요한 추론 수를 반영해 2/5로 분류했다.",
+      "after": "명시된 표준편차 다섯 개를 비교하는 직접 해석1이다. 평균 차이는 이 목표의 필수 계산이 아니다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "projectionStatus",
+      "before": "PROJECTION_UNMATERIALIZED",
+      "after": "PROJECTION_BINDING_PENDING",
+      "reason": "새 선택·연결 또는 등록 공백을 공통 resolver/finalization 완료로 기록하지 않는다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-086",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "평균과 산포도 비교",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-086",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "평균과 산포도 비교"
+        },
+        "rpmL3": "자료 비교",
+        "rpmL4": "평균과 산포도 비교",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "projectionReason": "GLOBAL ACTIVE 부모 PT는 재사용하며 정확 whole-item TPL 부재를 후보로 기록했다. 교육과정 binding 연결과 정의 부재를 상세 sidecar에서 구별한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 분산 공식 변형이며 원본 배점 4.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "주어진 두 통계량을 등가 분산식으로 한 번 변형하여 제곱의 평균21을 얻는 표준2이다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-084",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "분산",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-084",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "분산",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_db36359a8341cc5d92e4394e7c514b57e2bd2372bd14b9d867e70358918cb8ab",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 서술형 작도 방법의 근거이며 원본 배점 6.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "두 현의 선택과 수직이등분선 작도 근거를 서술하는 정형 구성2이다. 서술형·6점이라는 형식만으로3을 유지하지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_4fdf0dacf44463bf4023933e8ec249f4884a19ec3317218355fd8290059c46af",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 두 호의 합·차 방정식 풀이이며 원본 배점 7.0점과 필요한 추론 수를 반영해 5/5로 분류했다.",
+      "after": "호 합·차를 미지수로 정하는 접근 선택 뒤 표준 연립과 원주각 관계로 해결하는3이다. 배점7점이나 단계 개수는5의 근거가 아니다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "field": "difficultyReason",
+      "before": "핵심 풀이 단계는 평균, 편차제곱합, 분산, 표준편차 순차 계산이며 원본 배점 7.0점과 필요한 추론 수를 반영해 3/5로 분류했다.",
+      "after": "모든 원자료가 주어져 표준편차 정의를 직접 적용한다. E034Q24 원자료 분산 직접 적용과 같은 방향이며 제곱근과 산술량만으로 추가 전략을 부여하지 않는다.",
+      "reason": "기존 배점·풀이 단계 수에 의존한 문구 대신 현재 실제 조건 해석/표준 접근/구조화 부담의 근거를 기록한다. 숫자 bucket과 historical level은 별도 판단한다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "field": "metaEvidenceDebt",
+      "before": "M3_EXACT_BINDING_UNMATERIALIZED",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "정확 정의 부재, 부모/leaf 공백, 기존 ACTIVE binding/crosswalk 연결 공백을 구별한다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "field": "projectionReason",
+      "before": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold.",
+      "after": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다.",
+      "reason": "이전 선택 또는 부정확한 binding-only 설명을 현재 판단의 실제 부채와 일치시킨다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "field": "nullReason",
+      "before": "M3_BINDING_UNMATERIALIZED_NOT_SEMANTIC_HOLD",
+      "after": "NATIVE_PT_AND_TEMPLATE_GAP",
+      "reason": "소스의 null 이유가 실제 정의·연결·publisher 공백을 가리키도록 정합화한다."
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "field": "meaningMeta",
+      "before": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-085",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "표준편차"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "표준편차",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "2015 RPM semantic path is classified from source/solution evidence; exact active PT/TPL pair is not materialized in this packet and remains pending, not a semantic hold."
+      },
+      "after": {
+        "semanticStatus": "CANDIDATE",
+        "rpmPrimaryId": "M3-RPM-085",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "표준편차"
+        },
+        "rpmL3": "산포도",
+        "rpmL4": "표준편차",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "projectionReason": "실제 풀이에 맞는 원본2015 RPM은 확인했으나 정확 ACTIVE PT/TPL 정의가 없어 기존 후보에 지원 UID를 추가한다."
+      },
+      "reason": "기존 nested meaningMeta의 실제 존재 필드만 상위의 RPM/PT/TPL/projection 값과 맞춘다. 정상 semanticStatus와 학생 내용은 보존한다."
+    }
+  ],
+  "normalPrimaryMethodAndDecisiveStepPreserved": true,
+  "studentFieldsChanged": false,
+  "sourceCurriculum2015Preserved": true
+}
