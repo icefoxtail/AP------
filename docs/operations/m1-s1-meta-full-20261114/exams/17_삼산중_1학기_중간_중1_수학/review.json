@@ -1,0 +1,3480 @@
+{
+  "schemaVersion": "M1-S1-META-FULL-EXAM-REVIEW-v1",
+  "author": "META_B",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+  "sourceBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+  "sourceSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
+  "questionCount": 24,
+  "sourceOnly": true,
+  "reviewedAt": "2026-11-14T08:28:38.478321+00:00",
+  "authorityBaselineMain": "8c3b8fe05348d7235546d7d2d9ec063029d19e4d",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_dd4426336736373dbd1c0abc9d25d9432b93b0b4cf530b4f4aa00543bde18988",
+      "sourceQuestionNo": 1,
+      "primaryMethod": "소수 정의로 주어진 수 분류",
+      "decisiveStep": "각 수의 약수 구조를 확인하고 소수에 해당하는 항목을 센다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소수와 합성수",
+        "l4": "소수·합성수 판별"
+      },
+      "canonicalRecordId": "M1-RPM-001",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "소인수분해",
+          "l3": "소수와 합성수",
+          "l4": "소수·합성수 판별"
+        },
+        "canonicalRecordId": "M1-RPM-114",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "주어진 유한 목록의 소수 판별이며 연속 구간의 모든 소수를 세는 문제와는 구별한다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+          "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The requested result is the set of true statements about primes and composites; the decisive strategy is to check each definition-based claim.",
+          "templateDefinition": "A direct prime test distinguishes one prime from four composites.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "소수 여부를 직접 확인하는 공통 골격. 한 소수 선택 TPL과 목록의 개수 산출 차이를 기록한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "발문에 제시된 목록에서 소수를 모두 센다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "작은 자연수의 소수 여부를 직접 확인하는 기본 정의 적용이다.",
+        "bucket": 1,
+        "reason": "작은 자연수의 소수 여부를 직접 확인하는 기본 정의 적용이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_SCOPE_REVIEW",
+          "reason": "DIRECT_PRIME_TEST의 한소수선택 정의와 목록의소수개수 목표를 구별. 범위전체소수개수 PT로 자동 변경하지 않음."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "f461b802a2b85c4fbb5c3afb86aa4ed56a36aa4f096077738b9ee9e3cc965e94",
+        "registeredQfull": "53bc3dc4bd6ced2f9bd36b33946cc7bfa37b45a8ccb23f2cb35c0b9ad6c19a23",
+        "currentQbody": "f461b802a2b85c4fbb5c3afb86aa4ed56a36aa4f096077738b9ee9e3cc965e94",
+        "currentQfull": "53bc3dc4bd6ced2f9bd36b33946cc7bfa37b45a8ccb23f2cb35c0b9ad6c19a23",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_5e4344a4ae5ee794c487f661f583d9cbc113fc3a36fd31f8a21da6f6c45c9237",
+      "sourceQuestionNo": 2,
+      "primaryMethod": "소인수분해에서 지수 읽기",
+      "decisiveStep": "자연수를 소수의 곱으로 정리하고2가 곱해진 횟수를 거듭제곱 지수로 읽는다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "canonicalRecordId": "M1-RPM-003",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "소인수분해",
+          "l3": "소인수분해",
+          "l4": "자연수의 소인수분해"
+        },
+        "canonicalRecordId": "M1-RPM-116",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "소인수분해의 빈 지수를 찾는 직접 적용이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+          "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_PRIME_POWER_PARAMETER",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The task asks which symbolic equality correctly expresses exponentiation or prime factorization; the defining strategy is to verify each equality against multiplication and prime-power rules.",
+          "templateDefinition": "The template isolates one exponent, one squared prime, and one remaining prime factor before evaluating a combination.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "소인수분해에서 지정된 지수를 읽는 부분을 재사용할 수 있으나 기존 TPL의 여러 문자 조합 산출보다 단순하다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "작은 자연수의 소인수분해에서 지수 하나를 읽는다.",
+        "bucket": 1,
+        "reason": "작은 자연수의 소인수분해에서 지수 하나를 읽는다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "f6e6bed54db42c574b98f0d63ca9dcf0da71c3c3a7ff36d43f95af2c2d34f684",
+        "registeredQfull": "55190c1938b3208f9d273264b28b36372d8df8f97bc9e8a7dd0d240a534ffbb7",
+        "currentQbody": "f6e6bed54db42c574b98f0d63ca9dcf0da71c3c3a7ff36d43f95af2c2d34f684",
+        "currentQfull": "55190c1938b3208f9d273264b28b36372d8df8f97bc9e8a7dd0d240a534ffbb7",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_b9f6517e2c1e3fccfcd5de378d74a40255ebe7619f6d7a5a06dc94e51f7dd648",
+      "sourceQuestionNo": 3,
+      "primaryMethod": "정수 합차의 계산값 비교",
+      "decisiveStep": "다섯 정수 덧셈·뺄셈 결과를 계산하고 동일한 네 결과와 다른 하나를 구별한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "덧셈·뺄셈 혼합"
+      },
+      "canonicalRecordId": "M1-RPM-021",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "덧셈과 뺄셈",
+          "l4": "덧셈·뺄셈 혼합"
+        },
+        "canonicalRecordId": "M1-RPM-134",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "거듭제곱·분수 나눗셈이 없는 정수 합차 비교이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The goal is to select an extremal value among expressions after evaluation; this type also covers substituted expressions in algebra.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "계산값 비교라는 ACTIVE 유형을 재사용 우선 검토. 현재 EVALUATED_OUTLIER는 분수 연속나눗셈으로 한정되어 정확 TPL은 미확정.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "작은 정수의 기본 합차를 반복하여 결과의 같음을 비교한다.",
+        "bucket": 1,
+        "reason": "작은 정수의 기본 합차를 반복하여 결과의 같음을 비교한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "정수 합차의 상이값 선택을 분수나눗셈 outlier 또는 최솟값 선택 템플릿에 강제하지 않는다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "19b8afa1437b7984fbf904da2fe0cb34189b83a27d9ba8891eb974524a8b8089",
+        "registeredQfull": "2f5eed425a3111326c83c88a4d8caa31e29d82c81c65a4c038b2fbabe06f1e9f",
+        "currentQbody": "19b8afa1437b7984fbf904da2fe0cb34189b83a27d9ba8891eb974524a8b8089",
+        "currentQfull": "2f5eed425a3111326c83c88a4d8caa31e29d82c81c65a4c038b2fbabe06f1e9f",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_c0c45ba30cc3b8ba299570d135fea07f6d952acc85867f45ea8f314a37a17a83",
+      "sourceQuestionNo": 4,
+      "primaryMethod": "각 소인수의 최대 지수 선택",
+      "decisiveStep": "세 소인수분해에 나타난 모든 소수를 포함하고 지수는 각 소수별 최댓값으로 고른다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공배수와 최소공배수",
+        "l4": "소인수분해로 최소공배수 구하기"
+      },
+      "canonicalRecordId": "M1-RPM-009",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "최대공약수와 최소공배수",
+          "l3": "공배수와 최소공배수",
+          "l4": "소인수분해로 최소공배수 구하기"
+        },
+        "canonicalRecordId": "M1-RPM-122",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "소인수분해로 최소공배수를 직접 구하는 문항이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The task recovers unknown exponents and a prime factor from simultaneous gcd and lcm specifications; min/max exponent matching is decisive.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-GCD_LCM",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "소인수 지수의 최대를 고르는 개념은 공유하나 기존 PT가 미지수 복원으로 좁게 서술되어 직접 LCM용 템플릿 범위 확인이 필요하다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "소인수 네 종류를 세 수 전체에서 비교하지만 적용 규칙은 한 가지이다.",
+        "bucket": 2,
+        "reason": "소인수 네 종류를 세 수 전체에서 비교하지만 적용 규칙은 한 가지이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "직접 최소공배수 계산과 미지 지수 복원 또는gcd/lcm비 계산은 목표가 다르다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "9edf04e252579d4d9f473e8a342db13101b07235d81a8783944daeccf6ad3103",
+        "registeredQfull": "577311eede7da97e1af83b9c376c8fcc75e305fed24c4d04933b7bb163b76f8f",
+        "currentQbody": "9edf04e252579d4d9f473e8a342db13101b07235d81a8783944daeccf6ad3103",
+        "currentQfull": "577311eede7da97e1af83b9c376c8fcc75e305fed24c4d04933b7bb163b76f8f",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_068f4e4bd1105266311eb3a2729c84e28ead2c3da66a65bc3bb4d56466a9d395",
+      "sourceQuestionNo": 5,
+      "primaryMethod": "수직선의 분할 눈금과 분수 위치",
+      "decisiveStep": "정수 사이의3등분 눈금을 읽고 음의 가분수를 해당 위치에 대응시킨다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "수직선과 대소 관계",
+        "l4": "수직선 위의 수"
+      },
+      "canonicalRecordId": "M1-RPM-015",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수",
+          "l3": "수직선과 대소 관계",
+          "l4": "수직선 위의 수"
+        },
+        "canonicalRecordId": "M1-RPM-128",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "q05 그림에서 각 정수 간격이3등분되고①은−2왼쪽 한 눈금임을 직접 확인했다. 수직선 위의 수 읽기가 핵심이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The goal is to select an extremal value among expressions after evaluation; this type also covers substituted expressions in algebra.",
+          "templateDefinition": "The template provides a short mixed-sign integer set and asks for the rightmost value.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "수직선에서 음수의 위치를 비교하는 계열은 공통이나 TPL의 혼합정수목록최우측과 가분수 눈금 대응은 다르다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "음의 가분수를 정수 경계와 분할 눈금에 연결하는 기본 표현 전환이다.",
+        "bucket": 2,
+        "reason": "음의 가분수를 정수 경계와 분할 눈금에 연결하는 기본 표현 전환이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_SCOPE_REVIEW",
+          "reason": "수직선의 분할된 분수 위치를 읽는 TPL 범위를 현재 정수목록순서 TPL과 구별한다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "d157842be62242712b4bd48c9df6c02e88875704316f2b2410286b7398434160",
+        "registeredQfull": "8ef8ad9372cecc697cf9e166ee928585ca47ee7e8f59ed3c5624215a87f37257",
+        "currentQbody": "d157842be62242712b4bd48c9df6c02e88875704316f2b2410286b7398434160",
+        "currentQfull": "8ef8ad9372cecc697cf9e166ee928585ca47ee7e8f59ed3c5624215a87f37257",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_cc141463187937a03cdd7ed29553006ed4e3fc95557c21c78d57f914b5dd8d66",
+      "sourceQuestionNo": 6,
+      "primaryMethod": "목표 합에서 빠진 정수 복원",
+      "decisiveStep": "알려진 세 수의 합을 구하고 허용된 두 목표합 각각에서 필요한 네 번째 값을 역산한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "부호가 있는 수의 덧셈"
+      },
+      "canonicalRecordId": "M1-RPM-019",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "덧셈과 뺄셈",
+          "l4": "부호가 있는 수의 덧셈"
+        },
+        "canonicalRecordId": "M1-RPM-132",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "카드 소재가 아니라 정수 합의 역산 문제이며 목표가0또는3이라는 실제 두 분기를 보존한다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The target is the original number after an operation was performed incorrectly; inverse-operation reasoning recovers it.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "주어진 합과 결과로 빠진 값을 역산하는 계열 재사용 후보. 기존 잘못한 연산 교정/역수 템플릿과는 다른 목표합 분기이다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "네 카드의 합이0또는3이면 허용되는 명시적 선택 조건이다.",
+        "integration": "허용 목표합0과3을 각각 두고 필요한 값을 비교한다. CC 유무 때문에 NONE으로 바꾸지 않는다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "목표합 두 가지를 각각 확인한 후 보기와 대응시켜야 한다.",
+        "bucket": 2,
+        "reason": "목표합 두 가지를 각각 확인한 후 보기와 대응시켜야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "두 허용합 가운데 성립하도록 만드는 빠진항 역산 TPL이 명확하지 않다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "f45dc28c9b891f312950a2ad7d00d0c1391c76d6ae6e4d50b2687a69d37eba69",
+        "registeredQfull": "2206a4717579b790be32bf4f59f83423f0e5b418623ac35c510279b2731f9aec",
+        "currentQbody": "f45dc28c9b891f312950a2ad7d00d0c1391c76d6ae6e4d50b2687a69d37eba69",
+        "currentQfull": "2206a4717579b790be32bf4f59f83423f0e5b418623ac35c510279b2731f9aec",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_516e20ec2f2bdde95a9a58199a789ee887c7554a8a933032b159e8a061614ed4",
+      "sourceQuestionNo": 7,
+      "primaryMethod": "절댓값의 극단을 고른 뒤 원래 수 사용",
+      "decisiveStep": "주어진 수들의0까지 거리를 비교해 두 수를 선택하고 원래 부호를 보존하여 합한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "절댓값",
+        "l4": "절댓값의 뜻"
+      },
+      "canonicalRecordId": "M1-RPM-017",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수",
+          "l3": "절댓값",
+          "l4": "절댓값의 뜻"
+        },
+        "canonicalRecordId": "M1-RPM-130",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "목표는 가장 큰 수와 작은 수가 아니라 절댓값이 가장 큰/작은 원래 수의 합이다.",
+      "activeLookup": [],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "절댓값 비교와 원래 수의 부호 보존을 구별한 뒤 합해야 한다.",
+        "bucket": 2,
+        "reason": "절댓값 비교와 원래 수의 부호 보존을 구별한 뒤 합해야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_SCOPE_REVIEW",
+          "reason": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES는 절댓값만주어진수의부호선택극값 문제. 여기처럼 실제수목록에서절댓값극단을고르는문항과 같다고 단정하지 않는다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "8acad658f14565d072bcfc908062fb5b92b13d1ff3326187ce48fcfab0cd7ce7",
+        "registeredQfull": "2928ae69244805fb7299f2a659b2658b7bcf1cb4fe4ec37dd349a198122e3619",
+        "currentQbody": "8acad658f14565d072bcfc908062fb5b92b13d1ff3326187ce48fcfab0cd7ce7",
+        "currentQfull": "2928ae69244805fb7299f2a659b2658b7bcf1cb4fe4ec37dd349a198122e3619",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_ac3beac9f7e420578b2cad9c705b1b6962b1ec3fd0a23de473212d82906d085a",
+      "sourceQuestionNo": 8,
+      "primaryMethod": "곱이1인 역수의 부호와 정수성 판별",
+      "decisiveStep": "각 카드 수의 역수를 구하고 그 값이 음수이면서 정수인지 확인한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_NEGATIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "곱셈과 나눗셈",
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "곱셈과 나눗셈",
+          "l4": null
+        },
+        "canonicalRecordId": null,
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "역수 관계를 만족하는 값의 수 체계 판별이 필요하다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_RECIPROCAL_RELATION",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The target is the original number after an operation was performed incorrectly; inverse-operation reasoning recovers it.",
+          "templateDefinition": "The template defines one value by its reciprocal and the other as the reciprocal of a rational input, then requests their sum.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "역수로 값을 복원하는 핵심은 공통이나 두역수의 합과 음의정수후보선택의 차이는 구별한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "빈칸 값은 곱1 조건을 만족하는 역수이면서 음의 정수여야 한다.",
+        "integration": "역수를 복원한 뒤 음수·정수 조건으로 후보를 거른다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "역수 변환 후 부호와 정수성 두 조건을 함께 확인한다.",
+        "bucket": 2,
+        "reason": "역수 변환 후 부호와 정수성 두 조건을 함께 확인한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "역수의 수체계 선택에 정확한 M1 L4가 없다."
+        },
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_SCOPE_REVIEW",
+          "reason": "역수값 복원 PT 재사용 우선 검토; 합산TPL을 도메인선택으로 무단 확장하지 않는다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "b5d5d5a4e7172fc987e12aba2fa989f3a67a13ed8a7d98744023820050cc0a90",
+        "registeredQfull": "f4b65ffe0289957a2fede2db2522e03dc700723806eaf2a363ad64dea9279466",
+        "currentQbody": "b5d5d5a4e7172fc987e12aba2fa989f3a67a13ed8a7d98744023820050cc0a90",
+        "currentQfull": "f4b65ffe0289957a2fede2db2522e03dc700723806eaf2a363ad64dea9279466",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_e7e12f169a7f36d03a34638c95bde4ef7774cda65513f5ef097ce226c6762f42",
+      "sourceQuestionNo": 9,
+      "primaryMethod": "부호·거듭제곱·나눗셈 계산 검토",
+      "decisiveStep": "각 보기의 부호 규칙과 거듭제곱의 홀짝을 확인해 등식의 참 여부를 판단한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "거듭제곱이 포함된 혼합 계산"
+      },
+      "canonicalRecordId": "M1-RPM-026",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "혼합 계산",
+          "l4": "거듭제곱이 포함된 혼합 계산"
+        },
+        "canonicalRecordId": "M1-RPM-139",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "여러 유리수 계산의 정확성을 판정한다. 별도의 법칙 이름을 맞히는 문제가 아니다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "유리수 연산 계열의 기존 정의를 재사용 우선 검토하되 공통인수 계산으로 한정된 PT 본문/세부TPL과 구별한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "곱셈·나눗셈·거듭제곱의 기본 부호 규칙을 여러 형태로 대조한다.",
+        "bucket": 2,
+        "reason": "곱셈·나눗셈·거듭제곱의 기본 부호 규칙을 여러 형태로 대조한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "연산법칙 이름을 고르는 PT_RATIONAL_OPERATION_RULE_JUDGMENT와 계산결과의참거짓판정은 다르다."
+        },
+        {
+          "type": "MULTI_LEAF_COVERAGE_NOTE",
+          "reason": "곱셈·나눗셈M1-RPM-022/023과 거듭제곱계산026이 보기별로 함께 필요하다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "78870b01e474340d2a3a5b98eda1540b0dab81a69280e43a4eedf89d9c95de39",
+        "registeredQfull": "6eae9023587fdb887708ea46f99c0e63cc411dfc6ce0fd03a05362e8c5c41b42",
+        "currentQbody": "78870b01e474340d2a3a5b98eda1540b0dab81a69280e43a4eedf89d9c95de39",
+        "currentQfull": "6eae9023587fdb887708ea46f99c0e63cc411dfc6ce0fd03a05362e8c5c41b42",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_8726aa5f38e0ce6db1519cf3da39e006800d84a4073f3a955be59afa05196041",
+      "sourceQuestionNo": 10,
+      "primaryMethod": "괄호와 연산 우선순위 판별",
+      "decisiveStep": "괄호 안에서 곱셈·나눗셈을 왼쪽부터 먼저 처리하고 덧셈 후 바깥 연산으로 나가는 순서를 정한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "괄호가 있는 혼합 계산"
+      },
+      "canonicalRecordId": "M1-RPM-025",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "혼합 계산",
+          "l4": "괄호가 있는 혼합 계산"
+        },
+        "canonicalRecordId": "M1-RPM-138",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "최종 계산값이 아니라 실행해야 할 연산의 순서를 묻는 문항이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The target is an incorrectly named calculation step; match each transformation to its arithmetic law.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "연산 법칙·변형 검사 계열이 관련되지만 기존 TPL은 변형의법칙이름오류를고르므로 우선순위선택용 TPL 확인이 필요하다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "모든 연산이 표시되어 있어 괄호 우선과 동순위 좌결합 규칙을 직접 적용한다.",
+        "bucket": 1,
+        "reason": "모든 연산이 표시되어 있어 괄호 우선과 동순위 좌결합 규칙을 직접 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "연산 순서를 고르는 것과 제시된법칙명오류판정은 서로 다른 골격이다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "fe9e6e4a7730a14e58c56a58ce31423b3392e6ab9e7168dfee6297b9a15bc6ec",
+        "registeredQfull": "50a857956af0197363888a61ccc71dc97c8ffec00a374d8c26f6063c816b147f",
+        "currentQbody": "fe9e6e4a7730a14e58c56a58ce31423b3392e6ab9e7168dfee6297b9a15bc6ec",
+        "currentQfull": "50a857956af0197363888a61ccc71dc97c8ffec00a374d8c26f6063c816b147f",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_16a8bc0f225c6131fc4794722e525b619b08990354fe0bc47b7b84494270846d",
+      "sourceQuestionNo": 11,
+      "primaryMethod": "같은 변의 합에서 빠진 정수 역산",
+      "decisiveStep": "각 변의 세 수 합이 같은 목표값이 되도록 빈칸을 차례로 결정하고 합한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "덧셈과 뺄셈",
+        "l4": "덧셈·뺄셈 혼합"
+      },
+      "canonicalRecordId": "M1-RPM-021",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "덧셈과 뺄셈",
+          "l4": "덧셈·뺄셈 혼합"
+        },
+        "canonicalRecordId": "M1-RPM-134",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "q11의 꼭대기−1, 오른변2, 아래왼쪽3, 아래중간−2와 두 빈칸을 실제로 보았다. 같은변합 PT/TPL의 구조와 일치한다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+          "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The target is the sum of missing entries under equal perimeter-sum constraints; write one equation per side.",
+          "templateDefinition": "The template places known signed integers on the base and two sloping sides, with a shared top vertex and two blanks.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "삼각형 세변의 합 조건에서 두 빈칸을 복원하고 합하는 ACTIVE 정의가 정확히 대응한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "세 변에서 각각 주어진 정수들의 합이5이다.",
+        "integration": "한 변의 합으로 빈칸을 구하고 다른 변 조건을 사용한 뒤 두 값을 합한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "공유하는 꼭짓점이 있는 두 합 관계를 순서대로 적용한다.",
+        "bucket": 2,
+        "reason": "공유하는 꼭짓점이 있는 두 합 관계를 순서대로 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "00d479b5336b1e41bc48a880dd7895125a7548a8a5b6bb48fe671f237edcd5d7",
+        "registeredQfull": "d234148247cde0c688f4f11dc246741be0ef08a821d845ec758341b342943247",
+        "currentQbody": "00d479b5336b1e41bc48a880dd7895125a7548a8a5b6bb48fe671f237edcd5d7",
+        "currentQfull": "d234148247cde0c688f4f11dc246741be0ef08a821d845ec758341b342943247",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_7317585f7a40adb63640b6858cf77c34f03c776ebbf0d16d2be74747fc29ad49",
+      "sourceQuestionNo": 12,
+      "primaryMethod": "문자식 연산기호 생략의 정확성 판별",
+      "decisiveStep": "숫자 계수의 위치, 반복 문자의 거듭제곱, 나눗셈 분모와 음수 계수를 점검한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "문자의 사용",
+        "l4": "곱셈·나눗셈 기호 생략"
+      },
+      "canonicalRecordId": "M1-RPM-028",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산",
+          "l3": "문자의 사용",
+          "l4": "곱셈·나눗셈 기호 생략"
+        },
+        "canonicalRecordId": "M1-RPM-141",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "곱셈·나눗셈 기호를 생략한 표현을 검토하는 직접 유형이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The goal is to validate symbolic translations of everyday quantities; compare each expression with its verbal meaning.",
+          "templateDefinition": "The template tests omitted × and ÷ signs in expressions with letters, negatives, and coefficients.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-03",
+              "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-03",
+              "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "문자·음수·계수의곱셈과나눗셈기호생략을검토하는템플릿과일치한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "여러 기본 표기규칙의 오개념 보기를 함께 확인한다.",
+        "bucket": 2,
+        "reason": "여러 기본 표기규칙의 오개념 보기를 함께 확인한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "5713b3d75c14840d125a12dcf808eef6a7aa0783ac29f42c12d0db9a822ef134",
+        "registeredQfull": "58726c7cadba12935ca933ffe88744e620e942cb31a48f2a4589af21103f3a7e",
+        "currentQbody": "5713b3d75c14840d125a12dcf808eef6a7aa0783ac29f42c12d0db9a822ef134",
+        "currentQfull": "58726c7cadba12935ca933ffe88744e620e942cb31a48f2a4589af21103f3a7e",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a8d6dc52ca3ac4bd8395074c80e9d28078b10ae3a56c60a7672a6e63df7aeba",
+      "sourceQuestionNo": 13,
+      "primaryMethod": "세 길이의 공약수 조건 판별",
+      "decisiveStep": "같은 정육면체로 빈틈없이 나누려면 한 변 길이가 원래 세 길이를 각각 나누어야 함을 적용한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_DIVISIBILITY"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "최대공약수·최소공배수의 활용",
+        "l4": "나누어떨어짐 조건"
+      },
+      "canonicalRecordId": "M1-RPM-011",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "최대공약수와 최소공배수",
+          "l3": "최대공약수·최소공배수의 활용",
+          "l4": "나누어떨어짐 조건"
+        },
+        "canonicalRecordId": "M1-RPM-124",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "최댓값을 묻지 않으므로 무조건 최대공약수값 산출 유형으로만 분류하지 않는다. 후보 한 변의 공약수 여부가 직접 목표이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The target is the candidate that fails common-divisor membership; minimum prime exponents provide the decisive test.",
+          "templateDefinition": "The template gives two prime factorizations and asks which listed divisor exceeds a shared prime exponent.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-GCD_LCM",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "공약수 조건을 만족하지 않는 후보를 고르는 핵심은 일치. 원래 세 길이의 도형 모델링을 선행 단계로 기록한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "원래 가로·세로·높이가 선택한 한 변의 길이로 모두 나누어떨어져야 한다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "입체 분할 조건을 세 정수의 나눗셈 조건으로 바꾸는 표준 응용이다.",
+        "bucket": 2,
+        "reason": "입체 분할 조건을 세 정수의 나눗셈 조건으로 바꾸는 표준 응용이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "08ff7ead030f6402abc1d014e0bc7f8c520ecb8b964b2844975a8ef9df90c59b",
+        "registeredQfull": "01c87b0908978db74220852bbe166191d5f998436d186e9dbd64cf5c2007cb01",
+        "currentQbody": "08ff7ead030f6402abc1d014e0bc7f8c520ecb8b964b2844975a8ef9df90c59b",
+        "currentQfull": "01c87b0908978db74220852bbe166191d5f998436d186e9dbd64cf5c2007cb01",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_a968b3488bbfe15d8b217ca9f5ff0dce4410c04da953e6f89027f04baa830280",
+      "sourceQuestionNo": 14,
+      "primaryMethod": "문자에 주어진 값 대입",
+      "decisiveStep": "두 문자값을 일차식에 넣고 음수에 대한 뺄셈을 처리한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "식의 값",
+        "l4": "대입하여 식의 값 구하기"
+      },
+      "canonicalRecordId": "M1-RPM-029",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산",
+          "l3": "식의 값",
+          "l4": "대입하여 식의 값 구하기"
+        },
+        "canonicalRecordId": "M1-RPM-142",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "비표준 연산이나 식 구성 없이 보통 문자식의 값을 직접 구한다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "수나 문자를 일차식에 대입하고 연산 순서에 따라 식의 값을 구한다.",
+          "templateDefinition": "주어진 수를 일차식에 대입한 뒤 거듭제곱·부호·곱셈·나눗셈 순서로 식의 값을 구한다.",
+          "bindings": [
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-03",
+              "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "일반문자식에값대입하는정확한ACTIVE정의.비표준연산CORE와구별한다.",
+          "disposition": "EXISTING_DEFINITION_BINDING_GAP_2015"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "주어진 두 값을 넣는 짧은 기본 계산이다.",
+        "bucket": 1,
+        "reason": "주어진 두 값을 넣는 짧은 기본 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "f79ab7c57e83294a81204b27837812c346ac2315b6752d056e4284b1e3b3fa4b",
+        "registeredQfull": "8ea496900a6a2bb1e396479dd4167adb4ff94357939c6936f6e7a1f463572fac",
+        "currentQbody": "f79ab7c57e83294a81204b27837812c346ac2315b6752d056e4284b1e3b3fa4b",
+        "currentQfull": "8ea496900a6a2bb1e396479dd4167adb4ff94357939c6936f6e7a1f463572fac",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_794db02f4e679ba7a086169d03379d9bcfd3733aff20a4e80056d0c7035440ad",
+      "sourceQuestionNo": 15,
+      "primaryMethod": "공통·전체 소인수 지수로 매개변수 제약",
+      "decisiveStep": "최대공약수의 최소지수와 최소공배수의 최대지수를 함께 비교해 제시된 문자를 결정하려는 구조이다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "공약수 조건으로 수 찾기"
+      },
+      "canonicalRecordId": "M1-RPM-008",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "최대공약수와 최소공배수",
+          "l3": "공약수와 최대공약수",
+          "l4": "공약수 조건으로 수 찾기"
+        },
+        "canonicalRecordId": "M1-RPM-121",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "gcd/lcm 지수조건 PT/TPL은 정확한 재사용 후보지만 c의 소수성 등 발문에 빠진 전제 여부 때문에 값의 유일성 확정은 보류한다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The task recovers unknown exponents and a prime factor from simultaneous gcd and lcm specifications; min/max exponent matching is decisive.",
+          "templateDefinition": "The template jointly uses gcd minima and lcm maxima for each prime to solve factorization parameters before evaluating an expression.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-GCD_LCM",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "각 소수의gcd최소·lcm최대지수를결합해매개변수를구하는정의와일치한다.단c가소수라는전제확인필요.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "gcd와lcm값이 모두 고정되어 있다. source에 없는 c소수조건은 추가하지 않았다.",
+        "integration": "각 소인수의 최소·최대 지수가 같은 두 수를 동시에 제한한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "최소·최대 지수를 서로 맞추고 추가 인수의 역할을 판정하는 결합 제약이다.",
+        "bucket": 3,
+        "reason": "최소·최대 지수를 서로 맞추고 추가 인수의 역할을 판정하는 결합 제약이다.",
+        "confidence": "low",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [
+        {
+          "type": "MISSING_FACTOR_DOMAIN_CONSTRAINT_SUSPECTED",
+          "reason": "발문은c의소수성이나제시식이완전소인수분해라는전제를명시하지 않는다. a와c에3인수를어떻게배분하는지가달라질여지가있어원본PDF의조건 확인 필요. 풀이/정답은 생성하지 않음."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "e3c5050b6b5f776dbe9906442f0465308ee6d470e1a7e6c3873977d77e99f8de",
+        "registeredQfull": "4a7db9067e5138150a2fdd8956c32fa519f2cb519318a9647366d94b2e465d91",
+        "currentQbody": "e3c5050b6b5f776dbe9906442f0465308ee6d470e1a7e6c3873977d77e99f8de",
+        "currentQfull": "4a7db9067e5138150a2fdd8956c32fa519f2cb519318a9647366d94b2e465d91",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_206ba8bff25e8a9572de91d2fe305998c8dab92d4232f6a2f42982124885f383",
+      "sourceQuestionNo": 16,
+      "primaryMethod": "공통 소인수의 최소 지수로 약수 검사",
+      "decisiveStep": "세 수에 공통인 소인수의 허용 지수를 정하고 각 후보가 그 범위를 넘는지 확인한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "공약수와 최대공약수",
+        "l4": "소인수분해로 최대공약수 구하기"
+      },
+      "canonicalRecordId": "M1-RPM-007",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "최대공약수와 최소공배수",
+          "l3": "공약수와 최대공약수",
+          "l4": "소인수분해로 최대공약수 구하기"
+        },
+        "canonicalRecordId": "M1-RPM-120",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "공약수 여부를 결정하는 실제 핵심은 최소 지수 비교이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The target is the candidate that fails common-divisor membership; minimum prime exponents provide the decisive test.",
+          "templateDefinition": "The template gives two prime factorizations and asks which listed divisor exceeds a shared prime exponent.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-GCD_LCM",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "공통소인수의허용지수를넘는후보를고르는정의와일치한다.제시수는2개가아니라3개라는입력수차이를명시한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "모든 세 수를 나누어야 공약수이다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "세 소인수분해에서 공통 지수의 제한을 읽어 다섯 후보와 비교한다.",
+        "bucket": 2,
+        "reason": "세 소인수분해에서 공통 지수의 제한을 읽어 다섯 후보와 비교한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "232c6573e55325030e1a5097116eaced0d235ce03f86c4141cc24796009ccaab",
+        "registeredQfull": "935c42fded33ee5ccdabb8f73bef552d5b7ed289177dc60e7d19d31aaa703a6a",
+        "currentQbody": "232c6573e55325030e1a5097116eaced0d235ce03f86c4141cc24796009ccaab",
+        "currentQfull": "935c42fded33ee5ccdabb8f73bef552d5b7ed289177dc60e7d19d31aaa703a6a",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_d68695be6b14d7c5a2610c51be89eaaa98583d2d701d37a87b178149ae9b7f07",
+      "sourceQuestionNo": 17,
+      "primaryMethod": "평균을 합과 자료수의 문자식으로 표현",
+      "decisiveStep": "확인된 다섯 점수의 합과 두 미지 점수를 모두 더한 뒤 전체 과목수로 나눈다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "문자와 식",
+        "midUnit": "문자의 사용과 식의 계산",
+        "l3": "문자의 사용",
+        "l4": "문자로 수량 나타내기"
+      },
+      "canonicalRecordId": "M1-RPM-027",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "문자와 식",
+          "midUnit": "문자의 사용과 식의 계산",
+          "l3": "문자의 사용",
+          "l4": "문자로 수량 나타내기"
+        },
+        "canonicalRecordId": "M1-RPM-140",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "단순 합산이 아니라 일곱 점수 전체를 분자로 묶는 문자식 구성이다. 선택지 중복은 메타와 별도 원문 결함으로 남긴다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The goal is to validate symbolic translations of everyday quantities; compare each expression with its verbal meaning.",
+          "templateDefinition": "The template mixes price, age, perimeter, money, and place-value descriptions and asks for the incorrect translation.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-03",
+              "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-03",
+              "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "주어진수량관계를문자식으로표현하는계열;평균형입력의범위는별도명시한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "평균의 합÷개수 관계가 문자식 구성에 필요하다. 일치하는 ACTIVE CrossConcept 정의가 없으면 키를 만들지 않고4칸에보존한다.",
+        "condition": "전체7과목을모두포함하여평균을구한다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "평균의 정의를 문자식의 괄호·분모 범위와 연결하는 기본 표현이다.",
+        "bucket": 2,
+        "reason": "평균의 정의를 문자식의 괄호·분모 범위와 연결하는 기본 표현이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [
+        {
+          "type": "DUPLICATED_CHOICES_CONFIRMED",
+          "reason": "원문JS의선택지③·④가둘다동일한 (430+a+b)/7 문자열이다. 단일선택유일성은별도원본대조필요; source choices를수정하지않음."
+        }
+      ],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "92cef0aadbba4198f16768d8cd3bcfff33291c6d5f746c68041b52fd6e3faff7",
+        "registeredQfull": "09922bf7cc655b4343c280740c6c93dbaacbb0a34e7036d3cb0dd35757113f65",
+        "currentQbody": "92cef0aadbba4198f16768d8cd3bcfff33291c6d5f746c68041b52fd6e3faff7",
+        "currentQfull": "09922bf7cc655b4343c280740c6c93dbaacbb0a34e7036d3cb0dd35757113f65",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_bea1bf4d3e4deaa8899baf99ab3ecd723861da1c46a5ac43decd530f713cb40d",
+      "sourceQuestionNo": 18,
+      "primaryMethod": "두 반복 주기의 최소공배수",
+      "decisiveStep": "십간의10주기와십이지의12주기가처음함께돌아오는간격을구해기준연도에더한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "최대공약수와 최소공배수",
+        "l3": "최대공약수·최소공배수의 활용",
+        "l4": "주기·배열·묶음 문제"
+      },
+      "canonicalRecordId": "M1-RPM-012",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "최대공약수와 최소공배수",
+          "l3": "최대공약수·최소공배수의 활용",
+          "l4": "주기·배열·묶음 문제"
+        },
+        "canonicalRecordId": "M1-RPM-125",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "q18의10개/12개맞물린바퀴는발문의공배수주기를시각화한다.두주기동기화가명시된LCM응용이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_LCM_APPLICATION",
+          "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "주어진 여러 길이의 공배수 조건을 이용해 가장 작은 정육면체의 변 길이를 정하고 반복 단위의 개수를 구한다.",
+          "templateDefinition": "두 attendance cycle의 최소공배수 주기를 구해 한 주기당 겹치는 날을 세고 기간 수만큼 반복한다.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-GCD_LCM",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "반복주기의최소공배수라는골격은공통.출석횟수·기간계수한정TPL과연도복귀목표의범위를구별한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "10·12의두주기가동시에돌아오는첫해를묻고기준은2004년이다.",
+        "integration": "공통주기후기준연도에더하여연도를정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "두주기의최초공통반복간격과기준연도를연결하는표준문제이다.",
+        "bucket": 2,
+        "reason": "두주기의최초공통반복간격과기준연도를연결하는표준문제이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_SCOPE_REVIEW",
+          "reason": "기존LCM응용정의와주기TPL재사용우선;최초연도산출을정육면체·출석횟수로오인하지않는다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "76cd36eb7b4e8dd934729e03c5889e62baa0e25b32795576404d25d1d88e1336",
+        "registeredQfull": "b8d408a4604168f0f5e5e92c08a09310487215f3f5be1f07997570b95b6d0d82",
+        "currentQbody": "76cd36eb7b4e8dd934729e03c5889e62baa0e25b32795576404d25d1d88e1336",
+        "currentQfull": "b8d408a4604168f0f5e5e92c08a09310487215f3f5be1f07997570b95b6d0d82",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_38d44411b60118b8f0c5ea883b69bcfb20012289f1e4b5351ef28e8271eecdeb",
+      "sourceQuestionNo": 19,
+      "primaryMethod": "인접 합의 소수 조건을 만족하는 배치",
+      "decisiveStep": "사용하지않은수들을정하고고정된이웃수와합이소수가되는후보를연쇄적으로제한한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소수와 합성수",
+        "l4": "소수의 성질 활용"
+      },
+      "canonicalRecordId": "M1-RPM-002",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "소인수분해",
+          "l3": "소수와 합성수",
+          "l4": "소수의 성질 활용"
+        },
+        "canonicalRecordId": "M1-RPM-115",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "단순 소수의 개수나 진술판정이 아니라 모든 인접쌍 제약을 동시에 만족시키는 순서 배치이다.",
+      "activeLookup": [],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "n번째줄에1부터n까지를모두사용하며첫칸1·끝칸n·인접합소수를동시에지킨다.",
+        "integration": "빈칸후보에따라다음인접가능수가달라져배치경우를나누고소수조건으로배제한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "levelReason": "서로다른빈칸선택이이웃조건과사용가능수를상호제약하여다수후보를연쇄검토해야한다.",
+        "bucket": 4,
+        "reason": "서로다른빈칸선택이이웃조건과사용가능수를상호제약하여다수후보를연쇄검토해야한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "NEW_TEMPLATE_OR_TYPE_NEEDED_AFTER_ACTIVE_LOOKUP",
+          "reason": "소수판별ACTIVE계열과일반중복순열/고등수열계열을대조했으나인접합소수·고정끝점·중복없는배치완성은정의가다르다.별도배치전략TPL필요여부인계."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_cb4941aa30221dc9583d49e95ca44a583b650d8f1143e09333670520f26d1809",
+      "sourceQuestionNo": 20,
+      "primaryMethod": "소인수의 지수 조합으로 약수 표 완성",
+      "decisiveStep": "가로의2거듭제곱과세로의3거듭제곱을곱해각약수가놓이는행·열을복원한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "소인수분해를 이용한 약수의 구조"
+      },
+      "canonicalRecordId": "M1-RPM-004",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "소인수분해",
+          "l3": "소인수분해",
+          "l4": "소인수분해를 이용한 약수의 구조"
+        },
+        "canonicalRecordId": "M1-RPM-117",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "72의약수생성구조를곱셈표로표현한문제이다.최대공약수나약수개수산출과구별한다.",
+      "activeLookup": [],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "별도 정의역·부호·정수성 제한은 발문에 제시되지 않았다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "행·열의소인수거듭제곱을읽고빠진곱을채우는기본구조이해이다.",
+        "bucket": 2,
+        "reason": "행·열의소인수거듭제곱을읽고빠진곱을채우는기본구조이해이다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "소인수별허용지수로약수를만드는구조는명확하다.기존약수여부선택/약수개수3개TPL을빈곱셈표완성에강제하지않는다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_c8637f3469ed02443b3a39ea1ce3cc39b73837b8fd99e24a22740292c9e651dc",
+      "sourceQuestionNo": 21,
+      "primaryMethod": "소인수분해의 정의와 잘못된 표현 대조",
+      "decisiveStep": "수가같은등식이라는것과소수들만의곱으로나타냈다는요건을구별하여제시된표현의잘못을찾는다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "소인수분해",
+        "midUnit": "소인수분해",
+        "l3": "소인수분해",
+        "l4": "자연수의 소인수분해"
+      },
+      "canonicalRecordId": "M1-RPM-003",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "소인수분해",
+          "midUnit": "소인수분해",
+          "l3": "소인수분해",
+          "l4": "자연수의 소인수분해"
+        },
+        "canonicalRecordId": "M1-RPM-116",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "발문 속 준호의 풀이는 검토대상이며 확정 해설이 아니다. SOURCE_ONLY 정식 method는비워둔다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+          "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "definition": "The task asks which symbolic equality correctly expresses exponentiation or prime factorization; the defining strategy is to verify each equality against multiplication and prime-power rules.",
+          "templateDefinition": "The template is a five-choice truth check mixing repeated addition, powers, prime factorization, and decimal powers; the student rejects each false representation.",
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-01",
+              "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "소인수분해의표현정확성을검토하는ACTIVE골격은재사용후보.다섯보기선택대신한풀이의오류설명이라는산출형식차이를기록한다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "제시된풀이의잘못된요소들을모두지적하고이유를서술해야한다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "등식값만확인하지않고곱의형식과인수의소수성을설명해야한다.",
+        "bucket": 2,
+        "reason": "등식값만확인하지않고곱의형식과인수의소수성을설명해야한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4b247193e0cfdf8f2da2a823bc199549d4f0d3be7cb4c7db181596b59b00da7f",
+      "sourceQuestionNo": 22,
+      "primaryMethod": "지정된 분배법칙으로 유리수 계산",
+      "decisiveStep": "괄호밖의자연수를두분수에각각곱하는형태로바꾼뒤합한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": "혼합 계산",
+        "l4": "괄호가 있는 혼합 계산"
+      },
+      "canonicalRecordId": "M1-RPM-025",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": "혼합 계산",
+          "l4": "괄호가 있는 혼합 계산"
+        },
+        "canonicalRecordId": "M1-RPM-138",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "발문이분배법칙을직접지정한다.일반사칙계산정답만맞는방법으로대체할수없는문항이다.",
+      "activeLookup": [
+        {
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": null,
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": null,
+          "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
+          "templateDefinition": null,
+          "bindings": [
+            {
+              "curriculum": "2015",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            },
+            {
+              "curriculum": "2022",
+              "standardUnitKey": "M1-02",
+              "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+              "status": "ACTIVE",
+              "ownerPack": "MIDDLE1"
+            }
+          ],
+          "semanticReason": "유리수사칙계산에서분배법칙을쓰는PT계열은재사용후보이나현재TPL의소수공통인수인식과명시된분배전개는다르다.",
+          "disposition": "EXISTING_ACTIVE_DEFINITION_REUSE_PROPOSAL"
+        }
+      ],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "계산방법으로덧셈에대한곱셈의분배법칙사용이명시되어있다.",
+        "integration": "한 주개념의 직접 적용이며 별도 개념 결합이 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "levelReason": "사용할법칙이명시되어있으며두분수와72의곱이단순화된다.",
+        "bucket": 1,
+        "reason": "사용할법칙이명시되어있으며두분수와72의곱이단순화된다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "지정한분배법칙으로곱을전개하는TPL범위를현재소수공통인수묶기TPL과구별한다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_b350d047a1052165477735c3446f2c392bb7b26e6ea2f46f8615cf761cd13d43",
+      "sourceQuestionNo": 23,
+      "primaryMethod": "반복 묶음의 길이와 몫·나머지 사용",
+      "decisiveStep": "그림에서흰돌4개와검은돌5개의반복단위를읽고완전한묶음수와남는위치를구분한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수의 계산",
+        "l3": null,
+        "l4": null
+      },
+      "canonicalRecordId": null,
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수의 계산",
+          "l3": null,
+          "l4": null
+        },
+        "canonicalRecordId": null,
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "q23실제그림은흰4·검5의9개단위반복이다.두주기의LCM문제로분류하지않는다.초등반복규칙/몫나머지영역에가까워M1정확RPMleaf공백을명시한다.",
+      "activeLookup": [],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "주분류의 핵심 개념만 필요하며 독립된 추가 개념을 요구하지 않는다.",
+        "condition": "첫번째부터200번째까지와정확히200번째위치를구별한다.",
+        "integration": "완전반복묶음과남은부분을구한결과로마지막색과전체개수를정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "한반복단위를정한뒤몫·나머지로200번째위치와두색의누적개수를해석한다.",
+        "bucket": 2,
+        "reason": "한반복단위를정한뒤몫·나머지로200번째위치와두색의누적개수를해석한다.",
+        "confidence": "medium",
+        "boundary": "NONE",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "RPM_LEAF_GAP",
+          "reason": "단일주기반복규칙과자연수나눗셈의몫·나머지가핵심이며M1-1의LCM·유리수사칙leaf에정확히대응하지않는다."
+        },
+        {
+          "type": "STANDARD_SCOPE_EVIDENCE_DEBT",
+          "reason": "M1-02-RATIONAL_NUMBER_OPERATIONS는임시비교후보뿐이다.초등선행영역의정식route/세부단원표현을후속검토할것."
+        },
+        {
+          "type": "NEW_TEMPLATE_OR_TYPE_NEEDED_AFTER_ACTIVE_LOOKUP",
+          "reason": "ACTIVE중복배정/고등등차등비/귀납수열은단일반복색배열의항과누적개수와다른정의다."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_04c2545714cdc02acedf7c0c81ce2efff21b0782c04166d013aa4c592c174810",
+      "sourceQuestionNo": 24,
+      "primaryMethod": "절댓값 대칭과 수직선 순서의 공동 제약",
+      "decisiveStep": "같은절댓값이면서서로다른두정수의대칭위치를거리조건과결합하고남은정수의순서·합조건을적용한다.",
+      "semanticStatus": "EVIDENCE_DEBT",
+      "evidenceStatus": "SOURCE_ONLY_PROPOSAL",
+      "before": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": null
+      },
+      "after": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_NUMBER_LINE"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중"
+      },
+      "sourcePatch": {},
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "majorUnit": "정수와 유리수",
+        "midUnit": "정수와 유리수",
+        "l3": "절댓값",
+        "l4": "절댓값 조건으로 수 찾기"
+      },
+      "canonicalRecordId": "M1-RPM-018",
+      "current2022Correspondence": {
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M1-1",
+          "majorUnit": "정수와 유리수",
+          "midUnit": "정수와 유리수",
+          "l3": "절댓값",
+          "l4": "절댓값 조건으로 수 찾기"
+        },
+        "canonicalRecordId": "M1-RPM-131",
+        "role": "COMPARISON_2022_ONLY",
+        "sourceMachineCurriculum": null
+      },
+      "classificationReason": "절댓값·거리·정수범위·서로다름·순서를모두함께보아야한다.같은절댓값만보고네수를추정하지않는다.",
+      "activeLookup": [],
+      "resolverStatus": "BLOCKED_SOLUTION_IDENTITY_NOT_VERIFIED_FINAL",
+      "auxiliaryReasons": {
+        "crossConcept": "절댓값조건에추가로수직선거리와좌우순서를해석해야한다.",
+        "condition": "네정수는서로다르며절댓값4미만이고,b/d의같은절댓값·거리4·b<d,a의왼쪽극단,b+d=c를동시에만족한다.",
+        "integration": "절댓값대칭·정수범위·서로다름·거리·순서조건이네수의허용값을동시에결정한다."
+      },
+      "difficulty": {
+        "level": "중",
+        "levelReason": "여섯조건이서로제약하는구조에서먼저정할두수와나머지수의역할을분리해야한다.",
+        "bucket": 3,
+        "reason": "여섯조건이서로제약하는구조에서먼저정할두수와나머지수의역할을분리해야한다.",
+        "confidence": "medium",
+        "boundary": "B23",
+        "status": "SOURCE_ONLY_PROPOSAL",
+        "independentFromLegacyLevel": true,
+        "preservedSourceLevel": null
+      },
+      "gaps": [
+        {
+          "type": "EXISTING_DEFINITION_TEMPLATE_GAP",
+          "reason": "절댓값조건으로수찾기RPMleaf는명확하나여러정수의상호제약을직접포괄하는ACTIVE TPL은미확정."
+        },
+        {
+          "type": "SOLUTION_EVIDENCE_DEBT",
+          "field": "method; final Resolver/PT/TPL",
+          "reason": "SOURCE_ONLY answer/solution remain blank; final Resolver requires VERIFIED_FINAL and independentVerification=true. Stem strategy is only a proposal."
+        }
+      ],
+      "contentDebt": [],
+      "fourSlotStatus": "EVIDENCE_DEBT_SOURCE_ONLY_METHOD",
+      "fingerprintComparison": {
+        "registeredQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "registeredQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "currentQbody": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d",
+        "currentQfull": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd",
+        "bodyMatches": true,
+        "fullMatches": true
+      },
+      "sourceCurriculumContext": {
+        "status": "UNKNOWN",
+        "value": null,
+        "reason": "Original year alone is not a machine curriculum value."
+      },
+      "proposedCorrections": [],
+      "sourcePatchProposal": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER"
+      },
+      "rpmPathRole": "COMPARISON_2015_ONLY",
+      "sourcePatchPolicy": "Existing schema fields only; absent fields remain sidecar proposals, never an implicit schema extension."
+    }
+  ],
+  "topics": [
+    "소수·소인수분해",
+    "최대공약수·최소공배수",
+    "정수·유리수·절댓값",
+    "문자식",
+    "반복규칙의범위공백"
+  ],
+  "notes": [
+    "2015 and 2022 RPM paths are comparison contexts. Missing explicit source curriculum stays UNKNOWN.",
+    "PT/TPL keys in activeLookup are lookup evidence/proposals, not a spoofed successful final Resolver result.",
+    "No source answer/solution was rewritten.",
+    "QBODY/QFULL follow raw content-null convention for examData; supplemental sourceStemSha256 and sourceBlob bind the actual question field."
+  ],
+  "workKey": "M1-S1-META-FULL",
+  "rootIntegration": {
+    "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+    "at": "2026-11-14T08:31:10.062Z",
+    "workerArtifactSha256": "412d7b578af8266fb3373649416481b8054c34aad59981dd303615fd8aa4b71d",
+    "sourceBaselineBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+    "sourceCurrentBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+    "afterIsProposedMetadata": true,
+    "appliedSourcePatches": [],
+    "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run.",
+    "registration": "NOT_RUN",
+    "productionInbox": "NOT_WRITTEN",
+    "officialResolverPrerequisite": "NOT_CONFIRMED_FOR_CURRENT_QFULL",
+    "protectedFields": "UNCHANGED_VERIFIED_BY_ROOT_CHECK",
+    "rootIndependentReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/independent-review.json"
+  }
+}

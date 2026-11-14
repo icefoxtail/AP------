@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+  "author": "META_B",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:31:10.062Z",
+  "sourceBaselineBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+  "sourceCurrentBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+  "workerReviewSha256": "412d7b578af8266fb3373649416481b8054c34aad59981dd303615fd8aa4b71d",
+  "workerFourSlotSha256": "40ca9f99242c37c30618450c5a6678c16e626319f0a997a41d169c32ac5d7947",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 15,
+      "result": "SOURCE_PRECONDITION_DEBT_OPEN",
+      "notes": "발문과 선지를 읽었다. 제시 곱을 소인수분해 완성형이라고 말하거나 c의 소수성을 명시하지 않아 지수 대응의 유일성 전제를 보충할 수 없다. 현재 GCD/LCM 분류는 후보로 두고 원PDF 확인 필요를 보존한 판단이 맞다. 방법·난이도 확정을 하지 않는다.",
+      "questionUid": "qid_v1_794db02f4e679ba7a086169d03379d9bcfd3733aff20a4e80056d0c7035440ad"
+    },
+    {
+      "ordinal": 19,
+      "result": "ACCEPTED_PROPOSAL_WITH_TYPE_DEBT",
+      "notes": "소수 피라미드의 전체 규칙과 고정칸을 직접 읽었다. 모든 숫자 사용, 양 끝 고정, 인접합 소수라는 상호 제약 배치가 핵심이므로 단순 소수개수나 고등 순열공식으로 분류하지 않은 것이 적절하다. given 소수·배치와 자연수/양화/끝점 조건 인용을 확인했다.",
+      "questionUid": "qid_v1_38d44411b60118b8f0c5ea883b69bcfb20012289f1e4b5351ef28e8271eecdeb"
+    },
+    {
+      "ordinal": 23,
+      "result": "ACCEPTED_PROPOSAL_WITH_SCOPE_AND_TERM_DEBT",
+      "notes": "실제 그림에서 흰4·검5의 한 단위가 반복됨을 확인했다. 단일 주기의 위치·누적개수 과제이므로 두 주기의 최소공배수 문제와 구별해야 한다. 소문항묶음·개수·범위 인용은 맞다. 첫 goal의 색 속성을 값으로 일반화한 부분은 후속 색 용어 후보 정비 대상으로 남기며, 해설 없는 방법을 확정하지 않는다.",
+      "questionUid": "qid_v1_b350d047a1052165477735c3446f2c392bb7b26e6ea2f46f8615cf761cd13d43"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "REVIEWED_PROPOSAL_WITH_SOURCE_ONLY_DEBT",
+  "sourcePatchPolicy": "SOURCE_ONLY source와 그림을 보존했다. q17 선택지③/④의 실제 동일 문자열도 추가로 읽어 확인했으나 원문 대조 전에 수정하지 않았다.",
+  "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run."
+}
