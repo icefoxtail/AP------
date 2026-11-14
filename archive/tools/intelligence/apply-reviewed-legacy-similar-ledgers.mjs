@@ -11,6 +11,7 @@ const repo = path.resolve(archive, '..');
 const ledgerDir = path.join(archive, 'data/legacy-similar-reviewed');
 const identityPath = path.join(archive, 'data/question_identity_map.json');
 const metadataPath = path.join(archive, 'data/question_metadata.json');
+const sourceLinksPath = path.join(archive, 'data/basic-scope-source-links.json');
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex');
 const json = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 const pathOf = (x) => String(x || '').replace(/\\/g, '/');
@@ -133,6 +134,16 @@ export function applyReviewedLegacySimilarLedgers() {
   const originalIdentityText = fs.readFileSync(identityPath, 'utf8');
   const originalMetadataText = fs.readFileSync(metadataPath, 'utf8');
   const identity = JSON.parse(originalIdentityText), metadata = JSON.parse(originalMetadataText);
+  const sourceLinks = json(sourceLinksPath);
+  requireAssert(sourceLinks.status === 'REVIEWED_SCOPE_LINKS' && Array.isArray(sourceLinks.records), 'reviewed basic source links');
+  const sourceLinksByItem = new Map();
+  for (const link of sourceLinks.records) {
+    const key = pathOf(link.sourceFile) + '#' + Number(link.sourceOrdinal);
+    const matches = sourceLinksByItem.get(key) ?? [];
+    matches.push(link);
+    sourceLinksByItem.set(key, matches);
+  }
+  let sourceLinksUpdated = false;
   const identityByUid = new Map(identity.records.map((r) => [r.questionUid, r]));
   const metadataByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
   const master = json(path.join(repo, 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json'));
@@ -178,6 +189,18 @@ export function applyReviewedLegacySimilarLedgers() {
       requireAssert([meta.contentFingerprint, row.sourceBodyFingerprint].includes(row.oldSourceBodyFingerprint) ||
         [row.sourceBodyFingerprint, contentFingerprint].includes(meta.contentFingerprint), 'unrecognized prior body fingerprint q' + row.qid);
       const canonicalSelection = verifyMaster(row, master, taxonomy, bindings, conditions);
+      if (visualRebind) {
+        const candidates = sourceLinksByItem.get(sourceFile + '#' + row.sourceOrdinal) ?? [];
+        for (const link of candidates) {
+          requireAssert([row.sourceFingerprint, sourceFingerprint].includes(link.sourceFingerprint) &&
+            [row.sourceBodyFingerprint, contentFingerprint].includes(link.sourceBodyFingerprint),
+            'visual rebind existing basic parent fingerprint q' + row.qid);
+          if (link.sourceFingerprint === sourceFingerprint && link.sourceBodyFingerprint === contentFingerprint) continue;
+          link.sourceFingerprint = sourceFingerprint;
+          link.sourceBodyFingerprint = contentFingerprint;
+          sourceLinksUpdated = true;
+        }
+      }
       const patch = {
         ...canonicalSelection,
         sourceFingerprint,
@@ -226,7 +249,8 @@ export function applyReviewedLegacySimilarLedgers() {
       }
     }
   }
-  if (!updated) return { status: 'ALREADY_BOUND', uidCount: touched.size };
+  if (sourceLinksUpdated) fs.writeFileSync(sourceLinksPath, JSON.stringify(sourceLinks, null, 2) + '\n');
+  if (!updated) return { status: sourceLinksUpdated ? 'BOUND_REVIEWED_EXISTING_UIDS' : 'ALREADY_BOUND', uidCount: touched.size };
   const stableIdentity = { ...identity };
   delete stableIdentity.identityDigest;
   delete stableIdentity.generatedAt;
