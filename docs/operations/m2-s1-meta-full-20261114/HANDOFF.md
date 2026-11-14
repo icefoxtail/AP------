@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 63개, 명시 미판정 13문항, RPM leaf 공백 98문항, 등록 부채 486문항, 내용 부채 18문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=485은 전체 품질 PASS가 아니다.
+독립 3문항 표본 63개, 명시 미판정 13문항, RPM leaf 공백 98문항, 등록 부채 486문항, 내용 부채 19문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=485은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -67,6 +67,7 @@
 | E023 | `c96a3a55e60ce2bddcc524bd2dd7128d684d7715` |
 | E020-confidence | `b738283e2f28fedbee1f9ff04cfba1f40a350463` |
 | E013-difficulty | `c87ca4e18dd535d0489c91ee90784d17702ad1d5` |
+| E014-difficulty | `3af2ea2df7f680948394a31ea74de29658973816` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 

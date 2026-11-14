@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E015",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:48:31.802413+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E015",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 7,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 순환소수를 분수로 바꾸는 정형 규칙이 즉시 정해지고 특히 올바른 보기는 순수 순환소수의 직접 변환이다. 기존 1/하를 수용하되 비순환 부분을 포함한 보기 때문에 B12를 남긴다."
+      },
+      {
+        "sourceOrdinal": 10,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 단위 환산 관계가 주어진다는 전제에서는 양측 모두 2/중에 합의한다. 그러나 입력에는 KiB↔GiB 관계가 없고 해설에서 처음 사용되므로 학생에게 관계가 제시되었는지 확인하기 전 confidence는 low로 두는 것이 적절하다."
+      },
+      {
+        "sourceOrdinal": 13,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 2와 5를 10으로 짝짓는 방법은 이 형태의 표준 전처리이고 분기나 비정형 발상이 없다. 기존 2를 수용하고 표현 전환의 경계 B23을 기록한다."
+      },
+      {
+        "sourceOrdinal": 21,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 계산 결과의 차라는 연산 관계가 명시되어 있다. 순환소수 변환 뒤 그 차를 방정식으로 옮기는 정해진 절차이므로 기존 2를 수용하고 B23을 기록한다."
+      },
+      {
+        "sourceOrdinal": 23,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 기본 이항과 양수 나눗셈 후 해를 수직선으로 옮기도록 과제가 명시되어 있다. 기존 1/하를 수용하되 표현 전환에 대한 B12 의견을 기록한다."
+      }
+    ],
+    "itemUpdates": [
+      {
+        "sourceOrdinal": 10,
+        "merge": {
+          "finalDifficulty": {
+            "reviewStatus": "manual_review",
+            "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+          }
+        },
+        "set": {
+          "contentDebt": [
+            "입력 본문에는 KiB와 GiB의 환산 관계가 없고 기존 해설에서만 해당 관계를 사용한다. 공유자료 또는 수업 전제의 실제 제시 여부 확인이 필요하다. 조건부 구조 판정이며 원문 수정이나 새 풀이를 하지 않았다."
+          ]
+        },
+        "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E015-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E015-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E015.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 23,
+        "blindInitialSha256": "312fe5aeb7d31580195a0e286a7915c9829ac21f1a0044a5f03a9e69be8104a7",
+        "comparisonSha256": "6d83204cd4ec0f228ad449b454b161cb67fad0be7c27b96aec39a067d20f79fb",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "amendments/resume-prerequisite-scope-r1/accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "amendments/resume-prerequisite-scope-r1/four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "amendments/resume-prerequisite-scope-r1/root-adjudication.json",
+    "validation": "amendments/resume-prerequisite-scope-r1/validation.json",
+    "sourceWriterDeferred": "amendments/resume-prerequisite-scope-r1/source-writer-deferred.json",
+    "currentSourceGitBlobSha": "7060d8d286d124d620fadb049dd2785f66f51b09",
+    "currentFourSlotSha256": "b3e97b97e42ae690312d5d89a13aa230f193b353ffed81249ed60129574626f9",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "335680d6e857f072644e3965627bd1b1d05c11fef43c998a19cb23c4b4933b26",
+  "previousFourSlotSha256": "b3e97b97e42ae690312d5d89a13aa230f193b353ffed81249ed60129574626f9",
+  "acceptedReviewSha256": "12a3673726b8b1ef2eab1aa0652baa517a5eb2b5f5fe8f54b75632513198c4a7",
+  "acceptedFourSlotSha256": "e1b11c2b9cb01451af9f442e3102684f8a4524b762e1ac1e9cf4b1dd4c7da421",
+  "reviewedSourceBlob": "7060d8d286d124d620fadb049dd2785f66f51b09",
+  "finalSourceBlob": "f51de79157404014cbf065232d1b8a4c42668b74",
+  "changes": [
+    {
+      "sourceOrdinal": 7,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 순환소수의 정형 변환 규칙을 바로 적용하는 확인 문제이며 보기 수만으로 난도를 높이지 않는다."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 순환소수를 분수로 바꾸는 정형 규칙이 즉시 정해지고 특히 올바른 보기는 순수 순환소수의 직접 변환이다. 기존 1/하를 수용하되 비순환 부분을 포함한 보기 때문에 B12를 남긴다.",
+        "authorReason": "각 순환소수의 정형 변환 규칙을 바로 적용하는 확인 문제이며 보기 수만으로 난도를 높이지 않는다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 순환소수를 분수로 바꾸는 정형 규칙이 즉시 정해지고 특히 올바른 보기는 순수 순환소수의 직접 변환이다. 기존 1/하를 수용하되 비순환 부분을 포함한 보기 때문에 B12를 남긴다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정형 단위 환산의 전처리를 한 번 거친 뒤 같은 밑 지수법칙을 직접 적용한다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 단위 환산 관계가 주어진다는 전제에서는 양측 모두 2/중에 합의한다. 그러나 입력에는 KiB↔GiB 관계가 없고 해설에서 처음 사용되므로 학생에게 관계가 제시되었는지 확인하기 전 confidence는 low로 두는 것이 적절하다.",
+        "authorReason": "정형 단위 환산의 전처리를 한 번 거친 뒤 같은 밑 지수법칙을 직접 적용한다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 단위 환산 관계가 주어진다는 전제에서는 양측 모두 2/중에 합의한다. 그러나 입력에는 KiB↔GiB 관계가 없고 해설에서 처음 사용되므로 학생에게 관계가 제시되었는지 확인하기 전 confidence는 low로 두는 것이 적절하다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "2와5를10으로 묶는 익숙한 변형 후 자릿수를 읽는 표준 절차여서2이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 2와 5를 10으로 짝짓는 방법은 이 형태의 표준 전처리이고 분기나 비정형 발상이 없다. 기존 2를 수용하고 표현 전환의 경계 B23을 기록한다.",
+        "authorReason": "2와5를10으로 묶는 익숙한 변형 후 자릿수를 읽는 표준 절차여서2이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 2와 5를 10으로 짝짓는 방법은 이 형태의 표준 전처리이고 분기나 비정형 발상이 없다. 기존 2를 수용하고 표현 전환의 경계 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "순환소수 변환 후 두 곱의 차가3이라는 직접 관계를 식으로 옮기는 익숙한 활용이며 접근 선택 부담은 작다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 계산 결과의 차라는 연산 관계가 명시되어 있다. 순환소수 변환 뒤 그 차를 방정식으로 옮기는 정해진 절차이므로 기존 2를 수용하고 B23을 기록한다.",
+        "authorReason": "순환소수 변환 후 두 곱의 차가3이라는 직접 관계를 식으로 옮기는 익숙한 활용이며 접근 선택 부담은 작다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 계산 결과의 차라는 연산 관계가 명시되어 있다. 순환소수 변환 뒤 그 차를 방정식으로 옮기는 정해진 절차이므로 기존 2를 수용하고 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기본 이항으로 얻은 해를 수직선에 옮기는 명시된 직접 절차이며 추가 조건 해석이 없다."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 기본 이항과 양수 나눗셈 후 해를 수직선으로 옮기도록 과제가 명시되어 있다. 기존 1/하를 수용하되 표현 전환에 대한 B12 의견을 기록한다.",
+        "authorReason": "기본 이항으로 얻은 해를 수직선에 옮기는 명시된 직접 절차이며 추가 조건 해석이 없다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 기본 이항과 양수 나눗셈 후 해를 수직선으로 옮기도록 과제가 명시되어 있다. 기존 1/하를 수용하되 표현 전환에 대한 B12 의견을 기록한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "merge": {
+        "finalDifficulty": {
+          "reviewStatus": "manual_review",
+          "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+        }
+      },
+      "set": {
+        "contentDebt": [
+          "입력 본문에는 KiB와 GiB의 환산 관계가 없고 기존 해설에서만 해당 관계를 사용한다. 공유자료 또는 수업 전제의 실제 제시 여부 확인이 필요하다. 조건부 구조 판정이며 원문 수정이나 새 풀이를 하지 않았다."
+        ]
+      },
+      "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 순환소수를 분수로 바꾸는 정형 규칙이 즉시 정해지고 특히 올바른 보기는 순수 순환소수의 직접 변환이다. 기존 1/하를 수용하되 비순환 부분을 포함한 보기 때문에 B12를 남긴다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 순환소수를 분수로 바꾸는 정형 규칙이 즉시 정해지고 특히 올바른 보기는 순수 순환소수의 직접 변환이다. 기존 1/하를 수용하되 비순환 부분을 포함한 보기 때문에 B12를 남긴다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "low",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 단위 환산 관계가 주어진다는 전제에서는 양측 모두 2/중에 합의한다. 그러나 입력에는 KiB↔GiB 관계가 없고 해설에서 처음 사용되므로 학생에게 관계가 제시되었는지 확인하기 전 confidence는 low로 두는 것이 적절하다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 2와 5를 10으로 짝짓는 방법은 이 형태의 표준 전처리이고 분기나 비정형 발상이 없다. 기존 2를 수용하고 표현 전환의 경계 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 2와 5를 10으로 짝짓는 방법은 이 형태의 표준 전처리이고 분기나 비정형 발상이 없다. 기존 2를 수용하고 표현 전환의 경계 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 계산 결과의 차라는 연산 관계가 명시되어 있다. 순환소수 변환 뒤 그 차를 방정식으로 옮기는 정해진 절차이므로 기존 2를 수용하고 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 계산 결과의 차라는 연산 관계가 명시되어 있다. 순환소수 변환 뒤 그 차를 방정식으로 옮기는 정해진 절차이므로 기존 2를 수용하고 B23을 기록한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 기본 이항과 양수 나눗셈 후 해를 수직선으로 옮기도록 과제가 명시되어 있다. 기존 1/하를 수용하되 표현 전환에 대한 B12 의견을 기록한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 기본 이항과 양수 나눗셈 후 해를 수직선으로 옮기도록 과제가 명시되어 있다. 기존 1/하를 수용하되 표현 전환에 대한 B12 의견을 기록한다."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E015-difficulty-blind-freeze-r1.json",
+      "sha256": "312fe5aeb7d31580195a0e286a7915c9829ac21f1a0044a5f03a9e69be8104a7",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E015-difficulty-comparison-r1.json",
+      "sha256": "6d83204cd4ec0f228ad449b454b161cb67fad0be7c27b96aec39a067d20f79fb",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E015.json",
+      "sha256": "407b5d4b772807ee8906e690106fb2b2b0811fca2f62c57d7b02d1bd0250a2ad",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
