@@ -1,0 +1,1373 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "6c34cb6ab57a1eb72cb964fa9bef8044f3ff14c2",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "/root/meta_a",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_592075800c7ef8397ad3f9cd903af3b07fa8e7d0f3c1af54d09a93a99f592501",
+      "fingerprints": {
+        "QBODY": "5526ba89533f47debff7a8dd2558b210d5806ba8a7b5c1f9af7d8b6a4974402c",
+        "QFULL": "fe82b992501e2dc87429ea6ee7b4bb2e3c7d813c55fd49f33cc331abd288aa52"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "그래프인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "좌표가 $4$인 점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "평행한 직선",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "x좌표가 일정한 점의 집합",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "x=4인 모든 점이 y축에 평행한 직선임을 읽어 주어진 점·평행축 설명과 맞춘다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_251ee2a8648ee9fabb0f56473930db5084373d7873c60d8b8dd063f9717433da",
+      "fingerprints": {
+        "QBODY": "417b44a19dcbed8e19a907583b2ad5a95ba2919476f5dce6348f28f76659af3a",
+        "QFULL": "b10d1b6cab22d36e3536e7732f5413b63805998ab7af1838d8f7e2de7113b220"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "조건이 아닌 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "충분조건인지",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "사다리꼴일 수도",
+            "evidenceType": "IMPLIED",
+            "justification": "한 쌍만 평행한 사다리꼴로 충분조건이 아님을 확인한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "평행사변형 판정의 불충분 조건",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "이웃각 하나의 합180°는 한 쌍 평행만 보장하므로 두 쌍 조건과 구별한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_35370f3d15babd68f7525cbcbecae6ccd4f7c6f51b63e6008ddfeec7788c6da4",
+      "fingerprints": {
+        "QBODY": "e8426a132b5ff26da21b89d96145a2372533c6a8918d61309fd3ee6fdacc67b1",
+        "QFULL": "a3071b195c6cd94bcc0c379cc0eb6b73f0c9ff24297c78d59977881018c6a9a6"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "두 직선"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 직선의 방정식을 모두 만족",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "4-b=5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "교점 좌표의 두 방정식 동시 만족",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "주어진 x좌표를 첫 식에 넣어 y좌표를 얻고 그 교점 전체를 둘째 식에 넣어 계수를 정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_fe7bbd04b083de16f15b7cf1965aa186dc0fbbb9bfd89faf00508bd8c8ebd6aa",
+      "fingerprints": {
+        "QBODY": "8f8030c01821fa497c3e77973d99ca0e2335c0f01c87a033d9ea75cca338f725",
+        "QFULL": "9f7dc765148265d84298eed4dff3bf67efdc96210a08791150bf7a49b242e8aa"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "서로 다른 평행선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "-a=2",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "절편은 각각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 없을 때"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "해가 없는 연립방정식의 서로 다른 평행선",
+        "condition": "COND_EXACT_INTERSECTION_COUNT: 두 직선 교점0개라는 조건으로 매개변수를 정한다."
+      },
+      "steps": [
+        "두 직선의 기울기는 같게 하고 절편은 다름을 확인한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_d5d10443c472753afc48b7bab3d42f1ce51a4de3604f1ed4833b08d1de7ec96f",
+      "fingerprints": {
+        "QBODY": "583253e1868e61e6f5c037e3f58875e9b9831eba2b9df44e9a0fc7620baabd47",
+        "QFULL": "efbe2820027d13356d29e393510823b1d25c3c2bc29d99bc42bfc9a55da2fac2"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "지나지 않는 사분면"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "기울기는 음수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "절편",
+            "src": "solution",
+            "quote": "절편도 음수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "a\\gt0"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "b\\lt0"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "계수 부호로 기울기·절편 부호와 사분면",
+        "condition": "COND_POSITIVE(a) 및 COND_NEGATIVE(b): 명시된 계수 부호가 기울기와 두 절편 부호를 결정한다."
+      },
+      "steps": [
+        "식을 y형태로 고쳐 음의 기울기와 두 음의 절편으로 빠지는 사분면을 판단한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520",
+      "fingerprints": {
+        "QBODY": "6b132700fcca074fca09671a224e7c6f0a903714c773a5185e826e10942a3e38",
+        "QFULL": "9261fd1ea95c28a728cfd9021c49e4210791caa3b223c6a5458f743d8e22203d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "세 직선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "세 직선의 교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12\\times8\\times2",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "세 교점 좌표의 삼각형 넓이",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 y절편을 밑변 끝점으로 잡고 두 직선의 교점 x좌표를 높이로 읽는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_89fb195a61e6340da8e296a6455292033d025b5bf7c9a309472d5939cf037e15",
+      "fingerprints": {
+        "QBODY": "e2a2bea15d2abcb71dd594ccef45fe8f2d8ff7f5746d6f4e9a6d3eaf5a7bcbce",
+        "QFULL": "3691255007e017cd5e4269b2efb7b2860b08d9e619bad1c198505513a60f1467"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "각의 이등분선"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "두 직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 발",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "공통 빗변과 한 예각의 RHA 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "수선 두 개와 공통 빗변을 확인하여 제시된 SAS가 아니라 RHA임을 구별한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_9ea18a37f6c8ed3bd5fe2def19abf6d549cc71a78c4f8af15f927c9e540ac895",
+      "fingerprints": {
+        "QBODY": "aa096e7337dd288a21605e2c488307ac205b620aa67b632c1f887120df19845d",
+        "QFULL": "29ab79311c7236f7f73a6267064880e8c91d4562166da3c35573a79c915a218e"
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "수직이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "양 끝점까지의 거리가 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심의 성질",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "수직이등분선 교점의 꼭짓점 등거리",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 수직이등분선에서 얻은 등거리를 연결하여 셋째 수직이등분선과 이등변 관계를 판정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_585c526fe1d0285c6fc1ef6ddf17e9d6bf9786d3fdabb5dac927d17b94fe5810",
+      "fingerprints": {
+        "QBODY": "4ac5fcdbc311ea93a0361f14fb9708aac55d6879f7a781cf9450195029f8e49c",
+        "QFULL": "2fa827730b1d6c044109c85f54c588813a4a5dd73b4459f0170aab8ebaf7f5a4"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심의 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "OA=OB=OC",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형의 각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내심 반각에서 외심의 등거리각으로 연결",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "내심각으로 A각을 정한 뒤 외심의 두 이등변삼각형 각과 한 점의360°를 연결한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_3bffe9ddea89ae2fb0d153b27eb4afb376f66c65c3dbf6902af49626be9ff73b",
+      "fingerprints": {
+        "QBODY": "30688bd559223592606996952cb4c6d4a0b5544131c7eefd3c97b2e8105f6374",
+        "QFULL": "c84713ec6a8becaaccd2b06aaac4eececc5afb983f1d93f6d644bcb913a3ec5f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "4:6:5"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "비의 합은 $15$",
+            "evidenceType": "IMPLIED",
+            "justification": "전체360°를 주어진 중심각 비로 나눈다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형의 밑각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "중심각 비례배분 후 외심각",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "한 점의360°를 주어진 비로 나누고 각 중심각의 이등변 밑각을 더한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_370368264ef7901f07f04dd543d867aea2b77a067f4841d8a6ad4e06db1862bf",
+      "fingerprints": {
+        "QBODY": "aaf890cb1cc6b72b45e2b1dfb325c62e3efc400e2b7fd9d344a8fa4369fe8a2f",
+        "QFULL": "86af8f69a76cd8609110164ef842f6e92aa1761a360f1bf06499bca54f941174"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원이"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "18+2x=22",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "내접원의 같은 접선 길이와 삼각형 둘레",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "각 꼭짓점에서 두 접선 길이가 같음을 써 세 변을 표현하고 전체 둘레에서 남은 접선 길이를 정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7a1260fc04746ac8eb84be65f89688da0ea35c5b450742cae97586c85eb2e850",
+      "fingerprints": {
+        "QBODY": "d30620ecccf1356247586e3ed45bddd89f6054799aa731b1050a6a786cef3fa6",
+        "QFULL": "e2da06aa5aa0014805a9ddd8b173a889c75817997f68491ae5383a285dced31d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "두 변까지의 거리는 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12\\times AB\\times DH",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "각 이등분선 위 점의 두 변까지 거리",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "밑변 AB에 대한 새 높이를 내린 뒤 이등분선의 같은 거리로 그 높이를 주어진 CD와 같게 놓는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_168690a8258b0244e72ca8315fc9cfe36b6261ebfda9abfaee86e70802aa2904",
+      "fingerprints": {
+        "QBODY": "17807f7aa6b42bbd01c0dc3054fc3c3c769f629232a919fa95568894dd40c4f0",
+        "QFULL": "a54d84a096f5cda119da48d749f99a21142b1abfa6e88eea7bdd615859926acd"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "서로 수직이등분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "이등분하므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "마름모의 대각선과 꼭짓각 이등분",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "대각선이 나누는 서로 다른 꼭짓각의 절반이 항상 같지는 않음을 구별한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_a47bd4d8d9bf83a7bf48258a79ca40df8c2bcdcbfa5fc2c16d29b82173df37c1",
+      "fingerprints": {
+        "QBODY": "9a85cce670caa07e6092b30671550ffcc2fd05b7e321006bd03a5f208d01b257",
+        "QFULL": "24be773ad4ecf2ebd77c7e2451ead4b8ed27150b43d7370608ef768ed33ef6c6"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "이웃한 두 각의 합",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "직각 조건",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "평행사변형 이웃각과 반각",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "이웃각180°에서 D각을 구하고 이등분선과 직각을 이어 목표각을 보완한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_646c146bce50fd043f4691d00a5f3a1f0b1addc899adfe7c3f980338f7bc870c",
+      "fingerprints": {
+        "QBODY": "419e402cb24845d1983ae3e3775d743b4061175db7907d337092dcfcc6850521",
+        "QFULL": "c01b663647a0aa91bb9d7ae5da4c1213df61355b4bf1a6b43e3b636ad331c9c9"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "충분조건",
+            "src": "solution",
+            "quote": "충분한지 확인한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "원래 항상 수직",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "계통도의 추가 충분조건",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "각 화살표의 출발 도형에 이미 있는 성질과 새로 필요한 성질을 구별한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_dbe75705e39c315c4f85d2f3ab8400eceadbd3427c4f826b9ed75874359fe2a1",
+      "fingerprints": {
+        "QBODY": "8fe8ba918e9b64a82cddc8610e2755c7154a507387511e4fe9864b4f117f820b",
+        "QFULL": "0cda5856b25c6d06b773a80b14444b927027b9547c2904c4d2015e7fca39e78d"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "접어"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "꼭짓각 $\\angle AEC$도 이등분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "대응하는 각의 크기도 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "AF\\parallel EC",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직사각형 접기의 대칭각",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "접는 선의 각 이등분과 평행변을 이용해 접기 전 각을 정하고 접힌 대응각으로 옮긴다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f",
+      "fingerprints": {
+        "QBODY": "feb6996e5294152fffe80a1015fcdef3b46ca78db52bee48eea8c8af1eee336b",
+        "QFULL": "8526b0c829f4bb7e52357bded98987c4c1fefd2f4a320b6d17d15ec58fc42933"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "\\triangle ABC"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "3:2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "높이가 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이비는 밑변의 길이비와 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "같은 높이인 삼각형의 밑변비와 넓이비",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "공통 꼭짓점에서 한 직선으로 내린 높이가 같으므로 전체 넓이를 밑변 분할비대로 나눈다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_69881034f7dde819ed1a2eaf0d4de808efbf9c724d6c402bbcfcd9ac4235d250",
+      "fingerprints": {
+        "QBODY": "19ef5f1611aa654e1f27867b4eec5bc3e608b3de718fa8230bc7f0792c352c4f",
+        "QFULL": "654d2f6a6a3d443d0307760a320f351feef94528699ae9b9db2c3bd4cfd94a6e"
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사다리꼴",
+            "src": "solution",
+            "quote": "사다리꼴",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac{6+8}{2}\\times14",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "RHA 합동의 대응요소와 넓이 판단",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "같은 빗변·한 예각으로 두 직각삼각형을 합동시켜 길이를 교환하고 사다리꼴 넓이까지 판정한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_bcaffd2248f2b961017c8f134b1652fe281e413c6394453bc1d9e4982d7e036f",
+      "fingerprints": {
+        "QBODY": "bb549bc3bc89910a66125016ae32eccf31c6c1014f083a394763b69a6ea00f44",
+        "QFULL": "bb10177bb59bdef19505f329eac303aaea5ac3e5e53793b20c1de936ea8ac89f"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "빗변의 중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "세 작은 삼각형의 넓이의 합",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "둘레",
+            "src": "solution",
+            "quote": "2\\pi R=5\\pi",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "직각삼각형 외접반지름과 넓이분할 내접반지름",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "외심은 빗변 중점으로, 내심은 동일 거리 높이의 세 넓이 합으로 반지름을 얻고 원의 둘레로 바꾼다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_eeba102f7b5045bb8b87a3cbcd071611966a58dc0d694797493d501a81c59cc9",
+      "fingerprints": {
+        "QBODY": "38bdabfa2a75056936e41096a0e680fa51a9c2adcd97398832d5a219c9bbfded",
+        "QFULL": "e2171508a97fe3e586ee8ae0190ef30fa582554b5037d9aac4e34730445ba610"
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "밑각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "AB\\parallel CD",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "맞꼭지각",
+            "src": "solution",
+            "quote": "맞꼭지각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "BE=BF=12"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "같은 각으로 새 이등변삼각형 판정",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "BE=BF의 밑각을 평행선·맞꼭지각으로 옮겨 DCF의 두 각을 같게 만들고 DF=DC를 얻는다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_23718c783b57fcc072dfb8cb548788efce8aea07cce694a8a6a9c9a9a80dc41a",
+      "fingerprints": {
+        "QBODY": "59119ab7432fa3240e7564fa9e0dff96fa5d8e5e71d07dffe98a6d32553c0f67",
+        "QFULL": "f543efbf42fa47f37fc23f11a93621298dc0cb682c91b8d66547a896edd7cb06"
+      },
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "값들의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 직선이 평행",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "세 직선이 한 점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "경우는 두 직선",
+            "evidenceType": "IMPLIED",
+            "justification": "평행 두 경우와 세 직선 공점 경우를 분리한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "a\\ne0"
+          }
+        ]
+      },
+      "reasons": {
+        "primary": "세 직선의 삼각형 퇴화 조건 분류",
+        "condition": "발문 a≠0은4칸에 보존한다. 실제 비삼각형 후보1,-3,-2 중0이 없어 해 선택을 바꾸지는 않으므로 COND_NONZERO를 추가하지 않는다."
+      },
+      "steps": [
+        "한 쌍 평행인 두 경우와 세 직선이 한 점에서 만나는 경우를 빠짐없이 나눈다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_301b33eeb958cc852a41a256f5f77f6b2699fc092bfd7b206d5fa27f6c029795",
+      "fingerprints": {
+        "QBODY": "c6f08063cbe010e51b3ee9a19dc8bd11edc9afa546591fa0ae4ce435602e9c13",
+        "QFULL": "60838938a3e481ac9270ab45927c9066852393971b94d761dafb9e0747dc95ed"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를 구하고"
+          },
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "성질을 쓰고"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "두 밑각이 같다는 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "각의 이등분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "이등변 밑각과 밑각 이등분",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "두 밑각이 같음을 적용한 뒤 작은 삼각형에 반각과 내각합을 쓴다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_786e1ef9e033b0adc9594bd658177fc2d8bd6a85ba627df7b92b9a651e28ad3d",
+      "fingerprints": {
+        "QBODY": "232c9102452223fc5ad15406f53bf620ed257cc527cd71485f8da80e0b3652d3",
+        "QFULL": "8f327c33a9807f78a7466c8fc28399a31569f52c22d91b2f2bc4ba861ccce9b2"
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "성질을 모두 쓰시오."
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을 각각 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "길이가 같고 서로 수직이등분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "각 꼭짓각을 이등분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "primary": "정사각형 대각선의 길이·직각·반각",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음."
+      },
+      "steps": [
+        "같은 대각선의 반 길이로 x를 정하고 대각선 수직과45°반각으로 작은 각을 빼서 y를 구한다."
+      ],
+      "judgedBy": "/root/meta_a",
+      "review": {
+        "status": "SEMANTIC_REVIEWED",
+        "independentSampleReview": "PENDING"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "allItemsRead": true,
+    "exactQuotesChecked": true,
+    "sourceContentUnchanged": true,
+    "semanticReviewBy": "/root/meta_a",
+    "independentSampleReview": "PENDING_ROOT_ASSIGNMENT"
+  }
+}

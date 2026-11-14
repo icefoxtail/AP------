@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E010",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "6c34cb6ab57a1eb72cb964fa9bef8044f3ff14c2",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "9282271ed3dca1766450faeeebd9cdf5cf85c164b9827a2d11a2bc0758501c92",
+  "fourSlotInputSha256": "2b41f7f78510525090faf038e2347c22c60d32af258c34524835d56526630254",
+  "sampleOrdinals": [
+    11,
+    17,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_370368264ef7901f07f04dd543d867aea2b77a067f4841d8a6ad4e06db1862bf",
+      "verdict": "PASS",
+      "metadataReview": "현재 ACTIVE PT_CIRCLE_TANGENT / TM_TANGENT_LENGTH는 외부점에서 그은 접선길이를 구하는 정의로 정확히 맞는다. 내심·각이등분 TPL에서의 교정과 RPM leaf 공백 분리가 타당.",
+      "fourSlotReview": "그림의 접점·각 꼭짓점에서 같은 접선 길이를 확인했다. 내접/둘레 given, 길이 goal, 접선/일차방정식 method와 exact quote 모두 타당.",
+      "difficultyReview": "접선조각 같음을 둘레식으로 바꾸는 1회 조건해석이라 bucket2/legacy하 인접경계를 독립 수용.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E010/11.png"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f",
+      "verdict": "NEEDS_REVISION",
+      "metadataReview": "NEW_PT 같은높이 삼각형의 밑변비·넓이비는 타당. 그러나 actual source에는 평행선이나 사각형이 없고 같은 꼭짓점과 같은 밑변 직선만 필요하다. M2-RPM-076 평행선과 넓이로 강제 연결하여 subUnit을 QUADRILATERAL_PROPERTIES로 옮기는 것은 부적절하다. source 삼각형 성질을 유지하며 단순 같은높이 넓이비 exact RPM_LEAF_GAP으로 기록할 것을 권고.",
+      "fourSlotReview": "높이와 넓이비 method, 삼각형/비 given, 넓이 goal는 실제 source·solution과 일치한다. 정확한 목표·방법의 critical 결함 없음.",
+      "difficultyReview": "같은높이에서 전체를3대2로 직접 분배하는 bucket1/하 타당.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": null
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_786e1ef9e033b0adc9594bd658177fc2d8bd6a85ba627df7b92b9a651e28ad3d",
+      "verdict": "PASS_WITH_EVIDENCE_REFINEMENT",
+      "metadataReview": "RPM079/PT_QUADRILATERAL_PROPERTIES/TPL_SPECIAL_QUADRILATERALS는 정사각형 대각선의 길이·수직·각이등분 성질과 일치한다.",
+      "fourSlotReview": "그림에서 OC=6, E각65, y=ABE를 확인했다. 두 목표와 대각선 방법 정확. method 일반 이등분선은 각이등분선으로 구체화하면 꼭짓각을 나눈다는 exact 의미가 더 분명하다.",
+      "difficultyReview": "필요한 성질을 소문항1이 직접 불러주고 소문항2에서 길이와 예각을 순차 적용하므로 bucket2 타당. legacy상은 독립재검 후에도 STRONG_CONFLICT를 보존하며 학습level 임의수정하지 않음.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 6,
+      "imageViewed": "/workspace/scratch/576242ad7339/workers/A/tmp/E010/23.png"
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
