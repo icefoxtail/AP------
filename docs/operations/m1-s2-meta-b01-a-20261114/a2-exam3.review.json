@@ -1,0 +1,3570 @@
+{
+  "schemaVersion": "m1-s2-integrated-semantic-review-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "worker": "A2",
+  "examNumber": 3,
+  "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "baseMainSha": "573fa32804480b2d70f7536b211e240e8d64d5ed",
+  "sourceGitBlobSha": "9d635c26109d3c088e55bd0529884611457d0433",
+  "reviewedCount": 24,
+  "reviewScope": "all metadata from each current problem + choices + reused answer/solution + needed images",
+  "sourceContentPreserved": true,
+  "fourSlotEvidence": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.4slot.json",
+  "fourSlotPriorStatus": "ABSENT_ON_MAIN",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_739e1aa780820f52cc6e83ca25b1a1508345da33cfd41c2b2aa15b02ab622d81",
+      "topic": "좌표 읽기",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_COORDINATE_POINT_READING",
+        "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "좌표평면",
+        "l4": "점의 좌표 읽기",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "좌표 읽기",
+      "decisiveStep": "지도 눈금에서 각 지점의 순서쌍을 직접 읽는다. 선택지 검토는 조건별 경우분기가 아니다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 1,
+        "levelAction": "KEEP",
+        "rationale": "눈금의 직접 좌표 읽기이므로1.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_739e1aa780820f52cc6e83ca25b1a1508345da33cfd41c2b2aa15b02ab622d81",
+        "format": "옳지 않은 것 고르기",
+        "slots": {
+          "given": [
+            {
+              "term": "점",
+              "termId": 142,
+              "src": "stem",
+              "quote": "지점"
+            },
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "stem",
+              "quote": "좌표평면"
+            }
+          ],
+          "goal": [
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "stem",
+              "quote": "좌표로"
+            }
+          ],
+          "method": [
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "solution",
+              "quote": "각 점의 좌표를 눈금에 맞춰 읽는다.",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "b38a9f4a4b3c48847b6e0c1ef230469e9c4b2948d2dc104e2947eb5633936923",
+          "QFULL": "c73e4d6a6556f60b24ea82866cd4c71031a1f7a1891278d5223b16800a4ebf51"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_539d36380fba5e6eaca4f2755efe690eaada61820b364928db2cccfa13614058",
+      "topic": "사분면과 좌표식의 부호",
+      "disposition": "KEEP",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "좌표평면",
+        "l4": "점의 좌표 읽기",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "사분면과 좌표식의 부호",
+      "decisiveStep": "제2사분면의 좌표 부호에서 좌표식의 부호를 추론한다. 기존 sign-deduction PT/TPL은 ACTIVE·정확한 binding·의미가 유효하므로 보존한다. 최신 공식 M1-RPM-163 family projection의 PT_COORDINATE_POINT_READING/TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM은 대안으로만 기록한다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_539d36380fba5e6eaca4f2755efe690eaada61820b364928db2cccfa13614058",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "점",
+              "termId": 142,
+              "src": "stem",
+              "quote": "점"
+            },
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "stem",
+              "quote": "제2사분면"
+            }
+          ],
+          "goal": [
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "stem",
+              "quote": "어디에 위치하는가"
+            }
+          ],
+          "method": [
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "solution",
+              "quote": "제2사분면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "부호",
+              "termId": 25,
+              "src": "solution",
+              "quote": "$a<0$, $b>0$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 부호을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "solution",
+              "quote": "$a-b<0$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 식의값을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "stem",
+              "quote": "제2사분면"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "9ec2ba0c34442f32ef497fa98e2b279f05d9f8f4e6651e0a175a6ad634ebeb7e",
+          "QFULL": "7f88458330bd74867956c233f95d76e265d6d17d9a0b19c0102d67a3fe4b6a5a"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e",
+      "topic": "상황 그래프 해석",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "그래프",
+        "l4": "그래프 해석",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "상황 그래프 해석",
+      "decisiveStep": "온도의 최저/최고와 반복 구간을 그림에서 읽는다. 주기함수 단원이나 선택지별 CASE_BRANCH로 확대하지 않는다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e",
+        "format": "옳지 않은 것 고르기",
+        "slots": {
+          "given": [
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            },
+            {
+              "term": "변수",
+              "termId": 744,
+              "src": "stem",
+              "quote": "두 변수"
+            }
+          ],
+          "goal": [
+            {
+              "term": "성질",
+              "termId": 305,
+              "src": "stem",
+              "quote": "그래프에 관한 설명"
+            }
+          ],
+          "method": [
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "solution",
+              "quote": "그래프에서 가장 낮은 온도",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "최솟값",
+              "termId": 128,
+              "src": "solution",
+              "quote": "가장 낮은 온도",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 최솟값을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "최댓값",
+              "termId": 127,
+              "src": "solution",
+              "quote": "가장 높은 온도",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 최댓값을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "40b17fedcdaae8047abe2a5f8c7330f032a4a832e9b7c24736c0d333258c1b88",
+          "QFULL": "b9ae533a63cfbe2f65cbb8086bbd24556d1ebc80371bc2db0e6b94b9254212a3"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ac28d71dcdee035cda402539898e93d767004e529304b6430d4a7e8257bfaea9",
+      "topic": "수위 그래프와 용기 단면",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+        "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+        "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "l3": "그래프",
+        "l4": "그래프 해석",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "수위 그래프와 용기 단면",
+      "decisiveStep": "일정 유량에서 단면이 넓을수록 수위 상승이 느려지는 관계로 그래프와 모양을 대응시킨다. 기존 수위-용기 PT/TPL을 재사용해야 한다.",
+      "gapType": "BINDING_GAP",
+      "gapDetail": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE는 ACTIVE지만 2022 M1-04-GRAPH_RELATION binding과 해당 RPM166 exact crosswalk가 없다. 기존 COORDINATE_PLANE binding만 있다.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_ac28d71dcdee035cda402539898e93d767004e529304b6430d4a7e8257bfaea9",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            },
+            {
+              "term": "높이",
+              "termId": 218,
+              "src": "stem",
+              "quote": "물의 높이"
+            },
+            {
+              "term": "도형",
+              "termId": 327,
+              "src": "stem",
+              "quote": "여러 가지 모양의 그릇"
+            }
+          ],
+          "goal": [
+            {
+              "term": "도형",
+              "termId": 327,
+              "src": "stem",
+              "quote": "모양의 그릇"
+            },
+            {
+              "term": "대응",
+              "termId": 106,
+              "src": "solution",
+              "quote": "ㄱ-A, ㄴ-C, ㄷ-B"
+            }
+          ],
+          "method": [
+            {
+              "term": "단면",
+              "termId": 334,
+              "src": "solution",
+              "quote": "단면적이 클수록",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "증가감소",
+              "termId": 111,
+              "src": "solution",
+              "quote": "처음 빠르고 점점 느려짐",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 증가감소을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "일정",
+              "termId": 357,
+              "src": "stem",
+              "quote": "매초 일정한 양의 물"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "38e07c95afaa0a7587cac3c912160c635af85d7d42893da6a2d2ddb0351d5dbc",
+          "QFULL": "74d5010c48bb70882d278459f9edbee9cd5df3d5254dc7d4ce48a36be20c59f2"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": false,
+        "matchingOwnerPacks": []
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
+      "topic": "정비례·반비례 비례상수",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "그래프에서 식 구하기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "그래프에서 식 구하기",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "정비례·반비례 비례상수",
+      "decisiveStep": "각 그래프의 주어진 한 점으로 두 비례상수를 정한다. TWO_GRAPH_CONSTANTS가 정확하다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "정비례",
+              "termId": 290,
+              "src": "stem",
+              "quote": "정비례"
+            },
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "stem",
+              "quote": "반비례"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            },
+            {
+              "term": "상수",
+              "termId": 309,
+              "src": "stem",
+              "quote": "상수"
+            }
+          ],
+          "goal": [
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "$a-b$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "정비례",
+              "termId": 290,
+              "src": "solution",
+              "quote": "정비례 그래프",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "solution",
+              "quote": "반비례 그래프",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$2=-4a$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 대입을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "ce8900ec36200884dbc74bd2462ef863b27b0b2a9827b65f8ff5310310661860",
+          "QFULL": "e87c1f819dc79e93ec50619161faa1f06910cba18fdd3fc22a088d80c22ec5d8"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+      "topic": "정비례 그래프 성질",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "좌표와 그래프",
+        "L3": "그래프",
+        "L4": "그래프 해석"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "정비례",
+        "l4": "정비례 그래프",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "정비례 그래프 성질",
+      "decisiveStep": "원점을 지나는 직선, 지나는 점과 사분면이 직접 판정 대상이다. 일반 상황 그래프가 아니라 정비례 그래프 leaf다.",
+      "gapType": "EXISTING_EXACT",
+      "gapDetail": "PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT 재사용 가능; RPM168은 RPM_ONLY이며 같은 template의 RPM170 반비례 row로 대신 묶으면 의미 오류.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+        "format": "옳은 것 고르기",
+        "slots": {
+          "given": [
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            }
+          ],
+          "goal": [
+            {
+              "term": "성질",
+              "termId": 305,
+              "src": "stem",
+              "quote": "그래프에 대한 설명"
+            }
+          ],
+          "method": [
+            {
+              "term": "정비례",
+              "termId": 290,
+              "src": "solution",
+              "quote": "정비례 관계",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "사분면",
+              "termId": 149,
+              "src": "solution",
+              "quote": "제2사분면과 제4사분면",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "de13b4f3f6383d32e4f9d7d89040249174c7788bd298204c0b16175f495a50be",
+          "QFULL": "3638da025c7a2bba18fead65f635be0f45c54d494c700afa64e77d0bcb8d6045"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "FUNCTIONS_GRAPHS"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_008e99d3101749b349c08fa5e412c4f59c9bfc8b098e48d8ce26d08a4c8c053a",
+      "topic": "생활 관계의 반비례 판별",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_SPEED_DISTANCE_TIME"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "crossConceptKeys",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "정비례·반비례 활용"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "생활 관계의 반비례 판별",
+      "decisiveStep": "삼각형 넓이와 일정 거리의 속력·시간을 곱 일정 관계로 나타낸 뒤 반비례 여부를 판단한다. 달의 무게는 정비례 대조 사례다.",
+      "gapType": "EXISTING_EXACT",
+      "gapDetail": "기존 PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION 정확; RPM172의 새 ACTIVE rows는 자원수·격자점·선분분할로 이 문항과 다름. 해당 native key의 exact projection 요청.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_008e99d3101749b349c08fa5e412c4f59c9bfc8b098e48d8ce26d08a4c8c053a",
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "stem",
+              "quote": "삼각형"
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "stem",
+              "quote": "넓이가"
+            },
+            {
+              "term": "높이",
+              "termId": 218,
+              "src": "stem",
+              "quote": "높이"
+            },
+            {
+              "term": "속력",
+              "termId": 704,
+              "src": "stem",
+              "quote": "초속"
+            }
+          ],
+          "goal": [
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "stem",
+              "quote": "반비례하는 관계"
+            }
+          ],
+          "method": [
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "solution",
+              "quote": "반비례한다",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "solution",
+              "quote": "$\\dfrac12xy=18$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 넓이을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "속력",
+              "termId": 704,
+              "src": "solution",
+              "quote": "$xy=500$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 속력을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "일정",
+              "termId": 357,
+              "src": "stem",
+              "quote": "넓이가 $18"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "df80df8970694e124c49ab502b200ab8018234ac4d9f1c29e4068321d76af894",
+          "QFULL": "1c61fc8b50e458130ea494094b857d620c52f5974b9a4c5b5819ef93d4ab54c8"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
+      "topic": "반비례식의 값",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L1": "좌표평면과 그래프",
+        "L2": "정비례와 반비례",
+        "L3": "관계 해석",
+        "L4": "그래프에서 식 구하기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 관계식",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "반비례식의 값",
+      "decisiveStep": "한 점으로 비례상수를 정하고 주어진 x좌표를 대입한다. TWO_GRAPH_CONSTANTS로 바꾸지 않고 INVERSE_POINT_SUBSTITUTION 유지.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "stem",
+              "quote": "반비례"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            },
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "stem",
+              "quote": "$x$좌표"
+            }
+          ],
+          "goal": [
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "stem",
+              "quote": "$y$좌표"
+            }
+          ],
+          "method": [
+            {
+              "term": "반비례",
+              "termId": 291,
+              "src": "stem",
+              "quote": "반비례 관계",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$2=\\dfrac{a}{4}$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 대입을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "d74d4791c0b7407b9ac2d5c8e52bcc4fdf29b02f70859d7e65bf7ceb40f781b4",
+          "QFULL": "800fcc6fdbd97896b6a6c97943b3ad2756a87ed5c12032f2a67aebf5479dd9d6"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_335da5e2c7a6f42520c7c59790de98393e76b80210f54b7b91d6c433ffd93782",
+      "topic": "중점의 연쇄 길이",
+      "disposition": "KEEP",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "점·선·면",
+        "L4": "두 점 사이의 거리와 중점"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "두 점 사이의 거리와 중점",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "중점의 연쇄 길이",
+      "decisiveStep": "연속된 세 중점의 정의로 선분을 이어 계산한다. CHAINED_MIDPOINT가 정확하다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_335da5e2c7a6f42520c7c59790de98393e76b80210f54b7b91d6c433ffd93782",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "선분",
+              "termId": 144,
+              "src": "stem",
+              "quote": "선분"
+            },
+            {
+              "term": "중점",
+              "termId": 188,
+              "src": "stem",
+              "quote": "중점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "길이",
+              "termId": 215,
+              "src": "stem",
+              "quote": "길이를"
+            }
+          ],
+          "method": [
+            {
+              "term": "중점",
+              "termId": 188,
+              "src": "solution",
+              "quote": "중점",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "선분",
+              "termId": 144,
+              "src": "solution",
+              "quote": "$QB=10+20=30",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 선분을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "97f586578d4cea042bfe0cdca60ba20e3ea39fe6cd7caff62fd38a84d36396e4",
+          "QFULL": "51464f6a394003bd9adbdf35838537a3178baf63d799bd0c2d06672e9f92ab18"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f9c54052280ef5a5bf6ebc57c42509083d2d7740770ceceef12adc7d73c700ea",
+      "topic": "맞꼭지각과 여각",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "각",
+        "L4": "각의 크기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "맞꼭지각",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "맞꼭지각과 여각",
+      "decisiveStep": "맞꼭지각으로 한 각을 옮기고 직각의 나머지 각을 구한다. 위치관계 대신 기본 도형의 각 소속.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_f9c54052280ef5a5bf6ebc57c42509083d2d7740770ceceef12adc7d73c700ea",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "세 직선"
+            },
+            {
+              "term": "교점",
+              "termId": 181,
+              "src": "stem",
+              "quote": "한 점에서 만날"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle y-"
+            },
+            {
+              "term": "식의값",
+              "termId": 61,
+              "src": "stem",
+              "quote": "값을"
+            }
+          ],
+          "method": [
+            {
+              "term": "맞꼭지각",
+              "termId": 175,
+              "src": "solution",
+              "quote": "맞꼭지각",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "여각",
+              "termId": 610,
+              "src": "solution",
+              "quote": "$y+27=90$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 여각을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "solution",
+              "quote": "가로선과 세로선은 수직"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "9eedb4c78bbaee2f44e6294bccbc02137dceed38e0da3f25c95e2bafcb13f3c0",
+          "QFULL": "99f0e200964fab820efe3edf7a592204ff2c3e625d8da8b95461ad9c09efcc99"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e91debd5d9851ee135e3d3f941c2476429d2e9cf1d37e29994a0663f768014b6",
+      "topic": "평각의 인접각 비",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "각",
+        "L4": "각의 크기"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "각의 크기",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "평각의 인접각 비",
+      "decisiveStep": "맞꼭지각이 아니라 한 평각을 이루는 인접각들의 두 비를 결합하여 목표 각의 합을 구한다. 새 ACTIVE straight-angle-partition을 정확히 재사용한다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_e91debd5d9851ee135e3d3f941c2476429d2e9cf1d37e29994a0663f768014b6",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle AOF"
+            },
+            {
+              "term": "평각",
+              "termId": 406,
+              "src": "stem",
+              "quote": "평각"
+            },
+            {
+              "term": "비",
+              "termId": 289,
+              "src": "stem",
+              "quote": "=3:1"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle COE"
+            }
+          ],
+          "method": [
+            {
+              "term": "비례배분",
+              "termId": 579,
+              "src": "solution",
+              "quote": "$4x+4y=140$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 비례배분을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "평각",
+              "termId": 406,
+              "src": "solution",
+              "quote": "평각",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "평각",
+              "termId": 406,
+              "src": "stem",
+              "quote": "평각"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "741b6c33e4c6f88f7f756d2bb1de8708ba1f32c396c804b288d925bd6aa3f421",
+          "QFULL": "a617649d75554f7d1d5dd28d6fa9a4a2984524f80ec240ccb9dbfed76ac06e36"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_00d5faf57a4654c3c6cf9814946c4f5c29bfb232f33b2a09418d166032122f1b",
+      "topic": "수선·거리 및 평면 위치관계",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+        "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+        "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "위치 관계",
+        "L3": "평면에서의 위치 관계",
+        "L4": "두 직선의 위치 관계"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "수직과 거리",
+        "l4": "점과 직선 사이의 거리",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "수선·거리 및 평면 위치관계",
+      "decisiveStep": "직각 표지에서 수선의 발과 점-직선 거리를 읽고 변의 연장선이 만나는지 판단한다. 사다리꼴 넓이·다각형 단원이 아니다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_00d5faf57a4654c3c6cf9814946c4f5c29bfb232f33b2a09418d166032122f1b",
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "slots": {
+          "given": [
+            {
+              "term": "사다리꼴",
+              "termId": 167,
+              "src": "stem",
+              "quote": "사다리꼴"
+            }
+          ],
+          "goal": [
+            {
+              "term": "성질",
+              "termId": 305,
+              "src": "stem",
+              "quote": "대한 설명"
+            }
+          ],
+          "method": [
+            {
+              "term": "수선의발",
+              "termId": 718,
+              "src": "solution",
+              "quote": "수선의 발",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "점과직선사이의거리",
+              "termId": 462,
+              "src": "solution",
+              "quote": "점 $A$와 직선 $BC$ 사이의 거리",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 점과직선사이의거리을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "위치관계",
+              "termId": 307,
+              "src": "solution",
+              "quote": "각각 직선 $AB$와 만나므로",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 위치관계을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "solution",
+              "quote": "$AB\\perp BC$"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "83160fbc4ca5e773ff31e650362ae44206f47bf571560761281ead5bafc719d0",
+          "QFULL": "0efe64caec5a722b86e16db79816cc68c926b038b97906ee23f350d22f5c5379"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "topic": "공간 직선·평면 위치관계",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-07",
+        "standardUnit": "입체도형의 성질",
+        "standardUnitOrder": 7,
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "subUnit": "입체도형",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "standardUnitKey",
+        "standardUnit",
+        "standardUnitOrder",
+        "subUnitKey",
+        "subUnit",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "입체도형",
+        "L2": "다면체와 회전체",
+        "L3": "다면체",
+        "L4": "각기둥·각뿔"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "공간에서의 위치 관계",
+        "l4": null,
+        "status": "RPM_LEAF_GAP"
+      },
+      "primaryMethod": "공간 직선·평면 위치관계",
+      "decisiveStep": "오각기둥을 소재로 모서리끼리 만남·평행·꼬임 및 모서리와 면 관계를 판정한다. 다면체 모양/측정이 primary가 아니다.",
+      "gapType": "RPM_LEAF_GAP",
+      "gapDetail": "ACTIVE PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS와 SPATIAL_CLAIM_AUDIT 및 2022 M1-05/POSITION_RELATION binding은 존재. RPM의 공간 L3에는 직선-평면/평면-평면 leaf만 있으며 결정적인 직선-직선 꼬인·평행 판정 exact leaf가 비어 있다. 각기둥·각뿔 leaf를 억지 primary로 삼지 않음.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+        "format": "옳지 않은 것 고르기",
+        "slots": {
+          "given": [
+            {
+              "term": "각기둥",
+              "termId": 410,
+              "src": "stem",
+              "quote": "오각기둥"
+            },
+            {
+              "term": "모서리",
+              "termId": 329,
+              "src": "solution",
+              "quote": "모서리"
+            },
+            {
+              "term": "평면",
+              "termId": 146,
+              "src": "solution",
+              "quote": "면 $ABCDE$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "위치관계",
+              "termId": 307,
+              "src": "stem",
+              "quote": "대한 설명"
+            }
+          ],
+          "method": [
+            {
+              "term": "꼬인위치",
+              "termId": 405,
+              "src": "solution",
+              "quote": "만나지도 않고 평행하지도 않는",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 꼬인위치을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "평행한 대응 모서리",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "solution",
+              "quote": "수직인 옆모서리",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 수선을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "3e2cd0a5e8954d60d5474db126afb7d619e71cac4b2b0d705d1840d8e3acabf9",
+          "QFULL": "c63aa7ce8096ae25542432a35c8598cb8a3ca3411187d7672a01e056f163096e"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774",
+      "topic": "엇각의 위치",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "엇각의 위치",
+      "decisiveStep": "평행성 없이 교차선에서 엇각 위치만 확인한다. 위치 식별을 각 크기 계산이나 경우분기로 올리지 않는다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_4c7fca50942ca10775327523c18ccbe2d18160249662d698ea44a96c72f5e774",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle h"
+            }
+          ],
+          "goal": [
+            {
+              "term": "엇각",
+              "termId": 716,
+              "src": "stem",
+              "quote": "엇각인"
+            }
+          ],
+          "method": [
+            {
+              "term": "엇각",
+              "termId": 716,
+              "src": "solution",
+              "quote": "엇각의 위치",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "403887473933206d46ac299088a5ea8d2ae1fe8e16e9a61c5f419fb6cb6f38c8",
+          "QFULL": "a6f4f99255678d20c390249de98fe15507b79c4925fd7676ed5737c71a7eada8"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+      "topic": "평행선의 각 크기",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_PARALLEL_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "templateKey"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "평행선의 각 크기",
+      "decisiveStep": "엇각과 같은 쪽 내각의 보각 관계를 직접 옮긴다. 미지수 방정식을 세우는 ANGLE_EQUATION보다 공식 DIRECT_TRANSFER가 정확하다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle a+"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "크기는"
+            }
+          ],
+          "method": [
+            {
+              "term": "엇각",
+              "termId": 716,
+              "src": "solution",
+              "quote": "엇각",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "평각",
+              "termId": 406,
+              "src": "solution",
+              "quote": "같은 쪽 내각",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 평각을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "stem",
+              "quote": "l\\parallel m"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "ab85344360ec87e6fb3a3e9294dacc2225d1d1b5de5f7e80575091976a27b422",
+          "QFULL": "a7f13310366457635d9aca89a6fb11b012a59ab6b5fbd5db50321529863eed60"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c45b20b2f087a643b82bdbc0405b2b2c1c96194ba953a77af50d9d15c31a1798",
+      "topic": "평행선과 꺾은선·삼각형 각",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "MULTI_STEP_COUPLING",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "changedFields": [
+        "crossConceptKeys",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "평행선과 꺾은선·삼각형 각",
+      "decisiveStep": "꺾은선의 기울어진 각을 평행선 사이에서 옮긴 다음 윗 삼각형의 내각·외각을 사용한다. MULTI_STEP_COUPLING은 허용 enum이 아니다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_c45b20b2f087a643b82bdbc0405b2b2c1c96194ba953a77af50d9d15c31a1798",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "직선"
+            },
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle x"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "크기는"
+            }
+          ],
+          "method": [
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "평행선과 이루는 각",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "내각",
+              "termId": 714,
+              "src": "solution",
+              "quote": "윗부분의 삼각형",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 내각을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "외각",
+              "termId": 715,
+              "src": "solution",
+              "quote": "(180^",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 외각을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "stem",
+              "quote": "평행할 때"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "a8b8e61fa570a1a7817ac851ce25ef0f883d1f6226710f628a7ba53a201b9dc0",
+          "QFULL": "348d3535d30f9ea918d83a5f8e3b1f1a23afc2aa99ba98d668087cc0513836af"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_26a62a5c2fc811fe37310857f79339211a308a9983b16cec54deb0b0f8f0fb62",
+      "topic": "같은 크기의 각 작도",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "기본 작도",
+        "L4": "선분·각의 이동"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "기본 작도",
+        "l4": "선분·각의 이동",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "같은 크기의 각 작도",
+      "decisiveStep": "컴퍼스 반지름과 현의 길이 이송, 필요한 교점의 순서가 핵심이다. 원·부채꼴 측정이 아니다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_26a62a5c2fc811fe37310857f79339211a308a9983b16cec54deb0b0f8f0fb62",
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "slots": {
+          "given": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle AOB"
+            },
+            {
+              "term": "반직선",
+              "termId": 145,
+              "src": "stem",
+              "quote": "반직선"
+            },
+            {
+              "term": "작도",
+              "termId": 134,
+              "src": "stem",
+              "quote": "작도하는 과정"
+            }
+          ],
+          "goal": [
+            {
+              "term": "성질",
+              "termId": 305,
+              "src": "stem",
+              "quote": "옳은 것"
+            }
+          ],
+          "method": [
+            {
+              "term": "작도",
+              "termId": 134,
+              "src": "solution",
+              "quote": "같은 각을 옮겨 그리는 작도",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "반지름",
+              "termId": 153,
+              "src": "solution",
+              "quote": "호의 반지름",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "현",
+              "termId": 154,
+              "src": "solution",
+              "quote": "현의 길이",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "babb0d8d7ed68b83cba013ca78486b075ecad14b625f424ded4588eaefd49d8f",
+          "QFULL": "df93a0ccec317283fae610668c22fbb3f3631556b190e2d3168ec8f973a143c4"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "topic": "삼각형 성립조건과 선택",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_SELECT_THREE_LENGTHS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_SELECT_THREE_LENGTHS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "세 변 조건"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "세 변 조건",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "삼각형 성립조건과 선택",
+      "decisiveStep": "서로 다른 다섯 길이 중 세 개를 선택하여 가장 긴 변의 존재 부등식을 확인한다. 유일성 조건과 별개로 존재성을 먼저 검토한다.",
+      "gapType": "EXISTING_EXACT",
+      "gapDetail": "SELECT_THREE_LENGTHS ACTIVE template 및 2022 construction PT binding 있음. 해당 RPM188 exact row는 UNIQUE_TRIANGLE_DATA와 INTEGER_PERIMETER_CASES뿐이며 선택길이 template projection 누락. 새 PT는 불필요.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "길이",
+              "termId": 215,
+              "src": "stem",
+              "quote": "길이가"
+            },
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "stem",
+              "quote": "삼각형"
+            }
+          ],
+          "goal": [
+            {
+              "term": "개수",
+              "termId": 129,
+              "src": "stem",
+              "quote": "몇 가지"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형의 세 변의 길이 관계",
+              "src": "solution",
+              "quote": "가장 긴 변이 나머지 두 변의 합보다 작은",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 삼각형의 세 변의 길이 관계을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "열거",
+              "termId": 294,
+              "src": "solution",
+              "quote": "가능한 세 변은",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 열거을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "중복불허",
+              "termId": 375,
+              "src": "stem",
+              "quote": "각각 $1$개씩"
+            },
+            {
+              "term": "합동",
+              "termId": 193,
+              "src": "stem",
+              "quote": "합동인 삼각형은 한 가지"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "179fa42d23b345cadf8d9e8673e2dfb7188b7eb3043bd4bb8ee25ef71f575953",
+          "QFULL": "41379d72824703c83b5001dda8f3dcd9b03c24aa9eae5603d7ba4755d5abc8b9"
+        },
+        "scenarioNote": "사전 ID76 삼각부등식은 TRIGONOMETRIC_INEQUALITY이므로 삼각형 세 변 존재조건의 대체어로 쓰지 않았다."
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
+      "topic": "삼각형 작도의 유일조건",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 작도",
+        "L4": "한 변과 양 끝각 조건"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "삼각형 작도의 유일조건",
+      "decisiveStep": "ASA와 SAS의 충분한 자료를 검토하고 SSA·AAA를 배제한다. 조건 존재 자체나 보기별 판정을 CASE_BRANCH로 두지 않는다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_63f6f87ada000980090636747d14c464d02f8b8833e329b72f3df7b18eec46f4",
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "stem",
+              "quote": "\\triangle ABC"
+            },
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "\\angle A"
+            },
+            {
+              "term": "길이",
+              "termId": 215,
+              "src": "stem",
+              "quote": "AB=4"
+            }
+          ],
+          "goal": [
+            {
+              "term": "삼각형의결정조건",
+              "termId": 409,
+              "src": "stem",
+              "quote": "한 가지로 작도되는"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형의결정조건",
+              "termId": 409,
+              "src": "solution",
+              "quote": "한 변 $AB$와 그 양 끝 각",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 삼각형의결정조건을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "끼인각",
+              "termId": 609,
+              "src": "solution",
+              "quote": "끼인각",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "sourceFingerprints": {
+          "QBODY": "013fd0fcb1004acd8ae85c1c549a697f2b3ba406e4c9cee6ff9142e6adcfba77",
+          "QFULL": "a2ac0815a17e5224d8be36b8e0ebb85eabb5fc9276752e4de3cf1926138f2dc4"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "topic": "합동을 이용한 수선 길이와 넓이",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA",
+        "templateKey": "TPL_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA",
+        "templateKey": "TPL_M1_MIDPOINT_PROJECTION_TRIANGLE_AREA_CORE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B45",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "crossConceptKeys",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "합동을 이용한 수선 길이와 넓이",
+      "decisiveStep": "중점으로 두 삼각형의 대응변을 확보하고 수직·맞꼭지각으로 합동을 얻어 목표 삼각형의 밑변과 높이로 전달한다. 핵심은 정사영 공식을 선행해서 쓰는 것이 아니라 중1 합동이다.",
+      "gapType": "BINDING_GAP",
+      "gapDetail": "현재 MIDPOINT_PROJECTION_TRIANGLE_AREA PT/TPL은 구체 문항에 대한 ACTIVE 기존 key로 재사용 가능하나 2022 CONSTRUCTION_CONGRUENCE binding과 ASA RPM projection이 없다. 기존 BASIC_FIGURE binding으로 작도와 합동 parent를 덮지 않음.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 4,
+        "levelAction": "KEEP",
+        "rationale": "합동에서 대응길이 또는 넓이 이동을 구성하는 상위 표준 복합 문제로4.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "stem",
+              "quote": "\\triangle ABC"
+            },
+            {
+              "term": "중점",
+              "termId": 188,
+              "src": "stem",
+              "quote": "중점"
+            },
+            {
+              "term": "수선의발",
+              "termId": 718,
+              "src": "stem",
+              "quote": "수선의 발"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "stem",
+              "quote": "넓이를"
+            }
+          ],
+          "method": [
+            {
+              "term": "합동조건",
+              "termId": 723,
+              "src": "solution",
+              "quote": "\\triangle BDM\\equiv\\triangle CEM",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 합동조건을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "대응변",
+              "termId": 612,
+              "src": "solution",
+              "quote": "$CE=BD=10",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 대응변을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "solution",
+              "quote": "[\\triangle ACE]=\\dfrac12",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 넓이을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "stem",
+              "quote": "내린 수선"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "f3367af1067ea4659228aa7c05f371699b7b9ce4a2c8e90f1bede1083fda5e20",
+          "QFULL": "46fc86b7b9959ae8a790bca8946f96909fb523ea1b8db4d4cfe9536243675c2b"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": false,
+        "matchingOwnerPacks": []
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "topic": "정비례 그래프와 삼각형 넓이",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnit": "좌표평면",
+        "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "crossConceptKeys"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "정비례 그래프와 삼각형 넓이",
+      "decisiveStep": "정비례식으로 수선 위 점의 좌표를 구하고 밑변·높이 넓이를 연결한다. 좌표 읽기 단독이 아니다.",
+      "gapType": "BINDING_GAP",
+      "gapDetail": "PT_M1_COORD_TRIANGLE_AREA/TPL_COORD_TRIANGLE_AREA_CORE는 정확한 기존 ACTIVE key. 2022 GRAPH_RELATION binding 및 RPM172 exact projection 누락.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 2,
+        "levelAction": "KEEP",
+        "rationale": "개념이 분명하고 짧은 해석·이동·대입으로 끝나는2.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+        "format": "소문항 묶음",
+        "slots": {
+          "given": [
+            {
+              "term": "정비례",
+              "termId": 290,
+              "src": "stem",
+              "quote": "정비례"
+            },
+            {
+              "term": "그래프",
+              "termId": 107,
+              "src": "stem",
+              "quote": "그래프"
+            },
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "stem",
+              "quote": "좌표"
+            }
+          ],
+          "goal": [
+            {
+              "term": "좌표",
+              "termId": 148,
+              "src": "solution",
+              "quote": "$A=(8,10)$"
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "solution",
+              "quote": "[\\triangle AOB]"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "termId": 53,
+              "src": "solution",
+              "quote": "$y=\\dfrac54\\times8=10$",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 대입을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "solution",
+              "quote": "\\dfrac12\\times8\\times10",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 넓이을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "stem",
+              "quote": "수선을"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "a199eeb9df3d88e8321fe7bfbd990580d3c46c1879cda845e657d245076122c0",
+          "QFULL": "5f875df41e38504b84af38d7c9f426bab9f0243c41f40171c32a847a47b927db"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": false,
+        "matchingOwnerPacks": []
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+      "topic": "직선·반직선·선분 개수",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "changedFields": [
+        "difficultyBucket",
+        "legacyLevelCompatibility"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "점·선·면",
+        "L4": "직선·반직선·선분"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "점·선·면",
+        "l4": "직선·반직선·선분",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "직선·반직선·선분 개수",
+      "decisiveStep": "한 직선 위 네 점과 외부 한 점에서 세 종류의 대상 동일성을 구분해 중복을 제거한다. 고등 조합 공식이 primary가 아니다.",
+      "gapType": "EXISTING_EXACT",
+      "gapDetail": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT/TPL_*_MULTI_OBJECT_COUNT 및 정확한 binding 존재. RPM173은 용어 동일성 judgment row만 있어 개수 유형 exact projection을 추가 요청.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "중복 계수의 표준/준고난도 경계 재확인 필요.",
+        "suggestion": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+          "independentRecheckRequired": false,
+          "reason": "A1 독립 재확인도3에 동의. level 상은 보존하고 registrar 허용값으로 BORDERLINE_REVIEW를 남긴다.",
+          "status": "ACCEPTED_AFTER_A1_RECHECK"
+        },
+        "independentReviewEvidence": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json"
+      },
+      "fourSlot": {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "점",
+              "termId": 142,
+              "src": "stem",
+              "quote": "네 점"
+            },
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "직선 $l$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "직선",
+              "termId": 143,
+              "src": "stem",
+              "quote": "직선의 개수"
+            },
+            {
+              "term": "반직선",
+              "termId": 145,
+              "src": "stem",
+              "quote": "반직선의 개수"
+            },
+            {
+              "term": "선분",
+              "termId": 144,
+              "src": "stem",
+              "quote": "선분의 개수"
+            },
+            {
+              "term": "개수",
+              "termId": 129,
+              "src": "stem",
+              "quote": "직선의 개수"
+            },
+            {
+              "term": "합",
+              "termId": 286,
+              "src": "stem",
+              "quote": "$a+b+c$의 값"
+            }
+          ],
+          "method": [
+            {
+              "term": "정의",
+              "termId": 369,
+              "src": "solution",
+              "quote": "같은 선분을 두 번씩",
+              "evidenceType": "IMPLIED",
+              "justification": "직선은 같은 지지직선, 반직선은 시작점과 방향, 선분은 같은 두 끝점이라는 대상 동일성 정의로 중복을 구분한다."
+            },
+            {
+              "term": "열거",
+              "termId": 294,
+              "src": "solution",
+              "quote": "$l,PA,PB,PC,PD$",
+              "evidenceType": "IMPLIED",
+              "justification": "일직선 위 대상과 외부 점 연결 대상을 나누어 실제 가능한 직선과 반직선을 빠짐없이 열거한다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "일직선",
+              "termId": 627,
+              "src": "stem",
+              "quote": "직선 $l$ 위에 있는 네 점"
+            },
+            {
+              "term": "위치관계",
+              "termId": 307,
+              "src": "stem",
+              "quote": "직선 $l$ 위에 있지 않은 한 점"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "67f6e120ed4288a4c10e41eee7cced8dc51da587b78205cd74c52111d23b33ae",
+          "QFULL": "1bf25489d5ebd8ed24abc688a25f0f38fba89e1c73171731d42aeee801257762"
+        }
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7e7daaa8de9d161000e9669ff4da4f7bf381397beaa4ad5f3b499110fb9d0125",
+      "topic": "평행선과 삼각형 각의 합",
+      "disposition": "GAP",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "crossConceptKeys"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "기본 도형",
+        "L3": "평행선과 각",
+        "L4": "동위각·엇각"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "평행선과 삼각형 각의 합",
+      "decisiveStep": "접힌 직사각형이 소재지만 목표 두 각의 합은 평행선 이동 후 삼각형 내각 합으로 결정된다. 접기 반사 자체를 별도 primary로 만들지 않는다.",
+      "gapType": "EXISTING_EXACT",
+      "gapDetail": "FOLDED_RECTANGLE_PARALLEL_TRANSFER ACTIVE template와 POSITION_RELATION PT binding 존재. RPM177의 해당 template exact projection 누락.",
+      "applicationPolicy": "확정한 비공유 필드는 적용 가능하되 missing binding/crosswalk/leaf의 PASS 또는 등록완료로 표시 금지. root 공식 resolver/등록 경로로 판정.",
+      "difficultyReview": {
+        "judgedBucket": 3,
+        "levelAction": "KEEP",
+        "rationale": "관계 선택/표현 해석이 필요한 표준3. ",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_7e7daaa8de9d161000e9669ff4da4f7bf381397beaa4ad5f3b499110fb9d0125",
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "직사각형",
+              "termId": 165,
+              "src": "stem",
+              "quote": "직사각형"
+            },
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle ABC"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "termId": 174,
+              "src": "stem",
+              "quote": "angle DEF+"
+            }
+          ],
+          "method": [
+            {
+              "term": "평행",
+              "termId": 180,
+              "src": "solution",
+              "quote": "평행하다",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "내각",
+              "termId": 714,
+              "src": "solution",
+              "quote": "\\triangle DEF",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 내각을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "접기",
+              "termId": 208,
+              "src": "stem",
+              "quote": "접는 선으로 하여 접은"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "8d9e14002690c227a33f0d6512b994e3ce58daa63e8f0e5ebc818bd9c3b21b92",
+          "QFULL": "b87075732db162aa5fd34049a9e1c537002e90d49622ff72870345a3404f52ac"
+        },
+        "scenarioNote": "접기 상황은 주어졌지만 현재 목표각 합은 평행선과 삼각형 내각만으로 결정되므로 접기를 method에 중복하지 않았다."
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e",
+      "topic": "정사각형 배치의 합동과 넓이",
+      "disposition": "CORRECT",
+      "prior": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "DEEP_COMPOSITE",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposed": {
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "changedFields": [
+        "subUnitKey",
+        "subUnit",
+        "integrationPattern"
+      ],
+      "rpmPrior": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L1": "기본 도형",
+        "L2": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동"
+      },
+      "rpmDecision": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동",
+        "status": "SEMANTIC_REVIEWED"
+      },
+      "primaryMethod": "정사각형 배치의 합동과 넓이",
+      "decisiveStep": "정사각형의 대각선 성질과 직각으로 ASA 합동을 보이고 넓이를 옮겨 합한다. 선형 합동→넓이 전달이므로 반복 상호 의존 DEEP_COMPOSITE는 과하다.",
+      "gapType": null,
+      "gapDetail": null,
+      "applicationPolicy": "root 공식 resolver 및 정확한 ACTIVE binding 검증 후 적용",
+      "difficultyReview": {
+        "judgedBucket": 4,
+        "levelAction": "KEEP",
+        "rationale": "합동에서 대응길이 또는 넓이 이동을 구성하는 상위 표준 복합 문제로4.",
+        "suggestion": null
+      },
+      "fourSlot": {
+        "sourceOrdinal": 24,
+        "questionUid": "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e",
+        "format": "소문항 묶음",
+        "slots": {
+          "given": [
+            {
+              "term": "정사각형",
+              "termId": 166,
+              "src": "stem",
+              "quote": "정사각형"
+            },
+            {
+              "term": "대각선",
+              "termId": 310,
+              "src": "stem",
+              "quote": "대각선"
+            },
+            {
+              "term": "교점",
+              "termId": 181,
+              "src": "stem",
+              "quote": "교점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "삼각형",
+              "termId": 158,
+              "src": "solution",
+              "quote": "\\triangle OPC\\equiv\\triangle OQD"
+            },
+            {
+              "term": "합동",
+              "termId": 193,
+              "src": "solution",
+              "quote": "ASA 합동"
+            },
+            {
+              "term": "넓이",
+              "termId": 213,
+              "src": "solution",
+              "quote": "색칠한 부분의 넓이"
+            }
+          ],
+          "method": [
+            {
+              "term": "합동조건",
+              "termId": 723,
+              "src": "solution",
+              "quote": "ASA 합동",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 합동조건을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "등적변형",
+              "termId": 630,
+              "src": "solution",
+              "quote": "[OPCQ]=[\\triangle OPC]+[\\triangle OCQ]",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 등적변형을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            },
+            {
+              "term": "정사각형",
+              "termId": 166,
+              "src": "solution",
+              "quote": "두 대각선이 넓이를 $4$등분",
+              "evidenceType": "IMPLIED",
+              "justification": "현재 문항의 기존 해설에서 이 부분이 정사각형을 적용하는 결정 단계이다. 문항의 수치 계산 자체를 별도 방법으로 넣지 않았다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "수선",
+              "termId": 179,
+              "src": "solution",
+              "quote": "서로 수직이고 서로를 이등분"
+            }
+          ]
+        },
+        "sourceFingerprints": {
+          "QBODY": "9846322c6981976bc622433c3add748bed92f465257b6e88bfbd263a23295e42",
+          "QFULL": "f24b355a49ca313784e05228faa4740c2d01a5822c88adb0250640b24c347d96"
+        },
+        "scenarioNote": "합동 증명에서 얻은 넓이 동등성을 영역 이동에 쓰는 순차 구조이다. 넓이 자체를 새로운 PT로 분리하지 않는다."
+      },
+      "canonicalKeyCheck": {
+        "activePT": true,
+        "activeTPL": true,
+        "parentMatches": true,
+        "exactProposedBinding": true,
+        "matchingOwnerPacks": [
+          "MIDDLE1"
+        ]
+      }
+    }
+  ],
+  "pendingCommonDefinitions": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ac28d71dcdee035cda402539898e93d767004e529304b6430d4a7e8257bfaea9",
+      "type": "BINDING_GAP",
+      "detail": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE는 ACTIVE지만 2022 M1-04-GRAPH_RELATION binding과 해당 RPM166 exact crosswalk가 없다. 기존 COORDINATE_PLANE binding만 있다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+      "type": "EXISTING_EXACT",
+      "detail": "PT_FUNCTION_GRAPH_PROPERTIES/TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT 재사용 가능; RPM168은 RPM_ONLY이며 같은 template의 RPM170 반비례 row로 대신 묶으면 의미 오류."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_008e99d3101749b349c08fa5e412c4f59c9bfc8b098e48d8ce26d08a4c8c053a",
+      "type": "EXISTING_EXACT",
+      "detail": "기존 PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION 정확; RPM172의 새 ACTIVE rows는 자원수·격자점·선분분할로 이 문항과 다름. 해당 native key의 exact projection 요청."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+      "type": "RPM_LEAF_GAP",
+      "detail": "ACTIVE PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS와 SPATIAL_CLAIM_AUDIT 및 2022 M1-05/POSITION_RELATION binding은 존재. RPM의 공간 L3에는 직선-평면/평면-평면 leaf만 있으며 결정적인 직선-직선 꼬인·평행 판정 exact leaf가 비어 있다. 각기둥·각뿔 leaf를 억지 primary로 삼지 않음."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "type": "EXISTING_EXACT",
+      "detail": "SELECT_THREE_LENGTHS ACTIVE template 및 2022 construction PT binding 있음. 해당 RPM188 exact row는 UNIQUE_TRIANGLE_DATA와 INTEGER_PERIMETER_CASES뿐이며 선택길이 template projection 누락. 새 PT는 불필요."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "type": "BINDING_GAP",
+      "detail": "현재 MIDPOINT_PROJECTION_TRIANGLE_AREA PT/TPL은 구체 문항에 대한 ACTIVE 기존 key로 재사용 가능하나 2022 CONSTRUCTION_CONGRUENCE binding과 ASA RPM projection이 없다. 기존 BASIC_FIGURE binding으로 작도와 합동 parent를 덮지 않음."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "type": "BINDING_GAP",
+      "detail": "PT_M1_COORD_TRIANGLE_AREA/TPL_COORD_TRIANGLE_AREA_CORE는 정확한 기존 ACTIVE key. 2022 GRAPH_RELATION binding 및 RPM172 exact projection 누락."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_dbd2626d30b8c1157df867b00f5eddc5e4f528aad38fd308424ea68bd9e31af2",
+      "type": "EXISTING_EXACT",
+      "detail": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT/TPL_*_MULTI_OBJECT_COUNT 및 정확한 binding 존재. RPM173은 용어 동일성 judgment row만 있어 개수 유형 exact projection을 추가 요청."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7e7daaa8de9d161000e9669ff4da4f7bf381397beaa4ad5f3b499110fb9d0125",
+      "type": "EXISTING_EXACT",
+      "detail": "FOLDED_RECTANGLE_PARALLEL_TRANSFER ACTIVE template와 POSITION_RELATION PT binding 존재. RPM177의 해당 template exact projection 누락."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "type": "TERM_DICTIONARY_GAP",
+      "term": "삼각형의 세 변의 길이 관계",
+      "detail": "term ID76은 삼각함수 부등식, ID409는 삼각형 유일 결정조건이다. 존재조건은 후보로 기록하고 임의 ID를 만들지 않는다."
+    }
+  ],
+  "crossReview": {
+    "status": "PASS_WITH_MINOR_CORRECTION_APPLIED",
+    "evidence": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json",
+    "sampleOrdinals": [
+      13,
+      18,
+      22
+    ],
+    "correctedOrdinals": [
+      22
+    ]
+  },
+  "counts": {
+    "KEEP": 2,
+    "CORRECT": 13,
+    "GAP": 9,
+    "PT_TPL_changedItems": 2,
+    "difficultyBucketChanged": 1,
+    "difficultyBoundaryPending": 0,
+    "fourSlotNewItems": 24,
+    "levelChanged": 0
+  },
+  "validation": {
+    "dictionary": "term-dict-v1.5-2026-11-04",
+    "fourSlotValidator": {
+      "fail": 0,
+      "warn": 10,
+      "quotes": 162,
+      "items": 24
+    },
+    "uidCount": 24,
+    "uniqueUidCount": 24,
+    "sourceContentUnchanged": true
+  },
+  "rootFinalCompatibilityAdjudication": "root가 register-difficulty5 reviewedCorrection 분기와 auto-register difficultyComplete를 직접 확인함. BORDERLINE_ACCEPTABLE은 해당 공식 분기에서 지원되므로 기존 정상 ACCEPTABLE을 보존하며 source 최종 인접경계 값은 root의 검증된 ACCEPTABLE 적용을 따른다. 최초 REVIEW만 지원한다는 전제는 폐기."
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "reviewer": "GPT_A2_54CB21AF3005",
+  "author": "A1",
+  "exam": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+  "sample": [
+    2,
+    7,
+    15
+  ],
+  "reviewBasis": "current JS stem/choices/reused solution plus each actual source image inspected; author 4-slot after IDs compared against v1.5 dictionary",
+  "sourceGitBlobSha": "04758a6084ca3c561e3f0463ff2e93a75eac5b30",
+  "reviewedArtifact": "docs/operations/m1-s2-meta-b01-a-20261114/a1-exam1.review.json",
+  "reviewedArtifactSha256": "2b8f049c4967925af2d61670dfaa1cfd9d0c00aa6d21de9485d79aee1e3d5301",
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_53311861e37719615dc603db64c1ff8a413a01daec5580b8b0a5a129b9f5afbf",
+      "verdict": "PASS",
+      "fourSlot": {
+        "given": [
+          174
+        ],
+        "goal": [
+          174,
+          288
+        ],
+        "method": [
+          406
+        ],
+        "condition": []
+      },
+      "rationale": "두 서로 다른 꼭짓점의 이웃각을 각각 평각에서 복원해 차를 구한다. given 각, goal 각/차, method 평각, condition 없음이 정확하다. 그림에 사각형이 있어도 내각합을 method로 추가하지 않는 것이 옳다.",
+      "substantiveErrors": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_60a01803a994f2e64293b2fda6278172505188e40653c8646b7316ca665f7645",
+      "verdict": "PASS",
+      "fourSlot": {
+        "given": [
+          165,
+          381
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          381,
+          155
+        ],
+        "condition": []
+      },
+      "rationale": "직사각형을 굴리는 과정에서 한 꼭짓점의 회전 궤적을 세 사분원 호의 길이로 연결한다. given 직사각형/회전이동, goal 길이, method 회전이동/호가 충분하며 피타고라스가 불필요하다.",
+      "difficultyIndependentJudgment": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "adjudication": "A1 상→중 및 bucket2 유지 제안에 동의",
+        "reason": "그림이 네 위치의 회전 순서를 주고 본문이 두 변과 대각선까지 제공한다. 추가 길이 복원·비정형 보조선·경우 분기는 없다. 각 회전 중심의 거리 선택은 익숙한 한 번의 모델 해석이고 이후 동일한 사분원 호 공식 반복이다. 중1 기준 중의 B23 경계로 판단한다."
+      },
+      "substantiveErrors": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ffcd4992e7ec7512be232e19f56037887e79e2d8706930dd9561b3857daa473a",
+      "verdict": "PASS",
+      "fourSlot": {
+        "given": [
+          603,
+          219
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          219,
+          346
+        ],
+        "condition": [
+          346
+        ]
+      },
+      "rationale": "그림의 두 직육면체 용기와 같은 물의 양을 전제로 각기둥 모양 물의 부피를 같게 놓고 목표 길이를 결정한다. given 직육면체 추가가 구체 객체를 복원하며 method 부피/상등과 condition 상등은 실제 동일부피 전제 및 계산에 대응한다.",
+      "substantiveErrors": []
+    }
+  ],
+  "summary": {
+    "sampled": 3,
+    "passed": 3,
+    "substantiveErrors": 0,
+    "fakeQuotesFound": 0,
+    "wholeExamRepeatRequired": false
+  },
+  "scopeLimit": "4slot 독립 표본 및 Q7 난이도만 확인. 전수 PT/TPL 또는 배포 PASS를 뜻하지 않음."
+}

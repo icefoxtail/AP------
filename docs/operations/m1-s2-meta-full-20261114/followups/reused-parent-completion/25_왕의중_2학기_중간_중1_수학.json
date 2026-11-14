@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "m1s2-reused-candidate-parent-completion-v1",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+  "sourceBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+  "status": "INDEPENDENTLY_ACCEPTED_REMOTE_RAW_VERIFIED",
+  "scope": "ADDITIVE_SECTION10_CANONICAL_PARENT_ONLY",
+  "oldRaw": {
+    "kind": "GIT_COMMIT_EXACT_BYTES",
+    "commit": "36d18b5e2ad45381854d38a1061e500a76dd9193",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.4slot.json",
+    "sha256": "d7ea006a0d031ce874c4d2c3e39bca7c67df06ea67d99c9be15b373ec3d83b1f",
+    "bytes": 45005
+  },
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/13-WsQ-OfsWq5f9fjYM3Bui_VhUSYo4Mv/view?usp=drivesdk",
+    "fileId": "13-WsQ-OfsWq5f9fjYM3Bui_VhUSYo4Mv",
+    "sha256": "d079e1a527e19d2daa64296165f068750b87eb5808f640bdf5dbfb7a09891c6f",
+    "readbackVerified": true,
+    "originalSourceBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+    "protectedPayloadSame": true
+  },
+  "additions": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+      "slot": "method",
+      "candidate": "삼각형의 세 변의 길이 관계",
+      "parent": "삼각형",
+      "parentId": 158
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+      "slot": "condition",
+      "candidate": "정삼각형 제외",
+      "parent": "이등변삼각형",
+      "parentId": 159
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_97ba9773e526e9742012fac950e7b061acde40b29e723dc29cd1823f23a7c060",
+      "slot": "method",
+      "candidate": "삼각형의 세 변의 길이 관계",
+      "parent": "삼각형",
+      "parentId": 158
+    }
+  ],
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#1 only 2 distinct terms",
+      "#1 method has 1 term",
+      "#3 only 3 distinct terms",
+      "#6 only 3 distinct terms",
+      "#7 only 4 distinct terms",
+      "#8 only 4 distinct terms",
+      "#10 only 4 distinct terms",
+      "#12 only 4 distinct terms",
+      "#19 only 3 distinct terms",
+      "#20 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 151
+    }
+  },
+  "rawSemanticDiff": {
+    "addedEntries": 3,
+    "removedEntries": 0,
+    "modifiedExistingEntries": 0,
+    "candidateDeclarationsChanged": 0,
+    "otherPropertiesChanged": 0,
+    "reversionDeepEqual": true,
+    "oldCanonicalSerializationAlreadyMatched": true
+  },
+  "compactDiff": [
+    {
+      "ordinal": 18,
+      "slot": "method",
+      "before": [
+        355,
+        294
+      ],
+      "after": [
+        355,
+        294,
+        158
+      ],
+      "addedTermId": 158,
+      "addedCanonicalTerm": "삼각형"
+    },
+    {
+      "ordinal": 18,
+      "slot": "condition",
+      "before": [
+        1
+      ],
+      "after": [
+        1,
+        159
+      ],
+      "addedTermId": 159,
+      "addedCanonicalTerm": "이등변삼각형"
+    },
+    {
+      "ordinal": 19,
+      "slot": "method",
+      "before": [
+        409
+      ],
+      "after": [
+        409,
+        158
+      ],
+      "addedTermId": 158,
+      "addedCanonicalTerm": "삼각형"
+    }
+  ],
+  "independentTechnicalReview": {
+    "reviewer": "GPT_ROOT_64695B8EDE31",
+    "author": "/root/meta_b",
+    "status": "ACCEPTED",
+    "scope": "Four added canonical-parent entries only; actual current stem/choices/existing solution read for the three affected items; prior full review and three-item samples reused.",
+    "items": [
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+        "slot": "method",
+        "parent": "삼각형",
+        "parentId": 158,
+        "decision": "ACCEPT_CANONICAL_PARENT_SAME_SLOT",
+        "reason": "세 변으로 삼각형의 존재를 판단하는 기존 인용은 상위 개념 삼각형의 병기를 직접 뒷받침한다."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+        "slot": "condition",
+        "parent": "이등변삼각형",
+        "parentId": 159,
+        "decision": "ACCEPT_CANONICAL_PARENT_SAME_SLOT",
+        "reason": "원문은 두 변이 같고 나머지 한 변은 다르다고 명시한다. 이등변삼각형이라는 상위 제약을 같은 칸에 병기하며 정삼각형 제외 후보와 기존 인용은 유지한다."
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_97ba9773e526e9742012fac950e7b061acde40b29e723dc29cd1823f23a7c060",
+        "slot": "method",
+        "parent": "삼각형",
+        "parentId": 158,
+        "decision": "ACCEPT_CANONICAL_PARENT_SAME_SLOT",
+        "reason": "세 변으로 삼각형의 존재를 판단하는 기존 인용은 상위 개념 삼각형의 병기를 직접 뒷받침한다."
+      }
+    ]
+  },
+  "priorSamplesPreserved": true,
+  "studentPayloadChanges": 0,
+  "sourceUnchanged": true,
+  "authorReceiptSha256": "a378f380796434f95722454457d905192736ceddc8e73d5d724e3c5fece06eac"
+}

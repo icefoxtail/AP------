@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-b",
+  "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+  "candidateSourceBlob": "7f2a5b3b3af7ac34b38305d9d9fa5ba9bf5be749",
+  "candidateSourceRawSha256": "6cf5b9b96c6fe661e797b124228d1b20bc7d849e1121af18de283263fe393487",
+  "raw4slotSha256": "86656a6232d4e2bd8c3c602aa42b2f25fbef99a05914cc691a6daeaeed93d5a6",
+  "authorReviewSha256": "d65d97968cf4713b065d7ad6c24a3b0e00985d7b2d3d317b4c3fef36572095c6",
+  "sampled": [
+    18,
+    19,
+    23
+  ],
+  "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS",
+  "directReads": [
+    "actual content/choices/solution for each sample",
+    "current ACTIVE PT/TPL definitions and parent",
+    "source graph/solid original PNG bytes extracted from Git and directly viewed",
+    "author full4slot and review"
+  ],
+  "figureEvidence": [
+    {
+      "n": 18,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-hyangrim-final-images/q18.png",
+      "sha256": "ebc980fc0ab9bc1cdc8dd49b0154af01f646a74428d56c3e4a64115548836400",
+      "gitPath": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q18.png"
+    },
+    {
+      "n": 19,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-hyangrim-final-images/q19.png",
+      "sha256": "5402136146d14c444eb385d6e133d070a92835a1e0c1df5c84dacbec516c9c79",
+      "gitPath": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q19.png"
+    },
+    {
+      "n": 23,
+      "path": "/workspace/scratch/64695b8ede31/agent-a/cross/24-hyangrim-final-images/q23.png",
+      "sha256": "105018cbecf649e4e677668ba50417b028a8a3bd10191d75771c045f95ec4688",
+      "gitPath": "archive/assets/images/24_향림중_2학기_기말_중1_기출/q23.png"
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 18,
+      "difficultyVerdict": "ACCEPT_BORDERLINE",
+      "level": "하",
+      "bucket": 2,
+      "recommendedCompatibility": "BORDERLINE_ACCEPTABLE",
+      "meaning": "구의 부피 공식을 적용하고 잘라낸 1/8의 여집합인 7/8을 적용한다. 공식 대입 외에 전체와 남은 부분의 비 해석이 한 번 있어 2가 타당하고 기존 하와 인접 허용한다.",
+      "native": "VOLUME_DIFFERENCE는 절단 후 남은 부피의 차 관계에 정확히 해당. 그림은 구 중심을 지나는 세 직각 절단으로 1/8 제거를 보여 준다.",
+      "fourSlot": "PASS; 구·부피·비와 절단 비 조건이 실제 풀이를 구별한다."
+    },
+    {
+      "ordinal": 19,
+      "difficultyVerdict": "ACCEPT_STRONG_CONFLICT_REASSESSMENT",
+      "level": "상",
+      "bucket": 2,
+      "recommendedCompatibility": "STRONG_CONFLICT",
+      "meaning": "그래프의 보이는 도수(1,4,2,0)를 읽고 30×0.4로 한 결측을 구한 뒤 전체 합에서 나머지를 정한다. 선택지 재구성·분기·복잡한 역산이 없으므로 2가 타당하다. 과거 상은 유지하고 강한 차이는 독립 검토로 수용한 기록을 남긴다.",
+      "native": "MISSING_FREQUENCY 정의에 직접 대응. 별도 수학 개념 결합 없이 primary taxonomy의 백분율·전체도수 복원 구조이므로 NONE 지지.",
+      "fourSlot": "MINOR_EVIDENCE_TYPE_CORRECTION",
+      "corrections": [
+        {
+          "slot": "method",
+          "term": "일차방정식",
+          "operation": "SET evidenceType=IMPLIED and add justification",
+          "quote": "$1+12+x+4+2+0=30$",
+          "reason": "해설에 일차방정식이라는 명칭은 없고 등식만 있다. 전체 도수 보존을 미지수 한 개의 일차식으로 표현한다는 함의 근거를 덧붙인다."
+        }
+      ]
+    },
+    {
+      "ordinal": 23,
+      "difficultyVerdict": "ACCEPT_BORDERLINE",
+      "level": "상",
+      "bucket": 3,
+      "recommendedCompatibility": "BORDERLINE_ACCEPTABLE",
+      "meaning": "실제 그림에서 전체 삼각영역의 회전은 반지름4·높이6인 원뿔, 제외 직사각형의 회전은 반지름2·높이2인 원기둥이다. 이 해석을 두 부피 공식과 연결하는 부담은 있으나 비표준 보조구조·조건분기는 없으므로 3을 유지한다.",
+      "native": "원뿔에서 원기둥을 제거하는 VOLUME_DIFFERENCE가 정확하며 CC_SOLID_OF_REVOLUTION 이후 부피 계산의 SEQUENTIAL을 지지한다.",
+      "fourSlot": "MINOR_GOAL_OBJECT_COMPLETION",
+      "corrections": [
+        {
+          "slot": "goal",
+          "term": "입체도형",
+          "operation": "ADD",
+          "src": "stem",
+          "quote": "두 입체도형의 이름",
+          "reason": "판정의 목표 대상이 입체도형의 종류라는 것을 goal에 명시한다."
+        }
+      ]
+    }
+  ],
+  "rpmInterpretation": "최종 source curriculum2015 및2015 RPM106/109/106 경로를 직접 재확인. 최신2022참조는 review에만 남아 원본과 구별된다.",
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "revision": 2,
+  "finalReadback": {
+    "correctionsApplied": [
+      "Q19 일차방정식 IMPLIED+전체도수 보존 근거",
+      "Q23 goal 입체도형 exact quote",
+      "Q18/Q23 BORDERLINE_ACCEPTABLE, Q19 STRONG_CONFLICT 독립수용",
+      "source2015 RPM와2022 review reference 분리"
+    ],
+    "unresolvedSampleDefects": 0
+  }
+}

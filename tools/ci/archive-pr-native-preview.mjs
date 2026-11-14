@@ -8,6 +8,7 @@ import { spawnSync } from 'node:child_process';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
+const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
 const REGISTRAR = 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs';
@@ -75,7 +76,9 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     const raw = fs.readFileSync(path.join(root, file));
     if (sha(raw) !== sha(gitBytes(root, `${headSha}:${file}`))) fail(`REQUEST_NOT_FIXED:${file}`);
     let request; try { request = JSON.parse(raw); } catch { fail(`REQUEST_JSON:${file}`); }
-    if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
+    const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
+    if (!correction && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) continue;
+    if (correction && (!Array.isArray(request.items) || !request.items.length)) fail('QUESTION_COUNT');
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')) fail('REQUEST_ID');
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     const refs = new Map();
@@ -93,7 +96,8 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
-    requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: request.expectedQuestionCount, source: { ...source, blobSha1 },
+    requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: correction ? request.items.length : request.expectedQuestionCount,
+      ...(correction ? { kind: 'basic-parent-correction' } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
@@ -149,7 +153,7 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
       || !Array.isArray(result.exams) || result.exams.length !== requests.length
       || requests.some(r => {
         const exams = result.exams.filter(e => e.file === r.path);
-        return exams.length !== 1 || exams[0].kind !== 'reviewed-exam-v2'
+        return exams.length !== 1 || exams[0].kind !== (r.kind || 'reviewed-exam-v2')
           || `archive/exams/${exams[0].sourceFile}` !== r.source.path || !complete(exams[0], r.questionCount);
       })
       || ['changed', 'checked', 'passed', 'skippedUnchanged'].some(k => result.exams.reduce((sum, e) => sum + e[k], 0) !== result.counts[k])

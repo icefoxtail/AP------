@@ -43,7 +43,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 직육면체의 꼭짓점 8개에 번호 1~8을, 모서리 12개에 번호 ①~⑫를 붙이고, 세로 모서리는 빨강, 위 모서리는 굵게, 보이지 않는 모서리는 점선으로 구분해 센 그림이다.",
     "solutionImageCaption": "직육면체의 꼭짓점 8개와 모서리 12개를 번호로 센다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "교점은 꼭짓점8개, 교선은 모서리12개에 대응함을 읽고 합한다.",
+    "decisiveStep": "교점은 꼭짓점8개, 교선은 모서리12개에 대응함을 읽고 합한다.",
+    "rpmPrimaryRecordId": "M1-RPM-094",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "입체도형", "midUnit": "다면체와 회전체", "l3": "다면체", "l4": "면·모서리·꼭짓점"}
   },
   {
     "id": 2,
@@ -76,7 +81,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
-    "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -87,7 +92,13 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 원 위의 다섯 점 A, B, C, D, E에서 두 점씩 이은 선분을 빠짐없이 그어 보인 그림.",
     "solutionImageCaption": "원 위의 다섯 점 중 두 점씩 이은 직선을 모두 그린 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "원 위의 점에서는 세점이 한직선에 놓이지 않으므로 순서없는 두 점쌍마다 서로 다른 직선 하나가 생긴다.",
+    "decisiveStep": "원 위의 점에서는 세점이 한직선에 놓이지 않으므로 순서없는 두 점쌍마다 서로 다른 직선 하나가 생긴다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "metaNullReason": "의미판정 완료. exact 기존TPL 없음; 같은PT 아래 일반화 정의·구별기준·지원UID를 review.proposals에 보존."
   },
   {
     "id": 3,
@@ -120,10 +131,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
@@ -131,7 +142,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나 생긴 마주 보는 두 각 a, b가 각각 60°로 같은 호로 표시되고, 위쪽의 이웃한 각은 x로 표시된 그림.",
     "solutionImageCaption": "맞꼭지각 a, b는 크기가 같고 각 x는 이웃한 각이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "맞꼭지각 a=b를 합조건과 결합해60도를 정하고 이웃각의 평각 관계를 적용한다.",
+    "decisiveStep": "맞꼭지각 a=b를 합조건과 결합해60도를 정하고 이웃각의 평각 관계를 적용한다.",
+    "rpmPrimaryRecordId": "M1-RPM-063",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "기본 도형", "l3": "각", "l4": "맞꼭지각"}
   },
   {
     "id": 4,
@@ -175,7 +191,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에서 점 A(5,4)에서 x축까지, 점 B(2,7)에서 y축까지 점선 수선을 내려 길이 a=4, b=2를 표시한 그림.",
     "solutionImageCaption": "점에서 축까지의 거리는 수선의 길이이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "x축까지는 y좌표의 절댓값, y축까지는 x좌표의 절댓값을 읽는다. 실제 내용은 M1-1이며2학기 파일 경로는 보존한다.",
+    "decisiveStep": "x축까지는 y좌표의 절댓값, y축까지는 x좌표의 절댓값을 읽는다. 실제 내용은 M1-1이며2학기 파일 경로는 보존한다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null
   },
   {
     "id": 5,
@@ -219,7 +240,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 AD 위의 점 O에서 OF가 수직이고 각 EOD=60°, 각 AOE=120°이며, 같은 호로 표시한 맞꼭지각 FOE와 BOC를 나타낸 그림.",
     "solutionImageCaption": "각 EOD, AOE의 크기와 맞꼭지각 FOE, BOC의 관계를 보인 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "평각의 두 부분이2:1임을 사용해60도를 정하고 수직각90도의 차를 맞꼭지각으로 옮긴다.",
+    "decisiveStep": "평각의 두 부분이2:1임을 사용해60도를 정하고 수직각90도의 차를 맞꼭지각으로 옮긴다.",
+    "rpmPrimaryRecordId": "M1-RPM-063",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "기본 도형", "l3": "각", "l4": "맞꼭지각"}
   },
   {
     "id": 6,
@@ -263,7 +289,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각기둥 ABC-DEF를 네 번 그려 두 밑면과 모서리 BE, BE와 평행한 AD·CF, EF와 수직인 DE·BE·CF, AB와 꼬인 위치의 CF·DF·EF를 각각 빨강과 굵은 선으로 구분해 보여 준다.",
     "solutionImageCaption": "삼각기둥에서 모서리 사이의 평행, 수직, 꼬인 위치 관계를 모서리별로 구분한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "모서리-면의 평행·수직과 두 모서리의 만남·평행·꼬임을 보기별로 구분한다. 그림의 직각 표시를 확인했다.",
+    "decisiveStep": "모서리-면의 평행·수직과 두 모서리의 만남·평행·꼬임을 보기별로 구분한다. 그림의 직각 표시를 확인했다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null
   },
   {
     "id": 7,
@@ -300,7 +331,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "눈금 없는 자는 길이 측정에 사용하지 않으며 길이 이동은 컴퍼스가 맡는다.",
+    "decisiveStep": "눈금 없는 자는 길이 측정에 사용하지 않으며 길이 이동은 컴퍼스가 맡는다.",
+    "rpmPrimaryRecordId": "M1-RPM-072",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "기본 작도", "l4": "선분·각의 이동"}
   },
   {
     "id": 8,
@@ -328,15 +364,15 @@ window.questionBank = [
     "answer": "①",
     "solution": "$l\\parallel m\\parallel n$이다.\n\n첫 번째 꺾인 점에서\n두 선분의 방향 차는\n\n$180^\\circ-150^\\circ=30^\\circ$\n\n평행선에서 옮긴 각이\n$2x,\\ 3x$이므로\n\n$3x-2x=30^\\circ$\n\n$x=30^\\circ$\n\n따라서\n$3x=90^\\circ$\n\n두 번째 선분은 평행선들에 수직이다.\n\n마지막 선분이 $n$과 이루는 각이 $55^\\circ$이므로\n작은 각은\n\n$90^\\circ-55^\\circ=35^\\circ$\n\n표시된 $y$는 그 보각이므로\n\n$y=180^\\circ-35^\\circ\n=145^\\circ$\n\n정답은 ①이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q8.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -348,7 +384,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q8-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 직선 l, m, n을 지나는 꺾인 선 그림. 꺾인 점의 150°와 바깥각 30°, l에서의 각 2x, m에서 직각 표시와 3x=90°, 꺾인 점의 35°와 y, n에서의 55°가 적혀 있다.",
     "solutionImageCaption": "평행선 l, m, n에서 꺾인 점의 각 150°의 바깥각 30°, l과 m에서의 각 2x와 3x, 그리고 y의 이웃한 각 35°를 보인 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "평행선에 대한 방향각의 차로 x를 정하고 두 번째 꺾임의 직각·보각 관계로 y를 구한다.",
+    "decisiveStep": "평행선에 대한 방향각의 차로 x를 정하고 두 번째 꺾임의 직각·보각 관계로 y를 구한다.",
+    "rpmPrimaryRecordId": "M1-RPM-064",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "기본 도형", "l3": "평행선과 각", "l4": "동위각·엇각"}
   },
   {
     "id": 9,
@@ -382,7 +423,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM", "CC_PARALLEL_LINE_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -392,7 +433,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 종이테이프의 접는 선 FG에서 동측내각 x=70°, 접은 각 GFE=70°, 각 EGF=70°, 삼각형 EFG의 각 y=40°를 표시한 그림.",
     "solutionImageCaption": "종이를 접었을 때 같아지는 각과 삼각형 EFG의 각을 보인 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "접기 대응각과 평행선의 동측내각으로 두 각을 옮기고 삼각형 내각합으로 마지막각을 구한다. 기존 접기 반사 유형을 유지하며 별도 삼각형 내각합 CC를 보완한다.",
+    "decisiveStep": "접기 대응각과 평행선의 동측내각으로 두 각을 옮기고 삼각형 내각합으로 마지막각을 구한다. 기존 접기 반사 유형을 유지하며 별도 삼각형 내각합 CC를 보완한다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null
   },
   {
     "id": 10,
@@ -425,7 +471,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -436,7 +482,13 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 각 복사 작도 그림으로, O와 P를 중심으로 한 같은 반지름의 호가 만드는 OA, OB, PC, PD에는 눈금 1개, 컴퍼스로 옮긴 현 AB와 CD에는 눈금 2개가 표시되고 PC와 CD에는 같은 눈금이 없다.",
     "solutionImageCaption": "같은 반지름 OA=OB=PC=PD와 옮긴 현 AB=CD를 눈금으로 구분한 각 복사 작도.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "같은 반지름의 원호와 옮긴 현에서 보존되는 길이·각을 판별한다. 작도 순서를 정하는 기존 ARC_CHORD_ANGLE_COPY와 다른 결과 성질 감사이다.",
+    "decisiveStep": "같은 반지름의 원호와 옮긴 현에서 보존되는 길이·각을 판별한다. 작도 순서를 정하는 기존 ARC_CHORD_ANGLE_COPY와 다른 결과 성질 감사이다.",
+    "rpmPrimaryRecordId": "M1-RPM-072",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "기본 작도", "l4": "선분·각의 이동"},
+    "metaNullReason": "의미판정 완료. exact 기존TPL 없음; 같은PT 아래 일반화 정의·구별기준·지원UID를 review.proposals에 보존."
   },
   {
     "id": 11,
@@ -469,15 +521,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: BC, ∠C, AB가 같을 때 B를 중심으로 반지름 AB인 원이 C에서 나간 반직선과 두 점에서 만나, 점 A가 C에 가까운 경우와 먼 경우의 서로 다른 삼각형 ABC 두 개를 나란히 보인 그림(길이와 각의 크기는 예).",
     "solutionImageCaption": "같은 BC, ∠C, AB에서 점 A가 두 곳에 놓여 삼각형이 두 개 생기는 모습(그린 크기는 예).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "주어진 한 변과 추가조건을 SAS·SSS·ASA에 대조하고 끼인각이 아닌 SSA 조건을 배제한다. 보기별 정의 확인을 CASE_BRANCH로 보지 않는다.",
+    "decisiveStep": "주어진 한 변과 추가조건을 SAS·SSS·ASA에 대조하고 끼인각이 아닌 SSA 조건을 배제한다. 보기별 정의 확인을 CASE_BRANCH로 보지 않는다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null
   },
   {
     "id": 12,
@@ -517,7 +574,12 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "세 변을 순서대로 놓아 중복을 제거하고 둘레20·각변4이상·삼각형 존재조건을 함께 만족하는 삼중항을 분기한다.",
+    "decisiveStep": "세 변을 순서대로 놓아 중복을 제거하고 둘레20·각변4이상·삼각형 존재조건을 함께 만족하는 삼중항을 분기한다.",
+    "rpmPrimaryRecordId": "M1-RPM-075",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "삼각형의 작도", "l4": "세 변 조건"}
   },
   {
     "id": 13,
@@ -561,7 +623,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 두 정삼각형 ABC와 ECD가 B, C, D가 한 직선 위에 놓인 그림을 두 개 나란히 놓고, 왼쪽은 삼각형 ACD, 오른쪽은 삼각형 BCE를 빨간 변으로 강조했다. AC=BC와 CD=CE의 같은 길이 눈금과 C에서의 120° 각이 두 삼각형에 같은 순서로 나타난다.",
     "solutionImageCaption": "△ACD와 △BCE가 AC=BC, CD=CE, 끼인각 120°로 대응하는 모습을 강조한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "두 정삼각형의 같은변과120도 각으로 SAS 합동을 만든 뒤 올바른 꼭짓점 대응을 확인한다.",
+    "decisiveStep": "두 정삼각형의 같은변과120도 각으로 SAS 합동을 만든 뒤 올바른 꼭짓점 대응을 확인한다.",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "삼각형의 합동", "l4": "SAS 합동"}
   },
   {
     "id": 14,
@@ -605,7 +672,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 정삼각형 ABC와 DCE가 B, D, E가 한 직선 위에 놓인 그림으로, BC=AC와 CD=CE의 같은 길이 눈금, ∠BCD=∠ACE=42°, ∠BDC=120°가 표시되고 ∠CBD와 ∠CAE는 같은 파란 호로 묶여 있다.",
     "solutionImageCaption": "BC=AC, CD=CE, ∠BCD=∠ACE이고 ∠CBD와 ∠CAE가 같음을 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "공통꼭짓점 둘레60도 회전으로 두 정삼각형의 대응을 연결하고 보조삼각형에서 구한 각을 전달한다. 대응을 찾아내는 추가 구조화 때문에4를 유지한다.",
+    "decisiveStep": "공통꼭짓점 둘레60도 회전으로 두 정삼각형의 대응을 연결하고 보조삼각형에서 구한 각을 전달한다. 대응을 찾아내는 추가 구조화 때문에4를 유지한다.",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "삼각형의 합동", "l4": "SAS 합동"}
   },
   {
     "id": 15,
@@ -642,7 +714,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "동변·동각·12변 조건으로 정십이각형을 정하고 한외각·내각합·대각선수의 기본 공식을 대조한다.",
+    "decisiveStep": "동변·동각·12변 조건으로 정십이각형을 정하고 한외각·내각합·대각선수의 기본 공식을 대조한다.",
+    "rpmPrimaryRecordId": "M1-RPM-086",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "정다각형", "l4": "정다각형의 성질"}
   },
   {
     "id": 16,
@@ -674,11 +751,11 @@ window.questionBank = [
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -686,7 +763,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 두 삼각형이 꼭짓점에서 맞닿은 그림으로, 교점에서 왼쪽 삼각형의 각 95°와 맞꼭지각 95°가 같은 빨간 호로 표시되고 y=25°, 직선 위의 이웃한 각 x=85°와 40°, 45°, 60°가 쓰여 있다.",
     "solutionImageCaption": "교점의 각 95°와 맞꼭지각 95°에서 y=25°와 x=85°를 구하는 과정을 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "첫삼각형 내각합에서 교점각을 구한 뒤 맞꼭지각으로 둘째삼각형에 전달한다. 단일교차점 각전달보다 TRIANGLE_ANGLE_CHASE의 전용TPL이 정확하다.",
+    "decisiveStep": "첫삼각형 내각합에서 교점각을 구한 뒤 맞꼭지각으로 둘째삼각형에 전달한다. 단일교차점 각전달보다 TRIANGLE_ANGLE_CHASE의 전용TPL이 정확하다.",
+    "rpmPrimaryRecordId": "M1-RPM-062",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "기본 도형", "l3": "각", "l4": "각의 크기"}
   },
   {
     "id": 17,
@@ -694,9 +776,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -714,15 +796,15 @@ window.questionBank = [
     "answer": "④",
     "solution": "점 $O$에서 표시된 작은 각을 $x$라 하자.\n\n사각형 $A-B-O-C$의 $O$에서의 안쪽 각은\n$360^\\circ-x$\n\n사각형의 내각의 합을 이용하면\n\n$85^\\circ+20^\\circ+25^\\circ+(360^\\circ-x)=360^\\circ$\n\n$130^\\circ-x=0$\n\n$x=130^\\circ$\n\n따라서 정답은 ④이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q17.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -730,7 +812,13 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC 안의 점 O에 B, C를 이은 그림으로, 사각형 ABOC의 내각 85°, 20°, 25°와 O에서 표시된 각 x, 그 바깥쪽 안쪽 각 360°-x가 표시되어 있다.",
     "solutionImageCaption": "사각형 ABOC의 내각 85°, 20°, 25°와 O의 안쪽 각 360°-x를 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "O에서의 반사각을360-x로 나타내고 오목사각형의 내각합을 적용한다. 기존 내부점TPL의 두 삼각형 합산과 다른 실제 해설 골격이다.",
+    "decisiveStep": "O에서의 반사각을360-x로 나타내고 오목사각형의 내각합을 적용한다. 기존 내부점TPL의 두 삼각형 합산과 다른 실제 해설 골격이다.",
+    "rpmPrimaryRecordId": "M1-RPM-081",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "다각형의 내각과 외각", "l4": "내각의 합"},
+    "metaNullReason": "의미판정 완료. exact 기존TPL 없음; 같은PT 아래 일반화 정의·구별기준·지원UID를 review.proposals에 보존."
   },
   {
     "id": 18,
@@ -763,11 +851,16 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "내각합과 외각합의 합180n으로 변수를 구하고 정다각형의 한외각을 계산한다.",
+    "decisiveStep": "내각합과 외각합의 합180n으로 변수를 구하고 정다각형의 한외각을 계산한다.",
+    "rpmPrimaryRecordId": "M1-RPM-083",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "다각형의 내각과 외각", "l4": "정다각형의 각"}
   },
   {
     "id": 19,
@@ -800,7 +893,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -808,7 +901,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 예로 든 정오각형과 정육각형의 아래 변 위의 점에서 나머지 꼭짓점으로 빨간 선분을 그어 번호 1부터의 삼각형으로 나눈 그림이다. 5각형은 삼각형 4개, 6각형은 5개로 n각형이면 n−1개이다.",
     "solutionImageCaption": "한 변 위의 점에서 n각형의 꼭짓점으로 선분을 그으면 삼각형이 n−1개 생긴다(그림은 5각형, 6각형의 예). 문제의 삼각형 14개는 n−1=14에 해당한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "변의 내부점에서 잇는 분할 삼각형 수가 n-1임을 해석하여 n을 정하고 정다각형 한내각 공식을 적용한다.",
+    "decisiveStep": "변의 내부점에서 잇는 분할 삼각형 수가 n-1임을 해석하여 n을 정하고 정다각형 한내각 공식을 적용한다.",
+    "rpmPrimaryRecordId": "M1-RPM-083",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "다각형의 내각과 외각", "l4": "정다각형의 각"}
   },
   {
     "id": 20,
@@ -841,7 +939,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -849,7 +947,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 한 꼭짓점에서 그은 빨간 대각선이 5각형, 6각형, 또 다른 다각형을 번호 붙은 삼각형으로 나누는 세 그림이다. 5각형은 대각선 2개와 삼각형 3개, 6각형은 대각선 3개와 삼각형 4개이고, 셋째 그림에 n각형이면 대각선 n−3개, 삼각형 n−2개라고 적었다.",
     "solutionImageCaption": "n각형이면 꼭짓점의 개수 A=n, 한 꼭짓점에서 그을 수 있는 대각선 B=n−3, 이 대각선들이 나누는 삼각형 C=n−2이다(그림은 5각형, 6각형의 예와 확인용 그림).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "n,n-3,n-2를 각각 조건식에 넣어 변 수를 정한다.",
+    "decisiveStep": "n,n-3,n-2를 각각 조건식에 넣어 변 수를 정한다.",
+    "rpmPrimaryRecordId": "M1-RPM-085",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "삼각형·다각형의 각", "l4": "변·대각선 개수"}
   },
   {
     "id": 21,
@@ -885,7 +988,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -897,7 +1000,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 오각형의 각 꼭짓점에서 한 변씩을 연장해 외각 60°, x, 80°, 65°, 90°를 빨간 호로 표시한 그림이다.",
     "solutionImageCaption": "오각형의 외각 다섯 개를 호로 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "표시된 다섯 외각의 합360도에서 주어진 네외각을 제외한다.",
+    "decisiveStep": "표시된 다섯 외각의 합360도에서 주어진 네외각을 제외한다.",
+    "rpmPrimaryRecordId": "M1-RPM-082",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "다각형의 내각과 외각", "l4": "외각의 합"}
   },
   {
     "id": 22,
@@ -933,7 +1041,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_COMPOSITE_ANGLE_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -945,7 +1053,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변을 공유한 정오각형과 정육각형의 공통 꼭짓점 둘레에 a=108°, b=120°, c=132°가 있고, 두 변의 연장선이 만든 사각형의 나머지 각 d=72°, e=60°, f=96°가 표시된 그림이다.",
     "solutionImageCaption": "정오각형과 정육각형의 각 a~f의 크기를 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "두 정다각형의 내각과 공통점 한바퀴 및 외각의 보각 관계를 적용한다. 보기 판정이므로 실제 경우분기는 없다.",
+    "decisiveStep": "두 정다각형의 내각과 공통점 한바퀴 및 외각의 보각 관계를 적용한다. 보기 판정이므로 실제 경우분기는 없다.",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null
   },
   {
     "id": 23,
@@ -968,12 +1081,12 @@ window.questionBank = [
     "answer": "$50^\\circ$",
     "solution": "$l\\parallel m$이므로 표시된 두 각은 같은 쪽 내각 관계이다.\n\n$(2x+50^\\circ)+(x-20^\\circ)=180^\\circ$\n\n$3x+30=180$\n\n$3x=150$\n\n$x=50^\\circ$\n\n따라서 답은 $50^\\circ$이다.",
     "image": "assets/images/23_향림중_2학기_중간_중1_기출/q23.png",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_PARALLEL_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -984,7 +1097,12 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m과 한 직선이 만나는 그림에서 위쪽 교점의 2x+50°와 그 맞꼭지각, 아래쪽 교점의 x-20°를 표시해 맞꼭지각과 x-20°가 같은 쪽 내각(빨강)임을 보여 준다.",
     "solutionImageCaption": "2x+50°의 맞꼭지각과 x-20°가 같은 쪽 내각임을 표시한 그림.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "두 평행선과 횡단선이 만드는 같은쪽내각의 합180도로 x를 정한다. 교차점 맞꼭지각형에서 실제평행선 방정식 TPL로 고친다.",
+    "decisiveStep": "두 평행선과 횡단선이 만드는 같은쪽내각의 합180도로 x를 정한다. 교차점 맞꼭지각형에서 실제평행선 방정식 TPL로 고친다.",
+    "rpmPrimaryRecordId": "M1-RPM-064",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "기본 도형", "l3": "평행선과 각", "l4": "동위각·엇각"}
   },
   {
     "id": 24,
@@ -1013,8 +1131,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
-    "crossConceptKeys": [],
+    "templateKey": null,
+    "crossConceptKeys": ["CC_PARALLEL_LINE_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -1024,7 +1142,13 @@ window.questionBank = [
     "solutionImage": "assets/images/23_향림중_2학기_중간_중1_기출/q24-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 평행 표시가 있는 AB와 ED, AC와 FD, 같은 길이 표시가 있는 BF와 CE를 가진 그림. 변 FC는 굵게 그려져 있고 공통이라고 적혀 있으며, 엇각 ∠ABC와 ∠DEF, ∠ACB와 ∠DFE가 같은 색 호로 표시되어 있다.",
     "solutionImageCaption": "FC는 BC와 EF에 공통인 부분이고, 엇각 ∠ABC와 ∠DEF, ∠ACB와 ∠DFE를 같은 색 호로 표시했다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2015",
+    "primaryMethod": "같은 짧은 선분에 공통부분을 더해 한 대응변의 같음을 얻고 두 평행관계의 각을 사용해 ASA 합동을 증명한다. 기존 GENERAL_SIDE_TRANSFER는 SAS 완성 골격이므로 별도 정확TPL이 필요하다.",
+    "decisiveStep": "같은 짧은 선분에 공통부분을 더해 한 대응변의 같음을 얻고 두 평행관계의 각을 사용해 ASA 합동을 증명한다. 기존 GENERAL_SIDE_TRANSFER는 SAS 완성 골격이므로 별도 정확TPL이 필요하다.",
+    "rpmPrimaryRecordId": "M1-RPM-080",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "기본 도형", "midUnit": "작도와 합동", "l3": "삼각형의 합동", "l4": "ASA 합동"},
+    "metaNullReason": "의미판정 완료. exact 기존TPL 없음; 같은PT 아래 일반화 정의·구별기준·지원UID를 review.proposals에 보존."
   },
   {
     "id": 25,
@@ -1053,11 +1177,16 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "내각162도의 보각으로 외각을 정하고 변 수를 구한 뒤 대각선 공식을 적용한다.",
+    "decisiveStep": "내각162도의 보각으로 외각을 정하고 변 수를 구한 뒤 대각선 공식을 적용한다.",
+    "rpmPrimaryRecordId": "M1-RPM-085",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "삼각형·다각형의 각", "l4": "변·대각선 개수"}
   },
   {
     "id": 26,
@@ -1086,10 +1215,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "primaryMethod": "전체 내각합을 주어진 비로 분배하고 가장작은외각에 대응하는 가장큰내각을 선택한다.",
+    "decisiveStep": "전체 내각합을 주어진 비로 분배하고 가장작은외각에 대응하는 가장큰내각을 선택한다.",
+    "rpmPrimaryRecordId": "M1-RPM-081",
+    "rpmPrimaryPath": {"curriculum": "2015", "scope": "M1-2", "majorUnit": "평면도형", "midUnit": "다각형", "l3": "다각형의 내각과 외각", "l4": "내각의 합"}
   }
 ];

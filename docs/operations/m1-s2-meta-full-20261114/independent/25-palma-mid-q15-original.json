@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "m1s2-one-item-independent-original-figure-review-v1",
+  "reviewer": "/root/meta_c",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+  "sourceOrdinal": 15,
+  "questionUid": "qid_v1_b8fe17673aa77ffa68f8d38ccaafc41c4c0fa3514e2c088999e936fe920588d1",
+  "scope": "METADATA_MEANING_WITH_RECOVERED_ORIGINAL_FIGURE; NOT_R1_R2; NO_SOURCE_EDIT",
+  "originalPdf": {
+    "driveFileId": "1CzcrWOdTw-pS0L17oTgwyEWVgr4CBx_4",
+    "path": "/workspace/scratch/64695b8ede31/root-review/palma25-mid-original.pdf",
+    "sha256": "669d18b77c49a287592f6a954bf5ae1876350bc434338d886a1a7fedaa6bfa94",
+    "page": 3
+  },
+  "figureRead": {
+    "path": "/workspace/scratch/64695b8ede31/root-review/palma25-mid-p3.png",
+    "sha256": "094093bad858a9b32bedaf06b88a117d623ad874ee30196f4c54fb7572d77165",
+    "actualView": true
+  },
+  "sourceSha256": "03af36a17284daa65955d5bafd133861cfa88265fe2e424fc365dcc2771fcaac",
+  "diagramPremise": "두 교차 선분의 교점 위에32도·23도를 포함한 작은 삼각형이 있고, 바깥 네 표시각과 교점의 오목각은 오각형을 이룬다. 두 개의 독립된 좌우 삼각형으로 곧바로 묶을 수 없다.",
+  "meaning": "작은 삼각형의 내각합으로 교차각을 정하고 맞꼭지각·한 점360도로 외곽의 오목각을 표현한 뒤 오각형 내각합에서 표시각 네 개의 합을 결정한다.",
+  "metadataDecision": {
+    "rpm": "REUSE_EXACT_ACTIVE",
+    "record": {
+      "id": "M1-RPM-197-CROSSING-ANGLE-SUM-20261113",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "각의 크기 계산"
+      },
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-06",
+      "subUnitKey": "M1-06-POLYGON_CIRCLE",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+      "problemTypeLabelKo": "교차 다각형의 각의 합",
+      "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+      "templateLabelKo": "교차 다각형의 분할과 보조각 소거",
+      "ownerPack": "MIDDLE1",
+      "bindingOwnerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "ownerPack": "MIDDLE1"
+      }
+    },
+    "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+    "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+    "definitionMatch": "삼각형+교차점의 공통 보조각+외곽 다각형+한 바퀴 관계로 보조각을 제거한다는 ACTIVE 정의 및 skeleton에 해당한다. 새 PT/TPL 불필요.",
+    "cc": [
+      "CC_VERTICAL_ANGLES"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "level": "상",
+    "difficultyBucket": 3,
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyReason": "그림을 작은 삼각형과 오목 오각형으로 구조화하는 선택은 필요하나, 그 다음은 내각합·맞꼭지각·한 점의 각 관계를 한 번씩 연결하는 익숙한 경로이다.2처럼 두 삼각형 직접 적용으로 단순화하면 실제 그림을 놓친다.3/4 인접경계에서3을 권고하고 기존상은 안정성 규칙으로 보존 가능하다."
+  },
+  "contentDebt": {
+    "status": "SEPARATE_CONTENT_REPAIR_REQUIRED",
+    "note": "현 해설의 a+b+32=180 및 c+d+23=180은 원그림에 존재하지 않는 두 삼각형을 가정한다. 수치 결론만 같다고 해설 전제를 승인하면 안 된다. 이번 source 수정은 하지 않았다."
+  },
+  "judged": true,
+  "unjudged": false,
+  "status": "SEMANTIC_DECIDED_REUSE_ACTIVE_NO_NEW_TYPE; CONTENT_DEBT_SEPARATE"
+}

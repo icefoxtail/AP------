@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "m1s2-scoped-publication-consistency-v1",
+  "scope": "Official index/catalog producers and unchanged unified classification comparison, limited to exact 95 assigned source questions; not full CI",
+  "before": {
+    "scope": "Official producers and same unified/index comparison as CI, limited to exact 95 assigned source questions",
+    "count": 95,
+    "compared": 95,
+    "mismatch": [
+      {
+        "source": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+        "ordinal": 13,
+        "id": 13,
+        "uid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+        "actual": "RPM22-M1-L1-07",
+        "expected": "RPM22-M1-L1-05",
+        "sourceUnit": "M1-05",
+        "sourceSubUnit": "M1-05-POSITION_RELATION"
+      }
+    ]
+  },
+  "after": {
+    "count": 95,
+    "compared": 95,
+    "mismatch": []
+  },
+  "publicationHold": {
+    "examNumber": 3,
+    "sourceOrdinal": 13,
+    "heldParentFields": 5,
+    "semanticCorrectionPublished": false
+  },
+  "status": "PASS_WITH_EXPLICIT_PARENT_PUBLICATION_HOLD"
+}

@@ -502,12 +502,12 @@ window.questionBank = [
     "standardUnit": "명제",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "표"
     ],
     "wide": false,
-    "content": "다음은 명제 ‘$a$, $b$가 모두 홀수일 때, $m=11a+b$, $n=3a+b$ 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다.<br><img src=\"assets/images/25_순천고_2학기_기말_고1_기출/q16.png\" alt=\"증명 과정\"><br>위의 과정에서 □ 안의 (가), (나)에 알맞은 식을 각각 $f(a)$, $g(a)$, (다)에 알맞은 수를 $k$라 할 때, $f(k)+g(k)$의 값은? [4.5점]",
+    "content": "다음은 명제 ‘$a$, $b$가 모두 홀수일 때, $m=11a+b$, $n=3a+b$ 중 적어도 하나는 제곱수가 아니다.’가 참임을 증명하는 과정이다.<br><img src=\"assets/images/25_순천고_2학기_기말_고1_기출/q16.png\" alt=\"증명 과정\" style=\"display:block;width:100%;max-width:100%;height:auto;\"><br>위의 과정에서 □ 안의 (가), (나)에 알맞은 식을 각각 $f(a)$, $g(a)$, (다)에 알맞은 수를 $k$라 할 때, $f(k)+g(k)$의 값은? [4.5점]",
     "choices": [
       "$10$",
       "$20$",
@@ -642,12 +642,12 @@ window.questionBank = [
     "standardUnit": "함수",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],
     "wide": false,
-    "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f$와 $g$가 모두 일대일대응이고, 아래 조건을 모두 만족시킬 때, 다음 물음에 답하여라. [부분 점수 있음, 6점]\n<div class=\"q-box\">(가) $f(1)=2$<br>(나) $g(3)=1$<br>(다) $(g\\circ f)(2)=2$</div>\n(1) $f(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]<br>(2) $g(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]<br>(3) $f^{-1}(3)+(f\\circ g)(1)$의 값을 구하시오. [2점]",
+    "content": "집합 $X=\\{1,2,3\\}$에 대하여 $X$에서 $X$로 가는 두 함수 $f$와 $g$가 모두 일대일대응이고, 아래 조건을 모두 만족시킬 때, 다음 물음에 답하여라. [부분 점수 있음, 6점]\n<div class=\"question-note-box\"><div>(가) $f(1)=2$</div><div>(나) $g(3)=1$</div><div>(다) $(g\\circ f)(2)=2$</div></div>\n<div style=\"min-height: 120px;\">(1) $f(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]</div><div style=\"min-height: 120px;\">(2) $g(2)$가 얼마인지 구하고 그 이유를 간단히 쓰시오. [2점]</div><div style=\"min-height: 95px;\">(3) $f^{-1}(3)+(f\\circ g)(1)$의 값을 구하시오. [2점]</div>",
     "choices": [],
     "answer": "(1) $1$, (2) $3$, (3) $4$",
     "solution": "(1) $f(1)=2$이고 $f$는 일대일이므로 $f(2)\\ne2$이다.\n만약 $f(2)=3$이면\n$(g\\circ f)(2)=g(3)=1$이 되어 주어진 값 2와 다르다.\n따라서 $f(2)=1$이다.\n\n(2) 주어진 조건에서\n$g(f(2))=g(1)=2$이다.\n또 $g(3)=1$이다. $g$는 일대일대응이므로 남은 함숫값은\n$g(2)=3$이다.\n\n(3) $f(1)=2$, $f(2)=1$이므로 일대일대응 조건에서 $f(3)=3$이다. 따라서\n$f^{-1}(3)=3$이다.\n또\n$(f\\circ g)(1)=f(g(1))=f(2)=1$이다.\n그러므로 구하는 값은\n$3+1=4$이다.",

@@ -51,6 +51,7 @@ const SCHEMA = {
   LEGACY: "archive-reviewed-exam-meta-register-request-v1",
   SCOPED_LINKS: "archive2-reviewed-basic-source-links-exam-scoped-v1",
   DIFF5: "archive-difficulty5-register-request-v1",
+  BASIC_PARENT_CORRECTION: "archive-basic-parent-correction-request-v1",
   BASIC_REBIND: "archive-basic-scope-rebind-request-v1",
 };
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
@@ -141,16 +142,20 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
-  if (schema === SCHEMA.BASIC_REBIND) {
+  if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
+    const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
     // A rebind changes no metadata value: the claim is only that the question is approved again in the consumer
     // (gated: canonical assignment APPROVED/PASS) and is bound to the current bytes (both fingerprints).
     const rows = doc.items.map(item => {
       if (!item?.after?.sourceFingerprint || !item.after.contentFingerprint) fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after fingerprints`);
-      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint,
+      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: correction ? {
+        L1: item.basicParent.L1, L2: item.basicParent.L2,
+        standardUnitKey: item.parentAfter.standardUnitKey, subUnitKey: item.parentAfter.subUnitKey,
+      } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+    return { kind: correction ? "basic-parent-correction" : "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
   if (schema === SCHEMA.NONPT) {

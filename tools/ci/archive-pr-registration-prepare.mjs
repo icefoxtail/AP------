@@ -64,7 +64,16 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
   }
   run(process.execPath, ['archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', '--write'], root, true);
   if (nativePreview.requests.length) run(process.execPath, ['archive/tools/meta-foundation/compile-meta-foundation.mjs', '--write'], root, true);
-  run('python3', ['archive/build_db.py'], root, true);
+  // Match the official reviewed-meta writer's bounded fixed-point recovery.
+  // Runtime readiness can update a manifest input after build_db created the
+  // manifest; one repeat in this same checkout incorporates those bytes.
+  // A second failure remains fatal, and all snapshot/scope/proof checks follow.
+  try {
+    run('python3', ['archive/build_db.py'], root, true);
+  } catch {
+    console.warn('::warning title=Archive registration first generation failed::Repeating the official builder once in the same temporary checkout; all validation gates remain required.');
+    run('python3', ['archive/build_db.py'], root, true);
+  }
   if (git(['rev-parse', '--verify', 'HEAD']).trim() !== headSha) throw new Error('temporary preparation must not create or change a commit');
   const generated = [...new Set([
     ...git(['diff', '--name-only', '-z', 'HEAD', '--']).split('\0'),
