@@ -1850,7 +1850,7 @@
         "standardUnitKey": "M3-04",
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "rpmRecordId": "M3-RPM-051",
-        "rpm2022RecordId": null,
+        "rpm2022RecordId": "M3-RPM-139",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1873,12 +1873,7 @@
           "status": "DEFINITION_MATCH_CANDIDATE"
         }
       },
-      "debts": [
-        {
-          "kind": "RPM2022_LEAF_PROPOSAL",
-          "reason": "2022 현재 leaf와 정확히 대응하는 경로가 없어 의미 판단을 제안으로 보존."
-        }
-      ],
+      "debts": [],
       "before": {
         "source": {
           "level": "중",
@@ -1911,7 +1906,7 @@
         "standardUnitKey": "M3-04",
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "rpmRecordId": "M3-RPM-051",
-        "rpm2022RecordId": null,
+        "rpm2022RecordId": "M3-RPM-139",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1929,7 +1924,15 @@
           "l3": "일반형",
           "l4": "완전제곱식 변형"
         },
-        "rpm2022EffectivePath": null
+        "rpm2022EffectivePath": {
+          "curriculumKey": "2022",
+          "courseKey": "M3-1",
+          "L1": "이차함수",
+          "L2": "이차함수의 그래프(2)",
+          "L3": "일반형 그래프",
+          "L4": "완전제곱식 변형"
+        },
+        "rpm2022ParentAuthority": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
       },
       "fingerprints": {
         "QBODY": "8a0d63012557a1c8281703646ed8a4b63c3c87b540c517f6ea86e4ed43c85eeb",
@@ -3169,7 +3172,17 @@
     "authorFourSlotSha256": "cca897d57795daf31fc5a06a0f796d51d187583d33739630b81a5b5e75d972eb",
     "independentArtifactSha256": "fc16e4e2b6b96fedb0172cd6e0c0894395415b8cf5749cd2b57232807a2b4b03",
     "comparisonMetadataProjection": "ONLY_RELEVANT_METADATA_FIELDS_RETAINED",
-    "mathematicalVerification": "NOT_PERFORMED"
+    "mathematicalVerification": "NOT_PERFORMED",
+    "scopedAmendments": [
+      {
+        "kind": "2015_2022_NAMING_CORRESPONDENCE",
+        "path": "docs/operations/m3-s1-meta-full-20261114/exams/E014/amendments/2022-function-correspondence.json",
+        "sha256": "f58257130a90e082d7989c525864bc763906ef98e7a8fcf9fc14da5a109d9f61",
+        "ordinals": [
+          18
+        ]
+      }
+    ]
   },
   "sourceFinalBlob": "026cf6ca656cab7b5fc73053d6e35107bea1728f",
   "sourceFinalSha256": "b8ec48600e04857fa4ab30c59a8ae38a44a81c07d998472ba612d913fd821c35",

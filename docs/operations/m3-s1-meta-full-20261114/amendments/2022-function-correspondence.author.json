@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "manual-curriculum-correspondence-amendment-v1",
+  "reviewer": "meta_a",
+  "sourceCanonicalFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+  "sourceCanonicalSha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3",
+  "scope": "문항의 의미 판정·난도·source UID·본문을 바꾸지 않고2015/2022 명칭개편에 따른 대응 필드만 교정",
+  "mappings": [
+    {
+      "from": "M3-RPM-045",
+      "to": "M3-RPM-135",
+      "fromPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "그래프의 모양"
+      },
+      "toPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(1)",
+        "l3": "이차함수의 기본 그래프",
+        "l4": "y=ax²"
+      },
+      "manualEquivalenceReason": "기본 y=ax² 그래프의 모양",
+      "method": "두 curriculum 정본의 l3/l4 실제 의미를 직접 대조"
+    },
+    {
+      "from": "M3-RPM-049",
+      "to": "M3-RPM-136",
+      "fromPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "꼭짓점형",
+        "l4": "평행이동"
+      },
+      "toPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(1)",
+        "l3": "이차함수의 기본 그래프",
+        "l4": "평행이동"
+      },
+      "manualEquivalenceReason": "꼭짓점형의 평행이동",
+      "method": "두 curriculum 정본의 l3/l4 실제 의미를 직접 대조"
+    },
+    {
+      "from": "M3-RPM-051",
+      "to": "M3-RPM-139",
+      "fromPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "완전제곱식 변형"
+      },
+      "toPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(2)",
+        "l3": "일반형 그래프",
+        "l4": "완전제곱식 변형"
+      },
+      "manualEquivalenceReason": "일반형의 완전제곱식 변형",
+      "method": "두 curriculum 정본의 l3/l4 실제 의미를 직접 대조"
+    },
+    {
+      "from": "M3-RPM-052",
+      "to": "M3-RPM-141",
+      "fromPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "최대·최소"
+      },
+      "toPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(2)",
+        "l3": "최대·최소와 활용",
+        "l4": "최대·최소"
+      },
+      "manualEquivalenceReason": "이차함수 최대·최소",
+      "method": "두 curriculum 정본의 l3/l4 실제 의미를 직접 대조"
+    },
+    {
+      "from": "M3-RPM-054",
+      "to": "M3-RPM-142",
+      "fromPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "toPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수의 그래프(2)",
+        "l3": "최대·최소와 활용",
+        "l4": "조건으로 식 결정"
+      },
+      "manualEquivalenceReason": "조건으로 이차함수식 결정",
+      "method": "두 curriculum 정본의 l3/l4 실제 의미를 직접 대조"
+    }
+  ],
+  "conditionalMappings": [
+    {
+      "from": "M3-RPM-050",
+      "targets": {
+        "꼭짓점 좌표": "M3-RPM-137",
+        "대칭축": "M3-RPM-138"
+      },
+      "rule": "문항의 요구량을 읽고 선택하며 통합자동매핑하지 않음"
+    }
+  ],
+  "scopeLimits": [
+    "원래 exact leafgap·부모맥락 후보는 그대로 보존",
+    "043판별/044함숫값/048기본형계수/053부호 위치는이매핑으로 임의확정하지않음",
+    "공식resolver및등록상태는NOT_RUN/RELEASE_PENDING 보존"
+  ]
+}
