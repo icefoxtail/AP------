@@ -29,7 +29,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -61,7 +70,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -91,7 +109,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -123,7 +150,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -155,7 +191,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -187,7 +232,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "crossConceptKeys": ["CC_QUADRATIC_FACTORIZATION"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "templateKey": "TPL_AREA_DIRECT"
   },
   {
     "id": 7,
@@ -219,7 +273,15 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -252,7 +314,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -285,7 +356,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -318,7 +398,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -348,7 +437,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -378,10 +476,19 @@ window.questionBank = [
     "answer": "①",
     "solution": "$AD\\perp BC$이므로 두 삼각형 $ABD$, $ACD$는 모두 직각삼각형이다.\nㄱ. $\\angle ABD=45^\\circ$이므로 $\\triangle ABD$의 나머지 예각도 $45^\\circ$이다. 따라서 직각이등변삼각형이고 $BD=AD=5$이다.\n\nㄴ. $\\tan30^\\circ=\\dfrac{AD}{DC}$이므로\n$\\dfrac{\\sqrt3}{3}=\\dfrac5{DC}$\n$DC=5\\sqrt3$이다.\n따라서 $BC=BD+DC=5+5\\sqrt3$이다.\n\nㄷ. $\\sin30^\\circ=\\dfrac{AD}{AC}$이므로\n$\\dfrac12=\\dfrac5{AC}$\n$AC=10$이다. 따라서 ㄷ은 옳지 않다.\n\nㄹ. 삼각형 $ABC$의 넓이는\n$\\dfrac12\\times BC\\times AD$\n$=\\dfrac12\\times(5+5\\sqrt3)\\times5$\n$=\\dfrac{25(1+\\sqrt3)}2$이다. 따라서 ㄹ은 옳지 않다.\n그러므로 옳은 것은 ㄱ, ㄴ이고 정답은 ①이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q12-solution.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_ISOSCELES_RIGHT_TRIANGLE","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT"
   },
   {
     "id": 13,
@@ -414,7 +521,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -444,7 +560,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -474,10 +599,19 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$\\angle B=36^\\circ$를 기준으로 보면 $BC=12$는 이웃한 변이고 $AB=x$는 빗변이다.\n$\\cos36^\\circ=\\dfrac{BC}{AB}=\\dfrac{12}{x}$이므로\n$x=\\dfrac{12}{\\cos36^\\circ}$이다.\n또 $AC=y$는 맞은편 변이므로\n$\\tan36^\\circ=\\dfrac{AC}{BC}=\\dfrac{y}{12}$\n$y=12\\tan36^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q15-solution.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -507,10 +641,19 @@ window.questionBank = [
     "answer": "②",
     "solution": "$AB=c$는 빗변이므로\n$\\cos A=\\dfrac{AC}{c},\\qquad \\sin A=\\dfrac{BC}{c}$이다.\n따라서\n$AC=c\\cos A,\\qquad BC=c\\sin A$이다.\n\nㄱ. $AC=c\\sin A$가 아니므로 옳지 않다.\nㄴ. $BC=c\\tan A$가 아니므로 옳지 않다.\nㄷ. 둘레는\n$c+c\\sin A+c\\cos A$이므로 옳다.\nㄹ. 넓이는\n$\\dfrac12\\times AC\\times BC$\n$=\\dfrac12c^2\\sin A\\cos A$이므로 옳지 않다.\n따라서 ㄷ만 옳고 정답은 ②이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q16-solution.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -543,7 +686,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -576,7 +728,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -609,7 +770,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PARALLELOGRAM_PROPERTIES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -642,7 +812,15 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -676,7 +854,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 22,
@@ -709,7 +896,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SQUARE_PROPERTIES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -733,7 +929,16 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -761,7 +966,16 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 25,
@@ -789,6 +1003,15 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];

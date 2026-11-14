@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-independent-semantic-sample-v1",
+  "examId": "E027",
+  "author": "review_c",
+  "reviewer": "review_a",
+  "sourceGitBlobSha": "a8015e825c1a9426e1e3f260e0ff029d3d665f39",
+  "artifactHashes": {
+    "review.json": "9d39017025be87231c980fb597bab0b93d02f5fb344f158f2d4960ac847e5083",
+    "E027.4slot.json": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+    "source-patch.json": "549c2591ef52f8570791c1a42b6f98f748f3ace086c6047370f93ca02f23957b"
+  },
+  "sampleOrdinals": [
+    6,
+    7,
+    20
+  ],
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_e0af58aa0e394d86cbe141a46f124ed14e7d92fef7bbd202f0fbac98bfc92efd",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "일반형을 인수분해해 두 x절편과 y절편을 전처리로 구한 뒤 세 좌표점의 밑변·높이로 삼각형 넓이를 계산한다. GLOBAL PT_COORD_TRIANGLE_AREA/TPL_AREA_DIRECT의 정확 정의 재사용 및 current 그래프(2) 부모, publisher leaf/native M3 binding 공백 분리가 타당하다. 전체 stem의 절편 대응 관계도 확인했다.",
+      "assetsInspected": [
+        "assets/images/23_동산중_2학기_중간_중3_수학/q06.png"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_8d117a0f0230d76fd7af55d15bf90e0bfb72cf6345de94e824f81a982c869695",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "계수 조합을 f(±1),4f(±1/2)로 재해석한 뒤 실제 그림의 함수값 부호를 읽는 결정방법이다. 기존 PT 정의의 함숫값 식 판정 범위와 일치하고 새TPL gap이 분리되었다.",
+      "assetsInspected": [
+        "assets/images/23_동산중_2학기_중간_중3_수학/q07.png"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_36d02c4141c7f8dcbd81037a782993cc17f31e098c85ebde395103d04df7c0e7",
+      "status": "PASS",
+      "metadataClassification": "PASS",
+      "criticalGoalMethod": "PASS",
+      "explicitConditionCoverage": "PASS",
+      "quoteExactness": "PASS_EXACT_SOURCE_SUBSTRINGS",
+      "judgment": "사인넓이 네 항을 두 대각선의 곱으로 묶고 주어진 넓이에서 미지 대각선을 역산한다. 직접 직각삼각형 길이 측정이나 중간길이 후 넓이 산출과 달라 세부TPL gap 판단이 타당하며 완전 치수·각 인용과 부정확한 generic CC 제거를 확인했다.",
+      "assetsInspected": [
+        "assets/images/23_동산중_2학기_중간_중3_수학/q20.png"
+      ]
+    }
+  ],
+  "status": "PASS_AFTER_ACTIVE_REUSE_AND_SLOT_CORRECTIONS",
+  "scope": "Metadata/4slot semantic review only; no new mathematical R1/R2/R3",
+  "independentAdjudicationRef": {
+    "path": "/workspace/scratch/9c9d44bb632b/root-validation/E027.rpm-leaf-gap-adjudication.json",
+    "sha256": "0122cf3cd59c75ba676825c5829fd801eb2877ffa924b4ae78196b6c5c0f80b7"
+  }
+}

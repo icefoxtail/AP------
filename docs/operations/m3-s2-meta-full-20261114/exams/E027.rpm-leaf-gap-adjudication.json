@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "m3-s2-rpm-leaf-gap-adjudication-v1",
+  "examId": "E027",
+  "reviewer": "GPT_ROOT_9C9D44BB632B",
+  "sourceGitBlobSha": "a8015e825c1a9426e1e3f260e0ff029d3d665f39",
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_e0af58aa0e394d86cbe141a46f124ed14e7d92fef7bbd202f0fbac98bfc92efd",
+      "status": "SEMANTIC_COMPLETE_PUBLISHER_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
+      "method": "주어진 일반형 이차함수의 두x절편과y절편을 구하고, 세 좌표의 축 위 밑변·높이로 삼각형 넓이를 계산한다.",
+      "effectiveParentPath": [
+        "2022",
+        "M3-1",
+        "이차함수",
+        "이차함수의 그래프(2)"
+      ],
+      "activeProblemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "nativeTemplateKey": "TPL_AREA_DIRECT",
+      "activeSearch": "GLOBAL ACTIVE TPL_AREA_DIRECT explicitly calculates a triangle area directly from three point coordinates. The M3 graph-geometry PT instead infers coefficients or coordinates from area/perimeter conditions and is not an exact direction match.",
+      "canonicalSearch": [
+        "M3-RPM-043 through 054",
+        "M3-RPM-135 through 142"
+      ],
+      "newNativeTemplateRequired": false,
+      "crossConceptDecision": "Keep quadratic factorization as preprocessing; do not duplicate primary triangle-area method as CrossConcept.",
+      "sourceCurriculumMustRemainUnchanged": true,
+      "newUnregisteredKeysAllowedInSource": false,
+      "nextOwner": "CODEX_RELEASE_OWNER",
+      "nextAction": "Reuse GLOBAL ACTIVE coordinates-area template; coordinate the missing exact publisher leaf and M3 context binding separately."
+    }
+  ]
+}
