@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "M1-S1-RESIDUAL-FOUR-SLOT-PATCH-v1",
+  "patches": [
+    {
+      "patchId": "S23",
+      "targetReviewFile": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/four-slot.json",
+      "questionUid": "qid_v1_b350d047a1052165477735c3446f2c392bb7b26e6ea2f46f8615cf761cd13d43",
+      "sourceOrdinal": 23,
+      "op": "replace_goal_only",
+      "before": [
+        {
+          "term": "값",
+          "src": "stem",
+          "quote": "무슨 색인가"
+        },
+        {
+          "term": "개수",
+          "src": "stem",
+          "quote": "각각 몇 개인가"
+        }
+      ],
+      "after": [
+        {
+          "term": "판정",
+          "src": "stem",
+          "quote": "무슨 색인가"
+        },
+        {
+          "term": "개수",
+          "src": "stem",
+          "quote": "각각 몇 개인가"
+        }
+      ],
+      "definitionEvidence": {
+        "id": 132,
+        "ko": "판정",
+        "en": [
+          "JUDGMENT",
+          "JUDGE"
+        ],
+        "synonyms": [
+          "검증",
+          "구별",
+          "판별",
+          "판단",
+          "검사",
+          "옳고그름",
+          "참거짓",
+          "참",
+          "거짓",
+          "진술"
+        ],
+        "kind": "행위",
+        "kindDetail": null,
+        "sourceKeys": [
+          "TPL_SET_IDENTIFY",
+          "TPL_SUBSET_DIRECT",
+          "PT_LIMIT_EXISTENCE",
+          "PT_SUBSET_JUDGMENT",
+          "TPL_INCLUSION_DIRECT"
+        ],
+        "usageInKeys": 131,
+        "usageInItems": 6,
+        "addedDuringItems": false
+      },
+      "rationale": "색은 문제 소재의 속성이며 질문은 해당 위치의 성질 판정이다. dictionary의 판정을 사용하고 색 같은 비수학 소재어를 신규 term으로 만들지 않는다. 각각 몇 개인가의 개수 term은 유지.",
+      "sourceEvidence": {
+        "exam": "17_삼산중_1학기_중간_중1_수학",
+        "ordinal": 23,
+        "questionUid": "qid_v1_b350d047a1052165477735c3446f2c392bb7b26e6ea2f46f8615cf761cd13d43",
+        "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+        "sourceBlob": "559db58665a8773f179d57acd9e1a0226387b11d",
+        "sourceSha256": "d0afd2d8727c07a724dfb3bbd628396add756aaac7b52fb1987868f6dd7120a5",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+          },
+          {
+            "scope": "QASSET",
+            "algo": "sha256-file-bytes-v1",
+            "path": "archive/assets/images/17_삼산중_1학기_중간_중1_수학/17_삼산중_1학기_중간_중1_수학_q23_img01.png",
+            "value": "a11c152bce533c4bca7691e90d2bcf7427ef389dfe355bedb22ecb58a35bbf9e"
+          }
+        ],
+        "sourceStemSha256": "ee5cf33cfff32bfb837d4746a920fb1168955d18478408a372c02a49c5bdeca9",
+        "reviewPath": "docs/operations/m1-s1-meta-full-20261114/exams/17_삼산중_1학기_중간_중1_수학/review.json",
+        "reviewSha256": "47ecdd5005375d780435fbc5b82a7a9b4022c9db291bf75900074b82005bc907",
+        "evidenceKind": "STEM_AND_PREVIOUS_VISUAL_REVIEW_ONLY",
+        "solutionApproval": "NOT_NEWLY_APPROVED",
+        "decisiveStep": "그림에서흰돌4개와검은돌5개의반복단위를읽고완전한묶음수와남는위치를구분한다."
+      },
+      "methodAfter": [],
+      "applied": false
+    }
+  ],
+  "rejectedMethodAliases": [
+    {
+      "term": "몫/나눗셈",
+      "reason": "현재 사전 별칭은 다항식의나눗셈에 연결되므로 자연수 나눗셈에 오용 금지"
+    },
+    {
+      "term": "반복",
+      "reason": "현재 별칭 반복합성은 이 단일 무늬와 다른 수학개념"
+    },
+    {
+      "term": "배열",
+      "reason": "순열 별칭이므로 이 무늬에서 소재어로 대체하지 않음"
+    }
+  ]
+}
