@@ -361,7 +361,8 @@ window.questionBank = [
       "정수",
       "합",
       "지수법칙",
-      "계수"
+      "계수",
+      "최댓값"
     ],
     "wide": false,
     "sourceQid": 10,
@@ -369,7 +370,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "content": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{cy^{12}}{27x^d}$일 때, 정수 $a, b, c, d$에 대하여 $a+b+c+d$의 값은? (단, $x\\ne0$.)",
+    "content": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{cy^{12}}{27x^d}$일 때, 정수 $a, b, c, d$에 대하여 $a+b+c+d$의 값은? (단, $x\\ne0$이고, $b$는 주어진 등식을 만족시키는 양의 정수 중 최댓값이다.)",
     "choices": [
       "① $-1$",
       "② $1$",
@@ -378,7 +379,7 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "answer": "⑤",
-    "solution": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{(-2)^b y^{ab}}{3^b x^{2b}} = \\frac{cy^{12}}{27x^d}$\n$3^b = 27 = 3^3$이므로 $b = 3$\n$c = (-2)^3 = -8$\n$ab = 3a = 12$이므로 $a = 4$\n$d = 2b = 2 \\times 3 = 6$\n따라서 $a + b + c + d = 4 + 3 + (-8) + 6 = 5$이다.",
+    "solution": "$\\left(\\frac{-2y^a}{3x^2}\\right)^b = \\frac{(-2)^b y^{ab}}{3^b x^{2b}} = \\frac{cy^{12}}{27x^d}$\n지수와 계수를 비교하면 $ab=12$, $d=2b$, $c=27\\left(-\\frac{2}{3}\\right)^b$이다.\n$b$가 양의 정수이고 $c$가 정수이려면 $27\\left(-\\frac{2}{3}\\right)^b=(-2)^b3^{3-b}$에서 $b\\le3$이어야 한다. 가능한 양의 정수는 $1,2,3$이며 그중 최댓값은 $b=3$이다.\n따라서 $a=12/3=4$, $c=(-2)^3=-8$, $d=2\\times3=6$이고, $a+b+c+d=4+3-8+6=5$이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
