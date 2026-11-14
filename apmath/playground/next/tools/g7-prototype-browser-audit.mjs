@@ -194,15 +194,15 @@ for (const [file, id] of scenes) for (const run of runs) {
     check('pause freezes time', await page.evaluate(t => lab.video.state === 'paused' && Math.abs(lab.video.t-t)<0.01, paused.t));
     await stableCheck('pause');
     await focusCheck('video');
-    await page.locator('.apl-vctl button[title*="0.5배"]').click();
-    check('half speed', await page.evaluate(() => lab.video.rate === 0.5 && lab.video.ui.slow.getAttribute('aria-pressed') === 'true'));
+    await page.locator('.apl-vctl button[title*="1배"]').click();
+    check('slow 1x speed', await page.evaluate(() => lab.video.rate === 1 && lab.video.ui.slow.getAttribute('aria-pressed') === 'true'));
     await page.getByRole('button',{name:'재생',exact:true}).click();
     await page.waitForTimeout(100);
     const rateBefore = await page.evaluate(() => ({t:lab.video.t,wall:performance.now()}));
     await page.waitForTimeout(800);
     const rateAfter = await page.evaluate(() => ({t:lab.video.t,wall:performance.now()}));
     const observedRate = (rateAfter.t-rateBefore.t)/((rateAfter.wall-rateBefore.wall)/1000);
-    check('half speed elapsed time', observedRate > 0.4 && observedRate < 0.6, JSON.stringify({rateBefore,rateAfter,observedRate}));
+    check('slow 1x elapsed time', observedRate > 0.8 && observedRate < 1.2, JSON.stringify({rateBefore,rateAfter,observedRate}));
     await page.getByRole('button',{name:'멈춤',exact:true}).click();
     await page.getByRole('button',{name:'다시 보기',exact:true}).first().click();
     await page.getByRole('button',{name:'멈춤',exact:true}).click();

@@ -142,7 +142,9 @@ test('pin region is built before captions, stays absent for existing lessons/vid
   start(p, 1); p.seek(8); assert.equal(p.ui.pins.hidden, true); assert.equal(p.cs.kind, 'video');
   start(p, 0, 1); assert.deepEqual(pinTex(p), ['z=\\frac{1}{2}']);
   assert.match(p.ui.pins.children[0].innerHTML, /class="katex"/); assert.match(p.ui.pins.children[0].innerHTML, /<math/);
-  assert.equal(p.rate, 1.5);
+  assert.equal(p.rate, 2);
+  p.ui.slow.dispatch('click'); assert.equal(p.rate, 1); assert.match(p.ui.slow.innerHTML, /1배/);
+  p.ui.slow.dispatch('click'); assert.equal(p.rate, 2); assert.match(p.ui.slow.innerHTML, /느리게/);
 });
 
 test('pins derive from current time, keep only three formulas and do not rebuild or append on unchanged frames', () => {
