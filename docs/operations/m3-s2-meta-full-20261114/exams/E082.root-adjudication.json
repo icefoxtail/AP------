@@ -1,0 +1,102 @@
+{
+  "examId": "E082",
+  "reviewer": "GPT_ROOT_00FBAC4C0777",
+  "items": {
+    "1": {
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "difficultyReason": "단위 사분원에서 OB=OC=1을 분모로 삼각비 정의를 바로 읽는다. 두 삼각형 기준각 구분의 최소부담은B12로 남긴 직접성질1."
+      },
+      "reason": "단위 사분원에서 OB=OC=1을 분모로 삼각비 정의를 바로 읽는다. 두 삼각형 기준각 구분의 최소부담은B12로 남긴 직접성질1.",
+      "reviewBasis": "Frozen independent review and root actual source/required figure reread; original author file preserved."
+    },
+    "11": {
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "difficultyReason": "주어진 등거리현과수선중점 성질로 AB=BC=2BL=20을 바로 구한다. 본문조건이 완전하며 원본PNG 잘림은 별도자산수리 사항이다."
+      },
+      "reason": "주어진 등거리현과수선중점 성질로 AB=BC=2BL=20을 바로 구한다. 본문조건이 완전하며 원본PNG 잘림은 별도자산수리 사항이다.",
+      "reviewBasis": "Frozen independent review and root actual source/required figure reread; original author file preserved."
+    },
+    "14": {
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "difficultyReason": "반지름r와같은직선거리r+1을 놓아(r+1)²=r²+9에서r4를 얻고넓이6을 구하는 표준방정식 한 번의2/B23."
+      },
+      "reason": "반지름r와같은직선거리r+1을 놓아(r+1)²=r²+9에서r4를 얻고넓이6을 구하는 표준방정식 한 번의2/B23.",
+      "reviewBasis": "Frozen independent review and root actual source/required figure reread; original author file preserved."
+    },
+    "19": {
+      "after": {
+        "rpmRecordId": "M2-RPM-223",
+        "primaryMethod": "여러 접한 원의 중심거리 조건으로 두 직각삼각형을 구성하고 피타고라스 제곱관계의 공통 항을 소거하여 반지름을 구한다.",
+        "decisiveStep": "(12−r)²+x²=(12+r)²와 r²+x²=(24−r)²에서 공통 x²를 소거한다. 48r=576−48r이므로 r=6.",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": null,
+        "crossConceptKeys": [],
+        "crossConditionRationale": "CC_PYTHAGOREAN은 이제 명시적인 primary가 되어 보조 CrossConcept 목록에서 제거한다. 실제 보조 원-원 접함 개념은 등록 debt로 남긴다.",
+        "debts": [
+          {
+            "field": "targetSubUnitKey",
+            "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+            "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+            "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+          },
+          {
+            "field": "crossConceptKeys",
+            "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+            "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+            "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+          }
+        ]
+      },
+      "semanticReason": "원의 위치관계는 PQ=12+r, OQ=24−r라는 변의 길이 조건을 만든다. 최종 미지 반지름을 결정하는 수학적 작동은 두 직각삼각형의 제곱관계 적용과 공통 수선 소거이며, 이것은 단순 보조 산술이 아니라 필요한 평면도형 길이 구성이다. 따라서 locked leaf 피타고라스 정리>도형에의 활용>평면도형 길이가 실제 primary method와 일치한다. 개별 직각삼각형에서 두 알려진 수치로 제3변을 즉시 구하는 leaf(101/219)보다 평면도형 활용(105/223)이 정확하다. Root 최종 판단: 독립 B의 exact 미확정 의견도 보존한다. 두 직각삼각형을 구성하고 공통 제곱항을 소거하여 미지 반지름을 결정하는 작동은 피타고라스의 평면도형 길이 활용 자체이다. 원끼리 접함의 중심거리 의미가 미등록인 점은 보조 CC와 target 부모 등록 사항으로 분리한다."
+    },
+    "21": {
+      "after": {
+        "rpmRecordId": "M2-RPM-189",
+        "primaryMethod": "서로 접한 세 작은 원의 중심을 정삼각형의 꼭짓점으로 바꾸고 큰 원의 중심을 그 정삼각형의 외심으로 해석해 외접반지름을 계산한다.",
+        "decisiveStep": "AB=BC=CA=2이고 OA=OB=OC=R−1이므로 O는 정삼각형 ABC의 외심이다. 높이 √3의 2/3이 외접반지름이어서 R−1=2√3/3, R=1+2√3/3.",
+        "standardUnitKey": "M3-06",
+        "subUnitKey": null,
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN"
+        ],
+        "crossConditionRationale": "CC_TRIANGLE_CIRCUMCENTER는 이제 명시적인 primary이므로 보조 CrossConcept 목록에서 제거한다. 정삼각형 구성과 높이의 피타고라스는 보조이다. 원-원 접함 개념은 등록 debt로 유지한다.",
+        "debts": [
+          {
+            "field": "targetSubUnitKey",
+            "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+            "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+            "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+          },
+          {
+            "field": "crossConceptKeys",
+            "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+            "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+            "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+          }
+        ]
+      },
+      "semanticReason": "원-원 접함은 AB=BC=CA=2 및 OA=OB=OC=R−1이라는 입력을 제공한다. 결정적 재해석과 길이 산출은 정삼각형의 외심 및 외접반지름이다. 원과 중심삼각형의 복합도형에서 외심을 사용하므로 locked leaf 외심·내심을 이용한 복합도형에 직접 부합한다. 이름에 내심이 함께 있지만 official crosswalk selectionRule이 외심/내심/복합 중 실제 primary center를 선택하도록 하므로 두 중심을 모두 쓸 필요는 없다."
+    },
+    "22": {
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "difficultyReason": "원본에 AC 분할선과60°/30°가 이미 주어져 AC=8√3을 구하고 두삼각형 넓이32√3+20√3을 합산한다. 분할선 선택이 없어2/B23."
+      },
+      "reason": "원본에 AC 분할선과60°/30°가 이미 주어져 AC=8√3을 구하고 두삼각형 넓이32√3+20√3을 합산한다. 분할선 선택이 없어2/B23.",
+      "reviewBasis": "Frozen independent review and root actual source/required figure reread; original author file preserved."
+    }
+  },
+  "policy": "Original author decisions remain frozen; this file records explicit root adjudications."
+}

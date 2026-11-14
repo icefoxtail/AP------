@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "author-c-semantic-adjudication-v1",
+  "examId": "E082",
+  "author": "GPT_AUTHOR_C_00FBAC4C0777",
+  "at": "2026-11-14T11:30:15.497554+00:00",
+  "frozenJudgmentsSha256": "ffb538f02f7c21835b47a497f3c3135702db4d1de008597bd6774df39d33916b",
+  "originalJudgmentsPreserved": true,
+  "reasonForRecheck": "Root requested prerequisite M2 locked RPM review before declaring exact semantic leaf unavailable. Reconsider source mathematics using canonical M2 leaves, not E055 or other author judgments.",
+  "authority": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+      "sha256": "79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+      "sha256": "3f85e9a2eec77aa8d1f2d36a6f7d3842f335e229e53028f905724370dbdd2ebf"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-2.md",
+      "sha256": "ab46db2d7c9e9c5cf0cb2f31abc413baa85aadea5837c6a530ac996870c0dd65"
+    },
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2"
+    }
+  ],
+  "targetParentPolicy": "Resolver contract §1.1 permits M3 target → M2 semantic source and requires target standardCourse/standardUnitKey/subUnitKey to remain separate. A semantic-source M2 parent is not a replacement for a missing M3 target parent.",
+  "items": [
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+      "decision": "ACCEPT_EXACT_PREREQUISITE_RPM_LEAF",
+      "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+      "targetScope": "M3-2",
+      "semanticSourceScope": "M2-2",
+      "targetStandardUnitKey": "M3-06",
+      "targetSubUnitKey": null,
+      "semanticSourceStandardUnitKey": "M2-07",
+      "semanticSourceSubUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "rpmRecordIdByCurriculum": {
+        "2015": "M2-RPM-105",
+        "2022": "M2-RPM-223"
+      },
+      "rpmPathByCurriculum": {
+        "2015": {
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "2022": {
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        }
+      },
+      "primaryMethod": "여러 접한 원의 중심거리 조건으로 두 직각삼각형을 구성하고 피타고라스 제곱관계의 공통 항을 소거하여 반지름을 구한다.",
+      "decisiveStep": "(12−r)²+x²=(12+r)²와 r²+x²=(24−r)²에서 공통 x²를 소거한다. 48r=576−48r이므로 r=6.",
+      "exactFitReason": "원의 위치관계는 PQ=12+r, OQ=24−r라는 변의 길이 조건을 만든다. 최종 미지 반지름을 결정하는 수학적 작동은 두 직각삼각형의 제곱관계 적용과 공통 수선 소거이며, 이것은 단순 보조 산술이 아니라 필요한 평면도형 길이 구성이다. 따라서 locked leaf 피타고라스 정리>도형에의 활용>평면도형 길이가 실제 primary method와 일치한다. 개별 직각삼각형에서 두 알려진 수치로 제3변을 즉시 구하는 leaf(101/219)보다 평면도형 활용(105/223)이 정확하다.",
+      "rejectedAlternative": {
+        "records": [
+          "M2-RPM-069",
+          "M2-RPM-189"
+        ],
+        "reason": "어떤 삼각형의 외심·내심도 핵심으로 쓰지 않는다. 원의 중심이 여럿 있다는 이유로 삼각형의 외심·내심 복합도형에 넣을 수 없다."
+      },
+      "crossConceptKeysAfter": [],
+      "crossConceptAdjustment": "CC_PYTHAGOREAN은 이제 명시적인 primary가 되어 보조 CrossConcept 목록에서 제거한다. 실제 보조 원-원 접함 개념은 등록 debt로 남긴다.",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficultyChanged": false,
+      "solutionCheckChanged": false,
+      "projectionReview": {
+        "status": "NO_PROJECTION",
+        "crosswalkStatusByCurriculum": {
+          "2015": "RPM_ONLY",
+          "2022": "RPM_ONLY"
+        },
+        "reason": "정확 RPM leaf는 있으나 해당 official crosswalk rows가 RPM_ONLY이며 PT/TPL 후보를 제시하지 않는다. 기존 Pythagorean templates 중 직접 두 변 산출·넓이 전이·접기/입체 정의를 억지로 연결하지 않는다. 필요한 native template: 접한 원의 중심거리 합차에서 두 직각삼각형의 공통 제곱항을 소거하는 반지름 계산."
+      },
+      "supersedesOriginalDebts": [
+        "Exact rpmRecordId absence",
+        "Need to invent a new RPM semantic leaf for this question"
+      ],
+      "remainingDebts": [
+        {
+          "field": "targetSubUnitKey",
+          "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+          "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+          "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+          "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+          "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+        }
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_99dce2ceff730a186fedd319f8c324127c2a068ee8a67d7316516c90a045c734",
+      "decision": "ACCEPT_EXACT_PREREQUISITE_RPM_LEAF",
+      "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+      "targetScope": "M3-2",
+      "semanticSourceScope": "M2-2",
+      "targetStandardUnitKey": "M3-06",
+      "targetSubUnitKey": null,
+      "semanticSourceStandardUnitKey": "M2-05",
+      "semanticSourceSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "rpmRecordIdByCurriculum": {
+        "2015": "M2-RPM-069",
+        "2022": "M2-RPM-189"
+      },
+      "rpmPathByCurriculum": {
+        "2015": {
+          "scope": "M2-2",
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        },
+        "2022": {
+          "scope": "M2-2",
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        }
+      },
+      "primaryMethod": "서로 접한 세 작은 원의 중심을 정삼각형의 꼭짓점으로 바꾸고 큰 원의 중심을 그 정삼각형의 외심으로 해석해 외접반지름을 계산한다.",
+      "decisiveStep": "AB=BC=CA=2이고 OA=OB=OC=R−1이므로 O는 정삼각형 ABC의 외심이다. 높이 √3의 2/3이 외접반지름이어서 R−1=2√3/3, R=1+2√3/3.",
+      "exactFitReason": "원-원 접함은 AB=BC=CA=2 및 OA=OB=OC=R−1이라는 입력을 제공한다. 결정적 재해석과 길이 산출은 정삼각형의 외심 및 외접반지름이다. 원과 중심삼각형의 복합도형에서 외심을 사용하므로 locked leaf 외심·내심을 이용한 복합도형에 직접 부합한다. 이름에 내심이 함께 있지만 official crosswalk selectionRule이 외심/내심/복합 중 실제 primary center를 선택하도록 하므로 두 중심을 모두 쓸 필요는 없다.",
+      "crossConceptKeysAfter": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptAdjustment": "CC_TRIANGLE_CIRCUMCENTER는 이제 명시적인 primary이므로 보조 CrossConcept 목록에서 제거한다. 정삼각형 구성과 높이의 피타고라스는 보조이다. 원-원 접함 개념은 등록 debt로 유지한다.",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyChanged": false,
+      "solutionCheckChanged": false,
+      "projectionReview": {
+        "status": "FIT_PENDING_OFFICIAL_RESOLVER",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "familyTemplateSelectionByCurriculum": {
+          "2015": {
+            "crosswalkRecordId": "M2-RPM-069",
+            "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+          },
+          "2022": {
+            "crosswalkRecordId": "M2-RPM-189",
+            "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+          }
+        },
+        "definition": "외심·외접원·빗변의 중점 관계를 이용한다.",
+        "internalSkeleton": "외심의 등거리 또는 빗변 중점 성질로 각·길이를 결정한다.",
+        "reason": "OA=OB=OC라는 등거리로 O를 외심으로 식별하고 그 외접반지름 길이를 결정한다. 외심과 내심 두 중심 관계가 아니므로 COMBINED를 선택하지 않는다. Root must rerun official resolver against target current binding; M2 source ACTIVE does not establish M3 target binding."
+      },
+      "supersedesOriginalDebts": [
+        "Exact rpmRecordId absence",
+        "Need to invent a new RPM semantic leaf or PT/TPL meaning for this question"
+      ],
+      "remainingDebts": [
+        {
+          "field": "targetSubUnitKey",
+          "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+          "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+          "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+          "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+          "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+        }
+      ]
+    }
+  ]
+}

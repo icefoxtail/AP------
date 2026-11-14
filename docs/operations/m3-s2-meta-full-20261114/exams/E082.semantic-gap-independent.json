@@ -1,0 +1,604 @@
+{
+  "examId": "E082",
+  "ordinal": 19,
+  "questionUid": "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+  "sourceGitBlobSha": "9aa381d4da591feaa89f8f8a1bd7741c744ff8b2",
+  "reviewer": "author_b",
+  "reviewedAt": "2026-11-14T11:33:08.878200+00:00",
+  "scope": "Independent source-first exact-primary RPM review across all locked middle-school leaves in both curricula; no peer/legacy item metadata viewed.",
+  "sourceFirstFreeze": {
+    "path": "/workspace/scratch/00fbac4c0777/worker-b/E082.q19.source-method-freeze.json",
+    "sha256": "cbc7438e703fa6317389187208092b03c040dd00f147757f5e85ac5c491f5ee6"
+  },
+  "primaryMethod": "원 P,Q와 반원의 접함을 중심거리의 합·차로 바꾼 뒤, 공통 수평거리 QM을 가진 두 직각삼각형에서 피타고라스식을 세워 그 거리의 제곱을 소거한다.",
+  "decisiveStep": "원 P의 반지름은 12. 원 Q의 반지름 r에 대해 PQ=12+r, OQ=24−r, OM=r, PM=12−r이다. QM=x라 놓으면 x²=48r와 x²=576−48r를 얻으므로 r=6.",
+  "assetsRead": [
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_신흥중_2학기_기말_중3_수학/q19.png",
+    "/workspace/scratch/00fbac4c0777/m3-meta/archive/assets/images/15_신흥중_2학기_기말_중3_수학/q19-solution.svg"
+  ],
+  "independentSolutionCheck": {
+    "computation": "x²+(12−r)²=(12+r)² ⇒ x²=48r; x²+r²=(24−r)² ⇒ x²=576−48r; 96r=576 ⇒ r=6. 0<6<12 조건에도 맞는다.",
+    "scope": "Existing source solution verified for semantic route; not R1/R2/R3 certification."
+  },
+  "m3ExactPrimaryLeafConfirmed": false,
+  "middleExactPrimaryLeafConfirmed": false,
+  "dedicatedCircleCircleTangencyLeafFound": false,
+  "selectedRpmRecordId": null,
+  "recommendedDisposition": "RETAIN_HOLD_ON_EXACT_RPM_PRIMARY",
+  "interpretationConfidence": "medium",
+  "conclusion": "M1~M3의 2015/2022 locked leaf를 모두 대조했으나 Q19의 원끼리 내외접 중심거리 합·차를 정확히 대표하는 native Primary leaf는 확인되지 않았다. M2-RPM-105/223은 계산 방식의 넓은 후보로 남지만, 이 후보를 실제 주방법으로 채택할지 독립 확정할 근거가 부족하므로 넓은 leaf로 강제 해소하지 않고 exact Primary HOLD를 유지하는 의견이다.",
+  "holdReason": "핵심 두 중심거리 PQ=12+r와 OQ=24−r는 원끼리 외접·내접에 의해 만들어진다. 현·접선·삼각형 외심/내심·삼각비 계열은 다른 결정 구조이며, 단순 제곱식 소거만을 Primary로 삼는 것도 source-first 의미를 축소할 수 있다.",
+  "adjudicationOption": "M2 피타고라스 평면도형 활용 leaf가 이 중심거리 구성까지 정식 Primary로 포괄한다고 owner가 근거를 들어 판정하면 M2-RPM-105/223을 재검토할 수 있다. 이 보고서는 그 broad 후보를 무관하다고 단정하거나 새로운 등록 키를 만들지 않는다.",
+  "candidateReviews": [
+    {
+      "candidates": [
+        {
+          "id": "M2-RPM-105",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        {
+          "id": "M2-RPM-223",
+          "curriculum": "2022",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        }
+      ],
+      "fit": "BROAD_COMPUTATIONAL_CANDIDATE_ONLY",
+      "reason": "피타고라스 정리의 평면도형 활용이라는 계산 층에는 부합한다. 다만 Q19에서 먼저 성립시켜야 하는 결정 조건은 서로 다른 두 원의 외접 PQ=12+r와 내접 OQ=24−r이며, 이를 공통 높이의 두 직각삼각형으로 옮겨야 한다. 현재의 도형에의 활용/평면도형 길이라는 넓은 leaf만으로 이 원끼리의 위치 관계가 주된 의미로 정확히 표현된다고 독립 확정하기 어렵다. 단순히 제곱 관계가 사용된다는 사실만으로 Primary를 이 leaf로 바꾸지는 않는다.",
+      "qualification": "이 후보가 수학적으로 무관하다는 뜻은 아니다. 피타고라스 중심의 주분류를 허용할지에 대한 의미 adjudication 가능성은 남긴다. 현재 재검의 source-first primaryMethod에는 원끼리 내외접의 중심거리 합·차가 필수 결정 구조로 포함되므로 exact native fit은 확인하지 못했다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M2-RPM-101",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          },
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        },
+        {
+          "id": "M2-RPM-219",
+          "curriculum": "2022",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          },
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "주어진 직각삼각형의 두 변에서 나머지 한 변을 바로 구하는 구조가 아니다. 반지름의 합·차와 공통 투영 길이를 먼저 구성하고 두 제곱식을 소거해야 하므로 직각삼각형 변 길이의 직접 적용을 주분류로 삼으면 결정 구조가 빠진다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M2-RPM-068",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "삼각형의 성질",
+            "midUnit": "삼각형의 외심과 내심",
+            "l3": "외접원·내접원 활용",
+            "l4": "반지름·각 계산"
+          },
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        {
+          "id": "M2-RPM-069",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "삼각형의 성질",
+            "midUnit": "삼각형의 외심과 내심",
+            "l3": "외접원·내접원 활용",
+            "l4": "외심·내심을 이용한 복합도형"
+          },
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        {
+          "id": "M2-RPM-188",
+          "curriculum": "2022",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "삼각형의 성질",
+            "midUnit": "삼각형의 외심과 내심",
+            "l3": "외접원·내접원 활용",
+            "l4": "반지름·각 계산"
+          },
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        {
+          "id": "M2-RPM-189",
+          "curriculum": "2022",
+          "scope": "M2-2",
+          "rpmPath": {
+            "majorUnit": "삼각형의 성질",
+            "midUnit": "삼각형의 외심과 내심",
+            "l3": "외접원·내접원 활용",
+            "l4": "외심·내심을 이용한 복합도형"
+          },
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "그림의 O,P,Q는 각각 서로 다른 원의 중심이다. 어떤 주어진 삼각형의 외심이나 내심을 찾아 같은 거리·각의 이등분선·수직이등분선을 사용하는 풀이가 아니다. 원이 내접한다는 표현만으로 삼각형의 내심/외심 복합도형 leaf를 선택할 수 없다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M3-RPM-070",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접점의 반지름과 접선"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-072",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-158",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접점의 반지름과 접선"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-160",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "지름 직선에 대한 수직 반지름은 보조 조건으로 쓰이지만, 목표 반지름은 원과 직선의 접선 길이나 한 점에서 그은 접선 길이로 결정되지 않는다. 핵심 식 PQ=12+r와 OQ=24−r는 원끼리 외접/내접의 중심거리 관계이다. 원과 직선/원의 접선 아래 leaf에 원끼리의 접함을 섞어 넣지 않는다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M3-RPM-067",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심에서 현에 내린 수선"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-068",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "현의 수직이등분선과 중심"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-069",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-155",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심에서 현에 내린 수선"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-156",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "현의 수직이등분선과 중심"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        },
+        {
+          "id": "M3-RPM-157",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "standardUnitKey": "M3-06",
+          "subUnitKey": "M3-06-CIRCLE_LINE"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "QM은 한 원의 중심에서 그 원의 현에 내린 수선이 아니다. OP를 포함하는 직선으로 두 원의 중심 사이의 위치를 투영하기 위한 보조선이다. 현의 이등분이나 현 길이의 결정이 없어 중심과 현 계열이 정확 주분류가 될 수 없다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M2-RPM-044",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "rpmPath": {
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "도형 활용",
+            "l4": "도형 조건을 이용한 연립방정식"
+          },
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+        },
+        {
+          "id": "M2-RPM-162",
+          "curriculum": "2022",
+          "scope": "M2-1",
+          "rpmPath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "도형 활용",
+            "l4": "도형 조건을 이용한 연립방정식"
+          },
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "x²를 별도 문자로 치환하면 두 식을 일차 연립 형식으로 쓸 수는 있다. 그러나 실제 결정 단계는 기하적인 내외접 중심거리 구성과 피타고라스이고, 소거는 그 뒤의 계산 도구다. 연립일차방정식 활용으로 Primary를 바꾸면 원문 구조를 대체한다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M3-RPM-066",
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "피타고라스 결합"
+          },
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        {
+          "id": "M3-RPM-154",
+          "curriculum": "2022",
+          "scope": "M3-2",
+          "rpmPath": {
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "복합도형",
+            "l4": "피타고라스 결합"
+          },
+          "standardUnitKey": "M3-05",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "삼각비 활용 아래의 피타고라스 결합 leaf이다. Q19에는 sin·cos·tan이나 각을 이용한 비가 결정 과정에 없으므로, 피타고라스라는 같은 단어만으로 이 leaf를 고르지 않는다."
+    },
+    {
+      "candidates": [
+        {
+          "id": "M1-RPM-088",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "원과 부채꼴의 기본",
+            "l4": "중심각·호·현"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE"
+        },
+        {
+          "id": "M1-RPM-089",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "원과 부채꼴의 기본",
+            "l4": "부채꼴의 호의 길이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-090",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "부채꼴의 넓이",
+            "l4": "중심각을 이용한 넓이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-091",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "부채꼴의 넓이",
+            "l4": "호의 길이와 넓이 관계"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-092",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "복합도형",
+            "l4": "부채꼴을 포함한 둘레"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-093",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "복합도형",
+            "l4": "부채꼴을 포함한 넓이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-201",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "원과 부채꼴의 기본",
+            "l4": "중심각·호·현"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE"
+        },
+        {
+          "id": "M1-RPM-202",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "원과 부채꼴의 기본",
+            "l4": "부채꼴의 호의 길이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-203",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "부채꼴의 넓이",
+            "l4": "중심각을 이용한 넓이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-204",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "부채꼴의 넓이",
+            "l4": "호의 길이와 넓이 관계"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-205",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "복합도형",
+            "l4": "부채꼴을 포함한 둘레"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        },
+        {
+          "id": "M1-RPM-206",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "rpmPath": {
+            "majorUnit": "평면도형",
+            "midUnit": "원과 부채꼴",
+            "l3": "복합도형",
+            "l4": "부채꼴을 포함한 넓이"
+          },
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+        }
+      ],
+      "fit": "REJECT_PRIMARY_MISMATCH",
+      "reason": "M1 원·부채꼴 계열은 기본 요소의 정의, 중심각·호, 호의 길이, 부채꼴 넓이와 복합 둘레/넓이이다. Q19는 그 양을 구하지 않으며 원끼리 접할 때의 중심거리 합·차가 필요하므로 같은 원 그림이라는 이유로 선택하지 않는다."
+    }
+  ],
+  "coverage": [
+    {
+      "curriculum": "2015",
+      "grade": "M1",
+      "parentRecords": 17,
+      "leafCount": 113
+    },
+    {
+      "curriculum": "2015",
+      "grade": "M2",
+      "parentRecords": 20,
+      "leafCount": 118
+    },
+    {
+      "curriculum": "2015",
+      "grade": "M3",
+      "parentRecords": 14,
+      "leafCount": 93
+    },
+    {
+      "curriculum": "2022",
+      "grade": "M1",
+      "parentRecords": 18,
+      "leafCount": 119
+    },
+    {
+      "curriculum": "2022",
+      "grade": "M2",
+      "parentRecords": 19,
+      "leafCount": 118
+    },
+    {
+      "curriculum": "2022",
+      "grade": "M3",
+      "parentRecords": 14,
+      "leafCount": 89
+    }
+  ],
+  "totalLockedMiddleLeafCount": 650,
+  "crosswalkRecordsAllResolveToInspectedLockedLeaves": true,
+  "current2022ParentPolicy": {
+    "scope": "2022_MIDDLE_L1_L2_ONLY",
+    "leafSemanticsUnchanged": true,
+    "reason": "현재 부모 정본은 L1/L2를 조정하며 새 L3/L4를 추가하지 않으므로 위 locked leaf 전체 대조를 대체하지 않는다."
+  },
+  "evidenceFiles": [
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "53668c1203032e1b87c05eca8ae2303ad0c8cc011f0cd949284cf5394b00e7de"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "314bd3dd8b0b65fe004e2cd4cfa42f251124d6499250e9cd8a5c155524404adc"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+      "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md",
+      "sha256": "50697aaa838dc5415bb926b284091ff19946ad756b50b65864d0506e1b488777"
+    },
+    {
+      "path": "/workspace/scratch/00fbac4c0777/m3-meta/archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2"
+    }
+  ],
+  "projection": {
+    "status": "NOT_RUN_BY_REVIEWER",
+    "reason": "본 작업은 주방법 의미 재검이며 공식 resolver와 최종 통합은 root 담당이다."
+  }
+}

@@ -1,0 +1,4319 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "examId": "E082",
+  "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "author": "GPT_AUTHOR_C_00FBAC4C0777",
+  "rootIntegrator": "GPT_ROOT_00FBAC4C0777",
+  "independentReviewer": "GPT_ROOT_00FBAC4C0777",
+  "sourceArchiveFile": "original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+  "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
+  "latestMainChecked": "cfa044ad09ec14f19dd63f4b3cbdce906f97ee99",
+  "sourceBeforeBlob": "9aa381d4da591feaa89f8f8a1bd7741c744ff8b2",
+  "sourceAfterBlob": "318632b91689ee3c1449909a5c857ad41341c881",
+  "sourceAfterSha256": "7a19958718f2ea516f5ad944cf1bfc1d89d0e0e844f95f10d7232055e176d7a8",
+  "questionCount": 24,
+  "uidDigest": "96708c6dcdefe5697909de37239002ec538ad624dbdb8594f61d38a5208abba8",
+  "authorRawReviewSha256": "ffb538f02f7c21835b47a497f3c3135702db4d1de008597bd6774df39d33916b",
+  "authority": {
+    "status": "ACTIVE",
+    "registrySha256": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+    "currentParentVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2"
+  },
+  "semanticPayloadSha256": "bac2d82f30905b19b3d0a6c5ff4fae5a42221ba453343ed21eeb2ca64d4bfb6a",
+  "artifactRefs": {
+    "4slot.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.4slot.json",
+      "sha256": "417144df2a047c1c75f46e491124030d3bbf57b2bca7bef81487115bd34f9bcf"
+    },
+    "asset-manifest.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.asset-manifest.json",
+      "sha256": "ca6386982b909f58365e85eb4a887488ad8525fe8294cb7a54a69c10592d9030"
+    },
+    "author-decisions.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.author-decisions.json",
+      "sha256": "ffb538f02f7c21835b47a497f3c3135702db4d1de008597bd6774df39d33916b"
+    },
+    "author-notes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.author-notes.json",
+      "sha256": "a488b7a056c601ba837cafea94db0cb5242bfa7d583c06dc641aa32bedad8afb"
+    },
+    "author-semantic-adjudication.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.author-semantic-adjudication.json",
+      "sha256": "caecf4dd122de0f879dedb69ccc15ec0654ccb4e39dd6aae4dc4514cd2770b11"
+    },
+    "difficulty-adjudication.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.difficulty-adjudication.json",
+      "sha256": "4e07d8273b0e7e66a8d2ec379fab66d2e2b5b79354135e7d6f72a0cd2dfcf8de"
+    },
+    "difficulty-independent.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.difficulty-independent.json",
+      "sha256": "3b388c860ae9d7bfbc1fa6d2ab03e3849b099e40ea887ec425ddf64be8424169"
+    },
+    "independent.comparison.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.independent.comparison.json",
+      "sha256": "1f4a77f03096d802452db22f2954191226f0cfeeb10c906c7e1101e42e0fdcc3"
+    },
+    "independent.source-first-notes.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.independent.source-first-notes.json",
+      "sha256": "af40bb6be42cd655ae5d8ed879bdc8fc0ad9ceee8108d04a58d0a190d94eab5a"
+    },
+    "proposals.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.proposals.json",
+      "sha256": "c76cb11952e236dcd473a9dd67973b939404a45423ef2e42fe67737754af1548"
+    },
+    "resolver-receipt.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.resolver-receipt.json",
+      "sha256": "bc97ccd20eaa5be4cf57510daf5581475611f058522e1b141d0c92900fba199e"
+    },
+    "root-adjudication.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.root-adjudication.json",
+      "sha256": "d87f53e924d14884bb4376bc4190c78150c31a1535fb5bc45d975f95c408c160"
+    },
+    "semantic-gap-independent.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.semantic-gap-independent.json",
+      "sha256": "82a23e0d39ddf1366a3b6f5b739b2f054f3da8c55beb9ae3ca6307845f55c715"
+    },
+    "source-patch.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.source-patch.json",
+      "sha256": "c83a6a2b29a26819e5632a23fa0ef40e93bca9c122c52a2f191f3beef854092f"
+    },
+    "template-fit-adjudication.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit-adjudication.json",
+      "sha256": "f92f3aa7e069b297eb2652c6b050cf18370998410990a3e676fd1b72f6165f84"
+    },
+    "template-fit.json": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.template-fit.json",
+      "sha256": "373a397b0db664cf26b55cbfb52e8fd1f06dc3beff74a4ce692a2e333a0aace9"
+    },
+    "independent": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E082.independent.json",
+      "sha256": "a01caaa6f0f40225bedc50e07008df4107ac3f380c43bb7f8c0f06afe30dfa73"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_1c1fb500ba6cb30ec9be996af71b9a967dd519b2384654468eb23fd4ad275567",
+      "sourceQuestionNo": 1,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "primaryMethod": "단위 사분원의 작은 직각삼각형과 접선 삼각형에서 변의 비를 구별한다.",
+      "decisiveStep": "OB=OC=1. sinx=AB,cosx=OA,siny=OA,cosy=AB,tanx=CD이며 OA<OC이므로②가 거짓이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-143",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "sin·cos·tan"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 1,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "reason": "단위 사분원의 반지름 1과 직각삼각형의 각 x,y에 대해 선분을 sin·cos·tan의 비로 직접 변환하여 각 보기의 진위를 판단한다. 정의와 skeleton의 변·각→삼각비 대응에 맞는다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "두 삼각형에서 삼각비 정의를 적용하는 Primary 내부 판정이다. A가 O,C 사이인 위치는4칸에 기록하며 별도 수범위키를 억지 추가하지 않는다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "단위 사분원에서 OB=OC=1을 분모로 삼각비 정의를 바로 읽는다. 두 삼각형 기준각 구분의 최소부담은B12로 남긴 직접성질1.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 1,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 1,
+          "finalBucket": 1,
+          "reason": "단위 사분원에서 OB=OC=1을 분모로 삼각비 정의를 바로 읽는다. 두 삼각형 기준각 구분의 최소부담은B12로 남긴 직접성질1.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "c7cce3150258c384d6fac4db5c1d5294f6d576abc114540d019c0d4e443be878",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "OB=OC=1. sinx=AB,cosx=OA,siny=OA,cosy=AB,tanx=CD이며 OA<OC이므로②가 거짓이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "05ceada7cce3c9739b1941399f98e0b1c17ec687bf82105a04506414913a6d93",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_5d4a4b5bd9fcaa6532b1f164905eaf11eaf06e0f79789bd26200438a575e0506",
+      "sourceQuestionNo": 2,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "primaryMethod": "특수각의 삼각비 값을 대입하여 다섯 등식을 판정한다.",
+      "decisiveStep": "①합=(1+√3)/2,②양변√2/2,③√3/2≠√3,④sin90=1,⑤합3/2이므로②만 참이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-146",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 2,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "reason": "30°·45°·60°·90°의 삼각비를 직접 대입·계산하여 다섯 등식 중 참인 식을 고른다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "직접 특수각 계산이므로 Primary 밖 개념이나 추가 해 제한은 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 하: 표준 삼각비 값의 확인이다. 버킷1: 각 보기의 값을 직접 대입한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "8371c24d4b6416d9711b136c89835009ffc7c9ae1779bde8a129fc90a96fd95c",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "①합=(1+√3)/2,②양변√2/2,③√3/2≠√3,④sin90=1,⑤합3/2이므로②만 참이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "3bf2482a00d4ea806f40ca9750a3778ebb6166bd6b4651548088dd977190092b",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_5540b05b7b072e7e23041ef9b5c98542a1ad9405de703ebe0d5366346266eb17",
+      "sourceQuestionNo": 3,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "primaryMethod": "두 변의 비 b=2a에서 나머지 변을 복원해 서로 다른 각의 삼각비를 더한다.",
+      "decisiveStep": "BC=a,AC=2a에서 AB=√3a. tanA=1/√3,cosC=1/2이므로 합(2√3+3)/6,③이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-144",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "삼각비의 관계"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 3,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "reason": "b=2a라는 변의 비에서 빗변과 나머지 변의 비를 얻고 tanA,cosC로 직접 변환한다. 피타고라스는 비를 완성하는 전처리이다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "피타고라스로 문자 변의 비를 복원한다. a는 실제 길이여서 양수이며 √(3a²)=√3a와약분을 정당화한다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 하: 비례하는 세 변에서 기본 삼각비를 구한다. 버킷2: 빗변과직각변비를 피타고라스로 정리하는 한 전처리이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 3,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "b=2a를 빗변과 한 직각변의 비로 해석하고 나머지 변을 복원해야 한다. 그 뒤 두 삼각비를 대입하는 익숙한 전처리형 2단계이다. 30°·60° 삼각형을 바로 인식하면 매우 짧아져 B12이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "673af50269422295f9a9c7ac6b5d93a07b4e9d7083b06d2e6f32633cb723bd51",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "BC=a,AC=2a에서 AB=√3a. tanA=1/√3,cosC=1/2이므로 합(2√3+3)/6,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "6d8726deefda8cc310137c1ac0b0a3727ad060d3cbd0a7f7dfff0ce832e0d5ab",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_15e0842abfa3c37fd5d5483d54b9d8e6993b9902225749a5e6999971fb1a6088",
+      "sourceQuestionNo": 4,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "primaryMethod": "두 직각이 만드는 여각 관계로 x를 C로 옮긴 후 cos와tan의 곱을 구한다.",
+      "decisiveStep": "AB=√(100−36)=8, x=90°−B=C이므로 cosx tanx=(6/10)(8/6)=4/5,②이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-144",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "삼각비의 관계"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "삼각비의 뜻",
+            "l4": "삼각비의 관계"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 4,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "reason": "수선 때문에 x=∠C임을 대응시킨 뒤 6-8-10의 변을 cosx,tanx로 직접 변환한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "두 삼각형의 여각 대응은 Primary의 삼각비 관계이며 부족한 변8은 피타고라스로 구한다. 별도 수제한은 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 내부의 각을 전체삼각형의각으로 옮긴다. 버킷2: 직각 두 개의 표준 대응 뒤 비의 직접 계산이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 4,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "두 직각 표시를 이용해 x를 큰 삼각형의 C각으로 옮기는 표준 각 해석이 필요하다. 필요한 변을 피타고라스로 보충한 뒤 같은 각의 두 비를 곱하면 되므로 2단계이며, 닮음·여각 대응과 계산을 연결하는 경계성은 B23이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "014526f72d0bae2a4a0fa25a136d41e70960b3389716fe57f245d2c4b3f628a8",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AB=√(100−36)=8, x=90°−B=C이므로 cosx tanx=(6/10)(8/6)=4/5,②이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "3c93dd7dce937ed9da1f55619e3c9199d1eb636e5e031a439f5eb2a0301c1da4",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6afabd2b3e944f634718419dda40c0d13fefed1276d6f66f646fee2b0d4fa2d1",
+      "sourceQuestionNo": 5,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "primaryMethod": "30°·45°·60°의 삼각비 값을 각 표현에 대입해 참인 식의 수를 센다.",
+      "decisiveStep": "ㄱ3/4,ㄴ−1/2,ㄷ√3−3,ㄹ1은 참이고ㅁ=(1/2+√2/2)(1/2−√2/2)=−1/4라 거짓이다. 참4개,④이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-146",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 5,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "reason": "주어진 특수각 삼각비 식 다섯 개를 계산해 진위를 판정하고 참인 개수를 센다. 값의 직접 계산·비교·판정 정의와 일치한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "특수각값 대입과 식계산으로 끝나며 다섯 보기라는 양이 별도 개념결합을 만들지 않는다. 수범위조건은 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 하: 특수각 표준값 연산이다. 버킷1: 연산량이나보기수로난도를 올리지 않고 전략은 직접대입 하나이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "5f95ca6263bd3a78135b4f577b3045851c0b38a0086ef0f8459e595418cd4c08",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "ㄱ3/4,ㄴ−1/2,ㄷ√3−3,ㄹ1은 참이고ㅁ=(1/2+√2/2)(1/2−√2/2)=−1/4라 거짓이다. 참4개,④이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "625c2c3692e53b4b3a1b91d1d4d05fc9146934ec28b7303af8790f6b211fd049",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_db815cc760186a76f99036780f0537bbf6530dc5353719ea820264a1b8bcca2c",
+      "sourceQuestionNo": 6,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_ISOSCELES_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "primaryMethod": "주어진 이등변삼각형의 각을 이용해45° 직각삼각형을 찾아22.5° 탄젠트를 유도한다.",
+      "decisiveStep": "ABD의A각22.5°, 전체A각67.5°라 DAC45°. AD6에서 AC=CD=3√2, BC=6+3√2이므로 tan22.5=√2−1,①이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-146",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 6,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "reason": "이등변삼각형으로 22.5°의 각을 대응시키고 45° 직각삼각형의 변 관계를 사용해 tan22.5°=√2−1을 결정한다. 특수각 관계로 삼각비를 결정한다는 skeleton에 해당하며 목표도 삼각비 자체이다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_ISOSCELES_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이등변삼각형의같은각과45°직각삼각형의변비가특수각의새값을유도한다. 별도수제한은 없다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 외운각이아닌22.5°값을도형으로유도한다. 버킷3:두이등변삼각형의각·변조건을연결해야한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 6,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "주어진 같은 변을 이등변삼각형 ABD의 같은 각으로 바꾸고, 큰 삼각형의 각과 결합해 ACD의 숨은 45°를 찾아야 한다. 이후 길이를 합쳐 비를 만드는 표준 복합 추론의 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "a83f146ef094fd85063fb2a39d8f5f4e580f5b140dda5242a2367bfa16342738",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "ABD의A각22.5°, 전체A각67.5°라 DAC45°. AD6에서 AC=CD=3√2, BC=6+3√2이므로 tan22.5=√2−1,①이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "d80378548d837cc9518ea1f21808433a3b9ffe43944c764293e921b0432a5fa7",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_682fab2b69f3933106a0b1dca6736a7ac5f6cbf4fdf467c7022aafb6ea463009",
+      "sourceQuestionNo": 7,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "primaryMethod": "60° 직각삼각형과 같은 두 변으로 만든 이등변삼각형에서75° 탄젠트를 유도한다.",
+      "decisiveStep": "AB1에서 AC2,BC√3. AC=CD와C각150°로CAD15°, DAB75°. BD=√3+2이므로tan75=2+√3,①이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-146",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비",
+            "l3": "특수각의 삼각비",
+            "l4": "특수각 계산"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비",
+            "label": "삼각비",
+            "order": 10,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 7,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+          "reason": "60° 직각삼각형의 변의 비와 이등변삼각형의 15° 관계로 75°를 구성하고 tan75°=2+√3을 결정한다. 특수각 관계로 삼각비를 결정한다는 skeleton에 맞는다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "평각으로150°를얻고이등변삼각형의밑각15°를합쳐75°비를정한다. 별도수조건은 없다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 보조삼각형으로75°값을유도한다. 버킷3: 특수각변비와같은변의각관계를한번연결해야한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 7,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "60° 직각삼각형에서 구한 길이를 이등변삼각형 ACD에 옮겨 CAD=15°를 만들고, 이를 75°의 목표 삼각형 ABD와 연결해야 한다. 특수각·이등변 성질·분할 길이가 실제로 결합하는 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "8a7f279d64d86dd1f9bedb2713e7ff623fe9e654a7c54c53b29868b03817e9aa",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AB1에서 AC2,BC√3. AC=CD와C각150°로CAD15°, DAB75°. BD=√3+2이므로tan75=2+√3,①이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "00c18d94c57f0de5e21d203f3a7640612d56a02eeb489857e3b6e3b563cb5137",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_9a2354a8de33e79f754b6ea4df8659188dbdb0e03735251537d448cc23d5a795",
+      "sourceQuestionNo": 8,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "primaryMethod": "마름모의 이웃각45°와 같은 두 변10을 사용하여 넓이를 구한다.",
+      "decisiveStep": "마름모의한각135°에이웃한각은45°. 넓이=10·10·sin45=50√2,③이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-150",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "다각형의 길이·넓이"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 8,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "reason": "10sin45°라는 삼각비 결과가 마름모의 높이에 해당하고 여기에 밑변 10을 곱하여 넓이 50√2를 구한다. 최종 목표가 넓이이므로 중간 측정값을 도형량으로 연결하는 CHAINED_MEASURE를 선택한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이웃각의보각관계로45°를확인한뒤Primary의마름모넓이에적용한다. 별도수제한은 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 마름모구조와삼각비넓이를연결한다. 버킷2:135°를45°로바꾸는한전처리뒤직접공식이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 8,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "마름모의 같은 변과 이웃한 각의 보각 관계를 먼저 이용해 45°의 높이를 만들면 바로 넓이식이 정해진다. 한 번의 익숙한 각 변환을 거치는 2단계이며 기본 넓이 직접 적용과 가까워 B12이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "acc089457ecdc9b517eb81d16c1f417b7c2774edc17ebb9c1594bda2ae1afb43",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "마름모의한각135°에이웃한각은45°. 넓이=10·10·sin45=50√2,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "26f493e0ca20116aa301bad5e5bbea2c2de1195b1f5ffc1aaa812457361a62a9",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_d3dbb908e07b171b714c35ac02c858225469e2e0e7a371f877c3bdb0e75c5efa",
+      "sourceQuestionNo": 9,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_SECTOR_AREA",
+          "CC_TRIANGLE_AREA_TRIG"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS"
+      },
+      "primaryMethod": "원주각30°에서 중심각60°를 구해 활꼴을 부채꼴에서 삼각형을 뺀 영역으로 계산한다.",
+      "decisiveStep": "반지름8,BOC60°이므로부채꼴32π/3,삼각형16√3. 색칠넓이는32π/3−16√3,⑤이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-163",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "label": "원주각",
+            "order": 13,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 9,
+          "status": "NATIVE_TEMPLATE_GAP",
+          "templateKey": null,
+          "reason": "원주각에 대응하는 중심각 60°는 중간값이고 최종 목표는 부채꼴에서 삼각형을 뺀 활꼴 넓이이다. CENTER_ARC skeleton은 목표각 계산으로 제한된다. 필요한 정의: 원주각·중심각으로 중심각을 얻어 부채꼴과 삼각형의 넓이 차를 계산하는 원의 부분 영역 넓이."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_CIRCLE_SECTOR_AREA",
+          "CC_TRIANGLE_AREA_TRIG"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "중심각을변환한뒤부채꼴과삼각비넓이를각각구해차를낸다. 추가수제한은 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 원주각과영역넓이의종합응용이다. 버킷3: 활꼴분할및각변환을선택해다른넓이공식을연결한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "632ba5b003c22073f6c2bf74e52f40d45ad1e8e572f11d3ab42f281a297680f5",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "반지름8,BOC60°이므로부채꼴32π/3,삼각형16√3. 색칠넓이는32π/3−16√3,⑤이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "field": "templateKey",
+          "reason": "원주각에 대응하는 중심각 60°는 중간값이고 최종 목표는 부채꼴에서 삼각형을 뺀 활꼴 넓이이다. CENTER_ARC skeleton은 목표각 계산으로 제한된다. 필요한 정의: 원주각·중심각으로 중심각을 얻어 부채꼴과 삼각형의 넓이 차를 계산하는 원의 부분 영역 넓이.",
+          "proposalDefinition": "원주각에 대응하는 중심각 60°는 중간값이고 최종 목표는 부채꼴에서 삼각형을 뺀 활꼴 넓이이다. CENTER_ARC skeleton은 목표각 계산으로 제한된다. 필요한 정의: 원주각·중심각으로 중심각을 얻어 부채꼴과 삼각형의 넓이 차를 계산하는 원의 부분 영역 넓이."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "mappedTemplateKeys": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "508f44819210364a36e758df191d4f4a08d86810cb09081e49cef7c691e61336",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_112fe3c9525daf082bdffc3fd94b3e44039cbe69009de40103b6f429c3370b5c",
+      "sourceQuestionNo": 10,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "primaryMethod": "경사면 그림자를 수평·수직 성분으로 나누고 태양광선의60° 높이차에 끝점 높이를 더한다.",
+      "decisiveStep": "경사그림자3√3의수평성분9/2,높이3√3/2. 총수평거리19/2의광선높이차19√3/2를더해광고판11√3m,②이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-151",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "측정 문제",
+          "l4": "높이·거리"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "측정 문제",
+            "l4": "높이·거리"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 10,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "reason": "경사 그림자의 수평·수직 성분을 구하고 연결된 직각삼각형에서 광고판 높이를 바로 산출한다. 공통 미지량에 대한 두 식을 연립하지 않으므로 SHARED_HEIGHT가 아니라 DIRECT_MEASURE를 선택한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "경사그림자의성분과태양광선높이는모두Primary의삼각비측정이다. 별도개념키나해선택조건을덧붙이지않는다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 꺾인그림자의끝점이지면위에있지않음을모델링한다. 버킷3: 두방향의성분을구해높이를합하는조건연결이며연립·경우분기는없다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 10,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "꺾인 그림자의 경사면 길이를 수평거리와 높이로 분해하고, 광선이 내려온 높이에 그림자 끝의 높이를 더하는 표현을 선택해야 한다. 삼각비는 표준적이지만 서로 다른 두 직각삼각형을 좌표 성분처럼 구조화하는 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "ebc46a788a735ef617b15d65d394315493ffc7f7bf253b1ad76a17f8ea20a37a",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "경사그림자3√3의수평성분9/2,높이3√3/2. 총수평거리19/2의광선높이차19√3/2를더해광고판11√3m,②이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "898854c577ee7949e02d684853853d86faa9a00ae42776c708e151be20720a8b",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_0d9026a9f4aab4987ec9a194d6ab3b7367beacaf6fa47ab39f1dbc55cfd9c4ad",
+      "sourceQuestionNo": 11,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "primaryMethod": "같은 중심거리의 세 현은 같고 중심 수선은 현을 이등분함을 적용한다.",
+      "decisiveStep": "OM=ON=OL에서AB=AC=BC. L은BC중점이라BC=2BL=20,AB20이므로⑤이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-157",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 11,
+          "status": "FIT",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "reason": "같은 중심거리의 현 길이가 같음을 이용하고 현의 절반 10에서 목표 현 길이 20을 구한다. 현 길이 산출이라는 정의와 일치한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "현의동일중심거리와이등분은Primary원의중심과현내부성질이다. 별도수제한은 없다."
+      },
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 등거리현과수선중점 성질로 AB=BC=2BL=20을 바로 구한다. 본문조건이 완전하며 원본PNG 잘림은 별도자산수리 사항이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 11,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 1,
+          "finalBucket": 1,
+          "reason": "주어진 등거리현과수선중점 성질로 AB=BC=2BL=20을 바로 구한다. 본문조건이 완전하며 원본PNG 잘림은 별도자산수리 사항이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "3c44322217e0e2293030405f9d17e0f57253c89f66d7104a0c6b6635b6053f50",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "OM=ON=OL에서AB=AC=BC. L은BC중점이라BC=2BL=20,AB20이므로⑤이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "mappedTemplateKeys": [
+            "TM_CIRCLE_CHORD_LENGTH"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "10117cdc7e0be6c0bf44ec1118fc0a40e67625a95cfb8482b41d26dc346e5e0f",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_a8f10a377a4336eaa0f47739f2b2a16170d95478f6c4b54bd6dcb5b4513ed675",
+      "sourceQuestionNo": 12,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_CIRCUMCENTER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "primaryMethod": "이등변삼각형의 높이와 외심의 위치를 이용해 반지름과 중심거리의 방정식을 세운다.",
+      "decisiveStep": "AM6,BM=√(45−36)=3. 외심은AC반대편이라OM=x,OB=x+3. (x+3)²=x²+36에서x=9/2,반지름15/2,④이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-157",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 중심과 현",
+            "l4": "중심거리와 현의 길이"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 12,
+          "status": "FIT",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "reason": "현 AC=12의 반현 6을 두 직각삼각형의 공통변으로 사용해 외심 거리와 반지름을 역산한다. 후보 정의가 현의 길이 조건을 이용하는 유형을 명시적으로 포함하므로 반지름이 목표여도 적합하다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_CIRCUMCENTER"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "이등변높이를구한뒤외심의세꼭짓점등거리와피타고라스를연결한다. x방정식은유일해이며별도근배제가없다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 외심위치에따라x+3을설정해야한다. 버킷3: 두삼각형의길이표현을같은반지름식으로연결하는구조화이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 12,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "이등변삼각형의 높이를 먼저 구하고, 외심과 그 높이가 같은 직선에 있다는 구조를 이용해 반지름을 미지수 식으로 표현해야 한다. OM과 BM의 합이 반지름이 되는 위치 관계를 선택한 뒤 피타고라스식을 연결하는 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "6254195d14aaf4ac8de85efca2c6ee436318a968d73275de493db84e64680933",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AM6,BM=√(45−36)=3. 외심은AC반대편이라OM=x,OB=x+3. (x+3)²=x²+36에서x=9/2,반지름15/2,④이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "mappedTemplateKeys": [
+            "TM_CIRCLE_CHORD_LENGTH"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "0cb84e0406656eb2756ad02d08644e920d655db31b3ba940d4446c5154a98d67",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_37ce1327bc2cf6c7cd45bc233bba9ebf5df5a4f40486d350066aec8d45971af3",
+      "sourceQuestionNo": 13,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "primaryMethod": "지름에 대한 원주각과 중심각을 구한 뒤 접선의 두 직각으로 교각을 계산한다.",
+      "decisiveStep": "ABC90°,ACB48°,AOB96°. OAP와OBP가90°이므로APB=180−96=84°,⑤이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-161",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 각 구하기"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 각 구하기"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 13,
+          "status": "NO_PROJECTION",
+          "templateKey": null,
+          "reason": "공식 후보가 없다. 필요한 정의: 지름에 대한 원주각과 원주각·중심각 관계를 통해 중심각을 얻은 뒤 접점 반지름의 직각 두 개를 이용해 두 접선의 교각을 결정."
+        },
+        "sourceProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "지름과원주각에서중심각을먼저복원한뒤접선각Primary에전달한다. 별도수제한은 없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 원주각과접선각의관계응용이다. 버킷2: 지름직각과중심각두배의표준계산을순차적용한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 13,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "반지름과 접선의 수직, 한 점에서 그은 두 접선의 길이가 같음을 바로 연결하면 접선 삼각형의 각을 구할 수 있다. 원주각·중심각을 모두 거치는 기존 해설보다 짧은 표준 경로가 있어 2단계이며, 어떤 이등변삼각형을 사용할지의 경계성은 B23이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "9f7169e1ca1867d2cc4c164d7cb81ce2b1ffc53f2063b6fd10d0fd49fe638b8d",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "ABC90°,ACB48°,AOB96°. OAP와OBP가90°이므로APB=180−96=84°,⑤이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_UNAVAILABLE",
+          "field": "templateKey",
+          "reason": "공식 후보가 없다. 필요한 정의: 지름에 대한 원주각과 원주각·중심각 관계를 통해 중심각을 얻은 뒤 접점 반지름의 직각 두 개를 이용해 두 접선의 교각을 결정.",
+          "proposalDefinition": "공식 후보가 없다. 필요한 정의: 지름에 대한 원주각과 원주각·중심각 관계를 통해 중심각을 얻은 뒤 접점 반지름의 직각 두 개를 이용해 두 접선의 교각을 결정."
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2015",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2022",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        }
+      ],
+      "operationalRecordBeforeSha256": "6133ef9bf3f323ef3ef2e15dd2769bea44b68a8f1bbd07d83b536c526e9974b7",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+      "sourceQuestionNo": 14,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_TANGENT"
+      },
+      "primaryMethod": "접선과 반지름의 직각 및 공선 조건으로 반지름을 역산해 삼각형 넓이를 구한다.",
+      "decisiveStep": "PO=r+1,PA3,OA=r에서(r+1)²=r²+9이므로r4. 넓이APO=3·4/2=6,①이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-158",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접점의 반지름과 접선"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접점의 반지름과 접선"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 14,
+          "status": "NATIVE_TEMPLATE_GAP",
+          "templateKey": null,
+          "reason": "PA가 이미 접선으로 주어졌으며 접함 여부나 접할 조건을 찾지 않는다. 접점 직각과 PO=r+1,PA=3으로 반지름을 역산한 뒤 삼각형 넓이를 구한다. 필요한 정의: 접선-반지름 직각삼각형에서 반지름을 역산하고 넓이 등 도형량으로 연결. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "접점직각에피타고라스식으로r을결정한후삼각형넓이에넣는다. 한양의해만나와별도조건키는없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "반지름r와같은직선거리r+1을 놓아(r+1)²=r²+9에서r4를 얻고넓이6을 구하는 표준방정식 한 번의2/B23.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 14,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "반지름r와같은직선거리r+1을 놓아(r+1)²=r²+9에서r4를 얻고넓이6을 구하는 표준방정식 한 번의2/B23.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "2ed7f6db5f9400cb42b48890e8d34c9ce40e2f1da6c414837c66376e2e7c9a2c",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "PO=r+1,PA3,OA=r에서(r+1)²=r²+9이므로r4. 넓이APO=3·4/2=6,①이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "field": "templateKey",
+          "reason": "PA가 이미 접선으로 주어졌으며 접함 여부나 접할 조건을 찾지 않는다. 접점 직각과 PO=r+1,PA=3으로 반지름을 역산한 뒤 삼각형 넓이를 구한다. 필요한 정의: 접선-반지름 직각삼각형에서 반지름을 역산하고 넓이 등 도형량으로 연결. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다.",
+          "proposalDefinition": "PA가 이미 접선으로 주어졌으며 접함 여부나 접할 조건을 찾지 않는다. 접점 직각과 PO=r+1,PA=3으로 반지름을 역산한 뒤 삼각형 넓이를 구한다. 필요한 정의: 접선-반지름 직각삼각형에서 반지름을 역산하고 넓이 등 도형량으로 연결. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+          "mappedTemplateKeys": [
+            "TM_TANGENCY_CONDITION"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "5314f8003e723984bbe46320bb15f9ce0c6c1ce697cf7297f43c36cb1ce887cf",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_e20baf4ef82156c717db31272dec95a3d324f624b4024e56c1fdd32d585768d7",
+      "sourceQuestionNo": 15,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT"
+      },
+      "primaryMethod": "내접원의 접선 조각을 소거하여 잘린 꼭짓점 삼각형의 둘레를 고정된 두 접선 길이로 바꾼다.",
+      "decisiveStep": "CE=CD=(9+10−7)/2=6. SX=SE,TX=TD이므로CS+CT+ST=CE+CD=12,③이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-160",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접선 조건으로 길이 구하기"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 15,
+          "status": "NATIVE_TEMPLATE_GAP",
+          "templateKey": null,
+          "reason": "각 외부점의 두 접선조각이 같음을 여러 번 적용하여 잘린 삼각형 CST의 둘레가 CE+CD=12임을 결정한다. 최종 목표는 한 접선 길이가 아니라 둘레 불변량이다. 필요한 정의: 내접원과 추가 접선이 만든 삼각형의 접선조각 합을 이용한 둘레 계산."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rationale": "전체과정이같은외부점의접선조각길이를합하고소거하는Primary내부이다. 별도수범위제한은없다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 잘린삼각형둘레에서미지조각이소거됨을찾아야한다. 버킷3: 원래세변과추가접선의조각관계를연결하는불변량선택이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 15,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "작은 삼각형의 세 변을 각각 구하려 하지 않고 접선의 같은 길이를 이용해 둘레를 CE+CD로 바꾸는 전략을 선택해야 한다. 원래 삼각형과 추가 접선에서 생기는 두 층의 길이 관계를 소거하는 표준 복합형 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "08cf1540fce489a740de086f7c34b8a4845dcb2708176e1c2e4b3bd7939f1aca",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "CE=CD=(9+10−7)/2=6. SX=SE,TX=TD이므로CS+CT+ST=CE+CD=12,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "field": "templateKey",
+          "reason": "각 외부점의 두 접선조각이 같음을 여러 번 적용하여 잘린 삼각형 CST의 둘레가 CE+CD=12임을 결정한다. 최종 목표는 한 접선 길이가 아니라 둘레 불변량이다. 필요한 정의: 내접원과 추가 접선이 만든 삼각형의 접선조각 합을 이용한 둘레 계산.",
+          "proposalDefinition": "각 외부점의 두 접선조각이 같음을 여러 번 적용하여 잘린 삼각형 CST의 둘레가 CE+CD=12임을 결정한다. 최종 목표는 한 접선 길이가 아니라 둘레 불변량이다. 필요한 정의: 내접원과 추가 접선이 만든 삼각형의 접선조각 합을 이용한 둘레 계산."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+          "mappedTemplateKeys": [
+            "TM_TANGENT_LENGTH"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "73aee24dcbadec3a3a85a1b449ef170d2a21ab09f5cff854bfc5236d8003e265",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_8d92f5977f7534e4e34d126ec5ae057fe4335c77988e8bcfc02b4eb817497867",
+      "sourceQuestionNo": 16,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+      },
+      "primaryMethod": "삼각형 외각으로 접현각을 구해 같은 원주각으로 옮긴 뒤 목표 각을 구한다.",
+      "decisiveStep": "PAT의외각80=35+ATP이므로ATP45°. 접현각으로ABT45°, ABT삼각형의x=180−80−45=55°,⑤이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-167",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "접선과 현이 이루는 각"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 16,
+          "status": "FIT",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+          "reason": "외각으로 접선-현각 45°를 얻고 같은 호에 대한 원주각으로 옮겨 목표각 x=55°를 구한다. 후보의 목표각 계산 skeleton과 일치한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "내각합/외각관계가접현각계산의앞뒤에사용된다. 별도수제한은없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 접현각과삼각형의각을연속계산한다. 버킷2: 주어진두각에서접현각이바로정해지는표준적용이다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "315c55d86e1d492faf4d16d4553b4333ba176491a4b034e2f5fca17f4e76ee90",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "PAT의외각80=35+ATP이므로ATP45°. 접현각으로ABT45°, ABT삼각형의x=180−80−45=55°,⑤이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "mappedTemplateKeys": [
+            "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "a81a6a4d46da82515a2e371473cee2ddb4014bd31777f07e876247d80d032748",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_3e2a62d8a649cddeda9c578421e15d87aa47f3374b2bc51897bedb9c7ca2c244",
+      "sourceQuestionNo": 17,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "primaryMethod": "현 AD를 이어 두 중심각을 원주각으로 바꾸고 외각의 차로 두 할선의 교각을 구한다.",
+      "decisiveStep": "ADB=32/2=16°,CAD=78/2=39°. PAD의외각관계로CPD=39−16=23°,③이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-168",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "복합 각 추론"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 17,
+          "status": "FIT",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+          "reason": "서로 다른 두 중심각을 각각 원주각 16°,39°로 변환하고 외각 관계로 원 밖 두 할선의 교각 23°를 결정한다. 여러 원의 각 관계를 순차 결합한다는 정의와 일치한다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "중심각두배관계로얻은두각을보조삼각형외각관계에넣는다. 별도수제한은없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 원밖교각의유도응용이다. 버킷3: 연결현AD를선택해중심각과교각을한삼각형으로묶어야한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 17,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "외부에서 만나는 두 할선의 각을 구하려면 AD를 연결하여 중심각 두 개를 원주각으로 옮기고, 한 삼각형의 외각 차로 연결하는 접근을 선택한다. 표준 보조선 한 번의 3단계이며, 이미 익힌 할선각의 반차 관계를 바로 적용하는 학습자에게는 2단계에 가까워 B23이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "6c469ef91fe9c3cf44562a719021c4862029cda3c2b811c7d0196b89940153fd",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "ADB=32/2=16°,CAD=78/2=39°. PAD의외각관계로CPD=39−16=23°,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "mappedTemplateKeys": [
+            "TPL_CIRCLE_ANGLE_COMPOSITE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "5b54b90470e25404279c6d03cc5a1f2fc08646cd5c28faaa83cd742ae1fcc17e",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_2f385e3086eed76be64af6169e7f809de59a30d1cf9b08a2478f0d445cc0f7a9",
+      "sourceQuestionNo": 18,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+      },
+      "primaryMethod": "현의 교점에서 생긴 보각과 삼각형 내각합으로 원주각 하나를 구해 같은 호의 각으로 옮긴다.",
+      "decisiveStep": "AED=120°,DAE=180−40−120=20°. DAC와DBC는같은호DC의원주각이므로DBC20°,②이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-162",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "같은 호에 대한 원주각"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "같은 호에 대한 원주각"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "label": "원주각",
+            "order": 13,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 18,
+          "status": "FIT",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+          "reason": "삼각형 내각합으로 얻은 원주각 DAC=20°를 같은 호 DC를 보는 DBC에 대응시켜 목표각을 구한다. 원주각·호의 대응 관계를 이용하는 정의와 목표각 skeleton에 맞는다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "보각과삼각형내각합으로중간원주각을얻은뒤Primary같은호의원주각성질을쓴다. 별도수제한은없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 내부교점과원주각의연결이다. 버킷2: 같은호를찾으면각두번계산으로끝난다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "4a01b432e564d66caa2c67dc92e7179dbdfdbdd2856aea3217996ea37b6f4e2e",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AED=120°,DAE=180−40−120=20°. DAC와DBC는같은호DC의원주각이므로DBC20°,②이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "mappedTemplateKeys": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "9aa78a40300806ffab9734b9cb5c88bd5b0120c622cf2538fe3e9374aaba6bc0",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+      "sourceQuestionNo": 19,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "primaryMethod": "여러 접한 원의 중심거리 조건으로 두 직각삼각형을 구성하고 피타고라스 제곱관계의 공통 항을 소거하여 반지름을 구한다.",
+      "decisiveStep": "(12−r)²+x²=(12+r)²와 r²+x²=(24−r)²에서 공통 x²를 소거한다. 48r=576−48r이므로 r=6.",
+      "rpm": {
+        "authorRecordId": "M2-RPM-223",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"도형의 닮음과 피타고라스 정리\",\"피타고라스 정리\"]",
+            "unitKey": "RPM22-M2-L1-08",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "도형의 닮음과 피타고라스 정리",
+            "L2": "피타고라스 정리",
+            "label": "피타고라스 정리",
+            "order": 18,
+            "orderInUnit": 4,
+            "legacyUnitKeys": [
+              "M22-2-07",
+              "M22-2-08"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 19,
+          "status": "NO_PROJECTION",
+          "templateKey": null,
+          "reason": "M2 prerequisite 평면도형 피타고라스 leaf는 정확하지만 공식 crosswalk RPM_ONLY라 native projection 없음. 원끼리 접함의 target 부모/CC 등록 필요."
+        },
+        "sourceProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "rationale": "CC_PYTHAGOREAN은 이제 명시적인 primary가 되어 보조 CrossConcept 목록에서 제거한다. 실제 보조 원-원 접함 개념은 등록 debt로 남긴다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 상: 여러접함조건을중심거리식으로재구성한다. 버킷4: 두원의중심사이에수선을정하고서로다른내접·외접조건을공통제곱항으로연립하는구조화가필요하다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "d6c72e03550d032d0137a4e68d5c4e86f47c83a9ccb8e2f74fea54b6b9a83d9b",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "원P반지름12. PM=12−r,PQ=12+r에서x²=48r. OQ=24−r,OM=r에서x²=576−48r. 두식비교로r6,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "field": "targetSubUnitKey",
+          "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+          "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+          "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+          "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+          "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+        },
+        {
+          "type": "PROJECTION_UNAVAILABLE",
+          "field": "templateKey",
+          "reason": "M2 prerequisite 평면도형 피타고라스 leaf는 정확하지만 공식 crosswalk RPM_ONLY라 native projection 없음. 원끼리 접함의 target 부모/CC 등록 필요.",
+          "proposalDefinition": "M2 prerequisite 평면도형 피타고라스 leaf는 정확하지만 공식 crosswalk RPM_ONLY라 native projection 없음. 원끼리 접함의 target 부모/CC 등록 필요."
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2015",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2022",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        }
+      ],
+      "operationalRecordBeforeSha256": "e9255b08ed8b15d8fc04c5fe08425bdb1d5f87def9844420830d99496b1d1285",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_bcde790c7d2e0b97755d568713f40b2a8ff5faa4bed30609112608fa86711459",
+      "sourceQuestionNo": 20,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CONGRUENCE",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "primaryMethod": "회전으로 같은 두 변의 이등변삼각형을 만들고 내접사각형의 대각 보각 관계를 원래 각으로 되돌린다.",
+      "decisiveStep": "AB=AB′,BAB′40°라ABB′70°. B와C′가현AB′반대쪽이므로AC′B′=180−70=110°. 회전합동으로ACB110°,③이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-165",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "내접사각형의 각"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각의 활용",
+            "l4": "내접사각형의 각"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각의 활용",
+            "label": "원주각의 활용",
+            "order": 14,
+            "orderInUnit": 3,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 20,
+          "status": "NO_PROJECTION",
+          "templateKey": null,
+          "reason": "공식 후보가 없다. 필요한 정의: 회전합동으로 등변과 각을 얻고 현의 반대쪽 두 원주각의 합 180°를 적용하여 원래 삼각형의 각을 결정."
+        },
+        "sourceProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_UNMATERIALIZED",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_CONGRUENCE",
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "회전합동의길이·각보존과이등변삼각형이Primary내접사각형각의앞뒤에쓰인다. 반대쪽위치조건은4칸에보존하며등록키를추정하지않는다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 회전전후도형을원위의네점과연결한다. 버킷3: 같은현의반대편각이보각임을구별하고회전각보존을재사용한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 20,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "회전으로 생기는 같은 길이에서 이등변삼각형 ABB′를 찾고, 그 각을 같은 원 위 네 점의 보각 관계에 옮긴 뒤 원래 삼각형의 대응각으로 되돌려야 한다. 회전·이등변·내접사각형이 연결되는 표준 3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "32395488e5f77d08ce4fea0e94f982f900d9022e3367e1d917fae32889160778",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AB=AB′,BAB′40°라ABB′70°. B와C′가현AB′반대쪽이므로AC′B′=180−70=110°. 회전합동으로ACB110°,③이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_UNAVAILABLE",
+          "field": "templateKey",
+          "reason": "공식 후보가 없다. 필요한 정의: 회전합동으로 등변과 각을 얻고 현의 반대쪽 두 원주각의 합 180°를 적용하여 원래 삼각형의 각을 결정.",
+          "proposalDefinition": "공식 후보가 없다. 필요한 정의: 회전합동으로 등변과 각을 얻고 현의 반대쪽 두 원주각의 합 180°를 적용하여 원래 삼각형의 각을 결정."
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2015",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        },
+        {
+          "type": "PROJECTION_UNMATERIALIZED",
+          "curriculum": "2022",
+          "reason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "mappedProblemTypeKey": null,
+          "mappedTemplateKeys": []
+        }
+      ],
+      "operationalRecordBeforeSha256": "afa7961cba6af4ce33ee2819c2aa4fafa2ce68e29b99b85c4989a3616014b089",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_99dce2ceff730a186fedd319f8c324127c2a068ee8a67d7316516c90a045c734",
+      "sourceQuestionNo": 21,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "primaryMethod": "서로 접한 세 작은 원의 중심을 정삼각형의 꼭짓점으로 바꾸고 큰 원의 중심을 그 정삼각형의 외심으로 해석해 외접반지름을 계산한다.",
+      "decisiveStep": "AB=BC=CA=2이고 OA=OB=OC=R−1이므로 O는 정삼각형 ABC의 외심이다. 높이 √3의 2/3이 외접반지름이어서 R−1=2√3/3, R=1+2√3/3.",
+      "rpm": {
+        "authorRecordId": "M2-RPM-189",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M2-2",
+            "majorUnit": "삼각형의 성질",
+            "midUnit": "삼각형의 외심과 내심",
+            "l3": "외접원·내접원 활용",
+            "l4": "외심·내심을 이용한 복합도형"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 외심과 내심\"]",
+            "parentKey": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 외심과 내심\"]",
+            "unitKey": "RPM22-M2-L1-06",
+            "grade": "중2",
+            "gradeKey": "M2",
+            "curriculumKey": "2022",
+            "courseKey": "M2-2",
+            "L1": "삼각형의 성질",
+            "L2": "삼각형의 외심과 내심",
+            "label": "삼각형의 외심과 내심",
+            "order": 12,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-2-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 21,
+          "status": "FIT",
+          "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+          "reason": "작은 원 중심의 정삼각형에서 O의 등거리=R−1을 외심으로 해석하고 외접반지름 길이를 산출한다. 공식 후보 정의의 외심 등거리→길이와 정확히 일치; M3 target binding은 별도."
+        },
+        "sourceProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "rationale": "CC_TRIANGLE_CIRCUMCENTER는 이제 명시적인 primary이므로 보조 CrossConcept 목록에서 제거한다. 정삼각형 구성과 높이의 피타고라스는 보조이다. 원-원 접함 개념은 등록 debt로 유지한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 원중심의배치를정삼각형과외심으로바꿔야한다. 버킷3: 핵심재해석한번후표준높이와2:1관계이며여러경우나반복비정형추론은없다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 21,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "세 원의 중심을 연결해 한 변 2인 정삼각형으로 바꾸고, 큰 원의 중심을 그 외심으로 인식해야 한다. 접함의 중심거리와 정삼각형 외심 거리의 결합을 선택하는 3단계이다. 대칭인 정형 배치여서 이후 계산은 직접적이므로 B23이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "97ba6252de76f46535f7dc32561f0e99e907771789d609b3b6e90caeb01e2438",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "작은원중심삼각형의변2,높이√3. 외심거리2√3/3=R−1이므로큰원반지름R=1+2√3/3이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "field": "targetSubUnitKey",
+          "kind": "TARGET_PARENT_REGISTRATION_DEBT",
+          "requiredMeaning": "원의 성질 안에서 여러 원의 내접·외접 관계와 중심거리 합·차를 다루는 하위단원",
+          "reason": "현재 M3-06 하위단원 원과 직선·원주각을 원끼리의 접함에 억지로 배정하지 않는다. 이 target parent gap은 아래에서 확정한 prerequisite RPM semantic leaf gap과 별도다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "kind": "EXACT_CONCEPT_REGISTRATION_DEBT",
+          "requiredMeaning": "원끼리 외접하면 중심거리=두 반지름 합, 내접하면 중심거리=반지름 차",
+          "reason": "원-직선의 접선 성질과 정의가 달라 기존 직선접선 CC로 치환하지 않는다."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2015",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIANGLE_CENTERS",
+          "mappedTemplateKeys": [
+            "TPL_TRIANGLE_CIRCUMCENTER"
+          ]
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIANGLE_CENTERS",
+          "mappedTemplateKeys": [
+            "TPL_TRIANGLE_CIRCUMCENTER"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "162652f6b7a463fdfdd201eeee064f597608d4df3ebdae32f385e69fb96bad93",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4854435f78b17eb4d71ed1568fcb998cef76e4407a0a21c750e8b8820b43ec9f",
+      "sourceQuestionNo": 22,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "primaryMethod": "공유 대각선으로 두 삼각형을 나눠 한쪽의 피타고라스 길이와 다른 쪽의 삼각비 높이를 합친다.",
+      "decisiveStep": "AC=√(16²−8²)=8√3. ABC넓이32√3,ACD높이10sin30=5라넓이20√3. 합52√3m²이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-150",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "다각형의 길이·넓이"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "삼각비",
+            "midUnit": "삼각비의 활용",
+            "l3": "평면도형",
+            "l4": "다각형의 길이·넓이"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"삼각비\",\"삼각비의 활용\"]",
+            "unitKey": "RPM22-M3-L1-05",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "삼각비",
+            "L2": "삼각비의 활용",
+            "label": "삼각비의 활용",
+            "order": 11,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-05"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 22,
+          "status": "FIT",
+          "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "reason": "직각삼각형의 대각선 AC를 구하고 10sin30°를 다른 삼각형의 높이로 사용한 다음 두 삼각형의 넓이를 합한다. 삼각비 중간값→넓이로 연결하는 CHAINED_MEASURE에 맞는다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "피타고라스로공유대각선을구하고Primary의삼각비넓이분할에넣는다. 별도수제한은없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "원본에 AC 분할선과60°/30°가 이미 주어져 AC=8√3을 구하고 두삼각형 넓이32√3+20√3을 합산한다. 분할선 선택이 없어2/B23.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 22,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "원본에 AC 분할선과60°/30°가 이미 주어져 AC=8√3을 구하고 두삼각형 넓이32√3+20√3을 합산한다. 분할선 선택이 없어2/B23.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "047bd5287de951228e93255a7445405bbc4960926d57be673a4bf935c1b79d6c",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "AC=√(16²−8²)=8√3. ABC넓이32√3,ACD높이10sin30=5라넓이20√3. 합52√3m²이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "8bb032babb46cdf5fca9d390361ae4c5278ccb5b39a1a936eb9b588f09dd828c",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_06b3ae65d59e49005130c6b098ca264dd170282fca254fc48a7477b652ffafd0",
+      "sourceQuestionNo": 23,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN",
+          "CC_TRIG_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS"
+      },
+      "primaryMethod": "반지름과 같은 현으로 정삼각형을 찾아 원주각30°를 만든 뒤 높이에서 목표 변을 구한다.",
+      "decisiveStep": "OA=OB=AB=6으로AOB60°,ACB30°. AH=√(36−20)=4,HC=4√3,AC=√64=8이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-163",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원주각",
+            "l3": "원주각과 중심각",
+            "l4": "중심각과 원주각"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원주각",
+            "label": "원주각",
+            "order": 13,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 23,
+          "status": "NATIVE_TEMPLATE_GAP",
+          "templateKey": null,
+          "reason": "반지름과 같은 현으로 중심각 60°·원주각 30°를 얻은 뒤 수선 높이 4를 이용해 목표 현 AC=8을 구한다. CENTER_ARC skeleton의 최종 목표각과 다르다. 필요한 정의: 현-반지름의 정삼각형 및 원주각 관계로 특수각을 확보하여 직각삼각형의 길이를 계산."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN",
+          "CC_TRIG_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "정삼각형이중심각을주고원주각변환후피타고라스높이와삼각비를연결한다. 별도수제한은없다."
+      },
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 현이반지름과같다는단서에서각을얻는응용이다. 버킷3: 중심각과높이의서로다른정보를목표직각삼각형에결합한다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": null
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "1aa1bfd0eabaad57976d8b8ba9d52d09188820ffa886f2b0d3b0912efb103769",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "OA=OB=AB=6으로AOB60°,ACB30°. AH=√(36−20)=4,HC=4√3,AC=√64=8이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "field": "templateKey",
+          "reason": "반지름과 같은 현으로 중심각 60°·원주각 30°를 얻은 뒤 수선 높이 4를 이용해 목표 현 AC=8을 구한다. CENTER_ARC skeleton의 최종 목표각과 다르다. 필요한 정의: 현-반지름의 정삼각형 및 원주각 관계로 특수각을 확보하여 직각삼각형의 길이를 계산.",
+          "proposalDefinition": "반지름과 같은 현으로 중심각 60°·원주각 30°를 얻은 뒤 수선 높이 4를 이용해 목표 현 AC=8을 구한다. CENTER_ARC skeleton의 최종 목표각과 다르다. 필요한 정의: 현-반지름의 정삼각형 및 원주각 관계로 특수각을 확보하여 직각삼각형의 길이를 계산."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "mappedTemplateKeys": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "f2045b47c72406e78a183d173efa8e578ec040787920e811ebfed76dbe47c68e",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28",
+      "sourceQuestionNo": 24,
+      "decision": "CORRECT",
+      "before": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "conceptClusterKey": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CHORD_PERP_BISECTOR",
+          "CC_PYTHAGOREAN",
+          "CC_TRIG_RATIO",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_CIRCLE_TANGENT"
+      },
+      "primaryMethod": "중심에서 현 중점으로 내린 수선을 공유하는 두 제곱식을 빼서 접선 길이를 구하고 삼각비 높이로 넓이를 계산한다.",
+      "decisiveStep": "PM6,AM2에서OP²−OA²=36−4=32. 접점직각으로PB²=32라PB4√2. 높이=PBsin30=2√2,넓이PBA=4√2이다.",
+      "rpm": {
+        "authorRecordId": "M3-RPM-158",
+        "candidateAfterSourceRepair": null,
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": "UNSPECIFIED_SOURCE_BINDING_LOOKUP_2015_BY_EXISTING_VALIDATOR",
+        "sourceComparison": {
+          "curriculum": "2015",
+          "scope": "M3-2",
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접점의 반지름과 접선"
+        },
+        "current2022": {
+          "basePath": {
+            "curriculum": "2022",
+            "scope": "M3-2",
+            "majorUnit": "원의 성질",
+            "midUnit": "원과 직선",
+            "l3": "원의 접선",
+            "l4": "접점의 반지름과 접선"
+          },
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+            "unitKey": "RPM22-M3-L1-06",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-2",
+            "L1": "원의 성질",
+            "L2": "원과 직선",
+            "label": "원과 직선",
+            "order": 12,
+            "orderInUnit": 1,
+            "legacyUnitKeys": [
+              "M22-3-06"
+            ]
+          }
+        }
+      },
+      "compatibility": {
+        "templateFit": {
+          "ordinal": 24,
+          "status": "NATIVE_TEMPLATE_GAP",
+          "templateKey": null,
+          "reason": "접함은 이미 주어진 조건이다. 두 피타고라스 식 차감으로 접선 PB의 길이를 구하고 sin30°로 삼각형 넓이에 연결한다. 필요한 정의: 접선 반지름 직각과 현 중점의 공통 수선으로 접선·할선 길이 관계를 얻어 삼각형 넓이까지 계산. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다."
+        },
+        "sourceProjectionStatus": "PROJECTION_REUSE",
+        "sourceBindingLookupCurriculum": "2015",
+        "current2022ProjectionStatus": "PROJECTION_BINDING_PENDING",
+        "sourceWritePolicy": "Only resolver-reusable registered projection keys; native mismatch or missing exact binding is omitted and preserved as debt."
+      },
+      "crossConditionIntegration": {
+        "crossConceptKeys": [
+          "CC_CIRCLE_CHORD_PERP_BISECTOR",
+          "CC_PYTHAGOREAN",
+          "CC_TRIG_RATIO",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "rationale": "현수직이등분선과두피타고라스식이접점반지름직각에연결되고이후삼각비높이·넓이로끝난다. 양의접선길이를택한다."
+      },
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 숨은중심·현중점으로공통제곱항을소거한다. 버킷3: 접선-할선길이관계를유도한후기본넓이로이어지는한흐름이며E081q24의추가반지름역산보다는단계가덜필요하다.",
+        "learningLevelProvenance": "AUTHOR_FRESH_JUDGMENT",
+        "adjudication": {
+          "ordinal": 24,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "접선과 할선의 닮음을 찾아 PB²=PA·PC를 먼저 얻거나, 현의 중점과 반지름을 이용한 두 피타고라스식의 차를 선택해야 한다. 구한 접선 길이를 30°의 높이와 넓이에 연결하는 표준 복합형 3단계이다. 기존 해설의 보조선 수나 서술형 형식 자체는 상향 근거가 아니다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "solutionEvidenceProvenance": {
+        "sourceSolutionSha256": "1350f31549d331028b925a3f627932d73a8eb69d1788b210129fbae7648a01f8",
+        "authorSolutionCheck": {
+          "status": "VERIFIED_FINAL",
+          "independentVerification": {
+            "performed": true,
+            "method": "DIRECT_RECOMPUTATION_FOR_META_ROUTING",
+            "computation": "PM6,AM2에서OP²−OA²=36−4=32. 접점직각으로PB²=32라PB4√2. 높이=PBsin30=2√2,넓이PBA=4√2이다.",
+            "scope": "Decisive steps and final answer checked by author; not an R1/R2/R3 blind certification"
+          }
+        },
+        "officialResolverPrerequisite": "AUTHOR_INDEPENDENT_DECISIVE_STEPS_AND_FINAL_CHECK",
+        "newR1R2R3": false
+      },
+      "fourSlot": {
+        "status": "EXISTING_REVIEWED_WITH_FRESH_ARTIFACT",
+        "authorArtifact": "E082.4slot.json"
+      },
+      "debts": [
+        {
+          "type": "NATIVE_TEMPLATE_GAP",
+          "field": "templateKey",
+          "reason": "접함은 이미 주어진 조건이다. 두 피타고라스 식 차감으로 접선 PB의 길이를 구하고 sin30°로 삼각형 넓이에 연결한다. 필요한 정의: 접선 반지름 직각과 현 중점의 공통 수선으로 접선·할선 길이 관계를 얻어 삼각형 넓이까지 계산. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다.",
+          "proposalDefinition": "접함은 이미 주어진 조건이다. 두 피타고라스 식 차감으로 접선 PB의 길이를 구하고 sin30°로 삼각형 넓이에 연결한다. 필요한 정의: 접선 반지름 직각과 현 중점의 공통 수선으로 접선·할선 길이 관계를 얻어 삼각형 넓이까지 계산. TM_TANGENCY_CONDITION의 접함 조건 산출·판정과 다르다."
+        },
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+          "mappedTemplateKeys": [
+            "TM_TANGENCY_CONDITION"
+          ]
+        }
+      ],
+      "operationalRecordBeforeSha256": "5900a0164dc5c54aceb3cb90205850167f9a871e9c673752d9a982d89b2d3507",
+      "operationalBeforeDelta": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      }
+    }
+  ],
+  "summary": {
+    "reviewedQuestions": 24,
+    "exactRpmSemanticHoldQuestions": 0,
+    "sourceChangedQuestionCount": 24,
+    "sourceChangedFieldCount": 389,
+    "projectionDebtQuestions": 24,
+    "productionRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+    "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE"
+  },
+  "independentFinalStatus": "PASS_FINAL_METADATA_BOUND"
+}
