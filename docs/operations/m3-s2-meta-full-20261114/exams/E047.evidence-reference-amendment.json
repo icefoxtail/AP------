@@ -1,0 +1,30 @@
+{
+  "examId": "E047",
+  "kind": "EVIDENCE_REFERENCE_PATH_CORRECTION_ONLY",
+  "targetPath": "docs/operations/m3-s2-meta-full-20261114/exams/E047.rpm-leaf-gap-evidence.json",
+  "targetBeforeSha256": "240b4cda5adcd1121838e3daafe27a076d103409fa6191b849ea2f825ff545a8",
+  "changes": [
+    {
+      "ordinal": 14,
+      "jsonPath": "items[2].existingAdjudicationRef",
+      "before": "docs/operations/m3-s2-meta-full-20261114/exams/E044.review.json",
+      "after": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json"
+    },
+    {
+      "ordinal": 19,
+      "jsonPath": "items[3].existingAdjudicationRef",
+      "before": "docs/operations/m3-s2-meta-full-20261114/exams/E044.review.json",
+      "after": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json"
+    },
+    {
+      "ordinal": 20,
+      "jsonPath": "items[4].existingAdjudicationRef",
+      "before": "docs/operations/m3-s2-meta-full-20261114/exams/E044.review.json",
+      "after": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json"
+    }
+  ],
+  "correctReferencedFileSha256": "6db8ac3966db10a19d43a18df3d2a492de09c7b4f65a8508d741a380d0005f57",
+  "reason": "저장된 보고서의 실제 이름은 E044.meta.json이다. review.json은 worker packet의 이름과 혼동한 참조 오기였다. 기존 Q14/19/20 판단과 인용 의미는 불변이다.",
+  "sourceStudentPayloadUnchanged": true,
+  "authorReviewPatchFourSlotAndIndependentDecisionsUnchanged": true
+}
