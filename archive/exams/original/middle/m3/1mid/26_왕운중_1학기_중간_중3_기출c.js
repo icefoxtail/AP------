@@ -16,7 +16,6 @@ window.questionBank = [
       "객관식",
       "제곱근",
       "근호",
-      "나머지정리",
       "조건해석",
       "계산"
     ],
@@ -31,10 +30,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] ‘9의 제곱근’과 기호 $\\sqrt{9}$를 구분한다.\n① 9의 제곱근은 제곱해서 9가 되는 수이므로 $3,-3$, 즉 $\\pm3$이다.\n② ‘제곱근 9’는 $\\sqrt{9}$를 뜻하므로 값은 $3$이다.\n③ 제곱해서 9가 되는 수는 $\\pm3$이다.\n④ $x^2=9$의 해는 $x=\\pm3$이다.\n⑤ 3과 -3은 $\\pm3$이다.\n따라서 나머지 넷과 값이 다른 것은 ②이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -52,7 +51,6 @@ window.questionBank = [
       "제곱근",
       "근호",
       "절댓값",
-      "전개",
       "참거짓",
       "조건해석",
       "계산"
@@ -68,10 +66,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $\\sqrt{a^2}=|a|$와 제곱의 성질을 이용해 각 보기를 확인한다.\nㄱ. $\\left(\\sqrt{\\frac35}\\right)^2=\\frac35$이므로 거짓이다.\nㄴ. $\\sqrt{\\left(-\\frac15\\right)^2}=\\left|-\\frac15\\right|=\\frac15$이므로 참이다.\nㄷ. $-\\sqrt{(-0.3)^2}=-|-0.3|=-0.3$이므로 참이다.\nㄹ. $(-\\sqrt{19})^2=19$이므로 거짓이다.\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
@@ -90,8 +88,6 @@ window.questionBank = [
       "근호",
       "무리수",
       "유리수",
-      "분모유리화",
-      "인수분해",
       "순환소수"
     ],
     "wide": false,
@@ -105,10 +101,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 실수는 유리수와 무리수로 나뉜다는 사실을 이용한다.\n① 순환소수는 무한소수이지만 유리수이므로 거짓이다.\n② $0=\\frac01$이므로 유리수이다. 거짓이다.\n③ $\\frac13=0.333\\cdots$처럼 유리수 중에는 무한소수로 나타나는 수도 있다. 거짓이다.\n④ 실수 중 무리수가 아닌 수는 모두 유리수이다. 참이다.\n⑤ $\\sqrt4=2$처럼 근호가 있어도 유리수인 경우가 있다. 거짓이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -142,10 +138,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $\\sqrt{a^2}=|a|$를 이용해 다섯 식을 직접 계산한다.\n① $\\sqrt4+\\sqrt{36}=2+6=8$\n② $\\sqrt3\\times\\sqrt{12}=\\sqrt{36}=6$\n③ $\\sqrt{8^2}\\div\\sqrt{(-2)^2}=8\\div2=4$이므로 제시된 $-4$와 다르다.\n④ $\\sqrt{(-3)^2}-\\sqrt{4^2}=3-4=-1$\n⑤ $(-\\sqrt2)^2(\\sqrt3)^2=2\\times3=6$\n따라서 옳지 않은 것은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -244,10 +240,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 한 변이 1인 정사각형의 대각선 길이는 $\\sqrt2$이다.\n그림에서 기준점 $-1$에서 오른쪽으로 $\\sqrt2$만큼 이동한 점이 $-1+\\sqrt2$에 해당한다.\n해당 원호가 수직선과 만나는 점은 D이므로 정답은 ④이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 같은 눈금의 위 수직선에는 원호와 A, B, D의 위치, 아래 수직선에는 글자와 보조선이 겹치지 않도록 C와 E의 위치를 따로 표시했다.",
     "solutionImageCaption": "두 줄은 같은 눈금이며, 점 C와 E는 보조선과 글자가 겹치지 않도록 아래에 따로 나타냈다. 한 변이 1인 정사각형의 대각선은 √2이다. −1을 중심으로 오른쪽에 그은 반지름 √2의 원호는 점 D에서 수직선과 만난다. 정답은 ④이다.",
@@ -270,7 +266,6 @@ window.questionBank = [
       "근호",
       "유리수",
       "전개",
-      "최대최소",
       "조건해석",
       "계산"
     ],
@@ -322,10 +317,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 양수의 범위에서는 부등식의 세 항을 제곱해도 대소관계가 유지된다.\n$200<\\sqrt x<202$이므로 $40000<x<40804$이다.\n자연수 $x$는 $40001,40002,\\ldots,40803$이고 개수는 $40803-40001+1=803$개이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 양의 제곱근 구간과 제곱한 자연수 구간을 열린 끝점으로 나타낸 두 수직선.",
     "solutionImageCaption": "양수인 200과 202를 제곱하면 경계는 40000과 40804가 된다. 열린 양 끝을 제외하면 자연수는 40001부터 40803까지이다. 40803−40001+1=803이므로 정답은 ③이다.",
@@ -349,7 +344,6 @@ window.questionBank = [
       "정수부분",
       "소수부분",
       "부등식",
-      "표해석",
       "자연수조건"
     ],
     "wide": false,
@@ -363,10 +357,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $N(x)=5$는 $\\sqrt x$의 정수부분이 5라는 뜻이다.\n$5\\le\\sqrt x<6$이므로 $25\\le x<36$이다.\n또 소수부분이 $0.5$보다 크므로 $\\sqrt x-5>0.5$, 즉 $x>30.25$이다.\n따라서 $x=31,32,33,34,35$의 5개이고 정답은 ④이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 25 이상 36 미만인 구간과 30.25보다 큰 구간의 교집합을 나타낸 수직선.",
     "solutionImageCaption": "교집합에서 자연수 x는 31, 32, 33, 34, 35이다. 정답: ④",
@@ -374,7 +368,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "상",
+    "level": "중",
     "category": "실수와 그 계산",
     "originalCategory": "실수와 그 계산",
     "standardCourse": "중3 수학",
@@ -397,10 +391,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 표의 제곱값을 소수점 위치만 바꾸어 비교한다.\n$1.78^2=3.1684<3.2<3.2041=1.79^2$이므로 $a=8$이다.\n또 $5.65^2=31.9225<32<32.0356=5.66^2$이므로 $b=5$이다.\n따라서 $a=8$, $b=5$이고 정답은 ④이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -454,8 +448,7 @@ window.questionBank = [
       "부등식",
       "연립방정식",
       "도형",
-      "삼각형",
-      "표해석"
+      "삼각형"
     ],
     "wide": false,
     "content": "$\\sqrt{3}x-y-8=0$, $\\sqrt{3}x+y-8=0$, $y$축으로 둘러싸인 삼각형 내부에 있으면서 $x$좌표, $y$좌표가 모두 정수인 점들의 개수를 구하면? (단, 만들어진 삼각형의 변 위의 점은 제외한다.) (5점)",
@@ -469,10 +462,10 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 삼각형 내부에서 정수 $x$를 하나씩 정해 가능한 정수 $y$를 센다.\n두 사선의 교점의 $x$좌표는 $\\frac8{\\sqrt3}$이고 $4<\\frac8{\\sqrt3}<5$이므로 정수 $x$는 $1,2,3,4$이다.\n내부 조건은 $\\sqrt3x-8<y<-\\sqrt3x+8$이다.\n$x=1$이면 $y=-6,-5,\\ldots,6$으로 13개,\n$x=2$이면 $3<2\\sqrt3<4$이므로 $y=-4,-3,\\ldots,4$로 9개,\n$x=3$이면 $5<3\\sqrt3<6$이므로 $y=-2,-1,0,1,2$로 5개,\n$x=4$이면 $6<4\\sqrt3<7$이므로 $y=-1,0,1$로 3개이다.\n따라서 $13+9+5+3=30$개이고 정답은 ⑤이다.",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중3_기출c/q13-solution-v2.svg",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "solutionImageAlt": "해설 그림: 두 사선과 y축으로 둘러싸인 삼각형의 네 세로줄에 내부 정수 좌표점을 표시한 그림.",
     "solutionImageCaption": "위쪽 직선 f(x)는 8−√3x, 아래쪽 직선 g(x)는 √3x−8이다. x=1, 2, 3, 4인 열에는 각각 13개, 9개, 5개, 3개가 있다. 합은 30개이므로 정답은 ⑤이다.",
     "solutionImageSize": "full"
@@ -493,7 +486,6 @@ window.questionBank = [
       "제곱근",
       "근호",
       "다항식",
-      "인수분해",
       "곱셈공식",
       "전개",
       "참거짓"
@@ -545,10 +537,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 원래 식을 각 보기로 나눈 몫이 다항식인지 확인한다.\n$4a^2b-8ab^2=4ab(a-2b)$이다.\n① $a$, ② $2(a-2b)$, ③ $b(a-2b)$, ④ $-(a-2b)$는 모두 인수이다.\n⑤ $b^2-ab=b(b-a)$는 원래 식의 인수가 아니다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -582,10 +574,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 양 끝 항이 $(3x)^2$, $(4y)^2$이므로 가운데 항은 $\\pm2(3x)(4y)$이어야 한다.\n따라서 $m+2=24$ 또는 $m+2=-24$이다.\n각각 풀면 $m=22$, $m=-26$이다.\n따라서 가능한 $m$은 $22,-26$이고 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -640,8 +632,7 @@ window.questionBank = [
       "곱셈공식",
       "완전제곱식",
       "공통인수",
-      "전개",
-      "범위"
+      "전개"
     ],
     "wide": false,
     "content": "다음은 수학 동아리 학생들의 풀이이다. 올바르게 푼 학생의 수는? (4점)\\n통민: 다항식 $x^2+axy+49y^2$이 완전제곱식이 되도록 하는 실수 $a$의 값은 14뿐이다.\\n강인: $(y+2)^2$을 전개하면 $y^2+4$이다.\\n희찬: $x^2+3x+4$를 인수분해하면 $x(x+3)+4$이다.\\n인범: $6ab^2-3a^2$을 인수분해하면 $3a(2b^2-a)$이다.\\n현규: $(-2x-\\dfrac{1}{2}y)^2$을 전개하면 $4x^2+2xy+\\dfrac{1}{4}y^2$이다.",
@@ -676,7 +667,6 @@ window.questionBank = [
       "근호",
       "분모유리화",
       "다항식",
-      "인수분해",
       "곱셈공식",
       "조건해석"
     ],
@@ -750,10 +740,10 @@ window.questionBank = [
     "choices": [],
     "answer": "3",
     "solution": "[키포인트] $90x$가 완전제곱수가 되도록 소인수의 지수를 모두 짝수로 만든다.\n$90=2\\times3^2\\times5$이므로 $x=10k^2$ ($k$는 자연수) 꼴이어야 한다.\n두 자리 자연수 조건을 적용하면 $k=1,2,3$에서 $x=10,40,90$이다.\n$k=4$이면 160이므로 제외한다.\n따라서 구하는 개수는 3이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
@@ -804,9 +794,9 @@ window.questionBank = [
     "choices": [],
     "answer": "로은: (a-2)(a-4)에 대입하여 1, 도율: (a-3)^2-1에 대입하여 1, 식의 값: 1",
     "solution": "[키포인트] 같은 식을 인수분해와 완전제곱식 두 방법으로 각각 변형한다.\n로은의 방법: $a^2-6a+8=(a-2)(a-4)$이므로 $a=3+\\sqrt2$를 대입하면 $(1+\\sqrt2)(\\sqrt2-1)=1$이다.\n도율의 방법: $a^2-6a+8=(a-3)^2-1$이므로 $a=3+\\sqrt2$를 대입하면 $(\\sqrt2)^2-1=1$이다.\n따라서 두 방법 모두 식의 값은 1이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
-    "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];
