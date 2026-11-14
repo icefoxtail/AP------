@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E026",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "0ce9f23e7016ae57adbb57e6a39a72659a02ac7f",
+  "reviewSha256": "8d70b02e283cf1299d3f2efbc7d0955dc72c4a6c72a8c0fed46a24310f5c1f2d",
+  "fourSlotSha256": "06537b7d6b4f7f407e74db1b1e06d38998f88efde5eb20c1c038e012b9b13ea6",
+  "ordinals": [
+    7,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_24e44c0c5bb7ca2e27014ffb2ea525a6af1ae5201cdbee39439892428a7509cd",
+      "verdict": "PASS",
+      "reason": "그림의 B,D 직각, BC=DC, EC 공통을 직접 확인하여 EBC와 EDC의 RHS가 즉시 성립함을 확인했다. 기존 해설은 여러 이등변/SSS 단계를 우회하나 원문 조건에서 직접 선택 가능한 RHS를 primary로 기록하고 4칸에서 IMPLIED와 그림 근거를 명시한 것은 타당하다. 한 각44를 두 대응각으로 나눠 목표각으로 옮기는 정형 계산으로 bucket2/상 STRONG를 독립 수용한다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 6,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_d862d59f4625031a650a248354067f171f186055685e14c5585f2e70891288bf",
+      "verdict": "PASS",
+      "reason": "정사각형 대각선의45도와 공통변, 같은변으로 ABE와 ADE의 SAS를 만든다. 기존 SQUARE_CONGRUENCE_TRANSFER는 같은변·직각과 별도 길이조건의 SAS라 이45도·공통변 구조와 다르고 GENERAL_ANGLE_TRANSFER는 공통 기선 위 교차선의 각 전달로 한정된다. 부모 PT_M1_CONGRUENCE_DATA_TRANSFER와 M1-RPM079 재사용 및 정확한 NEW_TPL 제안이 타당하다. 제안 템플릿에 정사각형 대각선45도 생성 자체가 포함되어 별도 CC 중복 없이 수용한다. 4칸 목적각·방법·주어진 각의 구분도 적절하다.",
+      "repairs": [],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 7,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "accepted": true
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7a9757eb4bea5f754b378fef8fa89c60a039652cb4babeeadd049b17c10c7f07",
+      "verdict": "REPAIR",
+      "reason": "실제 목표는 이미 알려진 평행사변형 판정 조건을 단순 선택하는 것이 아니라 그 조건이 성립하는 논증의 빈칸 완성이다. 내각합을 통해 이웃각 합을 만들고 동위각의 역으로 평행을 이끄는 M1-RPM065가 결정적 방향에 맞는다. 기존 M1 각 위치 TPL은 여러 진술의 보편 참거짓, QUADRILATERAL_CRITERIA는 판정조건 적용이므로 제안한 증명 골격은 별도 필요하다. 보조선과 논증 순서가 제시되어 bucket2/상 STRONG를 독립 수용한다. 다만 goal을 값 하나로만 표시하면 각 이름과 선분 이름 빈칸이 빠지므로 목표 항목을 보강하는 소형 수리를 권고한다.",
+      "repairs": [
+        {
+          "field": "4slot.goal",
+          "instruction": "기존 값 항목에 각 및 선분 목표를 보강하여 각 이름·각도 수치·평행할 선분을 채우는 혼합 빈칸임을 나타낼 것. 각과 선분 quote는 원문의 해당 빈칸 식을 사용. 핵심 method/goal 뒤바뀜은 아님."
+        }
+      ],
+      "imageViewed": true,
+      "quotesExact": true,
+      "quoteCount": 5,
+      "fourSlotCriticalDefect": false,
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "accepted": true
+      }
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "실제 원문과 세 그림을 읽고 ACTIVE 정의·공식 RPM을 대조했다. Q23 goal 세분화만 소형 권고이며 source나 저자 산출물을 직접 수정하지 않았다."
+  ]
+}
