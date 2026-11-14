@@ -1,0 +1,2386 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E005",
+  "owner": "B",
+  "sourceArchiveFile": "original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "9690448c2e992c776e189c14852065de2c7c71ed",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e2b02321bb1cbbe782119703fc75a1b37c449cfdbc6bd29372d58f19a42abbea",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "일차방정식의 미지수 수와 차수 판별",
+      "decisiveStep": "정리 후 x,y가 각각 일차로 남는 ③⑤를 고른다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "두 미지수의 일차방정식 정의 판별은 연립 가감·대입 RPM leaf에 없으므로 gap.",
+        "binding": "두 변수 선형성 정의만 판별하는 ACTIVE 골격이 없어 신규 제안.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "두 변수 곱·이차항·소거를 식별하는 직접 정의 과제이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "두 미지수의 일차방정식 정의 판별은 연립 가감·대입 RPM leaf에 없으므로 gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P1"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "두 변수 곱·이차항·소거를 식별하는 직접 정의 과제이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_125a9e3f90e7d51b9fb57b71ad75358d9e90c32ad5fa412fedf7fecfbadc36ad",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "일차방정식 여부 확인 후 주어진 해 대입",
+      "decisiveStep": "고차항 후보를 제외한 다음 (3,2)의 성립 여부를 검사한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "하나의 일차방정식 해 판정이므로 해가 주어진 연립방정식 leaf와 구별한다.",
+        "binding": "단일식 일차성+주어진 순서쌍 해 판정 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "정의 검사와 직접 대입만 반복하며 별도 식 해결이 없다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "하나의 일차방정식 해 판정이므로 해가 주어진 연립방정식 leaf와 구별한다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P1"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "정의 검사와 직접 대입만 반복하며 별도 식 해결이 없다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b37efb1f155834e716b8d4d9dfa723f98b4a978c9cc57b79cb64360b7645ae97",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-149",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대입법으로 연립방정식 해와 합 계산",
+      "decisiveStep": "x=-2y+3을 둘째 식에 넣어 y를 구한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "연립일차방정식",
+          "연립일차방정식"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "대입할 x표현이 이미 주어져 대입법 leaf149가 정확하다.",
+        "binding": "ACTIVE 소수계수/공통해 TPL과 다른 기본 대입법 해결 템플릿 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "미지수 한 개로 정리된 식을 그대로 대입하는 기본형이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "대입할 x표현이 이미 주어져 대입법 leaf149가 정확하다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P2"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "미지수 한 개로 정리된 식을 그대로 대입하는 기본형이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_9e0f0470c24a1abde9adb77f0016a270d3b651cf09a584170ab45b2e0943ed27",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-148",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "계수를 맞춰 가감법 해결",
+      "decisiveStep": "두 식에2,3을 곱해 y계수를6으로 맞춘다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "연립일차방정식",
+          "연립일차방정식"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "하",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "배수 설정 후 소거하므로 가감법 leaf148. sidecar numeric 난도에 들어간 문자열 하를 유효한 숫자로 교정한다.",
+        "binding": "연산 선택 ACTIVE TPL은 실제 해 계산을 포괄하지 않으므로 새 가감법 해결 골격.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "계수 맞추기와 해 대입의 통상 두 단계로 bucket2; 기존 level하는 B12 경계에서 유지한다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "배수 설정 후 소거하므로 가감법 leaf148. sidecar numeric 난도에 들어간 문자열 하를 유효한 숫자로 교정한다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P3"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "reason": "계수 맞추기와 해 대입의 통상 두 단계로 bucket2; 기존 level하는 B12 경계에서 유지한다.",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "difficultyConfidence": "high"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_79894fe0b8031aa1cefa11346ae63ced06708acd874da711b5c538479d3e8696",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-151",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "공통해 먼저 구한 뒤 미정계수 대입",
+      "decisiveStep": "a,b가 없는 소수식·분수식을 정수계수로 고쳐 공통해(4,5)를 얻는다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "연립일차방정식",
+          "연립일차방정식"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "소수·분수의 외형보다 공통해로 계수를 결정하는 leaf151이 주 방법이다.",
+        "binding": "ACTIVE 공통해에서 계수 구하기 TPL 정확.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "분모와 소수 정리는 선행 계산이고 공통해용 식 선택 이후 절차가 정형적이므로 기존3→2 제안.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "EXISTING_REUSE",
+        "templateDefinition": "상수가 모두 주어진 두 식을 먼저 연립해 공통해를 구하고, 그 해를 미정계수가 포함된 나머지 식들에 차례로 대입해 계수를 결정한 뒤 요구된 식의 값을 계산한다.",
+        "canonicalFile": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+        "matchedActivePrimaryBindings": [
+          {
+            "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+            "curriculum": "2015",
+            "standardCourse": "중2-1",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "reason": "소수·분수의 외형보다 공통해로 계수를 결정하는 leaf151이 주 방법이다.",
+      "registrationDebt": [],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "분모와 소수 정리는 선행 계산이고 공통해용 식 선택 이후 절차가 정형적이므로 기존3→2 제안.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b56cbc7a55be88a4afd1434cd47776a65a25df9c54c7780e086c67b7233daad8",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "구간별 시간 두 개로 총시간·총거리 연립",
+      "decisiveStep": "x+y=40,180x+120y=6000으로 두 구간 시간을 구한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "거리·속력·시간 맥락이지만 기존 만남/추격,강/열차 leaf와 달리 같은 사람이 구간별 속도를 달리하는 과제라 RPM gap.",
+        "binding": "구간별 속력 일정 상황의 총시간·총거리 연립 골격 신규 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "총시간·총거리 두 조건을 모델링하고 구한 시간에 속력을 곱한다. 정형적 단계이므로 기존3보다2.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "거리·속력·시간 맥락이지만 기존 만남/추격,강/열차 leaf와 달리 같은 사람이 구간별 속도를 달리하는 과제라 RPM gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P4"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "총시간·총거리 두 조건을 모델링하고 구한 시간에 속력을 곱한다. 정형적 단계이므로 기존3보다2.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c9ae4960920e45d62cf19ff8fa271e6fcd88aa022a3a528525fac8bafb130eba",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "대응의 단일값성으로 함수 아닌 관계 판별",
+      "decisiveStep": "x=6에 y=2와4가 모두 대응하므로 함수가 아니다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "일차함수 여부가 아닌 일반 함수 정의 판정이므로 기존 일차함수 판별 leaf를 강제하지 않는다.",
+        "binding": "함수+일차함수 개수합 ACTIVE TPL은 출력 목적이 달라 함수성 단독 판정 신규 골격.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "입력 하나에 출력 여러 개인 반례를 바로 찾는다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "일차함수 여부가 아닌 일반 함수 정의 판정이므로 기존 일차함수 판별 leaf를 강제하지 않는다.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P5"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "입력 하나에 출력 여러 개인 반례를 바로 찾는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_57bed78c6a4a4e694ed82c4c8c0c88d1eb87f3897471008a4b52a997c6697db1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-164",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "함숫값 대입으로 계수 결정 후 다른 입력 계산",
+      "decisiveStep": "f(3)=4로 a=3을 정하고 f(-1)에 넣는다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(1)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "최종 목표가 함숫값이므로 함숫값 leaf164, 계수 선행 결정은 steps에 명시한다.",
+        "binding": "단순 직접값 TPL에 계수 미정 선행 단계가 없어 계수 결정 후 함숫값 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "한 조건의 대입으로 계수를 얻고 다른 입력을 대입하는 짧고 직접적인 정형 절차이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "최종 목표가 함숫값이므로 함숫값 leaf164, 계수 선행 결정은 steps에 명시한다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P6"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "한 조건의 대입으로 계수를 얻고 다른 입력을 대입하는 짧고 직접적인 정형 절차이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7e294a1ec376c861cd42e750d7417e33933e6039f14d32085b32f4e28361e20d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "그림의 반복 증분을 일차식으로 표현",
+      "decisiveStep": "첫 도형4개,매회3개 증가로 y=3x+1이다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "fieldReview": {
+        "classification": "그림에서 증가규칙을 도출하는 과제는 두 좌표가 주어진 식 결정 leaf와 구별되는 RPM gap.",
+        "binding": "도형 반복수와 선형 증가식 결정 골격 필요. q09 원본 그림에서 사각형1,2,3개의 공유변을 실제 확인했다.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "공유 변 때문에4개씩이 아니라3개씩 증가함을 읽은 뒤 횟수를 역산한다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "그림에서 증가규칙을 도출하는 과제는 두 좌표가 주어진 식 결정 leaf와 구별되는 RPM gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P7"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "공유 변 때문에4개씩이 아니라3개씩 증가함을 읽은 뒤 횟수를 역산한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7da0ba7cf3c8c470167caf6f126f082c5855133537676496ee9b0f49a20b4061",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-165",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "일차함수의 차수와 비영 기울기 확인",
+      "decisiveStep": "y=ax+b,a≠0의 형태인 ②④를 고른다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(1)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "일차함수 판별 leaf165 정확.",
+        "binding": "ACTIVE 함수와 일차함수 개수합 TPL은 둘의 개수합이 목표라 일차함수 단독 선별과 구별.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "이차항·분모미지수·상수함수를 제외하는 정의 적용이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "일차함수 판별 leaf165 정확.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P8"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "이차항·분모미지수·상수함수를 제외하는 정의 적용이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "알려진 수직 이동으로 상수항을 바꾸어 그래프 선택",
+      "decisiveStep": "y=2x-2를4만큼 올려 y=2x+2로 만든다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "fieldReview": {
+        "classification": "수직 평행이동 핵심을 덮는 정확한 RPM leaf가 없어 gap.",
+        "binding": "ACTIVE 평행이동량 결정 TPL과 다르게 이동량이 알려져 있고 그래프 선택이 목표이다. q11 실제 선택지1의 절편2/기울기2 확인.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "이동 후 식을 만들고 기울기·절편을 그림과 맞추는 표준 연결이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "수직 평행이동 핵심을 덮는 정확한 RPM leaf가 없어 gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P9"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "이동 후 식을 만들고 기울기·절편을 그림과 맞추는 표준 연결이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_6f92c314290bb93082bba4726581accdfb621ccf0a39c87270652a41a203124f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "절편 두 개를 구해 합 조건 판정",
+      "decisiveStep": "각 식에서 x절편·y절편을 계산하여 합10을 찾는다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(1)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편 leaf에서 절편의 의미를 반복 적용한다.",
+        "binding": "ACTIVE 기울기·절편 부호 조건 선택 TPL과 다른 절편 합 조건 선택 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "두 절편을 구하고 합을 검사하는 표준 두 단계이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "기울기·절편 leaf에서 절편의 의미를 반복 적용한다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P10"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 절편을 구하고 합을 검사하는 표준 두 단계이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_db8f23f486179ddd8204782d9440d3a5bcf2fa00621d489683c93b6ade9da418",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-166",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "그래프 위 두 점의 변화량 비 계산",
+      "decisiveStep": "(-2,4),(2,1)에서 Δy/Δx=-3/4이다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(1)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "직접 기울기 계산 leaf166.",
+        "binding": "직선 방정식까지 구하는 TPL_LINE_TWO_POINTS를 강제하지 않고 기울기 단독 계산 골격 제안. q13 그림의 두 표시점 확인.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "눈금에 표시된 두 점을 읽어 공식에 대입하는 한 원리이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "직접 기울기 계산 leaf166.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P11"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "눈금에 표시된 두 점을 읽어 공식에 대입하는 한 원리이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_7df2a06f8682e574f1e2708816be7f9067cc9efb38086a8ccee7ee26b8a052d6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "사분면 조건을 기울기·절편 부호 범위로 변환",
+      "decisiveStep": "2a-1>0,4b-3<0을 각각 푼다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "기울기·절편의 부호와 통과 사분면의 관계가 핵심이며 증가·감소 leaf만으로 표현되지 않는 gap.",
+        "binding": "ACTIVE PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION은 일반 특정사분면 조건을 포함하지만 TPL은 첫사분면 회피와 경계합으로 좁아 새 출력 변형 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "통과사분면을 두 계수 부호로 읽고 각각 일차부등식을 푸는 표준 절차라 기존3→2 제안.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "기울기·절편의 부호와 통과 사분면의 관계가 핵심이며 증가·감소 leaf만으로 표현되지 않는 gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P12"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "통과사분면을 두 계수 부호로 읽고 각각 일차부등식을 푸는 표준 절차라 기존3→2 제안.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f404fec1f3335d254e866771eb9ae2ba76cba03f84d7144b994f56363a3f92de",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-170",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 점 기울기와 대입으로 직선 계수 결정",
+      "decisiveStep": "a=-5,b=7을 얻어 계수합을 구한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(2)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS"
+      },
+      "fieldReview": {
+        "classification": "두 점으로 식 구하기 leaf170.",
+        "binding": "ACTIVE TPL_LINE_TWO_POINTS와 핵심 정의가 일치하며 M2 경로 바인딩 별도 확인.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "차의 비로 기울기 결정 후 한 점 대입의 통상 단계이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "EXISTING_REUSE",
+        "templateDefinition": "두 점에서 기울기를 구하고 한 점을 대입하여 직선의 방정식을 구한다.",
+        "canonicalFile": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "두 점으로 식 구하기 leaf170.",
+      "registrationDebt": [
+        "BINDING_MISSING"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "차의 비로 기울기 결정 후 한 점 대입의 통상 단계이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "이동거리로 남은 삼각형 넓이를 구해 잔여 넓이 함수 구성",
+      "decisiveStep": "120−(60−12x)=96으로 시간을 결정한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmEffectiveParent": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "상",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA",
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "움직이는 점과 도형넓이의 일차함수 활용이다. 그래프 교점 자체가 없어 source EQUATION을 BASIC으로 제안하며 정확한 활용 leaf는 gap.",
+        "binding": "ACTIVE 그래프 아래 넓이 템플릿과 다르며 움직이는 점 넓이 모델링 골격 필요.",
+        "crossConcept": "남은 삼각형 넓이와 전체 직사각형 넓이를 독립적으로 구해 차를 사용한다.",
+        "condition": "점P가 B를 출발해 C까지만 이동한다는 유한 이동 구간이 명시되어 있다.",
+        "integration": "운동거리 표현에서 기하 넓이 모델을 만든 후 일차함수 출력 조건으로 시간을 구한다.",
+        "difficulty": "거리3x→남은 길이15−3x→삼각형 차넓이→시간 역산의 기하 모델링이 추가되어 bucket3이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "움직이는 점과 도형넓이의 일차함수 활용이다. 그래프 교점 자체가 없어 source EQUATION을 BASIC으로 제안하며 정확한 활용 leaf는 gap.",
+      "registrationDebt": [
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "E005-P13"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "거리3x→남은 길이15−3x→삼각형 차넓이→시간 역산의 기하 모델링이 추가되어 bucket3이다.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7e1505c9af581cc7e0991de6bdbf7438040513826c68388239dcf5dff2b81965",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-171",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "한 점과 기울기로 직선식을 구해 상수항 스케일 일치",
+      "decisiveStep": "y=-3x+2를6x+2y-4=0으로 바꾼다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "기울기와 한 점으로 식 구하기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "기울기와 한 점으로 식 구하기"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(2)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_POINT_SLOPE",
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_POINT_SLOPE"
+      },
+      "fieldReview": {
+        "classification": "한 점·기울기로 식 구하기 leaf171이며 일반형 표기를 읽을 뿐 교점 관계가 주 핵심은 아니다.",
+        "binding": "ACTIVE TPL_LINE_POINT_SLOPE와 주 골격 일치. 상수항 규격 조정은 후속 동일식 변환이며 바인딩 부채 별도.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "기울기식 결정 후 상수항을 맞추는 배수 조정은 정형 계산이라 기존3→2 제안.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "EXISTING_REUSE",
+        "templateDefinition": "한 점과 기울기를 이용하여 점-기울기형 또는 y=mx+n 꼴로 직선을 구한다.",
+        "canonicalFile": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "한 점·기울기로 식 구하기 leaf171이며 일반형 표기를 읽을 뿐 교점 관계가 주 핵심은 아니다.",
+      "registrationDebt": [
+        "BINDING_MISSING"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "기울기식 결정 후 상수항을 맞추는 배수 조정은 정형 계산이라 기존3→2 제안.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fee703363a98712d49d0a25a38a3ef747c65852a6d6867cad42e9f077f45fdda",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-173",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "수평선에서 y좌표가 같음을 적용",
+      "decisiveStep": "a+4=-2a+4로 a를 정한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 일차방정식의 관계"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "좌표축 평행 일차방정식 leaf173.",
+        "binding": "ACTIVE y축평행 한점의 x상수 방정식 TPL과 달리 수평선 두점의 y좌표를 비교하는 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "y축에 수직이라는 직접 성질과 간단한 일차식 정리만 필요하다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "좌표축 평행 일차방정식 leaf173.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P14"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "y축에 수직이라는 직접 성질과 간단한 일차식 정리만 필요하다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_dd842eeee653620a7e73ed3d38aaa4c92ee4bb206b94e186129f055a380559b8",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-174",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 직선 교점을 세 번째 식에 대입",
+      "decisiveStep": "앞 두 식의 공통해(3,-1)를3x+ay=5에 넣는다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 일차방정식의 관계"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "fieldReview": {
+        "classification": "세 직선의 한점 조건은 교점과 연립 관계 leaf174.",
+        "binding": "ACTIVE 교점 좌표합 TPL은 계수 결정까지 포괄하지 않아 교점→제3직선계수 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "교점 계산 후 한 매개변수를 대입하는 정형적 연결이므로 기존3→2 제안.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "세 직선의 한점 조건은 교점과 연립 관계 leaf174.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P15"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "교점 계산 후 한 매개변수를 대입하는 정형적 연결이므로 기존3→2 제안.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_11cf93285507ac4fc71c6b8db997a042b49752159541b12b26dbb879b66c34ad",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-176",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "세 직선의 교점에서 밑변·높이 결정",
+      "decisiveStep": "수평 밑변6,높이4의 삼각형 넓이를 계산한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 일차방정식의 관계"
+        ],
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": "상",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "fieldReview": {
+        "classification": "일차방정식 그래프 활용/넓이 leaf176. sidecar 문자열상 numeric을 유효3으로 판정한다.",
+        "binding": "ACTIVE 두함수+두축 차넓이와 다른 두사선+수평선 삼각형 골격. 실제 q20 solution 그림 확인.",
+        "crossConcept": "교점 좌표를 삼각형 밑변·높이로 읽고 면적 공식을 써야 한다.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "일차식 교점 계산 후 삼각형 넓이 개념에 연결한다.",
+        "difficulty": "교점 세 개를 얻어 적절한 밑변·높이를 선택하는 표준 기하 응용으로 bucket3이며 기존 level상 유지.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "일차방정식 그래프 활용/넓이 leaf176. sidecar 문자열상 numeric을 유효3으로 판정한다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P16"
+      ],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "교점 세 개를 얻어 적절한 밑변·높이를 선택하는 표준 기하 응용으로 bucket3이며 기존 level상 유지.",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "high",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2e3690647ff08ae3289531f476cc0ad795efd49e06c650e317e0269094697fed",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-148",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "가감법 또는 주어진 해의 합 관계 이용",
+      "decisiveStep": "해설은 두 식을 더해 x를 구하지만 목표합은 둘째 식에 이미 주어졌다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "연립일차방정식",
+          "연립일차방정식"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하"
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하"
+      },
+      "fieldReview": {
+        "classification": "실제 기존 해설은 가감법 leaf148이며 해의 합을 직접 읽는 더 짧은 정당한 해석도 기록한다.",
+        "binding": "정수계수 가감법 실제 해 계산 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "서술 여부와 관계없이 직접합 인식 또는 계수가 반대인 한 번의 소거로 해결되는 기본 과제이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "실제 기존 해설은 가감법 leaf148이며 해의 합을 직접 읽는 더 짧은 정당한 해석도 기록한다.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P3"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "서술 여부와 관계없이 직접합 인식 또는 계수가 반대인 한 번의 소거로 해결되는 기본 과제이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_834351026519bc5a1e6d582d1ada9559c40d2ca532ac2cda1627f84706433da5",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-164",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 함숫값의 직접 대입 후 일차결합 계산",
+      "decisiveStep": "f(5),g(-1)을 각각 계산하여6f+2g에 넣는다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 그 그래프(1)"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "beforeMetadata": {
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+      },
+      "fieldReview": {
+        "classification": "함숫값 계산 leaf164. 분수·소수 혼합은 수치 대입의 표면 형식이다.",
+        "binding": "ACTIVE TPL_FUNCTION_VALUE_DIRECT의 직접값 계산 반복과 목표 일차결합이므로 재사용 후보; M2 binding 부채.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "함수에 지정된 입력을 넣는 정의 수준이며 분수계산만으로 난도를 올리지 않는다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "EXISTING_REUSE",
+        "templateDefinition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+        "canonicalFile": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "함숫값 계산 leaf164. 분수·소수 혼합은 수치 대입의 표면 형식이다.",
+      "registrationDebt": [
+        "BINDING_MISSING"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "함수에 지정된 입력을 넣는 정의 수준이며 분수계산만으로 난도를 올리지 않는다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_71162b082731ea75b1fe093b1d80acb33d6a95194b0ef21e7dfc84d3cd1a6dc4",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-172",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "축교점과 통과점의 좌표 대입",
+      "decisiveStep": "y=0으로 x절편a를, x=-3으로 점의 y좌표b를 구한다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "일차함수",
+          "일차함수와 일차방정식의 관계"
+        ],
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중"
+      },
+      "fieldReview": {
+        "classification": "일차방정식 그래프의 해 의미를 축교점과 점 대입으로 사용하는 leaf172.",
+        "binding": "ACTIVE 두점으로 계수+좌표 결정 TPL은 첫 미정량이 계수이고 이 문제는 절편이라 새 출력 골격 필요.",
+        "crossConcept": "주된 방법 외에 독립적으로 필요한 보조 수학 개념이 없으며 대입·사칙연산을 별도 CrossConcept로 부풀리지 않음.",
+        "condition": "별도의 수 범위·부호·정수성 조건 없음. 주어진 식·좌표는 given 근거로 처리.",
+        "integration": "단일 주 방법의 연속 적용이므로 NONE.",
+        "difficulty": "두 조건 대입은 서로 독립적이며 그 결과의 곱을 구하는 통상 두 단계이다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "일차방정식 그래프의 해 의미를 축교점과 점 대입으로 사용하는 leaf172.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P17"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 조건 대입은 서로 독립적이며 그 결과의 곱을 구하는 통상 두 단계이다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_698d18f52df9dd4116ce54309aee65ac8259ed4f64b9ce927cbd81b284aebbfa",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-155",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 그래프 특성을 계수로 옮겨 연립방정식 해 개수 판단",
+      "decisiveStep": "a=-12,b=20을 넣은 두 식의 기울기가 달라 한 해이다.",
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "2022",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "rpmBasePath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "rpmEffectiveParent": [
+          "2022",
+          "M2-1",
+          "연립일차방정식",
+          "연립일차방정식"
+        ],
+        "crossConceptKeys": [
+          "CC_SLOPE_AND_INTERCEPT"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "curriculumEvidenceDebt": null
+      },
+      "beforeSource": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [
+          "CC_SLOPE_AND_INTERCEPT"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중"
+      },
+      "fieldReview": {
+        "classification": "최종 해 개수 판단이 주 목표여서 그래프 선행자료는 보조이고 M2-03 특수연립155로 분류 제안.",
+        "binding": "ACTIVE 무해 계수결정 TPL과 달리 선행 그래프 특성→주어진 연립 해개수 판정 골격 필요.",
+        "crossConcept": "주 방정식의 해 상태를 판단하기 전에 서로 다른 두 그래프의 기울기·절편을 반드시 추출해야 한다.",
+        "condition": "a,b가 유리수라는 명시 제한은 실제 canonical condition_registry의 ACTIVE COND_RATIONAL로 재사용한다. metadata_rules의 오래된 key목록만 보고 부재라고 한 최초 판단을 정정했다.",
+        "integration": "일차방정식 그래프 특성을 새로운 연립식의 계수로 전환한다.",
+        "difficulty": "각기 다른 그래프에서 기울기·절편을 추출하고 다시 연립식의 계수로 읽는 표상 전환과 해상태 판단을 결합한다.",
+        "fourSlot": "전 문항 stem/기존 solution 인용과 사전 용어 직접 검토; author SELF_CHECKED."
+      },
+      "bindingReview": {
+        "resolverStatus": "NOT_RUN",
+        "reason": "기존 해설은 읽었으나 원본에 R2/independentVerification 증거가 없어 VERIFIED_FINAL을 새로 주장하지 않음. root 기술 점검 예정.",
+        "candidateStatus": "NEW_TEMPLATE_REQUIRED",
+        "templateDefinition": null,
+        "canonicalFile": null,
+        "matchedActivePrimaryBindings": []
+      },
+      "reason": "최종 해 개수 판단이 주 목표여서 그래프 선행자료는 보조이고 M2-03 특수연립155로 분류 제안.",
+      "registrationDebt": [
+        "NEW_TEMPLATE_REQUIRED"
+      ],
+      "proposalRefs": [
+        "E005-P18"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "각기 다른 그래프에서 기울기·절편을 추출하고 다시 연립식의 계수로 읽는 표상 전환과 해상태 판단을 결합한다.",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "contentDebt": []
+    }
+  ],
+  "topicSummary": [],
+  "proposals": [
+    {
+      "proposalId": "E005-P1",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "미지수가2개인 일차방정식 정의와 해 판정",
+      "intendedParent": "연립일차방정식/일차방정식의 뜻",
+      "definition": "식을 정리해 두 미지수의 일차성을 판별하거나 주어진 순서쌍이 해인지를 확인한다.",
+      "distinguishingRule": "둘 이상의 방정식을 동시에 푸는 가감·대입 leaf와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_e2b02321bb1cbbe782119703fc75a1b37c449cfdbc6bd29372d58f19a42abbea",
+        "qid_v1_125a9e3f90e7d51b9fb57b71ad75358d9e90c32ad5fa412fedf7fecfbadc36ad"
+      ]
+    },
+    {
+      "proposalId": "E005-P2",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "기본 연립일차방정식 대입법 해결",
+      "intendedParent": "연립방정식의 풀이/대입법",
+      "definition": "한 식에서 정리된 한 미지수를 다른 식에 대입해 해와 그 식값을 구한다.",
+      "distinguishingRule": "소수계수 정수화·공통해 역복원과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_b37efb1f155834e716b8d4d9dfa723f98b4a978c9cc57b79cb64360b7645ae97"
+      ]
+    },
+    {
+      "proposalId": "E005-P3",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "정수계수 가감법 해결",
+      "intendedParent": "연립방정식의 풀이/가감법",
+      "definition": "배수를 맞춰 한 미지수를 소거하고 나머지 해를 얻는다.",
+      "distinguishingRule": "소거 연산만 선택하는 기존 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_9e0f0470c24a1abde9adb77f0016a270d3b651cf09a584170ab45b2e0943ed27",
+        "qid_v1_2e3690647ff08ae3289531f476cc0ad795efd49e06c650e317e0269094697fed"
+      ]
+    },
+    {
+      "proposalId": "E005-P4",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "한 사람이 구간별 속력을 달리한 총시간·총거리",
+      "intendedParent": "연립방정식의 활용/거리·속력·시간",
+      "definition": "두 구간의 속력과 총시간·총거리로 구간별 시간과 거리를 정한다.",
+      "distinguishingRule": "두 사람의 만남·추격 또는 강/열차와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_b56cbc7a55be88a4afd1434cd47776a65a25df9c54c7780e086c67b7233daad8"
+      ]
+    },
+    {
+      "proposalId": "E005-P5",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "함수의 정의로 단일값성 판정",
+      "intendedParent": "일차함수와 그 그래프(1)/함수의 뜻",
+      "definition": "한 입력마다 출력이 하나로 정해지는지를 관계별로 판정한다.",
+      "distinguishingRule": "일차함수 여부나 두 종류의 개수합까지 요구하지 않는다.",
+      "supportingQuestionUids": [
+        "qid_v1_c9ae4960920e45d62cf19ff8fa271e6fcd88aa022a3a528525fac8bafb130eba"
+      ]
+    },
+    {
+      "proposalId": "E005-P6",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "함숫값 조건으로 계수 결정 후 다른 함숫값",
+      "intendedParent": "함숫값 계산",
+      "definition": "미지 계수 포함 함수에 알려진 함숫값을 대입해 계수를 먼저 정하고 새 입력의 출력을 구한다.",
+      "distinguishingRule": "계수가 모두 주어진 직접값 계산과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_57bed78c6a4a4e694ed82c4c8c0c88d1eb87f3897471008a4b52a997c6697db1"
+      ]
+    },
+    {
+      "proposalId": "E005-P7",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "반복 도형의 선형 증가 규칙",
+      "intendedParent": "일차함수와 그 그래프(2)/식 구하기",
+      "definition": "첫 도형 수량과 공유부분을 고려한 일정 증가량으로 식을 구성하고 수량의 역함을 구한다.",
+      "distinguishingRule": "두 좌표가 명시되어 기울기 공식에 대입하는 유형과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_7e294a1ec376c861cd42e750d7417e33933e6039f14d32085b32f4e28361e20d"
+      ]
+    },
+    {
+      "proposalId": "E005-P8",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "일차함수만의 정의 판정",
+      "intendedParent": "일차함수의 뜻/일차함수 판별",
+      "definition": "y=ax+b에서 a≠0인 관계만 선택한다.",
+      "distinguishingRule": "함수 여부의 개수와 일차함수 개수합을 구하는 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_7da0ba7cf3c8c470167caf6f126f082c5855133537676496ee9b0f49a20b4061"
+      ]
+    },
+    {
+      "proposalId": "E005-P9",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "수직 평행이동 후 그래프 선택",
+      "intendedParent": "일차함수 그래프/평행이동",
+      "definition": "상수항에 알려진 이동량을 더한 뒤 새 기울기·절편과 일치하는 그림을 고른다.",
+      "distinguishingRule": "이동량이 미지수인 기존 템플릿과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e"
+      ]
+    },
+    {
+      "proposalId": "E005-P10",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "두 절편의 합 조건으로 식 선택",
+      "intendedParent": "일차함수 그래프/기울기·절편",
+      "definition": "각 보기의 x절편·y절편을 구해 지정된 합 조건을 확인한다.",
+      "distinguishingRule": "기울기와 절편 부호만 판별하는 기존 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_6f92c314290bb93082bba4726581accdfb621ccf0a39c87270652a41a203124f"
+      ]
+    },
+    {
+      "proposalId": "E005-P11",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "그래프 두 점의 기울기 직접 계산",
+      "intendedParent": "일차함수 그래프/기울기·절편",
+      "definition": "표시된 두 점에서 좌표 변화량의 비만 계산한다.",
+      "distinguishingRule": "직선 방정식 전체 결정과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_db8f23f486179ddd8204782d9440d3a5bcf2fa00621d489683c93b6ade9da418"
+      ]
+    },
+    {
+      "proposalId": "E005-P12",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "사분면 통과 조건으로 두 계수 범위",
+      "intendedParent": "일차함수 그래프의 성질/사분면",
+      "definition": "지나는 사분면들로 기울기와 y절편의 부호를 정해 두 계수의 범위를 구한다.",
+      "distinguishingRule": "증가·감소의 방향만 묻는 leaf와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_7df2a06f8682e574f1e2708816be7f9067cc9efb38086a8ccee7ee26b8a052d6"
+      ]
+    },
+    {
+      "proposalId": "E005-P13",
+      "kind": "RPM_LEAF_GAP",
+      "proposedLabel": "움직이는 점과 도형 넓이의 일차함수",
+      "intendedParent": "일차함수와 그 그래프(2)/활용",
+      "definition": "속력×시간으로 변하는 길이를 나타내고 도형넓이 함수를 구성해 목표 넓이의 시각을 구한다.",
+      "distinguishingRule": "좌표평면에 그려진 직선 교점 넓이와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1"
+      ]
+    },
+    {
+      "proposalId": "E005-P14",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "축평행선 위 두 점의 같은 좌표",
+      "intendedParent": "일차방정식 그래프/좌표축 평행",
+      "definition": "수평선의 y좌표 또는 수직선의 x좌표가 같음을 이용해 좌표에 포함된 매개변수를 결정한다.",
+      "distinguishingRule": "한점의 x좌표를 곧바로 x=c로 쓰는 기존 템플릿과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_fee703363a98712d49d0a25a38a3ef747c65852a6d6867cad42e9f077f45fdda"
+      ]
+    },
+    {
+      "proposalId": "E005-P15",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "세 직선의 한점 만남에서 계수 결정",
+      "intendedParent": "그래프와 연립방정식/교점",
+      "definition": "두 식의 교점을 구하고 그 점을 세 번째 직선식에 대입해 계수를 정한다.",
+      "distinguishingRule": "교점 좌표의 합만 구하는 기존 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_dd842eeee653620a7e73ed3d38aaa4c92ee4bb206b94e186129f055a380559b8"
+      ]
+    },
+    {
+      "proposalId": "E005-P16",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "두 사선과 축평행선의 삼각형 넓이",
+      "intendedParent": "그래프 활용/넓이",
+      "definition": "교점 세 개에서 축평행 밑변과 높이를 얻어 넓이를 계산한다.",
+      "distinguishingRule": "두 축+두 함수의 차넓이 기존 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_11cf93285507ac4fc71c6b8db997a042b49752159541b12b26dbb879b66c34ad"
+      ]
+    },
+    {
+      "proposalId": "E005-P17",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "일차방정식 그래프의 절편과 미지 좌표",
+      "intendedParent": "일차방정식 그래프",
+      "definition": "축교점의 한 좌표를0으로 두어 절편을 얻고 알려진 통과점의 미지 좌표를 대입으로 구한다.",
+      "distinguishingRule": "계수 미정형 두 점 대입 TPL과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_71162b082731ea75b1fe093b1d80acb33d6a95194b0ef21e7dfc84d3cd1a6dc4"
+      ]
+    },
+    {
+      "proposalId": "E005-P18",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "proposedLabel": "그래프의 기울기·절편을 연립식 계수로 연결",
+      "intendedParent": "특수 연립방정식/해의 개수",
+      "definition": "서로 다른 그래프의 특성을 계수로 사용하여 새 연립식의 기울기 또는 계수비로 해의 개수를 판정한다.",
+      "distinguishingRule": "처음부터 계수가 주어진 해개수 유형과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_698d18f52df9dd4116ce54309aee65ac8259ed4f64b9ce927cbd81b284aebbfa"
+      ]
+    }
+  ],
+  "notes": [
+    "24문항 stem·choices·기존solution 전부 직접 열람. 원본 q09/q11/q13/q16와 solution q14/q16/q20 그림7개 직접 확인.",
+    "Q4/Q16/Q20 sidecar difficultyBucket의 문자열값을 원본 그대로 beforeMetadata에 남기고 별도의 숫자 난도판정 제안.",
+    "기존 학생용 원문/답/해설/UID/순서/이미지 변경 없음."
+  ],
+  "amendment": {
+    "author": "GPT_ROOT_59E0F5BD3A77_WORKER_B",
+    "at": "2026-11-14T10:43:13.008546+00:00",
+    "basis": "PENDING_AMENDMENTS.json",
+    "originalReviewSha256": "22d379fae33ef90ed96480cb7f8bf54ed7b5e7497666bf41ac8e3aeb4e35e9bc",
+    "status": "AUTHOR_SCOPED_AMENDMENT_ROOT_ACCEPTANCE_PENDING"
+  }
+}

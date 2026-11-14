@@ -1,0 +1,1803 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "e414020080447f74606475d6ae43cbf34b439f33",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": "M2-S1-META-FULL reviewer B",
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e2b02321bb1cbbe782119703fc75a1b37c449cfdbc6bd29372d58f19a42abbea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6848e9ef74db92bf1230de5cb2d73fa11a977515e399dbff1e90a0e258fff720"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "af683c371f347878dadaf8801372ff7d9e69deacbe73c2c9d1b210e5872d4a4f"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "termId": 62,
+            "src": "stem",
+            "quote": "미지수가 2개인 일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식을 모두 고르면"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "모두 고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "가 되어 $x$가 사라지므로",
+            "evidenceType": "IMPLIED",
+            "justification": "식을 정리해 같은 x항이 소거되는지 확인한다."
+          },
+          {
+            "term": "차수",
+            "termId": 431,
+            "src": "solution",
+            "quote": "$x^2$항이 있으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "미지수의 차수가1인지 확인하는 판정이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "일차방정식의 미지수 수와 차수 판별",
+        "정리 후 x,y가 각각 일차로 남는 ③⑤를 고른다."
+      ],
+      "scenarioNote": "두 미지수의 일차방정식 정의 판별은 연립 가감·대입 RPM leaf에 없으므로 gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_125a9e3f90e7d51b9fb57b71ad75358d9e90c32ad5fa412fedf7fecfbadc36ad",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "473ed8ec51c318110b8d3c6a89f484501ed2f1cf4e6537be4a0157bd5560673f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2318d7b71f73a3839da0c0ce72bc32e5342e6736fbf47dd372501ab68b26ed6d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "$x=3$, $y=2$를 해로 갖는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "대입하여 양변이 같은지 검사한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차수",
+            "termId": 431,
+            "src": "solution",
+            "quote": "이차항이 있으므로 일차방정식이 아니다.",
+            "evidenceType": "IMPLIED",
+            "justification": "수치 성립 여부와 별개로 일차성을 검사한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "일차방정식 여부 확인 후 주어진 해 대입",
+        "고차항 후보를 제외한 다음 (3,2)의 성립 여부를 검사한다."
+      ],
+      "scenarioNote": "하나의 일차방정식 해 판정이므로 해가 주어진 연립방정식 leaf와 구별한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b37efb1f155834e716b8d4d9dfa723f98b4a978c9cc57b79cb64360b7645ae97",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9740d1fbc7efb4a093d177b7e90f0cec3ae5df60be5144be4f422bfaecf6e0e3"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f0d34cf37c13d33c85924dcb6c916cc19e10639ff524bc50eba62d27c8170e0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해를 $(a,b)$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입법",
+            "termId": 435,
+            "src": "solution",
+            "quote": "이를 둘째 식에 대입하여",
+            "evidenceType": "IMPLIED",
+            "justification": "x가 정리된 첫 식을 둘째 식에 넣어 y를 먼저 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "대입법으로 연립방정식 해와 합 계산",
+        "x=-2y+3을 둘째 식에 넣어 y를 구한다."
+      ],
+      "scenarioNote": "대입할 x표현이 이미 주어져 대입법 leaf149가 정확하다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_9e0f0470c24a1abde9adb77f0016a270d3b651cf09a584170ab45b2e0943ed27",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5abfb8289cae2e62d638860ed8157e3a8bd8baf0977279eab73eee9ffb476f0d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d76d9c96b16d17455fe621a5fa2f490c2dd800c15da27007efc31ac1aca95035"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해를 $(a,b)$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "두 식에서 $y$의 계수를 같게 만들어 없앤다.",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 배수를 곱한 뒤 같은 y항을 소거한다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "이를 $3x+2y=16$에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "계수를 맞춰 가감법 해결",
+        "두 식에2,3을 곱해 y계수를6으로 맞춘다."
+      ],
+      "scenarioNote": "배수 설정 후 소거하므로 가감법 leaf148. sidecar numeric 난도에 들어간 문자열 하를 유효한 숫자로 교정한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_79894fe0b8031aa1cefa11346ae63ced06708acd874da711b5c538479d3e8696",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2c102ee2722033d3d5ef40a72af400b8db92321235ea2037f97f12703df86ce7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa895b1883bfa6897c51ac98eb13d062ec080db275e42f8a7267b207d7ad824f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "두 연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "상수 $a,b$의 값을 각각"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입법",
+            "termId": 435,
+            "src": "solution",
+            "quote": "$y=4x-11$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "y를 x식으로 나타내어 다른 식에 대입하는 실제 공통해 계산이다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$ax-4y=-8$에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 서로 같을 때"
+          }
+        ]
+      },
+      "steps": [
+        "공통해 먼저 구한 뒤 미정계수 대입",
+        "a,b가 없는 소수식·분수식을 정수계수로 고쳐 공통해(4,5)를 얻는다."
+      ],
+      "scenarioNote": "소수·분수의 외형보다 공통해로 계수를 결정하는 leaf151이 주 방법이다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b56cbc7a55be88a4afd1434cd47776a65a25df9c54c7780e086c67b7233daad8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dbb4cfff98d141199673ad4d301d65afa2312d28fdeb81c8d7e84ba818c06dd9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2c3fd3b94827651b92ad6851d2c463e26627d3f7f3880c1fd93282dfb7a6cc5b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "분속 180 m"
+          },
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "총 거리가 6 km"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "A 구간과 B 구간의 거리를 각각"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "solution",
+            "quote": "$x+y=40$",
+            "evidenceType": "IMPLIED",
+            "justification": "구간별 두 시간의 합과 거리 합을 동시에 세운다."
+          },
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "두 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 y계수를 소거해 x를 얻는 해설 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "구간별 시간 두 개로 총시간·총거리 연립",
+        "x+y=40,180x+120y=6000으로 두 구간 시간을 구한다."
+      ],
+      "scenarioNote": "거리·속력·시간 맥락이지만 기존 만남/추격,강/열차 leaf와 달리 같은 사람이 구간별 속도를 달리하는 과제라 RPM gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_c9ae4960920e45d62cf19ff8fa271e6fcd88aa022a3a528525fac8bafb130eba",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "89787bf63c10eddd6ee7fb388e24b845a1bc860498bc1a456e0c132df42ed7a8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "989b5b20033824c92b52f281743a325169bcc96f8be5594449b236947eb40c26"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$y$가 $x$의 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "함수가 아닌 것은"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "아닌 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "함수라면 $x$의 값을 하나 정했을 때 $y$의 값도 반드시 하나로 정해져야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "함수 정의의 단일값성을 기준으로 판단한다."
+          },
+          {
+            "term": "반례",
+            "termId": 243,
+            "src": "solution",
+            "quote": "하나의 $x$에 서로 다른 $y$가 대응하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 x=6에 두 값을 주어 정의가 깨짐을 보인다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "대응의 단일값성으로 함수 아닌 관계 판별",
+        "x=6에 y=2와4가 모두 대응하므로 함수가 아니다."
+      ],
+      "scenarioNote": "일차함수 여부가 아닌 일반 함수 정의 판정이므로 기존 일차함수 판별 leaf를 강제하지 않는다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_57bed78c6a4a4e694ed82c4c8c0c88d1eb87f3897471008a4b52a997c6697db1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e4129793840580f4b7d6d5567a77fc1fcc6ae6614b361531132d8dc101620dc4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0dabdd07b9aeb2cceeacec440ae9cf5e367b69e9042428aadfe52ee803eea893"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$f(x)=ax-5$"
+          },
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(3)=4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(-1)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$f(x)=ax-5$에 $x=3$을 대입한 값이 $4$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "solution",
+            "quote": "$3a=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 함수값을 대입해 얻은 일차방정식으로 a를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "함숫값 대입으로 계수 결정 후 다른 입력 계산",
+        "f(3)=4로 a=3을 정하고 f(-1)에 넣는다."
+      ],
+      "scenarioNote": "최종 목표가 함숫값이므로 함숫값 leaf164, 계수 선행 결정은 steps에 명시한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7e294a1ec376c861cd42e750d7417e33933e6039f14d32085b32f4e28361e20d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a9cb93a30836ef30f758d0dcd9eaff1d641f5f420c36372809313cdfcd4220a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee9a68bcc07245bda593410528124ebce0569d01d87ac94b527da083e484cd6d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "도형",
+            "termId": 327,
+            "src": "stem",
+            "quote": "도형을 만들어 나간다고 할 때"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "성냥개비 $y$개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차식",
+            "termId": 36,
+            "src": "stem",
+            "quote": "$x$와 $y$의 관계식"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "성냥개비의 개수가 16개일 때의 횟수"
+          }
+        ],
+        "method": [
+          {
+            "term": "규칙",
+            "termId": 365,
+            "src": "solution",
+            "quote": "한 단계 늘 때마다 $3$개씩 늘어난다.",
+            "evidenceType": "IMPLIED",
+            "justification": "공유변을 제외한 반복 증가수를 읽어 규칙을 만든다."
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "solution",
+            "quote": "$16=3x+1$",
+            "evidenceType": "IMPLIED",
+            "justification": "원하는 개수를 식에 넣어 단계수를 역으로 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "그림의 반복 증분을 일차식으로 표현",
+        "첫 도형4개,매회3개 증가로 y=3x+1이다."
+      ],
+      "scenarioNote": "그림에서 증가규칙을 도출하는 과제는 두 좌표가 주어진 식 결정 leaf와 구별되는 RPM gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7da0ba7cf3c8c470167caf6f126f082c5855133537676496ee9b0f49a20b4061",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d779b09263426654db880d9a6b561218b80279c98f444593dec4572c8c4b60ba"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "768ff54a92f32909baf95280706d4484fe87449a1bada8c67967d5746551618f"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$y$가 $x$에 대한 일차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수인 것을 모두 고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "termId": 369,
+            "src": "solution",
+            "quote": "일차함수는",
+            "evidenceType": "IMPLIED",
+            "justification": "함수의 정의형 y=ax+b와 a≠0을 기준으로 판정한다."
+          },
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "각 식의 차수와 기울기를 살펴본다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "일차함수의 차수와 비영 기울기 확인",
+        "y=ax+b,a≠0의 형태인 ②④를 고른다."
+      ],
+      "scenarioNote": "일차함수 판별 leaf165 정확.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26e2602b129d93b4db0dd166601e626dfc2786522fdd79468e8fc1fba8754249"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22a23cef0cb3928713f2ee6eef609463ee39403f688767054cba889fd9a2e753"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "$y=2x-2$"
+          },
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "stem",
+            "quote": "4만큼 평행이동"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "평행이동한 그래프를 고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "solution",
+            "quote": "양의 방향으로 $4$만큼 평행이동하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기는 $2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편은 $2$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "알려진 수직 이동으로 상수항을 바꾸어 그래프 선택",
+        "y=2x-2를4만큼 올려 y=2x+2로 만든다."
+      ],
+      "scenarioNote": "수직 평행이동 핵심을 덮는 정확한 RPM leaf가 없어 gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_6f92c314290bb93082bba4726581accdfb621ccf0a39c87270652a41a203124f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "367788f6984f5e0e6f52d6198fcc7fc0c83b5c7835d5d4780dac0312df2d5408"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bdf12d93ff5cc18be21b4634f831184ef62f9dd804ecce7ce891aba4c2d0d7ba"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "solution",
+            "quote": "$x$절편은 $4$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편은 $6$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "solution",
+            "quote": "$4+6=10$",
+            "evidenceType": "IMPLIED",
+            "justification": "계산한 두 절편을 더해 조건값과 비교한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$x$절편과 $y$절편의 합이 10"
+          }
+        ]
+      },
+      "steps": [
+        "절편 두 개를 구해 합 조건 판정",
+        "각 식에서 x절편·y절편을 계산하여 합10을 찾는다."
+      ],
+      "scenarioNote": "기울기·절편 leaf에서 절편의 의미를 반복 적용한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_db8f23f486179ddd8204782d9440d3a5bcf2fa00621d489683c93b6ade9da418",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb67e091018c6fa972fffa6f00885efeaaca200c5a37cced1329268b974ba8be"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "09f6fd4c50c2bb04f3b7640509fb9acb6a5937f51eac4b7a66c26f1ab8cf010f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "stem",
+            "quote": "그래프의 기울기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "solution",
+            "quote": "$x$의 변화량은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비",
+            "termId": 289,
+            "src": "solution",
+            "quote": "기울기는",
+            "evidenceType": "IMPLIED",
+            "justification": "직접 읽은 x,y 변화량의 비로 기울기를 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "그래프 위 두 점의 변화량 비 계산",
+        "(-2,4),(2,1)에서 Δy/Δx=-3/4이다."
+      ],
+      "scenarioNote": "직접 기울기 계산 leaf166.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_7df2a06f8682e574f1e2708816be7f9067cc9efb38086a8ccee7ee26b8a052d6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8b61ac1829fd6a8b4dba5b6e83a9ffacbed06a01106e8a9b38f3afe8eaade2f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c083005ea41978e9a8a9812bdb17033c21b7aa3a7e98fab8d65345e8a9f4ac71"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=(2a-1)x+4b-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "상수 $a,b$의 값의 범위"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기는 양수이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편은 음수여야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "solution",
+            "quote": "$2a-1>0$",
+            "evidenceType": "IMPLIED",
+            "justification": "계수 부호 조건을 일차부등식으로 풀어 매개변수 범위를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "제1사분면, 제3사분면, 제4사분면을 지나기"
+          }
+        ]
+      },
+      "steps": [
+        "사분면 조건을 기울기·절편 부호 범위로 변환",
+        "2a-1>0,4b-3<0을 각각 푼다."
+      ],
+      "scenarioNote": "기울기·절편의 부호와 통과 사분면의 관계가 핵심이며 증가·감소 leaf만으로 표현되지 않는 gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f404fec1f3335d254e866771eb9ae2ba76cba03f84d7144b994f56363a3f92de",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c3379ace67edddac3b5372ad498cb65ab0443a877294e8ee1f2f7a5a8513af89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ddb291f2c58ef3d5eb7308a5e5ed09290df5b6fcc05c7734923cf22cc9677bf2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "두 점 $(-1,12)$, $(3,-8)$"
+          },
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 식이 $y=ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$a+b$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "직선의 기울기는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "두 점 기울기와 대입으로 직선 계수 결정",
+        "a=-5,b=7을 얻어 계수합을 구한다."
+      ],
+      "scenarioNote": "두 점으로 식 구하기 leaf170.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6bd88596f5f6ababf65fbb2565aca406d2e23d243840911090c20b8aad2938d6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00e202f805d52c772b7527609a6f256fd2fcccb4862c3ace7adb176f7a5b684f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "stem",
+            "quote": "직사각형 $ABCD$"
+          },
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "초속 3 cm로 움직이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "몇 초 후인가"
+          }
+        ],
+        "method": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "solution",
+            "quote": "$BP=3x$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "속력과 시간의 곱을 선분 길이로 바꾼다."
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "=60-12x",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 DPC의 밑변과 높이를 곱해 2로 나누는 실제 넓이식을 사용한다."
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "solution",
+            "quote": "120-(60-12x)",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 직사각형에서 삼각형 넓이를 빼는 연산을 실제 수행한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "점 $B$를 출발하여 점 $C$까지"
+          }
+        ]
+      },
+      "steps": [
+        "이동거리로 남은 삼각형 넓이를 구해 잔여 넓이 함수 구성",
+        "120−(60−12x)=96으로 시간을 결정한다."
+      ],
+      "scenarioNote": "움직이는 점과 도형넓이의 일차함수 활용이다. 그래프 교점 자체가 없어 source EQUATION을 BASIC으로 제안하며 정확한 활용 leaf는 gap.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_7e1505c9af581cc7e0991de6bdbf7438040513826c68388239dcf5dff2b81965",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5fa04c1b8117ded964b4b14527793010c5d313838e170c2485b47e7d8482ca5a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3e56514c50f1102a0fdd269d7a309805c434ad91d0856debde4f11e0dd2db2ee"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "stem",
+            "quote": "기울기가 $-3$"
+          },
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "점 $(2,-4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$a+b$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "solution",
+            "quote": "$y+4=-3(x-2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "점-기울기식으로 직선의 방정식을 세운다."
+          },
+          {
+            "term": "계수비교",
+            "termId": 696,
+            "src": "solution",
+            "quote": "상수항을 $-4$로 맞추기 위해 양변에 $2$를 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "정해진 상수항 표준과 동등한 식의 계수를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "한 점과 기울기로 직선식을 구해 상수항 스케일 일치",
+        "y=-3x+2를6x+2y-4=0으로 바꾼다."
+      ],
+      "scenarioNote": "한 점·기울기로 식 구하기 leaf171이며 일반형 표기를 읽을 뿐 교점 관계가 주 핵심은 아니다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_fee703363a98712d49d0a25a38a3ef747c65852a6d6867cad42e9f077f45fdda",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d5f00ceff53da029ae74ae66ff14294923bd27f2293cbf553390e23cc55fbe1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fc429cd3d1d8a75d795e6534906e8313aa3b2ee7b37a6f1ff8cb5605ad8d6562"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "두 점 $(6,a+4)$, $(-3a,-2a+4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "$x$축에 평행한 수평선이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "solution",
+            "quote": "두 점은 $y$좌표가 같다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "stem",
+            "quote": "$y$축에 수직일 때"
+          }
+        ]
+      },
+      "steps": [
+        "수평선에서 y좌표가 같음을 적용",
+        "a+4=-2a+4로 a를 정한다."
+      ],
+      "scenarioNote": "좌표축 평행 일차방정식 leaf173.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_dd842eeee653620a7e73ed3d38aaa4c92ee4bb206b94e186129f055a380559b8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c478fd83656fb54a476b85fa29a65769c4ae0c7549799b5d0e31f94166586a36"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e75048f6d45c174949fab835f84049e43e68774d9fe95481670bb66a2f6f67f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "세 직선 $x+2y=1$, $2x-y=7$, $3x+ay=5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "solution",
+            "quote": "앞의 두 직선의 교점을 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "한 점에서 만날 때"
+          }
+        ]
+      },
+      "steps": [
+        "두 직선 교점을 세 번째 식에 대입",
+        "앞 두 식의 공통해(3,-1)를3x+ay=5에 넣는다."
+      ],
+      "scenarioNote": "세 직선의 한점 조건은 교점과 연립 관계 leaf174.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_11cf93285507ac4fc71c6b8db997a042b49752159541b12b26dbb879b66c34ad",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8b89999cdda72201752ac27b46cc48f9a6106e6805d3675bc643803f37d22a8a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1aa23de2d33dc4b3c656b2e2b67ebdba3caaa9fa64bd7a335372addeddcc4f8f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "세 직선 $y=2x+5$, $x+y-2=0$, $y=-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "도형의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "solution",
+            "quote": "각 직선의 교점을 구한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "삼각형의 밑변은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "세 직선의 교점에서 밑변·높이 결정",
+        "수평 밑변6,높이4의 삼각형 넓이를 계산한다."
+      ],
+      "scenarioNote": "일차방정식 그래프 활용/넓이 leaf176. sidecar 문자열상 numeric을 유효3으로 판정한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2e3690647ff08ae3289531f476cc0ad795efd49e06c650e317e0269094697fed",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2219e706b45cf8d6d2ae96bc0f2253cad468793b3985d29612ba9ddf5081cf68"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe6e198a3a31427e4a7f9c83de6f575c650919f8e7f2d34b28e593c251b38e10"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "방정식 $2x-y=8$과 $x+y=-5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해를 $x=a$, $y=b$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "양변끼리 더하면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식의 y항이 부호가 반대여서 더해 소거한다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "이를 $x+y=-5$에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "가감법 또는 주어진 해의 합 관계 이용",
+        "해설은 두 식을 더해 x를 구하지만 목표합은 둘째 식에 이미 주어졌다."
+      ],
+      "scenarioNote": "실제 기존 해설은 가감법 leaf148이며 해의 합을 직접 읽는 더 짧은 정당한 해석도 기록한다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_834351026519bc5a1e6d582d1ada9559c40d2ca532ac2cda1627f84706433da5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d8e8f3a3c0ef069d49f5daaceb4113522570b5c75d5d5ee61aebda2597015b15"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f5f91b6d57f68e258d407fe3a70028d76c447fe1204081d9879ba7f4c8f0506"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "함수 $f(x)="
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$6f(5)+2g(-1)$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "먼저 두 함수값을 각각 구한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 함수에 주어진 입력5,-1을 실제 대입한다."
+          },
+          {
+            "term": "일차결합",
+            "termId": 577,
+            "src": "solution",
+            "quote": "$6f(5)+2g(-1)$",
+            "evidenceType": "IMPLIED",
+            "justification": "계산한 두 함숫값에 지정된 계수를 곱해 합한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "두 함숫값의 직접 대입 후 일차결합 계산",
+        "f(5),g(-1)을 각각 계산하여6f+2g에 넣는다."
+      ],
+      "scenarioNote": "함숫값 계산 leaf164. 분수·소수 혼합은 수치 대입의 표면 형식이다.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_71162b082731ea75b1fe093b1d80acb33d6a95194b0ef21e7dfc84d3cd1a6dc4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5cb76aad4a90de7b5abd9cccd1ade315bd18987adbd5f21842cef9d691744f89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7ccfabda042fbdee6dac45891e00ba1709cbb9c772bcfce96a22df3cd55a62d2"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식 $6x-15y-12=0$"
+          },
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "점 $(-3,b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "절편",
+            "termId": 151,
+            "src": "stem",
+            "quote": "$x$절편을 $a$"
+          },
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "x절편",
+            "termId": 648,
+            "src": "solution",
+            "quote": "$x$절편을 구하기 위해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$y=0$을 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [
+        "축교점과 통과점의 좌표 대입",
+        "y=0으로 x절편a를, x=-3으로 점의 y좌표b를 구한다."
+      ],
+      "scenarioNote": "일차방정식 그래프의 해 의미를 축교점과 점 대입으로 사용하는 leaf172.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_698d18f52df9dd4116ce54309aee65ac8259ed4f64b9ce927cbd81b284aebbfa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38f3e6db448a77a6225b074e654c6423d3577eda45506afca41f7165f2c87be0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ea3c7d8ed663aff3cc28201d35c52ee922f63080e8129ef23199eb21f768bb6"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해의 개수"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "해의 개수"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "두 직선의 기울기",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편 $b=20$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$a=-12$, $b=20$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "stem",
+            "quote": "$a,b$는 유리수"
+          }
+        ]
+      },
+      "steps": [
+        "두 그래프 특성을 계수로 옮겨 연립방정식 해 개수 판단",
+        "a=-12,b=20을 넣은 두 식의 기울기가 달라 한 해이다."
+      ],
+      "scenarioNote": "최종 해 개수 판단이 주 목표여서 그래프 선행자료는 보조이고 M2-03 특수연립155로 분류 제안.",
+      "reasons": [
+        "목표 대상과 해설에서 실제 사용된 방법을 분리하여 인용했다."
+      ],
+      "judgedBy": "M2-S1-META-FULL reviewer B",
+      "review": {
+        "status": "SELF_CHECKED",
+        "independentReview": false
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "sourceContentRead": true,
+    "independentReview": false
+  }
+}
