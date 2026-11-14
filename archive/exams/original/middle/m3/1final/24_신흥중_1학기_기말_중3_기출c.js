@@ -30,8 +30,8 @@ window.questionBank = [
     ],
     "answer": "①, ④",
     "solution": "[키포인트] $x^2+(a+b)x+ab=(x+a)(x+b)$ 꼴의 인수분해를 이용한다.\\n조건 정리: 다항식 $x^2-7x+6$이 주어졌다.\\n정석 풀이: 곱해서 $6$이 되고, 더해서 $-7$이 되는 두 수는 $-1$과 $-6$이다.\\n따라서 다항식을 인수분해하면 다음과 같다.\\n$x^2-7x+6 = (x-1)(x-6)$\\n그러므로 주어진 다항식의 인수는 $x-1$과 $x-6$이다.\\n따라서 정답은 ①, ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
@@ -110,7 +110,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "중",
+    "level": "하",
     "category": "이차방정식",
     "originalCategory": "이차방정식",
     "standardCourse": "중3 수학",
@@ -389,8 +389,8 @@ window.questionBank = [
     ],
     "answer": "②, ⑤",
     "solution": "[키포인트] 주어진 문장을 식으로 나타냈을 때, $y = ax^2+bx+c$ ($a \\neq 0$) 꼴이 되는지 확인한다.\\n정석 풀이: 각 보기를 식으로 나타내 본다.\\n① $x$각형의 내각의 합: $y = 180(x-2) = 180x - 360$ (일차함수)\\n② $x$각형의 대각선의 개수: $y = \\dfrac{x(x-3)}{2} = \\dfrac{1}{2}x^2 - \\dfrac{3}{2}x$ (이차함수)\\n③ 거리 = 속력 $\\times$ 시간: $y = 3x$ (일차함수)\\n④ 정육면체의 부피 = $(\\text{한 모서리의 길이})^3$: $y = x^3$ (삼차함수)\\n⑤ 부채꼴의 넓이 = $\\pi \\times (\\text{반지름})^2 \\times \\dfrac{\\text{중심각}}{360}$: $y = \\pi x^2 \\times \\dfrac{30}{360} = \\dfrac{\\pi}{12}x^2$ (이차함수)\\n따라서 이차함수인 것은 ②, ⑤이다.\\n따라서 정답은 ②, ⑤이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "이차함수의 활용",
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -714,8 +714,8 @@ window.questionBank = [
     "choices": [],
     "answer": "6547",
     "solution": "[키포인트] $acx^2+(ad+bc)x+bd = (ax+b)(cx+d)$ 꼴의 인수분해를 이용하여 주어진 이차식을 인수분해한다.\\n조건 정리: 비밀번호는 ⓐ, ⓑ, ⓒ, ⓓ를 순서대로 나열한 $4$자리 숫자이다.\\n풀이 방향: 주어진 두 다항식을 각각 인수분해하여 ⓐ, ⓑ, ⓒ, ⓓ의 값을 구한다.\\n정석 풀이: 첫 번째 식 $6x^2-11x+5$를 인수분해한다.\\n$x^2$의 계수 $6$은 $1 \\times 6$, 상수항 $5$는 $(-1) \\times (-5)$로 분리하면 대각선 곱의 합이 $1 \\times (-5) + 6 \\times (-1) = -11$이 되어 일차항의 계수와 일치한다.\\n$6x^2-11x+5 = (x-1)(6x-5)$\\n주어진 힌트 $(x-1)(ⓐx-ⓑ)$와 비교하면 ⓐ$=6$, ⓑ$=5$이다.\\n두 번째 식 $x^2+3x-28$을 인수분해한다.\\n곱해서 $-28$이 되고 더해서 $3$이 되는 두 수는 $7$과 $-4$이다.\\n$x^2+3x-28 = (x-4)(x+7)$\\n주어진 힌트 $(x-ⓒ)(x+ⓓ)$와 비교하면 ⓒ$=4$, ⓓ$=7$이다.\\n구한 숫자를 순서대로 나열하면 비밀번호는 $6547$이다.\\n따라서 구하는 값은 $6547$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
@@ -762,8 +762,8 @@ window.questionBank = [
     "choices": [],
     "answer": "7",
     "solution": "[키포인트] 구하고자 하는 동생의 나이를 미지수 $x$로 두고 문제의 조건에 맞게 이차방정식을 세운다.\\n조건 정리: 두 남매의 나이 차이는 $5$살이고, 두 나이의 곱은 $84$이다.\\n풀이 방향: 동생의 나이를 $x$살로 두면 다른 한 명의 나이는 $x+5$살이 된다. 이를 곱하여 $84$가 되는 식을 세우고 양수 해를 구한다.\\n정석 풀이: 동생의 나이를 $x$살이라 하자. 다섯 살 차이가 나므로 형(또는 누나, 오빠, 언니)의 나이는 $x+5$살이다.\\n나이의 곱이 $84$이므로 다음과 같이 방정식을 세울 수 있다.\\n$x(x+5) = 84$\\n괄호를 풀고 정리한다.\\n$x^2+5x-84 = 0$\\n곱해서 $-84$, 더해서 $5$가 되는 두 수를 찾아 인수분해한다.\\n$(x+12)(x-7) = 0$\\n$x = -12$ 또는 $x = 7$\\n나이는 항상 자연수이어야 하므로 $x \\gt 0$이다.\\n따라서 $x = 7$이다.\\n따라서 구하는 값은 $7$이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+    "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
