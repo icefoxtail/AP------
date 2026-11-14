@@ -18,15 +18,15 @@
     },
     "raw": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/raw.4slot.json",
-      "sha256": "ac7d25c6eb9683f4340adbf98f9f7d068c2fe7d5973811e3d468e6e2074c3080"
+      "sha256": "c3b32ef65aae2fb7f995d8bc1e6996f7fe6b48f506e9b66859bfac794dbcfd77"
     },
     "review": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/review.json",
-      "sha256": "9ebd04eebdd241056cea7eaa4837ec03572a9b626e227d1d4ee6a1eb105ccd78"
+      "sha256": "f91c07bf25a22ba2a3e5cf8e037b1afdc17a17dcf10bdd8863b47e18b75863f6"
     },
     "compact": {
       "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.4slot.json",
-      "sha256": "ee8be3db59eb59d404a00ad34234de8d70d7639693307edb96cf873391ffe34f"
+      "sha256": "a5db1f57c65b300f234456f826390d1f85e5e457e8ec4ca30507488ca0a037fd"
     }
   },
   "images": [
@@ -176,11 +176,56 @@
       "sha256": "d6587697145bd3f6b2683c5cbfbdfb5f7106a62a11cb7507e35e8785de6f2897"
     }
   },
-  "revision": 2,
+  "revision": 3,
   "readback": {
     "at": "2026-11-14",
     "sourceReparsed": true,
     "rawSlotsReread": true,
     "threeSampleOnly": true
-  }
+  },
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_SAME_QUOTE_PARENT_COMPLETION",
+      "status": "PASS",
+      "sourceBytesUnchanged": true,
+      "semanticVerdictUnchanged": true,
+      "changedSlotsVerified": [
+        {
+          "ordinal": 2,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "두 변 길이의 합이 나머지 한 변보다 커야"
+        },
+        {
+          "ordinal": 5,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "내각의 합"
+        },
+        {
+          "ordinal": 23,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "\\angle APB=120^\\circ"
+        }
+      ],
+      "bound": {
+        "sourceGitBlobSha": "b2b36387b6d2cf3ac4e623d932c4de98266d1a36",
+        "sourceSha256": "1766eb75c93d272c89d57289fde6d0aceac6f0113186a103144ef5d2074564c8",
+        "rawPath": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+        "rawSha256": "c3b32ef65aae2fb7f995d8bc1e6996f7fe6b48f506e9b66859bfac794dbcfd77",
+        "reviewSha256": "f91c07bf25a22ba2a3e5cf8e037b1afdc17a17dcf10bdd8863b47e18b75863f6",
+        "compactSha256": "a5db1f57c65b300f234456f826390d1f85e5e457e8ec4ca30507488ca0a037fd"
+      }
+    }
+  ]
 }
