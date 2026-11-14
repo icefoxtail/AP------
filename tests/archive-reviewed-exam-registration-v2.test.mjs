@@ -2679,3 +2679,14 @@ test("REVIEW2: an empty PT/TPL placeholder in the source is consistent with a fi
   rewriteSource(strict, q => { q.problemTypeKey = ""; q.templateKey = ""; });
   assert.throws(() => registerReviewedExamV2({ root: strict.root, request: strict.request }), /source\/approved metadata parity/);   // other approval types keep the strict rule
 });
+
+test("fieldCandidates rpmPath is accepted when the path is a leaf of the locked RPM master, refused when it is not", t => {
+  const f = receivedFixture(t);
+  const master = path.join(f.root, "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json");
+  fs.mkdirSync(path.dirname(master), { recursive: true });
+  fs.writeFileSync(master, JSON.stringify({ records: [{ curriculum: "2015", scope: "수학_상", majorUnit: "가", midUnit: "나", concepts: [{ concept: "다", problemTypes: [{ problemType: "라" }] }] }] }));
+  f.request.items[0].fieldCandidates = { rpmPath: [{ value: { majorUnit: "가", midUnit: "나", l3: "다", l4: "라" }, source: "agree" }] };
+  assert.doesNotThrow(() => registerReviewedExamV2({ root: f.root, request: f.request }));
+  f.request.items[0].fieldCandidates = { rpmPath: [{ value: { majorUnit: "가", midUnit: "나", l3: "다", l4: "없는 L4" }, source: "agree" }] };
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rpmPath not in RPM master or received registry/);
+});

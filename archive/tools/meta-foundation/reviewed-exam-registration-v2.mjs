@@ -54,7 +54,10 @@ let rpmIndexCache = null;
 function rpmPathKnown(root, tables, p) {
   if (!rpmIndexCache || rpmIndexCache.root !== root) {
     const set = new Set();
-    if (fs.existsSync(path.join(root, RPM_MASTER))) for (const r of JSON.parse(fs.readFileSync(path.join(root, RPM_MASTER), "utf8")).records || []) set.add([r.majorUnit, r.midUnit, r.l3, r.l4].join("\0"));
+    // CANONICAL_MASTER.json: one record per (curriculum, scope, majorUnit, midUnit); L3 = concept, L4 = problemType.
+    if (fs.existsSync(path.join(root, RPM_MASTER)))
+      for (const r of JSON.parse(fs.readFileSync(path.join(root, RPM_MASTER), "utf8")).records || [])
+        for (const c of r.concepts || []) for (const pt of c.problemTypes || []) set.add([r.majorUnit, r.midUnit, c.concept, pt.problemType].join("\0"));
     rpmIndexCache = { root, set };
   }
   return rpmIndexCache.set.has([p.majorUnit, p.midUnit, p.l3, p.l4].join("\0")) || Boolean(receivedActive(tables, "rpmPath", [p.majorUnit, p.midUnit, p.l3, p.l4].join(" > ")));
