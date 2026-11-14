@@ -658,14 +658,17 @@ window.questionBank = [
     "uid": "22_동산중_1학기_기말_중3_수학:q18",
     "sourceQid": 18,
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_수학/q18_solution_WALL_FENCE_DERIVED.svg",
+    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_기출c/q18-solution-v2.svg",
     "provenance": {
       "originalSourceGitBlobSha": "e04d67d4e61bff4b37b3c9ed47e924558e88fedf",
       "originalStudentContentPreserved": true,
       "repairStage": "CREATE",
       "repairType": "AUDITED_REPAIR",
       "changedScope": "solution and/or visual/answer derived candidate"
-    }
+    },
+    "solutionImageAlt": "해설 그림: 빗금 담장에 맞닿은 직사각형 놀이터에서 주황 세 변에 철망을 두고, 높이 x·밑변 y와 넓이 48m²를 표시한다.",
+    "solutionImageCaption": "철망 길이에서 2x+y=20, 넓이에서 xy=48이다. 대입하면 x²−10x+24=0이므로 x=4 또는 6이다. 두 값의 합은 10이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -775,14 +778,17 @@ window.questionBank = [
     "uid": "22_동산중_1학기_기말_중3_수학:q21",
     "sourceQid": 21,
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_수학/q21_solution_GRAPH_WIDTH_COMPARISON_NEW.svg",
+    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_기출c/q21-solution-v2.svg",
     "provenance": {
       "originalSourceGitBlobSha": "e04d67d4e61bff4b37b3c9ed47e924558e88fedf",
       "originalStudentContentPreserved": true,
       "repairStage": "CREATE",
       "repairType": "AUDITED_REPAIR",
       "changedScope": "solution and/or visual/answer derived candidate"
-    }
+    },
+    "solutionImageAlt": "해설 그림: 두 포물선에서 |y|=6일 때의 가로 폭을 파란색과 주황색 수평 선분으로 비교한다.",
+    "solutionImageCaption": "y=−6에서 y=−2x²의 폭은 2√3이고, y=6에서 y=3x²의 폭은 2√2이다. y=−2x²의 폭이 더 넓으므로 폭이 더 좁다는 설명이 틀렸다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -821,14 +827,17 @@ window.questionBank = [
     "uid": "22_동산중_1학기_기말_중3_수학:q22",
     "sourceQid": 22,
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_수학/q22_solution_QUADRATIC_PARABOLA_DERIVED.svg",
+    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_기출c/q22-solution-v2.svg",
     "provenance": {
       "originalSourceGitBlobSha": "e04d67d4e61bff4b37b3c9ed47e924558e88fedf",
       "originalStudentContentPreserved": true,
       "repairStage": "CREATE",
       "repairType": "AUDITED_REPAIR",
       "changedScope": "solution and/or visual/answer derived candidate"
-    }
+    },
+    "solutionImageAlt": "해설 그림: 원점이 꼭짓점인 아래로 열린 포물선에 점 (2,2), x=−3의 수직 안내선과 y축의 k 높이를 표시한다.",
+    "solutionImageCaption": "꼭짓점이 원점이므로 y=ax²이다. (2,2)를 대입해 a=1/2이고, x=−3에서 k=(1/2)·9=9/2이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -935,13 +944,16 @@ window.questionBank = [
     "uid": "22_동산중_1학기_기말_중3_수학:q25",
     "sourceQid": 25,
     "sourceMode": "AUDITED_REPAIR",
-    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_수학/q25_solution_X_AXIS_REFLECTION_NEW.svg",
+    "solutionImage": "assets/images/22_동산중_1학기_기말_중3_기출c/q25-solution-v2.svg",
     "provenance": {
       "originalSourceGitBlobSha": "e04d67d4e61bff4b37b3c9ed47e924558e88fedf",
       "originalStudentContentPreserved": true,
       "repairStage": "CREATE",
       "repairType": "AUDITED_REPAIR",
       "changedScope": "solution and/or visual/answer derived candidate"
-    }
+    },
+    "solutionImageAlt": "해설 그림: 파란 아래로 열린 포물선과 x축 대칭인 주황 위로 열린 포물선, x=3에서 y=b를 표시한다.",
+    "solutionImageCaption": "x축 대칭으로 y=(2/3)x²이므로 a=2/3이다. 점 (3,b)를 대입하면 b=6이다. 따라서 ab=4이다. 답: 4.",
+    "solutionImageSize": "full"
   }
 ];
