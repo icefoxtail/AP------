@@ -1406,7 +1406,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 3,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q17.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q17-problem-v2.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
     "choices": [
       "$93.97$",
       "$9.397$",
@@ -1423,7 +1423,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각비와 길이",
       "각을 이용한 길이"
