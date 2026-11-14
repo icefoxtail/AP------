@@ -344,7 +344,8 @@ window.questionBank = [
       "점 $\\mathrm{Q}$가 나타내는 수는 $1+\\sqrt{13}$이다."
     ],
     "answer": "④",
-    "solution": "격자에서 좌표 차를 읽고 피타고라스 정리로 선분의 길이를 구합니다.<br>$A=(0,0),\\quad B=(-1,3)$<br>$\\overline{AB}=\\sqrt{(-1)^2+3^2}=\\sqrt{10}$<br>$C=(1,0),\\quad D=(4,2)$<br>$\\overline{CD}=\\sqrt{(4-1)^2+2^2}=\\sqrt{13}$<br>$\\overline{AP}=\\overline{AB}$이고 $P$는 $A$의 왼쪽이므로 $P=-\\sqrt{10}$입니다.<br>$\\overline{CQ}=\\overline{CD}$이고 $Q$는 $C$의 오른쪽이므로 $Q=1+\\sqrt{13}$입니다.<br>$\\overline{CP}=1-(-\\sqrt{10})=1+\\sqrt{10}$입니다.<br>① $\\overline{AB}=\\sqrt{10}$은 참입니다.<br>② $\\overline{CD}=\\sqrt{13}$은 참입니다.<br>③ $\\overline{CP}=1+\\sqrt{10}$은 참입니다.<br>④ $P=\\sqrt{10}$은 거짓입니다.<br>⑤ $Q=1+\\sqrt{13}$은 참입니다.<br>따라서 옳지 않은 것은 ④입니다.<br><img src=\"assets/images/24_신흥중_1학기_중간_중3_수학/q06_solution_GEOMETRY.svg\" alt=\"6번 해설 시각자료\">",
+    "solution": "격자에서 좌표 차를 읽고 피타고라스 정리로 선분의 길이를 구합니다.<br>$A=(0,0),\\quad B=(-1,3)$<br>$\\overline{AB}=\\sqrt{(-1)^2+3^2}=\\sqrt{10}$<br>$C=(1,0),\\quad D=(4,2)$<br>$\\overline{CD}=\\sqrt{(4-1)^2+2^2}=\\sqrt{13}$<br>$\\overline{AP}=\\overline{AB}$이고 $P$는 $A$의 왼쪽이므로 $P=-\\sqrt{10}$입니다.<br>$\\overline{CQ}=\\overline{CD}$이고 $Q$는 $C$의 오른쪽이므로 $Q=1+\\sqrt{13}$입니다.<br>$\\overline{CP}=1-(-\\sqrt{10})=1+\\sqrt{10}$입니다.<br>① $\\overline{AB}=\\sqrt{10}$은 참입니다.<br>② $\\overline{CD}=\\sqrt{13}$은 참입니다.<br>③ $\\overline{CP}=1+\\sqrt{10}$은 참입니다.<br>④ $P=\\sqrt{10}$은 거짓입니다.<br>⑤ $Q=1+\\sqrt{13}$은 참입니다.<br>따라서 옳지 않은 것은 ④입니다.",
+      "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_수학/q6-solution-v2.svg",
     "level": "상",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -380,7 +381,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "격자에서 두 길이를 구한 뒤 수직선의 방향과 부호까지 해석.",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: P가 A=0의 왼쪽에 있고, C=1의 오른쪽에는 Q가 있다. 두 모눈 선분을 길이 옮기기 작도로 나타낸다.",
+    "solutionImageCaption": "P=−√10이고 Q=1+√13이므로 P가 양수라고 한 설명은 옳지 않다. 따라서 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -408,7 +412,8 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "②",
-    "solution": "먼저 근호가 자연수가 되는 조건으로 $ab$의 후보를 찾습니다.<br>$\\sqrt{18ab}=3\\sqrt{2ab}$입니다.<br>$3\\sqrt{2ab}$가 자연수이면 $2ab$는 완전제곱수입니다.<br>$1\\le a,b\\le6$이므로 $2ab\\le72$이고 가능한 짝수 제곱수는 $4,16,36,64$입니다.<br>따라서 $ab\\in\\{2,8,18,32\\}$입니다.<br>$ab=32$의 인수쌍은 $(1,32),(2,16),(4,8)$입니다. 각 쌍에는 $6$보다 큰 수가 있으므로 주사위 눈으로 불가능합니다.<br>$ab=2$이면 $(a,b)=(1,2),(2,1)$입니다.<br>$ab=8$이면 $(a,b)=(2,4),(4,2)$입니다.<br>$ab=18$이면 $(a,b)=(3,6),(6,3)$입니다.<br>유효한 순서쌍은 $6$개이고 전체 순서쌍은 $6\\times6=36$개입니다.<br>$P=\\frac{6}{36}=\\frac{1}{6}$이므로 정답은 ②입니다.<br><img src=\"assets/images/24_신흥중_1학기_중간_중3_수학/q07_solution_PROBABILITY.svg\" alt=\"7번 해설 시각자료\">",
+    "solution": "먼저 근호가 자연수가 되는 조건으로 $ab$의 후보를 찾습니다.<br>$\\sqrt{18ab}=3\\sqrt{2ab}$입니다.<br>$3\\sqrt{2ab}$가 자연수이면 $2ab$는 완전제곱수입니다.<br>$1\\le a,b\\le6$이므로 $2ab\\le72$이고 가능한 짝수 제곱수는 $4,16,36,64$입니다.<br>따라서 $ab\\in\\{2,8,18,32\\}$입니다.<br>$ab=32$의 인수쌍은 $(1,32),(2,16),(4,8)$입니다. 각 쌍에는 $6$보다 큰 수가 있으므로 주사위 눈으로 불가능합니다.<br>$ab=2$이면 $(a,b)=(1,2),(2,1)$입니다.<br>$ab=8$이면 $(a,b)=(2,4),(4,2)$입니다.<br>$ab=18$이면 $(a,b)=(3,6),(6,3)$입니다.<br>유효한 순서쌍은 $6$개이고 전체 순서쌍은 $6\\times6=36$개입니다.<br>$P=\\frac{6}{36}=\\frac{1}{6}$이므로 정답은 ②입니다.",
+      "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_수학/q7-solution-v2.svg",
     "level": "상",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -449,7 +454,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "완전제곱수 후보를 유한 범위로 줄이고 순서쌍을 경우별로 셈; top-bucket insight는 필요하지 않음.",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 두 주사위의 눈 a, b를 비교하는 곱 표에서 2ab가 완전제곱수가 되는 칸을 회색으로 칠했다.",
+    "solutionImageCaption": "가능한 순서쌍은 (1,2),(2,1),(2,4),(4,2),(3,6),(6,3)의 6개다. 확률은 6/36=1/6이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1144,7 +1152,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "구간 조건으로 두 절댓값의 부호를 정한 뒤 차를 계산.",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 열린 끝점 1과 3 사이에 예시 위치의 x를 표시한 수직선. x는 구간 안의 특정 수를 뜻하지 않는다.",
+    "solutionImageCaption": "주어진 범위에서 두 근호는 각각 3−x와 x−1이다. 그 차는 −2x+4이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1464,7 +1476,8 @@ window.questionBank = [
     "content": "[서술형 4]<br>어느 원기둥의 전개도에서 옆면 직사각형의 가로 (밑면 원의 둘레)는 $4\\sqrt{2}\\pi\\,\\mathrm{cm}$이고, 세로(원기둥의 높이)는 $3\\sqrt{3}\\,\\mathrm{cm}$이다. 이 원기둥의 부피를 구하는 과정과 답을 쓰시오. (5점)",
     "choices": [],
     "answer": "24√3π cm³",
-    "solution": "원기둥의 전개도에서 옆면 직사각형의 가로는 밑면 원의 둘레이고, 세로는 원기둥의 높이이다.\n밑면의 반지름을 $r$이라 하면 원둘레는 $2\\pi r$이다.\n$2\\pi r=4\\sqrt{2}\\pi$이므로, 양변을 $2\\pi$로 나누면 $r=2\\sqrt{2}$이다.\n원기둥의 높이는 $h=3\\sqrt{3}$이다.\n밑면의 넓이: $\\pi r^2=\\pi(2\\sqrt{2})^2=8\\pi$이다.\n원기둥의 부피는 밑면의 넓이와 높이의 곱이므로,\n$V=8\\pi\\times3\\sqrt{3}=\\boxed{24\\sqrt{3}\\pi\\,\\mathrm{cm}^{3}}$이다.\n<br><img src=\"assets/images/24_신흥중_1학기_중간_중3_수학/q24_solution_CYLINDER.svg\" alt=\"24번 해설 시각자료\">",
+    "solution": "원기둥의 전개도에서 옆면 직사각형의 가로는 밑면 원의 둘레이고, 세로는 원기둥의 높이이다.\n밑면의 반지름을 $r$이라 하면 원둘레는 $2\\pi r$이다.\n$2\\pi r=4\\sqrt{2}\\pi$이므로, 양변을 $2\\pi$로 나누면 $r=2\\sqrt{2}$이다.\n원기둥의 높이는 $h=3\\sqrt{3}$이다.\n밑면의 넓이: $\\pi r^2=\\pi(2\\sqrt{2})^2=8\\pi$이다.\n원기둥의 부피는 밑면의 넓이와 높이의 곱이므로,\n$V=8\\pi\\times3\\sqrt{3}=\\boxed{24\\sqrt{3}\\pi\\,\\mathrm{cm}^{3}}$이다.\n",
+      "solutionImage": "assets/images/24_신흥중_1학기_중간_중3_수학/q24-solution-v2.svg",
     "level": "상",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -1500,7 +1513,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "옆면 둘레에서 반지름을 역산한 뒤 밑넓이와 부피를 순차 계산.",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 원기둥 전개도에 옆면 직사각형의 가로 4√2π cm, 세로 3√3 cm, 밑면 반지름 2√2 cm를 표시한다.",
+    "solutionImageCaption": "반지름이 2√2 cm이고 높이가 3√3 cm이므로 부피는 24√3π cm³이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

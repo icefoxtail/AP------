@@ -392,9 +392,12 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q07_solution_NUMBERLINE_SQUARE_RENDER.png",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_기출/q7-solution-v2.svg",
     "primaryMethod": "정사각형의 대각선에 피타고라스 정리를 적용한 뒤 같은 길이를 수직선 위로 옮겨 좌표 결정",
-    "decisiveStep": "AC=√(1²+1²)=√2, CP=AC이므로 C의 좌표 1에서 오른쪽으로 √2만큼 이동하여 P=1+√2"
+    "decisiveStep": "AC=√(1²+1²)=√2, CP=AC이므로 C의 좌표 1에서 오른쪽으로 √2만큼 이동하여 P=1+√2",
+    "solutionImageAlt": "해설 그림: 정사각형의 대각선 AC를 반지름으로 써 수직선의 1에 놓인 C에서 오른쪽의 점 P로 길이를 옮긴다.",
+    "solutionImageCaption": "정사각형의 대각선 길이를 C에서 오른쪽으로 옮긴 그림. 따라서 P에 대응하는 수는 1+√2이다. 정답 ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -1281,6 +1284,9 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
-    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_수학/q23_solution_SQUARE_PERIMETER_RENDER.png"
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중3_기출/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 주어진 두 정사각형이 큰 정사각형의 파란 두 조각에 해당하고, 주황 직사각형 둘은 각각 넓이 xy이다.",
+    "solutionImageCaption": "한 변의 합은 x+y=20이다. 큰 정사각형에서 주어진 두 정사각형 넓이를 빼면 400−200=2xy이다. 따라서 두 둘레의 곱은 (4x)(4y)=16xy=1600이다.",
+    "solutionImageSize": "full"
   }
 ];

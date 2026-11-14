@@ -253,7 +253,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC=2(파랑), CA=3(주황), AB=4(초록)을 나타냈다.",
+    "solutionImageCaption": "파란 변 a=BC는 각 A의 맞은편이고, 주황 b=CA와 초록 c=AB는 각 A의 끼인 변이다. 코사인법칙에서 변의 대응을 확인한다. 정답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -856,10 +860,10 @@ window.questionBank = [
     "id": 21,
     "questionNumber": 21,
     "questionType": "주관식",
-    "content": "[주관식3 (서술형)] 다음 그림과 같이 $\\overline{\\mathrm{AB}}=3, \\overline{\\mathrm{AC}}=6$이고 $\\angle\\mathrm{BAC}=\\frac{2}{3}\\pi$인 삼각형 $\\mathrm{ABC}$가 있다. $\\angle\\mathrm{BAC}$의 이등분선이 변 $\\mathrm{BC}$와 만나는 점을 $\\mathrm{P}$라 할 때, 다음 물음에 답하여라. [7.0점] (부분점수 있음.)<br><br><img src=\"assets/images/21_매산여고_1학기_기말_고2_수학I/q21-source.svg\" class=\"question-img\"><br><br>1) 선분 $\\overline{\\mathrm{AP}}$의 길이를 구하여라. [3.0점]<br><br>2) 선분 $\\overline{\\mathrm{PC}}$의 길이를 구하여라. [2.0점]<br><br>3) 삼각형 $\\mathrm{APC}$의 외접원의 반지름의 길이를 구하여라. [2.0점]",
+    "content": "[주관식3 (서술형)] 다음 그림과 같이 $\\overline{\\mathrm{AB}}=3, \\overline{\\mathrm{AC}}=6$이고 $\\angle\\mathrm{BAC}=\\frac{2}{3}\\pi$인 삼각형 $\\mathrm{ABC}$가 있다. $\\angle\\mathrm{BAC}$의 이등분선이 변 $\\mathrm{BC}$와 만나는 점을 $\\mathrm{P}$라 할 때, 다음 물음에 답하여라. [7.0점] (부분점수 있음.)<br><br><img src=\"assets/images/21_매산여고_1학기_기말_고2_수학I/q21-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"두 변의 길이가 3, 6이고 끼인각이 120°인 삼각형 ABC와 각의 이등분선 AP\"><br><br>1) 선분 $\\overline{\\mathrm{AP}}$의 길이를 구하여라. [3.0점]<br><br>2) 선분 $\\overline{\\mathrm{PC}}$의 길이를 구하여라. [2.0점]<br><br>3) 삼각형 $\\mathrm{APC}$의 외접원의 반지름의 길이를 구하여라. [2.0점]",
     "choices": [],
     "images": [
-      "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-source.svg"
+      "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-problem-v2.svg"
     ],
     "answer": "\\text{(1) }2,\\quad\\text{(2) }2\\sqrt7,\\quad\\text{(3) }\\frac{2\\sqrt{21}}{3}",
     "solution": "(1) $\\angle A=120^\\circ$의 이등분선이므로 $\\angle BAP=\\angle PAC=60^\\circ$이다.\n먼저 삼각형 $ABC$에 코사인법칙을 적용한다.\n$BC^2=3^2+6^2-2\\cdot3\\cdot6\\cos120^\\circ=9+36+18=63$이므로 $BC=3\\sqrt7$이다.\n각의 이등분선 정리에서 $BP:PC=AB:AC=3:6=1:2$이다.\n따라서 $BP=\\sqrt7$, $PC=2\\sqrt7$이다.\n$AP=x$라 놓고 삼각형 $ABP$에 코사인법칙을 적용하면\n$BP^2=AB^2+x^2-2AB\\cdot x\\cos60^\\circ$이므로 $7=9+x^2-3x$, 즉 $(x-1)(x-2)=0$이다.\n삼각형 $APC$에서는 $PC^2=AC^2+x^2-2AC\\cdot x\\cos60^\\circ$이므로\n$28=36+x^2-6x$, 즉 $(x-2)(x-4)=0$이다.\n두 식을 모두 만족하는 양수는 $x=2$이다. 따라서 $AP=2$이다.\n(2) 위에서 구한 대로 $PC=2\\sqrt7$이다.\n(3) 삼각형 $APC$에서 $\\angle PAC=60^\\circ$이고 맞은편 변은 $PC$이다.\n사인법칙으로 외접원의 반지름은 $R=\\frac{PC}{2\\sin60^\\circ}=\\frac{2\\sqrt7}{\\sqrt3}=\\frac{2\\sqrt{21}}3$이다.",
@@ -890,9 +894,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-solution.svg",
-    "solutionImageAlt": "각 A의 이등분선 AP와 BP 대 PC 비를 표시한 삼각형",
-    "solutionImageCaption": "정확한 선분 길이와 각의 위치를 확인한다.",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 변 AB=3, AC=6, 내부 이등분선 AP, 양쪽 60° 각, BP=√7.",
+    "solutionImageCaption": "각 A=120°를 이등분하는 AP와 두 60° 각, 주어진 두 변, 중간값 BP=√7을 표시한다. 이등분선과 각의 대응으로 나머지 물음을 해결한다. 정답은 (1) 2, (2) 2√7, (3) 2√21/3이다.",
     "solutionImageSize": "full"
   },
   {

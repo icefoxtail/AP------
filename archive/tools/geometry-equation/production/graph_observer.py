@@ -4160,6 +4160,164 @@ def _trig_v2_tick_audit(plan,root,transform,expected):
         if not any(abs(float(line.get('data-value'))-float(multiple)*math.pi)<1e-9 for line in ticks if line.get('data-value') is not None):errors.append('TRIG_PI_TICK_PRIMITIVE_MISSING:'+str(multiple))
     return errors
 
+def _trig_display_window_ticks(root, transform, x_values, y_values):
+    nodes=[node for node in root.iter() if node.get('data-role')=='tick']
+    labels=[node for node in root.iter() if node.get('data-label-kind')=='TICK_LABEL']
+    if len(nodes)!=len(x_values)+len(y_values) or len(labels)!=len(nodes):
+        return ['TRIG_DISPLAY_TICK_INVENTORY_MISMATCH']
+    errors=[]
+    for axis, values in (('x',x_values),('y',y_values)):
+        for value in values:
+            target=float(value)*(math.pi if axis=='x' else 1)
+            expected_text=_trig_pi_tick_text(value) if axis=='x' else str(value).replace('-','−')
+            painted_text=_ov_label_codes(expected_text.replace('−','-'))
+            sign=1 if axis=='x' else -1
+            pos=transform['originX' if axis=='x' else 'originY']+sign*target*transform['s'+axis]
+            matches=[node for node in nodes if node.get('data-axis')==axis and abs(float(node.get('data-value','inf'))-target)<1e-9]
+            if len(matches)!=1:
+                errors.append('TRIG_DISPLAY_TICK_MISSING:'+axis+':'+str(value))
+                continue
+            tick=matches[0]
+            matches=[label for label in labels if label.get('data-tick-axis')==axis and label.get('data-tick-owner')==tick.get('id')]
+            x,y=(pos,transform['originY']) if axis=='x' else (transform['originX'],pos)
+            endpoints=[(float(tick.get('x'+i,'inf')),float(tick.get('y'+i,'inf'))) for i in ('1','2')]
+            distances=[math.hypot(px-x,py-y) for px,py in endpoints]
+            if not min(distances)*transform['displayScale']<=.35:
+                errors.append('TRIG_DISPLAY_TICK_POSITION_MISMATCH:'+axis+':'+str(value))
+            if len(matches)!=1:
+                errors.append('TRIG_DISPLAY_TICK_OWNER_MISMATCH:'+axis+':'+str(value))
+                continue
+            codes=_ov_glyph_codes(matches[0])
+            if (matches[0].get('data-tick-display-value')!=expected_text or len(codes)!=len(painted_text)
+                or any(code not in allowed for code,allowed in zip(codes,painted_text))):
+                errors.append('TRIG_DISPLAY_TICK_TEXT_MISMATCH:'+axis+':'+str(value))
+    return errors
+
+def trig_display_window_audit(plan, svg, transform, model):
+    """Read one display-only sine/cosine crop; no source interval endpoint is introduced."""
+    errors=[]
+    try:
+        spec=_trig_v2_spec(plan)
+        if (plan.get('sourceDomain')!={'kind':'ALL_REALS'} or spec['function'] not in ('SIN','COS')
+            or any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))):
+            raise ValueError('TRIG_DISPLAY_WINDOW_SOURCE_INVALID')
+        if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
+        window=plan['displayWindowPi']
+        if not isinstance(window,list) or len(window)!=2:
+            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+        lo,hi=(_piecewise_rational(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in window)
+        if not lo<0<hi or max(abs(lo),abs(hi))>100 or not Fraction(1,4)<=(hi-lo)/_trig_v2_period(spec)<=TRIG_V2_MAX_PERIODS:
+            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+        if plan.get('axisTickPi') is not True:
+            raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+        x0,x1=float(lo)*math.pi,float(hi)*math.pi
+        x_ticks=_trig_v2_tick_multiples(plan,'INTERVAL_PI',x0,x1)
+        ys=[_piecewise_rational(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
+        a,c,rate,phase=(spec[key] for key in ('a','c','rate','phase'))
+        low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
+        span=max(1.,high-low)
+        ypad=.42*span
+        xpad=max(.1*(x1-x0),.5)
+        left=max(xpad,max(1.0,abs(x0)))
+        expected_window=[x0-left,x1+xpad,low-ypad,high+ypad]
+        if (len(x_ticks)!=len(set(x_ticks)) or len(ys)!=len(set(ys))
+            or any(not value or not low-ypad<float(value)<high+ypad for value in ys)):
+            raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+        if plan.get('domain')!=[x0,x1] or plan.get('viewport')!=expected_window:
+            errors.append('TRIG_DISPLAY_WINDOW_MISMATCH')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:
+            raise ValueError('INVALID_OBSERVED_TRANSFORM')
+        scale_x=transform['sx']*transform['displayScale'];scale_y=transform['sy']*transform['displayScale']
+        root=ET.fromstring(svg)
+        paths,parse_errors=_observed_curve_branch_list(root,transform)
+        errors.extend(parse_errors)
+        if len(paths)!=1:return {'status':'FAIL','errors':['TRIG_DISPLAY_CURVE_INVENTORY_MISMATCH',*errors]}
+        points=paths[0]
+        if abs(points[0][0]-x0)*scale_x>.35 or abs(points[-1][0]-x1)*scale_x>.35:
+            errors.append('TRIG_DISPLAY_CURVE_RANGE_MISMATCH')
+        f=math.sin if spec['function']=='SIN' else math.cos
+        def exact_curve(x):
+            return float(a)*f(float(rate)*x+float(phase)*math.pi)+float(c)
+        if any(abs(y-exact_curve(x))*scale_y>.35 for x,y in points):
+            errors.append('TRIG_WRONG_FUNCTION_CURVE')
+        for (ax,ay),(bx,by) in zip(points,points[1:]):
+            step=bx-ax
+            if step<=0 or abs(float(a*rate*rate))*step**2*scale_y/8>.7:
+                errors.append('TRIG_DISPLAY_CURVE_SAMPLING_MISMATCH')
+                break
+            if abs((ay+by)/2-exact_curve((ax+bx)/2))*scale_y>.35:
+                errors.append('TRIG_DISPLAY_CURVE_CHORD_ERROR')
+                break
+        # Critical endpoints of the derivative are independent of the sampler's inventory.
+        angular=sorted((rate*lo+phase,rate*hi+phase))
+        shift=Fraction(1,2) if spec['function']=='SIN' else Fraction(0)
+        extrema={}
+        for k in range(math.ceil(angular[0]-shift),math.floor(angular[1]-shift)+1):
+            t=(k+shift-phase)/rate
+            if lo<t<hi:extrema[t]=c+a*(-1 if k%2 else 1)
+        for value,y in extrema.items():
+            if not any(abs(x-float(value)*math.pi)*scale_x<=.35 and abs(h-float(y))*scale_y<=.35 for x,h in points):
+                errors.append('TRIG_DISPLAY_EXTREMUM_NOT_SAMPLED:'+str(value))
+        if any(node.get('data-role') in ('interval-endpoint','trig-key-point','point') or
+               (node.get('id') or '').startswith(('interval-','period-label','formula')) for node in root.iter()):
+            errors.append('TRIG_DISPLAY_EXTRA_MARKUP')
+        guides=plan.get('displayGuides',{})
+        if not isinstance(guides,dict) or set(guides)-{'x','y'}:
+            raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+        expected_guides=[]
+        for axis, ticks in (('x',x_ticks),('y',ys)):
+            raw=guides.get(axis,[])
+            if not isinstance(raw,list):raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+            values=[_piecewise_rational(value,'TRIG_DISPLAY_GUIDES_INVALID') for value in raw]
+            if len(values)!=len(set(values)):raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+            for value in values:
+                level=extrema.get(value) if axis=='x' else value if value in (c-abs(a),c+abs(a)) else None
+                if value not in ticks or not level:raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
+                x=float(value)*math.pi;y=float(level)
+                expected_guides.append(((x,0.),(x,y)) if axis=='x' else ((0.,y),(x1,y)))
+        strokes=[node for node in root.iter() if (node.get('id') or '').startswith('trig-window-guide-')]
+        if model:
+            if strokes:errors.append('TRIG_DISPLAY_EXTRA_MARKUP')
+        else:
+            axes=[node for node in root.iter() if node.get('data-role')=='axis']
+            if sorted(node.get('data-axis','') for node in axes)!=['x','y']:errors.append('TRIG_DISPLAY_AXES_MISMATCH')
+            for axis in axes:
+                horizontal=axis.get('data-axis')=='x'
+                attr,position=('y',transform['originY']) if horizontal else ('x',transform['originX'])
+                if any(abs(float(axis.get(attr+i,'inf'))-position)*transform['displayScale']>.35 for i in ('1','2')):
+                    errors.append('TRIG_DISPLAY_AXES_MISMATCH')
+            errors.extend(_trig_display_window_ticks(root,transform,x_ticks,ys))
+            if len(strokes)!=len(expected_guides):errors.append('TRIG_DISPLAY_GUIDE_INVENTORY_MISMATCH')
+            for i, expected in enumerate(expected_guides):
+                one=[node for node in strokes if node.get('id')=='trig-window-guide-'+str(i)]
+                if len(one)!=1 or one[0].get('data-role')!='guide' or not one[0].get('stroke-dasharray'):
+                    errors.append('TRIG_DISPLAY_GUIDE_MISMATCH:'+str(i))
+                    continue
+                for j,(x,y) in enumerate(expected,1):
+                    ex=transform['originX']+x*transform['sx'];ey=transform['originY']-y*transform['sy']
+                    dx=float(one[0].get('x'+str(j),'inf'))-ex;dy=float(one[0].get('y'+str(j),'inf'))-ey
+                    if not math.hypot(dx,dy)*transform['displayScale']<=.35:
+                        errors.append('TRIG_DISPLAY_GUIDE_MISMATCH:'+str(i))
+            named={node.get('id',''):node for node in root.iter() if node.get('data-label-kind') not in (None,'TICK_LABEL')}
+            want_names={'axis-x':'x','axis-y':'y'}
+            if plan.get('showOriginLabel') is True:want_names['trig-window-origin']='O'
+            if set(named)!=set(want_names):errors.append('TRIG_DISPLAY_EXTRA_MARKUP')
+            for key,text in want_names.items():
+                node=named.get(key)
+                if node is None:continue
+                glyphs=_ov_glyph_codes(node);wanted=_ov_label_codes(text)
+                if len(glyphs)!=len(wanted) or any(code not in allowed for code,allowed in zip(glyphs,wanted)):
+                    errors.append('TRIG_DISPLAY_LABEL_TEXT_MISMATCH:'+key)
+            if 'trig-window-origin' in named:
+                box=_region_label_box(named,'trig-window-origin')
+                ox,oy=transform['originX'],transform['originY']
+                if box is None or not (0<=ox-box[0]-box[2]<=50 and 0<=box[1]-oy<=50):
+                    errors.append('TRIG_DISPLAY_ORIGIN_LABEL_MOVED')
+        return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),
+                'windowPi':window,'sourceDomain':'ALL_REALS','curvePoints':len(points)}
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_DISPLAY_SOURCE_INVALID']}
+
 def trigonometric_interval_v2_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
@@ -5211,6 +5369,7 @@ def _audit_family(plan,svg,transform,model=False):
     if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
         return exp_log_pair_overview_audit(plan,svg,transform)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1':return trig_display_window_audit(plan,svg,transform,model)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
