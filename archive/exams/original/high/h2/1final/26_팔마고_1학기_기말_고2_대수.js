@@ -535,7 +535,7 @@ window.questionBank = [
     "hasVisualAsset": true,
     "visualAssetType": "clean_vector_diagram",
     "visualAssetStatus": "clean",
-    "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q17.svg",
+    "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q17-problem-v2.svg",
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
