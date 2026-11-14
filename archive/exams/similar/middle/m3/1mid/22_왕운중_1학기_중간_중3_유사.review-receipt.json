@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "22_왕운중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1ab--2F-5AxUioVAGhOXwGLmKSw4YtNrblNwQy8YpLWk",
+    "revisionId": "AHj4eMQq51RdPispYXtc6g9QZjYq9kttIHgNiO1kZlKyo3aJSUAUd5aICf6x37BrEQaiedlSHcJ-6_eO1Us45_dlZWyoHHN7BD7wIXm3tlA",
+    "title": "22_왕운중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 24,
+    "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js"
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/22_왕운중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "5cc02043c56221aec5288fa4fa7a452cc203d1f4",
+  "authoringStatus": "R1_R2_REVIEWED_CANDIDATE; R3_VISUAL_PENDING",
+  "sourceAudit": {
+    "docParagraphCount": 379,
+    "nativeDocumentStructureRead": true,
+    "inlineObjects": 0,
+    "positionedObjects": 0,
+    "tables": 0,
+    "sourceMainFileVerified": true,
+    "sourceMainQuestionCount": 24,
+    "duplicateCandidateOnAccumulationBranch": false,
+    "repairs": [
+      "Q2: replaced ambiguous “제곱근 16” with unambiguous $\\sqrt{16}$.",
+      "Q11: repaired omitted y in $(3x-2y)^2$, updated false-statement choice to 가·마, preserved unique answer ②.",
+      "Q16: corrected two equivalent-but-not-answer choices so only ② expands to the stem expression.",
+      "Q21: specified coefficients of the linear x and y terms to avoid ambiguity from $x^2$ and $xy$.",
+      "Q24: stated the cutting plane is parallel to the base and that the requested volume is the removed small pyramid."
+    ]
+  },
+  "mathReview": {
+    "status": "R1_R2_COMPLETE",
+    "scope": "All 24 final candidate items; R1 used independent blind freeze, R2 followed current student-facing solutions.",
+    "r1": {
+      "status": "PASS",
+      "coverage": "Q01-Q24; Q02-Q24 frozen and compared in main R1, Q01 separately frozen before answer/solution read; modified Q02,Q11,Q16,Q21,Q24 independently rechecked after edits.",
+      "evidence": [
+        {
+          "path": "/workspace/r1-22-wangun-q01-freeze.json",
+          "sha256": "8ed59ea32e71935fbccfe066fc78c6ab1028c48f80c3e80953f60d80fa1566b7"
+        },
+        {
+          "path": "/workspace/r1-22-wangun-q01-comparison.json",
+          "status": "answer and solution agree",
+          "sha256": "8485f96b1256d14352e7d7a703b4680db0c1310d65e7a34825209cd87f1713c8"
+        },
+        {
+          "path": "/workspace/r1-22-wangun-freeze.json",
+          "sha256": "0cd3aa59b20b45aa7fc46de51e18325806904d8332ca44e0798b17274f8ce3a2"
+        },
+        {
+          "path": "/workspace/r1-22-wangun-compare.json",
+          "sha256": "be9dd8d55a9b94a307329ecb86e1d4ec324ecd3bc59aa91cf19aa4fd4ce8b0f1"
+        },
+        {
+          "path": "/workspace/r1-22-wangun-changed-freeze.json",
+          "status": "modified qids 2,11,16,21,24 independently solved",
+          "sha256": "8f613b23bbcd87dff075fd22b450b793e5a76803e896bdfc97babf92132508dc"
+        },
+        {
+          "path": "/workspace/r1-22-wangun-changed-comparison.json",
+          "status": "keys unique and correct",
+          "sha256": "5504f43b3530874b41f13ddd9d84ebdccf69c19b80d685e4de4f63bdc5a49a88"
+        }
+      ],
+      "disclosures": "The first R1 attempt saw Q01 stored answer/solution before freeze and excluded Q01; a separate reviewer then completed Q01 blind freeze before comparison. Post-freeze metadata text was emitted but not evaluated. Main R1 preserved an initial incorrect Q22 blind reasoning and corrected it after comparison; answer/solution independently agree."
+    },
+    "r2": {
+      "status": "PASS",
+      "coverage": "All 24 final solutions and associated meaning metadata reviewed; five repaired questions confirmed; no remaining math/solution error found.",
+      "finding": "Q15 metadata reason used “difference” where solution enumerates possible sums; corrected in candidate metadata before final validation.",
+      "qualityNote": "Q16 option ④ remains a less plausible distractor, but is wrong and the answer is unique."
+    },
+    "openIssues": []
+  },
+  "metadataReview": {
+    "status": "REVIEWED_WITH_EVIDENCE_DEBT",
+    "candidateRows": 24,
+    "r2Review": "All 24 rows compared to the final question/solution; Q15 wording corrected.",
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_24; all entries remain EVIDENCE_DEBT stubs",
+    "registrationStatus": "NOT_SUBMITTED",
+    "unclassifiedCandidates": "Preserved in separate unclassified-meta-candidates file; no false registry claim."
+  },
+  "visualReview": {
+    "status": "NOT_RUN_BY_USER_SCOPE",
+    "problemNeed": [
+      4,
+      24
+    ],
+    "solutionNeed": [
+      4,
+      24
+    ],
+    "createdAssets": [],
+    "renderedItems": [],
+    "note": "SVG creation and screen/visual review were not performed; checklist specifies required figures."
+  },
+  "checks": {
+    "nodeCheck": "PASS: node --check",
+    "tableCheck": "PASS: node tools/check-ap-tables.cjs --files <JS> (1 file, 0 tables, 0 FAIL)",
+    "similarExamHarness": "FAIL: draft harness reports missing author plans directory; visual plan/assets for Q04 and Q24 remain deferred and no EXEMPT/UNSUPPORTED substitution was made.",
+    "remoteCommit": "PENDING: draft candidate is being saved to the authorized cumulative branch; final branch SHA will be reported externally."
+  }
+}

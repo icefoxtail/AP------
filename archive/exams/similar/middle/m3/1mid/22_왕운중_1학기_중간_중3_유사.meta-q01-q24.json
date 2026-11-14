@@ -1,0 +1,706 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "22_왕운중_1학기_중간_중3_유사-candidate-v1",
+  "examUid": "22_왕운중_1학기_중간_중3_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m3/1mid/22_왕운중_1학기_중간_중3_유사.js",
+  "expectedSourceBlobSha1": "5cc02043c56221aec5288fa4fa7a452cc203d1f4",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "system-pipeline-v3",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_fd07d136779c89f83aff84bd092c6f594aea10506539fc0d86b5f2c4fe317bdc",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "두 일차식의 곱 분배법칙 전개",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_MULTIPLICATION_FORMULAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 1,
+        "variationType": "NUMERIC"
+      },
+      "reason": "두 일차식의 곱 분배법칙 전개: 분배법칙으로 $-3x^2, +2xy, +12xy, -8y^2$을 전개한 뒤 $xy$ 동류항을 합친다. Decisive step: $(-x)(-2y) = +2xy$와 $(4y)(3x) = +12xy$를 더해 $+14xy$를 얻는다."
+    },
+    {
+      "questionUid": "qid_v1_5456d6d24216adf2f5058bfc17355f35dc8149bc9258708c4dc579a4ef625b48",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "conceptClusterKey": "16의 제곱근과 제곱근 16 구별",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SQUARE_ROOT_PROPERTY",
+          "CC_PRINCIPAL_SQUARE_ROOT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 2,
+        "variationType": "NUMERIC"
+      },
+      "reason": "16의 제곱근과 제곱근 16 구별: ①②③⑤는 모두 $\\pm4$ 두 값을 나타내고, ④ $\\sqrt{16}$만 양의 제곱근 $4$ 하나를 나타냄을 구별한다. Decisive step: $\\sqrt{256}=16$의 제곱근은 $\\pm4$이고 $\\sqrt{16}=4$임을 구분한다."
+    },
+    {
+      "questionUid": "qid_v1_f11969399fa0beab82a754e50197cb9196b218b2ae0563baa2d66b133bd99978",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "완전제곱식 전개와 부호 포함 계수 비교",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_SQUARE_EXPANSION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 3,
+        "variationType": "NUMERIC"
+      },
+      "reason": "완전제곱식 전개와 부호 포함 계수 비교: $(ax+4)^2$을 전개해 일차항 $8a=-24$에서 음수 $a=-3$을 구하고 상수항 $b=16$과 더한다. Decisive step: $a^2=9$에서 $+3$이 아니라 일차항 $-24x$에 의해 $a=-3$임을 결정한다."
+    },
+    {
+      "questionUid": "qid_v1_9f8f860f78c1cd748e6c0ffd02363c54118ecb2ae768b858eac62602addf06a9",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "대수 막대 넓이와 제곱의 차 변형",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SUBSTITUTION_PERFECT_SQUARE",
+          "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 4,
+        "variationType": "NUMERIC"
+      },
+      "reason": "대수 막대 넓이와 제곱의 차 변형: $x^2+6ax$에 $9a^2$을 더하고 빼서 $(x+3a)^2-(3a)^2$으로 변형한 뒤 $A-B$를 구한다. Decisive step: 일차항 계수 $6a$의 절반의 제곱 $(3a)^2$을 보충해 $A=x+3a, B=3a$를 얻는다."
+    },
+    {
+      "questionUid": "qid_v1_127179a573f2896ef29b65501dabb3da1edc78ab3285374f79bc220b4b5533dc",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "분수 근호의 곱셈·나눗셈 약분",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_MULTIPLICATION_DIVISION",
+          "CC_RADICAL_DIVISION_SIMPLIFICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 5,
+        "variationType": "NUMERIC"
+      },
+      "reason": "분수 근호의 곱셈·나눗셈 약분: 나눗셈을 역수 곱셈으로 고쳐 하나의 근호 안에서 분자·분모를 약분해 $\\sqrt{5}$를 얻는다. Decisive step: $\\dfrac{7}{2} \\times \\dfrac{5}{14} \\times 4 = 5$로 약분한다."
+    },
+    {
+      "questionUid": "qid_v1_3132318f2433674bc282c0b5585ca5f3ea0b432e94e6b3dca6786f3fe0cd4333",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "conceptClusterKey": "무리수 구간 내 실수·유리수·정수부분 판별",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_INEQUALITY",
+          "CC_REAL_NUMBER_CONTINUITY_NUMBER_LINE"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 6,
+        "variationType": "NUMERIC"
+      },
+      "reason": "무리수 구간 내 실수·유리수·정수부분 판별: $5<8-\\sqrt{6}<6$과 $8<5+\\sqrt{11}<9$를 구해 구간 내 실수의 정수 부분 후보가 $5,6,7,8$임을 판별한다. Decisive step: 왼쪽 끝값이 $5$와 $6$ 사이, 오른쪽 끝값이 $8$과 $9$ 사이이므로 정수 부분이 $5, 6, 7, 8$임을 확인한다."
+    },
+    {
+      "questionUid": "qid_v1_3dfac5cca518effaa025791d6562f65c075bbe5dd819676c6f8d103140bd552e",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "켤레 분수 유리화와 대칭 이차식 변형",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+          "CC_TWO_VARIABLE_SQUARE_SUM_IDENTITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 7,
+        "variationType": "NUMERIC"
+      },
+      "reason": "켤레 분수 유리화와 대칭 이차식 변형: 분모를 유리화해 $x=4+\\sqrt{15}, y=4-\\sqrt{15}$를 구한 뒤 $(x+y)^2-3xy$에 $x+y=8, xy=1$을 대입한다. Decisive step: $x^2 - xy + y^2 = (x + y)^2 - 3xy$로 변형한다."
+    },
+    {
+      "questionUid": "qid_v1_6481b49c40611831400000dc4031ff5c59cd319e3f26cac15355318e77c0749e",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "곱셈공식 선택과 두 수의 곱 계산",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_NUMERICAL_COMPUTATION_BY_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 8,
+        "variationType": "NUMERIC"
+      },
+      "reason": "곱셈공식 선택과 두 수의 곱 계산: $100=x$로 치환하여 일차항 계수가 $1$인 $(x+a)(x+b)$ 공식을 선택하고 $10712$를 계산한다. Decisive step: $103=100+3, 104=100+4$는 최고차항 계수가 $1$이므로 $(x+a)(x+b)$가 가장 알맞다."
+    },
+    {
+      "questionUid": "qid_v1_14661b9184b10cd1bce7d70da06579e81aa2fdc89f94b120509be183fec02bed",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "conceptClusterKey": "음수 제곱근 부등식과 0 포함 정수 개수",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_INEQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 9,
+        "variationType": "NUMERIC"
+      },
+      "reason": "음수 제곱근 부등식과 0 포함 정수 개수: $-1$을 곱해 $\\sqrt{4x}<7$로 바꾸고 근호 안의 비음수 조건 $x\\ge 0$을 결합해 정수 $0\\sim 12$를 센다. Decisive step: 자연수가 아니라 정수 $x$를 묻기 때문에 $x=0$을 포함하여 $13$개가 된다."
+    },
+    {
+      "questionUid": "qid_v1_dd1f0d4383e085436ce67f74d1b9b95bfa3a6e8d859b06386a8edc7bb46a618d",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "conceptClusterKey": "무리수 포함 완전제곱근호의 부호 판별",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_ABSOLUTE_VALUE",
+          "CC_RADICAL_RATIONAL_EQUALITY"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 10,
+        "variationType": "NUMERIC"
+      },
+      "reason": "무리수 포함 완전제곱근호의 부호 판별: $2<\\sqrt{5}<3$으로 각 괄호 안의 부호를 판정해 근호를 벗기고 $a+b\\sqrt{5}$ 꼴과 계수를 비교한다. Decisive step: $2-\\sqrt{5}<0$이므로 앞 항은 $\\sqrt{5}-2$로 나오고 뒤 항은 $3-\\sqrt{5}$로 나와 $-5+2\\sqrt{5}$가 된다."
+    },
+    {
+      "questionUid": "qid_v1_0660756220b25d53af9ce779c5d79a6770bf6acba139f8c6d1fadd0dd634b790",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "인수분해 등식 오류 다중 판별",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_CROSS_MULTIPLICATION_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 11,
+        "variationType": "NUMERIC"
+      },
+      "reason": "인수분해 등식 오류 다중 판별: 각 우변을 전개해 상수항 부호와 제곱수 차이를 확인한다. 가와 마만 좌변과 다르다. Decisive step: 가의 상수항은 $-16$이고 마는 $x^2-144$이므로 두 식이 틀리며, 다의 $(3x-2y)^2$는 정확하다."
+    },
+    {
+      "questionUid": "qid_v1_6beb93ef2dbdfe79b5fc36abdb9451ad4f8a8d94a711721b8d2e73bcd927a9d0",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "양수 문자 근호 안으로 넣기와 대입",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_ALGEBRAIC_REPRESENTATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 12,
+        "variationType": "NUMERIC"
+      },
+      "reason": "양수 문자 근호 안으로 넣기와 대입: 양수 $a, b$를 근호 안에 넣어 두 항을 모두 $\\sqrt{ab}$ 꼴로 바꾼 뒤 $\\sqrt{ab}=11$을 대입한다. Decisive step: $a\\sqrt{\\frac{b}{a}} = \\sqrt{ab}$, $3b\\sqrt{\\frac{a}{b}} = 3\\sqrt{ab}$로 동류근호화하여 $4\\sqrt{ab}$를 얻는다."
+    },
+    {
+      "questionUid": "qid_v1_4d8b37253a88c9344c2302cbada6325fb40101690864e975d4574d7ef9414422",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "완전제곱식 일차항 두 수의 곱",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SUBSTITUTION_PERFECT_SQUARE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 13,
+        "variationType": "NUMERIC"
+      },
+      "reason": "완전제곱식 일차항 두 수의 곱: 상수항 $49=7^2$으로부터 일차항 계수 $\\square=\\pm 14$ 두 값을 구해 곱한다. Decisive step: $+14$와 $-14$ 두 경우의 곱이므로 음수 $-196$이 됨을 확인한다."
+    },
+    {
+      "questionUid": "qid_v1_bfb3fbf4ed2fd9457dc0bd46b66a0c687d1c9322d60dd5adb6ebe429637095d8",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "제곱근표 조회와 소수점 이동 오류 판별",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_DECIMAL_SHIFT",
+          "CC_SQUARE_ROOT_APPROXIMATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 14,
+        "variationType": "NUMERIC"
+      },
+      "reason": "제곱근표 조회와 소수점 이동 오류 판별: 소수점 $2$칸 이동 규칙으로 기준수를 택해 $580 = 5.8 \\times 100$에서 $10\\sqrt{5.8}$임을 확인해 ③의 오류를 찾는다. Decisive step: $\\sqrt{580}$은 $\\sqrt{58}$이 아니라 $\\sqrt{5.8}$의 $10$배인 $24.08$임을 구별한다."
+    },
+    {
+      "questionUid": "qid_v1_6b604c8e8fe38aacdffeede1ec791f628c48df96540a84f4584b7f84f89fa51b",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "정수 인수쌍 열거와 불가능한 일차항 계수",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_INTEGER_FACTOR_PAIRS",
+          "CC_QUADRATIC_TRINOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 15,
+        "variationType": "NUMERIC"
+      },
+      "reason": "정수 인수쌍 열거와 불가능한 일차항 계수: $mn=-20$인 정수쌍 $(1,20), (2,10), (4,5)$를 모두 열거해 가능한 합 $\\pm 19, \\pm 8, \\pm 1$에 없는 $12$를 고른다. Decisive step: $|mn|=20$의 절댓값 인수쌍에서 가능한 합 $\\pm 19, \\pm 8, \\pm 1$을 확인해 $12$가 나올 수 없음을 보인다."
+    },
+    {
+      "questionUid": "qid_v1_ee90f2b3a874f87ed4a1182d27a373d86d9ec21f30bcf50725169e10835ce738",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "단항 공통인수로 묶어 인수분해",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_COMMON_FACTOR_EXTRACTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 16,
+        "variationType": "NUMERIC"
+      },
+      "reason": "단항 공통인수로 묶어 인수분해: 각 선지를 전개해 $3a^2b-6ab^2$와 같은 식인지 확인한다. Decisive step: ②만 $3a^2b-6ab^2$로 전개되고, ①은 $ab^2$ 계수, ③은 부호, ④는 $b$ 인자, ⑤는 공통계수 $3$이 맞지 않는다."
+    },
+    {
+      "questionUid": "qid_v1_049959607bc65793db2d7e89dc0b3c9abbaa63115377c53f9ebaaf294481a0dd",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "근호 전개식의 유리수 조건",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION",
+          "CC_RADICAL_DISTRIBUTIVE_LAW"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 17,
+        "variationType": "NUMERIC"
+      },
+      "reason": "근호 전개식의 유리수 조건: 분배법칙으로 전개해 $(2+a)\\sqrt{5}-20-3a$로 정리한 뒤 무리수 계수 $2+a=0$을 푼다. Decisive step: $-\\dfrac{a}{\\sqrt{5}}(-5) = +a\\sqrt{5}$의 부호와 유리화를 정확히 처리해 $2+a=0$을 얻는다."
+    },
+    {
+      "questionUid": "qid_v1_a8824fa17119c92e04bc7711ccfa2696accfeecdc6e46e6c6a37962dd961c418",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "conceptClusterKey": "근호 간소화와 두 수의 차를 이용한 세 수 대소",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 18,
+        "variationType": "NUMERIC"
+      },
+      "reason": "근호 간소화와 두 수의 차를 이용한 세 수 대소: $\\sqrt{45}=3\\sqrt{5}, \\sqrt{20}=2\\sqrt{5}$로 바꾼 뒤 $B-A>0$과 $C-B>0$을 차례로 보인다. Decisive step: $B-A = (\\sqrt{6}-\\sqrt{5})+\\sqrt{3} > 0$임을 근삿값 없이 엄밀히 비교한다."
+    },
+    {
+      "questionUid": "qid_v1_a421ab685ef835bd8d1416a1c0d5280a2b13e3900dc49be39432c5328ba89fa9",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "conceptClusterKey": "제곱근 미만 자연수 개수 함수 구간별 합",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE_ENUMERATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 19,
+        "variationType": "NUMERIC"
+      },
+      "reason": "제곱근 미만 자연수 개수 함수 구간별 합: 제곱수 $1, 4, 9, 16$을 경계로 $f(x)$ 값이 같은 구간별 개수를 세어 곱한 뒤 합산한다. Decisive step: $x=4, 9, 16$에서 $\\sqrt{x}$가 정수이므로 그보다 '작은' 자연수 개수는 경계 포함 직전 구간과 같음을 확인한다."
+    },
+    {
+      "questionUid": "qid_v1_7e9ebfa3ff4fe4a847b17c9adbad079ba4bcf80bfd732ac652f5864109d585c7",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "세 이차다항식의 인수분해와 공통인수",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_TRINOMIAL_FACTORIZATION",
+          "CC_CROSS_MULTIPLICATION_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 20,
+        "variationType": "NUMERIC"
+      },
+      "reason": "세 이차다항식의 인수분해와 공통인수: 세 이차식을 합차공식과 이차식 인수분해로 각각 분해한 뒤 모두에 들어 있는 $x-2$를 찾는다. Decisive step: (다) $2x^2-3x-2 = (x-2)(2x+1)$을 정확히 인수분해해 공통인수 $x-2$를 확인한다."
+    },
+    {
+      "questionUid": "qid_v1_513d24686c1e66d11bdfc8584a65b8869aa86f28b182e82462fe208d585c71ca",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+        "conceptClusterKey": "단계별 다항식 전개와 일차항 계수 합",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_MULTIPLICATION_FORMULAS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 21,
+        "variationType": "NUMERIC"
+      },
+      "reason": "단계별 다항식 전개와 일차항 계수 합: 전개식에서 일차항의 $x$항·$y$항 계수를 각각 읽어 더한다. Decisive step: 이차항 $2x^2$와 이차항 $-8xy$를 제외한 일차항에서 $A=3, B=-12$를 읽는다."
+    },
+    {
+      "questionUid": "qid_v1_b1ecdc35aa83b27c08e79c63eadecbe162fa68580cf89484003943ef2ffb441e",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-02",
+        "subUnitKey": "M3-02-FACTORIZATION",
+        "conceptClusterKey": "8제곱의 차 합차공식 분해와 연립 조건",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DIFFERENCE_OF_SQUARES_FACTORIZATION",
+          "CC_DIFFERENCE_OF_FOURTH_POWERS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 22,
+        "variationType": "NUMERIC"
+      },
+      "reason": "8제곱의 차 합차공식 분해와 연립 조건: $a^8-b^8$을 합차공식으로 연속 분해하여 우변과 비교함으로써 $a-b=1$을 얻고 $a+b=9$와 연립한다. Decisive step: 좌변 인수분해 결과에서 $(a-b)$ 인수가 $1$이어야 우변과 일치함을 도출한다."
+    },
+    {
+      "questionUid": "qid_v1_7774cf8cfd74731659ac143ecc00b7ea57ea58399497abeb7bdbc5a2db3d4c10",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "무리수 정수·소수부분과 분모 유리화",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_RATIONALIZATION",
+          "CC_REAL_NUMBER_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 23,
+        "variationType": "NUMERIC"
+      },
+      "reason": "무리수 정수·소수부분과 분모 유리화: $2\\sqrt{6}=\\sqrt{24}$의 범위로 $a=4, b=2\\sqrt{6}-4$를 구하고 대입한 뒤 분모를 유리화한다. Decisive step: 분모 $b+4 = 2\\sqrt{6}$에서 상수항이 소거되어 단항 유리화로 간단히 풀린다."
+    },
+    {
+      "questionUid": "qid_v1_91c65f4b7397ad41b53f579216d12f9998daea4e466e4b7f807a7bc8282dee07",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "MID-MATH-3",
+        "standardUnitKey": "M3-01",
+        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+        "conceptClusterKey": "닮은 사각뿔 치수 축소와 무리수 부피 계산",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_RADICAL_MULTIPLICATION_DIVISION",
+          "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 24,
+        "variationType": "NUMERIC"
+      },
+      "reason": "닮은 사각뿔 치수 축소와 무리수 부피 계산: 밑면과 평행하게 잘려 나간 작은 사각뿔은 원래 사각뿔과 닮음비 $1:5$이므로 각 길이를 $1/5$로 줄여 부피를 구한다. Decisive step: 절단면이 밑면과 평행하므로 작은 사각뿔의 길이비가 높이비 $1:5$와 같고, 잘려 나간 도형의 부피를 계산한다."
+    }
+  ],
+  "source": {
+    "documentId": "1ab--2F-5AxUioVAGhOXwGLmKSw4YtNrblNwQy8YpLWk",
+    "revisionId": "AHj4eMQq51RdPispYXtc6g9QZjYq9kttIHgNiO1kZlKyo3aJSUAUd5aICf6x37BrEQaiedlSHcJ-6_eO1Us45_dlZWyoHHN7BD7wIXm3tlA",
+    "title": "22_왕운중_1학기_중간_중3_유사_일체형.md",
+    "sourceArchiveFile": "archive/exams/original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js"
+  },
+  "authoringStatus": "CANDIDATE_DRAFT",
+  "metadataStatus": "EVIDENCE_DEBT_NOT_REGISTERED"
+}
