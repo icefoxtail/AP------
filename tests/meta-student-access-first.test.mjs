@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import {acceptPendingSupplement,registerRequests,difficultyWriteConflicts} from '../tools/ci/register-reviewed-meta-requests.mjs';
 import {verifyStudentAccess,semanticFailuresAreSupplementary} from '../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 
@@ -48,6 +49,39 @@ test('legacy META_PIPELINE requests cannot overwrite another difficulty writer',
  assert.deepEqual(difficultyWriteConflicts(doc,meta),['u.difficultyBucket']);
  assert.deepEqual(difficultyWriteConflicts({...doc,approval:{type:'REVIEW2'}},meta),[]);
  assert.deepEqual(difficultyWriteConflicts({...doc,items:[{questionUid:'u',after:{problemTypeKey:'PT_A'}}]},meta),[]);
+});
+
+test('image-only choices require a matching reviewed image and evidence hash',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'visual-choice-'));
+ try{
+  for(const dir of ['archive/exams/original','archive/assets/images/exam','archive/data/meta-foundation/evidence'])fs.mkdirSync(path.join(root,dir),{recursive:true});
+  fs.writeFileSync(path.join(root,'archive/engine.html'),'engine');
+  fs.writeFileSync(path.join(root,'archive/exams/original/exam.js'),'window.questionBank=[{id:1,questionType:"객관식",content:"Question",choices:[],image:"assets/images/exam/q1.png"}];');
+  const img=Buffer.from('image-bytes'), imagePath='assets/images/exam/q1.png';fs.writeFileSync(path.join(root,'archive',imagePath),img);
+  const req={requestId:'v1',sourceArchiveFile:'original/exam.js',expectedQuestionCount:1,items:[{sourceOrdinal:1,questionUid:'uid1'}]};
+  assert.match(verifyStudentAccess(root,req).failures.join(','),/CHOICES_EMPTY/);
+  const proof={schemaVersion:'archive-visual-choice-review-v1',requestId:'v1',sourceArchiveFile:req.sourceArchiveFile,records:[{sourceOrdinal:1,questionUid:'uid1',imagePath,imageSha256:crypto.createHash('sha256').update(img).digest('hex'),choiceCount:5,visualReview:'CHOICES_1_TO_5_PRESENT',reviewer:'DIRECT_REVIEW'}]};
+  const rel='archive/data/meta-foundation/evidence/review.json',bytes=Buffer.from(JSON.stringify(proof));fs.writeFileSync(path.join(root,rel),bytes);
+  req.studentAccessEvidenceRef={path:rel,sha256:crypto.createHash('sha256').update(bytes).digest('hex')};
+  assert.equal(verifyStudentAccess(root,req).status,'PASS');
+  fs.writeFileSync(path.join(root,'archive',imagePath),'changed');assert.match(verifyStudentAccess(root,req).failures.join(','),/CHOICES_EMPTY/);
+  fs.writeFileSync(path.join(root,rel),'{}');assert.match(verifyStudentAccess(root,req).failures.join(','),/STUDENT_ACCESS_EVIDENCE_SHA_MISMATCH/);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
+});
+
+test('legacy image basename resolves only to its unique displayed existing image',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'asset-alias-'));
+ try{
+  fs.mkdirSync(path.join(root,'archive/exams/original'),{recursive:true});fs.mkdirSync(path.join(root,'archive/assets/images/exam'),{recursive:true});
+  fs.writeFileSync(path.join(root,'archive/engine.html'),'engine');fs.writeFileSync(path.join(root,'archive/assets/images/exam/q1.png'),'image');
+  const f=path.join(root,'archive/exams/original/exam.js'),req={sourceArchiveFile:'original/exam.js',expectedQuestionCount:1};
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/q1.png",images:["q1.png"]}];');
+  assert.equal(verifyStudentAccess(root,req).status,'PASS');
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/q1.png",images:["q2.png"]}];');
+  assert.match(verifyStudentAccess(root,req).failures.join(','),/ASSET_MISSING:q2.png/);
+  fs.writeFileSync(f,'window.questionBank=[{content:"Question",image:"assets/images/exam/missing.png",images:["missing.png"]}];');
+  assert.match(verifyStudentAccess(root,req).failures.join(','),/ASSET_MISSING/);
+ }finally{fs.rmSync(root,{recursive:true,force:true})}
 });
 
 test('consumer infrastructure failures are not swallowed as metadata supplements',()=>{

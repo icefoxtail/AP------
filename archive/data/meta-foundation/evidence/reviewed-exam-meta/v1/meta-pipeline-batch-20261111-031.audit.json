@@ -1,0 +1,406 @@
+{
+  "manifestType": "META_AUDIT_ATOMIC_PACKAGE",
+  "examTitle": "2019학년도 순천신흥중 2학년 2학기 중간고사 수학",
+  "examSlug": "19_신흥중_2학기_중간_중2_수학",
+  "sourceDriveId": "12EvUTF56WZUgMxAjPFTINauAsbZaVYen",
+  "sourceFileSha256": "5fe291464ae33779491ac82304ad9d24bc7699eb2c908d810063bfb74103dd93",
+  "standardCourse": "중2",
+  "primaryPack": "MIDDLE_GEOMETRY",
+  "totalQuestionsAudited": 23,
+  "auditPassedCount": 23,
+  "holdCount": 0,
+  "auditStatus": "AUDIT_COMPLETE_100_PERCENT_PASS",
+  "sopVersion": "SOP_v1.2",
+  "auditedAt": "2026-10-27T10:27:19.221262+00:00",
+  "auditRecords": [
+    {
+      "questionNumber": 1,
+      "sourceQuestionId": 1,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_ISOSCELES_TRIANGLE",
+      "templatePattern": "TPL_ISOSCELES_TRIANGLE_BASE_AND_EXTERIOR_ANGLE",
+      "difficultyLevel": 1,
+      "difficultyEvidence": "꼭지각 50°에서 밑각 (180°-50°)/2 = 65°를 구하고 외각 x = 180°-65° = 115°를 산출하는 1단계 이등변삼각형 외각 문항으로 Level 1을 보존한다.",
+      "crossConcepts": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_BASE_ANGLES",
+        "CC_EXTERIOR_ANGLE_THEOREM"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 2,
+      "sourceQuestionId": 2,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templatePattern": "TPL_PERPENDICULAR_BISECTOR_ANGLE_BISECTOR_SYSTEM",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "수직이등분선에 의한 이등변삼각형 성질로 각 B=각 DAB를 유도하고 각 A=2*각 B와 각 A+각 B=90°로부터 각 B=30°를 산출하는 2단계 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_ANGLE_BISECTOR",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 3,
+      "sourceQuestionId": 3,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_ISOSCELES_TRIANGLE",
+      "templatePattern": "TPL_ISOSCELES_VERTEX_BISECTOR_SEGMENT_EVALUATION",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "꼭지각 이등분선 위의 임의의 점 P에 대해 삼각형 PBD와 PCD의 합동 성질을 검토하여 거짓인 선지 ⑤(PB=PC이므로 수직이 아님)를 판별하는 2단계 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_TRIANGLE_CONGRUENCE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 4,
+      "sourceQuestionId": 4,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_ISOSCELES_TRIANGLE",
+      "templatePattern": "TPL_ISOSCELES_TRIANGLE_CONGRUENT_ATTACHMENTS_ANGLE",
+      "difficultyLevel": 3,
+      "difficultyEvidence": "밑각 65°와 주어진 변의 조건으로 삼각형 BDF와 CED의 SAS 합동을 밝히고 각 D = 180°-(x+y) = 65°를 산출하는 3단계 합동 연계 각도 문항으로 Level 3을 보존한다.",
+      "crossConcepts": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_SAS_CONGRUENCE",
+        "CC_ANGLE_CALCULATION"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 5,
+      "sourceQuestionId": 5,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_CIRCUMCENTER_PROPERTIES_EVALUATION",
+      "difficultyLevel": 1,
+      "difficultyEvidence": "외심의 정의인 세 변의 수직이등분선의 교점과 성질을 대조하여 내심의 성질인 각 이등분선(⑤번)을 옳지 않은 것으로 판별하는 1단계 외심 개념 문항으로 Level 1을 보존한다.",
+      "crossConcepts": [
+        "CC_CIRCUMCENTER",
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_DISTANCE_TO_VERTICES"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 6,
+      "sourceQuestionId": 6,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_INCENTER_ANGLE_FORMULA_EVALUATION",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "내심의 각 공식 각 BIC = 90° + 1/2 A = 90° + 25° = 115°를 적용하여 산출하는 2단계 내심 각도 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_INCENTER",
+        "CC_ANGLE_FORMULA",
+        "CC_ANGLE_BISECTOR"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 7,
+      "sourceQuestionId": 7,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_CIRCUMCENTER_CENTRAL_ANGLE_CALCULATION",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "외심의 중심각 성질 각 AOC = 2 * 각 B = 2 * 50° = 100°를 적용하여 산출하는 2단계 외심 중심각 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_CIRCUMCENTER",
+        "CC_CENTRAL_ANGLE",
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 8,
+      "sourceQuestionId": 8,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_RIGHT_TRIANGLE_INCENTER_RADIUS_CALCULATION",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "직각삼각형 넓이 1/2*8*6 = 24와 둘레 공식 1/2*r*(8+6+10) = 12r = 24로부터 내접원 반지름 r=2를 산출하는 2단계 내접원 반지름 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_RIGHT_TRIANGLE",
+        "CC_INCENTER_RADIUS",
+        "CC_TRIANGLE_AREA"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 9,
+      "sourceQuestionId": 9,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_INCENTER_PARALLEL_LINE_PERIMETER",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "평행선 엇각과 내심의 각 이등분으로 DI=DB, EI=EC 이등변삼각형을 밝혀 삼각형 ADE의 둘레 = AB+AC = 6+8 = 14를 산출하는 2단계 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_INCENTER",
+        "CC_PARALLEL_LINES",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 10,
+      "sourceQuestionId": 10,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_RIGHT_TRIANGLE_CIRCUMCIRCLE_INCIRCLE_AREA_DIFFERENCE",
+      "difficultyLevel": 3,
+      "difficultyEvidence": "외접원 반지름 R=13/2과 내접원 반지름 r=2를 구하고 두 원의 넓이의 차 (169/4 - 4)π = 153/4 π를 산출하는 3단계 외심/내심 복합 문항으로 Level 3을 보존한다.",
+      "crossConcepts": [
+        "CC_RIGHT_TRIANGLE_CIRCUMCENTER",
+        "CC_INCENTER_RADIUS",
+        "CC_CIRCLE_AREA"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 11,
+      "sourceQuestionId": 11,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_PARALLELOGRAM_CONDITIONS",
+      "templatePattern": "TPL_PARALLELOGRAM_DETERMINATION_FIVE_CONDITIONS",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "평행사변형이 되는 5가지 조건 중 한 쌍의 대변이 평행하고 그 길이가 같은 조건(AD//BC, AD=BC)인 ⑤번을 올바르게 선별하는 2단계 판별 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_PARALLELOGRAM_CONDITIONS",
+        "CC_DIAGONAL_BISECTION",
+        "CC_PARALLEL_LINES"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 12,
+      "sourceQuestionId": 12,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_PARALLELOGRAM_PROPERTIES",
+      "templatePattern": "TPL_PARALLELOGRAM_CHAIN_MIDPOINT_CONNECTOR",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "평행사변형 ABCD에서 CD=6, OCDE에서 OE=6을 구하고 삼각형 AOC 중점연결정리로 MN=1/2 OE = 3을 산출하는 2단계 복합 평행사변형 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_PARALLELOGRAM_PROPERTIES",
+        "CC_MIDPOINT_CONNECTOR_THEOREM"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 13,
+      "sourceQuestionId": 13,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_SPECIAL_QUADRILATERALS",
+      "templatePattern": "TPL_SQUARE_DIAGONAL_SYMMETRY_ANGLE",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "대각선 AC에 대한 대칭성으로 삼각형 CBE와 CDE의 합동을 밝혀 각 DEC=65°를 구하고 각 EDC = 90°-65°-45° = 20°를 산출하는 2단계 정사각형 대칭 각도 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_SQUARE_PROPERTIES",
+        "CC_TRIANGLE_CONGRUENCE",
+        "CC_DIAGONAL_SYMMETRY"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 14,
+      "sourceQuestionId": 14,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_PARALLELOGRAM_PROPERTIES",
+      "templatePattern": "TPL_PARALLELOGRAM_RIGHT_TRIANGLE_CIRCUMCENTER_MEDIAN",
+      "difficultyLevel": 3,
+      "difficultyEvidence": "연장선 교점 G를 잡아 직각삼각형에서 빗변 중점 성질을 이용해 DF=5를 구하고 선분 길이를 산출하는 3단계 평행사변형 심화 기하 문항으로 Level 3을 보존한다.",
+      "crossConcepts": [
+        "CC_PARALLELOGRAM_PROPERTIES",
+        "CC_RIGHT_TRIANGLE_CIRCUMCENTER",
+        "CC_SIMILARITY"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 15,
+      "sourceQuestionId": 15,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_SIMILAR_FIGURES",
+      "templatePattern": "TPL_ALWAYS_SIMILAR_FIGURES_IDENTIFICATION",
+      "difficultyLevel": 1,
+      "difficultyEvidence": "두 마름모는 내각의 크기가 다를 수 있어 항상 닮은 도형이 아님을 판별하여 ④번을 선별하는 1단계 닮음 개념 판별 문항으로 Level 1을 보존한다.",
+      "crossConcepts": [
+        "CC_SIMILARITY_DEFINITION",
+        "CC_REGULAR_POLYGON",
+        "CC_COUNTEREXAMPLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 16,
+      "sourceQuestionId": 16,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_SIMILAR_FIGURES",
+      "templatePattern": "TPL_SIMILARITY_RATIO_PERIMETER_CALCULATION",
+      "difficultyLevel": 1,
+      "difficultyEvidence": "닮음비 2:1과 삼각형 ABC의 둘레 6+8+10=24로부터 삼각형 DEF의 둘레 24 / 2 = 12를 산출하는 1단계 닮음비 둘레 문항으로 Level 1을 보존한다.",
+      "crossConcepts": [
+        "CC_SIMILAR_RATIO",
+        "CC_TRIANGLE_PERIMETER"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 17,
+      "sourceQuestionId": 17,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_SIMILARITY",
+      "templatePattern": "TPL_TRIANGLE_SAS_SIMILARITY_SIDE_CALCULATION",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "공통각 A와 끼인 두 변의 비 1:2로부터 삼각형 ADE와 ABC의 SAS 닮음을 밝히고 DE = 1/2 BC = 1/2 * 12 = 6을 산출하는 2단계 SAS 닮음 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_SAS_SIMILARITY",
+        "CC_PROPORTION",
+        "CC_COMMON_ANGLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 18,
+      "sourceQuestionId": 18,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_SIMILARITY",
+      "templatePattern": "TPL_INTERIOR_SIMILAR_TRIANGLE_PERIMETER_SUM",
+      "difficultyLevel": 3,
+      "difficultyEvidence": "외각 성질로 내부 삼각형 DEF의 세 각이 원래 삼각형과 같음을 밝혀 AA 닮음을 유도하고 둘레의 비로 삼각형 DEF 둘레 14를 산출하는 3단계 심화 닮음 문항으로 Level 3을 보존한다.",
+      "crossConcepts": [
+        "CC_AA_SIMILARITY",
+        "CC_EXTERIOR_ANGLE",
+        "CC_TRIANGLE_PERIMETER"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 19,
+      "sourceQuestionId": 19,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_MIDPOINT_CONNECTOR_THEOREM",
+      "templatePattern": "TPL_QUADRILATERAL_MIDPOINTS_PARALLELOGRAM_PERIMETER",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "중점연결정리로 평행사변형 PQRS의 변들이 대각선 AC=10, BD=12의 절반 5와 6이 됨을 이용해 둘레 2*(5+6) = 22를 산출하는 2단계 중점 사각형 둘레 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_MIDPOINT_CONNECTOR_THEOREM",
+        "CC_DIAGONAL_LENGTH",
+        "CC_PARALLELOGRAM"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 20,
+      "sourceQuestionId": 20,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_PARALLEL_SEGMENT_RATIO",
+      "templatePattern": "TPL_TRAPEZOID_PARALLEL_LINE_DIVIDING_RATIO",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "평행사변형 분할로 선분들을 구하고 삼각형 닮음비 3:5로부터 x=9, y=5를 산출하는 2단계 평행선 선분비 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_PARALLEL_LINES",
+        "CC_TRAPEZOID",
+        "CC_PARALLELOGRAM"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 21,
+      "sourceQuestionId": 21,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_SPECIAL_QUADRILATERALS",
+      "templatePattern": "TPL_SQUARE_AND_EQUILATERAL_COMBINED_ANGLE",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "정삼각형 EBC에서 각 EBC=60°로부터 각 ABE=30°를 구하고 이등변삼각형 ABE에서 각 BAE=각 BEA=75°를 서술 산출하는 2단계 서술형 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_SQUARE_PROPERTIES",
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_ISOSCELES_TRIANGLE"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 22,
+      "sourceQuestionId": 22,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_CENTERS",
+      "templatePattern": "TPL_ISOSCELES_CIRCUMCENTER_INCENTER_ANGLE_DIFFERENCE",
+      "difficultyLevel": 3,
+      "difficultyEvidence": "이등변삼각형 ABC에서 밑각 70°를 구하고 내심선 각 IBC=35°, 외심선 각 OBC=20°로부터 각 IBO = 35°-20° = 15°를 단계별 서술 산출하는 3단계 서술형 문항으로 Level 3을 보존한다.",
+      "crossConcepts": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_CIRCUMCENTER",
+        "CC_INCENTER"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    },
+    {
+      "questionNumber": 23,
+      "sourceQuestionId": 23,
+      "auditVerdict": "PASS",
+      "assignedPack": "MIDDLE_GEOMETRY",
+      "primaryTaxonomy": "PT_TRIANGLE_SIMILARITY",
+      "templatePattern": "TPL_TRIANGLE_AA_SIMILARITY_PROOF_AND_LENGTH",
+      "difficultyLevel": 2,
+      "difficultyEvidence": "공통각 C와 주어진 각으로 삼각형 ABC와 EDC의 AA 닮음을 증명하고 비례식 12:6 = 16:AC로부터 AC=8을 서술 산출하는 2단계 서술형 문항으로 Level 2를 보존한다.",
+      "crossConcepts": [
+        "CC_AA_SIMILARITY",
+        "CC_COMMON_ANGLE",
+        "CC_PROPORTION"
+      ],
+      "zeroStubAuditPassed": true,
+      "holdStatus": "NONE"
+    }
+  ]
+}

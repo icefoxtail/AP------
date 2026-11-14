@@ -1,0 +1,541 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "19_서울세일중_1학기_중간_중3_수학",
+  "sourceFileDriveId": "1RwzRFzQ0jhHVun0oOjgfv_3yNLEtn8_M",
+  "sourceSha256": "3477c51457304692563f84d14e5e611401f526599806fe47c4ab722278c94517",
+  "auditedTimestamp": "2026-10-23T17:30:24.641414+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "totalAuditedCount": 20,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_DEFINITION",
+        "CC_RADICAL_SUM_PROPERTY",
+        "CC_NEGATIVE_ORDER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "제곱근의 정의(양수 제곱근 2개), 근호 연산 성질(sqrt(a)+sqrt(b)!=sqrt(a+b)), 음수 대소 비교 등 5개 보기를 종합 판별 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>1. &lt;보기&gt;에서 옳은 것을 모두 고른 것은? [4점]</p>",
+        "solutionDecisiveExcerpt": "16의 제곱근은 +-4, 25의 음의 제곱근은 -5(참), 11의 제곱근 +-sqrt(11)(참), sqrt(2)+sqrt(3)!=sqrt(5), -2sqrt(2) > -3(참)으로 옳은 것은 ㄴ, ㄷ, ㅁ이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_SIMPLIFY",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION",
+        "CC_SQUARE_NUMBER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "56 = 2^3 * 7 소인수분해 후 지수를 짝수로 만드는 최소 자연수 x = 2 * 7 = 14 산출 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>2. $\\sqrt{56x}$가 자연수가 되도록 하는 수 중 가장 작은 자연수 $x$를 구하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "56 = 2^3 * 7이므로 지수가 홀수인 소인수를 짝수로 만들기 위해 x = 2 * 7 = 14이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_INTERVAL_ESTIMATION",
+        "CC_NEAREST_INTEGER"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "2*sqrt(15) = sqrt(60) 변형 후 49 < 60 < 64에서 60과 64의 차(4)가 49와의 차(11)보다 작아 가장 가까운 정수 8 판정 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>3. $2\\sqrt{15}$에 가장 가까이 있는 정수를 구하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "2*sqrt(15) = sqrt(60)이고 7 = sqrt(49), 8 = sqrt(64) 중 60은 64에 더 가까우므로 가장 가까운 정수는 8이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_ARITHMETIC",
+        "CC_ORDER_OF_OPERATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "sqrt(0.64)=0.8, -(-sqrt(10))^2=-10, sqrt(4/9)=2/3, sqrt((-2)^2)=2를 각각 구한 후 곱셈/나눗셈 및 덧셈 사칙연산 (-8 + 1/3 = -23/3) 수행 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>4. $\\sqrt{0.64}\\times \\{- (-\\sqrt{10})^2\\} + \\sqrt{\\frac{4}{9}} \\div \\sqrt{(-2)^2}$를 간단히 하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "0.8 * (-10) + (2/3) / 2 = -8 + 1/3 = -23/3이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+      "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+      "crossConceptKeys": [
+        "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+        "CC_REPEATING_DECIMAL"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "순환소수 및 제곱수 근호 식별을 통해 유리수를 제외하고 근호가 벗겨지지 않는 무리수 2개 선별 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>5. 다음 중에서 무리수를 모두 고르면? (정답 2개) [4점]</p>",
+        "solutionDecisiveExcerpt": "sqrt(1.6)과 sqrt(12)-sqrt(3)=2sqrt(3)-sqrt(3)=sqrt(3)은 근호가 벗겨지지 않으므로 무리수이다. 정답 ②, ④",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_SUM_DIFF_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "분모가 a+sqrt(b) 형태일 때 합차 공식 (a+sqrt(b))(a-sqrt(b))을 적용하기 위한 켤레식 3-sqrt(6) 직접 선택 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>6. $\\frac{3}{3+\\sqrt{6}}$의 분모를 유리화하고자 할 때, 분모와 분자에 곱해야 하는 수를 고르면? [3점]</p>",
+        "solutionDecisiveExcerpt": "합차 공식을 이용하여 분모를 유리화하려면 분모 3+sqrt(6)에 3-sqrt(6)을 곱해야 한다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_GEOMETRY_APPLICATION",
+      "templateKey": "TPL_M3_GEOMETRY_ALGEBRA_MODELING",
+      "crossConceptKeys": [
+        "CC_SQUARE_SIDE_LENGTH",
+        "CC_RECTANGLE_AREA",
+        "CC_RADICAL_MULTIPLICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 정사각형 넓이로부터 변의 길이 sqrt(32)=4sqrt(2), sqrt(75)=5sqrt(3)을 구하고 직사각형 넓이 4sqrt(2) * 5sqrt(3) = 20sqrt(6) 산출 (2단계, 시각자료 확인)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>7. 오른쪽 그림과 같이 넓이가 $32\\,\\text{m}^2$, $75\\,\\text{m}^2$인 두 정사각형 모양의 밭에 이웃한 화단의 넓이를 구하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "정사각형 한 변의 길이는 각각 sqrt(32)=4sqrt(2), sqrt(75)=5sqrt(3)이므로 화단의 넓이는 4sqrt(2)*5sqrt(3) = 20sqrt(6)이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_REAL_NUMBER_ORDER",
+        "CC_RADICAL_COMPARISON"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "양변에서 공통수 소거 후 3sqrt(2)=sqrt(18), 2sqrt(3)=sqrt(12) 근호 안 수 크기 비교로 sqrt(18) > sqrt(12) 판별 등 5개 선지 차례로 대소 판정 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>8. 두 실수의 대소 관계가 옳은 것을 고르면? [4점]</p>",
+        "solutionDecisiveExcerpt": "⑤ 3sqrt(2)-1과 2sqrt(3)-1에서 양변에 1을 더하면 3sqrt(2)=sqrt(18), 2sqrt(3)=sqrt(12)로 sqrt(18)>sqrt(12)이므로 부등호가 반대이나 정답표 확인",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_COEFFICIENT_INSERTION",
+        "CC_ALGEBRAIC_SUBSTITUTION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "a, b > 0 조건 하에 계수를 근호 안으로 넣어 sqrt(12ab) - sqrt(3ab)로 정리 후 ab=49 대입하여 14sqrt(3)-7sqrt(3)=7sqrt(3) 도출 (3단계 심화)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>9. $ab=49$일 때, $a\\sqrt{\\frac{12b}{a}} - b\\sqrt{\\frac{3a}{b}}$의 값을 구하면? [5점]</p>",
+        "solutionDecisiveExcerpt": "a*sqrt(12b/a) - b*sqrt(3a/b) = sqrt(12ab) - sqrt(3ab) = 2sqrt(3*49) - sqrt(3*49) = 14sqrt(3) - 7sqrt(3) = 7sqrt(3)이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_TABLE_LOOKUP",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "제곱근표의 5.7 행과 2 열의 교차점 값(2.392)을 직접 독해 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>10. ※ [10~11] 아래 표는 제곱근표의 일부를 나타낸 것이다. 제곱근표를 이용하여 다음 물음에 답하시오.</p>",
+        "solutionDecisiveExcerpt": "제곱근표에서 5.7의 행과 2의 열이 만나는 수는 2.392이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_SQUARE_ROOT_TABLE_LOOKUP",
+      "crossConceptKeys": [
+        "CC_RADICAL_DECIMAL_TRANSFORMATION",
+        "CC_SQUARE_ROOT_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "0.056 = 5.6/100으로 변형하여 sqrt(5.6)/10 = 2.366/10 = 0.2366 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>11. 제곱근표를 이용하여 $\\sqrt{0.056}$의 어림한 값을 구하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "sqrt(0.056) = sqrt(5.6/100) = sqrt(5.6)/10 = 2.366/10 = 0.2366이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_FORMULA_AUDIT",
+      "crossConceptKeys": [
+        "CC_SUM_DIFF_FORMULA",
+        "CC_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "(2x)^2 - (3y)^2 형태에서 합차 공식 A^2-B^2=(A+B)(A-B)을 직접 적용 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>12. $4x^2-9y^2$을 인수분해하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "4x^2 - 9y^2 = (2x)^2 - (3y)^2 = (2x+3y)(2x-3y)이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_FORMULA_AUDIT",
+      "crossConceptKeys": [
+        "CC_FACTORIZATION",
+        "CC_FACTOR_TEST"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개 이차식을 각각 인수분해하거나 x=3을 대입하여 2(3)^2+3-15=6 != 0인 다항식을 선별 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>13. 다음 중 $x-3$을 인수로 갖지 않는 다항식을 고르면? [4점]</p>",
+        "solutionDecisiveExcerpt": "2x^2 + x - 15 = (2x-5)(x+3)이므로 x-3이 아닌 x+3을 인수로 갖는다. 정답 ⑤",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_FORMULA_AUDIT",
+      "crossConceptKeys": [
+        "CC_COMMON_FACTOR",
+        "CC_ALGEBRAIC_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "공통인수 (x+y)를 묶어 (x+y)(x-y)로 분해한 후 두 인수의 합 (x+y)+(x-y)=2x 계산 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>14. 다항식 $x(x+y)-y(x+y)$는 두 일차식의 곱으로 인수분해가 된다. 이때 두 일차식의 합을 구하면? [4점]</p>",
+        "solutionDecisiveExcerpt": "x(x+y) - y(x+y) = (x+y)(x-y)이다. 두 일차식의 합은 (x+y) + (x-y) = 2x이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_MULTIPLICATION_FORMULA",
+      "templateKey": "TPL_M3_GEOMETRY_ALGEBRA_MODELING",
+      "crossConceptKeys": [
+        "CC_SUM_DIFF_FORMULA",
+        "CC_GEOMETRIC_AREA_ALGEBRA",
+        "CC_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "도형 A의 넓이 (2x+3)^2-1^2=(2x+4)(2x+2)=4(x+2)(x+1)로 합차 전개 -> 도형 B 넓이 (x+2)k와 일치시켜 가로 k=4(x+1)=4x+4 도출 (3단계 심화, 시각자료 확인)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>15. 다음 그림에서 도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이고, 도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다.</p>",
+        "solutionDecisiveExcerpt": "(2x+3)^2 - 1^2 = (2x+4)(2x+2) = 4(x+2)(x+1)이다. 도형 B의 넓이 (x+2)*가로와 같으므로 가로는 4x+4이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_LIKE_RADICAL_COMBINATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "6개 무리수를 각각 제곱인수 추출하여 간소화하고, 동류근호 sqrt(3), sqrt(6)별로 묶어 사칙계산 완수 (3단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>&lt;서술형 1&gt;<br/>$\\sqrt{48}$, $\\sqrt{54}$, $\\sqrt{27}$, $\\sqrt{96}$, $\\sqrt{12}$, $\\sqrt{24}$를 $a\\sqrt{b}$의 꼴로 나타내고, 이를 이용하여 식을 간단히 하시오.</p>",
+        "solutionDecisiveExcerpt": "각각 4sqrt(3), 3sqrt(6), 3sqrt(3), 4sqrt(6), 2sqrt(3), 2sqrt(6)으로 나타내고 계산하면 3sqrt(3) - sqrt(6)이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "subUnit": "제곱근과 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+      "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_NUMBER_LINE_COORDINATE",
+        "CC_SUM_DIFF_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "피타고라스 정리로 대각선 길이 sqrt(2)를 구하고 기준점 -2에서 좌우 회전 좌표 a, b를 설정하여 합차 공식으로 a^2-b^2 연산 완수 (3단계 서술형, 시각자료 확인)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>&lt;서술형 2&gt;<br/>오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 점 $\\text{A}, \\text{B}$에 대응하는 수를 각각 $a, b$라 할 때</p>",
+        "solutionDecisiveExcerpt": "a = -2-sqrt(2), b = -2+sqrt(2)이고 a^2-b^2 = (a+b)(a-b) = (-4)*(-2sqrt(2)) = 8sqrt(2)이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 계산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_MULTIPLICATION_FORMULA",
+      "templateKey": "TPL_M3_RATIONALIZATION_AND_SYMMETRIC_EVAL",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_ALGEBRAIC_EVALUATION",
+        "CC_DEGREE_REDUCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "분모 유리화로 x=2+sqrt(7) 도출 -> x-2=sqrt(7) 양변 제곱 (x-2)^2=7 => x^2-4x=3 변형 -> x^2-4x+7=3+7=10 차수 축소 대입 (3단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>&lt;서술형 3&gt;<br/>$x=\\frac{3}{\\sqrt{7}-2}$일 때, 다음을 구하시오. [6점]</p>",
+        "solutionDecisiveExcerpt": "x = sqrt(7)+2이고 x-2=sqrt(7)에서 (x-2)^2=7, x^2-4x=3이므로 x^2-4x+7 = 3+7 = 10이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_PERFECT_SQUARE_TRINOMIAL",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_COEFFICIENT_DETERMINATION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "일차항 계수 절반의 제곱이 상수항(16)과 같다는 조건 ((6k+2)/2)^2=16 => (3k+1)^2=16 수립 후 3k+1=+-4에서 k=1, -5/3 분기 해결 (3단계 심화 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>&lt;서술형 4&gt;<br/>다음 식이 완전제곱식이 되기 위한 상수 $k$의 값을 모두 구하시오. [6점]</p><div class=\"box\">$$x^2+(6k+2)x+16$$</div>",
+        "solutionDecisiveExcerpt": "((6k+2)/2)^2 = 16에서 (3k+1)^2 = 16, 3k+1 = +-4이므로 k = 1 또는 k = -5/3이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "중3",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLY_FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_M3_FACTORIZATION_APPLICATION",
+      "templateKey": "TPL_M3_NUMERICAL_CALC_BY_FACTORIZATION",
+      "crossConceptKeys": [
+        "CC_SUM_DIFF_FORMULA",
+        "CC_CYLINDER_VOLUME",
+        "CC_NUMERICAL_CALCULATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "뚫린 원기둥 부피 식 pi*(17.5^2 - 12.5^2) * 8을 합차 공식 (17.5+12.5)(17.5-12.5)=30 * 5 = 150으로 인수분해 변형하여 150pi * 8 = 1200pi 계산 (3단계 심화 서술형, 시각자료 확인)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<p>&lt;서술형 5&gt;<br/>오른쪽 그림과 같이 가운데가 뚫린 원기둥 모양의 입체도형이 있다. 이 입체도형의 부피를 구하시오. [6점]</p>",
+        "solutionDecisiveExcerpt": "부피는 pi*(17.5^2 - 12.5^2)*8 = pi*(17.5+12.5)(17.5-12.5)*8 = pi*30*5*8 = 1200pi cm^3이다.",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    }
+  ]
+}

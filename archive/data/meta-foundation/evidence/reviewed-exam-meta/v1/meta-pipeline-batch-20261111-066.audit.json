@@ -1,0 +1,621 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3",
+  "auditTimestamp": "2026-10-25T08:18:31.558917+00:00",
+  "examTitle": "25_연향중_1학기_중간_중3_수학",
+  "sourceDriveId": "1B8KTk_RljMfgfpJ7l4rXqh9JMs8-AJ9q",
+  "sourceSha256": "c965bd6785188090bf753ff0d2e386cd1e270524afb4fe79e5a8cb7e412eb345",
+  "totalQuestions": 23,
+  "totalApproved": 23,
+  "totalHold": 0,
+  "auditStatus": "PASSED_CANONICAL_AUDIT",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$가 $7$의 제곱근일 때, 다음 중 옳은 것은? (3점)",
+        "solutionDecisiveExcerpt": "$x$가 $7$의 제곱근이라는 것은 제곱하여 $7$이 되는 수이므로 $x^2 = 7$이다. 따라서 옳은 것은 ⑤이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_DEFINITION",
+      "templateKey": "TPL_SQUARE_ROOT_TRUE_FALSE",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_DEFINITION",
+        "CC_ALGEBRAIC_EQUATION_REPRESENTATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "제곱근의 기본 정의인 'x를 제곱하여 7이 되는 수(x^2=7)'를 바르게 연결하는 1단계 개념 판별 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$144$의 두 제곱근을 각각 $a$, $b$라 할 때, $\\sqrt{a-2b}$의 양의 제곱근은? (단, $a>b$) (4점)",
+        "solutionDecisiveExcerpt": "$a=12, b=-12$이므로 $a-2b = 12-2(-12) = 36$이다. $\\sqrt{a-2b} = \\sqrt{36} = 6$이고, 6의 양의 제곱근은 $\\sqrt{6}$이다. 따라서 정답은 ④이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_DEFINITION",
+      "templateKey": "TPL_SQUARE_ROOT_EVALUATION",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_EVALUATION",
+        "CC_POSITIVE_NEGATIVE_SQUARE_ROOT",
+        "CC_RADICAL_SIGN_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "144의 두 제곱근 a=12, b=-12에서 sqrt(a-2b)=sqrt(36)=6을 구한 뒤 6의 양의 제곱근 sqrt(6)을 산출하는 2단계 함정 방지 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{13+a}$가 자연수가 되도록 하는 가장 작은 자연수 $a$의 값은? (4점)",
+        "solutionDecisiveExcerpt": "$\\sqrt{13+a}$가 자연수가 되려면 $13+a$가 13보다 큰 제곱수이어야 한다. 가장 작은 제곱수는 16이므로 $13+a=16 \\implies a=3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_INTEGER_CONDITION",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_LEAST_NATURAL_NUMBER"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "13+a가 13보다 큰 가장 작은 제곱수 16이 되도록 a=3을 구하는 1단계 정수 조건 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "자연수 $a$에 대하여 $\\sqrt{a}$의 정수 부분을 $f(a)$라 할 때, $f(a)=7$을 만족시키는 자연수 $a$의 개수는? (5점)",
+        "solutionDecisiveExcerpt": "$\\sqrt{a}$의 정수 부분이 7이므로 $7 \\le \\sqrt{a} < 8 \\implies 49 \\le a < 64$이다. 따라서 자연수 $a$의 개수는 $64 - 49 = 15$개이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_INTEGER_PART",
+        "CC_INTEGER_COUNT_IN_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "정수 부분이 7이 되는 부등식 7<=sqrt(a)<8에서 49<=a<64를 도출하여 자연수 개수 64-49=15개를 산출하는 2단계 구간 추정 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 <보기>에서 옳은 것을 모두 고른 것은? (4점)<br><br><b><보기></b><br>ㄱ. 무한소수는 무리수이다.<br>ㄴ. 모든 실수는 수직선 위에 나타낼 수 있다.<br>ㄷ. 서로 다른 두 유리수 사이에는 무수히 많은 무리수가 존재한다.<br>ㄹ. $\\sq",
+        "solutionDecisiveExcerpt": "ㄴ. 모든 실수는 수직선 위에 점으로 일대일 대응된다 (참). ㄷ. 서로 다른 두 유리수 사이에는 무수히 많은 무리수가 존재한다 (참). 따라서 옳은 것은 ② ㄴ, ㄷ이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+      "templateKey": "TPL_REAL_NUMBER_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_COMPLETENESS_OF_REAL_LINE",
+        "CC_DENSITY_OF_REAL_NUMBERS",
+        "CC_RATIONAL_NUMBER_CLASSIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "실수의 수직선 대응 완비성과 유리수 사이 무리수의 조밀성을 점검하여 옳은 보기 ㄴ, ㄷ을 선별하는 1단계 개념 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AP}}$일 때, 점 $\\mathrm{P}$에 대응하는 수는? (4점)<br><img",
+        "solutionDecisiveExcerpt": "직각삼각형의 두 변의 길이가 1과 3이므로 $\\overline{\\mathrm{AB}} = \\sqrt{1^2+3^2} = \\sqrt{10}$이다. 점 A를 중심으로 오른쪽으로 내린 점 P의 좌표를 구한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "subUnit": "무리수와 실수",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+      "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN_THEOREM_ON_GRID",
+        "CC_REAL_NUMBER_COORDINATE_TRANSLATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "모눈 위 피타고라스 정리로 선분 길이 sqrt(10)을 구하고 기준점 A에서 수직선 위의 점 P의 좌표를 도출하는 2단계 수직선 작도 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{2}=1.414$, $\\sqrt{20}=4.472$일 때, 다음 중 옳지 않은 것은? (3점)",
+        "solutionDecisiveExcerpt": "④ $\\sqrt{0.002} = \\sqrt{\\frac{20}{10000}} = \\frac{\\sqrt{20}}{100} = \\frac{4.472}{100} = 0.04472$이어야 하므로 옳지 않은 것은 ④이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_POWER_OF_10_TRANSFORMATION",
+        "CC_SQUARE_ROOT_DECIMAL_ESTIMATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "10의 거듭제곱을 근호 밖으로 꺼내는 규칙을 적용하여 sqrt(0.002)=sqrt(20)/100=0.04472임을 확인하고 ④를 선별하는 1단계 어림수 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 두 실수의 대소 관계가 옳은 것은? (4점)",
+        "solutionDecisiveExcerpt": "② $\\sqrt{5}+2 > 4$의 양변에서 2를 빼면 $\\sqrt{5} > 2 = \\sqrt{4}$이므로 참이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_REAL_NUMBER_ORDER_COMPARISON",
+      "crossConceptKeys": [
+        "CC_INEQUALITY_PROPERTIES",
+        "CC_RADICAL_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "양변에서 2를 빼어 sqrt(5)>2=sqrt(4)의 참을 즉시 확인하는 1단계 대소 판별 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{5}\\times\\sqrt{6}\\times\\sqrt{7}\\times\\sqrt{8}\\times\\sqrt{9}\\times\\sqrt{10}=A\\sqrt{42}$일 때, 유리수 $A$의 값은? (4점)",
+        "solutionDecisiveExcerpt": "근호 안의 수를 소인수분해하면 $2^5 \\times 3^3 \\times 5^2 \\times 7 = 60^2 \\times 42$이므로 식의 값은 $60\\sqrt{42}$이다. 따라서 $A = 60$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION",
+        "CC_RADICAL_MULTIPLICATION",
+        "CC_RADICAL_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "소인수분해를 통해 2^5*3^3*5^2*7 = 60^2*42로 제곱수를 묶어 A=60을 구하는 1단계 근호 곱셈 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\frac{3\\sqrt{a}}{4\\sqrt{6}}=\\frac{\\sqrt{30}}{8}$일 때, 자연수 $a$의 값은? (4점)",
+        "solutionDecisiveExcerpt": "양변에 $8\\sqrt{6}$을 곱하면 $6\\sqrt{a} = \\sqrt{180} = 6\\sqrt{5}$이다. 따라서 $a = 5$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_EQUATION_SOLVING",
+        "CC_RADICAL_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "비례식 양변에 분모의 최소공배수를 곱해 6*sqrt(a)=6*sqrt(5)로 정리하고 자연수 a=5를 산출하는 1단계 근호 방정식 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sqrt{8}-a\\sqrt{2}+\\sqrt{16}-\\sqrt{32}$를 계산한 결과가 유리수가 되도록 하는 유리수 $a$의 값은? (4점)",
+        "solutionDecisiveExcerpt": "식은 $4 + (2-a-4)\\sqrt{2} = 4 - (a+2)\\sqrt{2}$이다. 유리수가 되려면 $a+2=0 \\implies a=-2$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_RATIONAL_NUMBER_CONDITION",
+        "CC_LIKE_RADICAL_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호를 정리하여 4+(-2-a)*sqrt(2)로 묶은 뒤 결과가 유리수가 되도록 -2-a=0에서 a=-2를 구하는 1단계 조건 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 않은 것을 모두 고르면? (정답 2개) (4점)",
+        "solutionDecisiveExcerpt": "④ $3\\sqrt{12}\\div\\sqrt{6}\\times\\sqrt{2} = 3\\sqrt{2}\\times\\sqrt{2} = 6$이므로 거짓이다. ⑤ $3\\sqrt{2}\\times\\sqrt{8/5}\\times\\sqrt{40} = 3\\sqrt{2}\\times 8 = 24\\sqrt{2}$이므로 거짓이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+      "crossConceptKeys": [
+        "CC_RADICAL_MULTIPLICATION_DIVISION",
+        "CC_CALCULATION_VALIDITY_CHECK"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "근호의 곱셈과 나눗셈 혼합 연산 5개 선지를 전수 계산하여 연산 결과가 6!=3, 24*sqrt(2)!=12*sqrt(2)로 틀린 ④, ⑤를 선별하는 2단계 연산 검증 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\mathrm{A}$, $\\mathrm{B}$ 두 개의 주사위를 동시에 던져 나오는 눈의 수를 각각 $a$, $b$라 할 때, $\\sqrt{72ab}$가 자연수가 될 확률은? (5점)",
+        "solutionDecisiveExcerpt": "$72ab = 6^2 \\times 2ab$이므로 $2ab$가 제곱수이어야 한다. 따라서 $ab = 2m^2$이어야 하므로 $ab \\in \\{2, 8, 18\\}$이다. 순서쌍은 $(1,2), (2,1), (2,4), (4,2), (3,6), (6,3)$의 6가지이므로 확률은 $\\frac{6}{36} = \\frac{1}{6}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_INTEGER_CONDITION",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_PROBABILITY_DICE_EXPERIMENT",
+        "CC_ORDERED_PAIRS_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "72ab=6^2*2ab에서 ab=2*m^2 형태가 되는 주사위 순서쌍 (1,2),(2,1),(2,4),(4,2),(3,6),(6,3) 6가지를 찾아 확률 6/36=1/6을 도출하는 3단계 복합 확률 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(-3a-2b)(a-b)=Aa^2+Bab+Cb^2$ 일 때 상수 $A, B, C$에 대하여 $ABC$의 값은? (3점)",
+        "solutionDecisiveExcerpt": "$(-3a-2b)(a-b) = -3a^2+ab+2b^2$이므로 $A=-3, B=1, C=2$이다. 따라서 $ABC = -6$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_EXPANSION",
+        "CC_COEFFICIENT_MATCHING"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 일차식을 전개하여 계수 A=-3, B=1, C=2를 구하고 곱 ABC=-6을 계산하는 1단계 전개 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 $\\square$ 안에 알맞은 수가 가장 작은 것은? (4점)",
+        "solutionDecisiveExcerpt": "① 20, ② 16, ③ 24, ④ 25, ⑤ 21이므로 가장 작은 수는 ② 16이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "다항식의 곱셈 공식",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_COEFFICIENT_MATCHING",
+        "CC_MULTIPLICATION_FORMULA"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "곱셈공식으로 각 선지의 빈칸 수 {20, 16, 24, 25, 21}을 산출하고 최솟값 16을 선별하는 1단계 계수 비교 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 완전제곱식으로 인수분해할 수 없는 것은? (4점)",
+        "solutionDecisiveExcerpt": "④ $16a^2+20ab+9b^2$에서 가운데 항이 $\\pm 2 \\times 4a \\times 3b = \\pm 24ab$이어야 완전제곱식이 되므로 ④는 완전제곱식으로 인수분해할 수 없다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_FACTORIZATION_VALIDITY_CHECK"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "양 끝 항 (4a)^2과 (3b)^2의 곱에 2를 곱한 가운데 항이 +-24ab이어야 함을 확인하여 20ab인 ④를 선별하는 1단계 완전제곱식 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x=\\frac{1}{\\sqrt{10}+3}$, $y=\\frac{1}{\\sqrt{10}-3}$ 일 때, $x^2+y^2$의 값은? (4점)",
+        "solutionDecisiveExcerpt": "$x = \\sqrt{10}-3, y = \\sqrt{10}+3$이다. $x+y = 2\\sqrt{10}, xy = 1$이므로 $x^2+y^2 = (x+y)^2-2xy = 40-2 = 38$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "subUnit": "곱셈 공식의 변형",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION",
+        "CC_MULTIPLICATION_FORMULA_TRANSFORMATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분모 유리화로 x=sqrt(10)-3, y=sqrt(10)+3을 구하고 곱셈공식 변형 (x+y)^2-2xy=40-2=38을 산출하는 2단계 식의 값 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 명수와 한수의 대화를 읽고 명수네 집 현관문의 비밀번호를 구한 후 $a+b+c+d$의 값은? (4점)<br><br><div style=\"border:1px solid #333; padding:8px;\">명수: 우리집 현관문의 비밀번호는 ⓐⓑⓒⓓ야.<br>한수: 힌",
+        "solutionDecisiveExcerpt": "$(ax+b)(x-3) = ax^2+(b-3a)x-3b = 3x^2-4x-15$에서 $a=3, b=5$이다.\n$(x-d)(5x-2) = 5x^2+(-2-5d)x+2d = 5x^2+cx+2$에서 $d=1, c=-7$이다.\n따라서 $a+b+c+d = 3+5+(-7)+1 = 2$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+      "crossConceptKeys": [
+        "CC_COEFFICIENT_MATCHING",
+        "CC_QUADRATIC_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "전개식과 인수분해식에서 계수 비교를 통해 a=3, b=5, c=-7, d=1을 각각 결정하고 합 2를 계산하는 3단계 미정계수 추론 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\frac{10009^2+2\\times 10009-3}{10008}$의 값을 구하면? (4점)",
+        "solutionDecisiveExcerpt": "$10009 = x$라 두면 분자는 $x^2+2x-3 = (x+3)(x-1)$이고 분모는 $x-1$이다. 따라서 식은 $x+3 = 10009+3 = 10012$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식의 활용",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_SUBSTITUTION_METHOD",
+        "CC_QUADRATIC_FACTORIZATION",
+        "CC_NUMERICAL_CALCULATION_APPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "10009=x로 치환하여 분자를 (x+3)(x-1)로 인수분해하고 분모 x-1을 약분하여 x+3=10012를 구하는 2단계 인수분해 수 계산 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$-5 < x < 6$ 일 때 다음 식을 간단히 하면? (5점)<br>$$\\sqrt{x^2+10x+25}-\\sqrt{x^2-12x+36}$$",
+        "solutionDecisiveExcerpt": "$\\sqrt{(x+5)^2}-\\sqrt{(x-6)^2} = |x+5|-|x-6|$이다. $-5<x<6$에서 $x+5>0, x-6<0$이므로 $(x+5)-[-(x-6)] = 2x-1$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_RADICAL_SIMPLIFICATION",
+      "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_RADICAL_SQUARE_SIMPLIFICATION",
+        "CC_ABSOLUTE_VALUE_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "완전제곱식 (x+5)^2과 (x-6)^2으로 변형 후 -5<x<6 범위에서 절댓값 부호를 풀어 2x-1을 산출하는 2단계 문자식 단순화 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서·논술형 1]<br>$10 \\le n < 200$인 자연수 $n$에 대하여 $\\sqrt{60n}$이 자연수가 되도록 하는 $n$의 개수를 구하시오. (6점)",
+        "solutionDecisiveExcerpt": "$60 = 2^2 \\times 3 \\times 5$이므로 $\\sqrt{60n}$이 자연수가 되려면 $n = 15k^2$ ($k$는 자연수)이어야 한다.\n$10 \\le 15k^2 < 200$에서 $\\frac{2}{3} \\le k^2 < \\frac{40}{3} \\approx 13.33$이므로 가능한 $k$는 1, 2, 3이다.\n따라서 $n$은 15, 60, 135의 3개이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "subUnit": "제곱근의 뜻과 성질",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_INTEGER_CONDITION",
+      "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION",
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_INTEGER_COUNT_IN_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "60=2^2*15 소인수분해로부터 n=15k^2을 도출하고 10<=15k^2<200 범위의 자연수 k=1,2,3을 찾아 n의 개수 3개를 산출하는 3단계 서술형 정수 조건 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서·논술형 2]<br>어느 맑은 날, 해발 $h\\,\\mathrm{m}$인 곳에서 사람의 눈으로 볼 수 있는 가장 먼 거리가 $\\sqrt{12.6h}\\,\\mathrm{km}$라 할 때, 해발 $150\\,\\mathrm{m}$인 전망대에서 사람의 눈으로 볼 수 있는 가장 ",
+        "solutionDecisiveExcerpt": "$h=150$을 대입하면 거리는 $\\sqrt{12.6 \\times 150} = \\sqrt{1890} = \\sqrt{18.9 \\times 100} = 10\\sqrt{18.9}$이다.\n$\\sqrt{18.9}=4.347$이므로 $10 \\times 4.347 = 43.47$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-01",
+      "standardUnit": "실수와 그 연산",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+      "crossConceptKeys": [
+        "CC_RADICAL_POWER_OF_10_TRANSFORMATION",
+        "CC_SQUARE_ROOT_DECIMAL_ESTIMATION",
+        "CC_REAL_WORLD_FORMULA_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "h=150을 대입하여 sqrt(1890)=10*sqrt(18.9)로 변형하고 주어진 조건 sqrt(18.9)=4.347을 적용하여 43.47km를 도출하는 3단계 실생활 서술형 어림수 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서·논술형 3]<br>주사위를 두 번 던져서 나오는 눈의 수를 차례로 $a, b$라고 할 때 $x^2+ax+b$가 인수분해 될 확률을 구하시오. (단, 완전제곱식이 아닌 확률만 구하시오.) (7점)",
+        "solutionDecisiveExcerpt": "$x^2+ax+b = (x+p)(x+q)$ ($p \\neq q$인 자연수)라 하면 $b=pq, a=p+q$이다.\n$a, b$가 주사위 눈($1 \\le a, b \\le 6$)이므로 가능한 $(p, q)$와 $(a, b)$는:\n$b=2: (1, 2) \\implies a=3 \\implies (3, 2)$\n$b=3: (1, 3) \\implies a=4 \\implies (4, 3)$\n$b=4: (1, 4) \\implies a=5 \\implies (5, 4)$\n$b=5: (1, 5) \\implies a=6 \\implies (6, 5)$\n$b=6: (2, 3) \\implies a=5 \\implies (5, 6)$\n총 5가지이므로 구하는 확률은 $\\frac{5}{36}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FACTORIZATION",
+        "CC_PROBABILITY_DICE_EXPERIMENT",
+        "CC_INTEGER_FACTORIZATION_PAIRS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "b=pq(p<q)의 서로 다른 자연수 곱에서 a=p+q<=6을 만족하는 순서쌍 (3,2),(4,3),(5,4),(6,5),(5,6) 5가지를 찾아 확률 5/36을 도출하는 3단계 서술형 인수분해 확률 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

@@ -1,0 +1,622 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_PACKAGE_v3",
+  "auditTimestamp": "2026-10-25T09:10:24.866256+00:00",
+  "examTitle": "21_왕운중_1학기_기말_중3_수학",
+  "sourceDriveId": "1engdMFC1iFADObp04-lS1uQbIlzuz_Sc",
+  "sourceSha256": "dabb62ae124c9200cf03c951e6cab8caa334fcb80a2bd67d682c73d616ce2e15",
+  "totalQuestions": 23,
+  "totalApproved": 23,
+  "totalHold": 0,
+  "auditStatus": "PASSED_CANONICAL_AUDIT",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 $y$가 $x$에 대한 이차함수가 <u>아닌</u> 것은? [3점]",
+        "solutionDecisiveExcerpt": "③ 자연수 $x$의 약수의 개수는 $x$에 대한 이차식으로 나타낼 수 없으므로 이차함수가 아니다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION",
+      "subUnit": "이차함수의 뜻",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_TRUE_FALSE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION_DEFINITION",
+        "CC_POLYNOMIAL_DEGREE_DETERMINATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "약수의 개수는 x에 대한 이차식이 아니므로 이차함수가 아닌 ③을 선별하는 1단계 개념 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$f(x)=2x^2+3x-7$에서 $f(a)=-2$일 때, 정수 $a$의 값은? [3점]",
+        "solutionDecisiveExcerpt": "$2a^2+3a-7=-2 \\implies 2a^2+3a-5=(2a+5)(a-1)=0$에서 $a$는 정수이므로 $a=1$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION",
+      "subUnit": "이차함수의 함숫값",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VALUE",
+      "templateKey": "TPL_M3_FUNCTION_VALUE_EQUATION_ROOT",
+      "crossConceptKeys": [
+        "CC_FUNCTION_VALUE_EVALUATION",
+        "CC_QUADRATIC_EQUATION_SOLUTION",
+        "CC_INTEGER_ROOT_FILTER"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "f(a)=-2를 대입하여 이차방정식 2a^2+3a-5=0을 풀고 정수 조건 a=1을 선별하는 2단계 함숫값 연계 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 옳지 <u>않은</u> 것은? [3점]",
+        "solutionDecisiveExcerpt": "③ $(5a+b)(5a-b) = 25a^2-b^2$인데 좌변은 $-25a^2+b^2$이므로 부호가 달라 옳지 않다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES",
+        "CC_CALCULATION_VALIDITY_CHECK"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "합차공식 (5a+b)(5a-b)=25a^2-b^2과 좌변의 부호 반대 오류를 선별하는 1단계 인수분해 진위 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2x-1$이 두 다항식 $4x^2-a$, $2x^2+bx-7$의 공통인수일 때, $ab$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$4x^2-a = (2x-1)(2x+1) \\implies a=1$이고, $2x^2+bx-7 = (2x-1)(x+7) \\implies b=13$이다. 따라서 $ab = 13$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-02",
+      "standardUnit": "다항식의 곱셈과 인수분해",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "subUnit": "인수분해 공식",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+      "crossConceptKeys": [
+        "CC_FACTOR_THEOREM_APPLICATION",
+        "CC_COEFFICIENT_MATCHING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "공통인수 2x-1로부터 a=1, b=13을 구하고 곱 ab=13을 산출하는 2단계 공통인수 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=-\\frac{1}{2}(x+3)^2$의 그래프에 대한 설명으로 옳지 <u>않은</u> 것은? [3점]",
+        "solutionDecisiveExcerpt": "⑤ $a<0$인 위로 볼록한 포물선이므로 축 $x=-3$의 왼쪽인 $x<-3$에서 $x$가 증가할 때 $y$도 증가한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프의 성질",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_PARABOLA_VERTEX_AND_AXIS",
+        "CC_INCREASING_DECREASING_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "위로 볼록한 포물선에서 증가 구간이 x<-3이어야 함을 파악하여 옳지 않은 ⑤를 선별하는 1단계 그래프 성질 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 평행이동하여 서로 포개어질 수 없는 것은? [4점]",
+        "solutionDecisiveExcerpt": "평행이동하여 포개어지려면 $x^2$의 계수가 같아야 한다. ②는 $x^2$의 계수가 $-3$이므로 포개어질 수 없다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수 그래프의 평행이동",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_QUADRATIC_TRANSLATION_CONGRUENCE",
+      "crossConceptKeys": [
+        "CC_PARABOLA_CONGRUENCE_CONDITION",
+        "CC_PARABOLA_TRANSLATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "평행이동만으로 포개어지기 위해서는 이차항의 계수 a가 동일해야 함(a=3)을 확인하여 a=-3인 ②를 선별하는 1단계 평행이동 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $4(x+4)^2-28=0$의 두 근의 곱은? [4점]",
+        "solutionDecisiveExcerpt": "$(x+4)^2 = 7 \\implies x = -4 \\pm \\sqrt{7}$이다. 두 근의 곱은 $(-4+\\sqrt{7})(-4-\\sqrt{7}) = 16-7 = 9$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_SQUARE_ROOT_QUADRATIC_SOLVE",
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_QUADRATIC_SOLVE",
+        "CC_ROOTS_PRODUCT"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "제곱근을 이용한 풀이로 두 근 -4+-sqrt(7)을 구하고 합차공식으로 두 근의 곱 16-7=9를 도출하는 2단계 이차방정식 풀이 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "한 개의 주사위를 두 번 던져서 처음에 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 하자. 이차방정식 $x^2+2ax+2b-a=0$이 중근을 가질 경우의 수는? [4점]",
+        "solutionDecisiveExcerpt": "중근 조건은 $a^2-(2b-a)=0 \\implies 2b = a(a+1)$이다. $a, b \\in \\{1, 2, 3, 4, 5, 6\\}$에서 가능한 순서쌍 $(a, b)$는 $(1, 1), (2, 3), (3, 6)$의 3가지이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 근의 판별",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT_ZERO_CONDITION",
+        "CC_PROBABILITY_DICE_EXPERIMENT",
+        "CC_ORDERED_PAIRS_ENUMERATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "중근 조건 D/4=a^2+a-2b=0에서 2b=a(a+1)을 만족하는 주사위 눈 순서쌍 (1,1),(2,3),(3,6) 3가지를 도출하는 3단계 복합 추론 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 이차함수의 그래프 중 아래로 볼록하고 두 이차함수 $y=\\frac{2}{3}x^2$, $y=x^2$의 그래프 사이에 있는 것은? [4점]",
+        "solutionDecisiveExcerpt": "아래로 볼록하고 두 그래프 사이에 있으려면 $\\frac{2}{3} < a < 1$이어야 한다. 따라서 ④ $y=\\frac{3}{4}x^2$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프의 성질",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_PARABOLA_OPENING_DIRECTION",
+        "CC_PARABOLA_WIDTH_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "아래로 볼록(a>0)과 폭 조건 2/3<a<1을 만족하는 계수 a=3/4를 선별하는 1단계 포물선 폭 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=-\\frac{3}{2}x^2$의 그래프는 점 $(-1, a)$를 지나고, 이차함수 $y=bx^2$의 그래프와 $x$축에 서로 대칭일 때, $a-b$의 값은? (단, $b$는 상수) [4점]",
+        "solutionDecisiveExcerpt": "$a = -\\frac{3}{2}(-1)^2 = -\\frac{3}{2}$이고, $x$축에 대칭이므로 $b = \\frac{3}{2}$이다. 따라서 $a - b = -\\frac{3}{2} - \\frac{3}{2} = -3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프의 성질",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_AXIS_SYMMETRY",
+      "crossConceptKeys": [
+        "CC_POINT_ON_PARABOLA",
+        "CC_X_AXIS_SYMMETRY",
+        "CC_FRACTION_ARITHMETIC"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "점 대입으로 a=-3/2, x축 대칭 성질로 b=3/2를 구한 뒤 차 a-b=-3을 산출하는 2단계 대칭 및 점 대입 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $\\frac{1}{3}x(x-3)=\\frac{1}{4}$의 두 근의 차는? [4점]",
+        "solutionDecisiveExcerpt": "양변에 12를 곱하면 $4x^2-12x-3=0$이다. 근의 공식에서 $x = \\frac{6 \\pm 4\\sqrt{3}}{4} = \\frac{3 \\pm 2\\sqrt{3}}{2}$이므로 두 근의 차는 $2\\sqrt{3}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_QUADRATIC_FORMULA_ROOTS_DIFFERENCE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FORMULA",
+        "CC_ROOTS_DIFFERENCE",
+        "CC_RADICAL_SIMPLIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "양변에 12를 곱해 4x^2-12x-3=0으로 정돈하고 근의 공식을 적용하여 두 근의 차 2*sqrt(3)을 산출하는 2단계 이차방정식 풀이 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "일차함수 $y=ax+3$의 그래프가 점 $(1-a, a^2)$을 지나고, 제 3사분면은 지나지 않을 때, 상수 $a$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "$a^2 = a(1-a)+3 \\implies 2a^2-a-3 = (2a-3)(a+1) = 0$에서 $a = \\frac{3}{2}$ 또는 $a = -1$이다. 제3사분면을 지나지 않으려면 기울기 $a < 0$이어야 하므로 $a = -1$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+      "crossConceptKeys": [
+        "CC_POINT_ON_LINE",
+        "CC_QUADRATIC_EQUATION_SOLUTION",
+        "CC_LINEAR_FUNCTION_QUADRANT"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "점 대입으로 이차방정식 2a^2-a-3=0을 풀어 a=-1, 3/2를 구한 뒤 제3사분면 미통과 조건(a<0)에 의해 a=-1을 선별하는 3단계 연계 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=-\\frac{1}{3}\\left(x-\\frac{1}{2}\\right)^2+3$의 그래프에서 $x$의 값이 증가할 때, $y$의 값이 감소하는 $x$의 값의 범위는? [4점]",
+        "solutionDecisiveExcerpt": "위로 볼록하고 축의 방정식이 $x = \\frac{1}{2}$이므로 $x$가 증가할 때 $y$가 감소하는 범위는 ② $x > \\frac{1}{2}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프의 성질",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_PARABOLA_VERTEX_AND_AXIS",
+        "CC_INCREASING_DECREASING_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "축의 방정식 x=1/2과 위로 볼록 형태로부터 x가 증가할 때 y가 감소하는 구간 x>1/2을 산출하는 1단계 증감 판정 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "그래프의 식이 $y=a(x+p)^2$일 때, $a-p$의 값은? [4점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q14.png\">",
+        "solutionDecisiveExcerpt": "그래프의 꼭짓점 좌표와 지나는 한 점의 좌표를 $y=a(x+p)^2$에 대입하여 $a, p$의 값을 구하고 $a-p$를 계산한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 식 구하기",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_VERTEX_FIND",
+      "crossConceptKeys": [
+        "CC_PARABOLA_VERTEX_FORM",
+        "CC_POINT_ON_PARABOLA"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "그래프의 꼭짓점(-p, 0)과 지나는 한 점을 식에 대입하여 계수 a, p를 구하고 a-p를 산출하는 2단계 이차함수 식 결정 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=a(x-2)^2+1$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $3$만큼 평행이동하였더니 이차함수 $y=-4(x+b)^2+c$의 그래프와 일치하였다. 상수 $a, b, c$의 합은? [5점]",
+        "solutionDecisiveExcerpt": "$a = -4$이고, 꼭짓점 $(2, 1)$을 $x$축으로 $-2$, $y$축으로 $3$만큼 이동하면 $(0, 4)$가 된다. 따라서 $y = -4x^2 + 4$이므로 $b = 0, c = 4$이고 $a+b+c = 0$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수 그래프의 평행이동",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_QUADRATIC_TRANSLATION_CONGRUENCE",
+      "crossConceptKeys": [
+        "CC_PARABOLA_TRANSLATION",
+        "CC_COEFFICIENT_MATCHING"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "평행이동에서 a=-4를 특정하고 꼭짓점 (2,1)이 (0,4)로 이동함을 통해 b=0, c=4에서 합 0을 도출하는 2단계 평행이동 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $x^2+ax+b=0$의 해는 $x=-1\\text{ 또는 }x=3$일 때, 이차방정식 $bx^2+ax+1=0$의 두 근의 차는? [5점]",
+        "solutionDecisiveExcerpt": "$x^2+ax+b=0$의 두 근이 $-1, 3$이므로 $a=-2, b=-3$이다. $3x^2+2x-1=(3x-1)(x+1)=0$의 두 근은 $1/3, -1$이며 두 근의 차는 $4/3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_QUADRATIC_FORMULA_ROOTS_DIFFERENCE",
+      "crossConceptKeys": [
+        "CC_ROOTS_SUM_AND_PRODUCT",
+        "CC_QUADRATIC_FACTORIZATION",
+        "CC_ROOTS_DIFFERENCE"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "두 근으로부터 a=-2, b=-3을 구하고 방정식 3x^2+2x-1=0을 풀어 두 근의 차 4/3을 산출하는 2단계 이차방정식 연계 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=ax^2$의 그래프가 오른쪽 그림의 ㉠과 같을 때, 다음 중 ㉡의 그래프로 적당한 것은? (단, $a$는 상수이다.) [5점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q17.png\">",
+        "solutionDecisiveExcerpt": "그래프의 볼록한 방향의 부호 반전 및 폭의 대소 관계($|a|$의 크기 비교)를 통해 ㉡에 알맞은 이차함수 식을 선별한다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "standardUnit": "이차함수",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "subUnit": "이차함수의 그래프의 성질",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_PARABOLA_OPENING_DIRECTION",
+        "CC_PARABOLA_WIDTH_COMPARISON"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "기준 포물선 ㉠과의 개형(볼록 방향 및 그래프의 폭 비교)을 통해 적합한 식을 판별하는 2단계 그래프 분석 문항이므로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $x^2-10x-11k+25=0$의 두 해가 정수가 되도록 하는 두 자리의 정수 $k$의 값들의 합은? [5점]",
+        "solutionDecisiveExcerpt": "$(x-5)^2 = 11k$이므로 해가 정수가 되려면 $11k$가 제곱수이어야 한다. $k = 11n^2$에서 두 자리 정수는 $11, 44, 99$이며 합은 $11 + 44 + 99 = 154$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_CONDITION",
+        "CC_PRIME_FACTORIZATION",
+        "CC_INTEGER_COUNT_IN_INTERVAL"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "(x-5)^2=11k에서 11k가 제곱수가 되도록 k=11n^2을 세우고 두 자리 정수 k in {11, 44, 99}의 합 154를 산출하는 3단계 정수 조건 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "단답형 1. 높이가 $150\\text{m}$인 건물 옥상에서 초속 $30\\text{m}$로 위로 쏘아 올린 물로켓의 $t$초 후의 높이를 $y\\text{m}$라 하면 $y=-5t^2+60t+150$인 관계가 성립한다. 이 물로켓이 지면으로부터의 높이가 $250\\text",
+        "solutionDecisiveExcerpt": "$-5t^2+60t+150 \\ge 250 \\implies t^2-12t+20 \\le 0 \\implies (t-2)(t-10) \\le 0$이므로 $2 \\le t \\le 10$이다. 따라서 머무르는 시간은 $10 - 2 = 8$초이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 활용",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_APPLICATION",
+      "templateKey": "TPL_M3_PROJECTILE_MOTION_TIME_INTERVAL",
+      "crossConceptKeys": [
+        "CC_PROJECTILE_HEIGHT_MODEL",
+        "CC_QUADRATIC_INEQUALITY",
+        "CC_TIME_INTERVAL_CALCULATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "높이 식 -5t^2+60t+150>=250을 t^2-12t+20<=0으로 풀어 2<=t<=10을 도출하고 머무는 시간 10-2=8초를 산출하는 3단계 실생활 활용 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "단답형 2. 이차방정식 $3x^2-9x+3=0$의 한 근이 $x=\\alpha$일 때, $\\alpha+\\frac{1}{\\alpha}$의 값을 구하시오. [4점]",
+        "solutionDecisiveExcerpt": "$\\alpha^2 - 3\\alpha + 1 = 0$의 양변을 $\\alpha$로 나누면 $\\alpha + \\frac{1}{\\alpha} = 3$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_RECIPROCAL_EQUATION_VALUE",
+      "crossConceptKeys": [
+        "CC_RECIPROCAL_EQUATION_TRANSFORMATION",
+        "CC_ALGEBRAIC_SUBSTITUTION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "근 대입 후 alpha^2-3*alpha+1=0의 양변을 alpha로 나누어 alpha+1/alpha=3을 산출하는 1단계 역수 합 문항으로 Bucket 1을 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 1. 완전제곱식을 이용하여 이차방정식 $4x^2-12x+7=0$의 해를 구하고, 그 풀이과정을 모두 서술하시오. [6점]<br><br><table style=\"border:1px solid black; margin:10px auto; width:95%; text",
+        "solutionDecisiveExcerpt": "❶ $x^2-3x+\\frac{7}{4}=0$\n❷ $x^2-3x=-\\frac{7}{4}$\n❸ $\\left(x-\\frac{3}{2}\\right)^2 = \\frac{1}{2}$\n❹ $x-\\frac{3}{2} = \\pm\\frac{\\sqrt{2}}{2}$\n❺ $x = \\frac{3 \\pm \\sqrt{2}}{2}$"
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "완전제곱식을 이용한 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_COMPLETE_SQUARE_STEPWISE_SOLVE",
+      "crossConceptKeys": [
+        "CC_COMPLETING_THE_SQUARE",
+        "CC_STEPWISE_ALGEBRAIC_PROOF",
+        "CC_SQUARE_ROOT_QUADRATIC_SOLVE"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "양변 계수 나누기부터 제곱근 구하기까지 5단계 완전제곱식 유도 과정을 거쳐 해 x=(3+-sqrt(2))/2를 서술하는 3단계 서술형 풀이 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 2. 다음 두 이차방정식의 공통인 해는 구하고, 그 풀이과정을 모두 서술하시오. [7점]<br><br><table style=\"border:1px solid black; margin:10px auto; width:80%; text-align:center;\"><t",
+        "solutionDecisiveExcerpt": "첫 번째 식에 45를 곱하면 $5x^2+9x-2=(5x-1)(x+2)=0 \\implies x=1/5$ 또는 $x=-2$.\n두 번째 식에 10을 곱하면 $5x^2-11x+2=(5x-1)(x-2)=0 \\implies x=1/5$ 또는 $x=2$.\n따라서 공통인 해는 $x = \\frac{1}{5}$이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 풀이",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SOLUTION",
+      "templateKey": "TPL_M3_COMMON_ROOT_FIND",
+      "crossConceptKeys": [
+        "CC_FRACTION_COEFFICIENT_EQUATION",
+        "CC_DECIMAL_COEFFICIENT_EQUATION",
+        "CC_COMMON_ROOT_IDENTIFICATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "분수 및 소수 계수를 정수 계수로 정돈하여 각각 x in {-2, 1/5}와 x in {1/5, 2}를 구하고 공통근 x=1/5를 도출하는 3단계 서술형 연립 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    },
+    {
+      "questionId": 23,
+      "questionNo": 23,
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 3. 다음은 1단계는 사각형, 2단계는 오각형, 3단계는 육각형으로 각 단계마다 변의 개수를 전 단계보다 한 개씩 늘린 다각형과 대각선을 그린 것이다. 이때, 다각형의 변의 개수와 대각선의 개수의 합이 91개인 단계는 몇 단계인지 구하고, 그 풀이과정을 모두 서",
+        "solutionDecisiveExcerpt": "$k$각형의 변과 대각선의 개수의 합은 $k + \\frac{k(k-3)}{2} = \\frac{k(k-1)}{2} = 91$이다.\n$k^2-k-182 = (k-14)(k+13) = 0$에서 $k = 14$이다.\n$n$단계 다각형은 $(n+3)$각형이므로 $n+3 = 14 \\implies n = 11$단계이다."
+      },
+      "pack": "MIDDLE3",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATIONS",
+      "subUnit": "이차방정식의 활용",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_APPLICATION",
+      "templateKey": "TPL_M3_GEOMETRIC_PATTERN_QUADRATIC_MODEL",
+      "crossConceptKeys": [
+        "CC_POLYGON_DIAGONALS_FORMULA",
+        "CC_QUADRATIC_EQUATION_MODELING",
+        "CC_STAGE_PATTERN_ANALYSIS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "변과 대각선 합 k(k-1)/2=91에서 k=14를 구하고 k=n+3 관계로부터 11단계를 도출하는 3단계 서술형 기하 패턴 이차방정식 모델링 문항이므로 Bucket 2를 부여한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL"
+    }
+  ]
+}

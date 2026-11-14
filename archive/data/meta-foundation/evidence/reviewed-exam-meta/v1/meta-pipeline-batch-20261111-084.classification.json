@@ -1,0 +1,506 @@
+{
+  "schemaVersion": "ALIVE_CANDIDATE_CLASSIFICATION_v3",
+  "examTitle": "22_순천고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1QEZVZ77_PyxHqW55AX2kXKkilC2lneD8",
+  "sourceSha256": "a4f3b5f4f3ae6de02ca9e79fbb6fe625f2e96338b439d6d662232c4569eec156",
+  "totalQuestions": 21,
+  "classifiedTimestamp": "2026-10-23T15:39:31.773959+00:00",
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN",
+        "CC_POPULATION_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표본평균의 기댓값은 모평균과 일치함(E(Xbar)=40)을 확인하는 1단계 기본 성질",
+      "sourceTextExcerpt": "모평균이 40, 모분산이 9인 모집단에서 크기가 100인 표본을 임의 추출할 때, 표본평균 $\\overline{X}$의 평균을 구하면?",
+      "solutionDecisiveExcerpt": "표본평균의 평균은 모평균과 같으므로 E(Xbar)=40 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_VARIANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(90, 1/3)에서 E(X)=30, V(X)=20 구하고 V(X)=E(X²)-{E(X)}²에서 E(X²)=920 산출 (3단계)",
+      "sourceTextExcerpt": "한 개의 주사위를 90번 던져 2의 약수의 눈이 나오는 횟수를 확률변수 $X$라고 할 때, 확률변수 $X^2$의 평균 $\\mathrm{E}(X^2)$을 구하면?",
+      "solutionDecisiveExcerpt": "V(X)=20, E(X)=30에서 E(X^2)=20+900=920 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평균 10 중심 대칭성으로 P(X>=5)=P(X<=15) 파악 후 a/6=15에서 a=90 산출 (2단계)",
+      "sourceTextExcerpt": "확률변수 $X$가 정규분포 $\\mathrm{N}(10, 3^2)$을 따를 때, $\\mathrm{P}\\left(X \\le \\frac{a}{6}\\right) = \\mathrm{P}(X \\ge 5)$를 만족시키는 상수 $a$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "정규분포 대칭성에 의해 a/6 = 15, a = 90 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전체 넓이 1/2*10*b=1에서 b=1/5, 구간 넓이 1/2*a*b=2/5에서 ab=4/5 직접 산출 (3단계, 시각자료 확인)",
+      "sourceTextExcerpt": "확률변수 $X$의 확률밀도함수 $y=f(x)$의 그래프가 오른쪽과 같다. $\\mathrm{P}(0 \\le X \\le a) = \\frac{2}{5}$일 때, 상수 $ab$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "1/2*a*b = 2/5에서 ab = 4/5 산출",
+      "visualAssetChecked": true,
+      "visualType": "IMAGE"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_MASS_FUNCTION",
+        "CC_EXPECTED_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률의 총합 (6+4k)/10=1에서 k=1 구하고 E(X)=20/10=2 산출 (2단계)",
+      "sourceTextExcerpt": "이산확률변수 $X$가 갖는 값이 $0, 1, 2, 3$이고 $X$의 확률질량함수가 $\\mathrm{P}(X=x) = \\frac{x+k}{10}$일 때, $\\mathrm{E}(X)$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "k=1, E(X) = (0*1+1*2+2*3+3*4)/10 = 2 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_NORMAL_DISTRIBUTION_CRITICAL_VALUE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "99% 신뢰구간 길이로부터 모표준편차 sigma=10 역산 후 95% 구간 길이 2*1.96*10/sqrt(n)<=4에서 n>=96.04 최소 자연수 97 도출 (4단계)",
+      "sourceTextExcerpt": "16개를 임의 추출하여 얻은 ... 신뢰도 99%의 신뢰구간이 $43.55 \\le m \\le 56.45$이다. ... 신뢰도 95% 신뢰구간 $b-a \\le 4$ 이하가 되기 위한 $n$의 최솟값은?",
+      "solutionDecisiveExcerpt": "sigma=10, 39.2/sqrt(n) <= 4에서 n >= 96.04이므로 최소 n=97 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-REPEATED_TRIALS",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS",
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_ABSOLUTE_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "여사건 X=4를 (D,C)=(3,1), (2,2)로 분할 계산(2/27)하여 P(|X-4|>=1)=1-2/27=25/27 산출 (4단계)",
+      "sourceTextExcerpt": "주사위 3개와 동전 2개를 동시에 던질 때 ... 합을 확률변수 $X$라 하자. $\\mathrm{P}(|X-4| \\ge 1)$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "여사건 P(X=4) = 1/54 + 3/54 = 2/27에서 P(|X-4|>=1) = 25/27 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_APPROXIMATION_TO_BINOMIAL",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "개별 확률 p1=P(Z>=2)=0.02 구하고 이항분포 B(2500, 0.02)~N(50, 7²) 정규근사에서 (n-50)/7=2로부터 n=64 산출 (4단계, 시각자료 확인)",
+      "sourceTextExcerpt": "운동시간이 35분 이상일 확률은 $p_1$이다. ... $n$명 이상일 확률은 $p_2$이다. 두 확률의 근삿값이 같아질 때 자연수 $n$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "p1은 Z=2에 대응, 이항분포 근사 N(50, 49)에서 (n-50)/7 = 2, n = 64 산출",
+      "visualAssetChecked": true,
+      "visualType": "IMAGE"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_EVEN_FUNCTION_INTEGRATION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭 밀도함수 전체 넓이 a+2b=1과 구간 넓이 a/4+b=3/8 연립하여 a=1/2, b=1/4, ab=1/8 산출 (3단계)",
+      "sourceTextExcerpt": "연속확률변수 $X$의 확률밀도함수 $f(x)$가 $-1\\le x\\le1$에서 $f(x)=a|x|+b$이고 ... $\\mathrm{P}(-\\frac12\\le X\\le\\frac12)=\\frac38$일 때, $ab$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "a+2b=1과 a/4+b=3/8 연립하여 a=1/2, b=1/4, ab=1/8 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+      "subUnit": "확률의 덧셈정리",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_PROBABILITY_ADDITION_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "P(B)=1-7/10=3/10 구하고 덧셈정리 3/5=1/2+3/10-P(A∩B)에서 P(A∩B)=1/5 산출 (1단계)",
+      "sourceTextExcerpt": "$\\mathrm{P}(A) = \\frac{1}{2}$, $\\mathrm{P}(B^C) = \\frac{7}{10}$, $\\mathrm{P}(A \\cup B) = \\frac{3}{5}$일 때, $\\mathrm{P}(A \\cap B)$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "P(B)=3/10, P(A∩B) = 1/2 + 3/10 - 3/5 = 1/5 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT",
+        "CC_ADJACENT_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "A, B 이웃 확률 2*5!/6!=1/3을 여사건 공식에 적용하여 이웃하지 않을 확률 1-1/3=2/3 산출 (2단계)",
+      "sourceTextExcerpt": "두 학생 $A, B$를 포함한 6명의 학생을 임의로 일렬로 세울 때, $A$와 $B$가 이웃하지 않을 확률을 구하면?",
+      "solutionDecisiveExcerpt": "여사건 이웃 확률 2*5!/6! = 1/3에서 1 - 1/3 = 2/3 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_EVENTS",
+        "CC_PROBABILITY_ADDITION_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "독립 조건 P(B)=1/5, P(A^c)=5/7에서 P(A)=2/7 도출 후 덧셈정리로 P(A∪B)=2/7+1/5-2/35=3/7 산출 (3단계)",
+      "sourceTextExcerpt": "두 사건 $A$와 $B$는 서로 독립이고 $\\mathrm{P}(B|A) = \\frac{1}{5}$, $\\mathrm{P}(A^C \\cap B) = \\frac{1}{7}$일 때, $\\mathrm{P}(A \\cup B)$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "P(B)=1/5, P(A)=2/7에서 P(A∪B) = 2/7 + 1/5 - 2/35 = 15/35 = 3/7 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY",
+        "CC_CONTINGENCY_TABLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "분할표 구성으로 축구 선택자 280명 중 2학년 120명을 찾아 조건부확률 120/280=3/7 산출 (3단계)",
+      "sourceTextExcerpt": "축구, 농구를 선택한 학생은 각각 280명, 120명 ... 축구를 선택한 학생이었을 때, 이 학생이 2학년 학생일 확률을 구하면?",
+      "solutionDecisiveExcerpt": "축구 선택 280명 중 2학년 축구 120명이므로 120/280 = 3/7 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_COMBINATION_NON_ADJACENT",
+        "CC_CLASSICAL_PROBABILITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "차이가 1이 아닌 4개 선택을 bi=ai-(i-1) 변환으로 7C4=35가지 센 후 35/10C4=35/210=1/6 산출 (3단계)",
+      "sourceTextExcerpt": "1부터 10까지의 자연수가 ... 4개의 공을 동시에 꺼낼 때, 꺼낸 공에 적혀 있는 수 중에서 어느 두 수의 차도 1이 아닐 확률을 구하면?",
+      "solutionDecisiveExcerpt": "7C4 / 10C4 = 35 / 210 = 1/6 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-MATHEMATICAL_PROBABILITY",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_CLASSICAL_PROBABILITY",
+        "CC_EXTREMAL_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "최댓값 4인 경우의 수 4³-3³=37을 전체 6³=216으로 나누어 37/216 산출 (2단계)",
+      "sourceTextExcerpt": "서로 다른 주사위 3개를 동시에 던질 때, 나오는 눈의 수의 최댓값이 4일 확률을 구하면?",
+      "solutionDecisiveExcerpt": "(4^3 - 3^3) / 6^3 = 37 / 216 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_STOPPING_TIME_EQUIVALENCE"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "4회 시행 시 이동거리 4+K>=6 (K>=2) 동치 변환 후 B(4, 2/3) 여사건 확률 8/9에서 p+q=17 산출 (4단계)",
+      "sourceTextExcerpt": "점 $\\mathrm{P}$의 좌표가 처음으로 6 이상이 되면 이 시행을 멈춘다. 4번 이하의 시행을 하여 멈출 확률이 $\\frac{q}{p}$일 때, $p+q$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "4회 내 6 도달은 K>=2와 동치이므로 1 - P(K=0,1) = 8/9, p+q=17 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-REPEATED_TRIALS",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_MULTINOMIAL_DISTRIBUTION",
+        "CC_INDEPENDENT_TRIALS"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "네 수의 합 10 이상인 경우를 (3,3,3,3), (3,3,3,2), (3,3,3,1), (3,3,2,2) 4가지로 분류 카운트하여 19/256 도출 후 p+q=275 산출 (4단계)",
+      "sourceTextExcerpt": "이 시행을 4번 반복하여 확인한 4개의 수의 합이 10 이상일 확률이 $\\frac{q}{p}$일 때, $p+q$의 값을 구하면?",
+      "solutionDecisiveExcerpt": "경우의 수 1+4+8+6 = 19, 확률 19/256에서 p+q=275 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY",
+        "CC_NON_REPLACEMENT_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "파란 공 이전 1이 3개인 조건확률 P(E)=1/4과 숫자합 5인 교집합 P(E∩F)=1/15로부터 조건부확률 (1/15)/(1/4)=4/15 산출 (5단계 킬러)",
+      "sourceTextExcerpt": "이 시행을 멈춘 후 꺼낸 공 중 1이 적힌 공의 개수가 3개일 때, 꺼낸 공에 적힌 모든 수의 합이 5일 확률을 구하면?",
+      "solutionDecisiveExcerpt": "P(E)=1/4, P(E∩F)=1/15에서 P(F|E) = (1/15)/(1/4) = 4/15 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_POPULATION_MEAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "173.5 ± 2.58*(5/10) = 173.5 ± 1.29에서 172.21 <= m <= 174.79 신뢰구간 산출 (2단계 서술형)",
+      "sourceTextExcerpt": "<서술형 1> ... 평균이 $173.5\\text{cm}$, 표준편차가 $5\\text{cm}$이었다. ... 신뢰도 99%의 신뢰구간을 구하시오.",
+      "solutionDecisiveExcerpt": "173.5 ± 1.29에서 172.21 <= m <= 174.79 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "P(Z>=2/3)+P(Z<=4/sigma)>=1을 P(Z<=4/sigma)>=P(Z<=2/3)로 변환하여 4/sigma>=2/3에서 sigma<=6 최댓값 6 산출 (3단계 서술형)",
+      "sourceTextExcerpt": "<서술형 2> $\\mathrm{P}(X \\ge 7) + \\mathrm{P}(Y \\ge 7) \\ge 1$을 만족시키는 양수 $\\sigma$의 최댓값을 구하시오.",
+      "solutionDecisiveExcerpt": "P(Z<=4/sigma) >= P(Z<=2/3)에서 4/sigma >= 2/3, sigma <= 6 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_HOMOGENEOUS_PRODUCT",
+        "CC_MONOTONE_FUNCTION_COUNT"
+      ],
+      "conditionKeys": [
+        "COND_DIVISIBILITY"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "비감소 함수에서 f(3)+f(4)+f(5)가 4의 배수인 5개 유형별 중복조합 합 10+1+3+12+10=36 도출 후 36/4^8 = 9/4^7에서 a=9 산출 (5단계 킬러)",
+      "sourceTextExcerpt": "<서술형 3> ... $f(x_1) \\le f(x_2)$이다. (나) $f(3)+f(4)+f(5)$의 값은 4의 배수이다. 확률이 $\\frac{a}{4^7}$이다. $a$의 값을 구하시오.",
+      "solutionDecisiveExcerpt": "중복조합 분할 합 36가지에서 36/4^8 = 9/4^7, a=9 산출",
+      "visualAssetChecked": false,
+      "visualType": "NONE"
+    }
+  ]
+}

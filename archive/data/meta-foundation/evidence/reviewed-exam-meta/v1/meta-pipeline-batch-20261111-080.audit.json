@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "23_강남여고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1Wx3w4wX9fbkERJDIxgYKv_Tn-RF96sgT",
+  "sourceSha256": "686501401d34552cb6ae1f788fb9e70ffbbb32f7997cc26dacb00d753f9faadc",
+  "auditedTimestamp": "2026-10-23T16:22:48.212749+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "totalAuditedCount": 25,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_EXPECTED_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(18, 1/3)에서 평균 E(X)=np=18*(1/3)=6 직접 산출 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률변수 $X$가 이항분포 $\\mathrm{B}\\left(18, \\dfrac{1}{3}\\right)$일 때, $X$의 평균은? [3.0점]",
+        "solutionDecisiveExcerpt": "E(X)=18*(1/3)=6 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_SUM_ONE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률의 총합 1/5+a+1/5+1/2=1에서 a=1/10 직접 산출 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률변수 $X$의 확률분포를 표로 나타내면 다음과 같다. 상수 $a$의 값은? [3.0점]",
+        "solutionDecisiveExcerpt": "1/5+a+1/5+1/2=1에서 a=1/10 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_MASS_FUNCTION",
+        "CC_PROBABILITY_SUM_ONE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "확률질량함수 합 (1+3+5)/a=9/a=1에서 a=9 직접 산출 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률질량함수가 $P(X=x) = \\dfrac{2x-1}{a} \\, (x=1, 2, 3)$일 때, 상수 $a$의 값은? [3.0점]",
+        "solutionDecisiveExcerpt": "(1+3+5)/a = 9/a = 1에서 a=9 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION",
+        "CC_INTEGRATION_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "밀도함수 전체 적분 [kx²/2]_0^3 = 9k/2 = 1에서 k=2/9 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "연속확률변수 $X$의 확률밀도함수가 $f(x)=kx \\, (0 \\le x \\le 3)$일 때, 상수 $k$의 값은? [3.5점]",
+        "solutionDecisiveExcerpt": "9k/2 = 1에서 k = 2/9 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "평균 18 중심 대칭성으로 18-6=12에 대칭인 a=18+6=24 직접 산출 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률변수 $X$가 정규분포 $\\mathrm{N}(18, 3^2)$을 따를 때, $P(X \\le 12)=P(X \\ge a)$를 만족시키는 상수 $a$의 값은? [3.5점]",
+        "solutionDecisiveExcerpt": "평균 18 대칭성으로 a = 18 + 6 = 24 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_APPROXIMATION_TO_BINOMIAL",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항분포 B(720, 1/6)에서 mu=120, sigma=10 구하고 P(-1<=Z<=1)=2*0.3413=0.6826 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률변수 $X$가 이항분포 $\\mathrm{B}\\left(720, \\dfrac{1}{6}\\right)$을 따를 때 ... $P(110 \\le X \\le 130)$의 값은? [3.5점]",
+        "solutionDecisiveExcerpt": "mu=120, sigma=10에서 P(-1<=Z<=1) = 2*0.3413 = 0.6826 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_NORMAL_DISTRIBUTION_CUMULATIVE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=(21.45-21)/0.3=1.5 구하고 P(Z<=1.5)=0.5+0.43=0.93 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "과자 한 개의 무게는 평균이 $21\\,\\mathrm{g}$, 표준편차가 $0.3\\,\\mathrm{g}$인 정규분포를 따른다 ... $21.45\\,\\mathrm{g}$ 이하일 확률은? [3.5점]",
+        "solutionDecisiveExcerpt": "z = 1.5에서 P(Z<=1.5) = 0.5 + 0.43 = 0.93 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+        "CC_LINEAR_TRANSFORMATION_VARIANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭 조건으로 평균 m=6 구하고 V(1/2X)=1/4V(X)=1에서 분산 4 도출하여 N(6,4) 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "(가) $P(X \\le -4) = P(X \\ge 16)$ (나) $\\mathrm{V}\\left(\\dfrac{1}{2}X\\right) = 1$ 정규분포를 기호로 나타낸 것은? [3.5점]",
+        "solutionDecisiveExcerpt": "m=6, V(X)=4이므로 N(6,4) 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_DISCRETE_RANDOM_VARIABLE",
+        "CC_LINEAR_TRANSFORMATION_EXPECTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "13개 어절 글자수 총합 36에서 E(X)=36/13 구하고 E(13X)=13*E(X)=36 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "이 시에서 한 어절을 임의로 뽑을 때, 뽑은 어절의 글자 수를 확률변수 $X$라고 하자. $13X$의 평균은? [3.5점]",
+        "solutionDecisiveExcerpt": "글자수 총합 36, E(13X) = 13*(36/13) = 36 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표본평균 표준오차 6/sqrt(36)=1 구하고 P(-2<=Z<=1)=0.4772+0.3413=0.8185 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "36명을 임의추출할 때, 몸무게의 평균이 $68\\,\\mathrm{kg}$ 이상 $71\\,\\mathrm{kg}$ 이하일 확률은? [4.0점]",
+        "solutionDecisiveExcerpt": "sigma(Xbar)=1, P(-2<=Z<=1) = 0.4772 + 0.3413 = 0.8185 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "E(Xbar)=150, V(Xbar)=36/9=4 구하고 합 154 직접 산출 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "모평균 150, 모분산 36에서 크기 9 표본추출 시 $\\mathrm{E}(\\overline{X})+\\mathrm{V}(\\overline{X})$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "E(Xbar)=150, V(Xbar)=4에서 합 154 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_SAMPLE_SIZE_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "신뢰구간 길이 비 l/4l = sqrt(n2)/sqrt(n1) = 1/4에서 n1/n2 = 16 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "신뢰도 95%로 추정한 모평균의 신뢰구간의 길이가 각각 $l, 4l$일 때 $\\dfrac{n_1}{n_2}$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "sqrt(n1/n2) = 4이므로 n1/n2 = 16 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_ORDER_STATISTICS_EXTREMAL",
+        "CC_LINEAR_TRANSFORMATION_EXPECTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "최댓값 X=3,4,5 확률분포(1/10, 3/10, 6/10)로 E(X)=9/2 구하고 E(4X+3)=4*(9/2)+3=21 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "5개의 공 중 3개를 꺼낼 때 가장 큰 수를 확률변수 $X$라 하자. $\\mathrm{E}(4X+3)$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "E(X)=9/2이므로 E(4X+3) = 4*(9/2)+3 = 21 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_HYPERGEOMETRIC_PROBABILITY",
+        "CC_COMPLEMENTARY_EVENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전체 10C2=45 중 여사건 불량품 2개 3C2=3에서 P(X<=1)=1-3/45=14/15 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "3개 불량품 포함 10개 제품 중 2개 꺼낼 때, 불량품이 1개 이하일 확률은? [4.0점]",
+        "solutionDecisiveExcerpt": "1 - P(X=2) = 1 - 3/45 = 14/15 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_SYMMETRIC_INTERVAL_PROBABILITY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "표준화된 반폭 b/4 = 4/a에서 ab=16 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$P(60-b \\le X \\le 60+b) = P(76 \\le Y \\le 84)$가 성립할 때, $ab$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "b/4 = 4/a이므로 ab = 16 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_NORMAL_DISTRIBUTION_CRITICAL_VALUE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오차한계 2.58*(30/15)=5.16에서 45±5.16, 39.84<=m<=50.16 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "임의추출한 225명의 평균 45분 ... 신뢰도 99%의 신뢰구간은? [4.0점]",
+        "solutionDecisiveExcerpt": "45 ± 2.58*(30/15) = 45 ± 5.16에서 39.84 <= m <= 50.16 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_SAMPLE_MEAN_RECOVERY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오차한계 1.96*(4/7)=1.12 구하고 xbar=196.64+1.12=197.76, a=198.88에서 xbar+a=396.64 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "신뢰구간이 $196.64 \\le m \\le a$이다. $\\overline{x}+a$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "E=1.12, xbar=197.76, a=198.88에서 xbar+a = 396.64 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_SET_ELEMENT_MATCHING",
+        "CC_SECOND_MOMENT_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "{m, sigma, sigma/2}={3,5,a}에서 sigma/2=3, sigma=6, m=5 결정 후 E(X²)=V(X)+m²=36+25=61 산출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$m, \\sigma, \\mathrm{E}(\\overline{X}), \\sigma(\\overline{X})$의 모든 값을 원소로 갖는 집합은 $\\{3, 5, a\\}$이다. $\\mathrm{E}(X^2)$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "m=5, sigma=6이므로 E(X^2) = 36 + 25 = 61 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "sigma(Xbar)=12/4=3, 양쪽 꼬리확률 0.05 대응 임계점 k/3=2에서 k=6 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "표본평균 $\\overline{X}$에 대하여 $P(|m-\\overline{X}| \\ge k) = 0.05$를 만족시키는 상수 $k$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "k/3 = 2에서 k = 6 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_STANDARD_ERROR",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=2/sigma에서 sigma=2일 때 p1=0.1587, sigma=4일 때 p2=0.3085 구하여 합 0.4672 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sigma=2$와 $\\sigma=4$일 때의 확률 $P\\left(\\overline{X} \\ge m+\\dfrac{2}{\\sqrt{n}}\\right)$를 각각 $p_1, p_2$라고 하자. $p_1+p_2$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "p1=0.1587, p2=0.3085에서 p1+p2 = 0.4672 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NORMAL_DENSITY_INTERSECTION",
+        "CC_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "교점 10에서 m1+m2=20, 각 구간 확률 0.4987 대응 z=3에서 (10-m1)/5=3, m1=-5, m2=25로부터 m2-m1=30 산출 (4단계, 시각자료 확인)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 곡선이 만나는 점의 $x$좌표가 $10$이다. $P(m_1 \\le X \\le 10)+P(10 \\le Y \\le m_2) = 0.9974$ 만족 시 $m_2-m_1$의 값은? [4.5점]",
+        "solutionDecisiveExcerpt": "m1=-5, m2=25에서 m2-m1 = 30 산출",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-BINOMIAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION",
+        "CC_LINEAR_TRANSFORMATION_VARIANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "(1) B(50, 1/5) 이항분포, E(X)=10, V(X)=8, (2) E(3X+2)=32, V(3X+2)=9*8=72 산출 (3단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 1> (1) 주어진 확률질량함수는 [ (가) ]분포이다 ... 평균과 분산을 구하시오. (2) $Y=3X+2$ 평균과 분산을 구하시오. [5.0점]",
+        "solutionDecisiveExcerpt": "(1) 이항분포, E=10, V=8, (2) E(Y)=32, V(Y)=72 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_SUM_ONE",
+        "CC_VARIANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "(1) a=1/4, (2) E(X)=9/2, E(X²)=25에서 V(X)=25-81/4=19/4 산출 (2단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 2> (1) 상수 $a$의 값을 구하시오. (2) $X$의 분산을 구하시오. [5.0점]",
+        "solutionDecisiveExcerpt": "a=1/4, V(X) = 25 - (9/2)^2 = 19/4 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 24,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-NORMAL_DISTRIBUTION",
+      "subUnit": "이항분포와 정규분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_STANDARDIZATION",
+        "CC_PROBABILITY_TO_FREQUENCY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "z=(63.6-60)/12=0.3에서 P(Z>=0.3)=0.5-0.12=0.38, 500*0.38=190명 산출 (2단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 3> ... $63.6$점 이상인 학생이 모두 $\\mathrm{A}$등급을 받을 때, $\\mathrm{A}$등급을 받는 학생 수를 구하시오. [5.0점]",
+        "solutionDecisiveExcerpt": "P(Z>=0.3) = 0.38에서 500*0.38 = 190명 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 25,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+      "subUnit": "신뢰구간",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL",
+        "CC_SAMPLE_SIZE_RECOVERY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중심 10, 반폭 0.392에서 n=100 구하고 99% 구간 a=9.484, b=10.516에서 n+xbar+a+b=100+10+20=130 산출 (4단계 서술형)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 4> ... $n+\\overline{X}+a+b$의 값을 구하시오. [5.0점]",
+        "solutionDecisiveExcerpt": "xbar=10, n=100, a+b=20에서 합 130 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ]
+}
