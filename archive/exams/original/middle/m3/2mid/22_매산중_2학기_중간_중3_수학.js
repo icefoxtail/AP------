@@ -311,7 +311,11 @@ window.questionBank = [
       "subConcept": "계수 절댓값과 포물선의 폭",
       "conditionsUsed": "두 포물선이 아래로 열리고 점선의 폭이 더 좁다는 조건을 계수 a의 부호와 절댓값으로 바꾼다.",
       "integrationPatternExplanation": "포물선 계수와 그래프 모양의 관계를 해석하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시에서 파란 실선과 주황 점선은 원점을 꼭짓점으로 하는 아래로 열린 포물선이다. y=-1에서 주황 점선의 좌우 교점이 파란 실선보다 원점에 가깝다.",
+    "solutionImageCaption": "두 그래프가 아래로 열리므로 a<0이다. 같은 높이에서 점선의 |x|가 더 작으므로 |a|>1이다. 보기에서 가능한 값은 -2이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -752,7 +756,11 @@ window.questionBank = [
       "subConcept": "특수각 좌표와 사다리꼴 넓이",
       "conditionsUsed": "반지름 2, 중심각 60°, AC⊥OB, DB⊥OB 및 O,A,D의 일직선 조건을 사용한다.",
       "integrationPatternExplanation": "중심각을 좌표로 나타내고 수직조건으로 사다리꼴의 넓이를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사분원의 반지름은 2이고 중심각 AOB는 60°이다. 두 평행변 AC, BD의 길이는 각각 √3, 2√3이고 두 변 사이의 거리 CB는 1이다.",
+    "solutionImageCaption": "사다리꼴 ACBD의 넓이는 (AC+BD)×CB÷2=(√3+2√3)×1÷2=3√3/2이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1012,7 +1020,11 @@ window.questionBank = [
       "subConcept": "두 포물선의 꼭짓점·교점 관계",
       "conditionsUsed": "두 포물선이 서로의 꼭짓점을 지나고 p<−2이며 수평거리 AB=6이라는 조건을 연결한다.",
       "integrationPatternExplanation": "서로의 꼭짓점 조건과 수평 현 길이를 포물선 대칭성에 함께 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 이동 포물선은 서로의 꼭짓점을 지난다. 원래 그래프의 대칭축과, 꼭짓점 A에서 같은 높이로 잰 AB=6을 표시한다.",
+    "solutionImageCaption": "원래 포물선의 축은 x=-2이다. 두 번째 꼭짓점 A가 원래 그래프 위에 있고 두 포물선은 V=(-2,0)에서 만난다. 대칭축을 이용해 B의 위치를 읽으면 p=-5, q=18이고 a=-2이다. 따라서 a+p+q=11이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1149,7 +1161,11 @@ window.questionBank = [
       "subConcept": "q23-① 특수각 표; q23-② 정사각뿔 높이와 tan",
       "conditionsUsed": "①은 30°·45°·60°의 표준값, ②는 한 모서리 10인 정사각뿔과 두 변의 중점 조건을 사용한다.",
       "integrationPatternExplanation": "특수각 표를 완성하고, 다른 선택문항에서는 입체의 높이를 구해 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔의 밑면 중심 O와 서로 마주 보는 변의 중점 M,N을 표시한다. 파란 단면 AOM은 O에서 직각이고 ∠AMN=x이다.",
+    "solutionImageCaption": "정사각형 밑면에서 OC=5√2이고 AC=10이므로 AO=√(10²−(5√2)²)=5√2이다. OM=5이므로 tan x=AO/OM=√2. 답: √2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

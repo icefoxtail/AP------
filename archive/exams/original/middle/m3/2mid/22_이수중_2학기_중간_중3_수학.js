@@ -808,7 +808,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[조건 정리] 삼각형의 내접원은 세 변에 접한다. 그림에서 $AD=3$, $DB=5$, $BC=9$이고 $x=AC$이다.\n[풀이] 한 점에서 원에 그은 두 접선의 길이는 같으므로 $BE=BD=5$이다. 따라서 $EC=BC-BE=9-5=4$이다.\n점 $C$에서 그은 접선 길이가 같아 $CF=CE=4$이고, 점 $A$에서도 $AF=AD=3$이다.\n그러므로 $AC=AF+FC=3+4=7$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q18.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q18.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 내접원에 접하는 삼각형의 접점 D, E, F를 보인다. A에서 AD=AF=3, B에서 DB=BE=5이며, C에서 CE=CF이다. BC=9이고 AC=x이다.",
+    "solutionImageCaption": "B에서의 접선 길이가 5이므로 EC=9−5=4이다. C에서 CE=CF=4이고 A에서 AD=AF=3이다. 따라서 AC=AF+FC=3+4=7이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -975,7 +979,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$10+\\dfrac{10\\sqrt3}{3}\\,\\mathrm m$",
     "solution": "[조건 정리] 두 건물의 수평 거리는 $10\\,\\mathrm m$이다. A 건물 옥상에서 B 건물의 밑부분을 내려다보는 각은 $45^\\circ$, 꼭대기를 올려다보는 각은 $30^\\circ$이다.\n[풀이] A 건물 옥상에서 B 건물 밑부분까지의 높이 차를 $h_1$이라 하면\n$\\tan45^\\circ=h_1/10$이므로 $h_1=10$이다.\nA 건물 옥상에서 B 건물 꼭대기까지의 높이 차를 $h_2$라 하면\n$\\tan30^\\circ=h_2/10$이므로 $h_2=10/\\sqrt3$이다.\n따라서 B 건물의 높이는\n$h_1+h_2=10+\\dfrac{10}{\\sqrt3}=10+\\dfrac{10\\sqrt3}{3}\\,\\mathrm m$이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s02.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s02.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 건물 사이 밑면 간격은 10 m이다. 낮은 옥상과 수평 투영점 H 사이 높이는 10 m, H에서 높은 건물 꼭대기까지는 10√3/3 m이다. 시선각은 45°와 30°이다.",
+    "solutionImageCaption": "tan45°=h₁/10이므로 h₁=10 m이다. tan30°=h₂/10이므로 h₂=10√3/3 m이다. 높은 건물의 높이는 h₁+h₂=10+10√3/3 m이다. 답: 10+10√3/3 m.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1056,6 +1064,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$9\\,\\mathrm{cm}$",
     "solution": "[조건 정리] 원은 직사각형의 위·왼쪽·아래 변에 접하므로 반지름은 $12\\div2=6\\,\\mathrm{cm}$이다. 아래 변과 원의 접점을 $P$, 위 변과 원의 접점을 $T$, $DE$와 원의 접점을 $F$라 하자.\n[풀이] 직각삼각형 $DCE$에서\n$CE=\\sqrt{DE^2-CD^2}=\\sqrt{15^2-12^2}=9\\,\\mathrm{cm}$이다.\n직사각형에서 $AD=BC$이고, $AT=BP=6\\,\\mathrm{cm}$이다. 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DF=DT=AD-AT=BC-6$이다.\n$DE=DF+FE=15$이므로 $FE=15-(BC-6)=21-BC$이다.\n점 $E$에서 그은 두 접선의 길이도 같아 $FE=EP$이다. 또 $EP=BE-BP=(BC-CE)-6=BC-15$이므로\n$21-BC=BC-15$에서 $BC=18$이다.\n따라서 $BE=BC-CE=18-9=9\\,\\mathrm{cm}$이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s04.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/s04.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD 안에 반지름 6 cm인 원이 있고 DE=15 cm는 원에 접한다. D에서의 접선 조각 DT=DF와 E에서의 접선 조각 EF=EP를 서로 다른 색과 눈금으로 표시한다.",
+    "solutionImageCaption": "반지름은 12÷2=6 cm이다. 직각삼각형 DCE에서 CE=√(15²−12²)=9 cm이다. DE=15 cm이고, D와 E에서 그은 접선 조각은 각각 같으므로 BE=9 cm가 된다. 답: 9 cm.",
+    "solutionImageSize": "full"
   }
 ];

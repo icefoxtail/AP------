@@ -1015,7 +1015,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이에서 이동한 두 헬리콥터 위치 A와 B, 배 바로 위 C를 수평선에 놓았다. A에서의 30도 시선은 파랑, B에서의 60도 시선은 주황이고 C에서 배 D까지는 수직이다.",
+    "solutionImageCaption": "AC=h√3, BC=h/√3이다. 두 거리의 차 AB는 3 km이므로 BC=1.5 km이다. 분속 1.5 km로 BC를 이동하면 60초가 더 걸린다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1197,7 +1201,11 @@ window.questionBank = [
       "subConcept": "중심에서 같은 거리에 있는 현의 길이와 현의 이등분",
       "conditionsUsed": "O가 외심이고 OD=OE=OF이며, 그림에서 D,E,F가 각 변에 내린 수선의 발인 점을 사용한다. 10 cm는 원본에서 AB의 길이로 확인했다.",
       "integrationPatternExplanation": "중심-현 거리로 세 변의 길이가 같음을 확인하고, 현의 수직이등분 및 30° 삼각비로 반지름과 넓이를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 ABC와 중심 O, 같은 색으로 표시한 세 수선 OD·OE·OF 및 여섯 반현. 꼭짓점 A의 30° 두 부분은 분리된 호로 나타냈다.",
+    "solutionImageCaption": "AB=10 cm이다. OD=OE=OF이므로 AB=BC=CA이고 △ABC는 정삼각형이다. 따라서 AD=5 cm, AO=10√3/3 cm, 넓이는 100π/3 cm². 답: (1) 정삼각형, (2) 5 cm, (3) 10√3/3 cm, (4) 100π/3 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1243,6 +1251,10 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "접선의 길이 성질로 DC를 6+x로 나타내고, 피타고라스 정리를 적용해 x를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB가 있는 반원 O와 접선 AD, BC, DC, 세 접점 A, B, E. 파랑은 AD=DE, 주황은 BC=CE를 나타낸다.",
+    "solutionImageCaption": "D에서 AD=DE=6 cm이고 C에서 CB=CE이다. 피타고라스 관계로 CB=8/3 cm. 답: 8/3 cm.",
+    "solutionImageSize": "full"
   }
 ];

@@ -1419,7 +1419,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수선 AH로 나뉜 두 직각삼각형 △ABH·△ACH, AB=4 cm, B의 30°와 C의 60°.",
+    "solutionImageCaption": "(1) △ABH에서 AH=2 cm. (2) △ACH에서 AC=4√3/3 cm. 답: (1) 2 cm, (2) 4√3/3 cm.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1534,7 +1538,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 접는 선 AC가 있는 삼각형 ABC와 밑변에 내린 수선 AH. 왼쪽에 테이프 폭 2 cm를 별도 구간으로 표시하고, 같은 눈금으로 AH와 연결했다.",
+    "solutionImageCaption": "∠ACB=67.5°이다. AH=2 cm, AB=BC=2√2 cm이므로 △ABC의 넓이는 2√2 cm². 답: (1) 67.5°, (2) 2√2 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1599,6 +1607,10 @@ window.questionBank = [
     "additionalImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/s04_1.png",
       "assets/images/22_팔마중_2학기_중간_중3_수학/s04_2.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 서로 떨어진 세 원호 조각과 두 현의 수직이등분선, 아래에는 원호 AB와 현 AB, 수선 CM 및 현 아래 중심 O를 나타낸다.",
+    "solutionImageCaption": "(1) 중심은 서로 다른 두 현의 수직이등분선의 교점이다. (2) r=10 cm. 답: (1) 원의 중심은 두 현의 수직이등분선의 교점, (2) 10 cm.",
+    "solutionImageSize": "full"
   }
 ];

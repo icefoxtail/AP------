@@ -90,7 +90,11 @@ window.questionBank =[
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "No exact ACTIVE M3 PT/TPL binding is confirmed; semantic RPM classification is retained and PT/TPL are not invented.",
       "integrationPattern": "NONE"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 x좌표의 두 포물선 점 A,B를 수직 선분으로 잇는다.",
+    "solutionImageCaption": "두 함수값의 차는 (½x²+1)−(½x²−3)=4이므로 AB=4이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -861,7 +865,11 @@ window.questionBank =[
         "CC_VERTEX"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선 그래프는 왼쪽에서 증가하다가 꼭짓점을 지나 오른쪽에서 감소한다. 주황색 세로 점선은 꼭짓점을 지나는 대칭축 x=−3이다.",
+    "solutionImageCaption": "꼭짓점의 x좌표는 −b/(2a)=−3a/2이다. 증가에서 감소로 바뀌는 경계가 −3이므로 a=2이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -1052,7 +1060,11 @@ window.questionBank =[
         "CC_RIGHT_TRIANGLE"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 직각삼각형 ABC와 작은 직각삼각형 BDE에서 파랑 호로 x와 각 A의 대응을 나타낸다.",
+    "solutionImageCaption": "피타고라스 정리로 AB=5이다. 닮음으로 x=∠A이므로 cos x=AC/AB=3/5이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1525,7 +1537,11 @@ window.questionBank =[
         "CC_ANGLE_BISECTOR"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 A의 각 이등분선 AD, 30° 각, AB=4와 구할 선분 CD=x를 표시한다.",
+    "solutionImageCaption": "30°-60°-90° 삼각형에서 AC=2, BC=2√3이다. 각의 이등분선 정리로 BD:DC=AB:AC=2:1이므로 CD=2√3/3이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1634,7 +1650,11 @@ window.questionBank =[
         "replacementReason": "The exact q17 source crop contains the figure but not printed choices, so the malformed transcription cannot be recovered uniquely. This valid distractor is a common segment-subtraction error: using BH−HC instead of BC=BH+HC gives 6√3−6. The stem, figure, other four choices, and answer are retained."
       }
     ],
-    "replacementReason": "Choice-level ALIVE_REPLACEMENT of q17 option ② only; original printed wording is not claimed recovered."
+    "replacementReason": "Choice-level ALIVE_REPLACEMENT of q17 option ② only; original printed wording is not claimed recovered.",
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 A의 수선 AH가 두 직각삼각형을 만들고, 파랑 눈금으로 AH=BH를 나타낸다.",
+    "solutionImageCaption": "△AHC에서 AH=12sin60°=6√3, HC=12cos60°=6이다. △ABH는 45°-45°-90°이므로 BH=AH=6√3. 따라서 BC=6(√3+1)이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1732,7 +1752,11 @@ window.questionBank =[
         "CC_RIGHT_TRIANGLE"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 45°로 겹친 두 테이프의 파란 평행사변형과 수직 폭 5·6을 나타낸다.",
+    "solutionImageCaption": "폭 5에 대응하는 변은 5/sin45°=5√2, 폭 6에 대응하는 변은 6√2이다. 둘레는 2(5√2+6√2)=22√2이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1830,7 +1854,11 @@ window.questionBank =[
         "CC_TRIANGLE_AREA"
       ],
       "integrationPattern": "INTERDEPENDENT"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 파란 삼각형의 넓이를 같게 표시하고, 첫 삼각형 높이 3√3과 둘째 삼각형의 수선 높이를 비교한다.",
+    "solutionImageCaption": "△ABC의 넓이는 ½·4·3√3=6√3이다. △DEF의 높이는 DF·sin60°이므로 넓이는 3DF이다. 두 넓이를 같게 두면 DF=2√3이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1939,7 +1967,11 @@ window.questionBank =[
         "CC_RIGHT_TRIANGLE"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 원의 중심 O에서 현 AB와 CD에 수선을 내려 중점 M,N을 두고, AM=5, OM=4, CD=10, ON=y를 표시한다.",
+    "solutionImageCaption": "첫째 원에서 x=√(12²+5²)=13이다. 둘째 원의 반지름 제곱은 4²+5²=41이고 반현은 5이므로 ON=y=√(41−5²)=4이다. 따라서 x+y=17이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -2160,7 +2192,11 @@ window.questionBank =[
         "CC_TANGENCY"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 지름 AB와 접선 AC·BD·CTD를 표시하고, C의 접선 길이는 파랑, D의 접선 길이는 주황 같은 눈금으로 묶는다.",
+    "solutionImageCaption": "CT=CA=4, DT=DB=9이므로 CD=13이고, C와 D의 높이 차는 9−4=5이다. 직각삼각형에서 AB²+5²=13²이므로 AB=12이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -2255,7 +2291,11 @@ window.questionBank =[
         "CC_TRIANGLE_AREA"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=−2x²+4x+16의 꼭짓점 A와 두 x절편 B,C로 만든 삼각형을 강조한다.",
+    "solutionImageCaption": "꼭짓점 높이는 18이고 두 x절편은 −2,4이므로 BC=6이다. △ABC의 넓이는 ½·6·18=54이다. 답: 54.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -2349,7 +2389,11 @@ window.questionBank =[
         "CC_TRIANGLE_AREA"
       ],
       "integrationPattern": "SEQUENTIAL"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 파랑 △BCD와 주황 △ABD로 나누고, DB에 내린 높이 AH를 점선으로 나타낸다.",
+    "solutionImageCaption": "△BCD의 넓이는 ½·6·2√3=6√3이다. △ABD의 높이는 AH=3sin30°=3/2이고 BD=4√3이므로 넓이는 3√3이다. 합은 9√3이다. 답: 9√3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

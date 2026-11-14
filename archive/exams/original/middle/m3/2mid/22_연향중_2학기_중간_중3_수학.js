@@ -1122,7 +1122,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q17.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q17.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 P, Q, F, X, 안쪽 접선 DE를 표시한다. 파랑·주황·초록 눈금은 A·B·C에서 각각 같은 접선 길이 쌍이고, 보라색 구간은 DP, DX, EQ, EX이다.",
+      "solutionImageCaption": "B에서 그은 접선 BP=BQ=(6+5−4)/2=7/2 cm이다. BED의 둘레는 BD+BE+DE=2BP이므로 답: 7 cm, ④.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -1188,7 +1192,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q18.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q18.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O의 두 접선 PA, PB와 접점 A, B, 반지름 OA·OB, 현 AB의 중점 M 및 수직이등분선 OP.",
+      "solutionImageCaption": "OA=3 cm, AP=4 cm이므로 OP=5 cm이고 AM=12/5 cm이다. AB=2AM이므로 답: 24/5 cm, ③.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -1248,7 +1256,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s01.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s01.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 교차하는 두 직각삼각형 ABC, DBC와 교점 E에서 밑변 BC에 내린 수선 EH. CH와 EH는 같은 길이로 표시했다.",
+      "solutionImageCaption": "BC=10√3이고 45° 직각삼각형에서 CH=EH이다. 답: 15−5√3.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -1368,7 +1380,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s03.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s03.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원과 접점 D, E, F, 중심 O에서 접점으로 향하는 세 반지름. 같은 꼭짓점의 접선 길이를 색과 눈금으로 묶었다.",
+      "solutionImageCaption": "BE=BD=2, CE=CF=3, AD=AF=OD=1이므로 반지름은 1 cm이다. 넓이 πr²=π. 답: π cm².",
+      "solutionImageSize": "full"
     }
   ]
 };
