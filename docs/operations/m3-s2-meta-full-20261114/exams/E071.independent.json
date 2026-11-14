@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E071",
+  "author": "m3_b",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2final/19_이수중_2학기_기말_중3_기출.js",
+  "sourceGitBlobSha": "c184f7d0c5504c4af8b9f37ca318bf994b697ff6",
+  "targetReviewSha256": "ab48a0ae447fa79a2f5e3bc38374171dcb744b00f0703be11350ff546fbad0f7",
+  "target4slotSha256": "c856ccba41610bfe1ed28b21877ffab49eb94b335fa80b6827258d5d1c3e8e05",
+  "sampledSourcePatchSha256": "2f32919a15be0b382b1e5ad58aa7d057813b534a9b13c0cc65d252cceb877e86",
+  "sampleOrdinals": [
+    11,
+    13,
+    21
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_374c96ba0a65b0ee9e6253cb293a843af73789fa663b7c251c056b08cb35456b",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재 원본의 같은 현 AB/CD, 수선 발 M/N을 확인하고 반현 AM=CN, 반지름 OA=OC 및 직각으로 RHS합동과 OM=ON을 잇는 증명빈칸임을 확인했다. 4칸 goal 증명/결정과 현이등분/합동/대응변 method 및 상등 condition이 맞는다. CC_RIGHT_TRIANGLE_CONGRUENCE_RHS 보강도 확인했으며 정확한 중심거리 동등성 증명 leaf 등록보류를 유지한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_480c8caf4f3d7fc543e4f3ce064cf0a692a0f8b41ccfc814e7f734e740ac4fc0",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재 원본 그림에서 x와110중심각이 보는 호가 다름을 독립 확인했다. 원주각값을 구하려면 지름180의 보각을 먼저 사용해야 하므로 복합 원각관계 TPL 분류가 맞다. 4칸은 원주각/중심각의 목표와 방법을 기록하되 source 정답55와 실제그림에서읽히는35의 충돌을 debts에 정확히 남겼다. 이 표본의 메타 의미 확인은 답/해설 품질PASS가 아니다.",
+      "quotesChecked": 5,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_fbba260038ff8020b67446da6a5c8f3ac381bca2868d435e4f397754fe4ebed0",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "접점 A/B의 직각, OA=OB와 공통빗변OP로 RHS합동을 보이고 접선 AP=BP를 증명하는 원문과 도형을 확인했다. 4칸 goal 각/증명, 수선·합동·대응변 method, 접함 condition을 수용한다. 계산형 TM_TANGENT_LENGTH를 강제로 사용하지 않고 증명용TPL 신규보류와 RHS CC를 기록한 것이 정확하다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 13,
+      "type": "CONTENT_ANSWER_SOLUTION_CONFLICT",
+      "release": "HOLD_SOURCE_QA",
+      "reason": "현재 도형의 목표호와110중심각의 호가 다르며35와기존55 충돌. 답수정없이 인계."
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "9fc7a103cc26caf6c08a7aeff9a7e697db154b7bab1d57dfb19a6255ba0733f9"
+}
