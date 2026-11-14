@@ -606,7 +606,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 원뿔의 축을 포함하는 단면을 오른쪽 직각삼각형으로 떼었다. 빗변은 모선 6 cm, 밑면 쪽 각은 30도, 주황 수직변은 높이 h이고 파랑 가로변은 반지름 r이다.",
+    "solutionImageCaption": "모선은 6 cm이고 높이는 6sin30°=3 cm, 반지름은 6cos30°=3√3 cm이다. 원뿔의 부피는 27π cm³이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -708,7 +712,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 원에 닿는 네 점은 P, Q, R, S이다. 같은 꼭짓점에서 그은 두 접선은 같은 색과 눈금이다. 파랑은 D, 주황은 E에서 그은 두 접선이다.",
+    "solutionImageCaption": "DP=DS=7 cm이고 ER=ES이다. 따라서 DE와 EC를 더하면 ER의 길이가 상쇄되어 14 cm이고, DC=6 cm를 더하면 둘레는 20 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -758,7 +766,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 7 cm, 8 cm, 9 cm 위에 접점 P, Q, R이 있다. 꼭짓점 A의 파랑 한 눈금, B의 주황 두 눈금, C의 초록 세 눈금 쌍이 각각 같다.",
+    "solutionImageCaption": "세 꼭짓점에서 접점까지의 길이를 각각 u, v, w로 두면 u+v=7, u+w=8, v+w=9이다. 따라서 2w=10이고 CR=5 cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -912,7 +924,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "접기에서 수직이등분선이 되는 성질로 중심과 현 사이 거리를 정한 뒤, 피타고라스 정리와 현의 이등분 성질로 AB를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 보라색 원호의 가운데 P를 파란 수직선을 따라 중심 O로 접는다. 접는 선 AB가 그 중점 H를 지나고, 같은 파랑 한 눈금은 OH=HP, 주황 두 눈금은 AH=HB이다.",
+    "solutionImageCaption": "OP=6 cm이며 접어서 P가 O와 겹치므로 OH=HP=3 cm이다. 반현 HB=√(6²−3²)=3√3 cm이므로 AB=6√3 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -965,7 +981,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "현과 중심의 관계 및 피타고라스 정리로 중심-현 거리를 구한 뒤, 삼각형 넓이식으로 원주점 P에서의 최댓값을 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB는 8 cm이고, 중심 O에서 내린 수선은 H에서 현을 반으로 나눈다. P가 현에서 가장 멀 때, 파란 높이 PH가 원의 중심을 지난다.",
+    "solutionImageCaption": "반현 AH=4 cm이므로 직각삼각형 AHO에서 OH=√(6²−4²)=2√5 cm이다. 현에서 가장 먼 점까지의 높이는 PH=6+2√5 cm이므로 최대 넓이는 4(6+2√5) cm²이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

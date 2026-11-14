@@ -720,7 +720,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[조건 정리] 반지름 $OA=8\\,\\mathrm{cm}$, 현 $AB=12\\,\\mathrm{cm}$이고, 중심에서 현에 내린 수선은 현을 이등분한다.\n[풀이] $M$을 중심에서 $AB$에 내린 수선의 발이라 하면 $AM=6$이다. 직각삼각형 $OAM$에서\n$OM^2=OA^2-AM^2=8^2-6^2=28$이다.\n거리이므로 $OM=\\sqrt{28}=2\\sqrt7\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q16.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q16.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB에 내린 수선의 발은 M이다. OA=8 cm, AB=12 cm이고 AM=MB이다.",
+    "solutionImageCaption": "AM=MB=12÷2=6 cm이다. 직각삼각형 OMA에서 OM²=OA²−AM²=8²−6²=28이므로 OM=2√7 cm이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -858,7 +862,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[조건 정리] $OA=5\\,\\mathrm{cm}$, $OM=ON=2\\sqrt3\\,\\mathrm{cm}$이고 $OM\\perp AB$, $ON\\perp CD$이다.\n[풀이] 중심에서 현에 내린 수선은 현을 이등분한다. 직각삼각형 $OMA$에서\n$AM^2=OA^2-OM^2=25-(2\\sqrt3)^2=25-12=13$이므로 $AM=\\sqrt{13}$이다.\n따라서 $AB=2AM=2\\sqrt{13}$이다. 또 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB=CD$이다.\n그러므로 $CD=2\\sqrt{13}\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q19.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q19.png",
+    "solutionImage": "assets/images/22_이수중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름이 5 cm인 원에서 두 현 AB, CD까지의 수선거리 OM=ON=2√3 cm이며, 수선의 발 M,N이 각각 현을 이등분한다.",
+    "solutionImageCaption": "직각삼각형 OMA에서 AM²=OA²−OM²=25−12=13이므로 AB=2√13이다. 중심에서 같은 거리에 있는 현은 길이가 같으므로 CD=2√13 cm이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

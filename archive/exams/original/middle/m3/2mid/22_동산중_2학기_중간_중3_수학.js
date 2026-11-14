@@ -962,7 +962,11 @@ window.questionBank =[
       "projectionReason": "Exact ACTIVE 2015 M3 binding and template were confirmed in the canonical active crosswalk.",
       "problemTypeOwnerPack": "MIDDLE_GEOMETRY",
       "integrationPattern": "NONE"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 대변 a,b를 파랑, 빗변 c를 주황으로 나타낸 모식도.",
+    "solutionImageCaption": "C=90°이므로 c는 빗변이고, tan A=a/b이다. 따라서 c/b라고 한 설명이 틀렸다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1344,7 +1348,11 @@ window.questionBank =[
         "CC_RIGHT_TRIANGLE"
       ],
       "integrationPattern": "INTERDEPENDENT"
-    }
+    },
+    "solutionImage": "assets/images/22_동산중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: AD=DC인 이등변삼각형 ADC와 직각삼각형 DBC에서 30°와 15°를 표시한다.",
+    "solutionImageCaption": "∠ADC=150°이므로 ∠A=15°. BC=d/2, DB=√3d/2, AB=d+√3d/2이다. 따라서 tan15°=BC/AB=2−√3. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

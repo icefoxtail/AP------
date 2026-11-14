@@ -658,7 +658,11 @@ window.questionBank = [
       "subConcept": "두 직각삼각형에서 변의 길이 곱 계산",
       "conditionsUsed": "ABC에서 ∠C=45°와 BC=6을, BCD에서 ∠B=30°와 BC=6을 각각 사용한다.",
       "integrationPatternExplanation": "두 직각삼각형에서 서로 다른 삼각비로 길이를 구해 곱한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통변 BC=6 cm를 사이에 둔 파란색 직각삼각형 ABC와 주황색 직각삼각형 BCD이다. 각도는 각각 45°와 30°이며 x=AB, y=CD이다.",
+    "solutionImageCaption": "ABC에서 x=AB=6sin45°=3√2이다. BCD에서 y=CD=6tan30°=2√3이다. 따라서 xy=3√2·2√3=6√6이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -707,7 +711,11 @@ window.questionBank = [
       "subConcept": "물매를 tan으로 해석",
       "conditionsUsed": "직각삼각형의 높이:밑변=3:10을 tan x와 연결하고 표의 값을 찾는다.",
       "integrationPatternExplanation": "지붕의 기울기를 탄젠트로 나타내어 표의 각과 연결한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 지붕 경사 삼각형 ABC에서 수평 밑변 AB=10, 수직 높이 BC=3이고 B는 직각이다. x는 A에서 지붕과 수평선이 이루는 각이다.",
+    "solutionImageCaption": "물매는 높이/밑변이므로 tan x=BC/AB=3/10=0.30이다. 표에서 tan 17°=0.30이므로 x=17°이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -812,7 +820,11 @@ window.questionBank = [
       "subConcept": "수직 평행이동과 점 대입",
       "conditionsUsed": "위로 k만큼 이동한 y=−4x²+3+k에 점 (1/2,5)를 대입한다.",
       "integrationPatternExplanation": "평행이동 후 함수식에 점을 대입하는 단일 함수 개념 풀이이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭과 모양의 두 아래로 열린 포물선을 그린다. x=1/2에서 원래 그래프의 Q와 이동한 그래프 위의 P(1/2,5)를 점선으로 연결한다.",
+    "solutionImageCaption": "원래 그래프에서 x=1/2일 때 y=-4(1/2)²+3=2이다. 이동한 그래프가 y=5인 P를 지나므로 k=5−2=3이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -916,7 +928,11 @@ window.questionBank = [
       "subConcept": "꼭짓점형의 계수 결정",
       "conditionsUsed": "꼭짓점 (2,6)으로 꼭짓점형을 세우고 점 (0,2)를 대입한다.",
       "integrationPatternExplanation": "꼭짓점형과 한 점 조건으로 계수를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 꼭짓점 V(2,6)과 곡선 위의 점 P(0,2)를 나타낸다.",
+    "solutionImageCaption": "꼭짓점에서 p=2, q=6이고, 점 P(0,2)를 대입하면 2=4a+6이므로 a=-1이다. 따라서 apq=(-1)·2·6=-12이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

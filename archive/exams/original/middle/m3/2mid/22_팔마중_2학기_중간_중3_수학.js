@@ -444,7 +444,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q07.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육면체 속 삼각형 EGC와 같은 이름으로 분리한 평면 직각삼각형 EGC. EG는 파랑, CG는 주황으로 나타냈다.",
+    "solutionImageCaption": "sin x/cos x=tan x=CG/EG=5/(5√2)=√2/2. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -838,7 +842,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q13.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 세 현에 내린 중심 수선은 파랑 한 눈금으로 같다. 수선이 각 현을 이등분하며 같은 주황 두 눈금의 여섯 반현 중 AD는 3 cm이다.",
+    "solutionImageCaption": "중심에서 같은 거리의 현 세 개는 길이가 같고, 각 수선은 현을 반으로 나눈다. AD=3 cm이므로 세 변은 각각 6 cm, 둘레는 18 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -968,7 +976,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 내린 같은 두 수선 OM과 ON은 파랑 한 눈금이며 두 수선 사이 보라 각은 110도이다. 주황 호 AB가 원주각 ACB와 중심각 AOB의 공통 호이다.",
+    "solutionImageCaption": "같은 현 AB와 BC에 대응하는 중심각은 같다. OM과 ON이 각 중심각을 반으로 나누므로 ∠AOB=∠MON=110°이다. 같은 호 AB를 보는 ∠ACB는 55°이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1098,7 +1110,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 D, E, F. 파랑·주황·초록 표식은 각 꼭짓점에서 같은 길이의 접선 쌍을 나타낸다.",
+    "solutionImageCaption": "AD=AF=3 cm, BD=BE=7 cm, CE=CF=6 cm이므로 BC=BE+EC=13 cm. 답: 13, ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1161,7 +1177,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 삼각형 ABC의 내접원과 접점 E,F,G, 두 번째는 B 부근의 P,Q와 PQ의 접점 T를 확대해 나타낸다. 각 접선 길이 쌍을 색과 눈금으로 구분했다.",
+    "solutionImageCaption": "BE=BF=(6+7−9)/2=2 cm이다. PB+PQ+BQ=BE+BF=4 cm. 답: 4 cm, ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1228,7 +1248,11 @@ window.questionBank = [
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png",
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png"
-    ]
+    ],
+    "solutionImage": "assets/images/22_팔마중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD, 네 접점과 C·D의 직각 표시. 같은 꼭짓점에서 그은 접선 길이를 색으로 구분했다.",
+    "solutionImageCaption": "A에서의 접선 길이를 u라 두면 AB=u+4, AD=u+2, BC=6, CD=4이다. (u+4)^2=(4−u)^2+16에서 u=1, 따라서 AB=5. 답: 5, ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -661,7 +661,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q10.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q10.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 탑을 두 삼각형으로 나눴다. 파랑 왼쪽 60도와 주황 오른쪽 45도는 수직 높이 h를 공유하고, 주황 같은 눈금은 AD=DC이다. 관측점 사이는 12 m이다.",
+      "solutionImageCaption": "수평 거리 BD=h/√3이고 DC=h이다. 두 거리 합이 12 m이므로 h=6(3−√3) m이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -727,7 +731,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q11.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q11.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 파랑 한 눈금인 두 8 cm 변이 이루는 주황 꼭지각은 30도이다. 아래 두 밑각이 같은 위치에 파랑 호가 있다.",
+      "solutionImageCaption": "두 밑각이 각각 75°이므로 꼭지각은 30°이다. 넓이는 (1/2)·8·8·sin30°=16 cm². 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -793,7 +801,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q12.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q12.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형에서 AB=4 cm이며 높이는 A에서 아래 선분으로 내린 수선 h이다. 아래 변의 중점 M부터 C까지가 파란 삼각형 밑변이다. 주어진 각 D는 60도이다.",
+      "solutionImageCaption": "MC=6/2=3 cm이다. 높이 h=4sin60°=2√3 cm이므로 삼각형 넓이는 (1/2)·3·2√3=3√3 cm²이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -924,7 +936,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q14.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q14.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 중심 O에서 길이 16 cm인 현 AB로 수선을 내려 H를 잡는다. 파랑 눈금은 현의 같은 두 반쪽이다. 주황 삼각형에서 중심거리 6 cm와 반지름 x를 읽는다.",
+      "solutionImageCaption": "현 절반은 8 cm이고 직각변은 6 cm와 8 cm이다. 빗변인 반지름은 √(6²+8²)=10 cm이고 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
