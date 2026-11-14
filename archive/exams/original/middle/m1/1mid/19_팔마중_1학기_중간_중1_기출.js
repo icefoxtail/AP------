@@ -143,9 +143,9 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {

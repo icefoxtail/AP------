@@ -1,0 +1,2226 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "26b69bd2751802229408e1693db4638986260b58",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "META_B",
+    "at": "2026-11-14T08:23:24.686197+00:00"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": 1,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c7e3d89f36cb24a9233c19d567beb98f5d3fe3e3453e2378085182d76fc2962b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "278f008af6a0b08a6fa325641d5ebf098285f6127d53a5d36250f842ca03396a"
+        }
+      ],
+      "sourceStemSha256": "e70096587635664ac3cc857fd195330f19b2e2bfb45e761b43ea02ffbf72a7e0",
+      "fingerprintComparison": {
+        "registeredQbody": "c7e3d89f36cb24a9233c19d567beb98f5d3fe3e3453e2378085182d76fc2962b",
+        "registeredQfull": "38accfc006550e1ee619855fa0e68c1fb50a1335aa444d416b7f5d1f938656c3",
+        "currentQbody": "c7e3d89f36cb24a9233c19d567beb98f5d3fe3e3453e2378085182d76fc2962b",
+        "currentQfull": "278f008af6a0b08a6fa325641d5ebf098285f6127d53a5d36250f842ca03396a",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "180을 소인수분해"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$2^a\\times b^2\\times c$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a\\times b-c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$180=2^2\\times3^2\\times5$",
+            "evidenceType": "IMPLIED",
+            "justification": "자연수를 소수의 거듭제곱 곱으로 나타낸 단계다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a\\times b-c=2\\times3-5=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "해설에서 구한 세 값을 요구식에 실제 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a$, $b$, $c$"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설은 소인수분해값과 문자 대응을 직접 제시한다. 기존 TPL은 정확하나 PT 상위 정의는 진술 참거짓으로 좁게 서술되어 정본 범위 점검을 남긴다.",
+        "condition": "a,b,c의 자연수 조건과 소인수분해의 밑이 소수라는 의미를 함께 읽는다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": 2,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b6be3350e666712f66d89a4302c835525ba42c81c80a6b8ce8ec861d4f849b6b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "139ba5a8d9e6657f04e9f222c93ab57602f7b5cfadfc8a626cb588d519d84f84"
+        }
+      ],
+      "sourceStemSha256": "b0ffc9e119f16e718ffd5c0e9cdbd9d383fb310acaa0fc5d5bf99d1f2b17b677",
+      "fingerprintComparison": {
+        "registeredQbody": "b6be3350e666712f66d89a4302c835525ba42c81c80a6b8ce8ec861d4f849b6b",
+        "registeredQfull": "b619dd2f11521fdf016ffdfb2c6fa1ee6998d1745c816d73b02ce7870694ba0a",
+        "currentQbody": "b6be3350e666712f66d89a4302c835525ba42c81c80a6b8ce8ec861d4f849b6b",
+        "currentQfull": "139ba5a8d9e6657f04e9f222c93ab57602f7b5cfadfc8a626cb588d519d84f84",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "$a★b=3\\times a-b$"
+          },
+          {
+            "term": "정의",
+            "src": "stem",
+            "quote": "라 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$2★3$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$2★3=3\\times2-3$",
+            "evidenceType": "IMPLIED",
+            "justification": "정의의 a,b에 2와3을 대응시켜 대입한 실제 해설 단계다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "기존 비표준 연산 정의 PT/TPL과 실제 발문·해설이 일치한다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": 3,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4ef8933a81c73509af4f4594f9f6c3e5129b2f5d6ae9b12955fde6e6a268cebe"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20cfc8f61363e47426c4b7753418fa6937bdda9dbfbac04b24ba472822a2ceae"
+        }
+      ],
+      "sourceStemSha256": "38b2f05a2baf4572af9b0fe9d6cb433de3d90c30e77f1517aa24ffcbd3caeedb",
+      "fingerprintComparison": {
+        "registeredQbody": "4ef8933a81c73509af4f4594f9f6c3e5129b2f5d6ae9b12955fde6e6a268cebe",
+        "registeredQfull": "2f1b4f838c620fd4d0efb40a007454da7ba5a4e392889b77acdcf6f640acdb79",
+        "currentQbody": "4ef8933a81c73509af4f4594f9f6c3e5129b2f5d6ae9b12955fde6e6a268cebe",
+        "currentQfull": "20cfc8f61363e47426c4b7753418fa6937bdda9dbfbac04b24ba472822a2ceae",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "주기",
+            "src": "stem",
+            "quote": "20분마다"
+          },
+          {
+            "term": "공배수",
+            "src": "stem",
+            "quote": "동시에 출발하는 시각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "바로 다음에 동시에 출발하는 시각"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "$\\operatorname{lcm}(20,35,10)$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 주기를 모두 만족하는 가장 짧은 재출발 간격으로 lcm을 사용했다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "오전 5시에 세 열차가 동시에 출발"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "주기·배열·묶음 RPM leaf가 직접 대응한다. 기존 PT/TPL의 정육면체·출석횟수 한정 서술은 이 시각 문제와 구별한다.",
+        "condition": "세 주기 모두의 공통 출발이며 첫 동시출발은 오전5시다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": 4,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "992f0008e5aa61fffe208cba1744adcaa46fa6a0917761fca0cca207c6347f22"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "14b7591585831304af10c7b523a6dcc921c140cb0b24babd5d3474ea79379570"
+        }
+      ],
+      "sourceStemSha256": "ccb8e81d867f2e90e09f3c5c64e90451c333110bbb863b48a496f4a1276ae0ac",
+      "fingerprintComparison": {
+        "registeredQbody": "992f0008e5aa61fffe208cba1744adcaa46fa6a0917761fca0cca207c6347f22",
+        "registeredQfull": "1cc9acf1fbe72da3fba76d3744ba711a3cb179d1863ee03ec34aa407726b1ea6",
+        "currentQbody": "992f0008e5aa61fffe208cba1744adcaa46fa6a0917761fca0cca207c6347f22",
+        "currentQfull": "14b7591585831304af10c7b523a6dcc921c140cb0b24babd5d3474ea79379570",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $100\\times□$"
+          },
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "약수가 27개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "들어갈 수 있는 자연수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$100\\times9=2^2\\times3^2\\times5^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "약수 개수 계산을 위해 실제 소인수분해된 곱을 사용한다."
+          },
+          {
+            "term": "약수의개수공식",
+            "src": "solution",
+            "quote": "$(2+1)(2+1)(2+1)=27$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 소인수 지수에 각각1을 더한 수의 곱으로 양의 약수 개수를 구했다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수는"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "약수가 27개"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설은 9를 넣은 소인수분해와 지수공식을 명시한다. 약수3개인 수를 소수제곱으로 세는 기존 PT/TPL과는 다른 의미이다.",
+        "condition": "빈칸은 자연수이고 곱의 양의 약수 개수는27이어야 한다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:26:00.169Z",
+        "result": "ACCEPTED_DIFFICULTY_CORRECTION_WITH_TYPE_DEBT",
+        "notes": "원문과 현재해설을 직접 읽었다. 선지의 수를 곱해 소인수 지수로 약수27개를 확인하는 표준 직접 응용이며, 새로운 인수 조합의 완전탐색을 요구하지 않는다. bucket3→2/B23을 수용한다. 기존 PT/TPL의 약수3개·소수제곱 정의는 이 문항과 달라 후보로만 보존한다. 4칸의 소인수분해·약수개수공식 인용은 실제해설과 맞는다."
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": 5,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c6091f932099537653e92e36cfe589a37a6ba02d4ed432c9faa0d9f051418c9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "120756d651c44dacb9b2ae31b0a6bb0510f2de39dd4e3f765cc06d1ba9cc256f"
+        }
+      ],
+      "sourceStemSha256": "3381e5ce6606f0b1c8851c506a7d9e23b703c40981c89b42ff7975e4b26a5cd8",
+      "fingerprintComparison": {
+        "registeredQbody": "8c6091f932099537653e92e36cfe589a37a6ba02d4ed432c9faa0d9f051418c9",
+        "registeredQfull": "850f26cf49b3f6704bf3511ec2faf99fd945d72b3a86d385e0a1881d066d219b",
+        "currentQbody": "8c6091f932099537653e92e36cfe589a37a6ba02d4ed432c9faa0d9f051418c9",
+        "currentQfull": "120756d651c44dacb9b2ae31b0a6bb0510f2de39dd4e3f765cc06d1ba9cc256f",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "분모가 75인 기약분수"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 중에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "기약분수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$75=3\\times5^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 소인수를 밝혀 제외할 배수를 정한다."
+          },
+          {
+            "term": "포함배제의원리",
+            "src": "solution",
+            "quote": "$24+14-4=34$(개)",
+            "evidenceType": "IMPLIED",
+            "justification": "3의 배수와5의 배수에서 중복으로 센15의 배수를 한 번 빼는 실제 과정이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "0보다 크고 1보다 작은"
+          },
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "$75$와 서로소인 수"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "해설에 소인수분해와 중복되는15배수의 보정이 모두 나타난다. 서로소 개수 PT/TPL의 핵심은 일치한다.",
+        "condition": "분자는1~74의 자연수이며75와 서로소여야 한다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": 6,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87d8a4152cb6b2de0592c9f5934d0ab79d4d5a283b1ac772194301ce78929857"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c068361d5bb7bc20629f5fdcf66dbd7a0342393328a90be1fd4f637e5110ea9b"
+        }
+      ],
+      "sourceStemSha256": "1f606258143ba2812619030259f6f2e81eab9100207eccd54b89343eaeb3a9b6",
+      "fingerprintComparison": {
+        "registeredQbody": "87d8a4152cb6b2de0592c9f5934d0ab79d4d5a283b1ac772194301ce78929857",
+        "registeredQfull": "fab2cefc5892b077bb70fc26a7d5b6098adf0da1e92e49790342818ce70cf2db",
+        "currentQbody": "87d8a4152cb6b2de0592c9f5934d0ab79d4d5a283b1ac772194301ce78929857",
+        "currentQfull": "c068361d5bb7bc20629f5fdcf66dbd7a0342393328a90be1fd4f637e5110ea9b",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "$A=2^2\\times3\\times5$"
+          },
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수를 $a$"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수를 $b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\dfrac{b}{a}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수지수선택",
+            "src": "solution",
+            "quote": "최대공약수는 각 소인수의 작은 지수를 취한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설은 공통 소인수의 최소 지수와 전체 소인수의 최대 지수를 각각 선택한다."
+          },
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "최소공배수는 큰 지수를 취한다.",
+            "evidenceType": "NAMED",
+            "justification": "소인수별 최대 지수 선택이라는 최소공배수 계산 방법이 명시되어 있다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설의 두 지수 선택과 비 계산이 MIN_MAX_RATIO 템플릿에 직접 대응한다. 최소공배수 leaf도 함께 쓰이는 보조 범위이다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": 7,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "74204f1228612659622f096315f19c963f672f6f58a43ae121333957d37a1388"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "79e403949154736b6a27a7a305bf120987e364affebf9f8de99f2e6897908042"
+        }
+      ],
+      "sourceStemSha256": "2b5d383c7731c6c233652ba09c0887b69ac242b8356544bc0eabf315ccee5ede",
+      "fingerprintComparison": {
+        "registeredQbody": "74204f1228612659622f096315f19c963f672f6f58a43ae121333957d37a1388",
+        "registeredQfull": "989cae149d9ab420e06597c9121d21cb7c7cfd6d027fd5de03c6f1ac4e71889a",
+        "currentQbody": "74204f1228612659622f096315f19c963f672f6f58a43ae121333957d37a1388",
+        "currentQfull": "79e403949154736b6a27a7a305bf120987e364affebf9f8de99f2e6897908042",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "서로소",
+            "src": "choices",
+            "quote": "8과 15는 서로소이다."
+          },
+          {
+            "term": "소수",
+            "src": "choices",
+            "quote": "가장 작은 소수는 1"
+          },
+          {
+            "term": "절댓값",
+            "src": "choices",
+            "quote": "절댓값이 큰 수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "옳은 것을 고르면"
+          }
+        ],
+        "method": [
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "$\\gcd(8,15)=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "해설이 두 수의 gcd를 계산해1임을 사용한다."
+          },
+          {
+            "term": "서로소판정",
+            "src": "solution",
+            "quote": "$8$과 $15$는 서로소이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "최대공약수가1이면 서로소라는 정의를 적용한 실제 결론이다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "선택지에는 소수·거듭제곱·절댓값·약수의 여러 개념이 섞인다. 현재 해설은 서로소 진술 하나를 입증하므로 실제 방법은 그 범위로 기록한다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": 8,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e9a81b5f9c1840135a2976f5948c50be46b2110c5a527a5c371a87a7dba89d1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3c4e668d08170edff73642ef754e054fb127f391aaeec767f98661b6e1b58e13"
+        }
+      ],
+      "sourceStemSha256": "d6887a80ac3a031dfbf581b225c444ebdfff95ae1e530de7b17f36d095307711",
+      "fingerprintComparison": {
+        "registeredQbody": "e9a81b5f9c1840135a2976f5948c50be46b2110c5a527a5c371a87a7dba89d1c",
+        "registeredQfull": "99dd83970fa12f6052e67f214cb8bcf8d108bf581d9c6d2aa15b666df475b6bc",
+        "currentQbody": "e9a81b5f9c1840135a2976f5948c50be46b2110c5a527a5c371a87a7dba89d1c",
+        "currentQfull": "3c4e668d08170edff73642ef754e054fb127f391aaeec767f98661b6e1b58e13",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "choices",
+            "quote": "0은 유리수이다."
+          },
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "가장 작은 정수는 0이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "옳지 않은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "정수에는 가장 작은 수가 없다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정수 집합의 아래로 끝없음과 유리수의0 포함 정의를 직접 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양화",
+            "src": "choices",
+            "quote": "모든 자연수는 유리수이다."
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "정답2개를 선택하는 다중 선택 형식이다.",
+      "reasons": {
+        "classification": "현재 해설의 결정 근거는 절댓값이 아니라 수 체계이다. 기존 절댓값 중심 TPL과 의미가 다르다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": 9,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea0d129d64ff905cd312051136726400f94c25250169f6cac9c9ae0112601779"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0bf2a77d80adb9336cbcb8bac0c33797e36fe62facbe6e124336459489dd22fd"
+        }
+      ],
+      "sourceStemSha256": "ae61ade9a6370bb6dc5204e7efac4beb59e7c43cf3dcb76666d29bfa7a7231ff",
+      "fingerprintComparison": {
+        "registeredQbody": "ea0d129d64ff905cd312051136726400f94c25250169f6cac9c9ae0112601779",
+        "registeredQfull": "41825cbd7327a6d02c12a7ec7644739fd3bb95a1daea1fb172b417867dd0e102",
+        "currentQbody": "ea0d129d64ff905cd312051136726400f94c25250169f6cac9c9ae0112601779",
+        "currentQfull": "0bf2a77d80adb9336cbcb8bac0c33797e36fe62facbe6e124336459489dd22fd",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-4$ 이상이고 $\\dfrac{10}{3}$보다 크지 않을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $x$의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$-4,-3,-2,-1,0,1,2,3$",
+            "evidenceType": "IMPLIED",
+            "justification": "해설이 허용된 모든 정수를 실제로 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "이상이고"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "구간은 비대칭이며 양끝의 포함 여부가 주어져 있다. 기존 TPL의 반대부호 동일절댓값·열린구간 조건과 다르다.",
+        "condition": "x는정수이며 -4이상10/3이하; 양끝 포함을 보존한다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": 10,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "03043fe24396ad82e4673250efea7c43238f014ded4586cf1356c6a308644568"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a68b8d86ff23ea7bdda372e87af9877da44f23048bcd5251a1e616e9dfad0a23"
+        }
+      ],
+      "sourceStemSha256": "c483dc05782438099ac3ef9ded8aa013b15dc38ea785f7d3f95a8493eb0a0583",
+      "fingerprintComparison": {
+        "registeredQbody": "03043fe24396ad82e4673250efea7c43238f014ded4586cf1356c6a308644568",
+        "registeredQfull": "0741a46c6b7358602369822fae2d55766111f84e70551a97559c7967e0448187",
+        "currentQbody": "03043fe24396ad82e4673250efea7c43238f014ded4586cf1356c6a308644568",
+        "currentQfull": "a68b8d86ff23ea7bdda372e87af9877da44f23048bcd5251a1e616e9dfad0a23",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "$(-\\dfrac{3}{5})\\div(+\\dfrac{3}{10})$"
+          },
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "계산 결과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "계산 결과가 나머지 넷과 다른"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "각 값을 계산하면",
+            "evidenceType": "IMPLIED",
+            "justification": "이 문항의 학습 목표 자체가 유리수 곱셈·나눗셈 계산이다. 해설은각선지 결과를 실제 제시한다."
+          },
+          {
+            "term": "계산값의동일성비교",
+            "src": "solution",
+            "quote": "나머지 넷과 다른 것은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 계산 결과가 같은지 다른지를 비교하여 다른 하나를 고른 실제 결론이다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설은 다섯 결과를 직접 나열한다. 중간 역수변환 단계가 없으므로 별도 method로 역수를 추정해 넣지 않는다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": 11,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c2b0f7893ea885ff7e1f38ebcea8df9ac2948261dd6b0085d73c83b1c3d68966"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2efe01ffdaac42955188c1cf5bae542099297c0a390c0db7ed41cc9c9683d237"
+        }
+      ],
+      "sourceStemSha256": "57cf56d7b4c5c654e3ac67e0fe7b7f7b24d528d4b230e9dbe521c70bb392a9a3",
+      "fingerprintComparison": {
+        "registeredQbody": "c2b0f7893ea885ff7e1f38ebcea8df9ac2948261dd6b0085d73c83b1c3d68966",
+        "registeredQfull": "6d975cff6d1382536cbbf7cc32a460807d39e587944ddeb55688f64ec5745404",
+        "currentQbody": "c2b0f7893ea885ff7e1f38ebcea8df9ac2948261dd6b0085d73c83b1c3d68966",
+        "currentQfull": "2efe01ffdaac42955188c1cf5bae542099297c0a390c0db7ed41cc9c9683d237",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-2)^4"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$\\dfrac{1}{2}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$=\\dfrac12-13$",
+            "evidenceType": "IMPLIED",
+            "justification": "이 문항은 순수 유리수 혼합 계산 자체를 요구한다."
+          },
+          {
+            "term": "연산의순서",
+            "src": "solution",
+            "quote": "$=\\dfrac12-\\left[(16-6)+3\\right]$",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱과 나눗셈을 먼저 계산한 뒤 괄호 안을 정리한 실제 단계다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "PRODUCT_QUOTIENT의 소수 공통인수 골격은 나타나지 않는다. 혼합 순서 템플릿을 우선 재사용 검토한다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": 12,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa04d96139bee4da116e32a3d1522c21b780ffb9c88a2d0612b8340d502e5277"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8b14afd19621bb5d1b1fcc93b23773e9686fccf7a2f8bd89d1b4bb2b53801f01"
+        }
+      ],
+      "sourceStemSha256": "0ecd54dbb59a2e7f17dd5b5eb113aaa1255d2bfeac8c116bc11256bb25ca5079",
+      "fingerprintComparison": {
+        "registeredQbody": "fa04d96139bee4da116e32a3d1522c21b780ffb9c88a2d0612b8340d502e5277",
+        "registeredQfull": "69e87c9ce94c7af0fc6605a7d3061780dcfa6d0f3dbaf544186ae7b441c25f48",
+        "currentQbody": "fa04d96139bee4da116e32a3d1522c21b780ffb9c88a2d0612b8340d502e5277",
+        "currentQfull": "8b14afd19621bb5d1b1fcc93b23773e9686fccf7a2f8bd89d1b4bb2b53801f01",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "4개의 유리수"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$-2$, $-\\dfrac{3}{2}$, $+\\dfrac{1}{3}$, $-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$(-2)\\left(-\\dfrac32\\right)\\left(\\dfrac13\\right)=1$",
+            "evidenceType": "IMPLIED",
+            "justification": "해설은 이 조합을 시작으로 세 수를 고르는 네 조합을 각각 계산한다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 값은 $2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "열거한 곱들 중 최댓값을 비교하여 선택한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "세 수를 뽑아"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설이 네 가지 조합을 실제 열거한다. CASE_BRANCH는CC유무와 무관하게 실제 경우분류에 근거하여 유지한다.",
+        "condition": "네 수 중 세 수를 뽑는 제한이며 반복 선택을 새로 허용하지 않는다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": 13,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0b2567f599d17465b91dd19d70b9d48692891e11fde419bed8a14846faa74ca4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e083db06a47cf426825c99c15d54467fbbc3e64bcd27f1b0275ad35974a0262"
+        }
+      ],
+      "sourceStemSha256": "7c4b79667fdc3218269ee9c277536cc67f42ad1f058fd6aa90287a3b714262c7",
+      "fingerprintComparison": {
+        "registeredQbody": "0b2567f599d17465b91dd19d70b9d48692891e11fde419bed8a14846faa74ca4",
+        "registeredQfull": "6648051f760f6d192b3cdd379e5d056a3456927e9af9f0933f77c55c652b36ea",
+        "currentQbody": "0b2567f599d17465b91dd19d70b9d48692891e11fde419bed8a14846faa74ca4",
+        "currentQfull": "9e083db06a47cf426825c99c15d54467fbbc3e64bcd27f1b0275ad35974a0262",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$6-(-2)-(-1)^3+(-6)$"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "(-6)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$=6+2+1-6$",
+            "evidenceType": "IMPLIED",
+            "justification": "수의 사칙계산 자체가 학습 목표이다."
+          },
+          {
+            "term": "연산의순서",
+            "src": "solution",
+            "quote": "$=6+2-(-1)-6$",
+            "evidenceType": "IMPLIED",
+            "justification": "거듭제곱을 먼저 처리하고 덧셈·뺄셈으로 정리한 실제 순서다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재해설과 MIXED_ORDER 정의가 일치하며 새로운 조건 분기는 없다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": 14,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c205c26a3ae454bf8917f3809c240c9945dc35ae6769ee638b14bab4329086c8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "780e93c9d796d3f92efc3515bd609256b09877a1a869e0c5a4c44e3b79a68f97"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-file-bytes-v1",
+          "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q14.png",
+          "value": "6d80f1dc980d99dc1da919bf3e049a56c777c1075c6bfa748b9f86d439d568d9"
+        }
+      ],
+      "sourceStemSha256": "c156e620b5b3c6695f77d91c7104ae33eff34a3bb54ea8803185735914190c67",
+      "fingerprintComparison": {
+        "registeredQbody": "c205c26a3ae454bf8917f3809c240c9945dc35ae6769ee638b14bab4329086c8",
+        "registeredQfull": "13d65e0bde14ce231b0b21d505281edf261bf49b791f7fb6933cc13dbef4e545",
+        "currentQbody": "c205c26a3ae454bf8917f3809c240c9945dc35ae6769ee638b14bab4329086c8",
+        "currentQfull": "780e93c9d796d3f92efc3515bd609256b09877a1a869e0c5a4c44e3b79a68f97",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$-4$에서 $4$까지의 정수"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "가로, 세로, 대각선의 합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "㉠의 위치에 들어갈 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "불변량",
+            "src": "solution",
+            "quote": "마방진의 한 줄의 합도 $0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체정수합에서 각 줄이 공유하는 일정한 합0을 구했다."
+          },
+          {
+            "term": "등식의성질",
+            "src": "solution",
+            "quote": "서로 마주 보는 두 칸의 합은 $0$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "해설이 합0과주어진한칸값으로나머지칸값을결정하는 덧셈등식을 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$-4$에서 $4$까지"
+          },
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "한 번씩 사용"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "합이 모두 같은"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "q14그림의중앙0·왼아래+1·오른위㉠을 실제로 확인했다. 해설이 사용하는 합의 보존관계를4칸에 기록하고 RETIRED 소재태그 마방진은 사용하지 않는다.",
+        "condition": "정수-4~4를각각한번만사용하며모든행·열·대각선합이같다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": [
+        {
+          "path": "archive/assets/images/19_팔마중_1학기_중간_중1_기출/q14.png",
+          "status": "VISUALLY_READ",
+          "observed": "3×3;첫행왼쪽−3,첫행오른쪽㉠;중간행2,0,−2;맨왼쪽아래+1",
+          "sha256": "6d80f1dc980d99dc1da919bf3e049a56c777c1075c6bfa748b9f86d439d568d9"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": 15,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8b86c3bd53b1b878f25008a162767e0372b5b55a019d74c74f856d56cfc83335"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "513cfc85b56cb9f5c8bf6a34eeae812a89b8c58b280c95eb00743c9b65dbf861"
+        }
+      ],
+      "sourceStemSha256": "0c068a6a96d214b7235e9795c9878969b15704f30a8cba2fa2b79a760d4828f4",
+      "fingerprintComparison": {
+        "registeredQbody": "8b86c3bd53b1b878f25008a162767e0372b5b55a019d74c74f856d56cfc83335",
+        "registeredQfull": "83b2e59772c01f412d82f195ebf97546021369651fb9348005c6babbbc0f22e3",
+        "currentQbody": "8b86c3bd53b1b878f25008a162767e0372b5b55a019d74c74f856d56cfc83335",
+        "currentQfull": "513cfc85b56cb9f5c8bf6a34eeae812a89b8c58b280c95eb00743c9b65dbf861",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "어떤 정수"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "음수가 되고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$x<-\\dfrac{11}{5}$",
+            "evidenceType": "IMPLIED",
+            "justification": "x+11/5<0에양변동일수의가감으로상한을얻고다른식에서하한을얻는다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$-5,-4,-3$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 열린구간을 만족하는 정수를 실제로열거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "음수가 되고"
+          },
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수가 된다"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재 해설은 두 부등식에서 열린구간을 만든다. 절댓값으로대칭끝점을정하는기존TPL과는 다른 경계도출이다.",
+        "condition": "x는정수이고 두더한값의음수/양수조건을모두만족;이를열린구간으로통합한다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": 16,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ce899ae2a827317176a8fbe2270eba37d27ece13967432c49fd3537957ed2683"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "480fcc87f13410e8ea088a7b81474d2c783c8c18e4bbc22f12bb726d3fbc1ac0"
+        }
+      ],
+      "sourceStemSha256": "91e77136f18f60df437461600369ab92d1b3870d6197c65fb40ef096a2ab4fe3",
+      "fingerprintComparison": {
+        "registeredQbody": "ce899ae2a827317176a8fbe2270eba37d27ece13967432c49fd3537957ed2683",
+        "registeredQfull": "d3bdde430ede77550fa7062967d38844f7a5c225041a0ad81cf0fa6ef2f40935",
+        "currentQbody": "ce899ae2a827317176a8fbe2270eba37d27ece13967432c49fd3537957ed2683",
+        "currentQfull": "480fcc87f13410e8ea088a7b81474d2c783c8c18e4bbc22f12bb726d3fbc1ac0",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "문자를 사용한 식"
+          },
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "$(x+y)\\div(-2)\\times c=-\\dfrac{c(x+y)}{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "표현이 옳은"
+          }
+        ],
+        "method": [
+          {
+            "term": "문자식의연산기호생략",
+            "src": "solution",
+            "quote": "$=-\\dfrac{c(x+y)}{2}$",
+            "evidenceType": "IMPLIED",
+            "justification": "현재해설이괄호전체의나눗셈을분모로표시하고c의곱셈기호를생략했다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재해설은선택지⑤의기호변환을실제로전개한다.기존SYMBOLIC_VALIDITY TPL과일치한다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": 17,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5901a74fd44017286d544b0ca01402288308b20faccc25698d20fc34144c645e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cca987320c43c06f09955b788b9f5ae93729d323204580c9c48e490fe26080db"
+        }
+      ],
+      "sourceStemSha256": "03c51165e731a3f77472d5307e452f1b9d185d0dba1f3fe7069452fee21dce4b",
+      "fingerprintComparison": {
+        "registeredQbody": "5901a74fd44017286d544b0ca01402288308b20faccc25698d20fc34144c645e",
+        "registeredQfull": "582d4fe7fa4162f340793d119d38d1f9e34c784ab1ee831be56b1d30b3780cf6",
+        "currentQbody": "5901a74fd44017286d544b0ca01402288308b20faccc25698d20fc34144c645e",
+        "currentQfull": "cca987320c43c06f09955b788b9f5ae93729d323204580c9c48e490fe26080db",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$(-1)+(-1)^2+(-1)^3"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "+\\cdots+"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "묶음",
+            "src": "solution",
+            "quote": "두 항씩 묶으면",
+            "evidenceType": "NAMED",
+            "justification": "해설이두항씩묶는방법을직접이름붙여사용한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$(-1)^{1997}=-1$",
+            "evidenceType": "IMPLIED",
+            "justification": "홀수지수인마지막항의부호를적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재해설에두항씩묶는과정과홀수지수마지막항이명시된다. 소수를분수로바꾸는SIGNED_SUM TPL과는 다르다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:26:00.169Z",
+        "result": "ACCEPTED_WITH_TEMPLATE_DEBT",
+        "notes": "현재해설은 (-1)의 거듭제곱을 두 항씩 묶어 소거하고 마지막 홀수 지수 항을 따로 처리한다. method 묶음·거듭제곱이 이 결정 단계를 포괄한다. 소수→분수 변환을 전제로 한 기존 SIGNED_SUM 정의와의 불일치를 확인했으며 신규 TPL 확정은 하지 않는다."
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": 18,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2ae3a7a3c5a9360825f0d52c1ccc3a23364db1f8b48bccdf986ad9278a7535f8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cbe949e6f5a99e1786a8001a7a6118c31af223610e650beb2b602b100f426a5c"
+        }
+      ],
+      "sourceStemSha256": "cdca3710c3783069b2b9bc94a3a2f54080271afd64220eb73b321525ccc86662",
+      "fingerprintComparison": {
+        "registeredQbody": "2ae3a7a3c5a9360825f0d52c1ccc3a23364db1f8b48bccdf986ad9278a7535f8",
+        "registeredQfull": "a949802ef2736570d424212665bd803e784e49d1c098a0a4ac78ad195bf7053d",
+        "currentQbody": "2ae3a7a3c5a9360825f0d52c1ccc3a23364db1f8b48bccdf986ad9278a7535f8",
+        "currentQfull": "cbe949e6f5a99e1786a8001a7a6118c31af223610e650beb2b602b100f426a5c",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "소인수분해한 식"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$1\\times2\\times3\\times\\cdots\\times28\\times29\\times30$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "지수",
+            "src": "stem",
+            "quote": "5의 지수를 $a$, 7의 지수를 $b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$5,\\ 10,\\ 15,\\ 20,\\ 25,\\ 30$",
+            "evidenceType": "IMPLIED",
+            "justification": "소인수5를제공하는배수들을실제로열거했다."
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$25=5^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "25가소인수5두개를제공함을소인수분해로확인해중복을추가했다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "해설은5배수와7배수를열거하고25안의두번째5를추가한다.연속곱소인수지수PT/TPL과정확히일치한다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": 19,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a9b1d87883b4aad5ceb1d5e0e1dba6a26ccdbf5bc8d12ff2b563f481dab1fc0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5c39ee12f2e108c5355d03a64d3c714aba35c17d4b0f7594f066f7e72c253df"
+        }
+      ],
+      "sourceStemSha256": "91b871cfda260f516dc6709c6a1ec2c37bcf2a4ab05632e25a0201de46d3b405",
+      "fingerprintComparison": {
+        "registeredQbody": "1a9b1d87883b4aad5ceb1d5e0e1dba6a26ccdbf5bc8d12ff2b563f481dab1fc0",
+        "registeredQfull": "b98102f5dc8db6aa7df8aeb0a103b536546f8b18f2916de4304505a4f62fd11c",
+        "currentQbody": "1a9b1d87883b4aad5ceb1d5e0e1dba6a26ccdbf5bc8d12ff2b563f481dab1fc0",
+        "currentQfull": "e5c39ee12f2e108c5355d03a64d3c714aba35c17d4b0f7594f066f7e72c253df",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수는 6"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수는 36"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A$, $B$의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$A=6m,\\quad B=6n$",
+            "evidenceType": "IMPLIED",
+            "justification": "최대공약수로공통인수를분리해새자연수m,n으로나타낸실제단계다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$mn=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱6의자연수인수쌍을두자리원수조건과서로소조건으로제한하여m,n을결정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자리의 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "두 자리"
+          },
+          {
+            "term": "서로소",
+            "src": "solution",
+            "quote": "$\\gcd(m,n)=1$"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "해설은최대공약수·최소공배수를같이사용해두자리조건으로인수쌍을정한다.기존THIRD_CANDIDATE TPL과실제골격이일치한다.",
+        "condition": "원래A,B가둘다두자리자연수이고gcd/lcm값이동시에고정되어있다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": 20,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "055f9faa830ce8794d25b106105dcf2cd03a5c142b4559df469bbf8ce4776085"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "48e1967c171c5bdc2e7f511cbd25a77295551ee5562ea309b65ea7243320fb05"
+        }
+      ],
+      "sourceStemSha256": "657d5e03ebc86d1ba82c5d31fc0dfa2b16e17c3bd1556eadb6920b5b5b5513e4",
+      "fingerprintComparison": {
+        "registeredQbody": "055f9faa830ce8794d25b106105dcf2cd03a5c142b4559df469bbf8ce4776085",
+        "registeredQfull": "6d84d4c1adae937459f7ff6282351340f6ae94f157b266d8526f3f56b892066a",
+        "currentQbody": "055f9faa830ce8794d25b106105dcf2cd03a5c142b4559df469bbf8ce4776085",
+        "currentQfull": "48e1967c171c5bdc2e7f511cbd25a77295551ee5562ea309b65ea7243320fb05",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$8x-11y$"
+          },
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "$x=-3$, $y=-2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$8x-11y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$=8(-3)-11(-2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진두음수를각문자자리에실제로대입했다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "새로정의한기호가없으므로기존PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE의비표준연산골격과는의미가다르다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": 21,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5cb2546f676be9c163b2e5725a7d4c20a9a7e80cebf967f87a885bb1f0a70f7b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d095050da6ca414d88bcb76f73d135414479b3eb395e63e400d47d353fb6a55e"
+        }
+      ],
+      "sourceStemSha256": "e618b70f491beeb936c5ec6aa97cd61d40d75ba3543a3f39253d5ec8e54ccbc3",
+      "fingerprintComparison": {
+        "registeredQbody": "5cb2546f676be9c163b2e5725a7d4c20a9a7e80cebf967f87a885bb1f0a70f7b",
+        "registeredQfull": "033605df2698c07cfda96819a564d9e3bff1e082e412f557d5b537be7088634d",
+        "currentQbody": "5cb2546f676be9c163b2e5725a7d4c20a9a7e80cebf967f87a885bb1f0a70f7b",
+        "currentQfull": "d095050da6ca414d88bcb76f73d135414479b3eb395e63e400d47d353fb6a55e",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "역수",
+            "src": "stem",
+            "quote": "$a$의 역수를 $-\\dfrac{4}{3}$"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$\\dfrac{3}{8}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$a$의 값을 구하여라"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "$a$의 역수가 $-\\dfrac43$이므로",
+            "evidenceType": "NAMED",
+            "justification": "해설이역수관계를직접명명하여수의값을복원한다."
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$=-\\dfrac9{12}+\\dfrac{32}{12}$",
+            "evidenceType": "IMPLIED",
+            "justification": "분모4와3을공통분모12로변환한실제합계산이다."
+          }
+        ],
+        "condition": []
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "실제해설의역수·통분단계가RECIPROCAL_RELATION TPL과정확히일치한다.주분류RPMleaf에는역수조건직접복원항목이없다.",
+        "condition": "추가 제한 없음",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": 22,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "46340c3dd5f202cd40d0600a44a1c4d5ca2b44181eb59e89961073f840f9ef69"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f14d2f206ac962d9f844d715946f175e74f4952774a3faf19f5d149d5ec6c4c5"
+        }
+      ],
+      "sourceStemSha256": "e18d6852f2eded747ec990c27e28fa6eff4ed8259e229506e156fe72cc705fae",
+      "fingerprintComparison": {
+        "registeredQbody": "46340c3dd5f202cd40d0600a44a1c4d5ca2b44181eb59e89961073f840f9ef69",
+        "registeredQfull": "be81e94cc5063eddbdb27235c113347d91df07c57f0ff7bd517662a81fd543f8",
+        "currentQbody": "46340c3dd5f202cd40d0600a44a1c4d5ca2b44181eb59e89961073f840f9ef69",
+        "currentQfull": "f14d2f206ac962d9f844d715946f175e74f4952774a3faf19f5d149d5ec6c4c5",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "이기면 2칸 올라가고, 비기면 1칸 올라가고, 지면 1칸 내려가기로"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$+1$, 1칸 내려가는 것을 $-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "위치",
+            "src": "stem",
+            "quote": "$A$학생의 위치"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "위치를 나타내는 수의 차"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "$A=5\\times2+3\\times1-2\\times1$",
+            "evidenceType": "IMPLIED",
+            "justification": "승무패별횟수와부호있는이동칸수를곱한합으로최종위치를나타낸다."
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$11-2=9$",
+            "evidenceType": "IMPLIED",
+            "justification": "부호있는변화량의계산과두위치의차가학습목표이므로사칙연산태그를허용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "처음 위치를 0"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "가위바위보를 10번"
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "현재해설에A/B의서로보완되는승패횟수와다른가중이동량계산이모두나타난다.기존SIGNED_RELATIVE_CHANGE TPL과정확히일치한다.",
+        "condition": "10번중A의승5·무3;초기위치0;승무패별이동규칙을모두보존한다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_B"
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    },
+    {
+      "questionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": 23,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4fd32be293ba17b5ed6266427022b8d6268e1079df99bb94f0d340d8d65f3471"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "86d6fa0072d266180890db905f181f021d6eb494fbe1f234338bccc1647c45ca"
+        }
+      ],
+      "sourceStemSha256": "523f2636d8396cd3f1b0d35791f1928033520274b5b2667f9b8d8305e00adb2b",
+      "fingerprintComparison": {
+        "registeredQbody": "4fd32be293ba17b5ed6266427022b8d6268e1079df99bb94f0d340d8d65f3471",
+        "registeredQfull": "00637783bbc4cc545fa0c5d4108d43761624440a97647b0ac4107852d4d65d44",
+        "currentQbody": "4fd32be293ba17b5ed6266427022b8d6268e1079df99bb94f0d340d8d65f3471",
+        "currentQfull": "86d6fa0072d266180890db905f181f021d6eb494fbe1f234338bccc1647c45ca",
+        "bodyMatches": true,
+        "fullMatches": false
+      },
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "$|x|=\\dfrac{1}{2}$"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$AB+2(-B)^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$AB+2(-B)^2$의 값"
+          },
+          {
+            "term": "미지수",
+            "src": "stem",
+            "quote": "$B$의 값을 구하여라"
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "$|x|=\\dfrac12$인 두 수 중 큰 수는",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값이같은두후보를대소비교하여B를고르는실제단계다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$=(-1)\\left(\\dfrac12\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "앞서구한A,B를요구식에실제로대입한단계이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "중에서 큰 수를 $B$"
+          },
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$B=\\dfrac12$",
+            "role": "DERIVED_CONDITION",
+            "justification": "발문은큰후보를고르라는제한이며양수성은양의절댓값을갖는두후보를비교한뒤도출된다."
+          }
+        ]
+      },
+      "proposedMethodSlots": [],
+      "strategyProposal": null,
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "해설에서절댓값조건의큰수선택이대입보다앞선실제단계이다.보통문자식대입과비표준연산정의TPL을구별한다.",
+        "condition": "입력 제한은 절댓값이 같은 두 후보 중 큰 수를 B로 선택하는 것이다. B의 양수성은 해설에서 도출된 결과이며 별도로 주어진 양수 조건이라고 주장하지 않는다.",
+        "methodEvidence": "현재 저장된 해설의 실제 결정 단계를 인용했다."
+      },
+      "judgedBy": {
+        "agent": "META_B",
+        "at": "2026-11-14T08:23:24.686197+00:00"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:26:00.169Z",
+        "result": "ACCEPTED_AFTER_CONDITION_ROLE_REFINEMENT",
+        "notes": "발문의 큰수 선택과 기존해설의 B 양수 도출 후 문자식 대입을 읽었다. 발문 조건과 해설에서 도출된 양수 조건의 역할을 분리한 최종 기록을 확인했다. 일반 대입 PT/TPL의 binding 미완과 현재 QFULL 불일치를 숨기지 않았으며 method 대소비교·대입의 실제 인용이 맞는다."
+      },
+      "evidenceDebt": [],
+      "assetEvidence": []
+    }
+  ],
+  "candidates": [
+    {
+      "term": "계산값의동일성비교",
+      "en": [
+        "CALCULATED_VALUE_EQUALITY_COMPARISON"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "값",
+      "note": "여러 계산 결과의 같음과 다름을 대조하여 유일하게 다른 결과를 선택하는 방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 10,
+          "questionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    },
+    {
+      "term": "약수의개수공식",
+      "en": [
+        "DIVISOR_COUNT_FORMULA"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "소인수분해",
+      "note": "소인수분해의각지수에1을더한수의곱으로양의약수개수를계산하는방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    },
+    {
+      "term": "소인수지수선택",
+      "en": [
+        "PRIME_EXPONENT_MIN_MAX_SELECTION"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "소인수분해",
+      "note": "최대공약수는공통소인수의최소지수,최소공배수는전체소인수의최대지수를선택하는방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    },
+    {
+      "term": "서로소판정",
+      "en": [
+        "COPRIMALITY_TEST"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "최대공약수",
+      "note": "두자연수의최대공약수가1인지확인하여서로소를판정하는방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 7,
+          "questionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    },
+    {
+      "term": "연산의순서",
+      "en": [
+        "ORDER_OF_OPERATIONS"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "사칙연산",
+      "note": "거듭제곱·괄호·곱셈나눗셈·덧셈뺄셈의우선순위를보존하여계산하는방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+          "slot": "method"
+        },
+        {
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    },
+    {
+      "term": "문자식의연산기호생략",
+      "en": [
+        "ALGEBRAIC_OPERATION_NOTATION"
+      ],
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "문자식",
+      "note": "곱셈기호생략과나눗셈의분수표시에서계수·괄호·분모범위를보존하는방법.",
+      "usedIn": [
+        {
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+          "slot": "method"
+        }
+      ],
+      "status": "CANDIDATE"
+    }
+  ],
+  "selfCheck": {
+    "status": "STRUCTURAL_PASS_AUTHOR_SELF_REVIEW",
+    "sourceCount": 23,
+    "semanticReadCount": 23,
+    "methodEvidenceDebtCount": 0,
+    "independentReview": "NOT_RUN",
+    "actualValidation": {
+      "fail": [],
+      "warn": [
+        "#2 only 4 distinct terms",
+        "#2 method has 1 term",
+        "#3 method has 1 term",
+        "#8 method has 1 term",
+        "#9 only 4 distinct terms",
+        "#9 method has 1 term",
+        "#10 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#11 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#13 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+        "#16 only 4 distinct terms",
+        "#16 method has 1 term",
+        "#17 only 4 distinct terms",
+        "#18 only 4 distinct terms",
+        "#20 only 4 distinct terms",
+        "#20 method has 1 term",
+        "#22 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)"
+      ],
+      "stats": {
+        "items": 23,
+        "examItems": 23,
+        "quotes": 136
+      }
+    },
+    "expectedFailures": [],
+    "unexpectedFailures": []
+  },
+  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/19_팔마중_1학기_중간_중1_기출/independent-review.json",
+  "sourceBaselineGitBlobSha": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+  "sourceCurrentSha256": "65678eeab75184088f58349691a49630ecc095991223c8965a1f5ae719ba281e"
+}

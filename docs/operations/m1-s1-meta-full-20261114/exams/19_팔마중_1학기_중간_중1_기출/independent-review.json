@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+  "author": "META_B",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:26:00.169Z",
+  "sourceBaselineBlob": "1d74618e5116af6d2f507e335ff7f7d490c1cf7e",
+  "sourceCurrentBlob": "26b69bd2751802229408e1693db4638986260b58",
+  "workerReviewSha256": "38a754bbbd89249f362acd957277a5ae067378aba0b9b85d10f4951cb061ca3b",
+  "workerFourSlotSha256": "6cf0f16b39fe6d28d9101e6d8a9985d067cbf26abeab59977cae80eb80397968",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 4,
+      "result": "ACCEPTED_DIFFICULTY_CORRECTION_WITH_TYPE_DEBT",
+      "notes": "원문과 현재해설을 직접 읽었다. 선지의 수를 곱해 소인수 지수로 약수27개를 확인하는 표준 직접 응용이며, 새로운 인수 조합의 완전탐색을 요구하지 않는다. bucket3→2/B23을 수용한다. 기존 PT/TPL의 약수3개·소수제곱 정의는 이 문항과 달라 후보로만 보존한다. 4칸의 소인수분해·약수개수공식 인용은 실제해설과 맞는다.",
+      "questionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c"
+    },
+    {
+      "ordinal": 17,
+      "result": "ACCEPTED_WITH_TEMPLATE_DEBT",
+      "notes": "현재해설은 (-1)의 거듭제곱을 두 항씩 묶어 소거하고 마지막 홀수 지수 항을 따로 처리한다. method 묶음·거듭제곱이 이 결정 단계를 포괄한다. 소수→분수 변환을 전제로 한 기존 SIGNED_SUM 정의와의 불일치를 확인했으며 신규 TPL 확정은 하지 않는다.",
+      "questionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca"
+    },
+    {
+      "ordinal": 23,
+      "result": "ACCEPTED_AFTER_CONDITION_ROLE_REFINEMENT",
+      "notes": "발문의 큰수 선택과 기존해설의 B 양수 도출 후 문자식 대입을 읽었다. 발문 조건과 해설에서 도출된 양수 조건의 역할을 분리한 최종 기록을 확인했다. 일반 대입 PT/TPL의 binding 미완과 현재 QFULL 불일치를 숨기지 않았으며 method 대소비교·대입의 실제 인용이 맞는다.",
+      "questionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "ACCEPTED_METADATA_REVIEW_WITH_DECLARED_DEBT",
+  "sourcePatchPolicy": "구체적인 난이도 경계 오류가 독립 검토된 q4의 지원필드만 수정했다. 기존level과호환 NORMAL은 유지한다. 빈 새필드를 source에 추가하지 않는다.",
+  "deferredPatchPolicy": "CrossConcept 추가, 미지원 conceptClusterKey, PT/TPL 교체 및 confidence의 소폭 재조정은 확정 등록하지 않는다. 작성자의 학습level 독립 제안과 기존level 보존을 구분하며 키/정의/바인딩 검토안은 소형 packet에 남긴다."
+}
