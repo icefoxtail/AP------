@@ -33,7 +33,7 @@
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
-      "sha256": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7"
+      "sha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67"
     },
     "existing4slot-source-compatibility.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.existing4slot-source-compatibility.json",
@@ -50,6 +50,10 @@
     "displayLabelCorrection": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.display-label-correction.json",
       "sha256": "35518f5df74114a8afdcddad16795d6edd0134d6f10d78bda898e20791755a77"
+    },
+    "semanticAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.semantic-amendment.json",
+      "sha256": "98e5fa4c8c24175a31cc48d4fcd2deafd2a2ba5c90ee755683d4f68533761eea"
     }
   },
   "items": [
@@ -3631,30 +3635,23 @@
           "recordId": "M3-RPM-088"
         },
         "current2022": {
-          "basePath": {
+          "recordId": null,
+          "effectiveParentPath": [
+            "2022",
+            "M3-2",
+            "통계",
+            "상자그림과 산점도"
+          ],
+          "effectivePath": {
             "majorUnit": "통계",
             "midUnit": "상자그림과 산점도",
-            "l3": "자료의 분포 비교",
-            "l4": "분포와 상관관계의 종합 해석"
+            "l3": "산점도",
+            "l4": null
           },
-          "recordId": "M3-RPM-180",
-          "effectiveParent": {
-            "key": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
-            "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
-            "unitKey": "RPM22-M3-L1-07",
-            "grade": "중3",
-            "gradeKey": "M3",
-            "curriculumKey": "2022",
-            "courseKey": "M3-2",
-            "L1": "통계",
-            "L2": "상자그림과 산점도",
-            "label": "상자그림과 산점도",
-            "order": 16,
-            "orderInUnit": 2,
-            "legacyUnitKeys": [
-              "M22-3-07"
-            ]
-          }
+          "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+          "status": "PARENT_CONFIRMED_LEAF_GAP",
+          "rejectedNearestRecordId": "M3-RPM-180",
+          "reason": "순수 좌표조건의 집계·비율 또는 선택 자료 평균을 구하며 상관 방향이나 분포·상관 종합을 판정하지 않는다. 현행 canonical 목록에서 이 골격의 exact leaf를 보증하지 않는다."
         }
       },
       "compatibility": {
@@ -5014,7 +5011,7 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "143e140d169a2e2829543151c029bd5aeb25ae9b08b321ae6a98b87cf67f5736",
+  "semanticPayloadSha256": "793524240289cdd1edbcac50d9a8d227e062a290de4a4a7231e6a2b2d7c6be9e",
   "independentFinalStatus": "PASS_AFTER_REQUESTED_CORRECTIONS",
   "rootCorrection": {
     "kind": "CANONICAL_DISPLAY_LABEL_ONLY",
@@ -5023,5 +5020,11 @@
       "sha256": "35518f5df74114a8afdcddad16795d6edd0134d6f10d78bda898e20791755a77"
     },
     "originalAuthorReviewUnchanged": true
-  }
+  },
+  "rootAdjudicationRefs": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E008.semantic-amendment.json",
+      "sha256": "98e5fa4c8c24175a31cc48d4fcd2deafd2a2ba5c90ee755683d4f68533761eea"
+    }
+  ]
 }

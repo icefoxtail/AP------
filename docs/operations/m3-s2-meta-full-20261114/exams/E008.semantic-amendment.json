@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "m3-s2-post-review-semantic-amendment-v1",
+  "examId": "E008",
+  "kind": "CURRENT2022_SCATTER_READING_LEAF_GAP",
+  "reviewer": "GPT_ROOT_9C9D44BB632B",
+  "previousBranchCommit": "ee2584c65997c98fe7d91e9a8841dc34c57a7bd4",
+  "sourceBeforeAmendmentBlob": "e99ff6ff2238a47690936d54b35088ec89c1ca0d",
+  "sourceAfterBlob": "e99ff6ff2238a47690936d54b35088ec89c1ca0d",
+  "sourceBaselineBlob": "1d84894ee7e4e89b0dc99f9bf3a87653c46351b1",
+  "originalArtifactHashes": {
+    "metadata": "f232a7d02c2934421b7cc8f39b0de6b503b4f9a909948acd7108307ae43d884c",
+    "verification": "52594b889a67ca5aa072262b2107c6eaf3444cc6829a1b41d79597c650d2ad5f",
+    "sourcePatch": "d34764a844465bb9ccb3943da83525bccc114c1bc07b7ee47f1186370a56d915",
+    "proposals": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7"
+  },
+  "authorAmendment": null,
+  "changes": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_10947c50eebae80e19633700a08cbd9535e1d5a8ed95b70c34eb68b523fb973e",
+      "field": "rpm.current2022",
+      "before": {
+        "basePath": {
+          "majorUnit": "통계",
+          "midUnit": "상자그림과 산점도",
+          "l3": "자료의 분포 비교",
+          "l4": "분포와 상관관계의 종합 해석"
+        },
+        "recordId": "M3-RPM-180",
+        "effectiveParent": {
+          "key": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
+          "parentKey": "[\"2022\",\"M3-2\",\"통계\",\"상자그림과 산점도\"]",
+          "unitKey": "RPM22-M3-L1-07",
+          "grade": "중3",
+          "gradeKey": "M3",
+          "curriculumKey": "2022",
+          "courseKey": "M3-2",
+          "L1": "통계",
+          "L2": "상자그림과 산점도",
+          "label": "상자그림과 산점도",
+          "order": 16,
+          "orderInUnit": 2,
+          "legacyUnitKeys": [
+            "M22-3-07"
+          ]
+        }
+      },
+      "after": {
+        "recordId": null,
+        "effectiveParentPath": [
+          "2022",
+          "M3-2",
+          "통계",
+          "상자그림과 산점도"
+        ],
+        "effectivePath": {
+          "majorUnit": "통계",
+          "midUnit": "상자그림과 산점도",
+          "l3": "산점도",
+          "l4": null
+        },
+        "authorityVersion": "RPM_MIDDLE_2022_PARENT_REFINEMENT_v1.2",
+        "status": "PARENT_CONFIRMED_LEAF_GAP",
+        "rejectedNearestRecordId": "M3-RPM-180",
+        "reason": "순수 좌표조건의 집계·비율 또는 선택 자료 평균을 구하며 상관 방향이나 분포·상관 종합을 판정하지 않는다. 현행 canonical 목록에서 이 골격의 exact leaf를 보증하지 않는다."
+      },
+      "sourceValuesChanged": false
+    }
+  ],
+  "protection": {
+    "allStudentAndOtherNonMetadataValuesUnchanged": true,
+    "fourSlotArtifactUnchanged": true,
+    "independentThreeSampleArtifactUnchanged": true,
+    "historicalLevelAndDifficultyUnchanged": true
+  },
+  "registration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "newMathematicalVerification": false
+}
