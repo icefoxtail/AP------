@@ -8,8 +8,8 @@
   "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "sourceBeforeBlob": "3037c0e1bf336f276431fb0de59f4c67fe7d75bd",
-  "sourceAfterBlob": "bd27f5fcac260a1cbbb232fa4b36a2d98dd03d66",
-  "sourceAfterSha256": "6b2e99f222188f1f5c9c3d5c8a8fab6eec0500db3b5d2a8be344ae475e2fac97",
+  "sourceAfterBlob": "dd043ef17225876e6b1f07b590b49092d9d05a29",
+  "sourceAfterSha256": "d7306d4b4ac225baf0cb1a1b011ba6148e73ee964d42460c79f2af6b49abc903",
   "questionCount": 24,
   "uidDigest": "a80a6bc3a537fd661a557cf42394fcc29caf5a1506c91fb52851431c47bbae06",
   "authorRawReviewSha256": "d603f321683ab7884480cfecd3bed3467f2209427523e44010331e5340905732",
@@ -26,7 +26,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.source-patch.json",
-      "sha256": "b49064857c8ba1bf553126cd3d9ee09b905192c803c5527f68a1a1fdd1a3d4ff"
+      "sha256": "866d49423c67af3e21c548d6303d1d0a0606ea23a85856688b45fb387964caa3"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.4slot.json",
@@ -47,6 +47,10 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.difficulty-adjudication.json",
       "sha256": "a67abf69216e56508e0e2eb94224f7a6b4e04bdc1e751131e8a4137f155ca1a2"
+    },
+    "displayLabelCorrection": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.display-label-correction.json",
+      "sha256": "98a77e260dd8b91f7e02e89513a8e396597d67a1961b4bbdcd425ecfc99c56e8"
     }
   },
   "items": [
@@ -714,7 +718,7 @@
       "after": {
         "standardCourse": "중2 수학",
         "standardUnitKey": "M2-05",
-        "standardUnit": "삼각형의 성질",
+        "standardUnit": "도형의 성질",
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
@@ -1048,7 +1052,7 @@
       "after": {
         "standardCourse": "중2 수학",
         "standardUnitKey": "M2-05",
-        "standardUnit": "삼각형의 성질",
+        "standardUnit": "도형의 성질",
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
@@ -3965,6 +3969,14 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "ed9dd7f2659ead8b6b1b981d1fbe7d1fb6ebff27453692b98ed651802c78181a",
-  "independentFinalStatus": "PASS"
+  "semanticPayloadSha256": "70ffeb8c71a7482759b1f518860caa3e0e9f20d44cd4d9e2cb985f1994005056",
+  "independentFinalStatus": "PASS",
+  "rootCorrection": {
+    "kind": "CANONICAL_DISPLAY_LABEL_ONLY",
+    "artifact": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.display-label-correction.json",
+      "sha256": "98a77e260dd8b91f7e02e89513a8e396597d67a1961b4bbdcd425ecfc99c56e8"
+    },
+    "originalAuthorReviewUnchanged": true
+  }
 }
