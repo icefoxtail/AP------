@@ -1,0 +1,1387 @@
+{
+  "schemaVersion": "m1s2-native-semantic-proposal-v1",
+  "taskId": "71f4352e-fbe1-4533-b390-86232a5cd287",
+  "owner": "GPT_ROOT_64695B8EDE31",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "status": "DRAFT_OUTSIDE_PRODUCTION_INBOX",
+  "sharedRegistryChanged": false,
+  "sourceNewUnregisteredKeysInserted": false,
+  "priorityOrder": [
+    "EXISTING_KEY_REUSE",
+    "EXISTING_DEFINITION_OR_BINDING_REPAIR",
+    "NEW_TEMPLATE",
+    "NEW_PROBLEM_TYPE"
+  ],
+  "curriculumPolicy": "지원 문항의 원본 교육과정·exact ACTIVE binding은 문항별 근거에서 확인한다. 2015를2022로 일괄변환하지 않는다. 같은 PT의 팩 소유자와 실제 binding행 ownerPack의 일치를 강제하지 않는다.",
+  "rpmPolicy": "출판사 RPM leaf 공백과 native PT/TPL의 정의 공백을 구분한다. 의미가 맞지 않는 근처 RPM leaf를 강제로 채우지 않는다.",
+  "notApproval": "모든 제안은 의미 판단과 등록 요청이며 ACTIVE 등록·운영 품질 PASS를 선언하지 않는다.",
+  "group": "geometry",
+  "proposals": [
+    {
+      "proposalId": "G01",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE_WITH_PARENT_DEFINITION_GENERALIZATION",
+      "proposedLabel": "평각의 이웃각 직접 복원",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "existingProblemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "한 직선의 같은 쪽을 나누는 두 이웃각에서 알려진 각을 평각에서 빼어 나머지 각을 복원하고, 요구한 각 또는 각들의 합·차를 구한다.",
+      "distinctionFromNearbyTypes": "비·등분 조건으로 기준각을 설정하는 ADJACENT_RATIO_SUM과 달리 알려진 각에 대한 직접 보각 복원이다. 삼각형의 내각합이나 맞꼭지각을 필수로 요구하지 않는다.",
+      "existingReuseAssessment": "평각이라는 기존 가족은 재사용한다. 현 PT 정의의 비·등분 제한을 선택 조건으로 일반화한 뒤 직접 복원 자식을 분리하는 것이 적절하다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 2,
+          "questionUid": "qid_v1_53311861e37719615dc603db64c1ff8a413a01daec5580b8b0a5a129b9f5afbf",
+          "sourceBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+          "sourceSha256": "8cc308a21291e188aa5648f9fd39e6a33b0e2b96c4084474aad37c3755ead85e",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_연향중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-yeonhyang-final-q19.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "평각을 나누는 인접각 사이의 등분 또는 비 관계를 이용해 목표 각이나 각의 합을 구하는 유형이다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "평각을 이루는 이웃각의 합을 이용하여 직접 주어진 각, 등분 또는 비 조건으로부터 미지각을 결정한다."
+    },
+    {
+      "proposalId": "G02",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_PROBLEM_TYPE_AND_TEMPLATE",
+      "proposedLabel": "꼭짓점을 고정한 원뿔 굴림의 평면 자취 넓이",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": null,
+        "proposedProblemTypeLabel": "굴림 길이 보존과 평면 자취 측정"
+      },
+      "existingTemplateKey": null,
+      "definition": "미끄러지지 않고 구르는 도형의 접촉 길이를 굴림 횟수와 연결하여 평면 자취의 반지름 또는 경계 길이를 복원하고 그 평면 영역을 측정한다. 원뿔의 꼭짓점을 고정한 경우 밑면 둘레의 누적 길이와 자취 원의 둘레를 연결하여 모선 길이를 정한 뒤 자취 넓이를 구한다.",
+      "distinctionFromNearbyTypes": "원뿔·원기둥 전개도의 표면적, 회전체의 부피, 알려진 반지름·각의 단순 부채꼴 대입과 구별한다. 목표가 평면 궤적 넓이이므로 입체의 겉넓이 primary로 두지 않는다.",
+      "existingReuseAssessment": "전역 ACTIVE 팩에서 굴림 길이 보존을 결정 단계로 가지는 PT를 찾지 못했다. NET_MEASURE나 SOLID_FIGURE_MEASURE의 이름 유사성만으로 붙이지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_dac159f88b041dbfe23bee2a8bb6a54536139a7106304c35721e829d53c1e4dc",
+          "sourceBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+          "sourceSha256": "8cc308a21291e188aa5648f9fd39e6a33b0e2b96c4084474aad37c3755ead85e",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_연향중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-yeonhyang-final-q19.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "rpmDisposition": "KNOWN_PARENT_ONLY_LEAF_GAP",
+      "proposedRpmParent": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "majorUnit": "평면도형",
+        "midUnit": "원과 부채꼴"
+      },
+      "sourceCorrectionProposal": {
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": null,
+        "templateKey": null
+      },
+      "sourceCorrectionNote": "현재 보존 source의 M1-07은 이 새 의미 판정의 승인값이 아니다. 공동 등록과 함께 위 primary 수정안을 적용한다."
+    },
+    {
+      "proposalId": "G03",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE_WITH_PARENT_DEFINITION_GENERALIZATION",
+      "proposedLabel": "넓이에서 복원한 길이를 주어진 합동의 대응변으로 전달",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "existingProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "합동 관계가 이미 주어진 두 삼각형에서 한 삼각형의 넓이와 높이 또는 밑변으로 미지 길이를 복원하고, 정렬된 대응 관계를 이용해 다른 삼각형의 대응변 길이로 옮긴다.",
+      "distinctionFromNearbyTypes": "새로 SAS 합동을 증명하는 GENERAL_SIDE_TRANSFER, 직접 표기값만 옮겨 미표시 요소를 찾는 ORDERED_CORRESPONDENCE, 목표각을 구하는 ANGLE_TRANSFER와 구별한다.",
+      "existingReuseAssessment": "합동의 대응 관계라는 기존 PT를 유지하며, 현 부모 정의의 목표각 한정을 대응변·대응각으로 바로잡고 길이 복원 단계가 있는 자식을 추가한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+          "sourceBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+          "sourceSha256": "f6fbfe5c1872e2c381e927c727f9b60d67102108390364497e2e890437705698",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_중간_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "보조 삼각형의 합동으로 대응각을 옮겨 목표 각을 구하는 유형이다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "주어지거나 필요한 조건으로 확인한 삼각형의 합동에서 대응변·대응각을 정렬하고 필요한 길이·각 또는 관련 성질을 전달한다."
+    },
+    {
+      "proposalId": "G04",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "내각의 합과 외각의 합에서 변 수 역산",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "볼록다각형의 내각의 합과 외각의 합 사이에 주어진 합·차 또는 비 관계를 변 수에 관한 식으로 나타내어 원래 다각형의 변 수를 복원한다.",
+      "distinctionFromNearbyTypes": "변 수를 주고 두 합을 직접 계산하는 DIRECT_INTERIOR_EXTERIOR_TOTALS, 다섯 내각의 비 배분인 INTERIOR_EXTERIOR_SUM과 구분한다.",
+      "existingReuseAssessment": "변 수를 복원하는 방향 자체가 결정 단계이므로 주어진 n의 직접 계산형으로 표시하지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 3,
+          "questionUid": "qid_v1_c71f505b8054c32612130ecaeb5267f00e56c7333796937539fc988f3e0f14a2",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "다각형의 변 수·내각·외각·대각선·분할 개수 사이의 관계를 이용하여 요구한 수치 또는 기본 성질을 결정한다."
+    },
+    {
+      "proposalId": "G05",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "일반 다각형의 내각·외각 식으로 미지각 결정",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "변 수가 정해진 일반 다각형에서 내각과 그 이웃 외각의 보각 관계로 각의 표현을 통일하고 내각의 합에 관한 일차식으로 목표각을 결정한다. 알려진 내각들로 남은 내각을 구한 뒤 외각으로 바꾸는 직접형도 포함한다.",
+      "distinctionFromNearbyTypes": "정다각형의 모든 각이 같음을 이용하는 유형, 삼각형만의 한 외각 정리, 오각형 다섯 각의 비를 배분하는 기존 특수 자식과 구분한다.",
+      "existingReuseAssessment": "사각형·육각형의 실제 내외각 결합을 이름이 비슷한 오각형 비 배분 TPL로 확정하지 않고 재사용 가능한 일반 자식으로 둔다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_b3709fbcfd8563154b9353c0e506ac78b6a5f1cc576184d27171e49fdc1480bc",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_d5c873accade1bfdcbba5a3de89186c8bd3877ff97f160071f4be47e5ec0c714",
+          "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+          "sourceSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-pungdeok-mid-q13-term.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 2,
+          "questionUid": "qid_v1_827bf72aef7c8ea965a1481e32787eb8e0851c6acdd4b87b136e5139616d2ac8",
+          "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+          "sourceSha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G06",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "다각형 기본 공식과 성질의 진술 검토",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+      "definition": "다각형의 내각·외각, 변 수, 대각선 수, 한 꼭짓점에서의 삼각형 분할 수 및 정다각형의 존재·성질을 관련 기본 공식과 대조하여 진술의 참거짓을 판정한다.",
+      "distinctionFromNearbyTypes": "특정 미지각을 풀거나 분할 구조로 변 수를 새로 복원하는 과제가 아니라 여러 독립 기본 성질을 판정하는 자식이다.",
+      "existingReuseAssessment": "기존 PROPERTY_AUDIT의 판정 형식은 동일하다. 실제 지원 문항의 대각선·삼각분할 공식 범위를 명시하여 기존 자식을 재사용한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 5,
+          "questionUid": "qid_v1_bb57713b55e14ec7b4a9f2c88131e4c8fc31a098c44e2fc21cd47fcf0a59fbe4",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "다각형의 내각·외각 기본 성질과 정다각형의 존재·종류 진술을 보기별로 확인한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G07",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "인접한 정다각형의 꼭짓점 주위각",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+      "definition": "서로 인접하거나 공통 꼭짓점을 갖는 정다각형의 내각·외각을 구하고 평각 또는 한 점 둘레각에 배치하여 사이의 표시각과 변 방향을 추적한다.",
+      "distinctionFromNearbyTypes": "정다각형 한 개에서 n만 역산하는 유형과 구분한다. 반드시 특정 세 종류의 정다각형 배열에 한정하지 않는다. 연장선으로 생기는 별도 빈 다각형의 내각합이 핵심이면 SHARED_SIDE_EXTENSION_AUDIT를 검토한다.",
+      "existingReuseAssessment": "현재 정의는 삼각형·사각형·오각형 예시에 한정되지만 alias는 다른 정다각형 조합을 포함한다. 동일한 주위각 결합 구조로 일반화한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_c8b8769a32b0848b7206dd5bc1b23e5bad8b0d52e515bd177613be0582a8f32c",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+            "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "Fresh M1 type for an angle formed by multiple regular polygons rather than one polygon formula in isolation.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "This template depends on the triangle-square-pentagon arrangement and combines their interior/exterior directions at x.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G08",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "입체 겉넓이의 등식·비에서 미지 치수 역산",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "existingProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "하나 또는 여러 입체의 겉넓이를 같은 미지 치수로 나타내고 주어진 겉넓이의 등식이나 비를 연결하여 그 치수를 결정한다.",
+      "distinctionFromNearbyTypes": "모든 치수가 알려진 공식 직접 대입, 전개도의 길이 대응, 부피 보존에서 높이를 구하는 유형과 구분한다.",
+      "existingReuseAssessment": "기둥의 모양보다 겉넓이 관계식의 역산이 핵심이므로 STANDARD_MEASURE의 직접 대입 정의로 확정하지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_cc8e33060ea2f9df16d5daabaeea73def88be9dcf00a86032d1d3f63fec25f9d",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_SOLID_FIGURE_MEASURE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "입체도형의 겉넓이와 부피 공식을 적용하고 합성·절단·옮김 전후의 관계로 측정량을 계산한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G09",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "기본 입체의 부피 공식과 공통 치수 비",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "existingProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "definition": "기둥·뿔·구 등 기본 입체의 알려진 치수에 겉넓이 또는 부피 공식을 적용한다. 공통 또는 직접 주어진 비의 치수로 여러 기본 입체의 부피를 같은 단위식으로 나타내어 비를 비교하는 경우를 포함한다.",
+      "distinctionFromNearbyTypes": "공통 치수의 직접 대입을 넘어 절단·접촉으로 숨은 길이를 추론하거나 미지 치수의 비정형 방정식을 풀어야 하면 해당 관계식·복합 입체 자식을 사용한다.",
+      "existingReuseAssessment": "현 정의의 입체 목록에서 구가 누락되어 생긴 범위 문제다. 기본 공식 대입 가족을 정합화하여 불필요한 새 PT를 만들지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_cfad542881c8b3e48289c056988672b0cbcbc20ef2e7fde41f1d0724c4f6b2ac",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_SOLID_FIGURE_MEASURE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "입체도형의 겉넓이와 부피 공식을 적용하고 합성·절단·옮김 전후의 관계로 측정량을 계산한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "기본 각기둥·원기둥·각뿔·원뿔의 겉넓이·부피 공식에 수치를 대입.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G10",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "원뿔대의 곡면 및 겉넓이",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "existingProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "원뿔대의 두 밑면과 모선 정보를 이용하여 큰 원뿔·작은 원뿔의 옆넓이 차 또는 그와 동등한 환상 부채꼴 구조로 곡면을 구하고 필요한 두 밑면 넓이를 합한다.",
+      "distinctionFromNearbyTypes": "각뿔대의 합동 사다리꼴 옆면을 합하는 FRUSTUM_SURFACE와 구분한다. 이미 완성된 전개도의 주어진 길이를 대응시키는 것이 목표이면 NET_MEASURE가 우선이다. 닮음이 실제 필요할 때만 보조개념으로 별도 기록한다.",
+      "existingReuseAssessment": "각뿔대와 원뿔대의 표면 구조가 다르므로 기존 FRUSTUM_SURFACE의 단순 별칭으로 처리하지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_2f4cc32028c6ae07ff056bb49e5c3e8867eb3a13098f71deae0bf5e46633cd74",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE"
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_fd5781162019b302954ab700e7ceaa1ab0bd37dc6c15b37ac892955152e74378",
+          "sourceBlob": "0a77205c399aac9fe07380d3eb6a2dd824a0c850",
+          "sourceSha256": "9d5cf115c22f2e49d0f93454fb9baa90d4691bd6b98afe25b93fbe729956ed18",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/25_신흥중_2학기_기말_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출-supplement-1.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_SOLID_FIGURE_MEASURE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "입체도형의 겉넓이와 부피 공식을 적용하고 합성·절단·옮김 전후의 관계로 측정량을 계산한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G11",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_AND_PARENT_DEFINITION_GENERALIZATION",
+      "proposedLabel": "기본 도형의 정의와 거리·중점 진술 검토",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "existingProblemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+      "definition": "점·선·면, 교점·교각·맞꼭지각, 중점·수선·수선의 발·수직이등분선 및 두 점 사이 거리의 정의를 주어진 그림과 대조해 진술을 판정한다. 선분의 길이와 실제 이동 경로의 길이, 끝점과 중점의 차이를 구별한다.",
+      "distinctionFromNearbyTypes": "공식으로 높이를 역산하는 측정형, 길이 조건을 여러 번 연결하는 선분 계산형, 사각형의 성질을 증명하는 유형과 구분한다.",
+      "existingReuseAssessment": "기존 가족의 label·aliases와 BASIC_TERM_CLAIM_AUDIT의 판정 구조를 재사용하되 부모가 선분/반직선 동일성 하나로 좁혀진 설명을 정합화한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_a01a0a035bf565b311af937c6d02c83ed5a4cf5c7b76407bdd8380ae9a4f0277",
+          "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+          "sourceSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-pungdeok-mid-q13-term.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+          "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+          "sourceSha256": "66e867046e70894a43b236587abcf52c7894dc97f4377bac9a28ea09c7f74886",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕운중_2학기_중간_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "한 직선 위 점의 배열에서 도형 기호가 나타내는 선분·반직선·직선의 동일성을 판정한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "교점·교각·맞꼭지각 용어와 중점 정의를 선택지별로 대조한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "기본 도형과 기호, 위치·거리·중점·수직 관계의 정의를 주어진 표시와 대조하여 도형의 동일성 또는 기본 용어 진술을 판정한다."
+    },
+    {
+      "proposalId": "G12",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "FORMALIZE_EXISTING_NONACTIVE_CANDIDATE",
+      "proposedLabel": "수선의 발과 점·직선 거리의 복수 진술 검토",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "existingProblemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "수직 표시와 선상 순서로 각 점에서 기준 직선에 내린 수선의 발을 식별하고, 해당 수선분의 길이와 중점 관계를 사용하여 여러 거리·수선 진술을 검토한다.",
+      "distinctionFromNearbyTypes": "한 개의 이미 표시된 수선 길이만 읽는 CORE와 구분한다. 빗변 또는 임의의 연결선분을 점과 직선 사이의 거리로 선택하지 않는다.",
+      "existingReuseAssessment": "기존 CLAIM_AUDIT 후보는 의미가 적합하지만 ACTIVE 등록 여부를 먼저 해결해야 한다. 가까운 직접 길이읽기 TPL로 덮지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_1ea07d7bc401d3f7661720a4cf03a386d49fccc7cb071ac311f7ba449ee71910",
+          "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+          "sourceSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-pungdeok-mid-q13-term.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+            "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CLAIM_AUDIT"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "점에서 직선까지의 거리를 수선분의 표시 길이로 읽는 기본도형 유형이다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "nonActiveHistoricalCandidate": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CLAIM_AUDIT"
+    },
+    {
+      "proposalId": "G13",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "세 변으로 삼각형을 작도하는 원의 중심·반지름·교점",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "existingProblemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "한 변을 먼저 고정한 뒤 그 양 끝점을 중심으로 나머지 두 변 길이를 반지름으로 하는 원을 그려 교점으로 셋째 꼭짓점을 정하는 SSS 작도의 순서와 각 단계의 중심·반지름·점 이름을 판정한다.",
+      "distinctionFromNearbyTypes": "각을 옮길 꼭짓점의 선행 결정을 다루는 ASA_VERTEX_DEPENDENCY와 구별한다. 단순 삼각형 존재성 여부가 목표인 유형과도 구분한다.",
+      "existingReuseAssessment": "작도 의존관계를 다루는 기존 부모는 재사용하고 실제 SSS 두 원 교점 구조를 나타내는 자식을 신설한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_9207cb96f9a04f687e10d7567228c6b7ef3de0617b7a2fd924d759e75b4450e9",
+          "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+          "sourceSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-pungdeok-mid-q13-term.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "주어진 변과 각으로 삼각형을 작도할 때 각 단계에 필요한 꼭짓점과 선분이 먼저 정해졌는지 확인하여 가능한 구성 순서를 판단한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G14",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "새 평행 보조선을 통한 동위각·엇각 전달",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "existingProblemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "주어진 도형의 꼭짓점이나 외부점을 지나 기존 변에 평행한 보조선을 새로 설정하고 동위각·엇각과 평각 관계로 목표각을 전달한다.",
+      "distinctionFromNearbyTypes": "이미 평행한 두 직선과 한 횡단선이 주어진 DIRECT_TRANSFER, 주어진 꺾인 선 각을 추적하는 BENT_LINE, 접기에서 반사각을 먼저 얻는 구조와 구분한다.",
+      "existingReuseAssessment": "문제의 지정 풀이가 평행선을 새로 만드는 단계이므로 삼각형 외각 정리 직접형으로 바꾸지 않고 기존 각전달 부모 아래 자식으로 보존한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_63f0d70cbd54a0f595cb1bc63cbd026a469e0487a155c17f68c7515256a90fd5",
+          "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+          "sourceSha256": "08bc00030d422c5a1f83957fccbf20d94cb7b0210a8e916c4d00aef7ca2ab348",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-pungdeok-mid-q13-term.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "두 평행선과 꺾은 선이 만드는 연쇄 각으로 표시된 각을 구한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "평행한 직선 사이의 동위각·엇각과 평각 관계로 각을 전달한다. 필요한 평행 보조선을 설정하는 경우와 주어진 꺾인 선의 각을 잇는 경우를 포함한다."
+    },
+    {
+      "proposalId": "G15",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_AND_PARENT_DEFINITION_GENERALIZATION",
+      "proposedLabel": "수치 각 조건으로 직선의 평행 판정",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "existingProblemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+      "definition": "주어지거나 작도로 보장된 동위각·엇각의 크기를 대응시켜 같음을 확인하고 역 성질로 두 직선의 평행 여부를 판정한다. 보각 관계를 먼저 적용해 대응각을 복원할 수 있다.",
+      "distinctionFromNearbyTypes": "평행이 이미 주어진 상태에서 각을 계산하는 각전달 유형과 구별한다. 작도의 도구·순서 자체가 목표인 경우에는 작도 유형을 사용한다.",
+      "existingReuseAssessment": "기존 CORE의 COMPARE_CORRESPONDING_ANGLE_MEASURES alias가 수치 비교를 명시하므로 각 복사 예시에 한정된 정의를 보완하여 기존 키를 재사용한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+          "sourceOrdinal": 3,
+          "questionUid": "qid_v1_680c947f5e0fce1e606903630f8f5ce1f14df17affb2f322230f55649fc08263",
+          "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+          "sourceSha256": "66e867046e70894a43b236587abcf52c7894dc97f4377bac9a28ea09c7f74886",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕운중_2학기_중간_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_PARALLELISM_CONVERSE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "평행선 작도의 기하 근거와 보장되는 길이 관계를 판정한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "원호 반지름을 옮겨 각을 복사하고 엇각의 역으로 평행선을 만들며, 불필요한 길이 등식을 거른다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "동위각·엇각 또는 같은 쪽 내각의 관계를 확인하여 두 직선의 평행 여부를 판정하고, 각 복사 작도가 평행을 보장하는 근거를 설명한다."
+    },
+    {
+      "proposalId": "G16",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "변 수와 대각선 개수의 직접·역방향 관계",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+      "definition": "다각형의 변 수를 직접 읽거나 내각·외각 조건에서 복원하여 한 꼭짓점 또는 전체 대각선 개수를 결정한다. 전체 대각선 수에서 가능한 정수 변 수를 역산하거나, 이웃하지 않은 꼭짓점 쌍의 중복을 제거해 같은 공식을 적용하는 경우를 포함한다.",
+      "distinctionFromNearbyTypes": "내부 분할 다각형들의 변을 세어 원래 경계를 복원하는 PARTITION_TO_DIAGONALS와 구분한다. 단순 원순열이나 원탁 배치의 수가 아니다.",
+      "existingReuseAssessment": "여러 직접·역방향 alias와 실제 지원 문항이 있으므로 특정 180도 총합 예시에 국한된 설명을 일반화한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 5,
+          "questionUid": "qid_v1_9e9eccb68d14313d49dca7d10cb526ab9d328ba657d966d7e2b1a11a561278fd",
+          "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+          "sourceSha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_687ce5362087736e16f97dc38772d92ad95affd965b566237a494a69f3c6b993",
+          "sourceBlob": "92c9580da4d07090df5963967de4e51bc2682ffa",
+          "sourceSha256": "67f373bdadb94197e65b3b23d08160653eef48573dffbd4acb1596385478b905",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/24_연향중_2학기_기말_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_기말_중1_기출-supplement-1.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "꼭짓점당 180° 총합으로 n을 구한 후 n(n−3)/2를 적용한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G17",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "정다각형의 변 수와 한 내각·외각 관계",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "definition": "정다각형의 한 내각·외각 또는 내각 전체합 조건으로 변 수를 결정하고, 변 수와 전체합 관계를 이용해 요구한 한 각 또는 기본 성질을 구한다.",
+      "distinctionFromNearbyTypes": "다각형의 각이 모두 같다는 조건 없이 임의의 표시각을 구하는 일반 내외각 식과 구분한다. 변 방향의 연속 회전 자체가 핵심인 문제는 별도 자식이다.",
+      "existingReuseAssessment": "INTERIOR_SUM_TO_SIDE_COUNT_AND_ANGLE 등 이미 등록된 alias의 범위를 기존 정의에 반영한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 7,
+          "questionUid": "qid_v1_178c78ae735475d98b498304b1d11044a043a8be54944a2515186c6c70a216fd",
+          "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+          "sourceSha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "각의 보각 관계로 외각을 구하고 변 수를 찾아 선택지의 성질을 검증한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G18",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "기둥·뿔의 꼭짓점·모서리·면 수 비교",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "existingProblemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+      "definition": "각기둥·각뿔 등 주어진 다면체에서 밑면의 변 수와 구조를 이용하여 꼭짓점·모서리·면 수를 세고 요구한 합·차 또는 여러 입체 사이의 개수를 비교한다.",
+      "distinctionFromNearbyTypes": "공간에서 모서리의 평행·꼬임을 판정하는 위치관계, 정다면체의 존재조건을 판정하는 유형과 구별한다.",
+      "existingReuseAssessment": "기존 부모의 의미와 직육면체·오각뿔 aliases가 일반 개수 계산을 지지하므로 사각뿔 한 예시로 축소된 자식 설명을 바로잡는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_3358e484c51b04b29ed7a4465203de61a047c92c5092ebbff1e827ec559065c6",
+          "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+          "sourceSha256": "f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_69aab22c00abbbf014ee27415a27c0cc976bc22e9e1fea5e63da47ee6a611e5c",
+          "sourceBlob": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
+          "sourceSha256": "a317aee006f69898368d234ddeafcb34fb0e5afcaa2d7f2b0f54f4c918b3e17a",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_팔마중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "입체도형의 기본 구성요소 수를 세어 이들의 차나 합을 구하는 유형이다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "사각뿔의 밑면 네 변과 꼭짓점으로 모이는 네 모서리, 밑면 네 꼭짓점과 꼭짓점 하나를 센다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G19",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "정다각형의 변 방향을 외각으로 연속 전환",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "변 수가 주어진 정다각형에서 한 외각을 정하고, 연속하는 변을 지날 때 바뀌는 방향각을 누적하여 기준 직선과 목표 변이 이루는 각을 구한다. 필요하면 기준 평행선 사이로 각을 옮긴다.",
+      "distinctionFromNearbyTypes": "한 외각으로 변 수를 역산하는 REGULAR_POLYGON_ANGLE, 여러 정다각형을 맞붙인 COMPOSITE_ANGLE, 대각선으로 만든 이등변삼각형의 각 추론과 구분한다.",
+      "existingReuseAssessment": "정다각형 한 개의 연속 변 방향을 추적하는 고유 단계가 기존 직접 공식형에 없어 같은 부모의 새 자식으로 둔다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_e1af04a3532c02e779c09341dcac2648cd3f3234afcebdd4a59011da9cb486f0",
+          "sourceBlob": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
+          "sourceSha256": "521ea41243aff041d428e3762c1a0c5e8fca36701310d417b90f4a54d37b4337",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_팔마중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-palma-mid-q15.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25-palma-mid-q15-original.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "G20",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_AND_PARENT_DEFINITION_GENERALIZATION",
+      "proposedLabel": "조건을 확인하거나 복원하여 삼각형 합동 기준 판정",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "existingProblemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+      "definition": "대응변·대응각을 정렬하고 주어진 조건 또는 정삼각형·평행선 등에서 직접 복원한 조건으로 SSS·SAS·ASA 중 충족되는 합동 기준을 판정하거나 서술한다. 조건이 부족하거나 SSA로 모호하면 합동을 확정하지 않는다.",
+      "distinctionFromNearbyTypes": "합동을 이용해 추가 목표각·길이를 계산하는 DATA_TRANSFER와 구별한다. 추가 조건 보기를 고르는 형식만이 아니라 합동 기준을 근거와 함께 제시하는 형식도 포함한다.",
+      "existingReuseAssessment": "EQUILATERAL_TRIANGLE_SAS와 PARALLELOGRAM_DIAGONAL_ASA라는 기존 alias가 동일한 판정 골격을 지지하므로 부모·자식 설명을 일반화한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_89f96ceb1ecd0267635574160c0fa3e720188999e51183f1372b1866236a68de",
+          "sourceBlob": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
+          "sourceSha256": "521ea41243aff041d428e3762c1a0c5e8fca36701310d417b90f4a54d37b4337",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_팔마중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-palma-mid-q15.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25-palma-mid-q15-original.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
+          "sourceBlob": "ef39f3709e39917c0ecff924ebce0f9ea8ceb838",
+          "sourceSha256": "304888fcd72afd585313c1e765ed604d68b75525ca5082102763bfcb0cd70192",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/24_연향중_2학기_중간_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출-supplement-1.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+          "sourceBlob": "ef39f3709e39917c0ecff924ebce0f9ea8ceb838",
+          "sourceSha256": "304888fcd72afd585313c1e765ed604d68b75525ca5082102763bfcb0cd70192",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/24_연향중_2학기_중간_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출-supplement-1.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+            "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+            "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "The goal is to identify data that determine exactly one triangle; compare existence and uniqueness across construction conditions.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "The template supplies one corresponding side in advance and offers additional conditions completing standard or ambiguous criteria.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "삼각형을 유일하게 결정하는 조건과 두 삼각형의 합동 기준을 비교하고, 필요한 대응변·대응각을 확인하여 존재성·유일성·합동 여부를 판정한다."
+    },
+    {
+      "proposalId": "G21",
+      "group": "geometry",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "대각선 분할에서 원래 다각형의 변 수 복원",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "existingProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+      "definition": "대각선으로 나눈 부분 도형의 수 또는 변 수와 내부 대각선의 중복 계수를 이용하여 원래 다각형의 변 수를 복원하고, 그 값으로 요구한 대각선 수·내각합·외각합 등 기본 양을 구한다.",
+      "distinctionFromNearbyTypes": "변 수 또는 대각선 수를 직접 공식에 넣는 DIAGONAL_FORMULA와 구분한다. 내부 공통변을 부분 도형들의 변 수 합에서 두 번씩 빼는 경계 복원이 핵심이다.",
+      "existingReuseAssessment": "기존 TWO_DIAGONALS_TWO_TRIANGLES_ONE_QUADRILATERAL alias가 분할 경계 복원을 지지한다. n−3,n−2 한 예시에 한정된 설명을 일반화하여 중복 자식을 만들지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_e7c3e3462fda1b6de3299f69d9d8345c6c8288d1f210125976dda42b65c80de0",
+          "sourceBlob": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
+          "sourceSha256": "521ea41243aff041d428e3762c1a0c5e8fca36701310d417b90f4a54d37b4337",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "4087264513410aa8d4ba872150dd9217ca529e9f",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_팔마중_2학기_중간_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-palma-mid-q15.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25-palma-mid-q15-original.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_6ef33b13b4ec9085d1acf7fee2cd17d7bb6ae53f4a811ea56af4efdfb3a58fd5",
+          "sourceBlob": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+          "sourceSha256": "04682ef4c67a04b31214f6ea138b22baf1ef44cbc06da26cacd739efbcf5fb87",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/24_향림중_2학기_중간_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/24_향림중_2학기_중간_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+            "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "The template substitutes n, n−3, and n−2 into the given linear relation.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    }
+  ]
+}
