@@ -106,7 +106,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -116,7 +116,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 정다각형의 한 꼭짓점에서 두 변이 이루는 내각 135°(파랑)와, 한 변을 연장해 생긴 이웃한 외각 45°(주황)를 나타낸 그림이다. 두 각의 합은 평각 180°이다.",
     "solutionImageCaption": "내각:외각=3:1이고 합이 180°이므로 외각은 45°이다. 외각의 합 360°÷45°=8이므로 정팔각형이어서 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "내각·외각 비로 정다각형의 변 수 결정",
+    "decisiveStep": "한 내각과 외각의 보각 관계로 외각을 정한 뒤 한 바퀴를 외각으로 나눈다."
   },
   {
     "id": 3,
@@ -164,13 +166,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "내각·외각 총합으로 다각형의 변 수 역산",
+    "decisiveStep": "변의 수에 대한 내각합과 외각합을 더한 식에서 변의 수를 역산한다."
   },
   {
     "id": 4,
@@ -276,13 +280,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "다각형의 각·대각선·삼각형 분할 개수 검토",
+    "decisiveStep": "개별 다각형의 기본 공식들을 진술별로 대조하며 실제 경우 분기는 없다."
   },
   {
     "id": 6,
@@ -386,7 +392,7 @@ window.questionBank = [
     "conceptClusterKey": "POLYGON_CIRCLE",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_VERTICAL_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
@@ -398,7 +404,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 세 지름 AB, CD, EF가 만드는 여섯 개의 중심각을 마주 보는 각끼리 같은 색과 호 개수로 짝지어 15, 14, 3으로 표시하고, 호 DF를 굵게 하여 3 cm로 나타낸 그림이다.",
     "solutionImageCaption": "마주 보는 각이 같아 15, 14, 3이 반대편에도 있으므로 전체는 64이고, 호 DF(3 cm)는 원 둘레의 3/64이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "지름의 맞꼭지각과 호 길이 비로 원주 역산",
+    "decisiveStep": "세 지름 때문에 중심각 비가 반대편에 반복됨을 읽고 주어진 호가 차지하는 원주의 비율로 역산한다."
   },
   {
     "id": 8,
@@ -446,13 +454,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "정오각형의 대각선과 이등변삼각형 각 추적",
+    "decisiveStep": "변의 같음으로 생긴 이등변삼각형들의 밑각과 정오각형 내각을 연결해 교점각을 구한다."
   },
   {
     "id": 9,
@@ -500,17 +510,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 한 변을 공유한 정오각형과 정육각형의 공유한 변 아래 꼭짓점에서 정오각형의 내각 108°, 정육각형의 내각 120°, ∠x를 서로 다른 색의 호로 표시한 그림이다. 세 각이 한 바퀴를 이룬다.",
     "solutionImageCaption": "한 꼭짓점에서 108°, 120°, ∠x가 한 바퀴 360°를 이룬다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "difficultyEvidenceSha": "sha256:1f5db5c93f887b78b96eb4d11748d3cef8d62c9ed81ccd8a0d4a5391b4fe3a8e",
+    "primaryMethod": "한 변을 공유하는 두 정다각형의 꼭짓점 주위 각",
+    "decisiveStep": "두 정다각형의 내각을 구한 뒤 공유 꼭짓점의 한 바퀴 각에서 뺀다."
   },
   {
     "id": 10,
@@ -559,7 +572,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -568,7 +581,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 큰 원 O(반지름 10cm)에서 두 작은 반원(반지름 6cm, 4cm)을 잘라 낸 색칠한 부분의 둘레를 이루는 호(큰 원 위·아래 10π씩 파랑, 6π 주황, 4π 초록)와 지름 선분 12cm(주황), 8cm(초록)를 나타냈다.",
     "solutionImageCaption": "둘레는 20π+10π+(12+8)=30π+20 cm이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "큰 원과 두 반원으로 이루어진 색칠 부분의 둘레",
+    "decisiveStep": "최신 학생 그림은 큰 원 전체가 경계에 포함되고, 두 작은 반원호와 지름선분도 경계다."
   },
   {
     "id": 11,
@@ -615,13 +630,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "정다면체의 정의 충족 여부",
+    "decisiveStep": "모든 면이 합동 정다각형이라는 조건만으로 충분하지 않고 꼭짓점별 면 수도 같아야 한다."
   },
   {
     "id": 12,
@@ -665,8 +682,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "conceptClusterKey": "SOLID_FIGURE",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+    "crossConceptKeys": ["CC_SOLID_OF_REVOLUTION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -674,7 +691,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "떨어진 회전축으로 만든 속 빈 원기둥의 겉넓이·부피",
+    "decisiveStep": "직사각형이 축에 닿지 않아 구멍이 생기며 안쪽 곡면과 두 고리 면까지 겉넓이에 포함한다."
   },
   {
     "id": 13,
@@ -789,7 +808,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -798,7 +817,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 밑면이 변 6, 8, 10 cm인 직각삼각형이고 높이 10 cm인 삼각기둥과, 평행한 변 10 cm·2 cm에 높이 6 cm, 빗변 10 cm인 사다리꼴을 밑면으로 하고 기둥의 높이가 h인 사각기둥을 나란히 보여 준다.",
     "solutionImageCaption": "두 기둥의 밑면 변의 길이와 기둥의 높이를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "두 각기둥 겉넓이 비로 미지 높이 결정",
+    "decisiveStep": "삼각기둥의 겉넓이를 먼저 구해 상대 기둥의 전체 겉넓이를 정하고 밑면 두 개를 제외해 높이를 구한다."
   },
   {
     "id": 15,
@@ -845,17 +866,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중1_수학/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 r인 구, 밑면 반지름 r이고 높이 2r인 원기둥, 같은 크기의 원뿔을 나란히 그리고 각각의 부피를 적은 그림이다.",
     "solutionImageCaption": "세 부피를 2/3πr³으로 나누면 구 : 원기둥 : 원뿔 = 2 : 3 : 1이므로 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "difficultyEvidenceSha": "sha256:1f5db5c93f887b78b96eb4d11748d3cef8d62c9ed81ccd8a0d4a5391b4fe3a8e",
+    "primaryMethod": "같은 반지름과 높이를 공유하는 구·원기둥·원뿔의 부피비",
+    "decisiveStep": "내접 관계로 공통 높이를 지름으로 표시하고 세 부피식의 공통 인수를 약분한다."
   },
   {
     "id": 16,
@@ -911,13 +935,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "정다면체의 꼭짓점별 면 수 조건",
+    "decisiveStep": "면의 합동성 외에도 각 꼭짓점에 모이는 면 수가 일정해야 함을 직접 적용한다."
   },
   {
   "id": 17,
@@ -978,14 +1004,17 @@ window.questionBank = [
   "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
   "crossConceptKeys": [],
   "conditionKeys": [],
-  "integrationPattern": "CASE_BRANCH",
-  "difficultyBucket": 3,
+  "integrationPattern": "NONE",
+  "difficultyBucket": 2,
   "difficultyConfidence": "medium",
-  "difficultyBoundaryFlag": "NONE",
+  "difficultyBoundaryFlag": "B12",
   "legacyLevelCompatibility": "NORMAL",
   "l3Disposition": "EXISTING_L3_REUSE",
-  "l4Disposition": "ASSIGNED"
-},
+  "l4Disposition": "ASSIGNED",
+    "difficultyEvidenceSha": "sha256:1f5db5c93f887b78b96eb4d11748d3cef8d62c9ed81ccd8a0d4a5391b4fe3a8e",
+    "primaryMethod": "두 집단 상대도수 분포다각형 직접 읽기",
+    "decisiveStep": "두 곡선의 해당 계급 높이와 일부 계급의 상대도수 합을 읽는다. 전체 인원이나 백분율 경계를 복원할 필요가 없다."
+  },
   {
     "id": 18,
     "questionUid": "qid_v1_3177952323f8389ae5a416b19ec6dfa0806e8f3ebda2b30f38b37faae41db158",
@@ -1031,13 +1060,15 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "도수·상대도수로 전체 인원과 누락값 복원",
+    "decisiveStep": "알려진 도수와 상대도수로 전체 도수를 복원한 뒤 나머지 도수·상대도수를 곱셈과 나눗셈으로 구한다."
   },
   {
     "id": 19,
@@ -1084,13 +1115,16 @@ window.questionBank = [
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "difficultyEvidenceSha": "sha256:1f5db5c93f887b78b96eb4d11748d3cef8d62c9ed81ccd8a0d4a5391b4fe3a8e",
+    "primaryMethod": "혼합 도수·상대도수 표의 여러 누락값 복원",
+    "decisiveStep": "알려진 한 행에서 전체 도수를 정한 뒤 비율식으로 여러 빈 칸을 순차 복원한다."
   },
   {
     "id": 20,
@@ -1109,7 +1143,7 @@ window.questionBank = [
     },
     "sourceCurriculum": "2015",
     "score": 5,
-    "level": "상",
+    "level": "중",
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
@@ -1143,16 +1177,19 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 윗면 반지름 5 cm, 아랫면 반지름 10 cm, 모선 13 cm인 원뿔대와, 두 밑면을 같은 배율로 그린 원, 반지름 4 cm인 구를 나란히 보여 주는 그림이다.",
     "solutionImageCaption": "원뿔대의 두 밑면과 모선, 반지름 4인 구를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "difficultyEvidenceSha": "sha256:1f5db5c93f887b78b96eb4d11748d3cef8d62c9ed81ccd8a0d4a5391b4fe3a8e",
+    "primaryMethod": "원뿔대와 구의 겉넓이 비",
+    "decisiveStep": "두 반지름과 모선이 직접 주어진 원뿔대의 곡면·밑면을 합하고 구의 겉넓이로 나눈다."
   },
   {
     "id": 21,
@@ -1194,9 +1231,9 @@ window.questionBank = [
     "conceptClusterKey": "POLYGON_CIRCLE",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
     "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
-    "crossConceptKeys": ["CC_LINEAR_EQUATION_SOLUTION"],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1205,7 +1242,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 삼각형의 꼭대기에서 한 변의 연장선과 다른 변 사이의 외각 x를 붉은 호로, 왼쪽 아래 꼭짓점의 외각 x+2°를 초록 호로 표시하고, 두 내각 180°−(x+2°)와 58°를 파란 호로 표시한 그림이다.",
     "solutionImageCaption": "꼭대기 외각 x는 이웃하지 않는 두 내각 180°−(x+2°)와 58°의 합이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "삼각형의 이웃한 내각·외각 방정식",
+    "decisiveStep": "삼각형 한 외각과 두 원격 내각의 합 또는 내각합을 이용해 표시된 식의 미지수를 푼다."
   },
   {
     "id": 22,
@@ -1250,7 +1289,7 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1259,7 +1298,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 사다리꼴 ADCB의 변 AB, DC를 연장해 만든 세 부채꼴 P, Q, R을 색을 달리해 칠한 그림이다. 중심각은 P 60°, Q 60°, R 120°로 호를 그려 표시했고 반지름은 각각 2 cm, 4 cm, 6 cm이다.",
     "solutionImageCaption": "부채꼴 P, Q, R의 반지름은 2 cm, 4 cm, 6 cm이고 중심각은 60°, 60°, 120°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "연결된 부채꼴들의 반지름·중심각을 이용한 넓이 결합",
+    "decisiveStep": "연결된 반지름의 길이와 주어진 각을 이용해 각 부채꼴 넓이를 구한 뒤 요구된 합과 차를 만든다."
   },
   {
     "id": 23,
@@ -1302,7 +1343,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1311,7 +1352,9 @@ window.questionBank = [
     "l4Disposition": "ASSIGNED",
     "solutionImageAlt": "해설 그림: 밑면 반지름 3, 높이 18인 원기둥 통에 쇠공 3개가 꼭 맞게 들어 있는 그림과, 공을 꺼낸 뒤 남은 물을 색칠한 같은 통을 나란히 그린 그림이다. 통 162π에서 공 108π를 빼면 물 54π이다.",
     "solutionImageCaption": "물의 부피 54π를 밑넓이 9π로 나누면 남은 물의 높이는 6cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "구를 제거한 원기둥의 물 부피 보존과 높이",
+    "decisiveStep": "내접한 구들의 지름 합으로 원기둥 높이를 읽고 구의 부피를 빼서 남은 물을 밑넓이로 나눈다."
   },
   {
     "id": 24,
@@ -1353,12 +1396,14 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
-    "l4Disposition": "ASSIGNED"
+    "l4Disposition": "ASSIGNED",
+    "primaryMethod": "집단별 상대도수를 전체 집단의 상대도수로 통합",
+    "decisiveStep": "각 집단의 실제 도수를 복원하고 두 집단의 도수와 전체 인원을 각각 합한 뒤 나눈다. 상대도수의 단순 평균이 아니다."
   }
 ];

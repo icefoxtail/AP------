@@ -52,11 +52,12 @@ test("catalog assignment evidence follows the problem fingerprint, not the full 
 
 test("reviewed path-and-ordinal scope links materialize verified UID assignments", () => {
   const sourceLinks = JSON.parse(read("archive/data/basic-scope-source-links.json"));
-  const middle1Stats = sourceLinks.records.filter((link) =>
+  const middle1Links = sourceLinks.records.filter((link) =>
     link.grade === "중1" && link.curriculumKey === "2022" && link.courseKey === "M1-2");
-  assert.equal(middle1Stats.length, 16, "fixture covers the manually reviewed statistics links");
+  assert.equal(middle1Links.filter(link => link.L1 === "통계").length, 16,
+    "fixture covers the manually reviewed statistics links");
 
-  for (const link of middle1Stats) {
+  for (const link of middle1Links) {
     const record = catalog.records.find((row) =>
       row.sourceFile === link.sourceFile && row.sourceOrdinal === link.sourceOrdinal);
     assert.ok(record, `${link.sourceFile}#${link.sourceOrdinal} resolves to a current catalog record`);

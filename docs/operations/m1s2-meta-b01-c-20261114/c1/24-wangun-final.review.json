@@ -1,0 +1,2816 @@
+{
+  "schemaVersion": "m1s2-integrated-semantic-review-v1",
+  "assignmentId": "M1S2-20261114-B01-C",
+  "reviewer": "C1",
+  "taskId": "00fc1959-d680-4242-b8df-7431bd89a315",
+  "reviewedAt": "2026-11-13T23:02:42.764250+00:00",
+  "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "sourceGitBlobSha": "4c672d14973ebf4a5364ebbe33fdce6ce6fbf82f",
+  "sourceSha256": "77796215d79ead2436148a3f5cf115b252f3bdc927dee34867fed0e26106442a",
+  "reviewScope": "24/24 source content, choices, answer, solution and all 15 necessary current figures; existing mathematics review reused; metadata judgment only",
+  "protectedFieldsChanged": false,
+  "sourceEditsByC1": false,
+  "officialResolverStatus": "ROOT_FINAL_REQUEST_STEP_PENDING; all 24 source items pass repository validateActiveMetaFields with native2015; structural validation is not semantic PASS",
+  "compactProvenanceReconciliation": {
+    "observedSourceGitBlobSha": "bfd63aefaa43be41f8665b59d0ca4c9d63d6d61b",
+    "currentSourceGitBlobSha": "4c672d14973ebf4a5364ebbe33fdce6ce6fbf82f",
+    "status": "ALL_24_COMPACT_ITEMS_REVIEWED_AGAINST_CURRENT_SOURCE; provenance write pending root",
+    "historicalBlobRead": false,
+    "historicalBlobReadLimitation": "Historical blob unavailable in local object DB; no claim that old/current source texts were byte-diffed. Current source and its current figures independently read in full."
+  },
+  "canonicalReferences": [
+    "docs/agents/metadata.md",
+    "docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md",
+    "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md",
+    "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+    "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+    "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "topicGroups": [
+    {
+      "topic": "다각형·삼각형의 각과 다각형 성질",
+      "ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        21
+      ],
+      "count": 8
+    },
+    {
+      "topic": "원과 부채꼴의 호·둘레·넓이",
+      "ordinals": [
+        6,
+        7,
+        10,
+        22
+      ],
+      "count": 4
+    },
+    {
+      "topic": "입체도형의 성질",
+      "ordinals": [
+        11,
+        13,
+        16
+      ],
+      "count": 3
+    },
+    {
+      "topic": "입체도형의 겉넓이·부피",
+      "ordinals": [
+        12,
+        14,
+        15,
+        20,
+        23
+      ],
+      "count": 5
+    },
+    {
+      "topic": "자료 정리·상대도수",
+      "ordinals": [
+        17,
+        18,
+        19,
+        24
+      ],
+      "count": 4
+    }
+  ],
+  "summary": {
+    "questionCount": 24,
+    "allSourceQuestionsRead": 24,
+    "necessaryFiguresRead": 15,
+    "difficultyBucketCorrectionProposals": [
+      7,
+      9,
+      15,
+      17,
+      19,
+      20,
+      22
+    ],
+    "levelCorrectionProposals": [
+      7,
+      20
+    ],
+    "integrationCorrectionProposals": [
+      2,
+      3,
+      5,
+      8,
+      9,
+      10,
+      11,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24
+    ],
+    "crossConceptCorrections": [
+      7,
+      8,
+      12,
+      14
+    ],
+    "fourSlotCorrections": [
+      3,
+      7,
+      10,
+      12,
+      16,
+      22,
+      23,
+      24
+    ],
+    "existingExactTemplateCorrection": [
+      12
+    ],
+    "nativeTypeGaps": [
+      3,
+      4,
+      5,
+      9,
+      14,
+      15,
+      20,
+      24
+    ],
+    "bindingGaps": [
+      1,
+      6,
+      8,
+      10,
+      21
+    ],
+    "crossConceptGaps": [
+      6
+    ],
+    "parentDefinitionDebt": [
+      17,
+      18,
+      21,
+      24
+    ],
+    "independentFourSlotSample": "PENDING_ROOT_OR_OTHER_REVIEWER"
+  },
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_2e86456060a73a45ed0061dc60dbb030d73c60a5c082267f8a35fff483dd09f1",
+      "actualPrimaryTopic": "맞꼭지각으로 연결된 두 삼각형의 내각합",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q1",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q01.png"
+        ],
+        "decisiveStep": "첫 삼각형의 교점각을 내각합으로 구해 맞꼭지각을 통해 다른 삼각형에 전달한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE",
+        "crossConceptKeys": [
+          "CC_VERTICAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "GAP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "BINDING_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 source TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE의 정의·부모·2015 native binding은 정확하다. 그러나 M1-RPM-084 FAMILY의 templateCandidates에 이 TPL이 없다. 동일한 삼각형 각 계산 RPM leaf에 정확한 후보/행을 추가하는 총괄 작업이 필요하다.",
+        "canonicalSourceConflict": "question_metadata templateKey는 공란이고 source에는 정확한 ACTIVE TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE가 있다. exact crosswalk 보완 후 등록 경로로 동기화해야 한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-084",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-197",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {},
+      "difficultyReason": "첫 삼각형의 교점각을 내각합으로 구해 맞꼭지각을 통해 다른 삼각형에 전달한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            158
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            158,
+            175
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_412754443f85747ce4890e8afc74aeb5d0ad694ce29aa65e1291f9c480f21418",
+      "actualPrimaryTopic": "내각·외각 비로 정다각형의 변 수 결정",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q2",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "한 내각과 외각의 보각 관계로 외각을 정한 뒤 한 바퀴를 외각으로 나눈다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-087",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "조건으로 정다각형 찾기"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-200",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "조건으로 정다각형 찾기"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "한 내각과 외각의 보각 관계로 외각을 정한 뒤 한 바퀴를 외각으로 나눈다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            169,
+            289
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            579,
+            715
+          ],
+          "condition": [
+            289
+          ]
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_c71f505b8054c32612130ecaeb5267f00e56c7333796937539fc988f3e0f14a2",
+      "actualPrimaryTopic": "내각·외각 총합으로 다각형의 변 수 역산",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q3",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "변의 수에 대한 내각합과 외각합을 더한 식에서 변의 수를 역산한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "difficultyBucket": 1
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현 INTERIOR_EXTERIOR_SUM TPL 정의는 오각형 다섯 내각의 비 배분에 한정된다. 이 문항은 내각합+외각합에서 n을 역산한다. DIRECT_INTERIOR_EXTERIOR_TOTALS도 n이 주어지는 방향이므로 그대로 대체하지 않는다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-081",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-194",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "변의 수에 대한 내각합과 외각합을 더한 식에서 변의 수를 역산한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            168
+          ],
+          "goal": [
+            328
+          ],
+          "method": [
+            714,
+            715,
+            64
+          ],
+          "condition": [
+            1
+          ]
+        },
+        "proposal": {
+          "goal": [
+            328,
+            129
+          ]
+        },
+        "reason": "요구한 n은 변 자체가 아니라 변의 개수이므로 개수(129)를 보강한다."
+      }
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_b3709fbcfd8563154b9353c0e506ac78b6a5f1cc576184d27171e49fdc1480bc",
+      "actualPrimaryTopic": "사각형의 내각·외각 관계를 방정식으로 표현",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q4",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q04.png"
+        ],
+        "decisiveStep": "각 외각을 이웃한 내각으로 바꿔 사각형 내각합에 대입하고 한 미지수를 푼다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "crossConceptKeys": [
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현 INTERIOR_EXTERIOR_SUM TPL의 다섯 각 비 배분 정의와 달리 사각형의 내각·외각 식을 내각합 방정식에 대입한다. 삼각형 외각 방정식 TPL로도 바꿀 수 없다. 다각형 내각·외각의 일차방정식형을 요청한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-084",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-197",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {},
+      "difficultyReason": "각 외각을 이웃한 내각으로 바꿔 사각형 내각합에 대입하고 한 미지수를 푼다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            162,
+            715
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            714,
+            715,
+            64
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_bb57713b55e14ec7b4a9f2c88131e4c8fc31a098c44e2fc21cd47fcf0a59fbe4",
+      "actualPrimaryTopic": "다각형의 각·대각선·삼각형 분할 개수 검토",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q5",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "개별 다각형의 기본 공식들을 진술별로 대조하며 실제 경우 분기는 없다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 PROPERTY_AUDIT 정의는 내각·외각 및 정다각형 존재/종류 진술을 다룬다. 결정적 대각선 개수 및 삼각형 분할 개수 검토가 명시된 정의가 아니므로 기존 정의 확장 또는 다각형 기본 공식 종합 진술형을 총괄이 판단해야 한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-085",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "변·대각선 개수"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-198",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "변·대각선 개수"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "개별 다각형의 기본 공식들을 진술별로 대조하며 실제 경우 분기는 없다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            168,
+            310
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            310,
+            714,
+            715
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_950d0c567ba744a10a0a8eb2b3ebccca7981ba3a48bb5da95be45de22642bceb",
+      "actualPrimaryTopic": "정육각형 안 부채꼴 호와 직선으로 이루어진 둘레",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q6",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q06.png"
+        ],
+        "decisiveStep": "정육각형의 내각이 호의 중심각이며 색칠된 경계의 직선 조각과 호를 합한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "GAP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "GAP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "BINDING_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 COMPOSITE_ARC_PERIMETER는 호와 직선 경계를 합하는 정확한 ACTIVE TPL이며 native binding도 있다. native M1-RPM-092는 일반 SECTOR_MEASURE만 고정하므로 정확한 TPL의 crosswalk 행 보완이 필요하다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-092",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-205",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {},
+      "difficultyReason": "정육각형의 내각이 호의 중심각이며 색칠된 경계의 직선 조각과 호를 합한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            605,
+            155
+          ],
+          "goal": [
+            214
+          ],
+          "method": [
+            714,
+            155,
+            286
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      },
+      "crossConceptGap": "호의 중심각을 정육각형 내각으로 구하는 보조 개념이 필요하나 일반적인 정다각형 내각을 정확히 표현하는 ACTIVE CC가 없다. 삼각비 넓이분할인 CC_REGULAR_OCTAGON_AREA로 대체하지 않는다. Integration은 정다각형 각→호 측정의 순차 적용으로 유지한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_deee38d5b788ac6e915dbad15defbb555f74f983d513849c7eb1ad227a9d3f07",
+      "actualPrimaryTopic": "지름의 맞꼭지각과 호 길이 비로 원주 역산",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q7",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q07.png"
+        ],
+        "decisiveStep": "세 지름 때문에 중심각 비가 반대편에 반복됨을 읽고 주어진 호가 차지하는 원주의 비율로 역산한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "difficultyBucket": 4
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "CORRECT",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "CORRECT",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-089",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "부채꼴의 호의 길이"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-202",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "부채꼴의 호의 길이"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "level": "중",
+        "crossConceptKeys": [
+          "CC_VERTICAL_ANGLES"
+        ]
+      },
+      "difficultyReason": "세 지름 때문에 중심각 비가 반대편에 반복됨을 읽고 주어진 호가 차지하는 원주의 비율로 역산한다.",
+      "levelReason": "복잡한 경우 분기나 비정형 발상 없이 주어진 비례/공식을 연결하는 표준 학습 과제이므로 중을 제안한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            708,
+            724
+          ],
+          "goal": [
+            622
+          ],
+          "method": [
+            175,
+            578
+          ],
+          "condition": [
+            289
+          ]
+        },
+        "proposal": {
+          "given": [
+            708,
+            724,
+            155
+          ]
+        },
+        "reason": "길이가 주어진 호가 원주와 비례를 세우는 직접 자료이므로 given에 호(155)를 보강한다."
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_b2bc4e767d4a73c8c29dfb8f37cc4fbee5bddfffbf5b901161ef54055bb4d8ab",
+      "actualPrimaryTopic": "정오각형의 대각선과 이등변삼각형 각 추적",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q8",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q08.png"
+        ],
+        "decisiveStep": "변의 같음으로 생긴 이등변삼각형들의 밑각과 정오각형 내각을 연결해 교점각을 구한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "CORRECT",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "BINDING_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 PROPERTY_AUDIT는 대각선 교점각 추적을 설명하지 못한다. 이미 ACTIVE인 TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE가 정확하고 부모 PT와 2015 native binding도 유효하다. 그러나 정확한 2015 crosswalk 후보가 없어 총괄이 기존 정의 재사용 행을 보완해야 한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-083",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-196",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "SEQUENTIAL",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ]
+      },
+      "difficultyReason": "변의 같음으로 생긴 이등변삼각형들의 밑각과 정오각형 내각을 연결해 교점각을 구한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            604,
+            310
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            159,
+            714,
+            158
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      },
+      "officialReuseCandidate": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+        "existingDefinitionExact": true,
+        "nativeExactBinding": true,
+        "crosswalkExact2015": false
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_c8b8769a32b0848b7206dd5bc1b23e5bad8b0d52e515bd177613be0582a8f32c",
+      "actualPrimaryTopic": "한 변을 공유하는 두 정다각형의 꼭짓점 주위 각",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q9",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q09.png"
+        ],
+        "decisiveStep": "두 정다각형의 내각을 구한 뒤 공유 꼭짓점의 한 바퀴 각에서 뺀다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 REGULAR_POLYGON_ANGLE_CHASE 정의는 정삼각형·정사각형·정오각형 배열의 방향각 계산이다. 이 문항은 맞붙인 정오각형과 정육각형의 두 내각을 한 바퀴에서 뺀다. SHARED_SIDE_EXTENSION_AUDIT는 연장선·빈 영역 내각합을 명시하므로 무조건 대체하지 않는다. 인접 정다각형의 꼭짓점 주위각형 정의 필요 여부를 총괄 판단한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-086",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "정다각형의 성질"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-196",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "두 정다각형의 내각을 구한 뒤 공유 꼭짓점의 한 바퀴 각에서 뺀다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            604,
+            605
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            714,
+            288
+          ],
+          "condition": [
+            322
+          ]
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_59ff6faafe76a9119b6d204f42d8cd7c7986b063138d367ec3a27544b6692c23",
+      "actualPrimaryTopic": "큰 원과 두 반원으로 이루어진 색칠 부분의 둘레",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q10",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q10-student.svg"
+        ],
+        "decisiveStep": "최신 학생 그림은 큰 원 전체가 경계에 포함되고, 두 작은 반원호와 지름선분도 경계다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "GAP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "BINDING_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "Q6과 같이 native M1-RPM-092에 정확한 COMPOSITE_ARC_PERIMETER 후보가 없다. 현재 정의와 2015 native binding은 재사용 가능하다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-092",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-205",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "최신 학생 그림은 큰 원 전체가 경계에 포함되고, 두 작은 반원호와 지름선분도 경계다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            620
+          ],
+          "goal": [
+            214
+          ],
+          "method": [
+            708,
+            622,
+            286
+          ],
+          "condition": [
+            627
+          ]
+        },
+        "proposal": {
+          "given": [
+            152,
+            620
+          ]
+        },
+        "reason": "최신 그림은 큰 원 전체의 외곽이 경계다. 반원만 있는 given에 원(152)을 보강하여 현행 그림의 전체 원/반원 구분을 보존한다."
+      }
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_26ab5e93f881b70d55b8517d61e1c779c737157a7306f28cd6f70bd28b86aed6",
+      "actualPrimaryTopic": "정다면체의 정의 충족 여부",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q11",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "모든 면이 합동 정다각형이라는 조건만으로 충분하지 않고 꼭짓점별 면 수도 같아야 한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-096",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-209",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "모든 면이 합동 정다각형이라는 조건만으로 충분하지 않고 꼭짓점별 면 수도 같아야 한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            413
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            369,
+            413
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_bce899674693d26cd6cb08ce76c09d9bfeb8845bc519f43f7f2c7a05dd478b46",
+      "actualPrimaryTopic": "떨어진 회전축으로 만든 속 빈 원기둥의 겉넓이·부피",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q12",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q12-student.svg"
+        ],
+        "decisiveStep": "직사각형이 축에 닿지 않아 구멍이 생기며 안쪽 곡면과 두 고리 면까지 겉넓이에 포함한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "CORRECT",
+        "crossConceptKeys": "CORRECT",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-106",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-219",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "crossConceptKeys": [
+          "CC_SOLID_OF_REVOLUTION"
+        ],
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE"
+      },
+      "difficultyReason": "직사각형이 축에 닿지 않아 구멍이 생기며 안쪽 곡면과 두 고리 면까지 겉넓이에 포함한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            165,
+            172
+          ],
+          "goal": [
+            220,
+            219
+          ],
+          "method": [
+            711,
+            219,
+            220
+          ],
+          "condition": [
+            340
+          ]
+        },
+        "proposal": {
+          "method": [
+            711,
+            288,
+            219,
+            220
+          ]
+        },
+        "reason": "속 빈 입체의 부피는 원기둥 두 부피의 차다. 기본 원기둥 공식만 보이는 기존 method에 차(288)를 넣어 구멍을 반영한다."
+      },
+      "officialReuseCandidate": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "existingDefinitionExact": true,
+        "nativeExactBinding": true,
+        "crosswalkExact2015": true,
+        "crosswalkRecordId": "M1-RPM-106",
+        "reason": "안쪽 곡면과 두 고리 절단면의 노출 넓이를 합하는 결정 단계가 COMPOSITE_SURFACE 정의와 맞는다. 부피 차 계산은 같은 측정 Primary 내 보조 계산이다. 실제 적용은 공식 Resolver 결과에 결속한다."
+      }
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a047a07bb2b85c6005640744492442d93cae75ebd4af20fd6c3f5a5f81d8715",
+      "actualPrimaryTopic": "회전체의 회전축 포함 단면",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q13",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "축을 포함한 단면의 모양을 각 회전체의 정의에 따라 판정한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-099",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "회전체",
+          "l4": "회전체의 단면"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-212",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "회전체",
+          "l4": "회전체의 단면"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {},
+      "difficultyReason": "축을 포함한 단면의 모양을 각 회전체의 정의에 따라 판정한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            172,
+            334
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            334,
+            320
+          ],
+          "condition": [
+            340
+          ]
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_cc8e33060ea2f9df16d5daabaeea73def88be9dcf00a86032d1d3f63fec25f9d",
+      "actualPrimaryTopic": "두 각기둥 겉넓이 비로 미지 높이 결정",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q14",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q14-student.svg"
+        ],
+        "decisiveStep": "삼각기둥의 겉넓이를 먼저 구해 상대 기둥의 전체 겉넓이를 정하고 밑면 두 개를 제외해 높이를 구한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "CORRECT",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 STANDARD_MEASURE는 기본 입체 공식에 수치를 대입하는 정의다. 두 각기둥의 겉넓이 비를 연결해 미지 높이를 역산하는 구조는 명시되지 않았다. NET_MEASURE도 원기둥·원뿔 전개도만 명시하므로 대체할 수 없다. 겉넓이 관계의 역산형을 검토 요청한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-100",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "각기둥"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-213",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "각기둥"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION_SOLUTION"
+        ]
+      },
+      "difficultyReason": "삼각기둥의 겉넓이를 먼저 구해 상대 기둥의 전체 겉넓이를 정하고 밑면 두 개를 제외해 높이를 구한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            173,
+            410,
+            220
+          ],
+          "goal": [
+            218
+          ],
+          "method": [
+            653,
+            220,
+            64
+          ],
+          "condition": [
+            289
+          ]
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_cfad542881c8b3e48289c056988672b0cbcbc20ef2e7fde41f1d0724c4f6b2ac",
+      "actualPrimaryTopic": "같은 반지름과 높이를 공유하는 구·원기둥·원뿔의 부피비",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q15",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q15-student.svg"
+        ],
+        "decisiveStep": "내접 관계로 공통 높이를 지름으로 표시하고 세 부피식의 공통 인수를 약분한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 STANDARD_MEASURE 정의는 각기둥·원기둥·각뿔·원뿔만 열거하며 구를 포함한 공통 치수 부피비는 빠져 있다. sphere/cylinder 제약 TPL은 구의 겉넓이를 묻는 다른 구조다. 기본입체 부피비형 또는 기존 일반 공식 정의의 범위 정합을 총괄이 검토해야 한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-105",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 부피"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-218",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 부피"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "내접 관계로 공통 높이를 지름으로 표시하고 세 부피식의 공통 인수를 약분한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            711,
+            712,
+            415
+          ],
+          "goal": [
+            722
+          ],
+          "method": [
+            219,
+            289
+          ],
+          "condition": [
+            720
+          ]
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_8bfafdeba785feb2052349ea5279d59dfb74bfacc5ccdc8e0a0161c3c9357729",
+      "actualPrimaryTopic": "정다면체의 꼭짓점별 면 수 조건",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q16",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "면의 합동성 외에도 각 꼭짓점에 모이는 면 수가 일정해야 함을 직접 적용한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-096",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-209",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"다면체와 회전체\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "면의 합동성 외에도 각 꼭짓점에 모이는 면 수가 일정해야 함을 직접 적용한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            413
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            413,
+            293
+          ],
+          "condition": []
+        },
+        "proposal": {
+          "given": [
+            170
+          ],
+          "method": [
+            369,
+            413
+          ]
+        },
+        "reason": "보기 전체는 다면체이고 일부가 정다면체가 아니므로 given의 정다면체 단정은 다면체(170)로 정정한다. 방법은 수학적 경우 분기가 아니라 정다면체의 정의 검토다."
+      }
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_dbfbdf2800303f350ea162510f61b7c91188e97f5dd7c181fa3f95fc9bf14134",
+      "actualPrimaryTopic": "두 집단 상대도수 분포다각형 직접 읽기",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q17",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q17-student-replacement.svg"
+        ],
+        "decisiveStep": "두 곡선의 해당 계급 높이와 일부 계급의 상대도수 합을 읽는다. 전체 인원이나 백분율 경계를 복원할 필요가 없다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "GAP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null,
+        "parentDefinitionDebt": "PT_M1_DATA_CATEGORY_PERCENTAGE definition은 줄기·잎 나이 구간 백분율에 한정되어 등록된 집단 그래프/전체 인원 복원 자식 정의와 충돌한다. 정상 자식의 의미상 재사용과 공유 부모 정의 정합을 분리한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-112",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "자료의 정리와 해석",
+          "l3": "자료 해석",
+          "l4": "그래프 비교"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-232",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "두 집단 비교"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "두 곡선의 해당 계급 높이와 일부 계급의 상대도수 합을 읽는다. 전체 인원이나 백분율 경계를 복원할 필요가 없다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            267
+          ],
+          "goal": [
+            132
+          ],
+          "method": [
+            267,
+            286
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3177952323f8389ae5a416b19ec6dfa0806e8f3ebda2b30f38b37faae41db158",
+      "actualPrimaryTopic": "도수·상대도수로 전체 인원과 누락값 복원",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q18",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "알려진 도수와 상대도수로 전체 도수를 복원한 뒤 나머지 도수·상대도수를 곱셈과 나눗셈으로 구한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "GAP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null,
+        "parentDefinitionDebt": "PT_M1_DATA_CATEGORY_PERCENTAGE definition은 줄기·잎 나이 구간 백분율에 한정되어 등록된 집단 그래프/전체 인원 복원 자식 정의와 충돌한다. 정상 자식의 의미상 재사용과 공유 부모 정의 정합을 분리한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-110",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "자료의 정리와 해석",
+          "l3": "상대도수",
+          "l4": "상대도수 계산"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-229",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "상대도수",
+          "l4": "상대도수 계산"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "알려진 도수와 상대도수로 전체 도수를 복원한 뒤 나머지 도수·상대도수를 곱셈과 나눗셈으로 구한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            267,
+            732
+          ],
+          "goal": [
+            732,
+            267
+          ],
+          "method": [
+            267,
+            732
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_930f72bdad783a8a1f7a0f12e1a4cbe0eb244d9024cfa5ff15a55756ad8cc849",
+      "actualPrimaryTopic": "혼합 도수·상대도수 표의 여러 누락값 복원",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q19",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "알려진 한 행에서 전체 도수를 정한 뒤 비율식으로 여러 빈 칸을 순차 복원한다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-108",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "자료의 정리와 해석",
+          "l3": "도수분포",
+          "l4": "도수분포표"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-228",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "도수분포표 완성"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "알려진 한 행에서 전체 도수를 정한 뒤 비율식으로 여러 빈 칸을 순차 복원한다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            267,
+            732
+          ],
+          "goal": [
+            286
+          ],
+          "method": [
+            267,
+            732
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_2f4cc32028c6ae07ff056bb49e5c3e8867eb3a13098f71deae0bf5e46633cd74",
+      "actualPrimaryTopic": "원뿔대와 구의 겉넓이 비",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q20",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/q20-student.svg"
+        ],
+        "decisiveStep": "두 반지름과 모선이 직접 주어진 원뿔대의 곡면·밑면을 합하고 구의 겉넓이로 나눈다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "difficultyBucket": 4
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "CORRECT",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 FRUSTUM_SURFACE 정의는 합동 사다리꼴 옆면을 합하는 각뿔대다. 실제 문항은 원뿔대 곡면이며 사다리꼴 면이 없다. 원뿔대 곡면/겉넓이형의 신규 또는 정의 분리 요청이 필요하다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-106",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-219",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "level": "중",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "두 반지름과 모선이 직접 주어진 원뿔대의 곡면·밑면을 합하고 구의 겉넓이로 나눈다.",
+      "levelReason": "복잡한 경우 분기나 비정형 발상 없이 주어진 비례/공식을 연결하는 표준 학습 과제이므로 중을 제안한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            412,
+            415
+          ],
+          "goal": [
+            289
+          ],
+          "method": [
+            652,
+            653,
+            220
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      }
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_46fefef1a967ad179d1883d34940807a2cca39be4a7bb642ddce0af5fd5a2550",
+      "actualPrimaryTopic": "삼각형의 이웃한 내각·외각 방정식",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q21",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/s01-student.svg"
+        ],
+        "decisiveStep": "삼각형 한 외각과 두 원격 내각의 합 또는 내각합을 이용해 표시된 식의 미지수를 푼다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATION_SOLUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "KEEP",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "KEEP"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "BINDING_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 EXTERIOR_SUM 정의는 삼각형의 세 외각 합을 이용하는 구조다. 기존 ACTIVE TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION은 외각을 보각 내각으로 바꿔 삼각형 각합 방정식을 푸는 정확한 구조다. 그러나 부모 PT_M1_TRIANGLE_ANGLE_CHASE의 2015/M1-06/M1-06-POLYGON_CIRCLE binding과 정확한 2015 crosswalk가 모두 없다. 그 부모의 연속 이등변삼각형 한정 definition도 자식과 충돌하는 공유 정의 부채다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-084",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-197",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {},
+      "difficultyReason": "삼각형 한 외각과 두 원격 내각의 합 또는 내각합을 이용해 표시된 식의 미지수를 푼다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            158
+          ],
+          "goal": [
+            174
+          ],
+          "method": [
+            715,
+            64
+          ],
+          "condition": []
+        },
+        "proposal": {},
+        "reason": "최신 문항과 그림에서 주어진 대상·요구량·풀이 개념·제약에 부합하여 유지한다."
+      },
+      "officialReuseCandidate": {
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "existingDefinitionExact": true,
+        "nativeExactBinding": false,
+        "crosswalkExact2015": false
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_01d555a93b8196f2408df534415082df5cc58a82058bc219f8a12565728ff9b0",
+      "actualPrimaryTopic": "연결된 부채꼴들의 반지름·중심각을 이용한 넓이 결합",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q22",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/s02-student.svg"
+        ],
+        "decisiveStep": "연결된 반지름의 길이와 주어진 각을 이용해 각 부채꼴 넓이를 구한 뒤 요구된 합과 차를 만든다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "difficultyBucket": 4
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "CORRECT",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-093",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-206",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "평면도형",
+          "midUnit": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 넓이"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "연결된 반지름의 길이와 주어진 각을 이용해 각 부채꼴 넓이를 구한 뒤 요구된 합과 차를 만든다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            167,
+            156
+          ],
+          "goal": [
+            288
+          ],
+          "method": [
+            156,
+            286
+          ],
+          "condition": [
+            180,
+            346
+          ]
+        },
+        "proposal": {
+          "goal": [
+            213,
+            286,
+            288
+          ],
+          "method": [
+            156,
+            213,
+            286,
+            288
+          ]
+        },
+        "reason": "요구량은 넓이들의 합과 차인데 기존 goal은 차만, method는 부채꼴과 합만 있어 목표량 넓이와 실제 감산을 보강한다."
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_3c95ffbe52da26793d611831f28128ef3b00182a14d8bf29d52c0da8fa426b15",
+      "actualPrimaryTopic": "구를 제거한 원기둥의 물 부피 보존과 높이",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q23",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [
+          "assets/images/24_왕운중_2학기_기말_중1_수학/s03-student.svg"
+        ],
+        "decisiveStep": "내접한 구들의 지름 합으로 원기둥 높이를 읽고 구의 부피를 빼서 남은 물을 밑넓이로 나눈다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "difficultyBucket": 3
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "KEEP",
+        "templateKey": "KEEP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "EXISTING_EXACT",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": null
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-106",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-219",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "입체도형",
+          "midUnit": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"입체도형\",\"입체도형의 겉넓이와 부피\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "EXISTING_LEAF_AND_BINDING_REUSE",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "내접한 구들의 지름 합으로 원기둥 높이를 읽고 구의 부피를 빼서 남은 물을 밑넓이로 나눈다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            711,
+            415
+          ],
+          "goal": [
+            218
+          ],
+          "method": [
+            219,
+            653
+          ],
+          "condition": [
+            720
+          ]
+        },
+        "proposal": {
+          "method": [
+            219,
+            288,
+            653
+          ]
+        },
+        "reason": "남은 물의 부피를 구하는 결정 단계가 전체 원기둥에서 구들의 부피를 빼는 것이므로 차(288)를 보강한다."
+      }
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_d558a727a4b5d2c1b2f9a5397039f787bccfc4524326cd63f7e4dae4e261006d",
+      "actualPrimaryTopic": "집단별 상대도수를 전체 집단의 상대도수로 통합",
+      "evidence": {
+        "sourceRef": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js#Q24",
+        "partsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution"
+        ],
+        "figuresRead": [],
+        "decisiveStep": "각 집단의 실제 도수를 복원하고 두 집단의 도수와 전체 인원을 각각 합한 뒤 나눈다. 상대도수의 단순 평균이 아니다."
+      },
+      "observedSource": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "observedCanonical": {
+        "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "difficultyBucket": 2
+      },
+      "fieldVerdicts": {
+        "nativeUnit": "KEEP",
+        "rpmPrimary": "KEEP",
+        "problemTypeKey": "GAP",
+        "templateKey": "GAP",
+        "crossConceptKeys": "KEEP",
+        "conditionKeys": "KEEP",
+        "integrationPattern": "CORRECT",
+        "level": "KEEP",
+        "difficultyBucket": "KEEP",
+        "fourSlots": "CORRECT"
+      },
+      "nativeResolution": {
+        "curriculum": "2015",
+        "classification": "NATIVE_TYPE_GAP",
+        "activeExactBinding": true,
+        "activeTemplateParent": true,
+        "structuralErrors": [],
+        "semanticCaveat": "현재 GROUP_COUNT_COMPARISON은 집단별 실제 인원 비교까지다. 문항은 집단별 실제 도수와 모집단 수를 합쳐 통합 상대도수를 산출한다. CLASS_GROUP_SUM은 같은 집단의 여러 계급 합이므로 대신 쓸 수 없다. 두 집단 통합 상대도수형을 요청한다.",
+        "parentDefinitionDebt": "PT_M1_DATA_CATEGORY_PERCENTAGE definition은 줄기·잎 나이 구간 백분율에 한정되어 등록된 집단 그래프/전체 인원 복원 자식 정의와 충돌한다. 정상 자식의 의미상 재사용과 공유 부모 정의 정합을 분리한다."
+      },
+      "rpmAssessment": {
+        "nativeCandidateCrosswalkRecordId": "M1-RPM-110",
+        "nativeBasePath": {
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "자료의 정리와 해석",
+          "l3": "상대도수",
+          "l4": "상대도수 계산"
+        },
+        "effective2022EquivalentRecordId": "M1-RPM-229",
+        "effective2022EquivalentPath": {
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "상대도수",
+          "l4": "상대도수 계산"
+        },
+        "effective2022ParentKey": "[\"2022\",\"M1-2\",\"통계\",\"도수분포표와 상대도수\"]",
+        "mappingStatus": "FAMILY_ACTIVE",
+        "status": "GAP",
+        "officialResolverRunByC1": false,
+        "nativeCurriculumMustRemain2015": true
+      },
+      "sourcePatchProposal": {
+        "integrationPattern": "NONE"
+      },
+      "difficultyReason": "각 집단의 실제 도수를 복원하고 두 집단의 도수와 전체 인원을 각각 합한 뒤 나눈다. 상대도수의 단순 평균이 아니다.",
+      "levelReason": "기존 학습 수준은 별도로 유지한다.",
+      "fourSlots": {
+        "before": {
+          "given": [
+            267,
+            350
+          ],
+          "goal": [
+            267
+          ],
+          "method": [
+            732,
+            267
+          ],
+          "condition": [
+            297
+          ]
+        },
+        "proposal": {
+          "method": [
+            732,
+            286,
+            267
+          ]
+        },
+        "reason": "집단별 실제 도수와 각 집단 전체 인원을 합쳐야 하므로 합(286)을 명시한다. 서로 다른 집단의 비율을 그대로 더하거나 평균내는 구조와 구별한다."
+      }
+    }
+  ]
+}
