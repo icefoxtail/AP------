@@ -311,7 +311,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[조건 정리] $\\angle C=90^\\circ$, $AC=4$, $\\angle A=60^\\circ$이고 그림에서 $BC=x$, $AB=y$이다.\n[풀이] 각 $A$에 대하여 $AC$는 이웃한 변, $BC$는 맞은편 변이므로\n$\\tan60^\\circ=\\dfrac{x}{4}=\\sqrt3$에서 $x=4\\sqrt3$이다.\n또 $\\cos60^\\circ=\\dfrac{4}{y}=\\dfrac12$에서 $y=8$이다.\n따라서 $x+y=4\\sqrt3+8=8+4\\sqrt3$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q07.png"
+    "image": "assets/images/22_이수중_2학기_중간_중3_수학/q07_question-v2.svg"
   },
   {
     "id": 8,

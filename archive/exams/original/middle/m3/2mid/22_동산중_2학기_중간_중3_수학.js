@@ -1076,7 +1076,7 @@ window.questionBank =[
     "sourceExamId": "22_동산중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 3,
-    "content": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">",
+    "content": "다음 그림은 반지름의 길이가 $1$인 사분원이다. 다음 삼각비의 값을 변의 길이로 나타낸 것 중 틀린 것은? (3점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q12_question-v2.svg\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">",
     "choices": [
       "$\\sin x = \\overline{AB}$",
       "$\\sin z = \\overline{OB}$",
