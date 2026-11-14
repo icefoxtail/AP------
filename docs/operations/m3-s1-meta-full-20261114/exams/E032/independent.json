@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E032",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T14:13:23.288381+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+  "sourceBlob": "cb7ab3e17cc49a8ccfba790c32d130cef92c4dd4",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E032.review.json",
+      "sha256": "878da187e57123fed4b5b5b0359dcf383b87beee2def158c60d57e27882300b3"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E032.4slot.json",
+      "sha256": "8a6d972441a4b82c72a5d9a887a0137bb3c1ac56fe4f23b8a093eb702265aa7c"
+    }
+  },
+  "sampledOrdinals": [
+    15,
+    19,
+    22
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18,
+    20,
+    21,
+    23,
+    24
+  ],
+  "scope": "METADATA_ONLY; all 24 actual stems, choices, existing solutions and reviewed slot selections read; q15/19/22 original PNG and solution SVG directly viewed.",
+  "findings": [
+    {
+      "ordinal": 15,
+      "status": "PASS",
+      "note": "도형 전체너비5x+4, 색칠높이4x-3을 원본에서 확인. 표준 직사각형 면적식 전개2/B23과020 기하곱셈을 수용."
+    },
+    {
+      "ordinal": 19,
+      "status": "PASS",
+      "note": "항등식 계수대응으로 a,b를 결정한 후 원그림 직각삼각형의 높이·넓이를 구하는3/B34. 피타고라스·삼각형넓이의 독립 보조기여를 확인."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원본에서 A=1,B=2와 대각선 등거리 P,Q 배치를 확인. 좌표구성 후 거리계산3/B34 수용. 해설SVG의 눈금·점 배치 불일치는 계산좌표와 구별해 contentDebt 보존됨."
+    },
+    {
+      "ordinal": 2,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근호 정리·분류의2를 기존하와1/2경계로 수용하는 B12/medium 근거가 보강됨. 기존해설 근호범위 오기는 contentDebt에 별도 보존."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS_AFTER_REVISION",
+      "note": "근호 단순화·분모유리화·동류항의 익숙한 순차계산으로2와 기존하 사이의B12/medium 수용."
+    },
+    {
+      "ordinal": 5,
+      "status": "PASS_AFTER_REVISION",
+      "note": "자연수 매개변수 최소값 target이002성질의 부모맥락과 정확leaf제안으로 분리됨. 직접 작은 자연수 후보를 대입하는2/B23 적합."
+    },
+    {
+      "ordinal": 6,
+      "status": "PASS_AFTER_REVISION",
+      "note": "양의 근호 범위를 제곱하여 자연수 후보를 합하는 target을004부모와 exactgap으로 분리함. 표준 부등식 변환2/B23 수용."
+    },
+    {
+      "ordinal": 23,
+      "status": "PASS_AFTER_REVISION",
+      "note": "정수·소수부분은 primary자체이므로 중복CC가 제거되었다. 정수부분 판정→정해진 역수 유리화는 표준2/B23로 기존상→중 교정을 수용."
+    }
+  ],
+  "additionalCheck": "q4/9/11/12/13/14/17/18/24의 근호연산·부호·계수비교와 소단원교정 실제내용 확인. 일반정의1, 기본연산2, 기하연결3의 단계 구분 및 변경 범위를 검토했다. 별도의 전수 풀이 검증은 수행하지 않았다.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
