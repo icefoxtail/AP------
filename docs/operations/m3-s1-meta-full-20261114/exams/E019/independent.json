@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E019",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-14",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "8ddacf3f74a144e140a74e87296bdd1ea3b5f763",
+  "inputHashes": {
+    "reviewSha256": "88db3b74c50c6a741abce0649ebf587dbb3552a562cac95cd2adf6c54656870e",
+    "fourSlotSha256": "91a59a5e2d38e1cabd82f5ca83692240fc29f6bde19ea7df559eda97adde851b"
+  },
+  "sampledOrdinals": [
+    6,
+    18,
+    24
+  ],
+  "additionalReviewedOrdinals": [
+    7,
+    10,
+    16,
+    17,
+    22
+  ],
+  "basis": "표본3과 난도변경·정본경로·projection 예외를 실제 current source stem/choices/solution 및 필요한 이미지로 독립 확인. source는 B/E019.input.json으로 별도 추출. q06 원본 PNG, q06와 q24 solution SVG render도 직접 읽음.",
+  "findings": [
+    {
+      "ordinal": 6,
+      "status": "PASS",
+      "note": "원본 격자에서 A=0,B=(-1,3),C=1,D=(4,2)를 확인. 피타고라스 길이를 왼쪽·오른쪽 수직선 위치로 옮기는 방법과 goal 판정이 일치. 표준 두 개념 연결 bucket3/B34 및 역사 level상 보존 수용."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS",
+      "note": "두 완전제곱 인수분해 후 주어진 단일구간에서 부호가 고정되는 절댓값 정리이다. method 완전제곱식·절댓값·부호, condition 범위가 실제 해설과 일치. bucket3/B34 수용."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS_WITH_DEBT",
+      "note": "원둘레에서 반지름을 역산하고 밑넓이·높이로 부피를 구하는 표준 순차 결합이다. method와 goal 부피 정확, bucket3/B34 수용. native007은 계산 부모이며 정확한 기하복합 leaf 부족을 명시적으로 유지."
+    },
+    {
+      "ordinal": 7,
+      "status": "PASS_WITH_DEBT",
+      "note": "2ab가 제곱수인 후보를 만들고 주사위1~6 범위로32를 제거한 뒤6/36을 구한다. 자연수·범위·확률의 실제 결합 및 bucket4 타당. 정확한 복합 leaf 제안 유지."
+    },
+    {
+      "ordinal": 10,
+      "status": "PASS_AFTER_CORRECTION",
+      "note": "한 항/합차 분모에 정해진 유리화 절차를 적용한다. 전략이 질문에 지정되어 bucket2/medium/B23로 저자와 교정 합의. 정답을 가르는 한항 leaf011과 다른 선택지 합차 leaf012의 범위차를 debt에 보존."
+    },
+    {
+      "ordinal": 16,
+      "status": "PASS",
+      "note": "같은 합차공식 세 번의 직접 연속 적용이며 bucket2 타당. 지수 구하기 goal와 합차공식 방법이 일치."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS_AFTER_CORRECTION",
+      "note": "지정된 인수x+2의 포함 여부를 각 식의 표준 인수분해로 판정한다. 여러 다항식의 공통인수 찾기 TPL 과대투영 제외 타당. 방법이 지정된 기본 비교이므로 bucket2/medium/B23 교정 수용."
+    },
+    {
+      "ordinal": 22,
+      "status": "PASS",
+      "note": "근호의 제곱인수를 분리해 주어진 근삿값의10배·1/10배를 더하고 지정 자리에서 반올림한다. bucket2 및 method/condition 근삿값 정확."
+    }
+  ],
+  "correctionsVerified": [
+    "2015·2022의 midUnit 문자열 차이로 생긴 가짜 leaf gap을 제거하고 L3/L4가 유일하게 대응하는2022 레코드·현재 효과적 부모로 교정함을 최종 파일에서 확인.",
+    "q10·q17 difficultyBucket2, confidence medium, boundaryB23 확인."
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

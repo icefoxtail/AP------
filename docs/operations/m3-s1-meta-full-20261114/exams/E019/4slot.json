@@ -1,0 +1,1983 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_신흥중_1학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "4046d1a6a5e93b09820a832b7eb6d5b258e7156e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-14T13:45:00.329496+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_113c87398dd84140c898cef0c5ae1d55c2e8c939f7069da65c804f958bed70eb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1d909bd31055ec0b210560970b880ec5d474cdad781874ae58caa744d020f5fb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "12cedcd9aaf783307b96d6a32c0c472dbeb53a02752e87c6a04a68fb90bd317f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "양의 제곱근",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "$(-5)^2$",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "$a+b$",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "$25$의 양의 제곱근은 $a=5$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "25의 양의 제곱근 5와 36의 음의 제곱근 -6을 정한 뒤 합한다.",
+            "termId": 22
+          },
+          {
+            "term": "부호",
+            "quote": "$36$의 음의 제곱근은 $b=-6$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "25의 양의 제곱근 5와 36의 음의 제곱근 -6을 정한 뒤 합한다.",
+            "termId": 25
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "quote": "양의 제곱근",
+            "src": "stem",
+            "termId": 396
+          },
+          {
+            "term": "음수",
+            "quote": "음의 제곱근",
+            "src": "stem",
+            "termId": 397
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱근의 뜻과 지정 부호 적용",
+        "condition": "25의 양의 제곱근 5와 36의 음의 제곱근 -6을 정한 뒤 합한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_47a83e3b4315505181d050a36ea3cb108620fc38e6dbf4b04b61576d84099e8f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9bd179580410700e98355db9194fd4e5a0e8a546ae1bff06b9c832bfa0d0f9ce"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5549f324838103c4f393a551a37244a44ee2d9fea5852e6491b630d5760c6085"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "양수 $a$의 제곱근",
+            "src": "choices",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳은 것은",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "음이 아닌 제곱근 하나",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√81은 9이지만 그 수의 제곱근은 ±3이라는 구별로 진술을 판정한다.",
+            "termId": 22
+          },
+          {
+            "term": "정의",
+            "quote": "$8>0$이고 $8^2=64$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√81은 9이지만 그 수의 제곱근은 ±3이라는 구별로 진술을 판정한다.",
+            "termId": 369
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 주값과 제곱근의 정의 구별",
+        "condition": "√81은 9이지만 그 수의 제곱근은 ±3이라는 구별로 진술을 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_00b713dd7a0e1740a1ac095f5fa03e79c8b288c67f5c334359d8bfbeb2aaa3b9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "42b46e848033b4b12a32d129769fc92bf22c6a23e9110aa8e1fb38f36f90e4bf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "094af84166bdbbb137416f63cc0f33d4697ac3fe079bace68798078a7dc8a061"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{(-13)^2}",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "(-\\sqrt{21})^2",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳은 것을 모두",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "quote": "\\left|-\\frac{5}{2}\\right|",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 안 제곱은 절댓값으로, 근호 밖 음수는 제곱 뒤 부호로 구별한다.",
+            "termId": 24
+          },
+          {
+            "term": "부호",
+            "quote": "제곱의 부호",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱근 안 제곱은 절댓값으로, 근호 밖 음수는 제곱 뒤 부호로 구별한다.",
+            "termId": 25
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근의 주값 및 제곱과 부호의 순서 판정",
+        "condition": "제곱근 안 제곱은 절댓값으로, 근호 밖 음수는 제곱 뒤 부호로 구별한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_4e6bdcab80c64e7c97aee1858f99b9901bb7dcc605c8dd589795eb83554dbf1d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "252253ef7e5ec38618538a2ffa061cbf58d5cb4d2579e3bbc40a75e908001b60"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "748732623b7114ca0ef84e2bc7a69d0b97e42fb585d679fb151fe72d3ad6ea16"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "quote": "$-\\sqrt{\\frac{1}{2}} < -\\frac{1}{3}$",
+            "src": "choices",
+            "termId": 63
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳은 것을",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "대소비교",
+            "quote": "제곱근의 단조성",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 근호의 대소를 확인한 뒤 -1을 곱할 때 부등호 방향이 바뀌는 선택지를 판정한다.",
+            "termId": 28
+          },
+          {
+            "term": "부등식의성질",
+            "quote": "양변에 $-1$을 곱하면",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 근호의 대소를 확인한 뒤 -1을 곱할 때 부등호 방향이 바뀌는 선택지를 판정한다.",
+            "termId": 654
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "실수의 대소와 음수 배수의 부등호 처리",
+        "condition": "양수 근호의 대소를 확인한 뒤 -1을 곱할 때 부등호 방향이 바뀌는 선택지를 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_5565f2a133fb335498f9d5fcdb3938fb067055fcc1f248e01a4deea7af904d9d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9497eba9c3ca8a67a2c766a334f7f9fdd7a33bda5bbd82951c6c31ee4b87f6b6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee2e58137bc03cf8dc17bc75d8d0c2af5ab4e9e30a2d5853d06566c601e81f37"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "0.\\dot{4}",
+            "src": "stem",
+            "termId": 5
+          },
+          {
+            "term": "무리수",
+            "quote": "무리수",
+            "src": "stem",
+            "termId": 4
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "quote": "몇 개인가",
+            "src": "stem",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "분류",
+            "quote": "유리수와 무리수로 분류",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수와 제곱근이 유한소수로 정리되는 경우를 제외하여 무리수 세 개를 분류한다.",
+            "termId": 320
+          },
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{0.25}=0.5",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "순환소수와 제곱근이 유한소수로 정리되는 경우를 제외하여 무리수 세 개를 분류한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수의 표현을 정리한 뒤 무리수 판별",
+        "condition": "순환소수와 제곱근이 유한소수로 정리되는 경우를 제외하여 무리수 세 개를 분류한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_1f3a6bfddb07c158934b493288b2fdefe0ddfff51a217984fb105dad11b838cd",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef3d06ababaed4c19a26d3d2c15b7abaa507470ee5380899e330e8e978422243"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "11dd6774c7b2b723e2865641c5bba87d2dcfa95de96efb6993b2ec5595b04cce"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "quote": "수직선",
+            "src": "stem",
+            "termId": 295
+          },
+          {
+            "term": "길이",
+            "quote": "한 눈금의 길이가 $1$",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳지 않은 것은",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "quote": "피타고라스 정리",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "AB=√10, CD=√13을 구하고 P의 왼쪽 위치를 반영하여 P=-√10으로 판정한다.",
+            "termId": 195
+          },
+          {
+            "term": "부호",
+            "quote": "$P$는 $A$의 왼쪽이므로",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "AB=√10, CD=√13을 구하고 P의 왼쪽 위치를 반영하여 P=-√10으로 판정한다.",
+            "termId": 25
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "격자 길이를 피타고라스 정리로 구해 수직선에 옮김",
+        "condition": "AB=√10, CD=√13을 구하고 P의 왼쪽 위치를 반영하여 P=-√10으로 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_738c9732452306e98abe25f752840f885e349a0e69ade6e9fb0b238ded922052",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73c13f64f774c8d8c5ccd33fdd8bc74061f66c6ae26e7dd3bf7001e18bc0aefc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "260baedddb7c9e984be2bf11a2ccb927d575a5c7422548140f330f492a868897"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{18ab}",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "순서쌍",
+            "quote": "눈의 수를 각각 $a, b$",
+            "src": "stem",
+            "termId": 402
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "quote": "확률",
+            "src": "stem",
+            "termId": 130
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "quote": "$2ab$는 완전제곱수",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2ab가 완전제곱수인 후보 중 ab=32를 눈의 범위로 제외하고 유효 순서쌍 6개를 전체 36개와 비교한다.",
+            "termId": 700
+          },
+          {
+            "term": "열거",
+            "quote": "유효한 순서쌍은 $6$개",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2ab가 완전제곱수인 후보 중 ab=32를 눈의 범위로 제외하고 유효 순서쌍 6개를 전체 36개와 비교한다.",
+            "termId": 294
+          },
+          {
+            "term": "확률",
+            "quote": "\\frac{6}{36}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2ab가 완전제곱수인 후보 중 ab=32를 눈의 범위로 제외하고 유효 순서쌍 6개를 전체 36개와 비교한다.",
+            "termId": 130
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "자연수가 될",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "범위",
+            "quote": "주사위",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱수 조건으로 주사위 순서쌍을 제한하여 확률 계산",
+        "condition": "2ab가 완전제곱수인 후보 중 ab=32를 눈의 범위로 제외하고 유효 순서쌍 6개를 전체 36개와 비교한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_99374b05f1cf27e9be9fdacbd3b192b9514f5541da29dc8a89f2057c7a37264e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7fc460ece98b449792c1eb22006ace1147081c1510d1e8b4ae18320dfa47181b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed49b5fe575d182572a7dd6665b8b655b3588ec78f29c590a87c7e42ae2b941f"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "$5\\sqrt{2}\\times\\sqrt{6}=5\\sqrt{8}$",
+            "src": "choices",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳은 것은",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "quote": "근호의 곱과 몫",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "분수로 나누는 마지막 선택지에서 역수를 곱하고 분모를 정리하여 참인 등식을 고른다.",
+            "termId": 287
+          },
+          {
+            "term": "유리화",
+            "quote": "\\frac{6\\sqrt{10}}{5}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "분수로 나누는 마지막 선택지에서 역수를 곱하고 분모를 정리하여 참인 등식을 고른다.",
+            "termId": 57
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 곱셈·나눗셈 혼합과 유리화",
+        "condition": "분수로 나누는 마지막 선택지에서 역수를 곱하고 분모를 정리하여 참인 등식을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3e4e4bea77c65d82e3fff5fc28f514720c74d4dd553b86408f8b8d10deff2a15",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ee1b78f51147c9f0c4d14a42da11940a11decf15038a04738489a5ed8310a29"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13345fd95ee87a7dc7ffaebeb4bb57573d2ee3e8c19421f13cfd8ea063f77237"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{3}=a",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "문자식",
+            "quote": "$a, b$를 사용",
+            "src": "stem",
+            "termId": 34
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "quote": "\\sqrt{8}",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "quote": "주어진 제곱근을 제곱",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a²+b²=8을 먼저 구성하고 그 제곱근으로 √8을 나타낸다.",
+            "termId": 20
+          },
+          {
+            "term": "합",
+            "quote": "$a^2+b^2=3+5=8$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a²+b²=8을 먼저 구성하고 그 제곱근으로 √8을 나타낸다.",
+            "termId": 286
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "문자로 주어진 근호를 제곱하여 목표 근호 표현",
+        "condition": "a²+b²=8을 먼저 구성하고 그 제곱근으로 √8을 나타낸다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_a604bf706c94ac62215833ccf33fa8c03897460eb280bcfea5fdb4f96b69c554",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2ddeafa661ea8c4d7b694ed44d9708ba468aaa40f78b1db451ae4dd0a514c898"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a55d27e10ab444fdd66f61c6c1768b2ff5d8d57efde8afb030ad2fb95d7e5d6"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "분모",
+            "quote": "분모",
+            "src": "stem",
+            "termId": 581
+          },
+          {
+            "term": "무리식",
+            "quote": "$\\frac{2}{\\sqrt{5}}=\\frac{2\\sqrt{5}}{5}$",
+            "src": "choices",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "옳지 않은 것은",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "quote": "분모를 유리화",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "한 항 분모에는 같은 근호, 합차 분모에는 켤레식을 곱하여 잘못 쓴 결과를 찾는다.",
+            "termId": 57
+          },
+          {
+            "term": "합차공식",
+            "quote": "\\frac{2(3+\\sqrt{5})}{9-5}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "한 항 분모에는 같은 근호, 합차 분모에는 켤레식을 곱하여 잘못 쓴 결과를 찾는다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "한 항 및 합차 분모의 유리화 결과 판정",
+        "condition": "한 항 분모에는 같은 근호, 합차 분모에는 켤레식을 곱하여 잘못 쓴 결과를 찾는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c694e8905b81c63e20db306ef15e600d8c33e4aab2706c28689582903259affd",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ad8dbdaf4db6e9c3781de00fbb69b93c2147132542acf9070dc89e880fe68a4d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cd5f73b1be98d10d48180cd975cebcdf7b76387d5d0298bc94ca431f5b9b89d7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "\\sqrt{27}-2\\sqrt{24}",
+            "src": "stem",
+            "termId": 39
+          },
+          {
+            "term": "계수",
+            "quote": "a\\sqrt{3}+b\\sqrt{6}",
+            "src": "stem",
+            "termId": 50
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "$a+b$",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "quote": "분배법칙",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호를 간단히 하고 괄호를 펼친 뒤 √3과 √6의 계수를 각각 1,-3으로 읽는다.",
+            "termId": 454
+          },
+          {
+            "term": "동류항",
+            "quote": "=\\sqrt{3}-3\\sqrt{6}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호를 간단히 하고 괄호를 펼친 뒤 √3과 √6의 계수를 각각 1,-3으로 읽는다.",
+            "termId": 698
+          },
+          {
+            "term": "계수비교",
+            "quote": "$a=1,\\quad b=-3$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "근호를 간단히 하고 괄호를 펼친 뒤 √3과 √6의 계수를 각각 1,-3으로 읽는다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "$a,b$는 유리수",
+            "src": "stem",
+            "termId": 3
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호 정리와 분배법칙 후 동류근호 계수 비교",
+        "condition": "근호를 간단히 하고 괄호를 펼친 뒤 √3과 √6의 계수를 각각 1,-3으로 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_d849648017146ef68cfd244603aef479a25d4e60ed5738dd1e8ee46ff36a8dd3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c09d0e5201158dd5b5a63827532829ec55dcf79bfdd19b23f90b9c327c2cd784"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a4528c7de4b6c65fdbde030548cfd0760b1eee9731a7d62c14c45104dd2f5efa"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(x+2)^2+(x+1)(3x-2)$",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$a-b+c$",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "두 곱을 전개",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 전개식을 합하여 4x²+5x+2로 정리하고 계수를 대입한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수",
+            "quote": "$a=4,\\quad b=5,\\quad c=2$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 전개식을 합하여 4x²+5x+2로 정리하고 계수를 대입한다.",
+            "termId": 50
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "곱셈공식과 분배법칙으로 전개 후 계수 추출",
+        "condition": "두 전개식을 합하여 4x²+5x+2로 정리하고 계수를 대입한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_7946be63de1d660a994f7b34f11873c296d24118339291dc8f2d5fd4a14f72e0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c136100727db8a02fadf0ce2b83befb1935a2e2fd4f992e8235d51163f92049a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "042ad5ee6ae7f892d5d8dea689a3e24107b46a015fdf4b3e6d8066c8ab9ec54f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합",
+            "quote": "$x+y=5$",
+            "src": "stem",
+            "termId": 286
+          },
+          {
+            "term": "곱",
+            "quote": "$xy=3$",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱합",
+            "quote": "$x^2+y^2$",
+            "src": "stem",
+            "termId": 336
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "합의 제곱 공식",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²+y²=(x+y)²-2xy로 바꾸어 주어진 합과 곱을 대입한다.",
+            "termId": 40
+          },
+          {
+            "term": "대입",
+            "quote": "$x^2+y^2=5^2-2\\times3=19$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²+y²=(x+y)²-2xy로 바꾸어 주어진 합과 곱을 대입한다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합의 제곱 항등식으로 제곱합 변형",
+        "condition": "x²+y²=(x+y)²-2xy로 바꾸어 주어진 합과 곱을 대입한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_f4897368804caa240f095831a234e7f99495136d11420eae6ffc150ee932bf56",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "abc77f5d3cdaffcebf5fbae7cbb7946a8d6d391c413c775a8d85657a00a8e32c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bad53a12ac60d92726f190a00a5ae684b1327a00938676e4fd0668cf1bfa57d5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "(\\sqrt{2}-a\\sqrt{3})(\\sqrt{2}-3\\sqrt{3})",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "$a$의 값",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "곱을 전개",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2+9a-(a+3)√6에서 a가 유리수임을 써 무리수 항의 계수를 0으로 둔다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "계수가 $0$이어야",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2+9a-(a+3)√6에서 a가 유리수임을 써 무리수 항의 계수를 0으로 둔다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "유리수가 되도록 하는 유리수 $a$",
+            "src": "stem",
+            "termId": 3
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호식의 전개 후 무리수 항 계수 소거",
+        "condition": "2+9a-(a+3)√6에서 a가 유리수임을 써 무리수 항의 계수를 0으로 둔다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_e437524058b528f5df95ae9dfae91a13a46aab1047e6931a569906d33af9ab41",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "433f3733d39b0dc0629e6973f3429bd36904d112f13d20d61020747c2f517a84"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d21fc713d908c05466b33d663dcc9130cdfa3b646812cc62c3094610d411cec7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "quote": "$2022\\times 2020$",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "goal": [
+          {
+            "term": "공식",
+            "quote": "곱셈공식",
+            "src": "stem",
+            "termId": 333
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "quote": "합차의 곱 공식",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2021을 중심으로 (2021+1)(2021-1)로 보고 합차공식을 고른다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인접한 두 수를 합차의 곱으로 표현",
+        "condition": "2021을 중심으로 (2021+1)(2021-1)로 보고 합차공식을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a52baba31ad2ef79ce9e1aca6414419593c5936d187d736a81323602bf43b84f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b85b90ddcd4903bf78c6e1c92f039a1c3d1c4095fb694e5e3fce0718f304e174"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ecd3ac31da504d673fc89ac0ad23d49544dd5cce70a557c8528feaea01a7990d"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "(x-1)(x+1)(x^2+1)(x^4+1)",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "알맞은 수",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "quote": "합차의 곱 공식",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "차례로 x²-1, x⁴-1, x⁸-1을 만들어 빈칸의 지수를 결정한다.",
+            "termId": 694
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "$\\square=8$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "차례로 x²-1, x⁴-1, x⁸-1을 만들어 빈칸의 지수를 결정한다.",
+            "termId": 20
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합차공식을 연속 적용하여 지수 결정",
+        "condition": "차례로 x²-1, x⁴-1, x⁸-1을 만들어 빈칸의 지수를 결정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_f2d9c0ada68fb1aa9f523fee1f31134503e97f04bd4f80fa59d8ae122146d3eb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e0a9f540249a89282f37436d9e57b7b3e8d790313a02820c1e7f6bb63254c037"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c435b6e75b4ff375c5ccacddec97f362d87e48d9055246804bb791b18c1091bd"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$2x^2-8x+8$",
+            "src": "choices",
+            "termId": 35
+          },
+          {
+            "term": "인수",
+            "quote": "$x+2$를 인수",
+            "src": "stem",
+            "termId": 43
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "갖지 않은 것은",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "실제로 인수분해",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 식은 공통인수 2를 뺀 뒤 2(x-2)²가 되어 x+2가 인수가 아님을 구별한다.",
+            "termId": 42
+          },
+          {
+            "term": "공통인수",
+            "quote": "2(x^2-4x+4)=2(x-2)^2",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 식은 공통인수 2를 뺀 뒤 2(x-2)²가 되어 x+2가 인수가 아님을 구별한다.",
+            "termId": 695
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 다항식을 인수분해하여 지정 인수 포함 여부 판정",
+        "condition": "마지막 식은 공통인수 2를 뺀 뒤 2(x-2)²가 되어 x+2가 인수가 아님을 구별한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_05899dcb2c40b151726a3c0b39ba28107da8bb1fc981c186825d7ba13fb7ee17",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3f8024f756a8588238b79159b4a4c4593dfb3aa6ad7c0734e55219f677a38c07"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "49be5106c2e4677d7205e4ca99e07fe95a6f3a9d0984d7a7f2d1ec5d62981578"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "\\sqrt{x^2-6x+9}-\\sqrt{x^2-2x+1}",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "quote": "간단히 하면",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "\\sqrt{(x-3)^2}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "1<x<3에서 |x-3|=3-x, |x-1|=x-1로 풀어 두 식의 차를 정리한다.",
+            "termId": 59
+          },
+          {
+            "term": "절댓값",
+            "quote": "제곱근을 절댓값으로",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "1<x<3에서 |x-3|=3-x, |x-1|=x-1로 풀어 두 식의 차를 정리한다.",
+            "termId": 24
+          },
+          {
+            "term": "부호",
+            "quote": "주어진 범위에서 부호",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "1<x<3에서 |x-3|=3-x, |x-1|=x-1로 풀어 두 식의 차를 정리한다.",
+            "termId": 25
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "$1 < x < 3$",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식의 제곱근을 범위별 부호로 정리",
+        "condition": "1<x<3에서 |x-3|=3-x, |x-1|=x-1로 풀어 두 식의 차를 정리한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2951d1325bdff3b39abe5c852399b4e2352d055f396f0bb4339f59dd00737642",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c515629ad1442e4320875e9d5e0e15ee4580d21fed88478834896034c197d8a4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "194f2b85c03a561ed85a85100e906925d1f740ebed526a7287e691d4f762b3b2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(3x+2)(3x-6)+k$",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "quote": "상수 $k$의 값",
+            "src": "stem",
+            "termId": 309
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "먼저 식을 전개",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "9x²-12x-12+k를 (3x-2)²와 대조하여 상수항을 맞춘다.",
+            "termId": 41
+          },
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식과 상수항",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "9x²-12x-12+k를 (3x-2)²와 대조하여 상수항을 맞춘다.",
+            "termId": 59
+          },
+          {
+            "term": "계수비교",
+            "quote": "$-12+k=4$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "9x²-12x-12+k를 (3x-2)²와 대조하여 상수항을 맞춘다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식이 되도록",
+            "src": "stem",
+            "termId": 59
+          }
+        ]
+      },
+      "reasons": {
+        "method": "전개 후 완전제곱식의 계수와 상수항 비교",
+        "condition": "9x²-12x-12+k를 (3x-2)²와 대조하여 상수항을 맞춘다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_bb67a33752eaf78bbbccbda0409309a3210df68171a6cb5cfc0a78dee426294e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d3be0284d7a4a33eae1ffa9311cb3629258711dfd30b80a63f35b331b64c92e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d009c260f7da9fb7843f73c46455511ca31e0b0d15c7c05305c1a4136a746b0e"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "quote": "$2^8-1$",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "약수",
+            "quote": "약수가 아닌",
+            "src": "stem",
+            "termId": 11
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "인수분해",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2⁸-1을 제곱의 차로 나누어 3·5·17로 나타내고 7을 제외한다.",
+            "termId": 42
+          },
+          {
+            "term": "합차공식",
+            "quote": "제곱의 차 공식",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "2⁸-1을 제곱의 차로 나누어 3·5·17로 나타내고 7을 제외한다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수의 인수분해를 약수 판정에 활용",
+        "condition": "2⁸-1을 제곱의 차로 나누어 3·5·17로 나타내고 7을 제외한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_0d2702d3894b5aefe029515488b5094ee059dd6fb915d7bdfd0277d1994198c5",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c9b0423b03a66cc453214805b9f212269b32c052b067f79ef4f1ee5b9ff1b0a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "21a9164fd4ba2cb8c9bbe7ba29b04feb4a8d5c25a800165d5b1b9177da0c7363"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "제곱근의 성질",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "잘못 말한 사람",
+            "src": "stem",
+            "termId": 132
+          },
+          {
+            "term": "등식",
+            "quote": "그 내용을 바르게 고치시오",
+            "src": "stem",
+            "termId": 349
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "quote": "음수가 아닙니다",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱을 근호로 되돌릴 때 음수가 아닌 값으로 택해야 함을 민자의 설명에 적용한다.",
+            "termId": 25
+          },
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{25}=5",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱을 근호로 되돌릴 때 음수가 아닌 값으로 택해야 함을 민자의 설명에 적용한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호의 주값과 제곱근 성질 오류 설명",
+        "condition": "음수의 제곱을 근호로 되돌릴 때 음수가 아닌 값으로 택해야 함을 민자의 설명에 적용한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d855e3fba81b9dee364705653362ea58b9893119ff894ee631ccf0beb8052d25",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d02b4ffac5b4346a14c078ec5262e6a10fcf99feecc2b852cceb3d1f742ade74"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4a822e4f3728e1c921f8751d64f0b261d098ee37122b0d6a24b7223c8c909d7"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "근삿값",
+            "quote": "주어진 근삿값",
+            "src": "stem",
+            "termId": 560
+          },
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{370}+\\sqrt{0.37}",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "값을 구하는",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "\\sqrt{370}=10\\sqrt{3.7}",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "370=100·3.7, 0.37=37/100으로 바꿔 근삿값을 10배와 1/10배 한 뒤 반올림한다.",
+            "termId": 22
+          },
+          {
+            "term": "근삿값",
+            "quote": "두 근삿값을 더하면",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "370=100·3.7, 0.37=37/100으로 바꿔 근삿값을 10배와 1/10배 한 뒤 반올림한다.",
+            "termId": 560
+          }
+        ],
+        "condition": [
+          {
+            "term": "근삿값",
+            "quote": "소수 셋째 자리에서 반올림",
+            "src": "stem",
+            "termId": 560
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호 안 소수점 이동과 주어진 근삿값 활용",
+        "condition": "370=100·3.7, 0.37=37/100으로 바꿔 근삿값을 10배와 1/10배 한 뒤 반올림한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_ee021b0469f779c292a3dafe63b75c59452d8a7f7272cd0faea86f167902efc3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb06bdeeebabfa820bc43b43a0aeadf70a18d9b92b19aad9e05ea0b44490c430"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "74a88c6726408926d4d18d0254d0590b1199c3d839f584f594eb5dc5cc2707d7"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "quote": "2\\sqrt{12}+\\sqrt{50}-\\sqrt{75}-\\sqrt{18}",
+            "src": "stem",
+            "termId": 39
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "quote": "$a+b$",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "quote": "같은 근호의 항끼리",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 √2항과 √3항을 모아 계수 2와 -1을 읽는다.",
+            "termId": 698
+          },
+          {
+            "term": "계수비교",
+            "quote": "$a=2,\\quad b=-1$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 √2항과 √3항을 모아 계수 2와 -1을 읽는다.",
+            "termId": 696
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "quote": "$a, b$는 유리수",
+            "src": "stem",
+            "termId": 3
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근호를 간단히 하여 동류근호 계수 비교",
+        "condition": "같은 √2항과 √3항을 모아 계수 2와 -1을 읽는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_297c2aadbc483102d7f02c54e1b9ffbfe1c34a8f12da192622e6d626e90fba3a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb51410fe675d502c69fa3273eb251d8018ab7dca82d687aef0d03e857ef567b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73992cd60f8073b795c757916022161bd8f4f0e2b36ee74e6a69021a81f45834"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "quote": "원기둥",
+            "src": "stem",
+            "termId": 711
+          },
+          {
+            "term": "전개도",
+            "quote": "전개도",
+            "src": "stem",
+            "termId": 173
+          },
+          {
+            "term": "둘레",
+            "quote": "밑면 원의 둘레",
+            "src": "stem",
+            "termId": 214
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "quote": "부피",
+            "src": "stem",
+            "termId": 219
+          }
+        ],
+        "method": [
+          {
+            "term": "반지름",
+            "quote": "밑면의 반지름",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 가로=밑면 원둘레에서 r=2√2를 구하고 밑넓이와 높이를 곱한다.",
+            "termId": 153
+          },
+          {
+            "term": "밑넓이",
+            "quote": "밑면의 넓이",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 가로=밑면 원둘레에서 r=2√2를 구하고 밑넓이와 높이를 곱한다.",
+            "termId": 653
+          },
+          {
+            "term": "부피",
+            "quote": "밑면의 넓이와 높이의 곱",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "옆면 가로=밑면 원둘레에서 r=2√2를 구하고 밑넓이와 높이를 곱한다.",
+            "termId": 219
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전개도의 원둘레에서 반지름을 구해 원기둥 부피 계산",
+        "condition": "옆면 가로=밑면 원둘레에서 r=2√2를 구하고 밑넓이와 높이를 곱한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_80ff92d22903920db8c968cbf980166cb5a8ed4db62bcddc5bfd0033a3bbfd9b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "26d3b7fcad7575a51d54f79ac66e95de587a170968d969a0938007095ef7b81e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a194735eed99da7e99eaa49daaa0865d31f8a4dab10e9ff16485d7cf93d0c28e"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "quote": "$102^2$",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "quote": "답",
+            "src": "stem",
+            "termId": 131
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "합의 제곱 공식",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "102를 100+2로 분해하고 합의 제곱 공식에 직접 대입한다.",
+            "termId": 40
+          },
+          {
+            "term": "전개",
+            "quote": "$=100^2+2\\cdot100\\cdot2+2^2$",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "102를 100+2로 분해하고 합의 제곱 공식에 직접 대입한다.",
+            "termId": 41
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "합의 제곱 공식으로 수의 제곱 계산",
+        "condition": "102를 100+2로 분해하고 합의 제곱 공식에 직접 대입한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-14T13:45:00.329496+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "8ddacf3f74a144e140a74e87296bdd1ea3b5f763",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E019",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-14",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "8ddacf3f74a144e140a74e87296bdd1ea3b5f763",
+    "inputHashes": {
+      "reviewSha256": "88db3b74c50c6a741abce0649ebf587dbb3552a562cac95cd2adf6c54656870e",
+      "fourSlotSha256": "91a59a5e2d38e1cabd82f5ca83692240fc29f6bde19ea7df559eda97adde851b"
+    },
+    "sampledOrdinals": [
+      6,
+      18,
+      24
+    ],
+    "additionalReviewedOrdinals": [
+      7,
+      10,
+      16,
+      17,
+      22
+    ],
+    "basis": "표본3과 난도변경·정본경로·projection 예외를 실제 current source stem/choices/solution 및 필요한 이미지로 독립 확인. source는 B/E019.input.json으로 별도 추출. q06 원본 PNG, q06와 q24 solution SVG render도 직접 읽음.",
+    "findings": [
+      {
+        "ordinal": 6,
+        "status": "PASS",
+        "note": "원본 격자에서 A=0,B=(-1,3),C=1,D=(4,2)를 확인. 피타고라스 길이를 왼쪽·오른쪽 수직선 위치로 옮기는 방법과 goal 판정이 일치. 표준 두 개념 연결 bucket3/B34 및 역사 level상 보존 수용."
+      },
+      {
+        "ordinal": 18,
+        "status": "PASS",
+        "note": "두 완전제곱 인수분해 후 주어진 단일구간에서 부호가 고정되는 절댓값 정리이다. method 완전제곱식·절댓값·부호, condition 범위가 실제 해설과 일치. bucket3/B34 수용."
+      },
+      {
+        "ordinal": 24,
+        "status": "PASS_WITH_DEBT",
+        "note": "원둘레에서 반지름을 역산하고 밑넓이·높이로 부피를 구하는 표준 순차 결합이다. method와 goal 부피 정확, bucket3/B34 수용. native007은 계산 부모이며 정확한 기하복합 leaf 부족을 명시적으로 유지."
+      },
+      {
+        "ordinal": 7,
+        "status": "PASS_WITH_DEBT",
+        "note": "2ab가 제곱수인 후보를 만들고 주사위1~6 범위로32를 제거한 뒤6/36을 구한다. 자연수·범위·확률의 실제 결합 및 bucket4 타당. 정확한 복합 leaf 제안 유지."
+      },
+      {
+        "ordinal": 10,
+        "status": "PASS_AFTER_CORRECTION",
+        "note": "한 항/합차 분모에 정해진 유리화 절차를 적용한다. 전략이 질문에 지정되어 bucket2/medium/B23로 저자와 교정 합의. 정답을 가르는 한항 leaf011과 다른 선택지 합차 leaf012의 범위차를 debt에 보존."
+      },
+      {
+        "ordinal": 16,
+        "status": "PASS",
+        "note": "같은 합차공식 세 번의 직접 연속 적용이며 bucket2 타당. 지수 구하기 goal와 합차공식 방법이 일치."
+      },
+      {
+        "ordinal": 17,
+        "status": "PASS_AFTER_CORRECTION",
+        "note": "지정된 인수x+2의 포함 여부를 각 식의 표준 인수분해로 판정한다. 여러 다항식의 공통인수 찾기 TPL 과대투영 제외 타당. 방법이 지정된 기본 비교이므로 bucket2/medium/B23 교정 수용."
+      },
+      {
+        "ordinal": 22,
+        "status": "PASS",
+        "note": "근호의 제곱인수를 분리해 주어진 근삿값의10배·1/10배를 더하고 지정 자리에서 반올림한다. bucket2 및 method/condition 근삿값 정확."
+      }
+    ],
+    "correctionsVerified": [
+      "2015·2022의 midUnit 문자열 차이로 생긴 가짜 leaf gap을 제거하고 L3/L4가 유일하게 대응하는2022 레코드·현재 효과적 부모로 교정함을 최종 파일에서 확인.",
+      "q10·q17 difficultyBucket2, confidence medium, boundaryB23 확인."
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}
