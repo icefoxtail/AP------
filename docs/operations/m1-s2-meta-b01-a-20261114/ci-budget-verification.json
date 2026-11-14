@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "m1s2-ci-budget-direct-dependency-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "path": ".github/workflows/ci.yml",
+  "beforeMinutes": 15,
+  "afterMinutes": 30,
+  "parsedWorkflowOnlyTimeoutChanged": true,
+  "triggersPermissionsConcurrencyCommandsGatesUnchanged": true,
+  "beforeSha256": "f9623dc55da2f6be477cd8e025455752bd8aef71598749253caa24a19685fda1",
+  "afterSha256": "b3a4d12a59f1183243816f85a310079b67cdcf1472cb187a0b141696bbca30cf",
+  "runEvidence": {
+    "run": 43533869947,
+    "job": 132258033470,
+    "head": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+    "startedAt": "2026-11-14T00:23:42Z",
+    "completedAt": "2026-11-14T00:38:59Z",
+    "elapsedSeconds": 917,
+    "conclusion": "cancelled",
+    "log": "The operation was canceled.",
+    "causeConfidence": "15 minute budget matches observed elapsed time; authoritative check annotations unavailable; separate real Q13 assertion is addressed by an explicit publication hold, not by this time change"
+  },
+  "ownerOverlap": {
+    "openPrCount": 73,
+    "sameFilePr": 956,
+    "branch": "codex/archive-only-ci-paths",
+    "head": "2464f200c8dedba00918f254206b876df9c7d07c",
+    "observedPatch": "Only adds on.push.paths and on.pull_request.paths; no timeout edit",
+    "hunkOverlap": false,
+    "otherBranchUnchanged": true
+  },
+  "validation": "YAML parsed before/after differs solely in jobs.test.timeout-minutes; existing required test selection and assertions retained. No extra test suite was added."
+}
