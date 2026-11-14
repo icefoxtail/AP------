@@ -82,7 +82,7 @@ export function verifyVisualRebindQuestions(ledger, oldQuestions, questions, fig
   return reviewedQids;
 }
 
-function readVisualRebind(name, ledger, code, questions) {
+export function readVisualRebind(name, ledger, code, questions) {
   const receiptPath = path.join(rebindDir, name.replace(/\.review\.json$/, '.json'));
   if (!fs.existsSync(receiptPath)) return null;
   const receipt = json(receiptPath);
