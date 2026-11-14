@@ -3,9 +3,9 @@
   "examUid": "23_연향중_2학기_중간_중1_유사",
   "candidateJsPath": "archive/exams/similar/middle/m1/2mid/23_연향중_2학기_중간_중1_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m1/2mid/23_연향중_2학기_중간_중1_유사.meta-candidate.json",
-  "candidateGitBlobSha1": "347a72937e2991ddbaf14bd67852f41cf9da8ae2",
+  "candidateGitBlobSha1": "f61ae96a5770445b6cceea2a47c8c30885cfd87c",
   "createdAt": "2026-11-13T07:12:00Z",
-  "reviewerRole": "CREATOR_SELF_CHECK_ONLY",
+  "reviewerRole": "CREATOR_SELF_CHECK_PLUS_BLIND_INDEPENDENT_MATH_REVIEW",
   "signOffStatus": "PENDING_INDEPENDENT_REVIEW",
   "auditSummary": {
     "totalQuestions": 24,
@@ -13,7 +13,7 @@
     "mcqCount": 20,
     "descriptiveCount": 4,
     "authorSelfCheckCount": 24,
-    "independentReviewCount": 0,
+    "independentReviewCount": 24,
     "sourceDiagramsRecovered": 0,
     "svgAssetCount": 0
   },
@@ -22,79 +22,94 @@
       "qid": 6,
       "description": "④가 일치와 중복되던 관계를 두 점 교차로 교체해 유일한 불가능 관계로 정정.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 7,
       "description": "직각 정오각기둥과 꼭짓점 대응을 명시, 꼬인 모서리 4+3=7; 오산 편집 잔재 제거.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 8,
       "description": "평각 안 반직선 순서 OA,OC,OD,OE,OB 보완.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 10,
       "description": "원 그림을 복원하지 않고 엇각·평각·분할 관계로 정의한 자체 완결형 변형; x−y=55.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 12,
       "description": "원 ② SSA 데이터의 비존재를 확인. M1에서 빗변으로 판정 가능하도록 90° 사례로 조정. ④도 최대각-대변 비교로 비존재 설명.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 13,
       "description": "공선점 순서를 O-A-B, O-C-D로 보완해 선분 길이 합과 각 대응을 확정.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 15,
       "description": "D-A-E 순서를 명시해 DE=AD+AE를 확정.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 16,
       "description": "맞꼭지각과 세 번째 각 위치를 텍스트로 정의.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 17,
       "description": "원 도형을 복원하지 않고 네 삼각형 내각 합의 자체 완결형 변형; 답 660°.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 18,
       "description": "정육각형·정오각형의 공통변과 반대편 배치를 명시; AF,AI의 작은 각 132°.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 21,
       "description": "세 직선, 반직선 순서와 세 인접각을 글로 정의; x=13.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 22,
       "description": "원 꺾은선을 복원하지 않고 동측내각을 직접 지정한 변형; x=85°.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
     },
     {
       "qid": 23,
       "description": "SSA를 일반화하지 않고 유효한 두 삼각형의 서로 다른 SSS 길이 집합으로 재구성.",
       "status": "REPAIRED_IN_CANDIDATE",
-      "independentReview": "NOT_RUN"
+      "independentReview": "PARTIAL_MATH_REVIEW"
+    },
+    {
+      "scope": "Q2 answer mapping",
+      "status": "REVIEW_CORRECTED",
+      "detail": "Independent reviewer identified the correct pair ㄱ,ㄷ but initially named option ②; after rechecking the frozen choices, corrected to ④, matching the candidate."
+    },
+    {
+      "scope": "Method/source metadata",
+      "status": "OPEN",
+      "detail": "Official M1 method/curriculum and Resolver checks remain NOT_RUN; Q20 blind derivation used sine rule while candidate solution uses M1 congruence and angle sum."
+    },
+    {
+      "scope": "Visual/display",
+      "status": "OPEN",
+      "detail": "Visual review, actual Archive display validation and Drive body hash NOT_RUN."
     }
   ],
   "items": [
@@ -338,5 +353,23 @@
       "pedagogicalVerdict": "UNREVIEWED",
       "assetCheck": "NOT_NEEDED_TEXT_COMPLETE"
     }
-  ]
+  ],
+  "reviewEvidence": {
+    "status": "PARTIAL_BLIND_MATH_REVIEW",
+    "reviewer": "/root/hyanglim23_blind_r1",
+    "frozenInput": "/tmp/yeonhyang23-student-only.json",
+    "frozenInputSha256": "b3d1b6886b36e3a8a4217faf183a3fd8be87af491c7951799e52fe9bc74db769",
+    "candidateBlobAtFreeze": "f61ae96a5770445b6cceea2a47c8c30885cfd87c",
+    "scope": "24문항 발문·선택지만으로 독립 풀이 후 답 동결; 후보 답과 대조.",
+    "result": "최종 답 24개가 후보와 일치. Q2 조합 ㄱ,ㄷ은 맞았으나 처음 선택지 번호를 ②로 잘못 기록해 ④로 바로잡음. 후보 Q25의 답은 독립 검수자의 대안과 다른 유효 합동쌍을 제시함.",
+    "methodLimit": "Q20 독립 풀이에서는 사인법칙을 언급했으나 이는 중1 범위 밖이다. 후보 해설은 SAS 합동·각의 합만 사용하므로 독립 검토 결과는 수치 답 검산으로만 기록하고 공식 교육과정 검수는 미완.",
+    "notCompleted": [
+      "official RPM/ACTIVE Resolver and full metadata review",
+      "official curriculum-method sign-off",
+      "visual review (NOT_RUN)",
+      "actual Archive display validation (NOT_RUN)",
+      "Drive body text hash (NOT_RUN)"
+    ],
+    "overallSignOff": "PENDING_INDEPENDENT_REVIEW"
+  }
 }
