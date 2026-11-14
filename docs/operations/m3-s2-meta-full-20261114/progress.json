@@ -1,7 +1,7 @@
 {
   "schemaVersion": "m3-s2-meta-branch-review-v1",
   "taskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
-  "owner": "GPT_ROOT_6538DF266481",
+  "owner": "GPT_ROOT_9D4541661C34",
   "branch": "review/m3-s2-meta-full-20261114",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "state": "IN_PROGRESS",
@@ -2500,8 +2500,8 @@
     },
     {
       "id": "E050",
-      "owner": "b",
-      "reviewer": "c",
+      "owner": "a",
+      "reviewer": "b",
       "sourcePath": "archive/exams/original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js",
       "sourceArchiveFile": "original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js",
       "year": 2021,
@@ -2515,7 +2515,38 @@
       "uidDigest": "d41f61004d902ca97b5b1eaa1cbd287ca4885a9175370b44d4ee6296fa56ae18",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.4slot.json",
       "existing4slotSourceBlob": "187dcae00b12472fefb35499970c869f200872c4",
-      "state": "ASSIGNED"
+      "state": "BRANCH_REVIEW_COMPLETE",
+      "previousAssignment": {
+        "owner": "b",
+        "reviewer": "c"
+      },
+      "reviewedQuestionCount": 24,
+      "decisions": {
+        "CORRECT": 24
+      },
+      "sourceAfterBlob": "8ab083776d80590cfe82a614de9cd49bb5445c97",
+      "sourceAfterSha256": "9fbf571d8c59de395a5512e13f486d5495615213413298a25c6a264597b37f8e",
+      "sourceChangedQuestionCount": 24,
+      "sourceChangedFieldCount": 366,
+      "metadataRef": "docs/operations/m3-s2-meta-full-20261114/exams/E050.meta.json",
+      "metadataSha256": "ccbd3f2ad3d0a08fe498a150cf66500bce3d36b4f96919ce5ca5f765f185c6cc",
+      "verificationRef": "docs/operations/m3-s2-meta-full-20261114/exams/E050.verification.json",
+      "verificationSha256": "ceb4029afeb5285d7a7cebff73a6446bb3a50f23aa32b4482d4436336ff7e0c6",
+      "independentSampleOrdinals": [
+        3,
+        13,
+        23
+      ],
+      "independentSampleStatus": "PASS_FINAL_METADATA_BOUND",
+      "fourSlotMode": "EXISTING_REVIEWED_WITH_CORRECTIONS",
+      "fourSlotJudgments": {
+        "REUSED_VALID_EVIDENCE_TARGETED_AMENDMENTS": 24
+      },
+      "fourSlotValidatorFail": 0,
+      "fourSlotValidatorWarnings": 8,
+      "activeFieldSchemaDebtCount": 13,
+      "current2022AndNewTypeRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
+      "commitParent": "31500a1ba9a970c7ab919d68dc70736073d3e4c8"
     },
     {
       "id": "E051",
@@ -3209,17 +3240,17 @@
       "state": "ASSIGNED"
     }
   ],
-  "storageMethod": "GitHub connected writer; local HTTPS push unavailable",
+  "storageMethod": "Isolated worktree, per-exam fast-forward push and remote HEAD readback",
   "registration": "NOT_RUN_CODEX_RELEASE_OWNER",
-  "mainMerge": "NOT_RUN_USER_EXCLUDED",
+  "mainMerge": "NOT_RUN_CODEX_RELEASE_HANDOFF",
   "deployment": "NOT_RUN_USER_EXCLUDED",
   "rollup": {
-    "branchReviewedExams": 51,
-    "branchReviewedQuestions": 1210,
-    "remainingExams": 32,
-    "remainingQuestions": 748,
-    "independentSamples": 153,
-    "latestPreparedExam": "E049",
+    "branchReviewedExams": 52,
+    "branchReviewedQuestions": 1234,
+    "remainingExams": 31,
+    "remainingQuestions": 724,
+    "independentSamples": 156,
+    "latestPreparedExam": "E050",
     "mainMerge": "NOT_RUN_USER_EXCLUDED"
   },
   "ownerHistory": [
@@ -3228,17 +3259,25 @@
       "throughRemoteHead": "5156f97e0e646eb0cadef99264592225fe2168aa",
       "branchReviewedExams": 31,
       "branchReviewedQuestions": 733
+    },
+    {
+      "owner": "GPT_ROOT_6538DF266481",
+      "throughRemoteHead": "31500a1ba9a970c7ab919d68dc70736073d3e4c8",
+      "branchReviewedExams": 51,
+      "branchReviewedQuestions": 1210,
+      "previousWriterTermination": "UNCONFIRMED_NO_OFFERED_CLAIM"
     }
   ],
   "continuation": {
-    "reason": "USER_DIRECTED_EXACT_TASK_CONTINUATION",
-    "resumedRemoteHead": "5156f97e0e646eb0cadef99264592225fe2168aa",
-    "verifiedLatestMain": "e9cdc120e2a7d7b26b2bac01306191276b8fbcc1",
+    "reason": "USER_DIRECTED_EXACT_TASK_FINAL_CONTINUATION",
+    "resumedRemoteHead": "31500a1ba9a970c7ab919d68dc70736073d3e4c8",
+    "verifiedLatestMain": "9d7c543180e267e5a623dc0686513d33a4e91bcf",
     "latestMainTargetConflictCount": 0,
-    "previousCompletedExamsReused": 31,
-    "previousCompletedQuestionsReused": 733,
-    "previousIndependentSamplesReused": 93,
-    "awcrAcceptedRevision": 46,
-    "awcrAcceptedRawSha256": "511b457a7aaf2906c425335e06f2e836dbe2d44830ba8be70c5eca51b549a2b1"
+    "previousCompletedExamsReused": 51,
+    "previousCompletedQuestionsReused": 1210,
+    "previousIndependentSamplesReused": 153,
+    "awcrContinuationRevision": 72,
+    "awcrContinuationRawSha256": "5bf3078be25c4b5f692757c2ad05b9d1db25c4e2f7c707f0cef71b6a8e4482d3",
+    "ownershipBasis": "Explicit current user continuation; no predecessor OFFERED/termination assertion. Isolated worktree, remote HEAD comparison and fast-forward-only push."
   }
 }

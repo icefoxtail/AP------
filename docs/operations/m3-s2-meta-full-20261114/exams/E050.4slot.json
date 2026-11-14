@@ -1,0 +1,1510 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "c13852e4046acc1438b53b91bac92ee391b44515",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT6_ASTRA_REVIEW_A",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14",
+    "priorEvidenceReused": true
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$는 원 $O$에 외접하고"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 $5\\text{ cm}$"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "그림에서 AB=11 cm, BC=13 cm이고 원의 반지름은 5 cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 원본 그림의11·13·반지름5 입력을 현재 해설 재진술로 결속한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "AH=AE=3 cm이다. 따라서 x=3 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "원본 x 표시는 접점 H까지의 선분 AH를 가리킨다."
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "C에서 접점 F, G까지의 접선 길이는 CF=CG=5 cm",
+            "evidenceType": "IMPLIED",
+            "justification": "직각을 낀 두 접선과 반지름이 정사각형을 이룬다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외접",
+            "src": "stem",
+            "quote": "원 $O$에 외접하고"
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle C=90^\\circ$이고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각의 접선 길이를 반지름으로 정하고 같은 점에서 그은 접선 길이를 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_3c63b22d77b928bede67ae83823e048323d9fb454ad9b41d17a2befc5194ae29"
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "동심원",
+            "src": "stem",
+            "quote": "두 동심원에서 작은 원에 접하는"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "큰 원과 만나는 두 점을 각각"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이가 각각 $5\\text{ cm}, 3\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "$\\overline{AB}$의 길이는?"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AB}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "AT=√(OA²−OT²)",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름과 중심에서 현까지 거리로 직각삼각형의 한 변을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "작은 원에 접하는 직선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접점에 내린 수선이 큰 원의 현을 이등분하므로 피타고라스 정리를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9d3f43509565f6e48e46fd011aa62f221a6a9898f3972c196b6789fb24d3dd76"
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "원 $O$에 그은 두 접선의 접점"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 둘레의 길이는?"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle DAE=60^\\circ"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "그림에 표시된 OD=40 cm는 반지름이고",
+            "evidenceType": "IMPLIED",
+            "justification": "현재 원본의 OD40을 원의 반지름으로 사용한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 둘레의 길이는?"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "의 둘레의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "접선과 반지름은 수직이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "tan30°=OD/AD이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "B와 C에서 그은 접선의 길이가 각각 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "AO는 ∠DAE를 이등분하므로 ∠DAO=30°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이와 접점 수직 관계로 AO가 두 접선 사이각을 이등분하여 tan30에 넣을 각을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "$\\overline{BC}$가 원 $O$에 접하고"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접선이 만드는 각의 이등분과 탄젠트로 접선 길이를 구한 후 접선 길이의 등식으로 둘레를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_51807fe08cbc462d77af546e66e09252a5d4651c002dc29ab44d36b307dd4d1d"
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원주각",
+            "src": "stem",
+            "quote": "\\angle ADB=65^\\circ$일 때"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\angle ABC=90^\\circ, \\angle ADB=65^\\circ$일 때, $\\angle x$의 크기는? [4점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "같은 호 AB를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "△ABC의 내각의 합에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "△ABC의 내각의 합에서 ∠BAC=180°−90°−65°=25°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 같은 호 원주각 전달 사이에 실제 내각합을 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle ABC=90^\\circ"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "직각 원주각에서 지름을 확인하고 같은 호의 원주각과 내각합을 사용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4ca2e3a1d86a3c47ddcf7fb1e91a948f0275e65622c5735a60803308279afbbb"
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "$\\angle AOB=100^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle APB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "호",
+            "src": "solution",
+            "quote": "큰 호의 크기는 360°−100°=260°",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 원에서 작은 호를 빼서 원주각이 보는 큰 호를 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각의 크기는 그 호의 절반이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "원주각이 작은 호 위에 놓이므로 큰 호에 대한 원주각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_987fbc6524fa7b337ac86247c556ae0b53fa1171d6539fcc6cb24d1d674400eb"
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정오각형",
+            "src": "stem",
+            "quote": "정오각형 $ABCDE$에서"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $BE$와 $AC$의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BFC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "각 작은 호의 크기는 360°÷5=72°",
+            "evidenceType": "IMPLIED",
+            "justification": "정오각형의 꼭짓점이 원을 다섯 등분한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "호 BC를 보는 원주각이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 ABF에서 ∠AFB=180°−36°−36°",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 내각합과 보각으로 대각선 교각을 구한다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "A, F, C는 한 직선 위이므로 ∠AFB와 ∠BFC는 서로 보각이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "최종 목표각은 이미 계산한 AFB의 평각 관계로 얻는다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 ABF에서 ∠AFB=180°−36°−36°=108°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원주각을 삼각형 내각합에 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $O$에 내접하는 정오각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "등분된 호의 원주각 두 개와 삼각형 내각합 및 보각을 이용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_526ecf5327add42c468eead6ded240a244d39ec585ac131222d3a36cf8b87ac2"
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$는 원에 내접하고"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "원 위의 점 $A$에서 그은 접선"
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "그림에서 ∠ADC=98°, ∠APB=42°이고",
+            "evidenceType": "IMPLIED",
+            "justification": "원본에 표시된98도와42도 입력을 보존한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle CAB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "마주 보는 각의 합은 180°이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현 AB가 이루는 각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 ABC에서 ∠CAB=180°−82°−40°",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 내각합을 이용한다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "BP와 BC는 반대 방향의 반직선이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원 안의 ABC와 원 밖의 ABP를 연결하는 실제 평각 관계이다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 ABP에서 ∠BAP=180°−98°−42°=40°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접현각으로 전달할 각을 삼각형 내각합으로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원에 내접하고 점 $P$는"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "원 위의 점 $A$에서 그은 접선"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "내접사각형의 대각, 접현각, 삼각형의 내각합으로 목표 각을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_edd900502edd59e8c43de2e2095aef48d5b136131919b76ec3f0d817a296cc4c"
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "항상 원에 내접하는 사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "항상 원에 내접하는 사각형"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모두 몇 개인가?"
+          }
+        ],
+        "method": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "solution",
+            "quote": "마주 보는 두 각의 합이 180°이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "내접사각형의 대각 합 조건을 각 도형에 적용한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "일반 사다리꼴, 마름모, 평행사변형",
+            "evidenceType": "IMPLIED",
+            "justification": "각 도형의 성질을 비교해 항상 내접하는 경우를 센다."
+          },
+          {
+            "term": "등변사다리꼴",
+            "src": "solution",
+            "quote": "등변사다리꼴은 같은 밑변에 있는 밑각이 같고",
+            "evidenceType": "IMPLIED",
+            "justification": "항상성립을 판단할 때 실제 사용한 특수사각형의 밑각 성질이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "항상 원에 내접하는 사각형"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "각 사각형이 대각 합 180도를 항상 만족하는지 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_522aad4369ca7f25ac37dbc4cc3784efadda3b57f3b3aac880f3e20f7c36ceba"
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원에내접하는사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$는 원 $O$에 내접하고"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "각각 두 점 $A, C$에서의 접선이다"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle D=85^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$의 크기는?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선과 현이 이루는 각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "△ACD에서 ∠ADC=85°이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형의 내각합에서 두 각의 합을 구한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "∠ACD+∠CAD=180°−85°=95°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 접현각에 대응하는 내각의 합을 내각합으로 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $O$에 내접하고"
+          },
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "각각 두 점 $A, C$에서의 접선이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각을 삼각형의 두 내각으로 바꾸고 내각합을 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_8d803fe076552da4e922b852e09c05a1c4dfdaacb231c3bc3ef8c64771dbe240"
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "직선 $PT$는 원 $O$의 접선이고"
+          },
+          {
+            "term": "지름",
+            "src": "solution",
+            "quote": "AB는 중심 O를 지나므로 지름이다"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BCT=75^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BPC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선과현이이루는각",
+            "src": "solution",
+            "quote": "접선 CT와 현 CB가 이루는 각은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "AB가 지름이므로 ∠ACB=90°",
+            "evidenceType": "IMPLIED",
+            "justification": "반원에 대한 원주각은 직각이다."
+          },
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 PBC에서 ∠BPC=180°−15°−105°",
+            "evidenceType": "IMPLIED",
+            "justification": "보각과 삼각형 내각합으로 바깥 각을 구한다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "CP와 CT는 반대 방향이므로 ∠BCP=180°−75°=105°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 삼각형 PBC의 접점각을 평각으로 바꾼다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 PBC에서 ∠BPC=180°−15°−105°=60°이고",
+            "evidenceType": "IMPLIED",
+            "justification": "마지막 목표각은 현재 해설의 삼각형 내각합이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "점 $C$는 접점이다"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "접현각과 지름의 원주각으로 내각을 구한 후 외부 삼각형의 내각합을 사용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c7087e0f7fc57d6820feff4804f7e3fea0bafa93826ca379b3b347968fdcae2f"
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "대푯값에 대한 다음 설명"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "대푯값에 대한 다음 설명"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "설명 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대푯값",
+            "src": "solution",
+            "quote": "자료의 중심적인 경향을 나타내는 값",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "산포도",
+            "src": "solution",
+            "quote": "흩어진 정도는 범위나 분산, 표준편차",
+            "evidenceType": "IMPLIED",
+            "justification": "자료의 흩어진 정도를 나타내는 산포도와 대푯값을 구별한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "중심 경향을 나타내는 대푯값과 흩어진 정도를 구별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_eff6ff043b91e4e3eb17e4fead459bd92f1f80e6542ed6e19c65d5c174f8a3bd"
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다음 자료 중에서 평균보다 중앙값"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대푯값",
+            "src": "stem",
+            "quote": "평균보다 중앙값이 자료의 중심적인 경향을 더 잘 나타내는 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "중심적인 경향을 더 잘 나타내는 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값은 가운데 값인 4이고",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이상치",
+            "src": "solution",
+            "quote": "큰 값 68의 영향을 많이 받는다",
+            "evidenceType": "IMPLIED",
+            "justification": "극단적으로 큰 값이 평균을 끌어올린다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균은 (1+2+3+4+4+5+68)÷7",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "극단값이 평균에 주는 영향을 중앙값과 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_8ff83ffd6886a7cdd666044116ed597d891feb8dff5c6ff4b3c2cbbbcec59fbf"
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "7, 9, 8, 8, 7, 8, 6, 7, 8, 6"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균, 중앙값, 최빈값을 각각"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "평균, 중앙값, 최빈값을 각각"
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "평균, 중앙값, 최빈값을 각각"
+          },
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "$a, b, c$의 대소 관계는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균 a=74÷10=7.4이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값 b=(7+8)÷2=7.5이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "최빈값 c=8이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평균·중앙값·최빈값을 각각 구해 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "수면 시간",
+      "questionUid": "qid_v1_532b5b1365804280c1362fc7a5e657f7563e4a5cc691bd9940ab1f0eb88650c9"
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "수학 점수의 편차를 나타낸 것이다"
+          },
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 70점일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변량",
+            "src": "stem",
+            "quote": "가을이의 수학 점수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "편차",
+            "src": "solution",
+            "quote": "편차의 합은 0이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "평균 70점에 편차 −5점을 더한",
+            "evidenceType": "IMPLIED",
+            "justification": "평균에 편차를 더해 원래 점수를 복원한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "편차 합으로 미지 편차를 구한 후 평균을 더한다."
+      },
+      "steps": [],
+      "scenarioNote": "수학 점수",
+      "questionUid": "qid_v1_e61704644266d40da7bba24177dc2aaab51abec653dec16db9f289764e5b63d8"
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "편차",
+            "src": "stem",
+            "quote": "각 변량에 대한 편차가 다음과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "표준편차",
+            "src": "stem",
+            "quote": "이 자료의 표준편차는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "분산은 편차 제곱의 평균이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "표준편차",
+            "src": "solution",
+            "quote": "표준편차는 분산의 양의 제곱근이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "편차 제곱의 평균을 구하고 양의 제곱근을 취한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_85b28acafc8a15c5804440686c95c0c2f3ffd80ec43ecbcdf012d39d85d1bce8"
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "평균이 3, 분산이 2일 때"
+          },
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "평균이 3, 분산이 2일 때"
+          },
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "다섯 개의 변량 2, 5, $a$, $b$, 3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱합",
+            "src": "stem",
+            "quote": "$a^2 + b^2$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "a+b=5이다",
+            "evidenceType": "IMPLIED",
+            "justification": "평균과 자료 개수로 미지수의 합을 구한다."
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "다섯 편차 제곱의 합은 5·2=10",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "a²+b²−6(a+b)+18=5",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "평균으로 미지수의 합을 얻고 분산의 편차 제곱식을 전개해 제곱합을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a4e05dfcda2706efea28572996b974e137f18f8ed3b95e61b560eb44ce57f03b"
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "두 변량의 산점도를 그렸을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "뚜렷한 양의 상관관계나 음의 상관관계가 보이지 않는 산점도이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "목표 그림과 같은 모양의 상황은 상관이 뚜렷하지 않은 두 변량의 관계이다."
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "같은 모양이 되는 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "뚜렷한 양의 상관관계나 음의 상관관계가 보이지 않는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "산점도에 상관관계가 없는 것을 읽어 각 보기의 변량 쌍과 대조한다."
+      },
+      "steps": [],
+      "scenarioNote": "생활 속 변량",
+      "questionUid": "qid_v1_d8f0edb756972ce895f94a1326257dd2f6714b3079c4bae5f8764c6bd400d42f"
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "수학 성적과 영어 성적에 대한 산점도"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평균",
+            "src": "stem",
+            "quote": "수학 점수의 평균은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "수학 점수는 50, 40, 60, 50, 40점",
+            "evidenceType": "IMPLIED",
+            "justification": "영어 점수 조건을 만족하는 점의 수학 좌표를 읽는다."
+          },
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "(50+40+60+50+40)÷5=240÷5=48",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "영어 점수가 60점 미만인 학생들"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "영어 점수로 대상을 제한하고 대응하는 수학 점수의 평균을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "수학·영어 성적",
+      "questionUid": "qid_v1_0eec338095606742a8d8d4bfabb3f2e77bf8689c1f675334c843079f13a106b9"
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "solution",
+            "quote": "x좌표가 70, 80, 90, 100인 학생"
+          }
+        ],
+        "goal": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "학생의 비율은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "개수",
+            "src": "solution",
+            "quote": "수학 점수가 80점 이상인 점은 6개",
+            "evidenceType": "IMPLIED",
+            "justification": "영어 기준을 만족하는 학생과 두 기준을 모두 만족하는 학생을 센다."
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "비율은 $\\frac{6}{12}$=$\\frac{1}{2}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "영어 점수가 70점 이상인 학생 중에서 수학 점수가 80점 이상인 학생의 비율은?"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "영어 점수 기준 집단 중 수학 점수도 기준 이상인 비율을 구한다. 두 조건은 영어 70 이상과 수학 80 이상이다."
+      },
+      "steps": [],
+      "scenarioNote": "수학·영어 성적",
+      "questionUid": "qid_v1_81e5f1133c1f1f39869cfecab9585ce85c356745659aca63616e7e006d7d2606"
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "산점도",
+            "src": "stem",
+            "quote": "오른쪽 산점도는 학생 20명의 몸무게와 팔굽혀펴기 횟수를 조사하여 나타낸 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "choices",
+            "quote": "$A$는 $B$보다 몸무게가 많이 나간다."
+          },
+          {
+            "term": "상관관계",
+            "src": "choices",
+            "quote": "몸무게와 팔굽혀펴기 횟수 사이에는 음의 상관관계가 있다."
+          },
+          {
+            "term": "비율",
+            "src": "choices",
+            "quote": "몸무게에 비하여 팔굽혀펴기를 가장 많이 한 학생은 $C$이다."
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "순서쌍",
+            "src": "solution",
+            "quote": "A는 (45 kg, 45회), B는 (50 kg, 25회)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상관관계",
+            "src": "solution",
+            "quote": "음의 상관관계이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비율",
+            "src": "solution",
+            "quote": "C는 (60 kg, 15회)이므로 몸무게 1 kg당 횟수는 15/60=0.25이다. A는 45 kg에 45회로 45/45=1이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 해설은 몸무게1kg당 횟수의 y/x를 계산하며 임의의 다른 상대위치 기준으로 교체하지 않는다."
+          },
+          {
+            "term": "백분율",
+            "src": "solution",
+            "quote": "5/20=25%이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "5명/20명인 빈도를 백분율로 바꾸는 별도 보기의 실제 계산이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "choices",
+            "quote": "몸무게가 $50\\text{ kg}$ 이상 $65\\text{ kg}$ 이하인 학생 수는 10명이다."
+          }
+        ]
+      },
+      "reasons": {
+        "method": "좌표와 범위별 점 수, 상대 비율 및 상관 방향을 비교하여 보기를 판정한다."
+      },
+      "steps": [],
+      "scenarioNote": "몸무게와 팔굽혀펴기",
+      "questionUid": "qid_v1_1b886df18be22ebe4356b6cbf6cf03ea6a2f03bb9a50ff5ffc0b1e642f73ceab"
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "OM은 현 AB에 수직이므로"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름을 x라 하면 OC=OB=x"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AM}=8, \\overline{CM}=4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "$x$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현 AB에 수직이므로 현을 이등분한다",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 현에 내린 수선은 현을 이등분한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리를 적용하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$\\overline{AB} \\perp \\overline{OC}$"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "현의 중점과 반지름 차로 직각삼각형을 만들고 피타고라스 정리를 쓴다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_41e5a82e0a41db3b702a53e61f68d4a8716c5ce21e0317c355ae61a4b458a0ac"
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "두 현 $AB, CD$의 교점이다"
+          },
+          {
+            "term": "호",
+            "src": "stem",
+            "quote": "\\overparen{DB}=4\\text{ cm}$일 때"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ADC=25^\\circ, \\angle DPB=85^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overparen{DB}=4\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원주",
+            "src": "stem",
+            "quote": "이 원의 둘레의 길이를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형 APD에서 ∠DAP=180°−95°−25°",
+            "evidenceType": "IMPLIED",
+            "justification": "교차선의 보각과 삼각형 내각합으로 원주각을 구한다."
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각 ∠DAB가 호 DB를 보므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "원둘레의 120°/360°=1/3",
+            "evidenceType": "IMPLIED",
+            "justification": "호 길이는 중심각에 비례한다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "PA와 PB는 반대 방향의 반직선이므로 ∠APD=180°−85°=95°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 교각에서 삼각형 APD의 내각으로 바꾸는 평각 관계를 명시한다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형 APD에서 ∠DAP=180°−95°−25°=60°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에 넣을60도를 삼각형 내각합으로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "현의 교각에서 삼각형의 원주각을 얻고 중심각과 호 길이의 비로 원주를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_ff593c1dec61a7ca565b81ef6533d6c410199c65bed7bc83a918284973db3c98"
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "$3a+1, 7, 9, 9, a+4, 7, 10$"
+          },
+          {
+            "term": "중앙값",
+            "src": "stem",
+            "quote": "중앙값과 최빈값이 7일 때"
+          },
+          {
+            "term": "최빈값",
+            "src": "stem",
+            "quote": "중앙값과 최빈값이 7일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "src": "stem",
+            "quote": "$a$의 값을 구하시오"
+          },
+          {
+            "term": "결정",
+            "src": "stem",
+            "quote": "$a$의 값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "최빈값",
+            "src": "solution",
+            "quote": "두 식 중 하나가 7이 되어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "7이 최빈값이 되도록 빈도를 늘리는 식을 찾는다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "다른 가능성 a+4=7은 a=3",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식 중 어느 것이 7인지 경우를 나눈다."
+          },
+          {
+            "term": "중앙값",
+            "src": "solution",
+            "quote": "중앙값은 네 번째 값 7이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "최빈값 조건으로 후보를 나눈 후 정렬해 중앙값을 검증한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_0bbef25af2fb97dd7e89582f6daaf636752926156572dbfeaab33a8f9f8789a7"
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "자료",
+            "src": "stem",
+            "quote": "7, 4, 6, 3, 10"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분산",
+            "src": "stem",
+            "quote": "두 학급의 분산을 각각 구하고"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "성공 개수가 더 고른지 설명하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "평균",
+            "src": "solution",
+            "quote": "A학급 평균은 (7+4+6+3+10)÷5=6",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "분산",
+            "src": "solution",
+            "quote": "편차는 1, −2, 0, −3, 4이므로 분산은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "분산이 더 작은 B학급의 성공 개수가",
+            "evidenceType": "IMPLIED",
+            "justification": "분산이 작으면 평균 주위에 더 모여 있다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "각 집단의 평균과 편차 제곱 평균을 구해 분산을 비교한다."
+      },
+      "steps": [],
+      "scenarioNote": "자유투 성공 횟수",
+      "questionUid": "qid_v1_0e0638a16cca1a0f4aaf1552b270c599261588c6762935a954a4cb635ea93d8d"
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 24,
+    "quotesChecked": 176,
+    "quotesNotFound": 0,
+    "previousSelfCheck": {
+      "items": 24,
+      "quotesChecked": 136,
+      "quotesNotFound": 0,
+      "warningsRechecked": [
+        "q04",
+        "q05",
+        "q11",
+        "q14",
+        "q15",
+        "q16",
+        "q17",
+        "q18",
+        "q19"
+      ],
+      "notes": "실제 열람 q01~q07,q09,q10,q15,q17,q18,q20,s01,s02 PNG. q19는 q18의 공통 산점도를 사용한다. 경고 재독: q04 같은 호 원주각과 삼각형 내각합, q05 큰 호와 원주각, q11 대푯값과 산포도 구분, q14 편차 합과 원자료 복원, q15 편차 제곱 평균과 제곱근, q16 평균과 분산식 전개, q17 상관관계 유무 판정, q18 조건별 점 좌표의 평균, q19 두 기준 해당 점의 비율로 충분하여 유지."
+    },
+    "notes": "전체24문항 실제 원문·기존 답/해설과33현재그림 읽음. 기존 v0의 정상 인용/용어 재사용, Q19 분수표기 변경 및 누락 입력·목표·실제 보조방법만 보완. q01/s01 legacy id는 별도 보존하고 정확 현재 UID 및 숫자 ordinal에 결속.",
+    "independentSamplesRequired": [
+      3,
+      13,
+      23
+    ]
+  }
+}

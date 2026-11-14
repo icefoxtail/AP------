@@ -1,0 +1,64 @@
+{
+  "ordinal": 13,
+  "questionUid": "qid_v1_532b5b1365804280c1362fc7a5e657f7563e4a5cc691bd9940ab1f0eb88650c9",
+  "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+  "completeCanonicalRecord": {
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "canonicalLabelKo": "평균·중앙값·최빈값을 함께 구해 결합",
+    "definition": "한 자료 집합에서 평균·중앙값·최빈값을 각각 구하고 요구된 결합값을 계산한다.",
+    "internalSkeleton": "자료의 합과 개수로 평균을 구하고, 정렬한 자료에서 중앙값을 구한 뒤 빈도 최댓값의 자료값을 최빈값으로 정해 세 통계량을 결합한다.",
+    "status": "ACTIVE",
+    "ownerPack": "MIDDLE1",
+    "aliases": [],
+    "supportingItemCount": 1,
+    "supportingQuestionUids": [
+      "qid_v1_7360cee3fca35b3d5cf90b163d1166a92ad3256528aafc796d1aa614a7310c39"
+    ],
+    "observedConditionKeys": [],
+    "observedIntegrationPatterns": [
+      "SEQUENTIAL"
+    ],
+    "evidenceProvenance": [
+      {
+        "source": "R2E_M1_B01_B31_FINAL_ADJUDICATION",
+        "representativeQuestionUid": "qid_v1_7360cee3fca35b3d5cf90b163d1166a92ad3256528aafc796d1aa614a7310c39",
+        "representativePrimaryMethod": "자유투 자료에서 평균·중앙값·최빈값을 구해 합한다.",
+        "representativeDecisiveStep": "평균 6, 중앙값 7, 최빈값 8을 더해 21을 얻는다."
+      }
+    ]
+  },
+  "actualGoal": "a,b,c의 대소 관계",
+  "actualExistingSolution": "자료의 합은 74이므로 평균 a=74÷10=7.4이다. 크기순으로 나열하면 6, 6, 7, 7, 7, 8, 8, 8, 8, 9이고, 중앙값 b=(7+8)÷2=7.5이다. 가장 자주 나온 값은 8이므로 최빈값 c=8이다. 따라서 a<b<c이고, 정답은 ⑤이다.",
+  "semanticReuse": "평균·중앙값·최빈값 세 값의 직접 계산 및 요구된 결합 결과라는 골격을 재사용한다. 기존 support의 합21과 현재 순서관계 a<b<c의 차이는 명시하며 같은 support UID가 순서관계를 직접 승인했다는 주장은 하지 않는다.",
+  "classificationStatus": "AUTHOR_PROPOSAL_INDEPENDENT_SAMPLE_PENDING",
+  "current2022ExactCombinedLeafGap": {
+    "recordId": null,
+    "status": "NO_EXACT_2022_LEAF",
+    "effectiveParent": {
+      "key": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+      "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+      "unitKey": "RPM22-M1-L1-08",
+      "grade": "중1",
+      "gradeKey": "M1",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "L1": "통계",
+      "L2": "대푯값",
+      "label": "대푯값",
+      "order": 17,
+      "orderInUnit": 1,
+      "legacyUnitKeys": [
+        "M22-1-08"
+      ]
+    },
+    "parentKey": "[\"2022\",\"M1-2\",\"통계\",\"대푯값\"]",
+    "reason": "평균·중앙값·최빈값 전체를 구해 대소 관계로 결합하는 단일 exact leaf는 없다. 세 정의 성분을 모두 기록한다.",
+    "relatedExistingLeaves": [
+      "M1-RPM-221",
+      "M1-RPM-223",
+      "M1-RPM-224"
+    ]
+  },
+  "sharedRegistryModified": false
+}

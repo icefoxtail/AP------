@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E050",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js",
+  "sourceBlob": "c13852e4046acc1438b53b91bac92ee391b44515",
+  "sourceGitBlobSha": "c13852e4046acc1438b53b91bac92ee391b44515",
+  "sourcePacketSha256": "24ceb76f94119685b7e2d7b8a600931dfbd14acc22efabd76d2fa6da44da4709",
+  "target4slotSha256": "0211af8c6690e41353c8d916ddf8c6302889d113eb6a8b8b6d7ba238c7d6aee8",
+  "targetReviewSha256": "52730a193a4ff16db84907b1b4f56885f6d17dcb4d146fc4e26b10f5a38b279d",
+  "sampledSourcePatchSha256": "28e8dfd439727acdfe1ae45080f1e6550bc15113fc78ac6904750a518b62347a",
+  "sampleOrdinals": [
+    3,
+    13,
+    23
+  ],
+  "sampleRule": "접선 둘레와 삼각비 보조, 세 대푯값 결합 ACTIVE 범위, 최빈값·중앙값 후보 분기를 독립 확인",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_51807fe08cbc462d77af546e66e09252a5d4651c002dc29ab44d36b307dd4d1d",
+      "status": "PASS",
+      "independentMeaningReview": "현재 원본 및 해설 그림의 A-B-D, A-C-E 순서와 원이 삼각형 바깥쪽에서 BC에 접하는 관계를 확인했다. 반지름40·접점 수직·AO 반각30에서 tan으로 AD=AE를 얻고 BD=BF,CE=CF를 둘레식에서 소거한다. given 접선·삼각형·각·반지름, goal 삼각형 둘레, method 수선·탄젠트·접선의길이·이등분선, condition BC 접함이 실제 방법 및 목표와 맞는다. native TM_TANGENT_LENGTH는 한 조각만을 제한하지 않으며 E042/E045의 root 범위 결정과 동일하게 접선 길이 관계망 재사용을 수용한다.",
+      "quotesChecked": 11,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentExistingSolutionImage",
+        "currentOriginalImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_532b5b1365804280c1362fc7a5e657f7563e4a5cc691bd9940ab1f0eb88650c9",
+      "status": "PASS",
+      "independentMeaningReview": "현재 원자료10개와 해설 분포 그림을 직접 대조했다. 합74의 평균7.4, 정렬 중앙 두 값7/8의 중앙값7.5, 최빈값8을 구해 대소 관계를 정한다. given 자료, goal 평균·중앙값·최빈값·대소비교, method 세 정의가 요청된 실제 목표를 포괄한다. ACTIVE ALL_STATISTICS_COMBINATION의 전체 정의·skeleton은 세 통계량을 구해 결합한다는 범위이며 합으로만 제한하지 않는다. 지원 대표문항의 합과 현재 대소관계가 다름은 명시하고, 현재 source가 그 지원 UID의 직접 승인 대상이라고 주장하지 않는다. 이 차이를 같은 골격의 의미 재사용으로 수용한다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentExistingSolutionImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_0bbef25af2fb97dd7e89582f6daaf636752926156572dbfeaab33a8f9f8789a7",
+      "status": "PASS",
+      "independentMeaningReview": "두 식3a+1과a+4 중 어느 하나가7이 되어야 최빈값7의 빈도를 확보한다는 조건으로 a=2/3 두 후보를 만들고 각 정렬 자료의 중앙값을 다시 확인한다. 실제 해설은 평균을 사용하지 않는다. given 자료·중앙값·최빈값, goal 매개변수 결정, method 최빈값·경우분류·중앙값을 수용한다. 3→중앙값9 배제와2→중앙값7 수용을 실제 source에서 확인했으며 CASE_BRANCH가 의미상 존재한다. 범위나 정수 조건을 새로 만들어 condition에 넣지 않았다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentExistingSolutionImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E050.image-version.json",
+    "sha256": "603f2183c9fef8e5db80a58671f45e4039f850fdcfb2c7fae1ecae2df8bd1dbd",
+    "verifiedAndReadAssets": 16
+  },
+  "sourceCaveats": [],
+  "newMathematicalVerification": false,
+  "q13NativeReuseEvidence": {
+    "canonicalRegistryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "canonicalRegistrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+    "completeDefinitionAndSkeletonPersonallyRead": true,
+    "authorEvidencePath": "/workspace/scratch/6538df266481/worker-outputs/a/E050/q13-combined-statistics-reuse.json",
+    "authorEvidenceSha256": "dd0f4c070716dfa14d50affa4aba0f93c42cad2c1f32a9cceed093681c48f03e",
+    "interpretation": "GLOBAL_ACTIVE_REUSE_BY_SEMANTIC_INFERENCE",
+    "newDefinitionClaimed": false
+  }
+}

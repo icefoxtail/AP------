@@ -1,0 +1,563 @@
+{
+  "priorFullV0Sha256": "7a523ea495cb9cfc51ba239c72e1f90e49a95f725a6b7a832eae610be3989c0e",
+  "currentSourceSha256": "24ceb76f94119685b7e2d7b8a600931dfbd14acc22efabd76d2fa6da44da4709",
+  "changes": [
+    {
+      "ordinal": 1,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "길이",
+        "src": "solution",
+        "quote": "그림에서 AB=11 cm, BC=13 cm이고 원의 반지름은 5 cm이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "현재 원본 그림의11·13·반지름5 입력을 현재 해설 재진술로 결속한다."
+      }
+    },
+    {
+      "ordinal": 1,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "선분",
+        "src": "solution",
+        "quote": "AH=AE=3 cm이다. 따라서 x=3 cm",
+        "evidenceType": "IMPLIED",
+        "justification": "원본 x 표시는 접점 H까지의 선분 AH를 가리킨다."
+      }
+    },
+    {
+      "ordinal": 2,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 각각 $5\\text{ cm}, 3\\text{ cm}$"
+      }
+    },
+    {
+      "ordinal": 2,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "현",
+        "src": "stem",
+        "quote": "$\\overline{AB}$의 길이는?"
+      }
+    },
+    {
+      "ordinal": 3,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle DAE=60^\\circ"
+      }
+    },
+    {
+      "ordinal": 3,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "그림에 표시된 OD=40 cm는 반지름이고",
+        "evidenceType": "IMPLIED",
+        "justification": "현재 원본의 OD40을 원의 반지름으로 사용한다."
+      }
+    },
+    {
+      "ordinal": 3,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 둘레의 길이는?"
+      }
+    },
+    {
+      "ordinal": 3,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "AO는 ∠DAE를 이등분하므로 ∠DAO=30°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "접선 길이와 접점 수직 관계로 AO가 두 접선 사이각을 이등분하여 tan30에 넣을 각을 정한다."
+      }
+    },
+    {
+      "ordinal": 4,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "다음 그림에서 $\\angle ABC=90^\\circ, \\angle ADB=65^\\circ$일 때, $\\angle x$의 크기는? [4점]"
+      }
+    },
+    {
+      "ordinal": 4,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "△ABC의 내각의 합에서 ∠BAC=180°−90°−65°=25°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "두 같은 호 원주각 전달 사이에 실제 내각합을 사용한다."
+      }
+    },
+    {
+      "ordinal": 6,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "평각",
+        "src": "solution",
+        "quote": "A, F, C는 한 직선 위이므로 ∠AFB와 ∠BFC는 서로 보각이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "최종 목표각은 이미 계산한 AFB의 평각 관계로 얻는다."
+      }
+    },
+    {
+      "ordinal": 6,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형 ABF에서 ∠AFB=180°−36°−36°=108°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "두 원주각을 삼각형 내각합에 사용한다."
+      }
+    },
+    {
+      "ordinal": 7,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "solution",
+        "quote": "그림에서 ∠ADC=98°, ∠APB=42°이고",
+        "evidenceType": "IMPLIED",
+        "justification": "원본에 표시된98도와42도 입력을 보존한다."
+      }
+    },
+    {
+      "ordinal": 7,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "평각",
+        "src": "solution",
+        "quote": "BP와 BC는 반대 방향의 반직선이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "원 안의 ABC와 원 밖의 ABP를 연결하는 실제 평각 관계이다."
+      }
+    },
+    {
+      "ordinal": 7,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형 ABP에서 ∠BAP=180°−98°−42°=40°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "접현각으로 전달할 각을 삼각형 내각합으로 구한다."
+      }
+    },
+    {
+      "ordinal": 8,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "원에내접하는사각형",
+        "src": "stem",
+        "quote": "항상 원에 내접하는 사각형"
+      }
+    },
+    {
+      "ordinal": 8,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "등변사다리꼴",
+        "src": "solution",
+        "quote": "등변사다리꼴은 같은 밑변에 있는 밑각이 같고",
+        "evidenceType": "IMPLIED",
+        "justification": "항상성립을 판단할 때 실제 사용한 특수사각형의 밑각 성질이다."
+      }
+    },
+    {
+      "ordinal": 9,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle D=85^\\circ$"
+      }
+    },
+    {
+      "ordinal": 9,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle x + \\angle y$의 크기는?"
+      }
+    },
+    {
+      "ordinal": 9,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "∠ACD+∠CAD=180°−85°=95°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "두 접현각에 대응하는 내각의 합을 내각합으로 구한다."
+      }
+    },
+    {
+      "ordinal": 10,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BCT=75^\\circ$"
+      }
+    },
+    {
+      "ordinal": 10,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "평각",
+        "src": "solution",
+        "quote": "CP와 CT는 반대 방향이므로 ∠BCP=180°−75°=105°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "외부 삼각형 PBC의 접점각을 평각으로 바꾼다."
+      }
+    },
+    {
+      "ordinal": 10,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형 PBC에서 ∠BPC=180°−15°−105°=60°이고",
+        "evidenceType": "IMPLIED",
+        "justification": "마지막 목표각은 현재 해설의 삼각형 내각합이다."
+      }
+    },
+    {
+      "ordinal": 11,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "대푯값",
+        "src": "stem",
+        "quote": "대푯값에 대한 다음 설명"
+      }
+    },
+    {
+      "ordinal": 12,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "대푯값",
+        "src": "stem",
+        "quote": "평균보다 중앙값이 자료의 중심적인 경향을 더 잘 나타내는 것은?"
+      }
+    },
+    {
+      "ordinal": 13,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "평균",
+        "src": "stem",
+        "quote": "평균, 중앙값, 최빈값을 각각"
+      }
+    },
+    {
+      "ordinal": 13,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "평균, 중앙값, 최빈값을 각각"
+      }
+    },
+    {
+      "ordinal": 13,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "최빈값",
+        "src": "stem",
+        "quote": "평균, 중앙값, 최빈값을 각각"
+      }
+    },
+    {
+      "ordinal": 16,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "자료",
+        "src": "stem",
+        "quote": "다섯 개의 변량 2, 5, $a$, $b$, 3"
+      }
+    },
+    {
+      "ordinal": 17,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "상관관계",
+        "src": "solution",
+        "quote": "뚜렷한 양의 상관관계나 음의 상관관계가 보이지 않는 산점도이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "목표 그림과 같은 모양의 상황은 상관이 뚜렷하지 않은 두 변량의 관계이다."
+      }
+    },
+    {
+      "ordinal": 19,
+      "slot": "method",
+      "action": "REPLACE_STALE_OR_INCOMPLETE_EVIDENCE",
+      "before": {
+        "term": "비율",
+        "src": "solution",
+        "quote": "비율은 6/12=1/2",
+        "evidenceType": "NAMED"
+      },
+      "after": {
+        "term": "비율",
+        "src": "solution",
+        "quote": "비율은 $\\frac{6}{12}$=$\\frac{1}{2}$",
+        "evidenceType": "NAMED"
+      }
+    },
+    {
+      "ordinal": 19,
+      "slot": "condition",
+      "action": "REPLACE_STALE_OR_INCOMPLETE_EVIDENCE",
+      "before": {
+        "term": "범위",
+        "src": "stem",
+        "quote": "영어 점수가 70점 이상인 학생 중에서"
+      },
+      "after": {
+        "term": "범위",
+        "src": "stem",
+        "quote": "영어 점수가 70점 이상인 학생 중에서 수학 점수가 80점 이상인 학생의 비율은?"
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "given",
+      "action": "REPLACE_STALE_OR_INCOMPLETE_EVIDENCE",
+      "before": {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "조사하여 나타낸 것이다"
+      },
+      "after": {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "오른쪽 산점도는 학생 20명의 몸무게와 팔굽혀펴기 횟수를 조사하여 나타낸 것이다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "대소비교",
+        "src": "choices",
+        "quote": "$A$는 $B$보다 몸무게가 많이 나간다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "상관관계",
+        "src": "choices",
+        "quote": "몸무게와 팔굽혀펴기 횟수 사이에는 음의 상관관계가 있다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "goal",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "비율",
+        "src": "choices",
+        "quote": "몸무게에 비하여 팔굽혀펴기를 가장 많이 한 학생은 $C$이다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "method",
+      "action": "REPLACE_STALE_OR_INCOMPLETE_EVIDENCE",
+      "before": {
+        "term": "비율",
+        "src": "solution",
+        "quote": "5/20=25%이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "조건을 만족하는 점을 세어 전체에 대한 비율을 계산한다."
+      },
+      "after": {
+        "term": "비율",
+        "src": "solution",
+        "quote": "C는 (60 kg, 15회)이므로 몸무게 1 kg당 횟수는 15/60=0.25이다. A는 45 kg에 45회로 45/45=1이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "실제 해설은 몸무게1kg당 횟수의 y/x를 계산하며 임의의 다른 상대위치 기준으로 교체하지 않는다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "백분율",
+        "src": "solution",
+        "quote": "5/20=25%이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "5명/20명인 빈도를 백분율로 바꾸는 별도 보기의 실제 계산이다."
+      }
+    },
+    {
+      "ordinal": 20,
+      "slot": "condition",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "범위",
+        "src": "choices",
+        "quote": "몸무게가 $50\\text{ kg}$ 이상 $65\\text{ kg}$ 이하인 학생 수는 10명이다."
+      }
+    },
+    {
+      "ordinal": 21,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{AM}=8, \\overline{CM}=4$"
+      }
+    },
+    {
+      "ordinal": 22,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle ADC=25^\\circ, \\angle DPB=85^\\circ$"
+      }
+    },
+    {
+      "ordinal": 22,
+      "slot": "given",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overparen{DB}=4\\text{ cm}$"
+      }
+    },
+    {
+      "ordinal": 22,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "평각",
+        "src": "solution",
+        "quote": "PA와 PB는 반대 방향의 반직선이므로 ∠APD=180°−85°=95°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "주어진 교각에서 삼각형 APD의 내각으로 바꾸는 평각 관계를 명시한다."
+      }
+    },
+    {
+      "ordinal": 22,
+      "slot": "method",
+      "action": "ADD_MISSING_INPUT_GOAL_OR_METHOD",
+      "after": {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형 APD에서 ∠DAP=180°−95°−25°=60°이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "원주각에 넣을60도를 삼각형 내각합으로 계산한다."
+      }
+    }
+  ],
+  "ordinalRebaseOnly": {
+    "priorIds": [
+      "q01",
+      "q02",
+      "q03",
+      "q04",
+      "q05",
+      "q06",
+      "q07",
+      "q08",
+      "q09",
+      "q10",
+      "q11",
+      "q12",
+      "q13",
+      "q14",
+      "q15",
+      "q16",
+      "q17",
+      "q18",
+      "q19",
+      "q20",
+      "s01",
+      "s02",
+      "s03",
+      "s04"
+    ],
+    "currentOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "noExistingThreeIndependentSamplesFound": true
+}
