@@ -1,0 +1,376 @@
+[
+  {
+    "id": "B-E005-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "definition": "원에 내접하는 사각형의 대각의 합180도 또는 외각과 내대각이 같다는 관계로 미지각이나 각의 결합값을 정한다.",
+    "internalSkeleton": "대각 쌍을 정한다 → 보각식을 쓴다 → 목표 각 또는 결합값을 구한다.",
+    "distinguishFrom": {
+      "TPL_CIRCLE_ANGLE_COMPOSITE": "원주각·중심각 여러 관계의 연쇄 대신 내접사각형의 대각 관계 자체가 결정 원리다."
+    },
+    "supportOrdinals": [
+      2
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_CIRCLE_TANGENT_RADIUS_ANGLE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_TANGENT_RADIUS_ANGLE",
+    "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+    "definition": "접점에서 반지름과 접선이 수직이라는 관계를 다른 반지름·삼각형 각 관계와 연결하여 각의 크기를 정한다.",
+    "internalSkeleton": "반지름·접선의 직각을 표시한다 → 반지름이 같은 삼각형 등의 알려진 각을 구한다 → 직각의 보각을 산출한다.",
+    "distinguishFrom": {
+      "TM_TANGENCY_CONDITION": "접하는지 판정하거나 접함 조건을 만드는 문제가 아니다.",
+      "TPL_CIRCLE_ANGLE_TANGENT_CHORD": "접선현각을 원주각에 대응시키는 정리를 사용하지 않는다."
+    },
+    "supportOrdinals": [
+      4
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_78a33cae31014035c5e0aa99cc93846f0fca67ff569bbf34ba23846194739bfe"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_M3_DISPERSION_DEFINITION_CLAIM_AUDIT",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_M3_DISPERSION_DEFINITION_CLAIM_AUDIT",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "definition": "대푯값·편차·분산·표준편차의 정의 및 평균 주위 집중 정도를 구별하여 진술의 참·거짓을 판정한다.",
+    "internalSkeleton": "용어별 정의를 기준으로 진술을 비교한다 → 제곱평균과 제곱근 및 대푯값의 역할을 구별한다.",
+    "distinguishFrom": {
+      "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE": "기존 TPL은 편차의 부호를 거꾸로 서술한 진술을 고르는 좁은 골격이다."
+    },
+    "supportOrdinals": [
+      13
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_1b9b31386833098c7560a0b26855bdd0ebdf84c2af06cecb69abe7271d24c5e4"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_M3_RAW_DATA_DISPERSION_CLAIM_AUDIT",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_M3_RAW_DATA_DISPERSION_CLAIM_AUDIT",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "definition": "개별 변량을 표시한 그래프나 자료에서 평균·분산·표준편차를 계산하고 여러 자료의 수치·대소 진술을 판정한다.",
+    "internalSkeleton": "개별값을 읽는다 → 평균과 편차제곱 평균을 구한다 → 표준편차·편차합 진술과 비교한다.",
+    "distinguishFrom": {
+      "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS": "도수 막대의 밀집 모양만으로 비교하는 문제와 다르다.",
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE": "계급값·도수 가중치가 주어진 도수분포표 계산과 다르다."
+    },
+    "supportOrdinals": [
+      15
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_6c3e82ef29bf06c634c8d39c104adaf4073eac2588ca6da76db5b96bd98de25c"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_CENTRAL_TENDENCY_GROUP_SIZE_RATIO",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CENTRAL_TENDENCY_GROUP_SIZE_RATIO",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "definition": "두 집단의 평균과 합친 평균을 이용해 집단별 관측값 개수의 비를 결정한다.",
+    "internalSkeleton": "집단 크기를 a,b로 둔다 → 평균×크기로 총합을 표현한다 → 전체 평균식을 풀어 a:b를 구한다.",
+    "distinguishFrom": {
+      "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION": "개별 누락값을 복원하는 문제 대신 집단의 크기비가 미지수다."
+    },
+    "supportOrdinals": [
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_11ad3389bc04164aa75121e299247470e23a087f9090c6b58ead723311c0905a"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "kind": "NEW_PT",
+    "proposedKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProblemTypeKey": null,
+    "definition": "유한 자료의 평균·중앙값·분산·순서 조건에서 미지 변량 또는 합·제곱합을 추론하고 변경 자료의 통계량을 구한다.",
+    "internalSkeleton": "자료의 위치·합·편차제곱 조건을 수식화하여 결합한다.",
+    "distinguishFrom": {
+      "PT_M3_LINEAR_TRANSFORMATION_STATISTICS": "모든 변량에 같은 일차변환을 적용하는 문제가 아니다.",
+      "PT_M3_DISPERSION_DEVIATION_PROPERTIES": "편차합0으로 미지 편차를 하나 구하는 것보다 원자료의 합·제곱합 역추론이 중심이다.",
+      "PT_EXPECTATION_VARIANCE": "확률변수의 분포가 아닌 유한 자료 자체의 기술통계다."
+    },
+    "supportOrdinals": [
+      16,
+      23
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_96e32fa7c1227598b3c5ac89e77f636a1d7840843be2d850f7e3c7d779738442",
+      "qid_v1_dc4d05c35672e98f47cc6ac910b797d468991116831c9909e58f4a962c4fb68a"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_STAT_CONSTRAINT_REPLACED_DATA_VARIANCE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_STAT_CONSTRAINT_REPLACED_DATA_VARIANCE",
+    "parentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "definition": "기존 자료의 평균·분산에서 알려지지 않은 부분의 합과 제곱합을 복원하여 일부 변량이 교체된 새 자료의 분산을 구한다.",
+    "internalSkeleton": "기존 평균에서 합 → 기존 분산에서 제곱합 → 변경된 평균과 편차제곱합 → 새 분산",
+    "distinguishFrom": {
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA": "자료 전체의 배율 변환이 아니라 일부 값 교체다."
+    },
+    "supportOrdinals": [
+      16
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_96e32fa7c1227598b3c5ac89e77f636a1d7840843be2d850f7e3c7d779738442"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_STAT_CONSTRAINT_MEDIAN_MEAN_VARIANCE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_STAT_CONSTRAINT_MEDIAN_MEAN_VARIANCE",
+    "parentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "definition": "정렬된 소수 자료에서 중앙값·평균·분산 조건을 결합하여 각 변량을 복원한다.",
+    "internalSkeleton": "중앙값 위치 고정 → 평균으로 나머지 합 → 분산으로 이차식 → 순서에 맞는 근 선택",
+    "distinguishFrom": {
+      "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION": "분산의 제곱합과 이차식이 추가된 핵심 구조다."
+    },
+    "supportOrdinals": [
+      23
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_dc4d05c35672e98f47cc6ac910b797d468991116831c9909e58f4a962c4fb68a"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-PT_M3_SCATTERPLOT_ANALYSIS",
+    "kind": "NEW_PT",
+    "proposedKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "parentProblemTypeKey": null,
+    "definition": "두 변량의 산점도를 읽고 상관관계·좌표 조건·비율·순위·선택된 자료의 통계량을 해석한다.",
+    "internalSkeleton": "각 점을 한 관측값의 두 좌표로 읽어 관계·조건·순위를 분석한다.",
+    "distinguishFrom": {
+      "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS": "도수분포 꺾은선의 정점·중앙값 해석이 아니라 쌍자료 산점도다.",
+      "PT_SAMPLE_MEAN_DISTRIBUTION": "표본평균의 확률분포와 무관하다."
+    },
+    "supportOrdinals": [
+      18,
+      19,
+      20,
+      24
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_eb593dc168657bd4004b71a013cc6fb891ea024edb086baac278bd2f8133a1aa",
+      "qid_v1_9bd539b51506f85921472f24f0f34497d9a9aae0e7163a61e7861cdcce06f7d0",
+      "qid_v1_8841ceb6028b6fcf41602ea8c47e951bdca0a0db0b04c7a9403cbc21a46eac8a",
+      "qid_v1_50222e845c0b28ee4387d603ce408c09c54f20f449858ccc06ceb40f92da699f"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_SCATTERPLOT_CORRELATION_CONTEXT",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_SCATTERPLOT_CORRELATION_CONTEXT",
+    "parentProblemTypeKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "definition": "산점도의 방향으로 양·음·무상관을 해석하고 그 관계를 설명하는 실제 변량쌍을 선택한다.",
+    "internalSkeleton": "분포 방향 → 두 변량 증가·감소 관계 → 같은 경향의 맥락",
+    "distinguishFrom": {},
+    "supportOrdinals": [
+      18
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_eb593dc168657bd4004b71a013cc6fb891ea024edb086baac278bd2f8133a1aa"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_SCATTERPLOT_STATEMENT_AUDIT",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_SCATTERPLOT_STATEMENT_AUDIT",
+    "parentProblemTypeKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "definition": "고정 산점도의 좌표에서 빈도·상관·대소조건·조건부 비율 등을 각각 읽어 여러 진술을 판정한다.",
+    "internalSkeleton": "진술을 좌표 조건으로 해석 → 해당 점·도수 계산 → 진위 판정",
+    "distinguishFrom": {},
+    "supportOrdinals": [
+      19
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_9bd539b51506f85921472f24f0f34497d9a9aae0e7163a61e7861cdcce06f7d0"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_SCATTERPLOT_CONSTRAINT_RATIO",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_SCATTERPLOT_CONSTRAINT_RATIO",
+    "parentProblemTypeKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "definition": "두 변량의 차·합·평균 등의 복수 조건을 부등식으로 표현하고 공통조건을 만족하는 점의 비율을 구한다.",
+    "internalSkeleton": "문장조건을 좌표 부등식으로 변환 → 공통조건의 점을 선택 → 전체에 대한 비율",
+    "distinguishFrom": {},
+    "supportOrdinals": [
+      20
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_8841ceb6028b6fcf41602ea8c47e951bdca0a0db0b04c7a9403cbc21a46eac8a"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-TPL_SCATTERPLOT_RANKED_SUBSET_MEAN",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_SCATTERPLOT_RANKED_SUBSET_MEAN",
+    "parentProblemTypeKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "definition": "좌표의 합이나 평균을 기준으로 상위 비율의 점을 선택하고 선택된 자료의 특정 변량 평균을 구한다.",
+    "internalSkeleton": "순위 기준 환원 → 정해진 상위 인원 선택 → 선택 집단 한 변량 평균",
+    "distinguishFrom": {},
+    "supportOrdinals": [
+      24
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_50222e845c0b28ee4387d603ce408c09c54f20f449858ccc06ceb40f92da699f"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ]
+  },
+  {
+    "id": "B-E005-M1_REUSE",
+    "kind": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+    "existingTemplates": [
+      "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+    ],
+    "supportOrdinals": [
+      12,
+      14
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_8b5dec845030d47a40f86f68959fa85eef95fea02cd589f7056e65a2f925967d",
+      "qid_v1_70b3cb575c4fb247abaf2f2b4bdb207b692b1b510c19423bd130ffa9d90caa07"
+    ],
+    "definition": "이미 GLOBAL ACTIVE에 존재하는 대푯값 정의판정·중앙값 조건복원 골격을 재사용하고 원본2015 중3의 RPM 행과 현행2022 중1의 RPM 행을 별도로 연결한다.",
+    "distinguishFrom": "학년이 M1이라고 새 M3 동의 키를 만들지 않는다."
+  }
+]

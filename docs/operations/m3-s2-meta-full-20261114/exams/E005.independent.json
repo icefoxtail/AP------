@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E005",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "710a21568c599dc5ac25802b910af2beb99911e6",
+  "sampled4slotSha256": "127d492749f3b928d05047a6d23f78f009b1851585bf01b8252428a0acb825a8",
+  "sampledReviewSha256": "4ad6446cd91f267a9c83618a27ca3614925d276847078359a8b249b8a58c1fee",
+  "sourcePacketSha256": "8b7b0c4e2fea20bb892297c12002597af1884699e84f5edb22021ab616575bb5",
+  "sampled": [
+    19,
+    20,
+    24
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_9bd539b51506f85921472f24f0f34497d9a9aae0e7163a61e7861cdcce06f7d0",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "산점도의 한 좌표 빈도·상관 방향·좌표 대소·두 좌표 문턱을 각각 읽어 진술의 참거짓을 판정한다.",
+      "difficultyIndependentJudgment": {
+        "bucket": 2,
+        "historicalLevel": "중",
+        "compatibility": "NORMAL",
+        "boundary": "B23",
+        "reason": "직접 점 읽기이고 복잡한 전략 선택 없음"
+      },
+      "status": "PASS"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_8841ceb6028b6fcf41602ea8c47e951bdca0a0db0b04c7a9403cbc21a46eac8a",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "향상과 점수차를 y−x≥2로, 평균조건을 x+y≥10으로 옮기고 두 조건의 교집합 점을 센다.",
+      "difficultyIndependentJudgment": {
+        "bucket": 3,
+        "historicalLevel": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "boundary": "NONE",
+        "reason": "조건을 식/순위로 한 번 바꾼 후 조건에 맞는 점을 선택하는 표준 전략이므로 bucket3, 역사level상 경계 수용"
+      },
+      "status": "PASS"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_50222e845c0b28ee4387d603ce408c09c54f20f449858ccc06ceb40f92da699f",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 9
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "평균순위와 합순위가 같음을 이용해 상위9점을 선택한 뒤 읽기 좌표만 평균낸다.",
+      "difficultyIndependentJudgment": {
+        "bucket": 3,
+        "historicalLevel": "상",
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "boundary": "NONE",
+        "reason": "조건을 식/순위로 한 번 바꾼 후 조건에 맞는 점을 선택하는 표준 전략이므로 bucket3, 역사level상 경계 수용"
+      },
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "3 independent metadata samples and independent difficulty judgment; no full-exam R1/R2/R3 certification",
+  "previousSampled4slotSha256": "127d492749f3b928d05047a6d23f78f009b1851585bf01b8252428a0acb825a8",
+  "followup": "Q19 60/70/80 하한조건과 좌표대소 조건을 모두 보존하고 중+2 NORMAL 수정 확인. Q20/24는 root receipt도 별도로 존재."
+}

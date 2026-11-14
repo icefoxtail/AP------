@@ -36,7 +36,14 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O에서 호 AB를 보는 원주각 APB=50도는 주황색이고, 같은 호를 보는 중심각 AOB=x와 호 AB는 파란색이다.",
     "solutionImageCaption": "같은 호를 보는 중심각은 원주각의 2배이므로 x=2×50°=100°이다. 정답은 ⑤이다.",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -71,7 +78,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q2-solution-v2.svg",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형의 네 각 중 마주 보는 62°와 ∠x는 파랑, 82°와 ∠y는 주황으로 짝지어 합이 180°임을 보여 주고 x=118°, y=98°를 꼭짓점 곁에 쓴다.",
-    "solutionImageCaption": "마주 보는 두 각의 합이 180°이므로 x=118°, y=98°이고 x−y=20°이다. 정답 ③."
+    "solutionImageCaption": "마주 보는 두 각의 합이 180°이므로 x=118°, y=98°이고 x−y=20°이다. 정답 ③.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -107,7 +123,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 원주각 25°가 보는 3 cm 호와 같은 길이의 오른쪽 3 cm 호를 같은 색으로 표시하고, 각 호의 중심각 50°와 두 중심각을 합친 x를 보인다.",
-    "solutionImageCaption": "원주각 25°가 보는 3 cm 호의 중심각은 50°이고 오른쪽 3 cm 호의 중심각도 50°이므로 x는 두 중심각의 합이다. x=100°이고 정답은 ④이다."
+    "solutionImageCaption": "원주각 25°가 보는 3 cm 호의 중심각은 50°이고 오른쪽 3 cm 호의 중심각도 50°이므로 x는 두 중심각의 합이다. x=100°이고 정답은 ④이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -143,7 +168,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O의 지름 BC와 접점 A에서의 접선 AT. 같은 반지름 OA, OB는 주황, 크기가 같은 두 각 ∠OAB, ∠ABO(25°)는 파랑으로 표시되고, A에서 OA와 AT 사이에 직각 표시가 있다.",
-    "solutionImageCaption": "OA=OB이므로 ∠OAB=∠ABO=25°이고 OA⊥AT이므로 x=90°−25°=65° (정답 ③)"
+    "solutionImageCaption": "OA=OB이므로 ∠OAB=∠ABO=25°이고 OA⊥AT이므로 x=90°−25°=65° (정답 ③)",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -179,7 +213,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O 밖의 점 A에서 접선 AB, AC를 긋고 접점의 직각 표시, ∠BDC=63°, 중심각 ∠BOC=126°, 파랗게 칠한 사각형 ABOC를 나타낸 그림.",
-    "solutionImageCaption": "∠BDC=63°는 호 BC를 보는 원주각이므로 중심각 ∠BOC=2×63°=126°이고, ∠ABO=∠ACO=90°이므로 사각형 ABOC의 네 각의 합 360°에서 ∠CAB=360°−(90°+126°+90°)=54°이다. 정답 ②."
+    "solutionImageCaption": "∠BDC=63°는 호 BC를 보는 원주각이므로 중심각 ∠BOC=2×63°=126°이고, ∠ABO=∠ACO=90°이므로 사각형 ABOC의 네 각의 합 360°에서 ∠CAB=360°−(90°+126°+90°)=54°이다. 정답 ②.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -215,7 +258,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 큰 반원 AB와 작은 반원 BC가 있고 A에서 작은 반원에 그은 접선 AD가 큰 반원과 E에서 만난다. 각 BDE와 각 BCD가 58도로 같은 색이고 각 DBC는 32도, 각 BAE는 26도, 큰 반원의 중심각은 52도와 128도이다.",
-    "solutionImageCaption": "접선과 현의 각으로 ∠BCD=∠BDE=58°이고 ∠DBC=32°, ∠BAE=26°이므로 중심각은 52°와 128°이다. 호의 길이는 중심각에 비례하므로 호 BE=32×52/128=13cm이고 정답은 ①이다."
+    "solutionImageCaption": "접선과 현의 각으로 ∠BCD=∠BDE=58°이고 ∠DBC=32°, ∠BAE=26°이므로 중심각은 52°와 128°이다. 호의 길이는 중심각에 비례하므로 호 BE=32×52/128=13cm이고 정답은 ①이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -251,7 +303,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 AB, DC의 연장선이 E에서 22도, AD, BC의 연장선이 F에서 24도로 만난다. 네 호를 a, b, c, d로 나타내고 E 옆에 b−d=44, c−a=48이 적혀 있으며 ∠BCD는 x이다.",
-    "solutionImageCaption": "E에서 b−d=44°, F에서 c−a=48°이고 a+b+c+d=360°이므로 a+d=134°이다. ∠x는 호 BAD(=a+d)를 보는 원주각이므로 ∠x=134°÷2=67°이다. 정답은 ②이다."
+    "solutionImageCaption": "E에서 b−d=44°, F에서 c−a=48°이고 a+b+c+d=360°이므로 a+d=134°이다. ∠x는 호 BAD(=a+d)를 보는 원주각이므로 ∠x=134°÷2=67°이다. 정답은 ②이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -287,7 +348,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O의 네 호를 색으로 나눠 호 AB와 호 BC는 같은 파랑 60°, 호 DC는 초록 136°, 남은 호 AD는 주황 104°로 보이고 ∠ABD가 호 AD를 보는 원주각임을 표시한다.",
-    "solutionImageCaption": "호 AD=360°−(60°+60°+136°)=104°이므로 ∠ABD=104°÷2=52°이다. 정답 ④."
+    "solutionImageCaption": "호 AD=360°−(60°+60°+136°)=104°이므로 ∠ABD=104°÷2=52°이다. 정답 ④.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -323,7 +393,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PD가 이루는 ∠APD=72°에서 호 AD=108°를 구하고, 나머지 호를 세 등분한 호 AB, BC, CD 84°를 같은 색으로, 호 DC와 AB의 원주각 ∠QBC, ∠QCB 42°를 같은 색으로 표시한다.",
-    "solutionImageCaption": "접선 PA, PD가 이루는 각 72°에서 호 AD=108°, 나머지 호 ABCD=252°를 세 등분한 호 AB=BC=CD=84°이다. 호 DC, AB의 원주각 ∠QBC=∠QCB=42°이므로 ∠BQC=96°이고 정답은 ①이다."
+    "solutionImageCaption": "접선 PA, PD가 이루는 각 72°에서 호 AD=108°, 나머지 호 ABCD=252°를 세 등분한 호 AB=BC=CD=84°이다. 호 DC, AB의 원주각 ∠QBC=∠QCB=42°이므로 ∠BQC=96°이고 정답은 ①이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 10,
@@ -358,7 +437,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q10-solution-v2.svg",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 오각형 ABCDE. ∠A가 보는 호 BCDE(192°, 파랑)와 ∠D가 보는 호 CBAE(228°, 주황)가 겹치는 호 BC는 초록으로, 그 중심각 ∠BOC는 x로 표시되어 있다.",
-    "solutionImageCaption": "192°+228°=360°+(호 BC)이므로 호 BC=60°이고, 중심각 x는 호 BC와 같아 x=60° (정답 ④)"
+    "solutionImageCaption": "192°+228°=360°+(호 BC)이므로 호 BC=60°이고, 중심각 x는 호 BC와 같아 x=60° (정답 ④)",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -394,7 +482,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC에서 호 CA=80°(주황), 호 AB=160°(파랑), 호 BC=120°(초록)이고 ∠B가 호 CA를 보는 각으로 표시된 그림.",
-    "solutionImageCaption": "호 CA=2k라 하면 호 AB=4k, 호 BC=3k이고 2k+4k+3k=360°에서 k=40°이므로 호 CA=80°이다. ∠B는 호 CA를 보는 원주각이므로 ∠B=80°÷2=40°이다. 정답 ②."
+    "solutionImageCaption": "호 CA=2k라 하면 호 AB=4k, 호 BC=3k이고 2k+4k+3k=360°에서 k=40°이므로 호 CA=80°이다. ∠B는 호 CA를 보는 원주각이므로 ∠B=80°÷2=40°이다. 정답 ②.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -426,7 +523,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 자료 1, 3, 4, 5, 6, 7, 30의 점도표. 30만 가로축을 끊은 뒤 멀리 떨어져 있고, 평균 8의 점선이 중앙값 5의 점선보다 오른쪽에 있다.",
     "solutionImageCaption": "점 하나가 자료 하나이다. 작은 순서로 1, 3, 4, 5, 6, 7, 30이고 가운데(4번째) 값이 중앙값 5이다. 합 56을 7로 나눈 평균은 8로, 30 때문에 대부분의 자료보다 크게 오른쪽으로 끌려간다. 이처럼 다른 값과 크게 떨어진 값이 있으면 평균보다 중앙값이 대푯값으로 적절하므로 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -454,7 +560,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 14,
@@ -486,7 +601,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선에 5 이상 11 이하(첫째), 8 이상(둘째), 그 공통 범위 8 이상 11 이하가 줄로 그려져 있고 공통 범위의 자연수 8, 9, 10, 11에 점이 있다.",
     "solutionImageCaption": "공통 범위 8≤a≤11 안의 자연수는 8, 9, 10, 11의 4개이다. 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": ["CC_SIMULTANEOUS_LINEAR_INEQUALITIES"],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -521,7 +645,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 고객 5명의 색상과 반응 속도 만족도를 나눈 두 점도표. 둘 다 평균 6에 점선이 있다. 색상은 4, 6, 6, 6, 8점이고 편차 −2, 0, +2가, 반응 속도는 2, 4, 6, 8, 10점이고 편차 −4, −2, 0, +2, +4가 쓰여 있다.",
     "solutionImageCaption": "점 하나가 고객 한 명이고 그림의 숫자는 점수에서 평균 6을 뺀 편차이다. 색상의 편차는 2, 0, −2, 0, 0으로 제곱의 합이 8이고 분산은 8/5=1.6이다. 반응 속도의 편차는 2, 4, −4, 0, −2로 제곱의 합이 40이고 분산은 8이다. 가격은 모두 6점이어서 표준편차가 0이다. 색상보다 반응 속도가 더 흩어져 있어 표준편차가 가장 큰 것을 그래프만 보고도 찾을 수 있으므로 ⑤가 옳지 않다. 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -549,7 +682,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_SYMMETRIC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -581,7 +723,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선에 B모둠 평균 66, 전체 평균 68, A모둠 평균 72가 점으로 있고 66과 68 사이 거리 2, 68과 72 사이 거리 4가 괄호로 표시되어 있다.",
     "solutionImageCaption": "전체 평균 68은 B 평균과 2, A 평균과 4 떨어져 있으므로 학생 수의 비는 이 거리의 역비 A:B=2:4=1:2이다. 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -612,13 +763,22 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "제시된 산점도는 $x$가 증가할수록 $y$도 대체로 증가하는 모양이므로 양의 상관관계이다.\n겨울철 기온과 난방비, 산의 높이와 기온, 쌀 소비량과 재고량, 지구의 기온과 빙하의 크기는 대체로 한쪽이 증가하면 다른 쪽이 감소한다.\n반면 에어컨 사용 시간이 늘어나면 전기 요금도 대체로 증가한다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 점들이 왼쪽 아래에서 오른쪽 위로 띠 모양으로 모여 있는 예시 산점도. 오른쪽 위로 향하는 화살표가 있다.",
     "solutionImageCaption": "예: 점들이 왼쪽 아래에서 오른쪽 위로 모이므로(화살표) x가 커질수록 y도 대체로 커지는 양의 상관관계이다. 에어컨 사용 시간이 늘면 전기 요금도 늘어나므로 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -647,13 +807,22 @@ window.questionBank = [
     "answer": "④",
     "solution": "산점도의 점을 하나씩 확인한다.\n① 국어 점수 $60$점인 학생이 $3$명으로 가장 많으므로 참이다.\n② 전체적으로 오른쪽 위로 분포하므로 양의 상관관계가 있다.\n③ 국어 점수가 영어 점수보다 높은 점은 $(60,50),(100,90)$의 $2$개이므로\n$\\dfrac{2}{10}=\\dfrac15$\n④ 두 점수가 모두 $60$점 이상인 점은\n$(60,60),(60,70),(70,90),(80,80),(100,90)$\n의 $5$개이다. 따라서 '6명'은 틀리다.\n⑤ 국어 점수가 $70$점 이상인 세 점은 영어 점수가 모두 $80$점 이상이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 국어·영어 점수 산점도. 점선 y=x와 국어 60점 세로선이 있고, 국어와 영어가 모두 60점 이상인 오른쪽 위 영역의 점 5개에 동그라미가 있으며 영역 모서리에 5명이 쓰여 있다.",
     "solutionImageCaption": "국어 60점 점은 3개이고(①), 점선 y=x 아래는 (60,50),(100,90)뿐이다(③). 두 점수가 모두 60점 이상인 점은 (60,60),(60,70),(70,90),(80,80),(100,90)의 5개이므로 6명이라고 한 ④가 옳지 않다. 정답은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_MODE"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -683,13 +852,22 @@ window.questionBank = [
     "answer": "②",
     "solution": "점의 좌표를 $(x,y)=(1차 점수,2차 점수)$라 하자.\n조건 가, 나를 함께 쓰면\n$y-x\\ge2$\n조건 다는 두 점수의 평균이 $5$점 이상이라는 뜻이므로\n$\\dfrac{x+y}{2}\\ge5$\n$x+y\\ge10$\n두 조건을 모두 만족하는 점은\n$(4,6),(6,8),(6,9),(8,10)$\n의 $4$개이다.\n전체 학생이 $30$명이므로\n$\\dfrac{4}{30}=\\dfrac{2}{15}$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 사격 동아리 학생 30명의 1차·2차 점수 산점도. 점선 y-x=2와 x+y=10이 그어져 있고 두 조건을 모두 만족하는 점 4개가 파란색이다.",
     "solutionImageCaption": "그림에서 읽은 점 30개이다. 조건 가, 나를 함께 쓰면 2차−1차≥2이고, 조건 다는 1차+2차≥10이다. 두 조건을 모두 만족하는 점은 파란 점 (4,6), (6,8), (6,9), (8,10)의 4개이므로 비율은 4/30이고 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_LINEAR_INEQUALITIES","CC_MEAN"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -721,7 +899,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 정오각형 ABCDE와 대각선이다. 호 BC, CD, DE가 같은 색으로 모두 72도이고 중심각 COD가 72도이며 각 CAD는 호 CD를 보는 원주각이다.",
-    "solutionImageCaption": "정오각형의 이웃한 두 꼭짓점에 대한 중심각은 360°÷5=72°이고 ∠CAD는 호 CD를 보는 원주각이므로 ∠CAD=72°÷2=36°이다."
+    "solutionImageCaption": "정오각형의 이웃한 두 꼭짓점에 대한 중심각은 360°÷5=72°이고 ∠CAD는 호 CD를 보는 원주각이므로 ∠CAD=72°÷2=36°이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 22,
@@ -752,7 +939,16 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 외접원 O에서 AQ는 지름이고 AH는 BC에 수직이다. AB=6, AC=8, BH=2이고 AH와 CH는 4√2로 같은 색이며 각 ACB와 각 AQB는 45도로 같은 색, 각 ABQ는 직각이다.",
-    "solutionImageCaption": "AH=CH=4√2이므로 ∠ACB=45°이고 같은 호 AB의 원주각 ∠AQB=45°이다. AQ가 지름이므로 ∠ABQ=90°이고 삼각형 ABQ가 직각이등변삼각형이어서 AQ=6√2, 반지름은 3√2이다. 따라서 원 O의 넓이는 18π이다."
+    "solutionImageCaption": "AH=CH=4√2이므로 ∠ACB=45°이고 같은 호 AB의 원주각 ∠AQB=45°이다. AQ가 지름이므로 ∠ABQ=90°이고 삼각형 ABQ가 직각이등변삼각형이어서 AQ=6√2, 반지름은 3√2이다. 따라서 원 O의 넓이는 18π이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_ISOSCELES_RIGHT_TRIANGLE","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -776,7 +972,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION_ROOTS"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -801,12 +1006,21 @@ window.questionBank = [
     "answer": "$\\dfrac{70}{9}$",
     "solution": "듣기와 읽기의 평균으로 순위를 정하는 것은 두 점수의 합으로 순위를 정하는 것과 같다.\n전체 $15$명의 상위 $60\\%$는\n$15\\times0.6=9$\n이므로 점수의 합이 큰 $9$명을 고른다.\n상위 $9$개의 점은\n$(10,9),(8,10),(9,8),(8,9),(7,8)$\n$(9,5),(6,8),(6,7),(7,5)$\n이다.\n이들의 읽기 점수의 합은\n$10+8+9+8+7+9+6+6+7=70$\n따라서 읽기 점수의 평균은\n$\\dfrac{70}{9}$\n\n따라서 구하는 값은 $\\dfrac{70}{9}$이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중3_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 읽기 x와 듣기 y 점수의 산점도 15점. 직선 x+y=12와 그 오른쪽 위 영역이 칠해져 있고 합이 큰 상위 9명의 점이 파란색이다.",
     "solutionImageCaption": "듣기와 읽기의 평균으로 순위를 정하는 것은 두 점수의 합 x+y가 큰 순서로 정하는 것과 같다. 15명의 상위 60%는 15×0.6=9명이고 파란 점 9개가 그 점들이다(x+y≥12). 이들의 읽기 점수의 합은 10+8+9+8+7+9+6+6+7=70이므로 평균은 70/9이다. 따라서 구하는 값은 70/9이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_UPPER_BOUND"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];
