@@ -1,0 +1,659 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E049",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T14:53:03.839815+00:00",
+  "sourceGitBlobSha": "69d4b6c570b473be3c07bba6f4aed54ca6706b1c",
+  "reviewSha256": "2a5f369436a5ee05a336a2332d1ea2c331f3b253b3f64aad312141a53492a4e4",
+  "fourSlotSha256": "a1c2dfe33c0cc90fcd889ab2622542c94e38f0ebc07f081f629b84d23514e139",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E049.initial.json",
+  "initialFreezeSha256": "b74dd9c67972b00657e92f14a5d641305bfb125aa21c475acc0aeaeee62863ed",
+  "sampleOrdinals": [
+    3,
+    14,
+    23
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 3,
+      "classification": "기약분모 소인수로 유한소수를 판별하므로 RPM119. 실제 source와 해설의 보기 번호 재배열 부채를 별도로 유지한다.",
+      "binding": "정본119의 유한소수 판별 범위를 실제 내용에 대조했으며 정확한 ACTIVE PT/TPL 결속은 미등록이다.",
+      "crossConcept": "약분·소인수 확인은 동일 유한소수 판별 내부이며 추가 CC가 아니다.",
+      "condition": "실제 발문에 추가 범위 제약이 없어 conditionKeys 빈 배열 수용.",
+      "integration": "동일 판별 절차 내부이므로 NONE.",
+      "difficulty": "독립 초기1과 저자2는 B12 인접 경계이고, 번호 충돌 때문에 low인 구조조건부2를 수용한다. 원문 품질 승인과 구별한다.",
+      "fourSlot": "actual 분수 given·유한소수 goal·해설에 명명된 소인수 method literal 확인. 보기 번호 오류를 고치거나 새 풀이를 작성하지 않았다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "classification": "원뿔 높이를 부피 공식으로 정리한 후 다항식을 단항식으로 나누는 RPM133.",
+      "binding": "실제로 읽은 ACTIVE M1 standard measure와 M2 triangle height 정의를 재사용 비교. 전자는 수치 대입, 후자는 삼각형 넓이여서 현 원뿔 문자식 높이에는 related 후보만 보존한다.",
+      "crossConcept": "CC_GEOMETRIC_AREA_VOLUME_FORMULA의 도형 공식을 x식으로 쓰는 정의가 부피 공식을 통해 제수를 결정하는 외부 단계에 해당한다.",
+      "condition": "길이 양수 등 암묵 조건을 별도 원문 literal로 만들어 넣지 않았다.",
+      "integration": "부피 공식 정리가 다항식 나눗셈 입력을 결정하므로 SEQUENTIAL.",
+      "difficulty": "독립2/B23와 저자2/B23 일치. 공식 역산 뒤 항별 나눗셈인 정형 구조.",
+      "fourSlot": "원뿔·반지름·부피 given, 높이 goal, 실제 표준 원뿔 부피 공식과 나눔 문장 NAMED 확인."
+    },
+    {
+      "sourceOrdinal": 23,
+      "classification": "오독 후 순환소수에서 보존된 분자·분모를 복원하는 기존 해설 구조는 RPM124 조건을 만족하는 유리수에 해당한다.",
+      "binding": "현재 공식 RPM 범위를 확인했고 미등록 ACTIVE scoped binding 부채는 유지한다.",
+      "crossConcept": "순환분수 변환과 보존 성분의 결합은 현재 primary 내부이며 중복 CC 없음.",
+      "condition": "잘못 본 분자/분모의 실제 두 발문 literal을 4칸 condition으로 보존. 근거 없는 범위 제한 없음.",
+      "integration": "동일 원분수 복원 내부이므로 NONE.",
+      "difficulty": "독립 초기3과 저자2는 B23 인접 차로 저자 구조조건부2/low 수용. 오독 후 기약 성분을 원성분과 동일시하는 전제가 미명시된 부채를 유지한다.",
+      "fourSlot": "R2 두 순환소수를 포함한 given 전체 literal을 확인. 원 기약분수와 순환소수의 이중 goal, 실제 해설 분자·분모·분수 method만 인용한다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_2cda2f9e31c12a549fcd2aabf6325437599ad2e4e69f20e4087b85bbd08d1593",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "유리수소수의포함관계와기약분모의소인수를함께판정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "유리수·유한/무한/순환의여러분류진술을구별",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1
+      },
+      "decision": "ACCEPT",
+      "reason": "유리수소수의포함관계와기약분모의소인수를함께판정"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_51ce3cdbc3bdb4b878e8a78f5781f951a40b140fa09c212407a27932b63f15ac",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "순환소수의 앞자리전개 후사전식대소비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환표현을앞자리로풀어처음다른자리에서비교",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 2
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수의 앞자리전개 후사전식대소비교"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_abb6a08af167493e0bc079d8f4c3f20ca2eb59f985d307fca0498101f896b955",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "기약분모의2/5소인수판별. 해설보기번호충돌"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기약분모소인수로유한소수판정; 실제해설의보기번호순서가source와다르고결론번호도충돌",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3
+      },
+      "decision": "ACCEPT_CONDITIONAL_STRUCTURE_WITH_SOURCE_DEBT",
+      "reason": "기약분모의2/5소인수판별. 해설보기번호충돌; 1/2의 B12 인접 차로 저자2를 수용."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_df875b8977bba21dfb71279b31b05866b2751aabebc1adb43e19c484d7bd00e2",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "순환마디길이로나눈나머지로50번째숫자결정"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환마디길이와50의나머지로자리숫자대응",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 4
+      },
+      "decision": "ACCEPT",
+      "reason": "순환마디길이로나눈나머지로50번째숫자결정"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_c369b18df10631168962b1f36f461ed9b9122bf226f28295e4ba410fa8356c63",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "제시된모든순환표기가맞아보이는데원답과해설번호도충돌"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "제시된표현은잘못된보기가분명하지않고answer④/해설②가상충한다. 원문과답을추정정정하지않음",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 5
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_SOURCE_DEBT",
+      "reason": "제시된모든순환표기가맞아보이는데원답과해설번호도충돌"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_fb533358f53e6a6c717d409a8ff6727b67d1274992b291ecdcd132c02eaebea8",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "비순환한자리와순환두자리를맞춘10거듭제곱차"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환마디가같아지는두배수를선택",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6
+      },
+      "decision": "ACCEPT",
+      "reason": "비순환한자리와순환두자리를맞춘10거듭제곱차; 1/2의 B12 인접 차로 저자2를 수용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_49ab965286059a89b6351a014f36d964edb818b660df94b45bde9cf41d033aa6",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "reason": "발문이참조하는빈칸계산과정이실제원문에없음"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "안에들어갈수라는목표에대응하는원래빈칸과정이본문에없음. 해설로문제지문을재작성하지않음",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 7
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_SOURCE_DEBT",
+      "reason": "발문이참조하는빈칸계산과정이실제원문에없음"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_08489fdab06aae2d7d7122903455f2e55c004687a96953a402ae9274aaf9a630",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "같은항세개합을곱으로바꿔거듭제곱화"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "동일한3²항세개를곱셈과거듭제곱으로표현",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 8
+      },
+      "decision": "ACCEPT",
+      "reason": "같은항세개합을곱으로바꿔거듭제곱화"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_254bf2494c6256e229941967ce974d8ae7c0822e3f2a866a8f2673ef762dbd98",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "여러지수법칙과부호·나눗셈을비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "여러지수법칙의독립보기판정",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9
+      },
+      "decision": "ACCEPT",
+      "reason": "여러지수법칙과부호·나눗셈을비교"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f5911d30917bd394d57148d30137f12abaec8702a5e005019a3090868db26730",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "계수/문자지수비교의정형구조. 실제해설은x지수와최종합이충돌"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "거듭제곱의계수/지수대응구조이나실제해설의x지수가3b대신b²로적혀최종합도answer와충돌",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10
+      },
+      "decision": "ACCEPT_CONDITIONAL_STRUCTURE_WITH_SOURCE_DEBT",
+      "reason": "계수/문자지수비교의정형구조. 실제해설은x지수와최종합이충돌"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_eb3e081629fbadef808494567120445edef77e10ff08dbf5c3d86ba3ea9899e3",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "두밑소인수분해와반복항묶기로지수차계산"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "밑의소인수분해와동일항묶기를각거듭제곱몫에적용",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 11
+      },
+      "decision": "ACCEPT",
+      "reason": "두밑소인수분해와반복항묶기로지수차계산"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_5a713ebb3ee517cec2bd41c37275bc5de54f8913ab85b6a99eed419daf81b5b5",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "81의밑을3으로통일해지수의일차관계"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "81을3의거듭제곱으로맞춘후지수차대응",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 12
+      },
+      "decision": "ACCEPT",
+      "reason": "81의밑을3으로통일해지수의일차관계"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_7a9ce8c84e25abc7914bd63a8adfc02d596f64623b84b0085378670caa0dd7db",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "거듭제곱곱몫의부호와지수연산비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "혼합단항식거듭제곱·곱·몫에서부호와지수비교",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13
+      },
+      "decision": "ACCEPT",
+      "reason": "거듭제곱곱몫의부호와지수연산비교"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_109c600f2c3f09cd9336f391eeff3336a7ca1aa337a32d1cc999bb0f29abf91a",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "원뿔부피식을높이에대해정리하여다항식나눗셈"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "원뿔부피공식으로높이에관해정리해다항식나눗셈",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14
+      },
+      "decision": "ACCEPT",
+      "reason": "원뿔부피식을높이에대해정리하여다항식나눗셈"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_0d6533be1be7646d8482775f9b6325bc22217574866ad313bfa644f54e7b6e22",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "앞단항식의몫을정리한뒤분수단항식으로다시나눔"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "A의몫정리후B로나누는두단계",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15
+      },
+      "decision": "ACCEPT",
+      "reason": "앞단항식의몫을정리한뒤분수단항식으로다시나눔"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_90c0f4ad9847c805767b6aa6036e42930ab78424b27c8dfc36d24bbf15d90a48",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "다항식곱몫과계수합. 해설에원문없는A판본혼입"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "괄호전개/단항식나눗셈뒤계수합; 해설이source상수4대신정의안된A를도입한판본혼입부채",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 16
+      },
+      "decision": "ACCEPT_CONDITIONAL_STRUCTURE_WITH_SOURCE_DEBT",
+      "reason": "다항식곱몫과계수합. 해설에원문없는A판본혼입"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_79fde774d6d86fba4f8475180852c9429bf46a5361c89b53fb0f47739ef39cef",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "부등호가있는식과다항식/등식의정의구별"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "부등호유무의부등식정의직접판정",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 17
+      },
+      "decision": "ACCEPT",
+      "reason": "부등호가있는식과다항식/등식의정의구별"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b9b9a1caaa9b0086a03747314ef0f63e95de3e0c3462d7d47553deccc36e5ae5",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "문장의작다/작지않다와괄호구조를비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "문장수량관계와작지않다의비엄격부등호를대응",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18
+      },
+      "decision": "ACCEPT",
+      "reason": "문장의작다/작지않다와괄호구조를비교"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_01be64ba35678ae23afade5377f0e2b968dc8b46414957f7bfcfd5ca3ede3ed8",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "간단한일차부등식에서음수배방향반전"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "이항과음수배부등호반전의기본풀이",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "initialFreezeSourceOrdinal": 19
+      },
+      "decision": "ACCEPT",
+      "reason": "간단한일차부등식에서음수배방향반전"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_535f7d4ccb048a4c500be70d32272767280bbb91e037f38b9733ca9d28b4a629",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "분모제거후부등식의자연수개수"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "분모제거뒤자연수범위를세는정형절차",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20
+      },
+      "decision": "ACCEPT",
+      "reason": "분모제거후부등식의자연수개수"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_9bbfb302aa7d0896d193535e4996a335361adbdd9fe823505f5adf04788e0660",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "단가비교와고정교통비로자연수최소개수"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "고정교통비와편당가격을엄격비교해최소정수선택",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "decision": "ACCEPT",
+      "reason": "단가비교와고정교통비로자연수최소개수"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_97af5f2266ce189ec31955f5046a90093c4280bd31cfc30bca07733bd16a4a0b",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "medium",
+        "reason": "순환부분소거후기약분수약분"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "혼합순환소수의자리맞춤차와약분",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "decision": "ACCEPT",
+      "reason": "순환부분소거후기약분수약분"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_5917cbd7919aebe47e080738e95b34bb995a214070453d606b8abae7ad0d6c74",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "오독두순환소수에서원분자분모복원. 기약형동일시전제부채"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "오독후순환분수에서보존분자/분모를복원하는기존해설구조. 오독후분수약분동일시관례는미명시",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "decision": "ACCEPT_CONDITIONAL_STRUCTURE_WITH_SOURCE_DEBT",
+      "reason": "오독두순환소수에서원분자분모복원. 기약형동일시전제부채; B23 인접 구조 차로 저자2/low 수용, 미명시 복원 전제 부채 유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_5f637c7e9fd68dc7d3d2894a8bd54a3d9c4e47d720a5ec077b6159b3944a48e3",
+      "independentInitial": {
+        "sourceOrdinal": 24,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "medium",
+        "reason": "왕복두속력시간과구매시간합을제한시간에비교"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "왕복거리/속력과구매시간을시간상한에모델링",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "decision": "ACCEPT",
+      "reason": "왕복두속력시간과구매시간합을제한시간에비교"
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 2,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "순환표현을앞자리로풀어처음다른자리에서비교; 현재 내용에서 직접 정의/대응/기본 변형의 bucket1로 판단되며 source 중과 B12 인접 호환을 독립 승인."
+    },
+    {
+      "sourceOrdinal": 8,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "동일한3²항세개를곱셈과거듭제곱으로표현; 현재 내용에서 직접 정의/대응/기본 변형의 bucket1로 판단되며 source 중과 B12 인접 호환을 독립 승인."
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "81을3의거듭제곱으로맞춘후지수차대응; 현재 내용에서 직접 정의/대응/기본 변형의 bucket1로 판단되며 source 중과 B12 인접 호환을 독립 승인."
+    },
+    {
+      "sourceOrdinal": 17,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "부등호유무의부등식정의직접판정; 현재 내용에서 직접 정의/대응/기본 변형의 bucket1로 판단되며 source 중과 B12 인접 호환을 독립 승인."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "BORDERLINE_ACCEPTABLE",
+      "reason": "이항과음수배부등호반전의기본풀이; 현재 내용에서 직접 정의/대응/기본 변형의 bucket1로 판단되며 source 중과 B12 인접 호환을 독립 승인."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "requiredMethodEvidenceDebt": 0,
+  "nativeMethodFailures": 0,
+  "notes": [
+    "24 actual stems/choices/existing solutions read and initial snapshot frozen before author comparison; no source images.",
+    "R2 Q1 actual objects in goal, Q21 literal fixed transport fee, Q23 both recurring decimals in given, Q24 elapsed-time candidates with same-slot value parents actually read and accepted. Q21 three monetary constants all appear in the given literal.",
+    "UNKNOWN5/7, Q3 numbering conflict, Q10 exponent/sum error, Q16 undefined A from another version and Q23 reduction assumption remain explicit. No solution/answer/source alteration and no quality PASS or resolver inference."
+  ]
+}
