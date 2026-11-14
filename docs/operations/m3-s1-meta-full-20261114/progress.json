@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 34,
-    "reviewedQuestions": 814
+    "reviewedExams": 35,
+    "reviewedQuestions": 839
   },
   "duplicateUids": [],
   "exams": [
@@ -3538,9 +3538,55 @@
       ],
       "solutionCount": 25,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_PROPOSAL",
       "assignedTo": "meta_c",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "468451214e50990373c2fd1849ad48211817023f",
+      "reviewer": "meta_c",
+      "independentReviewer": "meta_a",
+      "integratedBy": "GPT_ROOT_0B1AF1898334",
+      "sampledOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E033",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 1,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 17,
+      "sourceChangedFields": 18,
+      "contentDebtCount": 1,
+      "typeProposalCount": 12,
+      "evidenceDebtOrdinals": [],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E034",
@@ -9121,6 +9167,6 @@
     "sharedCheckpointRevision": 2,
     "predecessorRawSha256": "a898b038e1fbf8ab0dd49c82bfedfd69e9104dc984973930bbdbc2b221b857db"
   },
-  "updatedAt": "2026-11-14T14:17:46.560465+00:00",
-  "lastPublishedHeadBeforeCurrent": "58a536d76b6f7101cb7712d51564cc87cf43d564"
+  "updatedAt": "2026-11-14T14:18:02.555138+00:00",
+  "lastPublishedHeadBeforeCurrent": "d218822f6bb1069a95147cdc1353500c8655c072"
 }
