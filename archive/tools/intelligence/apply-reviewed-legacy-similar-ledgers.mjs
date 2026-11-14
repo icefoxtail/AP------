@@ -24,6 +24,54 @@ const gitBlob = (content) => crypto.createHash('sha1')
   .update('blob ' + Buffer.byteLength(content) + '\0').update(content).digest('hex');
 const requireAssert = (cond, reason) => { if (!cond) throw new Error('LEGACY_REVIEW_BIND_FAIL: ' + reason); };
 const normalized = (v) => JSON.stringify(v);
+export function legacySimilarPreservationPlan(meta, row) {
+  const rpmConfirmed = row.rpmStatus === 'CANONICAL_PATH_REVIEWED' && !row.metaDebt.includes('RPM_CROSSWALK_PROJECTION_PENDING') &&
+    !row.metaDebt.includes('RPM_ONLY_NO_ACTIVE_PT_TPL_PROJECTION');
+  const rpmDebt = (row.metaDebt || []).filter((debt) => !String(debt).includes('CONDITION'));
+  const conditionDebt = (row.conditionFieldDebts || []).filter((debt) => debt.field === 'conditionKeys');
+  requireAssert(row.holdReasons === undefined || Array.isArray(row.holdReasons), 'invalid reviewed RPM hold reasons q' + row.qid);
+  requireAssert(Number.isInteger(row.independentDifficulty1to5) && row.independentDifficulty1to5 >= 1 && row.independentDifficulty1to5 <= 5,
+    'reviewed difficulty bucket missing q' + row.qid);
+  if (Number.isInteger(meta.difficultyBucket)) {
+    requireAssert(meta.difficultyBucket === row.independentDifficulty1to5,
+      'existing reviewed difficulty differs from ledger q' + row.qid);
+  } else if (meta.difficultyBucket !== undefined) {
+    requireAssert(['하', '중', '상'].includes(meta.difficultyBucket), 'unexpected legacy difficulty value q' + row.qid);
+  }
+  // Older reviewed ledgers only carry the independent 1–5 bucket. Preserve
+  // any already populated confidence/boundary/compatibility values verbatim;
+  // use those ledger fields only when the reviewer actually supplied them.
+  const difficultyPatch = { difficultyBucket: row.independentDifficulty1to5 };
+  for (const [field, valid] of [
+    ['difficultyConfidence', (value) => ['high', 'medium', 'low'].includes(value)],
+    ['difficultyBoundaryFlag', (value) => typeof value === 'string'],
+    ['legacyLevelCompatibility', (value) => typeof value === 'string'],
+  ]) {
+    if (row[field] !== undefined) {
+      requireAssert(valid(row[field]), 'invalid reviewed ' + field + ' q' + row.qid);
+      requireAssert(meta[field] === undefined || meta[field] === row[field],
+        'existing reviewed difficulty differs from ledger q' + row.qid);
+      difficultyPatch[field] = row[field];
+    } else if (meta[field] !== undefined) {
+      difficultyPatch[field] = meta[field];
+    }
+  }
+  const compatiblePriorPathStatus = ['CONFIRMED', 'DIRECT', 'DIRECT_ACTIVE', 'FAMILY_ACTIVE'].includes(meta.rpmPathStatus);
+  const legacyNoL4Reason = row.rpmStatus === 'HOLD_NO_EQUIVALENT_L4'
+    ? (row.metaDebt || []).filter((debt) => debt === 'NO_EQUIVALENT_RPM_L4') : [];
+  const explicitHoldReasons = row.holdReasons || [];
+  const rpmSemanticReason = rpmConfirmed ? '' : (explicitHoldReasons.length ? explicitHoldReasons : legacyNoL4Reason).join('; ');
+  requireAssert(rpmConfirmed || rpmSemanticReason.length > 0, 'reviewed RPM hold reason missing q' + row.qid);
+  return {
+    rpmConfirmed, rpmDebt, conditionDebt, conditionKeysEvidenceDebt: conditionDebt[0],
+    rpmPathStatus: rpmConfirmed
+      ? (compatiblePriorPathStatus ? meta.rpmPathStatus : 'CONFIRMED')
+      : row.rpmStatus === 'HOLD_NO_EQUIVALENT_L4' ? 'HOLD_NO_EQUIVALENT_PATH' : 'SEMANTIC_HOLD_OR_ROUTE_OUT',
+    rpmSemanticStatus: rpmConfirmed ? 'FINAL' : 'HOLD',
+    rpmSemanticReason,
+    ...difficultyPatch,
+  };
+}
 function verifyMaster(row, master, taxonomy, bindings, conditions) {
   const scope = master.records.find((r) => r.curriculum === row.rpmCurriculum &&
     r.scope === row.rpmCourse && r.majorUnit === row.rpmL1 && r.midUnit === row.rpmL2);
@@ -102,6 +150,9 @@ export function applyReviewedLegacySimilarLedgers() {
       requireAssert([meta.contentFingerprint, row.sourceBodyFingerprint].includes(row.oldSourceBodyFingerprint) ||
         meta.contentFingerprint === row.sourceBodyFingerprint, 'unrecognized prior body fingerprint q' + row.qid);
       const canonicalSelection = verifyMaster(row, master, taxonomy, bindings, conditions);
+      const preservation = legacySimilarPreservationPlan(meta, row);
+      const { rpmPathStatus, rpmSemanticStatus, rpmSemanticReason, rpmDebt, conditionKeysEvidenceDebt,
+        difficultyBucket, difficultyConfidence, difficultyBoundaryFlag, legacyLevelCompatibility } = preservation;
       const patch = {
         ...canonicalSelection,
         sourceFingerprint: row.sourceFingerprint,
@@ -112,20 +163,19 @@ export function applyReviewedLegacySimilarLedgers() {
         L1: row.rpmL1, L2: row.rpmL2, L3: row.rpmL4 ? row.rpmL3 : '', L4: row.rpmL4 || '',
         rpmL1: row.rpmL1, rpmL2: row.rpmL2, rpmL3: row.rpmL3, rpmL4: row.rpmL4,
         rpmCurriculum: row.rpmCurriculum,
-        rpmPathStatus: row.rpmL4 ? 'CONFIRMED' : 'HOLD_NO_EQUIVALENT_PATH',
-        rpmSemanticStatus: row.rpmL4 ? 'CONFIRMED' : 'HOLD',
-        rpmSemanticReason: row.rpmL4 ? '' : 'Reviewed source has no equivalent canonical RPM L4',
-        rpmEvidenceDebtFields: row.metaDebt,
+        rpmPathStatus, rpmSemanticStatus, rpmSemanticReason,
+        rpmEvidenceDebtFields: rpmDebt,
+        ...(conditionKeysEvidenceDebt ? { conditionKeysEvidenceDebt } : {}),
         rpmProjectionRevision: 'archive-registration-target-source-rpm-projection-v1',
         problemTypeKey: row.problemTypeKey || '',
         templateKey: row.templateKey || '',
         crossConceptKeys: row.crossConceptKeys || [],
         conditionKeys: row.conditionKeys || [],
         integrationPattern: row.integrationPattern || '',
-        difficultyBucket: row.independentDifficulty1to5,
-        difficultyConfidence: 'medium',
-        difficultyBoundaryFlag: row.qid === 7 ? 'B34' : 'NONE',
-        legacyLevelCompatibility: row.qid === 7 ? 'BORDERLINE_ACCEPTABLE' : 'NORMAL',
+        difficultyBucket,
+        ...(difficultyConfidence !== undefined ? { difficultyConfidence } : {}),
+        ...(difficultyBoundaryFlag !== undefined ? { difficultyBoundaryFlag } : {}),
+        ...(legacyLevelCompatibility !== undefined ? { legacyLevelCompatibility } : {}),
         sourceType: 'LEGACY_SIMILAR',
         reviewStatus: 'reviewed_pass',
         metadataStatus: row.metaDebt.length ? 'approved_partial_with_explicit_holds' : 'approved_semantic_review',
