@@ -1,0 +1,1826 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "6313665839a28d4767924729ed7346621afd2cf4",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "m3_a",
+    "run": "M3S2_FULL_20261114",
+    "at": "2026-11-14"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2b5c53233c1daa42c277164946d28633dc582815ef550ab87323cfaf430b6f0d",
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{BC}}=2\\sqrt{3}$일 때, 다음 중 옳지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q01.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{BC}}=2\\sqrt{3}$일 때, 다음 중 옳지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q01.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{BC}}=2\\sqrt{3}$일 때, 다음 중 옳지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q01.png\" />"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=4$, $\\overline{\\mathrm{BC}}=2\\sqrt{3}$일 때, 다음 중 옳지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q01.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형에서 $AB=4$는 빗변이고 $BC=2\\sqrt3$이므로 $AC=\\sqrt{4^2-(2\\sqrt3)^2}=2$이다.<br>따라서 $\\sin A=BC/AB=\\sqrt3/2$, $\\cos A=AC/AB=\\frac{1}{2}$, $\\tan B=AC/BC=\\sqrt3/3$, $\\cos B=BC/AB=\\sqrt3/2$이다. 반면 $\\sin B=AC/AB=\\frac{1}{2}$이므로 ⑤만 옳지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형에서 $AB=4$는 빗변이고 $BC=2\\sqrt3$이므로 $AC=\\sqrt{4^2-(2\\sqrt3)^2}=2$이다.<br>따라서 $\\sin A=BC/AB=\\sqrt3/2$, $\\cos A=AC/AB=\\frac{1}{2}$, $\\tan B=AC/BC=\\sqrt3/3$, $\\cos B=BC/AB=\\sqrt3/2$이다. 반면 $\\sin B=AC/AB=\\frac{1}{2}$이므로 ⑤만 옳지 않다.",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다.",
+        "method": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_8fffc000ba486200a9223b5f22dbe10f94e65a37dbbbf58ad13e14a56908e447",
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\sin(90^\\circ - B^\\circ) \\times \\tan B^\\circ$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q02.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\sin(90^\\circ - B^\\circ) \\times \\tan B^\\circ$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q02.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\sin(90^\\circ - B^\\circ) \\times \\tan B^\\circ$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q02.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "직각삼각형에서 $\\sin(90^\\circ-B)=\\cos B$이다. 그림에서 $AB=\\sqrt3$, $AC=1$, $BC=2$이므로 $\\cos B=AB/BC=\\sqrt3/2$, $\\tan B=AC/AB=1/\\sqrt3=\\sqrt3/3$이다.<br>따라서 $\\sin(90^\\circ-B)\\times\\tan B=(\\sqrt3/2)(\\sqrt3/3)=\\frac{1}{2}$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "직각삼각형에서 $\\sin(90^\\circ-B)=\\cos B$이다. 그림에서 $AB=\\sqrt3$, $AC=1$, $BC=2$이므로 $\\cos B=AB/BC=\\sqrt3/2$, $\\tan B=AC/AB=1/\\sqrt3=\\sqrt3/3$이다.<br>따라서 $\\sin(90^\\circ-B)\\times\\tan B=(\\sqrt3/2)(\\sqrt3/3)=\\frac{1}{2}$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다.",
+        "method": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_1ea614f45133a6596fea439b823f22ebda8eb502835b172e8480d9f8efab69eb",
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "$4\\cos A - 3 = 0$일 때, $\\sin A \\div \\tan A$의 값은?"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "$4\\cos A - 3 = 0$일 때, $\\sin A \\div \\tan A$의 값은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$4\\cos A - 3 = 0$일 때, $\\sin A \\div \\tan A$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$4\\cos A-3=0$에서 $\\cos A=\\frac{3}{4}$이다. $\\tan A=\\sin A/\\cos A$이므로<br>$\\sin A\\div\\tan A=\\sin A/(\\sin A/\\cos A)=\\cos A=\\frac{3}{4}$이다. 따라서 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$4\\cos A-3=0$에서 $\\cos A=\\frac{3}{4}$이다. $\\tan A=\\sin A/\\cos A$이므로<br>$\\sin A\\div\\tan A=\\sin A/(\\sin A/\\cos A)=\\cos A=\\frac{3}{4}$이다. 따라서 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다.",
+        "method": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_54c016b2fd6ed14b50cbbec21bc3e90d497989b9aacdec1f6b545403d4f3a9fb",
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{BCD}=y^\\circ$라고 할 때, $\\frac{\\tan x^\\circ}{\\cos y^\\circ}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q04.png\" />"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{BCD}=y^\\circ$라고 할 때, $\\frac{\\tan x^\\circ}{\\cos y^\\circ}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q04.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{BCD}=y^\\circ$라고 할 때, $\\frac{\\tan x^\\circ}{\\cos y^\\circ}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q04.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{CD}}$이다. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{BCD}=y^\\circ$라고 할 때, $\\frac{\\tan x^\\circ}{\\cos y^\\circ}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q04.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=\\frac{8}{15}$, $\\cos y=\\cos A=AC/AB=\\frac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{\\frac{8}{15}}{\\frac{8}{17}}=\\dfrac{17}{15}$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=\\frac{8}{15}$, $\\cos y=\\cos A=AC/AB=\\frac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{\\frac{8}{15}}{\\frac{8}{17}}=\\dfrac{17}{15}$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다."
+          },
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=\\frac{8}{15}$, $\\cos y=\\cos A=AC/AB=\\frac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{\\frac{8}{15}}{\\frac{8}{17}}=\\dfrac{17}{15}$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "그림에서 직각삼각형 $\\mathrm{ABC}$는 $C$에서 직각이고 $AC=8$, $CB=15$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.<br>$CD\\perp AB$이므로 $\\triangle ACD$와 $\\triangle ABC$는 AA 닮음이고, $x=\\angle ABC$이다. 또 $D$는 $AB$ 위에 있어 $\\angle CBD=\\angle ABC$이며 $\\angle BDC=90^\\circ$이므로 $y=90^\\circ-\\angle ABC=\\angle CAB$이다.<br>따라서 $\\tan x=\\tan B=AC/CB=\\frac{8}{15}$, $\\cos y=\\cos A=AC/AB=\\frac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x}{\\cos y}=\\dfrac{\\frac{8}{15}}{\\frac{8}{17}}=\\dfrac{17}{15}$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다.",
+        "method": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4ff26e7db7c7edcaf53d3e9ece708be4e77fff4f3ac28ccfae9d3f32cc9a9927",
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "① $\\sin30^\\circ=\\frac{1}{2}=\\cos60^\\circ$이다.<br>② $\\sin60^\\circ=\\cos30^\\circ=\\sqrt3/2$이므로 차는 $0$이다.<br>③ $\\tan45^\\circ=1$이므로 우변은 $\\cos30^\\circ=\\sqrt3/2=\\sin60^\\circ$이다.<br>④ $\\tan30^\\circ=1/\\sqrt3$이므로 역수는 $\\sqrt3=\\tan60^\\circ$이다.<br>⑤ 좌변은 $\\frac{1}{2}+\\frac{1}{2}=1$이지만 $\\cos90^\\circ=0$이다. 따라서 옳지 않은 것은 ⑤이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "① $\\sin30^\\circ=\\frac{1}{2}=\\cos60^\\circ$이다.<br>② $\\sin60^\\circ=\\cos30^\\circ=\\sqrt3/2$이므로 차는 $0$이다.<br>③ $\\tan45^\\circ=1$이므로 우변은 $\\cos30^\\circ=\\sqrt3/2=\\sin60^\\circ$이다.<br>④ $\\tan30^\\circ=1/\\sqrt3$이므로 역수는 $\\sqrt3=\\tan60^\\circ$이다.<br>⑤ 좌변은 $\\frac{1}{2}+\\frac{1}{2}=1$이지만 $\\cos90^\\circ=0$이다. 따라서 옳지 않은 것은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "① $\\sin30^\\circ=\\frac{1}{2}=\\cos60^\\circ$이다.<br>② $\\sin60^\\circ=\\cos30^\\circ=\\sqrt3/2$이므로 차는 $0$이다.<br>③ $\\tan45^\\circ=1$이므로 우변은 $\\cos30^\\circ=\\sqrt3/2=\\sin60^\\circ$이다.<br>④ $\\tan30^\\circ=1/\\sqrt3$이므로 역수는 $\\sqrt3=\\tan60^\\circ$이다.<br>⑤ 좌변은 $\\frac{1}{2}+\\frac{1}{2}=1$이지만 $\\cos90^\\circ=0$이다. 따라서 옳지 않은 것은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다.",
+        "method": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_357a1807c52aae742c6ea4faecfb08ab5a82bde6c768703d5336b0d957dd60de",
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\cos 50^\\circ + \\sin 40^\\circ - \\tan 50^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\cos 50^\\circ + \\sin 40^\\circ - \\tan 50^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q06.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\cos 50^\\circ + \\sin 40^\\circ - \\tan 50^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q06.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "다음 그림과 같이 점 $\\mathrm{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서 $\\cos 50^\\circ + \\sin 40^\\circ - \\tan 50^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q06.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "$\\sin40^\\circ=\\cos50^\\circ$이므로 식은 $2\\cos50^\\circ-\\tan50^\\circ$이다.<br>삼각비 표에서 $\\cos50^\\circ\\approx0.64$, $\\tan50^\\circ\\approx1.19$이므로 $2(0.64)-1.19=0.09$이다. 따라서 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다."
+          },
+          {
+            "term": "여각",
+            "src": "solution",
+            "quote": "$\\sin40^\\circ=\\cos50^\\circ$이므로 식은 $2\\cos50^\\circ-\\tan50^\\circ$이다.<br>삼각비 표에서 $\\cos50^\\circ\\approx0.64$, $\\tan50^\\circ\\approx1.19$이므로 $2(0.64)-1.19=0.09$이다. 따라서 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$\\sin40^\\circ=\\cos50^\\circ$이므로 식은 $2\\cos50^\\circ-\\tan50^\\circ$이다.<br>삼각비 표에서 $\\cos50^\\circ\\approx0.64$, $\\tan50^\\circ\\approx1.19$이므로 $2(0.64)-1.19=0.09$이다. 따라서 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다.",
+        "method": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7b2a65d728649b5418d07325c41e5266ea3af33c8e8c10e81542075d2f6220b9",
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle\\mathrm{ABC}$의 꼭짓점 $\\mathrm{A}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{D}$라고 할 때, $\\overline{\\mathrm{AC}}-\\overline{\\mathrm{CD}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q07.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "그림에서 $AB=3\\sqrt2$, $AD\\perp BC$, $\\angle B=45^\\circ$, $\\angle C=60^\\circ$이다. 직각삼각형 $ABD$는 45°-45°-90°이므로 $AD=BD=3$ cm이다.<br>직각삼각형 $ACD$에서 $\\tan60^\\circ=AD/CD$이므로 $CD=3/\\sqrt3=\\sqrt3$ cm이다. 또 $\\cos60^\\circ=CD/AC$이므로 $AC=2\\sqrt3$ cm이다.<br>따라서 $AC-CD=2\\sqrt3-\\sqrt3=\\sqrt3$ cm이며 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "그림에서 $AB=3\\sqrt2$, $AD\\perp BC$, $\\angle B=45^\\circ$, $\\angle C=60^\\circ$이다. 직각삼각형 $ABD$는 45°-45°-90°이므로 $AD=BD=3$ cm이다.<br>직각삼각형 $ACD$에서 $\\tan60^\\circ=AD/CD$이므로 $CD=3/\\sqrt3=\\sqrt3$ cm이다. 또 $\\cos60^\\circ=CD/AC$이므로 $AC=2\\sqrt3$ cm이다.<br>따라서 $AC-CD=2\\sqrt3-\\sqrt3=\\sqrt3$ cm이며 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "그림에서 $AB=3\\sqrt2$, $AD\\perp BC$, $\\angle B=45^\\circ$, $\\angle C=60^\\circ$이다. 직각삼각형 $ABD$는 45°-45°-90°이므로 $AD=BD=3$ cm이다.<br>직각삼각형 $ACD$에서 $\\tan60^\\circ=AD/CD$이므로 $CD=3/\\sqrt3=\\sqrt3$ cm이다. 또 $\\cos60^\\circ=CD/AC$이므로 $AC=2\\sqrt3$ cm이다.<br>따라서 $AC-CD=2\\sqrt3-\\sqrt3=\\sqrt3$ cm이며 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다.",
+        "method": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0634fb2440454629db0f25ddf7a07adb7f88c288ff6c37215f417b770bffcfb1",
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=4$, $\\overline{\\mathrm{BC}}=6$일 때, $\\frac{\\sin A}{\\sin B}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q08.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=4$, $\\overline{\\mathrm{BC}}=6$일 때, $\\frac{\\sin A}{\\sin B}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q08.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=4$, $\\overline{\\mathrm{BC}}=6$일 때, $\\frac{\\sin A}{\\sin B}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q08.png\" />"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=4$, $\\overline{\\mathrm{BC}}=6$일 때, $\\frac{\\sin A}{\\sin B}$의 값은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q08.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "그림에서 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 그러면 $\\sin A=CH/AC=CH/4$이고 $\\sin B=CH/BC=CH/6$이다.<br>따라서 $\\dfrac{\\sin A}{\\sin B}=\\dfrac{CH/4}{CH/6}=\\frac{6}{4}=\\frac{3}{2}$이므로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "그림에서 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 그러면 $\\sin A=CH/AC=CH/4$이고 $\\sin B=CH/BC=CH/6$이다.<br>따라서 $\\dfrac{\\sin A}{\\sin B}=\\dfrac{CH/4}{CH/6}=\\frac{6}{4}=\\frac{3}{2}$이므로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다."
+          },
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "그림에서 $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. 그러면 $\\sin A=CH/AC=CH/4$이고 $\\sin B=CH/BC=CH/6$이다.<br>따라서 $\\dfrac{\\sin A}{\\sin B}=\\dfrac{CH/4}{CH/6}=\\frac{6}{4}=\\frac{3}{2}$이므로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다.",
+        "method": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_c812e2456354808ae65b1b06816b10bc6504418e1f30698f62dd1e5640052459",
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림은 서로 $200\\text{ m}$ 떨어진 해안가의 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 $\\mathrm{C}$지점을 관측하였더니 다음 그림과 같은 결과를 얻었다. 두 지점 $\\mathrm{B}$와 $\\mathrm{C}$사이의 거리를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q09.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "그림에서 $AB=200\\,\\mathrm m$, $\\angle A=60^\\circ$, $\\angle B=75^\\circ$이다. 따라서 $\\angle C=45^\\circ$이다. $B$에서 $AC$에 내린 수선의 발을 $H$라 하면 직각삼각형 $ABH$에서 $AH=AB\\cos60^\\circ=100$, $BH=AB\\sin60^\\circ=100\\sqrt3$이다.<br>$\\triangle BHC$는 $H$에서 직각이고 $\\angle C=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $HC=BH=100\\sqrt3$이고 $BC=\\sqrt{BH^2+HC^2}=100\\sqrt6$ m이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "그림에서 $AB=200\\,\\mathrm m$, $\\angle A=60^\\circ$, $\\angle B=75^\\circ$이다. 따라서 $\\angle C=45^\\circ$이다. $B$에서 $AC$에 내린 수선의 발을 $H$라 하면 직각삼각형 $ABH$에서 $AH=AB\\cos60^\\circ=100$, $BH=AB\\sin60^\\circ=100\\sqrt3$이다.<br>$\\triangle BHC$는 $H$에서 직각이고 $\\angle C=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $HC=BH=100\\sqrt3$이고 $BC=\\sqrt{BH^2+HC^2}=100\\sqrt6$ m이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "그림에서 $AB=200\\,\\mathrm m$, $\\angle A=60^\\circ$, $\\angle B=75^\\circ$이다. 따라서 $\\angle C=45^\\circ$이다. $B$에서 $AC$에 내린 수선의 발을 $H$라 하면 직각삼각형 $ABH$에서 $AH=AB\\cos60^\\circ=100$, $BH=AB\\sin60^\\circ=100\\sqrt3$이다.<br>$\\triangle BHC$는 $H$에서 직각이고 $\\angle C=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $HC=BH=100\\sqrt3$이고 $BC=\\sqrt{BH^2+HC^2}=100\\sqrt6$ m이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+        "method": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_4ce792bf5e5b73c08a575beabeda0abf863d0a1a83f379584add131c247550f7",
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "올려본각",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $10\\text{ m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{D}$에서 이 건물의 꼭대기 $\\mathrm{A}$ 지점을 올려다본 각의 크기가 각각 $30^\\circ$, $45^\\circ$이다. 이 건물의 높이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q10.png\" />"
+          },
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $10\\text{ m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{D}$에서 이 건물의 꼭대기 $\\mathrm{A}$ 지점을 올려다본 각의 크기가 각각 $30^\\circ$, $45^\\circ$이다. 이 건물의 높이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q10.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $10\\text{ m}$ 떨어진 두 지점 $\\mathrm{B}$와 $\\mathrm{D}$에서 이 건물의 꼭대기 $\\mathrm{A}$ 지점을 올려다본 각의 크기가 각각 $30^\\circ$, $45^\\circ$이다. 이 건물의 높이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q10.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "건물 높이를 $h$ m라 하자. $45^\\circ$로 올려다보는 가까운 점 $D$에서 건물 밑까지의 수평거리는 $h$이다. 더 먼 점 $B$에서 건물 밑까지의 수평거리는 $h\\sqrt3$이다($\\tan30^\\circ=h/(h\\sqrt3)$).<br>두 점 사이가 10 m이므로 $h\\sqrt3-h=10$이다. 따라서 $h=10/(\\sqrt3-1)=5(\\sqrt3+1)$ m이다. 선택지의 단위도 m로 맞추면 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다."
+          },
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "건물 높이를 $h$ m라 하자. $45^\\circ$로 올려다보는 가까운 점 $D$에서 건물 밑까지의 수평거리는 $h$이다. 더 먼 점 $B$에서 건물 밑까지의 수평거리는 $h\\sqrt3$이다($\\tan30^\\circ=h/(h\\sqrt3)$).<br>두 점 사이가 10 m이므로 $h\\sqrt3-h=10$이다. 따라서 $h=10/(\\sqrt3-1)=5(\\sqrt3+1)$ m이다. 선택지의 단위도 m로 맞추면 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다."
+          },
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "건물 높이를 $h$ m라 하자. $45^\\circ$로 올려다보는 가까운 점 $D$에서 건물 밑까지의 수평거리는 $h$이다. 더 먼 점 $B$에서 건물 밑까지의 수평거리는 $h\\sqrt3$이다($\\tan30^\\circ=h/(h\\sqrt3)$).<br>두 점 사이가 10 m이므로 $h\\sqrt3-h=10$이다. 따라서 $h=10/(\\sqrt3-1)=5(\\sqrt3+1)$ m이다. 선택지의 단위도 m로 맞추면 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다.",
+        "method": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_9dab58543ca1636ef1f4e03df8f6bb3d3c22f5269e19526b25defbc47d9d10bb",
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 $6$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}$, $\\mathrm{CD}$의 중점을 각각 $\\mathrm{M}$, $\\mathrm{N}$이라 하고 $\\angle\\mathrm{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q11.png\" />"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "한 변의 길이가 $6$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}$, $\\mathrm{CD}$의 중점을 각각 $\\mathrm{M}$, $\\mathrm{N}$이라 하고 $\\angle\\mathrm{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q11.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "한 변의 길이가 $6$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}$, $\\mathrm{CD}$의 중점을 각각 $\\mathrm{M}$, $\\mathrm{N}$이라 하고 $\\angle\\mathrm{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q11.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "한 변의 길이가 $6$인 정사각형 $\\mathrm{ABCD}$의 두 변 $\\mathrm{AD}$, $\\mathrm{CD}$의 중점을 각각 $\\mathrm{M}$, $\\mathrm{N}$이라 하고 $\\angle\\mathrm{MBN}=x^\\circ$라 할 때, $\\sin x^\\circ$의 값을 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q11.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "정사각형의 한 변은 $6$이고 $M,N$은 각각 변의 중점이므로 $AM=MD=DN=NC=3$이다. 직각삼각형 $ABM$과 $BCN$에서 $BM=BN=\\sqrt{6^2+3^2}=3\\sqrt5$이다.<br>삼각형 $BMN$의 넓이는 정사각형의 넓이에서 나머지 세 직각삼각형의 넓이를 빼면 된다.<br>$[BMN]=6^2-\\left(\\dfrac12\\cdot6\\cdot3+\\dfrac12\\cdot3\\cdot3+\\dfrac12\\cdot6\\cdot3\\right)=\\dfrac{27}{2}$이다.<br>$[BMN]=\\dfrac12 BM\\cdot BN\\sin x$이므로 $\\dfrac{27}{2}=\\dfrac12(3\\sqrt5)(3\\sqrt5)\\sin x$이다. 따라서 $\\sin x=\\dfrac{27}{45}=\\dfrac35$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "정사각형의 한 변은 $6$이고 $M,N$은 각각 변의 중점이므로 $AM=MD=DN=NC=3$이다. 직각삼각형 $ABM$과 $BCN$에서 $BM=BN=\\sqrt{6^2+3^2}=3\\sqrt5$이다.<br>삼각형 $BMN$의 넓이는 정사각형의 넓이에서 나머지 세 직각삼각형의 넓이를 빼면 된다.<br>$[BMN]=6^2-\\left(\\dfrac12\\cdot6\\cdot3+\\dfrac12\\cdot3\\cdot3+\\dfrac12\\cdot6\\cdot3\\right)=\\dfrac{27}{2}$이다.<br>$[BMN]=\\dfrac12 BM\\cdot BN\\sin x$이므로 $\\dfrac{27}{2}=\\dfrac12(3\\sqrt5)(3\\sqrt5)\\sin x$이다. 따라서 $\\sin x=\\dfrac{27}{45}=\\dfrac35$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "정사각형의 한 변은 $6$이고 $M,N$은 각각 변의 중점이므로 $AM=MD=DN=NC=3$이다. 직각삼각형 $ABM$과 $BCN$에서 $BM=BN=\\sqrt{6^2+3^2}=3\\sqrt5$이다.<br>삼각형 $BMN$의 넓이는 정사각형의 넓이에서 나머지 세 직각삼각형의 넓이를 빼면 된다.<br>$[BMN]=6^2-\\left(\\dfrac12\\cdot6\\cdot3+\\dfrac12\\cdot3\\cdot3+\\dfrac12\\cdot6\\cdot3\\right)=\\dfrac{27}{2}$이다.<br>$[BMN]=\\dfrac12 BM\\cdot BN\\sin x$이므로 $\\dfrac{27}{2}=\\dfrac12(3\\sqrt5)(3\\sqrt5)\\sin x$이다. 따라서 $\\sin x=\\dfrac{27}{45}=\\dfrac35$이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다.",
+        "method": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3554cb3decbb7ec2b7cb083b7beae4ee1b51d6ac7778c700a38595d4a79d69a9",
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\triangle\\mathrm{ABC}$의 넓이가 $24\\sqrt{3}\\text{ cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q12.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$BC=8$이고 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자. 넓이로 $AH=2(24\\sqrt3)/8=6\\sqrt3$이다. $\\angle B=60^\\circ$이므로 직각삼각형 $ABH$에서 $BH=AH/\\tan60^\\circ=6$이다. 따라서 $HC=BC-BH=2$.<br>직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=(6\\sqrt3)^2+2^2=112$이므로 $AC=4\\sqrt7$ cm. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다."
+          },
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "$BC=8$이고 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자. 넓이로 $AH=2(24\\sqrt3)/8=6\\sqrt3$이다. $\\angle B=60^\\circ$이므로 직각삼각형 $ABH$에서 $BH=AH/\\tan60^\\circ=6$이다. 따라서 $HC=BC-BH=2$.<br>직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=(6\\sqrt3)^2+2^2=112$이므로 $AC=4\\sqrt7$ cm. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "$BC=8$이고 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자. 넓이로 $AH=2(24\\sqrt3)/8=6\\sqrt3$이다. $\\angle B=60^\\circ$이므로 직각삼각형 $ABH$에서 $BH=AH/\\tan60^\\circ=6$이다. 따라서 $HC=BC-BH=2$.<br>직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=(6\\sqrt3)^2+2^2=112$이므로 $AC=4\\sqrt7$ cm. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$BC=8$이고 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자. 넓이로 $AH=2(24\\sqrt3)/8=6\\sqrt3$이다. $\\angle B=60^\\circ$이므로 직각삼각형 $ABH$에서 $BH=AH/\\tan60^\\circ=6$이다. 따라서 $HC=BC-BH=2$.<br>직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=(6\\sqrt3)^2+2^2=112$이므로 $AC=4\\sqrt7$ cm. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다.",
+        "method": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\square\\mathrm{ABCD}$의 넓이를 구하면?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q13.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선 $AC$로 사각형을 두 삼각형으로 나눈다. $[ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin60^\\circ=24\\sqrt3$이다.<br>또 $AD=CD=2\\sqrt7$, $\\angle ADC=120^\\circ$이므로 $[ADC]=\\dfrac12(2\\sqrt7)^2\\sin120^\\circ=14\\cdot\\dfrac{\\sqrt3}{2}=7\\sqrt3$이다.<br>따라서 사각형의 넓이는 $24\\sqrt3+7\\sqrt3=31\\sqrt3\\text{ cm}^2$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "대각선 $AC$로 사각형을 두 삼각형으로 나눈다. $[ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin60^\\circ=24\\sqrt3$이다.<br>또 $AD=CD=2\\sqrt7$, $\\angle ADC=120^\\circ$이므로 $[ADC]=\\dfrac12(2\\sqrt7)^2\\sin120^\\circ=14\\cdot\\dfrac{\\sqrt3}{2}=7\\sqrt3$이다.<br>따라서 사각형의 넓이는 $24\\sqrt3+7\\sqrt3=31\\sqrt3\\text{ cm}^2$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "대각선 $AC$로 사각형을 두 삼각형으로 나눈다. $[ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin60^\\circ=24\\sqrt3$이다.<br>또 $AD=CD=2\\sqrt7$, $\\angle ADC=120^\\circ$이므로 $[ADC]=\\dfrac12(2\\sqrt7)^2\\sin120^\\circ=14\\cdot\\dfrac{\\sqrt3}{2}=7\\sqrt3$이다.<br>따라서 사각형의 넓이는 $24\\sqrt3+7\\sqrt3=31\\sqrt3\\text{ cm}^2$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다."
+          },
+          {
+            "term": "평각",
+            "src": "solution",
+            "quote": "대각선 $AC$로 사각형을 두 삼각형으로 나눈다. $[ABC]=\\dfrac12\\cdot12\\cdot8\\cdot\\sin60^\\circ=24\\sqrt3$이다.<br>또 $AD=CD=2\\sqrt7$, $\\angle ADC=120^\\circ$이므로 $[ADC]=\\dfrac12(2\\sqrt7)^2\\sin120^\\circ=14\\cdot\\dfrac{\\sqrt3}{2}=7\\sqrt3$이다.<br>따라서 사각형의 넓이는 $24\\sqrt3+7\\sqrt3=31\\sqrt3\\text{ cm}^2$이므로 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다.",
+        "method": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_b17269fb0cb07abcf73ae3ecc3fac59fa1a613b0690b5ecef9df15c952a9057b",
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          },
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 현이고 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$일 때, 다음 중 바르지 않은 것은?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q14.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "원 중심에서 현에 내린 수선은 현을 이등분한다. 중심에서 현 $AB$, $CD$까지의 거리가 각각 $OM$, $ON$이고 $OM=ON$이므로 두 현은 중심에서 같은 거리에 있다. 같은 원에서 중심에서 같은 거리에 있는 현의 길이는 같으므로 $AB=CD$이다.<br>따라서 $AM=MB$, $CN=ND$이고 $2AM=AB=CD$가 성립한다. 그러나 $AM=OM$은 현의 반 길이와 중심에서 현까지의 거리를 같다고 단정하는 것으로 일반적으로 성립하지 않는다(예를 들어 반지름 5, 중심거리 4이면 반 현 길이는 3이다). 옳지 않은 것은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다."
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "원 중심에서 현에 내린 수선은 현을 이등분한다. 중심에서 현 $AB$, $CD$까지의 거리가 각각 $OM$, $ON$이고 $OM=ON$이므로 두 현은 중심에서 같은 거리에 있다. 같은 원에서 중심에서 같은 거리에 있는 현의 길이는 같으므로 $AB=CD$이다.<br>따라서 $AM=MB$, $CN=ND$이고 $2AM=AB=CD$가 성립한다. 그러나 $AM=OM$은 현의 반 길이와 중심에서 현까지의 거리를 같다고 단정하는 것으로 일반적으로 성립하지 않는다(예를 들어 반지름 5, 중심거리 4이면 반 현 길이는 3이다). 옳지 않은 것은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다."
+          },
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원 중심에서 현에 내린 수선은 현을 이등분한다. 중심에서 현 $AB$, $CD$까지의 거리가 각각 $OM$, $ON$이고 $OM=ON$이므로 두 현은 중심에서 같은 거리에 있다. 같은 원에서 중심에서 같은 거리에 있는 현의 길이는 같으므로 $AB=CD$이다.<br>따라서 $AM=MB$, $CN=ND$이고 $2AM=AB=CD$가 성립한다. 그러나 $AM=OM$은 현의 반 길이와 중심에서 현까지의 거리를 같다고 단정하는 것으로 일반적으로 성립하지 않는다(예를 들어 반지름 5, 중심거리 4이면 반 현 길이는 3이다). 옳지 않은 것은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다.",
+        "method": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_357b8db2a86ab986cc1ea7b75abd1eef0597719cf4fefe36e753851f1c0334db",
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />"
+          },
+          {
+            "term": "접기",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $12\\text{ cm}$인 원 모양의 종이를 현 $\\mathrm{AB}$를 접는 선으로 하여 접었더니 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지난다. 이 때 현 $\\mathrm{AB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q15.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "src": "solution",
+            "quote": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다."
+          },
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "접은 뒤 원래의 중심 $O$가 접힌 호 $AB$ 위에 놓인다. 접은 뒤의 원은 중심 $O'$와 반지름 12 cm인 원이므로 $OO'=12$ cm이다. 접는 선 $AB$는 $OO'$의 수직이등분선이다. 원래 중심에서 현 $AB$까지의 거리를 $d$라 하면 $2d=OO'=12$, 따라서 $d=6$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 반 현의 길이는 $\\sqrt{12^2-6^2}=6\\sqrt3$ cm이다. 따라서 $AB=12\\sqrt3$ cm로 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+        "method": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_3dee851adcb59c2e1aeae8da9f445ff9331c53e6c169e74294cf94e8aee6c8db",
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림은 반지름의 길이가 $10\\text{ cm}$인 원의 일부이다. 현 $\\mathrm{AB}$의 중점 $\\mathrm{H}$에서 그은 이 현의 수선은 이 호와 점 $\\mathrm{P}$에서 만나고 $\\overline{\\mathrm{HP}}=2\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q16.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "현의 중점 $H$에서 그은 수선은 원의 중심 $O$를 지나므로 $O,H,P$는 한 직선 위에 있고, 그림에서 $H$는 $O$와 $P$ 사이에 있다. 따라서 $OH=OP-HP=10-2=8$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $H$는 $AB$의 중점이다. 직각삼각형 $OHA$에서 $OA=10$ cm이므로 $AH=\\sqrt{OA^2-OH^2}=\\sqrt{10^2-8^2}=6$ cm, 따라서 $AB=12$ cm이다. $P$에서 $AB$까지의 높이는 $HP=2$ cm이므로 $[APB]=\\dfrac12\\cdot12\\cdot2=12$ cm$^2$이다. 따라서 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "현의 중점 $H$에서 그은 수선은 원의 중심 $O$를 지나므로 $O,H,P$는 한 직선 위에 있고, 그림에서 $H$는 $O$와 $P$ 사이에 있다. 따라서 $OH=OP-HP=10-2=8$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $H$는 $AB$의 중점이다. 직각삼각형 $OHA$에서 $OA=10$ cm이므로 $AH=\\sqrt{OA^2-OH^2}=\\sqrt{10^2-8^2}=6$ cm, 따라서 $AB=12$ cm이다. $P$에서 $AB$까지의 높이는 $HP=2$ cm이므로 $[APB]=\\dfrac12\\cdot12\\cdot2=12$ cm$^2$이다. 따라서 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "현의 중점 $H$에서 그은 수선은 원의 중심 $O$를 지나므로 $O,H,P$는 한 직선 위에 있고, 그림에서 $H$는 $O$와 $P$ 사이에 있다. 따라서 $OH=OP-HP=10-2=8$ cm이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $H$는 $AB$의 중점이다. 직각삼각형 $OHA$에서 $OA=10$ cm이므로 $AH=\\sqrt{OA^2-OH^2}=\\sqrt{10^2-8^2}=6$ cm, 따라서 $AB=12$ cm이다. $P$에서 $AB$까지의 높이는 $HP=2$ cm이므로 $[APB]=\\dfrac12\\cdot12\\cdot2=12$ cm$^2$이다. 따라서 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다.",
+        "method": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_d9968d176d96ec9c965904f72aed8cb396f8cb6d7398605e61e920471eeef409",
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          },
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$이고 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OM}}=4\\text{cm}$이고, $\\triangle\\mathrm{OCD}$의 넓이가 $12$일 때, $\\overline{\\mathrm{OD}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q17.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "$AB=CD$인 같은 원의 현이므로 중심에서 두 현까지의 거리는 같다. $AB\\perp OM$이고 $OM=4$ cm이므로 $CD$에 내린 수선의 길이도 4 cm이다. $N$을 $O$에서 $CD$에 내린 수선의 발이라 하면 $N$은 $CD$의 중점이다.<br>$[OCD]=\\frac12\\cdot CD\\cdot ON=12$이므로 $CD=6$ cm, 따라서 $ND=3$ cm이다. 직각삼각형 $OND$에서 $OD=\\sqrt{4^2+3^2}=5$ cm이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$AB=CD$인 같은 원의 현이므로 중심에서 두 현까지의 거리는 같다. $AB\\perp OM$이고 $OM=4$ cm이므로 $CD$에 내린 수선의 길이도 4 cm이다. $N$을 $O$에서 $CD$에 내린 수선의 발이라 하면 $N$은 $CD$의 중점이다.<br>$[OCD]=\\frac12\\cdot CD\\cdot ON=12$이므로 $CD=6$ cm, 따라서 $ND=3$ cm이다. 직각삼각형 $OND$에서 $OD=\\sqrt{4^2+3^2}=5$ cm이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "$AB=CD$인 같은 원의 현이므로 중심에서 두 현까지의 거리는 같다. $AB\\perp OM$이고 $OM=4$ cm이므로 $CD$에 내린 수선의 길이도 4 cm이다. $N$을 $O$에서 $CD$에 내린 수선의 발이라 하면 $N$은 $CD$의 중점이다.<br>$[OCD]=\\frac12\\cdot CD\\cdot ON=12$이므로 $CD=6$ cm, 따라서 $ND=3$ cm이다. 직각삼각형 $OND$에서 $OD=\\sqrt{4^2+3^2}=5$ cm이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$AB=CD$인 같은 원의 현이므로 중심에서 두 현까지의 거리는 같다. $AB\\perp OM$이고 $OM=4$ cm이므로 $CD$에 내린 수선의 길이도 4 cm이다. $N$을 $O$에서 $CD$에 내린 수선의 발이라 하면 $N$은 $CD$의 중점이다.<br>$[OCD]=\\frac12\\cdot CD\\cdot ON=12$이므로 $CD=6$ cm, 따라서 $ND=3$ cm이다. 직각삼각형 $OND$에서 $OD=\\sqrt{4^2+3^2}=5$ cm이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다.",
+        "method": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7a8dd83176dc404183baff71eb09dc3f47dc808adcef75fd87c28ea15d720a1a",
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q18.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q18.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "다음 그림과 같이 반지름의 길이가 $8\\text{cm}$인 원 $\\mathrm{O}$의 외부의 한 점 $\\mathrm{P}$에서 이 원에 그은 두 접선이 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 각각 접하고 $\\overline{\\mathrm{PO}}$는 이 원과 점 $\\mathrm{C}$에서 만난다. $\\overline{\\mathrm{PC}}=9\\text{cm}$일 때, $\\overline{PB}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q18.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "접함",
+            "src": "solution",
+            "quote": "$OC=8$ cm이고 $PC=9$ cm이며 $P,O,C$가 한 직선 위에서 $C$가 원 위에 있으므로 $PO=PC+CO=17$ cm이다. 반지름과 접선은 접점에서 수직이므로 $\\triangle PBO$는 $B$에서 직각이다.<br>따라서 $PB^2+OB^2=PO^2$, 즉 $PB=\\sqrt{17^2-8^2}=\\sqrt{225}=15$ cm이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다."
+          },
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "$OC=8$ cm이고 $PC=9$ cm이며 $P,O,C$가 한 직선 위에서 $C$가 원 위에 있으므로 $PO=PC+CO=17$ cm이다. 반지름과 접선은 접점에서 수직이므로 $\\triangle PBO$는 $B$에서 직각이다.<br>따라서 $PB^2+OB^2=PO^2$, 즉 $PB=\\sqrt{17^2-8^2}=\\sqrt{225}=15$ cm이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "$OC=8$ cm이고 $PC=9$ cm이며 $P,O,C$가 한 직선 위에서 $C$가 원 위에 있으므로 $PO=PC+CO=17$ cm이다. 반지름과 접선은 접점에서 수직이므로 $\\triangle PBO$는 $B$에서 직각이다.<br>따라서 $PB^2+OB^2=PO^2$, 즉 $PB=\\sqrt{17^2-8^2}=\\sqrt{225}=15$ cm이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다.",
+        "method": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_80f28cd63ca5e30fe144b645897c577f59d2b3877e54eac8787e381f0fef3954",
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          },
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 두 직선 $\\mathrm{PA}$와 $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고 각각 두 점 $\\mathrm{A}$와 $\\mathrm{B}$에서 접한다. $\\angle\\mathrm{P}=60^\\circ$이고 $\\overline{\\mathrm{OA}}=6\\text{cm}$일 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q19.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로 $PA=PB$이고 $OP$는 $\\angle APB$의 이등분선이다. 따라서 $\\angle APO=30^\\circ$. 또 $OA\\perp PA$이므로 직각삼각형 $OAP$에서 $\\angle AOP=60^\\circ$. 같은 방식으로 $\\angle POB=60^\\circ$이어서 중심각 $\\angle AOB=120^\\circ$이다.<br>중심에서 현 $AB$에 내린 수선은 현을 이등분한다. 이를 $M$이라 하면 $\\angle AOM=60^\\circ$, $OA=6$ cm이고 $AM=6\\sin60^\\circ=3\\sqrt3$ cm이다. 따라서 $AB=2AM=6\\sqrt3$ cm, ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로 $PA=PB$이고 $OP$는 $\\angle APB$의 이등분선이다. 따라서 $\\angle APO=30^\\circ$. 또 $OA\\perp PA$이므로 직각삼각형 $OAP$에서 $\\angle AOP=60^\\circ$. 같은 방식으로 $\\angle POB=60^\\circ$이어서 중심각 $\\angle AOB=120^\\circ$이다.<br>중심에서 현 $AB$에 내린 수선은 현을 이등분한다. 이를 $M$이라 하면 $\\angle AOM=60^\\circ$, $OA=6$ cm이고 $AM=6\\sin60^\\circ=3\\sqrt3$ cm이다. 따라서 $AB=2AM=6\\sqrt3$ cm, ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로 $PA=PB$이고 $OP$는 $\\angle APB$의 이등분선이다. 따라서 $\\angle APO=30^\\circ$. 또 $OA\\perp PA$이므로 직각삼각형 $OAP$에서 $\\angle AOP=60^\\circ$. 같은 방식으로 $\\angle POB=60^\\circ$이어서 중심각 $\\angle AOB=120^\\circ$이다.<br>중심에서 현 $AB$에 내린 수선은 현을 이등분한다. 이를 $M$이라 하면 $\\angle AOM=60^\\circ$, $OA=6$ cm이고 $AM=6\\sin60^\\circ=3\\sqrt3$ cm이다. 따라서 $AB=2AM=6\\sqrt3$ cm, ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "두 접선의 길이는 같으므로 $PA=PB$이고 $OP$는 $\\angle APB$의 이등분선이다. 따라서 $\\angle APO=30^\\circ$. 또 $OA\\perp PA$이므로 직각삼각형 $OAP$에서 $\\angle AOP=60^\\circ$. 같은 방식으로 $\\angle POB=60^\\circ$이어서 중심각 $\\angle AOB=120^\\circ$이다.<br>중심에서 현 $AB$에 내린 수선은 현을 이등분한다. 이를 $M$이라 하면 $\\angle AOM=60^\\circ$, $OA=6$ cm이고 $AM=6\\sin60^\\circ=3\\sqrt3$ cm이다. 따라서 $AB=2AM=6\\sqrt3$ cm, ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다.",
+        "method": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_7b00f03273735c9ce2668ce6ca94dd65dd8e8901e1bd120edf8ccb7a5abadeab",
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$와 접한다. $\\overline{\\mathrm{AD}}=3\\text{cm}$이고 $\\overline{\\mathrm{BC}}=5\\text{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q20.png\" />"
+          },
+          {
+            "term": "공통접선",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$와 접한다. $\\overline{\\mathrm{AD}}=3\\text{cm}$이고 $\\overline{\\mathrm{BC}}=5\\text{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q20.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$와 접한다. $\\overline{\\mathrm{AD}}=3\\text{cm}$이고 $\\overline{\\mathrm{BC}}=5\\text{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q20.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$와 접한다. $\\overline{\\mathrm{AD}}=3\\text{cm}$이고 $\\overline{\\mathrm{BC}}=5\\text{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q20.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "다음 그림에서 $\\overline{\\mathrm{AB}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$와 접한다. $\\overline{\\mathrm{AD}}=3\\text{cm}$이고 $\\overline{\\mathrm{BC}}=5\\text{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q20.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "원과 $CD$의 접점을 $T$라 하자. 접점에서 반지름은 접선과 수직이고, 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DT=DA=3$ cm, $CT=CB=5$ cm이다. $T$는 $D$와 $C$ 사이에 있으므로 $CD=DT+TC=8$ cm이다.<br>반지름 $OA$, $OB$는 지름 $AB$ 위에 있고 접선은 접점에서 반지름과 수직이므로 $AD\\perp AB$, $BC\\perp AB$이다. 따라서 $AD\\parallel BC$. $D$에서 $AB$와 평행한 선을 그어 $BC$와 만나는 점을 $E$라 하자. 사각형 $ABED$는 직사각형이므로 $DE=AB$, $BE=AD=3$ cm이고, $EC=BC-BE=5-3=2$ cm이다.<br>직각삼각형 $DEC$에서 $CD^2=DE^2+EC^2$이므로 $AB^2+2^2=8^2$, 따라서 $AB=2\\sqrt{15}$ cm이다. 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\cdot AB=\\dfrac{3+5}{2}\\cdot2\\sqrt{15}=8\\sqrt{15}$ cm$^2$이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다."
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "원과 $CD$의 접점을 $T$라 하자. 접점에서 반지름은 접선과 수직이고, 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DT=DA=3$ cm, $CT=CB=5$ cm이다. $T$는 $D$와 $C$ 사이에 있으므로 $CD=DT+TC=8$ cm이다.<br>반지름 $OA$, $OB$는 지름 $AB$ 위에 있고 접선은 접점에서 반지름과 수직이므로 $AD\\perp AB$, $BC\\perp AB$이다. 따라서 $AD\\parallel BC$. $D$에서 $AB$와 평행한 선을 그어 $BC$와 만나는 점을 $E$라 하자. 사각형 $ABED$는 직사각형이므로 $DE=AB$, $BE=AD=3$ cm이고, $EC=BC-BE=5-3=2$ cm이다.<br>직각삼각형 $DEC$에서 $CD^2=DE^2+EC^2$이므로 $AB^2+2^2=8^2$, 따라서 $AB=2\\sqrt{15}$ cm이다. 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\cdot AB=\\dfrac{3+5}{2}\\cdot2\\sqrt{15}=8\\sqrt{15}$ cm$^2$이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "원과 $CD$의 접점을 $T$라 하자. 접점에서 반지름은 접선과 수직이고, 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DT=DA=3$ cm, $CT=CB=5$ cm이다. $T$는 $D$와 $C$ 사이에 있으므로 $CD=DT+TC=8$ cm이다.<br>반지름 $OA$, $OB$는 지름 $AB$ 위에 있고 접선은 접점에서 반지름과 수직이므로 $AD\\perp AB$, $BC\\perp AB$이다. 따라서 $AD\\parallel BC$. $D$에서 $AB$와 평행한 선을 그어 $BC$와 만나는 점을 $E$라 하자. 사각형 $ABED$는 직사각형이므로 $DE=AB$, $BE=AD=3$ cm이고, $EC=BC-BE=5-3=2$ cm이다.<br>직각삼각형 $DEC$에서 $CD^2=DE^2+EC^2$이므로 $AB^2+2^2=8^2$, 따라서 $AB=2\\sqrt{15}$ cm이다. 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\cdot AB=\\dfrac{3+5}{2}\\cdot2\\sqrt{15}=8\\sqrt{15}$ cm$^2$이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "원과 $CD$의 접점을 $T$라 하자. 접점에서 반지름은 접선과 수직이고, 한 점에서 원에 그은 두 접선의 길이는 같으므로 $DT=DA=3$ cm, $CT=CB=5$ cm이다. $T$는 $D$와 $C$ 사이에 있으므로 $CD=DT+TC=8$ cm이다.<br>반지름 $OA$, $OB$는 지름 $AB$ 위에 있고 접선은 접점에서 반지름과 수직이므로 $AD\\perp AB$, $BC\\perp AB$이다. 따라서 $AD\\parallel BC$. $D$에서 $AB$와 평행한 선을 그어 $BC$와 만나는 점을 $E$라 하자. 사각형 $ABED$는 직사각형이므로 $DE=AB$, $BE=AD=3$ cm이고, $EC=BC-BE=5-3=2$ cm이다.<br>직각삼각형 $DEC$에서 $CD^2=DE^2+EC^2$이므로 $AB^2+2^2=8^2$, 따라서 $AB=2\\sqrt{15}$ cm이다. 사다리꼴 $ABCD$의 넓이는 $\\dfrac{AD+BC}{2}\\cdot AB=\\dfrac{3+5}{2}\\cdot2\\sqrt{15}=8\\sqrt{15}$ cm$^2$이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다.",
+        "method": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_0d07b1392a76f33887ffe920ff84556253aeb57537b4d38ae2fdc6a55fb7d096",
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          },
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          },
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "다음 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$에서 각각 접한다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{AC}}=12\\text{cm}$, $\\overline{\\mathrm{AD}}=4\\text{cm}$일 때, $\\overline{\\mathrm{BC}}$의 길이는?<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/q21.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "접선의길이",
+            "src": "solution",
+            "quote": "같은 점에서 원에 그은 두 접선의 길이는 같다. 점 $A$에서 $AD=AF=4$ cm이다. $AB=10$ cm이므로 $BD=BE=10-4=6$ cm이다. 또 $AC=12$ cm이므로 $CF=AC-AF=8$ cm이고 $CE=CF=8$ cm이다.<br>따라서 $BC=BE+EC=6+8=14$ cm이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "같은 점에서 원에 그은 두 접선의 길이는 같다. 점 $A$에서 $AD=AF=4$ cm이다. $AB=10$ cm이므로 $BD=BE=10-4=6$ cm이다. 또 $AC=12$ cm이므로 $CF=AC-AF=8$ cm이고 $CE=CF=8$ cm이다.<br>따라서 $BC=BE+EC=6+8=14$ cm이므로 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다.",
+        "method": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_ff9e55f94ffa5b2e1a354cd27d09994a9ad85dffdf0d99aca2a0b1faa7a96d53",
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]"
+          },
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]"
+          },
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "(1) $0^\\circ<A<90^\\circ$이고 $\\tan A=2=2/1$이므로 직각삼각형의 맞은편 변과 이웃한 변의 비를 $2:1$로 둘 수 있다. 빗변은 $\\sqrt{2^2+1^2}=\\sqrt5$이므로 $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$이다.<br>(2) 분자는 $\\sin A\\cos A=(2/\\sqrt5)(1/\\sqrt5)=\\frac{2}{5}$이다. 분모는 $(\\sin A)^2-(\\cos A)^2=\\frac{4}{5}-\\frac{1}{5}=\\frac{3}{5}$이다. 따라서 전체 값은 $(\\frac{2}{5})/(\\frac{3}{5})=\\frac{2}{3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다."
+          },
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "(1) $0^\\circ<A<90^\\circ$이고 $\\tan A=2=2/1$이므로 직각삼각형의 맞은편 변과 이웃한 변의 비를 $2:1$로 둘 수 있다. 빗변은 $\\sqrt{2^2+1^2}=\\sqrt5$이므로 $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$이다.<br>(2) 분자는 $\\sin A\\cos A=(2/\\sqrt5)(1/\\sqrt5)=\\frac{2}{5}$이다. 분모는 $(\\sin A)^2-(\\cos A)^2=\\frac{4}{5}-\\frac{1}{5}=\\frac{3}{5}$이다. 따라서 전체 값은 $(\\frac{2}{5})/(\\frac{3}{5})=\\frac{2}{3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다."
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "(1) $0^\\circ<A<90^\\circ$이고 $\\tan A=2=2/1$이므로 직각삼각형의 맞은편 변과 이웃한 변의 비를 $2:1$로 둘 수 있다. 빗변은 $\\sqrt{2^2+1^2}=\\sqrt5$이므로 $\\sin A=2/\\sqrt5$, $\\cos A=1/\\sqrt5$이다.<br>(2) 분자는 $\\sin A\\cos A=(2/\\sqrt5)(1/\\sqrt5)=\\frac{2}{5}$이다. 분모는 $(\\sin A)^2-(\\cos A)^2=\\frac{4}{5}-\\frac{1}{5}=\\frac{3}{5}$이다. 따라서 전체 값은 $(\\frac{2}{5})/(\\frac{3}{5})=\\frac{2}{3}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "[서술형1] $\\tan A=2$일 때, $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.(단, $0^\\circ < \\angle A < 90^\\circ$) [5점]<br>(1) 위 식에서 $\\tan A=2$일 때, $\\sin A$와 $\\cos A$의 값을 구하면?[2점]<br>(2) 위(1)에서 구한 값을 이용하여 $\\frac{\\sin A \\cos A}{(\\sin A)^2 - (\\cos A)^2}$의 값을 구하면?[3점]"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다.",
+        "method": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_1c73e8a3d5c4bb2e0bb874bd035367877f483864b429235862a9a4a0eee091a6",
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형2] 아래 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.[5점]<br>(1) 다음 그림에서 $\\angle\\mathrm{ABD}=60^\\circ$, $\\angle\\mathrm{BDC}=45^\\circ$이고 $\\overline{\\mathrm{AB}}=2\\sqrt{2}$일 때, $\\overline{\\mathrm{BC}}$의 길이를 구하면?[2점]<br>(조건: 삼각비를 이용하여 풀 것)<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_1.png\" /><br>(2) $\\square\\mathrm{ABCD}$의 넓이가 $30\\sqrt{3}$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면?[3점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s02_2.png\" />"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "(1) $\\triangle ABD$는 $\\angle A=90^\\circ$, $\\angle ABD=60^\\circ$인 직각삼각형이다. $\\tan60^\\circ=AD/AB$에서 $AD=2\\sqrt6$이다. $\\sin60^\\circ=AD/BD$이므로 $BD=2\\sqrt6/(\\sqrt3/2)=4\\sqrt2$이다. $\\triangle BCD$는 $C$에서 직각이고 $\\angle BDC=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $BC=BD/\\sqrt2=4$.<br>(2) 대각선 $AC$와 $BD$가 $P$에서 만나며 $\\angle APB=\\angle CPD=60^\\circ$, $\\angle BPC=\\angle DPA=120^\\circ$이다. 네 삼각형의 넓이를 합하고 $\\sin120^\\circ=\\sin60^\\circ$를 이용하면<br>$[ABCD]=[APB]+[BPC]+[CPD]+[DPA]$<br>$=\\dfrac12\\sin60^\\circ(AP\\cdot PB+PB\\cdot PC+PC\\cdot PD+PD\\cdot PA)$<br>$=\\dfrac12\\sin60^\\circ(AP+PC)(PB+PD)=\\dfrac12 AC\\cdot BD\\sin60^\\circ$이다.<br>$30\\sqrt3=\\dfrac12\\cdot AC\\cdot15\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{4}AC$에서 $AC=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다."
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "(1) $\\triangle ABD$는 $\\angle A=90^\\circ$, $\\angle ABD=60^\\circ$인 직각삼각형이다. $\\tan60^\\circ=AD/AB$에서 $AD=2\\sqrt6$이다. $\\sin60^\\circ=AD/BD$이므로 $BD=2\\sqrt6/(\\sqrt3/2)=4\\sqrt2$이다. $\\triangle BCD$는 $C$에서 직각이고 $\\angle BDC=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $BC=BD/\\sqrt2=4$.<br>(2) 대각선 $AC$와 $BD$가 $P$에서 만나며 $\\angle APB=\\angle CPD=60^\\circ$, $\\angle BPC=\\angle DPA=120^\\circ$이다. 네 삼각형의 넓이를 합하고 $\\sin120^\\circ=\\sin60^\\circ$를 이용하면<br>$[ABCD]=[APB]+[BPC]+[CPD]+[DPA]$<br>$=\\dfrac12\\sin60^\\circ(AP\\cdot PB+PB\\cdot PC+PC\\cdot PD+PD\\cdot PA)$<br>$=\\dfrac12\\sin60^\\circ(AP+PC)(PB+PD)=\\dfrac12 AC\\cdot BD\\sin60^\\circ$이다.<br>$30\\sqrt3=\\dfrac12\\cdot AC\\cdot15\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{4}AC$에서 $AC=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "(1) $\\triangle ABD$는 $\\angle A=90^\\circ$, $\\angle ABD=60^\\circ$인 직각삼각형이다. $\\tan60^\\circ=AD/AB$에서 $AD=2\\sqrt6$이다. $\\sin60^\\circ=AD/BD$이므로 $BD=2\\sqrt6/(\\sqrt3/2)=4\\sqrt2$이다. $\\triangle BCD$는 $C$에서 직각이고 $\\angle BDC=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $BC=BD/\\sqrt2=4$.<br>(2) 대각선 $AC$와 $BD$가 $P$에서 만나며 $\\angle APB=\\angle CPD=60^\\circ$, $\\angle BPC=\\angle DPA=120^\\circ$이다. 네 삼각형의 넓이를 합하고 $\\sin120^\\circ=\\sin60^\\circ$를 이용하면<br>$[ABCD]=[APB]+[BPC]+[CPD]+[DPA]$<br>$=\\dfrac12\\sin60^\\circ(AP\\cdot PB+PB\\cdot PC+PC\\cdot PD+PD\\cdot PA)$<br>$=\\dfrac12\\sin60^\\circ(AP+PC)(PB+PD)=\\dfrac12 AC\\cdot BD\\sin60^\\circ$이다.<br>$30\\sqrt3=\\dfrac12\\cdot AC\\cdot15\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{4}AC$에서 $AC=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다."
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(1) $\\triangle ABD$는 $\\angle A=90^\\circ$, $\\angle ABD=60^\\circ$인 직각삼각형이다. $\\tan60^\\circ=AD/AB$에서 $AD=2\\sqrt6$이다. $\\sin60^\\circ=AD/BD$이므로 $BD=2\\sqrt6/(\\sqrt3/2)=4\\sqrt2$이다. $\\triangle BCD$는 $C$에서 직각이고 $\\angle BDC=45^\\circ$이므로 직각이등변삼각형이다. 따라서 $BC=BD/\\sqrt2=4$.<br>(2) 대각선 $AC$와 $BD$가 $P$에서 만나며 $\\angle APB=\\angle CPD=60^\\circ$, $\\angle BPC=\\angle DPA=120^\\circ$이다. 네 삼각형의 넓이를 합하고 $\\sin120^\\circ=\\sin60^\\circ$를 이용하면<br>$[ABCD]=[APB]+[BPC]+[CPD]+[DPA]$<br>$=\\dfrac12\\sin60^\\circ(AP\\cdot PB+PB\\cdot PC+PC\\cdot PD+PD\\cdot PA)$<br>$=\\dfrac12\\sin60^\\circ(AP+PC)(PB+PD)=\\dfrac12 AC\\cdot BD\\sin60^\\circ$이다.<br>$30\\sqrt3=\\dfrac12\\cdot AC\\cdot15\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{4}AC$에서 $AC=8$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "삼각비를 이용하여 풀 것"
+          }
+        ]
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다.",
+        "method": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_828803f46792fadc8014e2570d3be5b535ff852837621722d9458b02c6e38428",
+      "sourceOrdinal": 24,
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          },
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "접선의길이",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          },
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "[서술형3] 다음 접선의 성질을 아래 순서에 따라 증명하려고 한다. 빈 칸 ① ~ ⑤에 알맞은 답을 기호를 써서 구하시오.[5점, 각 1점씩]<br><br>&lt;접선의 성질&gt;<br>원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 같다.<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s03.png\" /><br><br>원 $O$ 밖의 한 점 $P$에서 이 원에 그은 두 접선의 접점을 각각 $A$와 $B$라고 할 때,<br>$\\triangle\\mathrm{PAO}, \\triangle\\mathrm{PBO}$에서<br>( ① )<br>( ② )<br>( ③ )을 만족한다.<br>①②③에 의해<br>$\\triangle\\mathrm{PAO} \\equiv \\triangle\\mathrm{PBO}$ ( ④ 합동) 이다.<br>따라서, 합동인 삼각형의 대응하는 두 변의 길이는 같으므로<br>( ⑤ ) 이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "직각",
+            "src": "solution",
+            "quote": "① $OA$와 $OB$는 같은 원의 반지름이므로 $OA=OB$이다.<br>② 반지름은 접점에서 접선과 수직이므로 $\\angle PAO=\\angle PBO=90^\\circ$이다.<br>③ $PO$는 두 삼각형의 공통 빗변이므로 $PO=PO$이다.<br>따라서 한 쌍의 빗변과 한 쌍의 다른 변이 각각 같고 두 삼각형이 직각삼각형이므로 RHS 합동이다. 대응변이 같아 $PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다."
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "① $OA$와 $OB$는 같은 원의 반지름이므로 $OA=OB$이다.<br>② 반지름은 접점에서 접선과 수직이므로 $\\angle PAO=\\angle PBO=90^\\circ$이다.<br>③ $PO$는 두 삼각형의 공통 빗변이므로 $PO=PO$이다.<br>따라서 한 쌍의 빗변과 한 쌍의 다른 변이 각각 같고 두 삼각형이 직각삼각형이므로 RHS 합동이다. 대응변이 같아 $PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다."
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "① $OA$와 $OB$는 같은 원의 반지름이므로 $OA=OB$이다.<br>② 반지름은 접점에서 접선과 수직이므로 $\\angle PAO=\\angle PBO=90^\\circ$이다.<br>③ $PO$는 두 삼각형의 공통 빗변이므로 $PO=PO$이다.<br>따라서 한 쌍의 빗변과 한 쌍의 다른 변이 각각 같고 두 삼각형이 직각삼각형이므로 RHS 합동이다. 대응변이 같아 $PA=PB$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+        "method": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다."
+      ],
+      "scenarioNote": ""
+    },
+    {
+      "questionUid": "qid_v1_f014643162db68150334203c1d452223ac77e1a16d336bf431ec50e09ba2adfd",
+      "sourceOrdinal": 25,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "현",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "[서술형4] 다음 그림과 같이 원 $\\mathrm{O}$의 중심에서 두 현 $\\mathrm{AB}$와 $\\mathrm{AC}$에 이르는 거리가 같고 $\\angle\\mathrm{B}=60^\\circ$, $\\overline{\\mathrm{DO}}=2\\text{cm}$일 때, 다음 물음에 풀이과정을 쓰고 답하시오.[5점]<br><img src=\"assets/images/21_팔마중_2학기_중간_중3_수학/s04.png\" /><br>(1) $\\angle x$의 크기를 구하면?[2점]<br>(2) $\\triangle\\mathrm{ABC}$의 넓이를 구하면?[3점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "사인",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "중심 $O$에서 두 현 $AB$, $AC$까지의 거리가 같으므로 $AB=AC$이다. 따라서 밑각이 같은 이등변삼각형에서 $\\angle C=\\angle B=60^\\circ$, $\\angle A=60^\\circ$이고 $\\triangle ABC$는 정삼각형이다.<br>$OD\\perp AB$이므로 $D$는 현 $AB$의 중점이다. 또 $O$는 두 직선 $AB$, $AC$까지의 거리가 같아 $AO$가 $\\angle A$의 이등분선이므로 $\\angle OAB=30^\\circ$이다. $OA=OB$는 반지름이므로 $\\triangle OAB$는 이등변삼각형이고 $\\angle OBA=30^\\circ$. $D$가 $AB$ 위에 있으므로 $\\angle OBD=30^\\circ$이다.<br>직각삼각형 $ODB$에서 $\\tan30^\\circ=OD/BD$이므로 $BD=2\\sqrt3$ cm, $AB=2BD=4\\sqrt3$ cm이다. 정삼각형의 높이는 $AB\\sin60^\\circ=6$ cm이므로 넓이는 $\\dfrac12\\cdot4\\sqrt3\\cdot6=12\\sqrt3\\text{ cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "given": "실제 주어진 대상과 도형 관계를 기록했다.",
+        "goal": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다.",
+        "method": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다.",
+        "condition": "명시된 범위·부호 등 해 제한을 읽었다. 그 외 기하 조건은 given과 method의 근거에 보존했다."
+      },
+      "steps": [
+        "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다."
+      ],
+      "scenarioNote": ""
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "items": 25,
+    "quotesChecked": 208,
+    "quotesNotFound": 0,
+    "notes": "各문항 실제 본문·해설 및 도형을 읽어 의미 결정. 기존 수학 검증을 재사용하며 새 풀이나 수학 R1/R2/R3를 작성하지 않았다."
+  }
+}

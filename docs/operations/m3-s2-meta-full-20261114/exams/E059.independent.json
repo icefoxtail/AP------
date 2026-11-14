@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E059",
+  "author": "m3_a",
+  "reviewer": "m3_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "6313665839a28d4767924729ed7346621afd2cf4",
+  "targetReviewSha256": "44eeba4c93d43e6eee5de8c2e89e70fed9dcabd49b0969b940658b0872e4031b",
+  "target4slotSha256": "96b6ee2ab77cbbcb342d2153326bdfdcc50399f07adbb9a381441e828941a294",
+  "sampledSourcePatchSha256": "7d9d3de0b31c7f53ff9f26104419c1b5c159f01e22378d83855f197ea5560d60",
+  "sampleOrdinals": [
+    11,
+    23,
+    24
+  ],
+  "sampleRule": "Independent reviewer m3_b read three current-source samples and every difficulty exception, including original figures, before author semantic decisions; source contradiction and bounded alternate-proof evidence remain explicit.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_9dab58543ca1636ef1f4e03df8f6bb3d3c22f5269e19526b25defbc47d9d10bb",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "현재원본의정사각형한변6및두중점배치를직접확인했다. 두빗변3√5와정사각형에서세삼각형을뺀넓이27/2를같은대상BMN에연결해sinx3/5를구하므로GEOMETRIC_DERIVATION·Pyth/다각형넓이/삼각비넓이CC와4칸사인목표/넓이방법이정확하다. 난도는독립협의3/B34.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_1c73e8a3d5c4bb2e0bb874bd035367877f483864b429235862a9a4a0eee091a6",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "두필수소문항의서로다른도형을모두읽었다. (1)은삼각비사용조건과두직각삼각형연쇄, (2)는교각60·BD15·넓이조건으로대각선AC를복원한다. 4칸이명시삼각비조건과대각선/넓이방법을포괄한다. 현sin120해설재서술은보류하고, A/C의BD에대한높이AP sin60/CP sin60을합하는중등대체풀이를독립확인해난도3만확정했다.",
+      "quotesChecked": 11,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_828803f46792fadc8014e2570d3be5b535ff852837621722d9458b02c6e38428",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "접선동일길이증명의빈칸에서동일반지름·접점직각·공통빗변세조건을RHS합동으로묶는다. 실제계산값을묻는tangent-lengthTPL을억지로부여하지않고nativeTPL보류와RHS CC를남긴판정이정확하다. 4칸증명목표와직각/합동조건/합동방법이본문논증을포괄한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+      "type": "CONTENT_GEOMETRY_CONDITION_INCONSISTENCY",
+      "reason": "원도형ABC의대각선AC²112와ADC의AC²84가충돌한다. 동일한AC를두값으로강제하는조건은동시에성립할수없다.",
+      "nextAction": "인쇄원문/PDF에서 길이와120도표시를대조하고내용수정담당이문제·정답·해설을검증한뒤난도를재판정한다.",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+      "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+      "reason": "현해설sin120도직접사용은중등급각범위의근거로검증되지않았다. 선행조건모순도있어난도UNKNOWN.",
+      "nextAction": "원문조건복구후중등풀이를독립검증하고난도재판정.",
+      "release": "HOLD_SOURCE_QA"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_1c73e8a3d5c4bb2e0bb874bd035367877f483864b429235862a9a4a0eee091a6",
+      "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT",
+      "reason": "현문자해설sin120직접사용의재서술필요. 아래독립대체풀이가있어난도만3으로판정한다.",
+      "independentAlternativeProof": "P가두대각선내부교점이고∠APB=∠CPD60도이다. A,C의BD까지수선높이는각각 AP sin60,CP sin60. A,C는BD의반대쪽이므로[ABCD]=[ABD]+[CBD]=1/2 BD(AP+CP)sin60=1/2 BD·AC sin60. BD15와넓이30√3에서AC8. 급각삼각비와넓이공식만사용한다.",
+      "nextAction": "독립확인된급각수선높이풀이로해설을재서술하고정식내용QA검증후출고한다.",
+      "release": "HOLD_SOURCE_SOLUTION_REWRITE"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "54dbb8ced203c2200ec3f9a11dc15314ff10994668c12de9d13de82cf7c37fd7"
+}

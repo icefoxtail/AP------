@@ -1,0 +1,991 @@
+[
+  {
+    "ordinal": 1,
+    "questionUid": "qid_v1_2b5c53233c1daa42c277164946d28633dc582815ef550ab87323cfaf430b6f0d",
+    "before": {
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "피타고라스 정리로 변을 구하고 sin·cos·tan 정의를 적용",
+      "decisiveStep": "AC=2, 따라서 sin B=AC/AB=1/2로 ⑤가 거짓",
+      "difficultyReason": "빗변과 한 변으로 나머지 한 변을 구한 뒤 삼각비 정의를 각 보기와 직접 대조한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다.",
+      "decisiveStep": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다.",
+      "difficultyReason": "피타고라스 한 전처리 뒤 기본비 판정2이다.",
+      "projectionReason": "빗변4와직각변2√3으로 나머지변2를 구하고 A,B의 세삼각비를 정의로 비교한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 2,
+    "questionUid": "qid_v1_8fffc000ba486200a9223b5f22dbe10f94e65a37dbbbf58ad13e14a56908e447",
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "여각 관계와 직각삼각형 삼각비 곱셈",
+      "decisiveStep": "sin(90°−B)=cosB=√3/2, tanB=√3/3이므로 곱은 1/2",
+      "difficultyReason": "여각에서 sin과 cos가 바뀌는 관계와 tan 정의를 연속 적용한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다.",
+      "decisiveStep": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다.",
+      "difficultyReason": "표준30·60직각삼각형의 기본비와여각관계 직접 적용1이다.",
+      "projectionReason": "두직각변1,√3의 빗변2를 읽고 sin(90−B)=cosB와 tanB의 곱을 정의로 계산한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 3,
+    "questionUid": "qid_v1_1ea614f45133a6596fea439b823f22ebda8eb502835b172e8480d9f8efab69eb",
+    "before": {
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "tan 정의로 sin/tan을 cos로 변형",
+      "decisiveStep": "sinA÷tanA=cosA=3/4",
+      "difficultyReason": "삼각비의 정의만 한 번 대입하면 주어진 비율이 바로 약분된다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다.",
+      "decisiveStep": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다.",
+      "difficultyReason": "한 기본삼각비관계의 직접 치환1이다.",
+      "projectionReason": "주어진 cosA=3/4와 sinA/tanA=cosA의 기본관계로 식의값을 바로 얻는다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 4,
+    "questionUid": "qid_v1_54c016b2fd6ed14b50cbbec21bc3e90d497989b9aacdec1f6b545403d4f3a9fb",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-065",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "복합도형",
+        "l4": "보조선 활용"
+      },
+      "rpmL3": "복합도형",
+      "rpmL4": "보조선 활용",
+      "primaryMethod": "빗변에 내린 높이의 변 길이 관계와 삼각비를 연쇄 적용",
+      "decisiveStep": "tan x=8/15, cos y=8/17이므로 비는 17/15",
+      "difficultyReason": "AA 닮음으로 빗변에 내린 높이의 빗변 분할을 구하고, 넓이로 높이를 구한 뒤 두 직각삼각형의 삼각비를 결합한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_RIGHT_TRIANGLE_SIMILARITY"
+      ],
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-056",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "삼각비의 관계"
+      },
+      "rpmL3": "삼각비의 뜻",
+      "rpmL4": "삼각비의 관계",
+      "primaryMethod": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다.",
+      "decisiveStep": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다.",
+      "difficultyReason": "주어진 높이의 AA·여각관계 전달 후 기본비 계산2이다.",
+      "projectionReason": "큰직각삼각형의 빗변17을 구하고 높이로 나뉜 두각을 원래각의 여각에 대응해 tanx=8/15,cosy=8/17로 둔다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_4ff26e7db7c7edcaf53d3e9ece708be4e77fff4f3ac28ccfae9d3f32cc9a9927",
+    "before": {
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-057",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "특수각의 삼각비",
+        "l4": "30°·45°·60°"
+      },
+      "rpmL4": "30°·45°·60°",
+      "primaryMethod": "특수각 삼각비 값 대입",
+      "decisiveStep": "sin30°+cos60°=1이고 cos90°=0",
+      "difficultyReason": "30°, 45°, 60°, 90°의 삼각비 표를 각 보기에서 확인한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-058",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "특수각의 삼각비",
+        "l4": "특수각 계산"
+      },
+      "rpmL4": "특수각 계산",
+      "primaryMethod": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다.",
+      "decisiveStep": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다.",
+      "difficultyReason": "특수각 값의 직접 계산·비교1이다.",
+      "projectionReason": "30°,45°,60°,90°의 표준값을 각 등식에 대입해⑤의 좌우불일치를 판정한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 6,
+    "questionUid": "qid_v1_357a1807c52aae742c6ea4faecfb08ab5a82bde6c768703d5336b0d957dd60de",
+    "before": {
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "여각 관계와 삼각비 표의 근삿값 계산",
+      "decisiveStep": "2cos50°−tan50°≈2(0.64)−1.19=0.09",
+      "difficultyReason": "여각 관계로 항을 합친 다음 삼각비 표의 근삿값을 대입해 지정 소수 자릿수로 계산한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다.",
+      "decisiveStep": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다.",
+      "difficultyReason": "단위원 도형의 세변비를 여각관계로 바꾸는 정형2이다.",
+      "projectionReason": "반지름1인 사분원에서 OB=.64,접선DC=1.19를 cos50,tan50로 읽고 sin40=cos50을 이용해 .09를 구한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_7b2a65d728649b5418d07325c41e5266ea3af33c8e8c10e81542075d2f6220b9",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-059",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비와 길이",
+        "l4": "직각삼각형의 변"
+      },
+      "rpmL3": "삼각비와 길이",
+      "rpmL4": "직각삼각형의 변",
+      "primaryMethod": "특수각 삼각비와 직각삼각형의 변 관계",
+      "decisiveStep": "AC=2√3, CD=√3이므로 차는 √3 cm",
+      "difficultyReason": "45° 및 30°가 포함된 직각삼각형에서 변의 길이를 구하고 두 길이의 차를 계산한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [],
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-065",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "복합도형",
+        "l4": "보조선 활용"
+      },
+      "rpmL3": "복합도형",
+      "rpmL4": "보조선 활용",
+      "primaryMethod": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다.",
+      "decisiveStep": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다.",
+      "difficultyReason": "공유된 알려진 높이의 길이 전달 후 차계산2이다.",
+      "projectionReason": "그려진 수선AD의 길이3을 왼쪽45° 삼각형에서 얻고 오른쪽60° 삼각형의 AC,CD를 차례로 구해 차를 낸다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 8,
+    "questionUid": "qid_v1_0634fb2440454629db0f25ddf7a07adb7f88c288ff6c37215f417b770bffcfb1",
+    "before": {
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "공통 높이로 두 사인비를 나타내고 비를 약분",
+      "decisiveStep": "(CH/4)/(CH/6)=3/2",
+      "difficultyReason": "공통 높이를 두 삼각비 식에 넣어 약분하면 변의 비가 남는다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다.",
+      "decisiveStep": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다.",
+      "difficultyReason": "그려진 공통높이에 정의를 두 번 적용하고 소거하는 정형2이다.",
+      "projectionReason": "두사인을 공통높이CH/4,CH/6로 표현하고 비에서 CH를 소거한다. 사인법칙을 직접 요구하는 문항으로 분류하지 않는다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 9,
+    "questionUid": "qid_v1_c812e2456354808ae65b1b06816b10bc6504418e1f30698f62dd1e5640052459",
+    "before": {
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-063",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "측정 문제",
+        "l4": "높이·거리"
+      },
+      "rpmL3": "측정 문제",
+      "rpmL4": "높이·거리",
+      "primaryMethod": "두 삼각형에 공통인 높이를 세우고 60°·45° 삼각비를 적용",
+      "decisiveStep": "BH=100√3이고 BHC가 45°-45°-90°이므로 BC=100√6 m",
+      "difficultyReason": "두 관측점이 만드는 삼각형에서 공통 수선 높이를 이용해 기준거리와 목표거리의 관계를 연쇄 계산한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE_TEMPLATE_SELECTED_BY_DECISIVE_STRUCTURE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_ANGLE_SUM"
+      ],
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-065",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "복합도형",
+        "l4": "보조선 활용"
+      },
+      "rpmL3": "복합도형",
+      "rpmL4": "보조선 활용",
+      "primaryMethod": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+      "decisiveStep": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+      "difficultyReason": "필요 수선과 연결되는 두직각삼각형을 선택하는 표준 전략3이다.",
+      "projectionReason": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 10,
+    "questionUid": "qid_v1_4ce792bf5e5b73c08a575beabeda0abf863d0a1a83f379584add131c247550f7",
+    "before": {
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "공통 높이를 이용한 두 관측점 거리 연립",
+      "decisiveStep": "h(√3−1)=10에서 h=5(√3+1) m",
+      "difficultyReason": "같은 건물 높이를 두 관측점의 30°·45° 관계에 각각 대입해 수평거리 차 식을 세운다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE_TEMPLATE_SELECTED_BY_DECISIVE_STRUCTURE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다.",
+      "decisiveStep": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다.",
+      "difficultyReason": "공통높이와 거리차모델을 세워 미지량을 결정하는 전략3이다.",
+      "projectionReason": "같은쪽 관측점30°,45°의 수평거리를 공통높이h의√3h,h로 두고 차10으로 연립한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 11,
+    "questionUid": "qid_v1_9dab58543ca1636ef1f4e03df8f6bb3d3c22f5269e19526b25defbc47d9d10bb",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-061",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "삼각형의 높이·넓이"
+      },
+      "rpmL3": "평면도형",
+      "rpmL4": "삼각형의 높이·넓이",
+      "primaryMethod": "피타고라스 정리와 정사각형의 넓이 분할로 sin x 산출",
+      "decisiveStep": "BM=BN=3√5, [BMN]=27/2이므로 sin x=3/5",
+      "difficultyReason": "중점에 따른 직각삼각형의 변과 정사각형의 넓이 분할로 두 변과 삼각형 넓이를 구한 뒤 sin x를 계산한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE_TEMPLATE_SELECTED_BY_DECISIVE_STRUCTURE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_POLYGON_AREA",
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryId": "M3-RPM-055",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비의 뜻",
+        "l4": "sin·cos·tan"
+      },
+      "rpmL3": "삼각비의 뜻",
+      "rpmL4": "sin·cos·tan",
+      "primaryMethod": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다.",
+      "decisiveStep": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다.",
+      "difficultyReason": "정사각형의 세바깥삼각형 넓이차와 피타고라스길이를 만든 뒤 삼각비넓이를 역산하는 익숙한 면적분할 전략1회가 핵심이므로3이다. 독립 m3_b와 합의, 기존상과 B34 경계수용.",
+      "projectionReason": "정사각형에서 두빗변BM=BN=3√5와 남는 삼각형의 넓이27/2를 따로 복원한 뒤 1/2 BM·BN·sinx와 같게 둔다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 12,
+    "questionUid": "qid_v1_3554cb3decbb7ec2b7cb083b7beae4ee1b51d6ac7778c700a38595d4a79d69a9",
+    "before": {
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-061",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "삼각형의 높이·넓이"
+      },
+      "rpmL3": "평면도형",
+      "rpmL4": "삼각형의 높이·넓이",
+      "primaryMethod": "삼각형 넓이로 높이를 구한 뒤 특수각과 피타고라스 결합",
+      "decisiveStep": "AH=6√3, HC=2이므로 AC=√112=4√7",
+      "difficultyReason": "주어진 넓이에서 높이를 구하고, 특수각으로 밑변을 분할한 다음 피타고라스 정리로 다른 변을 구한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE_TEMPLATE_SELECTED_BY_DECISIVE_STRUCTURE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryId": "M3-RPM-066",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "복합도형",
+        "l4": "피타고라스 결합"
+      },
+      "rpmL3": "복합도형",
+      "rpmL4": "피타고라스 결합",
+      "primaryMethod": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다.",
+      "decisiveStep": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다.",
+      "difficultyReason": "넓이→높이→수평분할→빗변을 연결하는 역산전략3이다.",
+      "projectionReason": "넓이와밑변으로 높이를 역산하고60°로 밑변분할점을 정한 뒤 남은 직각삼각형의 빗변을 구한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 13,
+    "questionUid": "qid_v1_6405fe6be0f32b6cf009b6e2115a7cb1dcc00338be816f5f52ae67183042d2d9",
+    "before": {
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_AREA"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "포함각을 이용한 삼각형 넓이 계산과 분할 합산",
+      "decisiveStep": "[ABC]=24√3, [ADC]=7√3이므로 전체는 31√3",
+      "difficultyReason": "대각선으로 사각형을 나누고 두 삼각형의 넓이를 포함각과 두 변으로 계산해 합한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_FAMILY_ACTIVE_TEMPLATE_SELECTED_BY_DECISIVE_STRUCTURE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "crossConceptKeys": [],
+      "difficultyBucket": "UNKNOWN",
+      "difficultyConfidence": "UNKNOWN",
+      "difficultyBoundaryFlag": "UNKNOWN",
+      "legacyLevelCompatibility": "UNKNOWN",
+      "primaryMethod": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다.",
+      "decisiveStep": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다.",
+      "difficultyReason": "현해설이 sin120°를 직접 사용하여 중3 범위의 독립풀이검증이 필요하며 원문조건 자체도 불일치한다. 원문PDF대조/수정 및 중등범위의 풀이독립검증후 난도를 재판정한다.",
+      "projectionReason": "대각선AC로 나누어 두변과끼인각의 넓이를 각각 얻어 합한다. 120°는 보각60°의 높이로 해석해야 중3범위에 맞는다.",
+      "metaEvidenceDebt": "SOURCE_SOLUTION_CURRICULUM_SCOPE_DEBT;CONTENT_GEOMETRY_CONDITION_INCONSISTENCY;SOLUTION_CURRICULUM_SCOPE_DEFECT"
+    }
+  },
+  {
+    "ordinal": 14,
+    "questionUid": "qid_v1_b17269fb0cb07abcf73ae3ecc3fac59fa1a613b0690b5ecef9df15c952a9057b",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "중심에서 현까지의 거리와 현의 길이의 대응",
+      "decisiveStep": "OM=ON이면 AB=CD이며 AM=OM은 일반적으로 보장되지 않음",
+      "difficultyReason": "같은 원에서 중심과 현 사이 거리의 일치가 현 길이의 일치로 이어지는 정리를 적용하고 잘못된 등식을 판별한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다.",
+      "decisiveStep": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다.",
+      "difficultyReason": "현의 수직이등분과 등거리정리의 직접 성질판정1이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "중심에서 두현까지의 같은거리와 수선을 적용해 반현·전체현의 같음을 판정하되 반현과중심거리는 같다고 단정할수 없다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 15,
+    "questionUid": "qid_v1_357b8db2a86ab986cc1ea7b75abd1eef0597719cf4fefe36e753851f1c0334db",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 4,
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "접기 대칭으로 중심 사이 거리 산출 후 중심거리-현 길이 관계",
+      "decisiveStep": "접힌 원의 중심 간 거리는 12이므로 현까지 중심거리는 6, AB=12√3",
+      "difficultyReason": "접기를 반사로 해석해 중심 간 거리와 현까지의 거리를 연결한 뒤 피타고라스 정리로 현을 구한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_LINE_SYMMETRY_REFLECTION",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+      "decisiveStep": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+      "difficultyReason": "접기조건을 중심거리로 변환하는 보조중심 전략3이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_3dee851adcb59c2e1aeae8da9f445ff9331c53e6c169e74294cf94e8aee6c8db",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-067",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심에서 현에 내린 수선"
+      },
+      "rpmL4": "중심에서 현에 내린 수선",
+      "primaryMethod": "중심에서 현에 내린 수선의 성질과 피타고라스·넓이",
+      "decisiveStep": "AH=6, AB=12, 높이 HP=2이므로 넓이 12 cm²",
+      "difficultyReason": "현의 중점에 내린 중심 수선과 반지름으로 밑변을 구한 뒤 삼각형 넓이를 계산한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-069",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 중심과 현",
+        "l4": "중심거리와 현의 길이"
+      },
+      "rpmL4": "중심거리와 현의 길이",
+      "primaryMethod": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다.",
+      "decisiveStep": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다.",
+      "difficultyReason": "중심거리·반현의 정형 피타고라스 뒤 넓이2이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "반지름10에서 활높이2를 빼 중심거리8을 얻고 반현6과 밑변12를 구해 높이2인 삼각형넓이를 계산한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_d9968d176d96ec9c965904f72aed8cb396f8cb6d7398605e61e920471eeef409",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "동일 현 길이의 중심거리와 현 이등분 성질, 넓이, 피타고라스",
+      "decisiveStep": "ON=4, CD=6, ND=3이므로 OD=5",
+      "difficultyReason": "같은 길이 현의 중심거리 성질로 다른 현의 수선을 구한 뒤 넓이식과 피타고라스 정리를 사용한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다.",
+      "decisiveStep": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다.",
+      "difficultyReason": "넓이조건을 반현으로 바꾸는 표준 역산2이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "같은 현은 중심거리4가 같으므로 넓이12에서 현6을 얻고 반현3·중심거리4의 빗변을 반지름5로 정한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_7a8dd83176dc404183baff71eb09dc3f47dc808adcef75fd87c28ea15d720a1a",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "반지름과 접선의 수직 성질 및 피타고라스 정리",
+      "decisiveStep": "PO=17, OB=8이므로 PB=15",
+      "difficultyReason": "원 밖의 점·중심·접점으로 이루어진 직각삼각형에 피타고라스 정리를 적용한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다.",
+      "decisiveStep": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다.",
+      "difficultyReason": "접점직각·피타고라스의 정형계산2이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "주어진 외부구간PC9와반지름8을 더해 PO17을 만든 뒤 접점직각삼각형의 접선길이15를 구한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_80f28cd63ca5e30fe144b645897c577f59d2b3877e54eac8787e381f0fef3954",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-071",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "한 점에서 그은 두 접선"
+      },
+      "rpmL4": "한 점에서 그은 두 접선",
+      "primaryMethod": "접선 대칭·중심각 추론과 특수각 삼각비",
+      "decisiveStep": "∠AOB=120°, 반 현 길이 3√3이므로 AB=6√3",
+      "difficultyReason": "두 접선의 대칭으로 중심각을 구한 다음 중심에서 현에 내린 수선과 30°·60° 삼각비로 현 길이를 구한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryId": "M3-RPM-072",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "rpmL4": "접선 조건으로 길이 구하기",
+      "primaryMethod": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다.",
+      "decisiveStep": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다.",
+      "difficultyReason": "OP와현의중점수선을 연결하여 접선각60°를 중심각120°와 반각으로 옮기는 보조선·표현 선택이 필요하여3이다. 독립 m3_b와 합의, 기존상과 경계수용.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "두접점 직각과 접선사이각60°에서 중심각120°를 얻어 반현에 대응하는30°·60° 직각삼각형으로 현길이를 구한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_7b00f03273735c9ce2668ce6ca94dd65dd8e8901e1bd120edf8ccb7a5abadeab",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_PYTHAGOREAN",
+        "CC_AREA"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "접선 길이 성질·피타고라스·사다리꼴 넓이",
+      "decisiveStep": "CD=8, 수평 차 2이므로 AB=2√15, 넓이=8√15",
+      "difficultyReason": "접선 길이 합으로 사선 변을 구한 뒤 평행한 밑변의 차와 피타고라스로 높이를 찾고 사다리꼴 넓이를 계산한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_POLYGON_AREA"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다.",
+      "decisiveStep": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다.",
+      "difficultyReason": "접선길이 관계를 사다리꼴높이의 보조직각삼각형으로 옮기는 전략3이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "같은점 접선길이로 CD=3+5=8을 얻고 두평행접선의 높이차2와 길이8로 지름을 구해 사다리꼴넓이를 계산한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_0d07b1392a76f33887ffe920ff84556253aeb57537b4d38ae2fdc6a55fb7d096",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-071",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "한 점에서 그은 두 접선"
+      },
+      "rpmL4": "한 점에서 그은 두 접선",
+      "primaryMethod": "같은 점에서 그은 두 접선 길이의 같음",
+      "decisiveStep": "BE=6, CE=8이므로 BC=14",
+      "difficultyReason": "각 꼭짓점에서 같은 점으로부터 그은 접선 길이의 같음을 세 차례 적용해 한 변을 합한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [],
+      "legacyLevelCompatibility": "NORMAL",
+      "rpmPrimaryId": "M3-RPM-072",
+      "rpmPrimaryPath": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기"
+      },
+      "rpmL4": "접선 조건으로 길이 구하기",
+      "primaryMethod": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다.",
+      "decisiveStep": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다.",
+      "difficultyReason": "세꼭짓점의 접선길이 같음을 연결하는 정형2이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "같은점 접선길이 AD=AF=4,BD=BE=6,CE=CF=8을 순차전달하여 BC14를 얻는다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 22,
+    "questionUid": "qid_v1_ff9e55f94ffa5b2e1a354cd27d09994a9ad85dffdf0d99aca2a0b1faa7a96d53",
+    "before": {
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "tan 값의 직각삼각형 구현 후 분수식 대입",
+      "decisiveStep": "sinA·cosA=2/5, sin²A−cos²A=3/5이므로 값은 2/3",
+      "difficultyReason": "탄젠트의 변의 비를 직각삼각형으로 구현해 sin·cos를 구하고 식에 대입한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다.",
+      "decisiveStep": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다.",
+      "difficultyReason": "기본삼각비 복원과 같은값의 식대입을 연결하는 정형2이다.",
+      "projectionReason": "tanA2로 직각변1,2의 비와빗변√5를 정해 sin,cos를 얻고 이어지는 유리식에 대입한다.",
+      "metaEvidenceDebt": "NONE"
+    }
+  },
+  {
+    "ordinal": 23,
+    "questionUid": "qid_v1_1c73e8a3d5c4bb2e0bb874bd035367877f483864b429235862a9a4a0eee091a6",
+    "before": {
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE",
+        "CC_TRIANGLE_AREA",
+        "CC_AREA"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "rpmPrimaryId": "M3-RPM-059",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비",
+        "l3": "삼각비와 길이",
+        "l4": "직각삼각형의 변"
+      },
+      "rpmL3": "삼각비와 길이",
+      "rpmL4": "직각삼각형의 변",
+      "primaryMethod": "(1) 특수각 삼각비 연쇄, (2) 교점 주변 네 삼각형 넓이 분해",
+      "decisiveStep": "(1) BD=4√2에서 BC=4; (2) [ABCD]=½AC·BD·sin60°에서 AC=8",
+      "difficultyReason": "서술형 두 항목으로 첫째는 두 직각삼각형의 삼각비를 연속 적용하고 둘째는 교점 주변 네 삼각형의 넓이를 합해 대각선 길이 관계로 넓이를 역산한다.",
+      "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE",
+      "metaEvidenceDebt": null
+    },
+    "after": {
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "rpmPrimaryId": "M3-RPM-062",
+      "rpmPrimaryPath": {
+        "majorUnit": "삼각비",
+        "midUnit": "삼각비의 활용",
+        "l3": "평면도형",
+        "l4": "다각형의 길이·넓이"
+      },
+      "rpmL3": "평면도형",
+      "rpmL4": "다각형의 길이·넓이",
+      "primaryMethod": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다.",
+      "decisiveStep": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다.",
+      "difficultyReason": "두필수소문항의 삼각비연쇄와 대각선넓이 관계를 구성하는 표준전략3이다. 독립 m3_b가 A,C에서 BD로 내린 높이 AP sin60,CP sin60과 두삼각형넓이합으로 AC8을 확인하여 중등범위 대체풀이와 난도를 확정했다. 기존상과B34경계수용.",
+      "projectionReason": "필수소문항(1)은 두직각삼각형에 특수각을 연쇄적용하고 (2)는 네삼각형넓이의 합을 두대각선의 곱으로 묶어 길이를 역산한다. 두문항 모두 다각형의 삼각비길이 활용이며 택1문항이 아니다.",
+      "metaEvidenceDebt": "SOURCE_SOLUTION_CURRICULUM_SCOPE_DEBT"
+    }
+  },
+  {
+    "ordinal": 24,
+    "questionUid": "qid_v1_828803f46792fadc8014e2570d3be5b535ff852837621722d9458b02c6e38428",
+    "before": {
+      "problemTypeKey": null,
+      "crossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "difficultyBucket": 3,
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "접점 반지름의 수직성과 RHS 합동 증명",
+      "decisiveStep": "OA=OB, 두 접점의 직각, PO 공통으로 PAO≡PBO(RHS)",
+      "difficultyReason": "반지름·접선의 수직 조건과 공통 빗변으로 직각삼각형의 RHS 합동을 구성한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"
+      ],
+      "difficultyBucket": 2,
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+      "decisiveStep": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+      "difficultyReason": "증명골격과 다섯빈칸이 주어져 정형 RHS근거를 배치하는2이다.",
+      "projectionStatus": "ACTIVE_TEMPLATE_GAP",
+      "projectionReason": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+      "nullReason": "두반지름의 같음·접점직각·공통빗변을 RHS합동의 세조건에 배치하여 두접선의 같음을 증명한다. 길이값을 계산하는 TM_TANGENT_LENGTH는 이 빈칸증명의 exact template가 아니다.",
+      "metaEvidenceDebt": "TANGENT_EQUALITY_RHS_PROOF_TEMPLATE_GAP"
+    }
+  },
+  {
+    "ordinal": 25,
+    "questionUid": "qid_v1_f014643162db68150334203c1d452223ac77e1a16d336bf431ec50e09ba2adfd",
+    "before": {
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA",
+        "CC_PYTHAGOREAN"
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "ALIGNED",
+      "primaryMethod": "중심거리-현 정리, 정삼각형 각 추론, 특수각과 넓이",
+      "decisiveStep": "x=60°, AB=4√3, 높이 6이므로 넓이 12√3 cm²",
+      "difficultyReason": "같은 중심거리에서 현의 길이를 같게 해 정삼각형임을 보이고, 중심에서 현에 내린 수선과 특수각으로 변과 넓이를 구한다.",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionReason": "EXACT_M3_CROSSWALK_DIRECT_BINDING_GAP_OWNER_MISMATCH",
+      "nullReason": "ACTIVE_PT_OWNER_MISMATCH_BINDING_GAP",
+      "metaEvidenceDebt": "EXACT_RPM_SEMANTIC_PATH_RETAINED_BUT_NO_EXACT_OWNER_MATCHED_ACTIVE_PT_TPL_BINDING"
+    },
+    "after": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_TRIG_RATIO",
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "primaryMethod": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다.",
+      "decisiveStep": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다.",
+      "difficultyReason": "현조건을 정삼각형으로 환원하고 중심을 잇는 보조삼각형을 선택하는 전략3이다.",
+      "projectionStatus": "PROJECTION_REUSE",
+      "projectionReason": "같은중심거리로 두현을 같게 하여 정삼각형을 확인하고 반지름이등변·중심수선으로30° 직각삼각형을 만든 뒤 변과넓이를 구한다.",
+      "nullReason": null,
+      "metaEvidenceDebt": "NONE"
+    }
+  }
+]
