@@ -1,0 +1,1380 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/21_연향중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "0243bc77d19c50dfe6b410825849176897cc06fd",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/C",
+    "at": "2026-11-14T14:21:10.890782+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5e115ab1c8bb33d2186bab942ed3646974a139af34adf82ff86145742d752c01",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4b54f7a4c4d29082477a60b9472438408833a7610310d25d8e0768f5eda168ef"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6b48e260b429f7dbb2535485a19a4f4d95def29104ad37fd8b597103c1ec4b28"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "termId": 62,
+            "src": "choices",
+            "quote": "$2x+5=2(x-y)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "미지수가 2개인 일차방정식"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "아닌 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "정리 후 미지수가 둘이고 일차인지를 묻는다.연립식의 가감/대입030/031로 붙이지 않는 정의leafgap.",
+        "method": "두 미지수 일차방정식의 정의"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_f9eb8f2de048648a98293c91eeb7ab44e7717b40a97522df947fac3bfbadaa2b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f8d9daa068e9b4e92f8e82d05220b7e38fcfaa4a73bc121e651a35f00519be42"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0f584672febe4dc3cd4c61a8ef58aff9d4d678a7e9389dd8b8971b44fecd4cff"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "$y$가 $x$의 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "termId": 84,
+            "src": "stem",
+            "quote": "함수가 아닌 것은?"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "아닌 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "입력에대한출력유일성 판단이며일차성판별047과다르다.실제ACTIVE 함수정의/대응판정 후보 확인.",
+        "method": "함수의 유일대응 정의"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_6ab840aa42fb03734d73383d5842a92a00466e9cd236a4e948fd7d0b39dbb91f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1e8235f7e4aef243e285039fd32bf3990442533832b9567f98541ac12bb0ea1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ebb7f344bdd03b65b24729797e3f0fd12d265ff40d2b0aaf79ba92007a4dc51e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "$x=2, y=-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "다음 연립방정식 중에서"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "인 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "이미 알려진 해를 만족하는 연립식을 선택한다.미지계수결정032 또는가감/대입으로해를새로구하기와목표가다른leafgap.",
+        "method": "주어진 순서쌍이 연립식 해인지 판정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_a6d602a24226419dc4dfde38154e6354ae2eee5d9e60ce7bd4d7a6a5607d2d4b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b5455a83d251948f857ee8983f563c067d8c89dc9cf6e935d5050c6d70d6ac38"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4cd237d84184da59588045fb683e5eebf136d1259b177654aa5251803844b9b2"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식 $3x+y=-1$"
+          },
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "$(a, 2), (-5, b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "미지수",
+            "termId": 745,
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          },
+          {
+            "term": "좌표",
+            "termId": 148,
+            "src": "stem",
+            "quote": "$(a, 2), (-5, b)$"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "두 부분순서쌍이 같은 한방정식의 해임을 이용해 미지좌표를 각각 구한다.실제활성M2점대입template는미지계수선행을요구해exact와구별.",
+        "method": "일차방정식 해의 미지좌표 결정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_4a76aa9e6c50c1328e97c150c876e33efc3876228726c6e7fbe88f761a3cc7a8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "998a00d211ebc205ab987f69163a732948f1ca0f90b1596331f1177b83e0c612"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "edc94eeaf349efd7951d965cba5f5ea527c73f2291693a53cf33181fa1a09675"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "주어진 일차함수의 그래프"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "$y$절편이 $-3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "식으로 올바른 것은?"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "그래프와 평행이고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "실제그래프에서 기울기를 얻고 지정y절편을 합하여 목표직선을 정하는059조건식.그래프읽기와평행은primary내부.",
+        "method": "평행 그래프와 절편 조건의 직선식"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_9faf4ba0d50951d90eda09c9ebbf4da36c71a1d4101077347bdd482a565ded16",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dfa4257ef65037689da8afec68e42daf3330b1ceacb233249a7d44e90838e706"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0fce00b09303864134ff7a904f3bdf353a7fbca05adee3d6e6b5e6616f6b671"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $f(x)=-2x+a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(3)$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "함숫값",
+            "termId": 100,
+            "src": "stem",
+            "quote": "$f(-2)=10$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "f(-2)의조건으로a를정한뒤f(3)을구하는046.knownformula직접대입template의선행계수결정차이를보존.",
+        "method": "함숫값 조건 후 다른 함숫값"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_4687c1896dad1fdd1fcb569a43d68438fdc401a34d5a39e96b4eda73f3d518aa",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f3195da8406fe79eac66525c6d8899c33b8a4a6ec72b97821968a6c9be65dfed"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a3632a30775f34883434654b2594074dddb839f0fd35cfa51b76553917785b3d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식 $2x+ay+b=0$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "오른쪽 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$-a+b$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "그래프의(0,-2),(6,2)를 읽었다.점대입 연립과기울기절편 비교중 actual해설의decisive방법을확정할수없어primary보류.",
+        "method": "실제 그래프에서 일차방정식 계수 결정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_7457de2d387a2fbee1f5e6b25b7ba4831e4c7f8ab349c4ae765781c75442e8c9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10cff41fed14190a0d587d5bf011ac021d338a372a7250367ed877e9669bd40a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c82290eff89680de917e2dd43be2c534cb97e5bd9fc775f66c86b9301b1dbf0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식 $ax-by-4=0$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "오른쪽 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$의 값을"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "실제그림은y=-2인수평직선이므로x계수0과상수조건을정하는055축평행직선의의미귀속.",
+        "method": "수평 직선의 미지계수"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_72f760f562f7a0e38c689f7b92d8da32592bfcf951ea10b06e64aa80711a2e03",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "67d36b7fe5a800551baf901975ecd399062addddda38c12ed65d64d344c2c09d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8c0bc19dfe077bc294ac9c7e948bba2474386a920c5e9252ea68fa96d9eb946d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식 $"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "일차방정식 $3x+y-7=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $k$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해와 같을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "주어진선형관계를함께만족하는해를구한뒤k를정하는033계수결정.해가같다는문구를새풀이로고쳐쓰지않는다.",
+        "method": "추가 해관계로 연립식 계수 결정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4dd3e3d194e71a6ee74399a8c5b3b57d478a7a2ece03f332d4606902c34051b7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "af6dfc326ab4444d1047b18029394f2f9d96f11ecf0f784720cd4523ca7ff1f0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5144d3dfca8a5d6ed88a5aab9f5b37896646da8699104420d3547ad3fa3e2080"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "3계단 올라가고"
+          },
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "가위바위보를 한 전체 횟수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "전체 횟수를 구하면?"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "제외",
+            "termId": 323,
+            "src": "stem",
+            "quote": "비기는 경우는 없었다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "두사람의승리횟수와총경기수관계038에대응한다.ACTIVE게임template의두승리수합목표와일치하는source-only후보.직접총변화량방법도가능함은해설부재한계.",
+        "method": "계단 게임의 전체 경기수"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_dacc680f21d6c6ddbfd3a14aebbe81e82c75f8ff0ebd654c738e7717a9c7ab53",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f45492f11fd89a00f716a9ac0186d799ab25d710ce864f040df8460ac68ff8c7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "25a740297cbaf1e8b14f5bbc83707275e3f48f8ff35d331db8ea90b34c785ded"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식 $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "비율",
+            "termId": 650,
+            "src": "stem",
+            "quote": "$x$의 값이 $y$의 값의 2배"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "x=2y관계와상수식으로해를정한뒤a를구하는033.",
+        "method": "해의 배수관계로 계수 결정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_cb1ffdfb375a17a2e0d57270c19e6cb790bf6798a6d146b83b9a0d19f4214051",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c74d314b65ee7c3c712732a0c5c99f710d688471bd85cb07836312f0b9b5031"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb92553a8171fbd94c79d2448ef64250571a4b5d17df4d17f4a81494ed7d9e93"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "25명이 탈 거예요."
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "합해서 19대요."
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "2인용 자전거는 몇 대인 거지?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "두종류의수량과가중인원합039개수관계.",
+        "method": "자전거 대수와 탑승인원 모델"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_93745e4ac7a1a706513fda08f7c5ee08e619642a77ba16e4b0e405f4ed6873ea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1d6d25bad6836b0469d2f025343cf8501880bbabb90a77ebeb0fc67c032e0d1b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f7111f9ee4e1f5d728a5c7b51f87097de9e54d141ff8d06e184b796f0596730a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "termId": 143,
+            "src": "stem",
+            "quote": "다음 직선을 그래프로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수의 식"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "바르게 나타낸 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "평행+점·두점·두절편·점기울기의독립보기로052/053/059등을각각요구한다.한leaf로강제하지않는다.",
+        "method": "여러 입력형식의 직선식 판정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_acc14b5fdee8010ccdbc9d90299a3cabcad5fbb4f05672ddf6feb6ee358fc322",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b282086abc80869e649f73f201a4a2762a690d91f987a9c933922a70b8a505dc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70f57a043fdcd935a079b0822d1409a4c86e7ecfe24f55ddc8773617e1e9aa9d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=-\\frac{2}{a}x+\\frac{1}{b}$"
+          },
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "오른쪽 그림과 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "termId": 149,
+            "src": "stem",
+            "quote": "지나지 않는 사분면은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "원그래프의기울기/절편부호를a,b부호로바꿔새식의사분면을판정한다.증감051로축소하지않는명확한부호재해석leafgap.",
+        "method": "계수부호의 재사용으로 사분면 판정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_6f88b0291cf4a7ccad3b23b11251d39b8420dd5ef89b274862975127fc80bec9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "407dcc0d621a97299c1079eded2df52c91399adc1402fbb7ecb9e051374c894e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cc10dfce0533e34266ff8662fa3fb2ea3806dde83878faf6b6b59f8ab8a6098f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "stem",
+            "quote": "직사각형 $ABCD$"
+          },
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "초속 $2\\text{ cm}$"
+          },
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "stem",
+            "quote": "삼각형 $DPC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "termId": 306,
+            "src": "stem",
+            "quote": "$x$와 $y$ 사이의 관계식"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "넓이를 $y"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "선분",
+            "termId": 144,
+            "src": "stem",
+            "quote": "점 $B$를 출발하여 점 $C$까지"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "일정속력의이동거리로남은변을표현해넓이의시간함수를만드는모델.좌표그래프영역넓이058로갈아끼우지않는다.왼쪽변길이판독부채유지.",
+        "method": "이동점의 시간과 삼각형 넓이 모델"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_1a69245086de5741a5f577ef47f09b2ebde70d9f3fca514dbdd0c71832c10db4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8feb53abeac67094625644dc8f7982d319718c42442224fd6a99ab5121e90284"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "116996a8b03002015da6762900b5661e787ce0f51646eb77f5c0d1417ddbba4b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "두 일차방정식"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "그래프의 교점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직선의방정식",
+            "termId": 436,
+            "src": "stem",
+            "quote": "직선의 방정식은?"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$y$축에 평행한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "최종목표는055축평행직선의식이며두직선교점좌표를선행연립방정식으로구한다는source구조.교점056을최종목표로오인하지않는다.",
+        "method": "교점을 지나는 y축평행 직선"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_dc7e45e12f26e35118f31ec90c0f9793134f2f9d1b7ea18c0a2452fa93ce2fa8",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22bd7d9026c98b9f72c8e0cf556de49bd19cc1ea0a4369606e034b53741e4837"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0c3a68c1c6598001b76c7765d13eba2ddad11f238acd974623721285903eb466"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "termId": 107,
+            "src": "stem",
+            "quote": "오른쪽 그래프와 같은 일차함수"
+          },
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=-ax+7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a+k$의 값"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+k$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "평행이동",
+            "termId": 210,
+            "src": "stem",
+            "quote": "$y$축으로 $k$만큼 평행이동"
+          },
+          {
+            "term": "상등",
+            "termId": 346,
+            "src": "stem",
+            "quote": "그래프와 일치한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "실제절편(-4,0),(0,3)에서기울기를읽고이동후식의-a와절편7을비교한다.수직이동계수목표의RPMgap.",
+        "method": "그림의 직선과 수직 평행이동"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_2f76b4be930d329ee02c67ca216805e6d96c2acf5b24b4b9a0be7de19d2cc2f4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "66bdd1f52edd899f4e648c0a1cf7af4c91cc736497a5e06436811e96d2175613"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d00c0e89da5c499f6b4679b5cc25666f87c9095ee61c24a38eac9eb4eebd32fe"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "termId": 436,
+            "src": "stem",
+            "quote": "두 직선의 방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "교점의 좌표가 존재하지 않을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "교점이없다는직선관계에서평행·비일치조건을확인하는057.실제ACTIVE LINE_RELATION/PARALLEL_PARAMETER 정의일치후보.",
+        "method": "두 직선이 만나지 않는 매개변수"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_68dedb755c864bd465b9bfc6f945a0d0e8384184b981edabf2cf226184c6ce4a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "808ffabf83f2a0acd567b8820df7a8f02d666aea5e7698069d14e455c7d187cf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0a53444def885253ceb6bfcee0c80f1b16ed01d6a030d6fc4c6065d184b1691"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "stem",
+            "quote": "직사각형의 긴 변과 짧은 변"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "긴 변과 짧은 변의 길이"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식을 이용하여 풀이하시오."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "실제s01의높이차19와전체높이21을긴변·짧은변으로표현하는044도형연립.연립방정식사용지시를condition에보존하되빈method로옮기지않는다.",
+        "method": "직사각형 배치의 길이 연립식"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e47ad75e1fddcc237dbc634726b1f3543f6cdcb07e3d89d1b55bfaf9ea16012b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ed5d9f0b7ef204571644b4100249882b374cb795311bbd9c1da5672735b6337"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8b6cc7ddb0dffcc5e85a4cfca35f1efdad1bc7d39dce09270a5581dea92de21"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$20^\\circ\\text{C}$의 물"
+          },
+          {
+            "term": "온도",
+            "src": "stem",
+            "quote": "$20^\\circ\\text{C}$의 물"
+          },
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "3분마다 $15^\\circ\\text{C}$씩"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "termId": 306,
+            "src": "stem",
+            "quote": "$x$와 $y$ 사이의 관계식"
+          },
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "몇 분이 지난 후인지"
+          },
+          {
+            "term": "경과시간",
+            "src": "stem",
+            "quote": "몇 분이 지난 후인지"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "변화량",
+            "termId": 316,
+            "src": "stem",
+            "quote": "일정하게 올라갔다."
+          },
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$100^\\circ\\text{C}$에서 끓는다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "초기온도와일정온도증가율에서시간함수를세우고목표온도도달시간을구한다.단순그래프기울기·절편048이나이미주어진함숫값046과구별되는모델leafgap.",
+        "method": "일정 증가율의 온도와 경과시간 모델"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_157a80b3a26152ac04e922246d17b4a6a3192a0aa18dae579ec71b757fd05074",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51eea335b1a70eb43e83f11d1c8c6cc1d638e2236f3d06bf14e1234ff0b01ddf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0078a975e6233204126ca8ec03e4eb8cd5c2c36b93db147bfb7ff68fa8f8501e"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "세 일차방정식의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "수 $a$의 값들의 합"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "값들의 합"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "stem",
+            "quote": "삼각형을 이루지 않도록"
+          },
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "$a \\ne 0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "평행또는한점교차의다른경우를분류하는knownprimary.두직선관계057하나로축소하지않고ACTIVE INTERSECTION_TRIANGLE_FORMATION과일치하는RPMleafgap후보.",
+        "method": "세 직선의 삼각형 비형성 조건"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T14:21:10.890782+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "온도",
+      "en": [
+        "TEMPERATURE"
+      ],
+      "synonyms": [],
+      "kind": "대상",
+      "parent": "값",
+      "note": "섭씨단위로표현된물의상태측정값.기존상황/시간alias를재활용하지않고같은given에값부모를둔다.",
+      "usedIn": [
+        {
+          "questionUid": "qid_v1_e47ad75e1fddcc237dbc634726b1f3543f6cdcb07e3d89d1b55bfaf9ea16012b",
+          "sourceOrdinal": 20,
+          "slots": [
+            "given"
+          ]
+        }
+      ]
+    },
+    {
+      "term": "경과시간",
+      "en": [
+        "ELAPSED_TIME"
+      ],
+      "synonyms": [
+        "지난 시간"
+      ],
+      "kind": "대상",
+      "parent": "값",
+      "note": "가열시작부터목표온도에이를때까지지난시간.같은goal에값부모를두고정식등록전후를구별한다.",
+      "usedIn": [
+        {
+          "questionUid": "qid_v1_e47ad75e1fddcc237dbc634726b1f3543f6cdcb07e3d89d1b55bfaf9ea16012b",
+          "sourceOrdinal": 20,
+          "slots": [
+            "goal"
+          ]
+        }
+      ]
+    }
+  ],
+  "selfCheck": {
+    "status": "FAIL",
+    "validator": "tools/4slot/validate-4slot.cjs",
+    "items": 21,
+    "examItems": 21,
+    "quotes": 83,
+    "fail": 21,
+    "warn": 17,
+    "warningReview": [
+      "Warnings of few distinct terms or one method were reviewed against actual direct tasks; no irrelevant terms were inserted to satisfy a count."
+    ],
+    "independentReview": "PENDING"
+  }
+}
