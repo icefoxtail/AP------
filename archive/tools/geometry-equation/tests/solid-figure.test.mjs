@@ -3250,3 +3250,124 @@ test('G15: a cone frustum net tints its ring and circles with highlights, and th
   assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side'},{face:'side'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
   assert.throws(()=>solveSolidFigure(frustumNet({highlights:[{face:'side',fill:'RED'}]})),code('SOLID_NET_HIGHLIGHT_INVALID'));
 });
+
+const union=(side=2,length=7)=>({kind:'ORTHOGONAL_SQUARE_PRISM_UNION',side,length});
+const unionPlan=(side,length)=>figure({solids:[union(side,length)],solidCaption:{text:'입체'}});
+const crossProduct=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const dotProduct=(a,b)=>a.reduce((sum,n,i)=>sum+n*b[i],0);
+const delta=(a,b)=>a.map((n,i)=>n-b[i]);
+
+test('the orthogonal square prism union is one closed, concave boundary without internal or flat joins',()=>{
+  for(const [side,length] of [[2,7],[2.5,4.75]]){
+    const plan=unionPlan(side,length);
+    const {vertices,edges,faces,runs}=solveSolidFigure(plan).solids[0];
+    assert.equal(vertices.length,32);
+    assert.equal(edges.length,60);
+    assert.equal(faces.length,30);
+    assert.ok(vertices.every(v=>v.name===null));
+    const center=[(Math.min(...vertices.map(v=>v.p[0]))+Math.max(...vertices.map(v=>v.p[0])))/2,
+      (Math.min(...vertices.map(v=>v.p[1]))+Math.max(...vertices.map(v=>v.p[1])))/2,0];
+    const points=vertices.map(v=>delta(v.p,center));
+    const adjacent=new Map();
+    let volume=0,endCaps=0;
+    const bodyContains=p=>p.every(n=>Math.abs(n)<length/2)&&p.filter(n=>Math.abs(n)>side/2).length<=1;
+    for(const face of faces){
+      assert.equal(face.idx.length,4);
+      const [a,b,c,d]=face.idx.map(i=>points[i]);
+      const normal=crossProduct(delta(b,a),delta(c,a)).map(n=>Math.abs(n)<1e-9?0:Math.sign(n));
+      const middle=a.map((n,i)=>(n+b[i]+c[i]+d[i])/4);
+      const normalAxis=normal.findIndex(Boolean);
+      assert.ok(normalAxis>=0);
+      const epsilon=Math.min(side,length-side)/20;
+      assert.ok(bodyContains(middle.map((n,i)=>n-epsilon*normal[i])));
+      assert.ok(!bodyContains(middle.map((n,i)=>n+epsilon*normal[i])));
+      endCaps+=Math.abs(middle[normalAxis])>side/2?1:0;
+      volume+=(dotProduct(a,crossProduct(b,c))+dotProduct(a,crossProduct(c,d)))/6;
+      for(const [i,u] of face.idx.entries()){
+        const v=face.idx[(i+1)%4],key=[Math.min(u,v),Math.max(u,v)].join(',');
+        const sharing=adjacent.get(key)??[];
+        sharing.push({normal,forward:u<v});
+        adjacent.set(key,sharing);
+      }
+    }
+    assert.equal(endCaps,6);
+    assert.ok(Math.abs(volume-(side**3+6*side**2*(length-side)/2))<1e-8);
+    assert.ok([...adjacent.values()].every(pair=>pair.length===2&&pair[0].forward!==pair[1].forward&&dotProduct(pair[0].normal,pair[1].normal)===0));
+    const reentrant=edges.filter(([a,b])=>[points[a],points[b]].every(p=>p.every(n=>Math.abs(n)<=side/2+1e-9)));
+    assert.equal(reentrant.length,12);
+    assert.ok(runs.some(e=>e.runs.length>1));
+    assert.ok(runs.some(e=>e.runs.some(run=>run.hidden)));
+  }
+});
+
+test('the orthogonal square prism union refuses invalid dimensions, extra shape data and unsupported contexts',()=>{
+  const plan=unionPlan();
+  for(const values of [[0,7],[-1,7],[2,2],[4,2],[2,1001],['2',7],[2,Infinity],[NaN,7]]){
+    assert.throws(()=>solveSolidFigure(unionPlan(...values)),code('SOLID_UNION_DIMENSION_INVALID'));
+  }
+  for(const extra of [{points:[]},{at:[0,0,0]},{cuts:[]},{names:'ABCDEFGH'}]){
+    assert.throws(()=>solveSolidFigure({...plan,solids:[{...union(),...extra}]}),code('SOLID_UNION_PARAM_INVALID'));
+  }
+  for(const extra of [{solids:[union(),cuboid()]},{dims:[]},{space:{}},{highlights:[]}]){
+    assert.throws(()=>solveSolidFigure({...plan,...extra}),code('SOLID_UNION_CONTEXT_UNSUPPORTED'));
+  }
+  assert.throws(()=>solveSolidFigure(figure({net:{solid:union()}})),code('SOLID_NET_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure({...plan,view:{yawDeg:0}}),code('SOLID_VIEW_DEGENERATE'));
+});
+
+test('orthogonal prism union observer verifies the concave boundary and rejects missing or fabricated geometry',async()=>{
+  const plan=unionPlan();
+  const spec=solidFigureSpec(plan,solveSolidFigure(plan));
+  const lines=spec.prims.map(p=>`<line data-role="edge" data-solid="${p.solid}" data-edge="${p.edge}" data-vis="${p.vis}"${p.vis==='hidden'?' stroke-dasharray="5 4"':''} x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/>`);
+  const observe=body=>audit(plan,`<svg xmlns="http://www.w3.org/2000/svg" data-solid-figure="solid-figure-v1" data-yaw="28" data-pitch="20"><rect fill="#fff"/>${body.join('')}</svg>`);
+  const pass=await observe(lines);
+  assert.equal(pass.status,'PASS',JSON.stringify(pass.errors));
+  const hidden=lines.find(line=>line.includes('data-vis="hidden"'));
+  const visible=lines.find(line=>line.includes('data-vis="solid"'));
+  const mutations=[
+    [lines.filter(line=>line!==visible),'SOLID_EDGE_'],
+    [[...lines,visible.replace(/data-edge="[^"]+"/,'data-edge="seam"')],'SOLID_EDGE_UNKNOWN'],
+    [[...lines,'<path d="M 10 10 L 20 20" stroke="#000"/>'],'SOLID_UNION_UNDECLARED_PRIMITIVE'],
+    [lines.map(line=>line===hidden?hidden.replace(' data-vis="hidden" stroke-dasharray="5 4"',' data-vis="solid"'):line),'SOLID_EDGE_VISIBILITY_MISMATCH'],
+    [lines.map(line=>line===visible?visible.replace(/x1="([^"]+)"/,(_,x)=>`x1="${Number(x)+6}"`):line),'SOLID_EDGE_OFF_LINE'],
+  ];
+  for(const [drawing,expected] of mutations){
+    const result=await observe(drawing);
+    assert.equal(result.status,'FAIL');
+    assert.ok(result.errors.some(e=>e.startsWith(expected)),JSON.stringify(result.errors));
+  }
+});
+
+test('an orthogonal prism union composes with the source square prism and its x, x, y labels',async()=>{
+  const prism={
+    capability:'solid-figure-v1',
+    solids:[{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:7,names:'........'}],
+    dims:[
+      {edge:['#b0','#b1'],label:'x',side:'BOTTOM'},
+      {edge:['#b1','#b2'],label:'x',side:'RIGHT'},
+      {edge:['#b0','#t0'],label:'y',side:'LEFT'},
+    ],
+  };
+  const plan=gridOf([solidPanel(prism,'[그림 1]'),solidPanel({capability:'solid-figure-v1',solids:[union()]},'[그림 2]')],
+    {caption:'정사각기둥과 같은 중심에서 직교하는 세 정사각기둥'});
+  const checked=compositePanels(plan);
+  const framed={...plan,panels:checked.map(({caption,plan})=>({caption,plan}))};
+  const composed=await composeCompositeCandidate({
+    plan:framed,
+    panels:checked.map(({plan})=>({plan,model:solveSolidFigure(plan)})),
+    identity:assetIdentity('solid-union-grid|1','PROBLEM_VISUAL','problem-figure'),
+    typographyPolicy:{baseFontPx:23,displayScale:0.55,fontFloorCssPx:11},
+  });
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.deepEqual(composed.panels.map(p=>p.staticAudit.status),['PASS','PASS']);
+  assert.equal(composed.renderedLayout.status,'PASS',JSON.stringify(composed.renderedLayout.errors));
+  const panelSvg=[...composed.svg.matchAll(/href="data:image\/svg\+xml;base64,([^"]+)"/g)].map(m=>Buffer.from(m[1],'base64').toString('utf8'));
+  assert.equal(panelSvg.length,2);
+  assert.deepEqual([...panelSvg[0].matchAll(/data-label-role="dim"[^>]* data-tex="([xy])"/g)].map(m=>m[1]).sort(),['x','x','y']);
+  assert.doesNotMatch(panelSvg[1],/data-label-role|data-role="highlight-face"/);
+  const hidden=panelSvg[1].lastIndexOf('data-vis="hidden"');
+  const visible=panelSvg[1].indexOf('data-vis="solid"');
+  assert.ok(hidden>=0&&hidden<visible);
+  assert.match(panelSvg[1],/data-vis="hidden"[^>]*stroke="#a0a0a0"[^>]*stroke-dasharray="5 4"/);
+  assert.doesNotMatch(composed.svg,/⑤|겹침|부피/);
+});

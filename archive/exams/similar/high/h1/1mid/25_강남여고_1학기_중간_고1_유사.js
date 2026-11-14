@@ -433,7 +433,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><path d='M30 40 L50 30 L70 40 L70 90 L50 100 L30 90 Z' fill='none' stroke='black'/><path d='M30 40 L50 50 L70 40' fill='none' stroke='black'/><path d='M50 50 L50 100' fill='none' stroke='black'/><text x='45' y='115' font-size='10'>[그림 1]</text><path d='M100 60 L140 60 L140 70 L100 70 Z M115 45 L115 85 L125 85 L125 45 Z' fill='none' stroke='black' stroke-width='1'/><path d='M105 55 L135 75 M135 55 L105 75' fill='none' stroke='black' stroke-width='0.5' stroke-dasharray='2'/><text x='110' y='100' font-size='10'>[그림 2]</text></svg>",
+    "content": "[그림 1]과 같이 가로의 길이, 세로의 길이, 높이가 각각 $x, x, y$ ($y>x$)인 정사각기둥 3개를 [그림 2]와 같이 각각의 중앙 부분이 겹치면서 서로 수직으로 만나도록 만든 입체가 있다. 이때 [그림 2]의 입체의 부피를 $x, y$로 나타내면? [4.6점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q16-problem-v2.svg\" style=\"display:block; margin:8px auto; width:300px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"정사각기둥 한 개와, 중심에서 서로 수직으로 만나는 세 정사각기둥\">",
     "choices": [
       "$(y-x)(3y-x^{2})$",
       "$x^{2}(3y-x)$",
@@ -517,7 +517,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><svg width='160' height='120' viewBox='0 0 160 120' xmlns='http://www.w3.org/2000/svg'><path d='M40 100 L120 100 L40 20 Z' fill='none' stroke='black'/><path d='M120 100 L120 80 L40 0 L40 20' fill='none' stroke='black'/><path d='M40 0 L120 80' fill='none' stroke='black'/><path d='M60 100 L60 60 L100 80' fill='none' stroke='black' stroke-dasharray='2'/><text x='75' y='110' font-size='10'>8</text><text x='30' y='60' font-size='10'>10</text><text x='125' y='90' font-size='10'>24</text></svg>",
+    "content": "직각을 낀 두 변의 길이가 $8, 10$인 직각삼각형을 밑면으로 하고 높이가 $24$인 삼각기둥을 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하면? [4.9점]<br><img src=\"assets/images/25_강남여고_1학기_중간_고1_유사/q19-problem-v2.svg\" style=\"display:block; margin:8px auto; width:270px; max-width:100%; height:auto; max-height:220px; object-fit:contain\" alt=\"밑면의 직각변이 8과 10이고 높이가 24인 삼각기둥 안의 직육면체\">",
     "choices": [
       "360",
       "420",
