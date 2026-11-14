@@ -555,7 +555,11 @@ window.questionBank = [
       "subConcept": "사각형 넓이",
       "conditionsUsed": "AB=9, BC=12, ∠B=60°, AD=3√3, DC=6, ∠D=150°.",
       "integrationPatternExplanation": "두 삼각형 넓이를 구해 사각형 넓이로 합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 △ABC와 주황 △ACD는 대각선 AC를 공유하며 주어진 변 길이와 각을 표시한다.",
+    "solutionImageCaption": "△ABC의 넓이는 27√3이고 △ACD의 넓이는 9√3/2이다. 합은 63√3/2 cm²이며 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -895,7 +899,11 @@ window.questionBank = [
       "subConcept": "반원과 tan",
       "conditionsUsed": "AC=2, ∠AOC=30°, ∠ACB=90°, C-O-B 일직선.",
       "integrationPatternExplanation": "반지름과 중심선 길이를 구한 뒤 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: O를 중심으로 하는 위쪽 반원에서 A는 호 위에 있고 C는 지름 안쪽에 있다. AC=2, 중심각 AOC=30°, C에서 직각이며 B의 각은 x이다.",
+    "solutionImageCaption": "OA=OB=4이고 OC=2√3이다. 따라서 CB=OC+OB=2√3+4이며, tan x=AC/CB=2/(2√3+4)=2−√3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

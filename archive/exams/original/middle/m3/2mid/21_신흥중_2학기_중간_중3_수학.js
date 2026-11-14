@@ -1017,7 +1017,11 @@ window.questionBank = [
       "subConcept": "접선 조건으로 길이 구하기",
       "conditionsUsed": "AD·CD·BC는 반원의 접선, AD=3, CD=10.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원 O의 지름 AB와 접선 AD, BC, CD를 나타낸다. AD에는 3, CD 전체에는 10이 표시되어 있다. 접점 E를 기준으로 길이가 같은 접선끼리 두 색으로 묶는다.",
+    "solutionImageCaption": "AD=DE=3이고 CD=10이므로 CE=CB=7이다. 평행한 AD와 BC의 길이 차는 7−3=4이다. 직각삼각형에서 AB²+4²=10²이므로 AB=2√21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

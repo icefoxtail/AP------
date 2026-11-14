@@ -949,7 +949,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "507da2732c3cc0158748a5b7ebee7221ed71a6a8"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 밑변 BC 전체에 8 cm, B의 각에 60°를 표시했다. 파란 높이 AH와 주황 변 AC를 구분한다.",
+    "solutionImageCaption": "삼각형의 넓이에서 AH=6√3 cm이다. ∠B=60°이므로 BH=6 cm, HC=2 cm이다. 직각삼각형 AHC에 피타고라스 정리를 쓰면 AC=4√7 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1606,7 +1610,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "6225b4cda43702eea02aae87b4323ffa1d1cce3c"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 한 줄 눈금은 DA와 DT, 주황 두 줄 눈금은 CB와 CT를 묶는다. D에서 BC에 내린 수선 DE를 점선으로 표시한다.",
+    "solutionImageCaption": "같은 점에서 그은 두 접선의 길이가 같으므로 CD=3+5=8 cm이다. 직각삼각형 DEC에서 EC=2 cm이므로 DE=AB=2√15 cm이다. 사다리꼴 넓이는 (3+5)÷2×2√15=8√15 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1930,7 +1938,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "db814e78213fc920ba09b842c391d4a8b8005e44"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: PA와 PB의 접점에서 직각을 표시한다. 두 반지름 OA, OB는 같은 파란 눈금이고, 두 삼각형이 공유하는 빗변 OP는 주황색이다.",
+    "solutionImageCaption": "OA=OB이고 ∠PAO=∠PBO=90°이며 PO는 공통 빗변이다. 두 직각삼각형은 RHS 합동이므로 대응하는 접선의 길이 PA와 PB가 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
