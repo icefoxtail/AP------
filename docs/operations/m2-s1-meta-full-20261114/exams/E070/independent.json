@@ -1,0 +1,710 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E070",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS",
+  "createdAt": "2026-11-14T15:46:12.521735+00:00",
+  "sourceGitBlobSha": "4aed1b3bd6aeed39813d7087753797c2c746b6a2",
+  "reviewSha256": "601cc9bf9c222b29deb32a2ea599d2144c2741d88b0c8359bf8d8bdb554fab0b",
+  "fourSlotSha256": "574bfe7a024c9fd127264ed965a88a51ecd51595da3f17715700107fd68c4f46",
+  "initialFreezePath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E070.initial.json",
+  "initialFreezeSha256": "26162732cd18247d2846e69ca2837ee63a989da1faca1a9ec32273ad5ae40b24",
+  "sampleOrdinals": [
+    7,
+    17,
+    22
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 7,
+      "classification": "2022 RPM129 단항식 혼합계산. 거듭제곱·곱·몫과 동일단항식의 계수/문자지수 대조를 source-only 구조로 제안.",
+      "binding": "실제 RPM129 L1~4를 읽었고 공식scoped PT/TPL 및 genuine resolver는 미확정. 없는 기존해설을 근거로 만들지 않음.",
+      "crossConcept": "계수와 지수의 직접대응은 혼합계산primary 내부로 중복CC없음.",
+      "condition": "상수m,n이라는 실제 발문을 보존하고 원문에 없는 자연수조건을 추가하지 않음.",
+      "integration": "단일 단항식정리 내부로 NONE의 조건부제안.",
+      "difficulty": "독립2/B23/low와 저자2/B23/low 일치. 문자지수와 계수를 구별하는 정형혼합계산.",
+      "fourSlot": "전체등식given, 매개상수차goal 실제literal 확인. method[] 및 부재부채 유지."
+    },
+    {
+      "sourceOrdinal": 17,
+      "classification": "2022 RPM144 시간제한. 서로다른 속력의 지각정보로 거리/예정시간을 먼저해석한 뒤 목표속력하한을 결정하는 source-only 구조.",
+      "binding": "실제 RPM144 L1~4 시간제한을 읽었다. 정형왕복TPL과 달리 같은목적지의 두속력·지각정보이며 exacttarget등록은 미확정.",
+      "crossConcept": "속력·시간·거리 관계는 시간제한 primary 자체의 골격이므로 중복CC없음.",
+      "condition": "예정시간안 도착이라는 실제 제한만 보존하며 속력 정수조건을 추가하지 않음.",
+      "integration": "단일 시간제한모델 안의 선행량복원과 목표하한으로 NONE.",
+      "difficulty": "독립3/B23/low와 저자3/B23/low 일치. 두 지각정보의 공통모델과 후속속력한계를 연결하는 추가부담.",
+      "fourSlot": "두속력/두지각시간을 실제인용. 경과시간given/condition 후보는 각각 같은slot값131 parent와 결속. 속력goal 및 method[] 확인."
+    },
+    {
+      "sourceOrdinal": 22,
+      "classification": "네삼각형넓이와 그 넓이변수의 후속 제곱/곱/몫 값을 함께 묻는다. 기존해설이 없는 복합소문항이라 단일primarynull을 수용.",
+      "binding": "129혼합/134식값 및 기하목표의 실제 범위가 병존하므로 하나의exactbinding을 강제하지 않음.",
+      "crossConcept": "primary미판정에 종속된 CC도 null이다. 기하를없음[]으로 확정하지 않았다.",
+      "condition": "실제 외부치수6a/3b/좌상b/우하b/상단2a/하단3a를 확인. 오른아래 작은2b가 어느선분에 속하는지는 미정으로 그림부채 유지.",
+      "integration": "primary미판정에 종속된 integrationnull. NONE이나SEQUENTIAL로 확정하지 않음.",
+      "difficulty": "독립2/B23와 저자3/B23 인접차이. 네 모서리의 빠진길이/넓이를 만들고 후속문자식으로 연결하는 부담으로 저자3을 조건부수용.",
+      "fourSlot": "직사각형치수given, 네삼각형넓이 및 식값의 두goal을 actualliteral로 확인. 실제그림SHA와 미세치수표현부채, method[] 유지."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "유리수·무한·순환소수 포함관계의 정의판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "유리수/유한·무한·순환의포함관계다섯진술판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "유리수·무한·순환소수 포함관계의 정의판정; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "여섯분수의 기약분모 소인수판정과 개수",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분수여섯개의기약분모조건을비교해개수. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "여섯분수의 기약분모 소인수판정과 개수; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "100배 소수점이동 후 주기시작위치와77번째자리 대응",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "100배소수점이동후세자리주기의77번째위치. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "100배 소수점이동 후 주기시작위치와77번째자리 대응"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "분수의 반복주기와40자리의 완전주기/나머지합 연결",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "분수를반복소수로읽고6자리주기합과40자리나머지결합. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 4,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "분수의 반복주기와40자리의 완전주기/나머지합 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "거듭제곱·곱몫 여러독립 지수법칙의 검산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯보기의곱몫/거듭제곱법칙검토. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 5,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "거듭제곱·곱몫 여러독립 지수법칙의 검산"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "공통거듭제곱 인수로 묶어 지수값을 결정하는 정형변형",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "같은밑거듭제곱의합을공통인수와연결하여지수결정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "공통거듭제곱 인수로 묶어 지수값을 결정하는 정형변형"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "단항식 거듭제곱·곱몫에서 문자지수와 계수를 따로 대응해 두상수 결정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "단항식곱몫·거듭제곱을정리해문자지수와수치계수의조건을각각비교. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "단항식 거듭제곱·곱몫에서 문자지수와 계수를 따로 대응해 두상수 결정"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "분수계수 다항식을 통분하고 괄호를 제거해 동류항 정리",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분수계수괄호두식을통분·분배하여동류항정리. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "분수계수 다항식을 통분하고 괄호를 제거해 동류항 정리"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "두오류등식에서 A,B를 각각복원한뒤 차계산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "각각주어진연산결과로두원식복원후차. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "두오류등식에서 A,B를 각각복원한뒤 차계산"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "단항식분배와 문자지수의 여러독립보기 검산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분배식다섯개를문자지수와계수로검토. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "단항식분배와 문자지수의 여러독립보기 검산"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "다항식나눗셈과 분배전개 뒤 동류항정리",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "다항식을단항식으로나눈항과분배항을정리하여결합. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 11,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "다항식나눗셈과 분배전개 뒤 동류항정리"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "사람무게와 세물건 무게의 합을 탑승상한과 연결하는 문장모델",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "몸무게총량과엘리베이터최대하중의직접모형번역. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 12,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "사람무게와 세물건 무게의 합을 탑승상한과 연결하는 문장모델; 단일 총량상한의 직접 문장번역1/2 인접B12에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "음수계수의 대소역전을 파악한후 같은연산의 부등호성질 적용",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "음수계수의주어진부등식에서대소를읽고다섯변환을판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "음수계수의 대소역전을 파악한후 같은연산의 부등호성질 적용; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "수량문장을 식으로옮겨 부등호·미지수·차수로 일차부등식 판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯문장관계의등식/부등식과차수를판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "수량문장을 식으로옮겨 부등호·미지수·차수로 일차부등식 판정"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "양변정리 뒤 일차항계수가 사라지지 않을 조건",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "양변정리후일차계수가0이되는제외값을판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "양변정리 뒤 일차항계수가 사라지지 않을 조건"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "2일 총판매수는 정수이나 하루평균은 반정수도 가능하다. 원문은 평균을 정수로 제한하지 않는데 주어진수치에서 최솟값과 정수보기의 정밀도가 맞지 않는다. 정수올림 관례를 가정한 구조추정2와 별도로 최종UNKNOWN 유지",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "초기모델구조2는보존하되, 2일평균은정수일필요가없고일별동일판매/평균정수제약이없는데보기는정수뿐이어서현재최소값해석미확정.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 16,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_AVERAGE_INTEGRALITY_DEBT",
+      "reason": "2일 총판매수는 정수이나 하루평균은 반정수도 가능하다. 원문은 평균을 정수로 제한하지 않는데 주어진수치에서 최솟값과 정수보기의 정밀도가 맞지 않는다. 정수올림 관례를 가정한 구조추정2와 별도로 최종UNKNOWN 유지"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "서로다른 두속력의 지각시간차로 공통거리와 예정시간을 복원하고 목표속력하한으로 연결",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두속력에서각각지각시간이다른정보로거리/예정시간을먼저복원하고최소속력범위를결정하는추가모델연계. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "서로다른 두속력의 지각시간차로 공통거리와 예정시간을 복원하고 목표속력하한으로 연결"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "동류항정리 뒤 두미지수 일차성 정의로 보기를 판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "정리후미지수개수와차수에따라여섯보기를판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "동류항정리 뒤 두미지수 일차성 정의로 보기를 판정; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "이차항 제거와 x항 비영이라는 서로다른 계수조건을 동시에 적용",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "이차항소거와두일차미지수존재조건을동시에비교. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "이차항 제거와 x항 비영이라는 서로다른 계수조건을 동시에 적용"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "비순환부가 있는 순환소수의 지정10배/1000배 소거와 기약분수화",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "순환소수의비순환부와주기를맞춘10배소거를서술하고기약분수. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "비순환부가 있는 순환소수의 지정10배/1000배 소거와 기약분수화"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "할인된판매가와 원가기준 최소이익을 연결해 정가하한을 결정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "할인가와원가대비이익조건을하나의부등식으로모델링. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "할인된판매가와 원가기준 최소이익을 연결해 정가하한을 결정"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제4모서리 삼각형의 밑변높이를 구해 넓이를 식에 대입하고 공통문자인수 약분; 오른아래 미세2b 표시는 가리키는선분이불명확하여 명시된 바깥b치수 기준의 조건부해석",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제그림의빠진선분길이와네삼각형넓이를먼저구한뒤문자식의제곱/곱/몫을계산하는복합소문항. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "실제4모서리 삼각형의 밑변높이를 구해 넓이를 식에 대입하고 공통문자인수 약분; 오른아래 미세2b 표시는 가리키는선분이불명확하여 명시된 바깥b치수 기준의 조건부해석; 네면적에서 후속식까지의2/3 인접B23에서 저자3 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제지불액과거스름돈으로 한일차식을 만들고 구매개수의 비음정수·우유하한으로 순서쌍열거",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두상품금액관계와구매개수의정수/하한조건으로가능한순서쌍전체를열거. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "실제지불액과거스름돈으로 한일차식을 만들고 구매개수의 비음정수·우유하한으로 순서쌍열거"
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "requiredMethodEvidenceDebt": 23,
+  "nativeMethodFailures": 23,
+  "notes": [
+    "23 actual source-only stems/choices and actualQ22 figure read; initial23 judgments frozen before author comparison. No original answers/solutions were reconstructed.",
+    "R2 Q2 primary119 finite-decimal classification with supporting120 denominator condition verified against actual canonical names and full goal.",
+    "Q16 average262 goal literal added; total-sales integrality is distinct from daily-average integrality. UNKNOWN/low maintained; initial structural2 is retained separately and not promoted to numeric certainty. RPM143 is only the conditional total-count model, not proof of integer-average validity.",
+    "Q5/Q11/Q22 primary and dependentCC/integration remain null. Q23 one equation does not become a two-equation system; actual domain distinguishes nonnegativeinteger x/y and explicitly positiveinteger y.",
+    "Q22 small2b unbound graphic label retained. Elapsedtime/monetaryamount candidates have same-slot value parents. Missing sourcecurriculum/numericfields remain proposal-only. Native method23 remains failure debt, not qualityPASS."
+  ]
+}

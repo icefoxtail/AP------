@@ -1,0 +1,3335 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E070",
+  "owner": "GPT_ROOT_14C2C64E43FB",
+  "createdAt": "2026-11-14T15:49:11.148594+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E070",
+    "reviewPath": "/workspace/scratch/14c2c64e43fb/workers/A/E070/review-r2.json",
+    "fourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/A/E070/four-slot-r2.json",
+    "independentPath": "/workspace/scratch/14c2c64e43fb/workers/B/independent/E070.independent-review.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "proposalStatus": "ROOT_ACCEPTANCE_REQUIRED",
+    "acceptIndependentAdjacentMismatch": [],
+    "authorSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/review.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/four-slot.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/content-only.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/difficulty-content-first-freeze.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/asset-evidence.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/mechanical-r2.json",
+      "/workspace/scratch/14c2c64e43fb/workers/A/E070/supplement-r2.json"
+    ],
+    "independentSupplementPaths": [
+      "/workspace/scratch/14c2c64e43fb/workers/B/independent/E070.initial.json"
+    ],
+    "notes": [
+      "23문항과실제q22그림열람. 정답/해설23개없어method빈칸/native부채유지.",
+      "source/legacy값은초기동결후대조. Q16평균정수제약미명시로초기구조2를보존하고finalUNKNOWN으로유보.",
+      "Exact B receipt bound to this revision; no prior completed reviews repeated. Existing source debts/native missing-method failures remain as documented, not quality PASS."
+    ],
+    "rootAcceptance": {
+      "owner": "GPT_ROOT_14C2C64E43FB",
+      "actualSourceOrdinalsRead": [
+        6,
+        16,
+        21
+      ],
+      "additionalScopedOrdinalsRead": [
+        2
+      ],
+      "actualImagesViewed": [],
+      "decision": "ACCEPT_WITH_EXPLICIT_DEBTS",
+      "rationale": "Actual3source/choices and4slots6/16/21 read plus revisedQ2. CanonicalRPM125/126/143/146 and119/120 definitions support exactgoal classification vs supportingdenominatorcondition. Q16 goalaverage262 and unknown daily-average integrality preserved. ExactBreceipt54e3d15f covers23source-only numericjudgments, actualQ22figure, independent7/17/22 andsixadjacent disputes with explicit B12/B23 evidence. No invented method23 or extra condition. Conditionalsource primary143 not an assertion that average is integer."
+    }
+  },
+  "sampleReviewer": "B",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "유리수·무한·순환소수 포함관계의 정의판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "유리수/유한·무한·순환의포함관계다섯진술판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 1,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "유리수·무한·순환소수 포함관계의 정의판정; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "여섯분수의 기약분모 소인수판정과 개수",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분수여섯개의기약분모조건을비교해개수. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 2,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "여섯분수의 기약분모 소인수판정과 개수; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "100배 소수점이동 후 주기시작위치와77번째자리 대응",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "100배소수점이동후세자리주기의77번째위치. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 3,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "100배 소수점이동 후 주기시작위치와77번째자리 대응"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "분수의 반복주기와40자리의 완전주기/나머지합 연결",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "분수를반복소수로읽고6자리주기합과40자리나머지결합. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 4,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "분수의 반복주기와40자리의 완전주기/나머지합 연결"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "거듭제곱·곱몫 여러독립 지수법칙의 검산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯보기의곱몫/거듭제곱법칙검토. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 5,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "거듭제곱·곱몫 여러독립 지수법칙의 검산"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "공통거듭제곱 인수로 묶어 지수값을 결정하는 정형변형",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "같은밑거듭제곱의합을공통인수와연결하여지수결정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 6,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "공통거듭제곱 인수로 묶어 지수값을 결정하는 정형변형"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "단항식 거듭제곱·곱몫에서 문자지수와 계수를 따로 대응해 두상수 결정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "단항식곱몫·거듭제곱을정리해문자지수와수치계수의조건을각각비교. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 7,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "단항식 거듭제곱·곱몫에서 문자지수와 계수를 따로 대응해 두상수 결정"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "분수계수 다항식을 통분하고 괄호를 제거해 동류항 정리",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분수계수괄호두식을통분·분배하여동류항정리. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 8,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "분수계수 다항식을 통분하고 괄호를 제거해 동류항 정리"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "두오류등식에서 A,B를 각각복원한뒤 차계산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "각각주어진연산결과로두원식복원후차. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 9,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "두오류등식에서 A,B를 각각복원한뒤 차계산"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "단항식분배와 문자지수의 여러독립보기 검산",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "분배식다섯개를문자지수와계수로검토. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 10,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "단항식분배와 문자지수의 여러독립보기 검산"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "다항식나눗셈과 분배전개 뒤 동류항정리",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "다항식을단항식으로나눈항과분배항을정리하여결합. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 11,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "다항식나눗셈과 분배전개 뒤 동류항정리"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "사람무게와 세물건 무게의 합을 탑승상한과 연결하는 문장모델",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "몸무게총량과엘리베이터최대하중의직접모형번역. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 12,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "사람무게와 세물건 무게의 합을 탑승상한과 연결하는 문장모델; 단일 총량상한의 직접 문장번역1/2 인접B12에서 저자1 수용."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "음수계수의 대소역전을 파악한후 같은연산의 부등호성질 적용",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "음수계수의주어진부등식에서대소를읽고다섯변환을판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 13,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "음수계수의 대소역전을 파악한후 같은연산의 부등호성질 적용; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "수량문장을 식으로옮겨 부등호·미지수·차수로 일차부등식 판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "다섯문장관계의등식/부등식과차수를판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 14,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "수량문장을 식으로옮겨 부등호·미지수·차수로 일차부등식 판정"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "양변정리 뒤 일차항계수가 사라지지 않을 조건",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "양변정리후일차계수가0이되는제외값을판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 15,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "양변정리 뒤 일차항계수가 사라지지 않을 조건"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "2일 총판매수는 정수이나 하루평균은 반정수도 가능하다. 원문은 평균을 정수로 제한하지 않는데 주어진수치에서 최솟값과 정수보기의 정밀도가 맞지 않는다. 정수올림 관례를 가정한 구조추정2와 별도로 최종UNKNOWN 유지",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "reason": "초기모델구조2는보존하되, 2일평균은정수일필요가없고일별동일판매/평균정수제약이없는데보기는정수뿐이어서현재최소값해석미확정.",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "initialFreezeSourceOrdinal": 16,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_UNKNOWN_WITH_AVERAGE_INTEGRALITY_DEBT",
+      "reason": "2일 총판매수는 정수이나 하루평균은 반정수도 가능하다. 원문은 평균을 정수로 제한하지 않는데 주어진수치에서 최솟값과 정수보기의 정밀도가 맞지 않는다. 정수올림 관례를 가정한 구조추정2와 별도로 최종UNKNOWN 유지"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "difficultyBucket": 3,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "서로다른 두속력의 지각시간차로 공통거리와 예정시간을 복원하고 목표속력하한으로 연결",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두속력에서각각지각시간이다른정보로거리/예정시간을먼저복원하고최소속력범위를결정하는추가모델연계. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 17,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "서로다른 두속력의 지각시간차로 공통거리와 예정시간을 복원하고 목표속력하한으로 연결"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "difficultyBucket": 1,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "동류항정리 뒤 두미지수 일차성 정의로 보기를 판정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "정리후미지수개수와차수에따라여섯보기를판정. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 18,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "동류항정리 뒤 두미지수 일차성 정의로 보기를 판정; 여러 독립보기/개수판정의1/2 인접B12에서 저자2 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "이차항 제거와 x항 비영이라는 서로다른 계수조건을 동시에 적용",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "이차항소거와두일차미지수존재조건을동시에비교. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 19,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "이차항 제거와 x항 비영이라는 서로다른 계수조건을 동시에 적용"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "independentInitial": {
+        "sourceOrdinal": 20,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12",
+        "difficultyConfidence": "low",
+        "reason": "비순환부가 있는 순환소수의 지정10배/1000배 소거와 기약분수화",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "순환소수의비순환부와주기를맞춘10배소거를서술하고기약분수. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 20,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "비순환부가 있는 순환소수의 지정10배/1000배 소거와 기약분수화"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "independentInitial": {
+        "sourceOrdinal": 21,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "할인된판매가와 원가기준 최소이익을 연결해 정가하한을 결정",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "할인가와원가대비이익조건을하나의부등식으로모델링. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "할인된판매가와 원가기준 최소이익을 연결해 정가하한을 결정"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "independentInitial": {
+        "sourceOrdinal": 22,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제4모서리 삼각형의 밑변높이를 구해 넓이를 식에 대입하고 공통문자인수 약분; 오른아래 미세2b 표시는 가리키는선분이불명확하여 명시된 바깥b치수 기준의 조건부해석",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "실제그림의빠진선분길이와네삼각형넓이를먼저구한뒤문자식의제곱/곱/몫을계산하는복합소문항. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "실제4모서리 삼각형의 밑변높이를 구해 넓이를 식에 대입하고 공통문자인수 약분; 오른아래 미세2b 표시는 가리키는선분이불명확하여 명시된 바깥b치수 기준의 조건부해석; 네면적에서 후속식까지의2/3 인접B23에서 저자3 조건부판정 수용."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "independentInitial": {
+        "sourceOrdinal": 23,
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23",
+        "difficultyConfidence": "low",
+        "reason": "실제지불액과거스름돈으로 한일차식을 만들고 구매개수의 비음정수·우유하한으로 순서쌍열거",
+        "evidenceStatus": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두상품금액관계와구매개수의정수/하한조건으로가능한순서쌍전체를열거. 기존정답·해설이없으므로source-only 조건부난도.",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23,
+        "evidenceStatus": "CONDITIONAL_SOURCE_ONLY_PROPOSAL",
+        "reviewStatus": "manual_review"
+      },
+      "decision": "ACCEPT_CONDITIONAL_SOURCE_ONLY_WITH_METHOD_DEBT",
+      "reason": "실제지불액과거스름돈으로 한일차식을 만들고 구매개수의 비음정수·우유하한으로 순서쌍열거"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 1,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 2,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 3,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 9,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 12,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 14,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 18,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 21,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT_SOURCE_ONLY_WITH_EXPLICIT_DEBTS"
+    }
+  ],
+  "scopedOverrides": [],
+  "sourcePatches": [],
+  "sourceFieldEdits": [],
+  "sourceWriterDeferred": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_cb480e1f2c668aa60adf306323b12a037c2e26700aa366f37ec968335a1a1268",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "유리수와 순환소수",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c87db54b028eb71dbaa83093fe24220a7b7567a0b5e1f2e95146f063a1ca40a0",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "유리수와 순환소수",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_7575367492b2310fee26a6772365d3981c4b0fa0e9abd16025a68e8eb0a861f8",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "유리수와 순환소수",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ae59a9cbe5c5b6bfdc3ab07737d3d597c54b9b49afed2f2ee27fe368974b9828",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "유리수와 순환소수",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_af68502c29896b9ed1d9766b990bb2ac6c61c6d41c4b2296c52089c7e70e5e2c",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "지수법칙",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_98cd8805a2b5c1fbface33ebcc0624150c7277babc707f2a945eeb98fcbdb6eb",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "지수법칙",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_da9dcb1cfb80dbe8cccaada44a0c18b4d5e9f0d1a76c6c2b7885328c5a1940ea",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "지수법칙",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_77c465e7458202d28d27b653213ed66b6eb57775b44d4b926b605101c799a1ba",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "다항식의 계산",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_c9702f2fafbfcde4c6bd506ceff47f6d998bdfb0614889308ecc812c08a0f005",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "다항식의 계산",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_e8b66e8b2dd8cf707423d3afa4ed0be40461dbe461483322ba3ecd59d07881d8",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "다항식의 계산",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_03238e074280f2c922e97c5712c54cf3b6539da6328a983490da843a54dad8b2",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "다항식의 계산",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY_WORD",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "하",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1c9188e728eb903e59ddfa2e5d6846f8961c1d3525ddc2027bf92b444fe920bb",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식의 활용",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d479df818bce0d5b5b8c26642e363bbe486a1fa8fd079fe9428f11400d25254d",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [
+        "CC_SQUARE_AREA"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "SEQUENTIAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_664144d3c5133fac5498f6925ece0166b7cd230602bec060f5c659ccc3d407bf",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_a1cb64421eefe536e69dd9d3b7e165b8214e3f50bb764305b0ecd720571d200e",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY_WORD",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "level",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "UNKNOWN",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_b53adb23b084344a941bceb0fa49a8b964c4c1e1dd8f01f0c9d213ba23f47051",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식의 활용",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY_WORD",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 3,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_1f36b6326b41851d908258187fda428fce3235b9fd5bdb79ed6e8b0701944444",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식의 활용",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 3,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ebe6d15b22666a3117eb117c93a9ef1b6975facfe704f0f2c3070eec03006e7b",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B12",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 3,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_eba54d90933f5a6a4e41860a4cc0c79e2f65df71b430c0c0e04d31a3035f33ff",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-REPEATING_DECIMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ad760faa211d500d9c211d0da0701db6ed158f06d152a1bcedbc31d6b64fe7d4",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "유리수와 순환소수",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-02-LINEAR_INEQUALITY_WORD",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "일차부등식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_1b7be0c0ef68f66beebe09db961825a94f0db41ce754a2fbdf45c968b065d058",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "일차부등식의 활용",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-01-POLYNOMIAL_OPERATIONS",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": null,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 3,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "수와 식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 1,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_263df70c4d017985e19d337fc43669ab14ad47e4d87701249185ebb00a40d958",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "다항식의 계산",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "standardUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "subUnitKey",
+      "beforeMissing": true,
+      "after": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_INTEGER",
+        "COND_RANGE",
+        "COND_NATURAL"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "level",
+      "beforeMissing": true,
+      "after": "중",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "difficultyBucket",
+      "beforeMissing": true,
+      "after": 2,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "difficultyConfidence",
+      "beforeMissing": true,
+      "after": "low",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "difficultyBoundaryFlag",
+      "beforeMissing": true,
+      "after": "B23",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "legacyLevelCompatibility",
+      "beforeMissing": true,
+      "after": "NORMAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "standardUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "category",
+      "beforeMissing": true,
+      "after": "연립일차방정식",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "standardUnitOrder",
+      "beforeMissing": true,
+      "after": 3,
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9c2cd5a41ff931ae43819490353435129b12c65632aee6ec9d7f075eeb725eb8",
+      "field": "subUnit",
+      "beforeMissing": true,
+      "after": "연립일차방정식의 활용",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    }
+  ],
+  "reviewedSourceBlob": "4aed1b3bd6aeed39813d7087753797c2c746b6a2",
+  "finalSourceBlob": "4aed1b3bd6aeed39813d7087753797c2c746b6a2",
+  "reviewSha256": "601cc9bf9c222b29deb32a2ea599d2144c2741d88b0c8359bf8d8bdb554fab0b",
+  "acceptedReviewSha256": "5a0c3a00dd4ddbeb3f5b705ca0577555ebf878c735265e76b00bf3304f109246",
+  "independentSha256": "54e3d15fe3f8be776087f18645337765ba5e7063a2f8ce87d44f6ec1fe43e71c",
+  "reviewedFourSlotSha256": "574bfe7a024c9fd127264ed965a88a51ecd51595da3f17715700107fd68c4f46",
+  "finalFourSlotSha256": "574bfe7a024c9fd127264ed965a88a51ecd51595da3f17715700107fd68c4f46",
+  "independentSupplements": [
+    {
+      "file": "independent-supplements/E070.initial.json",
+      "sha256": "26162732cd18247d2846e69ca2837ee63a989da1faca1a9ec32273ad5ae40b24"
+    }
+  ],
+  "fourSlotRebind": {
+    "transformation": "sourceGitBlobSha and only the explicitly recorded scopedOverrides; author bytes preserved separately.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ],
+  "authorSupplements": [
+    {
+      "file": "author-supplements/review.json",
+      "sha256": "fa1e7020a723f9117bbdc9fb2f870588b47357731b415dbc55359fb04a98bed9"
+    },
+    {
+      "file": "author-supplements/four-slot.json",
+      "sha256": "a990118b4c39dc62864908b73cbb6e5b350edf5c0af90c8956dfe229d1475614"
+    },
+    {
+      "file": "author-supplements/content-only.json",
+      "sha256": "f88ec2690b7852bdd336c283188fec8e2db835c61ef78d22875487e1da940b4e"
+    },
+    {
+      "file": "author-supplements/difficulty-content-first-freeze.json",
+      "sha256": "8cb3751851f03c5bf2b00536f8f1db1c5b2cb1e073d4d66b16cf9ad54b1f4149"
+    },
+    {
+      "file": "author-supplements/asset-evidence.json",
+      "sha256": "1137ea2dcce978f725c909997063b3fd875bda5703d3a1bf495b52cb7c961180"
+    },
+    {
+      "file": "author-supplements/mechanical-r2.json",
+      "sha256": "44fa5964d65f95d63d7e8c952a500ff00d03016ee834f23a2d5597dab15c29cb"
+    },
+    {
+      "file": "author-supplements/supplement-r2.json",
+      "sha256": "19e7732e0de78083670e7f6735da6ed25ae93eaaadd808e167db867a463321ac"
+    }
+  ]
+}
