@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "/root/meta_c",
+  "author": "/root/meta_b",
+  "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_AND_Q22_ORIGINAL_TABLE_BEFORE_AUTHOR_SLOTS",
+  "sampled": [
+    5,
+    14,
+    22
+  ],
+  "scope": "THREE_QUESTIONS_METADATA_SEMANTICS_NOT_R1_R2",
+  "status": "ACCEPTED_AFTER_COMPATIBILITY_READBACK",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/sources/archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sha256": "129e1c46e51bd4aebbee35ec12323a0b1e7a73b37a0890da17a00e08cc1cec78",
+      "gitBlobSha": "d73e0e5adb3b2cccd1ac37291e96587c9fe176d1"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/25_동산중_2학기_기말_중1_기출/full.4slot.json",
+      "sha256": "3886823aa8ac0861639d8e5630939ddeb6abbde6116bfdb8b7192a8890c7999f"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/25_동산중_2학기_기말_중1_기출/review.json",
+      "sha256": "8e151620814d88d4cec633177b3d135b5b6643bc5926b7de945af3010c3b404a"
+    },
+    "proposal": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/25_동산중_2학기_기말_중1_기출/proposal.json",
+      "sha256": "3207c1b52bd80c411b627faada613bbba493ed7fc33b9d2e77f728df66c82df3"
+    }
+  },
+  "images": [
+    {
+      "ordinal": 22,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/dongsan25final-q22.png",
+      "sha256": "29cf57e070e6cea1f96a8869ea84e63accaaad1443db72718405794af495a0d6",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "KEEP_BUCKET1_LEVEL_MIDDLE_SET_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "한 일차식에서 항·계수·상수항과 차수를 정의에 따라 바로 읽는다.전략선택 없는 bucket1이 타당하다. 기존중은 한 단계 인접차라 안정성 원칙에 따라 보존하고 NORMAL/REVIEW 대신 BORDERLINE_ACCEPTABLE로 결속할 수 있다.",
+      "fourSlotVerdict": "ACCEPT",
+      "fourSlotReason": "given 일차식과 method 항·계수·상수항으로 단순 정의판정의 실제 구별점을 담았다. 연산을 goal에 잘못 넣지 않았다.",
+      "requiredMetadataChange": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "optionalNote": "응답형식은 단일 정답도 유효하나 옳은 것 고르기로 더 구체화할 수 있다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "KEEP_BUCKET3_LEVEL_HIGH_SET_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "첫 방정식을 푼 해를 둘째 식의 미지수에 고정하여 매개변수 방정식으로 전환하는 표준 공통해 구조이다. 분수·소수 계산만으로4로 올리지 않는다. 상/3은 인접차로 기존상 유지가 가능하다.",
+      "fourSlotVerdict": "ACCEPT",
+      "fourSlotReason": "공통근 condition과 해→대입→매개변수에 관한 일차방정식의 method가 두 식의 연결을 빠짐없이 나타낸다.",
+      "requiredMetadataChange": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      }
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "metadataVerdict": "ACCEPT_NEW_TPL_UNDER_EXISTING_PT_PROPOSAL",
+      "difficultyVerdict": "KEEP_BUCKET2_LEVEL_MIDDLE",
+      "fourSlotVerdict": "ACCEPT",
+      "reason": "원표 A450/B300 mg per100g를 읽었다. 기준량을1g당으로 환산하고 문자량의 선형결합을 만들며 다음 소문항이 동일 식에 수치를 대입한다. 기존 WORD_QUANTITY_TRANSLATION은 잘못된 생활수량 번역을 찾는 골격이라 이 연속 과정을 정확히 담지 못한다.",
+      "proposalVerdict": "기존PT에 UNIT_QUANTITY_AND_EVALUATION 템플릿을 등록하는 제안 수용. 현PT지원UID에 이 문항이 포함되어 새PT보다 새TPL이 적절하다. parentPT의 검사 중심 예시 정의는 문자식 구성까지 명시하도록 일반화하면 좋다.",
+      "fourSlotReason": "given 비율, goal 문자식·식의값, method 비례·합·대입이 실제 두 소문항의 결정 단계를 덮는다. 여기서 합은 두 식품 기여량을 총량식으로 구성하는 모델링 자체여서 단순 수치 덧셈의 잡음 용어와 구별된다.",
+      "integrationVerdict": "SEQUENTIAL_ACCEPTED"
+    }
+  ],
+  "revision": 2,
+  "readback": {
+    "status": "PASS",
+    "metadataCompatibility": [
+      5,
+      14
+    ],
+    "unchangedContentAnd4SlotSamples": [
+      5,
+      14,
+      22
+    ],
+    "sourceBlob": "d73e0e5adb3b2cccd1ac37291e96587c9fe176d1"
+  }
+}

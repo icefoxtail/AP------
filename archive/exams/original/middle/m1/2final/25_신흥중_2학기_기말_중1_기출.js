@@ -33,7 +33,7 @@ window.questionBank = [
     "image": null,
     "solutionImage": null,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 2,
@@ -44,7 +44,20 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 한 원 O에서 부채꼴 OAB와 중심각 ∠AOB, 현 AB와 그 위쪽 활꼴, 지름 CD와 반원을 세 그림으로 나누어 색으로 구분해 보여 준다.",
     "solutionImageCaption": "부채꼴, 활꼴, 현, 지름, 반원의 뜻을 한 원에서 비교한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-201",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "중심각·호·현"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 2,
@@ -88,7 +101,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 원 O에서 60° 중심각의 부채꼴 AOB와 20° 중심각의 부채꼴 COD의 호를 비교하고, 60°를 20°씩 셋으로 나눈 세 현이 CD와 같으며 현 AB가 꺾은선보다 짧고 세 삼각형 합이 삼각형 AOB보다 넓은 부분이 색으로 드러난다.",
-    "solutionImageCaption": "중심각의 비 3:1은 호와 부채꼴에는 그대로, 현과 삼각형에는 그대로 적용되지 않음을 보여 준다."
+    "solutionImageCaption": "중심각의 비 3:1은 호와 부채꼴에는 그대로, 현과 삼각형에는 그대로 적용되지 않음을 보여 준다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-201",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "중심각·호·현"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 3,
@@ -99,8 +125,8 @@ window.questionBank = [
     "standardUnitKey": "M1-06",
     "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "다각형과 원",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -122,8 +148,11 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q3.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q3-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
     "difficultyBucket": 3,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
@@ -132,7 +161,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 반원 O에서 AD∥OC이고 ∠DAO=∠ADO=36°, ∠AOD=108°, ∠BOC=36°를 표시하고, 호 AD=24cm와 호 BC를 굵게 보이며 두 부채꼴 AOD와 BOC를 색칠한 그림이다.",
-    "solutionImageCaption": "OA=OD이므로 ∠ADO=∠DAO=36°, ∠AOD=108°이고 AD∥OC에서 ∠BOC=36°이므로 호 AD : 호 BC = 108 : 36이다."
+    "solutionImageCaption": "OA=OD이므로 ∠ADO=∠DAO=36°, ∠AOD=108°이고 AD∥OC에서 ∠BOC=36°이므로 호 AD : 호 BC = 108 : 36이다.",
+    "curriculum": "2022",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-202",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "원과 부채꼴의 기본",
+      "l4": "부채꼴의 호의 길이"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 4,
@@ -169,14 +211,27 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 1,
     "sourceQuestionNo": "4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 중심각 45°, 안쪽 반지름 4cm, 바깥 반지름 8cm인 부채꼴 모양의 색칠한 부분에서 바깥 호 2π cm와 안쪽 호 π cm, 빨간 직선 두 개 4cm와 4cm를 구분해 보여 준다.",
-    "solutionImageCaption": "색칠한 부분의 둘레는 두 호와 두 직선으로 이루어진다."
+    "solutionImageCaption": "색칠한 부분의 둘레는 두 호와 두 직선으로 이루어진다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-205",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "복합도형",
+      "l4": "부채꼴을 포함한 둘레"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 5,
@@ -211,7 +266,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q5-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RECTANGLE_AREA"
+    ],
     "conditionKeys": [],
     "difficultyBucket": 4,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
@@ -220,7 +277,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 직사각형 ABCD와 사분원 ABE에서 겹친 부분 S는 파랑, 겹치지 않는 두 색칠 부분 6x−S와 9π−S는 같은 주황색으로 칠해 공통 넓이를 빼면 6x=9π임을 보여 준다.",
-    "solutionImageCaption": "두 색칠 부분이 같으면 공통인 S를 빼도 같으므로 6x=9π이고 BC=3π/2 cm이다. 정답 ②."
+    "solutionImageCaption": "두 색칠 부분이 같으면 공통인 S를 빼도 같으므로 6x=9π이고 BC=3π/2 cm이다. 정답 ②.",
+    "curriculum": "2022",
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-206",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "복합도형",
+      "l4": "부채꼴을 포함한 넓이"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 6,
@@ -266,7 +336,20 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 정칠각뿔 세 개를 나란히 그린 그림. 첫째는 밑면의 모서리 7개를 빨갛게, 둘째는 꼭짓점으로 향하는 옆 모서리 7개를 빨갛게 표시했고, 셋째는 밑면 1개(진한 파랑)와 옆면 7개(연한 파랑)를 색으로 나누어 보인다.",
     "solutionImageCaption": "칠각뿔의 모서리는 밑면 7개와 옆 모서리 7개로 14개이고, 면은 밑면 1개와 옆면 7개로 8개이며 꼭짓점도 8개이다.",
     "solutionImageSize": "medium",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution-v2.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q6-solution-v2.svg",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-208",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "다면체",
+      "l4": "각기둥·각뿔"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 7,
@@ -303,7 +386,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "7",
@@ -313,7 +396,20 @@ window.questionBank = [
     "solutionImageCaption": "x=20(정이십면체의 면), y=12(정육면체의 모서리 4+4+4)이므로 x+2y=20+24=44, 정답은 ③이다.",
     "solutionImageSize": "medium",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v2.svg",
-    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v3.svg"
+    "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q7-solution-v3.svg",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-209",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "정다면체",
+      "l4": "정다면체의 종류"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 8,
@@ -347,7 +443,7 @@ window.questionBank = [
     "image": null,
     "solutionImage": null,
     "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
-    "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+    "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 3,
@@ -358,7 +454,20 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q8-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 원기둥을 축을 지나는 평면으로 자른 직사각형 단면, 구를 중심을 지나지 않는 평면으로 자른 원 모양 단면, 원뿔을 회전축을 포함하는 평면으로 자른 좌우 대칭 단면의 세 그림이다.",
     "solutionImageCaption": "회전축에 평행한 평면의 단면은 직사각형이 될 수 있어 ②는 옳지 않고, 구는 어떤 평면으로 잘라도 단면이 원이므로 ③도 옳지 않다. 정답은 ②, ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-212",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "회전체",
+      "l4": "회전체의 단면"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 9,
@@ -392,17 +501,30 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q9.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q9-solution-v3.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 2,
     "sourceQuestionNo": "9",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 삼각기둥의 전개도. 합동인 직각삼각형 밑면 2개(파랑)와 세로 6cm, 가로 5cm, 4cm, 3cm인 직사각형 옆면 3개가 이어져 있고, 직각삼각형의 직각 표시와 각 면의 넓이(밑면 6cm², 옆면 30cm², 24cm², 18cm²)가 적혀 있다.",
-    "solutionImageCaption": "삼각기둥은 밑면 2개와 가로가 3, 4, 5이고 세로가 6인 직사각형 옆면 3개로 펼쳐진다."
+    "solutionImageCaption": "삼각기둥은 밑면 2개와 가로가 3, 4, 5이고 세로가 6인 직사각형 옆면 3개로 펼쳐진다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-213",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "기둥의 겉넓이와 부피",
+      "l4": "각기둥"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 10,
@@ -446,7 +568,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 반지름 4cm인 두 반구와 높이 6cm인 원기둥을 붙인 입체, 두 반구의 곡면을 합친 구, 붙인 두 원을 점선으로 제외한 원기둥 옆면의 세 그림이다.",
-    "solutionImageCaption": "겉넓이는 두 반구의 곡면 64π와 원기둥 옆면 48π를 더한 112π cm²이다(붙인 두 원은 제외). 정답은 ④이다."
+    "solutionImageCaption": "겉넓이는 두 반구의 곡면 64π와 원기둥 옆면 48π를 더한 112π cm²이다(붙인 두 원은 제외). 정답은 ④이다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-220",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "붙인 입체"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 11,
@@ -483,14 +618,27 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 3,
     "sourceQuestionNo": "11",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 한 변이 6cm인 정사각형 밑면을 주황색으로 칠한 높이 3cm인 사각기둥과, 같은 밑면에 꼭짓점에서 내린 수선의 높이 4cm를 점선과 직각 표시로 나타낸 사각뿔을 나란히 그린 그림이다.",
-    "solutionImageCaption": "기둥 36×3=108, 뿔 36×4÷3=48이므로 부피는 108+48=156 cm³, 정답은 ③이다."
+    "solutionImageCaption": "기둥 36×3=108, 뿔 36×4÷3=48이므로 부피는 108+48=156 cm³, 정답은 ③이다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-220",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "붙인 입체"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 12,
@@ -527,14 +675,27 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 3,
     "sourceQuestionNo": "12",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 밑면의 반지름 3cm, 높이 12cm인 원기둥 안에 반지름 3cm인 구 두 개가 위아래로 꼭 맞게 들어 있는 그림과, 원기둥 하나, 구 두 개를 따로 그리고 부피를 적은 그림이다.",
-    "solutionImageCaption": "빈 공간의 부피는 원기둥 108π에서 구 두 개 72π를 뺀 36π cm³이므로 정답은 ①이다."
+    "solutionImageCaption": "빈 공간의 부피는 원기둥 108π에서 구 두 개 72π를 뺀 36π cm³이므로 정답은 ①이다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-219",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "잘라낸 입체"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 13,
@@ -578,7 +739,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 반지름 r, 높이 2r인 원기둥이 물로 가득 찬 모습, 그 안에 꼭 맞는 구를 넣은 모습, 구를 꺼낸 뒤 남은 물을 색으로 칠하고 물 높이 4 cm를 그릇 바깥 왼쪽 치수선으로 쓴 세 그림이다.",
-    "solutionImageCaption": "남은 물 2πr³÷3이 높이 4cm인 원기둥 모양의 부피 4πr²과 같으므로 r=6 cm이고 정답은 ④이다."
+    "solutionImageCaption": "남은 물 2πr³÷3이 높이 4cm인 원기둥 모양의 부피 4πr²과 같으므로 r=6 cm이고 정답은 ④이다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-214",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "기둥의 겉넓이와 부피",
+      "l4": "원기둥"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 14,
@@ -613,7 +787,7 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q14.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q14-solution-v2.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 3,
@@ -623,7 +797,15 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 대출한 책의 수를 나타낸 줄기와 잎 그림. 큰 값부터 10번째까지의 잎 10개를 동그라미로 묶고 큰 값부터 센 순번 1~10을 동그라미 위에 썼으며, 줄기 4, 3, 2의 잎 1개, 1개, 4개와 줄기 1에서 큰 쪽 4개를 괄호로 묶어 개수를 쓴 그림",
-    "solutionImageCaption": "큰 값부터 10번째까지의 잎에 순번을 쓰고 줄기별 개수를 묶은 줄기와 잎 그림"
+    "solutionImageCaption": "큰 값부터 10번째까지의 잎에 순번을 쓰고 줄기별 개수를 묶은 줄기와 잎 그림",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 15,
@@ -659,16 +841,31 @@ window.questionBank = [
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q15-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PERCENTAGE_CALCULATION"
+    ],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 4,
     "sourceQuestionNo": "15",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 스티커 수 히스토그램: 0~5장 3명, 15~20장 14명, 20~25장 2명 막대만 있고 5~10장·10~15장 계급은 빈 자리이다. 0~10장 아래에 9명, 10장 이상 아래에 21명 괄호가 있다.",
-    "solutionImageCaption": "막대가 없는 5~10장·10~15장 계급은 표에서 ?로 가려진 계급이다. 전체 30명 중 10장 이상은 30×0.7=21명, 10장 미만은 9명이므로 5장 이상 10장 미만은 9−3=6명이다. 정답 ①(6명)"
+    "solutionImageCaption": "막대가 없는 5~10장·10~15장 계급은 표에서 ?로 가려진 계급이다. 전체 30명 중 10장 이상은 30×0.7=21명, 10장 미만은 9명이므로 5장 이상 10장 미만은 9−3=6명이다. 정답 ①(6명)",
+    "curriculum": "2022",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-228",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "도수분포표와 상대도수",
+      "l3": "도수분포표",
+      "l4": "도수분포표 완성"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 16,
@@ -703,7 +900,7 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q16.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q16-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "difficultyBucket": 3,
@@ -713,7 +910,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 걸은 거리 히스토그램: 도수 2,5,8,4,2,3,1명. 0~20 km 두 막대 아래에 미만 2+5=7명 괄호, 50~70 km 아래에 큰쪽 1+3=4명 괄호가 있고 50~60 km 막대가 가장 진하다.",
-    "solutionImageCaption": "연한 회색 두 막대는 20 km 미만(2+5=7명), 진한 막대는 큰 쪽에서 4번째 회원이 속한 50~60 km 계급(1+3=4이므로 3명)이다. 정답 ③, ⑤"
+    "solutionImageCaption": "연한 회색 두 막대는 20 km 미만(2+5=7명), 진한 막대는 큰 쪽에서 4번째 회원이 속한 50~60 km 계급(1+3=4이므로 3명)이다. 정답 ③, ⑤",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-231",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "도수분포표와 상대도수",
+      "l3": "분포 해석",
+      "l4": "히스토그램·그래프 해석"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 17,
@@ -748,17 +958,32 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q17.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q17-solution-v3.svg",
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+    "crossConceptKeys": [
+      "CC_PERCENTAGE_CALCULATION"
+    ],
     "conditionKeys": [],
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 4,
     "sourceQuestionNo": "17",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 팔 굽혀 펴기 도수분포다각형: 도수 2,3,5,6,4명. 40~50개 점(4명)은 큰 점, 30~40개 점(6명)은 동그라미이고 30~40개 아래에 '큰 쪽부터 5번째' 괄호가 있다.",
-    "solutionImageCaption": "큰 쪽부터 센 순서로, 1~4번째 학생은 40~50개 계급(4명, 큰 점)에 있고 5번째 학생은 30~40개 계급(6명, 동그라미)에 있다. 전체는 2+3+5+6+4=20명이고 6÷20×100=30(%)이다. 정답 ①(a+b+c=30+40+30=100)"
+    "solutionImageCaption": "큰 쪽부터 센 순서로, 1~4번째 학생은 40~50개 계급(4명, 큰 점)에 있고 5번째 학생은 30~40개 계급(6명, 동그라미)에 있다. 전체는 2+3+5+6+4=20명이고 6÷20×100=30(%)이다. 정답 ①(a+b+c=30+40+30=100)",
+    "curriculum": "2022",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-231",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "도수분포표와 상대도수",
+      "l3": "분포 해석",
+      "l4": "히스토그램·그래프 해석"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 18,
@@ -769,8 +994,8 @@ window.questionBank = [
     "standardUnitKey": "M1-08",
     "standardUnit": "자료의 정리와 해석",
     "standardUnitOrder": 8,
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
@@ -792,18 +1017,31 @@ window.questionBank = [
     "solution": "상대도수는 '그 학교 전체 학생 중 해당 계급에 속한 비율'이다. 실제 학생 수와 상대도수는 구별해야 한다.\n\n① 각 학교의 전체 학생 수는 그래프에 주어져 있지 않다. 상대도수 그래프만 보고 같다고 할 수 없으므로 거짓이다.\n\n② $20$시간 미만의 상대도수 합은 A 학교가 $0.10+0.25+0.35=0.70$, B 학교가 $0.10+0.15+0.25=0.50$이다. A의 비율이 오히려 더 크고 두 학교의 전체 학생 수도 모르므로 A의 실제 인원이 적다고 단정할 수 없다. 거짓이다.\n\n③ A는 $10$시간 이상 $20$시간 미만에 상대도수가 많이 모여 있고, B는 $20$시간 이상인 계급 쪽의 상대도수가 상대적으로 더 크다. 따라서 A가 더 긴 시간에 몰려 있다는 말은 거짓이다.\n\n④ A 학교에서 $20$시간 이상인 비율은 $0.20+0.10=0.30$이다. 전체가 200명이면 $200\\times0.30=60$명이므로 참이다.\n\n⑤ B 학교의 $20$시간 이상 $25$시간 미만 상대도수 $0.30$을 백분율로 바꾸면 $0.30\\times100=30\\%$이다. $0.3\\%$가 아니므로 거짓이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q18.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q18-solution-v2.svg",
-    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 5,
     "sourceQuestionNo": "18",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: A, B 두 중학교의 여가 활동 시간에 대한 상대도수 분포를 나타낸 두 도수분포다각형. A 중학교(실선)에서 20시간 이상인 두 계급의 점을 동그라미로 표시해 상대도수 0.2, 0.1을 쓰고 그 합 0.30을 괄호로 묶은 그림",
-    "solutionImageCaption": "A 중학교의 20시간 이상 두 계급의 상대도수와 합을 나타낸 두 도수분포다각형"
+    "solutionImageCaption": "A 중학교의 20시간 이상 두 계급의 상대도수와 합을 나타낸 두 도수분포다각형",
+    "curriculum": "2022",
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-232",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "도수분포표와 상대도수",
+      "l3": "분포 해석",
+      "l4": "두 집단 비교"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 19,
@@ -842,7 +1080,20 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 한 변이 10cm인 정사각형 안에서 두 사분원의 호가 만드는 렌즈 모양 S를 진하게, 두 사분원이 덮는 나머지 두 부분을 각각 25π-S로 표시해 겹침 구조를 보여 준다.",
-    "solutionImageCaption": "두 사분원이 정사각형을 덮고 렌즈 모양이 겹친다."
+    "solutionImageCaption": "두 사분원이 정사각형을 덮고 렌즈 모양이 겹친다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-206",
+    "rpmPrimaryPath": {
+      "majorUnit": "평면도형",
+      "midUnit": "원과 부채꼴",
+      "l3": "복합도형",
+      "l4": "부채꼴을 포함한 넓이"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 20,
@@ -874,14 +1125,27 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 5,
     "sourceQuestionNo": "서술형 2",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 정삼각형 10개로 된 오각쌍뿔에서 위 꼭짓점과 아래 꼭짓점에 모인 면 5개를 주황색으로, 가운데 둘레의 한 꼭짓점에 모인 면 4개를 파란색으로 나타낸 세 그림이다.",
-    "solutionImageCaption": "위·아래 꼭짓점에는 면이 5개, 가운데 꼭짓점에는 4개 모여 개수가 다르므로 정다면체가 아니다."
+    "solutionImageCaption": "위·아래 꼭짓점에는 면이 5개, 가운데 꼭짓점에는 4개 모여 개수가 다르므로 정다면체가 아니다.",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-209",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "다면체와 회전체",
+      "l3": "정다면체",
+      "l4": "정다면체의 종류"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 21,
@@ -910,8 +1174,10 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q21.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q21-solution-v2.svg",
     "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
-    "crossConceptKeys": [],
+    "templateKey": null,
+    "crossConceptKeys": [
+      "CC_SIMILARITY"
+    ],
     "conditionKeys": [],
     "difficultyBucket": 4,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
@@ -920,7 +1186,21 @@ window.questionBank = [
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 반지름 8cm, 4cm이고 모선 9cm인 원뿔대와, 이를 연장한 모선 18cm인 큰 원뿔(위의 작은 원뿔 모선 9cm를 주황색으로 표시), 반지름 4cm 모선 9cm인 작은 원뿔을 나란히 그린 그림이다.",
-    "solutionImageCaption": "원뿔대의 옆넓이 144π−36π=108π와 두 밑면 80π를 더하면 겉넓이는 188π cm²이다. 입체의 이름은 원뿔대이다."
+    "solutionImageCaption": "원뿔대의 옆넓이 144π−36π=108π와 두 밑면 80π를 더하면 겉넓이는 188π cm²이다. 입체의 이름은 원뿔대이다.",
+    "curriculum": "2022",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-219",
+    "rpmPrimaryPath": {
+      "majorUnit": "입체도형",
+      "midUnit": "입체도형의 겉넓이와 부피",
+      "l3": "복합입체도형",
+      "l4": "잘라낸 입체"
+    },
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE",
+    "metaNullReason": "의미판정 완료: 정확한 일반화 TPL 정의 제안이 review.proposals에 있으며 공식 등록 전 source key를 비움."
   },
   {
     "id": 22,
@@ -950,16 +1230,30 @@ window.questionBank = [
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q22.svg",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q22-solution-v3.svg",
     "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
-    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+    "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "sourceArchiveFile": "신흥중1학년2학기기말_2025.pdf",
     "sourcePage": 6,
     "sourceQuestionNo": "서술형 4",
     "sourceDocumentSha256": "2ba55f4d5b52e9706011aeb4eec6cd7c633c9566351fd106891eb13e7ef8db60",
     "solutionImageSize": "medium",
     "solutionImageAlt": "해설 그림: 문자 메시지 개수 점도표: 5가 점 2개, 7·8·10·11·12·13·15가 점 1개씩, 114는 가로축을 끊은 뒤 멀리 떨어진 점 1개로 모두 10개이다.",
-    "solutionImageCaption": "점 하나가 학생 한 명의 자료이다. 5가 2개(최빈값), 작은 쪽에서 5번째·6번째 점 10과 11이 가운데 두 값(중앙값 (10+11)÷2), 114는 나머지보다 매우 큰 값이다. 합 200÷10=20이므로 평균 20개, 중앙값 10.5개, 최빈값 5개"
+    "solutionImageCaption": "점 하나가 학생 한 명의 자료이다. 5가 2개(최빈값), 작은 쪽에서 5번째·6번째 점 10과 11이 가운데 두 값(중앙값 (10+11)÷2), 114는 나머지보다 매우 큰 값이다. 합 200÷10=20이므로 평균 20개, 중앙값 10.5개, 최빈값 5개",
+    "curriculum": "2022",
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": "M1-RPM-225",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "대푯값",
+      "l3": "대푯값의 선택",
+      "l4": "자료에 적절한 대푯값"
+    },
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
+    "metaNullReason": "의미판정 완료: 정확한 일반화 TPL 정의 제안이 review.proposals에 있으며 공식 등록 전 source key를 비움."
   }
 ];

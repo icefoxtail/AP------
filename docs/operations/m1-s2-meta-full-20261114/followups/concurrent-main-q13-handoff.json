@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "m1s2-concurrent-main-q13-narrow-handoff-v1",
+  "owner": "meta-a",
+  "scope": "READ_ONLY_CONCURRENT_MAIN_PUBLICATION_HOLD_RECONCILIATION",
+  "status": "INTENTIONAL_PUBLICATION_HOLD_CONFIRMED_SEMANTIC_CORRECTION_RETAINED",
+  "latestMain": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "sourceOrdinal": 13,
+  "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+  "finding": "latest main의 M1-07/SOLID는 의미 재판정이나 교정안 철회가 아니다. 이미 확정한 M1-05/POSITION 교정안과 공용 metadata·identity·runtime의 게시 일관성을 맞추지 못해 5개 source 필드만 의도적으로 보류한 상태다.",
+  "publicationEvidence": {
+    "holdStatus": "SEMANTIC_CORRECTION_CONFIRMED_PUBLICATION_DEFERRED",
+    "responsibleRole": "COORDINATOR_ONLY",
+    "mainSourceBlob": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+    "mainSourceSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
+    "integrationBranch": "review/m1-s2-meta-full-20261114",
+    "branchSourceBlob": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+    "branchSourceSha256": "5da677cd437571b6ef94f7cdacf7dad56be667ad950bab482e50d8e3b873618d",
+    "branchIsExactReviewedCorrectionSnapshot": true,
+    "reviewedCorrectionCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+    "fieldDifferences": [
+      {
+        "ordinal": 13,
+        "field": "subUnitKey",
+        "latestMain": "M1-07-SOLID_FIGURE",
+        "integrationBranch": "M1-05-POSITION_RELATION"
+      },
+      {
+        "ordinal": 13,
+        "field": "standardUnit",
+        "latestMain": "입체도형의 성질",
+        "integrationBranch": "기본도형"
+      },
+      {
+        "ordinal": 13,
+        "field": "standardUnitOrder",
+        "latestMain": 7,
+        "integrationBranch": 5
+      },
+      {
+        "ordinal": 13,
+        "field": "subUnit",
+        "latestMain": "입체도형",
+        "integrationBranch": "위치 관계"
+      },
+      {
+        "ordinal": 13,
+        "field": "standardUnitKey",
+        "latestMain": "M1-07",
+        "integrationBranch": "M1-05"
+      }
+    ],
+    "allOtherQuestionFieldsEqual": true,
+    "protectedPayloadChanges": 0,
+    "otherThreeChangedScopeSourcesByteEqual": true
+  },
+  "retainedSemanticDecision": {
+    "topic": "공간 직선·평면 위치관계",
+    "primaryMethod": "공간 직선·평면 위치관계",
+    "decisiveStep": "오각기둥을 소재로 모서리끼리 만남·평행·꼬임 및 모서리와 면 관계를 판정한다. 다면체 모양/측정이 primary가 아니다.",
+    "correctParent": {
+      "standardUnitKey": "M1-05",
+      "standardUnit": "기본도형",
+      "standardUnitOrder": 5,
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "subUnit": "위치 관계"
+    },
+    "disposition": "GAP",
+    "gapType": "RPM_LEAF_GAP",
+    "gapMeaning": "공간 직선·직선의 꼬임·평행을 포함하는 exact RPM leaf 공백이며 의미 미판정이 아니다.",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+    "integrationPattern": "NONE",
+    "existingActiveTypeAndDesiredBindingConfirmedByPriorReview": {
+      "activePT": true,
+      "activeTPL": true,
+      "parentMatches": true,
+      "exactProposedBinding": true,
+      "matchingOwnerPacks": [
+        "MIDDLE1"
+      ]
+    },
+    "independentReviewConclusion": "오각기둥은 주어진 소재이고 목표가 모서리/평면의 위치관계 판정이라는 점을 정확히 구별했다. 꼬인 위치·평행·수직 방법이 보기 판정의 결정 단계를 덮으며 인용이 해당 현재 해설과 일치한다.",
+    "fourSlotAndDifficultySemanticReviewRetained": true
+  },
+  "recordedPublicationBlocker": {
+    "historicalCiRun": 43533869947,
+    "historicalCiJob": 132258033470,
+    "test": "tests/archive2-unified-units.test.js:137",
+    "runtimeClassification": "RPM22-M1-L1-07",
+    "correctedSourceExpectedClassification": "RPM22-M1-L1-05",
+    "comparisonBefore": {
+      "compared": 95,
+      "mismatch": 1
+    },
+    "comparisonAfterHold": {
+      "compared": 95,
+      "mismatch": 0
+    },
+    "officialRouteLimitsAtB01ACloseout": [
+      "native-v2 requires all 24 items; Q4/Q20/Q21 have separate exact-binding gaps",
+      "basic-scope-rebind permits only fingerprint rebinding",
+      "AutoMeta first fails old identity fingerprint and then missing binding L1/L2",
+      "EXISTING_TARGET_UPDATE requires separate whole-exam R1/R2/R3 proof and is not dispatched by current PR/main inbox"
+    ],
+    "notANewTypeOrBindingProblem": true,
+    "currentRouteOrCiReexecutionPerformed": false
+  },
+  "coordinatorHandoff": {
+    "decisionBoundary": "올바른 의미 parent M1-05/POSITION과 main의 게시 보류를 구별한다. 최신 main의 보류된 M1-07을 의미상 정답으로 채택하거나 우리 branch의 교정안이 운영 반영까지 완료됐다고 표시하지 않는다.",
+    "nextAction": "Root가 기존 Q13 의미·독립·보류 근거를 재사용하여 공식 evidence-bound parent/fingerprint 전환으로 metadata·identity·runtime을 함께 맞추고, 변경하지 않은 unified consistency 검사를 통과시킨 후 5개 게시 필드를 적용한다. 전환을 수행하지 않는 마감이라면 source 교정 후보와 게시 보류1건을 별도로 인계한다.",
+    "completedReviewToRetain": "기존95문항 및 Q13 수학·4칸 의미 검토를 다시 시작할 필요가 없다. 현재 전체 메타 작업의 다른 시험지 결과와도 구별한다."
+  },
+  "evidenceReferences": [
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/q13-parent-publication-hold.json",
+      "blob": "95a870e0a21cb0812206dc30106c452070e38343",
+      "sha256": "29058c14d7cf4c20de82b068c782ba44cd2f28c15f287f965cd05e7b570f2dd9"
+    },
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/q13-publication-consistency-verification.json",
+      "blob": "93560c523f75ae391dade622389803ab3ba64846",
+      "sha256": "31a4db0807cc16d61587462c3bb6472628813ac264447f28b0850b180ea83792"
+    },
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/a1-publication-hold-audit.json",
+      "blob": "fa4192a6fc59227e6b79f688671e4286906ccbe7",
+      "sha256": "495e02f631966436e382e814d9d2e7fc82968b77c58370843d505a0458838802"
+    },
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json",
+      "blob": "95d04d6e01d098255b4dab07b4287f02bad766b9",
+      "sha256": "b78210028cdfc9cbfa519bae9c00821ba0c077f4af9412ad06b8e475bbfbad27"
+    },
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/a1-cross-exam3.json",
+      "blob": "1e6bed1f1697500198770eb55a7d291dfd8d2fc0",
+      "sha256": "1184e03cd3a371fdad1fa0490441155c9bd7a835668dd9cef2cd7516fa85f770"
+    },
+    {
+      "commit": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+      "path": "docs/operations/m1-s2-meta-b01-a-20261114/root-exam3.applied.json",
+      "blob": "b4c4411253b0bbe657508257728cf35f702bd6a7",
+      "sha256": "f37c7b45626699a9468e5619c576f08cb8dea3acd69ee7010d8b5c764e155700"
+    }
+  ],
+  "rootComparisonReference": {
+    "path": "/workspace/scratch/64695b8ede31/root-review/latest-main-comparison.json",
+    "sha256": "aba6260171e417ea67c9b08cfc4563abc0140b1678b4c2b4dfb310430bf6f089"
+  },
+  "reviewerActions": {
+    "sourceModified": false,
+    "mainModified": false,
+    "sharedCheckoutOrIndexModified": false,
+    "canonicalRegistryModified": false,
+    "mathReReviewPerformed": false,
+    "testOrGateModified": false
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m1s2-final-handoff-independent-consistency-v1",
+  "reviewer": "/root/meta_c",
+  "scope": "READ_ONLY_FINAL_RECORD_CONSISTENCY_NOT_NEW_MATH_OR_METADATA_REVIEW",
+  "inputFiles": [
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/progress.json",
+      "sha256": "6f0a153cc0c5b47b7b6e41646194510a4222a1a9a97a1a9a45b6974e7a6cd5a3"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/verification.json",
+      "sha256": "e400c8942585d59351f59c9e909e1faef6ac0708fb49b76d5d869ab220920513"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/HANDOFF.md",
+      "sha256": "bc3fd7c82d6ad950baf77aa6cefb9400f200e091f9229d7aace8aa121801f389"
+    },
+    {
+      "path": "docs/operations/m1-s2-meta-full-20261114/proposals/index.json",
+      "sha256": "b3d7f47bdc306bbb5e1a0294308a5fda1415e5ca7bff9ee7e151d8097bf7c49c"
+    }
+  ],
+  "checks": {
+    "exams": 32,
+    "uniqueUids": 761,
+    "disjointCounts": {
+      "NEW_REVIEW_READY": 62,
+      "REUSED_REVIEW_READY": 9,
+      "OTHER_OWNER_IN_PROGRESS": 0,
+      "SEMANTIC_UNJUDGED": 1,
+      "COMMON_REGISTRATION_PENDING": 689
+    },
+    "unresolvedUids": [
+      "qid_v1_378417836e32662281c15dd16fae018a76dfb486b235ebe1d91c4a6041f4f3fc"
+    ],
+    "origin": {
+      "newExams": 20,
+      "newItems": 476,
+      "reusedExams": 12,
+      "reusedItems": 285
+    },
+    "sourceChanged": {
+      "files": 29,
+      "items": 615
+    },
+    "topicGroups": 346,
+    "sourceBlobAndShaChecks": 32,
+    "compactSourceAndOrdinalChecks": 32,
+    "independent": {
+      "basicExpandedSlots": 101,
+      "newUniqueUnion": 132,
+      "difficultyExceptions": 97
+    },
+    "proposalRecords": 263,
+    "proposalSupportingUids": 299,
+    "shaReferencesChecked": 68,
+    "localReferencesChecked": 77,
+    "sharedRegistryChangedFiles": 0,
+    "examReviewFinalSourceChecks": 32,
+    "firstLevelEvidenceShaChecks": 650,
+    "firstLevelImageByteShaAndBlobChecks": 590,
+    "unresolvedCompletionLanguage": {
+      "semanticDecided": 760,
+      "semanticUnjudged": 1,
+      "globalQualityPassClaim": false,
+      "handoffExplicitlyPreservesHold": true,
+      "onlyUnjudgedExam": "25_왕운중_2학기_기말_중1_기출",
+      "onlyUnjudgedOrdinal": 23
+    },
+    "sparseCheckoutReferencesVerifiedFromGit": 590
+  },
+  "findings": [],
+  "limitations": [
+    "No Google Drive remote fetch repeated; local compact/progress fileId and raw SHA identity checked.",
+    "Input reviewed at current draft bytes; final commit identity is root handoff responsibility.",
+    "No mathematical answers or content quality re-evaluation performed."
+  ],
+  "inputFilesStable": true,
+  "status": "NO_INCONSISTENCY_FOUND_IN_SCOPED_CHECKS"
+}

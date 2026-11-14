@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "/root/meta_b",
+  "author": "/root/meta_a",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+  "sampled": [
+    12,
+    20,
+    23
+  ],
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_THEN_ORIGINAL_PNG20_23_THEN_AUTHOR_SLOTS_REGISTRY",
+  "scope": "FULL_METADATA_SEMANTICS_THREE_SAMPLES_NOT_R1_R2",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+      "blob": "1c8c41c3150e0eafcf43902d78d3d5ec5857b0a4",
+      "sha256": "58885d2230b2f74569616c753e59d5ed233a8a23fa216fb9f68e9ab0d59cf0a0"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+      "sha256": "4425685a960ec7a6142c80304307b3628c184d2d6018c4c42f80c5c0ee22da2c"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_왕운중_2학기_중간_중1_기출/review.json",
+      "sha256": "32e681cf538adda77c6bd82ae4d14e4543cf81c6e35f4789b489e7fa1e1e617b"
+    }
+  },
+  "figures": [
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/wangun24-q20.png",
+      "sha256": "5a489dcf27bc45be6a29914fc45bc607430ffe2b69635a15299fd08b2f1df895",
+      "actualView": true
+    },
+    {
+      "ordinal": 23,
+      "path": "/workspace/scratch/64695b8ede31/agent-b/cross/images/wangun24-q23.png",
+      "sha256": "af3f1d97d59b138f785e46b51cc4ef4b852ac81b9ae5c59cb5cfb9f3ae98a926",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 12,
+      "verdict": "ACCEPT",
+      "meaning": "이등변삼각형 둘레를 밑변의 함수로 쓰고 밑변<두같은변의합, 두자리자연수, 짝수성, 서로다름을 교차하여 한 변수 후보를 열거한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "삼각부등식과 정수 조건으로 한 변수를 제한하는 표준 조건 통합이다. 세 변이 모두 자유로운 다중 분기보다 부담이 작아3. 기존상은 인접 차이로 보존한다."
+      },
+      "native": "정확한삼각형 존재 조건과 자연수 둘레 enumeration 골격이다. 사전76을 쓰지 않고 삼각형의세변조건 후보를 사용한 처리가 정확하다.",
+      "fourSlot": "둘레·이등변삼각형 / 개수 / 삼각형세변조건·부등식·짝수·열거 / 자연수·두자리·서로다름 조건을 확인.",
+      "questionUid": "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
+      "QBODY": "811879dedb97ab2cb87f65759173f51aa37390412a2d33ee63d6c6d80e81dabf",
+      "QFULL": "5aa95417cc9bceb560905dbcb45e5fcb8aed7ee8280654b4ef5591c1c7320472"
+    },
+    {
+      "ordinal": 20,
+      "verdict": "ACCEPT_STRONG_CONFLICT_REASSESSMENT",
+      "meaning": "보이는 낮은 세 계급의 도수만 합하여 전체50명에 대한10% 진술을 판단한다. 그래프의 가려진 부분은 실제 해설에서 복원하지 않는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 2,
+        "compatibility": "STRONG_CONFLICT",
+        "reason": "보이는도수 합계와 백분율의 표준 두 단계이며 가려진 자료의 추론이나 경우분기가 없어2가 타당하다. 역사적상은 유지하고 강한 차이를 독립재검으로 수용."
+      },
+      "native": "MISSING_FREQUENCY→FREQUENCY_AUDIT 교정과 primary만으로완결하는NONE 지지. 실제 목표진술의 누적구간과 비율계산을 읽은 판정이다.",
+      "fourSlot": "요청한3만원미만 범위조건을 선택지 직접인용으로 추가했음을 확인.",
+      "questionUid": "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
+      "QBODY": "c5d1f1ca54d86e943770ac11250cfff1ceddd326d810a719a8fbae3a4431cb7a",
+      "QFULL": "536e030bfe9e6734e77b91f3262319be6dfe2114c691fb76b79e9e313c4e26a8"
+    },
+    {
+      "ordinal": 23,
+      "verdict": "ACCEPT_NEW_TEMPLATE_UNDER_EXISTING_PT",
+      "meaning": "직각과 한 예각으로 두 끝각을 구해 ASA 합동을 증명하고 대응변 길이를 옮겨 두 선분의 차를 구한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "compatibility": "NORMAL",
+        "reason": "두 삼각형의 대응을 잡고 합동증명에서 길이차로 연결하는 표준 전략 선택이다."
+      },
+      "native": "M1 실제해설은 ASA이며 RHA를 강제할 이유가 없다. 기존거리측정SAS/대응순서TPL과는 ASA증명→두대응변→선분차의구체적골격이다. 기존CONGRUENCE_DATA_TRANSFER 아래 신규TPL 제안 수용.",
+      "fourSlot": "내각합·합동조건·대응변·차 방법이 실제 단계를 포괄하고 합동이유를 goal에 추가한 보완 확인.",
+      "questionUid": "qid_v1_62c74ba8158bc2ebaf42fd4c2914976b6e9eeedb9ceb4aa1073a7e780ee56f63",
+      "QBODY": "a63043b88729925c54d2c2a1b589a954f86b12e3bab205539ae6a08f6266991b",
+      "QFULL": "26a4ee1cb7dc9adb42da1cf8b8f6524fd4030f15d505edfdc4c3f6806ca14e45"
+    }
+  ],
+  "revision": 2,
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_PARENT_SAME_SLOT_TECHNICAL_READBACK",
+      "sourceBytesUnchanged": true,
+      "semanticRejudgment": false,
+      "existingIndependentVerdictsRetained": true,
+      "checks": [
+        {
+          "ordinal": 9,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "$2+4<7$",
+          "pass": true
+        },
+        {
+          "ordinal": 11,
+          "slot": "method",
+          "candidate": "컴퍼스",
+          "addedParent": "작도",
+          "dictionaryId": 134,
+          "src": "solution",
+          "quote": "컴퍼스는",
+          "pass": true
+        },
+        {
+          "ordinal": 12,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "$b<2a$",
+          "pass": true
+        },
+        {
+          "ordinal": 13,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$180^\\circ-60^\\circ-70^\\circ=50^\\circ$",
+          "pass": true
+        },
+        {
+          "ordinal": 23,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "$\\angle ACB=180^\\circ-90^\\circ-31^\\circ",
+          "pass": true
+        }
+      ],
+      "quoteValidation": {
+        "count": 167,
+        "fail": 0
+      },
+      "latestInputs": {
+        "source": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+          "blob": "1c8c41c3150e0eafcf43902d78d3d5ec5857b0a4",
+          "sha256": "58885d2230b2f74569616c753e59d5ed233a8a23fa216fb9f68e9ab0d59cf0a0"
+        },
+        "raw": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+          "sha256": "661f6ec92fc415628e75fbfa22e008e759c8082f580d60be835dc29e79386817"
+        },
+        "review": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/24_왕운중_2학기_중간_중1_기출/review.json",
+          "sha256": "fc8328b5ec080fe5ffb9a0f932f9c785560447d0b03866252d8de45f3890abba"
+        },
+        "compact": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.4slot.json",
+          "sha256": "bd36e0c587f25062cd99c52cf21c5e03f4b798bba0bdb1a61dc264e167390a5e"
+        }
+      },
+      "note": "후보와 사전 부모가 같은 슬롯·같은 직접 quote로 유지됨을 실제 raw/source에서 확인했다."
+    }
+  ]
+}
