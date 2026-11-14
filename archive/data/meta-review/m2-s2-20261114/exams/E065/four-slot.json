@@ -1,0 +1,2001 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "eda9ac1a03af4bb27ebeb5c606dcbed39fe13b7e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e5d6b3f7dac6f3f0bb1a44731bcc02671833f0c261f7581a11c746e9be7b7a15",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_43adf8e833d0d7c790e032c373c20c1ff581fe5b40e3feaefbe772191b619391",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "25eddac7cbb267b727bd28f24bcb3d997fe9255349d4a956ccb0efa8322bc2b6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1343eae17f748858aa981856cde95c255fa753dddba136dce9145a44b59bd6d"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "0685421943013e2018a188d72546bf4fc346e926ec6ab03add80bad3094344f0"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABC}$"
+          },
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "그 이유를 설명하는 과정"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "적당하지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선을 그어",
+            "evidenceType": "IMPLIED",
+            "justification": "꼭지각을 같게 나누고 두 작은 삼각형의 세 번째 각도 맞춘다."
+          },
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "그 양 끝 각의 크기가 각각 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "본문이 안내한 공통변 AD와 그 양끝각은 ASA이며 SAS와 구별한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{B} = \\angle \\text{C}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "이등분한 꼭지각과 같은 밑각에서 나머지 각도 같음을 확인하고 공통변 AD 양끝각으로 ASA를 선택한다.",
+      "reasons": {
+        "review": "증명 단계가 빈칸과 문장으로 주어져 있어 정형 합동조건을 대조하는2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "5c11b9839adfb31e6c3e8e28ce8150708b11ab4e7966423218fa5b8e5c6caf64",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_1572c2d1ac0b4fa51e31da38639a0ef12bc401f300d77b23dfa1d76c93540ad1",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "be6441aec8bb970e07c30a51d45e2de598fcc0a485ac60bcef164851c9de4f48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9cd870cd6af995eed5212fde40957a634aedcaf2f67f29e197acf263361a2970"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "dbb460050571718d14be0a7ce8cc98386a089641ba525c508628730636b323e9"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}}=\\overline{\\text{BD}}=\\overline{\\text{BC}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$x$를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}}=\\overline{\\text{BD}}=\\overline{\\text{BC}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 두 이등변삼각형의 같은 밑각을 x로 연쇄한다."
+          },
+          {
+            "term": "외각",
+            "src": "stem",
+            "quote": "$\\angle \\text{CBE} = 78^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "B의 외각78도를 두 등변각의 관계로3x와 연결한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{CBE} = 78^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AD=BD와BD=BC의 두 등변각을 x로 이어 외각78도가3x임을 얻는다.",
+      "reasons": {
+        "review": "두 등변 관계와 한 직선의 각을 주어진 그림에서 순차 적용하는 정형2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "cbb9e8d7c573096794bc3501b014f33a54261078ecf38bf05807375dd5bd7595",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_2abc1414b5ff2cc81c9a463df59c283640648944e2304e56553b7f6556bd1eeb",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4170260856e9057ab48281a6f380e94a20dac79ad0cedd8d7457604233a7b63"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6104dd6a3c2942a6458e8c86672174f5fa98226671beda8d8c743550ed74f2e9"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "6a913937f30d3ff92a96d5b5d7ace4f065c88c6dae719ee736e5fefa560c7f18"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{B}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AE}}=\\overline{\\text{AC}}",
+            "evidenceType": "IMPLIED",
+            "justification": "공통빗변 AD와 같은 변 AE,AC로 RHS 합동을 판정한다."
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle \\text{ADE} = 60^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "대응각과 내각합으로 A의 각과 B를 보완한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "\\overline{\\text{AB}} \\perp \\overline{\\text{DE}}"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle \\text{ADE} = 60^\\circ"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "공통 AD와AE=AC로 ADE와ADC를 합동시켜 A의 두 반각을 구하고 B를 보완한다.",
+      "reasons": {
+        "review": "그려진 두 직각삼각형의 RHS와 내각합을 직접 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "713ecac4b196d650bf4334f2ad27ab25e5aa3753c5b0d3bd30093eea42eed01e",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2165283c2491985e91b8b93b25973a1d93499155439d48cbd1dc938e6e0e2f97",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3c41ab6659d1532208f7d758ec7e6c97774301906bf3d1c46debdd121e32b86c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dd08574ddc8a0a167b2a5e17d2487b6cf82d6a2e5522535c0a654d995909566b"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "56fb65daf4f08282506e0a60c89b5ec8ccdb21d889d57f746b27f90b0021c5a5"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $\\text{ABC}$"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABC}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "이등분선이",
+            "evidenceType": "IMPLIED",
+            "justification": "D에서 두 각변 AB,AC까지의 수선거리 같음을 사용한다."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 DC3을 두 부분삼각형의 공통높이로 사용하여 넓이를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}}$와 만나는 점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "D에서AB에 내린 수선길이가 DC=3임을 써 두 부분삼각형 넓이의 합을 구한다.",
+      "reasons": {
+        "review": "명시된 각이등분선의 등거리 성질을 두 삼각형의 공통높이로 옮기는 표준2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "022d14bf2d3ebb46559fd8319ec80cfe5363ce1b30b859dcfa096fb707ca366e",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_c3f789adc8a5607f2989d767d4b24a14d98ad16053378c1d90714c1ad60419fb",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "72451fa182ec225a4db240521c045bd05b25d7f2eeef9bd92de5f8a44a98c91e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0db26dc8dcd4adfe9a81347b05581a24379cc20932c0f2b4142a5d0cffe62881"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "206c4225f905032607bf6b5a95fda61a73518e04b39a4daabab91ea333695b34"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "내심일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의40도·30도를 두 내각의 반각으로 해석한다."
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 세 반각의 합90도로 나머지 반각을 보완한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "그림의40도·30도가 두 내각의 절반이므로 남은 반각을90도에서 보완한다.",
+      "reasons": {
+        "review": "내심의 각이등분을 큰 삼각형 내각합에 옮기는 기본 연결이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "876f0a3857989eb9f7d25ffde7851712153fd685af9cd08058d485d834065f66",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d99764b0254e4c80e44924fee7021b5564e9dcfe5c6609b500dfc4be45884107",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "87e56172a15a808a0bd147b01670b59cf1b48dedfa9d6018b2b55cdce447d520"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "58380718448e43b33eaa53113e00b8c286545da5f6d75d5017a10f0ea0f21cbd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "7fcfe23d022811ab6d3b319094f3deef1edb7a2a7782979c1868e40b633002cd"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "외심일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "OB=OC인 반지름의 등변각으로 그림의26도를 C로 옮긴다."
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "외심일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "중심각BOC를 구하고 그 절반인 맞은편 A각을 얻는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "OB=OC로 밑각26도를 옮겨 중심각 BOC를 구하고 맞은편 A각을 반으로 구한다.",
+      "reasons": {
+        "review": "반지름의 등변과 중심각 관계를 직접 연결한다. 추가37도는 이 경로에 필요하지 않다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "bece4ac657e81f4e80b285248c4d5d3f224a42d16f9529bab85f12f8c7c8dd87",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_03a07374b610bb3e7055a2801da2f2494b5d265a7f22158583ae9124fe328d1f",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b79f5bec78e82fb4b4a16ba1ce608d82d96ad5730118758d29bce0ae23991112"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e05b2f1b72ae69f4d541e234cb248636384d6e4e9542cc24151ad5fe92253774"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "0240475502444da97c3e9628638902495c21f3c420fd536cb546d900ca01dfaa"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심을"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "stem",
+            "quote": "외심을",
+            "evidenceType": "IMPLIED",
+            "justification": "세 꼭짓점 등거리와 세 변까지 수선거리를 구별한다."
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "각 변의 중점",
+            "evidenceType": "IMPLIED",
+            "justification": "변중점이 일반적으로 내심의 수선발은 아님을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "각 변의 중점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "외심의 꼭짓점 등거리와 내심의 변까지 수선거리를 구별하며 임의 중점까지 거리를 같다고 하지 않는다.",
+      "reasons": {
+        "review": "두 중심의 정의를 보기에 직접 적용하는1이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "ae46b12228944f0e65cf83a1caa501a9ae16f4758cb2954ab23fb0d380497657",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_90f46f052b68304a09585b581b0e5fd5dd69e48c9275d48aece39bb5530edc99",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "45d801b1f58ef116cbeb3a2470a7ce67d375fa8a1e1d2faf83d1cc0151e90d85"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "daf8a5d59e49144942dd7a57f3ec1b5fc996f425d03a2317b4250096f2e6448e"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "364b9e6bedccb00b15beeb8af7197d5cbbdc2a87bb65d6ea6ea744597c6f5e5c"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "내접원의 반지름"
+          }
+        ],
+        "method": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "내접원의 반지름",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에 주어진 직각변6,8·빗변10에 직각삼각형 내접반지름 r=(a+b-c)/2를 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심을"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "직각변6,8과 빗변10에 r=(a+b-c)/2를 적용한다.",
+      "reasons": {
+        "review": "직각삼각형 내접반지름의 표준 관계에 세 길이를 직접 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "0aa6c5c2419769981435b0975e1309c2f13d3fdca0274e206b96086d13a40107",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_76d25a86cf21af73d686f790ba933edab3cc2404a2188d93f338c55a08c72278",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9900b7e96650528447137c7d323a9a37b0dcfa4d4160b3934ac1e50afdd32268"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eb6a89a74a724bb76d1f3387d850ca49ebd960e5f4d2324318f39abf9a029787"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "9a7e33a47774064a5c3714be8df57eabcc077aa27ea45a4934b837bb42d56a97"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이고"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{BOC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "내심이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내심각90+A/2를 역산하여 A를 얻는다."
+          },
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "외심이고",
+            "evidenceType": "IMPLIED",
+            "justification": "복원한 A의 두 배인 중심각을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{BIC} = 130^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "BIC=90+A/2로 A를 복원한 뒤 BOC=2A를 적용한다.",
+      "reasons": {
+        "review": "두 중심의 표준 각관계를 순서대로 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "d239d73549874148a4ea5471560ef38353db30313b70fecd3719d6cbf0fcdeea",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_3a500f724966fe84521029dec759c45c786854bddaa0b42ecf9219d5d495dcf6",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "713c20078f2000e816d168e4f59933810cc513c4eed7b8a6b344369517d312c0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9bc78f21e9906a84bd9355bd6afb084474d515584a0d7c7f57f6156b2ad99d94"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "57c3307a627e50cc9858d4330b9d3581b52012db6069eb49e055ce6be04a13a7"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 연장선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "대각선 $\\text{AC}$에 내린 수선",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 그림에서 BF와DE는 같은 직선에 수직이므로 서로 평행하다."
+          },
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "평행사변형",
+            "evidenceType": "IMPLIED",
+            "justification": "대변 길이와 평행선의 두 각으로 ABF와CDE를 ASA로 맞춘다."
+          },
+          {
+            "term": "대응각",
+            "src": "stem",
+            "quote": "옳지 않은 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "합동의 대응순서에 맞지 않게 옮긴 각을 고른다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 연장선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "그림의 BF와DE가 같은 대각선에 수직이므로 평행임을 써 ABF와CDE의 ASA 및 대응 요소를 비교한다.",
+      "reasons": {
+        "review": "표준 평행·대변·합동 대응에서 잘못 옮긴 각을 찾아내는2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "76356527e2858a4c2e4bebe51142de2c7c14da0713d7f1c2f58d7776d27aeb7f",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_5584f35bba286c5a3cb154879984321b0cebe6835848445839f9ef0e5c5402b6",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bfc38d8be13faaa8d19b1d6d03b3d7827341839eff5126a7bc25f0090e2d54ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "761194b1c427be8ba529c04f63480c7c5c15a3685577a3f55747213261bcd918"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "c7953c5a0f5f93a5b2bfd6667a1969fdd117af95abb09ac763f89743f2669ef4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{B}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "평각",
+            "src": "stem",
+            "quote": "평행사변형",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃하는 두 내각 합180도를 사용한다."
+          },
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "$2\\angle \\text{B} = \\angle \\text{A} + 30^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "A=180-B를 대입해 B에 관한 일차방정식을 푼다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "$2\\angle \\text{B} = \\angle \\text{A} + 30^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "A+B=180과 주어진2B=A+30을 결합해 B의 일차방정식을 세운다.",
+      "reasons": {
+        "review": "이웃각의 보각성과 주어진 식을 한 번 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "0bae8b8d8ad500b2ae2e0e79729effb1b154237007490bbf938bd6c5758adc02",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_2e874ac20a4d4f6942d32ac51c2ee6d4417e0bb67a3c5fe0ad629cbd86082793",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1149ed765f7eeb90e99c2b39de2cef00cde6619f33222a4f4acd6766e07b4e12"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "640332ad4d5dca609f352f11dd58b5e1c8b726a22cfc20e4c1ef14da8232b9f2"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "1c0a796fb668be9877d2548d89f933b2104076c7d9fa49f857366d00d071bce3"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square \\text{ABCD}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "교점 $\\text{O}$를 지난다",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 이등분과 평행선의 각으로 ODP와OBQ의 합동을 얻는다."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ODP} = 15\\text{ cm}^2, \\triangle \\text{OCQ} = 30\\text{ cm}^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "옮긴 두 넓이로 OBC를 얻은 뒤 대각선의 네 등넓이 분할을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점 $\\text{O}$를 지난다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "ODP와OBQ의 합동으로 작은 넓이를 옮겨 OBC의 넓이를 구하고 대각선의 네 등넓이를 이용한다.",
+      "reasons": {
+        "review": "대각선 중심과 주어진 횡단선에서 표준 대칭·등넓이를 차례로 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "16e1785049f0f2c102067a0a10c02b99c4aaf598f8e01b8404631cdb699a2589",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_989c2b0cc85cce07c92e2178516dc5b8def67a8b8a3f6c65210a7d978241e621",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "84acffb1bbf4bc79551850d184f04c707694eebf2a81140d74d98fab73e44195"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7c5d5f193f4ab4c4fe8dae9d353972fd65a42f1aaa3ebd633081d2461d177d21"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "1721785378d4082894b12b07fa6e78d1dba8b34a2255d86002dd507aea90942c"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "내부에 있는 한 점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{PH}}+\\overline{\\text{PF}}$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "각각 평행한 선분",
+            "evidenceType": "IMPLIED",
+            "justification": "두 평행 방향이 만든 부분 평행사변형의 대변 길이를 옮긴다."
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\overline{\\text{PH}}+\\overline{\\text{PF}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 전체9와12에서 부분3과4를 각각 빼고 더한다. 단위 충돌은 sourceHold다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}, \\overline{\\text{AD}}$에 각각 평행"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "부분도형의 대변 등량으로 PH=9-3,PF=12-4를 구해 합한다.",
+      "reasons": {
+        "review": "명시된 두 평행 방향에서 전체와 부분을 대응시켜 두 차를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "5fdad0e5675c41eb871399b4de5b64c98156f19d993e6f93cc000101efc10a41",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9e97e29e22c5ef6dfa1fe87a9145ec59a2cf6e8bee436ae79d194590ed8daa2b",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "79ef85eb1c0540cc229f8421c1823a09d22cf6c0e2687f207d76a1e505bb62cd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ed8db06449f991439cdeeb4132d7c735d582f7599229bbe76c31aa6b874e8d8e"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "2e8e937e9fd94de59161f16eb3678676721c1c6e4d1641ab21498882fdda56df"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AC}}=\\overline{\\text{BD}}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "무엇을 확인하기 위해서인지"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AC}}=\\overline{\\text{BD}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "문틀의 대변이 같거나 평행하다는 전제를 추가할 경우 같은 대각선은 직사각형의 충분조건이다. 현 발문에 그 기초 전제가 없어 조건부 후보이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AC}}=\\overline{\\text{BD}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "대변이 같거나 평행한 틀이라는 기초 전제가 주어져야 같은 대각선으로 네 직각을 확인할 수 있다.",
+      "reasons": {
+        "review": "그 전제가 복원되는 경우에는 직사각형 충분조건 직접형1이다."
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "sourceHold": {
+          "status": "PARALLELOGRAM_FRAME_PREMISE_NOT_STATED",
+          "reason": "발문은 문짝 대각선의 길이가 같은지 검사하는 목적을 묻지만 문틀의 대변이 같거나 평행하다는 기초 전제를 명시하지 않는다. 같은 대각선만으로 일반 사각형의 네 직각은 보장되지 않는다."
+        },
+        "methodCandidateOnly": true
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "difficultyBucket",
+        "level",
+        "sourceFramePremise",
+        "primaryMethodConfirmation"
+      ]
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "539a75a9510a4e451891c62c0b499f3ecbf3c0ba68fd42dd25a5dc91415bb069",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_180bfbe5ffc2354610968090b0ad77cee10887acf49c4efba4925f9802fc270f",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "385cc25c88a2458d672704d7199529f9ed48aa99094a239ec0eda3a6cf512a7b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68520ed2b7aabea9032be92a8715b572225d7b20cf433ff8f20995877d0bf963"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "55f5df2854a892418ce99b13c70f06f5e0efaf0805dc6428a6e0d55507ca5aa0"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "마름모일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "실제 x는 대각선 교점의 직각이므로90도이다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "마름모일 때",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 ADB에서 같은 변 AB=AD로 y가 주어진30도와 같다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "대각선 교점의 x는90도이며 같은 두 변의 밑각으로 y를 주어진30도와 같게 놓아 합한다.",
+      "reasons": {
+        "review": "대각선의 수직성과 이등변 밑각을 두 목표에 각각 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "0cb00cf4327890ba2404e82a8c861c32179d65423ac3204c58463ecd28e9d02e",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_69475d6affb6a2467e7ba3b6f2c63741c6eba49395f6feedd8de40adc2aeb97c",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "597aefd3e0117cd1145b7e29bb5aeade986dc70f3d19c64cfaeb508543775907"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f30d0ba7c9c994570577c594fd688497f6de3466ccbf27312673a66c2c676d9"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "choices",
+            "quote": "사각형은"
+          },
+          {
+            "term": "중점",
+            "src": "choices",
+            "quote": "중점을 차례로 연결"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "옳지 않은 것은",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선이 수직이등분하는 조건은 일반적으로 마름모를 정한다."
+          },
+          {
+            "term": "중점연결정리",
+            "src": "choices",
+            "quote": "중점을 차례로 연결",
+            "evidenceType": "IMPLIED",
+            "justification": "중점연결선이 원사각형 대각선에 평행하고 절반이라는 관계를 써 만들어진 사각형을 판정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "대각선",
+            "src": "choices",
+            "quote": "두 대각선이 서로 다른 것을 수직이등분"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "수직이등분 대각선의 마름모 조건을 구별하고 중점연결로 만들어지는 변이 원대각선의 절반·평행임을 사용한다.",
+      "reasons": {
+        "review": "사각형의 기본 판정과 표준 중점연결 관계를 진술에 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "69c91e0de3d9169537fd0040d4435cd8beaee76faa94b2a253cedfb21fca311d",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_36a5f7a3e436c98392f7dcc020423963e374a06036659f697b072cef8355f6df",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e338e90f135b8abd316a9469459d355688708470df437117da288f88ba168f52"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e9a18d03fe6924381a7225cdad47f349a68dcd78408a3c5d840f48272400258c"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "97003ad43e011209da616ae9b8fff8cc7710210fb13ca22a912b323a09cc979f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "마름모가 되기 위한"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모가 되기 위한",
+            "evidenceType": "IMPLIED",
+            "justification": "이웃변 같음과 대각선 수직의 충분조건을 그대로 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "choices",
+            "quote": "$\\overline{\\text{AB}} = \\overline{\\text{AD}}$"
+          },
+          {
+            "term": "수선",
+            "src": "choices",
+            "quote": "$\\overline{\\text{AC}} \\perp \\overline{\\text{BD}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "이웃한 두 변이 같거나 두 대각선이 수직인 조건을 직사각형 조건과 구별한다.",
+      "reasons": {
+        "review": "마름모의 표준 충분조건을 그대로 고르는1이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "e533157a37c887c2babc1ff7bfdd2c20ffa1cd578e8484b42f00735933fed738",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_48696e6e0ad4573baf05729b776c291e12c05acd99f1fe179da5a3e7cecddf53",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "963d36026ca2f987ec0a75c01cc3747a9fc4b0d0c71f5637f367ef3b8833c9d6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a026c43bec6fc5da90f81b8c57a418c4cd34867051393e4d9cb13479d3ddd9ea"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "36d8063724537c00bf8758ca6b9f3e6e99b2a2521799292970d4e00a50b6deca"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square \\text{ABCD} = 60\\text{cm}^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square \\text{EBFD}$의 넓이"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등분선이",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선 엇각과 이등분각이 같은 두 각을 만들어 AE=AB와CF=CD를 얻는다."
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\square \\text{EBFD}$의 넓이",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이의 밑변비를 쓰거나 두 작은 삼각형 넓이를 전체에서 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "$\\angle \\text{B}, \\angle \\text{D}$의 이등분선"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}}=6\\text{cm}, \\overline{\\text{BC}}=12\\text{cm}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "평행·이등분각에서 AE=AB,CF=CD를 얻어 양쪽 작은 삼각형을 제외하거나 같은 높이의 내부 밑변비를 쓴다.",
+      "reasons": {
+        "review": "명시된 두 이등분선의 표준 등변 패턴을 넓이비에 옮기는2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "3d7883de13695d9dbbca32ba482c91315815c588d95671807741d8e300dbfebc",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_8a0a6f611a4bf08e5fb2d74bebb3353b6eef60fd5170846df4538e1d7657b415",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6f3ec303ef31590732dc48bc25bff73e26bf8e2820c2f84f72a3537f1c9bc4d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bc0ff7abe6b147db65f2387a46b20c8c10e6559d9352c986a9fafc435be060cf"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "c735476348821ad21523048ee0abd68ce335fab700eb76329ff2768ce350895e"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABC} \\sim \\triangle \\text{DFE}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABC} \\sim \\triangle \\text{DFE}$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 순서에서 AB와DF, AC와DE의 대응을 읽는다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$x$의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 길이2:4를1.5:x에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABC} \\sim \\triangle \\text{DFE}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "ABC와DFE의 주어진 대응으로 AB2와DF4의 비를 AC와DE에 적용한다.",
+      "reasons": {
+        "review": "닮음과 대응순서가 명시되어 있어 비례식에 바로 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "9a25c0af773c1691e42cec9313164a8c8de23a9ee04c749b4156529ff9dea68f",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_f476f5942adedf00ed5d37e52b915ef149e2d8e0d1522031c25b3f6a10abf541",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "efe247775d35bef54b5c3074b8f46fde6ed4e1ca093531f2ba0e319d1996e226"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bfb2e8e2543ae423b25b8c2469db4f05fe739da05cb563cbc19b4b5d65d49f16"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "0503a13c03fc131cd262f76b27e1c898c4303f0a41ddc81f67f411d7702c54fe"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "그림에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{CD}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "$\\angle \\text{B} = \\angle \\text{ADE}$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 등각과 공통 A각으로 ABC와ADE가 AA 닮음이다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$\\overline{\\text{CD}}$의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "대응하는 AB:AD=AC:AE로 전체 AC를 구한다."
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$\\overline{\\text{CD}}$의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 AC에서 주어진 AD를 뺀다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle \\text{B} = \\angle \\text{ADE}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "ABC와ADE의 AA에서 AB:AD=AC:AE를 쓰고 AC에서AD를 빼 CD를 구한다.",
+      "reasons": {
+        "review": "주어진 등각·공통각에 대응비와 전체에서 부분을 빼는 정형 단계를 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "5f82b8edfe03468f06a3c452c89c367a9e8bebfdc32b4a1ab900735a2229fa6b",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_df1aef8243c47ebc16fb6aac1329d5835862d833e8d1575788b2367ad15c6906",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5dc79da690531a57ef4f372492426ee2082118b241638cd0764577098ffa2377"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2daf5a7ad64c2864548f853e4e534c8bdcb98f89cf21742ee855ed92fe1274ff"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "c6856c9f7d32cfcd687b9afc44349eed466fcc47c7030f651de0d0ea328b1e88"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$x$를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "빗변 $\\text{BC}$",
+            "evidenceType": "IMPLIED",
+            "justification": "수선으로 생긴 두 직각삼각형과 큰 삼각형이 AA 닮음이라는 표준 사영 관계를 사용한다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$x$를 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "AB제곱=BH·BC를 이용해 전체 빗변을 구한다."
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$x$를 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 BC에서 BH를 빼 HC를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AB제곱=BH·BC를 AA 닮음에서 얻어 BC를 구하고 BH를 빼 HC를 정한다.",
+      "reasons": {
+        "review": "표준 직각삼각형 사영비례를 한 번 적용하고 부분길이를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "17f068f087ab9796d2be13f8a2b4f9d0a10a06e548a4a61006b4e35a4deef0ff",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ea1410530df2cbb93cd978d4760bb47ba30ee01bceaad9ce2a7606beef240a15",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "ed50770c75a2a92a40df40b3f6ffa13610c315f8fd2213a4ca7aa9a1c6609a92"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}}=2\\overline{\\text{AB}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "대변의 등량과 세 연장부분의 등량으로 AD=DE 및BC=CF인 두 이등변삼각형을 구성한다."
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 꼭지각은 평행사변형의 보각 관계이므로 두 밑각 합을 정한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{EC}}=\\overline{\\text{CD}}=\\overline{\\text{DF}}$"
+          },
+          {
+            "term": "연장선",
+            "src": "stem",
+            "quote": "연장선 위에"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AD=DE와BC=CF인 두 큰 이등변삼각형을 찾아 평행사변형의 보각 관계로 두 밑각 합을 정한다.",
+      "reasons": {
+        "review": "선분배수와 연장배치를 두 다른 이등변삼각형으로 재구성하고 두 각을 결합해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "20e330948899163292b9a93ff4161ded65e09cd2fd80b44c8a907bc252ca71b1",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b6996af7e927deefd9a90bb4b8ef792d4f92d4069d6d8ecff00ad317c36398a2",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "a4506fc9462cc0484161b1273e65ba28d4354957f8fa886b84e4e2ae13feeb49"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "두 직육면체"
+          },
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "두 도형의 닮음비"
+          },
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x+y$"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "닮은 도형을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "stem",
+            "quote": "서로 닮은 도형",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 대응 높이6과8에서 모든 모서리의 같은 비를 정한다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$x+y$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 수평 모서리4와5의 확대길이를 계산한다."
+          },
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "닮은 도형을 모두",
+            "evidenceType": "IMPLIED",
+            "justification": "앞·뒤 대응면의 같은 변비를 비교하여 닮은 면을 찾는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "대응 높이6:8로 x,y를 구하고 같은 변비의 앞·뒤 직사각형 면을 비교한다.",
+      "reasons": {
+        "review": "소문항이 닮음비→대응길이→대응면의 순서를 안내하는 정형2이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "86383c67d7c2e06a233e4d3a0af9064344713dd96045108cb49536623227ae74",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_b84b3f5fc029f2ef952dbc0de33cfeb8ad3a123f7bd3a091a65ae0f3d8a677a5",
+      "format": "소문항 묶음",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "9eb22054164d56d0f337aa6696a9daa1a9a5f2f695968f8b6f8ba43bf59a73fb"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle \\text{ABE}$와 $\\triangle \\text{CDB}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮은 도형임을 설명"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음조건",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}} \\parallel \\overline{\\text{CD}}, \\overline{\\text{AE}} \\parallel \\overline{\\text{BC}}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 평행쌍의 엇각으로 ABE와CDB의 대응각이 같음을 설명한다."
+          },
+          {
+            "term": "비례식",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}}$의 길이",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 BE8과BD12의 비를 AE6과BC에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}} \\parallel \\overline{\\text{CD}}, \\overline{\\text{AE}} \\parallel \\overline{\\text{BC}}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 평행선 쌍으로 ABE와CDB의 대응각을 맞추고 BE:BD=8:12로 BC를 구한다.",
+      "reasons": {
+        "review": "소문항에서 닮음 설명을 먼저 안내한 뒤 대응비를 바로 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "legacyQuestionFingerprint": {
+        "algo": "sha256-utf8",
+        "value": "9fd782c3efae6e8da3cff9ced7d86f388d94d36b7c13f5753dfa28e2504dda03",
+        "note": "Canonical QBODY/QFULL bind raw content=null; legacy question text is additionally bound."
+      },
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_02f46a899127df1c06ea8636d4bb3322e88ee678b63d6475c4ae4e563232c87d",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ca0f698ec3d15576d8a55ee53e7c9f37e140e8b7d8a1d577c4a2a7027434c52d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3410fc0f742045dec7c94aaedc610935cc34e0e98230930a1ae2f2585f9799cd"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "956559f76e4f8b2a39a2cd7e1350190a5d0725e6a6f7c5ec82c283049021dc74"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "두 원뿔"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "두 밑면의 넓이의 비"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "원뿔 (나)의 부피"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "$9:16$",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이비의 제곱근으로 선형 닮음비3:4를 얻는다."
+          },
+          {
+            "term": "부피비",
+            "src": "stem",
+            "quote": "서로 닮은 도형",
+            "evidenceType": "IMPLIED",
+            "justification": "닮음비의 세제곱27:64를 부피54에 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "서로 닮은 도형"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$9:16$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "밑면 넓이비9:16의 제곱근인3:4를 얻고 세제곱 부피비27:64를 적용한다.",
+      "reasons": {
+        "review": "넓이비와 부피비의 서로 다른 거듭제곱을 표준 순서로 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "term": "연장선",
+      "en": "EXTENDED_LINE",
+      "synonyms": [],
+      "kind": "방법",
+      "parent": "직선",
+      "note": "주어진 선분의 방향을 끝점 바깥으로 연장하여 추가 점이나 새 교점을 만드는 직선. E063 연장선 후보와 같은 의미로 재사용한다.",
+      "usedIn": [
+        22
+      ]
+    }
+  ],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}

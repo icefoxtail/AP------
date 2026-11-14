@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E065",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "eda9ac1a03af4bb27ebeb5c606dcbed39fe13b7e",
+  "sourceSha256": "9a7688eea0331d29ef06a8c6305d8f93eef49988060d789550bc5ac8ea599a10",
+  "reviewSha256": "9314fa39f0b262e9e521849b5983359cba9b72c15878f7005b267181843e962b",
+  "fourSlotSha256": "aa94587e568b791688d0b53646807da2479e7f71701a81002b7ea6be8d7241e7",
+  "independentSampleSha256": "5732f17434f4341322524e8a4391423fd99bb7c823b7894033566746c5ed8090",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9e97e29e22c5ef6dfa1fe87a9145ec59a2cf6e8bee436ae79d194590ed8daa2b",
+      "fields": [
+        "difficultyBucket",
+        "level",
+        "sourceFramePremise",
+        "primaryMethodConfirmation"
+      ]
+    }
+  ],
+  "sampleReviewer": "M2_CLOSEOUT_INDEPENDENT",
+  "sampleOrdinals": [
+    4,
+    14,
+    22
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "9314fa39f0b262e9e521849b5983359cba9b72c15878f7005b267181843e962b",
+      "finalReviewSha256": "9314fa39f0b262e9e521849b5983359cba9b72c15878f7005b267181843e962b",
+      "independentSampleSha256": "5732f17434f4341322524e8a4391423fd99bb7c823b7894033566746c5ed8090",
+      "adjudicatedCompatibilityOrdinals": [],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "증명 골격과 이등분된 두 각이 제시되어 공통변을 ASA 조건에 대응하는 2/B23이다. 학습수준 중 후보를 수용한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "AD=BD=BC를 두 이등변삼각형으로 읽고 외각78을 두 밑각 관계와 연결하여 x를 정하는 표준 연쇄 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "직각 두 개와 공통 빗변으로 RHS를 찾은 뒤 대응각을 전체 삼각형에 옮기는 2/B23이다. 새로운 보조선 선택은 없다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "D에서 AB까지의 수선거리를 각이등분선의 등거리로 DC=3에 연결하고 AB·AC를 밑변으로 두 넓이를 합하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "내심이 만든 40도·30도의 두 반각을 원래 내각으로 바꿔 나머지 반각을 구하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "OB=OC의 밑각에서 중심각을 얻고 원래 꼭지각으로 옮기는 표준 외심각 연쇄이므로 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "외심의 세 반지름 같음을 보기와 직접 대조하므로 1/NONE이다. 그림의 중선 같은 위상은 별도 소스 보류이며 내심의 수선발을 임의로 만들지 않는다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "주어진 직각변6·8과 빗변10에서 r=(6+8-10)/2의 직접 적용이므로 1/B12이다. 공식 도입 과정 자체를 새 전략으로 세지 않는다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "내심각130에서 A를 얻고 외심각으로 옮기는 표준 두 중심각 연결로 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행사변형의 평행·등변과 두 수선의 실제 위치를 읽어 합동/각관계를 판단하는 2/B23이다. 발문 E·F 순서 충돌은 소스 보류로 유지한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행사변형 이웃각의 합180과 2B=A+30을 연립하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "대각선 이등분으로 두 쌍의 마주보는 작은 삼각형을 대응시켜 부분각을 합하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "평행한 대변의 길이에서 표시된 부분3·4를 빼고 필요한 두 조각을 합하는 2/B12이다. 그림cm와 선택지m의 불일치는 별도 소스 보류다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 14,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "대각선 같음만으로 일반 사각형의 직사각형성이 보장되지 않는다. 문틀의 대변 평행/등량 전제가 없으므로 UNKNOWN을 유지하고 전제 복구 후 1/하 후보만 보존한다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT_UNRESOLVED_CONDITIONAL_CANDIDATE",
+      "proposedLevel": "하",
+      "candidateLevelApproved": false
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "마름모의 대각선 수직과 각이등분 성질을 서로 다른 표시각에 적용해 더하는 2/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "여러 사각형의 충분조건과 중점 연결 사각형의 유형을 구별해야 하므로 2/B23이다. 반복 보기 수만으로 상향하지 않는다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "평행사변형이 마름모가 되는 인접변 같음 또는 대각선 수직의 표준 충분조건을 바로 찾는 1/B12이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "두 각이등분선과 AB6·BC12로 중점 위치를 확인하고 동일 높이/합동의 넓이를 연결하는 표준 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": null,
+      "reason": "닮음관계와 대응이 주어져 대응변 비를 직접 대입하는 1/NONE이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "하",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "공통 A와 같은 각으로 엇바뀐 작은/큰 삼각형 대응을 정하고 전체 AC에서 AD를 빼는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "직각삼각형 높이의 닮음에서 AB제곱=BH·BC를 적용한 후 HC를 부분차로 구하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": null,
+      "reason": "AD=2AB와 EC=CD=DF를 AD=DE 및 BC=CF인 두 큰 이등변삼각형으로 재구성해야 한다. 평행사변형 보각과 두 밑각을 결합하므로 3/B23·중 후보가 적절하다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "닮은 직육면체의 면과 길이 대응을 소문항 안내에 따라 잡아 공통비로 두 길이를 구하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "AB평행CD와 AE평행BC에서 교차 삼각형의 대응비와 BE+ED의 전체를 연결하는 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": null,
+      "reason": "밑면 넓이비9:16을 길이비3:4로 바꿔 부피비27:64를 적용하는 표준 변환 2/B23이다.",
+      "independentReviewer": "M2_CLOSEOUT_INDEPENDENT",
+      "independentDecision": "ACCEPT",
+      "proposedLevel": "중",
+      "candidateLevelApproved": true
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 7,
+      "reason": "그림의 중점 연결선은 각 꼭짓점에서 대변중점으로 이어져 중심과 중선의 위상을 혼동시킬 수 있다. 발문의 명시적 외심·내심과 변중점 정의로 메타를 판단하며 임의 변중점을 내심의 수선발이라고 추정하지 않는다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 10,
+      "reason": "발문에 B,D에서 내린 수선과 BC,AD의 교점을 각각E,F라 한 순서는 그림의 D→E, B→F와 다르다. 실제 그림에는 E가BC 위, F가AD 위이고 DE와BF가AC에 수직인 배치가 명확하여 그 배치 기준 메타를 판정한다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 13,
+      "reason": "실제 그림의9,12,3,4는cm 단위인데 모든 보기 단위가m이다. 부분 대변 길이의 차를 계산하는 메타는 충분하나 새 정답/단위를 채우거나 원문을 바꾸지 않는다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 14,
+      "reason": "발문은 문짝 대각선의 길이가 같은지 검사하는 목적을 묻지만 문틀의 대변이 같거나 평행하다는 기초 전제를 명시하지 않는다. 같은 대각선만으로 일반 사각형의 네 직각은 보장되지 않는다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
