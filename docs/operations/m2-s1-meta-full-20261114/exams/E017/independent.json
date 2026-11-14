@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E017",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T11:16:07.459395+00:00",
+  "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+  "sourceSha256": "c05cd9d6990d680f3268228245417aa5ac33e8abfbb0e0dc083df0830118598b",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E017.review.json",
+    "reviewSha256": "856511792155ef12b5a2b3f19db7bf5f65d0bacbbf0f8dfb708f0b87f7760ec5",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E017.4slot.json",
+    "fourSlotSha256": "99ca873a4ac6031f22ab6d19639535e6a9b3465f39e55c64e4a89ce15157496f"
+  },
+  "status": "ACCEPT_WITH_NARROW_AMENDMENTS",
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      13,
+      20,
+      24
+    ],
+    "difficultyOrdinals": [
+      2,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      18,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "priorExamsNotRepeated": true
+  },
+  "samples": [
+    {
+      "sourceOrdinal": 13,
+      "status": "ACCEPT",
+      "classification": "2022 semantic 제안의M2-RPM190 변·각성질과동일범위이며sourcecurriculum은UNKNOWN으로남긴다.",
+      "binding": "실제MG두각이등분선겹침선분PT/TPL정의와일치한다.기존키재사용후보이며curriculumbinding은미확정이다.",
+      "crossConcept": "CC_ISOSCELES_CONVERSE실제정의대로같은두각에서같은두변을얻는추가결정단계이다.",
+      "condition": "별도수체계제한은없다.원본B-F-E-C순서가EF=BE−BF의부호를결정하는그림근거임을확인했다.",
+      "integration": "평행·반각→등변→겹침길이의SEQUENTIAL이타당하다.",
+      "fourSlot": "NAMED이등변삼각형·평행은해설에명칭/관계식이직접있고차는EF=BE−BF표준식이직접있다.인용·ID·지문연결을확인했다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "status": "ACCEPT_WITH_NARROW_METHOD_LABEL_AMENDMENT",
+      "classification": "다섯특수사각형의성질비교201이전체목표이며사다리꼴중점199에한정하지않는다.",
+      "binding": "ACTIVEgeneric특수사각형정의는최종성질판정과맞다.현재M1중점audittemplate의SAS골격은기존해설의중점연결정리와달라정확히선택하지않은것이맞다.",
+      "crossConcept": "CC_MIDPOINT의실제광의중점성질에부합하며중점연결정리를통해원대각선과새변의관계를옮긴다.",
+      "condition": "임의의추가숫자도메인조건없음.",
+      "integration": "중점관계→대각선성질→새사각형분류의SEQUENTIAL수용.",
+      "fourSlot": "중점연결정리명칭이나삼각형의기호표준식은전체해설에없다.사각형대각선에대한평행·반길이서술을해당정리로식별하는것이므로IMPLIED+근거를추가한다.나머지마름모·직사각형은명칭이직접있어NAMED유지."
+    },
+    {
+      "sourceOrdinal": 24,
+      "status": "ACCEPT_WITH_TEMPLATE_SCOPE_CAVEAT",
+      "classification": "(1)194평행선과넓이의유효부모가여러가지사각형으로이동한정본leafMapping을실제로확인했고(2)195분할도형의보조결정을보존한것이맞다.",
+      "binding": "MG사다리꼴대각선분할비넓이TPL정의는(2)의넓이비계산을직접포괄한다.(1)의큰삼각형공통부분차에의한동일넓이증명을정의가명시하지않으므로전체exactcoverage라고확정하지않도록caveat/debt를추가한다.",
+      "crossConcept": "같은높이의AO:OC밑변비를넓이비로옮기는CC_AREA_RATIO는실제추가단계이다.",
+      "condition": "AO:OC=3:5는수치관계로4slot에보존하고임의숫자조건키를만들지않았다.",
+      "integration": "공통큰삼각형차→12라는넓이확정→3:5넓이비의SEQUENTIAL수용.",
+      "fourSlot": "높이·공통부분차·비례는전체해설과기존solution그림의명시적관계식으로확인된다.인용·ID·QBODY/QFULL을실제대조했다."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 2,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "잘못한덧셈을되돌리고원래뺄셈을적용하는명시된역연산두단계이다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "해구간의끝점을주어진최대해8과같게두는정형매개변수역산이다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두부등식의해방향·경계를맞추는한번의조건해석이며식의길이는3의근거가아니다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "원본115도·30도삼각형에서35도를구하고엇각·이웃각보각을차례적용한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "independentDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "둘레와3:4비례관계를한번해석하는2이다.정형반둘레분배의낮은부담으로기존하는인접경계로유지가능하다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "각이등분선과평행선에서두이등변삼각형을선택하고원본B-F-E-C겹침선분을전체길이와연결하는전략선택이있어3이다.보조삼각형두개가드러나는정도와겹침해석을고려해기존상도인접범위에서유지한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두번접기대칭의동일변을읽어마름모임을확인하고그정의를적용하는표준해석이다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "이웃각보각의반각이직각임을즉시연결해내부직사각형의대각선성질을판정한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "independentDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "중점연결선과원대각선의평행·절반관계를한번옮긴뒤특수사각형의성질을적용한다.직접정리확인의하/중경계여서기존하와numeric2의인접호환을수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "같은변AB=AD가직접주어져선택할이등변삼각형이명확하며평행선엇각과사다리꼴밑각을정형연쇄로적용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "소문항이정리와대입을안내한다.괄호·분수계산량만으로상향하지않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "시간합모델을세우도록직접안내되며두분할거리x와6−x가정해져접근선택이작다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "큰삼각형ABC,DBC의같은넓이에서공통부분을빼는구조를찾은뒤같은높이의밑변비를연결하므로3이다.증명구조선택의부담으로기존상도인접호환가능하다."
+    },
+    {
+      "sourceOrdinal": 25,
+      "independentDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT",
+      "reason": "각조건을삼각형AOB의등변·직각으로바꾸어대각선길이같음·수직을유도해야하므로3이다.보조조건을만드는증명부담에따라기존상의인접호환을허용한다."
+    }
+  ],
+  "requiredAmendments": [
+    {
+      "sourceOrdinals": [
+        12,
+        13,
+        20,
+        24,
+        25
+      ],
+      "field": "finalDifficulty.legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "Actual independent boundary review completed; existing three-level judgments remain admissible."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "slots.method[term=중점연결정리]",
+      "change": {
+        "evidenceType": "IMPLIED",
+        "justification": "사각형의대각선을한변으로하는삼각형에서두변의중점을연결한선분이대각선과평행하고절반길이임을적용한단계이다.해설은사각형의결과를서술하며정리명칭이나삼각형의기호식은생략한다."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "bindingCoverageAndRegistrationDebt",
+      "change": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID is a direct semantic candidate for part(2) area-ratio calculation. Part(1) equal-area proof by subtracting the common triangle is not explicitly covered in its definition; keep TEMPLATE_PARTIAL_COVERAGE_PROOF_DEBT and do not claim full exact-template activation."
+    }
+  ],
+  "authorResponse": "B accepted both proposed narrow changes in team message and requested root apply them only in accepted layer; original author/four-slot hashes preserved.",
+  "actualReferencesRead": [
+    "source/choices/existing solutions of14 scoped questions",
+    "9 original/solution images",
+    "taxonomy_registry actual MG/generic/M1SAS candidate definitions and skeletons",
+    "concept_registry CC_ISOSCELES_CONVERSE/CC_MIDPOINT/CC_AREA_RATIO",
+    "middle2 crosswalk190/194/195/199/201 and current2022 leafMappings",
+    "4slot contract§8 and dictionary v1.5 citedterms",
+    "difficulty v1.3§3/4.1/4.2"
+  ],
+  "visualEvidence": [
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q11.png",
+      "sha256": "5951d9e4883e153ac0dfc2bcc5dfba38dcf7eabd3185472ebe2f0e4a965079ca",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q12.png",
+      "sha256": "c99555e7a3f4c83e018738287ab9141871687e747d1af529c13e8a57899fec11",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q13.png",
+      "sha256": "d2c7a5517c3f808dc585536cbb56f1608fbb79d4f01b6a4a53e420fab15a632e",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q16.png",
+      "sha256": "8e30bfb08bd1c2b23aa07561fe829e00775095cbed6b364bd5afe4aa0f080ea2",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q18.png",
+      "sha256": "23144a8ffd3deb739e9eb346e1701ec21654b8d0fad184136d12050d534d4830",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q21.png",
+      "sha256": "f83fcf64751bc581504a5072bdcf9e9d296b7aceb9ac9c41f2602296039a7209",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q24.png",
+      "sha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q25.png",
+      "sha256": "a7bc5ac809c9a0fff9c93bef25e034d8e60b2398423f1ff7918a99001ab46330",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E017-q24-solution.png",
+      "sha256": "adf40407a466361340e2ee5cb0245162eda09b93ee9d1e0ee1399b046e07f939",
+      "status": "ACTUALLY_VIEWED"
+    }
+  ],
+  "processDisclosure": "Author candidate values and existing levels were visible to this independent semantic reviewer; no blind-first-pass or official resolver receipt is claimed.",
+  "machineFieldProtection": "Source curriculum and absent numeric difficulty fields stay absent;2022semantic and numeric judgments remain proposals. All targetL1/L2 areM2; lower-prerequisite namespace is not introduced."
+}

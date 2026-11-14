@@ -1,0 +1,2031 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_RESUME",
+    "at": "2026-11-14T11:08:33.547369+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1cd92fda2ba714adc12a63b173b86af01a3507106830c937a666b5e4902794cf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cbbf20dedf95fd6d142543a822bf86d0cc2b32aa5d57eac5b87bb5c41e1d30bd"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3d89e4f96b15104744e2d6f6a62d79dfe82aa1ea8877ecd3c377ff94458bfa55"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "A=$2x-y$, B=$-x+2y$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$2(2A-3B)-(3A-2B)$를 계산"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$A,B$를 먼저 $x,y$로 바꾼 뒤",
+            "evidenceType": "IMPLIED",
+            "justification": "이미 주어진 A,B의 두 다항식을 각각 넣는 대입이 기존 해설의 두 전개식에 보인다."
+          },
+          {
+            "term": "분배법칙",
+            "termId": 454,
+            "src": "solution",
+            "quote": "$2A-3B=2(2x-y)-3(-x+2y)=7x-8y$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "$2(2A-3B)-(3A-2B)=14x-16y-(8x-7y)=6x-9y$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "주어진 두 다항식을 대입하고 전체 다항식을 정리",
+        "classification": "명명된 다항식 A,B를 대입해 다른 문자식으로 표현하므로 식의값134를 primary로 읽고 괄호전개131을 보조로 남긴다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_5c76b16b1c91f85ee5a853e4c3b0e938916891a4cfbd69acde2b3afd752b5a9b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4f21a4d9e7facb47efe076d3cd35c606069a9809aa38d34d9fb9459ef1acd591"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4d9bb7378d509f4212399f44cf81adc4623a0c9429add284d2dcf0a7e2f04dd3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$3x^2-2x+5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "바르게 계산한 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "복원",
+            "termId": 135,
+            "src": "solution",
+            "quote": "잘못 더한 식을 되돌려 원래 식을 구한 다음",
+            "evidenceType": "IMPLIED",
+            "justification": "P+(3x²−2x+5)=결과에서 원식을 복원하고 뺄셈을 다시 수행한다."
+          },
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "$2x^2+3x-4-(3x^2-2x+5)=-x^2+5x-9$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "잘못 더한 식을 되돌리고 요구된 뺄셈 복원",
+        "classification": "다항식 덧셈·뺄셈 오류 복원으로131이며 정확한 기존M2오류복원 정의와 일치한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_72d6de551dad500252c63dceacca79cb550dbf5fd78f51b4d4de15d8c7ab2533",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8f38284c47e94e477cec7136db6ab84671731c704e43cb0fe53e6152ce7f7fe4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "507f16d57209c35c431eb6ceaad212d617fc6045fe9c2bf08c9ca8fc87209f36"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$3x-[x+2y-\\{5x-2y-(x-3y)\\}]=ax+by$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$a$와 $b$의 곱"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "termId": 454,
+            "src": "solution",
+            "quote": "가장 안쪽 괄호부터 풀면",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호 앞 음수를 각 항에 배분하는 계산을 기존 해설의 세 등식에서 확인한다."
+          },
+          {
+            "term": "계수비교",
+            "termId": 696,
+            "src": "solution",
+            "quote": "$a=6$, $b=-1$",
+            "evidenceType": "IMPLIED",
+            "justification": "최종6x−y와ax+by의 대응계수를 읽는 단계다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "$a, b$는 수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "안쪽 괄호부터 부호를 풀고 계수 비교",
+        "classification": "중첩괄호 덧셈·뺄셈131이 결정계산이며 계수의 곱은 최종 출력이다.",
+        "condition": "a,b는 수라고만 명시되어 정수·자연수 조건을 만들어 넣지 않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_634b3d9998795fd3eb6377707d564f3afbb849f3273942a4934b8ff51b0587b0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b97d81f63fb3de93e245e17a7cd30523d10462b93dc2113b8af59413cf65007b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "689a421a9da8e53ae2662ffe437f007b6685b4b761660110aca9623dbf548615"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$2x(2x-4)-(2x-1)(-3x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$x^2$의 계수를 $a$, $x$의 계수를 $b$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "termId": 454,
+            "src": "solution",
+            "quote": "$2x(2x-4)=4x^2-8x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "$4x^2-8x-(-6x^2+3x)=10x^2-11x$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "단항식을 다항식에 분배하고 동류항의 계수를 읽음",
+        "classification": "두 단항식×다항식132이며 계수추출은 출력 단계이다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8006a127e00bf539f38d7112f898db2289d029544d84d94d9d08b16c36a6d4cf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cf0c95c3870e43650837d8a129981e7a0dd6b92cd072f1ee637da7f67d6cd993"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9fba7e59b224c09127a04f74ac3a6869a076e3c09fba1f80d3b5f1c3466fe3f0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "termId": 651,
+            "src": "stem",
+            "quote": "$\\dfrac{-2x^2+3x^3}{x^2}-\\dfrac{4x^3-2x^5}{x^3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "계산하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "solution",
+            "quote": "각 분수를 항별로 나눈 뒤",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "$(-2+3x)-(4-2x^2)=2x^2+3x-6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "다항식 각 항을 단항식으로 나누고 차를 정리",
+        "classification": "실제 두 분자는 다항식이다. 기존 EXPONENT_LAW에서 POLYNOMIAL_OPERATIONS/133으로 보정한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "IMPLICIT_DOMAIN: source division requires x nonzero, not explicitly stated; no condition invented."
+      ]
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d7d0fdfe16390caebc083f09d800486b6f4851961a0ede297f0a69e5051469bc",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1007087b743dbd6c32f0d00010cf905530e2594776e2d4f2f8be306954fa458c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e1d65b98cfed04f991b45fab8c5ab12bb7d48a5fae81d10a1c4b7d8c390852bb"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "termId": 34,
+            "src": "choices",
+            "quote": "$x+2$"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "choices",
+            "quote": "$3x-2=2x-7$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "부등식이 아닌 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "solution",
+            "quote": "부등식은 부등호로 두 식의 대소 관계를 나타낸 식",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "solution",
+            "quote": "$3x-2=2x-7$은 등식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "부등호로 대소를 표현한 식인지 정의 판정",
+        "classification": "부등식의 정의 판정이다. 일차식인지 또는 해를 찾는 문제와 달라 기존 RPM풀이 leaf로 강제하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_f6cf9ec25659d1d7fa48295e4b9cf2b28d0e4e4bbf8b3ac1c0daeaf779fecf84",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3addd2e2a3d0e708ef2790c8ca4b963df7f00195425f7497f53b2843b93c432d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c5e76416819df100cbf9ba4fefb8122456de19625f69160db069cacae32f8993"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "$-2a-1\\le -2b-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "termId": 654,
+            "src": "solution",
+            "quote": "$-2$로 나누면 부등호가 바뀌어 $a\\ge b$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대소비교",
+            "termId": 28,
+            "src": "solution",
+            "quote": "$a/2\\ge b/2$이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "음수 나눗셈으로 관계를 복원한 뒤 부등식 변형 판정",
+        "classification": "양변 동일수 덧셈 및 음수배의 방향반전136이다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_6592d1351f935360dbd4213fdbb341e8f890f4718456721b1b00d42af0513d82",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e7ed36a7b0148f27aaa9ea202bad04fef14389dceed12a7e54953df3e4e96f08"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b5edf1afc795e68b9a0b43ea2eca1d70723760007f5c6f8175d43de2b53ab3f5"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식 $10+x\\le3(x-1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "해가 아닌 것은"
+          },
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 아닌 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "termId": 454,
+            "src": "solution",
+            "quote": "$10+x\\le3x-3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "termId": 654,
+            "src": "solution",
+            "quote": "$13\\le2x$이므로 $x\\ge\\dfrac{13}{2}=6.5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "괄호가 있는 부등식을 풀고 제시 숫자의 해 포함 여부 판정",
+        "classification": "괄호 있는 일차부등식139이며 보기 검사는 최종 구간대입이다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d49dea28f9bcfee239766b85523b55beb5bb619ce001f2148ac799339b38a55a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "08a61f1be44135892bf3986a8da0b8727fddbc6bee6b515537316e2ab7b24744"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9491016a04f1aaec389850e4530dcbb6b2d70977b22e81b2856c1ce3f49c5e8f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "일차부등식 $\\dfrac{1}{4}x-1\\ge x-a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "termId": 654,
+            "src": "solution",
+            "quote": "$x\\le\\dfrac43(a-1)$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "solution",
+            "quote": "$\\dfrac43(a-1)=8$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "termId": 127,
+            "src": "stem",
+            "quote": "해 중에서 가장 큰 수가 8"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "최대 해의 경계값과 계수식을 같게 놓음",
+        "classification": "해의 조건으로 계수 찾기141이다. 정수해가 아니라 실수해 경계이다.",
+        "condition": "가장큰해가8이라는 경계조건이 있으며 a 또는 x가정수라는제약은없다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6c76e7cdf3eedc9a60a2a8fa6a4d78f97b1b338f50e4e53598c3107c3d50c875",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d733aba83220f3253cb3780a56dd2091fbb22e9585ce8f732bfd78bb233a516"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05352595010aaec99e14801bd7376eb41402fd87d7333c2eb579421f19c7d293"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "stem",
+            "quote": "두 일차부등식 $\\dfrac{1}{2}(x-1)\\le0.3(x-5)-2$, $\\dfrac{2-x}{3}\\ge\\dfrac{a}{2}+\\dfrac{1}{6}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "termId": 654,
+            "src": "solution",
+            "quote": "$x\\le-15$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "solution",
+            "quote": "$\\dfrac{3-3a}{2}=-15$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해집합",
+            "termId": 83,
+            "src": "stem",
+            "quote": "해가 서로 같을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 해구간의 방향과 경계가 같음을 이용해 계수 결정",
+        "classification": "두 일차부등식의 같은 해 조건141이다.",
+        "condition": "두 해집합의 일치가 조건이며 별도 정수나 부호 제약은 없다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_43559a63e43e4a079f89541d6bf000ea18df5ed04abc165c08a859cae0d22a0c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3a7a1ded4548567b62698ae5d7c7565c763bdea51b1e240679d03440b3c55cc4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "670c8e8a6332a080ff26008f73c9e870340d96dfc95bea3e72946fdaf9e2635a"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "대각선",
+            "termId": 310,
+            "src": "stem",
+            "quote": "대각선의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle x+\\angle y$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형",
+            "termId": 158,
+            "src": "solution",
+            "quote": "$\\triangle AOD$에서 $\\angle AOD=115^\\circ$, $\\angle ADO=30^\\circ$이므로 $\\angle OAD=35^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "$AD\\parallel BC$이므로 $x=35^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "termId": 714,
+            "src": "solution",
+            "quote": "이웃각 $\\angle ADC=80^\\circ$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대각선이 만든 삼각형의 각에서 평행사변형의 이웃각을 연결",
+        "classification": "실제 평행사변형의 변·각 성질190이다. 원본 그림115°,30°,65°와 x,y의 위치를 확인했다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_6b720257c3715c5b52f7fd0e99c0feb79d08cc8aea81d83dbad8af7539e3c13c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c01da109ff7a0651471483f62f1bec7987d19bd210bbcfb94566d11fba5705da"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2b5b26dcc004575713daea6d5145df4cba58d71a801178678559e6e94633946"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "둘레",
+            "termId": 214,
+            "src": "stem",
+            "quote": "둘레의 길이는 28cm"
+          },
+          {
+            "term": "비",
+            "termId": 289,
+            "src": "stem",
+            "quote": "$\\overline{AB}:\\overline{AD}=3:4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{CD}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "solution",
+            "quote": "마주 보는 두 변의 길이가 각각 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례배분",
+            "termId": 579,
+            "src": "solution",
+            "quote": "$AB=3k$, $AD=4k$라 두자.",
+            "evidenceType": "IMPLIED",
+            "justification": "전체 둘레를3:4의 공통비례상수로 표현하여 각변을 정한다."
+          },
+          {
+            "term": "둘레",
+            "termId": 214,
+            "src": "solution",
+            "quote": "$2(3k+4k)=28$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행사변형의 대변 같음과 둘레 비례배분",
+        "classification": "평행사변형 변의성질190에 비례배분 보조가 연결된다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_54d9e914570853eb3891648cad5570f1bd85f85f4ada6564fd543288b651a00c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d2e2f279fa146650d346b02238533aa1c18b97ab4fed0e8369c77671e38781f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dde12713c7ae914c8186f8dc1b4ed07f3582fbddeaec8e3a5f8347762b0d3ca0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "stem",
+            "quote": "각각 $\\angle A$와 $\\angle D$의 이등분선"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{AB}=x$이고 $\\overline{AD}=y$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{EF}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "solution",
+            "quote": "각의 이등분선과 평행선으로 이등변삼각형을 만든다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "$AD\\parallel BC$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "solution",
+            "quote": "$EF=BE-BF=x-(y-x)=2x-y$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행선과 두 각이등분선으로 이등변삼각형을 찾아 겹친 선분 계산",
+        "classification": "평행사변형 변·각성질190에서 이등변삼각형의 역으로 두 길이를 만든다. 원본 B-F-E-C순서 확인.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_b115dd886da2a9fdbf5592a703c142b1f451a5a6b9efc9ea11a61d378856f01d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cc1a17b25aacd5292fc770942e3c0d77efc7dd7944014c9d45ecdb26c38cca28"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6df793493f66a29c2b8381a25ca536fd559a09e822f8a25126b56a4e59e2c038"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle A=120^\\circ$, $\\angle B=60^\\circ$"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$\\overline{AD}=\\overline{BC}=7\\text{cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형이 되는 가장 알맞은 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "termId": 714,
+            "src": "solution",
+            "quote": "$\\angle A+\\angle B=120^\\circ+60^\\circ=180^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "한 쌍의 대변이 평행하고 그 길이가 같으면 평행사변형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "같은쪽 내각합으로 평행을 확인하고 한쌍대변 판정",
+        "classification": "평행사변형 변·각 판정192이다. 주어진A120/B60/AD=BC가 실제그림과 맞는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_33abb9ccfd6eaa5ebe9015bb2021464abd3ed53a35fcc61820850d4129a312cf",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb5f215e332504a3e8509fa38e5f90aed1d45cc3d5d0996013384b1f6f389342"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "38fc12f619b2c86998bf6f42e1895ea24911d7abff61591ad5e6c062b754b95b"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "대각선",
+            "termId": 310,
+            "src": "stem",
+            "quote": "두 대각선의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "termId": 166,
+            "src": "stem",
+            "quote": "정사각형이 되는 조건이 아닌 것"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "조건이 아닌 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "solution",
+            "quote": "직사각형 조건과 마름모 조건이 함께 필요",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "solution",
+            "quote": "직사각형 조건과 마름모 조건이 함께 필요",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "정사각형이 되려면 직사각형과 마름모 조건이 함께 필요한지 판정",
+        "classification": "사각형 포함관계의 조건판정200이다. 이미평행사변형인 전제를 전보기에서 유지한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_e15ab35f7d9b353f63623bd7f715e95be6ca54ea7c0548869435fbe8fc67be6c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ee42d1e54c279bfeccc18f63edeb78bf7042325abf53b7972b78b9b888ee1b48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9284b863924937be14370909e262c6654ac44a7f53174fbc1bc482291f572633"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭성",
+            "termId": 110,
+            "src": "stem",
+            "quote": "종이를 두 번 접어"
+          },
+          {
+            "term": "선분",
+            "termId": 144,
+            "src": "stem",
+            "quote": "길이가 7cm인 선분"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "만들어지는 사각형"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭이동",
+            "termId": 209,
+            "src": "solution",
+            "quote": "자른 선분의 대칭이 반복되어",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌축을기준으로자른선분이반사되어길이가보존되는것을기존해설이명시한다."
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "solution",
+            "quote": "완성된 도형은 마름모",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "두 대각선이 서로 수직",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "실제 PNG에두번접힌종이,잘라낼선분7cm,왼쪽접힘과이루는25°가표시된다.45°절단의정사각형상황을가정하지않는다.",
+      "reasons": {
+        "method": "접은 종이의 대칭으로 네변같음을 확인하고 마름모 성질 판정",
+        "classification": "종이펴기후 마름모의 성질비교201이며 원본그림의두접힘과25°를 확인했다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_63d98fdf7e29066e11b323ae7ea8b3c2f5653aa3c6c3b8af00f5b502ef9fa701",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "660b3b8cfb4a130d5cdeb2599a6d345b712aab3a320ae7b568f320e78540957f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1981914648915b44d9da10859cbde86921bbebb33c7880bb1c3718c2d7ffe41f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "$\\square ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "stem",
+            "quote": "마름모가 되는 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "solution",
+            "quote": "$AB\\parallel DC$이고 $AB=DC$이므로 ABCD는 평행사변형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "두 대각선이 서로 수직",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "solution",
+            "quote": "네 변의 길이가 같으므로 마름모",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "먼저 평행사변형을 보장한 다음 수직대각선으로 마름모 판정",
+        "classification": "일반사각형에서특수사각형의충분조건을판정하는200이다. 처음부터평행사변형이라고가정하지않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_570bbbed926ec01b30b4dfa165542da89697458db171362c75379dac5145b896",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d2b7b8c9806c24456fe8bdba3d1b87dc0bda0dccd46cb97b94cb4262b743d59b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "360b698f99d85614b28c85c75b89aebe23bfb65b31c5ef5c754eba5afefc5ae3"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "stem",
+            "quote": "네 내각의 이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "$\\square PQRS$"
+          },
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "termId": 714,
+            "src": "solution",
+            "quote": "평행사변형의 이웃한 두 각은 보각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "그 각의 이등분선은 서로 수직",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "solution",
+            "quote": "PQRS는 직사각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이웃각의 절반 합이 직각임을 보여 안쪽 직사각형 성질 비교",
+        "classification": "평행사변형의이등분선으로만든사각형성질비교201이다. 정확한기존MG과제정의가있다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2becfc0a37b476224fc37bdc5d4f1646ad50fb97fd7ec9143bd5de73649f8b15",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2eb80ad16e466071ccf18323b58f9b3eca0fbca8c9a05ff03aa8413c23022ae6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7c15b283e6ee6a0e39f1f99fb146ce94209230e6cb4d8c80a8441386d82c2703"
+        }
+      ],
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "등변사다리꼴",
+            "termId": 438,
+            "src": "stem",
+            "quote": "등변사다리꼴"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "src": "stem",
+            "quote": "사각형은 몇 개인가"
+          },
+          {
+            "term": "대각선",
+            "termId": 310,
+            "src": "stem",
+            "quote": "두 대각선이 서로 다른 것을 이등분"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "solution",
+            "quote": "두 대각선이 서로를 이등분하는 것은 평행사변형의 대표 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "termId": 166,
+            "src": "solution",
+            "quote": "정사각형: 평행사변형의 특수한 경우",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "solution",
+            "quote": "마름모: 평행사변형의 특수한 경우",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사각형 포함관계에서 대각선의 상호이등분 성질 판정",
+        "classification": "여러사각형의공통성질비교201이며대각선길이같음과상호이등분을구별한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e11db8dac2a4bbd8f08184a744f69b637af2ed747ce9082785460fcd4fe69267",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "74d0624bb781838f22a85979c7453d2f1faa10c384f7e56daaea79a2ffb5612a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d0e888d951662253685efd994409bcbc43ee7c30741261112434d619456d6134"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "termId": 162,
+            "src": "stem",
+            "quote": "사각형과 그 사각형"
+          },
+          {
+            "term": "중점",
+            "termId": 188,
+            "src": "stem",
+            "quote": "각 변의 중점을 연결"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "짝 지은 것으로 옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "termId": 441,
+            "src": "solution",
+            "quote": "각 변은 원래 사각형의 대각선과 평행하고 그 절반 길이",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "solution",
+            "quote": "대각선이 같으면 중점 사각형은 마름모",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "solution",
+            "quote": "대각선이 수직이면 직사각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "중점연결정리로 새 사각형의 변을 원래 대각선에 연결",
+        "classification": "여러사각형의성질비교201에중점연결정리를보조로연결한다. 사다리꼴에한정된RPM199로강제하지않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_5681a3a6894b70eeec122c5caccefb266330102bce61806cf780fb1d2346e427",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ece8f43198b58eff2a8ecc30314d945a25d5e48aabf7476cb82bd9b573f481a6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa0c8bad070b8bca73d2d2fab5b195a53a4bd80f992e89379c41eb9f759c1323"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "등변사다리꼴",
+            "termId": 438,
+            "src": "stem",
+            "quote": "등변사다리꼴 ABCD"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$\\overline{AD}\\parallel\\overline{BC}$"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle DBC=30^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle BDC$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "termId": 716,
+            "src": "solution",
+            "quote": "평행선의 엇각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "solution",
+            "quote": "$\\triangle ABD$는 이등변삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "termId": 714,
+            "src": "solution",
+            "quote": "$\\angle BAD=120^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등변사다리꼴",
+            "termId": 438,
+            "src": "solution",
+            "quote": "같은 밑변 위의 밑각은 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행선의 엇각과 이등변삼각형을 이용해 등변사다리꼴의 각 결정",
+        "classification": "등변사다리꼴198의밑각성질을핵심으로하고삼각형ABD의두변같음을보조로쓴다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_400f55aafedf2c6366270fd862aa8150927dfc8bd550a2ae29faff96b9b19663",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "11ad26b78c887e0bb444aad4cab8e756e4158280dc928db19a32f4e5dab0f931"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0126718114a496a646b566b7988b5f3fc8323f7cd96b3450bb0102da8a133eb4"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$y-[2x-\\{3y+(8y^2-6xy)\\div4y\\}]$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "(1) $y-[2x-\\{3y+(8y^2-6xy)\\div4y\\}]$를 계산하시오."
+          },
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "주어진 식의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "solution",
+            "quote": "$(8y^2-6xy)\\div4y=2y-\\dfrac32x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "동류항",
+            "termId": 698,
+            "src": "solution",
+            "quote": "$y-(\\dfrac72x-5y)=-\\dfrac72x+6y$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "$x=\\dfrac47$, $y=2$를 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "단항식으로 항별 나누고 괄호 정리 후 값 대입",
+        "classification": "(1)의다항식나눗셈133과괄호131을거쳐(2)의식의값134가최종목표다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": [
+        "IMPLICIT_DIVISION_DOMAIN: y nonzero required by division; given y=2 already satisfies."
+      ]
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_0540bf372ef0661f7ac173f41118f9e0ce69fc8bb51d24b54865ff772e4d740b",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a06f4113e6eb3a511318a3e17fcf88fc29b52b37733b554a0e69ec32f4a95294"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2fd8cde144e3e5e55dcf4a73f0474b63010efa89283a4926aec34ed5ac2c8172"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "집에서 6km 떨어진 공원"
+          },
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "stem",
+            "quote": "시속 8km"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "termId": 63,
+            "src": "stem",
+            "quote": "부등식을 세우시오."
+          },
+          {
+            "term": "거리",
+            "termId": 216,
+            "src": "stem",
+            "quote": "집에서 몇 km 이상 떨어진 곳"
+          }
+        ],
+        "method": [
+          {
+            "term": "속력",
+            "termId": 704,
+            "src": "solution",
+            "quote": "이동 시간은 거리÷속력",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차부등식",
+            "termId": 355,
+            "src": "solution",
+            "quote": "$\\dfrac{x}{8}+\\dfrac{10}{60}+\\dfrac{6-x}{4}\\le1$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "termId": 297,
+            "src": "stem",
+            "quote": "1시간을 넘지 않았을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "자전거고장지점앞뒤의거리를합하면6km이며,10분정지는별도시간이다. 왕복문제가아니다.",
+      "reasons": {
+        "method": "고장전후 이동시간과 정지시간의 합으로 부등식 구성",
+        "classification": "거리·속력·시간144이며전체거리6을두구간x와6−x로나눈편도모델이다.",
+        "condition": "총시간1시간이하가부등식의상한이다. 고장거리는실수거리이며정수올림을추가하지않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "02df088f360e5fb70f151317794c3595a5bd7e93ba3e0e8f81638a95fc6df8b8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8128d68ed697431b5d111f851031618ad284f602dc2ac36c0b21f5c36d6a7eb0"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "termId": 167,
+            "src": "stem",
+            "quote": "사다리꼴 ABCD"
+          },
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "stem",
+            "quote": "$\\overline{AD}\\parallel\\overline{BC}$"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "$\\triangle ODC$의 넓이가 $12\\text{cm}^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "termId": 133,
+            "src": "stem",
+            "quote": "넓이가 같은 이유를 설명"
+          },
+          {
+            "term": "넓이",
+            "termId": 213,
+            "src": "stem",
+            "quote": "$\\triangle OBC$의 넓이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "높이",
+            "termId": 218,
+            "src": "solution",
+            "quote": "공통 밑변 $BC$에 대한 높이가 같아 넓이가 같다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "solution",
+            "quote": "공통인 $\\triangle OBC$를 빼면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례",
+            "termId": 741,
+            "src": "solution",
+            "quote": "넓이의 비는 $AO:OC=3:5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "termId": 289,
+            "src": "stem",
+            "quote": "$\\overline{AO}:\\overline{OC}=3:5$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행선 사이 같은넓이에서 공통부분을 빼고 밑변비로 넓이 계산",
+        "classification": "(1)은평행선과넓이194,(2)는분할도형195의넓이비이다. 전체동일한사다리꼴의넓이연결을primary로둔다.",
+        "condition": "주어진AO:OC비는넓이비계산의수치관계다. 별도미지수범위conditionKey가아니므로4slot관계로보존한다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_ee7bd25adb45780b251a0eb3edbe953670d44145c407feaf042634379b61ab31",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73fdc5e8fa60ced8ab44ee9f9ce67a2478bb727758c76e779c0676234e7528cc"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f5cbce0233dedfe1452863b199370c6bf336be797a1a8d98fce7b545a4c0d8c2"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "termId": 163,
+            "src": "stem",
+            "quote": "평행사변형 ABCD"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle CAB=a$, $\\angle ODC=b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직사각형",
+            "termId": 165,
+            "src": "stem",
+            "quote": "직사각형임을 설명하시오."
+          },
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "stem",
+            "quote": "마름모임을 설명하시오."
+          },
+          {
+            "term": "증명",
+            "termId": 133,
+            "src": "stem",
+            "quote": "설명하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "termId": 159,
+            "src": "solution",
+            "quote": "$\\triangle AOB$의 두 밑각이 같아 $OA=OB$",
+            "evidenceType": "IMPLIED",
+            "justification": "같은두밑각에서마주보는두변같음을도출하는이등변삼각형의역이다."
+          },
+          {
+            "term": "대각선",
+            "termId": 310,
+            "src": "solution",
+            "quote": "$AC=2OA$, $BD=2OB$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각",
+            "termId": 344,
+            "src": "solution",
+            "quote": "$\\angle AOB=90^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "평행사변형의 대각선이 서로 수직이면 마름모",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "stem",
+            "quote": "$a=b$"
+          },
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$a+b=90^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각조건을 대각선 길이같음 또는 수직으로 바꾸어 특수사각형 증명",
+        "classification": "두소문항모두평행사변형에서특수사각형판정200이다. 별개조건의두과제이지한풀이의CASE_BRANCH가아니다.",
+        "condition": "(1)의a=b와(2)의a+b90은서로다른부분의조건이다. 전역연립조건으로합치지않는다."
+      },
+      "judgedBy": {
+        "agent": "M2_META_REVIEWER_B_RESUME",
+        "at": "2026-11-14T11:08:33.547369+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      },
+      "evidenceDebt": []
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "SELF_CHECKED",
+    "scope": "Each stem, choices, existing solution and required figure read; machine receipt is in separate validation file.",
+    "independentReview": "PENDING"
+  }
+}

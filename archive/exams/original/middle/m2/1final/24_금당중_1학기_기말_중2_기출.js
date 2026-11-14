@@ -162,8 +162,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[핵심] 각 분수를 항별로 나눈 뒤 마지막에 뺄셈을 정리한다.\n$\\dfrac{-2x^2+3x^3}{x^2}=-2+3x$이고 $\\dfrac{4x^3-2x^5}{x^3}=4-2x^2$이다.\n따라서 $(-2+3x)-(4-2x^2)=2x^2+3x-6$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-01-EXPONENT_LAW",
-    "subUnit": "지수법칙",
+    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+    "subUnit": "다항식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

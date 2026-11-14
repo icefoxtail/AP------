@@ -4,7 +4,7 @@
 
 **RUNNING / ACTIVE_OWNER**. owner `GPT_ROOT_59E0F5BD3A77`. taskId `d200021a-924b-42a5-ad31-a53818575c78`. 같은 브랜치 `review/m2-s1-meta-full-20261114`에서 세 작업자가 분리된 시험지 큐를 연속 처리한다.
 
-전체 **75시험지 / 1,780문항** 중 **16시험지 / 379문항**의 검토 패킷을 보존했다. 잔여는 **59시험지 / 1,401문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
+전체 **75시험지 / 1,780문항** 중 **17시험지 / 404문항**의 검토 패킷을 보존했다. 잔여는 **58시험지 / 1,376문항**이다. 이 커밋의 원격 보존 여부와 최종 SHA는 실제 branch HEAD 및 외부 Notion/AWCR readback을 따른다. 자기 SHA를 같은 커밋 안에 요구하지 않는다.
 
 기존 E001–E012 검토는 재사용했고, PENDING_AMENDMENTS.json의 7건은 원본·독립 증거를 보존한 채 좁은 보정을 적용·검증하여 각각 원격 출판했다. 이전 미원격 로컬 파일의 실제 바이트는 찾지 못했다. LOCAL_RECOVERY.json의 역사적 SHA를 새 작성본의 복구 SHA로 주장하지 않는다.
 
@@ -20,7 +20,7 @@
 
 ## 현재 집계와 한계
 
-독립 3문항 표본 48개, 명시 미판정 9문항, RPM leaf 공백 77문항, 등록 부채 367문항, 내용 부채 12문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=370은 전체 품질 PASS가 아니다.
+독립 3문항 표본 51개, 명시 미판정 9문항, RPM leaf 공백 78문항, 등록 부채 392문항, 내용 부채 12문항, 필수 method 근거 부채 0문항이다. 서로 겹치는 집계이며 fullyJudgedQuestions=395은 전체 품질 PASS가 아니다.
 
 최초 인벤토리의 기존 해설은 1,386문항, 빈 해설은394문항이다. 해설 없는 문항에 새 풀이를 만들어 method 근거를 채우지 않는다. 실제 method가 비어 있는 source-only 항목은 native validator 실패와 필수 근거 부채를 그대로 남긴다. 공식 resolver의 genuine VERIFIED_FINAL 증거가 없는 경우 NOT_RUN을 유지한다.
 
@@ -39,7 +39,7 @@
 
 ## AWCR 최신 검증
 
-**revision 5**, fileId `1hdX1yHhYtxQdbrGqmkIhxTxHinlfGXaf`, raw SHA-256 `f6cf3fd18830d3595aabcc3e818fa747848f0eda61820fb8ca2f60577234df67`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
+**revision 6**, fileId `1nLqTeYqRkZci-rRTK61VcHmvpq-IoC-T`, raw SHA-256 `9756b837028a3b5a1c9db8c1dde59561eba53a92148d20887367001107bd555f`. raw readback 검증을 마쳤다. checkpoint는 안전 metadata만 포함하며 quality=UNKNOWN이다. 다음 revision은 이 실제 raw SHA를 parent로 사용한다.
 
 ## 이번 재개의 원격 출판 기록
 
@@ -59,6 +59,7 @@
 | E012-scoped-calibration | `6a6830e3b5aa0c957da7af95e7c0c0fef8befb8f` |
 | E014-prerequisite-scope | `6a84b1c374f194f50601dc74e525c63bf5d07a0f` |
 | E015-prerequisite-scope | `21eef4e00aaa030f2c92c3d9bd701acf31f995d8` |
+| E016 | `a627d04d6b8075049bf908d216a7f113402450ea` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 
@@ -68,12 +69,13 @@
 |---|---:|
 | M1-07-SOLID_FIGURE_MEASURE | 1 |
 | M2-01-EXPONENT_LAW | 33 |
-| M2-01-POLYNOMIAL_OPERATIONS | 27 |
+| M2-01-POLYNOMIAL_OPERATIONS | 33 |
 | M2-01-REPEATING_DECIMAL | 45 |
-| M2-02-LINEAR_INEQUALITY | 31 |
-| M2-02-LINEAR_INEQUALITY_WORD | 10 |
+| M2-02-LINEAR_INEQUALITY | 36 |
+| M2-02-LINEAR_INEQUALITY_WORD | 11 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION | 52 |
 | M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD | 16 |
 | M2-04-LINEAR_FUNCTION_BASIC | 89 |
 | M2-04-LINEAR_FUNCTION_EQUATION | 33 |
+| M2-05-QUADRILATERAL_PROPERTIES | 13 |
 | UNRESOLVED | 42 |
