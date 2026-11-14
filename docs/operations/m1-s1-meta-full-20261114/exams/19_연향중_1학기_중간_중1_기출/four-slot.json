@@ -1,0 +1,1981 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "46f3f493c46c0ef76f29b032a8381483ba651a51",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "META_C",
+    "at": "2026-11-14T08:17:32.822Z",
+    "role": "semantic_metadata_author"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
+      "sourceOrdinal": 1,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8ccf9f51c30bb31b2f264b10a1b9dffb54f5d2278d5e8f2cf53d94bb53083daf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b4fb54757c00d62aaa49ec89640853d3660852f415e6df8f154476ddc45f5a84"
+        }
+      ],
+      "sourceQuestionSha256": "a5264c51bd5de2d65b7ffaae7e4f76e308e33bb54b53e38c4bb99320802f7765",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "$a+a+a+a+a=a^5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$=2^2\\times3^3$",
+            "evidenceType": "IMPLIED",
+            "justification": "동일 소인수의 반복 개수가 각각 지수 2와 3으로 쓰인 변환을 확인했다."
+          },
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "$2\\times2\\times3\\times3\\times3$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 소수 인수의 반복을 지수 표기로 묶는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "소수 판별보다 거듭제곱 표기 진술의 참·거짓이 핵심이다. 소인수분해 아래 별도 거듭제곱 표기 leaf가 없다.",
+        "method": "반복된 소인수의 개수를 지수와 대응한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
+      "sourceOrdinal": 2,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b73b72bc64161d5dd09ecd75b8b5cfd1d85bead1bd3669d0e8f13e753a447ef0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e4966ae84e1cb4dea310a9ff98e400e7b1bc3ea02dccf3efddc233a33f2b0ea"
+        }
+      ],
+      "sourceQuestionSha256": "12dccc2a475edbfcda88be164e9d1f9ecb0872358edbdf3e38100b77ff57d4c9",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "가장 작은 소수"
+          },
+          {
+            "term": "합성수",
+            "src": "stem",
+            "quote": "합성수는 4개"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "7의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것을 모두 고른"
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "가장 작은 소수는 $2$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성수",
+            "src": "solution",
+            "quote": "한 자리 합성수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "$2$는 짝수인 소수",
+            "evidenceType": "IMPLIED",
+            "justification": "모든 소수는 홀수라는 보편 진술을 짝수 소수 2로 반박한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "한 자리 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "한 자리 자연수"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 소수"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "소수와 합성수의 일반 성질 진술을 판단하는 문항이다.",
+        "method": "한 자리 합성수 열거와 2의 짝수 소수 반례를 확인한다.",
+        "condition": "한 자리 조건은 보기의 판정 대상이고 별도 미지수 탐색 제한으로 conditionKeys를 과잉 등록하지 않는다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
+      "sourceOrdinal": 3,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "162530dd45b8af0bad3cb7428d4fd8be3c0cceecdb246206766e4485bfdbf384"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "60e5e8a9c0bbc223cbe951927150492593c37e02983eecb9bebdf405432f9544"
+        }
+      ],
+      "sourceQuestionSha256": "e573de02266a0fa5b746346bb99f6799fc63813e2303cd2d9df28a9589856a28",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소인수",
+            "src": "stem",
+            "quote": "소인수가 나머지 넷과 다른"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분류",
+            "src": "stem",
+            "quote": "다른 하나"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "의 소인수는 모두",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$256=2^8$",
+            "evidenceType": "IMPLIED",
+            "justification": "256을 소수 2의 거듭제곱으로 나타내어 소인수의 종류를 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "자연수를 소인수분해하고 소인수 구성의 차이를 확인한다.",
+        "method": "지수나 크기가 아니라 서로 다른 소인수의 종류를 비교한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b",
+      "sourceOrdinal": 4,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c6a56aed41df86070adc74ad7bfced9fb0a19804a36f8b15fac406d079709769"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b79f667d456c88308b9de7b5df2353ba5ed02183b92631555874dd0d11a07fc1"
+        }
+      ],
+      "sourceQuestionSha256": "3bb7798e186cf955bd1539dc4e702fbf2e8d79614b603961c7a1c25b0db073c0",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "약수",
+            "src": "stem",
+            "quote": "약수가 3개"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "꼴이고 $p$는 소수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$p^2$",
+            "evidenceType": "IMPLIED",
+            "justification": "약수 3개인 수의 소인수 지수가 2인 구조를 소수 제곱으로 나타낸다."
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$2,3,5,7,11,13,17,19,23$",
+            "evidenceType": "IMPLIED",
+            "justification": "경계 이내의 가능한 소수를 빠짐없이 나열해 개수를 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 중에서"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "1부터 600까지"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "약수가 3개"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "약수 개수 조건을 만족하는 자연수의 범위 개수 문제이다.",
+        "method": "p²≤600의 경계에 맞는 소수 p를 열거한다.",
+        "condition": "1부터 600까지 자연수라는 범위를 만족하는 대상만 센다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
+      "sourceOrdinal": 5,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70fde81adf1b1eebb26805dfbdd61aec27fd840767c52d9886136779b50e9060"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac5755bddbd534515374db43072b79a7333e99419edfb123930e1a004fe21bf9"
+        }
+      ],
+      "sourceQuestionSha256": "04a50e3ccaea246273c439b72584a32652a9775f0d999e30bb021b92478f62d8",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "15와 서로소"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$15=3\\times5$",
+            "evidenceType": "IMPLIED",
+            "justification": "15의 소인수를 3,5로 분해한다."
+          },
+          {
+            "term": "제외",
+            "src": "solution",
+            "quote": "$3,5$의 배수를 제외한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$11,13,14,16,17,19$",
+            "evidenceType": "IMPLIED",
+            "justification": "범위 안에서 서로소 조건을 만족하는 후보들을 나열하여 센다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "10과 20 사이"
+          },
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 중"
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "15와 서로소"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "공약수 1만 공유한다는 조건으로 자연수를 찾고 세는 최대공약수 문항이다.",
+        "method": "3 또는 5로 나누어떨어지는 후보를 제거한다.",
+        "condition": "10과20 사이 자연수이며 고정수15와 서로소라는 명시 조건이 후보를 제한한다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
+      "sourceOrdinal": 6,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7acacb508adfa1fd53fbf451eda15e3aebe96a106ab5eee1feb4a63ce6b60ed7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cce5cae2143b648fc0064609533ec6ae9d657442829ec13b79dd851aaaf6339d"
+        }
+      ],
+      "sourceQuestionSha256": "cf7ffca45f315843e5e40260fcf929e20a6ccbf3174e7a8a106f0d69a0651703",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최대공약수",
+            "src": "stem",
+            "quote": "최대공약수는"
+          },
+          {
+            "term": "최소공배수",
+            "src": "stem",
+            "quote": "최소공배수는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "stem",
+            "quote": "$a+b-c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "최대공약수",
+            "src": "solution",
+            "quote": "최대공약수가 $2^3",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "최소공배수가 $2^5",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "$a=5$",
+            "evidenceType": "IMPLIED",
+            "justification": "최대공약수/최소공배수로 제시된 소수2의 최소·최대지수와 두 수의 지수를 대응한 결과를 사용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 자연수"
+          },
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "2, 3이 아닌 소수"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "2, 3이 아닌"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "최대공약수와 최소공배수를 함께 만족하는 소인수 조건을 복원한다.",
+        "method": "소수별로 두 수의 지수 최소·최대값을 두 조건과 대조하여 a,b,c를 정한다.",
+        "condition": "a,b,c는 자연수이며 c는2,3이 아닌 소수라는 추가 제약. 소수 조건을 정확히 표현하는 Condition key는 별도 미등록 상태로 기록한다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+      "sourceOrdinal": 7,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1174a1f6d91ebf37d20482882982a3c5dbff583e114c1b7b45f171bee7af52d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "62b35f25a2d31cf9dc6185ad6d16d06932f522ab8f7e3f1af33fdc72a5a56720"
+        }
+      ],
+      "sourceQuestionSha256": "511ee44a2a173ff02d1fdf8fdeebaf3911353ae13a654087ce3b456bf8ee5a70",
+      "format": "단일 정답",
+      "methodCoverage": {
+        "status": "EVIDENCE_DEBT",
+        "covered": "제시 후보를 두 곱에 대입하여 자연수가 됨을 확인하는 단계",
+        "missingDecisiveStep": "후보 36/13의 도출과 그보다 작은 양의 공통 인자가 없다는 최소성 근거",
+        "mechanicalSchemaQuotePassDoesNotResolveCoverage": true
+      },
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "\\dfrac{26}{9}"
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "가장 작은 기약분수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$a+b$의 값"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 기약분수"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "\\dfrac{36}{13}\\times\\dfrac{26}{9}=8",
+            "evidenceType": "IMPLIED",
+            "justification": "제시한 후보를 첫 곱 조건에 직접 대입해 자연수가 됨을 확인한다."
+          },
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "가 모두 자연수가 되어야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "어느 것에 곱해도 자연수가"
+          },
+          {
+            "term": "기약분수",
+            "src": "stem",
+            "quote": "기약분수"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "두 분수의 자연수화 조건을 동시에 만족하는 가장 작은 기약분수 문제이다.",
+        "method": "제시 해설은 후보 분수를 두 원분수에 곱해 자연수가 됨을 확인한다. 후보 도출과 최소성은 미제시다.",
+        "condition": "곱의 값 두 개가 모두 자연수여야 한다. 구하는 인자 자체가 자연수라는 뜻으로 오해하지 않는다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:18:37.512Z",
+        "result": "PARTIAL_METHOD_EVIDENCE_DEBT",
+        "notes": "원문은 가장 작은 기약분수를 요구하지만 현재 해설은 제시한 분수가 두 곱을 자연수로 만듦만 확인한다. 최소성/도출 단계가 없어 method의 결정 단계 포괄 여부는 미완이다. 현재 파일이 이 한계를 methodCoverage/fourSlotStatus로 명시함을 확인했다. 기계적 인용 검증 성공을 수학적 완결로 취급하지 않는다."
+      }
+    },
+    {
+      "questionUid": "qid_v1_ecbcbe41b488e96a38999cb4d6db411fb3581e3172aba6a70ddeb55cb5ba3f83",
+      "sourceOrdinal": 8,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5fcd48de97ce976764119e3b553b2bc0ee0d3a2dd78a5a2abe43e716b39f8747"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4410b28bc1993a8ffffa51670648d15628ebe3f43aa7011222ad62549b14c63e"
+        }
+      ],
+      "sourceQuestionSha256": "d26826cddf8eb22c6719ffba2508b61272bb6c36f666215af865652232391084",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "절댓값이 같은 두 수"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "두 수의 차가 9"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "$-x,\\ x$",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 수가 같은 절댓값이면 원점에서 반대 방향에 대칭으로 놓인다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$2x=9$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$-4,-3,-2,-1,0,1,2,3,4$",
+            "evidenceType": "IMPLIED",
+            "justification": "끝점 사이 정수만 나열하여 개수를 확인한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수의 개수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "두 수 사이"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "절댓값 조건으로 끝점을 구하는 것이 주개념이며 구간 정수 개수가 후속 목표다.",
+        "method": "두 끝점 사이 길이로 절댓값을 정한 뒤 그 사이 정수만 센다.",
+        "condition": "끝점은 정수일 필요가 없고 두 수 사이에서 세는 대상만 정수이다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d55faa7a9477ef5bb4314ca9dc280dc967b764095d94a6f0225348a467232cb8",
+      "sourceOrdinal": 9,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c74e90102d5b7ddc68681f4b46e87e08531d21ba19d00ea3660a8f32b9d7a92"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "23017318c32f27f09d8407de759f15b1d3c308e7030324ce484651b5c442b705"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-bytes",
+          "value": "22b474e712078a73cbaf7a9a7ce1ae8861f240f172ef9e8bd159875f1dd62e11",
+          "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q9.png"
+        }
+      ],
+      "sourceQuestionSha256": "5c2f429e7cf7631fb6600bf7077b0a0b3521e20795fc54be86df9e8813530a6f",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "서울의 $+9$"
+          },
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "뉴욕의 $-5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "요일과 시각을 각각"
+          }
+        ],
+        "method": [
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$4+5=9$시간",
+            "evidenceType": "IMPLIED",
+            "justification": "두 도시의 기준시차 차를 부호 연산으로 계산한다."
+          },
+          {
+            "term": "변환",
+            "src": "solution",
+            "quote": "월요일 오후 $9$시",
+            "evidenceType": "IMPLIED",
+            "justification": "화요일 오전6시에서9시간을 빼 전날21시로 시간표현을 환산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "시점",
+            "src": "stem",
+            "quote": "화요일 오전 6시"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "정수의 뺄셈을 실제 시간 차이와 날짜 이동으로 해석한다.",
+        "method": "그림에서 두바이+4,뉴욕-5를 읽어 기준 시각에서 차를 이동한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      },
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_연향중_1학기_중간_중1_기출-q9.png",
+        "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q9.png",
+        "observation": "세계 지도에 그리니치0, 두바이+4, 서울+9, 뉴욕-5 표시를 직접 확인. 해설의 시간차 입력과 일치."
+      }
+    },
+    {
+      "questionUid": "qid_v1_3b9eddec458d80a5ab7f07d8636a6e7ebcc405aaa1b63d0a8af6fd439164bd5b",
+      "sourceOrdinal": 10,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bea31114b82d0505371c92160e1ddad113d6d4bf452f658085c00c60a31da3a9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c165b43f14eae8b85071f5fe870e2ab274f6d7cd7803a19cb1346dbf35b49cb2"
+        }
+      ],
+      "sourceQuestionSha256": "83b8e7b3c4cd5bcbbd4f963e3e569e4721c8196607c75c26d96ab9d97718b281",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "choices",
+            "quote": "$(+8)-(-3)+(+7)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$-6-2-5=-13$",
+            "evidenceType": "IMPLIED",
+            "justification": "단원 목표가 부호 있는 정수 덧셈·뺄셈 계산 자체이다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 작은 값은 $-13$",
+            "evidenceType": "IMPLIED",
+            "justification": "계산한 각 결과의 크기를 비교한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "정수 혼합 덧셈·뺄셈의 값 비교이다.",
+        "method": "음수를 빼는 항의 부호를 바꾼 결과들을 비교한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6ce2fa03238108560bf64b8a2d06f27d093602a2acfb67a757a8ad76a03799df",
+      "sourceOrdinal": 11,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2855ce0376fb977d731221a189a57ef7481fac1ecba52ae62435fa1aec18b092"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2e6907a12b75e3a0536c7f5f5d667d2e0e4dc1a1447b9a09a36823c9499cc4f7"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-bytes",
+          "value": "18a278cad93e4e4b6baffad97a9ddcea647bc13e09da21a089d55da47986267a",
+          "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q11.png"
+        }
+      ],
+      "sourceQuestionSha256": "e6165778687ffecbe6af9a093844e82261e3ac1752b1a177bf1900dd441cfcd7",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전개도",
+            "src": "stem",
+            "quote": "전개도를 접어"
+          },
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "정육면체를 만들려고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$a\\times b\\times c$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "전개도를 접으면 마주 보는 면은",
+            "evidenceType": "IMPLIED",
+            "justification": "전개도의 인접·반대 관계를 접힘으로 해석한다."
+          },
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "마주 보는 두 수의 합이 $4$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "마주 보는 면의 수의 합이 4"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "정수 연산은 후속 절차이고 결정적 사고는 정육면체 전개도의 반대 면 복원이다. 시험 학기만으로 1학기 수 계산에 재배정하지 않는다.",
+        "method": "마주보는 면을 먼저 정해야 a,b,c의 수치 관계가 만들어진다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      },
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_연향중_1학기_중간_중1_기출-q11.png",
+        "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q11.png",
+        "observation": "가로줄 5,c,b,1이며5의 위-3,아래a. 접었을 때 -3/a,5/b,c/1이 반대면인 구조 확인."
+      }
+    },
+    {
+      "questionUid": "qid_v1_8bc9c811cc835ba1a24e54bcaa41ef5a7ecdc296581e61f368e82898ff5d0412",
+      "sourceOrdinal": 12,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b95d4e88d9a71da1f2c9a179a1ee690b0e5a4582fb605f766ca17f0561fc4509"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "70e4760e675d9f295d9c79e7c277dbb17980f1f7df55fbb8afa93a2899f9e536"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256-bytes",
+          "value": "9e000f00d75c1a3c115656562f64ddc11c24254cc08e1048ffde90af5a5ddfb4",
+          "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q12.png"
+        }
+      ],
+      "sourceQuestionSha256": "de4428bc5b32b4df3773232fa8cebf963e4c062bddbb25b70cc28ec60f181f51",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "다음 계산 과정"
+          },
+          {
+            "term": "교환법칙",
+            "src": "choices",
+            "quote": "교환법칙"
+          },
+          {
+            "term": "분배법칙",
+            "src": "choices",
+            "quote": "분배법칙"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "교환법칙",
+            "src": "solution",
+            "quote": "— 교환법칙",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "결합법칙",
+            "src": "solution",
+            "quote": "— 결합법칙",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "계산 결과보다 실제 변형에 적용된 연산 법칙 명칭을 판단한다.",
+        "method": "두 번째 변형은 항을 분배한 것이 아니라 곱의 묶음을 바꾼 것이다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      },
+      "imageInspection": {
+        "status": "VIEWED",
+        "path": "19_연향중_1학기_중간_중1_기출-q12.png",
+        "sourceAsset": "archive/assets/images/19_연향중_1학기_중간_중1_기출/q12.png",
+        "observation": "(-10)×(+11)×(-2)의 인자순서 교환, 이어 첫 두 인자를 괄호로 묶는 순서. ②는 결합법칙 위치임을 확인."
+      }
+    },
+    {
+      "questionUid": "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
+      "sourceOrdinal": 13,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "22e01ed9d96c2afaa33b2bffee83c9b5465ce783a627977aee9affb6fee0b5d1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "167fd95fb20eec151b4c20ceff790e37bfa495434605211d6e2b176337731279"
+        }
+      ],
+      "sourceQuestionSha256": "50e7a1499492a1c7dc337a62686b4f1d5e8e4825e5bdd3e4a46f3cf5bc3f6b15",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "41.6\\times1.7+58.4\\times1.7"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "41.6\\times1.7+58.4\\times1.7"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "을 계산하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "$=(41.6+58.4)\\times1.7$",
+            "evidenceType": "IMPLIED",
+            "justification": "공통인수1.7을 묶어 두 곱의 합을 합의 곱으로 바꾼다."
+          },
+          {
+            "term": "공통인수",
+            "src": "solution",
+            "quote": "$=(41.6+58.4)\\times1.7$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 항의 같은 인수1.7을 공통인수로 유지한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "곱셈·나눗셈이란 template 이름만 보면 좁지만 실제 ACTIVE 정의는 이 공통인수 소수 계산과 일치한다.",
+        "method": "공통인수1.7을 유지하고 두 소수의 합을 먼저 구한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
+      "sourceOrdinal": 14,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "991a34ed5ee8aa9940809ea1276f4bdb041b1184c335d31434d8208c4f137282"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7ff077f02a7f0363588afb0e958b0b6f97ffdc45255dc60c6b1778b63d4e7502"
+        }
+      ],
+      "sourceQuestionSha256": "d4f8e38d229d4721833ac23242c2fc633ccc6f3c95962725f5adb6cbc23a91a5",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역수",
+            "src": "stem",
+            "quote": "역수를 $x$"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$0.3$의 역수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x\\div y$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "$-3$의 역수는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$=-\\dfrac13\\times\\dfrac3{10}$",
+            "evidenceType": "IMPLIED",
+            "justification": "단원 목표인 유리수 나눗셈을 나누는 수의 역수 곱으로 계산한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "역수의 뜻을 유리수 나눗셈에 적용하는 계산 문항이다.",
+        "method": "소수0.3을 분수로 나타내어 역수를 정한 후 나누는 수의 역수를 곱한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+      "sourceOrdinal": 15,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1c90189a99ae0115bdec698c608b10b17febea79685084125d1611d0a9f6e7c6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dfcccdc20812a207f9c2d50f8572b1d486dcf08a28bfcf3f026e83c72ed09f68"
+        }
+      ],
+      "sourceQuestionSha256": "fedae09cee9559942764ae3640033b5ef7d76989aee2e7f148cb0440d6c34090",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "\\left(-\\dfrac{4}{5}\\right)"
+          },
+          {
+            "term": "연산",
+            "src": "stem",
+            "quote": "\\times\\left(-\\dfrac{2}{3}\\right)\\div"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "을 계산하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "\\times\\left(-\\dfrac58\\right)",
+            "evidenceType": "IMPLIED",
+            "justification": "-8/5로 나누는 연산을 그 역수-5/8을 곱하는 연산으로 바꾼다."
+          },
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "$=-\\dfrac13$",
+            "evidenceType": "IMPLIED",
+            "justification": "곱한 분자분모의 공통인수를 약분하여 기약값을 얻는다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "부호 있는 분수의 곱셈·나눗셈 혼합 계산이다.",
+        "method": "두 음수의 곱 뒤 음수로 나누는 부호를 보존한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_30823040895108b3b727e7e169e1ce127c777f2f3e89ecf21e0ffd8dacd84408",
+      "sourceOrdinal": 16,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9a767b800d4567874255828a0f606cedc5edf9581008acab9320c1db6b5db780"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "19763b7f9c41c6efda52f5472cf99e8690ab25b31f7796a613f5fe7d767a1011"
+        }
+      ],
+      "sourceQuestionSha256": "1396c0c170e261fea46a66f6e32cd338eb1f4a68b6c937515e3966e1534f1e23",
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "세 유리수"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "a\\times b\\lt0"
+          },
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "a-b\\gt0"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부호",
+            "src": "choices",
+            "quote": "$a\\gt0, b\\gt0, c\\gt0$"
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "부호는 서로 다르다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "$a<0,\\ b>0$은 불가능하다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이부호의 두 가능성 중 음수a/양수b는 차가 양수라는 조건에 모순이므로 제거한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "세 유리수"
+          },
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "a-b\\gt0"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "b\\div c\\gt0"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "양수·음수의 용어 분류가 아니라 유리수의 곱·차·몫 부호 법칙을 연결한 추론이므로 계산 subUnit을 제안한다.",
+        "method": "a,b가 이부호인 두 경우 중 a-b>0을 만족하는 경우를 고른다.",
+        "condition": "입력은 유리수이며 곱<0,차>0,몫>0이라는 관계가 주어진다. a가 양수라는 결론을 입력 COND_POSITIVE로 혼동하지 않는다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:18:37.512Z",
+        "result": "ACCEPTED_AFTER_EVIDENCE_REFINEMENT",
+        "notes": "곱·차·몫 부호의 세 조건을 실제 발문과 해설에서 읽었다. 해설은 이부호의 두 경우 중 하나를 배제하므로 CASE_BRANCH가 타당하다. goal 부호의 근거를 일반적 '옳은 것' 문구에서 실제 부호조합 선지로 보완했다. 세부단원 정정은 정확binding 부재로 제안에만 둔다."
+      }
+    },
+    {
+      "questionUid": "qid_v1_7eb78c9d22a62c22f6eb68880a569bf6a5c074bf0c09ddcfa5a41d33a38afff6",
+      "sourceOrdinal": 17,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a641d965cb85dcf9e03931ff26b7d0b6ead5714994384b3d06f0d047824901cb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f6840d5fc61c0b4501a4694fc9be29e97d191bcf887b363bc4b08f6f51978286"
+        }
+      ],
+      "sourceQuestionSha256": "412f4efde0250e6ffff36e106a91f840619acd977f552f77fb421442d9b3d481",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "(-2)^3"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "\\dfrac{5}{4}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 양의 정수의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "$6-\\dfrac34=\\dfrac{21}{4}$",
+            "evidenceType": "IMPLIED",
+            "justification": "단원 목표인 중첩 유리수 계산에서 안쪽 나눗셈 뒤 괄호를 계산한다."
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$(-2)^3=-8$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$A<5$이고 $A>4$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$1,2,3,4$",
+            "evidenceType": "IMPLIED",
+            "justification": "엄격한 상한 아래의 양의 정수를 나열한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양의 정수"
+          },
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "양의 정수"
+          },
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$A$보다 작은"
+          },
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모든 양의 정수"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "혼합 계산 결과를 정수 선택 경계로 쓰는 순차 구조이다.",
+        "method": "A의 유리수 값을 구해4와5 사이임을 판단한 뒤 허용되는 양의 정수만 더한다.",
+        "condition": "A보다 작은 모든 양의 정수라는 엄격 상한·양수 정수 범위가 선택을 제한한다.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+      "sourceOrdinal": 18,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a5dc2772455bbe756b68ca3eaf987611fa0b2d8ec85a7a7ee5ee6a6852260a9f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b4059d22ea751b0f61903d807865ab3afff99bc8748f084f74127a74cfbaedab"
+        }
+      ],
+      "sourceQuestionSha256": "f3e1a0e5b0181345dfe704bc1cf4e733bc54f8042126d6ee5e0ad864c06c27cf",
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "문자식",
+            "src": "choices",
+            "quote": "$x$원짜리 과자를 4개"
+          },
+          {
+            "term": "자릿수",
+            "src": "choices",
+            "quote": "십의 자리의 숫자가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "자릿수",
+            "src": "solution",
+            "quote": "십의 자리 숫자가 $x$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "문자식",
+            "src": "solution",
+            "quote": "$10x+y$",
+            "evidenceType": "IMPLIED",
+            "justification": "십의 자리 숫자x에10을 곱하고 일의 자리y를 더해 두 자리 수를 표현한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "두 자리 자연수"
+          },
+          {
+            "term": "자릿수",
+            "src": "choices",
+            "quote": "두 자리 자연수"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "다양한 생활·도형·자릿값 문장의 식 표현 적절성을 판정한다.",
+        "method": "두 자리 자연수의 십의 자리와 일의 자리를 각 자릿값으로 나타낸다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+      "sourceOrdinal": 19,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "199306b724311d3f054ee03091482e353fa203593fa9cf96ecfbda812711422c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e45ecbb5bb9877bfbbb2d722c180f77cd760925fca9743119d7f298bdd6530ed"
+        }
+      ],
+      "sourceQuestionSha256": "4156b4d11253c43cfca08ab6dda8b6ee1b558870007054fbcb5420208a0a96cb",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "stem",
+            "quote": "\\dfrac{ac}{b}"
+          },
+          {
+            "term": "문자식",
+            "src": "stem",
+            "quote": "a\\div(b\\div c)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "같은 것을"
+          },
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "모두 고른 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "a\\times\\dfrac cb",
+            "evidenceType": "IMPLIED",
+            "justification": "b/c로 나누는 것을 그 역수c/b의 곱으로 바꾼다."
+          },
+          {
+            "term": "변환",
+            "src": "solution",
+            "quote": "a\\div b\\times c=\\dfrac{ac}{b}",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽에서 차례로 계산되는 곱·나눗셈을 하나의 분수로 나타낸다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "모두 고른 것은"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "문자식에서 곱셈·나눗셈 표기의 생략·동치 변환을 다룬다.",
+        "method": "연속 나눗셈과 나눗셈을 포함한 괄호를 구별하여 분모·분자를 결정한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c1f3347c7e55101c4b4d70ec5f5b28950e953b0856a54e21afe24a53e9ea5fa3",
+      "sourceOrdinal": 20,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5532c507d2ef8e3f9b4297b07e07f3ad134b9b2d03f553206d493c3b778b5272"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "669f04fd3a5c0de3380145bb04e42d78bed84e9762604ee86dad4083cf64a1b5"
+        }
+      ],
+      "sourceQuestionSha256": "f078124c3a4c8659781bceedefddd92e4b3b98520e7ca704d2aa67f0579a45b9",
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$x=-2$"
+          },
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "$y=-\\dfrac{1}{2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "식의 값이 가장 큰"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "을 대입한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "$x^2-\\dfrac y4",
+            "evidenceType": "IMPLIED",
+            "justification": "x²항은 음수x를 괄호로 대입한 제곱으로 계산한 기존 해설 값을 확인했다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 것은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "계산된 다섯 유리수 값을 비교해 가장 큰 것을 결정한다."
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "classification": "문자에 주어진 수를 대입하는 식의 값이 핵심이고 마지막에 최대값을 고른다.",
+        "method": "음수의 제곱과 분수의 나눗셈을 구별하여 얻은 값을 비교한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
+      "sourceOrdinal": 21,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fe5a9302b87d710f2cc1e2908d47012c9fc54900a573e995e2443fd4d91868ac"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e239257006d4379471baa48aa2e3464237a1f78186cdb3d1b5ca791e3c459740"
+        }
+      ],
+      "sourceQuestionSha256": "d5dfeec115dc1e9b5f60f8e8fd3ebcd3bb93c4b2d0c14c13a161aec9e12380d2",
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "src": "stem",
+            "quote": "직육면체 모양의 벽돌"
+          },
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "가능한 한 작은 정육면체"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "한 모서리의 길이"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "벽돌의 총 개수"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "의 최소공배수이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "$24=2^3\\times3$",
+            "evidenceType": "IMPLIED",
+            "justification": "세 길이를 소인수분해하여 소수별 최대 지수로 최소공배수를 정한다."
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "벽돌 수는 부피의 비로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "일정",
+            "src": "stem",
+            "quote": "일정한 방향으로"
+          },
+          {
+            "term": "배치",
+            "src": "stem",
+            "quote": "빈틈없이 쌓아"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가능한 한 작은"
+          },
+          {
+            "term": "소인수분해",
+            "src": "stem",
+            "quote": "소인수분해를 사용하여 계산"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "가장 작은 공통 배치 크기를 구하는 최소공배수 활용이다.",
+        "method": "동일 방향 빈틈없는 배치의 세 축 조건을 최소공배수로 묶는다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
+      "sourceOrdinal": 22,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3e4b6dac400b7e20453fe83d7e2136a6b39677c2cf6de7f48945623a2a11e8e5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aceb31a03559c00f0fdac6b5873fb4f4a1e97591a2e97e07f6636e2c32cfd609"
+        }
+      ],
+      "sourceQuestionSha256": "5131a73c1f7e2958f842411029ef812f2ab371a34d2db040e5a519122bd88bb4",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "변화량",
+            "src": "stem",
+            "quote": "이기면 3칸 올라가고 지면 2칸"
+          },
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$+1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "위치를 나타내는 수의 차"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "$5\\times3-3\\times2$",
+            "evidenceType": "IMPLIED",
+            "justification": "태호의 승패별 이동량을 부호 있는 합으로 나타낸다."
+          },
+          {
+            "term": "차",
+            "src": "solution",
+            "quote": "$9-(-1)=10$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "시점",
+            "src": "stem",
+            "quote": "처음 위치를 0"
+          },
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "비긴 경우는 없다"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "부호 있는 정수의 곱셈·덧셈을 상대 위치 변화에 적용하는 문장 문제이다.",
+        "method": "비김이 없으므로 이긴 횟수와 진 횟수가 상대와 상보적임을 사용한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "AUTHOR_REVIEWED_NOT_INDEPENDENTLY_SAMPLED",
+        "author": "META_C"
+      }
+    },
+    {
+      "questionUid": "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c",
+      "sourceOrdinal": 23,
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d363adc8926d2b52cf8d95067b6400dd0d836a9cc8e7ed367f8ddd035b5a2001"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b7fcc37092a56f40e493010d60d94a3d2df3c4320a07a594e6977b9e6293ec51"
+        }
+      ],
+      "sourceQuestionSha256": "7a2709fe35701ec986dfe6493739d2921729a2760e36b57018539b2bfde36ca7",
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "-\\dfrac{2}{3}"
+          },
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "세 수를 골라 곱한 값"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A+B$의 값"
+          },
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "가장 큰 것을 $A$"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "가장 작은 것을 $B$"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "서로 다른 세 수의 곱을 모두 계산한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "기존 해설에서 네 수 중 서로 다른 세 수를 고르는 네 조합을 실제로 각각 전개해 곱을 계산한다. 개념명 열거가 직접 쓰인 것은 아니므로 IMPLIED다."
+          },
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "가장 큰 값",
+            "evidenceType": "IMPLIED",
+            "justification": "네 후보 곱 중 가장 큰 값과 가장 작은 값을 각각 선택한다."
+          },
+          {
+            "term": "통분",
+            "src": "solution",
+            "quote": "$=\\dfrac{20-42}{35}$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 극값의 합을 분모35로 통분하여 계산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "구별가능",
+            "src": "stem",
+            "quote": "서로 다른 세 수"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "세 수를 골라"
+          }
+        ]
+      },
+      "reasons": {
+        "classification": "유리수 곱셈을 선택 경우별로 적용하고 극값을 비교한다.",
+        "method": "빠짐없는 네 선택 경우를 계산하여 부호와 크기로 극값을 정한다.",
+        "condition": "명시 추가 제한 없음.",
+        "selfCheck": "META_C 본인 의미·인용 점검. 독립 검토는 root가 별도 수행한다."
+      },
+      "judgedBy": {
+        "agent": "META_C",
+        "at": "2026-11-14T08:17:32.822Z",
+        "role": "semantic_metadata_author"
+      },
+      "review": {
+        "status": "REVIEWED_SAMPLE",
+        "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+        "at": "2026-11-14T08:18:37.512Z",
+        "result": "ACCEPTED_AFTER_EVIDENCE_REFINEMENT",
+        "notes": "네 선택조합의 곱을 모두 열거하고 극값 두 개를 비교해 합산하는 기존해설을 확인했다. CASE_BRANCH가 맞고 given/goal/condition이 요구와 일치한다. 열거라는 개념명을 직접 쓰지 않았으므로 NAMED를 IMPLIED로 고치고 구체적인 해설 근거를 추가한 최종 파일을 확인했다."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "SCHEMA_QUOTE_PASS",
+    "independentReview": false,
+    "at": "2026-11-14T08:17:32.855Z",
+    "fail": [],
+    "warn": [
+      "#1 only 3 distinct terms",
+      "#3 only 3 distinct terms",
+      "#10 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+      "#10 only 4 distinct terms",
+      "#14 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+      "#14 only 4 distinct terms",
+      "#17 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+      "#18 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 23,
+      "examItems": 23,
+      "quotes": 164
+    }
+  },
+  "rootReviewRef": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/independent-review.json",
+  "sourceBaselineGitBlobSha": "ca8b8eb414827d3402caa19333604a9004660f3e",
+  "sourceCurrentSha256": "d63b3ac4134a1b4adec3b8cc9bd8721ec906ab8d00c30dd91aaa42d6d34e216d"
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+  "author": "META_C",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:18:37.512Z",
+  "sourceBaselineBlob": "ca8b8eb414827d3402caa19333604a9004660f3e",
+  "sourceCurrentBlob": "46f3f493c46c0ef76f29b032a8381483ba651a51",
+  "workerReviewSha256": "64b39ee09a718d5a5fe1b8f47b440a7941d8c1ddd1002c43b110691265d5dff5",
+  "workerFourSlotSha256": "8d4e0f947e9d64e286f83023d172218a12f5eb7fbcdf9edee277e320a61f409d",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 7,
+      "result": "PARTIAL_METHOD_EVIDENCE_DEBT",
+      "notes": "원문은 가장 작은 기약분수를 요구하지만 현재 해설은 제시한 분수가 두 곱을 자연수로 만듦만 확인한다. 최소성/도출 단계가 없어 method의 결정 단계 포괄 여부는 미완이다. 현재 파일이 이 한계를 methodCoverage/fourSlotStatus로 명시함을 확인했다. 기계적 인용 검증 성공을 수학적 완결로 취급하지 않는다.",
+      "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e"
+    },
+    {
+      "ordinal": 16,
+      "result": "ACCEPTED_AFTER_EVIDENCE_REFINEMENT",
+      "notes": "곱·차·몫 부호의 세 조건을 실제 발문과 해설에서 읽었다. 해설은 이부호의 두 경우 중 하나를 배제하므로 CASE_BRANCH가 타당하다. goal 부호의 근거를 일반적 '옳은 것' 문구에서 실제 부호조합 선지로 보완했다. 세부단원 정정은 정확binding 부재로 제안에만 둔다.",
+      "questionUid": "qid_v1_30823040895108b3b727e7e169e1ce127c777f2f3e89ecf21e0ffd8dacd84408"
+    },
+    {
+      "ordinal": 23,
+      "result": "ACCEPTED_AFTER_EVIDENCE_REFINEMENT",
+      "notes": "네 선택조합의 곱을 모두 열거하고 극값 두 개를 비교해 합산하는 기존해설을 확인했다. CASE_BRANCH가 맞고 given/goal/condition이 요구와 일치한다. 열거라는 개념명을 직접 쓰지 않았으므로 NAMED를 IMPLIED로 고치고 구체적인 해설 근거를 추가한 최종 파일을 확인했다.",
+      "questionUid": "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "ACCEPTED_REVIEW_PACKET_WITH_Q7_METHOD_DEBT",
+  "sourcePatchPolicy": "실제 해설에서 경우 배제/네 조합 열거가 확인된 두 항목의 Integration만 정정한다. q7 최소성 부족은 내용·방법 근거 부채로 남기고 해설을 새로 쓰지 않는다.",
+  "deferredPatchPolicy": "q16 subUnit과 관련 정확binding, PT/TPL 정의 불일치, 23문항 모두의 등록QFULL 불일치가 남아 있다. 과거 승인만으로 현재 VERIFIED_FINAL을 주장하지 않고 Codex의 근거 재결속 대상으로 보존한다."
+}
