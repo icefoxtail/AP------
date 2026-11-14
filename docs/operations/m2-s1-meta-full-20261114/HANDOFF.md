@@ -69,6 +69,7 @@
 | E013-difficulty | `c87ca4e18dd535d0489c91ee90784d17702ad1d5` |
 | E014-difficulty | `3af2ea2df7f680948394a31ea74de29658973816` |
 | E015-difficulty | `71f246c796960f78e277809d10890e88314dc025` |
+| E016-difficulty | `1cf8cdd518071b8b4e071f30a59a7b9a67ec8bf5` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 

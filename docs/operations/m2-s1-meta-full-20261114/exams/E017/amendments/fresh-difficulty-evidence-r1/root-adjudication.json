@@ -1,0 +1,262 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E017",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:49:17.089535+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E017",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 3,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 안쪽부터 괄호를 정리하는 직접 절차 1과 중첩 부호 전처리 2의 차이다. 새로운 전략은 없고 기존 2를 B12로 보존한다."
+      },
+      {
+        "sourceOrdinal": 4,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱을 전개한 뒤 전체 차를 계산하는 정형 결합이다. 직접 전개 1도 가능하지만 기존 2를 1/2 경계로 보존한다."
+      },
+      {
+        "sourceOrdinal": 15,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 각 조건쌍을 알려진 직사각형·마름모 판정 기준에 대응시키는 틀은 명확하다. 복수 보기 판별을 3으로 확장하지 않고 기존 2를 B23로 수용한다."
+      },
+      {
+        "sourceOrdinal": 17,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 평행하고 길이가 같은 한 쌍의 대변이라는 조건과 대각선 수직을 명시적으로 제공한다. 알려진 두 판정 기준을 연결하는 기존 2를 B23로 수용한다."
+      },
+      {
+        "sourceOrdinal": 19,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 대표 사각형의 대각선 성질과 포함관계 회상이 중심이며 별도 도형 구성이 없다. 기존 1/하를 수용하고 유사 성질의 구별은 B12 의견으로 남긴다."
+      },
+      {
+        "sourceOrdinal": 20,
+        "after": {
+          "difficultyBoundaryFlag": "B23"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 중점 사각형의 변이 원래 대각선에 대응한다는 표준 정리를 바로 적용하는 문제이다. 숫자 2를 수용하되 두 성질의 연결 때문에 B23로 조정한다. 기존 하는 이 정형 대응을 알고 있는 학습자의 인접 수준으로 보존한다."
+      }
+    ],
+    "itemUpdates": [],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E017-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E017-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E017.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 25,
+        "blindInitialSha256": "b5c31a2cb56434eb3c81935ef9650744eef5aa4be467ca9fe90cdb0ca5a49a20",
+        "comparisonSha256": "3c27c5dfe28b984981cc1dd65056f9ea954785dcd5661e79baa6367b8925bc42",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "cbd7abbd131be61c271af81b31e84230b49152d7",
+    "currentFourSlotSha256": "a77a1d871bb6484018ebdfa367c242a479c9e43700117e3ec5277c980f34dbcd",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "1f6629988458596474d59df7833f177624a7efe0a5e2a0f436fd5645897c3d73",
+  "previousFourSlotSha256": "a77a1d871bb6484018ebdfa367c242a479c9e43700117e3ec5277c980f34dbcd",
+  "acceptedReviewSha256": "597469710a992d532636ce083246a2be243f04a7aea9743c2fed269143514d49",
+  "acceptedFourSlotSha256": "a77a1d871bb6484018ebdfa367c242a479c9e43700117e3ec5277c980f34dbcd",
+  "reviewedSourceBlob": "cbd7abbd131be61c271af81b31e84230b49152d7",
+  "finalSourceBlob": "cbd7abbd131be61c271af81b31e84230b49152d7",
+  "changes": [
+    {
+      "sourceOrdinal": 3,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호가 여러 겹이어도 정해진 안쪽부터의 전개이며 접근 선택 없는2이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 안쪽부터 괄호를 정리하는 직접 절차 1과 중첩 부호 전처리 2의 차이다. 새로운 전략은 없고 기존 2를 B12로 보존한다.",
+        "authorReason": "괄호가 여러 겹이어도 정해진 안쪽부터의 전개이며 접근 선택 없는2이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 안쪽부터 괄호를 정리하는 직접 절차 1과 중첩 부호 전처리 2의 차이다. 새로운 전략은 없고 기존 2를 B12로 보존한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정해진 두 곱 전개와 뺄셈을 차례로 수행하는2이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱을 전개한 뒤 전체 차를 계산하는 정형 결합이다. 직접 전개 1도 가능하지만 기존 2를 1/2 경계로 보존한다.",
+        "authorReason": "정해진 두 곱 전개와 뺄셈을 차례로 수행하는2이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱을 전개한 뒤 전체 차를 계산하는 정형 결합이다. 직접 전개 1도 가능하지만 기존 2를 1/2 경계로 보존한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "다섯 조건쌍이 알려진 직사각형/마름모 판정에 해당하는지 비교하는2이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 각 조건쌍을 알려진 직사각형·마름모 판정 기준에 대응시키는 틀은 명확하다. 복수 보기 판별을 3으로 확장하지 않고 기존 2를 B23로 수용한다.",
+        "authorReason": "다섯 조건쌍이 알려진 직사각형/마름모 판정에 해당하는지 비교하는2이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 각 조건쌍을 알려진 직사각형·마름모 판정 기준에 대응시키는 틀은 명확하다. 복수 보기 판별을 3으로 확장하지 않고 기존 2를 B23로 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두알려진판정조건을명시된순서로적용하는2이다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 평행하고 길이가 같은 한 쌍의 대변이라는 조건과 대각선 수직을 명시적으로 제공한다. 알려진 두 판정 기준을 연결하는 기존 2를 B23로 수용한다.",
+        "authorReason": "두알려진판정조건을명시된순서로적용하는2이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 평행하고 길이가 같은 한 쌍의 대변이라는 조건과 대각선 수직을 명시적으로 제공한다. 알려진 두 판정 기준을 연결하는 기존 2를 B23로 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대표성질과포함관계의직접회상1이다."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 대표 사각형의 대각선 성질과 포함관계 회상이 중심이며 별도 도형 구성이 없다. 기존 1/하를 수용하고 유사 성질의 구별은 B12 의견으로 남긴다.",
+        "authorReason": "대표성질과포함관계의직접회상1이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 대표 사각형의 대각선 성질과 포함관계 회상이 중심이며 별도 도형 구성이 없다. 기존 1/하를 수용하고 유사 성질의 구별은 B12 의견으로 남긴다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "중점사각형의알려진대각선대응을적용하는2/B12이며기존하와인접이다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 중점 사각형의 변이 원래 대각선에 대응한다는 표준 정리를 바로 적용하는 문제이다. 숫자 2를 수용하되 두 성질의 연결 때문에 B23로 조정한다. 기존 하는 이 정형 대응을 알고 있는 학습자의 인접 수준으로 보존한다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root.",
+        "authorReason": "중점사각형의알려진대각선대응을적용하는2/B12이며기존하와인접이다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 중점 사각형의 변이 원래 대각선에 대응한다는 표준 정리를 바로 적용하는 문제이다. 숫자 2를 수용하되 두 성질의 연결 때문에 B23로 조정한다. 기존 하는 이 정형 대응을 알고 있는 학습자의 인접 수준으로 보존한다."
+    }
+  ],
+  "sourceFieldEdits": [],
+  "evidence": [
+    {
+      "file": "evidence/E017-difficulty-blind-freeze-r1.json",
+      "sha256": "b5c31a2cb56434eb3c81935ef9650744eef5aa4be467ca9fe90cdb0ca5a49a20",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E017-difficulty-comparison-r1.json",
+      "sha256": "3c27c5dfe28b984981cc1dd65056f9ea954785dcd5661e79baa6367b8925bc42",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E017.json",
+      "sha256": "2cf3644e284f612b7dd9b466d23b6e43efe62ad3fb81f1db4b1a08d81fc46074",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}

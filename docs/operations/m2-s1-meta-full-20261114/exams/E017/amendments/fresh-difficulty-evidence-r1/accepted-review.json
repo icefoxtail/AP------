@@ -1,0 +1,3610 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E017",
+  "owner": "B",
+  "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+  "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 25,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_1cd92fda2ba714adc12a63b173b86af01a3507106830c937a666b5e4902794cf",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-134",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 두 다항식을 대입하고 전체 다항식을 정리",
+      "decisiveStep": "A,B에2x−y,−x+2y를 대입하여6x−9y를 얻는다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmRecordId": "M2-RPM-134",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-131"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "명명된 다항식 A,B를 대입해 다른 문자식으로 표현하므로 식의값134를 primary로 읽고 괄호전개131을 보조로 남긴다.",
+        "binding": "H1직접연산 definition은 덧셈·뺄셈·곱셈 정리지만 skeleton은 이항전개/나머지 골격으로 달라 정합성 부채를 남긴다. 다항식 대입134의 별도 골격을 확정하지 않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "식대입과 괄호전개 순서가 제시된 정형2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "명명된 다항식 A,B를 대입해 다른 문자식으로 표현하므로 식의값134를 primary로 읽고 괄호전개131을 보조로 남긴다. A,B에2x−y,−x+2y를 대입하여6x−9y를 얻는다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "식대입과 괄호전개 순서가 제시된 정형2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cbbf20dedf95fd6d142543a822bf86d0cc2b32aa5d57eac5b87bb5c41e1d30bd"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3d89e4f96b15104744e2d6f6a62d79dfe82aa1ea8877ecd3c377ff94458bfa55"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_5c76b16b1c91f85ee5a853e4c3b0e938916891a4cfbd69acde2b3afd752b5a9b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-131",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "잘못 더한 식을 되돌리고 요구된 뺄셈 복원",
+      "decisiveStep": "P=결과−더한식, 바른식=P−같은식을 계산하여−x²+5x−9이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmRecordId": "M2-RPM-131",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+          "candidateTemplateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+            "parentProblemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+            "definition": "잘못 더한 결과에서 더해 버린 식을 두 번 빼거나, 먼저 원래 식을 구한 뒤 빼야 할 식을 빼서 바른 결과를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "다항식 덧셈·뺄셈 오류 복원으로131이며 정확한 기존M2오류복원 정의와 일치한다.",
+        "binding": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION의 실제 정의는 잘못 더한 결과에서 두 번 빼거나 원식을 구한 뒤 빼기이다. 본 해설과 정확히 일치하는 기존 후보이며 curriculum/scoped binding만 미확정이다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "잘못한 덧셈과 해야할 뺄셈이 명시되어 역연산을 두 번 수행하는2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "다항식 덧셈·뺄셈 오류 복원으로131이며 정확한 기존M2오류복원 정의와 일치한다. P=결과−더한식, 바른식=P−같은식을 계산하여−x²+5x−9이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "잘못한 덧셈과 해야할 뺄셈이 명시되어 역연산을 두 번 수행하는2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4f21a4d9e7facb47efe076d3cd35c606069a9809aa38d34d9fb9459ef1acd591"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4d9bb7378d509f4212399f44cf81adc4623a0c9429add284d2dcf0a7e2f04dd3"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_72d6de551dad500252c63dceacca79cb550dbf5fd78f51b4d4de15d8c7ab2533",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-131",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "안쪽 괄호부터 부호를 풀고 계수 비교",
+      "decisiveStep": "전체식6x−y에서a6,b−1을 읽어곱−6이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "괄호가 있는 계산"
+        },
+        "rpmRecordId": "M2-RPM-131",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "전체 또는 필요한 항만 전개하여 특정 차수의 계수를 구한다.",
+            "internalSkeleton": "TERM_COUNT_FROM_DISTINCT_FACTOR_CHOICES",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "중첩괄호 덧셈·뺄셈131이 결정계산이며 계수의 곱은 최종 출력이다.",
+        "binding": "H1연산/계수추출 definition과 internalSkeleton의 알려진 충돌을 재사용 검토 부채로 남긴다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "a,b는 수라고만 명시되어 정수·자연수 조건을 만들어 넣지 않는다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 안쪽부터 괄호를 정리하는 직접 절차 1과 중첩 부호 전처리 2의 차이다. 새로운 전략은 없고 기존 2를 B12로 보존한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "중첩괄호 덧셈·뺄셈131이 결정계산이며 계수의 곱은 최종 출력이다. 전체식6x−y에서a6,b−1을 읽어곱−6이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 안쪽부터 괄호를 정리하는 직접 절차 1과 중첩 부호 전처리 2의 차이다. 새로운 전략은 없고 기존 2를 B12로 보존한다.",
+        "authorReason": "괄호가 여러 겹이어도 정해진 안쪽부터의 전개이며 접근 선택 없는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8f38284c47e94e477cec7136db6ab84671731c704e43cb0fe53e6152ce7f7fe4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "507f16d57209c35c431eb6ceaad212d617fc6045fe9c2bf08c9ca8fc87209f36"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_634b3d9998795fd3eb6377707d564f3afbb849f3273942a4934b8ff51b0587b0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-132",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단항식을 다항식에 분배하고 동류항의 계수를 읽음",
+      "decisiveStep": "전개10x²−11x에서a+b=−1이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmRecordId": "M2-RPM-132",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "전체 또는 필요한 항만 전개하여 특정 차수의 계수를 구한다.",
+            "internalSkeleton": "TERM_COUNT_FROM_DISTINCT_FACTOR_CHOICES",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "두 단항식×다항식132이며 계수추출은 출력 단계이다.",
+        "binding": "H1직접연산/계수추출의 definition과 skeleton 충돌이 있어 exact확정을 하지 않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱을 전개한 뒤 전체 차를 계산하는 정형 결합이다. 직접 전개 1도 가능하지만 기존 2를 1/2 경계로 보존한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "두 단항식×다항식132이며 계수추출은 출력 단계이다. 전개10x²−11x에서a+b=−1이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 곱을 전개한 뒤 전체 차를 계산하는 정형 결합이다. 직접 전개 1도 가능하지만 기존 2를 1/2 경계로 보존한다.",
+        "authorReason": "정해진 두 곱 전개와 뺄셈을 차례로 수행하는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b97d81f63fb3de93e245e17a7cd30523d10462b93dc2113b8af59413cf65007b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "689a421a9da8e53ae2662ffe437f007b6685b4b761660110aca9623dbf548615"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_8006a127e00bf539f38d7112f898db2289d029544d84d94d9d08b16c36a6d4cf",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-133",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다항식 각 항을 단항식으로 나누고 차를 정리",
+      "decisiveStep": "두 몫−2+3x와4−2x²의 차는2x²+3x−6이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "subUnit": "지수법칙",
+        "category": "다항식의 계산"
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "subUnit": "지수법칙",
+        "category": null
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "subUnit": "다항식의 계산",
+        "category": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmRecordId": "M2-RPM-133",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+            "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+            "definition": "긴 나눗셈·조립제법 표를 구성해 몫·나머지·계수를 직접 계산한다.",
+            "internalSkeleton": "SYNTHETIC_DIVISION_TABLE_COMPLETION",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "실제 두 분자는 다항식이다. 기존 EXPONENT_LAW에서 POLYNOMIAL_OPERATIONS/133으로 보정한다.",
+        "binding": "H1 나눗셈 template의 조립제법/긴나눗셈은 본 항별 단항식 나눗셈과 다르다. 좁은 exact 골격 등록 부채를 남긴다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "항별 나눗셈 뒤 부호정리의 표준2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "실제 두 분자는 다항식이다. 기존 EXPONENT_LAW에서 POLYNOMIAL_OPERATIONS/133으로 보정한다. 두 몫−2+3x와4−2x²의 차는2x²+3x−6이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "항별 나눗셈 뒤 부호정리의 표준2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cf0c95c3870e43650837d8a129981e7a0dd6b92cd072f1ee637da7f67d6cd993"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9fba7e59b224c09127a04f74ac3a6869a076e3c09fba1f80d3b5f1c3466fe3f0"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_d7d0fdfe16390caebc083f09d800486b6f4851961a0ede297f0a69e5051469bc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "부등호로 대소를 표현한 식인지 정의 판정",
+      "decisiveStep": "x+2는 식만 있고 등식3x−2=2x−7도 부등식이 아니다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "부등식의 정의 판정이다. 일차식인지 또는 해를 찾는 문제와 달라 기존 RPM풀이 leaf로 강제하지 않는다.",
+        "binding": "부등식정의 판정은 현재 RPM 부등식뜻 세부 leaf에서 exact확인되지 않는다. 이전 일차부등식 판정 template는 차수 조건까지 포함하므로 본 일반부등식 판정을 그대로 active화하지 않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "부등호 유무를 직접 확인하는1이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "부등식의 정의 판정이다. 일차식인지 또는 해를 찾는 문제와 달라 기존 RPM풀이 leaf로 강제하지 않는다. x+2는 식만 있고 등식3x−2=2x−7도 부등식이 아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "RPM_LEAF_GAP"
+      ],
+      "proposalRefs": [
+        "B-E017-INEQUALITY-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부등호 유무를 직접 확인하는1이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1007087b743dbd6c32f0d00010cf905530e2594776e2d4f2f8be306954fa458c"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e1d65b98cfed04f991b45fab8c5ab12bb7d48a5fae81d10a1c4b7d8c390852bb"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_f6cf9ec25659d1d7fa48295e4b9cf2b28d0e4e4bbf8b3ac1c0daeaf779fecf84",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-136",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "음수 나눗셈으로 관계를 복원한 뒤 부등식 변형 판정",
+      "decisiveStep": "−2로나누면a≥b이므로a/2≥b/2이고⑤는 일반적으로 틀리다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmRecordId": "M2-RPM-136",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "candidateTemplateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+            "parentProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+            "definition": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "양변 동일수 덧셈 및 음수배의 방향반전136이다.",
+        "binding": "현재 M2성질판정 template의 덧셈/곱셈 추적 및 음수의 방향 반전 정의가 일치한다. 학년이나 curriculum 누락을 핑계로 semantic 신규 template를 만들지 않고 기존후보를 남긴다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "한 번의 관계 복원 뒤 표준 성질을 적용하는2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "양변 동일수 덧셈 및 음수배의 방향반전136이다. −2로나누면a≥b이므로a/2≥b/2이고⑤는 일반적으로 틀리다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 번의 관계 복원 뒤 표준 성질을 적용하는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3addd2e2a3d0e708ef2790c8ca4b963df7f00195425f7497f53b2843b93c432d"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c5e76416819df100cbf9ba4fefb8122456de19625f69160db069cacae32f8993"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_6592d1351f935360dbd4213fdbb341e8f890f4718456721b1b00d42af0513d82",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-139",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "괄호가 있는 부등식을 풀고 제시 숫자의 해 포함 여부 판정",
+      "decisiveStep": "x≥6.5이므로보기6만해가 아니다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "rpmRecordId": "M2-RPM-139",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+            "definition": "분수나 소수 계수를 정수로 고친 뒤 이항과 나눗셈을 수행하고, 제시된 해와 비교해 옳지 않은 보기를 찾는다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "괄호 있는 일차부등식139이며 보기 검사는 최종 구간대입이다.",
+        "binding": "기존 소수분수부등식 풀이 오류 template는 제시된 해 계산의 오류를 판정한다. 본 괄호부등식에서 수의 포함여부는 목표가 달라 exact reuse는 보류한다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "분배와 이항 뒤 다섯 상수 중 해가 아닌 것을 고르는2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "괄호 있는 일차부등식139이며 보기 검사는 최종 구간대입이다. x≥6.5이므로보기6만해가 아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분배와 이항 뒤 다섯 상수 중 해가 아닌 것을 고르는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "e7ed36a7b0148f27aaa9ea202bad04fef14389dceed12a7e54953df3e4e96f08"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b5edf1afc795e68b9a0b43ea2eca1d70723760007f5c6f8175d43de2b53ab3f5"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d49dea28f9bcfee239766b85523b55beb5bb619ce001f2148ac799339b38a55a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-141",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "최대 해의 경계값과 계수식을 같게 놓음",
+      "decisiveStep": "x≤4(a−1)/3의 최댓값8에서a7이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmRecordId": "M2-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+            "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+            "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+            "internalSkeleton": "CHAIN_INEQUALITY_SPLIT_AND_INTERSECT",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "해의 조건으로 계수 찾기141이다. 정수해가 아니라 실수해 경계이다.",
+        "binding": "H1parameter definition은 계수조건이나 skeleton은 연쇄부등식 교집합으로 본 단일 경계 역산과 달라 정합성 부채를 남긴다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "가장큰해가8이라는 경계조건이 있으며 a 또는 x가정수라는제약은없다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "부등식 정리 후 이미 제시된 끝점8과 비교하는 익숙한2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "해의 조건으로 계수 찾기141이다. 정수해가 아니라 실수해 경계이다. x≤4(a−1)/3의 최댓값8에서a7이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "부등식 정리 후 이미 제시된 끝점8과 비교하는 익숙한2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "08a61f1be44135892bf3986a8da0b8727fddbc6bee6b515537316e2ab7b24744"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9491016a04f1aaec389850e4530dcbb6b2d70977b22e81b2856c1ce3f49c5e8f"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_6c76e7cdf3eedc9a60a2a8fa6a4d78f97b1b338f50e4e53598c3107c3d50c875",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-141",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 해구간의 방향과 경계가 같음을 이용해 계수 결정",
+      "decisiveStep": "첫해x≤−15,둘째x≤(3−3a)/2를 비교하여a11이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmRecordId": "M2-RPM-141",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+            "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+            "definition": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+            "internalSkeleton": "CHAIN_INEQUALITY_SPLIT_AND_INTERSECT",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "두 일차부등식의 같은 해 조건141이다.",
+        "binding": "H1parameter definition/skeleton 충돌이 있어 실제 단일부등식 두 경계 비교를 활성 골격으로 덮지 않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "두 해집합의 일치가 조건이며 별도 정수나 부호 제약은 없다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "소수/분수를 정수화한 두 식의 끝점을 같게 놓는 정형2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "두 일차부등식의 같은 해 조건141이다. 첫해x≤−15,둘째x≤(3−3a)/2를 비교하여a11이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소수/분수를 정수화한 두 식의 끝점을 같게 놓는 정형2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0d733aba83220f3253cb3780a56dd2091fbb22e9585ce8f732bfd78bb233a516"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "05352595010aaec99e14801bd7376eb41402fd87d7333c2eb579421f19c7d293"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_43559a63e43e4a079f89541d6bf000ea18df5ed04abc165c08a859cae0d22a0c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-190",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대각선이 만든 삼각형의 각에서 평행사변형의 이웃각을 연결",
+      "decisiveStep": "AOD의각합에서35°, 평행·보각으로x35,y50이므로85°이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmRecordId": "M2-RPM-190",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_QUADRILATERAL_PROPERTIES",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "평행사변형의 변·각·대각선 성질을 이용한다.",
+            "internalSkeleton": "평행사변형의 평행·대변·대각선 조건을 목표값에 연결한다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_TRIANGLE_ANGLE_SUM",
+            "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "실제 평행사변형의 변·각 성질190이다. 원본 그림115°,30°,65°와 x,y의 위치를 확인했다.",
+        "binding": "generic TPL_QUADRILATERAL_PROPERTIES의 실제 변·각·대각선 성질→목표값 skeleton과 일치하는 후보이다. 현재 M2-2 scope와 source curriculum미상은 별도 binding debt다.",
+        "crossConcept": "별도 삼각형AOD의 내각합으로 선행 각35°를 얻어 primary 평행사변형각계산에 공급한다. 평행선의 엇각은 primary의 평행성 적용 안에 있어 중복CC를 추가하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "삼각형 내각합으로 구한 각을 평행사변형의 평행·보각 관계에 차례로 넣는다.",
+        "difficulty": "삼각형각합→엇각→이웃각 보각이라는 정형 연쇄로2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "실제 평행사변형의 변·각 성질190이다. 원본 그림115°,30°,65°와 x,y의 위치를 확인했다. AOD의각합에서35°, 평행·보각으로x35,y50이므로85°이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "삼각형각합→엇각→이웃각 보각이라는 정형 연쇄로2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3a7a1ded4548567b62698ae5d7c7565c763bdea51b1e240679d03440b3c55cc4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "670c8e8a6332a080ff26008f73c9e870340d96dfc95bea3e72946fdaf9e2635a"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_6b720257c3715c5b52f7fd0e99c0feb79d08cc8aea81d83dbad8af7539e3c13c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-190",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행사변형의 대변 같음과 둘레 비례배분",
+      "decisiveStep": "3k,4k의둘레14k28에서k2,CD6cm이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmRecordId": "M2-RPM-190",
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+          "candidateTemplateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+            "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+            "definition": "평행사변형의 둘레를 2로 나누어 이웃하는 두 변의 합을 구하고, 주어진 비에 따라 그 합을 비례배분해 각 변의 길이를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_RATIO_AND_PROPORTION",
+            "definition": "주어진 비에 따라 전체 양을 나누어 각 부분의 크기를 정하는 것."
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "평행사변형 변의성질190에 비례배분 보조가 연결된다.",
+        "binding": "MG둘레·변의비 PT와 template의 실제 definition이 정확히 일치한다. 현재2022 M2 RPM190 directbindinggap과 source curriculum미상으로 후보만 보존한다.",
+        "crossConcept": "전체 둘레를 반으로 한 두 인접변 합을3:4로 나누는CC_RATIO_AND_PROPORTION 실제 정의에 맞는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "평행사변형대변같음으로 두변합을구하고 비례배분한다.",
+        "difficulty": "둘레반분과3:4비례배분의 익숙한 전처리2/B12이며 기존하와 인접 경계다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "평행사변형 변의성질190에 비례배분 보조가 연결된다. 3k,4k의둘레14k28에서k2,CD6cm이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "둘레반분과3:4비례배분의 익숙한 전처리2/B12이며 기존하와 인접 경계다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "c01da109ff7a0651471483f62f1bec7987d19bd210bbcfb94566d11fba5705da"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f2b5b26dcc004575713daea6d5145df4cba58d71a801178678559e6e94633946"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_54d9e914570853eb3891648cad5570f1bd85f85f4ada6564fd543288b651a00c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-190",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선과 두 각이등분선으로 이등변삼각형을 찾아 겹친 선분 계산",
+      "decisiveStep": "BE=CF=x,BC=y이므로EF=BE−BF=2x−y이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        },
+        "rpmRecordId": "M2-RPM-190",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+          "candidateTemplateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+            "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+            "definition": "평행선의 엇각과 각의 이등분선으로 생기는 이등변삼각형을 찾아 같은 길이의 변을 표시하고, 전체 변의 길이에서 겹치는 부분을 빼거나 더해 원하는 선분을 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_ISOSCELES_CONVERSE",
+            "definition": "두 내각의 크기가 같은 삼각형은 두 변의 길이가 같은 이등변삼각형이다"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "평행사변형 변·각성질190에서 이등변삼각형의 역으로 두 길이를 만든다. 원본 B-F-E-C순서 확인.",
+        "binding": "MG두내각 이등분선의 겹친선분 PT와 template의 실제 정의가 동일하다. 신규 semantic template없이 기존후보의 scoped binding을 보류한다.",
+        "crossConcept": "각이등분과 엇각으로 두 각의 같음을 만든 뒤 두변같음으로 바꾸는CC_ISOSCELES_CONVERSE가 결정적인 외부 개념이다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "평행·각이등분→이등변 역→두길이→겹침길이를 순차 연결한다.",
+        "difficulty": "보조 이등변삼각형 두개를 선택하고 겹침EF를 전체변과 연결하는 전략3/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "평행사변형 변·각성질190에서 이등변삼각형의 역으로 두 길이를 만든다. 원본 B-F-E-C순서 확인. BE=CF=x,BC=y이므로EF=BE−BF=2x−y이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "보조 이등변삼각형 두개를 선택하고 겹침EF를 전체변과 연결하는 전략3/B23이다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0d2e2f279fa146650d346b02238533aa1c18b97ab4fed0e8369c77671e38781f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "dde12713c7ae914c8186f8dc1b4ed07f3582fbddeaec8e3a5f8347762b0d3ca0"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_b115dd886da2a9fdbf5592a703c142b1f451a5a6b9efc9ea11a61d378856f01d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-192",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "같은쪽 내각합으로 평행을 확인하고 한쌍대변 판정",
+      "decisiveStep": "120+60=180으로AD∥BC,길이7같음과 묶어 평행사변형이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        },
+        "rpmRecordId": "M2-RPM-192",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_QUADRILATERAL_CRITERIA",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "대변·대각선·평행 조건으로 평행사변형임을 판정한다.",
+            "internalSkeleton": "주어진 필요조건을 평행사변형 판정 조건으로 연결한다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "평행사변형 변·각 판정192이다. 주어진A120/B60/AD=BC가 실제그림과 맞는다.",
+        "binding": "generic 평행사변형 판정 template의 대변·평행조건 definition/skeleton이 정확후보다. 범위미상이나bindinggap으로 semantic 재사용을 버리지 않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "평행 확인을 거친 알려진 한쌍대변 조건 적용2이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "평행사변형 변·각 판정192이다. 주어진A120/B60/AD=BC가 실제그림과 맞는다. 120+60=180으로AD∥BC,길이7같음과 묶어 평행사변형이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행 확인을 거친 알려진 한쌍대변 조건 적용2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cc1a17b25aacd5292fc770942e3c0d77efc7dd7944014c9d45ecdb26c38cca28"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6df793493f66a29c2b8381a25ca536fd559a09e822f8a25126b56a4e59e2c038"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_33abb9ccfd6eaa5ebe9015bb2021464abd3ed53a35fcc61820850d4129a312cf",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-200",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "정사각형이 되려면 직사각형과 마름모 조건이 함께 필요한지 판정",
+      "decisiveStep": "②③은 직사각형만 보장해정사각형조건이아니다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmRecordId": "M2-RPM-200",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "사각형 포함관계의 조건판정200이다. 이미평행사변형인 전제를 전보기에서 유지한다.",
+        "binding": "specialquadrilaterals template의 대각선·변·각 성질을 적용해결론 skeleton이 맞는 기존후보이다. 조건이두개라는것만으로CASE_BRANCH를붙이지않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 각 조건쌍을 알려진 직사각형·마름모 판정 기준에 대응시키는 틀은 명확하다. 복수 보기 판별을 3으로 확장하지 않고 기존 2를 B23로 수용한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "사각형 포함관계의 조건판정200이다. 이미평행사변형인 전제를 전보기에서 유지한다. ②③은 직사각형만 보장해정사각형조건이아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 각 조건쌍을 알려진 직사각형·마름모 판정 기준에 대응시키는 틀은 명확하다. 복수 보기 판별을 3으로 확장하지 않고 기존 2를 B23로 수용한다.",
+        "authorReason": "다섯 조건쌍이 알려진 직사각형/마름모 판정에 해당하는지 비교하는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "cb5f215e332504a3e8509fa38e5f90aed1d45cc3d5d0996013384b1f6f389342"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "38fc12f619b2c86998bf6f42e1895ea24911d7abff61591ad5e6c062b754b95b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_e15ab35f7d9b353f63623bd7f715e95be6ca54ea7c0548869435fbe8fc67be6c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-201",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "접은 종이의 대칭으로 네변같음을 확인하고 마름모 성질 판정",
+      "decisiveStep": "같은7cm의대칭네변으로 마름모;직사각형이나직각조건은불성립이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_LINE_SYMMETRY_REFLECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmRecordId": "M2-RPM-201",
+        "crossConceptKeys": [
+          "CC_LINE_SYMMETRY_REFLECTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_LINE_SYMMETRY_REFLECTION",
+            "definition": "점이나 도형을 직선 y=x 또는 일반 직선에 대하여 대칭이동하는 변환"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "종이펴기후 마름모의 성질비교201이며 원본그림의두접힘과25°를 확인했다.",
+        "binding": "기존specialquadrilaterals는마름모성질판정을포함하지만펼치기의선행구성은CC로기록한다. 별도종이맥락만으로새template를만들지않는다.",
+        "crossConcept": "펼치기의 축대칭 반사로 네 선분길이같음을 먼저얻어마름모판정에 공급한다. 실제CC정의는일반직선에대한도형반사를포함한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "접힘의대칭→네변같음→마름모성질을순서대로적용한다.",
+        "difficulty": "대칭에서같은변을인식한뒤알려진마름모성질을고르는정형2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "종이펴기후 마름모의 성질비교201이며 원본그림의두접힘과25°를 확인했다. 같은7cm의대칭네변으로 마름모;직사각형이나직각조건은불성립이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "대칭에서같은변을인식한뒤알려진마름모성질을고르는정형2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ee42d1e54c279bfeccc18f63edeb78bf7042325abf53b7972b78b9b888ee1b48"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "9284b863924937be14370909e262c6654ac44a7f53174fbc1bc482291f572633"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_63d98fdf7e29066e11b323ae7ea8b3c2f5653aa3c6c3b8af00f5b502ef9fa701",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-200",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "먼저 평행사변형을 보장한 다음 수직대각선으로 마름모 판정",
+      "decisiveStep": "AB∥DC,AB=DC를 먼저사용하고AOB90°로마름모이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmRecordId": "M2-RPM-200",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "대변·대각선·평행 조건으로 평행사변형임을 판정한다.",
+            "internalSkeleton": "주어진 필요조건을 평행사변형 판정 조건으로 연결한다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "일반사각형에서특수사각형의충분조건을판정하는200이다. 처음부터평행사변형이라고가정하지않는다.",
+        "binding": "generic 판정및specialquadrilaterals의두단계를후보로보존한다. 별도새로운사각형PT를요구하지않으며정확한연속binding은미확정이다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 평행하고 길이가 같은 한 쌍의 대변이라는 조건과 대각선 수직을 명시적으로 제공한다. 알려진 두 판정 기준을 연결하는 기존 2를 B23로 수용한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "일반사각형에서특수사각형의충분조건을판정하는200이다. 처음부터평행사변형이라고가정하지않는다. AB∥DC,AB=DC를 먼저사용하고AOB90°로마름모이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 평행하고 길이가 같은 한 쌍의 대변이라는 조건과 대각선 수직을 명시적으로 제공한다. 알려진 두 판정 기준을 연결하는 기존 2를 B23로 수용한다.",
+        "authorReason": "두알려진판정조건을명시된순서로적용하는2이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "660b3b8cfb4a130d5cdeb2599a6d345b712aab3a320ae7b568f320e78540957f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1981914648915b44d9da10859cbde86921bbebb33c7880bb1c3718c2d7ffe41f"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_570bbbed926ec01b30b4dfa165542da89697458db171362c75379dac5145b896",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-201",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "이웃각의 절반 합이 직각임을 보여 안쪽 직사각형 성질 비교",
+      "decisiveStep": "이웃각합180이므로이등분선수직,안쪽직사각형대각선은항상수직아니다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmRecordId": "M2-RPM-201",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+          "candidateTemplateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+            "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+            "definition": "이웃하는 두 내각의 합이 180도임을 이용해 이등분선이 만나는 각이 직각임을 보이고, 만들어진 사각형이 직사각형임을 확인한 뒤 각 성질의 참·거짓을 판정한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "평행사변형의이등분선으로만든사각형성질비교201이다. 정확한기존MG과제정의가있다.",
+        "binding": "MG네각이등분선교점사각형PT/직사각형성질판정template의실제definition전체와일치한다. 내부구조의직사각형인식을추가CC로중복하지않고정확기존후보로보존한다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "보각절반으로직사각형을인식후성질판정하는익숙한2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "평행사변형의이등분선으로만든사각형성질비교201이다. 정확한기존MG과제정의가있다. 이웃각합180이므로이등분선수직,안쪽직사각형대각선은항상수직아니다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "보각절반으로직사각형을인식후성질판정하는익숙한2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d2b7b8c9806c24456fe8bdba3d1b87dc0bda0dccd46cb97b94cb4262b743d59b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "360b698f99d85614b28c85c75b89aebe23bfb65b31c5ef5c754eba5afefc5ae3"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2becfc0a37b476224fc37bdc5d4f1646ad50fb97fd7ec9143bd5de73649f8b15",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-201",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "사각형 포함관계에서 대각선의 상호이등분 성질 판정",
+      "decisiveStep": "평행사변형과그특수형세가지의4개이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmRecordId": "M2-RPM-201",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "여러사각형의공통성질비교201이며대각선길이같음과상호이등분을구별한다.",
+        "binding": "generic특수사각형성질의기존후보를사용한다. 별도MGcount equaldiagonals는대각선길이동일조건이라본상호이등분에재사용하지않는다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 대표 사각형의 대각선 성질과 포함관계 회상이 중심이며 별도 도형 구성이 없다. 기존 1/하를 수용하고 유사 성질의 구별은 B12 의견으로 남긴다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "여러사각형의공통성질비교201이며대각선길이같음과상호이등분을구별한다. 평행사변형과그특수형세가지의4개이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 대표 사각형의 대각선 성질과 포함관계 회상이 중심이며 별도 도형 구성이 없다. 기존 1/하를 수용하고 유사 성질의 구별은 B12 의견으로 남긴다.",
+        "authorReason": "대표성질과포함관계의직접회상1이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2eb80ad16e466071ccf18323b58f9b3eca0fbca8c9a05ff03aa8413c23022ae6"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7c15b283e6ee6a0e39f1f99fb146ce94209230e6cb4d8c80a8441386d82c2703"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e11db8dac2a4bbd8f08184a744f69b637af2ed747ce9082785460fcd4fe69267",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-201",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중점연결정리로 새 사각형의 변을 원래 대각선에 연결",
+      "decisiveStep": "원래대각선같음→새마름모,수직→새직사각형;일반평행사변형은대각선수직미보장이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "성질 비교"
+        },
+        "rpmRecordId": "M2-RPM-201",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT",
+            "parentProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+            "definition": "평행사변형의 대변·각과 변의 중점 조건으로 보조 삼각형의 SAS 합동을 확인하고, 대응변·대응각으로 보장되는 중점 사각형의 성질과 항상 성립하지 않는 성질을 구분한다.",
+            "internalSkeleton": "중점으로 반변의 길이 관계를 확인한다 → 평행사변형의 대변·각과 함께 SAS 합동을 만든다 → 대응 요소를 옮긴다 → 중점 사각형의 성질이 항상 성립하는지 판정한다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_MIDPOINT",
+            "definition": "다른 primary를 해결하기 위한 보조 단계로 중점 좌표나 중점 성질을 사용한다."
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "여러사각형의성질비교201에중점연결정리를보조로연결한다. 사다리꼴에한정된RPM199로강제하지않는다.",
+        "binding": "generic특수사각형후보와중점보조를남긴다. M1midpoint audit의actualskeleton은SAS합동증명이며본기존해설은중점연결정리라그exacttemplate를선택하지않는다.",
+        "crossConcept": "중점의성질로새사각형변의평행·반길이를얻는CC_MIDPOINT 실제정의에부합한다. 단순중점길이이등분만을뜻하는CC_SEGMENT_MIDPOINT로축소하지않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "중점연결정리→원대각선조건→새사각형의성질을순차연결한다.",
+        "difficulty": "Root accepts actual A2 blind assessment and subsequent independent comparison: 중점 사각형의 변이 원래 대각선에 대응한다는 표준 정리를 바로 적용하는 문제이다. 숫자 2를 수용하되 두 성질의 연결 때문에 B23로 조정한다. 기존 하는 이 정형 대응을 알고 있는 학습자의 인접 수준으로 보존한다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "여러사각형의성질비교201에중점연결정리를보조로연결한다. 사다리꼴에한정된RPM199로강제하지않는다. 원래대각선같음→새마름모,수직→새직사각형;일반평행사변형은대각선수직미보장이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 중점 사각형의 변이 원래 대각선에 대응한다는 표준 정리를 바로 적용하는 문제이다. 숫자 2를 수용하되 두 성질의 연결 때문에 B23로 조정한다. 기존 하는 이 정형 대응을 알고 있는 학습자의 인접 수준으로 보존한다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root.",
+        "authorReason": "중점사각형의알려진대각선대응을적용하는2/B12이며기존하와인접이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "74d0624bb781838f22a85979c7453d2f1faa10c384f7e56daaea79a2ffb5612a"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d0e888d951662253685efd994409bcbc43ee7c30741261112434d619456d6134"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_5681a3a6894b70eeec122c5caccefb266330102bce61806cf780fb1d2346e427",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-198",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선의 엇각과 이등변삼각형을 이용해 등변사다리꼴의 각 결정",
+      "decisiveStep": "ADB=ABD30→BAD120,ADC120에서BDC90이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴"
+        },
+        "rpmRecordId": "M2-RPM-198",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_ISOSCELES_TRIANGLE",
+            "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 세 내각의 합이 180도인 성질"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "등변사다리꼴198의밑각성질을핵심으로하고삼각형ABD의두변같음을보조로쓴다.",
+        "binding": "generic특수사각형PT는사다리꼴을정의에포함한다. 실제등변사다리꼴각계산과밑각성질에맞는기존후보로두고scope미확정을남긴다.",
+        "crossConcept": "AB=AD로삼각형ABD의밑각두개를30으로정하는이등변삼각형개념이별도필수다. 평행은등변사다리꼴primary의평행밑변에서직접적용한다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "삼각형각계산으로주어진도형의한밑각을구한뒤등변사다리꼴성질에연결한다.",
+        "difficulty": "주어진동일변과평행관계를차례로연결하는표준2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "등변사다리꼴198의밑각성질을핵심으로하고삼각형ABD의두변같음을보조로쓴다. ADB=ABD30→BAD120,ADC120에서BDC90이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진동일변과평행관계를차례로연결하는표준2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ece8f43198b58eff2a8ecc30314d945a25d5e48aabf7476cb82bd9b573f481a6"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fa0c8bad070b8bca73d2d2fab5b195a53a4bd80f992e89379c41eb9f759c1323"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_400f55aafedf2c6366270fd862aa8150927dfc8bd550a2ae29faff96b9b19663",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-134",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단항식으로 항별 나누고 괄호 정리 후 값 대입",
+      "decisiveStep": "식은−7x/2+6y이고x4/7,y2에서10이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmRecordId": "M2-RPM-134",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "perPartDecisions": [
+          {
+            "part": "(1)",
+            "rpmRecordId": "M2-RPM-133",
+            "supportingRpmRecordIds": [
+              "M2-RPM-131"
+            ],
+            "goal": "괄호가있는다항식간단히정리"
+          },
+          {
+            "part": "(2)",
+            "rpmRecordId": "M2-RPM-134",
+            "goal": "주어진값대입"
+          }
+        ],
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"식의 계산\",\"다항식의 계산\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-133",
+          "M2-RPM-131"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+            "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+            "definition": "긴 나눗셈·조립제법 표를 구성해 몫·나머지·계수를 직접 계산한다.",
+            "internalSkeleton": "SYNTHETIC_DIVISION_TABLE_COMPLETION",
+            "status": "ACTIVE"
+          },
+          {
+            "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+            "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+            "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+            "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "(1)의다항식나눗셈133과괄호131을거쳐(2)의식의값134가최종목표다.",
+        "binding": "H1polydivision의긴나눗셈은항별단항식나눗셈과다르고H1직접연산skeleton도충돌한다. 본정리후대입의합성순서를제안으로남긴다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "별도 수 체계나 유한 범위로 답 후보를 제한하지 않는다. 주어진 수와 도형 관계는 given에 보존한다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "소문항이정리와대입순서를명시한정형2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "(1)의다항식나눗셈133과괄호131을거쳐(2)의식의값134가최종목표다. 식은−7x/2+6y이고x4/7,y2에서10이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "DEFINITION_INTERNAL_SKELETON_CONFLICT",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소문항이정리와대입순서를명시한정형2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "11ad26b78c887e0bb444aad4cab8e756e4158280dc928db19a32f4e5dab0f931"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0126718114a496a646b566b7988b5f3fc8323f7cd96b3450bb0102da8a133eb4"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_0540bf372ef0661f7ac173f41118f9e0ce69fc8bb51d24b54865ff772e4d740b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-144",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "고장전후 이동시간과 정지시간의 합으로 부등식 구성",
+      "decisiveStep": "x/8+1/6+(6−x)/4≤1에서x≥16/3이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmRecordId": "M2-RPM-144",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "semanticScope": "M2-1",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-1\",\"일차부등식\",\"일차부등식의 활용\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+            "parentProblemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+            "definition": "편도 거리를 미지수로 두고 갈 때·올 때의 시간과 머무는 시간을 더한 식을 세워 제한 시간 이하라는 부등식을 풀고 거리 범위를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": []
+      },
+      "fieldReview": {
+        "classification": "거리·속력·시간144이며전체거리6을두구간x와6−x로나눈편도모델이다.",
+        "binding": "기존왕복시간template는같은편도거리를두속력으로왕복한다. 본문은고정전체거리를x와6−x로나누는편도이므로동일template로확정하지않고기존speedPT하의변형을제안한다.",
+        "crossConcept": "선택 primary를 수행하는 표준 조작 자체를 별도 crossConcept으로 중복하지 않는다.",
+        "condition": "총시간1시간이하가부등식의상한이다. 고장거리는실수거리이며정수올림을추가하지않는다.",
+        "integration": "한 primary의 정형 절차 안에서 해결되며 외부 개념 통합을 추가하지 않는다.",
+        "difficulty": "소문항이시간모델과풀이를안내한다. 잘정해진분할거리의시간합으로2/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "거리·속력·시간144이며전체거리6을두구간x와6−x로나눈편도모델이다. x/8+1/6+(6−x)/4≤1에서x≥16/3이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "B-E017-PIECEWISE-TRAVEL"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소문항이시간모델과풀이를안내한다. 잘정해진분할거리의시간합으로2/B23이다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a06f4113e6eb3a511318a3e17fcf88fc29b52b37733b554a0e69ec32f4a95294"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2fd8cde144e3e5e55dcf4a73f0474b63010efa89283a4926aec34ed5ac2c8172"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-194",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행선 사이 같은넓이에서 공통부분을 빼고 밑변비로 넓이 계산",
+      "decisiveStep": "ABC=DBC에서OBC를빼OAB=ODC12;AO:OC3:5로OBC20이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_AREA_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이"
+        },
+        "rpmRecordId": "M2-RPM-194",
+        "crossConceptKeys": [
+          "CC_AREA_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+          "candidateTemplateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+          "status": "EXISTING_PARTIAL_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING",
+          "coveredParts": [
+            "(2)"
+          ],
+          "uncoveredParts": [
+            "(1)"
+          ],
+          "coverageReason": "The exact definition covers area-ratio calculation, not the preceding proof by subtracting a common triangle."
+        },
+        "perPartDecisions": [
+          {
+            "part": "(1)",
+            "rpmRecordId": "M2-RPM-194",
+            "goal": "두삼각형넓이같음을설명"
+          },
+          {
+            "part": "(2)",
+            "rpmRecordId": "M2-RPM-195",
+            "goal": "분할삼각형넓이계산"
+          }
+        ],
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "supportingRpmRecordIds": [
+          "M2-RPM-195"
+        ],
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+            "parentProblemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+            "definition": "평행한 두 밑변에 의해 대각선이 나뉘는 비를 이용해 삼각형들의 넓이비를 정하고, 주어진 넓이에 그 비를 차례로 적용해 원하는 삼각형의 넓이를 구한다.",
+            "internalSkeleton": null,
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_AREA_RATIO",
+            "definition": "두 도형의 넓이 사이의 비율 관계."
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "(1)은평행선과넓이194,(2)는분할도형195의넓이비이다. 전체동일한사다리꼴의넓이연결을primary로둔다.",
+        "binding": "Retain the actual existing area-ratio template only as a part(2) candidate. Part(1) proof by subtracting the common large-triangle area is not explicitly covered; no whole-item exact-template activation is claimed.",
+        "crossConcept": "평행선의같은높이·같은넓이에서얻은12를별도같은높이삼각형의밑변비3:5로옮기는CC_AREA_RATIO단계가필요하다.",
+        "condition": "주어진AO:OC비는넓이비계산의수치관계다. 별도미지수범위conditionKey가아니므로4slot관계로보존한다.",
+        "integration": "같은넓이차→알려진넓이확정→밑변비넓이비의순차연결이다.",
+        "difficulty": "같은큰삼각형의공통부분을제거하는구조선택후밑변비를연결하는3/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "(1)은평행선과넓이194,(2)는분할도형195의넓이비이다. 전체동일한사다리꼴의넓이연결을primary로둔다. ABC=DBC에서OBC를빼OAB=ODC12;AO:OC3:5로OBC20이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+        "TEMPLATE_PARTIAL_COVERAGE_PROOF_DEBT"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "같은큰삼각형의공통부분을제거하는구조선택후밑변비를연결하는3/B23이다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "02df088f360e5fb70f151317794c3595a5bd7e93ba3e0e8f81638a95fc6df8b8"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8128d68ed697431b5d111f851031618ad284f602dc2ac36c0b21f5c36d6a7eb0"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_ee7bd25adb45780b251a0eb3edbe953670d44145c407feaf042634379b61ab31",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-200",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "각조건을 대각선 길이같음 또는 수직으로 바꾸어 특수사각형 증명",
+      "decisiveStep": "(1)AOB밑각같음→OA=OB→AC=BD→직사각형;(2)각합90→대각선수직→마름모이다.",
+      "beforeSource": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      },
+      "after": {
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2022",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        },
+        "rpmRecordId": "M2-RPM-200",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_CONVERSE",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Existing solution inspected for semantic review. No genuine independent VERIFIED_FINAL resolver receipt was created by this author.",
+        "bindingReview": {
+          "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "candidateTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "status": "EXISTING_SEMANTIC_CANDIDATE_CURRICULUM_BINDING_PENDING"
+        },
+        "perPartDecisions": [
+          {
+            "part": "(1)",
+            "rpmRecordId": "M2-RPM-200",
+            "crossConceptKeys": [
+              "CC_ISOSCELES_CONVERSE"
+            ],
+            "given": "a=b",
+            "goal": "직사각형증명"
+          },
+          {
+            "part": "(2)",
+            "rpmRecordId": "M2-RPM-200",
+            "crossConceptKeys": [
+              "CC_TRIANGLE_ANGLE_SUM"
+            ],
+            "given": "a+b=90°",
+            "goal": "마름모증명"
+          }
+        ],
+        "semanticScope": "M2-2",
+        "rpmEffectiveParentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "inspectedTemplateCandidates": [
+          {
+            "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+            "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+            "definition": "직사각형·마름모·정사각형 등 특수 사각형의 정의와 성질을 이용한다.",
+            "internalSkeleton": "특수 사각형의 대각선·변·각 성질을 적용해 결론을 낸다.",
+            "status": "ACTIVE"
+          }
+        ],
+        "crossConceptDefinitions": [
+          {
+            "conceptKey": "CC_ISOSCELES_CONVERSE",
+            "definition": "두 내각의 크기가 같은 삼각형은 두 변의 길이가 같은 이등변삼각형이다"
+          },
+          {
+            "conceptKey": "CC_TRIANGLE_ANGLE_SUM",
+            "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다"
+          }
+        ]
+      },
+      "fieldReview": {
+        "classification": "두소문항모두평행사변형에서특수사각형판정200이다. 별개조건의두과제이지한풀이의CASE_BRANCH가아니다.",
+        "binding": "generic특수사각형template의대각선조건→결론과맞는기존후보다. 두조건을결합해정사각형으로끝나는MG별도template는본두독립목표와다르므로선택하지않는다.",
+        "crossConcept": "(1)같은두각→두변같음의이등변역,(2)두각합90→나머지직각의삼각형각합이각각필요하다. 각소문항의보조개념범위를분리한다.",
+        "condition": "(1)의a=b와(2)의a+b90은서로다른부분의조건이다. 전역연립조건으로합치지않는다.",
+        "integration": "각소문항별삼각형성질로대각선조건을만든후사각형판정을순차적용한다.",
+        "difficulty": "직접주어지지않은대각선조건을삼각형각성질로만들어판정하는전략3/B23이다.",
+        "fourSlot": "Actual source literals and dictionary IDs checked. No new solution substituted; independent sample pending."
+      },
+      "reason": "두소문항모두평행사변형에서특수사각형판정200이다. 별개조건의두과제이지한풀이의CASE_BRANCH가아니다. (1)AOB밑각같음→OA=OB→AC=BD→직사각형;(2)각합90→대각선수직→마름모이다.",
+      "registrationDebt": [
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+        "SOURCE_CURRICULUM_MISSING_SEMANTIC_2022_PROPOSAL_ONLY",
+        "SOURCE_NUMERIC_DIFFICULTY_FIELDS_MISSING_PROPOSAL_ONLY",
+        "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "직접주어지지않은대각선조건을삼각형각성질로만들어판정하는전략3/B23이다.",
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "b862003aab287515b6cf007f9ec74bb7ebe09573",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "73fdc5e8fa60ced8ab44ee9f9ce67a2478bb727758c76e779c0676234e7528cc"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f5cbce0233dedfe1452863b199370c6bf336be797a1a8d98fce7b545a4c0d8c2"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    "명명된 다항식 A,B를 대입해 다른 문자식으로 표현하므로 식의값134를 primary로 읽고 괄호전개131을 보조로 남긴다.",
+    "다항식 덧셈·뺄셈 오류 복원으로131이며 정확한 기존M2오류복원 정의와 일치한다.",
+    "중첩괄호 덧셈·뺄셈131이 결정계산이며 계수의 곱은 최종 출력이다.",
+    "두 단항식×다항식132이며 계수추출은 출력 단계이다.",
+    "실제 두 분자는 다항식이다. 기존 EXPONENT_LAW에서 POLYNOMIAL_OPERATIONS/133으로 보정한다.",
+    "부등식의 정의 판정이다. 일차식인지 또는 해를 찾는 문제와 달라 기존 RPM풀이 leaf로 강제하지 않는다.",
+    "양변 동일수 덧셈 및 음수배의 방향반전136이다.",
+    "괄호 있는 일차부등식139이며 보기 검사는 최종 구간대입이다.",
+    "해의 조건으로 계수 찾기141이다. 정수해가 아니라 실수해 경계이다.",
+    "두 일차부등식의 같은 해 조건141이다.",
+    "실제 평행사변형의 변·각 성질190이다. 원본 그림115°,30°,65°와 x,y의 위치를 확인했다.",
+    "평행사변형 변의성질190에 비례배분 보조가 연결된다.",
+    "평행사변형 변·각성질190에서 이등변삼각형의 역으로 두 길이를 만든다. 원본 B-F-E-C순서 확인.",
+    "평행사변형 변·각 판정192이다. 주어진A120/B60/AD=BC가 실제그림과 맞는다.",
+    "사각형 포함관계의 조건판정200이다. 이미평행사변형인 전제를 전보기에서 유지한다.",
+    "종이펴기후 마름모의 성질비교201이며 원본그림의두접힘과25°를 확인했다.",
+    "일반사각형에서특수사각형의충분조건을판정하는200이다. 처음부터평행사변형이라고가정하지않는다.",
+    "평행사변형의이등분선으로만든사각형성질비교201이다. 정확한기존MG과제정의가있다.",
+    "여러사각형의공통성질비교201이며대각선길이같음과상호이등분을구별한다.",
+    "여러사각형의성질비교201에중점연결정리를보조로연결한다. 사다리꼴에한정된RPM199로강제하지않는다.",
+    "등변사다리꼴198의밑각성질을핵심으로하고삼각형ABD의두변같음을보조로쓴다.",
+    "(1)의다항식나눗셈133과괄호131을거쳐(2)의식의값134가최종목표다.",
+    "거리·속력·시간144이며전체거리6을두구간x와6−x로나눈편도모델이다.",
+    "(1)은평행선과넓이194,(2)는분할도형195의넓이비이다. 전체동일한사다리꼴의넓이연결을primary로둔다.",
+    "두소문항모두평행사변형에서특수사각형판정200이다. 별개조건의두과제이지한풀이의CASE_BRANCH가아니다."
+  ],
+  "proposals": [
+    {
+      "id": "B-E017-INEQUALITY-DEFINITION",
+      "type": "RPM_LEAF_GAP",
+      "definition": "부등호로두식의대소관계를나타내는부등식의정의판정",
+      "intendedParent": null,
+      "distinguishingRule": "일차식차수나해구하기를묻지않으므로일차부등식판정과구별한다.",
+      "sourceOrdinals": [
+        6
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d7d0fdfe16390caebc083f09d800486b6f4851961a0ede297f0a69e5051469bc"
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    },
+    {
+      "id": "B-E017-PIECEWISE-TRAVEL",
+      "type": "EXISTING_FAMILY_NEW_TEMPLATE_REVIEW",
+      "definition": "고정전체거리의두부분을서로다른속력으로이동하고정지시간을포함하는시간상한",
+      "intendedParent": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "distinguishingRule": "왕복은두구간의거리가같지만본문은x와6−x다.거리분해의모델이달라기존왕복template를확장하지않는다.",
+      "sourceOrdinals": [
+        23
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0540bf372ef0661f7ac173f41118f9e0ce69fc8bb51d24b54865ff772e4d740b"
+      ],
+      "status": "PROPOSED_ONLY_NO_SHARED_REGISTRATION"
+    }
+  ],
+  "notes": [
+    "25개발문·선택지·기존해설과PNG10개및Q24해설SVG를실제로읽고판정했다. 이전PARTIAL_READ는완성artifact가아니며본신규author를과거검토복구로주장하지않는다.",
+    "최초난도작성전에기존level은노출되어있었다. BLIND_FIRST_PASS가아니며난도판독절차부채를명시한다.",
+    "원문에curriculum과numericdifficulty필드가없다. machineUNKNOWN유지,2022RPMsemantic및numeric은제안층에만둔다. 연도에서교육과정을추정하지않는다.",
+    "시험은1final경로지만실제11–21/24–25는M2-2사각형단원이다. 시험시기나학기범위로콘텐츠분류를강제하지않는다.",
+    "Q5기존지수법칙에서다항식나눗셈133으로보정한다.",
+    "유효legacylevel은보존했다. Q12/Q20하+2와Q13/Q24/Q25상+3은독립검토까지BORDERLINE_REVIEW다.",
+    "기존MG/범용사각형exactsemantic후보가있어새PT/TPL을임의생성하지않고curriculum/scopedbinding과공식resolver증거부채를분리한다."
+  ],
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_B_RESUME",
+    "at": "2026-11-14T11:08:33.547369+00:00"
+  },
+  "sourceAssetEvidence": [
+    {
+      "sourceOrdinal": 11,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q11.png",
+      "rawSha256": "5951d9e4883e153ac0dfc2bcc5dfba38dcf7eabd3185472ebe2f0e4a965079ca",
+      "readBy": "B",
+      "findings": "AOD115°,ADO30°,BAC65°와C의x,D의y 위치 확인."
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q12.png",
+      "rawSha256": "c99555e7a3f4c83e018738287ab9141871687e747d1af529c13e8a57899fec11",
+      "readBy": "B",
+      "findings": "ABCD 평행사변형 배치 확인; 둘레와비의 수치는본문에만 있음."
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q13.png",
+      "rawSha256": "d2c7a5517c3f808dc585536cbb56f1608fbb79d4f01b6a4a53e420fab15a632e",
+      "readBy": "B",
+      "findings": "BC위점순서B-F-E-C,ABx,ADy와AE/DF각이등분표시 확인."
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q14.png",
+      "rawSha256": "b3e815ab850b73530ad36f53b1f0176c8d955c62128194e8bf3d57c6fce47a48",
+      "readBy": "B",
+      "findings": "A120°,B60°,AD/BC 길이7 표시 확인."
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q16.png",
+      "rawSha256": "8e30bfb08bd1c2b23aa07561fe829e00775095cbed6b364bd5afe4aa0f080ea2",
+      "readBy": "B",
+      "findings": "두번접힌 종이와 절단선7cm,왼쪽접힘과절단선의25° 확인."
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q17.png",
+      "rawSha256": "5ddd14d90f0aec67b0939c8153bbcc270e7497237af2fde593463647c315b4e3",
+      "readBy": "B",
+      "findings": "일반사각형ABCD와교차대각선O;평행사변형별도표시없음."
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q18.png",
+      "rawSha256": "23144a8ffd3deb739e9eb346e1701ec21654b8d0fad184136d12050d534d4830",
+      "readBy": "B",
+      "findings": "네각이등분선의교점사각형PQRS와각이등분표시 확인."
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q21.png",
+      "rawSha256": "f83fcf64751bc581504a5072bdcf9e9d296b7aceb9ac9c41f2602296039a7209",
+      "readBy": "B",
+      "findings": "AD∥BC 등변사다리꼴의AB=AD동일표시,DBC30° 확인."
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24.png",
+      "rawSha256": "46663e972c07a76aa6a6ee605fa1807a9b1bdf8a7770776a2f28e9fe6d0b943e",
+      "readBy": "B",
+      "findings": "사다리꼴ABCD와대각선교점O;주어진분할비와면적은본문."
+    },
+    {
+      "sourceOrdinal": 25,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q25.png",
+      "rawSha256": "a7bc5ac809c9a0fff9c93bef25e034d8e60b2398423f1ff7918a99001ab46330",
+      "readBy": "B",
+      "findings": "평행사변형대각선교점O, a는CAB,b는ODC 위치 확인."
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePath": "archive/assets/images/24_금당중_1학기_기말_중2_기출/q24-solution.svg",
+      "rawSha256": "271eac5b5998cb6f4181341afe61a77e82cdd3903733d09d4fa23d7fdb373d12",
+      "readBy": "B",
+      "findings": "원본SVG를InkscapePNG로렌더하여공통삼각형제거로12,밑변비3:5로20을설명하는두패널실제시각확인."
+    }
+  ],
+  "freshDifficultyEvidenceSupplement": {
+    "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+    "worker": "A2",
+    "itemCount": 25,
+    "blindInitialSha256": "b5c31a2cb56434eb3c81935ef9650744eef5aa4be467ca9fe90cdb0ca5a49a20",
+    "comparisonSha256": "3c27c5dfe28b984981cc1dd65056f9ea954785dcd5661e79baa6367b8925bc42",
+    "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+    "historicalOriginalExposurePreserved": true,
+    "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+    "fullQualityPassClaim": false
+  }
+}
