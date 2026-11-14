@@ -8939,9 +8939,10 @@
           "sha256": "9ad6de2e8cd914379876255abd3c52c94fcc1b9557624447756b136e3b0d1a70"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "3e07104193b9ffa3471e0a005cfc6f23f9fa2fe7"
     },
     {
       "examId": "E059",
@@ -8979,12 +8980,122 @@
         22,
         23
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         "candidate"
       ],
-      "uidSetSha256": "e9fcd8c69a23c2798e7c7dafef62c74a85e6c2a8d255563c4153eb3ebed6ab7b"
+      "uidSetSha256": "e9fcd8c69a23c2798e7c7dafef62c74a85e6c2a8d255563c4153eb3ebed6ab7b",
+      "reviewedQuestionCount": 23,
+      "fullyJudgedQuestionCount": 23,
+      "registrationPendingQuestionCount": 23,
+      "unresolvedQuestionCount": 0,
+      "unresolvedOrdinals": [],
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        1,
+        5
+      ],
+      "changedQuestionCount": 23,
+      "fourSlotQuestionCount": 23,
+      "independentSampleOrdinals": [
+        1,
+        4,
+        14
+      ],
+      "independentReviewer": "A",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            21
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            4
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            8,
+            10,
+            11,
+            12,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            9
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            13,
+            15
+          ]
+        },
+        {
+          "rpmL1": "유리수와 순환소수",
+          "rpmL2": "유리수와 순환소수",
+          "ordinals": [
+            14
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            23
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/four-slot.json",
+          "sha256": "ab2800b1e242dd8795c1b2f425e05bb56229389265b477824a7be5bb90e21f8d"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/independent-sample.json",
+          "sha256": "17b9c488c1d1e54d0ba44b80c47fc8dcdb1dde5fc497025cb440fec1f6655707"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/mechanical-check.json",
+          "sha256": "27214d280a010d01c479a7f087bbc715e086071ecb557beb38c6792dd34107a3"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+          "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E059/root-acceptance.json",
+          "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E060",
@@ -9440,14 +9551,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 59,
-    "reviewedQuestions": 1413,
-    "fullyJudgedQuestions": 1386,
+    "reviewedExams": 60,
+    "reviewedQuestions": 1436,
+    "fullyJudgedQuestions": 1409,
     "unresolvedQuestions": 27,
-    "remainingExams": 8,
-    "remainingQuestions": 191
+    "remainingExams": 7,
+    "remainingQuestions": 168
   },
-  "lastVerifiedExamCommit": "27a6d3375f6be14149a7ed539a829d9b621f29c1",
+  "lastVerifiedExamCommit": "3e07104193b9ffa3471e0a005cfc6f23f9fa2fe7",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
