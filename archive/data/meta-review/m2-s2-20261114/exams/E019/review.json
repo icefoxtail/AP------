@@ -1743,7 +1743,8 @@
       },
       "after": {
         "crossConceptKeys": [
-          "CC_SPEED_DISTANCE_TIME"
+          "CC_SPEED_DISTANCE_TIME",
+          "CC_AREA"
         ],
         "conditionKeys": [
           "COND_RANGE"
@@ -1756,7 +1757,7 @@
       "fieldReview": {
         "classification": "현재 RPM058은 그래프가 둘러싼 넓이이고 RPM059는 조건에 따른 직선식 결정이다. 여기서는 실제 움직이는 도형의 넓이-시간 관계를 새로 모델링하므로 정확한 RPM leaf 및 NEW_PT 공백으로 기록.",
         "binding": "ACTIVE 키 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
-        "crossConcept": "일차함수 관계식의 모델 입력인 속력×시간은 CC_SPEED_DISTANCE_TIME이다. 도형의 사다리꼴 넓이 공식은 정확한 현행 CC 공백으로 기존 제안과 합친다.",
+        "crossConcept": "속력×시간은 CC_SPEED_DISTANCE_TIME이며, 이를 일반 사다리꼴 넓이식으로 조립하는 단계는 ACTIVE CC_AREA의 도형 넓이 계산·조건 사용 정의에 포함된다.",
         "condition": "COND_RANGE: 두 점이 각각 변 위에서 이동하는 공통 시간 범위0≤x≤6에서 선분식18-x와3x를 사용하며 구한3초가 그 범위에 든다.",
         "integration": "이동 거리를 x와3x로 나타내고 남은 변18-x와 함께 사다리꼴 넓이식에 넣어 목표 넓이의 시간을 구한다.",
         "difficulty": "이동량과 남은 길이를 구별해 도형 넓이를 시간의 함수로 구성해야 한다. ROOT가 실제 발문·기존 해설과 필요한 그림을 독립 재독하여 현 bucket과 legacy 인접 차이를 수용했다.",
@@ -1774,8 +1775,7 @@
         }
       ],
       "proposalRefs": [
-        "E019-MOVING-AREA-FUNCTION",
-        "E019-TRAPEZOID-AREA"
+        "E019-MOVING-AREA-FUNCTION"
       ],
       "finalDifficulty": {
         "level": "상",
@@ -1809,7 +1809,15 @@
       },
       "beforeMetadata": {
         "legacyLevelCompatibility": "NORMAL"
-      }
+      },
+      "revisionHistory": [
+        {
+          "scope": "crossConcept-only",
+          "withdrawnProposalRef": "E019-TRAPEZOID-AREA",
+          "replacementConceptKey": "CC_AREA",
+          "reason": "ROOT가 확인한 일반 도형넓이 ACTIVE 정의를 지원 문항 원문·기존 해설과 재대조하여 일치함을 확인했다. 더 좁은 밀도함수용 CC는 사용하지 않는다."
+        }
+      ]
     },
     {
       "sourceOrdinal": 23,
@@ -2114,21 +2122,6 @@
       "supportingQuestionUids": [
         "qid_v1_615edb4d04c6389f7a3caf3bdb6d7c9f92269cc6a20313d92b662ad1cc827a1f"
       ]
-    },
-    {
-      "id": "E019-TRAPEZOID-AREA",
-      "type": "CC",
-      "name": "사다리꼴 넓이 공식",
-      "definition": "평행한 두 밑변의 합과 높이를 곱하여2로 나누는 일반 기하의 사다리꼴 넓이 관계.",
-      "parent": "도형 넓이",
-      "distinguishingCriteria": "E010/E013 동일 공백 재사용. 현재 CC_LINEAR_FUNCTION_AREA 및 CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도함수 전용이며 이 동적 기하 모델의 일반 넓이 정의를 대신하지 않음.",
-      "existingCandidatesReviewed": [
-        "CC_LINEAR_FUNCTION_AREA",
-        "CC_TRAPEZOIDAL_AREA_PROPERTY"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_615edb4d04c6389f7a3caf3bdb6d7c9f92269cc6a20313d92b662ad1cc827a1f"
-      ]
     }
   ],
   "notes": [
@@ -2194,6 +2187,26 @@
       ],
       "note": "ROOT 난도 Q7 상/2 STRONG·medium/B23 유지, Q12/15/22/23 상/3 ACCEPTABLE 수용. B Q15/18/22 표본으로 누락 CC와 Q15 4칸 보완. 원본 학생 내용 변경 없음.",
       "sampleRef": "workers/B/cross/E019.sample.json"
+    }
+  ],
+  "withdrawnProposals": [
+    {
+      "id": "E019-TRAPEZOID-AREA",
+      "type": "CC",
+      "name": "사다리꼴 넓이 공식",
+      "definition": "평행한 두 밑변의 합과 높이를 곱하여2로 나누는 일반 기하의 사다리꼴 넓이 관계.",
+      "parent": "도형 넓이",
+      "distinguishingCriteria": "E010/E013 동일 공백 재사용. 현재 CC_LINEAR_FUNCTION_AREA 및 CC_TRAPEZOIDAL_AREA_PROPERTY는 확률밀도함수 전용이며 이 동적 기하 모델의 일반 넓이 정의를 대신하지 않음.",
+      "existingCandidatesReviewed": [
+        "CC_LINEAR_FUNCTION_AREA",
+        "CC_TRAPEZOIDAL_AREA_PROPERTY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_615edb4d04c6389f7a3caf3bdb6d7c9f92269cc6a20313d92b662ad1cc827a1f"
+      ],
+      "status": "WITHDRAWN_EXISTING_ACTIVE_REUSE",
+      "replacementConceptKey": "CC_AREA",
+      "withdrawalReason": "속력×시간은 CC_SPEED_DISTANCE_TIME이며, 이를 일반 사다리꼴 넓이식으로 조립하는 단계는 ACTIVE CC_AREA의 도형 넓이 계산·조건 사용 정의에 포함된다."
     }
   ]
 }
