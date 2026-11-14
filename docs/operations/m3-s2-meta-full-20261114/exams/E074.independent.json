@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E074",
+  "author": "m3_b",
+  "reviewer": "root",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.js",
+  "sourceGitBlobSha": "eacc9e64735011ab4602d708a6bf8fc89391b144",
+  "targetReviewSha256": "556f669a1314ebed2b82e4f31a122ddb998fd63c91944b5cda8623f1b684324d",
+  "target4slotSha256": "6e393dcdebf86fab388bea8022f86778af0894dad1d84893c53efaf0b9c03d1a",
+  "sampledSourcePatchSha256": "1401de9c1a9076f9902836f8016440ca28dcaba7d991caded9e7e771db778029",
+  "sampleOrdinals": [
+    8,
+    15,
+    23
+  ],
+  "sampleRule": "Root-selected current-source samples cover distinct methods and nontrivial conditions; original full review is not repeated.",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "scope": "Independent metadata meaning/4slot consistency only. Source QA, official registration and production release are not passed by this status.",
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_1e2236560e3bb82ccbac8037f238e9051e81da39066c191432c592aa43a3f8e4",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "표적 원본에서 10점2발,9점1발,8점4발,7점1발을 직접 읽었다. 평균8.5,분산1,표준편차1의 도수표 전환 경로가 FREQUENCY_TABLE PT와 4칸 도수·평균·분산·제곱근 method에 맞다. 역사적2009 canonical 키 보존과 비교용 제안을 구분한다.",
+      "quotesChecked": 7,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_8eaa6fefb1d6f240d7f74140e73f6795122e6d2e1df71bf9eb32b4ce1550c933",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본의 접힌 호와 음영, 반지름12 및 B에서 O로 포갠 조건을 대조했다. 접는 선의 수직이등분으로 OD6, 고정점C와 반사 중심B를 확인한 후 60도 부채꼴에서 삼각형BDC를 뺀다. SECTOR_MEASURE TPL과 반사·피타고라스·넓이 CC 및 INTERDEPENDENT가 실제 경로에 맞다.",
+      "quotesChecked": 10,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_b05dbba9a424e88cb92b4bb7ff617e675153f5b3f11c0c6d2f6eabfca68a4e8e",
+      "status": "PASS_METADATA_MEANING_ONLY",
+      "independentMeaningReview": "원본 직사각형 AB6,AC10과 대각선 접기, B′C와 AD의 교점E를 확인했다. 현재 해설은 수직방향 성분과 좌표 직선 교점을 쓰므로 4칸이 그 경로를 사실대로 기록한 것은 맞지만 중등 범위 풀이 검증은 완료되지 않았다. 반사 PT/TPL과 좌표 관련 CC는 의미 후보로만 남기고 난도 UNKNOWN 및 해설범위 HOLD를 유지한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "requiredSourceFigures"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "sourceCaveats": [
+    {
+      "ordinal": 10,
+      "type": "HISTORICAL_SOURCE_FIDELITY_UNVERIFIED"
+    },
+    {
+      "ordinal": 17,
+      "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT"
+    },
+    {
+      "ordinal": 23,
+      "type": "SOLUTION_CURRICULUM_SCOPE_DEFECT"
+    },
+    {
+      "ordinals": "1–23",
+      "type": "HISTORICAL_2009_CANONICAL_BINDING_NOT_REGISTERED"
+    }
+  ],
+  "newMathematicalVerification": false,
+  "sourceFirstNotesSha256": "e4fb95aff54ae4380f192e8a462d2ca1f6b2de2d18e0f4ed9fc5e02daf245ca5"
+}
