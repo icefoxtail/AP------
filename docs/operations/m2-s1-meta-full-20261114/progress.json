@@ -19,10 +19,10 @@
     "existingFourSlotCount": 24,
     "canonicalUidCount": 1780
   },
-  "reviewedExams": 9,
-  "reviewedQuestions": 214,
-  "remainingExams": 66,
-  "remainingQuestions": 1566,
+  "reviewedExams": 10,
+  "reviewedQuestions": 238,
+  "remainingExams": 65,
+  "remainingQuestions": 1542,
   "nextAction": "CONTINUE_THREE_REVIEWER_QUEUES",
   "registrationStatus": "NOT_RUN",
   "mainMergeStatus": "NOT_AUTHORIZED",
@@ -1129,8 +1129,117 @@
       "solutionCount": 24,
       "existingFourSlotCount": 0,
       "existingFourSlotRef": null,
-      "status": "QUEUED",
-      "reviewedQuestionCount": 0
+      "status": "REVIEWED_WITH_REMAINING",
+      "reviewedQuestionCount": 24,
+      "fullyJudgedQuestionCount": 23,
+      "finalSourceBlob": "dbdf1bf5e54c8fdd6d4fedd5e64f16025803d783",
+      "sourceFieldEditCount": 51,
+      "artifactDir": "docs/operations/m2-s1-meta-full-20261114/exams/E010",
+      "independentReviewer": "B",
+      "independentSampleOrdinals": [
+        8,
+        13,
+        19
+      ],
+      "rpmGapOrdinals": [
+        1,
+        2,
+        5,
+        9,
+        13,
+        18
+      ],
+      "registrationPendingOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "contentDebtOrdinals": [
+        8
+      ],
+      "unresolved": [
+        {
+          "sourceOrdinal": 8,
+          "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+          "fields": [
+            "contentDebt"
+          ],
+          "reason": [
+            {
+              "kind": "SOLUTION_REFERENCE_ERROR",
+              "observed": "해설은 첫째 연립방정식에서 2x+y=5,x+y=3을 뺀다고 쓰지만 x+y=3은 둘째 연립방정식의 첫째 식이다. 공통해 선택과 계산 결과는 일치한다.",
+              "action": "식 출처 표현의 정오표 검토만; 원문 보존."
+            }
+          ]
+        }
+      ],
+      "requiredEvidenceDebt": [],
+      "topicSummary": [
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "count": 8,
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            21
+          ]
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "count": 2,
+          "ordinals": [
+            5,
+            22
+          ]
+        },
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "count": 14,
+          "ordinals": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            23,
+            24
+          ]
+        }
+      ],
+      "nextAction": "CODEX_RESOLVE_NAMED_DEBTS_AND_REGISTER"
     },
     {
       "examId": "E011",
@@ -2112,8 +2221,8 @@
       "reviewedQuestionCount": 0
     }
   ],
-  "fullyJudgedQuestions": 210,
-  "updatedAt": "2026-11-14T09:16:46.069068+00:00",
+  "fullyJudgedQuestions": 233,
+  "updatedAt": "2026-11-14T09:20:56.863033+00:00",
   "verifiedExamPublications": [
     {
       "examId": "E001",
@@ -2177,6 +2286,15 @@
       "remoteHeadVerified": true,
       "method": "GitHub connector tree/commit/update_ref with expected previous HEAD; native git ls-remote readback; exact local fast-forward",
       "verifiedAt": "2026-11-14T09:16:42.329558+00:00"
+    },
+    {
+      "examId": "E008",
+      "commitSha": "800bc0beeec3c819ab7d2f02b623c57f71c59810",
+      "parentSha": "f7614defaba03d23640371aa5bee178e2fe4b113",
+      "treeSha": "c3761253bdf1408cfa2c64851f86ee91e58cfa6f",
+      "remoteHeadVerified": true,
+      "method": "GitHub connector tree/commit/update_ref with expected previous HEAD; native git ls-remote readback; exact local fast-forward",
+      "verifiedAt": "2026-11-14T09:17:09.227363+00:00"
     },
     {
       "examId": "E009",

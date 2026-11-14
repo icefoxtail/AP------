@@ -1,0 +1,290 @@
+{
+  "sampleReviewer": "B",
+  "sampleFile": "E010.sample.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정의와간단한소거로식에남는미지수개수만확인하므로1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 3,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "대입식과풀이진행이본문에이미제시되어세빈칸은직접계산이다.1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "서로다른두속력,거리차2,시간2시간20분을두연립관계로번역해야하여3의B23수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "알려진x값을첫째식에넣어y를구하고둘째식상수에바로대입하므로1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수·소수와괄호를정리한후기본연립해를구하는정형계산이라2수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 8,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "알려진식두개를고르는공통해원리를적용하면단순정수연립과직접계수대입으로끝난다. 최초3→독립권고2수정확인, B23수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 9,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "고정된자연수보다작은자연수의복수출력반례를직접제시할수있어1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 11,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "y=ax+b형식과상쇄후수직선/이차식을정의에따라구별하는기본판정이라1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "서로다른두정수입력을함수식에대입후더하는기초적평가로1수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 16,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "원그림(0,6),(2,0)을직접읽고차의비공식을한번쓰면기울기가나온다.1수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "각x계수의부호를읽으며ㅁ은한번분배하면음기울기가바로드러나1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "오류선택지의x=2를대입하면즉시y=-5가되어거짓임이확정된다. 전체보기수만으로상향하지않고1수용.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "두식의y계수가이미반대여서더하기한번으로소거되며역대입이직접적이다. 서술형식과무관하게1타당.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "표가x+y,4x+2y와각합계를제공해모델선택부담을대부분제거한다. 연립풀이뒤x+2y후속평가이므로독립권고2수정확인.",
+      "independentReviewer": "B"
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두관측점으로기울기와절편을구하고20분을대입하는표준일차함수활용으로2수용.",
+      "independentReviewer": "B"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "공통해template의상수식선정→해→계수대입정의와정확대응. 내용부채는식출처단어이며수학골격과분리."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_WITH_BINDING_DEBT",
+      "reason": "거짓점명제의decisive함숫값RPM046/별도164와전체graph-propertygeneric후보를구별하여record. TARGET_BINDING_NOT_CONFIRMED를삭제하거나검증완료로승격하지않음."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_REVISION",
+      "reason": "생활소재여도실제계산은두점(3,18),(6,16)으로식을정하는정확한기존골격이다. 2015RPM052/별도2022170와TPL_LINE_TWO_POINTS의definition/internalSkeleton을수용하고불필요한RPMgap철회확인."
+    }
+  ],
+  "semanticOverrides": [],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "정의 확인과 한 번의 소거만 필요하여 2→1."
+    },
+    {
+      "sourceOrdinal": 3,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "풀이식이 주어진 기본 대입법 과정이므로 2→1."
+    },
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "속력 두 개·혼합 시간단위·거리차를 두 식으로 번역하는 표준 활용."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "주어진 x값으로 한 일차식과 상수값을 직접 계산하여 2→1."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "분수·소수 정리 후 기본 대입으로 끝나는 표준 계산, 3→2."
+    },
+    {
+      "sourceOrdinal": 9,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "입력 하나에 출력이 유일한지 직접 확인, 2→1."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "간단한 정리 후 일차함수 정의를 적용하여 2→1."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "두 점의 세로좌표를 주어진 식에 직접 대입하여 2→1."
+    },
+    {
+      "sourceOrdinal": 16,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "정수 절편 두 점을 읽고 기울기 공식 한 번, 2→1."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "계수의 부호를 읽는 직접 그래프 성질 확인, 2→1."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "정수 입력 하나를 대입하면 거짓인 점 명제가 즉시 확인되어 2→1."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "reason": "이미 반대계수인 y를 직접 더해 없애는 가장 기본 가감법, 2→1."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "독립 B 재검: 표가 x+y와4x+2y 관계를 이미 제공한다. 연립해 뒤 x+2y 계산은 직접적인 후속 산술이라2단계."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "주어진 두 시간·길이에서 직선식과 함숫값을 구하는 표준 활용, 3→2."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E010",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+  "finalSourceBlob": "dbdf1bf5e54c8fdd6d4fedd5e64f16025803d783",
+  "reviewSha256": "8a95c3fb0521d00ee6d9e26726d3615336c2c06a15d36aa134f5431d3f60c1c4",
+  "independentSha256": "759fc5c07274c5dec120ccb880ce430f97fdeb1881d091f251df55c33f9b5338",
+  "reviewedFourSlotSha256": "45afde2013577f1f69fa7dfdc7b1b58bd00a82904afeae1e7149c2854adf710e",
+  "finalFourSlotSha256": "1c5ede25ebe93e5f6f5ebb093f32de9863b2be7affbcaa98305528e09313007a",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T09:20:56.863033+00:00",
+  "independentHistory": []
+}

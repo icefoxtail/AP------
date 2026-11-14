@@ -1,0 +1,3067 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E010",
+  "owner": "A",
+  "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_c43ade0c622e651bc27eef080a5495603ec0a622b220220863219415edb97b28",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "정리 후 두 미지수의 일차 등식인지 판정",
+      "decisiveStep": "ㄹ은 y=1로 정리되어 미지수가 하나이고 ㄴ은 등호가 없다.",
+      "beforeSource": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "두 미지수 일차방정식의 정의는 풀이 leaf와 달라 RPM gap.",
+        "binding": "정의 판정의 신규 PT/TPL 필요.",
+        "crossConcept": "정의 판정 내부의 식 정리만 사용.",
+        "condition": "추가 수체계 제한 없음.",
+        "integration": "하나의 정의를 네 식에 적용.",
+        "difficulty": "정의 확인과 한 번의 소거만 필요하여 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "두 미지수 일차방정식의 정의는 풀이 leaf와 달라 RPM gap. ㄹ은 y=1로 정리되어 미지수가 하나이고 ㄴ은 등호가 없다.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-TWO-VARIABLE-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정의 확인과 한 번의 소거만 필요하여 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5aabf01977d257008c52caaeb3d81586836b92b2bea31af58df21e2df637f712"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "777911a869ce211dcd535cd8445524d398d7b41bb3e76097335797eaaf19beb7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6cae786512d1ff215790ec6710b89e3868676d05ad07bf451eeb4ee8aa052057",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "자연수 범위에서 한 식의 순서쌍 열거",
+      "decisiveStep": "y=11-2x가 양의 정수가 되는 x=1,…,5를 센다.",
+      "beforeSource": {
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "conditionKeys": [],
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "일차방정식 자연수해 개수는 연립계 풀이와 구별되는 RPM gap.",
+        "binding": "두 자연수 미지수의 단일 방정식 해 열거 template 필요.",
+        "crossConcept": "작은 후보집합을 열거하는 동일 primary.",
+        "condition": "x,y 모두 자연수라는 명시 범위.",
+        "integration": "자연수해의 열거 한 방법.",
+        "difficulty": "자연수 양수 경계와 대응 순서쌍을 함께 확인.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "일차방정식 자연수해 개수는 연립계 풀이와 구별되는 RPM gap. y=11-2x가 양의 정수가 되는 x=1,…,5를 센다.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-NATURAL-PAIR-COUNT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "자연수 양수 경계와 대응 순서쌍을 함께 확인."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d1ed72dfbf0c9a081ec3fffe29756a3ebb181c33f5c98542175fedd9145bb267"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8455c9acc780d43b2c082749de1434430177bfed531fa454d5ec445d834e3287"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d413c3e4691e3248e8ef7e986e57d869850829e89d285c0a78c4ae8c31ff449a",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-031",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "대입법 풀이의 빈칸 채우기",
+      "decisiveStep": "x=2y를 대입해 3y=6, y=2, x=4.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-031",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmL3": "연립방정식의 풀이",
+        "rpmL4": "대입법",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법"
+        },
+        "rpmRecordId": "M2-RPM-031",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-149",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "연립방정식의 풀이",
+            "l4": "대입법"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 대입법031, 별도 2022 149 대응.",
+        "binding": "기존 가감법 승수선택 template와 달리 대입법의 안내 빈칸.",
+        "crossConcept": "빈칸 합은 주풀이 결과의 단순 집계.",
+        "condition": "추가 조건 없음.",
+        "integration": "대입법 한 축.",
+        "difficulty": "풀이식이 주어진 기본 대입법 과정이므로 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 대입법031, 별도 2022 149 대응. x=2y를 대입해 3y=6, y=2, x=4.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-SUBSTITUTION-BLANKS"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "풀이식이 주어진 기본 대입법 과정이므로 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d86f2c638e4467d99e8c425096972bf17e724a44e8119456ae497c8b84600d76"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "65ccd7b1766dedc474f6aba4270fc0df88a8c423d580733a05eae6a81c9a174b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_09b6480eb4e2d27c2900cde15662a2736cc4d2437a71fa25c2c0b1d38c8be03d",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 해를 대입하여 두 계수 결정",
+      "decisiveStep": "a+2b=6,a-2b=2의 합과 차로 a,b를 얻는다.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmL3": "해와 계수",
+        "rpmL4": "계수 결정",
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-151",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 계수결정033, 2022 151 대응.",
+        "binding": "오독/계수맞바꿈 template는 아니며 주어진 해의 계수 복원 template 필요.",
+        "crossConcept": "계수 a,b를 미지수로 보는 동일 연립계 방법.",
+        "condition": "상수라는 설명은 추가 수체계 제한 아님.",
+        "integration": "해 대입에 의한 계수결정 primary.",
+        "difficulty": "해를 두 식에 대입한 뒤 합·차로 계수를 복원.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 계수결정033, 2022 151 대응. a+2b=6,a-2b=2의 합과 차로 a,b를 얻는다.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-SYSTEM-PARAMETER"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해를 두 식에 대입한 뒤 합·차로 계수를 복원."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "f3bdc0a3d777bd7e2354f06b64b15f542beac01b04b6b984a9907811a6edc993"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "89c94be9d1e47269aab99b91f23560c88185caba38c68788f68c7a35757e8979"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_759b51a8739036f2d927c204d60a21bbb4eca923a0f5a40edec3435f35e5e1e3",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "두 이동 구간의 거리 차와 시간 합 모델링",
+      "decisiveStep": "x-y=2와 x/6+y/2=7/3을 결합하여 둘레 x+y를 구한다.",
+      "beforeSource": {
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "이동 활용이지만 만남·추격/강물·기차 leaf와 다르므로 거리차·시간합 RPM gap.",
+        "binding": "두 구간 속력의 시간합과 거리차를 연립하는 template 필요.",
+        "crossConcept": "시간 단위 환산은 해당 활용의 내부.",
+        "condition": "뛴 거리>걸은 거리는 주어진 거리차 식의 방향을 정하는 원문 관계.",
+        "integration": "두 이동 구간 모델링 primary 하나.",
+        "difficulty": "속력 두 개·혼합 시간단위·거리차를 두 식으로 번역하는 표준 활용.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "이동 활용이지만 만남·추격/강물·기차 leaf와 다르므로 거리차·시간합 RPM gap. x-y=2와 x/6+y/2=7/3을 결합하여 둘레 x+y를 구한다.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-TRAVEL-SEGMENTS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "속력 두 개·혼합 시간단위·거리차를 두 식으로 번역하는 표준 활용."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "97ea0772370449ee9a3eae69b728991155873a6c2d66a09ae7d6e54cf870124c"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0deb6114730ef8a42a1f42bac141659208f471a03fe383ae957a8a9a18f8c52c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_c91eed3b34bef6ff6bcd57c0dbc7a73f5a92b6b26ea80bc26e5c2caa897a175e",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "해의 한 좌표로 다른 좌표를 찾고 상수 복원",
+      "decisiveStep": "x=-2에서 y=3, 그 해를 두 번째 식에 대입하여 a 결정.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmL3": "해와 계수",
+        "rpmL4": "계수 결정",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-151",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "최종 목표가 상수 a이므로 2015 계수결정033, 2022 151.",
+        "binding": "해 일부가 주어진 상수복원 template 제안.",
+        "crossConcept": "두 번 대입하는 한 primary.",
+        "condition": "상수라는 단서는 별도 수체계 조건 아님.",
+        "integration": "해 대입과 상수복원은 같은 primary.",
+        "difficulty": "주어진 x값으로 한 일차식과 상수값을 직접 계산하여 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "최종 목표가 상수 a이므로 2015 계수결정033, 2022 151. x=-2에서 y=3, 그 해를 두 번째 식에 대입하여 a 결정.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-SYSTEM-PARAMETER"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 x값으로 한 일차식과 상수값을 직접 계산하여 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "78967177e4ead00746e5f6bf29b09807c00cee71925458e2756411b03ce2b6b5"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b49a912b5c7724212e45b5e6d43f21c29e27a51b4a8e753c56daffb4e6eef197"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_d73b6181bdac2f62cf648cdbad1abef84ac4b77a7a2b3fe0a6fe41719ada24bb",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-035",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분수·소수를 없앤 뒤 연립계 계산",
+      "decisiveStep": "3x+y=20,2x-3y=-5로 정리한 뒤 해의 선형식 계산.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-035",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "rpmL3": "복잡한 꼴의 연립방정식",
+        "rpmL4": "분수·소수가 있는 연립방정식",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "rpmRecordId": "M2-RPM-035",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-153",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "복잡한 꼴의 연립방정식",
+            "l4": "분수·소수가 있는 연립방정식"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 분수소수계035, 2022 153.",
+        "binding": "소수계수만의 기존 template는 분모6과 괄호 정리를 모두 포괄하는지 확장검토 필요.",
+        "crossConcept": "분배/분모제거는 복잡한 연립계 내부.",
+        "condition": "추가 명시 제한 없음.",
+        "integration": "복잡한 계수의 동일 연립계 풀이.",
+        "difficulty": "분수·소수 정리 후 기본 대입으로 끝나는 표준 계산, 3→2.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 분수소수계035, 2022 153. 3x+y=20,2x-3y=-5로 정리한 뒤 해의 선형식 계산.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-FRACTION-DECIMAL-SYSTEM"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수 정리 후 기본 대입으로 끝나는 표준 계산, 3→2."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "659cea823955687fdc3f2f48e6bd1175f3d6efb51104a20bfc8ef9e2c75461d0"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b1d8316be8cd0e6106309f22acbc5606f33e0d9be273e62ed22581747121e491"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "verdict": "UNRESOLVED",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "공통해를 먼저 구한 뒤 각 미정계수 복원",
+      "decisiveStep": "상수가 정해진 2x+y=5,x+y=3으로 공통해를 구하고 a,b에 대입.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmL3": "해와 계수",
+        "rpmL4": "계수 결정",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-151",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "공통해에서 계수결정, 2015 033/2022 151.",
+        "binding": "ACTIVE 공통해 PT/TPL의 정의와 골격이 정확히 일치; 대상 binding 별도 확인.",
+        "crossConcept": "공통해와 계수복원 모두 동일 primary.",
+        "condition": "상수 설명 외 명시범위 없음.",
+        "integration": "같은 primary의 순차 계산이며 다른 개념 통합 아님.",
+        "difficulty": "독립 B 재검: 두 상수식으로 공통해를 구한 뒤 계수를 직접 대입하는 정형 절차이며 E005/E011의 동형 공통해와 같은2단계.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "공통해에서 계수결정, 2015 033/2022 151. 상수가 정해진 2x+y=5,x+y=3으로 공통해를 구하고 a,b에 대입.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "독립 B 재검: 두 상수식으로 공통해를 구한 뒤 계수를 직접 대입하는 정형 절차이며 E005/E011의 동형 공통해와 같은2단계."
+      },
+      "contentDebt": [
+        {
+          "kind": "SOLUTION_REFERENCE_ERROR",
+          "observed": "해설은 첫째 연립방정식에서 2x+y=5,x+y=3을 뺀다고 쓰지만 x+y=3은 둘째 연립방정식의 첫째 식이다. 공통해 선택과 계산 결과는 일치한다.",
+          "action": "식 출처 표현의 정오표 검토만; 원문 보존."
+        }
+      ],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "eda939ebbde6f28069aaba9721b21ffe647010be494b8ddc4bacb9ea891b269b"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "fa715e778e910463b3275c682063a3327ae0977bfbcbe55c7bacf74c67812e74"
+          }
+        ]
+      },
+      "unresolvedFields": [
+        "contentDebt"
+      ]
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "입력마다 출력이 하나인지 판정",
+      "decisiveStep": "자연수 x보다 작은 자연수 y는 같은 x에 여러 값이 가능.",
+      "beforeSource": {
+        "conditionKeys": [],
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "conditionKeys": [],
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+        "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "일반 함수의 대응 정의는 일차함수 판별 leaf보다 넓어 gap.",
+        "binding": "ACTIVE 함수정의 PT와 대응판정 TPL의 definition/internalSkeleton 일치.",
+        "crossConcept": "소재별 식은 함수 여부 확인에 쓰는 예시.",
+        "condition": "보기③⑤ 자연수 범위가 대응집합을 정한다.",
+        "integration": "함수 정의 하나로 판정.",
+        "difficulty": "입력 하나에 출력이 유일한지 직접 확인, 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "일반 함수의 대응 정의는 일차함수 판별 leaf보다 넓어 gap. 자연수 x보다 작은 자연수 y는 같은 x에 여러 값이 가능.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-FUNCTION-DEFINITION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "입력 하나에 출력이 유일한지 직접 확인, 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "696767ba0c95086b8cf377fbca2b6cf2599979ecb4ef2d0823844770405cff11"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2cc9d7cea66e4a0d379ef50722186e8cb56ffbeb335175bdcc0971720d6154b6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_3527f5d06ce8dab0a14265f46e167c236abd041c6735ce4a6d5f81db4679dbf1",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-046",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단위무게 대응식에서 함숫값 계산",
+      "decisiveStep": "f(x)=250x에 4를 대입.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmL3": "일차함수의 뜻",
+        "rpmL4": "함숫값",
+        "level": "하",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmRecordId": "M2-RPM-046",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-164",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "함숫값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 함숫값046/2022 164.",
+        "binding": "ACTIVE PT_FUNCTION_VALUE/TPL_FUNCTION_VALUE_DIRECT가 대응식의 직접 계산을 포괄.",
+        "crossConcept": "단위량 곱은 주어진 대응 자체.",
+        "condition": "추가 수체계 조건 없음.",
+        "integration": "직접 함숫값 한 계산.",
+        "difficulty": "250×4의 직접 계산.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 함숫값046/2022 164. f(x)=250x에 4를 대입.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "250×4의 직접 계산."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4e26b967598978f4bb92b7ffbc5859f4b53c1efcedd318f7080c1d13e306f29f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a644df8ffbcc9f5c5e4d6aa5fd887c0380c0a6eb8cb302cf9254ec44eb27c58b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7ed802fa2d1bbd9c70f64bec51fe98cc48dc03a9fbe22bb85427cb8406516306",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-047",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "정리된 식이 y=ax+b인지 판정",
+      "decisiveStep": "x=5로 되는 식과 x²+2x인 식을 제외.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-047",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "rpmL3": "일차함수의 뜻",
+        "rpmL4": "일차함수 판별",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별"
+        },
+        "rpmRecordId": "M2-RPM-047",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-165",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "일차함수 판별"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 일차함수판별047/2022 165.",
+        "binding": "일반 대응판정보다 일차성 판별에 특화된 template 필요.",
+        "crossConcept": "기본 전개는 일차성 판별의 내부.",
+        "condition": "a≠0은 정의이지 문항에 새 수범위 조건을 부여하지 않음.",
+        "integration": "일차함수 정의 확인.",
+        "difficulty": "간단한 정리 후 일차함수 정의를 적용하여 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 일차함수판별047/2022 165. x=5로 되는 식과 x²+2x인 식을 제외.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-LINEAR-FUNCTION-IDENTIFY"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "간단한 정리 후 일차함수 정의를 적용하여 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7ef6ee4831ac645bf88671fdabe7482b85009ab671253e247ff2556c0dc698f8"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "628756afbeea36648952784ecfc58387c2100ee5ff6fc7238af2d79e1543a9d6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_9a6850b70b9f99ad47a8247efe3d232644710face7c3ba0778e3710c711017a8",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-046",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 입력의 함숫값 대입 후 합",
+      "decisiveStep": "x=1,2를 대입해 p,q를 계산.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmL3": "일차함수의 뜻",
+        "rpmL4": "함숫값",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmRecordId": "M2-RPM-046",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-164",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "함숫값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 함숫값046/2022 164.",
+        "binding": "ACTIVE 직접 함숫값 TPL의 반복과 합산.",
+        "crossConcept": "두 값의 합은 내부 결과 처리.",
+        "condition": "추가 제한 없음.",
+        "integration": "직접 대입 반복.",
+        "difficulty": "두 점의 세로좌표를 주어진 식에 직접 대입하여 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 함숫값046/2022 164. x=1,2를 대입해 p,q를 계산.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 점의 세로좌표를 주어진 식에 직접 대입하여 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "6f492abc2ae6098e6cfebd6c0a74828a1a9cf70f5ded3488e335946185fcf62e"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d32bda63c5031909a3d3105877c778839a0b103d01447e1a2ddd76e3dfd419f2"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "알려진 수직이동량을 함수식에 더함",
+      "decisiveStep": "y=x의 y좌표가 모두 3 증가하여 y=x+3.",
+      "beforeSource": {
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "level": "하",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "알려진 이동량으로 이동식을 쓰는 RPM leaf gap; 실제 q13 원그림 확인.",
+        "binding": "기존 점을 통과하도록 미지 이동량을 정하는 template와 구별.",
+        "crossConcept": "좌표의 수직이동이 primary.",
+        "condition": "추가 수범위 제한 없음.",
+        "integration": "수직 평행이동 하나.",
+        "difficulty": "이동량3이 명시되어 상수항에 더한다.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "알려진 이동량으로 이동식을 쓰는 RPM leaf gap; 실제 q13 원그림 확인. y=x의 y좌표가 모두 3 증가하여 y=x+3.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-VERTICAL-TRANSLATION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이동량3이 명시되어 상수항에 더한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "02f72f85abee762fd2f4616da9ea536075f0e1db8ec0f108b644d91cf407d86e"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "919e575322a46e9534be560ede32804eb77fafdb8326c9969b6e6d790258faca"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_bd44ee9f450e57d5ad4a0a0c10c2bd249b3765ae3fff0acbe833479dcf080776",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 y절편의 차로 이동량 계산",
+      "decisiveStep": "절편이 -1에서2로 변하므로 차3.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmL3": "일차함수의 그래프",
+        "rpmL4": "기울기·절편",
+        "level": "하",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-048",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-166",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 그래프",
+            "l4": "기울기·절편"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 기울기절편048/2022 166에 y절편 비교로 대응.",
+        "binding": "계수부호→그래프선택 template와 다름; 절편차 이동량 template 필요.",
+        "crossConcept": "동일 기울기에서 절편차를 비교하는 내부 방법.",
+        "condition": "추가 범위 없음.",
+        "integration": "절편 차 한 계산.",
+        "difficulty": "두 상수항의 차를 직접 구한다.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 기울기절편048/2022 166에 y절편 비교로 대응. 절편이 -1에서2로 변하므로 차3.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-VERTICAL-TRANSLATION"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 상수항의 차를 직접 구한다."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "1d53b655a9dd962bf00b5a81808ef9a33c8c568587b10e17e8e09ebd6bc9a9b9"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0e64efc10373538df2de0c2d050dd56f50ea259513971afabe0d47d2a3edd4de"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_67c68e2f30ac488a90cf537de262f551eb07e5d0978b08529ef58da20860a1bb",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "좌표축 위에서 한 좌표0을 대입",
+      "decisiveStep": "y=0으로 x절편, x=0으로 y절편.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmL3": "일차함수의 그래프",
+        "rpmL4": "기울기·절편",
+        "level": "하",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-048",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-166",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 그래프",
+            "l4": "기울기·절편"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 기울기절편048/2022 166.",
+        "binding": "수치절편계산은 coefficient-sign graph choice template와 다름.",
+        "crossConcept": "직선 절편 정의 적용만 필요.",
+        "condition": "추가 범위 없음.",
+        "integration": "절편의 직접 계산.",
+        "difficulty": "좌표축에서0 대입하는 기본 정의.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 기울기절편048/2022 166. y=0으로 x절편, x=0으로 y절편.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-SLOPE-INTERCEPT-READ"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "좌표축에서0 대입하는 기본 정의."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "8b091283c2e9dc889972b332ab4efd4b3f0b9456e4c50b30f0384030ae1005a9"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "32cd5af44915f27bc62e17f815655223c3437b1b1ac2e9dca3d00f039d91973b"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_fe80164b56537676f9a9487317f70fbd0e2396ee8ec1f16f4fb8b75b288af878",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-048",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "그림의 두 절편점으로 변화율 계산",
+      "decisiveStep": "원그림의(0,6),(2,0)에서 세로변화/가로변화=-3.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmL3": "일차함수의 그래프",
+        "rpmL4": "기울기·절편",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        },
+        "rpmRecordId": "M2-RPM-048",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-166",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 그래프",
+            "l4": "기울기·절편"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 기울기절편048/2022 166, q16-clean-v1 원그림 직접 확인.",
+        "binding": "직선식을 끝까지 정하는 TPL_LINE_TWO_POINTS 대신 기울기 직접 계산 template 제안.",
+        "crossConcept": "두 좌표의 기울기 정의만 사용.",
+        "condition": "추가 조건 없음.",
+        "integration": "기울기 직접 계산.",
+        "difficulty": "정수 절편 두 점을 읽고 기울기 공식 한 번, 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 기울기절편048/2022 166, q16-clean-v1 원그림 직접 확인. 원그림의(0,6),(2,0)에서 세로변화/가로변화=-3.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-SLOPE-INTERCEPT-READ"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정수 절편 두 점을 읽고 기울기 공식 한 번, 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "24642ae5e887aabd6995283c21b4cfba89df3faa4117e534f8543524bdf279b9"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "a9e93532778372b405f50356010bed1092f3626977f1357f1e64d89a6d76f3ec"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_848be8575e06f69f5e716c2af0c4a88ddb627fec2583e4e78b2b66e633630ad0",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-051",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "기울기 음수인 함수 선별",
+      "decisiveStep": "ㄱ,ㄹ,ㅁ의 x계수가 각각 -1,-3,-2.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-051",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "증가·감소"
+        },
+        "rpmL3": "그래프의 성질",
+        "rpmL4": "증가·감소",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "증가·감소"
+        },
+        "rpmRecordId": "M2-RPM-051",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-169",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "그래프의 성질",
+            "l4": "증가·감소"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 증가감소051/2022 169.",
+        "binding": "ACTIVE graph-property PT/TPL definition/internalSkeleton 일치.",
+        "crossConcept": "식 정리는 기울기 부호 확인의 내부.",
+        "condition": "음수는 판정 결과이지 독립적인 주어진 수범위 제한 아님.",
+        "integration": "기울기 부호와 방향 한 관계.",
+        "difficulty": "계수의 부호를 읽는 직접 그래프 성질 확인, 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 증가감소051/2022 169. ㄱ,ㄹ,ㅁ의 x계수가 각각 -1,-3,-2.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수의 부호를 읽는 직접 그래프 성질 확인, 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "3120ecd89b4a71f4d50e8c194cf47d18481c50e08650eddaca3eed4da7bf5d50"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "04ec6ded66cf704f0ffec07b33fca7d37a5b881b93386f12b5c88fbddb306664"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_7eaf50ef21da3797bc76bcc61ce0aa541b63deb6cca31c3cb09757d55140cbf3",
+      "verdict": "CORRECT",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "세 직선의 위치에서 계수 부호를 구해 새 직선의 사분면 판단",
+      "decisiveStep": "평행한 두 증가직선에서 a>0, 낮은 직선의 절편에서 b<0; 목표는 음의 기울기·양의절편.",
+      "beforeSource": {
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": null,
+        "rpmRecordId": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": null
+      },
+      "fieldReview": {
+        "classification": "사분면 통과/비통과 RPM leaf gap. q18-clean-v1 실제 두 평행선과 원점 아래 절편을 확인.",
+        "binding": "ACTIVE graph-property generic pair는 부호와 위치 판정 골격을 포괄.",
+        "crossConcept": "여러 그래프의 부호 판독은 동일 그래프 primary.",
+        "condition": "부호는 그림에서 도출하므로 별도 명시조건으로 중복등록 안함.",
+        "integration": "계수부호와 사분면의 같은 primary 관계.",
+        "difficulty": "두 평행선 중 원식을 구분하고 a,b 부호를 목표식으로 옮기는 두 단계 해석.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "사분면 통과/비통과 RPM leaf gap. q18-clean-v1 실제 두 평행선과 원점 아래 절편을 확인. 평행한 두 증가직선에서 a>0, 낮은 직선의 절편에서 b<0; 목표는 음의 기울기·양의절편.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "RPM_LEAF_GAP",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-QUADRANT"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 평행선 중 원식을 구분하고 a,b 부호를 목표식으로 옮기는 두 단계 해석."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "69e9578e5b68e43211a8350d24eed52402e6ce48505c9c3244954a076d860001"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5e7443ada450f54717537a82aa0e4d8972fca0c4ada36e2647c0a33c879f1509"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ec069c580d6edb710b9159548abefbbf995ed2d1859f22ae6b23155f6f79605a",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-046",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 점의 함숫값으로 틀린 명제 결정",
+      "decisiveStep": "x=2의 실제 함숫값은 -5이므로 (2,5)는 지나지 않는다.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmL3": "일차함수의 뜻",
+        "rpmL4": "함숫값",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "rpmRecordId": "M2-RPM-046",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-164",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "함숫값"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "결정 단계가 함숫값 대입이므로 2015 046/2022 164. 나머지 기울기·절편 명제는 확인 맥락.",
+        "binding": "전체 문항 골격은 ACTIVE graph-property generic PT/TPL, 현재 046의 직접함숫값 crosswalk binding과 불일치하므로 별도 검토.",
+        "crossConcept": "같은 일차함수의 기본 성질 확인만 포함.",
+        "condition": "추가 수체계 조건 없음.",
+        "integration": "일차함수의 기본 성질 하나의 영역에서 명제 판정.",
+        "difficulty": "정수 입력 하나를 대입하면 거짓인 점 명제가 즉시 확인되어 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "결정 단계가 함숫값 대입이므로 2015 046/2022 164. 나머지 기울기·절편 명제는 확인 맥락. x=2의 실제 함숫값은 -5이므로 (2,5)는 지나지 않는다.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-GRAPH-STATEMENT-BINDING"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정수 입력 하나를 대입하면 거짓인 점 명제가 즉시 확인되어 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "7e78593d286e8d997b301b062e4af539cd6002ac765c6e9f4f31e2ce04261b7f"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "b0b71dc53397bc571611520a2a1b20f374b36420364a141ac080e5e39206b450"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_9cbce51c912f32c192cf7a3081cab79505dfd9f612f8cb90f970adb131166175",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-052",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 점의 기울기와 한 점 대입으로 계수 결정",
+      "decisiveStep": "a=(-2-4)/(2+1)=-2, 한 점에서 b=2.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-052",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmL3": "식 구하기",
+        "rpmL4": "두 점으로 식 구하기",
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmRecordId": "M2-RPM-052",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-170",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "식 구하기",
+            "l4": "두 점으로 식 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 두 점 식구하기052/2022 170.",
+        "binding": "ACTIVE TPL_LINE_TWO_POINTS의 정의/골격 정확; ab는 구한 계수의 마무리 출력.",
+        "crossConcept": "계수의 곱은 식결정의 결과 처리.",
+        "condition": "추가 제한 없음.",
+        "integration": "두 점으로 직선 정하기 한 primary.",
+        "difficulty": "기울기 계산과 한 점 대입의 표준 두 단계.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 두 점 식구하기052/2022 170. a=(-2-4)/(2+1)=-2, 한 점에서 b=2.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기울기 계산과 한 점 대입의 표준 두 단계."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "ad73c6495a834bce41932f1de37ac5d09e9e22b557f44cc294687af08d512303"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "26c004cc790e980c669f9ffbb48dde7fd9f0301ff91fd1feb10896ff247ba051"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e0354fe2865ae8cf7cb26ab83af94bc6e2519c7913a02de5ca2e2be40778805b",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-030",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 식을 더하여 y를 소거",
+      "decisiveStep": "3x-y와 x+y를 더해4x=16, 대입하여 y.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-030",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmL3": "연립방정식의 풀이",
+        "rpmL4": "가감법",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmRecordId": "M2-RPM-030",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-148",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "연립방정식의 풀이",
+            "l4": "가감법"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 가감법030/2022 148.",
+        "binding": "ACTIVE 가감법 승수·연산 선택 template와 전체 풀이 서술은 달라 신규 template.",
+        "crossConcept": "역대입은 가감법의 내부 절차.",
+        "condition": "요구 방법은 출제 목표라 별도의 수체계 조건 키 없음.",
+        "integration": "가감법 단일 primary.",
+        "difficulty": "이미 반대계수인 y를 직접 더해 없애는 가장 기본 가감법, 2→1.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 가감법030/2022 148. 3x-y와 x+y를 더해4x=16, 대입하여 y.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-ELIMINATION-SOLVE"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "이미 반대계수인 y를 직접 더해 없애는 가장 기본 가감법, 2→1."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0e2ee8f185b7b396fd7030e1069cbd4caa9ece1a94b7741cef9cf5172103b5ca"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "4c4d24f496c8850c36462771afd226c50790636302d79aa09b061e6842896a09"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8f81c9c2a760ebc7a9b10c52cbe1acd083cbb9d737f4ed211b644c3ff8060140",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-039",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "마릿수와 다리수로 개수를 결정한 뒤 새 합 계산",
+      "decisiveStep": "x+y=30,4x+2y=94에서 얻은 x,y로 x+2y 평가.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "standardUnit": "연립방정식"
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-039",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "rpmL3": "수와 개수",
+        "rpmL4": "개수·가격",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "standardUnit": "연립일차방정식"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "rpmRecordId": "M2-RPM-039",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식의 활용\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-157",
+          "rpmBasePath": {
+            "majorUnit": "연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "수와 개수",
+            "l4": "개수·가격"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"연립일차방정식\",\"연립일차방정식의 활용\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 개수가격039/2022 157, 소재는 동물의 수.",
+        "binding": "단가 미지수인 cost template와 달리 개수가 미지수인 두 집단 합계 template 필요.",
+        "crossConcept": "꼬리/날개 수의 환산은 개수 활용의 내부.",
+        "condition": "동물의 개수라는 생활문맥의 전제만 있고 별도 자연수·범위 제한을 명시하지 않아 추가 condition key 없음.",
+        "integration": "두 집단 개수 활용 primary 한 축.",
+        "difficulty": "독립 B 재검: 표가 x+y와4x+2y 관계를 이미 제공한다. 연립해 뒤 x+2y 계산은 직접적인 후속 산술이라2단계.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 개수가격039/2022 157, 소재는 동물의 수. x+y=30,4x+2y=94에서 얻은 x,y로 x+2y 평가.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "NEW_TEMPLATE_REQUIRED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-TWO-COUNT-TOTALS"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "독립 B 재검: 표가 x+y와4x+2y 관계를 이미 제공한다. 연립해 뒤 x+2y 계산은 직접적인 후속 산술이라2단계."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "0451396ee733a4f409be4ba6880b737c42cf8019db00166d6d96737a6f45274a"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2735237729a91491bc28384de9587b2b9750b79a7aaf07720693c50f32a670e7"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_7f0fbb590ef5fa0e191f7dc931f649a70d7fe64b66ad42d8753eebcc1e69557a",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-053",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "평행 조건으로 기울기를 정하고 x절편점을 대입",
+      "decisiveStep": "기울기 -2와 (2,0)으로 b=4 결정.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-053",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "기울기와 한 점으로 식 구하기"
+        },
+        "rpmL3": "식 구하기",
+        "rpmL4": "기울기와 한 점으로 식 구하기",
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "기울기와 한 점으로 식 구하기"
+        },
+        "rpmRecordId": "M2-RPM-053",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_MULTI_CONDITION",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-171",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "식 구하기",
+            "l4": "기울기와 한 점으로 식 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 기울기와한점053/2022 171.",
+        "binding": "ACTIVE PT_LINE_EQUATION/TPL_LINE_MULTI_CONDITION의 선행조건→점·기울기→식 골격 일치. 해당 leaf의 기본 point-slope crosswalk와 세부binding 확인 필요.",
+        "crossConcept": "평행과 절편은 직선결정 primary의 내부 조건.",
+        "condition": "평행 조건은 주어진 기하 관계이지 수체계 condition key 아님.",
+        "integration": "기울기와 점으로 직선결정이라는 단일 primary.",
+        "difficulty": "평행 기울기와 절편 좌표를 해석한 뒤 한 번 대입.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 기울기와한점053/2022 171. 기울기 -2와 (2,0)으로 b=4 결정.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행 기울기와 절편 좌표를 해석한 뒤 한 번 대입."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "d858c9a5aba2d2ee84cddb2829a7e7bb1662154709b7933b56e9a80ffe8e3511"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "92e0c067bfc2768743ad0a560aeea0155fdb75af4da4e95f91addbbb5ecda2c6"
+          }
+        ]
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0b847837931911c894d734fcaf1896d19910df95e3e4f520e2a9470052d1783e",
+      "verdict": "CORRECT",
+      "rpmRecordId": "M2-RPM-052",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "시간별 길이로 선형모델을 정해 미래값 예측",
+      "decisiveStep": "두 점(3,18),(6,16)에서 기울기와 초기길이를 정한 뒤 x=20 대입.",
+      "beforeSource": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "beforeMetadata": {
+        "rpmPrimaryRecordId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "rpmPrimaryRecordId": "M2-RPM-052",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmL3": "식 구하기",
+        "rpmL4": "두 점으로 식 구하기",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "semanticCurriculum": "2015",
+        "machineCurriculum": "2015",
+        "curriculumProvenance": "SOURCE_EXPLICIT",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "rpmRecordId": "M2-RPM-052",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "activeProjection": "REGISTRATION_PENDING",
+        "resolverStatus": "NOT_RUN_EVIDENCE_INCOMPLETE",
+        "resolverReason": "Metadata review reads existing solution; no genuine independent VERIFIED_FINAL solution receipt has been established by this worker.",
+        "effectiveParent2022": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+        "corresponding2022": {
+          "rpmRecordId": "M2-RPM-170",
+          "rpmBasePath": {
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "식 구하기",
+            "l4": "두 점으로 식 구하기"
+          },
+          "effectiveParentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+          "status": "SEPARATE_CORRESPONDENCE_ONLY"
+        }
+      },
+      "fieldReview": {
+        "classification": "2015 두 점으로 식구하기052/2022 170. 두 시간·길이 관측쌍을 좌표로 읽어 기울기와 절편을 결정하는 실제 풀이가 이 leaf에 해당한다.",
+        "binding": "ACTIVE PT_LINE_EQUATION/TPL_LINE_TWO_POINTS의 두 점→기울기→한 점 대입 골격이 정확하다. 마지막 입력의 함숫값은 구한 식의 직접 활용. 실제 M2 scoped binding/공식 resolver 증거는 별도 미완료.",
+        "crossConcept": "일정 변화율은 일차함수 활용 primary.",
+        "condition": "타고 남은 길이의 실생활 범위 외 문항의 별도 제약 없음.",
+        "integration": "두 점에서 일정변화 모델을 구성하는 하나의 활용 방법.",
+        "difficulty": "주어진 두 시간·길이에서 직선식과 함숫값을 구하는 표준 활용, 3→2.",
+        "fourSlot": "SELF_CHECKED literal source quotes; independent sample pending"
+      },
+      "reason": "2015 두 점으로 식구하기052/2022 170. 두 시간·길이 관측쌍을 좌표로 읽어 기울기와 절편을 결정하는 실제 풀이가 이 leaf에 해당한다. 두 점(3,18),(6,16)에서 기울기와 초기길이를 정한 뒤 x=20 대입.",
+      "registrationDebt": [
+        "TARGET_BINDING_NOT_CONFIRMED",
+        "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED"
+      ],
+      "proposalRefs": [
+        "E010-LINEAR-MODEL"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 두 시간·길이에서 직선식과 함숫값을 구하는 표준 활용, 3→2."
+      },
+      "contentDebt": [],
+      "reviewScope": "STEM_CHOICES_EXISTING_SOLUTION_REQUIRED_FIGURES_METADATA_ONLY",
+      "sourceEvidence": {
+        "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+        "fingerprints": [
+          {
+            "scope": "QBODY",
+            "algo": "sha256-canonical-json-v1",
+            "value": "5c1d80c4fdffed68ab589dfc3d74b26f87e900d6972e66a0348a67094a0206b4"
+          },
+          {
+            "scope": "QFULL",
+            "algo": "sha256-canonical-json-v1",
+            "value": "2b81d7cfa1953a00e5b42305fcab443897ba394ccd97c0ee77e75101d6e8eca8"
+          }
+        ]
+      }
+    }
+  ],
+  "topicSummary": [
+    "M2-03",
+    "M2-04"
+  ],
+  "proposals": [
+    {
+      "id": "E010-TWO-VARIABLE-DEFINITION",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "정리한 등식에 두 미지수가 각각 일차로 남는지 판정.",
+      "parent": "2015/M2-1/일차부등식과 연립일차방정식/연립일차방정식/뜻",
+      "distinction": "실제 연립계의 해를 구하는 풀이 leaf와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_c43ade0c622e651bc27eef080a5495603ec0a622b220220863219415edb97b28"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 1,
+          "decisiveStep": "ㄹ은 y=1로 정리되어 미지수가 하나이고 ㄴ은 등호가 없다."
+        }
+      ]
+    },
+    {
+      "id": "E010-NATURAL-PAIR-COUNT",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "두 미지수 일차식 한 개의 자연수 순서쌍을 범위에서 열거해 개수 결정.",
+      "parent": "2015/M2-1/일차부등식과 연립일차방정식/연립일차방정식/해",
+      "distinction": "연립 두 식의 유일해 또는 일차부등식 정수해 개수와 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_6cae786512d1ff215790ec6710b89e3868676d05ad07bf451eeb4ee8aa052057"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 2,
+          "decisiveStep": "y=11-2x가 양의 정수가 되는 x=1,…,5를 센다."
+        }
+      ]
+    },
+    {
+      "id": "E010-SUBSTITUTION-BLANKS",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "대입법 풀이의 제시된 단계에서 중간 해와 수치 빈칸 결정.",
+      "parent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "distinction": "가감법의 승수선택과 다름.",
+      "supportingQuestionUids": [
+        "qid_v1_d413c3e4691e3248e8ef7e986e57d869850829e89d285c0a78c4ae8c31ff449a"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 3,
+          "decisiveStep": "x=2y를 대입해 3y=6, y=2, x=4."
+        }
+      ]
+    },
+    {
+      "id": "E010-SYSTEM-PARAMETER",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "주어진 해 전부 또는 일부를 식에 대입해 미정계수를 복원.",
+      "parent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "distinction": "공통해를 먼저 찾거나 오독계수를 교환하는 template와 다름.",
+      "supportingQuestionUids": [
+        "qid_v1_09b6480eb4e2d27c2900cde15662a2736cc4d2437a71fa25c2c0b1d38c8be03d",
+        "qid_v1_c91eed3b34bef6ff6bcd57c0dbc7a73f5a92b6b26ea80bc26e5c2caa897a175e"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 4,
+          "decisiveStep": "a+2b=6,a-2b=2의 합과 차로 a,b를 얻는다."
+        },
+        {
+          "sourceOrdinal": 6,
+          "decisiveStep": "x=-2에서 y=3, 그 해를 두 번째 식에 대입하여 a 결정."
+        }
+      ]
+    },
+    {
+      "id": "E010-TRAVEL-SEGMENTS",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "두 구간 이동의 거리차와 총시간으로 두 거리 또는 전체길이 결정.",
+      "parent": "2015/M2-1/일차부등식과 연립일차방정식/연립일차방정식의 활용/속력",
+      "distinction": "만남·추격·강물·기차의 특수 상대속력 상황과 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_759b51a8739036f2d927c204d60a21bbb4eca923a0f5a40edec3435f35e5e1e3"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 5,
+          "decisiveStep": "x-y=2와 x/6+y/2=7/3을 결합하여 둘레 x+y를 구한다."
+        }
+      ]
+    },
+    {
+      "id": "E010-FRACTION-DECIMAL-SYSTEM",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "분수·소수·괄호가 함께 있는 연립계를 정수계수로 정리해 해의 식값 계산.",
+      "parent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "distinction": "소수만10배 정리하는 기존 template보다 분모와 분배 정리 추가.",
+      "supportingQuestionUids": [
+        "qid_v1_d73b6181bdac2f62cf648cdbad1abef84ac4b77a7a2b3fe0a6fe41719ada24bb"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 7,
+          "decisiveStep": "3x+y=20,2x-3y=-5로 정리한 뒤 해의 선형식 계산."
+        }
+      ]
+    },
+    {
+      "id": "E010-FUNCTION-DEFINITION",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "하나의 입력에 하나의 출력이 대응하는지 일반 함수의 정의로 판정.",
+      "parent": "2015/M2-1/일차함수/일차함수와 그 그래프/함수의 뜻",
+      "distinction": "일차함수 여부보다 넓은 일반 대응 판정; ACTIVE generic pair 재사용 검토.",
+      "supportingQuestionUids": [
+        "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 9,
+          "decisiveStep": "자연수 x보다 작은 자연수 y는 같은 x에 여러 값이 가능."
+        }
+      ]
+    },
+    {
+      "id": "E010-LINEAR-FUNCTION-IDENTIFY",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "정리한 식이 y=ax+b,a≠0 꼴인지로 일차함수 판별.",
+      "parent": "M2-04-LINEAR_FUNCTION_BASIC",
+      "distinction": "함수인지 일반 대응판정과 일차성 판별은 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_7ed802fa2d1bbd9c70f64bec51fe98cc48dc03a9fbe22bb85427cb8406516306"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 11,
+          "decisiveStep": "x=5로 되는 식과 x²+2x인 식을 제외."
+        }
+      ]
+    },
+    {
+      "id": "E010-VERTICAL-TRANSLATION",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "알려진 수직이동량으로 이동식 결정 또는 두 평행식의 절편차로 이동량 결정.",
+      "parent": "2015/M2-1/일차함수/일차함수와 그 그래프/평행이동",
+      "distinction": "주어진 점을 통과하도록 미지 이동량을 찾는 기존 template와 구별. Q14는 절편 비교 leaf 사용가능.",
+      "supportingQuestionUids": [
+        "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+        "qid_v1_bd44ee9f450e57d5ad4a0a0c10c2bd249b3765ae3fff0acbe833479dcf080776"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 13,
+          "decisiveStep": "y=x의 y좌표가 모두 3 증가하여 y=x+3."
+        },
+        {
+          "sourceOrdinal": 14,
+          "decisiveStep": "절편이 -1에서2로 변하므로 차3."
+        }
+      ]
+    },
+    {
+      "id": "E010-SLOPE-INTERCEPT-READ",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "수치 함수식/그림에서 좌표축절편 또는 변화율을 직접 계산.",
+      "parent": "M2-04-LINEAR_FUNCTION_BASIC",
+      "distinction": "계수 부호에 따른 그래프 선택 template와 다름.",
+      "supportingQuestionUids": [
+        "qid_v1_67c68e2f30ac488a90cf537de262f551eb07e5d0978b08529ef58da20860a1bb",
+        "qid_v1_fe80164b56537676f9a9487317f70fbd0e2396ee8ec1f16f4fb8b75b288af878"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 15,
+          "decisiveStep": "y=0으로 x절편, x=0으로 y절편."
+        },
+        {
+          "sourceOrdinal": 16,
+          "decisiveStep": "원그림의(0,6),(2,0)에서 세로변화/가로변화=-3."
+        }
+      ]
+    },
+    {
+      "id": "E010-QUADRANT",
+      "kind": "RPM_LEAF_GAP",
+      "definition": "계수부호와 절편위치로 직선이 지나는/지나지 않는 사분면 판정.",
+      "parent": "2015/M2-1/일차함수/일차함수와 그 그래프/그래프의 성질",
+      "distinction": "증가감소 또는 두직선 평행만으로 사분면 출력을 포괄하지 못함.",
+      "supportingQuestionUids": [
+        "qid_v1_7eaf50ef21da3797bc76bcc61ce0aa541b63deb6cca31c3cb09757d55140cbf3"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 18,
+          "decisiveStep": "평행한 두 증가직선에서 a>0, 낮은 직선의 절편에서 b<0; 목표는 음의 기울기·양의절편."
+        }
+      ]
+    },
+    {
+      "id": "E010-GRAPH-STATEMENT-BINDING",
+      "kind": "BINDING_MISSING",
+      "definition": "일차함수 그래프 명제에서 함숫값으로 거짓 점 포함 명제를 가르는 generic graph-property pair의 leaf 결속 검토.",
+      "parent": "M2-04-LINEAR_FUNCTION_BASIC",
+      "distinction": "RPM함숫값 leaf의 direct-value pair와 문항전체의 generic graph-property PT/TPL이 달라 수동결속 필요.",
+      "supportingQuestionUids": [
+        "qid_v1_ec069c580d6edb710b9159548abefbbf995ed2d1859f22ae6b23155f6f79605a"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 19,
+          "decisiveStep": "x=2의 실제 함숫값은 -5이므로 (2,5)는 지나지 않는다."
+        }
+      ]
+    },
+    {
+      "id": "E010-ELIMINATION-SOLVE",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "가감법으로 미지수 하나를 없애고 역대입하여 전체 해를 구함.",
+      "parent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "distinction": "가감 승수/연산만 선택하는 기존 template와 전체풀이 출력 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_e0354fe2865ae8cf7cb26ab83af94bc6e2519c7913a02de5ca2e2be40778805b"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 21,
+          "decisiveStep": "3x-y와 x+y를 더해4x=16, 대입하여 y."
+        }
+      ]
+    },
+    {
+      "id": "E010-TWO-COUNT-TOTALS",
+      "kind": "NEW_TEMPLATE_REQUIRED",
+      "definition": "두 집단 개수 합과 서로 다른 단위수 합에서 개수를 구한 뒤 요구된 새 총량 계산.",
+      "parent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "distinction": "단가가 미지수인 cost template와 개수가 미지수인 모델 구별.",
+      "supportingQuestionUids": [
+        "qid_v1_8f81c9c2a760ebc7a9b10c52cbe1acd083cbb9d737f4ed211b644c3ff8060140"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 22,
+          "decisiveStep": "x+y=30,4x+2y=94에서 얻은 x,y로 x+2y 평가."
+        }
+      ]
+    },
+    {
+      "id": "E010-LINEAR-MODEL",
+      "kind": "EXISTING_REUSE",
+      "definition": "시간·길이의 두 관측점을 읽어 기울기와 절편을 정한 뒤 목표 입력의 함숫값 계산.",
+      "parent": "PT_LINE_EQUATION/TPL_LINE_TWO_POINTS",
+      "distinction": "독립 B 재검으로 생활소재만의 별도 leafgap 제안을 철회. 실제 두 점 식결정 골격은 기존2015 052/2022170 및 generic template가 포괄.",
+      "supportingQuestionUids": [
+        "qid_v1_0b847837931911c894d734fcaf1896d19910df95e3e4f520e2a9470052d1783e"
+      ],
+      "evidence": [
+        {
+          "sourceOrdinal": 24,
+          "decisiveStep": "두 점(3,18),(6,16)에서 기울기와 초기길이를 정한 뒤 x=20 대입."
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Read all24 source stems, choices and existing solutions. Viewed original Q13, Q16-clean-v1, Q18-clean-v1 figures.",
+    "All24 explicitly declare curriculum2015. Primary IDs/paths are actual2015; corresponding2022 records/effectiveParent are separate.",
+    "Q8 solution equation-source wording retained as contentDebt; no student text/answer/solution changes.",
+    "NAMED includes actual method name or standard formula per4slot§8; modeling inference carries IMPLIED justification."
+  ],
+  "judgedBy": {
+    "agent": "M2_META_REVIEWER_A",
+    "at": "2026-11-14T09:18:39.651621+00:00"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E010",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "39c1ea8f6f4f1b773e866efea6b9d43e6174ebf8",
+  "reviewSha256": "8a95c3fb0521d00ee6d9e26726d3615336c2c06a15d36aa134f5431d3f60c1c4",
+  "fourSlotSha256": "45afde2013577f1f69fa7dfdc7b1b58bd00a82904afeae1e7149c2854adf710e",
+  "sampleOrdinals": [
+    8,
+    13,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "status": "PASS_WITH_EXISTING_CONTENT_DEBT",
+      "findings": "공통해를정하는상수식2x+y=5,x+y=3과후속계수대입이실제해설에존재한다. 해설의첫째연립식이라는식출처표현오류는기록된contentDebt가정확하고계산·답을허위로수정하지않았다. goal매개변수+합보강을최종source인용으로재확인. numeric2수정수용.",
+      "goalMethodInversion": false,
+      "quoteCheck": "Every final sample quote checked literally against exact source."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+      "status": "PASS",
+      "findings": "실제원본그림에서y=x와(1)직선사이의수직화살표가위쪽3임을확인했다. given일차함수/이동과goal함수식,method평행이동/좌표증가가서로구분되고해설과일치한다. 알려진이동량으로식을작성하는문항이라미지이동량결정TPL과구별한gap은타당.",
+      "goalMethodInversion": false,
+      "quoteCheck": "Every final sample quote checked literally against exact source."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ec069c580d6edb710b9159548abefbbf995ed2d1859f22ae6b23155f6f79605a",
+      "status": "PASS_WITH_BINDING_DEBT",
+      "findings": "거짓명제는점(2,5)의통과여부이고기존해설에y=-3(2)+1=-5의실제값계산이있다. 따라서함숫값RPM046의decisive판단을수용한다. 전체문항이여러그래프성질진술판정인genericTPL후보도수용하되현재RPM직접함숫값binding과의정합성은미확정으로보존한다. method함숫값formula는표준수치대입근거이며NAMED허용. goal그래프+판정보강도literal검증.",
+      "goalMethodInversion": false,
+      "quoteCheck": "Every final sample quote checked literally against exact source."
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_c43ade0c622e651bc27eef080a5495603ec0a622b220220863219415edb97b28",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정의와간단한소거로식에남는미지수개수만확인하므로1타당."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_d413c3e4691e3248e8ef7e986e57d869850829e89d285c0a78c4ae8c31ff449a",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "대입식과풀이진행이본문에이미제시되어세빈칸은직접계산이다.1타당."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_759b51a8739036f2d927c204d60a21bbb4eca923a0f5a40edec3435f35e5e1e3",
+      "level": "중",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "서로다른두속력,거리차2,시간2시간20분을두연립관계로번역해야하여3의B23수용."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_c91eed3b34bef6ff6bcd57c0dbc7a73f5a92b6b26ea80bc26e5c2caa897a175e",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "알려진x값을첫째식에넣어y를구하고둘째식상수에바로대입하므로1타당."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_d73b6181bdac2f62cf648cdbad1abef84ac4b77a7a2b3fe0a6fe41719ada24bb",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수·소수와괄호를정리한후기본연립해를구하는정형계산이라2수용."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "알려진식두개를고르는공통해원리를적용하면단순정수연립과직접계수대입으로끝난다. 최초3→독립권고2수정확인, B23수용."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "고정된자연수보다작은자연수의복수출력반례를직접제시할수있어1타당."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_7ed802fa2d1bbd9c70f64bec51fe98cc48dc03a9fbe22bb85427cb8406516306",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "y=ax+b형식과상쇄후수직선/이차식을정의에따라구별하는기본판정이라1타당."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_9a6850b70b9f99ad47a8247efe3d232644710face7c3ba0778e3710c711017a8",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "서로다른두정수입력을함수식에대입후더하는기초적평가로1수용."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_fe80164b56537676f9a9487317f70fbd0e2396ee8ec1f16f4fb8b75b288af878",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "원그림(0,6),(2,0)을직접읽고차의비공식을한번쓰면기울기가나온다.1수용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_848be8575e06f69f5e716c2af0c4a88ddb627fec2583e4e78b2b66e633630ad0",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "각x계수의부호를읽으며ㅁ은한번분배하면음기울기가바로드러나1타당."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ec069c580d6edb710b9159548abefbbf995ed2d1859f22ae6b23155f6f79605a",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "오류선택지의x=2를대입하면즉시y=-5가되어거짓임이확정된다. 전체보기수만으로상향하지않고1수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_e0354fe2865ae8cf7cb26ab83af94bc6e2519c7913a02de5ca2e2be40778805b",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "두식의y계수가이미반대여서더하기한번으로소거되며역대입이직접적이다. 서술형식과무관하게1타당."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8f81c9c2a760ebc7a9b10c52cbe1acd083cbb9d737f4ed211b644c3ff8060140",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "표가x+y,4x+2y와각합계를제공해모델선택부담을대부분제거한다. 연립풀이뒤x+2y후속평가이므로독립권고2수정확인."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_0b847837931911c894d734fcaf1896d19910df95e3e4f520e2a9470052d1783e",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두관측점으로기울기와절편을구하고20분을대입하는표준일차함수활용으로2수용."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "공통해template의상수식선정→해→계수대입정의와정확대응. 내용부채는식출처단어이며수학골격과분리."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_WITH_BINDING_DEBT",
+      "reason": "거짓점명제의decisive함숫값RPM046/별도164와전체graph-propertygeneric후보를구별하여record. TARGET_BINDING_NOT_CONFIRMED를삭제하거나검증완료로승격하지않음."
+    },
+    {
+      "sourceOrdinal": 24,
+      "decision": "ACCEPT_REVISION",
+      "reason": "생활소재여도실제계산은두점(3,18),(6,16)으로식을정하는정확한기존골격이다. 2015RPM052/별도2022170와TPL_LINE_TWO_POINTS의definition/internalSkeleton을수용하고불필요한RPMgap철회확인."
+    }
+  ],
+  "figuresViewed": [
+    "workers/A/E010-Q13.png",
+    "workers/A/E010-Q16.png"
+  ],
+  "status": "PASS_WITH_EXISTING_CONTENT_AND_BINDING_DEBT",
+  "at": "2026-11-14T09:20:03.972786+00:00"
+}
