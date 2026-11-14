@@ -249,7 +249,11 @@ var examData = window.examData = {
         "1"
       ],
       "answer": "①",
-      "solution": "$0<\\alpha<\\frac\\pi2$이고 $\\sin\\alpha=\\frac13$인 각 $\\alpha$를 둔다. 주어진 범위에서 $\\sin x=\\frac13$의 해는\n$a=\\alpha,\\quad b=\\pi-\\alpha,\\quad c=2\\pi+\\alpha$이다.\n따라서\n$a+\\frac{b-c}{2}$\n$=\\alpha+\\frac{(\\pi-\\alpha)-(2\\pi+\\alpha)}2$\n$=\\alpha+\\frac{-\\pi-2\\alpha}2$\n$=\\alpha-\\frac\\pi2-\\alpha$\n$=-\\frac\\pi2$이다.\n그러므로\n$\\sin\\left(a+\\frac{b-c}{2}\\right)=\\sin\\left(-\\frac\\pi2\\right)=-1$이고 정답은 ①이다."
+      "solution": "$0<\\alpha<\\frac\\pi2$이고 $\\sin\\alpha=\\frac13$인 각 $\\alpha$를 둔다. 주어진 범위에서 $\\sin x=\\frac13$의 해는\n$a=\\alpha,\\quad b=\\pi-\\alpha,\\quad c=2\\pi+\\alpha$이다.\n따라서\n$a+\\frac{b-c}{2}$\n$=\\alpha+\\frac{(\\pi-\\alpha)-(2\\pi+\\alpha)}2$\n$=\\alpha+\\frac{-\\pi-2\\alpha}2$\n$=\\alpha-\\frac\\pi2-\\alpha$\n$=-\\frac\\pi2$이다.\n그러므로\n$\\sin\\left(a+\\frac{b-c}{2}\\right)=\\sin\\left(-\\frac\\pi2\\right)=-1$이고 정답은 ①이다.",
+      "solutionImage": "assets/images/21_강남여고_1학기_기말_고2_수학I/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 0≤x<5π/2에서 y=sin x와 y=1/3의 교점 세 개는 α, π−α, 2π+α의 자리에 놓인다.",
+      "solutionImageCaption": "사인곡선과 y=1/3의 교점을 왼쪽부터 α, π−α, 2π+α로 읽는다. 세 위치를 주어진 식에 대입하면 각은 −π/2이다. 정답은 ①이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 17,
@@ -331,7 +335,11 @@ var examData = window.examData = {
       "solution": "원의 반지름이 2이므로 원의 넓이는\n$\\pi\\cdot2^2=4\\pi$이다.\n내접 정삼각형의 한 변은 반지름 2인 원의 중심각 $120^\\circ$에 대응하는 현이므로\n$2\\cdot2\\sin60^\\circ=2\\sqrt3$이다.\n정삼각형 한 개의 넓이는\n$\\frac{\\sqrt3}{4}(2\\sqrt3)^2=3\\sqrt3$이다.\n두 삼각형이 겹치는 가운데 정육각형의 한 변을 구한다. 좌표평면의 원점을 중심 $O$에 두고, 그림처럼 $BC$를 수평으로 잡으면 $BC$는 $y=-1$에 놓을 수 있다. (중심에서 현 $BC$까지의 거리는 $2\\cos60^\\circ=1$이다.) 따라서\n$B=(-\\sqrt3,-1),\\quad C=(\\sqrt3,-1),\\quad A=(0,2)$이다.\n$EF\\parallel BC$이고 반대 방향의 정삼각형이므로\n$E=(-\\sqrt3,1),\\quad F=(\\sqrt3,1)$이다.\n직선 $AB$의 기울기는 $\\frac{-1-2}{-\\sqrt3-0}=\\sqrt3$이므로\n$AB: y=\\sqrt3 x+2$이다.\n$AB$와 $EF$의 교점에서는 $y=1$이므로\n$1=\\sqrt3 x+2$\n$x=-\\frac1{\\sqrt3}$이다. 대칭인 반대쪽 교점의 $x$좌표는 $\\frac1{\\sqrt3}$이므로 가운데 정육각형의 한 변은\n$\\frac1{\\sqrt3}-(-\\frac1{\\sqrt3})=\\frac2{\\sqrt3}$이다.\n정육각형의 넓이는\n$6\\cdot\\frac{\\sqrt3}{4}(\\frac2{\\sqrt3})^2=2\\sqrt3$이다.\n색칠되지 않은 두 정삼각형의 합집합 넓이는 두 삼각형의 넓이 합에서 겹친 정육각형을 한 번 빼어\n$3\\sqrt3+3\\sqrt3-2\\sqrt3=4\\sqrt3$이다.\n따라서 색칠된 부분의 넓이는\n$4\\pi-4\\sqrt3$이다.\n$a=4, b=-4$이므로\n$a^2+b^2=4^2+(-4)^2=32$이다.\n따라서 정답은 ⑤이다.",
       "images": [
         "assets/images/21_강남여고_1학기_기말_고2_수학I/q21.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_강남여고_1학기_기말_고2_수학I/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 내접 정삼각형이 겹치는 중앙 정육각형과 그 한 변의 길이를 표시한다.",
+      "solutionImageCaption": "두 정삼각형이 겹치는 정육각형의 한 변은 2√3/3이다. 두 삼각형의 넓이 합에서 겹친 부분을 한 번 빼고, 그 합집합의 넓이를 원의 넓이에서 뺀다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 22,
@@ -346,7 +354,11 @@ var examData = window.examData = {
         "14"
       ],
       "answer": "④",
-      "solution": "$t=2\\pi x-\\frac\\pi3$이라 놓으면 $0<x<2$에서\n$-\\frac\\pi3<t<\\frac{11\\pi}3$이다.\n방정식은 $3\\cos t=a$가 된다. 코사인의 값의 범위는 $-1\\le\\cos t\\le1$이므로 $-3\\le a\\le3$일 때만 해가 있다.\n끝점 $t=-\\frac\\pi3,\\frac{11\\pi}3$에서 코사인값은 모두 $\\frac12$이다. 따라서 $-3<a<3$이고 $a\\ne\\frac32$이면 수평선 $y=\\frac a3$은 이 길이 $4\\pi$인 열린 구간 안에서 코사인 그래프와 네 번 만나므로 해는 4개이다.\n$a=\\frac32$이면 끝점 두 곳도 근이지만 $t$의 구간은 열린 구간이므로 두 근은 제외된다. 구간 안의 근은 $t=\\frac\\pi3,\\frac{5\\pi}3,\\frac{7\\pi}3$의 세 개이다.\n$a=3$ 또는 $a=-3$이면 각각 코사인의 최댓값 또는 최솟값을 두 주기 안에서 두 번 만나므로 해는 2개이다. $a<-3$ 또는 $a>3$이면 해가 없다.\n따라서 가능한 $f(a)$의 값은\n$0,2,3,4$이다.\n그러므로 $m=4$, $n=0+2+3+4=9$이고\n$m+n=4+9=13$이다.\n따라서 정답은 ④이다."
+      "solution": "$t=2\\pi x-\\frac\\pi3$이라 놓으면 $0<x<2$에서\n$-\\frac\\pi3<t<\\frac{11\\pi}3$이다.\n방정식은 $3\\cos t=a$가 된다. 코사인의 값의 범위는 $-1\\le\\cos t\\le1$이므로 $-3\\le a\\le3$일 때만 해가 있다.\n끝점 $t=-\\frac\\pi3,\\frac{11\\pi}3$에서 코사인값은 모두 $\\frac12$이다. 따라서 $-3<a<3$이고 $a\\ne\\frac32$이면 수평선 $y=\\frac a3$은 이 길이 $4\\pi$인 열린 구간 안에서 코사인 그래프와 네 번 만나므로 해는 4개이다.\n$a=\\frac32$이면 끝점 두 곳도 근이지만 $t$의 구간은 열린 구간이므로 두 근은 제외된다. 구간 안의 근은 $t=\\frac\\pi3,\\frac{5\\pi}3,\\frac{7\\pi}3$의 세 개이다.\n$a=3$ 또는 $a=-3$이면 각각 코사인의 최댓값 또는 최솟값을 두 주기 안에서 두 번 만나므로 해는 2개이다. $a<-3$ 또는 $a>3$이면 해가 없다.\n따라서 가능한 $f(a)$의 값은\n$0,2,3,4$이다.\n그러므로 $m=4$, $n=0+2+3+4=9$이고\n$m+n=4+9=13$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "assets/images/21_강남여고_1학기_기말_고2_수학I/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: t=2πx−π/3로 놓으면 열린 구간 −π/3<t<11π/3에서 y=3cos t와 대표 수평선의 교점 수를 비교한다.",
+      "solutionImageCaption": "열린 구간에서 y=3cos t와 수평선의 교점 수를 비교한다. y=3/2에서 양 끝점은 제외하므로 교점은 세 개다. 가능한 교점 수의 최댓값은 4이고 서로 다른 교점 수의 합은 9이다. 정답은 ④(13)이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 23,
@@ -364,7 +376,11 @@ var examData = window.examData = {
       "solution": "먼저 코사인 법칙으로 $AC$를 구한다.\n$AC^2=AB^2+BC^2-2\\cdot AB\\cdot BC\\cos\\angle ABC$\n$=2^2+2^2-2\\cdot2\\cdot2\\cos120^\\circ$\n$=4+4-8(-\\frac12)=12$이므로\n$AC=2\\sqrt3$이다.\n외접원의 반지름은 현 $AC$와 그 현이 보는 원주각 $\\angle ABC=120^\\circ$를 이용해\n$AC=2R\\sin120^\\circ$\n$2\\sqrt3=2R\\cdot\\frac{\\sqrt3}{2}$\n$R=2$이다.\n점 $P$는 $B$를 포함하지 않는 호 $AC$ 위에 있으므로 $\\angle APC$는 $B$를 포함하는 호 $AC$를 본다. 그 호의 중심각은 $120^\\circ$이므로\n$\\angle APC=60^\\circ$이다.\n$2AP=3CP$에서 $AP:CP=3:2$이므로\n$AP=3t,\\quad CP=2t$라 놓는다. 코사인 법칙을 삼각형 $APC$에 적용하면\n$AC^2=(3t)^2+(2t)^2-2\\cdot3t\\cdot2t\\cos60^\\circ$\n$12=9t^2+4t^2-6t^2$\n$12=7t^2$\n$t^2=\\frac{12}{7}$이다.\n따라서 삼각형 $APC$의 넓이는\n$S=\\frac12\\cdot3t\\cdot2t\\sin60^\\circ$\n$=3t^2\\cdot\\frac{\\sqrt3}{2}$\n$=\\frac{18\\sqrt3}{7}$이다.\n그러므로\n$\\frac{7S}{R}=\\frac{7\\cdot\\frac{18\\sqrt3}{7}}2=9\\sqrt3$이다.\n따라서 정답은 ②이다.",
       "images": [
         "assets/images/21_강남여고_1학기_기말_고2_수학I/q23.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_강남여고_1학기_기말_고2_수학I/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 APC에서 ∠APC=60°이고 AP:CP=3:2이다.",
+      "solutionImageCaption": "삼각형 APC에서 AP=3t, CP=2t이고 끼인각은 60°이다. 코사인법칙으로 AC²=7t²를 얻고 두 변과 끼인각으로 넓이를 구한다. 정답은 ②(9√3)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,
@@ -434,7 +450,11 @@ var examData = window.examData = {
       "solution": "(1) 현 $AB$는 원주각 $C$가 보는 현이므로 사인 법칙에 따라\n$AB=2R\\sin C$이다.\n$8\\sqrt2=2R\\cdot\\frac{2\\sqrt2}{3}$\n$8\\sqrt2=\\frac{4\\sqrt2}{3}R$\n$R=6$이다.\n\n(2) 점 $O$가 삼각형 내부에 있으므로 삼각형은 예각삼각형이고 $\\cos B,\\cos C>0$이다. 중심에서 현까지 내린 수선은 현을 이등분한다. 직각삼각형에서 반지름 $R$을 빗변으로 보면\n$ d(O,AB)=R\\cos C,\\quad d(O,AC)=R\\cos B$이다.\n두 거리의 비가 $1:2$이므로\n$\\cos C:\\cos B=1:2$\n$\\cos B=2\\cos C$이다.\n$C$가 예각이고 $\\sin C=\\frac{2\\sqrt2}{3}$이므로\n$\\cos C=\\sqrt{1-\\frac89}=\\frac13$이다.\n따라서\n$\\cos B=\\frac23$\n$\\sin B=\\sqrt{1-\\frac49}=\\frac{\\sqrt5}{3}$이다.",
       "images": [
         "assets/images/21_강남여고_1학기_기말_고2_수학I/q28.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_강남여고_1학기_기말_고2_수학I/q28-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심 O에서 현 AB와 AC에 내린 수선 및 그 길이의 비를 표시한다.",
+      "solutionImageCaption": "원 중심 O에서 현 AB와 AC까지의 거리비는 2:4이다. 직각삼각형에서 두 거리를 반지름으로 나눈 값이 각각 cos C와 cos B이므로 cos B는 cos C의 두 배이다. 정답은 (1) 반지름 6, (2) sin B=√5/3이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 29,

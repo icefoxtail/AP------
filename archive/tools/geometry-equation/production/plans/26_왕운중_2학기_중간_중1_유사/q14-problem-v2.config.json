@@ -1,0 +1,81 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+  "questionId": 14,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            0,
+            10,
+            0,
+            10
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "curves": [
+            {
+              "id": "f",
+              "kind": "RATIONAL",
+              "numerator": [
+                "3",
+                "0"
+              ],
+              "denominator": [
+                "0",
+                "1"
+              ],
+              "domain": [
+                "1/10000",
+                "10"
+              ],
+              "hideLabel": true
+            }
+          ],
+          "regions": [
+            {
+              "id": "R",
+              "under": "f",
+              "from": "1/10000",
+              "to": "10",
+              "fill": "LIGHT"
+            }
+          ],
+          "overlays": {
+            "points": [
+              {
+                "id": "O",
+                "x": "0",
+                "y": "0"
+              }
+            ]
+          }
+        },
+        "caption": "제1사분면의 반비례 그래프와 아래쪽 영역",
+        "sourceQuote": "함수 y=a/x (a>0)의 그래프 아래 내부의 자연수 좌표를 가진 점의 개수",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "제1사분면에서 곡선 아래쪽 영역",
+            "mappedTo": [
+              "graphPlan.curves",
+              "graphPlan.regions"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
