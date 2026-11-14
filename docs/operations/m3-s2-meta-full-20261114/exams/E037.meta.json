@@ -29,7 +29,7 @@
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.4slot.json",
-      "sha256": "48fdb1c4bb3081f0f05950f0e7a81d311ed96486cafd56b1edee7eb1b2f35fd9"
+      "sha256": "9ea74fa76ad3e2ca9f4c55b44705a662032cecc47c0be426a928bf3384309276"
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.proposals.json",
@@ -57,11 +57,19 @@
     },
     "independent": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.independent.json",
-      "sha256": "b4f640b1c82e83e4b3845f16947b9e57918d9284c83c9c781ff45c9398dedd50"
+      "sha256": "2b1b93e2ed740953308a2b4e5eef320b4ebda96174c746f433c467aa7954833d"
     },
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.difficulty-adjudication.json",
       "sha256": "85142b09c22a65399632126f6c0adea54da6b4a15ad133e6b388954357e03ef1"
+    },
+    "fourSlotAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.4slot-amendment.json",
+      "sha256": "c8050df43e843522d854bbd0fc90de65011518bddddef64f57466e4eecaffc6e"
+    },
+    "fourSlotIndependentAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.4slot-independent-amendment.json",
+      "sha256": "a46f12b93399b395e973794ebd7056102ac2af51013ee176a48bf29788c19084"
     }
   },
   "items": [
@@ -8243,5 +8251,25 @@
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
   "semanticPayloadSha256": "137831ddd7d1d75077c8f62ee8f07541264d68bd48a07fc4ba50c383d4ab43a8",
-  "independentFinalStatus": "PASS_AFTER_TARGETED_CORRECTION"
+  "independentFinalStatus": "PASS_AFTER_TARGETED_CORRECTION",
+  "targetedFourSlotAmendment": {
+    "changedOrdinals": [
+      20
+    ],
+    "previous": {
+      "commit": "1dbbc5e19abe2e8b09f445ab389ec3ba2ae619b5",
+      "metadataSha256": "2c68aacff27bd286bd4034c6965d41de513a9454d36110e8e64fd542c6cea9dc",
+      "verificationSha256": "1467c3de84d9551559013eeebd74eae59372b1b2a4b370846e4db093ebd5948c",
+      "fourSlotSha256": "48fdb1c4bb3081f0f05950f0e7a81d311ed96486cafd56b1edee7eb1b2f35fd9",
+      "independentSha256": "b4f640b1c82e83e4b3845f16947b9e57918d9284c83c9c781ff45c9398dedd50"
+    },
+    "independentDelta": "PASS",
+    "existingThreeSampleOrdinals": [
+      14,
+      21,
+      25
+    ],
+    "studentSourceChanged": false,
+    "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE"
+  }
 }
