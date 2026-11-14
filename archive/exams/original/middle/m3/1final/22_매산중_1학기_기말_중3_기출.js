@@ -909,7 +909,11 @@ window.questionBank = [
       "sourceQid": 14,
       "originalContentChoicesChanged": false,
       "changeRationale": null
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 열린 부등식 구간의 공통 부분을 표시한 수직선.",
+    "solutionImageCaption": "주어진 구간에서 |x+3|=−(x+3), |x+4|=x+4이므로 식은 −2x−7이다. 답: −2x−7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1202,7 +1206,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_기출/q19-solution-v2.svg",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "Infer the rectangle pattern and select the natural solution of a quadratic equation.",
@@ -1235,7 +1239,10 @@ window.questionBank = [
       "sourceQid": 19,
       "originalContentChoicesChanged": false,
       "changeRationale": null
-    }
+    },
+    "solutionImageAlt": "해설 그림: 1행 3개, 2행 4개, 3행 5개의 세 바둑돌 배열을 비교한다.",
+    "solutionImageCaption": "n단계의 바둑돌 수는 n(n+2)이다. n(n+2)=440을 풀어 자연수 단계만 취한다. 답: 20단계.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1388,7 +1395,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_기출/q22-solution-v2.svg",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "The harder choice needs figure-to-area translation and factorization; the simpler choice is noted separately.",
@@ -1421,7 +1428,10 @@ window.questionBank = [
       "sourceQid": 22,
       "originalContentChoicesChanged": false,
       "changeRationale": null
-    }
+    },
+    "solutionImageAlt": "해설 그림: 2-① 넓이 타일 분해와 2-② 잘린 정사각형 A 및 같은 넓이 직사각형 B를 두 그림으로 보여 준다.",
+    "solutionImageCaption": "2-① x²+3x+2=(x+1)(x+2)이므로 가로는 x+2이다. 2-② A의 넓이는 (2x−3)(2x+1)이고 B의 높이가 2x−3이므로 가로는 2x+1이다. 답: 수준별 2-① x+2, 수준별 2-② 2x+1.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1509,7 +1519,7 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "sourceMode": "ORIGINAL",
-    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImage": "assets/images/22_매산중_1학기_기말_중3_기출/q24-solution-v2.svg",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "The harder choice models card orientations, remaining width, and area to determine dimensions.",
@@ -1542,6 +1552,9 @@ window.questionBank = [
       "sourceQid": 24,
       "originalContentChoicesChanged": false,
       "changeRationale": null
-    }
+    },
+    "solutionImageAlt": "해설 그림: 4-① 정사각형에 3cm와 2cm를 더한 그림, 4-② 여섯 카드와 4cm 틈을 나타낸 그림.",
+    "solutionImageCaption": "4-① (x+3)(x+2)=56에서 길이 조건에 맞는 x는 5이다. 4-② 4s=2l+4와 4s(s+l)=260에서 s=5, l=8이므로 판의 가로 20cm, 세로 13cm이다. 답: 수준별 4-① 5cm, 수준별 4-② 66cm.",
+    "solutionImageSize": "full"
   }
 ];

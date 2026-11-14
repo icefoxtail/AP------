@@ -956,8 +956,7 @@ window.questionBank = [
     "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표를 각각 2만큼 이동한 격자점 13개와 원래 좌표축.",
     "solutionImageCaption": "좌표를 각각 2만큼 옮긴 격자점 13개와 원래 좌표축을 표시한다. 평행이동은 공선성을 보존한다. 정답은 445개이다.",
-    "solutionImageSize": "full",
-    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q16-problem.svg"
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1140,8 +1139,7 @@ window.questionBank = [
     "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 17에서 닫히고 17√2에서 열린 k의 구간.",
     "solutionImageCaption": "두 교점이 모두 윗반원 위에 있도록 하는 조건은 17≤k<17√2이다. 이 구간에서 가능한 양의 정수의 최댓값을 구한다. 정답은 24이다.",
-    "solutionImageSize": "full",
-    "image": "assets/images/19_금당고_2학기_기말_고1_기출/q19-problem.svg"
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

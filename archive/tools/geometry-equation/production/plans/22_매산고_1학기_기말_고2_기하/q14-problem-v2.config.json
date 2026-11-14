@@ -1,0 +1,169 @@
+{
+  "sourcePath": "archive/exams/original/high/h2/1final/22_매산고_1학기_기말_고2_기하.js",
+  "questionId": 14,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "space": {
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "id": "A",
+              "at": [
+                "sqrt(3)",
+                0,
+                1
+              ]
+            },
+            {
+              "id": "B",
+              "at": [
+                0,
+                1,
+                1
+              ]
+            },
+            {
+              "id": "L",
+              "at": [
+                0,
+                0,
+                2
+              ],
+              "hideName": true,
+              "hideDot": true
+            }
+          ],
+          "planes": [
+            {
+              "id": "alpha",
+              "name": "\\alpha",
+              "through": [
+                "P",
+                "A",
+                "L"
+              ],
+              "extent": {
+                "center": [
+                  1,
+                  0,
+                  1
+                ],
+                "u": [
+                  1,
+                  0,
+                  0
+                ],
+                "v": [
+                  0,
+                  0,
+                  1
+                ]
+              }
+            },
+            {
+              "id": "beta",
+              "name": "\\beta",
+              "through": [
+                "P",
+                "B",
+                "L"
+              ],
+              "extent": {
+                "center": [
+                  0,
+                  1,
+                  1
+                ],
+                "u": [
+                  0,
+                  1,
+                  0
+                ],
+                "v": [
+                  0,
+                  0,
+                  1
+                ]
+              }
+            }
+          ],
+          "lines": [
+            {
+              "id": "l",
+              "name": "l",
+              "intersection": [
+                "alpha",
+                "beta"
+              ]
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "A",
+              "style": "AUTO"
+            },
+            {
+              "from": "P",
+              "to": "B",
+              "style": "AUTO"
+            }
+          ]
+        },
+        "marks": {
+          "angles": [
+            {
+              "id": "alpha-angle",
+              "refs": [
+                "L",
+                "P",
+                "A"
+              ],
+              "value": 60,
+              "label": "60^\\circ",
+              "arcs": 1
+            },
+            {
+              "id": "beta-angle",
+              "refs": [
+                "L",
+                "P",
+                "B"
+              ],
+              "value": 45,
+              "label": "45^\\circ",
+              "arcs": 2
+            }
+          ]
+        },
+        "caption": "교선 l 위의 점 P에서 평면 α의 점 A와 평면 β의 점 B까지의 선분과 주어진 각을 나타낸 공간도형",
+        "sourceQuote": "두 평면 α, β는 서로 수직이고 교선은 l이며, 점 P는 l 위에 있다. ∠(l,PA)=60°, ∠(l,PB)=45°.",
+        "sourceConditions": [
+          "두 평면 α, β는 서로 수직이고 교선은 l이다.",
+          "P lies on l; A lies in α and B lies in β.",
+          "The angles between l and PA/PB are 60°/45°, respectively."
+        ],
+        "newVisualInformation": [
+          "Shows only the perpendicular plane topology, point incidence, and source-given angles; no coordinate parameterization or lengths are displayed.",
+          "The hidden 3D coordinates normalize the drawing and are not student-facing measurements."
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

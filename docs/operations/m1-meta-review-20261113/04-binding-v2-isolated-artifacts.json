@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "isolated-binding-v2-evidence-v1",
+  "baselineMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "scope": "LOCAL_ISOLATED_ONLY_NOT_OPERATIONAL_MAIN",
+  "allCopiedBytesVerified": true,
+  "files": [
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-dry-run.json",
+      "sha256": "aea133a4188da97c7fde2cf4764832ba2b3b06c6d642aba630d680a74e70c5fe",
+      "sizeBytes": 812
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-write.json",
+      "sha256": "5abeef16aac9f54ff63d04d01c46fa640fdcefaeebae0eff6028abb2ab88c313",
+      "sizeBytes": 332
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-projection.json",
+      "sha256": "a854d3ce084facc2823b485e4bcd85f997083cd3d7290ccc2b2d400ea0ad4e1e",
+      "sizeBytes": 532
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-consumer.json",
+      "sha256": "c0dc40ea1f750e88158ba28622ee5f81fb24589b43ab928ad7aef367563719b0",
+      "sizeBytes": 656
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-build.log",
+      "sha256": "a430235a42147b8d227b4092f8ffd1301fc35e21f8c40cb39618d3b42ccb66cd",
+      "sizeBytes": 19660
+    },
+    {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-build-attempt1.log",
+      "sha256": "f5e7135ec28dc2a6bc364911637d2b79ecb757dd3f5968f9c7abfc7a60a8847d",
+      "sizeBytes": 143
+    }
+  ],
+  "request": {
+    "path": ".archive-meta-register/inbox/m1-linear-equation-course-spelling-20261113.json",
+    "rawSha256": "2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007"
+  },
+  "initialEnvironmentFailure": {
+    "cause": "Tracked archive/build_db.py was absent from sparse worktree",
+    "resolution": "Materialized existing archive root Python files from exact baseline Git objects; no code/source/guard change",
+    "buildDbBlobSha1": "befaca832d8c79a2f6c535a421e11d7430c93a74"
+  },
+  "unsupportedConsumerCliAttempt": {
+    "argument": "--json",
+    "result": "Usage error before Consumer work; removed unsupported argument and executed documented CLI once",
+    "finalConsumerEvidence": {
+      "path": "docs/operations/m1-meta-review-20261113/04-binding-v2-isolated-evidence/04-binding-v2-consumer.json",
+      "sha256": "c0dc40ea1f750e88158ba28622ee5f81fb24589b43ab928ad7aef367563719b0",
+      "sizeBytes": 656
+    }
+  }
+}

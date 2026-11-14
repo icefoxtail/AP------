@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "/root/meta_b",
+  "author": "/root/meta_a",
+  "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+  "sampled": [
+    12,
+    21,
+    22
+  ],
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_THEN_THREE_ORIGINAL_FIGURES_THEN_AUTHOR_SLOTS_REGISTRY",
+  "scope": "FULL_METADATA_SEMANTICS_THREE_SAMPLES_NOT_R1_R2",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "blob": "0a77205c399aac9fe07380d3eb6a2dd824a0c850",
+      "sha256": "9d5cf115c22f2e49d0f93454fb9baa90d4691bd6b98afe25b93fbe729956ed18"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/25_신흥중_2학기_기말_중1_기출/raw.4slot.json",
+      "sha256": "f03e24f07e24653de70f94b6971d24b59e45e4faae4564e9e603a88004913afd"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/25_신흥중_2학기_기말_중1_기출/review.json",
+      "sha256": "8fecc5f9c28be7ba350de7e7d5e5a610d0f731c810b98dfb006ea99471e41a7d"
+    }
+  },
+  "figures": [
+    {
+      "ordinal": 12,
+      "svg": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q12.svg",
+      "svgSha256": "a591a8afb4d4ec713bf5d1fdc2af5d4bee916204e49ba575078a1b38465b2621",
+      "png": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q12.png",
+      "actualView": true,
+      "renderNote": "XML namespace prefix normalized in render input only; original SVG bytes preserved."
+    },
+    {
+      "ordinal": 21,
+      "svg": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q21.svg",
+      "svgSha256": "4dbca03def92fb7c3f2c5d2cd95946b9890c49e472e719755fefc87393c8a22a",
+      "png": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q21.png",
+      "actualView": true,
+      "renderNote": "Original SVG rendered unchanged."
+    },
+    {
+      "ordinal": 22,
+      "svg": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q22.svg",
+      "svgSha256": "370277d2824230942bc9f0d3d8b6a1c049cb6dbdc6334a94d9a1a2ae3e51c7d2",
+      "png": "/workspace/scratch/64695b8ede31/agent-b/cross/images/shinheung25-q22.png",
+      "actualView": true,
+      "renderNote": "Original SVG rendered unchanged."
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 12,
+      "verdict": "ACCEPT",
+      "meaning": "두 구가 꼭 맞는 접촉으로 원기둥 높이를 지름 두 개로 정하고 원기둥 부피에서 두 구의 부피를 뺀다.",
+      "native": "VOLUME_DIFFERENCE의 큰 입체에서 내부 부분을 빼는 정의와 일치; 기존 RPM219 잘라낸 입체 부모·등록 binding 수용.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "접촉 조건을 원기둥 높이로 바꾸는 표준 공간 해석이 선행하지만 비정형 보조구성이나 경우 분기는 없어4보다3. 기존 상은 인접 차이로 보존 가능."
+      },
+      "fourSlot": "원기둥·구 / 부피 / 지름·부피·차 / 접함이 실제 결정 단계를 포괄.",
+      "requiredChangesVerified": [
+        "integrationPattern SEQUENTIAL→NONE: 높이 복원과 부피차는 같은 primary 측정 골격 내부."
+      ],
+      "questionUid": "qid_v1_020d35b211bcbee2cb7b69376158544ba3aa9e7f12c9f46824bcc880d82a4674",
+      "QBODY": "e1edcbdf58cee1441a890a1a93a69bd96388fa4ab92815174bc21cbd060bfd23",
+      "QFULL": "ec93d0d4a30a1d8f1ce525dae2db15bf63c25245fdfc12a84ccecc09d2eeb132"
+    },
+    {
+      "ordinal": 21,
+      "verdict": "ACCEPT_REGISTRATION_PENDING",
+      "meaning": "사다리꼴의 축회전으로 원뿔대를 식별하고 닮음으로 모선길이를 정하여 두 원뿔의 옆넓이 차와 두 밑면을 합한다.",
+      "native": "기존 FRUSTUM_SURFACE는 합동 사다리꼴 옆면 정의이므로 원뿔대 곡면 계산에 맞지 않는다. 기존 SOLID_FIGURE_MEASURE 아래 CONICAL_FRUSTUM_SURFACE 신규TPL 제안의 일반화·구별 기준 수용.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 4,
+        "compatibility": "NORMAL",
+        "reason": "큰 원뿔을 연장해 닮음의 모선비를 구성한 다음 곡면 차로 환원하는 추가 구조화 필요."
+      },
+      "fourSlot": "주어진 회전체/사다리꼴, goal 원뿔대·겉넓이, method 닮음·옆넓이·겉넓이가 적절.",
+      "requiredChangesVerified": [
+        "condition 축 + 직선 l exact quote 추가."
+      ],
+      "questionUid": "qid_v1_fd5781162019b302954ab700e7ceaa1ab0bd37dc6c15b37ac892955152e74378",
+      "QBODY": "8ab6811833a0b3dfbe59c90169f2540d7813f41c8401ed001ee60714d26f24d5",
+      "QFULL": "94269f5c254039e564f8aec6773fd1b209f6798ba2bb6151ab17beae4cfb8e11"
+    },
+    {
+      "ordinal": 22,
+      "verdict": "ACCEPT_REGISTRATION_PENDING",
+      "meaning": "평균·중앙값·최빈값을 계산하고 이상치 민감도 및 중심 대표성으로 적절한 대푯값을 선택한다.",
+      "native": "기존 ALL_STATISTICS_COMBINATION은 통계량의 결합값 계산이고 DEFINITION_CLAIM_AUDIT는 일반 정의 판정이다. 자료별 적절성 선택 TPL을 같은 PT 아래 제안한 판단 수용.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "compatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "자료의 세 통계량 계산에 자료특성 판단을 연결하는 표준 선택형이다.114의 영향이 명확하며 새 전략 구성이나 복잡한 조건 분기가 없어3이 타당."
+      },
+      "fourSlot": "자료 / 평균·중앙값·최빈값·대푯값 / 해당계산·이상치가 질문과 풀이를 덮는다.",
+      "requiredChangesVerified": [
+        "중앙값·최빈값 등 NAMED 직접인용을 명칭 포함 범위로 보완."
+      ],
+      "questionUid": "qid_v1_16e41519e0db01be6d1e8b456f156330e91028771ac2f1148e5f07a80f8bad24",
+      "QBODY": "e5f3dddbdc37fdb08a5b62070b3dd57864baa311a12fef2adcbc17b20754e3c9",
+      "QFULL": "160184e8dae167f166af681e37b01540ad35401619f59d06c6291a6a03875797"
+    }
+  ],
+  "revision": 2,
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_PARENT_SAME_SLOT_TECHNICAL_READBACK",
+      "sourceBytesUnchanged": true,
+      "semanticRejudgment": false,
+      "existingIndependentVerdictsRetained": true,
+      "checks": [],
+      "quoteValidation": {
+        "count": 145,
+        "fail": 0
+      },
+      "latestInputs": {
+        "source": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "blob": "0a77205c399aac9fe07380d3eb6a2dd824a0c850",
+          "sha256": "9d5cf115c22f2e49d0f93454fb9baa90d4691bd6b98afe25b93fbe729956ed18"
+        },
+        "raw": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/25_신흥중_2학기_기말_중1_기출/raw.4slot.json",
+          "sha256": "85ec8c67bbc52450b719c5ade959674c3efaa3809e822dc05ee7f18ee06a62f0"
+        },
+        "review": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/25_신흥중_2학기_기말_중1_기출/review.json",
+          "sha256": "44bd26815dd84ff5427702d404c6e80b132ad11c3d70713499c0b21a0932b8d7"
+        },
+        "compact": {
+          "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.4slot.json",
+          "sha256": "58f77322caf1dd7b30d60c0a7b4595b6428b4d01a1dd9195a25520df03cf74fb"
+        }
+      },
+      "note": "슬롯 변경 없이 후보 정이십면체의 영문명·설명 보완만 확인했다.",
+      "candidateDeclarationReadback": {
+        "term": "정이십면체",
+        "en": [
+          "REGULAR_ICOSAHEDRON"
+        ],
+        "synonyms": [],
+        "kind": "방법",
+        "parent": [
+          "정다면체"
+        ],
+        "note": "정삼각형 스무 면으로 이루어진 정다면체.",
+        "usedIn": [
+          7
+        ]
+      }
+    }
+  ]
+}

@@ -796,7 +796,7 @@ window.questionBank = [
       "⑤ $20x^2+31x-12$"
     ],
     "answer": "④",
-    "solution": "원본 q15 그림에서 전체 가로는 5x+4이고 전체 세로는 4x이다.\n색칠되지 않은 아래쪽 띠의 높이는 3이므로 색칠한 세로 길이는 4x-3이다.\n색칠한 넓이=(5x+4)(4x-3)\n=20x²-15x+16x-12\n=20x²+x-12이다. ④.\n<img src=\"assets/images/23_향림중_1학기_중간_중3_수학/q15_solution.svg\" alt=\"15번 해설 그림\">",
+    "solution": "원본 q15 그림에서 전체 가로는 5x+4이고 전체 세로는 4x이다.\n색칠되지 않은 아래쪽 띠의 높이는 3이므로 색칠한 세로 길이는 4x-3이다.\n색칠한 넓이=(5x+4)(4x-3)\n=20x²-15x+16x-12\n=20x²+x-12이다. ④.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
@@ -826,7 +826,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_수학/q15_solution.svg"
+    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_기출/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 직사각형은 가로 5x와 4인 두 부분을 이어 붙인 영역이다. 왼쪽 전체 높이 4x 중 아래의 주황색 띠 높이가 3이므로 파란 세로는 4x−3이다.",
+    "solutionImageCaption": "색칠한 직사각형의 가로는 5x+4, 세로는 4x−3이므로 넓이는 (5x+4)(4x−3)=20x²+x−12이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1018,7 +1021,7 @@ window.questionBank = [
       "⑤ $36$"
     ],
     "answer": "①",
-    "solution": "(x+a)²=x²+2ax+a²=x²+4x+b를 비교한다.\n2a=4에서 a=2, b=a²=4이다.\n빗변은 4b−2a=16−4=12, 밑변은 a+b=6이다.\n피타고라스 정리로 높이 h는 h²=12²−6²=144−36=108, h=6√3이다.\n넓이=(1/2)×6×6√3=18√3. ①.\n<img src=\"assets/images/23_향림중_1학기_중간_중3_수학/q19_solution.svg\" alt=\"19번 해설 그림\">",
+    "solution": "(x+a)²=x²+2ax+a²=x²+4x+b를 비교한다.\n2a=4에서 a=2, b=a²=4이다.\n빗변은 4b−2a=16−4=12, 밑변은 a+b=6이다.\n피타고라스 정리로 높이 h는 h²=12²−6²=144−36=108, h=6√3이다.\n넓이=(1/2)×6×6√3=18√3. ①.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
@@ -1048,7 +1051,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_수학/q19_solution.svg"
+    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_기출/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형의 밑변은 파랑으로 그린 6이고 빗변의 길이는 12이다. 주황으로 구별한 높이 h는 밑변에 수직이다.",
+    "solutionImageCaption": "계수 비교에서 a=2, b=4이므로 빗변은 12, 밑변은 6이다. h²=12²−6²=108에서 h=6√3이다. 넓이는 18√3이고 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1173,7 +1179,7 @@ window.questionBank = [
     "content": "[서술형 2]<br>다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}$, $\\mathrm{Q}$에 대응하는 수를 각각 구하고, $\\overline{\\mathrm{PQ}}$의 길이를 구하시오. [5점]<br><img src=\"assets/images/23_향림중_1학기_중간_중3_수학/q22.png\">",
     "choices": [],
     "answer": "P=2−√2, Q=1+√2, PQ=2√2−1",
-    "solution": "① 원본 학생용 q22 PNG의 수직선에서 A=1, B=2이며, P는 0과 1 사이, Q는 2와 3 사이에 있다. 모눈 한 칸의 가로·세로가 각각 1이다.\n② 원본 도형에서 A에서 D까지 가로 1, 세로 1인 직각삼각형을 확인한다. 따라서 AD²=1²+1²=2, AD=√2이다. 마찬가지로 BC=√2이다.\n③ AD=AQ이므로 AQ=√2. Q가 A의 오른쪽에 있으므로 Q=1+√2이다.\n④ BC=BP이므로 BP=√2. P가 B의 왼쪽에 있으므로 P=2−√2이다.\n⑤ P<Q이므로 PQ=Q−P=(1+√2)−(2−√2)=2√2−1이다.\n⑥ √2≈1.414이므로 P≈0.586(0<P<1), Q≈2.414(2<Q<3)로 원본 PNG에 찍힌 P,Q 위치와 일치한다.\n이 근거는 Source-Only Git 원본 q22 PNG SHA 49bfffc55f56416b9f3f18b6d49fdd37ec87e6ac을 base64 실제 획득·육안 대조한 것이다. 별도 인쇄 PDF 원본 전체를 검증했다는 뜻은 아니다.\n<img src=\"assets/images/23_향림중_1학기_중간_중3_수학/q22_solution.svg\" alt=\"22번 해설 그림\">",
+    "solution": "① 원본 학생용 q22 PNG의 수직선에서 A=1, B=2이며, P는 0과 1 사이, Q는 2와 3 사이에 있다. 모눈 한 칸의 가로·세로가 각각 1이다.\n② 원본 도형에서 A에서 D까지 가로 1, 세로 1인 직각삼각형을 확인한다. 따라서 AD²=1²+1²=2, AD=√2이다. 마찬가지로 BC=√2이다.\n③ AD=AQ이므로 AQ=√2. Q가 A의 오른쪽에 있으므로 Q=1+√2이다.\n④ BC=BP이므로 BP=√2. P가 B의 왼쪽에 있으므로 P=2−√2이다.\n⑤ P<Q이므로 PQ=Q−P=(1+√2)−(2−√2)=2√2−1이다.\n⑥ √2≈1.414이므로 P≈0.586(0<P<1), Q≈2.414(2<Q<3)로 원본 PNG에 찍힌 P,Q 위치와 일치한다.\n이 근거는 Source-Only Git 원본 q22 PNG SHA 49bfffc55f56416b9f3f18b6d49fdd37ec87e6ac을 base64 실제 획득·육안 대조한 것이다. 별도 인쇄 PDF 원본 전체를 검증했다는 뜻은 아니다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
@@ -1203,7 +1209,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_수학/q22_solution.svg"
+    "solutionImage": "assets/images/23_향림중_1학기_중간_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 A=1, B=2와 그 위의 한 변 1인 정사각형을 보인다. 두 대각선 AD, BC의 길이를 각각 A에서 오른쪽, B에서 왼쪽으로 컴퍼스 호로 옮겨 Q와 P를 찾는다.",
+    "solutionImageCaption": "AD=BC=√2이다. 따라서 P=2−√2, Q=1+√2이고 PQ=Q−P=2√2−1이다. 정답: P=2−√2, Q=1+√2, PQ=2√2−1.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

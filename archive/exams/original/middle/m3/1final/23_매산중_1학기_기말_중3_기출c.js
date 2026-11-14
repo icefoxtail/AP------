@@ -605,7 +605,11 @@ window.questionBank = [
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_FUNCTION_SYMMETRY"
-    ]
+    ],
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선은 원점에서 만나며 y축에 각각 대칭이다. 파란 곡선은 아래로 열리고 주황 곡선은 위로 열려 x축을 사이에 두고 서로 마주 본다.",
+    "solutionImageCaption": "y=−3x²는 원점을 지나고 아래로 열리므로 ②이다. y=3x²와는 x축에 대하여 서로 대칭이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -640,7 +644,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 평행이동 포물선의 개형, 원래 꼭짓점과 오른쪽·아래로 옮긴 새 꼭짓점을 비교한다.",
+    "solutionImageCaption": "원래 그래프를 오른쪽 3, 아래 2만큼 옮겼다. 새 그래프는 y=1/5(x−3)²−2. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -671,7 +679,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 꼭짓점은 y축 왼쪽, x축 아래에 있다. 세로 점선은 꼭짓점을 지나는 대칭축이다.",
+    "solutionImageCaption": "점선 x=−2는 대칭축이 y축의 왼쪽에 있는 예시다. 위로 열린 포물선의 꼭짓점 (p,q)가 제3사분면에 있으므로 a>0, p<0, q<0이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -707,7 +719,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭과 아래쪽 모양을 유지하는 파란 원래 포물선과 주황 평행이동 포물선을 비교하고 두 꼭짓점의 이동을 점선으로 잇는다.",
+    "solutionImageCaption": "평행이동으로 a=−2/5, b=−3, c=5이므로 abc=6.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -739,7 +755,11 @@ window.questionBank = [
     ],
     "conditionKeys": [
       "COND_POSITIVE"
-    ]
+    ],
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 밑변 길이는 2x−6이다. 꼭짓점에서 그 밑변에 내린 높이 h를 점선과 직각으로 표시했다.",
+    "solutionImageCaption": "넓이는 (2x−6)h/2=(x−3)h이다. 주어진 넓이 x²+4x−21=(x−3)(x+7)에서 높이는 x+7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -765,7 +785,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에서는 큰 정사각형에서 작은 정사각형을 빼고, 남은 부분을 파랑과 주황으로 나눴다. 아래에서는 주황 조각을 돌려 파랑에 이어 붙여 가로 x+y, 세로 x−y인 직사각형을 만들었다.",
+    "solutionImageCaption": "둘레의 합에서 x+y=12이다. 넓이의 차 x²−y²=(x+y)(x−y)=60을 이용하면 x−y=5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -842,7 +866,11 @@ window.questionBank = [
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_FUNCTION_SYMMETRY"
-    ]
+    ],
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 포물선을 같은 좌표축과 y=1, y=−1 점선에서 비교한다. 곡선마다 식 라벨이 붙어 있다.",
+    "solutionImageCaption": "(1) 위로 볼록한 것은 ㄱ, ㄹ, ㅂ. (2) x축 대칭인 그래프는 ㄴ과 ㅂ. (3) 가장 넓은 그래프는 ㄹ.",
+    "solutionImageSize": "full"
   },
   {
     "id": 26,
@@ -866,7 +894,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q26-solution.svg",
+    "solutionImageAlt": "해설 그림: 처음 위쪽으로 열린 포물선을 아래로 반사하고, 이어 오른쪽과 아래쪽으로 옮긴 두 그래프 과정을 비교한다.",
+    "solutionImageCaption": "반사 후 오른쪽 4, 아래 5만큼 평행이동하면 y=−3(x−4)²−5이고 꼭짓점은 (4,−5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 27,
@@ -890,6 +922,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q27-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 색과 주황 색의 포물선이 y축 위의 같은 점에서 만난다. 주황 포물선의 대칭축은 x=3이며 꼭짓점은 그 점선에 놓인다.",
+    "solutionImageCaption": "축 x=3에서 p=−3이고, 공통 y절편 41에 대입하여 36−q=41, q=−5이다. 따라서 p+q=−8이다.",
+    "solutionImageSize": "full"
   }
 ];

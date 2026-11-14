@@ -266,7 +266,10 @@ console.log(JSON.stringify({
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (!requestPath.startsWith(root + path.sep) || !fs.existsSync(requestPath)) throw new Error("valid --request is required");
   const req = JSON.parse(fs.readFileSync(requestPath, "utf8"));
-  if (req.schemaVersion === "archive-finalqa-pinpoint-register-request-v1") {
+  if (["archive-binding-course-correction-request-v1", "archive-binding-course-correction-request-v2"].includes(req.schemaVersion)) {
+    const { registerBindingCourseCorrection } = await import("./register-binding-course-correction.mjs");
+    console.log(JSON.stringify(await registerBindingCourseCorrection({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
+  } else if (req.schemaVersion === "archive-finalqa-pinpoint-register-request-v1") {
     const { registerFinalqaPinpointDelta } = await import("./register-finalqa-pinpoint-delta.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
     console.log(JSON.stringify(registerFinalqaPinpointDelta({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
@@ -278,7 +281,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const { registerDifficulty5 } = await import("./register-difficulty5.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
     console.log(JSON.stringify(registerDifficulty5({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
-  } else if (req.schemaVersion === "archive-basic-scope-rebind-request-v1") {
+  } else if (req.schemaVersion === "archive-basic-scope-rebind-request-v1" || req.schemaVersion === "archive-basic-parent-correction-request-v1") {
     const { registerBasicScopeRebind } = await import("./register-basic-scope-rebind.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
     console.log(JSON.stringify(registerBasicScopeRebind({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));

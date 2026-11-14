@@ -1,0 +1,3991 @@
+{
+  "schemaVersion": "m1s2-final-verification-v1",
+  "taskId": "71f4352e-fbe1-4533-b390-86232a5cd287",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "contentCheckpoint": "016fa6ab7434d3cbaab25ecedf870e98d9a7ef95",
+  "latestMain": "993a6fd0d646e113a62fc12d71a57cd6e4563af9",
+  "scope": {
+    "exams": 32,
+    "items": 761,
+    "uniqueUids": 761
+  },
+  "summary": {
+    "processedItems": 761,
+    "remainingItems": 0,
+    "sourceChangedFiles": 29,
+    "sourceChangedItems": 615,
+    "compactItems": 761,
+    "independentSampleSlots": 101,
+    "newRawQuotes": 3278,
+    "protectedPayloadChanges": 0,
+    "registryStatus": "ACTIVE",
+    "registryErrors": [],
+    "localGateFailures": 0,
+    "newExams": 20,
+    "newItems": 476,
+    "reusedExams": 12,
+    "reusedItems": 285,
+    "totalExams": 32,
+    "totalItems": 761,
+    "semanticDecided": 760,
+    "semanticUnjudged": 1,
+    "unsavedExamResults": 0,
+    "otherOwnerInProgress": 0,
+    "disjointCounts": {
+      "NEW_REVIEW_READY": 62,
+      "REUSED_REVIEW_READY": 9,
+      "OTHER_OWNER_IN_PROGRESS": 0,
+      "SEMANTIC_UNJUDGED": 1,
+      "COMMON_REGISTRATION_PENDING": 689
+    },
+    "disjointPrecedence": [
+      "SEMANTIC_UNJUDGED",
+      "COMMON_REGISTRATION_PENDING",
+      "NEW_REVIEW_READY_OR_REUSED_REVIEW_READY_BY_ORIGIN"
+    ],
+    "newOrReusedCountsAreAnOverlappingOriginAxisNotAddedToDisjointCounts": true,
+    "mainMergePerformed": false,
+    "operationalRegistrationPerformed": false,
+    "globalQualityPassClaim": false,
+    "independentThreeItemMinimumMetExams": 32,
+    "independentUniqueNewReviewedItems": 132,
+    "newDifficultyExceptionsIndependentlyCovered": 97
+  },
+  "failures": [],
+  "technicalDebtCountsOverlapByCode": {
+    "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": 18,
+    "TERM_DICTIONARY_CANDIDATE_PENDING": 89,
+    "DECLARED_RPM_LEAF_TOOL_ROLE_MISSING": 1,
+    "CANONICAL_PROPOSAL_PENDING": 266,
+    "DECLARED_RPM_LEAF_GIVEN_CONGRUENCE_TRANSFER_MISSING": 1,
+    "DECLARED_RPM_LEAF_SPATIAL_LINE_LINE_MISSING": 1,
+    "DECLARED_ACTIVE_TEMPLATE_DEFINITION_GENERALIZATION": 2,
+    "DECLARED_ACTIVE_PARENT_DEFINITION_GENERALIZATION": 2,
+    "DECLARED_RPM_COMPOSITE_CLAIM_NO_SINGLE_LEAF": 1,
+    "DECLARED_ACTIVE_TEMPLATE_NUMERIC_DEFINITION_GENERALIZATION": 1,
+    "DECLARED_CC_PARALLEL_CONVERSE_DEFINITION_GAP": 1,
+    "DECLARED_RPM_OFFICIAL_LEAF_GAP_SPACE_EDGE_RELATION": 1,
+    "DECLARED_RPM_OFFICIAL_LEAF_GAP_TRIANGLE_UNIQUENESS": 1,
+    "NATIVE_PAIR_UNFILLED": 56,
+    "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": 633,
+    "ADVANCED_META_FIELD_MISSING:problemTypeKey": 13,
+    "ADVANCED_META_FIELD_MISSING:templateKey": 14,
+    "DECLARED_RPM_LEAF_GAP": 18,
+    "PRIOR_DECLARED_RPM_LEAF_GAP": 10,
+    "DECLARED_NATIVE_TYPE_GAP": 14,
+    "PRIOR_DECLARED_NATIVE_TYPE_GAP": 22,
+    "CANONICAL_DEFINITION_PROPOSAL_PENDING": 39,
+    "TPL_NOT_ACTIVE": 2,
+    "EXACT_BINDING_NOT_UNIQUE": 55,
+    "ADVANCED_META_CURRICULUM_BINDING_INVALID": 37,
+    "ADVANCED_META_TEMPLATE_INVALID": 2,
+    "DECLARED_BINDING_GAP": 19,
+    "PRIOR_DECLARED_BINDING_OR_CROSSWALK_GAP": 12,
+    "PRIOR_DECLARED_CONDITION_GAP": 1,
+    "PRIOR_DECLARED_SHARED_PARENT_DEFINITION_DEBT": 10,
+    "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey": 15,
+    "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": 36,
+    "ADVANCED_META_FIELD_MISSING:crossConceptKeys": 1,
+    "ADVANCED_META_FIELD_MISSING:conditionKeys": 1,
+    "ADVANCED_META_FIELD_MISSING:integrationPattern": 1,
+    "ADVANCED_META_FIELD_MISSING:difficultyBucket": 1,
+    "ADVANCED_META_FIELD_MISSING:difficultyConfidence": 1,
+    "ADVANCED_META_FIELD_MISSING:difficultyBoundaryFlag": 1,
+    "ADVANCED_META_FIELD_MISSING:legacyLevelCompatibility": 1,
+    "ADVANCED_META_INTEGRATION_PATTERN_REQUIRED": 1,
+    "SOURCE_PARENT_PUBLICATION_HOLD": 2,
+    "CONTENT_DEPENDENT_FOUR_SLOT_COMPLETION": 1,
+    "DECLARED_CROSSWALK_GAP": 10,
+    "PRIOR_DECLARED_BINDING_GAP": 8,
+    "PRIOR_DECLARED_EXISTING_KEY_REUSE_WITH_CROSSWALK_GAP": 16,
+    "DECLARED_EXISTING_EXACT": 9,
+    "PRIOR_DECLARED_EVIDENCE_PENDING": 4,
+    "PRIOR_DECLARED_TERM_DICTIONARY_GAP": 7,
+    "DECLARED_CANONICAL_GAP": 7,
+    "SOURCE_PARENT_PUBLICATION_HOLD_CONCURRENT_MAIN": 1,
+    "DECLARED_RPM_LEAF_STEM_LEAF_READING_MISSING": 1,
+    "DECLARED_EXACT_TEMPLATE_REGISTRATION_PENDING": 2,
+    "DECLARED_RPM_LEAF_GAP-3": 1,
+    "DECLARED_RPM_LEAF_AND_BINDING_GAP-8": 1,
+    "DECLARED_EXACT_BINDING_GAP-9": 2,
+    "DECLARED_TPL_DEFINITION_GAP-9": 1,
+    "DECLARED_CONDITION_DEFINITION_GAP-9-20": 2,
+    "DECLARED_PT_TPL_DEFINITION_GAP-12": 1,
+    "DECLARED_TPL_DEFINITION_GAP-18": 1,
+    "DECLARED_PT_TPL_RPM_GAP-22": 1,
+    "DECLARED_REGISTRATION_PENDING": 30,
+    "DECLARED_RPM_TOOL_ROLE_LEAF_MISSING": 2,
+    "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": 48,
+    "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": 76,
+    "DECLARED_EXACT_BINDING_MISSING": 15,
+    "DECLARED_RPM_SPATIAL_LINE_LINE_SKEW_LEAF_MISSING": 2,
+    "DECLARED_RPM_SINGLE_LEAF_MIXED_SPATIAL_RELATIONS_MISSING": 1,
+    "DECLARED_RPM_M1_UNORDERED_PAIR_COUNT_OUT_OF_SCOPE": 1,
+    "DECLARED_ACTIVE_PARENT_LABEL_SCOPE_NORMALIZATION_PENDING": 1,
+    "DECLARED_RPM_TRAPEZOID_AREA_HEIGHT_LEAF_MISSING": 1,
+    "DECLARED_RPM_MIXED_SPATIAL_STATEMENTS_SINGLE_LEAF_MISSING": 1,
+    "DECLARED_EXACT_ASA_SIDE_DIFFERENCE_TEMPLATE_PENDING": 1,
+    "PRIOR_DECLARED_CROSS_CONCEPT_GAP": 1,
+    "DECLARED_RPM_LEAF_GAP-1": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_PENDING": 7,
+    "DECLARED_RPM_LEAF_AND_EXACT_BINDING_GAP-7": 1,
+    "DECLARED_RPM_LEAF_GAP-9": 1,
+    "DECLARED_RPM_LEAF_GAP-11": 2,
+    "DECLARED_RPM_LEAF_GAP-12": 1,
+    "DECLARED_CONDITION_DEFINITION_GAP-12-21": 2,
+    "DECLARED_EXACT_STEM_LEAF_NATIVE_CROSSWALK_PENDING": 2,
+    "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-4": 1,
+    "DECLARED_CONDITION_REGISTRATION_GAP-4": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-9": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_CORRECTION-11": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-15": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-17": 2,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-23": 1,
+    "DECLARED_RPM_MIXED_BASIC_GEOMETRY_CLAIM_LEAF_MISSING": 1,
+    "DECLARED_RPM_MIXED_TRIANGLE_UNIQUENESS_LEAF_MISSING": 2,
+    "DECLARED_RPM_FOLDING_ANGLE_LEAF_MISSING": 2,
+    "DECLARED_RPM_GIVEN_CONGRUENCE_DATA_TRANSFER_LEAF_MISSING": 1,
+    "DECLARED_RPM_CONGRUENCE_CRITERIA_COMPARISON_LEAF_MISSING": 2,
+    "DECLARED_RPM_CONGRUENCE_INVARIANT_LEAF_MISSING": 1,
+    "DECLARED_RPM_QUADRANT_SIGN_DEDUCTION_LEAF_MISSING": 2,
+    "DECLARED_RPM_MIXED_SPATIAL_RELATIONS_LEAF_MISSING": 1,
+    "DECLARED_RPM_FOLDED_NET_SPATIAL_RELATIONS_LEAF_MISSING": 1,
+    "DECLARED_RPM_MIXED_COORDINATE_GRAPH_SIGN_LEAF_MISSING": 1,
+    "DECLARED_RPM_COORDINATE_POLYGON_AREA_LEAF_MISSING": 1,
+    "DECLARED_RPM_MIXED_ROTATION_PROPERTY_CLAIMS_LEAF_MISSING": 1,
+    "DECLARED_RPM_LEAF_GAP-1-4": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-3": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-5": 2,
+    "DECLARED_EXACT_BINDING_GAP-5": 1,
+    "DECLARED_RPM_LEAF_GAP-6-7": 2,
+    "DECLARED_EXACT_BINDING_GAP-7": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-8": 3,
+    "DECLARED_CONDITION_REGISTRATION_GAP-9": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-9": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-10": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-11": 1,
+    "DECLARED_RPM_LEAF_GAP-12-23": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-13": 3,
+    "DECLARED_RPM_LEAF_GAP-14": 1,
+    "DECLARED_RPM_SCOPE_GAP-15": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-16": 1,
+    "DECLARED_EXACT_BINDING_GAP-16": 1,
+    "DECLARED_EXACT_BINDING_GAP-17": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-18": 2,
+    "DECLARED_EXISTING_GLOBAL_PT_TPL_BINDING_GAP-19": 1,
+    "DECLARED_EXACT_BINDING_GAP-19": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-20": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-21": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-22": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-24": 2,
+    "DECLARED_EXACT_BINDING_GAP-24": 2,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-4": 1,
+    "DECLARED_NEW_TPL_EXISTING_PT-13": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-15": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-18": 1,
+    "DECLARED_CC_DEFINITION_GENERALIZATION-21": 1,
+    "DECLARED_NEW_TPL_EXISTING_PT-23": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-23": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-2": 1,
+    "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-3": 1,
+    "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-4-5": 2,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-4": 1,
+    "DECLARED_EXACT_BINDING_GAP-6": 1,
+    "DECLARED_CONDITION_REGISTRATION_GAP-7": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-7": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-12": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-14": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-14": 1,
+    "DECLARED_RPM_LEAF_GAP-15-16": 2,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-17": 1,
+    "DECLARED_EXACT_BINDING_GAP-18": 1,
+    "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-21-23": 2,
+    "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-25": 1,
+    "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-25": 1,
+    "DECLARED_RPM_LEAF_GAP-26": 1,
+    "DECLARED_RPM_READING_LEAF_NATIVE_PARENT_CROSSWALK_MISMATCH": 1,
+    "DECLARED_RPM_ORDERED_PAIR_EQUALITY_LEAF_MISSING": 1,
+    "DECLARED_RPM_AXIS_COORDINATE_CONSTRAINT_LEAF_MISSING": 1,
+    "DECLARED_RPM_MIXED_SPATIAL_RELATION_LEAF_MISSING": 1,
+    "DECLARED_RPM_COORDINATE_TRIANGLE_AREA_LEAF_MISSING": 1,
+    "DECLARED_RPM_CONGRUENCE_TO_TRAPEZOID_AREA_LEAF_MISSING": 1
+  },
+  "exams": [
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "sourceBlob": "37ea0edbc9cf0ca64eebe8e123d71a977183b004",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 18,
+      "semanticUnresolved": [],
+      "registrationPending": 6,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 18,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 6
+      },
+      "technicalDebtOrdinalsByCode": {
+        "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": [
+          6,
+          8,
+          12,
+          13,
+          14
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          19
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceBlob": "b2b36387b6d2cf3ac4e623d932c4de98266d1a36",
+      "questionCount": 23,
+      "origin": "NEW",
+      "sourceChangedItems": 9,
+      "semanticUnresolved": [],
+      "registrationPending": 13,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 10,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 13
+      },
+      "technicalDebtOrdinalsByCode": {
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          2,
+          5,
+          23
+        ],
+        "DECLARED_RPM_LEAF_TOOL_ROLE_MISSING": [
+          2
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          4,
+          6,
+          8,
+          11,
+          12,
+          15,
+          16,
+          20,
+          21,
+          23
+        ],
+        "DECLARED_RPM_LEAF_GIVEN_CONGRUENCE_TRANSFER_MISSING": [
+          3
+        ],
+        "DECLARED_RPM_LEAF_SPATIAL_LINE_LINE_MISSING": [
+          4
+        ],
+        "DECLARED_ACTIVE_TEMPLATE_DEFINITION_GENERALIZATION": [
+          6,
+          15
+        ],
+        "DECLARED_ACTIVE_PARENT_DEFINITION_GENERALIZATION": [
+          11,
+          16
+        ],
+        "DECLARED_RPM_COMPOSITE_CLAIM_NO_SINGLE_LEAF": [
+          16
+        ],
+        "DECLARED_ACTIVE_TEMPLATE_NUMERIC_DEFINITION_GENERALIZATION": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "sourceBlob": "712d54960422c834f6b3ce9e7d02ee64e0afed4f",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 5,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 19,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 5
+      },
+      "technicalDebtOrdinalsByCode": {
+        "DECLARED_CC_PARALLEL_CONVERSE_DEFINITION_GAP": [
+          4
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          4,
+          8,
+          10
+        ],
+        "DECLARED_RPM_OFFICIAL_LEAF_GAP_SPACE_EDGE_RELATION": [
+          8
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          10,
+          11,
+          13
+        ],
+        "DECLARED_RPM_OFFICIAL_LEAF_GAP_TRIANGLE_UNIQUENESS": [
+          10
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+      "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+      "questionCount": 25,
+      "origin": "REUSED",
+      "sourceChangedItems": 25,
+      "semanticUnresolved": [],
+      "registrationPending": 25,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 25
+      },
+      "technicalDebtOrdinalsByCode": {
+        "NATIVE_PAIR_UNFILLED": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          17,
+          22,
+          23,
+          24
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
+        ],
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          22,
+          23,
+          24
+        ],
+        "ADVANCED_META_FIELD_MISSING:templateKey": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          17,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          1,
+          7,
+          8,
+          14
+        ],
+        "PRIOR_DECLARED_RPM_LEAF_GAP": [
+          1,
+          7,
+          8,
+          14
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          4,
+          6,
+          12,
+          24
+        ],
+        "PRIOR_DECLARED_NATIVE_TYPE_GAP": [
+          4,
+          6,
+          12,
+          17,
+          24
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          4,
+          6,
+          12,
+          17,
+          24
+        ],
+        "TPL_NOT_ACTIVE": [
+          6
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          6
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          6
+        ],
+        "ADVANCED_META_TEMPLATE_INVALID": [
+          6
+        ],
+        "DECLARED_BINDING_GAP": [
+          9,
+          10,
+          13,
+          22,
+          23
+        ],
+        "PRIOR_DECLARED_BINDING_OR_CROSSWALK_GAP": [
+          9,
+          10,
+          13,
+          22,
+          23
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          13
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+      "questionCount": 23,
+      "origin": "REUSED",
+      "sourceChangedItems": 10,
+      "semanticUnresolved": [],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          3
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          11,
+          23
+        ],
+        "PRIOR_DECLARED_NATIVE_TYPE_GAP": [
+          11,
+          15,
+          17,
+          18,
+          23
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          11,
+          15,
+          17,
+          18,
+          23
+        ],
+        "PRIOR_DECLARED_CONDITION_GAP": [
+          12
+        ],
+        "PRIOR_DECLARED_SHARED_PARENT_DEFINITION_DEBT": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "TPL_NOT_ACTIVE": [
+          15
+        ],
+        "ADVANCED_META_TEMPLATE_INVALID": [
+          15
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+      "sourceBlob": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 1,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "EXACT_BINDING_NOT_UNIQUE": [
+          1
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_BINDING_GAP": [
+          1,
+          14,
+          17
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          4,
+          14,
+          17,
+          20,
+          22,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey": [
+          4,
+          14,
+          17,
+          20,
+          22,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          4,
+          14,
+          17,
+          20,
+          22,
+          24
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          4,
+          6,
+          7,
+          11,
+          13
+        ],
+        "ADVANCED_META_FIELD_MISSING:crossConceptKeys": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:conditionKeys": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:integrationPattern": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:difficultyBucket": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:difficultyConfidence": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:difficultyBoundaryFlag": [
+          7
+        ],
+        "ADVANCED_META_FIELD_MISSING:legacyLevelCompatibility": [
+          7
+        ],
+        "ADVANCED_META_INTEGRATION_PATTERN_REQUIRED": [
+          7
+        ],
+        "SOURCE_PARENT_PUBLICATION_HOLD": [
+          7
+        ],
+        "CONTENT_DEPENDENT_FOUR_SLOT_COMPLETION": [
+          15
+        ],
+        "DECLARED_CROSSWALK_GAP": [
+          19,
+          21
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          20,
+          22,
+          24
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          20,
+          22,
+          24
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+      "sourceBlob": "1808ca0a61527e2e9892825ab82062c7f808b4ee",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 0,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "NATIVE_PAIR_UNFILLED": [
+          1
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey": [
+          1
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          1
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          1
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          1
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          6
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+      "sourceBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          2,
+          5
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          2,
+          5
+        ],
+        "DECLARED_BINDING_GAP": [
+          2,
+          5
+        ],
+        "PRIOR_DECLARED_BINDING_GAP": [
+          2,
+          5
+        ],
+        "PRIOR_DECLARED_EXISTING_KEY_REUSE_WITH_CROSSWALK_GAP": [
+          2,
+          5,
+          6,
+          9,
+          15,
+          16
+        ],
+        "DECLARED_EXISTING_EXACT": [
+          6,
+          9,
+          15,
+          16
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          8,
+          23
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          8
+        ],
+        "PRIOR_DECLARED_NATIVE_TYPE_GAP": [
+          8,
+          23
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          8,
+          23
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          14,
+          23
+        ],
+        "PRIOR_DECLARED_RPM_LEAF_GAP": [
+          14,
+          23
+        ],
+        "PRIOR_DECLARED_EVIDENCE_PENDING": [
+          14
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          18,
+          19
+        ],
+        "PRIOR_DECLARED_TERM_DICTIONARY_GAP": [
+          18,
+          19
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+      "sourceBlob": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 0,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "EXACT_BINDING_NOT_UNIQUE": [
+          1
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_BINDING_GAP": [
+          1
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          2,
+          5,
+          7,
+          9
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey": [
+          2,
+          5,
+          7,
+          9
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          2,
+          5,
+          7,
+          9
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          2,
+          5,
+          7,
+          9
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          2,
+          5,
+          7,
+          9
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          3,
+          16
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+      "sourceBlob": "adb1256f6034ca7a931557b6069c5c94b047d2fd",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 0,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_CROSSWALK_GAP": [
+          2,
+          8,
+          12,
+          15,
+          18,
+          19,
+          23,
+          24
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          3,
+          11,
+          20,
+          22
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey": [
+          3,
+          11,
+          20,
+          22
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          3,
+          11,
+          20,
+          22
+        ],
+        "DECLARED_NATIVE_TYPE_GAP": [
+          3
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          3,
+          14
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          7,
+          14,
+          16
+        ],
+        "DECLARED_BINDING_GAP": [
+          11,
+          20,
+          22
+        ],
+        "SOURCE_PARENT_PUBLICATION_HOLD": [
+          14
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+      "sourceBlob": "3b592f8f9c5e04fdf152dc47fed7b5d916937829",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [
+        23
+      ],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 1,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "PRIOR_DECLARED_TERM_DICTIONARY_GAP": [
+          6,
+          11,
+          12
+        ],
+        "DECLARED_CANONICAL_GAP": [
+          21
+        ],
+        "PRIOR_DECLARED_EXISTING_KEY_REUSE_WITH_CROSSWALK_GAP": [
+          21
+        ],
+        "PRIOR_DECLARED_EVIDENCE_PENDING": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+      "sourceBlob": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          4,
+          20,
+          21
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          4,
+          20,
+          21
+        ],
+        "DECLARED_BINDING_GAP": [
+          4,
+          20,
+          21
+        ],
+        "PRIOR_DECLARED_BINDING_GAP": [
+          4,
+          20,
+          21
+        ],
+        "PRIOR_DECLARED_EXISTING_KEY_REUSE_WITH_CROSSWALK_GAP": [
+          4,
+          6,
+          7,
+          18,
+          20,
+          21,
+          22,
+          23
+        ],
+        "DECLARED_EXISTING_EXACT": [
+          6,
+          7,
+          18,
+          22,
+          23
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          13
+        ],
+        "PRIOR_DECLARED_RPM_LEAF_GAP": [
+          13
+        ],
+        "SOURCE_PARENT_PUBLICATION_HOLD_CONCURRENT_MAIN": [
+          13
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          18
+        ],
+        "PRIOR_DECLARED_TERM_DICTIONARY_GAP": [
+          18
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+      "sourceBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+      "questionCount": 23,
+      "origin": "REUSED",
+      "sourceChangedItems": 23,
+      "semanticUnresolved": [],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          2,
+          12,
+          19
+        ],
+        "DECLARED_CANONICAL_GAP": [
+          2,
+          10,
+          11,
+          12,
+          17,
+          19
+        ],
+        "PRIOR_DECLARED_NATIVE_TYPE_GAP": [
+          2,
+          12
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          2,
+          12,
+          19
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          10,
+          11,
+          17
+        ],
+        "PRIOR_DECLARED_BINDING_GAP": [
+          10,
+          11,
+          17
+        ],
+        "PRIOR_DECLARED_EVIDENCE_PENDING": [
+          10,
+          19
+        ],
+        "PRIOR_DECLARED_RPM_LEAF_GAP": [
+          12,
+          17
+        ],
+        "PRIOR_DECLARED_TERM_DICTIONARY_GAP": [
+          15
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          17
+        ],
+        "ADVANCED_META_FIELD_MISSING:problemTypeKey": [
+          19
+        ],
+        "ADVANCED_META_FIELD_MISSING:templateKey": [
+          19
+        ],
+        "PRIOR_DECLARED_EXISTING_KEY_REUSE_WITH_CROSSWALK_GAP": [
+          19
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceBlob": "0a77205c399aac9fe07380d3eb6a2dd824a0c850",
+      "questionCount": 22,
+      "origin": "NEW",
+      "sourceChangedItems": 22,
+      "semanticUnresolved": [],
+      "registrationPending": 22,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 22
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          7
+        ],
+        "DECLARED_RPM_LEAF_STEM_LEAF_READING_MISSING": [
+          14
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          14,
+          18,
+          21,
+          22
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          21,
+          22
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          21,
+          22
+        ],
+        "DECLARED_EXACT_TEMPLATE_REGISTRATION_PENDING": [
+          21,
+          22
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          21,
+          22
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+      "sourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_RPM_LEAF_GAP-3": [
+          3
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          8,
+          9
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          8,
+          9
+        ],
+        "DECLARED_RPM_LEAF_AND_BINDING_GAP-8": [
+          8
+        ],
+        "DECLARED_EXACT_BINDING_GAP-9": [
+          9
+        ],
+        "DECLARED_TPL_DEFINITION_GAP-9": [
+          9
+        ],
+        "DECLARED_CONDITION_DEFINITION_GAP-9-20": [
+          9,
+          20
+        ],
+        "DECLARED_PT_TPL_DEFINITION_GAP-12": [
+          12
+        ],
+        "DECLARED_TPL_DEFINITION_GAP-18": [
+          18
+        ],
+        "DECLARED_PT_TPL_RPM_GAP-22": [
+          22
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceBlob": "d73e0e5adb3b2cccd1ac37291e96587c9fe176d1",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "EXACT_BINDING_NOT_UNIQUE": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          22,
+          23
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_REGISTRATION_PENDING": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          22,
+          23
+        ],
+        "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": [
+          17
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          17,
+          22
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "sourceBlob": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+      "questionCount": 23,
+      "origin": "NEW",
+      "sourceChangedItems": 23,
+      "semanticUnresolved": [],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          1,
+          4,
+          5,
+          6,
+          14,
+          15,
+          19,
+          20,
+          22
+        ],
+        "DECLARED_RPM_TOOL_ROLE_LEAF_MISSING": [
+          1
+        ],
+        "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": [
+          2,
+          3,
+          5,
+          7,
+          8,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          19,
+          20,
+          21,
+          22
+        ],
+        "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          5,
+          9,
+          10,
+          15,
+          16,
+          18,
+          19
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          5,
+          9,
+          10,
+          15,
+          16,
+          18,
+          19
+        ],
+        "DECLARED_EXACT_BINDING_MISSING": [
+          5,
+          9,
+          10,
+          15,
+          16,
+          18,
+          19
+        ],
+        "DECLARED_RPM_SPATIAL_LINE_LINE_SKEW_LEAF_MISSING": [
+          9
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          12
+        ],
+        "DECLARED_RPM_SINGLE_LEAF_MIXED_SPATIAL_RELATIONS_MISSING": [
+          16
+        ],
+        "DECLARED_RPM_M1_UNORDERED_PAIR_COUNT_OUT_OF_SCOPE": [
+          18
+        ],
+        "DECLARED_ACTIVE_PARENT_LABEL_SCOPE_NORMALIZATION_PENDING": [
+          20
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "sourceBlob": "7f2a5b3b3af7ac34b38305d9d9fa5ba9bf5be749",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 12,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 12,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 12
+      },
+      "technicalDebtOrdinalsByCode": {
+        "NATIVE_PAIR_UNFILLED": [
+          5,
+          15,
+          21,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          5,
+          15,
+          21,
+          24
+        ],
+        "DECLARED_REGISTRATION_PENDING": [
+          5,
+          15,
+          21,
+          24
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          5,
+          6,
+          13,
+          14,
+          15,
+          19,
+          20,
+          21,
+          24
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          12,
+          15,
+          17,
+          19,
+          21,
+          23
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          17
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_율촌중_2학기_기말_중1_기출.js",
+      "sourceBlob": "7c434cbd0fea6028ca18272385bb7872b9a0b303",
+      "questionCount": 22,
+      "origin": "REUSED",
+      "sourceChangedItems": 12,
+      "semanticUnresolved": [],
+      "registrationPending": 22,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 22
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "DECLARED_BINDING_GAP": [
+          9,
+          22
+        ],
+        "PRIOR_DECLARED_BINDING_OR_CROSSWALK_GAP": [
+          9,
+          22
+        ],
+        "DECLARED_RPM_LEAF_GAP": [
+          19
+        ],
+        "PRIOR_DECLARED_RPM_LEAF_GAP": [
+          19
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+      "sourceBlob": "1c8c41c3150e0eafcf43902d78d3d5ec5857b0a4",
+      "questionCount": 23,
+      "origin": "NEW",
+      "sourceChangedItems": 23,
+      "semanticUnresolved": [],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": [
+          1,
+          3,
+          5,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": [
+          1,
+          2,
+          4,
+          7,
+          8,
+          10,
+          12,
+          14,
+          17,
+          21,
+          23
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          1,
+          3,
+          5,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "DECLARED_RPM_TRAPEZOID_AREA_HEIGHT_LEAF_MISSING": [
+          3
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          5,
+          7
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          5,
+          7
+        ],
+        "DECLARED_RPM_SPATIAL_LINE_LINE_SKEW_LEAF_MISSING": [
+          5
+        ],
+        "DECLARED_EXACT_BINDING_MISSING": [
+          5,
+          7
+        ],
+        "DECLARED_RPM_MIXED_SPATIAL_STATEMENTS_SINGLE_LEAF_MISSING": [
+          6
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          9,
+          11,
+          12,
+          13,
+          23
+        ],
+        "DECLARED_RPM_TOOL_ROLE_LEAF_MISSING": [
+          11
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          23
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          23
+        ],
+        "DECLARED_EXACT_ASA_SIDE_DIFFERENCE_TEMPLATE_PENDING": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+      "questionCount": 24,
+      "origin": "REUSED",
+      "sourceChangedItems": 20,
+      "semanticUnresolved": [],
+      "registrationPending": 15,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 9,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 15
+      },
+      "technicalDebtOrdinalsByCode": {
+        "PRIOR_DECLARED_BINDING_OR_CROSSWALK_GAP": [
+          1,
+          6,
+          8,
+          10,
+          21
+        ],
+        "PRIOR_DECLARED_NATIVE_TYPE_GAP": [
+          3,
+          4,
+          5,
+          9,
+          14,
+          15,
+          20,
+          24
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          3,
+          4,
+          5,
+          9,
+          14,
+          15,
+          20,
+          24
+        ],
+        "PRIOR_DECLARED_CROSS_CONCEPT_GAP": [
+          6
+        ],
+        "PRIOR_DECLARED_SHARED_PARENT_DEFINITION_DEBT": [
+          17,
+          18,
+          21,
+          24
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+      "sourceBlob": "3df1dac3212f0ae891fad38085699159039f7d26",
+      "questionCount": 22,
+      "origin": "NEW",
+      "sourceChangedItems": 20,
+      "semanticUnresolved": [],
+      "registrationPending": 21,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 1,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 21
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "DECLARED_RPM_LEAF_GAP-1": [
+          1
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          1,
+          2,
+          3,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          20,
+          21,
+          22
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_PENDING": [
+          2,
+          6,
+          8,
+          10,
+          13,
+          16,
+          22
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          7
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          7
+        ],
+        "DECLARED_RPM_LEAF_AND_EXACT_BINDING_GAP-7": [
+          7
+        ],
+        "DECLARED_RPM_LEAF_GAP-9": [
+          9
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          11,
+          12,
+          13,
+          21
+        ],
+        "DECLARED_RPM_LEAF_GAP-11": [
+          11
+        ],
+        "DECLARED_RPM_LEAF_GAP-12": [
+          12
+        ],
+        "DECLARED_CONDITION_DEFINITION_GAP-12-21": [
+          12,
+          21
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          14,
+          21
+        ],
+        "DECLARED_EXACT_STEM_LEAF_NATIVE_CROSSWALK_PENDING": [
+          15,
+          17
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+      "sourceBlob": "92c9580da4d07090df5963967de4e51bc2682ffa",
+      "questionCount": 23,
+      "origin": "NEW",
+      "sourceChangedItems": 23,
+      "semanticUnresolved": [],
+      "registrationPending": 23,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 23
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          4,
+          11,
+          13
+        ],
+        "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-4": [
+          4
+        ],
+        "DECLARED_CONDITION_REGISTRATION_GAP-4": [
+          4
+        ],
+        "CANONICAL_DEFINITION_PROPOSAL_PENDING": [
+          4
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          4,
+          9,
+          11,
+          15,
+          17,
+          18,
+          20,
+          23
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-9": [
+          9
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_CORRECTION-11": [
+          11
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-15": [
+          15
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-17": [
+          17
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-23": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+      "sourceBlob": "2ca2ad4a59528586fbfaa0edb46de1a6f7d8080e",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          3,
+          7,
+          20,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          3,
+          7,
+          20,
+          24
+        ],
+        "DECLARED_REGISTRATION_PENDING": [
+          3,
+          7,
+          17,
+          20,
+          24
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          3,
+          4,
+          7,
+          9,
+          13,
+          14,
+          17,
+          20,
+          21,
+          24
+        ],
+        "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": [
+          4,
+          9,
+          13,
+          14,
+          21
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          6,
+          8,
+          11,
+          12,
+          16,
+          17,
+          19,
+          20,
+          23
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          7,
+          17
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          7,
+          17
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+      "sourceBlob": "f01e63a4ce6d0948e8b36ac79d206add39f4ccd1",
+      "questionCount": 26,
+      "origin": "NEW",
+      "sourceChangedItems": 26,
+      "semanticUnresolved": [],
+      "registrationPending": 26,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 26
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          21,
+          22,
+          24,
+          25
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          2,
+          10,
+          17,
+          24
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          2,
+          10,
+          17,
+          24
+        ],
+        "DECLARED_REGISTRATION_PENDING": [
+          2,
+          10,
+          17,
+          24
+        ],
+        "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": [
+          4,
+          6,
+          9,
+          11,
+          22
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          7,
+          8,
+          9,
+          12,
+          14,
+          15,
+          16,
+          17,
+          18,
+          22,
+          23,
+          26
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
+      "sourceBlob": "a5f1e7531ba0a55547cfd0fb7788f2982aee878e",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_RPM_MIXED_BASIC_GEOMETRY_CLAIM_LEAF_MISSING": [
+          1
+        ],
+        "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          10,
+          11,
+          13,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          10,
+          11,
+          13,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": [
+          2,
+          4,
+          5,
+          6,
+          12,
+          17,
+          18,
+          23,
+          24
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          8,
+          10,
+          11
+        ],
+        "DECLARED_RPM_MIXED_TRIANGLE_UNIQUENESS_LEAF_MISSING": [
+          8
+        ],
+        "DECLARED_RPM_FOLDING_ANGLE_LEAF_MISSING": [
+          10
+        ],
+        "DECLARED_RPM_GIVEN_CONGRUENCE_DATA_TRANSFER_LEAF_MISSING": [
+          11
+        ],
+        "DECLARED_RPM_CONGRUENCE_CRITERIA_COMPARISON_LEAF_MISSING": [
+          13
+        ],
+        "DECLARED_RPM_CONGRUENCE_INVARIANT_LEAF_MISSING": [
+          14
+        ],
+        "DECLARED_RPM_QUADRANT_SIGN_DEDUCTION_LEAF_MISSING": [
+          15
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          16,
+          19,
+          23
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          16,
+          19,
+          23
+        ],
+        "DECLARED_RPM_MIXED_SPATIAL_RELATIONS_LEAF_MISSING": [
+          16
+        ],
+        "DECLARED_EXACT_BINDING_MISSING": [
+          16,
+          19,
+          23
+        ],
+        "DECLARED_RPM_FOLDED_NET_SPATIAL_RELATIONS_LEAF_MISSING": [
+          19
+        ],
+        "DECLARED_RPM_MIXED_COORDINATE_GRAPH_SIGN_LEAF_MISSING": [
+          20
+        ],
+        "DECLARED_RPM_COORDINATE_POLYGON_AREA_LEAF_MISSING": [
+          21
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+      "sourceBlob": "5a882f85179ced5eff8e6389f4ee2fd6287b1152",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          11,
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          9
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          10
+        ],
+        "DECLARED_EXACT_BINDING_MISSING": [
+          10
+        ],
+        "DECLARED_RPM_MIXED_ROTATION_PROPERTY_CLAIMS_LEAF_MISSING": [
+          11
+        ],
+        "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": [
+          18,
+          19
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+      "sourceBlob": "4ae5beb89c314c4e9e8fced3f85368b3ba7003dc",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 22,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "DECLARED_RPM_LEAF_GAP-1-4": [
+          1,
+          4
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          2,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-3": [
+          3
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          4,
+          9,
+          12,
+          17,
+          18,
+          19
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          5,
+          7,
+          16,
+          17,
+          19,
+          24
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          5,
+          7,
+          16,
+          17,
+          19,
+          24
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-5": [
+          5
+        ],
+        "DECLARED_EXACT_BINDING_GAP-5": [
+          5
+        ],
+        "DECLARED_RPM_LEAF_GAP-6-7": [
+          6,
+          7
+        ],
+        "DECLARED_EXACT_BINDING_GAP-7": [
+          7
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-8": [
+          8
+        ],
+        "DECLARED_CONDITION_REGISTRATION_GAP-9": [
+          9
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-9": [
+          9
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-10": [
+          10
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-11": [
+          11
+        ],
+        "DECLARED_RPM_LEAF_GAP-12-23": [
+          12,
+          23
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-13": [
+          13
+        ],
+        "DECLARED_RPM_LEAF_GAP-14": [
+          14
+        ],
+        "DECLARED_RPM_SCOPE_GAP-15": [
+          15
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-16": [
+          16
+        ],
+        "DECLARED_EXACT_BINDING_GAP-16": [
+          16
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-17": [
+          17
+        ],
+        "DECLARED_EXACT_BINDING_GAP-17": [
+          17
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-18": [
+          18
+        ],
+        "DECLARED_EXISTING_GLOBAL_PT_TPL_BINDING_GAP-19": [
+          19
+        ],
+        "DECLARED_EXACT_BINDING_GAP-19": [
+          19
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-20": [
+          20
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-21": [
+          21
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-22": [
+          22
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-24": [
+          24
+        ],
+        "DECLARED_EXACT_BINDING_GAP-24": [
+          24
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
+      "sourceBlob": "500deda821ab7b84f67ab745f84ddbbd3e04457e",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-4": [
+          4
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          4,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          23,
+          24
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          5,
+          6,
+          7
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-8": [
+          8
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          13,
+          23
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          13,
+          23
+        ],
+        "DECLARED_NEW_TPL_EXISTING_PT-13": [
+          13
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-13": [
+          13
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-15": [
+          15
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-18": [
+          18
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-20": [
+          20
+        ],
+        "DECLARED_CC_DEFINITION_GENERALIZATION-21": [
+          21
+        ],
+        "DECLARED_NEW_TPL_EXISTING_PT-23": [
+          23
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-23": [
+          23
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+      "sourceBlob": "b291feb9517ad79d343d8b73354d42382755f1a5",
+      "questionCount": 26,
+      "origin": "NEW",
+      "sourceChangedItems": 26,
+      "semanticUnresolved": [],
+      "registrationPending": 26,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 26
+      },
+      "technicalDebtOrdinalsByCode": {
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          1,
+          10,
+          13,
+          15,
+          17,
+          18,
+          21,
+          23,
+          26
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          2,
+          3,
+          5,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-2": [
+          2
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-3": [
+          3
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-3": [
+          3
+        ],
+        "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-4-5": [
+          4,
+          5
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-4": [
+          4
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-5": [
+          5
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          6,
+          9,
+          18,
+          24
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          6,
+          9,
+          18,
+          24
+        ],
+        "DECLARED_EXACT_BINDING_GAP-6": [
+          6
+        ],
+        "DECLARED_CONDITION_REGISTRATION_GAP-7": [
+          7
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-7": [
+          7
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-8": [
+          8
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-9": [
+          9
+        ],
+        "DECLARED_EXACT_BINDING_GAP-9": [
+          9
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-10": [
+          10
+        ],
+        "DECLARED_RPM_LEAF_GAP-11": [
+          11
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-12": [
+          12
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-13": [
+          13
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-14": [
+          14
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-14": [
+          14
+        ],
+        "DECLARED_RPM_LEAF_GAP-15-16": [
+          15,
+          16
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-17": [
+          17
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-18": [
+          18
+        ],
+        "DECLARED_EXACT_BINDING_GAP-18": [
+          18
+        ],
+        "DECLARED_EXISTING_TPL_DEFINITION_NORMALIZATION-21-23": [
+          21,
+          23
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-22": [
+          22
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-24": [
+          24
+        ],
+        "DECLARED_EXACT_BINDING_GAP-24": [
+          24
+        ],
+        "DECLARED_EXISTING_PT_TPL_DEFINITION_NORMALIZATION-25": [
+          25
+        ],
+        "DECLARED_EXACT_RPM_NATIVE_CROSSWALK_GAP-25": [
+          25
+        ],
+        "DECLARED_RPM_LEAF_GAP-26": [
+          26
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+      "sourceBlob": "13346ae081b7c146e93aaaf78b8747d6a684faff",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 22,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 2,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 22
+      },
+      "technicalDebtOrdinalsByCode": {
+        "DECLARED_RPM_READING_LEAF_NATIVE_PARENT_CROSSWALK_MISMATCH": [
+          1
+        ],
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          9,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "DECLARED_RPM_ORDERED_PAIR_EQUALITY_LEAF_MISSING": [
+          2
+        ],
+        "DECLARED_ACTIVE_DEFINITION_NORMALIZATION_PENDING": [
+          2,
+          3,
+          6,
+          15,
+          22,
+          23
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          6,
+          12,
+          15,
+          16,
+          22,
+          23
+        ],
+        "DECLARED_RPM_AXIS_COORDINATE_CONSTRAINT_LEAF_MISSING": [
+          3
+        ],
+        "DECLARED_RPM_QUADRANT_SIGN_DEDUCTION_LEAF_MISSING": [
+          4
+        ],
+        "DECLARED_RPM_NATIVE_BRIDGE_REGISTRATION_PENDING": [
+          5,
+          6,
+          7,
+          9,
+          11,
+          13,
+          14,
+          16,
+          19,
+          20,
+          23
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          11,
+          17,
+          20
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          12,
+          16
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          12,
+          16
+        ],
+        "DECLARED_RPM_MIXED_SPATIAL_RELATION_LEAF_MISSING": [
+          12
+        ],
+        "DECLARED_EXACT_BINDING_MISSING": [
+          12,
+          16
+        ],
+        "DECLARED_RPM_FOLDING_ANGLE_LEAF_MISSING": [
+          15
+        ],
+        "DECLARED_RPM_MIXED_TRIANGLE_UNIQUENESS_LEAF_MISSING": [
+          17
+        ],
+        "DECLARED_RPM_CONGRUENCE_CRITERIA_COMPARISON_LEAF_MISSING": [
+          18
+        ],
+        "DECLARED_RPM_COORDINATE_TRIANGLE_AREA_LEAF_MISSING": [
+          21
+        ],
+        "DECLARED_RPM_CONGRUENCE_TO_TRAPEZOID_AREA_LEAF_MISSING": [
+          24
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+      "sourceBlob": "0f3b05966c71d8781f784e209de2e51f3838fc83",
+      "questionCount": 24,
+      "origin": "NEW",
+      "sourceChangedItems": 24,
+      "semanticUnresolved": [],
+      "registrationPending": 24,
+      "dispositionCounts": {
+        "NEW_REVIEW_READY": 0,
+        "REUSED_REVIEW_READY": 0,
+        "OTHER_OWNER_IN_PROGRESS": 0,
+        "SEMANTIC_UNJUDGED": 0,
+        "COMMON_REGISTRATION_PENDING": 24
+      },
+      "technicalDebtOrdinalsByCode": {
+        "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "CANONICAL_PROPOSAL_PENDING": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          9,
+          10,
+          13,
+          17,
+          21,
+          22,
+          23,
+          24
+        ],
+        "NATIVE_PAIR_UNFILLED": [
+          5,
+          7,
+          13,
+          21
+        ],
+        "ADVANCED_META_FIELD_TYPE_INVALID:templateKey": [
+          5,
+          7,
+          13,
+          21
+        ],
+        "DECLARED_REGISTRATION_PENDING": [
+          5,
+          7,
+          13,
+          21,
+          22
+        ],
+        "TERM_DICTIONARY_CANDIDATE_PENDING": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          24
+        ],
+        "DECLARED_NATIVE_EXACT_RPM_LEAF_DEBT": [
+          17,
+          24
+        ],
+        "EXACT_BINDING_NOT_UNIQUE": [
+          22
+        ],
+        "ADVANCED_META_CURRICULUM_BINDING_INVALID": [
+          22
+        ]
+      },
+      "sourceSyntax": "PASS",
+      "uidOrder": "PASS",
+      "protectedPayloadChanges": 0
+    }
+  ],
+  "difficultyCoverage": [
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        5,
+        6,
+        9,
+        11,
+        19,
+        23
+      ],
+      "independentOrdinals": [
+        5,
+        6,
+        9,
+        11,
+        19,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_팔마중_2학기_중간_중1_기출.json",
+          "sha256": "2b1de13bed4a1d75136d153072547562bcfa9e8b0a3b3710cf17390b3100a63e"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_팔마중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "d3210e8f51499c511ec7318c0f1f8125712730354fd86c4f0b9741f4907f26e6"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        21
+      ],
+      "independentOrdinals": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        16,
+        21
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_왕운중_2학기_중간_중1_기출.json",
+          "sha256": "2f2eec742a97a492e152e869d82b7fdc614c2c1fd0d0ca726a048e2f52debb79"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_왕운중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "82d26cbae7ec013e68145f58f09e28aced03f1796b080f5153aaaa68022132e8"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        14
+      ],
+      "independentOrdinals": [
+        4,
+        14,
+        18,
+        21
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_신흥중_2학기_중간_중1_기출.json",
+          "sha256": "2d521cabe2dfd74900bf0f83695f8d73f92247ee981996c8f655f4143e573f07"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/26_신흥중_2학기_중간_중1_기출-difficulty-completeness.json",
+          "sha256": "d5fa616b39fc55310bf1383de480fad5a3c0a093a46bb16fff81ee204281077f"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        1,
+        6,
+        12,
+        17,
+        18,
+        22
+      ],
+      "independentOrdinals": [
+        1,
+        6,
+        12,
+        17,
+        18,
+        21,
+        22
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출.json",
+          "sha256": "d865c757922f8fbd362a6d95617a51b44f6100f56e127632cbac45c90df997d0"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출-supplement-1.json",
+          "sha256": "f5901577f4f02ad1625c317d06868d3f275d163dab3aece564d2ca2311ca3bae"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+      "exceptionOrdinals": [
+        24
+      ],
+      "independentOrdinals": [
+        8,
+        9,
+        19,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_중간_중1_수학.json",
+          "sha256": "b0eee3a02351b4a0f75c4233632615c41a595fe4e3d2dbd70a6f7da8ba3efc32"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25-dongsan-mid-q24-difficulty.json",
+          "sha256": "0e9e5331831daef211fc4bb4dd16b9e850f9698c41e428dd27354f955304f7f7"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        5,
+        6,
+        11,
+        14
+      ],
+      "independentOrdinals": [
+        5,
+        6,
+        11,
+        14,
+        22
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_기말_중1_기출.json",
+          "sha256": "dd8e8911199899cdc55dec68eccd7a06ca8caad7f1172836c6454702f9c2c6ed"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/25_동산중_2학기_기말_중1_기출-supplement-1.json",
+          "sha256": "5f6c9cafe0fa090f5cb19fc95bb4d05874a01eae6caf427c94683a16ffebd56d"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        18,
+        19
+      ],
+      "independentOrdinals": [
+        18,
+        19,
+        20
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_향림중_2학기_중간_중1_기출.json",
+          "sha256": "03a7c52721c5a7e3762a4ba5ea305c78cd3ef2e675992abcd098624d6f159f72"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        18,
+        19,
+        23
+      ],
+      "independentOrdinals": [
+        18,
+        19,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_향림중_2학기_기말_중1_기출.json",
+          "sha256": "025e25e89a6016b944296c897e1394e5d8a9aac65ff437b48b0dce200f550a16"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        3,
+        12,
+        19,
+        20
+      ],
+      "independentOrdinals": [
+        3,
+        12,
+        19,
+        20,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_왕운중_2학기_중간_중1_기출.json",
+          "sha256": "992adbc25f332ce8842bb307b55fc32c0f048cb8fe9893617fe61ea487edc43f"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_왕운중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "bf4270a3de5bba03fe1550ea0e4879abb473eea7bda211c762359d0ebb50e296"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_연향중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        6,
+        8,
+        16,
+        21
+      ],
+      "independentOrdinals": [
+        6,
+        8,
+        10,
+        16,
+        20,
+        21
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출.json",
+          "sha256": "8c05b4a85483f2e80163b491b4a033e839616c4b787edaf94760bd92e7c017dd"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "10821d2bcfc02265c022a8997e757f604f5f890348954793671d680cfaea5056"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/c-2015-parent-followup.json",
+          "sha256": "35fd48fe8e281d3db50eff0f4c2c8192e109e316e5315c01438fecd4d9d17ecf"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        1,
+        6,
+        7,
+        13,
+        15,
+        18
+      ],
+      "independentOrdinals": [
+        1,
+        4,
+        6,
+        7,
+        13,
+        15,
+        18,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_기말_중1_기출.json",
+          "sha256": "8b592f058d23d74d8fc33276f6af485468507ed0b4f096d3a890a94081226f04"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_연향중_2학기_기말_중1_기출-supplement-1.json",
+          "sha256": "faa59fc6598517655b0a5dfe7dd07d684ae324f111e34116bdc90081593d5880"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        4,
+        7,
+        11,
+        12,
+        15,
+        17,
+        20,
+        23
+      ],
+      "independentOrdinals": [
+        4,
+        7,
+        11,
+        12,
+        15,
+        17,
+        20,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/24_매산중_2학기_중간_중1_기출.json",
+          "sha256": "d55288720fd2ac7f8e961aad1b01f50f224e825d0c2c03c5fe699b1ba69bf147"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        2,
+        8,
+        9,
+        13,
+        19,
+        22,
+        24
+      ],
+      "independentOrdinals": [
+        2,
+        8,
+        9,
+        13,
+        17,
+        19,
+        22,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_향림중_2학기_중간_중1_기출.json",
+          "sha256": "6d826ec964e012d1c9496a9d2ed7766b9c41e41e9a0ead005e001023cef1d131"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        1,
+        10,
+        12,
+        19,
+        20,
+        24
+      ],
+      "independentOrdinals": [
+        1,
+        10,
+        12,
+        19,
+        20,
+        22,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_왕운중_2학기_중간_중1_기출.json",
+          "sha256": "fbb82cdac00b4113f72159bf9205a261c05a48a597fc34651cac2ed695fe67e1"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        15,
+        16,
+        18,
+        20
+      ],
+      "independentOrdinals": [
+        9,
+        15,
+        16,
+        18,
+        19,
+        20,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_왕운중_2학기_기말_중1_기출.json",
+          "sha256": "5e0c437fc409a8205ba198a84148e8e574a0a110b5c5f3fa3ef93670ac448ef9"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        10,
+        15,
+        18
+      ],
+      "independentOrdinals": [
+        7,
+        10,
+        12,
+        15,
+        17,
+        18,
+        19,
+        20
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_연향중_2학기_중간_중1_기출.json",
+          "sha256": "9608e17fb05b455a1fde439cda3200619590535abcdeae6ef12d17697f4a9b2c"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/c-2015-parent-followup.json",
+          "sha256": "35fd48fe8e281d3db50eff0f4c2c8192e109e316e5315c01438fecd4d9d17ecf"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_연향중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        3,
+        9,
+        10,
+        13,
+        14,
+        15,
+        19
+      ],
+      "independentOrdinals": [
+        3,
+        8,
+        9,
+        10,
+        13,
+        14,
+        15,
+        19,
+        23
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_연향중_2학기_기말_중1_기출.json",
+          "sha256": "c938f40eb8a013bda9712bc122cb9f34eaeb060b8689404d8cb13266443a17b5"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_연향중_2학기_기말_중1_기출-supplement-1.json",
+          "sha256": "c6bd6d3d7b2fb1a64f69683218cfa3a04992dd6d62a1da9e2d327e03e55368a6"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        4,
+        6,
+        10,
+        22
+      ],
+      "independentOrdinals": [
+        4,
+        6,
+        10,
+        15,
+        16,
+        22,
+        25
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_신흥중_2학기_중간_중1_기출.json",
+          "sha256": "978549df793afac3b35f9610b4faa13a9225134c8dad035520bb3af36c9e245f"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_신흥중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "de6bfdc53f0df9aa902fd6e1f09204372073e2172740057450946851e6488e22"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+      "exceptionOrdinals": [
+        7,
+        13,
+        14,
+        15,
+        19,
+        22,
+        23,
+        24
+      ],
+      "independentOrdinals": [
+        7,
+        8,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        22,
+        23,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_중간_중1_기출.json",
+          "sha256": "25b05f0652c52c33c1c12b99ab6f0467a95126be74eec04f379c91004870a3ba"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_중간_중1_기출-supplement-1.json",
+          "sha256": "112b31b2bce49deb9ef21b58b5bfbd3655cf125f2ca4703cd8ab1dc12f9875b4"
+        }
+      ]
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+      "exceptionOrdinals": [
+        4,
+        13,
+        14,
+        24
+      ],
+      "independentOrdinals": [
+        4,
+        13,
+        14,
+        19,
+        22,
+        24
+      ],
+      "refs": [
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_기말_중1_기출.json",
+          "sha256": "a19e70bc47a20940af6e1d42e2e6e77a8f32609cfcc3f7691fe8a191da5fcd30"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-full-20261114/independent/23_금당중_2학기_기말_중1_기출-supplement-1.json",
+          "sha256": "7bf495a4ed9ba7310f3f896adc0aa1512dabd22c4591da49ed1285b9b6f4ec67"
+        }
+      ]
+    }
+  ],
+  "authorReadProofIndex": "docs/operations/m1-s2-meta-full-20261114/author-read-proof-index.json",
+  "prohibitedMutations": {
+    "studentPayload": 0,
+    "assets": 0,
+    "sharedRegistries": 0,
+    "productionInbox": 0,
+    "mainMerge": 0,
+    "forcePush": 0
+  },
+  "limitations": [
+    "Metadata review only, no complete mathematical R1/R2/R3 or student-content quality PASS.",
+    "Official shared registration and source fingerprint reconciliation remain Codex work.",
+    "One original-condition item remains semantically unresolved."
+  ]
+}

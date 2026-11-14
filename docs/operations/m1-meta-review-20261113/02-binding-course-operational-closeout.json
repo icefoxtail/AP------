@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "binding-course-operational-closeout-v1",
+  "recordedAt": "2026-11-13T16:44:14.912594+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "status": "COURSE_CORRECTION_REGISTERED_ON_MAIN_WITH_CONSUMER_PRESERVATION",
+  "scope": "Existing binding course spelling correction only; no new metadata approval or exam mathematical review.",
+  "publication": {
+    "pr": 1966,
+    "prUrl": "https://github.com/icefoxtail/AP------/pull/1966",
+    "prHead": "48732a97f0291d6f125a3f3f3358a0201941954b",
+    "mergeInputSha": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "registeredMainSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "registeredTree": "52bb30a7efe875985d8f3fa2214236332c062b66",
+    "remoteCommitUrl": "https://github.com/icefoxtail/AP------/commit/51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "remoteGitApiCommitTreeMatchesLocalObjects": true,
+    "rootActualRemoteFetchAndReceiptReadback": "CONFIRMED_BY_ROOT",
+    "reportIndependentReadback": "Exact commit Git objects and GitHub git-commit tree read without index mutation."
+  },
+  "writer": {
+    "runId": 43461439913,
+    "jobId": 132009095000,
+    "runAttempt": 1,
+    "workflowUrl": "https://github.com/icefoxtail/AP------/actions/runs/43461439913",
+    "workflowStatus": "completed",
+    "workflowConclusion": "success",
+    "completedAtUtc": "2026-11-13T16:29:42Z",
+    "steps": {
+      "prepare": "success",
+      "persist": "success",
+      "bindPersistedSnapshot": "success",
+      "dispatchExactSnapshot": "success",
+      "reportIncompleteRequiredRegistration": "skipped",
+      "uploadEvidence": "success"
+    },
+    "pushLogEvidence": {
+      "observedAtUtc": "2026-11-13T16:29:29.6825054Z",
+      "result": "PUSHED",
+      "attempts": 1,
+      "mainSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+      "registeredSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45"
+    },
+    "jobErrorMarkerCount": 0,
+    "errorMarkerScope": "Literal ::error:: or Error: markers in completed job log; request and Consumer outcomes are separately checked."
+  },
+  "request": {
+    "requestId": "m1-proportion-course-spelling-20261113",
+    "originalRawSha256": "b5c56ef1dca62d921297b75dc80415392e006a2bed1f9494c94f0e8c58146ba4",
+    "receiptCanonicalRequestSha256": "97975675d23989a9f32bdb85171501aa468b2c2631c37c6873f0061539709c5d",
+    "hashKindsAreDistinct": true,
+    "artifactInputEntry": "native/archive-meta-register-pass/requests/m1-proportion-course-spelling-20261113.json",
+    "disposition": "APPLIED",
+    "appliedCount": 1,
+    "rejectedCount": 0,
+    "pendingCount": 0,
+    "proof": {
+      "reviewedLogEntry": "reviewed-1.log",
+      "appliedListEntry": "native/archive-meta-register-pass/applied.txt",
+      "appliedListSha256": "330b8d6c33d30443b30a08ecc5fb933570ff36ca7eec5b25c8f03d5d87e8cdf7",
+      "appliedListBytes": 73,
+      "rejectedListBytes": 0,
+      "pendingListBytes": 0
+    }
+  },
+  "correction": {
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "curriculum": "2022",
+    "standardUnitKey": "M1-04",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "standardCourseBefore": "中1 수학",
+    "standardCourseAfter": "중1 수학",
+    "packVersionBefore": "1.0.5",
+    "packVersionAfter": "1.0.6"
+  },
+  "actualMainReceipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json",
+    "blobSha1": "6949cc36915099a5dbaee47c68dd6ed41a5eea88",
+    "sha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+    "bytes": 333311,
+    "schemaVersion": "archive-binding-course-correction-receipt-v1",
+    "status": "CORRECTED_EXISTING_BINDING",
+    "operation": "BINDING_COURSE_SPELLING_CORRECTION",
+    "approvalCreated": false,
+    "metadataApprovalStatus": "NOT_CREATED",
+    "examFinalQaStatus": "NOT_EVALUATED",
+    "consumerVerificationStoredInReceipt": "REQUIRES_POST_BUILD_COMPARISON",
+    "postBuildRequirementEvidence": "Separate reviewedFinal-1.log satisfies the post-build comparison; the immutable receipt field is not rewritten.",
+    "protectedFileCount": 104,
+    "runtimeConsumerCount": 613,
+    "preservedDirectConsumerCount": 1,
+    "runtimeRecordsSha256": "5cc02546ece16197b05ab1e0480a017d3db0ac387b7150f7ec5186e3ff439d1c",
+    "consumerBeforeSha256": "6b1f3e5aaae347361cd4d0d0b8b82aff872f996809f8efe9d295d8f9bd7bb619"
+  },
+  "actualMainOutputs": {
+    "verification": "All seven receipt output SHA-256 values match raw Git blob bytes at registeredMainSha.",
+    "count": 7,
+    "rows": [
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "blobSha1": "bf44f529761420527412d1986164e950299bec11",
+        "sha256": "940b777803308d6e5bffcf2bb45aae3a5fb66de8f101bb01f9b41813eb7c9282",
+        "bytes": 945589,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "blobSha1": "b5094f07fba5840880f78fa3a5a4daeb36859313",
+        "sha256": "cb2e66b55fc31dd93238f39d06544e36201c2d0dc37544faeb21afa0c213a918",
+        "bytes": 2264135,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "blobSha1": "76120ea7b61a410789818e6ac12117f2d6c8e7a1",
+        "sha256": "1fdfe40779eb5d2fe000edf4656f191cc41a9d24d2ca0cb6e43463d82f541bcf",
+        "bytes": 1296,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "blobSha1": "71c4512e620278f58e2b24b93c6dc30f17bf66fb",
+        "sha256": "31e29b5ea44e081f168d4885a55d6f36d058db2103fef9f529b59fccdc8c59f4",
+        "bytes": 98519,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+        "blobSha1": "cf733fd212e667c84a6751f1839bc3eb8037c4a2",
+        "sha256": "f15fb38429f8e9c4e4efb2a10a637d3d6808ca842d43516cd0be06fa406de525",
+        "bytes": 1497,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "blobSha1": "a88a45ca1beff308dadd2b61c272822193d64c88",
+        "sha256": "b02bc2a39b6aab41bacc7a0841c807d19355fa07196e97f23f4aed2aea225306",
+        "bytes": 1299866,
+        "matchesReceipt": true
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/registry_index.json",
+        "blobSha1": "334a791d4ac1b585307f01b3c4fdbe04ec0c856b",
+        "sha256": "7f4e3c03ff4e721a3fc5a42b47cbc2197c68454dc4f45642054d6ccbf7c536fb",
+        "bytes": 21739,
+        "matchesReceipt": true
+      }
+    ]
+  },
+  "finalPostAutoMetaConsumer": {
+    "artifactEntry": "reviewedFinal-1.log",
+    "rawSha256": "5949a4d5974034d1c5b744502999251323038759c6f341eb0595a95c40099eb1",
+    "bytes": 839,
+    "executionPoint": "POST_AUTOMETA_PRE_PUSH",
+    "reportedInputMainSha": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "status": "PASS",
+    "counts": {
+      "changed": 1,
+      "checked": 1,
+      "passed": 1,
+      "skippedUnchanged": 0
+    },
+    "preservedRuntimeUids": 613,
+    "approvalCreated": false,
+    "failureCount": 0,
+    "unobservedFieldCount": 0,
+    "assignmentPendingCount": 0,
+    "solverOnlyRevisionCount": 0,
+    "snapshotBinding": "The subsequent persisted/report.json checks registeredMainSha and reuses the reviewed lane at the matching verified digests. This report does not relabel the pre-push invocation as a new post-push Consumer run."
+  },
+  "persistedSnapshot": {
+    "artifactEntry": "persisted/report.json",
+    "rawSha256": "c6cf4d52663e052ba38068834646d5b437796d0f9381d636f521d4ceea9e58e6",
+    "bytes": 2500,
+    "inputSha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "mode": "check",
+    "status": "REGISTRATION_PARTIAL",
+    "safeToPersist": false,
+    "needed": true,
+    "publishable": true,
+    "registrationReady": true,
+    "reviewedLaneStatus": "VERIFIED_REUSED",
+    "reviewedLaneNeeded": false,
+    "reviewedVerifiedInputDigest": "b55b7df4c123f97b47ef007a6293434b14ba161d0b91222d23d8f5c058d921de",
+    "reviewedVerifiedOutputDigest": "4cefe7313578ab62db4552f9174545f0c3b5c3c5463bf6077baa5aa02fce0d9a",
+    "inputDigest": "bd874a119d249589382366b923276c641d6e163b7749caa4334addd9a016848e",
+    "outputDigest": "a4a3368b81e9e2cc5493e7c78c4f0639066b3f671e3127dac21d2914e8b67db4",
+    "changedPathsCount": 0
+  },
+  "remainingGlobalState": {
+    "wholeArchiveRegistrationComplete": false,
+    "semanticLaneStatus": "NEEDS_REGISTRATION",
+    "semanticLaneNeeded": true,
+    "semanticLaneRequired": false,
+    "interpretation": "The course correction is operationally closed. The persisted writer snapshot remains REGISTRATION_PARTIAL with an optional semantic lane needing continuation; no global completion or additional source approval is claimed."
+  },
+  "artifact": {
+    "id": 14056249377,
+    "name": "archive-main-registration-43461439913-1",
+    "metadataUrl": "https://api.github.com/repos/icefoxtail/AP------/actions/artifacts/14056249377",
+    "downloadEndpoint": "https://api.github.com/repos/icefoxtail/AP------/actions/artifacts/14056249377/zip",
+    "zipSha256": "93a82c2d47788bd198d7f953062f32e023896e82fcf12bce45ebf6187bad7456",
+    "zipBytes": 72649,
+    "localZipPath": ".tmp/m1-meta-review/02-course-main-writer43461439913.zip",
+    "localRootExtractedCopies": [
+      {
+        "path": ".tmp/m1-meta-review/02-course-actual-main-receipt.json",
+        "source": "Registered main Git receipt",
+        "sha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+        "bytes": 333311
+      },
+      {
+        "path": ".tmp/m1-meta-review/02-course-actual-main-final-consumer.json",
+        "artifactEntry": "reviewedFinal-1.log",
+        "sha256": "5949a4d5974034d1c5b744502999251323038759c6f341eb0595a95c40099eb1",
+        "bytes": 839
+      },
+      {
+        "path": ".tmp/m1-meta-review/02-course-actual-main-persisted.json",
+        "artifactEntry": "persisted/report.json",
+        "sha256": "c6cf4d52663e052ba38068834646d5b437796d0f9381d636f521d4ceea9e58e6",
+        "bytes": 2500
+      }
+    ]
+  },
+  "nextAction": "Refresh Wangun native request baselines from the corrected main before its separate official registration.",
+  "executionBoundary": {
+    "readOnlyGitAndApi": true,
+    "gitIndexModified": false,
+    "productionEditedByReportAuthor": false,
+    "writerOrTestsRerun": false,
+    "fullR1R2R3Rerun": false,
+    "newMetadataApprovalCreated": false,
+    "mathematicalFinalQa": "NOT_EVALUATED",
+    "wangunRegistrationPerformedByThisReport": false,
+    "awcrR18Created": false,
+    "reportIncludesRawQuestionAnswerSolutionOrCredentials": false
+  }
+}

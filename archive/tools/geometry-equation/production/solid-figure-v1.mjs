@@ -7,6 +7,7 @@ import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-lay
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
+import {orthogonalSquarePrismBoundary} from './orthogonal-square-prism-union.mjs';
 
 // A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
 // orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
@@ -17,6 +18,7 @@ import {PALETTE,isPaletteName} from './palette.mjs';
 // the final SVG: visible/hidden per edge, vertex positions, ellipse axes and tangent lines, the liquid region, marks, nesting, net face congruence
 // and adjacency, label values and places. A sphere may be cut by planes through its centre (cut:{kind}: half, quarter, eighth, 3/4, 7/8; sphere-parts.mjs).
 export const SOLID_CAPABILITY='solid-figure-v1';
+const PRISM_UNION_KIND='ORTHOGONAL_SQUARE_PRISM_UNION';
 export const SOLID_MODEL_VERSION='SOLID_FIGURE_MODEL_v2',SOLID_SPEC_VERSION='SOLID_FIGURE_SPEC_v2',SOLID_SVG_VERSION='solid-figure-svg-v2';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('solid_figure_observer_worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -306,6 +308,15 @@ function buildBipyramid(spec){
   for(let i=0;i<n;i++){faces.push([i,(i+1)%n,n]);ids.push('top'+i);}
   for(let i=0;i<n;i++){faces.push([i,(i+1)%n,n+1]);ids.push('bottom'+i);}
   return convexPolyhedron('BIPYRAMID',spec.id,[...ring,[cx,cy,2*h],[cx,cy,0]],faces,ids,spec.names,spec.count);
+}
+function buildPrismUnion(spec){
+  onlyKeys(spec,['id','kind','side','length'],'SOLID_UNION_PARAM_INVALID');
+  const side=pos(spec.side,'SOLID_UNION_DIMENSION_INVALID');
+  const length=pos(spec.length,'SOLID_UNION_DIMENSION_INVALID');
+  if(length<=side)bad('SOLID_UNION_DIMENSION_INVALID');
+  const {points,faces}=orthogonalSquarePrismBoundary(side,length);
+  const vertices=points.map(p=>({name:null,p}));
+  return {id:spec.id,kind:PRISM_UNION_KIND,category:'POLY',vertices,faces,edges:edgesOfFaces(faces),height:length,exact:true};
 }
 /** The distinct edges (vertex index pairs, low first) of a set of faces, sorted. */
 function edgesOfFaces(faces){
@@ -698,7 +709,7 @@ export const joinKeys=keys=>keys.every(k=>PLAIN_KEY.test(k))?keys.join(''):keys.
 const ringSize=solid=>solid.kind==='PYRAMID'?solid.vertices.length-1:solid.kind==='BIPYRAMID'?solid.vertices.length-2:solid.vertices.length/2;
 /** The slot of vertex i of a polyhedron in the reference grammar. */
 function vertexSlot(solid,i){
-  if(solid.kind==='REGULAR_POLYHEDRON')return 'v'+i;
+  if(solid.kind==='REGULAR_POLYHEDRON'||solid.kind===PRISM_UNION_KIND)return 'v'+i;
   const n=ringSize(solid);
   if(solid.kind==='PYRAMID')return i<n?'b'+i:'apex';
   if(solid.kind==='BIPYRAMID')return i<n?'b'+i:i===n?'apex':'apex2';
@@ -711,7 +722,7 @@ function slotIndex(solid,ring,index,apex){
   const total=solid.vertices.length,n=ringSize(solid);
   const i=Number(index);
   if(ring==='v')return i<total?i:null;
-  if(solid.kind==='REGULAR_POLYHEDRON')return null;// no ring and no apex: only #v<i>
+  if(solid.kind==='REGULAR_POLYHEDRON'||solid.kind===PRISM_UNION_KIND)return null;// no ring and no apex: only #v<i>
   if(apex==='apex')return solid.kind==='PYRAMID'||solid.kind==='BIPYRAMID'?n:null;
   if(apex==='apex2')return solid.kind==='BIPYRAMID'?n+1:null;
   if(ring==='b')return i<n?i:null;
@@ -1192,10 +1203,10 @@ const SIDE_FRACTIONS=[0.5,0.4,0.6,0.3,0.7,0.2,0.8,0.1,0.9,0,1,-0.15,1.15,-0.3,1.
 const SEGMENT_SIDES=['LEFT','RIGHT','TOP','BOTTOM'],SIDE_DIRECTION={LEFT:[-1,0],RIGHT:[1,0],TOP:[0,1],BOTTOM:[0,-1]},SIDE_FACING_MIN=0.3;
 // highlight tints: a fill colour and its opacity (LIGHT is the original blue shade of every highlight)
 const HIGHLIGHT_FILLS={LIGHT:['#7fa6e8',0.32],MEDIUM:['#7fa6e8',0.55],WARM:['#f2a65a',0.42],GREEN:['#6fcf97',0.42],ROSE:['#e98aa8',0.42],VIOLET:['#a78bdb',0.42]};
-const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
+const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM','REGULAR_POLYHEDRON','BIPYRAMID',PRISM_UNION_KIND],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
 const UNIT=/^(cm|mm|m|km)$/;
 // plan.view:{yawDeg}: the azimuth of the view in whole degrees, -60..60 (28 is the default and may be written). A polyhedron figure (solids of PRISM, PYRAMID, FRUSTUM,
-// REGULAR_POLYHEDRON or BIPYRAMID, with dims, highlights, segments, marks, labels) may be turned; nets, round solids and a free space keep the fixed view.
+// REGULAR_POLYHEDRON, BIPYRAMID or ORTHOGONAL_SQUARE_PRISM_UNION) may be turned; nets, round solids and a free space keep the fixed view.
 const VIEW_YAW_MAX=60;
 function planYaw(plan){
   if(plan.view===undefined)return DEFAULT_YAW_DEG;
@@ -1371,10 +1382,15 @@ function solveSolids(plan){
   // a plan with a space may have no solid at all (a plane and its points, lines and perpendiculars)
   const solidSpecs=plan.solids===undefined?[]:plan.solids;
   if(!Array.isArray(solidSpecs)||solidSpecs.length>3||(plan.solids!==undefined&&solidSpecs.length<1))bad('SOLID_COUNT_INVALID');
+  if(solidSpecs.some(spec=>spec?.kind===PRISM_UNION_KIND)){
+    // This is one connected body in one panel, with just its external boundary.
+    if(solidSpecs.length!==1||['unit','space','dims','highlights','segments','section','marks','labels'].some(key=>plan[key]!==undefined))bad('SOLID_UNION_CONTEXT_UNSUPPORTED');
+  }
   const solids=expandBalls(solidSpecs).map((spec,i)=>{
     if(!isPlain(spec))bad('SOLID_PARAM_INVALID');
     const withId={...spec,id:spec.id??'s'+(i+1)};
     if(typeof withId.id!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(withId.id))bad('SOLID_ID_INVALID');
+    if(spec.kind===PRISM_UNION_KIND)return buildPrismUnion(withId);
     if(POLY_KINDS.includes(spec.kind)){
       // points: named helper points the engine places in 3D (see resolveAuxPoints); the builders know nothing of them
       const {points:auxSpec,...bare}=withId;
@@ -2125,7 +2141,7 @@ function solveNet(plan){
   }
   if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
   if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
-  if(net.solid.kind==='REGULAR_POLYHEDRON'||net.solid.kind==='BIPYRAMID')bad('SOLID_NET_UNSUPPORTED:'+net.solid.kind);
+  if(net.solid.kind==='REGULAR_POLYHEDRON'||net.solid.kind==='BIPYRAMID'||net.solid.kind===PRISM_UNION_KIND)bad('SOLID_NET_UNSUPPORTED:'+net.solid.kind);
   if(net.solid.cuts!==undefined)bad('SOLID_NET_UNSUPPORTED:CUT');
   const solid=buildPolyhedron({...net.solid,id:'s1'});
   const faceById=new Map(solid.faces.map(f=>[f.id,f]));
@@ -3335,12 +3351,17 @@ function renderPrims(spec,model){
   for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='cutface'))body+=`<g data-layer="20"><path id="${p.id}" data-role="cut-face" data-solid="${p.solid}" data-faces="${p.faces}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" d="M ${p.points.map(q=>q.join(' ')).join(' L ')} Z"/></g>`;
   for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='section'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="section" data-section="axial" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="#2457b8" stroke-width="1.6" stroke-dasharray="6 3" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
-  for(const p of spec.prims){
+  const prismUnion=model.solids?.[0]?.kind===PRISM_UNION_KIND;
+  const hiddenUnionEdge=p=>prismUnion&&p.role==='edge'&&p.vis==='hidden';
+  // Keep the hidden edges legible without competing with the visible contours at crossings.
+  const strokes=prismUnion?[...spec.prims.filter(hiddenUnionEdge),...spec.prims.filter(p=>!hiddenUnionEdge(p))]:spec.prims;
+  for(const p of strokes){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
+      const hidden=hiddenUnionEdge(p);
+      const w=hidden?1.2:p.role==='dim-line'||p.role==='dim-ext'||p.role==='axis-line'||p.role==='cut-radius'?1.1:p.role==='segment'||p.role==='net-diagonal'||(p.role==='net-edge'&&p.accent)||(p.role==='space-segment'&&p.accent==='ACCENT')?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.mark?`data-mark="${p.mark}"${p.markEdge?` data-edge="${p.markEdge}"`:''} data-mark-index="${p.markIndex}" data-mark-count="${p.markCount}"`:'',p.face&&p.diagonal===undefined?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.diagonal!==undefined?`data-face="${p.face}" data-diagonal="${p.diagonal}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:'',(p.role==='net-edge'||p.role==='net-diagonal'||p.role==='space-segment')&&p.accent?`data-accent="${p.accent}"`:'',p.lineId?`data-line="${p.lineId}"`:'',p.space?'data-space="1"':''].filter(Boolean).join(' ');
-      body+=`<g data-layer="40"><line ${attrs}${p.color!==undefined?` data-color="${p.color}"`:''} stroke="${p.color!==undefined?PALETTE[p.color].line:p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
+      body+=`<g data-layer="40"><line ${attrs}${p.color!==undefined?` data-color="${p.color}"`:''} stroke="${hidden?'#a0a0a0':p.color!==undefined?PALETTE[p.color].line:p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
     }else if(p.t==='arc'){
       const A=[p.cx+p.rx*Math.cos(p.u0),p.cy-p.ry*Math.sin(p.u0)].map(r6),B=[p.cx+p.rx*Math.cos(p.u1),p.cy-p.ry*Math.sin(p.u1)].map(r6);
@@ -3386,7 +3407,13 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':label.role==='face-label'?'AREA_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.mark?` data-mark="${label.mark}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''}${label.countKind?` data-count="${label.countKind}" data-count-n="${label.countN}" data-solid="${label.solid}"`:''}${label.faceOf?` data-face-of="${label.faceOf}"`:''}${label.spaceOf?` data-space-of="${label.spaceOf}"`:''}${label.textId?` data-text-id="${label.textId}" data-at-kind="${label.atKind}" data-target="${esc(label.target)}"`:''} ${label.kind==='TEXT'?`data-text="${esc(label.text)}"`:`data-tex="${esc(label.tex)}"`} data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
     const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    // A directly published problem figure has no outer composite to supply its accessible name.
+    const problemFigure=identity?.surface==='PROBLEM_VISUAL'&&typeof plan.caption==='string';
+    if(problemFigure&&(!plan.caption.trim()||/[\r\n]/.test(plan.caption)||plan.caption.length>500))throw new Stop('SOLID_ACCESSIBILITY_TITLE_INVALID');
+    const description=plan.accessibilityDescription??'입체도형과 주어진 길이 및 위치를 나타낸 그림이다.';
+    if(problemFigure&&(typeof description!=='string'||!description.trim()||/[\r\n]/.test(description)||description.length>500))throw new Stop('SOLID_ACCESSIBILITY_DESCRIPTION_INVALID');
+    const names=problemFigure?`<title id="visual-title">${esc(plan.caption)}</title><desc id="visual-desc">${esc(description)}</desc>`: '';
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${problemFigure?' aria-labelledby="visual-title visual-desc"':''}${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${names}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-solid-'+Date.now()+'.svg',svg);
     let response;

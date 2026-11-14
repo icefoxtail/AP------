@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "m1s2-targeted-followup-v1",
+  "owner": "GPT_ROOT_64695B8EDE31",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+  "ordinal": 15,
+  "questionUid": "qid_v1_b8fe17673aa77ffa68f8d38ccaafc41c4c0fa3514e2c088999e936fe920588d1",
+  "beforeSourceBlob": "d68a1987bcf0d6ee3f5fc1a70eef5a1f644e5e9e",
+  "sourceBlob": "e71505db09d176f5ab9b48f2d64d4e52514f5f33",
+  "status": "SEMANTIC_DECIDED_WITH_CONTENT_REPAIR_DEBT",
+  "changes": {
+    "problemTypeKey": {
+      "before": null,
+      "after": "PT_M1_CROSSING_POLYGON_ANGLE_SUM"
+    },
+    "templateKey": {
+      "before": null,
+      "after": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION"
+    },
+    "courseKey": {
+      "before": null,
+      "after": "M1-2"
+    },
+    "rpmPrimaryPath": {
+      "before": null,
+      "after": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "평면도형",
+        "L2": "다각형",
+        "L3": "삼각형·다각형의 각",
+        "L4": "각의 크기 계산"
+      }
+    },
+    "rpmL3": {
+      "before": null,
+      "after": "삼각형·다각형의 각"
+    },
+    "rpmL4": {
+      "before": null,
+      "after": "각의 크기 계산"
+    },
+    "crossConceptKeys": {
+      "before": null,
+      "after": []
+    },
+    "conditionKeys": {
+      "before": null,
+      "after": []
+    },
+    "integrationPattern": {
+      "before": null,
+      "after": "NONE"
+    },
+    "primaryMethod": {
+      "before": null,
+      "after": "교차 도형의 내각합과 교점의 각 관계를 결합해 표시각의 합을 결정한다."
+    },
+    "decisiveStep": {
+      "before": null,
+      "after": "원본 PDF의 닫힌 외곽과 내부 삼각형을 확인했다. 기존 해설의 두삼각형 전제는 내용 수정 부채로 분리한다."
+    },
+    "difficultyBucket": {
+      "before": null,
+      "after": 3
+    },
+    "difficultyConfidence": {
+      "before": null,
+      "after": "medium"
+    },
+    "difficultyBoundaryFlag": {
+      "before": null,
+      "after": "B34"
+    },
+    "legacyLevelCompatibility": {
+      "before": null,
+      "after": "BORDERLINE_ACCEPTABLE"
+    }
+  },
+  "decision": "REUSE_EXISTING_ACTIVE_CROSSING_POLYGON_TYPE_AND_EXACT_BINDING",
+  "reason": "원본 전체 그림에서 작은 내부삼각형과 교점의 오목각을 포함하는 외곽 다각형 구조를 확인했다. 각의 합과 교점 보조각 소거가 핵심이며 도형의 모양만 보고 별다각형 회전각 유형으로 바꾸지 않았다.",
+  "originalVisualEvidence": {
+    "driveFileId": "1CzcrWOdTw-pS0L17oTgwyEWVgr4CBx_4",
+    "url": "https://drive.google.com/file/d/1CzcrWOdTw-pS0L17oTgwyEWVgr4CBx_4/view",
+    "rawSha256": "669d18b77c49a287592f6a954bf5ae1876350bc434338d886a1a7fedaa6bfa94",
+    "page": 3,
+    "originalSchoolFooterRead": true
+  },
+  "registry": {
+    "activePt": true,
+    "activeTpl": true,
+    "parentMatch": true,
+    "exactBinding": "2022|중1 수학|M1-06|M1-06-POLYGON_CIRCLE",
+    "exactCrosswalk": "M1-RPM-197-CROSSING-ANGLE-SUM-20261113"
+  },
+  "independent": {
+    "path": "docs/operations/m1-s2-meta-full-20261114/independent/25-palma-mid-q15-original.json",
+    "sha256": "8db6f268c519a6f323bca1bca9ac84110fdb4c3346da6bc932f08e5afacb4a1c",
+    "reviewer": "META_C"
+  },
+  "fourSlot": {
+    "decision": "KEEP_VALID_CORE_TAGS_AND_RECORD_ENRICHMENT_PLAN",
+    "currentCore": {
+      "given": [
+        "각"
+      ],
+      "goal": [
+        "각",
+        "합"
+      ],
+      "method": [
+        "내각"
+      ],
+      "condition": []
+    },
+    "proposedAdditionalVisualTerms": {
+      "given": [
+        "삼각형",
+        "다각형"
+      ],
+      "method": [
+        "맞꼭지각",
+        "한 점 둘레각"
+      ]
+    },
+    "applicationStatus": "CONTENT_DEPENDENT_ENRICHMENT_PENDING",
+    "reason": "기존 해설에 없는 다각형·교점 단계를 새 해설 인용인 것처럼 만들지 않았다. 현재 내각 핵심태그는 타당하며 원본의 완전한 시각 구조에 맞춘 보강안은 후속 내용 수정과 함께 direct evidence를 결속한다."
+  },
+  "contentDebt": {
+    "kind": "SOURCE_DIAGRAM_CROPPED_AND_SOLUTION_STRUCTURE_MISMATCH",
+    "nextAction": "학생용 원그림 crop과 기존 두삼각형 해설 전제를 별도 내용 수정 담당자가 원본 PDF와 대조한다. 해당 수정 후 새 내용/그림 판본에 4칸 보강을 결속한다.",
+    "studentContentChanged": false
+  },
+  "mathFullR1R2Performed": false
+}

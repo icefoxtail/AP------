@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "pr-ci-result-v1",
+  "status": "ALL_REQUIRED_OBSERVED_WORKFLOWS_SUCCESS",
+  "repository": "icefoxtail/AP------",
+  "pullRequest": 1960,
+  "pullRequestUrl": "https://github.com/icefoxtail/AP------/pull/1960",
+  "expectedHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+  "observedHeadSha": "f0a89b11f7c085b08ab406831f0d2bc0681fefed",
+  "headMatches": true,
+  "observedBaseSha": "ceeafbee1cc000f5308e040ba252729f0982c827",
+  "pullRequestState": "open",
+  "mergeable": true,
+  "observedAtUtc": "2026-11-13T12:03:43.410Z",
+  "workflowCount": 5,
+  "jobCount": 7,
+  "successJobs": 7,
+  "failedJobs": 0,
+  "pendingJobs": 0,
+  "workflowRuns": [
+    {
+      "id": 43419988776,
+      "name": "Generated Consumer browser smoke",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131867283517,
+          "name": "browser-smoke",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43419988718,
+      "name": "JS Archive Meta Resolver Bridge",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131867283164,
+          "name": "resolver-bridge",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43419988726,
+      "name": "Problem Bank Shared Meta",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131867283025,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43419988714,
+      "name": "Archive2 Runtime Guard",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131867284556,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131867284986,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43419988749,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 131867283522,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131867340838,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "previousFailedHead": "8bab8a18877415b0d63ea79f01bf46d9a434be33",
+  "previousEvidence": {
+    "path": ".tmp/m1-meta-review/01-ci-result.json",
+    "sha256": "232fc5d7b03249bf5869ceaf6322a5bfa1e60099e21547dedfca0058f3308799"
+  },
+  "remediation": "Four stale rpm-middle-toc script cache query references aligned by ROOT; no old-head workflow rerun.",
+  "boundaries": {
+    "readOnlyGitHub": true,
+    "workflowRerun": false,
+    "trackedFilesEdited": false,
+    "commentsPosted": false,
+    "merged": false,
+    "mainMetadataWriterRegistration": "NOT_CHECKED_IN_THIS_REPORT",
+    "mathQaClaimed": false
+  },
+  "nextAction": "ROOT may complete final main/lease verification and merge, then verify the single main writer receipt and actual projection."
+}

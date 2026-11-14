@@ -1,0 +1,134 @@
+name: AP Math G7 visual short verification
+
+on:
+  push:
+    branches: ['feat/g7-visual-shorts-20261113']
+    paths:
+      - 'apmath/playground/**'
+      - '.github/workflows/apmath-g7-visual-shorts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g7-visual-short-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            apmath/playground
+            docs/agents
+            docs/guides
+          persist-credentials: false
+      - name: Record exact public source for reproducible review
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/g7-review"
+          git rev-parse HEAD > "$RUNNER_TEMP/g7-review/commit.txt"
+          git archive --format=tar HEAD AGENTS.md apmath/playground docs/agents docs/guides > "$RUNNER_TEMP/g7-review/source.tar"
+          (cd "$RUNNER_TEMP/g7-review" && sha256sum source.tar > source.sha256)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g7-review-source-${{ github.sha }}
+          path: ${{ runner.temp }}/g7-review/
+          retention-days: 14
+          if-no-files-found: error
+  learning:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Mathematics and existing player contracts
+        run: |
+          node --test apmath/playground/next/tools/g7-short-*.test.mjs apmath/playground/next/tools/video.test.mjs apmath/playground/next/tools/lessons.g7-*.test.mjs
+      - name: Install actual Chromium and Korean fonts
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: All G7 proof mappings and changed entry integration
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          G7_EVIDENCE: ${{ runner.temp }}/g7-evidence
+          G7_REFERENCE_PLAYBACK: reuse
+          G7_REFERENCE_EVIDENCE: 'CI 43346417520 at b0221b2730340c25c3559cf7f334e60860d4006c verified leaf-area, tank-remain and tank-over at both 1440 and 390 with strict actual scene/plan identities. CI 43335954065 retains four correctly identified reference plans and 36 unique function scenes. No reference implementation changed in this label-only follow-up.'
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-http.log" 2>&1 &
+          for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
+          node apmath/playground/next/tools/g7-learning-browser.mjs
+          # All 318 routes and question mappings still run. Retain the now
+          # correctly identified reference playback from its exact prior CI.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g7-learning-browser-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/g7-evidence/
+            ${{ runner.temp }}/g7-http.log
+          retention-days: 14
+          if-no-files-found: warn
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Reuse CI43346417520 for unchanged geometry. Only the final
+          # label/initial-fit corrections need new four-size captures/playback.
+          - { lab: g7-circle-sector, mode: static, scenes: 'rl-semi', live_scenes: 'rl-semi', exclude_scenes: '' }
+          - { lab: g7-surface-volume, mode: static, scenes: 'sv3-7,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', live_scenes: 'sv3-7,sv4-2,sv4-3,sv4-4,sv5-6,sv6-1', exclude_scenes: '' }
+          - { lab: g7-construction, mode: static, scenes: 'c1-1', live_scenes: 'c1-1', exclude_scenes: '' }
+          - { lab: g7-solids, mode: static, scenes: 's3-5,s4-2,s4-4', live_scenes: 's3-5,s4-2,s4-4', exclude_scenes: '' }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            apmath/playground
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and Korean fonts
+        run: |
+          npm install --prefix "$RUNNER_TEMP/g7-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.56.1
+          "$RUNNER_TEMP/g7-browser/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y fonts-noto-cjk
+      - name: New geometry questions at four sizes and actual normal-speed playback
+        env:
+          NODE_PATH: ${{ runner.temp }}/g7-browser/node_modules
+          G7_EVIDENCE: ${{ runner.temp }}/g7-geometry-evidence
+          G7_SHORT_LABS: ${{ matrix.lab }}
+          G7_SHORT_MODE: ${{ matrix.mode }}
+          G7_LIVE_SCENES: ${{ matrix.live_scenes }}
+          G7_SHORT_EXCLUDE_SCENES: ${{ matrix.exclude_scenes }}
+          G7_SHORT_SCENES: ${{ matrix.scenes }}
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > "$RUNNER_TEMP/g7-geometry-http.log" 2>&1 &
+          for i in {1..20}; do curl --silent --fail http://127.0.0.1:8765/apmath/playground/next/kit/apl-catalog.js >/dev/null && break; sleep 1; done
+          node apmath/playground/next/tools/g7-geometry-shorts-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g7-geometry-${{ matrix.lab }}-browser-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/g7-geometry-evidence/
+            ${{ runner.temp }}/g7-geometry-http.log
+          retention-days: 14
+          if-no-files-found: warn

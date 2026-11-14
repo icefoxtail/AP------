@@ -1,0 +1,935 @@
+{
+  "baseline": {
+    "commit": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "tree": "31bb7763bb56018167279ad094dd787989129f75"
+  },
+  "binding": {
+    "afterCourse": "중1 수학",
+    "arrayLength": 179,
+    "beforeCourse": "中1 수학",
+    "changedPaths": [
+      "/bindings/154/standardCourse"
+    ],
+    "declaredCount": 179,
+    "unchangedRows": 178
+  },
+  "createdAt": "2026-11-13T21:06:55.399728+00:00",
+  "failures": [],
+  "generatedByproducts": [
+    {
+      "afterSha256": "e7f698f7a87432e3cd79b5cc2701ddbf3dca895b20ade4337b73546c09f25ac2",
+      "beforeSha256": "6c04884f236384ae4b978105f2b01b1ba912093ab38bf9c18416ee9a8c4de511",
+      "changedPaths": [
+        "/files/7/sha256",
+        "/files/9/sha256",
+        "/files/31/sha256",
+        "/files/32/sha256",
+        "/files/133/sha256",
+        "/projectionVersion"
+      ],
+      "classification": "DERIVED_VERSION_OR_INPUT_HASH_ONLY",
+      "otherValuesEqual": true,
+      "path": "archive/data/archive2-canonical-input-manifest.json"
+    },
+    {
+      "afterSha256": "48c338521092454c858353e6cac1926bc6d64741c04609179ec5bc59e28ed289",
+      "beforeSha256": "ec7ae2267134907854a7decafc7b09bc615035be6391b45d8f0dcbdaddcae066",
+      "changedPaths": [
+        "/baseProjectionVersion",
+        "/mixedLookup/baseProjectionVersion",
+        "/mixedLookup/context/sha256",
+        "/mixedLookup/uidBuckets/15/sha256"
+      ],
+      "classification": "DERIVED_VERSION_OR_INPUT_HASH_ONLY",
+      "otherValuesEqual": true,
+      "path": "archive/data/archive2-source-verification-index.json"
+    },
+    {
+      "afterSha256": "90d8822ebb0e98edc9fff461bbe5cb6170643e0c73047c86ff2557071a46d8e7",
+      "beforeSha256": "2e13af7a45a62800834049794341978938372c1e151ebb6427e248b52e3c97a4",
+      "changedPaths": [
+        "/generatedAgainst/authorityInputsSha256"
+      ],
+      "classification": "DERIVED_VERSION_OR_INPUT_HASH_ONLY",
+      "otherValuesEqual": true,
+      "path": "archive/data/basic-scope-parent-links.json"
+    },
+    {
+      "afterSha256": "754b7117371f8edd04e2f8b0440a0fb4707e63c3d2e9837081f6605fa52f6908",
+      "beforeSha256": "70c972a604b50417b7e079b8eb0f745995905ed13375ae720f17be7220cd33e4",
+      "changedPaths": [
+        "/checked/archive2CatalogIndexVersion",
+        "/checked/currentCanonicalSourceReadinessV1/catalogIndexVersion",
+        "/reviewedApplyV1/packCounts/8/runtimeSha256"
+      ],
+      "classification": "DERIVED_VERSION_OR_INPUT_HASH_ONLY",
+      "otherValuesEqual": true,
+      "path": "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+    }
+  ],
+  "inputPartition": {
+    "beforeFiles": 116,
+    "completeDisjointPartition": true,
+    "outputs": 7,
+    "protectedFiles": 109
+  },
+  "intentionalCodeCopies": [
+    "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+    "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+    "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+    "tools/ci/reviewed-meta-register-pass.sh"
+  ],
+  "notPerformed": [
+    "Consumer rerun",
+    "Registrar or builder rerun",
+    "R1/R2/R3",
+    "Mathematical FinalQA",
+    "Git or index mutation",
+    "Production source or canonical mutation"
+  ],
+  "operationalMainRegistrationClaimed": false,
+  "outputs": [
+    {
+      "afterSha256": "4a8b9715bafd9b70d0fa66a1f51e7ee03eac3af0272934075007c9c9894f55bd",
+      "beforeSha256": "9e4ea7b2be2868c1139942d22f0f72ad99174cb28204f0080277e356734db93b",
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "beforeSha256": "5afbd86d471396e5f202d5e3d00369626be9e6351906b10d699758255feb06ec",
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "3ac6cfa6b9be161c6d8f2b354757acdb47c8f7506c2f8c4569279df0492108fa",
+      "beforeSha256": "ba017ebf3ddbe99675d55b28f62ee31cec3ff60af5254a04b415e4ad067e6ed5",
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "a139f0d316acdf8ba4a58baa6c4c80862b7fc086d96c973b869476347cc3f980",
+      "beforeSha256": "53cd70317cb28b8ea06099505a799da62994a9de25caadaa343dce3d9a012fa4",
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "631c1648d79eba63d015531d9e2e59b9c0be27a459dbf4c0f938920d6ef014df",
+      "beforeSha256": "17769652596a06ad5e40ff3de77733754c87c00b5977c542892edc074343dd20",
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "7a9047d97e9ab868a3e5bec246adcbe1645bd80db25a286aa95b1eea92105bc4",
+      "beforeSha256": "70c27072c9c28bbf2014568dc4032f0735cbaf049f74a82543ae484baeec91d0",
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "receiptMatched": true
+    },
+    {
+      "afterSha256": "7dfb24d8357875fe640bbebc199f453e2d63f72be563042fbf93b2f6ccc2882b",
+      "beforeSha256": "b037c915b84ffc85ae8349d49bb34ef4f62c8b77de91fb8b0d6e1c934afd656e",
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "receiptMatched": true
+    }
+  ],
+  "pack": {
+    "afterVersion": "1.0.9",
+    "beforeVersion": "1.0.8",
+    "changedPaths": [
+      "/packVersion"
+    ]
+  },
+  "proofRoot": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-register",
+  "protected": {
+    "checked": 109,
+    "entries": [
+      {
+        "equal": true,
+        "gitBlob": "f797a6ba365e245741234e4ad4428e6a45cd90cb",
+        "path": "archive/data/archive2-item-review-overrides.json",
+        "sha256": "de96971c50a8c71ecc6d2dff95e59951f7fe10411fba0c6c176903d8242297c1"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6a8837b713a8bfec9d415865fd1a29005da30dc3",
+        "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+        "sha256": "6f0c3508c293f6861a7d9a2641be2c90769d8cc46c00c75cbe67092edb009d54"
+      },
+      {
+        "equal": true,
+        "gitBlob": "dd6bcc336d20e09b671559967d56045285e618ec",
+        "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
+        "sha256": "dd2bc4069ed66978b42550739c4c7807a30346463a78dfa81f5613d1680f129c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "1fb3cdf8f43a47786a45ac119e90bcd91c9763ed",
+        "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+        "sha256": "61026eefaae21ab74f6b7a23ddbd20b27f43ccdb921105ebe75dc3909147c83e"
+      },
+      {
+        "equal": true,
+        "gitBlob": "b0c3ed16a89eaacde6516ee10ea97b135d805d95",
+        "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
+        "sha256": "d6dac004fc42c4d7c5e8fc411ea97bc653ba5681079698f77f352c6518d6b9e4"
+      },
+      {
+        "equal": true,
+        "gitBlob": "654a94820dc861500dc7efcb2e3141e31c039535",
+        "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+        "sha256": "97a3b7de9161ee8840ca41c2a4c8ca9876734937198d87cb4c16e2e9e89849c6"
+      },
+      {
+        "equal": true,
+        "gitBlob": "4f8c13c5836510dc445caf6a014ba5653a8096a1",
+        "path": "archive/data/meta-foundation/canonical/concepts/logic-set.json",
+        "sha256": "f33efc641f56ace7dd121238f4b2638f410570bb4a8f47642111df67992b0eeb"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6251231fb6aacdcf5df806988be7a5ea7a896b7a",
+        "path": "archive/data/meta-foundation/canonical/concepts/middle1.json",
+        "sha256": "61fe5e236cfc4cf68d5cc17171617f9303c692b3d4caf889800cf5e2b088ad3d"
+      },
+      {
+        "equal": true,
+        "gitBlob": "3521d2289b1b65527944f63536b2b60a68f25958",
+        "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
+        "sha256": "c5e617dd42eca2268207905cdee4ebe61939f76f9108349b692aeaee47b5bcf1"
+      },
+      {
+        "equal": true,
+        "gitBlob": "533323b3b721b2ca92d0ee849d493980fad96f0c",
+        "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+        "sha256": "3c24c543d18345e8144bd013064666c0a29afa8138e7007ccb209dea5c210837"
+      },
+      {
+        "equal": true,
+        "gitBlob": "bdf3f98c66751c309625436bbc333a88bed4b4e7",
+        "path": "archive/data/meta-foundation/canonical/concepts/sequences.json",
+        "sha256": "dbc95de1be6ba1c3ebd487d1827f8d6c325d2ae909981ff8f61544742678957a"
+      },
+      {
+        "equal": true,
+        "gitBlob": "2d9c9a6e9e697c4ba0fe679c22b06e503afa73eb",
+        "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+        "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657"
+      },
+      {
+        "equal": true,
+        "gitBlob": "46c5fd4f64209e5e9d0dc098030bd318c7f1f0de",
+        "path": "archive/data/meta-foundation/canonical/concepts/trigonometry.json",
+        "sha256": "6dc2372dc0ed53987215f08a003a91c3453e2e5c2988f43ba730a2a8ec599974"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f6f2977d2ae21cc8eb38f65db57517867fce8898",
+        "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+        "sha256": "8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617"
+      },
+      {
+        "equal": true,
+        "gitBlob": "1fd85b5f2e2262cbb1bb0cf34ab643c8085aa7d5",
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf"
+      },
+      {
+        "equal": true,
+        "gitBlob": "29b3f87ca3067ce165dbde00d783ef84520f5b38",
+        "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/aliases.json",
+        "sha256": "96e5c8ef2d0a31204d9b58b38fd1c613af78c54d849004659d251a61a47cce63"
+      },
+      {
+        "equal": true,
+        "gitBlob": "10de34c1675f86ba59ebd0552e2e7b930fa8d219",
+        "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+        "sha256": "d659538f5253bd081706c299b82ac5814ba3cb85e64420a8a282ab042adbf61c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f64e577df865d743ab55675d7ddb3a1ef2b8e531",
+        "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/pack.json",
+        "sha256": "6457d8d5956a4da6b6b78eed0d271e440b1ed398438a7b29c708e4fd3617c591"
+      },
+      {
+        "equal": true,
+        "gitBlob": "04c4d2771f925e7d5d07add939528bdbe4441f43",
+        "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/taxonomy.json",
+        "sha256": "1aa1dcd5faa83efcb0ec211c631f935ca2e1c604bb41b58fd30ae977cd420f2b"
+      },
+      {
+        "equal": true,
+        "gitBlob": "967fb8128dac9e6317a8a82287720b001fee3b54",
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/aliases.json",
+        "sha256": "f3af3f54d502bf8e7ae7b6dd84ac74ca46eeb8aa928171408e38a0f6f8f3f50c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "43787d9a0db21270bc724eb6809cd1bcc81ea004",
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+        "sha256": "ff59576b8df6c016103841234f0bc64bdfcc16ac875df2f23f8d299b4ff66330"
+      },
+      {
+        "equal": true,
+        "gitBlob": "5453ad4713d3528ae813ef8891518e741d06ce15",
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/pack.json",
+        "sha256": "f9f334947ab521a168c27eac76c3d87a25e9e31a2af9c8f88fa50ef4a1bed427"
+      },
+      {
+        "equal": true,
+        "gitBlob": "36df7a6afc8d919743b256fb87af88428bae1081",
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+        "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+      },
+      {
+        "equal": true,
+        "gitBlob": "e12ddf41e652f81c8a15f2ab93586fd95e94ddba",
+        "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/aliases.json",
+        "sha256": "0cf59c0d43ef96fd46b4c16325e0c3d7f6f6aadbf1decef262658e6f5755110c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f31d642f743e0f97fbeb68d37e44ef863d15d97d",
+        "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/bindings.json",
+        "sha256": "2a2b9d2cdf3d5b2cdbf27279d85d69b392f70e5706d073b8ed92bf2a4ea13160"
+      },
+      {
+        "equal": true,
+        "gitBlob": "ca185cea2d48e0f7837fc5b8f1591d7b28b9e935",
+        "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/pack.json",
+        "sha256": "14be7fac9251ae3b58994a942651080877b740f2dbe1eb6ce2a0dde0782e8ff2"
+      },
+      {
+        "equal": true,
+        "gitBlob": "2c9b670ef99fa5a418320a9146e06c6a3d5029db",
+        "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/taxonomy.json",
+        "sha256": "6cdb69282a67115935134e5d6d7632c51fa9e26126ae4a45e1a1ef48813b471f"
+      },
+      {
+        "equal": true,
+        "gitBlob": "e16b6f850ee227f43ee3b02ab347529098f8aa25",
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/aliases.json",
+        "sha256": "a0e69ab0e7b3825763272f086dccdb86ef2cd0730552acf91529092c884d3fd8"
+      },
+      {
+        "equal": true,
+        "gitBlob": "37d7cc4ba8c1b5356f51d27d183b25db1b9ce023",
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+        "sha256": "e881896df6f8ae5a5728876e1fcb0dffecb9e9bdc01f7e50f10f842eaffb826e"
+      },
+      {
+        "equal": true,
+        "gitBlob": "8f4681aa70523ae547e2a5f1c13a76c7bfd7b66c",
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+        "sha256": "eb7f9aadc04019ca36c4c0255fa46f84a5a5de52d031e5fe5e71665a51a97c2c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "73466c5d547b14ade63df5975925f24a018641e4",
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f470e6a944da09ce7b9b406364f32894054af67a",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/aliases.json",
+        "sha256": "a459a72979b235d531b3b9992d08d5dec7d4e60f3913788c400d442dba79ece6"
+      },
+      {
+        "equal": true,
+        "gitBlob": "28c9a1639425ca1b8f4375da6612d15c7f5f94f7",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+        "sha256": "35302a5b1448feea34bb03ee24c9b7059a7f84dd9510fb19274250f39fab29ad"
+      },
+      {
+        "equal": true,
+        "gitBlob": "843cb169deed88fb9d9642fa334608c4f842d755",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/pack.json",
+        "sha256": "dac68a99e092fe1170a1fe002e4de14ae232328ff03b33b7fd73979dcc026082"
+      },
+      {
+        "equal": true,
+        "gitBlob": "dea309fa49338a2228c0828f660578e075fec7f9",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+      },
+      {
+        "equal": true,
+        "gitBlob": "c2339460c6e6d2fc91e2fb7ab2f9665899cdac55",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry/aliases.json",
+        "sha256": "db186215fe6ef0ced6c6dcd3825727af1c91f77ad34a642d23a2febc09b81926"
+      },
+      {
+        "equal": true,
+        "gitBlob": "0d8bb6f228a4d468f403543f9bdcf2892d284e56",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+        "sha256": "af843d20885e448ea5a730d3c8a7a5e8b21abf93c45d5658f4b6aa5e9ab3b1f7"
+      },
+      {
+        "equal": true,
+        "gitBlob": "bcb6f0552ef27e1b899772c8fc52d171bb407ca0",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+        "sha256": "2b560ef0db7ec3aad0178a73d60c1cf6de7e267855708865bb67d890e7c20610"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6e94b45321ef28b1edfff81bbc486ae4ff1c07ff",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry/taxonomy.json",
+        "sha256": "bc6a43a4b941af7891014d311396da352ceac53c30adf54ea1e111cbb7fc4d85"
+      },
+      {
+        "equal": true,
+        "gitBlob": "27dce1a6fe73d43c73e79c384e60c7b9f04f6e2f",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/aliases.json",
+        "sha256": "c540580aba9060ceff81319155d7c1337bf1e811289483511c3030c2d68449c4"
+      },
+      {
+        "equal": true,
+        "gitBlob": "ec72c9d6c616382ebca4d6a7392df8e04db15619",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+        "sha256": "7c2334d36cd2eee4eb90f6962d4301317fcde385a9cb88f1c1e15a10f75ae9f8"
+      },
+      {
+        "equal": true,
+        "gitBlob": "acec75b3bc83998d0e803ffe70d632afdcb3de7c",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+        "sha256": "0f8cf7afcd3aca9d7c7a96e966803144d1642f5bf2bad99e505d30f287505b85"
+      },
+      {
+        "equal": true,
+        "gitBlob": "9468b6883b83f47d618d3576e8e2ff2227748edf",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+        "sha256": "f86de5514f0412339a7ecd4c726263cf84db28d961fcfe24d95644802c5cf4ef"
+      },
+      {
+        "equal": true,
+        "gitBlob": "cb8f3753f29de1b874d1a819724daa8adc1ef465",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/aliases.json",
+        "sha256": "3c46a5ad22e2ba13fa7d8dfb2051ff4519e790befea0701908d4ff300ac5f461"
+      },
+      {
+        "equal": true,
+        "gitBlob": "e2a47d81ddbc5c531ea53b22feb049c2c82d12f7",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/bindings.json",
+        "sha256": "ab37bbce702c73d28dd14415d6ba7fe1cb55c42417162f97f497b277f3da9379"
+      },
+      {
+        "equal": true,
+        "gitBlob": "7f4b99b2fbcc7088be9e013ecf44e5de2df0e520",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/pack.json",
+        "sha256": "60cbdccb978bafbf4edf1bf04e081fb39970a0334c827079957e3ba6cd796648"
+      },
+      {
+        "equal": true,
+        "gitBlob": "8f3eb8a74d70e267ff37a66b20c17fc50d74cbeb",
+        "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/taxonomy.json",
+        "sha256": "533eb7222eb313e034fddb8e3034653dc8763472ab232c988d10d54a36ecea4a"
+      },
+      {
+        "equal": true,
+        "gitBlob": "16f6217cf7f00d8bc759cb3de313a22674d1ac91",
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/aliases.json",
+        "sha256": "9d5bca3366f3a8823afd506be37f6a8b196b1599faaa5f53a548d4023c48d78a"
+      },
+      {
+        "equal": true,
+        "gitBlob": "9b3d0cb40054198b34d36db2f7c5ad2512a94c2a",
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+        "sha256": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6d5e8b79cacba5a6d9cc2ba72c5a4666a986b938",
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+        "sha256": "91c6493661c00809e6b1c613f886ac4eb37289558abe8274b3929f5c2cb577ca"
+      },
+      {
+        "equal": true,
+        "gitBlob": "b6d279a2913aac0a754b9bfb4ccf3bb74c437cc5",
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+        "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+      },
+      {
+        "equal": true,
+        "gitBlob": "588f977b18de391f189def3aeae74f56f22bfb2e",
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/aliases.json",
+        "sha256": "9fb49614a2829b3d928e90a2d91d98c3a53dd6e07bbb47fbffb31b37f33e3912"
+      },
+      {
+        "equal": true,
+        "gitBlob": "dd4b573c8b6a9cb0a90211f26034124ad6378379",
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+        "sha256": "50605f20f9f4a37f186ee79c983db4631b4e8922cb7dfedf791722b37497ffe4"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f415d54096b82524af8f81f2354b878c5ab1a080",
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+        "sha256": "b9337290842da013fddda2afe899361232be1428d3395ee25e355459c9358f24"
+      },
+      {
+        "equal": true,
+        "gitBlob": "a103610df452c6158936251920f05bb73559395b",
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+        "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+      },
+      {
+        "equal": true,
+        "gitBlob": "7826146fd794dc9ce7ebc68cd0ff60b026fc416c",
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+        "sha256": "06a45ebecbd7dacfc71e1f795230e6341deee6b726127b807b3f3e99bc13676d"
+      },
+      {
+        "equal": true,
+        "gitBlob": "61a284f88b6ac153a99e24d387ac91ce2ba9c01e",
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+        "sha256": "83f10a0787289d40a896f6118015d224b3672ebac059121f59bb7d31a500a83d"
+      },
+      {
+        "equal": true,
+        "gitBlob": "42a81006dd1d2ceb1d4588e2377d145103fd9b41",
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+        "sha256": "7219c146593318da0046765a106098882e92c649f0e2242ae4dad86442a97b0b"
+      },
+      {
+        "equal": true,
+        "gitBlob": "fe8a9e23dbcd98b7057035a8bde22bb81893564f",
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+        "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2"
+      },
+      {
+        "equal": true,
+        "gitBlob": "1fde5e7e87340444d8b6260911584f540e8aa6e0",
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+        "sha256": "422eadccd96aac0451555aecf69be61bd0405ec4964036fd6eba9c5ccbb16801"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6947b8766655e9d121b26aaa1dfe2c46193585aa",
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e"
+      },
+      {
+        "equal": true,
+        "gitBlob": "2ab85c599d95db5faf46e824aa8ac09edb73c648",
+        "path": "archive/data/meta-foundation/canonical/packs/middle2/aliases.json",
+        "sha256": "932b39f7ba367e04a7c655ed044a8fb109536b45cb48f7155780625b6b73cbf6"
+      },
+      {
+        "equal": true,
+        "gitBlob": "8f2167c118cadb452ef744ccd90ab483a232805a",
+        "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+        "sha256": "6a70842eea515775860fdfc627817cc1ca79f6930b0e474cb807bbc5fe2d0367"
+      },
+      {
+        "equal": true,
+        "gitBlob": "21191207d98fa91351febba475a46f3b1e6095f7",
+        "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+        "sha256": "6856acd77851a76a6d538549f432888722758e479926b0527a102bfcccf71832"
+      },
+      {
+        "equal": true,
+        "gitBlob": "363101b2cf987e71e80526a7e720cbd2dbce4527",
+        "path": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+        "sha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4"
+      },
+      {
+        "equal": true,
+        "gitBlob": "d39f0c2c44c8651003abcbff890d749615333aca",
+        "path": "archive/data/meta-foundation/canonical/packs/middle3/aliases.json",
+        "sha256": "658690343529c52ca583035c1d2811dd3bf816f383ca42a4bc41e17f24bb52ee"
+      },
+      {
+        "equal": true,
+        "gitBlob": "681fd64918717925b3f3886ab7687d5958529a8d",
+        "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+        "sha256": "9754ff2e0a58cecfa6828a204fb00b989cb68e7f30f3c58d35d29d51338c3a55"
+      },
+      {
+        "equal": true,
+        "gitBlob": "a97bf01aba05014e7b159209dc74cdabb553af43",
+        "path": "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+        "sha256": "65808f7f2b8bfb7b1ef1be9d35e2fd2395541a27fd75015e9fa5cef54f2b1b93"
+      },
+      {
+        "equal": true,
+        "gitBlob": "2d671f23a174047286ceda021d773d3f7922f94f",
+        "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+        "sha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+      },
+      {
+        "equal": true,
+        "gitBlob": "691e810f28bcb60b7adf500b1f760813ffef6918",
+        "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/aliases.json",
+        "sha256": "5a5c5839128fbcf40c0cdee802f1e7f6b7f9408b7a18157bab07194ab02458ee"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+        "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+        "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685"
+      },
+      {
+        "equal": true,
+        "gitBlob": "05da3e5f047afd21fe923dd2e6eef7174d14db2e",
+        "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+        "sha256": "52be86bc7ee036677c6a2359fa991c0a95362cb0730814be1230b6aa647a3c99"
+      },
+      {
+        "equal": true,
+        "gitBlob": "aac8ee94fd982755358eefc936cff50fec2d1601",
+        "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+        "sha256": "d47934ac1d6729dd42f434e19bf49b47e5175c4125d496541c88ef90946b8ec1"
+      },
+      {
+        "equal": true,
+        "gitBlob": "0719579105cb0526944edd8235c24a906298ee91",
+        "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/aliases.json",
+        "sha256": "8eaf72d877a8b560455ef948c7229faf0a6c3de841ab9d962edb513259f3422a"
+      },
+      {
+        "equal": true,
+        "gitBlob": "9f650c46d1b42a7b05951465dc5c124e1b0ac963",
+        "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+        "sha256": "5d11705a488f3de996a1a0be10154168748299015052e6d5e1b19d7037817fb9"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f888794056a183bcfe55759b738dfae35f30f4e3",
+        "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/pack.json",
+        "sha256": "19198198adf5cee0fda38708ae71313272d60a854afeb71a750fa0a41945b552"
+      },
+      {
+        "equal": true,
+        "gitBlob": "0dff04fc3f75a1d93a9f8c2a4f83f8165fe63421",
+        "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+        "sha256": "f39e9445169d2c0f42d38a4bd1e3c41219e7e03f28b9a41ab4d76542f638e520"
+      },
+      {
+        "equal": true,
+        "gitBlob": "998024f20f21e7ceeae52683921efd81d2f7c0af",
+        "path": "archive/data/meta-foundation/canonical/packs/trigonometry/aliases.json",
+        "sha256": "74f9273c95bef1eb0188aab181b13de31da36c8b54172c72efe712382296db98"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f0da1e32a7f1ffc539595abf3844deffecb7e37c",
+        "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+        "sha256": "ba5f1e2fa976ef7434fae7e461b1228df6f5b0ce07043e1448a291e6233b9149"
+      },
+      {
+        "equal": true,
+        "gitBlob": "cb7c91719a432bf6d6f447d7f9d35cd5eb7eaa3e",
+        "path": "archive/data/meta-foundation/canonical/packs/trigonometry/pack.json",
+        "sha256": "71a532845d684687fd85992737452fda79537804ddc5d7aad72eb4d3fc0a091f"
+      },
+      {
+        "equal": true,
+        "gitBlob": "3496603694ec3ec27e952bb869eab4ae75371bfe",
+        "path": "archive/data/meta-foundation/canonical/packs/trigonometry/taxonomy.json",
+        "sha256": "e00d94231656f828f82df3e4523135aaf420c4cd1cf3b577b964a864608226da"
+      },
+      {
+        "equal": true,
+        "gitBlob": "a6396ac1d60ba0045c4bc74b75e04bcd60df4c33",
+        "path": "archive/data/meta-foundation/compiled/aliases.json",
+        "sha256": "91cd2389664be06b344276fc8237db0de5fe397010c64ef4ba9aaf1aed1e121d"
+      },
+      {
+        "equal": true,
+        "gitBlob": "c92d9eb64df0d1173b5f964570ddedf0940b0601",
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "sha256": "e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2"
+      },
+      {
+        "equal": true,
+        "gitBlob": "04877329f1732a8f90708819781c9c7485a84820",
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "sha256": "3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208"
+      },
+      {
+        "equal": true,
+        "gitBlob": "29dad85abe258f83881a660f2c88de9e14073b2a",
+        "path": "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522.json",
+        "sha256": "05c30b0709f788ad2c61db3c11b5231a1ce29f1bf7012d626baccd7ccb4659ca"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f49264888fd8ffc33f1db48abdab32e211c6063e",
+        "path": "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2.json",
+        "sha256": "ad444a140df44cd03177ae69f9f0257ae6e1ccef1357e3587c0a3f2937ad5788"
+      },
+      {
+        "equal": true,
+        "gitBlob": "bb8b538ff4e6bb7e65ffe187399b4079838f282f",
+        "path": "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b.json",
+        "sha256": "e271bfba5d17168202ad5530d22f0529d394d62ecb635c62f649b91aa1c95d97"
+      },
+      {
+        "equal": true,
+        "gitBlob": "8eaf73fe04581d601889ba37eba6b551d9e92608",
+        "path": "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac.json",
+        "sha256": "dd1324aed9b365876e39edaafab3cd2c4fd8e7859deca4d6edba18b302ccab7f"
+      },
+      {
+        "equal": true,
+        "gitBlob": "76df4e5c28cf5b0ac90de8becfc600d03a3b30e7",
+        "path": "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb.json",
+        "sha256": "d9a742615e99b82714d0567147b31cbe51325cfc5904081ede1fe5093756f64b"
+      },
+      {
+        "equal": true,
+        "gitBlob": "9d432747c8f7ceae187296a1c105c411461488fe",
+        "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+        "sha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "5f1b68d3680ff031a53c873939f0e198844fa80c",
+        "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+        "sha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86"
+      },
+      {
+        "equal": true,
+        "gitBlob": "744d2a1fc87d88d6b1c9b14ddfbaef5d390bdc93",
+        "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+        "sha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6"
+      },
+      {
+        "equal": true,
+        "gitBlob": "8cc13bb74270ce68f119aec69fe89ea6b72d024d",
+        "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "sha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873"
+      },
+      {
+        "equal": true,
+        "gitBlob": "7ae77769a58ae4b494323ccc0cae82d6e98560bb",
+        "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+        "sha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c"
+      },
+      {
+        "equal": true,
+        "gitBlob": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+        "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959"
+      },
+      {
+        "equal": true,
+        "gitBlob": "3a8e84d5030f861669aa271e7f631adecc3cb62e",
+        "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+        "sha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033"
+      },
+      {
+        "equal": true,
+        "gitBlob": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+        "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+        "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9"
+      },
+      {
+        "equal": true,
+        "gitBlob": "7e30642b331dd969df259e019f6134cfb2c1183d",
+        "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+        "sha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84"
+      },
+      {
+        "equal": true,
+        "gitBlob": "e305a34db250cea79fa4ba8dab6002ee733f0c59",
+        "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+        "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760"
+      },
+      {
+        "equal": true,
+        "gitBlob": "1e1875d502537d5d5e503c315d30ded4a99472df",
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "sha256": "a30aa5bf76476fee5c1ebb7295ea53561030fcd3f4ac2488be23ab917e5c20ea"
+      },
+      {
+        "equal": true,
+        "gitBlob": "73a85105e604e475034b92af74cacac46a224f8d",
+        "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "sha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8"
+      },
+      {
+        "equal": true,
+        "gitBlob": "3afc6f712f7e31b6d1ab5ee5928411566ca48eaa",
+        "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+        "sha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30"
+      },
+      {
+        "equal": true,
+        "gitBlob": "c577dd9525165e0abd1476dbb1c71b1b6af8f165",
+        "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+        "sha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec"
+      },
+      {
+        "equal": true,
+        "gitBlob": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+        "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+        "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7"
+      },
+      {
+        "equal": true,
+        "gitBlob": "1003a81b2a8844ef77cdfb0a6ae620dec082aa69",
+        "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+        "sha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a"
+      },
+      {
+        "equal": true,
+        "gitBlob": "89ccc6a71aaf23fd0ace1c8033574740c23d0a6a",
+        "path": "archive/data/question_identity_map.json",
+        "sha256": "d38b896a127c4cfd9679b03668a0668c31e5107a54403591dda3145ab20ebffe"
+      },
+      {
+        "equal": true,
+        "gitBlob": "a7c1a453fb5ecab57af4133b40856633c0b5d0fa",
+        "path": "archive/data/question_metadata.json",
+        "sha256": "4842ee51b15b531576395440997eb53ccf5ef499b6680115c6091bd4d60f5d56"
+      },
+      {
+        "equal": true,
+        "gitBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+        "path": "archive/exams/original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+        "sha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029"
+      },
+      {
+        "equal": true,
+        "gitBlob": "33bf3967f7f94fc2dd638602cf93e302c61744e5",
+        "path": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+        "sha256": "cd1c72c86ab16ebf0a4d3a3fd74411cfaae9db5410f9893444a217935825f2f1"
+      }
+    ],
+    "equal": 109,
+    "method": "Current raw SHA256 and size equal request and receipt; current Git blob equals actual baseline tree object. Entire metadata and identity hashed as bytes, not reparsed."
+  },
+  "receipt": {
+    "approvalCreated": false,
+    "examFinalQaStatus": "NOT_EVALUATED",
+    "metadataApprovalStatus": "NOT_CREATED",
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-linear-equation-course-spelling-20261113.binding-course-correction.json",
+    "rawSha256": "dde07d5cdc7bc9290dae8bef62d247c1521e47f54658efd44089e6092660a804",
+    "status": "CORRECTED_EXISTING_BINDING"
+  },
+  "remainingUncertainty": [
+    "Some unchanged tracked 4slot files are not materialized; Git diff confirms no mutation, physical raw hashes not claimed for absent files."
+  ],
+  "request": {
+    "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/.tmp/m1-meta-review/04-binding-v2.request.json",
+    "rawSha256": "2b4ce237d03dde8b4c70a9da859883f37a6c9d120639c65633ea0d425f917007",
+    "requestId": "m1-linear-equation-course-spelling-20261113"
+  },
+  "reusedOfficialEvidence": [
+    {
+      "counts": null,
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/.tmp/m1-meta-review/04-binding-v2-projection.json",
+      "performedBy": "parent",
+      "rawSha256": "a854d3ce084facc2823b485e4bcd85f997083cd3d7290ccc2b2d400ea0ad4e1e",
+      "rerunByThisAudit": false,
+      "status": "PASS"
+    },
+    {
+      "counts": {
+        "changed": 5,
+        "checked": 5,
+        "passed": 5,
+        "skippedUnchanged": 0
+      },
+      "path": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-register/.tmp/m1-meta-review/04-binding-v2-consumer.json",
+      "performedBy": "parent",
+      "rawSha256": "c0dc40ea1f750e88158ba28622ee5f81fb24589b43ab928ad7aef367563719b0",
+      "rerunByThisAudit": false,
+      "status": "PASS"
+    }
+  ],
+  "runtime": {
+    "afterRecords": 659,
+    "beforeRecords": 659,
+    "changedPaths": [
+      "/packVersion",
+      "/runtimeVersion"
+    ],
+    "declaredRecords": 659,
+    "otherRuntimeFilesRawProtected": 16,
+    "recordsCanonicalSha256": "5c10373f3684e4666b92fef048ca6fc74e35a98d69c7852db2e8f2faf5b80f64",
+    "recordsOrderedDeepEqual": true
+  },
+  "schemaVersion": "binding-v2-isolated-protection-audit-v1",
+  "scope": "ISOLATED_PRESERVATION_ONLY",
+  "specificProtection": {
+    "existingProofFiles": 5,
+    "fourSlot": {
+      "changedFiles": [],
+      "gitTrackedChanges": [],
+      "physicalRawHashedAndGitBlobEqual": 377,
+      "trackedDataFiles": 384,
+      "unmaterializedTrackedFiles": [
+        "archive-work/4slot-annotate-v1/out/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/16_경북장흥중_1학기_중간_중3_수학.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/16_왕운중_1학기_중간_중3_수학.4slot.json",
+        "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.4slot.json"
+      ]
+    },
+    "metadataAndIdentityWholeBytesUnchanged": true,
+    "overrideIndexWholeBytesUnchanged": true,
+    "priorApprovalProtection": "Entire metadata, identity, override index, all runtime records and existing receipts preserved; no repeated per-UID Consumer run.",
+    "priorClosedQuestionCount": 71,
+    "priorFiles": [
+      {
+        "equal": true,
+        "gitBlob": "dd4c578cbef2c1a08d5adaf051b10f3fb0e8419b",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-palma-2026-mid-meta-review-20261113.json",
+        "sha256": "174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd"
+      },
+      {
+        "equal": true,
+        "gitBlob": "3fdb8ea81301408bc05bf57d7893e262450a757c",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+        "sha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054"
+      },
+      {
+        "equal": true,
+        "gitBlob": "6fe74ab3e215a064dbbbfc8d98555f12e075335d",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+        "sha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f9f7180d4d21f82f8140d8143662dc19260ebbb9",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
+        "sha256": "0f673be4ab627f7d8d89ee66f2f1983ef3a212b9826f1064bf5e207894e92b88"
+      },
+      {
+        "equal": true,
+        "gitBlob": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+        "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+        "sha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56"
+      },
+      {
+        "equal": true,
+        "gitBlob": "21c4a9cee8baca27a43d20c64c0e69bd5bfe5670",
+        "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+        "sha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129"
+      },
+      {
+        "equal": true,
+        "gitBlob": "2b8411c03707eaa39fdf0159e3de448d459da181",
+        "path": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+        "sha256": "1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7"
+      }
+    ],
+    "sources": 2
+  },
+  "status": "PASS",
+  "workingTreeDelta": {
+    "derivedByproductCount": 4,
+    "intentionalCodeCopyCount": 4,
+    "newReceiptPaths": [
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-linear-equation-course-spelling-20261113.binding-course-correction.json"
+    ],
+    "receiptOutputCount": 7,
+    "trackedChangeCount": 15,
+    "unexpectedTrackedChanges": []
+  }
+}

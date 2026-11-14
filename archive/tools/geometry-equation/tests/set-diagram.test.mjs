@@ -56,6 +56,22 @@ const disjoint2={kind:'VENN',sets:[{id:'A'},{id:'B'}],elements:[{text:'1',in:['A
 const disjoint3={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],elements:[{text:'x',in:['B']},{text:'y',in:['A','C']}],shade:'(A∪C)∩(B∪C)',disjoint:[['A','B']]};
 const chain3={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],elements:[{text:'1',in:['A','B','C']},{text:'2',in:['B','C']},{text:'3',in:['C']},{text:'4',in:[]}],subset:['A','B','C'],shade:'B-A'};
 
+test('frameless Venn refuses outside information and preserves the default frame',()=>{
+  const diagram={kind:'VENN',sets:[{id:'A'},{id:'B'},{id:'C'}],shade:'A∪B'};
+  const framed=setDiagramSpec(plan(diagram),solveDiagram(diagram));
+  assert.deepEqual(framed,setDiagramSpec(plan({...diagram,showUniverse:true}),solveDiagram({...diagram,showUniverse:true})));
+  const hide={...diagram,showUniverse:false};
+  const plain=setDiagramSpec(plan(hide),solveDiagram(hide));
+  assert.deepEqual(plain.prims,framed.prims.filter(prim=>prim.role!=='universal'));
+  assert.deepEqual(plain.labels,framed.labels.filter(label=>label.role!=='universal-name'));
+  refuse({...hide,showUniverse:'false'},'SET_SHOW_UNIVERSE_INVALID');
+  refuse({...hide,universe:{name:'U'}},'SET_HIDDEN_UNIVERSE_DECLARED');
+  refuse({...hide,universeLabelOutside:true},'SET_UNIVERSE_LABEL_OUTSIDE_INVALID');
+  refuse({...hide,elements:[{text:'5',in:[]}]},'SET_HIDDEN_UNIVERSE_OUTSIDE_ELEMENT');
+  refuse({...hide,shade:'(A∪B∪C)^c'},'SET_HIDDEN_UNIVERSE_OUTSIDE_SHADE');
+  assert.doesNotThrow(()=>solveDiagram({...hide,shade:'A∩(B^c)'}),'a complement can be used within a set');
+});
+
 test('the engine derives every atomic region and the truth of the set expression itself',()=>{
   const m=solveDiagram(venn2);
   assert.deepEqual(m.cells.map(c=>[c.region,c.shade,c.elements]),[['OUTSIDE',true,[3]],['A',false,[0]],['B',false,[2]],['A∩B',true,[1]]]);
@@ -99,6 +115,22 @@ test('the engine derives every atomic region and the truth of the set expression
   assert.deepEqual(setDiagramSize(table),{width:356,height:318});
   assert.deepEqual(setDiagramSpec(plan(table4),table).prims.filter(p=>p.role==='membership').map(p=>`${p.data.element}:${p.data.set}`),
     ['0:A','0:D','1:B','1:D','2:A','2:B','2:C','3:D','4:A','4:B','5:C']);
+});
+
+test('a problem Venn labels U above a shaded universal rectangle', async () => {
+  const diagram = { ...venn2, elements: [], universeLabelOutside: true };
+  const source = plan(diagram);
+  const model = checkSetDiagramPlan(source);
+  const identity = assetIdentity('palma-q11|11', 'PROBLEM_VISUAL', 'choice-5');
+  const composed = await composeSetDiagramFigure({
+    plan: source, model, identity, typographyPolicy: { baseFontPx: 40, displayScale: 0.292 }
+  });
+  assert.equal(composed.status, 'COMPOSED', JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status, 'PASS');
+  assert.equal(composed.renderedLayout.status, 'PASS');
+  const shifted = bumpLabel(composed.svg, 'universal-name', 0, 30);
+  const observed = await pythonWorker({ diagram, svg: shifted }, { script: observer });
+  assert.ok(observed.result.errors.includes('SD_UNIVERSAL_LABEL_OUTSIDE_PLACE'));
 });
 
 test('set figures that cannot be drawn faithfully are refused with their codes',()=>{

@@ -1,0 +1,173 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ray",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "-3"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B"
+        ],
+        "displayLines": [
+          "ray"
+        ],
+        "displaySegments": [
+          {
+            "id": "ba",
+            "refs": [
+              "B",
+              "A"
+            ]
+          },
+          {
+            "id": "ob",
+            "refs": [
+              "O",
+              "B"
+            ]
+          }
+        ],
+        "axisTickValues": {
+          "x": [
+            6
+          ],
+          "y": []
+        },
+        "rightAngles": [
+          {
+            "id": "rightB",
+            "refs": [
+              "A",
+              "B",
+              "O"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "regions": [
+            {
+              "id": "triangle",
+              "fill": "LIGHT",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "O",
+                    "B",
+                    "A"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 485
+        },
+        "caption": "정비례 그래프 위 점 A와 수선의 발 B",
+        "accessibilityDescription": "원점을 지나는 정비례 직선 위에 점 A가 있고, 점 A에서 내린 수선은 가로축의 점 B에서 만난다.",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 33,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

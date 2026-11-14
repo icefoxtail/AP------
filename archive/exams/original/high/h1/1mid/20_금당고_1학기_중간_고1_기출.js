@@ -628,7 +628,7 @@ window.questionBank = [
       "$7$",
       "$8$"
     ],
-    "image": "assets/images/20_금당고_1학기_중간_고1_기출/q15.svg",
+    "image": "assets/images/20_금당고_1학기_중간_고1_기출/q15-problem-v2.svg",
     "answer": "②",
     "solution": "먼저 주어진 이차방정식의 근과 계수의 관계를 이용하면\n$\\alpha+\\beta=6$, $\\alpha\\beta=3$이다.\n직각삼각형의 두 직각변의 길이가 $\\alpha$, $\\beta$이고, 내접한 정사각형의 두 변이 이 직각변 위에 있다.\n정사각형의 한 변을 $s$라 하자. 정사각형 바깥의 작은 직각삼각형과 원래 삼각형은 서로 닮음이므로\n$\\dfrac{s}{\\beta}=\\dfrac{\\alpha-s}{\\alpha}$이다.\n양변에 $\\alpha\\beta$를 곱하면\n$\\alpha s=\\alpha\\beta-\\beta s$,\n$(\\alpha+\\beta)s=\\alpha\\beta$이므로\n$s=\\dfrac{\\alpha\\beta}{\\alpha+\\beta}=\\dfrac36=\\dfrac12$이다.\n정사각형의 넓이는 $s^2=\\dfrac14$이다.\n두 수 $\\dfrac12$, $\\dfrac14$를 근으로 하는 이차방정식은\n$\\left(x-\\dfrac12\\right)\\left(x-\\dfrac14\\right)=0$이다.\n전개하면 $x^2-\\dfrac34x+\\dfrac18=0$이다.\n양변에 $8$을 곱하면 $8x^2-6x+1=0$이므로 $m=-6$, $n=1$이다.\n따라서 $|m+n|=|-6+1|=5$이므로 정답은 ②이다.",
     "level": "상",

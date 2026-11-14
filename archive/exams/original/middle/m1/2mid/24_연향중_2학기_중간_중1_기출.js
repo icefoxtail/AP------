@@ -80,7 +80,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 점 A에서 시작해 B, C, D를 각각 지나는 반직선 세 개를 화살표로 그린 그림. 시작점 하나에서 반직선이 3개씩 나온다는 것을 보여 준다.",
     "solutionImageCaption": "점 A에서 시작하는 반직선 3개",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "직선·반직선·선분"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 3,
@@ -116,7 +125,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -124,7 +133,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 두 직선이 한 점에서 만나는 그림. 왼쪽 각 x+40°와 오른쪽 각 70°는 맞꼭지각으로 같은 색 호이고, 위쪽 각 y°는 70°와 한 직선 위의 이웃한 각임을 보여 준다.",
     "solutionImageCaption": "맞꼭지각 x+40°=70°, 이웃한 각 y°+70°=180°",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-063",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "맞꼭지각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 4,
@@ -160,7 +178,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -168,7 +186,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 선분 AB 위에 점 N, M이 있고, 위쪽에 AM과 MB가 각각 8cm로 같은 길이 표식으로, 아래쪽에 AB가 16cm로 표시된 그림. AN과 NM은 같은 길이 표식이 있다.",
     "solutionImageCaption": "AB=16cm, AM=MB=8cm, AN=NM",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-061",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "두 점 사이의 거리와 중점"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 5,
@@ -205,7 +232,16 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-068",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "위치 관계",
+      "l3": "공간에서의 위치 관계",
+      "l4": "직선과 평면의 위치 관계"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 6,
@@ -239,7 +275,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_STRAIGHT_ANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -249,7 +287,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 두 번 꺾인 선이 있고, 꺾인 두 점에서 l, m과 평행한 점선 보조선을 그어 40°, 50°, 가운데 선분과 보조선이 이루는 각 α를 같은 색 호로 표시한 그림.",
     "solutionImageCaption": "보조선으로 엇각 40°, α, 50°를 옮겨 x와 y를 구한다",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 7,
@@ -257,9 +304,9 @@ window.questionBank = [
     "category": "정육면체의 위치 관계",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -277,8 +324,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "전개도를 접어 $\\overline{AB}$의 위치를 먼저 잡는다.\n\n$\\overline{CD},\\overline{DM},\\overline{EF},\\overline{EL}$은\n$\\overline{AB}$와 만나지 않고 평행하지도 않아서\n꼬인 위치가 된다.\n\n반면 $\\overline{DE}$는\n접은 뒤 $\\overline{AB}$와 꼬인 위치가 아니다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q7.png",
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "입체도형",
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
@@ -327,7 +374,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_STRAIGHT_ANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -337,7 +386,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 두 직선 l, m 사이에 점 A, B, C, D, S를 지나는 꺾인 선이 있고, B, C, D에서 l, m에 평행한 점선 보조선을 그어 a, a+b, a+b+c 와 d, 25°가 차례로 쌓이는 것을 각 호로 표시한 그림.",
     "solutionImageCaption": "보조선으로 a, b, c, d, 25°를 점 D의 한 직선 위에 모은다",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "평행선과 각",
+      "l4": "동위각·엇각"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 9,
@@ -397,12 +455,12 @@ window.questionBank = [
     "solution": "점 $P$를 지나 $l$과 평행한 직선을 만들기 위해\n먼저 보조선을 긋고,\n아래 교점에서 만든 호와 현의 길이를\n점 $P$로 그대로 옮긴다.\n\n그림의 ㉠~㉥을 실제 작도 순서대로 따르면\n선택지 ②의 순서가 된다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q10.png",
     "imageSize": "tall",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -417,7 +475,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 직선 l과 점 P를 지나는 보조선, 두 개의 긴 호와 현의 길이를 옮기는 작은 호, 점 P를 지나는 평행선이 그려진 작도 그림. 작도 흔적마다 순서 번호 1~6과 원문자 ㉠~㉥이 붙어 있다.",
     "solutionImageCaption": "평행선 작도의 순서를 번호 1~6으로 표시",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "기본 작도",
+      "l4": "선분·각의 이동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 11,
@@ -448,7 +515,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INEQUALITY",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
@@ -494,7 +564,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -534,12 +604,21 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
     "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE"],
+    "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 작도",
+      "l4": "세 변 조건"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 14,
@@ -573,7 +652,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE",
+      "CC_STRAIGHT_ANGLE"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -583,7 +665,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: B, C, D가 한 직선 위에 있고 정삼각형 ABC와 정삼각형 ECD가 점 C에서 만난다. AC와 BC에 눈금 한 개, CD와 CE에 눈금 두 개가 있고, 점 C에서 각 ACD와 각 BCE가 모두 120도로 표시되어 있다.",
     "solutionImageCaption": "AC=BC, CD=CE이고 ∠ACD=∠BCE=120°이므로 두 변과 그 끼인각이 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-079",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "SAS 합동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 15,
@@ -620,7 +711,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -628,7 +719,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 선생님 나이 20개를 줄기별로 작은 수부터 늘어놓은 줄기와 잎 그림에서, 문제의 a, b, c가 놓인 20대 셋째 잎, 30대 여섯째 잎, 40대 넷째 잎에 동그라미를 친 그림",
     "solutionImageCaption": "원자료를 줄기별로 정렬해 a, b, c가 놓인 잎을 동그라미로 표시한 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 16,
@@ -655,19 +755,30 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$40$대 선생님은\n$41,42,42,47,47,48,49$\n의 $7$명이다.\n\n전체는 $20$명이므로\n$\\dfrac{7}{20}\\times100=35\\%$\n\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "상대도수",
+      "l4": "상대도수 계산"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 17,
@@ -706,7 +817,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   },
   {
     "id": 18,
@@ -741,8 +861,10 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -750,7 +872,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 키(cm)별 학생 수를 나타낸 히스토그램. 130~140은 4명, 150~160은 9명, 170~180은 3명이고, 160~170 계급은 점선 테두리 안에 물음표로 표시되어 있다. 160 이상의 두 계급을 괄호로 묶어 6명이라고 적혀 있다.",
     "solutionImageCaption": "160cm 이상인 두 계급을 묶어 6명으로 나타낸 도수분포 히스토그램이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-108",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 19,
@@ -784,8 +915,10 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -793,7 +926,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 130cm부터 180cm까지 계급 크기 10cm인 도수분포 히스토그램에서 150cm 미만인 130~140, 140~150 두 계급을 짙게 칠해 괄호로 묶고, 도수가 비어 있던 140~150 계급은 값 없이 점선 막대로 나타낸 그림",
     "solutionImageCaption": "150cm 미만인 학생은 130~140, 140~150 두 계급에 속한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-108",
+    "rpmPrimaryPath": {
+      "majorUnit": "통계",
+      "midUnit": "자료의 정리와 해석",
+      "l3": "도수분포",
+      "l4": "도수분포표"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "FAMILY_ACTIVE"
   },
   {
     "id": 20,
@@ -824,15 +966,24 @@ window.questionBank = [
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 한 직선 위의 점 A, B, C, D에서 AB와 BC는 같은 길이(눈금 한 개)이고 BC는 6cm이다. 치수선으로 AC=2x, CD=2x(눈금 두 개), BD=3x, AD=4x가 표시되어 있다.",
     "solutionImageCaption": "AB=x라 하면 BD=3x, AD=4x이고 C가 AD의 중점이므로 AC=CD=2x, BC=x=6cm이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-061",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "점·선·면",
+      "l4": "두 점 사이의 거리와 중점"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 21,
@@ -855,13 +1006,15 @@ window.questionBank = [
     "answer": "$\\triangle ABC\\equiv\\triangle CDA$ (ASA 합동)",
     "solution": "$AD\\parallel BC$이므로\n$\\angle BCA=\\angle DAC$\n(엇각)\n\n$AB\\parallel CD$이므로\n$\\angle BAC=\\angle DCA$\n(엇각)\n\n$AC$는 공통인 변이다.\n\n따라서 한 변 $AC$와 그 양 끝 각이 각각 같으므로\n$\\triangle ABC\\equiv\\triangle CDA$\n(ASA 합동)이다.",
     "image": "assets/images/24_연향중_2학기_중간_중1_기출/q21.png",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -871,7 +1024,16 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD에 대각선 AC를 굵게 그렸다. AD∥BC로 생기는 엇각 ∠BCA와 ∠DAC에는 호 한 개, AB∥CD로 생기는 엇각 ∠BAC와 ∠DCA에는 호 두 개를 표시해 각각 같음을 보였고, 변 AC가 두 삼각형에 공통임을 나타냈다.",
     "solutionImageCaption": "평행선의 엇각 ∠BCA=∠DAC, ∠BAC=∠DCA와 공통인 변 AC로 △ABC≡△CDA(ASA)이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-080",
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "작도와 합동",
+      "l3": "삼각형의 합동",
+      "l4": "ASA 합동"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 22,
@@ -900,9 +1062,13 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -910,6 +1076,15 @@ window.questionBank = [
     "solutionImage": "assets/images/24_연향중_2학기_중간_중1_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 종이 ABCD를 선분 EF(빨간 선)를 접는 선으로 접은 그림이다. ∠EGF는 120도이고, ∠GEF, ∠FEC, ∠GFE에는 같은 두 겹 호를, 선분 GE와 GF에는 같은 눈금을 표시해 삼각형 EGF가 GE=GF인 이등변삼각형임을 나타냈다.",
     "solutionImageCaption": "접힌 각 ∠GEF=∠FEC와 엇각 ∠GFE=∠FEC로 ∠GEF=∠GFE이므로 삼각형 EGF는 이등변삼각형이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": null,
+    "rpmPrimaryPath": {
+      "majorUnit": "기본 도형",
+      "midUnit": "기본 도형",
+      "l3": "각",
+      "l4": "각의 크기"
+    },
+    "rpmScope": "M1-2",
+    "rpmCrosswalkStatus": "EVIDENCE_DEBT"
   }
 ];

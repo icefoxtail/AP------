@@ -1,0 +1,234 @@
+{
+  "schemaVersion": "exact-head-browser-artifact-observation-v1",
+  "observedAt": "2026-11-13T17:29:09.278898+00:00",
+  "prHead": "e03094dff7abe80ac6a66223b1f20ffea19a52fe",
+  "observedPrMergeCommit": "aaf1d329e82e05ad575606f773d0aeddf412ac51",
+  "workflowRunId": 43471944952,
+  "artifacts": [
+    {
+      "id": 14060609076,
+      "localPath": ".tmp/m1-meta-review/ci-artifacts/pr1968-e030/pr1968-fresh-rpm-middle-browser.zip",
+      "zipSha256": "cbf6e24aaaf612cdae65452abb1da7a66e3a5e74b9a5cd1555b7febce2916c1d",
+      "jsonMember": "rpm-middle-browser-report.json",
+      "jsonSha256": "98e31e94417d9c559d50154a89ddff6e482990954cb53f1a24c7fa65463bdf70"
+    },
+    {
+      "id": 14060903473,
+      "localPath": ".tmp/m1-meta-review/ci-artifacts/pr1968-e030/pr1968-fresh-solution-loading.zip",
+      "zipSha256": "1f250762405e5c298f511f38a435caa80d923504a3564099a759db63122035b2",
+      "jsonMember": "solution-loading.json",
+      "jsonSha256": "082d7f80b0c15d5bc3942a64d20640606db0f9f7712fc4c6569181a5a7e5df69"
+    }
+  ],
+  "rpmBrowser": {
+    "status": "PASS_WITH_REAL_DATA_GAPS",
+    "dataSource": "Unmodified runtime catalog and actual UnitPastExamsCore.buildCatalog results",
+    "fixture": "Existing local-only teacher session; no exercise fixtures",
+    "unitCount": 24,
+    "parentCount": 54,
+    "leafCount": 326,
+    "countsByBook": {
+      "M1-1": 9,
+      "M1-2": 9,
+      "M2-1": 10,
+      "M2-2": 10,
+      "M3-1": 9,
+      "M3-2": 7
+    },
+    "m1RealPools": [
+      {
+        "label": "기본 도형",
+        "parentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "count": 11
+      },
+      {
+        "label": "작도와 합동",
+        "parentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "count": 23
+      }
+    ],
+    "m1PoolsDisjoint": true,
+    "m1DistinctPoolStatus": "PASS",
+    "urlRoundTripStatus": "PASS",
+    "uidCount": 34,
+    "urlRoundTripUidSetsEqual": true,
+    "layoutCount": 34,
+    "widths": [
+      390,
+      1440
+    ],
+    "overflowCount": 0,
+    "pageRuntimeErrorCount": 0,
+    "blockedWriteCount": 0,
+    "finderChecks": [
+      {
+        "grade": "중2",
+        "status": "PASS"
+      },
+      {
+        "grade": "중1",
+        "status": "PASS"
+      }
+    ],
+    "dataGapCount": 15,
+    "dataGapStatusCounts": {
+      "NO_CURRENT_PARENT_FINDER_RECORDS": 1,
+      "NO_CURRENT_PARENT_RECORDS": 14
+    },
+    "dataGaps": [
+      {
+        "grade": "중3",
+        "status": "NO_CURRENT_PARENT_FINDER_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-05",
+        "parentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(1)\"]",
+        "label": "일차함수와 그 그래프(1)",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-05",
+        "parentKey": "[\"2022\",\"M2-1\",\"일차함수\",\"일차함수와 그 그래프(2)\"]",
+        "label": "일차함수와 그 그래프(2)",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-06",
+        "parentKey": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 성질\"]",
+        "label": "삼각형의 성질",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-06",
+        "parentKey": "[\"2022\",\"M2-2\",\"삼각형의 성질\",\"삼각형의 외심과 내심\"]",
+        "label": "삼각형의 외심과 내심",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-07",
+        "parentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"평행사변형\"]",
+        "label": "평행사변형",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m2",
+        "unitKey": "RPM22-M2-L1-07",
+        "parentKey": "[\"2022\",\"M2-2\",\"사각형의 성질\",\"여러 가지 사각형\"]",
+        "label": "여러 가지 사각형",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-01",
+        "parentKey": "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"제곱근의 뜻과 성질\"]",
+        "label": "제곱근의 뜻과 성질",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-01",
+        "parentKey": "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"무리수와 실수\"]",
+        "label": "무리수와 실수",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-01",
+        "parentKey": "[\"2022\",\"M3-1\",\"실수와 그 연산\",\"근호를 포함한 식의 계산\"]",
+        "label": "근호를 포함한 식의 계산",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-02",
+        "parentKey": "[\"2022\",\"M3-1\",\"다항식의 곱셈과 인수분해\",\"다항식의 곱셈\"]",
+        "label": "다항식의 곱셈",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-02",
+        "parentKey": "[\"2022\",\"M3-1\",\"다항식의 곱셈과 인수분해\",\"다항식의 인수분해\"]",
+        "label": "다항식의 인수분해",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-06",
+        "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+        "label": "원과 직선",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-06",
+        "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각\"]",
+        "label": "원주각",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      },
+      {
+        "grade": "m3",
+        "unitKey": "RPM22-M3-L1-06",
+        "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원주각의 활용\"]",
+        "label": "원주각의 활용",
+        "status": "NO_CURRENT_PARENT_RECORDS"
+      }
+    ],
+    "preview": {
+      "status": "NOT_EXERCISED_HERE",
+      "reason": "The existing output browser CI separately verifies preview rendering."
+    }
+  },
+  "solutionBrowser": {
+    "pass": true,
+    "currentSha": "aaf1d329e82e05ad575606f773d0aeddf412ac51",
+    "matchesObservedPrMergeCommit": true,
+    "baselineSha": "9efb9633b19b966b0611a10bc352172f217c2dcd",
+    "questionCount": 50,
+    "solutionImageCount": 37,
+    "fixedFixtureSources": [
+      "archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+      "archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js",
+      "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js"
+    ],
+    "baselineCurrentPayloadShaEqual": true,
+    "comparisonCount": 6,
+    "comparisonPasses": 6,
+    "comparisons": [
+      {
+        "name": "actual-50-parity-1",
+        "pass": true
+      },
+      {
+        "name": "actual-50-parity-2",
+        "pass": true
+      },
+      {
+        "name": "actual-50-performance",
+        "pass": true
+      },
+      {
+        "name": "actual-50-qpp1-parity",
+        "pass": true
+      },
+      {
+        "name": "actual-50-qpp2-parity",
+        "pass": true
+      },
+      {
+        "name": "original-real-sol-parity",
+        "pass": true
+      }
+    ],
+    "rowCount": 16,
+    "rowPasses": 16,
+    "chromeVersion": "157.0.8103.78",
+    "playwrightVersion": "1.62.1"
+  },
+  "scopeBoundary": "Read-only inspection of completed CI artifact metadata. No browser rerun or math review. The50-question solution fixture is not the23-question Wangun2026 registration proof. Real-data gaps remain unverified; no full operational success claim."
+}

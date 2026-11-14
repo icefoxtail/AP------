@@ -13,6 +13,7 @@ const IDENTITY = 'archive/data/question_identity_map.json';
 const RUNTIME = 'archive/data/meta-foundation/runtime';
 const STATE = `${AUTO}/state.json`;
 const CONFIG = `${AUTO}/config.json`;
+const NATIVE_RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const FIELDS = ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit',
   'curriculum','curriculumKey','courseKey','problemTypeKey','templateKey','crossConceptKeys',
@@ -52,14 +53,91 @@ const archived = (root,commit,file) => {
 const mapUnique = (rows, key, label) => { const m=new Map(); for(const r of rows||[]){const k=key(r);if(m.has(k))throw Error(`DUPLICATE_${label}:${k}`);m.set(k,r);}return m; };
 const semantic = q => pick(q,FIELDS);
 
+// The reviewed lane may have just registered this exact source before AutoMeta reaches an older
+// pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
+// ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
+export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack=pt?.ownerPack}) {
+  if(!nativeSource||!previous||!equal(pick(previous,STUDENT),pick(question,STUDENT)))return null;
+  const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
+  if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
+    ||!/^[a-f0-9]{40}$/.test(blobSha1||'')||!runtimeRecord||runtimeStatus!=='ACTIVE'
+    ||String(runtimeRecord.sourceQuestionNo??'')!==String(question.sourceQuestionNo??question.id??''))return null;
+  if(!['FINAL_QA','REVIEW2'].includes(current.metadataApprovalType)||current.reviewStatus!=='reviewed_pass'
+    ||!String(current.metadataStatus||'').startsWith('approved_')||current.tagStatus!=='reviewed_pass'
+    ||current.sourceFingerprint!==sourceFingerprint(question)||current.contentFingerprint!==contentFingerprint(question)
+    ||FIELDS.some(k=>Object.hasOwn(question,k)&&!equal(question[k],current[k]))
+    ||current.metaFoundationStatus!=='ACTIVE'||current.metaFoundationPackId!==ownerPack
+    ||!String(current.L1||'').trim()||!String(current.L2||'').trim()
+    ||current.L3!==pt.canonicalLabelKo||current.L4!==tpl.canonicalLabelKo)return null;
+  const boundRead=relative=>{
+    if(typeof relative!=='string'||path.isAbsolute(relative)||relative.includes('\\')
+      ||relative.split('/').some(p=>!p||p==='.'||p==='..'))throw Error('NATIVE_EVIDENCE_PATH_INVALID');
+    const full=fs.realpathSync(path.join(root,relative)),base=fs.realpathSync(root);
+    if(!full.startsWith(base+path.sep))throw Error('NATIVE_EVIDENCE_PATH_ESCAPE');
+    return fs.readFileSync(full);
+  };
+  for(const receiptPath of Array.isArray(current.approvalEvidence)?current.approvalEvidence:[]) {
+    if(typeof receiptPath!=='string'||!receiptPath.startsWith(NATIVE_RECEIPTS))continue;
+    const requestId=receiptPath.slice(NATIVE_RECEIPTS.length).replace(/\.json$/,'');
+    if(!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(requestId)||receiptPath!==NATIVE_RECEIPTS+requestId+'.json')continue;
+    try {
+      const receipt=JSON.parse(boundRead(receiptPath)),approval=receipt.approval;
+      if(receipt.schemaVersion!=='archive-reviewed-exam-meta-registration-v2'
+        ||receipt.metadataRegistrationStatus!=='REGISTERED'||receipt.requestId!==requestId
+        ||!/^[a-f0-9]{64}$/.test(receipt.requestSha256||'')||receipt.sourceArchiveFile!==source
+        ||receipt.sourceRawSha256!==sha256(bytes)||receipt.sourceBlobSha1!==blobSha1
+        ||receipt.totalQuestions!==bank.length||!Array.isArray(receipt.appliedRecords)
+        ||receipt.appliedRecords.length!==bank.length
+        ||new Set(receipt.appliedRecords.map(r=>r.questionUid)).size!==bank.length
+        ||receipt.appliedRecords.some((r,i)=>r.sourceArchiveFile!==source||r.sourceOrdinal!==i+1)
+        ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
+        ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
+        ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
+      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(boundRead(ref.path))===ref.sha256))continue;
+      const record=receipt.appliedRecords[ordinal-1];
+      const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
+      const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
+      if(record.questionUid!==identity.questionUid||!equal(record,current)
+        ||runtime?.length!==1||!equal(runtime[0],runtimeRecord)
+        ||registeredIdentity?.length!==1||registeredIdentity[0].sourceArchiveFile!==source
+        ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
+        ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
+        ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      return receiptPath;
+    } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
+  }
+  return null;
+}
+
+export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
+  const pt=registry.problemTypes.get(candidate.problemTypeKey),tpl=registry.templates.get(candidate.templateKey);
+  const bindings=registry.bindingRows.filter(b=>b.status==='ACTIVE'&&b.curriculum===check.curriculum&&b.standardUnitKey===candidate.standardUnitKey&&(b.subUnitKey??null)===(candidate.subUnitKey??null)&&b.problemTypeKey===candidate.problemTypeKey&&String(b.standardCourse||'').replaceAll(' ','')===String(candidate.standardCourse||'').replaceAll(' ',''));
+  if(bindings.length!==1)return {reason:'EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS'};
+  const binding=bindings[0],definitionPack=registry.activePacks.get(pt?.ownerPack);
+  if(!definitionPack||pt?.status!=='ACTIVE'||tpl?.status!=='ACTIVE'||tpl.ownerPack!==pt.ownerPack
+    ||tpl.parentProblemTypeKey!==candidate.problemTypeKey||definitionPack.status&&definitionPack.status!=='ACTIVE')return {reason:'ACTIVE_OWNER_PACK_MISMATCH'};
+  // An exact ACTIVE binding may reuse another pack's PT/TPL definitions.
+  // Its owner controls runtime placement and course scope, as in official v2 resolve().
+  const ownerPack=binding.ownerPack||pt.ownerPack,pack=registry.activePacks.get(ownerPack);
+  if(!/^[A-Z][A-Z0-9_]*$/.test(ownerPack)||!pack||pack.status&&pack.status!=='ACTIVE')return {reason:'ACTIVE_OWNER_PACK_MISMATCH'};
+  if(runtimeOwner&&runtimeOwner!==ownerPack)return {reason:'EXISTING_RUNTIME_OWNER_CONFLICT'};
+  let scope;
+  try {scope=registry.root?read(registry.root,`archive/data/meta-foundation/canonical/packs/${ownerPack.toLowerCase().replaceAll('_','-')}/pack.json`,null):pack;}
+  catch {return {reason:'BINDING_OWNER_PACK_SCOPE_MISMATCH'};}
+  const course=candidate.standardCourse||candidate.courseKey,courseKey=candidate.courseKey||course;
+  if(!scope||(scope.packId||scope.id)!==ownerPack||(scope.packVersion||scope.version)!==pack.version
+    ||scope.canonicalStatus&&scope.canonicalStatus!=='ACTIVE'||!scope.curricula?.includes(check.curriculum)
+    ||!scope.standardCourses?.includes(course)||!scope.standardCourses?.includes(courseKey))return {reason:'BINDING_OWNER_PACK_SCOPE_MISMATCH'};
+  return {pt,tpl,binding,pack,ownerPack};
+}
+
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
-export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt}) {
+export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
   if (q.questionUid && q.questionUid!==identity.questionUid) return reject('SOURCE_UID_CONFLICT');
   if (identity.status && identity.status!=='VERIFIED') return reject('UID_NOT_VERIFIED');
   const questionNo=String(q.sourceQuestionNo??q.id??'');
-  if (identity.sourceQuestionNo!=null && String(identity.sourceQuestionNo)!==questionNo) return reject('SOURCE_ORDINAL_CHANGED');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
   if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
@@ -77,22 +155,45 @@ export function planQuestion({question:q, previous, current, identity, registry,
     if(changed || candidate[k]==null || candidate[k]==='') candidate[k]=structuredClone(q[k]);
   }
   if(!candidate.problemTypeKey||!candidate.templateKey) return reject('DECLARED_PT_TPL_MISSING');
+  const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha});
+  const hasSourceRationale=!sourceMetaChanged||Boolean(String(q.primaryMethod||'').trim()&&String(q.decisiveStep||'').trim());
+  // Reusing an existing byte-bound native approval does not produce new metadata.
+  // Validate every supplied field, ACTIVE key/binding/owner and source rationale,
+  // then let the byte-bound native receipt verifier prove full state equality.
+  // Missing optional producer fields are never filled or treated as completed.
+  const nativeEligible=nativeSource&&['FINAL_QA','REVIEW2'].includes(current.metadataApprovalType)
+    &&Array.isArray(current.approvalEvidence)&&current.approvalEvidence.some(p=>typeof p==='string'&&p.startsWith(NATIVE_RECEIPTS));
+  if(nativeEligible) {
+    // Native metadata/identity retain the global question number. The source and
+    // runtime may carry a restarted display number; the receipt binds both lanes.
+    if(identity.sourceQuestionNo==null||current.sourceQuestionNo==null
+      ||String(identity.sourceQuestionNo)!==String(current.sourceQuestionNo))return reject('SOURCE_ORDINAL_CHANGED');
+    const supplied=validate({...candidate,sourceArchiveFile:source},registry,{requireFields:false});
+    if(supplied.status==='VALIDATED'&&supplied.activeBinding) {
+      const context=activeBindingContext({candidate,check:supplied,registry,runtimeOwner});
+      if(!context.reason&&hasSourceRationale) {
+        const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
+        if(nativeReceipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
+          sourceOrdinal:ordinal,inputHash,nativeReviewReceipt:nativeReceipt};
+      }
+    }
+  }
+  // All new registrations and missing/stale/incompatible native evidence retain
+  // the original strict producer validation, including difficulty completeness.
+  if (identity.sourceQuestionNo!=null && String(identity.sourceQuestionNo)!==questionNo) return reject('SOURCE_ORDINAL_CHANGED');
   const check=validate({...candidate,sourceArchiveFile:source},registry,{requireFields:true});
   if(check.status!=='VALIDATED'||!check.activeBinding||!check.difficultyComplete) return reject(...check.errors, ...(!check.difficultyComplete?['DIFFICULTY_INCOMPLETE']:[]), ...(!check.activeBinding?['ACTIVE_BINDING_MISSING']:[]));
-  const pt=registry.problemTypes.get(candidate.problemTypeKey),tpl=registry.templates.get(candidate.templateKey);
-  const bindings=registry.bindingRows.filter(b=>b.status==='ACTIVE'&&b.curriculum===check.curriculum&&b.standardUnitKey===candidate.standardUnitKey&&(b.subUnitKey??null)===(candidate.subUnitKey??null)&&b.problemTypeKey===candidate.problemTypeKey&&String(b.standardCourse||'').replaceAll(' ','')===String(candidate.standardCourse||'').replaceAll(' ',''));
-  if(bindings.length!==1) return reject('EXACT_COURSE_BINDING_MISSING_OR_AMBIGUOUS');
-  const binding=bindings[0],pack=registry.activePacks.get(pt.ownerPack);
-  if(!pack||tpl.ownerPack!==pt.ownerPack) return reject('ACTIVE_OWNER_PACK_MISMATCH');
-  if(runtimeOwner && runtimeOwner!==pt.ownerPack) return reject('EXISTING_RUNTIME_OWNER_CONFLICT');
+  const context=activeBindingContext({candidate,check,registry,runtimeOwner});
+  if(context.reason)return reject(context.reason);
+  const {pt,tpl,binding,pack,ownerPack}=context;
   // Existing declarations are evidence of what was merged, not proof of independent mathematical QA.
-  if(sourceMetaChanged && (!String(q.primaryMethod||'').trim()||!String(q.decisiveStep||'').trim())) return reject('SOURCE_SEMANTIC_RATIONALE_MISSING');
+  if(!hasSourceRationale) return reject('SOURCE_SEMANTIC_RATIONALE_MISSING');
   if(!binding.L1||!binding.L2||!pt.canonicalLabelKo||!tpl.canonicalLabelKo) return reject('CANONICAL_LABELS_MISSING');
   const final={...candidate,sourceFingerprint:fp,contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
     L1:binding.L1,L2:binding.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
-    metaFoundationPackId:pt.ownerPack,metaFoundationPackVersion:pack.version,
+    metaFoundationPackId:ownerPack,metaFoundationPackVersion:pack.version,
     metadataRegistrationStatus:'REGISTERED',metadataRegistrationBasis:'MAIN_MERGED_EXPLICIT_METADATA',
     independentMathReviewStatus:studentChanged?'NOT_PERFORMED_BY_AUTO_REGISTRAR':current.independentMathReviewStatus||'NOT_PERFORMED_BY_AUTO_REGISTRAR',
     l3Disposition:'ASSIGNED',l4Disposition:'ASSIGNED',curriculumApplicability:current.curriculumApplicability||'DEFAULT_SCOPE',
@@ -108,11 +209,10 @@ export function planQuestion({question:q, previous, current, identity, registry,
     const groups={standardUnit:['standardCourse','standardUnitKey','standardUnit'],subUnit:['subUnitKey','subUnit'],concept:['L1','L2','L3','L4'],problemType:['problemTypeKey'],template:['templateKey'],crossConcept:['crossConceptKeys'],condition:['conditionKeys'],integrationPattern:['integrationPattern'],difficulty:['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility']};
     for(const [field,keys] of Object.entries(groups))if(keys.some(k=>!equal(current[k],final[k])))final.fieldStatus[field]='registered_main_merge';
   }
-  const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha});
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
   const effectiveFields=[...FIELDS.filter(k=>Object.hasOwn(final,k)), 'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'];
   if(priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash};
-  return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack:pt.ownerPack,final,
+  return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack,final,
     changedFields:effectiveFields.filter(k=>!equal(current[k],final[k])),preserveReview,coreChanged,sourceMetaChanged,
     studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo};
 }
@@ -167,7 +267,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const targets=selectTargets(root,state,config,head);
   const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0};
   if(!targets.length){report.status='NO_CHANGE';if(reportPath)fs.writeFileSync(reportPath,json(report));return report;}
-  const c=await context(root),banks=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
+  const c=await context(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
   const nextState=structuredClone(state);nextState.pending={...state.pending};nextState.latestReceipts={...state.latestReceipts};nextState.completedPilots=[...(state.completedPilots||[])];
   const beforeRows=new Map(c.metadata.records.map(r=>[r.questionUid,hash(r)])),touched=new Set(),sourceHashes=new Map();
   const max=config.maxQuestionsPerRun||100;
@@ -184,6 +284,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(!banks.has(source)){
         const bytes=fs.readFileSync(path.join(root,rel));sourceHashes.set(rel,sha256(bytes));
         banks.set(source,loadBank(bytes.toString('utf8'),rel));
+        sourceBindings.set(source,{root,bytes,bank:banks.get(source)});
       }
       const prevKey=`${target.baseCommit}:${source}`;
       if(!previousBanks.has(prevKey))previousBanks.set(prevKey,archived(root,target.baseCommit,source));
@@ -198,7 +299,12 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         continue;
       }
       acted++;attempted=true;target.attemptSignature=attemptSignature;
-      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner:c.owners.get(id?.questionUid),priorReceipt:prior});
+      const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
+      if(['FINAL_QA','REVIEW2'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
+        nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
+      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
+        nativeSource:{...nativeSource,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
+          runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
         const requestId=`main-${result.questionUid.slice(7,23)}-${result.inputHash.slice(0,24)}`;

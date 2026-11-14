@@ -587,7 +587,10 @@ window.questionBank = [
       "replacementStage": "CREATE"
     },
     "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-problem.svg",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 같은 파란색으로 채운 삼각형과 직사각형의 넓이가 같고, 각 도형의 밑변 또는 가로와 높이를 구별한다.",
+    "solutionImageCaption": "삼각형과 직사각형의 같은 넓이 관계. 직사각형의 가로 길이는 4√3 cm.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1050,7 +1053,10 @@ window.questionBank = [
       "replacementStage": "CREATE"
     },
     "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem.svg",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파랑·주황·초록 정사각형 안의 넓이 8, 18, 32와 아래의 한 변 길이 2√2, 3√2, 4√2를 짝지었다. 길이 단위는 cm, 넓이 단위는 제곱센티미터이다.",
+    "solutionImageCaption": "세 정사각형의 한 변 길이는 2√2 cm, 3√2 cm, 4√2 cm이며, 그 합은 9√2 cm.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1122,7 +1128,10 @@ window.questionBank = [
       "replacementStage": "CREATE"
     },
     "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem.svg",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란색과 주황색으로 나눈 남은 직사각형 조각을 색을 맞춰 재배치한다.",
+    "solutionImageCaption": "파란 조각과 주황 조각을 옮겨 붙이면 가로 x+y, 세로 x−2y인 직사각형이 된다. 남은 넓이의 인수분해는 (x+y)(x−2y)이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1243,7 +1252,10 @@ window.questionBank = [
       "replacementStage": "CREATE"
     },
     "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-problem.svg",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 A=2를 중심으로 Q와 P까지 같은 길이 2√2의 span을 좌우에 표시한다.",
+    "solutionImageCaption": "정사각형 한 변이 2√2이므로 b=2−2√2, a=2+2√2이다. 따라서 b/a=(1−√2)/(1+√2)를 켤레식으로 유리화한다. 답: 2√2−3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1304,7 +1316,10 @@ window.questionBank = [
       "sourceQid": "q22"
     },
     "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-problem.svg",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 면을 파랑·주황·초록으로 구분한 직육면체. 앞 가로 AB는 √6+√8 cm, 왼쪽 위 깊이 EH는 √8 cm, 앞 오른쪽 높이 BF는 √6 cm이고 같은 방향 모서리에는 서로 다른 눈금 수가 표시되어 있다.",
+    "solutionImageCaption": "(1) 부피: (√6+√8)×√6×√8=12√2+8√6 cm³. (2) 겉넓이: 2[(√6+√8)√6+√6√8+√8(√6+√8)]=28+24√3 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1355,7 +1370,10 @@ window.questionBank = [
     "metaEvidenceDebt": "VERIFY_ACTIVE_PT_TPL_MAPPING_BEFORE_OFFICIAL_STAGE",
     "originalSourceGitBlob": "0c81c4a1e6f7ef1f092aa052796f33d3587e8074",
     "sourceBranch": "codex/scan-intake-deliverables-20261012",
-    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 작은 정사각형을 뺀 ㄴ자 영역을 두 직사각형으로 나누고, 한 조각을 돌려 붙여 새 직사각형을 만든다.",
+    "solutionImageCaption": "두 조각의 넓이를 보존해 재배치하면 변의 길이가 a+b와 a−b인 직사각형이 된다. 빈칸은 a²−b².",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

@@ -307,7 +307,7 @@ test("basicParent must be the single canonical parent of the approved sub-unit; 
 test("the registrar, pass script, consumer verifier and commit paths know the rebind schema", () => {
   const read = rel => fs.readFileSync(path.join(repoRoot, rel), "utf8");
   assert.match(read("archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs"), /archive-basic-scope-rebind-request-v1[\s\S]{0,200}register-basic-scope-rebind\.mjs/);
-  assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /"\$schema" == "archive-basic-scope-rebind-request-v1" \]\]; then\n      verify_rc/);
+  assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /"\$schema" == "archive-basic-scope-rebind-request-v1"[^\n]* \]\]; then\n      verify_rc/);
   assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /node --test tests\/archive-basic-scope-rebind\.test\.mjs/);
   assert.match(read("archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs"), /BASIC_REBIND: "archive-basic-scope-rebind-request-v1"/);
   assert.ok(read("tools/ci/archive-meta-register-commit.paths").split(/\r?\n/).includes("archive/data/basic-scope-source-links.json"), "the link file is committed by the single writer");

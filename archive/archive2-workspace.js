@@ -2004,14 +2004,18 @@
 
 
   // Search text per exam, built once per catalog: the exam's visible values (never JSON keys) plus
-  // the uid and L1-L4 text of its questions. Every search term must occur somewhere in it.
+  // the uid and L1-L4 text of its questions. Exact current middle-school parents are search
+  // aliases from the shared selection index; stored source/request paths remain unchanged.
   let findSearchIndex = null;
   function findSearchText(exam) {
     const catalog = state.catalog;
     if (!findSearchIndex || findSearchIndex.exams !== catalog.exams || findSearchIndex.records !== catalog.records) {
       const questionsByFile = new Map();
+      const index = unifiedIndex();
       for (const r of catalog.records) {
-        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4].filter(Boolean).join(" "));
+        const entry = index?.byUid.get(r.questionUid);
+        const parent = entry?.rpmParentStatus === "EXACT" ? entry.rpmParent : null;
+        const text = C.normalizeSearch([r.questionUid, r.L1, r.L2, r.L3, r.L4, parent?.L1, parent?.L2].filter(Boolean).join(" "));
         if (!text) continue;
         const list = questionsByFile.get(r.sourceFile);
         if (list) list.push(text);
@@ -2466,20 +2470,30 @@
   }
   // Selection inputs come from the cached pool records of the chosen units only (no catalog scan).
   function balancedQuickSelection(units, preset) {
-    const pools = { 1: [], 2: [], 3: [], 4: [] }, scopeByUid = new Map();
+    const pools = { 1: [], 2: [], 3: [], 4: [] }, scopeByUid = new Map(), gradeByUid = new Map();
     for (const unit of units) for (const bucket of Quick.BUCKETS)
       for (const record of unit.buckets[bucket]) {
         pools[bucket].push(record);
         scopeByUid.set(record.questionUid, unit.key);
+        gradeByUid.set(record.questionUid, unit.grade);
       }
     const typeByUid = new Map(), subunitByUid = new Map();
     const metaByUid = quickPoolCache.metaByUid;
     for (const uid of scopeByUid.keys()) {
       const row = metaByUid?.get(uid);
-      if (!row) continue;
       const group = AssessmentRecipes?.representativeGroup?.(row);
       if (group?.concept || group?.type) typeByUid.set(uid, group.concept || group.type);
-      if (row.subUnitKey) subunitByUid.set(uid, row.subUnitKey);
+      const grade = gradeByUid.get(uid);
+      if (/^중[123]$/.test(grade)) {
+        const entry = quickPoolCache.index?.byUid?.get(uid);
+        const parent = entry?.rpmParentStatus === "EXACT" && entry.rpmParent?.grade === grade
+          ? entry.rpmParent : null;
+        const legacy = entry?.rpmParentStatus === "OUT_OF_SCOPE" && entry.originalCurriculum === "2015";
+        // The empty key is the unresolved group, not a guessed legacy L2. Keep its records
+        // available in the unit pool while balancing exact current subunits independently.
+        subunitByUid.set(uid, String(parent?.L2 || "").trim() ? String(parent.parentKey || "").trim()
+          : legacy && row?.subUnitKey ? `legacy:2015:${row.subUnitKey}` : "");
+      } else if (row?.subUnitKey) subunitByUid.set(uid, row.subUnitKey);
     }
     const scopeUse = new Map(), subunitUse = new Map(), typeUse = new Map(),
       sourceUse = new Map(), selected = [];
@@ -2491,7 +2505,7 @@
         for (let j = 0; j < candidates.length; j++) {
           const record = candidates[j], type = typeByUid.get(record.questionUid);
           const scope = scopeByUid.get(record.questionUid);
-          const subunit = subunitByUid.get(record.questionUid) || record.L2;
+          const subunit = subunitByUid.get(record.questionUid) ?? record.L2;
           const score = (scopeUse.get(scope) || 0) * 1000000 +
             (subunitUse.get(subunit) || 0) * 10000 +
             (type ? (typeUse.get(type) || 0) : 0) * 100 +
@@ -2503,7 +2517,7 @@
         selected.push(record);
         const scope = scopeByUid.get(record.questionUid);
         scopeUse.set(scope, (scopeUse.get(scope) || 0) + 1);
-        const subunit = subunitByUid.get(record.questionUid) || record.L2;
+        const subunit = subunitByUid.get(record.questionUid) ?? record.L2;
         subunitUse.set(subunit, (subunitUse.get(subunit) || 0) + 1);
         const type = typeByUid.get(record.questionUid);
         if (type) typeUse.set(type, (typeUse.get(type) || 0) + 1);

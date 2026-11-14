@@ -117,7 +117,7 @@ test("ci.yml: scoped execution retains the existing blocking gates for their aff
   for (const needle of [
     "node --check", "node tools/skills/verify-skills.mjs --json", "node --test tests/git-growth.test.mjs",
     "node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs",
-    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 15"
+    "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 30"
   ]) assert.ok(ci.includes(needle), needle);
 });
 

@@ -127,7 +127,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 벤다이어그램 중 $(A\\cup B)-(A-C)$를 바르게 색칠한 부분을 나타낸 것을 고르면? [3.7점]",
-    "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04.svg",
+    "image": "assets/images/23_매산여고_2학기_중간_고1_기출/q04-problem-v2.svg",
     "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q4-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 원 A, B, C가 서로 겹쳐 있는 벤다이어그램이다. B만의 영역, B와 C의 공통 영역, A·B·C의 공통 영역, A와 C의 공통 영역이 회색으로 칠해져 있고, A만의 영역, C만의 영역, A와 B만의 공통 영역은 칠해져 있지 않다.",
     "solutionImageCaption": "A−C=A∩Cᶜ이므로 (A∪B)−(A−C)=(A∪B)∩(Aᶜ∪C)이다. 이는 A∪B에서 A에만 속하고 C에는 속하지 않는 부분을 뺀 영역이고, 그림의 회색 부분이다. 정답은 ⑤이다.",

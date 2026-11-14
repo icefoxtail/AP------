@@ -297,6 +297,8 @@ def _fit_overview_family(plan):
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
+    if 'asymptoteOnly' in plan and plan.get('family')!='rational':raise ValueError('ASYMPTOTE_ONLY_REQUIRES_RATIONAL')
+    if 'pairedAxisCrossing' in plan and plan.get('family')!='trigonometric':raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
     if plan.get('family')=='sqrt-affine':
         if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
@@ -602,6 +604,14 @@ def _fit_rational_overview(plan):
     # verticalAsymptoteLabelAt (G13a): TOP_LEFT | TOP_RIGHT | BOTTOM_LEFT | BOTTOM_RIGHT puts the label x=p on that side of the dashed vertical asymptote, at its top or bottom end; NONE draws
     # no automatic label (the author writes it, for example as a callout). The default place is kept without the field.
     if 'verticalAsymptoteLabelAt' in plan and plan['verticalAsymptoteLabelAt'] not in VERTICAL_ASYMPTOTE_LABEL_PLACES:raise ValueError('VERTICAL_ASYMPTOTE_LABEL_AT_INVALID')
+    asymptote_only='asymptoteOnly' in plan
+    if asymptote_only:
+        if plan['asymptoteOnly'] is not True:raise ValueError('ASYMPTOTE_ONLY_INVALID')
+        if numerator[1]==0:raise ValueError('ASYMPTOTE_ONLY_REQUIRES_LINEAR_NUMERATOR')
+        if (plan.get('hideLabels')!=['formula'] or plan.get('axisTickValues',{'x':[],'y':[]})!={'x':[],'y':[]} or
+            any(key in plan for key in ('axisTitles','formulaTex','formulaLabel','overlays','regions','asymptoteLabelAt','verticalAsymptoteLabelAt')) or
+            plan.get('requiredPoints',[])!=[]):
+            raise ValueError('ASYMPTOTE_ONLY_REQUIRES_ASYMPTOTES_WITHOUT_OTHER_LABELS')
     if numerator[1]==0:return _rational_inverse_regions(plan,_fit_rational_constant_numerator(plan,numerator[0],denominator,original_domain,original_viewport),numerator[0],denominator)
     if 'regions' in plan:raise ValueError('GRAPH_REGION_REQUIRES_INVERSE_PROPORTION')   # regions of a rational: the inverse proportion y=k/(d0+d1*x) only (the shaded stretch must not meet a second asymptote or the x-intercept)
     if plan.get('displayWindow') is not None:raise ValueError('DISPLAY_WINDOW_REQUIRES_INVERSE_PROPORTION')
@@ -611,6 +621,7 @@ def _fit_rational_overview(plan):
     numerator_root=-numerator[0]/numerator[1]
     horizontal=numerator[1]/denominator[1]
     is_hole=(numerator[0]+numerator[1]*pole_or_hole)==0
+    if asymptote_only and is_hole:raise ValueError('ASYMPTOTE_ONLY_REQUIRES_VERTICAL_POLE')
     if is_hole:
         singularity={'kind':'REMOVABLE_HOLE','x':_fraction_text(pole_or_hole),'y':_fraction_text(horizontal)}
         x_intercept=None
@@ -1714,9 +1725,130 @@ def _fit_trigonometric_period_v2(plan,spec):
     fitted={**plan,'domain':domain,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','trigFeatures':features,'trigFeaturePolicy':policy}
     return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
 
+TRIG_AXIS_CROSSING_PAIR_POLICY='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1'
+
+def _fit_trig_axis_crossing_pair(plan):
+    if (plan.get('sourceDomain')!={'kind':'ALL_REALS'} or
+        set(plan)-{'family','sourceDomain','pairedAxisCrossing','axisTickPi','axisTickValues','domain','viewport'}):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
+    request=plan['pairedAxisCrossing']
+    if not isinstance(request,dict) or not {'xPi','windowPi'}<=set(request)<={'xPi','windowPi','guidesPi'}:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_INVALID')
+    def fraction(value):
+        parsed=_piecewise_fraction(value,'TRIG_AXIS_CROSSING_PAIR_PI_INVALID')
+        if parsed.denominator>120:
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_PI_INVALID')
+        return parsed
+    window=request['windowPi']
+    if not isinstance(window,list) or len(window)!=2:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_WINDOW_INVALID')
+    lo,hi=map(fraction,window)
+    crossing=fraction(request['xPi'])
+    if not (-2<=lo<0<hi<=4 and lo<crossing<hi and Fraction(1,2)<=hi-lo<=3
+            and crossing-2<lo and hi<crossing+2):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_WINDOW_INVALID')
+    angle=S.Rational(crossing.numerator,crossing.denominator)*S.pi
+    sine,cosine=S.sin(angle),S.cos(angle)
+    if sine==0 or cosine==0 or S.simplify(sine-cosine)==0:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_NOT_TRANSVERSE')
+    ticks=plan.get('axisTickValues')
+    if (plan.get('axisTickPi') is not True or not isinstance(ticks,dict) or set(ticks)!={'x','y'}
+            or ticks['y']!=[] or not isinstance(ticks['x'],list) or not 1<=len(ticks['x'])<=6):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID')
+    x_ticks=list(map(fraction,ticks['x']))
+    if crossing not in x_ticks or len(x_ticks)!=len(set(x_ticks)) or any(not (value and lo<value<hi) for value in x_ticks):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID')
+    raw_guides=request.get('guidesPi',[])
+    if not isinstance(raw_guides,list) or len(raw_guides)>8:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID')
+    guides=list(map(fraction,raw_guides))
+    if len(guides)!=len(set(guides)) or any(not (value and lo<value<hi) for value in guides):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID')
+
+    # Shifts are fixed by f(crossing)=g(crossing)=0. Keep that equation inside the
+    # sampling expressions and publish only the original axes, curves, and ticks.
+    offsets=[-sine,cosine]
+    low=min(float(offset)-1 for offset in offsets)
+    high=max(float(offset)+1 for offset in offsets)
+    span=high-low
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    xpad=.035*(x1-x0)
+    viewport=[x0-xpad,x1+xpad,low-.27*span,high+.15*span]
+    features={'xPi':str(crossing),'windowPi':window,'guidesPi':raw_guides,
+              'guideSpan':[low-.08*span,high+.05*span]}
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'overviewPolicy':TRIG_AXIS_CROSSING_PAIR_POLICY,
+            'shapeIntent':'OVERVIEW','trigAxisCrossingPairFeatures':features}
+    return {'graphPlan':fitted,'policy':TRIG_AXIS_CROSSING_PAIR_POLICY,'sourceDomainPreserved':True,
+            'displayOnly':True,'features':features,
+            'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+TRIG_DISPLAY_WINDOW_POLICY='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1'
+
+def _fit_trig_display_window(plan):
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'} or plan.get('function') not in ('SIN','COS'):
+        raise ValueError('TRIG_DISPLAY_WINDOW_REQUIRES_ALL_REAL_SINE_COSINE')
+    if any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles')):
+        raise ValueError('TRIG_DISPLAY_WINDOW_FIELD_UNSUPPORTED')
+    if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:
+        raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
+    raw=plan['displayWindowPi']
+    if not isinstance(raw,list) or len(raw)!=2:
+        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+    lo,hi=(_piecewise_fraction(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in raw)
+    if not lo<0<hi or max(abs(lo),abs(hi))>100:
+        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+    spec=trig_spec(plan)
+    period=trig_axis_period(spec)
+    if not Fraction(1,4)<=(hi-lo)/period<=TRIG_INTERVAL_MAX_PERIODS:
+        raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    if plan.get('axisTickPi') is not True:
+        raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+    if plan.get('displaySize') not in (None,'medium','full'):
+        raise ValueError('TRIG_DISPLAY_SIZE_INVALID')
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    ticks=trig_pi_ticks(plan,'INTERVAL_PI',x0,x1)
+    y_ticks=[_piecewise_fraction(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
+    a,c=spec['a'],spec['c']
+    low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
+    span=max(1.0,high-low)
+    ypad=.42*span
+    if (len(ticks)!=len(set(ticks)) or len(y_ticks)!=len(set(y_ticks))
+        or any(not value or not low-ypad<float(value)<high+ypad for value in y_ticks)):
+        raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    xpad=max(.1*(x1-x0),.5)
+    left=max(xpad,max(1.0,abs(x0)))
+    viewport=[x0-left,x1+xpad,low-ypad,high+ypad]
+    position_to_phase=lambda value:spec['rate']*value+spec['phase']
+    phase_lo,phase_hi=sorted(map(position_to_phase,(lo,hi)))
+    shift=Fraction(1,2) if spec['function']=='SIN' else Fraction(0)
+    extrema={}
+    for k in range(math.ceil(phase_lo-shift),math.floor(phase_hi-shift)+1):
+        value=(k+shift-spec['phase'])/spec['rate']
+        if lo<value<hi:extrema[value]=c+a*(-1 if k%2 else 1)
+    guides=[]
+    declared=plan.get('displayGuides',{})
+    if not isinstance(declared,dict) or set(declared)-{'x','y'} or any(not isinstance(row,list) for row in declared.values()):
+        raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+    for axis in ('x','y'):
+        values=[_piecewise_fraction(v,'TRIG_DISPLAY_GUIDES_INVALID') for v in declared.get(axis,[])]
+        if len(set(values))!=len(values):raise ValueError('TRIG_DISPLAY_GUIDES_INVALID')
+        for value in values:
+            if axis=='x' and (value not in ticks or not extrema.get(value)):
+                raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
+            if axis=='y' and (value not in y_ticks or value not in (c-abs(a),c+abs(a))):
+                raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
+            guides.append({'axis':axis,'value':str(value),'level':str(extrema[value] if axis=='x' else value)})
+    features={'windowPi':raw,'extrema':[str(x) for x in extrema],'guides':guides}
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW',
+            'overviewPolicy':TRIG_DISPLAY_WINDOW_POLICY,'trigDisplayFeatures':features}
+    return {'graphPlan':fitted,'policy':TRIG_DISPLAY_WINDOW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,
+            'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
 def _fit_trigonometric_overview(plan):
+    if 'pairedAxisCrossing' in plan:return _fit_trig_axis_crossing_pair(plan)
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    if 'displayWindowPi' in plan:return _fit_trig_display_window(plan)
+    if 'displayGuides' in plan or 'showOriginLabel' in plan:raise ValueError('TRIG_DISPLAY_LABELS_REQUIRE_WINDOW')
     source=plan.get('sourceDomain')
     if isinstance(source,dict) and source.get('kind') in {'INTERVAL_PI','INTERVAL'}:
         legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}

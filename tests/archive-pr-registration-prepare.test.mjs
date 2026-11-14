@@ -46,7 +46,8 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
 
 test('only registration inputs require a temporary projection; unknown scope is conservative', () => {
   for (const file of ['archive/exams/original/new.js', 'archive/assets/images/a.svg', 'archive/data/question_metadata.json',
-    'archive/data/meta-foundation/canonical/pack.json', 'archive/tools/build-archive2-catalog.mjs']) {
+    'archive/data/meta-foundation/canonical/pack.json', 'archive/tools/build-archive2-catalog.mjs',
+    '.archive-meta-register/inbox/native-v2.json', 'tools/ci/archive-pr-native-preview.mjs']) {
     assert.equal(registrationInputsChanged([file]), true, file);
   }
   for (const paths of [[], ['apmath/playground/labs/a.html'], ['.github/workflows/ci.yml'], ['docs/architecture/notes.md']]) {
@@ -112,6 +113,57 @@ test('dirty work and generator failure are not hidden', t => {
     if (command === 'python3') throw new Error('builder failure');
     return f.run(command, args);
   } }), /builder failure/);
+});
+
+test('a first fixed-point failure reuses generated runtime bytes in the same checkout', t => {
+  const f = fixture(t);
+  const runtimePath = 'archive/data/meta-foundation/runtime/middle-geometry-v1.json';
+  let builds = 0;
+  const result = f.prepare({ run: (command, args) => {
+    const output = f.run(command, args);
+    if (command === 'python3') {
+      builds += 1;
+      if (builds === 1) {
+        f.write(runtimePath, '{"catalogUidDirectJoin":24}\n');
+        throw new Error('Archive2 canonical input digest mismatch: data/meta-foundation/runtime/middle-geometry-v1.json');
+      }
+      assert.equal(fs.readFileSync(path.join(f.root, runtimePath), 'utf8'), '{"catalogUidDirectJoin":24}\n');
+    }
+    return output;
+  } });
+  assert.equal(result.state, 'PREPARED');
+  assert.equal(builds, 2);
+  assert.equal(f.commands.filter(c => c[1] === 'archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs').length, 1);
+  assert.equal(f.git('rev-parse', 'HEAD'), f.headSha);
+  assert.deepEqual(result.generatedPaths, [runtimePath, 'archive/db.js']);
+});
+
+test('a repeated builder failure is fatal after exactly one recovery attempt', t => {
+  const f = fixture(t);
+  let builds = 0;
+  assert.throws(() => f.prepare({ run: (command, args) => {
+    if (command === 'python3') {
+      builds += 1;
+      throw new Error(`persistent builder failure ${builds}`);
+    }
+    return f.run(command, args);
+  } }), /persistent builder failure 2/);
+  assert.equal(builds, 2);
+  assert.equal(f.git('rev-parse', 'HEAD'), f.headSha);
+});
+
+test('fixed-point recovery still refuses a source mutation from the failed first build', t => {
+  const f = fixture(t);
+  let builds = 0;
+  assert.throws(() => f.prepare({ run: (command, args) => {
+    const output = f.run(command, args);
+    if (command === 'python3' && ++builds === 1) {
+      f.write('archive/exams/original/new.js', 'unexpected source mutation');
+      throw new Error('first generation failed after a source write');
+    }
+    return output;
+  } }), /changed non-derived files: archive\/exams\/original\/new.js/);
+  assert.equal(builds, 2);
 });
 
 test('source mutation by a generator fails the derived scope guard', t => {

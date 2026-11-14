@@ -348,9 +348,10 @@ window.questionBank = [
     "solution": "[키포인트] 접선 방정식을 원의 방정식에 대입하고 접선 조건인 판별식 $0$을 적용한다.\n조건 정리: 원의 중심은 $O(0,0)$, 반지름은 $4$, 바깥점은 $A(12,0)$이며 두 접선의 기울기를 $m,n$이라 한다.\n풀이 방향: 기울기 $m$인 접선의 방정식을 세워 원에 대입한 이차방정식의 판별식으로 두 접선의 기울기를 결정한다.\n정석 풀이:\n1. 점 $A(12,0)$을 지나는 기울기 $m$인 직선은 $y=m(x-12)$이다. 원에 대입하면\n$x^2+m^2(x-12)^2=16$,\n즉 $(1+m^2)x^2-24m^2x+(144m^2-16)=0$이다.\n2. 이 직선이 접선이 되려면 위 이차방정식이 중근을 가져야 하므로 판별식은 $0$이다.\n$(-24m^2)^2-4(1+m^2)(144m^2-16)=0$\n을 정리하면 $64-512m^2=0$이므로 $m^2=\\dfrac18$이다.\n3. 두 접선은 서로 다른 두 부호의 기울기를 가지므로 $m=\\dfrac{1}{2\\sqrt2}$, $n=-\\dfrac{1}{2\\sqrt2}$이다. 따라서 $mn=-\\dfrac18$이다.\n4. 그러므로 $8mn+9=8\\times\\left(-\\dfrac18\\right)+9=8$이다.\n핵심 확인: $A$는 $OA=12\\gt4$인 바깥점이므로 두 접선이 존재하고, 구한 두 기울기는 서로 다른 두 접선에 대응한다.\n따라서 정답은 ②이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_매산고_2학기_중간_고1_유사/q10.svg",
+    "image": "assets/images/25_매산고_2학기_중간_고1_유사/q10-problem-v1.svg",
+    "imageSize": "full",
     "imageStatus": "reviewed",
-    "visualAsset": "assets/images/25_매산고_2학기_중간_고1_유사/q10.svg",
+    "visualAsset": "assets/images/25_매산고_2학기_중간_고1_유사/q10-problem-v1.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -362,7 +363,7 @@ window.questionBank = [
         "satellite"
       ],
       "essentialVisualFacts": "circle center O=(0,0), radius 4, satellite A=(12,0), two tangent lines",
-      "assetRef": "plan-locked"
+      "assetRef": "assets/images/25_매산고_2학기_중간_고1_유사/q10-problem-v1.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "m1-shinheung-native-preflight-v1",
+  "status": "LOCAL_PREFLIGHT_VERIFIED_REMOTE_REGISTRATION_PENDING",
+  "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
+  "owner": "GPT_ROOT_BF50408FB63B",
+  "baselineMain": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
+  "exam": "2026 신흥중 중1 2학기 중간",
+  "questionCount": 24,
+  "requestId": "m1-shinheung-meta-closeout-20261113-bf-r1",
+  "requestRawSha256": "d5eaebc7e756eb076078e685649bbcd87eefaef7b7f7e4f54a1b5a28ef1f6c55",
+  "sourceRawSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+  "registryChanges": 0,
+  "metadataSourceScalarChanges": 56,
+  "mathFinalQaPerformed": false,
+  "originalSourceReviewRepeated": false,
+  "remoteRegistrationApplied": false,
+  "sourceApprovalRef": {
+    "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+    "sha256": "af9ca64b73bcf0be8e0bb3918ff929ebca1491f3589b401aea1efa20e9d9557d"
+  },
+  "officialStages": {
+    "dryRun": "PASS",
+    "localWrite": "PASS",
+    "compile": "PASS",
+    "buildDb": "PASS",
+    "registrationParity": "PASS",
+    "catalogCheck": "PASS",
+    "canonicalCompiledParity": "PASS",
+    "projection": {
+      "checked": 24,
+      "passed": 24
+    },
+    "changedUid": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "skipped": 0,
+      "failures": 0,
+      "unobservedFields": 0,
+      "assignmentPending": 0
+    }
+  },
+  "independentStateCheck": {
+    "metadataRows": 28890,
+    "changedMetadataUids": 24,
+    "otherMetadataRowsChanged": 0,
+    "runtimeRows": 6561,
+    "changedRuntimeUids": 24,
+    "otherRuntimeRowsChanged": 0,
+    "runtimeOwnerMoves": 0,
+    "identityRawUnchanged": true,
+    "protectedInputsRawUnchanged": 111,
+    "proofSha256": "573aaba905abc8b28f800d66c2f5c6f53c5d9168c1d6227e4e6656eeb93c208b"
+  },
+  "nativeReuse": {
+    "previousSource": "actual baseline main source",
+    "sourceMetaChanged": 24,
+    "beforeCodeFix": {
+      "passed": 23,
+      "failedOrdinal": 3,
+      "proofSha256": "0b5c3afe8d52e30594fe04c9f72f207ce14e81783cc59d27928da6cf5db4b9af"
+    },
+    "afterCodeFix": {
+      "alreadyRegistered": 24,
+      "finalMetadataProduced": 0,
+      "additionalSharedWrites": 0,
+      "proofSha256": "6b973ed50c87a83b673c04a4d48eb93a9144451f1286cb8aa90540103ef283a3"
+    }
+  },
+  "directDependencyFix": {
+    "problem": "Q3 reuses an existing GEOMETRY_EQUATIONS definition through an exact ACTIVE MIDDLE1 binding. The old AutoMeta path incorrectly used the definition owner as the runtime owner.",
+    "resolution": "Use the exact binding owner for runtime placement, receipt revision and producer output, while retaining ACTIVE definition/template/parent, exact binding, runtime owner, pack version and curriculum/course scope checks.",
+    "files": [
+      {
+        "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "sha256": "4ffb982960da1c72aca906dc8977d76b1f2a37d9f63debe187559ce7a62a1f9f"
+      },
+      {
+        "path": "tests/archive-main-merge-meta.test.mjs",
+        "sha256": "da304d9f52a813c8c18d97f86905ee3fb7cb99334b6c2f54aef47e5d6797ecfa"
+      }
+    ],
+    "unitTests": {
+      "passed": 113,
+      "failed": 0,
+      "skipped": 0,
+      "independentlyRepeated": true
+    }
+  },
+  "geometryRegression": {
+    "exitCode": 0,
+    "nativeApprovals": 5,
+    "negativeCases": 11,
+    "liveRuntimeOverlaysAndJoins": 1017,
+    "executedOnLocalRegisteredState": true
+  },
+  "rpm": {
+    "directOfficialLeaves": 22,
+    "parentOnlyNullHoldOrdinals": [
+      8,
+      10
+    ],
+    "canonicalMasterEdited": false,
+    "crosswalkEdited": false,
+    "parentAuthorityEdited": false
+  },
+  "scope": {
+    "submittedExamCount": 1,
+    "withheldExam": "왕운중 23문항",
+    "withheldReason": "Avoid overlapping source and request edits with the existing metadata owner.",
+    "bindingCourseRequestSubmitted": false
+  },
+  "remainingGates": [
+    "Exact PR-head CI and actual changed-source Chrome checks",
+    "Merge and successful single-writer registration on main",
+    "Fresh registered-main receipt, 24-UID Consumer and native approval preservation checks",
+    "Final progress and worker handoff"
+  ]
+}
+

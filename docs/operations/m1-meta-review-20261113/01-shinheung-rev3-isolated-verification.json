@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "existing-exam-isolated-consumer-preflight-v1",
+  "observedAt": "2026-11-13T14:02:53.300650+00:00",
+  "scope": "ISOLATED_CANDIDATE_NOT_OPERATIONAL_MAIN",
+  "status": "PASS",
+  "baselineMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "uncommittedIsolatedRegistration": true,
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+  "requestRawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+  "sourceRawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+  "sourceBytesChanged": false,
+  "method": [
+    "official v2 registrar --write in isolated worktree",
+    "catalog -> parent links -> catalog",
+    "official registrar --verify-projection",
+    "official verify-changed-uid-consumer-approval",
+    "RPMMiddleToc and Archive2UnifiedUnits using the actual resolved consumer rows"
+  ],
+  "projection": {
+    "status": "PASS",
+    "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+    "totalQuestions": 24,
+    "replay": true,
+    "plannedPaths": [],
+    "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+    "browserStatus": "NOT_RUN",
+    "consumerLanes": {
+      "canonical": 24,
+      "usableMetaLane": 0
+    }
+  },
+  "consumer": {
+    "status": "PASS",
+    "mainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".tmp/m1-meta-review/01-reviewed-exam-rev3.request.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "26_신흥중_2학기_중간_중1_기출",
+        "sourceFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "rpmParents": {
+    "path": "docs/operations/m1-meta-review-20261113/01-shinheung-rev3-isolated-rpm-parents.json",
+    "sha256": "9926d56aacd13a3c4769e27d5ce869757d73bf5f7bd694c5050eabbd1f568f6c",
+    "exactLeafCount": 22,
+    "rpmOnlyDebtOrdinals": [
+      8,
+      10
+    ],
+    "parentCounts": {
+      "기본 도형 / 기본 도형": 4,
+      "기본 도형 / 위치 관계": 4,
+      "기본 도형 / 작도와 합동": 6,
+      "평면도형 / 다각형": 4,
+      "평면도형 / 원과 부채꼴": 5,
+      "unresolved: LEGACY_PARENT_AMBIGUOUS": 1
+    },
+    "failures": [],
+    "q8RpmParent": "LEGACY_PARENT_AMBIGUOUS_PRESERVED",
+    "nativeCanonicalAssignmentApprovedQuestionCount": 24
+  },
+  "targetedRegressions": {
+    "parentHelperTests": 18,
+    "parentHelperPassed": 18,
+    "cacheReferenceConsistency": "PASS",
+    "fullR1R2R3Rerun": false
+  },
+  "preserved": {
+    "metadataBeforeAfterAndIdentitiesQuestions": 24,
+    "nativeRegistryChangeDefinitions": 17,
+    "studentQuestionAnswerSolutionImagesUidScoreDifficultyChanged": 0,
+    "existingCrosswalkRowsUnchanged": 244,
+    "exactCrosswalkRowsAdded": 1,
+    "productionConsumerGuardsChanged": 0,
+    "mathFinalQaPerformed": false
+  },
+  "operationalStatus": {
+    "mainRegistration": "NOT_YET_SUBMITTED_REV3",
+    "consumerOnRemoteMain": "NOT_YET_VERIFIED_REV3",
+    "completedExams": 0,
+    "totalExams": 44
+  },
+  "codeSha256": {
+    "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs": "d2acb7eac2cf1ac1875308368fa85ad72d383f149ca8d52db64daedebc5345f4",
+    "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs": "a2ac0494740882689e4af7f4e7169bd8f08dc5bdf70b5a2742fca107b84a0db1",
+    "archive/rpm-middle-toc.js": "21a4e9ace8ffb70a747fefa5726b98a6f85fce404b5fafa16b2fef7844549af7"
+  }
+}

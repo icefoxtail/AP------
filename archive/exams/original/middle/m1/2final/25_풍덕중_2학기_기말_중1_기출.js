@@ -74,7 +74,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -86,7 +86,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q2-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 오각뿔대의 두 밑면(파랑), 오른쪽은 전개도로 밑면 2개(⑥⑦, 파랑)와 사다리꼴 옆면 5개(①~⑤, 주황)에 번호를 붙여 면이 모두 7개임을 보여 주는 그림이다.",
     "solutionImageCaption": "면은 밑면 2개 + 옆면 5개 = 7개이므로 오면체가 아니라 칠면체이고, 옳지 않은 것은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "각뿔대의 면 구성과 성질",
+    "decisiveStep": "밑면 두 개와 옆면 개수를 구별하는 단일 정의 판단이며 경우 분기가 없다."
   },
   {
     "id": 3,
@@ -170,7 +172,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -182,7 +184,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 원기둥의 전개도로, 합동인 두 밑면(반지름 r인 원)과 가로가 밑면의 둘레 2πr, 세로가 높이 h인 직사각형 옆면을 보여 주는 그림이다.",
     "solutionImageCaption": "원기둥의 전개도: 두 밑면과 가로 2πr, 세로 h인 옆면",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "원기둥 전개도와 겉넓이 공식",
+    "decisiveStep": "전개도에서 두 밑면이 필요하다는 점을 확인하는 기본 공식 판단이다."
   },
   {
     "id": 5,
@@ -328,7 +332,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "상",
+    "level": "중",
     "category": "입체도형의 성질",
     "originalCategory": "입체도형의 성질",
     "standardCourse": "중1 수학",
@@ -361,18 +365,20 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f31ba2cc88b7949f16f088d040ffd737003c638a54be48fd3a49065cfad9be71",
-    "difficultyEvidenceSha": "sha256:540f2eabaae59511f925e49eb9af88576fc09d8a0d889de0000554f5acfc1bdd",
+    "difficultyEvidenceSha": "sha256:bf10c9acded376b03423f763f47a2a0d91d88dd88eeb962fcf0c322a09db9507",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 반지름 6cm, 높이 8cm인 큰 원뿔에서 높이의 절반에서 잘라 낸 작은 원뿔(반지름 3cm, 높이 4cm)을 빼고 남는 높이 4cm의 원뿔대를 색칠해 보여 주는 그림이다.",
     "solutionImageCaption": "큰 원뿔에서 작은 원뿔을 뺀 원뿔대 (높이 4 cm)",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "큰 원뿔에서 작은 원뿔을 뺀 원뿔대 부피",
+    "decisiveStep": "작은 원뿔과 큰 원뿔의 반지름·높이가 그림에 모두 제시되어 닮음 추론 없이 두 부피를 뺀다."
   },
   {
     "id": 9,
@@ -632,7 +638,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -644,7 +650,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q14-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 통학 시간 줄기와 잎 그림에서 줄기 1, 2, 3, 4의 잎 개수 4, 6, 7, 5를 괄호로 묶어 보이고, 작은 쪽 4번째 값인 17분에 동그라미를 친 그림",
     "solutionImageCaption": "줄기별 잎의 수와 4번째로 짧은 통학 시간을 나타낸 줄기와 잎 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "줄기와 잎 그림의 자료 읽기",
+    "decisiveStep": "잎의 개수와 순서만 직접 읽는 기초 자료 해석으로 별도 조건 분기가 없다."
   },
   {
     "id": 15,
@@ -679,7 +687,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_GROUPED_FREQUENCY_INFORMATION_EXACT_VALUE_LIMIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -687,7 +695,9 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:631fa3836be5cabbdc4a5d6d752dd90292abc2faa086feb0c1f1c680ea849607",
-    "difficultyEvidenceSha": "sha256:409eaa2b96ee9f07488e366a65ca80d363bd86592867f74a228cf3a059e97539"
+    "difficultyEvidenceSha": "sha256:409eaa2b96ee9f07488e366a65ca80d363bd86592867f74a228cf3a059e97539",
+    "primaryMethod": "계급별 도수표가 알려 주는 정보의 한계",
+    "decisiveStep": "계급에 속한 인원은 알 수 있지만 계급 내부 특정 관측값의 존재는 단정할 수 없다."
   },
   {
     "id": 16,
@@ -771,7 +781,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -783,7 +793,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q17-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 팔굽혀 펴기 기록 히스토그램과 도수분포다각형: 도수 2,5,6,12,10,5명. 20~35회 세 막대는 연한 회색 괄호 13명, 45~50회 막대는 진한 회색 괄호 5명이다.",
     "solutionImageCaption": "전체 2+5+6+12+10+5=40명이다. 연한 회색은 35회 미만(2+5+6=13명), 진한 회색은 45회 이상(5명)이고 5÷40×100=12.5(%)이다. 정답 ⑤",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "도수분포다각형의 계급·도수·비율 진술 검토",
+    "decisiveStep": "계급폭과 전체·누적 도수, 해당 구간 비율을 그래프에서 검산한다."
   },
   {
     "id": 18,
@@ -820,18 +832,20 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:baa0910b02013f3537ba255f01c65595c9885f9bcef88a1fc576488bf0e108e9",
-    "difficultyEvidenceSha": "sha256:d9c70a60e88d7b9821f9f4cc6b5ba337318559bcc017e5a5d970c71113157af5",
+    "difficultyEvidenceSha": "sha256:bf10c9acded376b03423f763f47a2a0d91d88dd88eeb962fcf0c322a09db9507",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 윗몸일으키기 기록의 상대도수 분포에서 50회 이상 60회 미만 계급의 상대도수 0.2 막대를 진하게 칠하고 다각형을 겹쳐 그린 그림",
     "solutionImageCaption": "50회가 속한 계급의 상대도수를 나타낸 그림",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "주어진 전체 인원과 상대도수로 계급 도수 계산",
+    "decisiveStep": "전체 인원이 이미 주어져 상대도수를 곱하면 해당 계급 인원이 바로 나온다."
   },
   {
     "id": 19,
@@ -867,19 +881,21 @@ window.questionBank = [
     "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:f070b4f34eb953dbb67d2112d093f97fc1d32a1490d0a8ef20df63c4603ae539",
-    "difficultyEvidenceSha": "sha256:c707371d6543aacda37a0eb430cd2153d9a3a3d437bb773b2d9b41ba0051cd66",
+    "difficultyEvidenceSha": "sha256:cc99ee783c2d0149bbd1e2c97eb70aa2e34f0949ba1959ec2f1802b58ad70882",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: A중학교(실선)와 B중학교(점선) 키의 상대도수 분포 다각형. 130~140cm는 A 0.15·B 0.05, 140~150cm는 A 0.2·B 0.2에 값이 있고, 140~150cm 아래 괄호에 A중 20명, B중 40명이 적혀 있다.",
     "solutionImageCaption": "점의 값은 상대도수이고 괄호 아래 숫자는 그 계급의 학생 수이다. 140~150cm는 A중 100×0.2=20명, B중 200×0.2=40명으로 같지 않다. 140 미만(130~140cm)은 A중 100×0.15=15명, B중 200×0.05=10명이다. 정답 ⑤",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "총인원이 다른 두 집단의 상대도수와 실제 인원 비교",
+    "decisiveStep": "상대도수가 같아도 분모인 전체 인원이 다르면 실제 인원은 다르다는 점을 적용한다."
   },
   {
     "id": 20,
@@ -948,19 +964,21 @@ window.questionBank = [
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:c65672dab9daf6cde3339a873aa3a723a303fa73a23f2eb0ad3ae64ee6537964",
-    "difficultyEvidenceSha": "sha256:508e85f7fa69786a3b1d9c634b3684788a16ca6582121cac1313384ee74c5fa7",
+    "difficultyEvidenceSha": "sha256:cc99ee783c2d0149bbd1e2c97eb70aa2e34f0949ba1959ec2f1802b58ad70882",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 한 꼭짓점에 정삼각형을 3개, 4개, 5개, 6개 모은 네 그림으로, 각 삼각형의 꼭지각 60°를 더한 각의 합이 180°, 240°, 300°, 360°임을 보여 주는 그림이다.",
     "solutionImageCaption": "한 꼭짓점에 모인 정삼각형이 3~6개일 때 각의 합은 180°, 240°, 300°, 360°이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "정다면체의 정의와 꼭짓점의 면 각 합",
+    "decisiveStep": "합동인 정다각형 면과 같은 꼭짓점 구성 조건을 확인하고 면의 각 합이 평각 전체보다 작아야 함을 설명한다."
   },
   {
     "id": 22,
@@ -992,7 +1010,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1004,7 +1022,9 @@ window.questionBank = [
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 3cm인 반구의 곡면(넓이 18π cm²)과 평평한 밑면인 반지름 3cm의 원(넓이 9π cm²)을 나란히 보여 주는 그림이다.",
     "solutionImageCaption": "반구의 겉넓이를 이루는 곡면 18π cm²와 밑면 9π cm²",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "반구 곡면과 절단면을 합한 겉넓이",
+    "decisiveStep": "구면의 절반과 새로 드러난 원 단면을 합하는 선형 계산이며 반복 상호 의존 구조가 없다."
   },
   {
     "id": 23,

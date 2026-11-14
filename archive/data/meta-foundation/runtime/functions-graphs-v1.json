@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.10/reviewed-exam-v2",
+  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.12/reviewed-exam-v2",
   "packId": "FUNCTIONS_GRAPHS",
-  "packVersion": "1.0.10",
+  "packVersion": "1.0.12",
   "generatedFrom": {
     "assignments": "archive/data/meta-foundation/evidence/functions-graphs/v1/item_metadata_assignments_520.json",
     "taxonomy": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
@@ -19,15 +19,16 @@
     "reviewedExam_meta-pipeline-palma25-695d6bcb5cca-20261027": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palma25-695d6bcb5cca-20261027.json",
     "reviewedExam_jeil-h1-2final-runtime-refresh-a011ae38": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/jeil-h1-2final-runtime-refresh-a011ae38.json",
     "reviewedExam_req-similar-309cbc6dec7b1e3e": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/req-similar-309cbc6dec7b1e3e.json",
-    "reviewedExam_meta-pipeline-palmahigh-h1-2final-22-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json"
+    "reviewedExam_meta-pipeline-palmahigh-h1-2final-22-20261104": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-palmahigh-h1-2final-22-20261104.json",
+    "reviewedExam_m1-wangun-2026-mid-meta-review-20261113": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
   },
   "counts": {
     "canonicalAssignments": 523,
-    "records": 543,
-    "taxonomyRows": 199,
-    "defaultSelectable": 537,
+    "records": 544,
+    "taxonomyRows": 200,
+    "defaultSelectable": 538,
     "supplementary": 0,
-    "automaticEligibleExpected": 77,
+    "automaticEligibleExpected": 78,
     "sourceHold": 0,
     "catalogUnregisteredExcluded": 0
   },
@@ -61,6 +62,12 @@
       "courseKey": "수학I",
       "L1": "삼각함수",
       "L2": "삼각함수의 그래프"
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례"
     },
     {
       "curriculumKey": "2022",
@@ -1832,6 +1839,19 @@
       "L4": "함수 그래프의 평행이동",
       "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "함수 그래프의 성질",
+      "L4": "함수 그래프의 성질 판정",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -5123,6 +5143,90 @@
       "defaultSelectable": true,
       "sourceIdentity": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js#15",
       "approvedSourceFingerprint": "ba914ab1fb63f6c31744248e1dd9337dc47f35ce787fba843de0a43c01300a4c",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "38f5263201b84b56f6cc36f56ffced815965a1d3b66d5570926f7984431f0af3",
+      "contentFingerprint": "e62f3b253f3c24f474b37cfe7107f1314000e698b8d2e60167db6cae67d2c796",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "standardUnit": "좌표평면과 그래프",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "subUnit": "그래프와 관계",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_AREA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.12:exam-final_qa-v2:m1-wangun-2026-mid-meta-review-20261113",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2022",
+      "rpmPrimaryPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 그래프"
+      },
+      "primaryMethod": "정비례와 반비례 그래프의 기본 성질을 대조하고 반비례의 좌표곱 불변을 좌표축에 붙은 직사각형 넓이로 해석한다.",
+      "decisiveStep": "좌표축까지의 두 길이의 곱이 반비례 상수와 연결된다는 의미 전환으로 넓이 변화 진술을 판정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculumKey": "2022",
+      "courseKey": "M1-1",
+      "integrationReason": "반비례의 좌표곱이라는 함수 관계를 직사각형 넓이라는 도형 언어로 해석하는 단계가 결정적이다.",
+      "rpmL1": "좌표평면과 그래프",
+      "rpmL2": "정비례와 반비례",
+      "rpmL3": "반비례",
+      "rpmL4": "반비례 그래프",
+      "L1": "좌표평면과 그래프",
+      "L2": "정비례와 반비례",
+      "L3": "함수 그래프의 성질",
+      "L4": "함수 그래프의 성질 판정",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+      "metaFoundationPackVersion": "1.0.12",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js#7",
+      "approvedSourceFingerprint": "38f5263201b84b56f6cc36f56ffced815965a1d3b66d5570926f7984431f0af3",
       "legacyLevel": "하",
       "runtimeSelectable": true
     },
@@ -25943,7 +26047,7 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 543,
+    "records": 544,
     "problemTypes": [
       {
         "key": "PT_COMPOSITE_FUNCTION_ANALYSIS",
@@ -26251,9 +26355,10 @@
       },
       {
         "key": "PT_FUNCTION_GRAPH_PROPERTIES",
-        "count": 28,
+        "count": 29,
         "questionUids": [
           "qid_v1_0c6db784f0af1f052034c35030c7941a0474456ac188a6490d99c6dea2a6c128",
+          "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
           "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
           "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
           "qid_v1_19c72f96f6917bb4c760567882d324efb72d76a32b30fb2231b0e15b4e37d3a4",
@@ -27141,8 +27246,9 @@
       },
       {
         "key": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-        "count": 24,
+        "count": 25,
         "questionUids": [
+          "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
           "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
           "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
           "qid_v1_19c72f96f6917bb4c760567882d324efb72d76a32b30fb2231b0e15b4e37d3a4",
@@ -28728,6 +28834,13 @@
         ]
       },
       {
+        "key": "CC_RECTANGLE_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e"
+        ]
+      },
+      {
         "key": "CC_RECTANGLE_AREA_EQUATION",
         "count": 1,
         "questionUids": [
@@ -28953,8 +29066,9 @@
       },
       {
         "key": "COND_POSITIVE",
-        "count": 12,
+        "count": 13,
         "questionUids": [
+          "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
           "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
           "qid_v1_3481f583e47fa5ff295a69cd20436263915710237aab376824f5c610369041a6",
           "qid_v1_3a95090e00bfda8bb2be20829c4cc54dcf861ef4dea3d46dd459f803b931d4b9",
