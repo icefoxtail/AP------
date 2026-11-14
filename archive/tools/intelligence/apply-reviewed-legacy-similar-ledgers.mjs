@@ -127,10 +127,11 @@ function verifyMaster(row, master, taxonomy, bindings, conditions) {
     defaultSelectable: L4.defaultSelectable ?? L3.defaultSelectable ?? scope.defaultSelectable,
   } : {};
 }
-export function applyReviewedLegacySimilarLedgers() {
+export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}) {
   if (!fs.existsSync(ledgerDir)) return { status: 'NO_LEDGER' };
   const files = fs.readdirSync(ledgerDir).filter((x) => x.endsWith('.review.json')).sort();
   if (!files.length) return { status: 'NO_LEDGER' };
+  if (prepareSourceLinksFor !== undefined) requireAssert(files.includes(prepareSourceLinksFor), 'unknown source link preparation target');
   const originalIdentityText = fs.readFileSync(identityPath, 'utf8');
   const originalMetadataText = fs.readFileSync(metadataPath, 'utf8');
   const identity = JSON.parse(originalIdentityText), metadata = JSON.parse(originalMetadataText);
@@ -153,6 +154,7 @@ export function applyReviewedLegacySimilarLedgers() {
   const touched = new Set();
   let updated = 0;
   for (const name of files) {
+    if (prepareSourceLinksFor !== undefined && name !== prepareSourceLinksFor) continue;
     const ledger = json(path.join(ledgerDir, name));
     requireAssert(ledger.schemaVersion === 'JS_ARCHIVE_LEGACY_SIMILAR_TARGET_REVIEW_V1' &&
       ledger.preserveUid === true && ledger.regenerateQid9 === false &&
@@ -196,6 +198,7 @@ export function applyReviewedLegacySimilarLedgers() {
             [row.sourceBodyFingerprint, contentFingerprint].includes(link.sourceBodyFingerprint),
             'visual rebind existing basic parent fingerprint q' + row.qid);
           if (link.sourceFingerprint === sourceFingerprint && link.sourceBodyFingerprint === contentFingerprint) continue;
+          requireAssert(prepareSourceLinksFor === name, 'visual rebind reviewed source link must be prepared q' + row.qid);
           link.sourceFingerprint = sourceFingerprint;
           link.sourceBodyFingerprint = contentFingerprint;
           sourceLinksUpdated = true;
@@ -249,8 +252,11 @@ export function applyReviewedLegacySimilarLedgers() {
       }
     }
   }
-  if (sourceLinksUpdated) fs.writeFileSync(sourceLinksPath, JSON.stringify(sourceLinks, null, 2) + '\n');
-  if (!updated) return { status: sourceLinksUpdated ? 'BOUND_REVIEWED_EXISTING_UIDS' : 'ALREADY_BOUND', uidCount: touched.size };
+  if (prepareSourceLinksFor !== undefined) {
+    if (sourceLinksUpdated) fs.writeFileSync(sourceLinksPath, JSON.stringify(sourceLinks, null, 2) + '\n');
+    return { status: sourceLinksUpdated ? 'REVIEWED_SOURCE_LINKS_PREPARED' : 'ALREADY_PREPARED', target: prepareSourceLinksFor };
+  }
+  if (!updated) return { status: 'ALREADY_BOUND', uidCount: touched.size };
   const stableIdentity = { ...identity };
   delete stableIdentity.identityDigest;
   delete stableIdentity.generatedAt;
