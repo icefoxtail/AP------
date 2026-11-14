@@ -1,0 +1,2766 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E075",
+  "owner": "C",
+  "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+  "sourceSha256": "8a19ddb262c99e1dcf3494566920c41bf3e9da7bdad0c9bfc20235de5ecff98c",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e0a853d39d76c3023a06d096999fa13fb80bb0ac3a5316ef0df09276e5220fe1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "두 미지수 일차방정식 정의의 개수 판정",
+      "decisiveStep": "방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_EQ_DEF",
+        "subUnit": "미지수가 2개인 일차방정식의 뜻",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-LINEAR_EQ_DEF",
+        "subUnit": "미지수가 2개인 일차방정식의 뜻",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "네식을정리하여등식여부·두미지수잔존여부를비교한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q1-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "네식을정리하여등식여부·두미지수잔존여부를비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ef8c5a694e7e87e3994dd076e4700d58b85cbf49bf135388f3cd040e4e7cb2c2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "한 두변수방정식의 자연수 해 개수",
+      "decisiveStep": "단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-NATURAL_SOLUTIONS",
+        "subUnit": "자연수 조건에서의 일차방정식의 해",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-NATURAL_SOLUTIONS",
+        "subUnit": "자연수 조건에서의 일차방정식의 해",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $x$, $y$가 자연수",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "한두변수방정식의자연수해를범위로제한하여개수를센다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q2-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한두변수방정식의자연수해를범위로제한하여개수를센다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e410dfbd18827eb2ffe9dacfdd69fe8aed5cad745351c4783dfc964456152b4c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "하나의 두변수방정식에 주어진 해 대입",
+      "decisiveStep": "주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-SOL_SUBSTITUTION",
+        "subUnit": "일차방정식의 해의 대입",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-SOL_SUBSTITUTION",
+        "subUnit": "일차방정식의 해의 대입",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "주어진순서쌍을대입해미지계수를직접결정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q3-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진순서쌍을대입해미지계수를직접결정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_e8c2120351ce1f9c2a197bae8dc4900b9b905d9a38ddd65203e44ae936ecf8f0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-030",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "반대부호 계수의 가감법과 해의 합",
+      "decisiveStep": "030 두식을더해y를소거하는단계가직접보인다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-ADDITION_SUBTRACTION",
+        "subUnit": "가감법을 이용한 연립방정식의 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-ADDITION_SUBTRACTION",
+        "subUnit": "가감법을 이용한 연립방정식의 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "030 두식을더해y를소거하는단계가직접보인다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "반대부호계수소거가준비된연립식을풀어두해의합을구한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "030 두식을더해y를소거하는단계가직접보인다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "반대부호계수소거가준비된연립식을풀어두해의합을구한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_a56cb6de5226591fb49af765cbd7176d4019838449386d36f3ea290c0ab123f0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "연립해를 추가식에 넣어 계수 결정",
+      "decisiveStep": "033 해를먼저구하고추가식을만족하는상수를정한다.031대입법은계수결정의전처리.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-COMMON_SOLUTION",
+        "subUnit": "연립방정식의 해를 다른 식에 대입하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-COMMON_SOLUTION",
+        "subUnit": "연립방정식의 해를 다른 식에 대입하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "033 해를먼저구하고추가식을만족하는상수를정한다.031대입법은계수결정의전처리.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해가 일차방정식 $2x+ay-2=0$을 만족",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "연립해를먼저구한뒤추가식에대입하여계수를정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "033 해를먼저구하고추가식을만족하는상수를정한다.031대입법은계수결정의전처리.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연립해를먼저구한뒤추가식에대입하여계수를정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_60d136d40490d26320ebf194f41d706006d1bd2aa5768f8f6c3512341a83e381",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-037",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "무수히 많은 해의 계수비 조건",
+      "decisiveStep": "037 해상태와계수조건의관계.기존해설은계수비등식을쓰며분모0경우를별도처리하지않았으므로low부채를남긴다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-INFINITE_SOLUTIONS",
+        "subUnit": "해가 무수히 많을 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-INFINITE_SOLUTIONS",
+        "subUnit": "해가 무수히 많을 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "037 해상태와계수조건의관계.기존해설은계수비등식을쓰며분모0경우를별도처리하지않았으므로low부채를남긴다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해가 무수히 많을 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "무수히많은해의계수비조건을이용한다.기존해설이1+2k분모0예외를분리하지않은좁은부채로낮은확신.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "037 해상태와계수조건의관계.기존해설은계수비등식을쓰며분모0경우를별도처리하지않았으므로low부채를남긴다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "EXISTING_SOLUTION_DENOMINATOR_EXCEPTION: coefficient-ratio line divides by1+2k without separately handling zero. Original solution/numeric conclusion preserved; confidence low.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무수히많은해의계수비조건을이용한다.기존해설이1+2k분모0예외를분리하지않은좁은부채로낮은확신."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "EXISTING_SOLUTION_DENOMINATOR_EXCEPTION: coefficient-ratio line divides by1+2k without separately handling zero. Original solution/numeric conclusion preserved; confidence low."
+      ]
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_5a825fd0a406e4d2bdd5ed1d817467938764e742f8a7bf315e57cd26c4c36e71",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "해의 비를 이용한 연립식 계수 결정",
+      "decisiveStep": "033 비관계로두성분을정해미지계수식에넣는다.주어진비는이계수조건primary내부.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-RATIO_CONDITION",
+        "subUnit": "해의 비가 주어진 연립방정식",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-RATIO_CONDITION",
+        "subUnit": "해의 비가 주어진 연립방정식",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "033 비관계로두성분을정해미지계수식에넣는다.주어진비는이계수조건primary내부.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 비가 $4:1$",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "해의비로두성분을정한뒤미지계수식을결정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "033 비관계로두성분을정해미지계수식에넣는다.주어진비는이계수조건primary내부.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "해의비로두성분을정한뒤미지계수식을결정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_f8e17dc36cfaf7b15409f045c596876f82b11643df91d6a9642d01761d6640f2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-030",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "가감법에서 지정 미지수 소거식",
+      "decisiveStep": "030 x계수최소공배수를맞추어빼는식선택.전체해계산은요구하지않는다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-ELIMINATION_METHOD",
+        "subUnit": "미지수 소거를 위한 식의 조작",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-ELIMINATION_METHOD",
+        "subUnit": "미지수 소거를 위한 식의 조작",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "030 x계수최소공배수를맞추어빼는식선택.전체해계산은요구하지않는다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "계수3과2의최소공배수배를맞춰소거식을선택하는직접절차.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "030 x계수최소공배수를맞추어빼는식선택.전체해계산은요구하지않는다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수3과2의최소공배수배를맞춰소거식을선택하는직접절차."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_a01d60164561c71669cd9e39415387ae66d30f6eb2630b1018120735ddf406d6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "잘못 읽은 상수항의 역추적",
+      "decisiveStep": "033 남은정상식과잘못구한해성분을이용해상수항을역산한다.현재보기59부재와원해설의미검증정정주장때문에수치난도UNKNOWN보존.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-MISREAD_COEFF",
+        "subUnit": "상수항을 잘못 보고 푼 문제(출제오류 선지 정정 분석)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-MISREAD_COEFF",
+        "subUnit": "상수항을 잘못 보고 푼 문제(출제오류 선지 정정 분석)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "033 남은정상식과잘못구한해성분을이용해상수항을역산한다.현재보기59부재와원해설의미검증정정주장때문에수치난도UNKNOWN보존.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $7x-2y=20$의 $20$을 다른 수로 잘못 보고",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "기존해설산출59가현재보기다섯개에없고시험현장64→59정정주장은독립증거없는원해설서술이다.정정사실로승격하지않고미판정.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "033 남은정상식과잘못구한해성분을이용해상수항을역산한다.현재보기59부재와원해설의미검증정정주장때문에수치난도UNKNOWN보존.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "CURRENT_CHOICES_MISMATCH_AND_UNVERIFIED_CORRECTION_CLAIM: existing calculation59 is absent from actual five choices. Existing prose claiming an in-exam64→59 correction has no independent evidence in this task and is not promoted to fact. Source answer and explanation are preserved; difficulty UNKNOWN.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": "UNKNOWN",
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기존해설산출59가현재보기다섯개에없고시험현장64→59정정주장은독립증거없는원해설서술이다.정정사실로승격하지않고미판정."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "CURRENT_CHOICES_MISMATCH_AND_UNVERIFIED_CORRECTION_CLAIM: existing calculation59 is absent from actual five choices. Existing prose claiming an in-exam64→59 correction has no independent evidence in this task and is not promoted to fact. Source answer and explanation are preserved; difficulty UNKNOWN."
+      ]
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_159591bd4ff07af3b62b1152473d5caa467021b3ac1b30618a2537b6b5c7be2b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "두 속력 구간의 시간·거리 합 연립",
+      "decisiveStep": "한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-WORD_PROBLEM_SPEED",
+        "subUnit": "연립방정식의 활용(거리, 속력, 시간)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-WORD_PROBLEM_SPEED",
+        "subUnit": "연립방정식의 활용(거리, 속력, 시간)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "걷기와뛰기시간합·거리합의두식을연립한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q10-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "걷기와뛰기시간합·거리합의두식을연립한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_c75c91feaa525c37af5ee29617911855a598571a0a6b836b64fe9d10fd8ff91b",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-019",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "구한 부등식 해의 수직선 표현",
+      "decisiveStep": "019 최종목표는수직선의방향·개폐경계선택.괄호정리021은표현할해를구하는내부선행단계.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SOL_NUMBER_LINE",
+        "subUnit": "일차부등식의 해와 수직선 표현",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SOL_NUMBER_LINE",
+        "subUnit": "일차부등식의 해와 수직선 표현",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "수직선으로 해 표현"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "수직선으로 해 표현"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "019 최종목표는수직선의방향·개폐경계선택.괄호정리021은표현할해를구하는내부선행단계.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "괄호부등식해를구해실제그림의개폐경계와방향을대조한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "019 최종목표는수직선의방향·개폐경계선택.괄호정리021은표현할해를구하는내부선행단계.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호부등식해를구해실제그림의개폐경계와방향을대조한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_7c16671069ef32165cbfd45afbf147da3b09661c49a02f5d1bd50b9e3379b743",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-018",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "구간의 음수배와 평행 이동 범위",
+      "decisiveStep": "018 부등식성질로구간끝점과등호방향을옮긴다.일차함수그래프를source에없는경로로추가하지않는다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-EXPRESSION_RANGE",
+        "subUnit": "식의 값의 범위 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-EXPRESSION_RANGE",
+        "subUnit": "식의 값의 범위 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "018 부등식성질로구간끝점과등호방향을옮긴다.일차함수그래프를source에없는경로로추가하지않는다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $-4 < x \\le 2$",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "주어진구간을음수배·상수더하기로바꿔끝점포함방향을판정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "018 부등식성질로구간끝점과등호방향을옮긴다.일차함수그래프를source에없는경로로추가하지않는다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진구간을음수배·상수더하기로바꿔끝점포함방향을판정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_6a4d34606e6a2fe6cc9ba71847fad609864c658288ced560a224a52bbf29a6e0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-018",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "주어진 비교에서 동치 부등식 판정",
+      "decisiveStep": "018 a,b대소관계에가감·음수배를적용하는ACTIVE성질template후보.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INEQ_PROPERTIES",
+        "subUnit": "부등식의 기본 성질",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INEQ_PROPERTIES",
+        "subUnit": "부등식의 기본 성질",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "부등식의 양변에 수를 더하거나 곱하고 나눌 때 성질을 옳게 적용한 보기를 찾는 과제.",
+            "template": "각 보기에서 양변에 같은 수를 더하거나 곱하는 단계를 추적하고, 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는지 확인한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "018 a,b대소관계에가감·음수배를적용하는ACTIVE성질template후보.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $3-2a > 3-2b$일 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "기본비교를정리한후보기의가감·음수배관계를비교한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "018 a,b대소관계에가감·음수배를적용하는ACTIVE성질template후보.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "기본비교를정리한후보기의가감·음수배관계를비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_3572de6ff965b1003ba21fa885c9f99aba89fe9870eaf456a79ea077198cf8df",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-023",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "수직선의 해 경계로 계수차 결정",
+      "decisiveStep": "023 실제열린1/왼쪽해를기준으로분모5+b의양수와경계등식을얻는다.주어진그림을실제로열람함.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-UNKNOWN_COEFF",
+        "subUnit": "수직선 위의 해를 통한 미지수의 차 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-UNKNOWN_COEFF",
+        "subUnit": "수직선 위의 해를 통한 미지수의 차 구하기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "023 실제열린1/왼쪽해를기준으로분모5+b의양수와경계등식을얻는다.주어진그림을실제로열람함.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해를 수직선 위에 나타내면 다음 그림과 같다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "실제수직선의열린1/왼쪽해와계수부호·경계를맞춘다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "023 실제열린1/왼쪽해를기준으로분모5+b의양수와경계등식을얻는다.주어진그림을실제로열람함.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "실제수직선의열린1/왼쪽해와계수부호·경계를맞춘다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1dc1057cd4dbcb6103a7a7699e21fd7f59e3c289cc36329aa735e6e84e9055f0",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "연립부등식의 공통해가 없는 매개조건",
+      "decisiveStep": "두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SYSTEM_NO_SOL",
+        "subUnit": "연립부등식의 해가 없을 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SYSTEM_NO_SOL",
+        "subUnit": "연립부등식의 해가 없을 조건",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류.",
+        "binding": "ACTIVE PT_H1_LINEAR_SYSTEM_INEQUALITY / TPL_H1_LINEAR_INEQUALITY_INTERVAL 정의는각해의교집합구간이다.현재는M2문항이며공집합조건의계수범위목표가추가되어M2scopedbinding증거없이활성화/정확재사용하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해가 없을 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "두구간의공통해가없도록끝점포함여부를비교한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q15-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두구간의공통해가없도록끝점포함여부를비교한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8566365dc5f0cf5c196a36ba7232b77a682671eff20df2c21e5fd762a728e9cc",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "분수·소수 연립부등식의 공통구간",
+      "decisiveStep": "두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SYSTEM_INEQ_SOL",
+        "subUnit": "복잡한 계수의 연립부등식 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SYSTEM_INEQ_SOL",
+        "subUnit": "복잡한 계수의 연립부등식 풀이",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "일차부등식 또는 연립부등식의 공통 해구간과 정수·매개변수 조건을 다루는 유형.",
+            "template": "각 부등식의 해를 구해 교집합 구간을 정한다.",
+            "internalSkeleton": "LINEAR_INEQUALITY_SYSTEM_INTERVAL_INTERSECTION"
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류.",
+        "binding": "실제ACTIVE H1PT/TPL정의와각식해→교집합구간골격을대조한교과횡단후보.현재M2target/미상curriculum에대한genuine scopedbinding전에는활성화하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "분수소수부등식을각각풀고공통구간의두경계차를계산한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q16-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수소수부등식을각각풀고공통구간의두경계차를계산한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_a19ff6f29109201a4ff94d0ca28218775c851aae1b45d4c3a71dd1da2b2d8dba",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "혼합 농도의 상하한 연립부등식",
+      "decisiveStep": "농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SALT_WATER",
+        "subUnit": "소금물의 농도 부등식 활용",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-SALT_WATER",
+        "subUnit": "소금물의 농도 부등식 활용",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $20\\%$이상 $25\\%$이하",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "혼합후농도상하한을소금량의두부등식으로모델링해공통범위를구한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q17-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "혼합후농도상하한을소금량의두부등식으로모델링해공통범위를구한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_cf84bf35f4720664d68008ccee6740917650f9f51e19bb4335eb21342d22c2d6",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-024",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "현재·미래 나이 수량 범위와 자연수 선택",
+      "decisiveStep": "024 나이수량이상/미만조건을공통구간으로정한다.이후자연수해선별은외부CC_INTEGER_PARAMETER_ANALYSIS로연결한다.29/3근사등호는내용부채로보존.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-AGE_PROBLEM",
+        "subUnit": "나이에 관한 일차부등식 활용",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-AGE_PROBLEM",
+        "subUnit": "나이에 관한 일차부등식 활용",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "이상·이하 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "이상·이하 조건"
+        },
+        "crossConceptKeys": [
+          "CC_INTEGER_PARAMETER_ANALYSIS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "024 나이수량이상/미만조건을공통구간으로정한다.이후자연수해선별은외부CC_INTEGER_PARAMETER_ANALYSIS로연결한다.29/3근사등호는내용부채로보존.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "수량관계024로연속범위를얻은뒤자연수제약으로가능한나이후보를거르는별도단계.정확ACTIVE integerparameter정의와일치.",
+        "condition": "실제제약: $x$세(자연수) / 3배 이상 / 2배보다 작다",
+        "integration": "현재미래부등식모델→공통연속범위→자연수후보선별CC의순차연결.",
+        "difficulty": "현재와미래나이두조건의공통범위에서자연수를선택한다.기존29/3=9.667은근삿값을등호로쓴표현부채로보존.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "024 나이수량이상/미만조건을공통구간으로정한다.이후자연수해선별은외부CC_INTEGER_PARAMETER_ANALYSIS로연결한다.29/3근사등호는내용부채로보존.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "EXISTING_SOLUTION_APPROXIMATION_EQUALITY: source explanation writes29/3=9.667 using equality for a rounded decimal. Natural-number selection unchanged, original text preserved, confidence low.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "현재와미래나이두조건의공통범위에서자연수를선택한다.기존29/3=9.667은근삿값을등호로쓴표현부채로보존."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "EXISTING_SOLUTION_APPROXIMATION_EQUALITY: source explanation writes29/3=9.667 using equality for a rounded decimal. Natural-number selection unchanged, original text preserved, confidence low."
+      ]
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_734e187b345fa5d7d2e1c5e17123843f616bb2fdb989af271fe9845189259e49",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "연립부등식의 정수해 개수와 계수범위",
+      "decisiveStep": "두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-INTEGER_COUNT",
+        "subUnit": "정수 해의 개수 조건과 상수 범위",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-INTEGER_COUNT",
+        "subUnit": "정수 해의 개수 조건과 상수 범위",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "일차부등식 또는 연립부등식의 공통 해구간과 정수·매개변수 조건을 다루는 유형.",
+            "template": "정수해 개수나 지정 해구간이 되도록 매개변수 범위를 정한다.",
+            "internalSkeleton": "CHAIN_INEQUALITY_SPLIT_AND_INTERSECT"
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존.",
+        "binding": "ACTIVEH1template는정수해개수에따른매개변수범위로현재골격과일치하나M2source에의scopedbinding은별도미확인.교과범위이동을하지않고후보상태로보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 정수 $x$ / 개수가 4개",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "정수4개라는조건을포함되는마지막정수와배제되는다음정수의두엄격경계로옮긴다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "RPM_LEAF_GAP: 두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E075-Q19-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정수4개라는조건을포함되는마지막정수와배제되는다음정수의두엄격경계로옮긴다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_4e4b33fd1c1101081e209f62e0a1c2d0706a1baf85b90b0ac26d98de5be6f556",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-024",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "의자 잔여 관례의 이중부등식 세우기",
+      "decisiveStep": "실제목표는최소개수·최대개수값이아닌조건에맞는식선택이므로024.마지막사용의자1~5명관례는기존해설에만명시되어conditional/low부채로분리한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-BENCH_PROBLEM",
+        "subUnit": "긴 의자 문제의 부등식 세우기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-BENCH_PROBLEM",
+        "subUnit": "긴 의자 문제의 부등식 세우기",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "이상·이하 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "이상·이하 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "실제목표는최소개수·최대개수값이아닌조건에맞는식선택이므로024.마지막사용의자1~5명관례는기존해설에만명시되어conditional/low부채로분리한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 최소 1명에서 최대 5명",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "의자3개가완전히비고마지막사용의자1~5명이라는기존해설관례로이중부등식을모델링한다.발문에는마지막의자관례미명시라조건부.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "실제목표는최소개수·최대개수값이아닌조건에맞는식선택이므로024.마지막사용의자1~5명관례는기존해설에만명시되어conditional/low부채로분리한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "LAST_OCCUPIED_BENCH_CONVENTION: existing explanation assumes exactly3 wholly empty benches and1~5 students on the last occupied bench; stem does not explicitly state the partial-last-bench convention. Keep conditional metadata/low and original text.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "의자3개가완전히비고마지막사용의자1~5명이라는기존해설관례로이중부등식을모델링한다.발문에는마지막의자관례미명시라조건부."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      },
+      "contentDebt": [
+        "LAST_OCCUPIED_BENCH_CONVENTION: existing explanation assumes exactly3 wholly empty benches and1~5 students on the last occupied bench; stem does not explicitly state the partial-last-bench convention. Keep conditional metadata/low and original text."
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_740fc8c74d72e8ec169f6a1f25cd6912a95da4be0e2512f48be643c5dc25ffe9",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-033",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 해의 합과 원식으로 계수 결정",
+      "decisiveStep": "033 x+y조건과a없는첫식으로해를정한후둘째식의상수를구한다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-SUM_CONDITION",
+        "subUnit": "해의 합이 주어진 연립방정식(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-SUM_CONDITION",
+        "subUnit": "해의 합이 주어진 연립방정식(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "033 x+y조건과a없는첫식으로해를정한후둘째식의상수를구한다.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: $x$, $y$의 합이 7",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "두해의합과계수없는첫식을연립한뒤나머지식에서상수를정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "033 x+y조건과a없는첫식으로해를정한후둘째식의상수를구한다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두해의합과계수없는첫식을연립한뒤나머지식에서상수를정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_20981cee334af50118cf06a1ff26b1873a09ee482ccb196c2032b6a4e3bef402",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-039",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "총인원과 총입장료로 두 집단 인원",
+      "decisiveStep": "039 개수가격연립모델.가격과총수가모두명시된정형형식.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-WORD_PROBLEM_TICKET",
+        "subUnit": "입장료에 관한 연립방정식 활용(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-04-WORD_PROBLEM_TICKET",
+        "subUnit": "입장료에 관한 연립방정식 활용(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "039 개수가격연립모델.가격과총수가모두명시된정형형식.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "주어진입력외에추가수범위·전칭·제외조건을발명하지않는다.",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "총인원과총입장료를연립한정형개수가격모델.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "039 개수가격연립모델.가격과총수가모두명시된정형형식.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "총인원과총입장료를연립한정형개수가격모델."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_606b94deafe3200c96b7cc6298a03026c96cc7347ec7d20b05746f0c49dec574",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-023",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 부등식의 같은 해로 상수 결정",
+      "decisiveStep": "023 두해의같은방향·경계를맞추는상수조건.연립의교집합을묻는과제와구분.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-EQUAL_SOLUTIONS",
+        "subUnit": "해가 서로 같은 두 일차부등식(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-EQUAL_SOLUTIONS",
+        "subUnit": "해가 서로 같은 두 일차부등식(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY"
+      },
+      "fieldReview": {
+        "classification": "023 두해의같은방향·경계를맞추는상수조건.연립의교집합을묻는과제와구분.",
+        "binding": "실제RPM과ACTIVE후보의정의·목표범위를대조했다. 관련variant를exact로강제하거나키를발명하지않는다.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 해가 같을 때",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "두부등식의해를각각구해같은경계조건으로상수를정한다.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "023 두해의같은방향·경계를맞추는상수조건.연립의교집합을묻는과제와구분.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두부등식의해를각각구해같은경계조건으로상수를정한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_c1b1459813a27c25eef2a217aa047d54c8b46a067d88d2ce9f73744de7919666",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-026",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "쇼핑 머무름을 포함한 왕복 시간제한",
+      "decisiveStep": "026 왕복시간+구매머무름시간의합이한도이하인거리범위.실제ACTIVE왕복제한PT/TPL정의에부합하며samedirection속력도허용된다.",
+      "beforeSource": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-WORD_PROBLEM_TIME",
+        "subUnit": "시간제한 쇼핑 거리 구하기(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "일차부등식의 활용",
+        "standardUnitOrder": null,
+        "subUnitKey": "M2-03-WORD_PROBLEM_TIME",
+        "subUnit": "시간제한 쇼핑 거리 구하기(서술형)",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "after": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "rpmBasePath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_UPPER_BOUND"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "bindingCandidate": {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+          "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+          "status": "EXISTING_REUSE_CANDIDATE",
+          "activationStatus": "HOLD_GENUINE_RESOLVER_AND_SCOPED_BINDING",
+          "definitionEvidence": {
+            "problemType": "갈 때와 올 때의 속력과 구매 시간이 주어진 상황에서 시간의 합이 제한 이하가 되는 거리 범위를 구하는 과제.",
+            "template": "편도 거리를 미지수로 두고 갈 때·올 때의 시간과 머무는 시간을 더한 식을 세워 제한 시간 이하라는 부등식을 풀고 거리 범위를 구한다.",
+            "internalSkeleton": null
+          }
+        }
+      },
+      "fieldReview": {
+        "classification": "026 왕복시간+구매머무름시간의합이한도이하인거리범위.실제ACTIVE왕복제한PT/TPL정의에부합하며samedirection속력도허용된다.",
+        "binding": "실제ACTIVE PT/TPL 정의와parent를읽고실제목표·풀이단계를비교한재사용후보. genuine resolver/scoped binding 전에는활성화보류.",
+        "crossConcept": "선택한primary안의정의·기본변형을CC로중복등록하지않는다.",
+        "condition": "실제제약: 1시간 이내 / 1시간 이내 / 1시간 이내",
+        "integration": "해당primary의정형내부흐름으로별도외부개념결합없음.",
+        "difficulty": "왕복시간과쇼핑정지시간의합으로허용거리를정하는정형시간한도모델.",
+        "fourSlot": "Source and existing full solution read; literal quotation atoms individually selected. NAMED means a method name or standard mathematical expression occurs in the whole solution; IMPLIED includes an explicit rationale. Independent sample pending."
+      },
+      "reason": "026 왕복시간+구매머무름시간의합이한도이하인거리범위.실제ACTIVE왕복제한PT/TPL정의에부합하며samedirection속력도허용된다.",
+      "registrationDebt": [
+        "SOURCE_CURRICULUM_ABSENT: RPM reference is semantic proposal; curriculum binding unresolved.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "왕복시간과쇼핑정지시간의합으로허용거리를정하는정형시간한도모델."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    }
+  ],
+  "topicSummary": [],
+  "proposals": [
+    {
+      "id": "C-E075-Q1-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "두 미지수 일차방정식 정의의 개수 판정",
+      "distinguishingRule": "방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap.",
+      "intendedParent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "sourceOrdinals": [
+        1
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e0a853d39d76c3023a06d096999fa13fb80bb0ac3a5316ef0df09276e5220fe1"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "방정식등호와정리후두미지수잔존여부를판정한다.연립032해판정과구분한definitionleafgap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q2-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "한 두변수방정식의 자연수 해 개수",
+      "distinguishingRule": "단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부.",
+      "intendedParent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "sourceOrdinals": [
+        2
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_ef8c5a694e7e87e3994dd076e4700d58b85cbf49bf135388f3cd040e4e7cb2c2"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "단일방정식의자연수순서쌍개수는두식을가진연립032또는일차부등식정수개수022와다른leafgap.자연수범위선별은정의된primary내부."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q3-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "하나의 두변수방정식에 주어진 해 대입",
+      "distinguishingRule": "주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap.",
+      "intendedParent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "sourceOrdinals": [
+        3
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e410dfbd18827eb2ffe9dacfdd69fe8aed5cad745351c4783dfc964456152b4c"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "주어진순서쌍으로단일식의계수를정한다.연립033으로입력식을늘리지않는leafgap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q10-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "두 속력 구간의 시간·거리 합 연립",
+      "distinguishingRule": "한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap.",
+      "intendedParent": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "sourceOrdinals": [
+        10
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_159591bd4ff07af3b62b1152473d5caa467021b3ac1b30618a2537b6b5c7be2b"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "한사람의연속걷기/뛰기두구간이다.040마주가기따라잡기나041열차/강으로의미를확장하지않는선형모델leafgap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q15-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "연립부등식의 공통해가 없는 매개조건",
+      "distinguishingRule": "두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY",
+      "sourceOrdinals": [
+        15
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1dc1057cd4dbcb6103a7a7699e21fd7f59e3c289cc36329aa735e6e84e9055f0"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "두일차부등식공통부분의비존재를목표로하는leafgap.023단일부등식계수조건과역할범위를구분한다.실제H1공통구간template는관련후보이나M2범위binding은보류."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q16-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "분수·소수 연립부등식의 공통구간",
+      "distinguishingRule": "두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY",
+      "sourceOrdinals": [
+        16
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_8566365dc5f0cf5c196a36ba7232b77a682671eff20df2c21e5fd762a728e9cc"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "두부등식해의교집합구간과경계차가목표인leafgap.실제ACTIVE H1interval골격은일치하나M2sourcecurriculum미상으로coursebinding보류."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q17-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "혼합 농도의 상하한 연립부등식",
+      "distinguishingRule": "농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY_WORD",
+      "sourceOrdinals": [
+        17
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a19ff6f29109201a4ff94d0ca28218775c851aae1b45d4c3a71dd1da2b2d8dba"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "농도상하한을소금량범위로옮기는모델이다.042소금물연립방정식과028할인이익어느쪽으로도잘못확정하지않는leafgap.농도공식은이특정primary내부."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E075-Q19-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "연립부등식의 정수해 개수와 계수범위",
+      "distinguishingRule": "두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존.",
+      "intendedParent": "M2-02-LINEAR_INEQUALITY",
+      "sourceOrdinals": [
+        19
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_734e187b345fa5d7d2e1c5e17123843f616bb2fdb989af271fe9845189259e49"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "sourceGitBlobSha": "ac962ba1f2282d40cd5a6f8b10304fe0e13b81fe",
+      "evidence": [
+        "두해구간공통부분의정수개수에서계수범위를정한다.022개수구하기와023단일계수조건을하나로강제하지않는leafgap.실제ACTIVEH1정수매개template골격후보만보존."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    }
+  ],
+  "notes": [
+    "Actual source stems, choices and existing solutions read; no new solution generated.",
+    "Initial content-only difficulty snapshot and actual figures precede legacy comparison. Source bytes/UID/order preserved."
+  ],
+  "sourceVisualEvidence": [
+    {
+      "sourceOrdinal": 11,
+      "sourcePath": "assets/images/17_연향중_1학기_기말_중2_수학/q11.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E075/assets/q11.png",
+      "sha256": "7e7934e0e55603b66f29bc250359249b8e6f1a5dda05650fdadc5b13749850ee"
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePath": "assets/images/17_연향중_1학기_기말_중2_수학/q14.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E075/assets/q14.png",
+      "sha256": "921c9a3df206b3b3447b078eb63a407cb231cf565559278be739594945306b84"
+    }
+  ],
+  "difficultyAssessmentDisclosure": "All current item content and existing solutions plus actual figures were read and initial difficulty frozen before legacy source/metadata fields were compared. Previous exposure is disclosed and does not invalidate valid current evidence.",
+  "difficultyInitialFreeze": {
+    "path": "/workspace/scratch/14c2c64e43fb/workers/C/E075/blind-initial.json",
+    "sha256": "30b0a317dcabd45734ce1414ed9b74946f359dfae468713dab9c75750462fe9f"
+  }
+}
