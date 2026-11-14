@@ -37,7 +37,7 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -233,7 +233,7 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -312,7 +312,7 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 1,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -889,7 +889,7 @@ window.questionBank = [
     "curriculum": "2022",
     "course": "중2 수학",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "low",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   }

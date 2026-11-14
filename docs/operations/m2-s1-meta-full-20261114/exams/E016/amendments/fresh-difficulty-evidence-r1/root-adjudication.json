@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E016",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:49:01.640729+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E016",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 1,
+        "after": {
+          "difficultyConfidence": "medium"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 분모를 10의 거듭제곱으로 만드는 틀이 이미 제시되어 1도 가능하다. 부족한 인수와 분자 보충을 대응시키는 표준 초입으로 기존 2/중도 합리적이므로 B12에서 보존한다."
+      },
+      {
+        "sourceOrdinal": 6,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 잘못 본 부분이 명시되어 있어 의도된 복원 절차 자체는 기존 2/B23을 수용한다. 다만 잘못 읽은 분수의 약분 후 성분을 원래 성분으로 볼 전제가 부족하다는 내용 debt가 실제로 남으므로 confidence low와 조건부 상태를 제안한다."
+      },
+      {
+        "sourceOrdinal": 8,
+        "after": {
+          "difficultyConfidence": "medium"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 법칙 적용 후 지수에 관한 식 한 개를 바로 푸는 기본 역산이다. 기존 1/하를 수용하되 연립된 관계가 없는 1/2 경계로 보존한다."
+      },
+      {
+        "sourceOrdinal": 23,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 정확한 양 끝 경계를 의도한 문제라면 음수 배와 평행이동의 표준 범위 변환이므로 기존 2/중을 수용한다. 다만 tight bound라는 의미가 본문에서 빠졌다는 기존 내용 debt가 남으므로 confidence low를 제안한다."
+      }
+    ],
+    "itemUpdates": [
+      {
+        "sourceOrdinal": 6,
+        "merge": {
+          "finalDifficulty": {
+            "reviewStatus": "manual_review",
+            "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+          }
+        },
+        "set": {
+          "contentDebt": [
+            {
+              "type": "MISREAD_REDUCTION_ASSUMPTION",
+              "evidence": "원래분수의기약성만으로잘못읽은분수의분자/분모가각기약표현과같다고할수없다. 예: 원래14/33(기약), 분모를24로오독하면7/12, 분자를18로오독하면6/11이되어동일오독소수를얻는다. 선택지의도답②는존재하지만발문만으로원래분수의유일성은보장되지않는다.",
+              "action": "본문·선택지·정답·해설보존. 잘못읽은분수의기약성등추가전제는별도내용검토대상."
+            },
+            "기약분수라는 조건은 처음 분수에만 명시되어 있다. 기존 해설은 잘못 읽은 분수의 기약 표현에서 원래 분자·분모를 바로 추출하며, 그 보존이 정당화되는 추가 전제가 입력에서 확인되지 않는다. 내용 검토 debt로 분리하며 의도된 구조만 조건부 평가한다."
+          ]
+        },
+        "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+      },
+      {
+        "sourceOrdinal": 23,
+        "merge": {
+          "finalDifficulty": {
+            "reviewStatus": "manual_review",
+            "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+          }
+        },
+        "set": {
+          "contentDebt": [
+            {
+              "type": "NONTIGHT_BOUND_AMBIGUITY",
+              "evidence": "모든x∈[−1,3]에대해a≤5−x/2≤b만요구하면a≤7/2,b≥11/2인모든경계가가능하다. 예a3,b6은조건을만족하지만4ab72다. a,b가각각최댓가능하한/최솟가능상한또는식의최솟값/최댓값이라는조건이없다.",
+              "action": "정답77과원문·기존해설은보존하고경계의tightness명시를후속내용검토로보낸다."
+            },
+            "a,b를 각각 최솟값·최댓값 또는 정확한 해 범위의 경계라고 명시하지 않고 부등식만 제시한다. 기존 해설은 가장 좁은 경계로 해석한다. 의도된 범위 변환 난도와 별개로 문구 확인 debt를 남긴다."
+          ]
+        },
+        "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E016-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E016-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E016.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 23,
+        "blindInitialSha256": "1af0cf5b3c905aeeaaa7ffb8832dd6ae6359b58d8cc8c2b82aec6a63e988c028",
+        "comparisonSha256": "e824440ec70028d7afd1108c32805c47ce40a4f522337368586738ce478d1635",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "e5cc0b159da7e3edfa57784d36c31958aad9574f",
+    "currentFourSlotSha256": "92b89a678d73795ae3dfba05c7875f232f5d19adb94ae103e4650f50624630f5",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "0040d47d68f8ca968c3e2a1ca77c01f01a7aeeab5b84a72c027fb9ce9e604806",
+  "previousFourSlotSha256": "92b89a678d73795ae3dfba05c7875f232f5d19adb94ae103e4650f50624630f5",
+  "acceptedReviewSha256": "07da597466aeb9ddca9e856be4e6d171c5ede0b7b57aa414193eb46437b7c8f8",
+  "acceptedFourSlotSha256": "4c9a2ed9510dd1a77a956446a07e128bdb3a848c8fd4370b55e995d3f8d6571c",
+  "reviewedSourceBlob": "e5cc0b159da7e3edfa57784d36c31958aad9574f",
+  "finalSourceBlob": "4e689ee7f210034f87245b9b22306e74d043c0f9",
+  "changes": [
+    {
+      "sourceOrdinal": 1,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분모를1000으로맞추라는틀이주어진익숙한전처리2/B12. 빈칸수로난이도를올리지않는다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 분모를 10의 거듭제곱으로 만드는 틀이 이미 제시되어 1도 가능하다. 부족한 인수와 분자 보충을 대응시키는 표준 초입으로 기존 2/중도 합리적이므로 B12에서 보존한다.",
+        "authorReason": "분모를1000으로맞추라는틀이주어진익숙한전처리2/B12. 빈칸수로난이도를올리지않는다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 분모를 10의 거듭제곱으로 만드는 틀이 이미 제시되어 1도 가능하다. 부족한 인수와 분자 보충을 대응시키는 표준 초입으로 기존 2/중도 합리적이므로 B12에서 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "The two mistaken readings and their unchanged components are specified. Converting the decimals and assembling the intended components is a familiar procedure with no new strategy selection. Preserve the distinct non-uniqueness content debt. Independent B recommended2 and author A accepted it; root reread the actual source and existing solution.",
+        "authorReason": "두오류에서보존되는서로다른성분을선택해야하므로3/B23제안. 내용누락으로난이도를올린것은아니다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 잘못 본 부분이 명시되어 있어 의도된 복원 절차 자체는 기존 2/B23을 수용한다. 다만 잘못 읽은 분수의 약분 후 성분을 원래 성분으로 볼 전제가 부족하다는 내용 debt가 실제로 남으므로 confidence low와 조건부 상태를 제안한다.",
+        "authorReason": "The two mistaken readings and their unchanged components are specified. Converting the decimals and assembling the intended components is a familiar procedure with no new strategy selection. Preserve the distinct non-uniqueness content debt. Independent B recommended2 and author A accepted it; root reread the actual source and existing solution."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 잘못 본 부분이 명시되어 있어 의도된 복원 절차 자체는 기존 2/B23을 수용한다. 다만 잘못 읽은 분수의 약분 후 성분을 원래 성분으로 볼 전제가 부족하다는 내용 debt가 실제로 남으므로 confidence low와 조건부 상태를 제안한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진꼴에서지수식한개를세워바로빈칸을구하므로1유지/B12."
+      },
+      "after": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 법칙 적용 후 지수에 관한 식 한 개를 바로 푸는 기본 역산이다. 기존 1/하를 수용하되 연립된 관계가 없는 1/2 경계로 보존한다.",
+        "authorReason": "주어진꼴에서지수식한개를세워바로빈칸을구하므로1유지/B12."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 법칙 적용 후 지수에 관한 식 한 개를 바로 푸는 기본 역산이다. 기존 1/하를 수용하되 연립된 관계가 없는 1/2 경계로 보존한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Under the intended tight-bound reading, the learning demand is the basic negative-multiplication inequality property followed by adding a constant. The separate failure to state tight bounds is content debt, not an advanced learning skill. This is a separate root learning-level adjudication supported by actual source reread and independent B, not a conversion from numeric2. Original level상 and strong-conflict history remain in author/independent evidence.",
+        "authorReason": "의도한범위변환은음수1/2배와5더하기의직접정형2/B12. 원문상4와강한충돌이며문항불명확성으로난이도를상향하지않는다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 정확한 양 끝 경계를 의도한 문제라면 음수 배와 평행이동의 표준 범위 변환이므로 기존 2/중을 수용한다. 다만 tight bound라는 의미가 본문에서 빠졌다는 기존 내용 debt가 남으므로 confidence low를 제안한다.",
+        "authorReason": "Under the intended tight-bound reading, the learning demand is the basic negative-multiplication inequality property followed by adding a constant. The separate failure to state tight bounds is content debt, not an advanced learning skill. This is a separate root learning-level adjudication supported by actual source reread and independent B, not a conversion from numeric2. Original level상 and strong-conflict history remain in author/independent evidence."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 정확한 양 끝 경계를 의도한 문제라면 음수 배와 평행이동의 표준 범위 변환이므로 기존 2/중을 수용한다. 다만 tight bound라는 의미가 본문에서 빠졌다는 기존 내용 debt가 남으므로 confidence low를 제안한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "merge": {
+        "finalDifficulty": {
+          "reviewStatus": "manual_review",
+          "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+        }
+      },
+      "set": {
+        "contentDebt": [
+          {
+            "type": "MISREAD_REDUCTION_ASSUMPTION",
+            "evidence": "원래분수의기약성만으로잘못읽은분수의분자/분모가각기약표현과같다고할수없다. 예: 원래14/33(기약), 분모를24로오독하면7/12, 분자를18로오독하면6/11이되어동일오독소수를얻는다. 선택지의도답②는존재하지만발문만으로원래분수의유일성은보장되지않는다.",
+            "action": "본문·선택지·정답·해설보존. 잘못읽은분수의기약성등추가전제는별도내용검토대상."
+          },
+          "기약분수라는 조건은 처음 분수에만 명시되어 있다. 기존 해설은 잘못 읽은 분수의 기약 표현에서 원래 분자·분모를 바로 추출하며, 그 보존이 정당화되는 추가 전제가 입력에서 확인되지 않는다. 내용 검토 debt로 분리하며 의도된 구조만 조건부 평가한다."
+        ]
+      },
+      "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+    },
+    {
+      "sourceOrdinal": 23,
+      "merge": {
+        "finalDifficulty": {
+          "reviewStatus": "manual_review",
+          "evidenceStatus": "CONDITIONAL_INTENDED_STRUCTURE_WITH_SOURCE_CONTEXT_DEBT"
+        }
+      },
+      "set": {
+        "contentDebt": [
+          {
+            "type": "NONTIGHT_BOUND_AMBIGUITY",
+            "evidence": "모든x∈[−1,3]에대해a≤5−x/2≤b만요구하면a≤7/2,b≥11/2인모든경계가가능하다. 예a3,b6은조건을만족하지만4ab72다. a,b가각각최댓가능하한/최솟가능상한또는식의최솟값/최댓값이라는조건이없다.",
+            "action": "정답77과원문·기존해설은보존하고경계의tightness명시를후속내용검토로보낸다."
+          },
+          "a,b를 각각 최솟값·최댓값 또는 정확한 해 범위의 경계라고 명시하지 않고 부등식만 제시한다. 기존 해설은 가장 좁은 경계로 해석한다. 의도된 범위 변환 난도와 별개로 문구 확인 debt를 남긴다."
+        ]
+      },
+      "reason": "Unresolved context stays explicitly conditional after independent recheck, with no invented student premise."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 분모를 10의 거듭제곱으로 만드는 틀이 이미 제시되어 1도 가능하다. 부족한 인수와 분자 보충을 대응시키는 표준 초입으로 기존 2/중도 합리적이므로 B12에서 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 잘못 본 부분이 명시되어 있어 의도된 복원 절차 자체는 기존 2/B23을 수용한다. 다만 잘못 읽은 분수의 약분 후 성분을 원래 성분으로 볼 전제가 부족하다는 내용 debt가 실제로 남으므로 confidence low와 조건부 상태를 제안한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 법칙 적용 후 지수에 관한 식 한 개를 바로 푸는 기본 역산이다. 기존 1/하를 수용하되 연립된 관계가 없는 1/2 경계로 보존한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "low",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 정확한 양 끝 경계를 의도한 문제라면 음수 배와 평행이동의 표준 범위 변환이므로 기존 2/중을 수용한다. 다만 tight bound라는 의미가 본문에서 빠졌다는 기존 내용 debt가 남으므로 confidence low를 제안한다."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E016-difficulty-blind-freeze-r1.json",
+      "sha256": "1af0cf5b3c905aeeaaa7ffb8832dd6ae6359b58d8cc8c2b82aec6a63e988c028",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E016-difficulty-comparison-r1.json",
+      "sha256": "e824440ec70028d7afd1108c32805c47ce40a4f522337368586738ce478d1635",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E016.json",
+      "sha256": "d8e6612706e11057bc28c95646c708add38efba4a276d136c6f45dc0e3e210f3",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}
