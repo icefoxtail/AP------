@@ -1,0 +1,1661 @@
+{
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E019",
+  "owner": "GPT_ROOT_59E0F5BD3A77",
+  "createdAt": "2026-11-14T11:33:20.850709+00:00",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "rootJudgment": {
+    "examId": "E019",
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/A/E019.review.json",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/A/E019.4slot.json",
+    "independentPath": "/workspace/scratch/59e0f5bd3a77/workers/B/cross/E019.sample.json",
+    "rootDecision": "ACCEPT_AUTHOR_WITH_EXPLICIT_DEBTS_AND_SCOPED_OVERRIDES",
+    "acceptIndependentAdjacentMismatch": [
+      15,
+      19,
+      20
+    ],
+    "resolvedIndependentAdjudications": [
+      5,
+      6,
+      7,
+      11,
+      17,
+      21,
+      22,
+      23
+    ],
+    "reviewOverrides": [
+      {
+        "sourceOrdinal": 21,
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+      },
+      {
+        "sourceOrdinal": 22,
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+      },
+      {
+        "sourceOrdinal": 23,
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+      },
+      {
+        "sourceOrdinal": 5,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+      },
+      {
+        "sourceOrdinal": 17,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+      },
+      {
+        "sourceOrdinal": 21,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+      },
+      {
+        "sourceOrdinal": 22,
+        "after": {
+          "level": "중",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "reason": "Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+      }
+    ],
+    "reviewItemUpdates": [
+      {
+        "sourceOrdinal": 5,
+        "merge": {
+          "semanticDecision": {
+            "bindingReview": {
+              "candidateProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+              "candidateTemplateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+              "status": "EXISTING_SEMANTIC_CANDIDATE_SCOPED_BINDING_PENDING",
+              "definitionEvidence": {
+                "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+                "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+                "definition": "두 식의 같은 미지수 계수비와 상수항비를 비교하고, 계수비는 같으나 상수항비는 다르다는 조건을 세워 미지의 계수를 결정한다.",
+                "internalSkeleton": null,
+                "status": "ACTIVE"
+              }
+            }
+          },
+          "fieldReview": {
+            "binding": "Independent B found this actual existing ACTIVE definition and root reread it. Preserve this reuse candidate before proposing a new type; exact current-scope binding and genuine resolver evidence remain pending."
+          }
+        },
+        "reason": "Actual GLOBAL ACTIVE definition reuse, without shared registration or ACTIVE projection claim."
+      },
+      {
+        "sourceOrdinal": 11,
+        "merge": {
+          "semanticDecision": {
+            "bindingReview": {
+              "candidateProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+              "candidateTemplateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+              "status": "EXISTING_SEMANTIC_CANDIDATE_SCOPED_BINDING_PENDING",
+              "definitionEvidence": {
+                "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+                "parentProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+                "definition": "`함수 그래프와 사분면` 안에서 '다른 함수와 비교한 사분면 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+                "internalSkeleton": "다른 함수와 비교한 사분면 관계",
+                "status": "ACTIVE"
+              }
+            }
+          },
+          "fieldReview": {
+            "binding": "Independent B found this actual existing ACTIVE definition and root reread it. Preserve this reuse candidate before proposing a new type; exact current-scope binding and genuine resolver evidence remain pending."
+          }
+        },
+        "reason": "Actual GLOBAL ACTIVE definition reuse, without shared registration or ACTIVE projection claim."
+      },
+      {
+        "sourceOrdinal": 6,
+        "merge": {
+          "semanticDecision": {
+            "targetNamespace": {
+              "curriculum": "2022",
+              "standardCourse": "중2 수학",
+              "standardUnitKey": "M2-03",
+              "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+            },
+            "semanticSourceScope": "M1-1",
+            "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+            "targetNamespacePreserved": true,
+            "prerequisitePathRole": "rpmPath is the complete prerequisite source path; target machine L1/L2 is separately preserved, not a fabricated cross-scope RPM path."
+          }
+        },
+        "reason": "Explicitly separate the retained target namespace from lower-grade primary provenance."
+      },
+      {
+        "sourceOrdinal": 7,
+        "merge": {
+          "semanticDecision": {
+            "targetNamespace": {
+              "curriculum": "2022",
+              "standardCourse": "중2 수학",
+              "standardUnitKey": "M2-03",
+              "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+            },
+            "semanticSourceScope": "M1-1",
+            "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+            "targetNamespacePreserved": true,
+            "prerequisitePathRole": "rpmPath is the complete prerequisite source path; target machine L1/L2 is separately preserved, not a fabricated cross-scope RPM path."
+          }
+        },
+        "reason": "Explicitly separate the retained target namespace from lower-grade primary provenance."
+      }
+    ],
+    "rootSourceReads": [
+      5,
+      17,
+      21,
+      22,
+      23
+    ],
+    "notes": [
+      "Root reviewed exact independent findings and reread the disputed source/solution passages. The original target namespace is preserved.",
+      "Q19 multiple valid choices and Q20 missing point-region restriction are content debts already supported by actual author/independent evidence. Do not edit student content or manufacture the missing condition.",
+      "Original first numeric judgment was exposed to old labels. Fresh-context A2 numeric-only recheck is pending; no blind-first PASS is claimed."
+    ]
+  },
+  "sampleReviewer": "B",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "평행계수비를 세우고b2일 때 같은직선임을 제외하는 익숙한2/B23이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "NONE",
+      "decision": "ACCEPT",
+      "reason": "같은시간t에서6t+4t30을세워두거리차를구하는 표준만남모델2."
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "전체500에서작년남학생x를빼여학생수를표현한후정해진증감률을적용하는2/B23."
+    },
+    {
+      "sourceOrdinal": 11,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "실제그림에서a,b둘다음수;몫양수,−b양수의한정된부호추적2/B23."
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "연비로처음70L를구하고소모25L의거리를계산하는표준2/B23."
+    },
+    {
+      "sourceOrdinal": 15,
+      "difficultyBucket": 1,
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "두점x가같은수직선은하나x에여러y라는정의의직접적용1/B12;중/1인접허용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "상수항비−1/2가이미고정되어계수둘을같은비에맞추는정형2/B23."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "실제그림의(4,0),(3,−2)와다른직선의교점/절편으로일차식을읽고보기와동치대조하는2/B23."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "비퇴화삼각형을만들기위해평행과공점이라는서로다른퇴화조건을골라모두배제하는구조선택3."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "의도한영역에서서로다른좌표축을밑변으로한두넓이를비에연결하여기울기비를읽는구조3. 누락위치제약은내용부채로분리."
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "바꿀계수a,b가명시되어교환된두식을쓰고주어진해를대입하는정형복원이다. 이어원식을다시풀지만풀이횟수는전략선택이아니다. 2/medium/B23권고."
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "실제그림은공통y절편2,양쪽x절편으로밑변을바로지정한다. 넓이60에서밑변60,왼쪽절편−58,기울기1/29를순서대로구하는익숙한역산2/B23권고. 미지계수를분모로쓰는표현만으로3을요구하지않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "주어진수평선y3이밑변을직접정하며세교점을구한뒤높이7−3,밑변2−(−4)를표준삼각형공식에넣는2/B23권고. 교점3개라는계산량으로3을주지않는다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "이동량−a를상수항에더하고(a,5)를넣으면하나의일차방정식인정형2/B23."
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_PREREQUISITE_WITH_TARGET_PATH_AMENDMENT",
+      "reason": "실제해설이t하나로6t+4t30을세워M1-RPM157 prerequisite primary가타당하다. 최신author는원래M2-03 WORD와course를보존하여namespace좁은보정을수용한다. 4slot의목표거리차와방법일차방정식·차가분리되어있다. semanticrpmPath의majorUnit/midUnit은아직M1텍스트이므로targetM2L1/L2와semanticSourceScope를분리하는후속root보완이필요하다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT_PREREQUISITE_WITH_TARGET_PATH_AMENDMENT",
+      "reason": "기존해설의0.85x+1.15(500−x)449는실제M1-RPM158 백분율·비율semantic에맞는다. 최신after는M2target보존됨. semanticrpmPath상위L1/L2는M2target과분리보정필요."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "EXISTING_SEMANTIC_CANDIDATE_FOUND",
+      "candidateProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "candidateTemplateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "reason": "실제ACTIVEdefinition은같은미지수계수비같음·상수항비다름으로미지계수결정이다. 그래프교점없음의본과제와같은semantic이며기존parallel-slope후보만보고exact없음이라고끝내지않는다. sourceRPM175는유지가능하고targetbinding미확정만별도로남긴다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "EXISTING_SEMANTIC_CANDIDATE_FOUND",
+      "candidateProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "candidateTemplateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+      "reason": "실제q11PNG는우하향이며y축원점아래교차이다. 따라서a<0,b<0이고새함수는양의기울기/양의y절편으로4사분면을지나지않는다. 원자goal사분면과method기울기/y절편이정확하다. 기존generic PT_FUNCTION_GRAPH_QUADRANT/TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION 정의가본다른함수비교를직접포함하므로기존semantic후보를반드시보존한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_CONTENT_DEBT",
+      "reason": "(-1,0)에세번째직선대입과각기울기재계산상①⑤둘다삼각형을만든다. 기존source해설도두정답을인정하며본문선택형식만후속부채다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_CONTENT_DEBT",
+      "reason": "원문에는P가선분AB위/제1사분면이라는제약이나그림이없다. 넓이는3|t|와4|y|이며|t|=4|y|가된다. a−1/4일때P12,−3이고두넓이36,12가비3:1이므로①도성립한다. 기존②만선택한해설은제1사분면분기증거로만4slot에인용되고내용부채가명시되어수용한다. 누락조건을새로추가하지않는다."
+    }
+  ],
+  "scopedOverrides": [
+    {
+      "sourceOrdinal": 15,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "basis": "Independent adjacent-mismatch adjudication accepted by root."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "basis": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "medium",
+      "basis": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBoundaryFlag",
+      "before": "B23",
+      "after": "B23",
+      "basis": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "NORMAL",
+      "basis": "The statement identifies the exact two coefficients to exchange. Writing the exchanged equations, substituting the stated solution and solving the original pair is a prescribed reconstruction; repeating equation solving does not require selecting a new strategy. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "basis": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "medium",
+      "basis": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyBoundaryFlag",
+      "before": "B23",
+      "after": "B23",
+      "basis": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "legacyLevelCompatibility",
+      "before": "BORDERLINE_REVIEW",
+      "after": "NORMAL",
+      "basis": "The actual diagram fixes the common y-intercept and both sides of the x-axis base. The area determines one base length, then one intercept and slope by direct standard inverse steps; using a denominator variable alone does not create strategy-level3. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "basis": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "medium",
+      "basis": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBoundaryFlag",
+      "before": "B23",
+      "after": "B23",
+      "basis": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "NORMAL",
+      "basis": "The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL",
+      "basis": "Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "legacyLevelCompatibility",
+      "before": "STRONG_CONFLICT",
+      "after": "NORMAL",
+      "basis": "Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "NORMAL",
+      "basis": "Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "basis": "Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "NORMAL",
+      "basis": "Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 5,
+      "merge": {
+        "semanticDecision": {
+          "bindingReview": {
+            "candidateProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+            "candidateTemplateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+            "status": "EXISTING_SEMANTIC_CANDIDATE_SCOPED_BINDING_PENDING",
+            "definitionEvidence": {
+              "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+              "parentProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+              "definition": "두 식의 같은 미지수 계수비와 상수항비를 비교하고, 계수비는 같으나 상수항비는 다르다는 조건을 세워 미지의 계수를 결정한다.",
+              "internalSkeleton": null,
+              "status": "ACTIVE"
+            }
+          }
+        },
+        "fieldReview": {
+          "binding": "Independent B found this actual existing ACTIVE definition and root reread it. Preserve this reuse candidate before proposing a new type; exact current-scope binding and genuine resolver evidence remain pending."
+        }
+      },
+      "reason": "Actual GLOBAL ACTIVE definition reuse, without shared registration or ACTIVE projection claim."
+    },
+    {
+      "sourceOrdinal": 11,
+      "merge": {
+        "semanticDecision": {
+          "bindingReview": {
+            "candidateProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+            "candidateTemplateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+            "status": "EXISTING_SEMANTIC_CANDIDATE_SCOPED_BINDING_PENDING",
+            "definitionEvidence": {
+              "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+              "parentProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+              "definition": "`함수 그래프와 사분면` 안에서 '다른 함수와 비교한 사분면 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+              "internalSkeleton": "다른 함수와 비교한 사분면 관계",
+              "status": "ACTIVE"
+            }
+          }
+        },
+        "fieldReview": {
+          "binding": "Independent B found this actual existing ACTIVE definition and root reread it. Preserve this reuse candidate before proposing a new type; exact current-scope binding and genuine resolver evidence remain pending."
+        }
+      },
+      "reason": "Actual GLOBAL ACTIVE definition reuse, without shared registration or ACTIVE projection claim."
+    },
+    {
+      "sourceOrdinal": 6,
+      "merge": {
+        "semanticDecision": {
+          "targetNamespace": {
+            "curriculum": "2022",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+          },
+          "semanticSourceScope": "M1-1",
+          "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+          "targetNamespacePreserved": true,
+          "prerequisitePathRole": "rpmPath is the complete prerequisite source path; target machine L1/L2 is separately preserved, not a fabricated cross-scope RPM path."
+        }
+      },
+      "reason": "Explicitly separate the retained target namespace from lower-grade primary provenance."
+    },
+    {
+      "sourceOrdinal": 7,
+      "merge": {
+        "semanticDecision": {
+          "targetNamespace": {
+            "curriculum": "2022",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+          },
+          "semanticSourceScope": "M1-1",
+          "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+          "targetNamespacePreserved": true,
+          "prerequisitePathRole": "rpmPath is the complete prerequisite source path; target machine L1/L2 is separately preserved, not a fabricated cross-scope RPM path."
+        }
+      },
+      "reason": "Explicitly separate the retained target namespace from lower-grade primary provenance."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 5,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "그래프의 교점이 없다는 조건을 평행·불일치로 해석하므로175이다. a/3=b/2에서 b2이면 a3이 되어 같은 직선이므로 제외. Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 7,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "실제 해설은 여자수를500−x로 놓은 한 미지수 백분율 방정식이므로 선행 M1-158의 semantic L3/L4를 재사용한다. target M2-03 L1/L2는 §1.4.1에 따라 보존하고 실제 한 변수 풀이 provenance를 분리한다. 0.85x+1.15(500−x)=449에서 작년남420,올해357. 전체−한 부분으로 다른 부분을 나타내고15% 변화를 적용하는 정형2/B23. 별도 접근 선택 없이 주어진 비율식을 만들 수 있어 기존3보다2를 제안한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "기울기·절편166은 중간 독해이고 최종 사분면의 부호 합성 판정에 정확한 leaf가 없어 gap을 남긴다. a<0,b<0이므로 b/a>0,−b>0; 새 그래프는4사분면을 지나지 않는다. 두 음수의 몫과−b의 부호를 읽어 사분면을 정하는 익숙한2/B23. 기존3에서2로 제안한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "거리x와 잔량y의 일차관계를 모델링하는 활용이다. 현재EQUATION분류를 보존하되 그래프/두직선없는 연료 감소 모델의 정확한RPM leaf는없다. 처음70L, y=70−x/16에y45를 넣으면x400. 연비를 이용해 초기량70을 구한 뒤25L소비거리를 구하는 정형2/B23. 긴생활문맥만으로3을유지하지않는다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "함수의 정의를 묻고 수평선도 함수로 인정해야 하므로165의 일차함수판별과 다르다. 기본분류 보존+정확한leaf gap을 기록한다. (2,−4),(2,−1)을 지나는 x2는 함수 그래프가 아니다. 두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "해가무수히많은특수연립방정식154이다. 해상태를조건으로계수를정한다. 상수항비3/(−6)=−1/2이므로 b−4,a7. Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "그래프에서각일차방정식을읽어대응하는연립식을고르는172이다. 실제교점좌표를구하는174와구별한다. 증가선y2x−8,감소선y−2x/5−4/5이므로⑤. 그림의두점/절편을읽어두식으로표현하는익숙한전처리2/B23제안."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "세직선관계조건으로계수후보를선택하는177이다. 답을하나로맞추기위해추가조건을발명하지않는다. 첫두직선교점(−1,0);②평행,③④공점,①⑤둘다가능. 교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "좌표축과직선의넓이조건을사용하는176이다. P위치제한누락으로반대부호해도존재하는문제는별도내용부채이다. 의도된제1사분면에서3t:4y=3:1이므로y/t1/4. 의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "주어진오류해에서계수를결정하고원래연립식을푸는151이다. 두서술부분은서로의결과에의존한다. 3b−2a6,3a−2b1에서a3,b4;원래식의해x−2,y−3. Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "일차함수그래프가만드는삼각형넓이조건176이다. b2, C(2,0),B(−2/a,0);2+2/a60에서a1/29. Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 23,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "세직선이만드는삼각형넓이176이다. (2,3),(−4,3),(−6,7)에서밑변6,높이4,넓이12. The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 24,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "평행이동식과통과점이같은매개변수를공유한다. 일반조건식177은관련되지만이동관계의exactleaf미비를기록한다. 5=5a/2+3/2−a에서a7/3. 이동량−a를상수항에더한뒤(a,5)를대입하면한일차식으로끝나는익숙한2/B23."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 5,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "그래프의 교점이 없다는 조건을 평행·불일치로 해석하므로175이다. a/3=b/2에서 b2이면 a3이 되어 같은 직선이므로 제외. Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "그래프의 교점이 없다는 조건을 평행·불일치로 해석하므로175이다. a/3=b/2에서 b2이면 a3이 되어 같은 직선이므로 제외. Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "그래프의 교점이 없다는 조건을 평행·불일치로 해석하므로175이다. a/3=b/2에서 b2이면 a3이 되어 같은 직선이므로 제외. Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 5,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "그래프의 교점이 없다는 조건을 평행·불일치로 해석하므로175이다. a/3=b/2에서 b2이면 a3이 되어 같은 직선이므로 제외. Separate learning-level adjudication: The learner uses the standard parallel-coefficient ratios and excludes the one coincident case specified by the equal constants. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "실제 해설은 여자수를500−x로 놓은 한 미지수 백분율 방정식이므로 선행 M1-158의 semantic L3/L4를 재사용한다. target M2-03 L1/L2는 §1.4.1에 따라 보존하고 실제 한 변수 풀이 provenance를 분리한다. 0.85x+1.15(500−x)=449에서 작년남420,올해357. 전체−한 부분으로 다른 부분을 나타내고15% 변화를 적용하는 정형2/B23. 별도 접근 선택 없이 주어진 비율식을 만들 수 있어 기존3보다2를 제안한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "실제 해설은 여자수를500−x로 놓은 한 미지수 백분율 방정식이므로 선행 M1-158의 semantic L3/L4를 재사용한다. target M2-03 L1/L2는 §1.4.1에 따라 보존하고 실제 한 변수 풀이 provenance를 분리한다. 0.85x+1.15(500−x)=449에서 작년남420,올해357. 전체−한 부분으로 다른 부분을 나타내고15% 변화를 적용하는 정형2/B23. 별도 접근 선택 없이 주어진 비율식을 만들 수 있어 기존3보다2를 제안한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "실제 해설은 여자수를500−x로 놓은 한 미지수 백분율 방정식이므로 선행 M1-158의 semantic L3/L4를 재사용한다. target M2-03 L1/L2는 §1.4.1에 따라 보존하고 실제 한 변수 풀이 provenance를 분리한다. 0.85x+1.15(500−x)=449에서 작년남420,올해357. 전체−한 부분으로 다른 부분을 나타내고15% 변화를 적용하는 정형2/B23. 별도 접근 선택 없이 주어진 비율식을 만들 수 있어 기존3보다2를 제안한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "기울기·절편166은 중간 독해이고 최종 사분면의 부호 합성 판정에 정확한 leaf가 없어 gap을 남긴다. a<0,b<0이므로 b/a>0,−b>0; 새 그래프는4사분면을 지나지 않는다. 두 음수의 몫과−b의 부호를 읽어 사분면을 정하는 익숙한2/B23. 기존3에서2로 제안한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "기울기·절편166은 중간 독해이고 최종 사분면의 부호 합성 판정에 정확한 leaf가 없어 gap을 남긴다. a<0,b<0이므로 b/a>0,−b>0; 새 그래프는4사분면을 지나지 않는다. 두 음수의 몫과−b의 부호를 읽어 사분면을 정하는 익숙한2/B23. 기존3에서2로 제안한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "기울기·절편166은 중간 독해이고 최종 사분면의 부호 합성 판정에 정확한 leaf가 없어 gap을 남긴다. a<0,b<0이므로 b/a>0,−b>0; 새 그래프는4사분면을 지나지 않는다. 두 음수의 몫과−b의 부호를 읽어 사분면을 정하는 익숙한2/B23. 기존3에서2로 제안한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "거리x와 잔량y의 일차관계를 모델링하는 활용이다. 현재EQUATION분류를 보존하되 그래프/두직선없는 연료 감소 모델의 정확한RPM leaf는없다. 처음70L, y=70−x/16에y45를 넣으면x400. 연비를 이용해 초기량70을 구한 뒤25L소비거리를 구하는 정형2/B23. 긴생활문맥만으로3을유지하지않는다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "거리x와 잔량y의 일차관계를 모델링하는 활용이다. 현재EQUATION분류를 보존하되 그래프/두직선없는 연료 감소 모델의 정확한RPM leaf는없다. 처음70L, y=70−x/16에y45를 넣으면x400. 연비를 이용해 초기량70을 구한 뒤25L소비거리를 구하는 정형2/B23. 긴생활문맥만으로3을유지하지않는다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "거리x와 잔량y의 일차관계를 모델링하는 활용이다. 현재EQUATION분류를 보존하되 그래프/두직선없는 연료 감소 모델의 정확한RPM leaf는없다. 처음70L, y=70−x/16에y45를 넣으면x400. 연비를 이용해 초기량70을 구한 뒤25L소비거리를 구하는 정형2/B23. 긴생활문맥만으로3을유지하지않는다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "함수의 정의를 묻고 수평선도 함수로 인정해야 하므로165의 일차함수판별과 다르다. 기본분류 보존+정확한leaf gap을 기록한다. (2,−4),(2,−1)을 지나는 x2는 함수 그래프가 아니다. 두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "함수의 정의를 묻고 수평선도 함수로 인정해야 하므로165의 일차함수판별과 다르다. 기본분류 보존+정확한leaf gap을 기록한다. (2,−4),(2,−1)을 지나는 x2는 함수 그래프가 아니다. 두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "함수의 정의를 묻고 수평선도 함수로 인정해야 하므로165의 일차함수판별과 다르다. 기본분류 보존+정확한leaf gap을 기록한다. (2,−4),(2,−1)을 지나는 x2는 함수 그래프가 아니다. 두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요."
+    },
+    {
+      "sourceOrdinal": 15,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "함수의 정의를 묻고 수평선도 함수로 인정해야 하므로165의 일차함수판별과 다르다. 기본분류 보존+정확한leaf gap을 기록한다. (2,−4),(2,−1)을 지나는 x2는 함수 그래프가 아니다. 두점의x가같고y가다름을읽어수직선을찾는직접정의적용1/B12제안. 기존중과인접불일치검토필요."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "해가무수히많은특수연립방정식154이다. 해상태를조건으로계수를정한다. 상수항비3/(−6)=−1/2이므로 b−4,a7. Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "해가무수히많은특수연립방정식154이다. 해상태를조건으로계수를정한다. 상수항비3/(−6)=−1/2이므로 b−4,a7. Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "해가무수히많은특수연립방정식154이다. 해상태를조건으로계수를정한다. 상수항비3/(−6)=−1/2이므로 b−4,a7. Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 17,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "해가무수히많은특수연립방정식154이다. 해상태를조건으로계수를정한다. 상수항비3/(−6)=−1/2이므로 b−4,a7. Separate learning-level adjudication: A fixed constant ratio already determines both coefficient ratios; only ordinary proportional equations remain. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "그래프에서각일차방정식을읽어대응하는연립식을고르는172이다. 실제교점좌표를구하는174와구별한다. 증가선y2x−8,감소선y−2x/5−4/5이므로⑤. 그림의두점/절편을읽어두식으로표현하는익숙한전처리2/B23제안."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "그래프에서각일차방정식을읽어대응하는연립식을고르는172이다. 실제교점좌표를구하는174와구별한다. 증가선y2x−8,감소선y−2x/5−4/5이므로⑤. 그림의두점/절편을읽어두식으로표현하는익숙한전처리2/B23제안."
+    },
+    {
+      "sourceOrdinal": 18,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "그래프에서각일차방정식을읽어대응하는연립식을고르는172이다. 실제교점좌표를구하는174와구별한다. 증가선y2x−8,감소선y−2x/5−4/5이므로⑤. 그림의두점/절편을읽어두식으로표현하는익숙한전처리2/B23제안."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "세직선관계조건으로계수후보를선택하는177이다. 답을하나로맞추기위해추가조건을발명하지않는다. 첫두직선교점(−1,0);②평행,③④공점,①⑤둘다가능. 교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "세직선관계조건으로계수후보를선택하는177이다. 답을하나로맞추기위해추가조건을발명하지않는다. 첫두직선교점(−1,0);②평행,③④공점,①⑤둘다가능. 교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "세직선관계조건으로계수후보를선택하는177이다. 답을하나로맞추기위해추가조건을발명하지않는다. 첫두직선교점(−1,0);②평행,③④공점,①⑤둘다가능. 교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요."
+    },
+    {
+      "sourceOrdinal": 19,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "세직선관계조건으로계수후보를선택하는177이다. 답을하나로맞추기위해추가조건을발명하지않는다. 첫두직선교점(−1,0);②평행,③④공점,①⑤둘다가능. 교점과기울기라는두관계를선택해퇴화경우를배제하는3/B34. source상과의인접불일치는독립검토필요."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "좌표축과직선의넓이조건을사용하는176이다. P위치제한누락으로반대부호해도존재하는문제는별도내용부채이다. 의도된제1사분면에서3t:4y=3:1이므로y/t1/4. 의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "좌표축과직선의넓이조건을사용하는176이다. P위치제한누락으로반대부호해도존재하는문제는별도내용부채이다. 의도된제1사분면에서3t:4y=3:1이므로y/t1/4. 의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "좌표축과직선의넓이조건을사용하는176이다. P위치제한누락으로반대부호해도존재하는문제는별도내용부채이다. 의도된제1사분면에서3t:4y=3:1이므로y/t1/4. 의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "좌표축과직선의넓이조건을사용하는176이다. P위치제한누락으로반대부호해도존재하는문제는별도내용부채이다. 의도된제1사분면에서3t:4y=3:1이므로y/t1/4. 의도된영역에서서로다른좌표축밑변넓이를비로연결하는구조선택3/B34. 누락조건을상위난도근거로사용하지않는다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "주어진오류해에서계수를결정하고원래연립식을푸는151이다. 두서술부분은서로의결과에의존한다. 3b−2a6,3a−2b1에서a3,b4;원래식의해x−2,y−3. Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "주어진오류해에서계수를결정하고원래연립식을푸는151이다. 두서술부분은서로의결과에의존한다. 3b−2a6,3a−2b1에서a3,b4;원래식의해x−2,y−3. Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "주어진오류해에서계수를결정하고원래연립식을푸는151이다. 두서술부분은서로의결과에의존한다. 3b−2a6,3a−2b1에서a3,b4;원래식의해x−2,y−3. Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 21,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "주어진오류해에서계수를결정하고원래연립식을푸는151이다. 두서술부분은서로의결과에의존한다. 3b−2a6,3a−2b1에서a3,b4;원래식의해x−2,y−3. Separate learning-level adjudication: The exchange instruction supplies the reconstruction procedure and each resulting system uses ordinary linear elimination. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "level",
+      "before": "상",
+      "after": "중",
+      "reason": "일차함수그래프가만드는삼각형넓이조건176이다. b2, C(2,0),B(−2/a,0);2+2/a60에서a1/29. Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 2,
+      "reason": "일차함수그래프가만드는삼각형넓이조건176이다. b2, C(2,0),B(−2/a,0);2+2/a60에서a1/29. Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "일차함수그래프가만드는삼각형넓이조건176이다. b2, C(2,0),B(−2/a,0);2+2/a60에서a1/29. Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 22,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "일차함수그래프가만드는삼각형넓이조건176이다. b2, C(2,0),B(−2/a,0);2+2/a60에서a1/29. Separate learning-level adjudication: The known height makes the area-to-base inverse direct, after which a coordinate intercept determines one slope. This supports standard learning level중 without advanced or hidden branching. It is not an automatic conversion from numeric2. Original source상 and the independent strong-conflict flag remain in historical evidence."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "세직선이만드는삼각형넓이176이다. (2,3),(−4,3),(−6,7)에서밑변6,높이4,넓이12. The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "세직선이만드는삼각형넓이176이다. (2,3),(−4,3),(−6,7)에서밑변6,높이4,넓이12. The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 23,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "세직선이만드는삼각형넓이176이다. (2,3),(−4,3),(−6,7)에서밑변6,높이4,넓이12. The requested triangle and horizontal line y=3 are explicitly supplied. Solving the standard intersections and directly reading the horizontal base and vertical height is a familiar sequence; the repeated arithmetic is not itself a higher strategy demand. Root reread the exact source and existing solution and accepts independent B's2/medium/B23 recommendation, preserving the original author3 history."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "평행이동식과통과점이같은매개변수를공유한다. 일반조건식177은관련되지만이동관계의exactleaf미비를기록한다. 5=5a/2+3/2−a에서a7/3. 이동량−a를상수항에더한뒤(a,5)를대입하면한일차식으로끝나는익숙한2/B23."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "평행이동식과통과점이같은매개변수를공유한다. 일반조건식177은관련되지만이동관계의exactleaf미비를기록한다. 5=5a/2+3/2−a에서a7/3. 이동량−a를상수항에더한뒤(a,5)를대입하면한일차식으로끝나는익숙한2/B23."
+    },
+    {
+      "sourceOrdinal": 24,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "평행이동식과통과점이같은매개변수를공유한다. 일반조건식177은관련되지만이동관계의exactleaf미비를기록한다. 5=5a/2+3/2−a에서a7/3. 이동량−a를상수항에더한뒤(a,5)를대입하면한일차식으로끝나는익숙한2/B23."
+    }
+  ],
+  "sourceWriterDeferred": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ca38b9deec332aa5c238dcdf32a8c0ba75d14e765a61deab8346891b19f81470",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ca38b9deec332aa5c238dcdf32a8c0ba75d14e765a61deab8346891b19f81470",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_NONZERO"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_ca38b9deec332aa5c238dcdf32a8c0ba75d14e765a61deab8346891b19f81470",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0d4b6b216a144f022fa029778a63264bd5bec7064251c604b72c9b250fe82b63",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0d4b6b216a144f022fa029778a63264bd5bec7064251c604b72c9b250fe82b63",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_0d4b6b216a144f022fa029778a63264bd5bec7064251c604b72c9b250fe82b63",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb1c05728991e2059c5970d509f2dec23d11513bbfcf2eb00d6ec46c7a376f2a",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb1c05728991e2059c5970d509f2dec23d11513bbfcf2eb00d6ec46c7a376f2a",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bb1c05728991e2059c5970d509f2dec23d11513bbfcf2eb00d6ec46c7a376f2a",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_85c43001d45a70bb09dd72ac92a23803084be97a61412046e9d26ed27a132da5",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_85c43001d45a70bb09dd72ac92a23803084be97a61412046e9d26ed27a132da5",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_85c43001d45a70bb09dd72ac92a23803084be97a61412046e9d26ed27a132da5",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f3a8e979fa267f024fd8db48c51c7e1825c2a22ba05801135e9f96d0bbeb736",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f3a8e979fa267f024fd8db48c51c7e1825c2a22ba05801135e9f96d0bbeb736",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_EXACT_INTERSECTION_COUNT"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3f3a8e979fa267f024fd8db48c51c7e1825c2a22ba05801135e9f96d0bbeb736",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_018b23417b28686e6140f9958dd6ece1b61e69ccceef612508d1bc62edc67db0",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_018b23417b28686e6140f9958dd6ece1b61e69ccceef612508d1bc62edc67db0",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_018b23417b28686e6140f9958dd6ece1b61e69ccceef612508d1bc62edc67db0",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_156e54c2083002b546c743d7f5e16a4ab97b3184dec184e905c8a1864cd54444",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_156e54c2083002b546c743d7f5e16a4ab97b3184dec184e905c8a1864cd54444",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_156e54c2083002b546c743d7f5e16a4ab97b3184dec184e905c8a1864cd54444",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_48469497c9b630c80fb5e4cf69d73a966a33b5b7049c6c92e447977b5a00a259",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_48469497c9b630c80fb5e4cf69d73a966a33b5b7049c6c92e447977b5a00a259",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_48469497c9b630c80fb5e4cf69d73a966a33b5b7049c6c92e447977b5a00a259",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_427a266062de662d1d1411da3b886f9dbbc44dd3445a994e07fa329ef9743d10",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_427a266062de662d1d1411da3b886f9dbbc44dd3445a994e07fa329ef9743d10",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_427a266062de662d1d1411da3b886f9dbbc44dd3445a994e07fa329ef9743d10",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c8a1ee64e9e67ca0e578fac1398d01c929db7b4ce4abc4ad96f184996fa99cef",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c8a1ee64e9e67ca0e578fac1398d01c929db7b4ce4abc4ad96f184996fa99cef",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c8a1ee64e9e67ca0e578fac1398d01c929db7b4ce4abc4ad96f184996fa99cef",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1571c0024ce3c15affc76940674519fd0563c9470ff52f4a0e2909fb46fbdee0",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1571c0024ce3c15affc76940674519fd0563c9470ff52f4a0e2909fb46fbdee0",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_1571c0024ce3c15affc76940674519fd0563c9470ff52f4a0e2909fb46fbdee0",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_311f08e77c06ac3b7fb195cb8654184a045b971e4e2ab9fe22e62620ce482d44",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_311f08e77c06ac3b7fb195cb8654184a045b971e4e2ab9fe22e62620ce482d44",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_311f08e77c06ac3b7fb195cb8654184a045b971e4e2ab9fe22e62620ce482d44",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_af44a161f3ff86ed9d34a36904d0ee7a6b8fffa4f04b42e3acf31e3e191fe50c",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_af44a161f3ff86ed9d34a36904d0ee7a6b8fffa4f04b42e3acf31e3e191fe50c",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_af44a161f3ff86ed9d34a36904d0ee7a6b8fffa4f04b42e3acf31e3e191fe50c",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9dc5b8661b5ad67adbbd9c1f682248e13bd55ab050e58980e5c652b2ee5f628f",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9dc5b8661b5ad67adbbd9c1f682248e13bd55ab050e58980e5c652b2ee5f628f",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9dc5b8661b5ad67adbbd9c1f682248e13bd55ab050e58980e5c652b2ee5f628f",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [
+        "CC_TRIANGLE_AREA",
+        "CC_AREA_RATIO"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "SEQUENTIAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_770b351cfb4894efb4f16e2fcecef2290d73a49b97a8f35ab5ea4c392f2b66bf",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_770b351cfb4894efb4f16e2fcecef2290d73a49b97a8f35ab5ea4c392f2b66bf",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_770b351cfb4894efb4f16e2fcecef2290d73a49b97a8f35ab5ea4c392f2b66bf",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "SEQUENTIAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9fa93463b36894899f789d81dbed2d4b810f954f08902027d4c99903e29853fe",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9fa93463b36894899f789d81dbed2d4b810f954f08902027d4c99903e29853fe",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_9fa93463b36894899f789d81dbed2d4b810f954f08902027d4c99903e29853fe",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "SEQUENTIAL",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9bb7be48df356940c437ee6b6b237ed23c4257358dab2a0d992142a3c717b767",
+      "field": "crossConceptKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9bb7be48df356940c437ee6b6b237ed23c4257358dab2a0d992142a3c717b767",
+      "field": "conditionKeys",
+      "beforeMissing": true,
+      "after": [],
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_9bb7be48df356940c437ee6b6b237ed23c4257358dab2a0d992142a3c717b767",
+      "field": "integrationPattern",
+      "beforeMissing": true,
+      "after": "NONE",
+      "reason": "MISSING_SOURCE_FIELD_PROPOSAL_ONLY"
+    }
+  ],
+  "reviewedSourceBlob": "6de15f494722e99364ec481f31ee884e39d919bf",
+  "finalSourceBlob": "acb4da0a91a76e66bd4e877f7a519e5f3fe94b6e",
+  "reviewSha256": "e4f956e1930beb2058f59c89c72a7ea9982b3e199b046707efaa25734359eec3",
+  "acceptedReviewSha256": "83dd3d4bf1a3b4c546d82aa7f27c36f6050594be6b335f933a0449a7c604c654",
+  "independentSha256": "3c310ce5940b758f1b8001f0dd0998042528c4eca39d087c650458a12afd3f2e",
+  "reviewedFourSlotSha256": "43c95c5e752cd20e69696a10a73db3ed6277d258538d1f82c98ce879465bc8cb",
+  "finalFourSlotSha256": "4e97ec2f2e63e2a49da494557ce24ef4560fdc589eeb0173e782b36965acdb90",
+  "independentSupplements": [],
+  "fourSlotRebind": {
+    "transformation": "sourceGitBlobSha and only the explicitly recorded scopedOverrides; author bytes preserved separately.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "notes": [
+    "Root consumed actual source-bound author and independent evidence. Semantics are not inferred from static validator PASS.",
+    "No main merge, shared registry/metadata write, production inbox or deployment."
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E019",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "6de15f494722e99364ec481f31ee884e39d919bf",
+  "sourceSha256": "4cbf54beeb889c651fa0f55cb8f50136b8021622d80385d111b96d32a760ebf1",
+  "reviewSha256": "e4f956e1930beb2058f59c89c72a7ea9982b3e199b046707efaa25734359eec3",
+  "fourSlotSha256": "43c95c5e752cd20e69696a10a73db3ed6277d258538d1f82c98ce879465bc8cb",
+  "sampleOrdinals": [
+    6,
+    11,
+    20
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_684f97bef8ace4fdc21089a174afd6f1fdfea70a46d03d7e1c5498f10fd8e4ac",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "실제해설이t하나로6t+4t30을세워M1-RPM157 prerequisite primary가타당하다. 최신author는원래M2-03 WORD와course를보존하여namespace좁은보정을수용한다. 4slot의목표거리차와방법일차방정식·차가분리되어있다. semanticrpmPath의majorUnit/midUnit은아직M1텍스트이므로targetM2L1/L2와semanticSourceScope를분리하는후속root보완이필요하다.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "실제q11PNG는우하향이며y축원점아래교차이다. 따라서a<0,b<0이고새함수는양의기울기/양의y절편으로4사분면을지나지않는다. 원자goal사분면과method기울기/y절편이정확하다. 기존generic PT_FUNCTION_GRAPH_QUADRANT/TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION 정의가본다른함수비교를직접포함하므로기존semantic후보를반드시보존한다.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d16501aaf63624d73d5e8c08dfe30fc30fd0fedbba620dfa9e7e660a3a1c32b5",
+      "status": "PASS_WITH_NAMED_DEBTS",
+      "findings": "원문에는P가선분AB위/제1사분면이라는제약이나그림이없다. 넓이는3|t|와4|y|이며|t|=4|y|가된다. a−1/4일때P12,−3이고두넓이36,12가비3:1이므로①도성립한다. 기존②만선택한해설은제1사분면분기증거로만4slot에인용되고내용부채가명시되어수용한다. 누락조건을새로추가하지않는다.",
+      "quoteCheck": "ALL_LITERAL_VALID",
+      "goalMethodInversion": false
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "평행계수비를 세우고b2일 때 같은직선임을 제외하는 익숙한2/B23이다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "high",
+      "recommendedBoundaryFlag": "NONE",
+      "decision": "ACCEPT",
+      "reason": "같은시간t에서6t+4t30을세워두거리차를구하는 표준만남모델2."
+    },
+    {
+      "sourceOrdinal": 7,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "전체500에서작년남학생x를빼여학생수를표현한후정해진증감률을적용하는2/B23."
+    },
+    {
+      "sourceOrdinal": 11,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "실제그림에서a,b둘다음수;몫양수,−b양수의한정된부호추적2/B23."
+    },
+    {
+      "sourceOrdinal": 14,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "연비로처음70L를구하고소모25L의거리를계산하는표준2/B23."
+    },
+    {
+      "sourceOrdinal": 15,
+      "difficultyBucket": 1,
+      "recommendedBucket": 1,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B12",
+      "decision": "ACCEPT",
+      "reason": "두점x가같은수직선은하나x에여러y라는정의의직접적용1/B12;중/1인접허용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "상수항비−1/2가이미고정되어계수둘을같은비에맞추는정형2/B23."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "실제그림의(4,0),(3,−2)와다른직선의교점/절편으로일차식을읽고보기와동치대조하는2/B23."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "비퇴화삼각형을만들기위해평행과공점이라는서로다른퇴화조건을골라모두배제하는구조선택3."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "recommendedBucket": 3,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B34",
+      "decision": "ACCEPT",
+      "reason": "의도한영역에서서로다른좌표축을밑변으로한두넓이를비에연결하여기울기비를읽는구조3. 누락위치제약은내용부채로분리."
+    },
+    {
+      "sourceOrdinal": 21,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "바꿀계수a,b가명시되어교환된두식을쓰고주어진해를대입하는정형복원이다. 이어원식을다시풀지만풀이횟수는전략선택이아니다. 2/medium/B23권고."
+    },
+    {
+      "sourceOrdinal": 22,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "실제그림은공통y절편2,양쪽x절편으로밑변을바로지정한다. 넓이60에서밑변60,왼쪽절편−58,기울기1/29를순서대로구하는익숙한역산2/B23권고. 미지계수를분모로쓰는표현만으로3을요구하지않는다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "AMEND_RECOMMENDED",
+      "reason": "주어진수평선y3이밑변을직접정하며세교점을구한뒤높이7−3,밑변2−(−4)를표준삼각형공식에넣는2/B23권고. 교점3개라는계산량으로3을주지않는다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "difficultyBucket": 2,
+      "recommendedBucket": 2,
+      "recommendedConfidence": "medium",
+      "recommendedBoundaryFlag": "B23",
+      "decision": "ACCEPT",
+      "reason": "이동량−a를상수항에더하고(a,5)를넣으면하나의일차방정식인정형2/B23."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 6,
+      "decision": "ACCEPT_PREREQUISITE_WITH_TARGET_PATH_AMENDMENT",
+      "reason": "실제해설이t하나로6t+4t30을세워M1-RPM157 prerequisite primary가타당하다. 최신author는원래M2-03 WORD와course를보존하여namespace좁은보정을수용한다. 4slot의목표거리차와방법일차방정식·차가분리되어있다. semanticrpmPath의majorUnit/midUnit은아직M1텍스트이므로targetM2L1/L2와semanticSourceScope를분리하는후속root보완이필요하다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "decision": "ACCEPT_PREREQUISITE_WITH_TARGET_PATH_AMENDMENT",
+      "reason": "기존해설의0.85x+1.15(500−x)449는실제M1-RPM158 백분율·비율semantic에맞는다. 최신after는M2target보존됨. semanticrpmPath상위L1/L2는M2target과분리보정필요."
+    },
+    {
+      "sourceOrdinal": 5,
+      "decision": "EXISTING_SEMANTIC_CANDIDATE_FOUND",
+      "candidateProblemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "candidateTemplateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "reason": "실제ACTIVEdefinition은같은미지수계수비같음·상수항비다름으로미지계수결정이다. 그래프교점없음의본과제와같은semantic이며기존parallel-slope후보만보고exact없음이라고끝내지않는다. sourceRPM175는유지가능하고targetbinding미확정만별도로남긴다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "decision": "EXISTING_SEMANTIC_CANDIDATE_FOUND",
+      "candidateProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "candidateTemplateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+      "reason": "실제q11PNG는우하향이며y축원점아래교차이다. 따라서a<0,b<0이고새함수는양의기울기/양의y절편으로4사분면을지나지않는다. 원자goal사분면과method기울기/y절편이정확하다. 기존generic PT_FUNCTION_GRAPH_QUADRANT/TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION 정의가본다른함수비교를직접포함하므로기존semantic후보를반드시보존한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_CONTENT_DEBT",
+      "reason": "(-1,0)에세번째직선대입과각기울기재계산상①⑤둘다삼각형을만든다. 기존source해설도두정답을인정하며본문선택형식만후속부채다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT_CONTENT_DEBT",
+      "reason": "원문에는P가선분AB위/제1사분면이라는제약이나그림이없다. 넓이는3|t|와4|y|이며|t|=4|y|가된다. a−1/4일때P12,−3이고두넓이36,12가비3:1이므로①도성립한다. 기존②만선택한해설은제1사분면분기증거로만4slot에인용되고내용부채가명시되어수용한다. 누락조건을새로추가하지않는다."
+    }
+  ],
+  "adjacentMismatchAdjudication": [
+    {
+      "sourceOrdinal": 15,
+      "level": "중",
+      "difficultyBucket": 1,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "sourceOrdinal": 19,
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "sourceOrdinal": 20,
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "BORDERLINE_ACCEPTABLE"
+    }
+  ],
+  "strongMismatchAdjudication": [
+    {
+      "sourceOrdinal": 5,
+      "originalLevel": "상",
+      "recommendedLevel": "중",
+      "recommendedBucket": 2,
+      "decision": "ROOT_LEVEL_ADJUDICATION_REQUIRED",
+      "reason": "독립numeric2는기존상과강하게충돌하므로인접호환으로승인할수없다. root의기존level보정결정과이유가필요하다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "originalLevel": "상",
+      "recommendedLevel": "중",
+      "recommendedBucket": 2,
+      "decision": "ROOT_LEVEL_ADJUDICATION_REQUIRED",
+      "reason": "독립numeric2는기존상과강하게충돌하므로인접호환으로승인할수없다. root의기존level보정결정과이유가필요하다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "originalLevel": "상",
+      "recommendedLevel": "중",
+      "recommendedBucket": 2,
+      "decision": "ROOT_LEVEL_ADJUDICATION_REQUIRED",
+      "reason": "독립numeric2는기존상과강하게충돌하므로인접호환으로승인할수없다. root의기존level보정결정과이유가필요하다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "originalLevel": "상",
+      "recommendedLevel": "중",
+      "recommendedBucket": 2,
+      "decision": "ROOT_LEVEL_ADJUDICATION_REQUIRED",
+      "reason": "독립numeric2는기존상과강하게충돌하므로인접호환으로승인할수없다. root의기존level보정결정과이유가필요하다."
+    }
+  ],
+  "assetEvidence": [
+    {
+      "sourceOrdinal": 11,
+      "sourcePath": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q11.png",
+      "sha256": "5a32dd00d28c27e18ca9258e4ed76abc165b2d1d65c2cbd48aa2942d0573ea82",
+      "inspection": "Original PNG visually inspected by B"
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePath": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q12.png",
+      "sha256": "5e2072da0ddc97f60d1fc485ad6a1aeef46e579ce44dd6bb1943166f80fa96c8",
+      "inspection": "Original PNG visually inspected by B"
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePath": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q18.png",
+      "sha256": "b6eeda0021292f6f6d4973dab2061321e1cbd653b1f6e7c900639fe8e24b3b0f",
+      "inspection": "Original PNG visually inspected by B"
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourcePath": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q22.png",
+      "sha256": "abb2d55216d532f0c6514e995c63ec659543db03097e6797ce9b17ab16115e01",
+      "inspection": "Original PNG visually inspected by B"
+    }
+  ],
+  "nativeValidation": {
+    "items": 24,
+    "quotes": 149,
+    "failCount": 0,
+    "warnCount": 5,
+    "report": "workers/B/cross/E019.native.json"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "status": "ROOT_ADJUDICATION_REQUIRED",
+  "notes": [
+    "All24 actual source stems/choices/existing solutions read; images11/12/18/22 and exact samplepacket/flaggeddifficulty inspected.",
+    "Bound to revised A artifact which preserves target M2 namespace forQ6/Q7; previousauthor bytes are not overwritten by B.",
+    "Canonical foundation§1.4.1 read directly: target currentL1/L2 is preserved with prerequisite L3/L4 andsemanticSourceScope/Relation.",
+    "Q21/Q22/Q23 proposed2 amendments are independent structural difficulty judgments. Priorauthor3 and sourcelevels are retained in evidence until root adjudication.",
+    "No source/studentcontent/sharedregistration changes and no genuine solver VERIFIED_FINAL evidence fabricated."
+  ],
+  "at": "2026-11-14T11:16:24.253423+00:00"
+}
