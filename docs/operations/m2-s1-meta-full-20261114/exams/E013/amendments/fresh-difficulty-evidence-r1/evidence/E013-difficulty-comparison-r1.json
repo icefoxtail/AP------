@@ -1,0 +1,970 @@
+{
+  "schemaVersion": "m2-s1-a2-difficulty-comparison-v1",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "worker": "A2",
+  "examId": "E013",
+  "revision": 1,
+  "createdAt": "2026-11-14T11:45:07.770344+00:00",
+  "scope": "difficulty_and_learningLevel_only",
+  "initialFreeze": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E013-difficulty-blind-freeze-r1.json",
+    "sha256": "e1165f4f675f1a87bb735343bd42e242a95ba3994c0f758c727fcb498502d4cf",
+    "inputPackSha256": "a6c7846b1475c21c196c1ec85581e84d49e1d21c0882dfad5d4d3253599270da",
+    "frozenAt": "2026-11-14T11:28:51.323148+00:00"
+  },
+  "acceptedArtifact": {
+    "examId": "E013",
+    "path": "/workspace/scratch/59e0f5bd3a77/m2-meta/docs/operations/m2-s1-meta-full-20261114/exams/E013/accepted-review.json",
+    "sha256": "3d172ce07b99f44c35e665c11a2cb6e33ddb11618b74f2f73e91a26df5e0bd3c"
+  },
+  "rootAcknowledgmentPointer": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/root-accepted-pointers-after-freeze.json",
+    "sha256": "e099e3b0478cf303ebacce99287c4336847d49284066910c501440648c733e69"
+  },
+  "allSixManifestBeforeExposure": {
+    "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/six-exam-difficulty-blind-manifest-r1.json",
+    "sha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387"
+  },
+  "comparisonAfterAllSixFrozen": true,
+  "itemCount": 24,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_f2a199eabdc427638f7455ed486d97fb64bb502222505b3449709f79675fe4d2",
+      "fingerprints": {
+        "QBODY": "7aeb5abfc7d8d87bc2f78073967ad2cc2375a510858b4d00bd82059c489990f6",
+        "QFULL": "d0d7c1822098728b283a60a5f3d1a24cbfa63a8291277c650359cb5f1f655950"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "주어진 값 대입과 수의 비교만 하는 직접 정의 적용이므로1. 기존 중과의 경계 불일치는 독립 검토가 필요하다."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "하",
+        "difficultyReason": "각 부등식에 같은 수를 대입하고 대소만 직접 확인한다. 전략 선택은 없고 보기별 부호 확인이 경계 요소다.",
+        "learningLevelReason": "한 값의 직접 대입이 반복되는 기본 확인형이며 복합 조건 해석은 없다."
+      },
+      "comparisonCategory": "ADJACENT_LEARNING_LEVEL_STABILITY",
+      "numericDifference": false,
+      "learningLevelDifference": true,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "직접 대입이라는 A2 하 판정은 유지 가능한 독립 의견이다. 여러 부등식의 참거짓과 음수 부호를 확인하는 기존 중도 인접 학습 경계 안이므로 기존 level을 보존한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ce27f233eb5f7c5059b3823bd4257dc30d01b759b87cd9442d367186959aea91",
+      "fingerprints": {
+        "QBODY": "564bbbbc3d508bcd855a1ebef281cb9c4514eab9a10e1c555f02a2c3a6301f7a",
+        "QFULL": "87f55486911c5f47d00fe4fa01fd3ef725334c40f156e1a216e0cb5ba4ad493b"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "덧셈의 한 항을 이항해 바로 동류항을 정리하는 짧은 표준 계산이다. 기존1 유지."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "빈 항을 등식의 뺄셈으로 고립하고 동류항을 모으는 직접 역연산이다.",
+        "learningLevelReason": "다항식 덧셈의 역연산 한 가지를 바로 적용한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_0dc4bceae2cae83a0aeb37bc97675ac0aa68c3cbd662fee8eb94236c5e70a322",
+      "fingerprints": {
+        "QBODY": "d672c1112bf8ed4a0657285db65562d00dfa1eceb01b41eabe7fb5f96a7d5a78",
+        "QFULL": "e8450d35d15ea4f7c39d97e3ea1b18db46406cb6b4c25d5c2f991093574fa1e6"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "필요한 곱3x·2x 하나를 골라 계수를 읽을 수 있는 직접 적용1."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "분배법칙으로 전개하여 지정된 항의 계수를 읽는다.",
+        "learningLevelReason": "전개와 계수 확인이 직선적으로 연결된다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_77d9940946683b3a20dc7d2f016927ac6169aae04f5dde943929780a403d3221",
+      "fingerprints": {
+        "QBODY": "4fe75c75fa6db6dabb3995c49235fc9e1d5539f77ff14ef5ed8d52934179b6d8",
+        "QFULL": "b7af8040cdb3bebb0817c3f89c243678cdba3991f2ca32eac4bca02e0bff5c9d"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "반복되는 마디를 읽어 표기와 대조하는 직접 개념 적용1. 중/1 경계는 독립 검토 전 REVIEW."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "중",
+        "difficultyReason": "각 소수의 반복 구간을 점 표기 정의에 맞춰 직접 확인한다. 비순환 부분 혼동 보기가 있어 경계로 남긴다.",
+        "learningLevelReason": "비순환 부분과 순환마디를 구별하며 여러 표기의 참거짓을 판단해야 한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_510674da42ce9ee3980e486dee068095f29a2654e727372102bd27309a534988",
+      "fingerprints": {
+        "QBODY": "f2ed8fdfb7a977a1dc727b6aa17d51b9344b68394c54c8607f6c45f0202da0ce",
+        "QFULL": "0fdccba74d794c998ecb02bcfd693a58859b0c9c234cebf47e4264a3f19eb6fc"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "약분 전 분모가 아니라 남은 분모로 판단하는 전처리 한 단계가 있으므로2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "분수를 먼저 약분한 후 기약분모의 소인수 조건을 적용하는 익숙한 전처리가 필요하다.",
+        "learningLevelReason": "약분과 유한소수 판별이 결합되며 약분 전 분모만 보면 오판할 수 있다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_0d962a98df5a7f3ee76c6d79e6a3ac81e38435e5cf46e4075567e06e88d86aac",
+      "fingerprints": {
+        "QBODY": "5e0d535569308fb79a1086c4f4ca311bcbbed543c6e79fe8164f2d6ca3798c7d",
+        "QFULL": "4bcd0e4a5ff368a6125531ed955e8bb864ebc4045d02e4016353606b276074e2"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "반복 부분을 소거하는 과정이 제시되어 자리 이동 배수와 차를 그대로 채운다.",
+        "learningLevelReason": "안내된 변환 절차에 수를 대입하는 기본 확인형이다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": true,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "자리 이동과 소거가 안내되어 1도 합리적이다. 기존 2는 안내된 두 식의 대응과 계수·상수의 연결이라는 표준 초입 해석으로 수용하되 빈칸 개수·마지막 산술 자체를 난도 근거로 삼지 않는다. 1/2 경계로 기존 값을 보존한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_e6821079b9ddeb0699a73a23d53702db51fc6a332b2474a247b699058f2a7228",
+      "fingerprints": {
+        "QBODY": "259f8aa5a8e0cada4cd50ab181d9f1eb9f27c8b0d4fa99724230036708034648",
+        "QFULL": "38c8969af6602fe895a907252e8cf17b9f0c521df9423176d92ba5542d66eeb0"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 법칙 모두 직접 주어진 형태에 대입하는 기본 수준1. 문항 수 자체로 올리지 않는다."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "거듭제곱의 거듭제곱과 같은 밑의 나눗셈 법칙을 각각 바로 적용한다.",
+        "learningLevelReason": "두 기본 지수법칙을 독립적으로 직접 적용하고 합한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_2f61eb5d1f6b883c82ad28544c1c7c55d5aa9b758ca6ba0c0b8e0bba008d1fbf",
+      "fingerprints": {
+        "QBODY": "2e06234f38cb3bcb0cc7fbe15d91c5e3c822c5c2c2fb4430a974b6b3490dea34",
+        "QFULL": "af3af76fc43cf47c66d5ae4d6c3b9b01e08d94dff064ec096a50381e5f6516d2"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "변형 후 네 식과 반대인 대소관계를 비교해야 하는 익숙한 전처리2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "각 부등식을 같은 두 수의 대소관계로 정규화하며 음수 배의 방향 전환을 확인한다.",
+        "learningLevelReason": "여러 등가 변형과 부등호 반전 함정을 판별한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_4f5a8217662a7f193fb3235f9a307850e737bde8b329633350985f060ec0cbed",
+      "fingerprints": {
+        "QBODY": "16aa98860d6f3b584f80f138b68e272c25d90c5fa55f36cbf56e1f167590b935",
+        "QFULL": "9e1e709cb037ccff8ef44a592b29518c8e17718ec210f92cfc5492916758a4ad"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "두 분모에서 제거해야 할 소인수 조건을 따로 추출한 뒤 공통 배수 조건으로 결합한다. 전형적인 최소배수 틀이므로 2와 경계다.",
+        "learningLevelReason": "유한소수 조건을 두 배수 조건으로 바꿔 최소값을 연결한다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "두 기약분모에서 제거할 인수를 얻으면 공통 배수 조건이 바로 정해진다. 별도 후보 선택이나 예외 분기가 없으므로 기존 2를 수용하고 A2의 3 의견은 B23 경계 증거로 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+      "fingerprints": {
+        "QBODY": "ecac4f7ba01838039da8faf4db2a08e8154e4cf469d75b83fd1c10bc89ffebf0",
+        "QFULL": "6b74807839dede0a3d0d9773cf171e3bdfc0fb21883e2e84447b97ab02e84b75"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+      },
+      "initialA2": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "상",
+        "difficultyReason": "약분 인수를 변수로 나타내고 크기 제한, 기약분자 조건, 유한소수 조건을 함께 적용해 가능한 후보를 제거한다.",
+        "learningLevelReason": "자연수 후보와 범위 및 기약조건을 여러 단계로 구조화하는 것이 핵심이다."
+      },
+      "comparisonCategory": "MATERIAL_STRUCTURE_REVIEW_PROPOSAL",
+      "numericDifference": true,
+      "learningLevelDifference": true,
+      "proposalAction": "ADOPT_A2_VALUE_AND_INDEPENDENT_LEVEL_PROPOSAL",
+      "proposedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "ROOT_ADJUDICATION_REQUIRED",
+      "comparisonReason": "약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e56c7efed6d186406dad106f9a63c557f29b4107d102430f0eb5eed56db7b406",
+      "fingerprints": {
+        "QBODY": "0b0aecfb3290572d99184b99d892d1bd95ee17929df4086ec07a0baecc236dd8",
+        "QFULL": "cfe21ce899254c19fe74121f614d5b20c818dba243a945693b3ba902a29586b6"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "복수 지수법칙과 부호를 정리한 뒤 보기 결과를 비교하는 표준2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "각 보기의 곱셈·거듭제곱·나눗셈을 익숙한 지수법칙으로 점검하되 부호와 지수 혼동을 구분한다.",
+        "learningLevelReason": "여러 계산 주장과 부호·지수 함정을 판별해야 한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_1d50d71655580ac70093c07090a0667223e797f80a4b401a22bc6eda085c7d0c",
+      "fingerprints": {
+        "QBODY": "45fbebed9be7c350f25e83a54781cc8b73bdd5d7a6bbf4915c7d21b9cd8736cd",
+        "QFULL": "6292d874adce6f28a803fab13bb24ef8aaae2fc557cc0d6c5fc53348e1b3e729"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "지수 계산과 표준형 읽기라는 익숙한 전처리의2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "단항식의 거듭제곱, 곱, 몫을 정리한 뒤 계수와 지수를 읽는 표준 복합 절차다.",
+        "learningLevelReason": "여러 지수법칙과 부호 처리를 결합한 뒤 식의 값을 구한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_5462468219240590e4334606987a97dead8e95e71748a7349c546af6a1abbde6",
+      "fingerprints": {
+        "QBODY": "04e32b453a2bef9b9d5a90036acddbb6c04545d53362c51a1f389db87d9b7c45",
+        "QFULL": "448789cc2d79c0e00db504c2c49144d281f4fd259bc009d192a8a543b18b2b56"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진40과50을2,5로 나타내고 동일항의 수5를 약분하는 전략이 바로 정해지는2/B23."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "밑을 소인수로 바꾸고 같은 항의 합을 곱으로 묶는 익숙한 전처리 후 지수법칙을 적용한다.",
+        "learningLevelReason": "소인수분해와 반복합의 변환을 거쳐 주어진 지수를 비교한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_8195ec54fe4a71db142d199aab883ff31a3bf3b1ab301d7d0f2fcbeaf40543fb",
+      "fingerprints": {
+        "QBODY": "94918e1f776ebcaf994986c8fdea5ab65d1c46e704980d7f7f06831d9fb74509",
+        "QFULL": "c009f9a965f75d7e6adccd6f98975c00a249b38a35de37b1aac771c8ee161967"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "learningLevel": "중",
+        "difficultyReason": "안쪽 괄호부터 부호를 분배하는 절차가 즉시 정해진다. 중첩 부호의 실행 부담은 있으나 전략 선택은 없다.",
+        "learningLevelReason": "중첩된 뺄셈의 부호를 여러 단계 확인해야 해 기본 단항 전개보다 실수 가능성이 크다."
+      },
+      "comparisonCategory": "ADJACENT_NUMERIC_BOUNDARY_STABILITY",
+      "numericDifference": true,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED_VALUE_RECORD_BOUNDARY",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+      "fingerprints": {
+        "QBODY": "d6d0db8541ce049fdbdf5f7be22eac816ebad3254b0cbf1a48abe14261a3433e",
+        "QFULL": "84eafe120b0722792472307603a60941a2c28fb5643fcc6dd1a5d8340da0c3e4"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "괄호 안 분수식의 정리 후 몫을 비교하는 한 번의 익숙한 전처리2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "각 나눗셈을 역수 곱으로 고쳐 동류항과 약분을 점검하는 표준 판단이다.",
+        "learningLevelReason": "분수식의 괄호와 역수 처리에 대한 여러 참거짓 판단이 필요하다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_cfb564d45af70774cb8575162520278e03d083005ea5087d3bd99d426811d826",
+      "fingerprints": {
+        "QBODY": "10df9dd37dafa29324aa7f9810a3fe41cf87ab6704bdce44a62ea599c9aaab9d",
+        "QFULL": "494bdbdf2d1acca818da51957cfca9a6b7f8aa2c38495a1e1cfb586f0240247d"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "정형적인단가×권수+배송료 모델과 정수선택이 즉시 결정되는2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "고정 배송비와 권당 비용을 한 부등식으로 옮기고 정수 최대값을 해석한다.",
+        "learningLevelReason": "수량을 식으로 번역하고 실제 권수와 잔돈으로 되돌리는 단순 활용이다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_198def5b93fe80a67337bbcb2bfed0b5992999d93d8944a66e4b92284c33bfb0",
+      "fingerprints": {
+        "QBODY": "9e8fa860266dbfda7ad077f83edd6371b4d26874ed65f2a62cbc1bef8a29e0a3",
+        "QFULL": "d11564583de95644add3536f0c01559966dde2476984a82132eae356fbd9f9d6"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한부등식을정리해해의끝점을같게두는익숙한역문제로2/B23. 기존3에서2로보정제안."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "부등식을 풀어 매개변수 경계값을 얻고 수직선의 열린 경계와 일치시킨다.",
+        "learningLevelReason": "음수 나눗셈과 수직선 해석을 연결하는 표준 문제다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_ed57ae18d353239ebe292122a98ad37755c00583feea02c534990f05dc10dfdc",
+      "fingerprints": {
+        "QBODY": "d98f5eaa5e3ceed35cc29cc49465f3b98bc1272920755ae98c43e2da80a60aab",
+        "QFULL": "c4cba9021185ca07be4fbafc1c220c7f355584eaa3287cc93fb5f5ed1918bff8"
+      },
+      "acceptedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "1t=10³kg,1kg=10³g를곱하는직접적용1."
+      },
+      "initialA2": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "하",
+        "difficultyReason": "제시된 두 단위 환산의 배수를 곱하는 직접 적용이며 불필요한 설명은 난도에 포함하지 않는다.",
+        "learningLevelReason": "주어진 배수 관계를 그대로 연쇄 적용한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c5612deecd07bfdff79b05718c606edbffd876b8a4d7b858de645bffb0d9ddf8",
+      "fingerprints": {
+        "QBODY": "ec2f69538a26b650e0e43f6992cfcfcb42190047cf884fc042c48e026a3d4a5f",
+        "QFULL": "827dee0819b26880d95adad050abf6894162733a43a1e1b75d801ff2cea29093"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "A,B를먼저괄호별로정리하는익숙한전처리후분배하는2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "주어진 다항식을 순서대로 대입하고 괄호별로 정리하는 명확한 절차다.",
+        "learningLevelReason": "대입, 분배법칙, 다항식의 차를 결합하는 표준 계산이다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_56df750b001e9bd82eee54570a1d61a919417f58ac313a35842b6171177d5f75",
+      "fingerprints": {
+        "QBODY": "34bb504e5d918f839063a4396d25a52e8c03213c3daf1dc396b701f04a81408d",
+        "QFULL": "22665a6f104ea5fc7c7a49d617b19c521a579471a3b1e89bc90f3f9198908a16"
+      },
+      "acceptedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "조건이허용하는두뺄셈순서를선택해모두복원해야하므로3/B23. 기존상은상/3인접불일치로독립재검토필요."
+      },
+      "initialA2": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "learningLevel": "중",
+        "difficultyReason": "뺄셈 순서가 특정되지 않았음을 해석하여 두 방향의 역연산을 모두 확인해야 한다. 분기는 두 개의 직접 계산에 한정된다.",
+        "learningLevelReason": "문장에 숨은 연산 순서의 두 가능성을 찾아 그림의 후보와 대응시킨다."
+      },
+      "comparisonCategory": "ADJACENT_LEARNING_LEVEL_STABILITY",
+      "numericDifference": false,
+      "learningLevelDifference": true,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "두 뺄셈 순서를 모두 알아차리는 점은 단순 계산을 넘어선다. 숫자 3에는 합의하며, 학습 수준 상은 순서의 두 가능성을 놓치기 쉬운 변별 요소를 반영한 인접 판단으로 보존한다. 단순 두 갈래 계산은 복합 경우분기 4까지 요구하지 않아 기존 B23을 유지한다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_6c7c92e0b3a0c0c0eb0a0ba715d6888ae40e5570c9d80d6b878c1c73bdaf3e39",
+      "fingerprints": {
+        "QBODY": "0c7b039e0de6f3795bdcde0070e78b0f4f63e0db45727b7ed3bc4c1694646a19",
+        "QFULL": "e4b77146c8f4b11fafb6baaecf876a3f34b7c652f92b1ef7a4df66bbf834f679"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주기3을얻어100의나머지를읽는익숙한전처리2."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "분수에서 순환마디를 구하고 자리수를 주기로 나눈 나머지를 이용하는 전형적 절차다.",
+        "learningLevelReason": "소수 표현과 주기적 자릿수 판단을 연결한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+      "fingerprints": {
+        "QBODY": "3c5e6c3f6038657e5be20b5aace7d11d98726c1e29b6c06229586186c75535e5",
+        "QFULL": "aebad18c479b6477d3364a08b9d5f2c7ad96bec48a0a9e577e3d9d988eeb1384"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두기본공식으로등식을세우고정형적으로h를고립시키는익숙한연결2. 식의문자차수때문에올리지않는다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "그림의 길이로 두 넓이를 식으로 만들고 같다는 조건에서 높이를 역산한다. 두 공식의 결합은 직접적이다.",
+        "learningLevelReason": "도형의 넓이 공식과 단항식 나눗셈을 연결하여 미지 길이를 구한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_c1e5715ab62cc1e28447451887ab790daf36d13fb6737c39864dad18d0523ae3",
+      "fingerprints": {
+        "QBODY": "9bc07b4717094aaecedb9afc86a23a23b27f962a3171dbdd52c3cf0e58e9aeab",
+        "QFULL": "48fc63c91c9233598eeabf1ddef3e4eb1027b750a4e7205b1c8f3a21be8dc356"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "고정비와월비용을비교하는정형모델이고자연수올림한번이므로2/B23. 서술단계수나큰수는3의근거가아니다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "learningLevel": "중",
+        "difficultyReason": "두 요금의 고정비와 월 비용을 비교 부등식으로 세우는 표준 활용이며 풀이 단계도 제시된다.",
+        "learningLevelReason": "비용 모델 두 개를 비교하고 개월 수의 자연수 조건을 해석한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_76d858707482bb1bc613a4a68b67d9348a11fd7f03c86b312790a416efb5d6ec",
+      "fingerprints": {
+        "QBODY": "d37c62ff492a1e72e41615177a239a4fb75ce464ad600d9424d66a4c36abef86",
+        "QFULL": "7c31e980e21a801962fda6dec14b2566aa52376fbb5e67ba876fb6d0b5c8350f"
+      },
+      "acceptedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각오류는표준법칙한개를수정하는익숙한절차2/B23. 네부분개수만으로3을유지하지않으며독립검토가필요하다."
+      },
+      "initialA2": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "learningLevel": "중",
+        "difficultyReason": "각 기존 계산의 오류를 독립적으로 확인하는 표준 법칙 점검이다. 여러 항목이라는 이유로 상향하지 않는다.",
+        "learningLevelReason": "역수·항별 나눗셈·부등호 방향·양변 배수의 함정을 설명해야 한다."
+      },
+      "comparisonCategory": "AGREEMENT",
+      "numericDifference": false,
+      "learningLevelDifference": false,
+      "proposalAction": "RETAIN_ACCEPTED",
+      "proposedDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "proposedReviewStatus": "INDEPENDENT_COMPARISON_COMPLETE",
+      "comparisonReason": "숫자 난이도와 학습 수준의 독립 판정이 일치한다. 기존 confidence·경계값은 별도 근거 결함이 없으므로 보존하고 초기 A2의 보조 필드 차이는 이력에 남긴다.",
+      "contentContextDebt": [],
+      "otherAxesReopened": false
+    }
+  ],
+  "sourceAndSharedFilesModified": false,
+  "qualityPassClaimed": false
+}

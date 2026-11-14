@@ -65,6 +65,7 @@
 | E019 | `b34cd23dca38f4040675e272851430ee7f01b489` |
 | E020 | `430b049a9283407148a55d18d3267a876b708a59` |
 | E023 | `c96a3a55e60ce2bddcc524bd2dd7128d684d7715` |
+| E020-confidence | `b738283e2f28fedbee1f9ff04cfba1f40a350463` |
 
 현재 커밋의 receipt는 원격 확인 후 다음 checkpoint에 추가한다. 원격 HEAD가 최신 권위다.
 

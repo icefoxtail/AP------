@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E013",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:47:39.400661+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E013",
+    "revisionName": "fresh-difficulty-evidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 6,
+        "after": {
+          "difficultyConfidence": "medium"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 자리 이동과 소거가 안내되어 1도 합리적이다. 기존 2는 안내된 두 식의 대응과 계수·상수의 연결이라는 표준 초입 해석으로 수용하되 빈칸 개수·마지막 산술 자체를 난도 근거로 삼지 않는다. 1/2 경계로 기존 값을 보존한다."
+      },
+      {
+        "sourceOrdinal": 9,
+        "after": {
+          "difficultyConfidence": "medium"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 기약분모에서 제거할 인수를 얻으면 공통 배수 조건이 바로 정해진다. 별도 후보 선택이나 예외 분기가 없으므로 기존 2를 수용하고 A2의 3 의견은 B23 경계 증거로 남긴다."
+      },
+      {
+        "sourceOrdinal": 10,
+        "after": {
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+      },
+      {
+        "sourceOrdinal": 14,
+        "after": {
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12"
+        },
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다."
+      }
+    ],
+    "itemUpdates": [],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E013-difficulty-blind-freeze-r1.json",
+        "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E013-difficulty-comparison-r1.json",
+        "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+      },
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/blind-inputs/E013.json",
+        "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+      }
+    ],
+    "reviewTopUpdates": {
+      "freshDifficultyEvidenceSupplement": {
+        "status": "ACTUAL_BLIND_INITIAL_AND_SUBSEQUENT_COMPARISON_RECORDED",
+        "worker": "A2",
+        "itemCount": 24,
+        "blindInitialSha256": "e1165f4f675f1a87bb735343bd42e242a95ba3994c0f758c727fcb498502d4cf",
+        "comparisonSha256": "7b867182307a5d1324854a52d3b494651f9646e7c8fe4422edd5dc14557a387b",
+        "allSixFrozenManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+        "historicalOriginalExposurePreserved": true,
+        "scope": "Difficulty and independent learning-level only; other axes not repeated.",
+        "fullQualityPassClaim": false
+      }
+    },
+    "notes": [
+      "Root verified actual immutable freeze and comparison hashes, 142 source UIDs and input-pack hashes before accepting this supplement.",
+      "Historical original authorship remains exposed to old metadata; this distinct later fresh-context supplement does not rewrite that history.",
+      "Root accepts evidence-based adjacent-boundary stability, with explicit confidence/flag refinements only; no numeric changes from reviewer taste."
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "123a36e6a953a9a1e30e1bba11a0188e2f399877",
+    "currentFourSlotSha256": "282d8e68ae5220d6401ab6ded2ca019b2bc23392b122184d85917faba709cd7f",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "3d172ce07b99f44c35e665c11a2cb6e33ddb11618b74f2f73e91a26df5e0bd3c",
+  "previousFourSlotSha256": "282d8e68ae5220d6401ab6ded2ca019b2bc23392b122184d85917faba709cd7f",
+  "acceptedReviewSha256": "a07c0d118431bc48d630fc7841f302ac8fe2a14170e2e16aa1b7d3cedef762d0",
+  "acceptedFourSlotSha256": "b5412c0fdc6c034cd511b99c92b6280174c5db0775985940ebcb923c5c1b6d87",
+  "reviewedSourceBlob": "123a36e6a953a9a1e30e1bba11a0188e2f399877",
+  "finalSourceBlob": "4cbcf1be8a0083baacfe81880c22f4521350a48a",
+  "changes": [
+    {
+      "sourceOrdinal": 6,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 자리 이동과 소거가 안내되어 1도 합리적이다. 기존 2는 안내된 두 식의 대응과 계수·상수의 연결이라는 표준 초입 해석으로 수용하되 빈칸 개수·마지막 산술 자체를 난도 근거로 삼지 않는다. 1/2 경계로 기존 값을 보존한다.",
+        "authorReason": "두 자리 순환 배수를 맞추는 과정이 발문에 이미 안내된 직접 절차1/2 경계. 빈칸 세 개와 마지막 덧셈의 연결을 고려해2를 유지한다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 자리 이동과 소거가 안내되어 1도 합리적이다. 기존 2는 안내된 두 식의 대응과 계수·상수의 연결이라는 표준 초입 해석으로 수용하되 빈칸 개수·마지막 산술 자체를 난도 근거로 삼지 않는다. 1/2 경계로 기존 값을 보존한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 기약분모에서 제거할 인수를 얻으면 공통 배수 조건이 바로 정해진다. 별도 후보 선택이나 예외 분기가 없으므로 기존 2를 수용하고 A2의 3 의견은 B23 경계 증거로 남긴다.",
+        "authorReason": "두 분모에서2,5외 인수만 추출해 최소공배수를 구하는 익숙한 연결이므로2/B23. 문제 길이만으로3에 두지 않는다."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 기약분모에서 제거할 인수를 얻으면 공통 배수 조건이 바로 정해진다. 별도 후보 선택이나 예외 분기가 없으므로 기존 2를 수용하고 A2의 3 의견은 B23 경계 증거로 남긴다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+      },
+      "after": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary.",
+        "authorReason": "단순 약분과 달리x=11g라는 표현을 선택하여 세 조건을 묶어야 하는3."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+    },
+    {
+      "sourceOrdinal": 14,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다.",
+        "authorReason": "중첩 괄호의 부호 처리를 여러 번 하지만 전략 선택은 없는 익숙한2."
+      },
+      "basis": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다."
+    }
+  ],
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 6,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 자리 이동과 소거가 안내되어 1도 합리적이다. 기존 2는 안내된 두 식의 대응과 계수·상수의 연결이라는 표준 초입 해석으로 수용하되 빈칸 개수·마지막 산술 자체를 난도 근거로 삼지 않는다. 1/2 경계로 기존 값을 보존한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 두 기약분모에서 제거할 인수를 얻으면 공통 배수 조건이 바로 정해진다. 별도 후보 선택이나 예외 분기가 없으므로 기존 2를 수용하고 A2의 3 의견은 B23 경계 증거로 남긴다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "level",
+      "before": "중",
+      "after": "상",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 4,
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+    },
+    {
+      "sourceOrdinal": 10,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: 약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다. Root directly reread the original source, existing gcd-candidate solution and v1.3 3/4 boundary: integrality and the upper bound actively eliminate candidates after the reduced-numerator and denominator restrictions. These are central constraints, not mere long arithmetic. Independently assessed advanced learning demands support상; numeric4/medium/B34 records the boundary."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "Root accepts actual A2 blind assessment and subsequent independent comparison: A2는 전략 선택 부재를 근거로 1을 주었고 기존 2는 중첩 음수 괄호를 정규화하는 익숙한 전처리를 근거로 한다. 조건 재구성은 없으며 두 값은 1/2 경계이므로 안정된 기존 2를 보존한다."
+    }
+  ],
+  "evidence": [
+    {
+      "file": "evidence/E013-difficulty-blind-freeze-r1.json",
+      "sha256": "e1165f4f675f1a87bb735343bd42e242a95ba3994c0f758c727fcb498502d4cf",
+      "role": "FRESH_CONTEXT_CONTENT_ONLY_INITIAL_BEFORE_ANY_SIX_PRIOR_METADATA"
+    },
+    {
+      "file": "evidence/E013-difficulty-comparison-r1.json",
+      "sha256": "7b867182307a5d1324854a52d3b494651f9646e7c8fe4422edd5dc14557a387b",
+      "role": "INDEPENDENT_DIFFICULTY_ONLY_COMPARISON_AFTER_ALL_SIX_FROZEN"
+    },
+    {
+      "file": "evidence/E013.json",
+      "sha256": "a6c7846b1475c21c196c1ec85581e84d49e1d21c0882dfad5d4d3253599270da",
+      "role": "EXACT_BLINDED_INPUT_PACK_WITH_SOURCE_IDENTITY"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}

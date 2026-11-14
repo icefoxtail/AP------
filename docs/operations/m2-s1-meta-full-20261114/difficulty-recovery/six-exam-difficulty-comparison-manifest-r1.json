@@ -1,0 +1,92 @@
+{
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "worker": "A2",
+  "revision": 1,
+  "createdAt": "2026-11-14T11:45:07.770344+00:00",
+  "status": "COMPARISON_COMPLETE_ROOT_PROPOSALS_READY",
+  "itemCount": 142,
+  "initialManifestSha256": "c304427d5ca4dacdbe4b4e9a6f75b9335176209156b9825e6331170b5fb2c387",
+  "numericDifferenceCount": 45,
+  "learningLevelDifferenceCount": 23,
+  "categoryCounts": {
+    "ADJACENT_LEARNING_LEVEL_STABILITY": 10,
+    "AGREEMENT": 84,
+    "ADJACENT_NUMERIC_BOUNDARY_STABILITY": 43,
+    "MATERIAL_STRUCTURE_REVIEW_PROPOSAL": 1,
+    "CONTENT_CONTEXT_EVIDENCE_LIMITATION": 4
+  },
+  "materialNumericAndLevelProposal": [
+    {
+      "examId": "E013",
+      "sourceOrdinal": 10,
+      "proposedDifficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "reason": "약분 인수를 도입하는 것만으로 끝나지 않는다. 기약분자 11, 유한소수를 위한 분모 인수 제거, x<100을 동시에 적용하여 허용 약분 인수를 제한하고 후보를 제거해야 한다. 자연수·범위·기약조건이 풀이 중심부에 있으므로 A2의 4가 rubric 3/4 경계의 상단을 더 잘 나타낸다. 학습 수준 상도 이 복합 조건 구조화에서 별도로 판단한다. 4/medium/B34, level 상을 root 판정안으로 제안한다."
+    }
+  ],
+  "confidenceDebtProposals": [
+    {
+      "examId": "E015",
+      "sourceOrdinal": 10
+    },
+    {
+      "examId": "E016",
+      "sourceOrdinal": 6
+    },
+    {
+      "examId": "E016",
+      "sourceOrdinal": 23
+    },
+    {
+      "examId": "E019",
+      "sourceOrdinal": 20
+    }
+  ],
+  "examComparisons": [
+    {
+      "examId": "E013",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E013-difficulty-comparison-r1.json",
+      "sha256": "7b867182307a5d1324854a52d3b494651f9646e7c8fe4422edd5dc14557a387b",
+      "itemCount": 24
+    },
+    {
+      "examId": "E014",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E014-difficulty-comparison-r1.json",
+      "sha256": "44e5c333751ef12d33d8dd26c8a4fb4b029f24a9f69ec6ae62e92f2e68568fa8",
+      "itemCount": 23
+    },
+    {
+      "examId": "E015",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E015-difficulty-comparison-r1.json",
+      "sha256": "6d83204cd4ec0f228ad449b454b161cb67fad0be7c27b96aec39a067d20f79fb",
+      "itemCount": 23
+    },
+    {
+      "examId": "E016",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E016-difficulty-comparison-r1.json",
+      "sha256": "e824440ec70028d7afd1108c32805c47ce40a4f522337368586738ce478d1635",
+      "itemCount": 23
+    },
+    {
+      "examId": "E017",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E017-difficulty-comparison-r1.json",
+      "sha256": "3c27c5dfe28b984981cc1dd65056f9ea954785dcd5661e79baa6367b8925bc42",
+      "itemCount": 25
+    },
+    {
+      "examId": "E019",
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/A2/E019-difficulty-comparison-r1.json",
+      "sha256": "cea930bf8a0c6ded93690311fb8185bab00cb7bbec0bef71cba431e9febd9651",
+      "itemCount": 24
+    }
+  ],
+  "noSourceMutation": true,
+  "noOtherAxisReview": true,
+  "initialFreezesPreserved": true,
+  "nextAction": "Root adjudicates material proposal and confidence debt; A2 continues E021 independent review and E022 authorship."
+}
