@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+  "author": "META_B",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:11:01.542Z",
+  "sourceBaselineBlob": "3f280a62cbe273a347f5fec051bfa040feafc1df",
+  "sourceCurrentBlob": "3f280a62cbe273a347f5fec051bfa040feafc1df",
+  "workerReviewSha256": "e6ec107a7822f5ab6ea2bc8f2515e324d7f1c2f7c521d48aed240380430e98df",
+  "workerFourSlotSha256": "fe2a8c6ba6fc13281f2a71c0264a6005797be5d475d06a41762419391c4c11ea",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 2,
+      "result": "ACCEPTED_PROPOSAL_WITH_DEBT",
+      "notes": "원문은 차수2, 항3개, x계수2, 상수항과 계수의 곱이 음수인 다항식 선택이다. 일차식 전용 L4에 강제로 붙이지 않은 RPM_LEAF_GAP이 타당하다. goal 다항식과 조건 차수·음수는 발문 인용과 일치한다. method 공란은 해설 부재로 미완 상태를 유지한다.",
+      "questionUid": "qid_v1_e5c6c39a303f03299f61f46ad735e90e05c224fef51c619dd0ee5c9db2fce109"
+    },
+    {
+      "ordinal": 15,
+      "result": "ACCEPTED_PROPOSAL_CONTENT_DEBT_OPEN",
+      "notes": "x축/y축 조건과 매개변수 차의 요구를 실제 발문·선지에서 확인했다. 선택지 부합 의심은 내용 부채로 분리했고 답이나 문장을 수정하지 않았다. goal 식의값, given 좌표·좌표축, condition 위치관계가 적절하다. 후속 원PDF 대조가 필요하다.",
+      "questionUid": "qid_v1_c52522288ff65425f7f7ff23a2de2ef59f039524cba13128449f78536ea3ba09"
+    },
+    {
+      "ordinal": 20,
+      "result": "ACCEPTED_PROPOSAL_WITH_DEBT",
+      "notes": "반비례 그래프 위 정수좌표점의 개수를 요구한다. 자연수 한 사분면만 세는 문제로 축소하지 않은 판단과 정수 조건 기록을 확인했다. 정확한 기존 ACTIVE 정의·2015 binding 재사용 후보와 비어 있는 crosswalk 연결을 구분했다. SOURCE_ONLY method는 확정하지 않는다.",
+      "questionUid": "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "REVIEWED_PROPOSAL_WITH_SOURCE_ONLY_DEBT",
+  "sourcePatchPolicy": "SOURCE_ONLY legacy examData schema에 지원되지 않는 분류·확장 메타 필드는 원문에 추가하지 않았다. 모든 수정안은 source blob/UID/ordinal에 결속된 별도 시험지 검토 packet에 보존한다.",
+  "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run."
+}

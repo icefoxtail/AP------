@@ -86,7 +86,7 @@
       "sourceSchema": "examData",
       "sourceOnly": true,
       "owner": "META_B",
-      "status": "ASSIGNED",
+      "status": "REVIEWED_WITH_SOURCE_ONLY_DEBT",
       "questionUids": [
         "qid_v1_0e870b74ccee66f886acbe8eac7d1dcebda842aa8a8bc8f368121d40f7e915af",
         "qid_v1_e5c6c39a303f03299f61f46ad735e90e05c224fef51c619dd0ee5c9db2fce109",
@@ -113,8 +113,29 @@
         "qid_v1_a83d7815861b1fbae504b39ebad15a6816c8a12580e96ed0c995a6d5092c83c1",
         "qid_v1_a2b0cce70d4bdacb7349d01c0cd0972d38e8a2be5ea93fac8232b4f71222027e"
       ],
-      "inputPath": ".tmp/m1-s1/input/19_금당중_1학기_기말_중1_수학.json",
-      "nextAction": "READ_SOURCE_AND_REVIEW_ALL_META"
+      "nextAction": "CODEX_SOURCE_EVIDENCE_AND_DECLARED_GAPS",
+      "reviewCompletedAt": "2026-11-14T08:11:01.542Z",
+      "reviewArtifacts": {
+        "review": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/review.json",
+        "fourSlot": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/four-slot.json",
+        "independent": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/independent-review.json",
+        "checks": "docs/operations/m1-s1-meta-full-20261114/exams/19_금당중_1학기_기말_중1_수학/checks.json"
+      },
+      "sourceCurrentBlob": "3f280a62cbe273a347f5fec051bfa040feafc1df",
+      "sourceCurrentSha256": "f04adc72d2f74fcdf1277464823e2661480b96dc88da25bb8f458adfa71311b3",
+      "independentSampleOrdinals": [
+        2,
+        15,
+        20
+      ],
+      "validation": {
+        "mechanical": "PASS",
+        "officialFourSlotFail": 24,
+        "officialFourSlotWarn": 20,
+        "expectedMethodDebt": 24,
+        "unexpectedFailureCount": 0,
+        "registeredCurrentQfullMatches": 24
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js",
@@ -551,7 +572,18 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T08:09:17.048Z",
-  "reviewedExamCount": 1,
-  "reviewedQuestionCount": 23
+  "updatedAt": "2026-11-14T08:11:01.542Z",
+  "reviewedExamCount": 2,
+  "reviewedQuestionCount": 47,
+  "remoteReceipts": [
+    {
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "commit": "eeab3bb2e07e33f0dab7e93697da31c218203442",
+      "parent": "87d86d9767520becfcd86e6dbff86dfe59f23b03",
+      "tree": "eb5811c43e3888e39350e5bcf2f098f4429a178b",
+      "remoteHeadVerified": "eeab3bb2e07e33f0dab7e93697da31c218203442",
+      "verifiedAt": "2026-11-14T08:10:10.119Z",
+      "method": "GitHub create_tree/create_commit + compare-and-swap fast-forward update_ref; git fetch/ls-remote readback and tree equality"
+    }
+  ]
 }
