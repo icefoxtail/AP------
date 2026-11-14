@@ -298,6 +298,7 @@ def _fit_overview_family(plan):
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if 'asymptoteOnly' in plan and plan.get('family')!='rational':raise ValueError('ASYMPTOTE_ONLY_REQUIRES_RATIONAL')
+    if 'pairedAxisCrossing' in plan and plan.get('family')!='trigonometric':raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
     if plan.get('family')=='sqrt-affine':
         if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
@@ -1724,6 +1725,62 @@ def _fit_trigonometric_period_v2(plan,spec):
     fitted={**plan,'domain':domain,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','trigFeatures':features,'trigFeaturePolicy':policy}
     return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
 
+TRIG_AXIS_CROSSING_PAIR_POLICY='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1'
+
+def _fit_trig_axis_crossing_pair(plan):
+    if (plan.get('sourceDomain')!={'kind':'ALL_REALS'} or
+        set(plan)-{'family','sourceDomain','pairedAxisCrossing','axisTickPi','axisTickValues','domain','viewport'}):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
+    request=plan['pairedAxisCrossing']
+    if not isinstance(request,dict) or not {'xPi','windowPi'}<=set(request)<={'xPi','windowPi','guidesPi'}:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_INVALID')
+    def fraction(value):
+        parsed=_piecewise_fraction(value,'TRIG_AXIS_CROSSING_PAIR_PI_INVALID')
+        if parsed.denominator>120:
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_PI_INVALID')
+        return parsed
+    window=request['windowPi']
+    if not isinstance(window,list) or len(window)!=2:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_WINDOW_INVALID')
+    lo,hi=map(fraction,window)
+    crossing=fraction(request['xPi'])
+    if not (-2<=lo<0<hi<=4 and lo<crossing<hi and Fraction(1,2)<=hi-lo<=3
+            and crossing-2<lo and hi<crossing+2):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_WINDOW_INVALID')
+    angle=S.Rational(crossing.numerator,crossing.denominator)*S.pi
+    sine,cosine=S.sin(angle),S.cos(angle)
+    if sine==0 or cosine==0 or S.simplify(sine-cosine)==0:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_NOT_TRANSVERSE')
+    ticks=plan.get('axisTickValues')
+    if (plan.get('axisTickPi') is not True or not isinstance(ticks,dict) or set(ticks)!={'x','y'}
+            or ticks['y']!=[] or not isinstance(ticks['x'],list) or not 1<=len(ticks['x'])<=6):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID')
+    x_ticks=list(map(fraction,ticks['x']))
+    if crossing not in x_ticks or len(x_ticks)!=len(set(x_ticks)) or any(not (value and lo<value<hi) for value in x_ticks):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID')
+    raw_guides=request.get('guidesPi',[])
+    if not isinstance(raw_guides,list) or len(raw_guides)>8:
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID')
+    guides=list(map(fraction,raw_guides))
+    if len(guides)!=len(set(guides)) or any(not (value and lo<value<hi) for value in guides):
+        raise ValueError('TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID')
+
+    # Shifts are fixed by f(crossing)=g(crossing)=0. Keep that equation inside the
+    # sampling expressions and publish only the original axes, curves, and ticks.
+    offsets=[-sine,cosine]
+    low=min(float(offset)-1 for offset in offsets)
+    high=max(float(offset)+1 for offset in offsets)
+    span=high-low
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    xpad=.035*(x1-x0)
+    viewport=[x0-xpad,x1+xpad,low-.27*span,high+.15*span]
+    features={'xPi':str(crossing),'windowPi':window,'guidesPi':raw_guides,
+              'guideSpan':[low-.08*span,high+.05*span]}
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'overviewPolicy':TRIG_AXIS_CROSSING_PAIR_POLICY,
+            'shapeIntent':'OVERVIEW','trigAxisCrossingPairFeatures':features}
+    return {'graphPlan':fitted,'policy':TRIG_AXIS_CROSSING_PAIR_POLICY,'sourceDomainPreserved':True,
+            'displayOnly':True,'features':features,
+            'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 TRIG_DISPLAY_WINDOW_POLICY='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1'
 
 def _fit_trig_display_window(plan):
@@ -1787,6 +1844,7 @@ def _fit_trig_display_window(plan):
             'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def _fit_trigonometric_overview(plan):
+    if 'pairedAxisCrossing' in plan:return _fit_trig_axis_crossing_pair(plan)
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
     if 'displayWindowPi' in plan:return _fit_trig_display_window(plan)
