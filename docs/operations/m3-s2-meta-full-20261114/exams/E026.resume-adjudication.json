@@ -1,0 +1,1026 @@
+{
+  "schemaVersion": "m3-s2-resume-adjudication-v1",
+  "examId": "E026",
+  "author": "a",
+  "previousAuthor": "b",
+  "previousReviewSha256": "c39e68f22835b57efb690c1156f66222a024b268aaba608434d58fdac4724994",
+  "sourceGitBlobSha": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+  "sourceSha256": "30228a3c994eda7f27d8b40e5091258dbf3a441812257db962ebe760dbb9c01f",
+  "inputSha256": "10bd71e77da436b0e66eb0d225c0bfe4aaf3f64526ab8aa6ec0378cb5f1f1589",
+  "itemsRead": 24,
+  "imageEvidenceRead": [
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/images-0.png",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/images-1.png",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/images-2.png",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/images-3.png"
+  ],
+  "studentFieldsChanged": false,
+  "newMathematicalVerification": false,
+  "sameVersionDifficultyReview": {
+    "path": "reused-difficulty-review.json",
+    "sha256": "77b5aad8526b4963c172203d19bd16d443516d35b406a43389026ef1564e2394",
+    "status": "REUSED_PENDING_ROOT_ACCEPTANCE"
+  },
+  "independentFourSlotSample": {
+    "status": "TARGETED_CORRECTION_READY_FOR_RECHECK",
+    "reviewer": "b",
+    "sampleOrdinals": [
+      5,
+      12,
+      16
+    ],
+    "changedOrdinal": 12
+  },
+  "itemChanges": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_9f7e424073229cfd5bde3020e156baa42a9e0d014aa7d3740b5b1c93f3c9e0de",
+      "changes": {
+        "fourSlot": {
+          "before": {
+            "given": [
+              {
+                "term": "접선",
+                "src": "stem",
+                "quote": "다음 그림과 같이 $\\overline{PA}$, $\\overline{PB}$는 원 $O$에 접하는 접선이고, $\\angle OAC=30^\\circ$, $\\angle CBF=54^\\circ$일 때, $\\angle APB$의 크기는? [4점]"
+              },
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle AOC$는 이등변삼각형이다"
+              }
+            ],
+            "goal": [
+              {
+                "term": "각",
+                "src": "stem",
+                "quote": "의 크기는? [4점]"
+              }
+            ],
+            "method": [
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle AOC$는 이등변삼각형이다",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "접선과현이이루는각",
+                "src": "solution",
+                "quote": "접선과 현 $BC$가 이루는 각이",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "중심각",
+                "src": "solution",
+                "quote": "작은 호 $AB$의 중심각은",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "접선",
+                "src": "solution",
+                "quote": "두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-132^\\circ\n=48^\\circ$이다.\n",
+                "evidenceType": "IMPLIED",
+                "justification": "두 접점의 반지름이 각 접선에 수직이어서 접선 사이 각은 대응 작은 중심각의 보각이다."
+              }
+            ],
+            "condition": [
+              {
+                "term": "접함",
+                "src": "stem",
+                "quote": "원 $O$에 접하는 접선이고"
+              }
+            ]
+          },
+          "after": {
+            "given": [
+              {
+                "term": "접선",
+                "src": "stem",
+                "quote": "다음 그림과 같이 $\\overline{PA}$, $\\overline{PB}$는 원 $O$에 접하는 접선이고, $\\angle OAC=30^\\circ$, $\\angle CBF=54^\\circ$일 때, $\\angle APB$의 크기는? [4점]"
+              },
+              {
+                "term": "각",
+                "src": "stem",
+                "quote": "$\\angle OAC=30^\\circ$, $\\angle CBF=54^\\circ$"
+              }
+            ],
+            "goal": [
+              {
+                "term": "각",
+                "src": "stem",
+                "quote": "의 크기는? [4점]"
+              }
+            ],
+            "method": [
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle AOC$는 이등변삼각형이다",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "접선과현이이루는각",
+                "src": "solution",
+                "quote": "접선과 현 $BC$가 이루는 각이",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "중심각",
+                "src": "solution",
+                "quote": "작은 호 $AB$의 중심각은",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "접선",
+                "src": "solution",
+                "quote": "두 접선 $PA$, $PB$가 이루는 각은\n$180^\\circ-132^\\circ\n=48^\\circ$이다.\n",
+                "evidenceType": "IMPLIED",
+                "justification": "두 접점의 반지름이 각 접선에 수직이어서 접선 사이 각은 대응 작은 중심각의 보각이다."
+              }
+            ],
+            "condition": [
+              {
+                "term": "접함",
+                "src": "stem",
+                "quote": "원 $O$에 접하는 접선이고"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_7f4f0997648908a732f3c0ff1bc4c1badf60c52d3af9e4920464df70e4a35f02",
+      "changes": {
+        "fourSlot": {
+          "before": {
+            "given": [
+              {
+                "term": "원주각",
+                "src": "stem",
+                "quote": "$\\angle ABC=115^\\circ$"
+              },
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle ODC$는 이등변삼각형이다"
+              }
+            ],
+            "goal": [
+              {
+                "term": "원주각",
+                "src": "stem",
+                "quote": "에 대한 원주각 $\\angle ACD$"
+              }
+            ],
+            "method": [
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle ODC$는 이등변삼각형이다",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "원주각",
+                "src": "solution",
+                "quote": "호 $AD$를 보는 원주각이므로",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "차",
+                "src": "solution",
+                "quote": "230^\\circ-92^\\circ",
+                "evidenceType": "IMPLIED",
+                "justification": "큰 호에서 호 DC를 빼어 호 AD의 크기를 구한다."
+              }
+            ],
+            "condition": []
+          },
+          "after": {
+            "given": [
+              {
+                "term": "원주각",
+                "src": "stem",
+                "quote": "$\\angle ABC=115^\\circ$"
+              },
+              {
+                "term": "각",
+                "src": "stem",
+                "quote": "$\\angle ODC=44^\\circ$"
+              }
+            ],
+            "goal": [
+              {
+                "term": "원주각",
+                "src": "stem",
+                "quote": "에 대한 원주각 $\\angle ACD$"
+              }
+            ],
+            "method": [
+              {
+                "term": "이등변삼각형",
+                "src": "solution",
+                "quote": "$\\triangle ODC$는 이등변삼각형이다",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "원주각",
+                "src": "solution",
+                "quote": "호 $AD$를 보는 원주각이므로",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "차",
+                "src": "solution",
+                "quote": "230^\\circ-92^\\circ",
+                "evidenceType": "IMPLIED",
+                "justification": "큰 호에서 호 DC를 빼어 호 AD의 크기를 구한다."
+              }
+            ],
+            "condition": []
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+      "changes": {
+        "after": {
+          "before": {
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "standardUnit": "평면도형의 성질",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "subUnit": "평면도형의 측정",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+            "crossConceptKeys": [
+              "CC_CIRCLE_TANGENT_PROPERTY",
+              "CC_PYTHAGOREAN",
+              "CC_SPECIAL_ANGLES"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "B34",
+            "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          },
+          "after": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-06",
+            "standardUnit": "원의 성질",
+            "standardUnitOrder": 6,
+            "subUnitKey": "M3-06-CIRCLE_LINE",
+            "subUnit": "원과 직선",
+            "problemTypeKey": "PT_CIRCLE_TANGENT",
+            "templateKey": null,
+            "crossConceptKeys": [
+              "CC_PYTHAGOREAN",
+              "CC_SPECIAL_ANGLES",
+              "CC_CIRCLE_CIRCUMFERENCE"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "level": "상",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "B34",
+            "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          }
+        },
+        "rpm": {
+          "before": {
+            "originalCurriculum": null,
+            "originalCurriculumProvenance": {
+              "status": "UNSPECIFIED",
+              "comparisonPathCurriculum": "2015",
+              "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+            },
+            "base": {
+              "majorUnit": "평면도형",
+              "midUnit": "원과 부채꼴",
+              "l3": "복합도형",
+              "l4": "부채꼴을 포함한 둘레",
+              "curriculum": "2015",
+              "scope": "M1-2",
+              "recordId": "M1-RPM-092"
+            },
+            "current2022": {
+              "basePath": {
+                "majorUnit": "평면도형",
+                "midUnit": "원과 부채꼴",
+                "l3": "복합도형",
+                "l4": "부채꼴을 포함한 둘레"
+              },
+              "recordId": "M1-RPM-205",
+              "effectiveParent": {
+                "key": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+                "parentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+                "unitKey": "RPM22-M1-L1-06",
+                "grade": "중1",
+                "gradeKey": "M1",
+                "curriculumKey": "2022",
+                "courseKey": "M1-2",
+                "L1": "평면도형",
+                "L2": "원과 부채꼴",
+                "label": "원과 부채꼴",
+                "order": 14,
+                "orderInUnit": 2,
+                "legacyUnitKeys": [
+                  "M22-1-06"
+                ]
+              }
+            }
+          },
+          "after": {
+            "originalCurriculum": null,
+            "originalCurriculumProvenance": {
+              "status": "UNSPECIFIED",
+              "comparisonPathCurriculum": "2015",
+              "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+            },
+            "base": {
+              "majorUnit": "원의 성질",
+              "midUnit": "원과 직선",
+              "l3": "원의 접선",
+              "l4": "접선 조건으로 길이 구하기",
+              "curriculum": "2015",
+              "scope": "M3-2",
+              "recordId": "M3-RPM-072"
+            },
+            "current2022": {
+              "basePath": {
+                "majorUnit": "원의 성질",
+                "midUnit": "원과 직선",
+                "l3": "원의 접선",
+                "l4": "접선 조건으로 길이 구하기"
+              },
+              "recordId": "M3-RPM-160",
+              "effectiveParent": {
+                "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+                "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+                "unitKey": "RPM22-M3-L1-06",
+                "grade": "중3",
+                "gradeKey": "M3",
+                "curriculumKey": "2022",
+                "courseKey": "M3-2",
+                "L1": "원의 성질",
+                "L2": "원과 직선",
+                "label": "원과 직선",
+                "order": 12,
+                "orderInUnit": 1,
+                "legacyUnitKeys": [
+                  "M22-3-06"
+                ]
+              }
+            }
+          }
+        },
+        "compatibility": {
+          "before": {
+            "semanticTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+            "judgment": "EXISTING_ACTIVE_REUSE",
+            "reason": "원기둥의 단면에서 두 접선의 길이를 피타고라스로 구하고 실이 감긴240° 큰 호의 길이를 더해 전체 실의 길이를 구한다.",
+            "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+            "officialResolver": {
+              "original": {
+                "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+                "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+                "readOnlyCompatibilityInspection": {
+                  "notResolverResult": true,
+                  "crosswalkRecordId": "M1-RPM-092",
+                  "mappingStatus": "DIRECT_ACTIVE",
+                  "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+                  "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+                  "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+                  "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+                  "exactContextBindingCount": 1,
+                  "bindingOwners": [
+                    "MIDDLE_GEOMETRY"
+                  ]
+                }
+              },
+              "current2022": {
+                "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+                "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+                "readOnlyCompatibilityInspection": {
+                  "notResolverResult": true,
+                  "crosswalkRecordId": "M1-RPM-205",
+                  "mappingStatus": "FAMILY_ACTIVE",
+                  "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+                  "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+                  "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+                  "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+                  "exactContextBindingCount": 1,
+                  "bindingOwners": [
+                    "MIDDLE_GEOMETRY"
+                  ]
+                }
+              }
+            }
+          },
+          "after": {
+            "semanticTemplate": null,
+            "judgment": "NEW_TPL_PROPOSAL",
+            "reason": "원의 접선 조건으로 길이와 접점 배치를 결정하는 M3-RPM-072/160이 Primary다. TM_TANGENT_LENGTH는 접선 자체의 길이 골격이고, TPL_CIRCLE_ANGLE_SECTOR_MEASURE는 부채꼴 측정을 주전략으로 하는 다른 PT 소속이다. 접선 두 길이와 감긴 큰 호를 합하는 정확 골격은 신규 TPL 제안으로 남긴다.",
+            "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+            "officialResolver": {
+              "original": {
+                "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+                "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+                "readOnlyCompatibilityInspection": {
+                  "notResolverResult": true,
+                  "crosswalkRecordId": "M3-RPM-072",
+                  "mappingStatus": "DIRECT_BINDING_GAP",
+                  "globalActiveTemplate": null,
+                  "globalActiveProblemType": "PT_CIRCLE_TANGENT",
+                  "problemTypeCanonicalOwner": "GEOMETRY_EQUATIONS",
+                  "exactContextBindingCount": 1,
+                  "bindingOwners": [
+                    "MIDDLE_GEOMETRY"
+                  ]
+                }
+              },
+              "current2022": {
+                "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+                "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+                "readOnlyCompatibilityInspection": {
+                  "notResolverResult": true,
+                  "crosswalkRecordId": "M3-RPM-160",
+                  "mappingStatus": "DIRECT_BINDING_GAP",
+                  "globalActiveTemplate": null,
+                  "globalActiveProblemType": "PT_CIRCLE_TANGENT",
+                  "problemTypeCanonicalOwner": "GEOMETRY_EQUATIONS",
+                  "exactContextBindingCount": 0,
+                  "bindingOwners": []
+                }
+              }
+            }
+          }
+        },
+        "crossConditionIntegration": {
+          "before": {
+            "crossConceptKeys": [
+              "CC_CIRCLE_TANGENT_PROPERTY",
+              "CC_PYTHAGOREAN",
+              "CC_SPECIAL_ANGLES"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "rationale": "원기둥의 단면에서 두 접선의 길이를 피타고라스로 구하고 실이 감긴240° 큰 호의 길이를 더해 전체 실의 길이를 구한다."
+          },
+          "after": {
+            "crossConceptKeys": [
+              "CC_PYTHAGOREAN",
+              "CC_SPECIAL_ANGLES",
+              "CC_CIRCLE_CIRCUMFERENCE"
+            ],
+            "conditionKeys": [],
+            "integrationPattern": "SEQUENTIAL",
+            "rationale": "접선과 반지름의 수직이 Primary이고 피타고라스로 직선 부분, 1:2 특수 직각삼각형으로 접점 중심각, 원주와 중심각 비율로 실제 감긴 큰 호 길이를 이어 구한다. 원기둥은 단면을 제시하는 맥락이다."
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_141483d409b985ceb32a0b2fbe6558e706a90762a6b0348a5bb3f0a58133f381",
+      "changes": {
+        "after": {
+          "before": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "standardUnit": "통계",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnit": "대푯값과 산포도",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 2,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "B12",
+            "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+          },
+          "after": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "standardUnit": "통계",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnit": "대푯값과 산포도",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": null,
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "하",
+            "difficultyBucket": 1,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "B12",
+            "legacyLevelCompatibility": "NORMAL"
+          }
+        },
+        "difficulty": {
+          "before": {
+            "level": "하",
+            "difficultyBucket": 2,
+            "reason": "하·2: 정렬 후 짝수 중앙값과 동률 최빈값을 각각 산출한다. 역사 level을 유지한다.",
+            "boundary": "B12"
+          },
+          "after": {
+            "level": "하",
+            "difficultyBucket": 1,
+            "reason": "자료를 순서대로 놓아 가운데 두 값의 평균과 최다 빈도를 직접 구한다. 짝수 중앙값·동률 최빈값은 정의의 직접 적용이며 별도 전략 선택이 없어 bucket 1을 채택한다. 기존 level 하는 보존한다.",
+            "boundary": "B12",
+            "legacyLevelCompatibility": "NORMAL",
+            "independentReviewReuse": {
+              "path": "reused-difficulty-review.json",
+              "sha256": "77b5aad8526b4963c172203d19bd16d443516d35b406a43389026ef1564e2394",
+              "reviewer": "c",
+              "sourceBlob": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+              "rootAcceptance": "PENDING"
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_b2ed2a988f278e046cbc19577c43a1fd58629a99bed91a3f3b8647455af95794",
+      "changes": {
+        "after": {
+          "before": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "standardUnit": "통계",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnit": "대푯값과 산포도",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          },
+          "after": {
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "standardUnit": "통계",
+            "standardUnitOrder": 7,
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+            "subUnit": "대푯값과 산포도",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_INEQUALITY_CONSTRAINT"
+            ],
+            "integrationPattern": "NONE",
+            "level": "중",
+            "difficultyBucket": 3,
+            "difficultyConfidence": "medium",
+            "difficultyBoundaryFlag": "NONE",
+            "legacyLevelCompatibility": "NORMAL"
+          }
+        },
+        "crossConditionIntegration": {
+          "before": {
+            "crossConceptKeys": [],
+            "conditionKeys": [],
+            "integrationPattern": "NONE",
+            "rationale": "평균에서 a+b=4를 얻고 중앙값1과 a<b를 함께 써 가운데 값에 대응할 미지수를 결정하여 차를 구한다."
+          },
+          "after": {
+            "crossConceptKeys": [],
+            "conditionKeys": [
+              "COND_INEQUALITY_CONSTRAINT"
+            ],
+            "integrationPattern": "NONE",
+            "rationale": "평균의 합 조건과 중앙값의 위치를 함께 사용해 미지 자료를 복원한다. 명시 a<b가 a,b의 대응을 정하여 b-a의 부호를 확정하므로 ACTIVE COND_INEQUALITY_CONSTRAINT가 필요하다. 다른 단원 개념을 결합하지 않아 Integration은 NONE이다."
+          }
+        },
+        "fourSlot": {
+          "before": {
+            "given": [
+              {
+                "term": "평균",
+                "src": "stem",
+                "quote": "이 자료의 평균과 중앙값이 모두 $1^\\circ\\rm C$일 때"
+              },
+              {
+                "term": "중앙값",
+                "src": "stem",
+                "quote": "이 자료의 평균과 중앙값이 모두 $1^\\circ\\rm C$일 때"
+              }
+            ],
+            "goal": [
+              {
+                "term": "차",
+                "src": "stem",
+                "quote": "$b-a$의 값은?"
+              }
+            ],
+            "method": [
+              {
+                "term": "평균",
+                "src": "solution",
+                "quote": "$a+b=4$이다",
+                "evidenceType": "IMPLIED",
+                "justification": "평균과 변량 개수로 전체 합을 정한다."
+              },
+              {
+                "term": "중앙값",
+                "src": "solution",
+                "quote": "또 중앙값이 $1$이고 $a<b$이다.\n다섯 값을 작은 순서로 놓았을 때 가운데 값이 $1$이 되려면\n$a=1$, $b=3$이어야 한다.",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "순서",
+                "src": "solution",
+                "quote": "$-2,-1,1,3,4$의 중앙값",
+                "evidenceType": "IMPLIED",
+                "justification": "두 미지수의 순서와 기존 값 위치를 이용해 가운데 값을 정한다."
+              }
+            ],
+            "condition": [
+              {
+                "term": "순서",
+                "src": "stem",
+                "quote": "단, $a\\lt b$"
+              }
+            ]
+          },
+          "after": {
+            "given": [
+              {
+                "term": "평균",
+                "src": "stem",
+                "quote": "이 자료의 평균과 중앙값이 모두 $1^\\circ\\rm C$일 때"
+              },
+              {
+                "term": "중앙값",
+                "src": "stem",
+                "quote": "이 자료의 평균과 중앙값이 모두 $1^\\circ\\rm C$일 때"
+              }
+            ],
+            "goal": [
+              {
+                "term": "미지수",
+                "src": "stem",
+                "quote": "$b-a$의 값은?"
+              },
+              {
+                "term": "차",
+                "src": "stem",
+                "quote": "$b-a$의 값은?"
+              }
+            ],
+            "method": [
+              {
+                "term": "평균",
+                "src": "solution",
+                "quote": "$a+b=4$이다",
+                "evidenceType": "IMPLIED",
+                "justification": "평균과 변량 개수로 전체 합을 정한다."
+              },
+              {
+                "term": "중앙값",
+                "src": "solution",
+                "quote": "또 중앙값이 $1$이고 $a<b$이다.\n다섯 값을 작은 순서로 놓았을 때 가운데 값이 $1$이 되려면\n$a=1$, $b=3$이어야 한다.",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "순서",
+                "src": "solution",
+                "quote": "$-2,-1,1,3,4$의 중앙값",
+                "evidenceType": "IMPLIED",
+                "justification": "두 미지수의 순서와 기존 값 위치를 이용해 가운데 값을 정한다."
+              }
+            ],
+            "condition": [
+              {
+                "term": "순서",
+                "src": "stem",
+                "quote": "단, $a\\lt b$"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_d1f64021d47896fb1ea2a90839bb1474102c26e09753f925e8d51e8141545074",
+      "changes": {
+        "fourSlot": {
+          "before": {
+            "given": [
+              {
+                "term": "중앙값",
+                "src": "stem",
+                "quote": "중앙값이 $5$이고 최빈값이"
+              },
+              {
+                "term": "최빈값",
+                "src": "stem",
+                "quote": "중앙값이 $5$이고 최빈값이 $6$"
+              }
+            ],
+            "goal": [
+              {
+                "term": "합",
+                "src": "stem",
+                "quote": "$a+b+c$의 값을 구하시오"
+              }
+            ],
+            "method": [
+              {
+                "term": "최빈값",
+                "src": "solution",
+                "quote": "최빈값이 $6$이 되려면",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "경우분류",
+                "src": "solution",
+                "quote": "세 값이 모두 $6$이면",
+                "evidenceType": "IMPLIED",
+                "justification": "6의 출현 횟수에 따라 중앙값과 최빈값 조건을 확인한다."
+              },
+              {
+                "term": "중앙값",
+                "src": "solution",
+                "quote": "자료가 $8$개이므로 중앙값은 네 번째와 다섯 번째 값의 평균이다.",
+                "evidenceType": "NAMED"
+              }
+            ],
+            "condition": []
+          },
+          "after": {
+            "given": [
+              {
+                "term": "중앙값",
+                "src": "stem",
+                "quote": "중앙값이 $5$이고 최빈값이"
+              },
+              {
+                "term": "최빈값",
+                "src": "stem",
+                "quote": "중앙값이 $5$이고 최빈값이 $6$"
+              }
+            ],
+            "goal": [
+              {
+                "term": "미지수",
+                "src": "stem",
+                "quote": "$a+b+c$의 값을 구하시오"
+              },
+              {
+                "term": "합",
+                "src": "stem",
+                "quote": "$a+b+c$의 값을 구하시오"
+              }
+            ],
+            "method": [
+              {
+                "term": "최빈값",
+                "src": "solution",
+                "quote": "최빈값이 $6$이 되려면",
+                "evidenceType": "NAMED"
+              },
+              {
+                "term": "경우분류",
+                "src": "solution",
+                "quote": "세 값이 모두 $6$이면",
+                "evidenceType": "IMPLIED",
+                "justification": "6의 출현 횟수에 따라 중앙값과 최빈값 조건을 확인한다."
+              },
+              {
+                "term": "중앙값",
+                "src": "solution",
+                "quote": "자료가 $8$개이므로 중앙값은 네 번째와 다섯 번째 값의 평균이다.",
+                "evidenceType": "NAMED"
+              }
+            ],
+            "condition": []
+          }
+        }
+      }
+    }
+  ],
+  "currentReviewSha256": "4651bcc5d392b9bfb5ae1aed0a5195fc72fd915ab410e493a0e0ee077b92ecf7",
+  "currentFourSlotSha256": "fd0525577dd0539f64af52a6616805927224b6f26d47368590f6cdb104ffbd9e",
+  "sourcePatchSha256": "831c2d6686c461efef8c9dcd2d53769522802519fe62fa290ea6cc556a435a45",
+  "rootSemanticAdjudicationApplied": {
+    "ordinal": 12,
+    "primary": "M3-RPM-072/160 retained",
+    "activeTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "newTemplateProposalWithdrawn": true,
+    "reason": "Existing definition includes composite perimeters with arcs and straight segments.",
+    "crossConceptPolicy": "tangency is Primary; supplementary Pythagorean/special-angle/circle-circumference keys retained."
+  },
+  "finalItem12": {
+    "ordinal": 12,
+    "questionUid": "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+    "sourceQuestionNo": 12,
+    "decision": "CORRECT",
+    "primaryMethod": "원기둥의 단면에서 접점 반지름과 접선의 수직을 사용한다. OP=2r인 직각삼각형으로 접선 두 길이와 접점 중심각을 정한 뒤 실제 감긴 큰 호 240°의 길이를 더한다.",
+    "decisiveStep": "접점 A,B에서 OA⊥PA와 OB⊥PB로 두 접선 길이 8√3과 작은 중심각 120°를 동시에 얻는다. 감긴 부분은 반대쪽 큰 호 240°이므로 전체 길이는 두 접선과 큰 호의 합이다.",
+    "evidenceRead": {
+      "stem": true,
+      "choices": true,
+      "answer": true,
+      "existingSolution": true,
+      "image": "READ"
+    },
+    "after": {
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "standardUnitOrder": 6,
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_SPECIAL_ANGLES",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "상",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "rpm": {
+      "originalCurriculum": null,
+      "originalCurriculumProvenance": {
+        "status": "UNSPECIFIED",
+        "comparisonPathCurriculum": "2015",
+        "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+      },
+      "base": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원과 직선",
+        "l3": "원의 접선",
+        "l4": "접선 조건으로 길이 구하기",
+        "curriculum": "2015",
+        "scope": "M3-2",
+        "recordId": "M3-RPM-072"
+      },
+      "current2022": {
+        "basePath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "recordId": "M3-RPM-160",
+        "effectiveParent": {
+          "key": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "parentKey": "[\"2022\",\"M3-2\",\"원의 성질\",\"원과 직선\"]",
+          "unitKey": "RPM22-M3-L1-06",
+          "grade": "중3",
+          "gradeKey": "M3",
+          "curriculumKey": "2022",
+          "courseKey": "M3-2",
+          "L1": "원의 성질",
+          "L2": "원과 직선",
+          "label": "원과 직선",
+          "order": 12,
+          "orderInUnit": 1,
+          "legacyUnitKeys": [
+            "M22-3-06"
+          ]
+        }
+      }
+    },
+    "compatibility": {
+      "semanticTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "judgment": "EXISTING_ACTIVE_TEMPLATE_CROSSWALK_GAP",
+      "reason": "GLOBAL ACTIVE sector TPL은 중심각·반지름·호 비례 및 부채꼴을 포함한 합성도형의 둘레를 명시하므로 두 접선과 감긴 큰 호의 길이 합을 포괄한다. 실제 접선 조건을 결정하는 Primary RPM072/160은 유지하고 해당 TPL의 정확 crosswalk 연결을 출고 담당에게 넘긴다.",
+      "sourceWritePolicy": "등록된 ACTIVE 키만 source 변경안에 포함. 신규 후보는 proposals에만 기록.",
+      "officialResolver": {
+        "original": {
+          "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+          "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+          "readOnlyCompatibilityInspection": {
+            "notResolverResult": true,
+            "crosswalkRecordId": "M3-RPM-072",
+            "mappingStatus": "DIRECT_BINDING_GAP",
+            "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+            "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+            "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+            "exactContextBindingCount": 1,
+            "bindingOwners": [
+              "MIDDLE_GEOMETRY"
+            ],
+            "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+            "exactTemplateCrosswalkConnection": "MISSING_SELECTED_RPM_ROW_USES_OTHER_PT_TPL"
+          }
+        },
+        "current2022": {
+          "status": "RESOLVER_INPUT_EVIDENCE_DEBT",
+          "reason": "Existing independently verified final solution provenance was not found; no new verification is asserted.",
+          "readOnlyCompatibilityInspection": {
+            "notResolverResult": true,
+            "crosswalkRecordId": "M3-RPM-160",
+            "mappingStatus": "DIRECT_BINDING_GAP",
+            "globalActiveTemplate": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+            "globalActiveProblemType": "PT_CIRCLE_ANGLE_RELATIONS",
+            "problemTypeCanonicalOwner": "MIDDLE_GEOMETRY",
+            "exactContextBindingCount": 0,
+            "bindingOwners": [],
+            "templateCanonicalOwner": "MIDDLE_GEOMETRY",
+            "exactTemplateCrosswalkConnection": "MISSING_SELECTED_RPM_ROW_USES_OTHER_PT_TPL"
+          }
+        }
+      }
+    },
+    "crossConditionIntegration": {
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_SPECIAL_ANGLES",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "rationale": "접선과 반지름의 수직이 Primary이고 피타고라스로 직선 부분, 1:2 특수 직각삼각형으로 접점 중심각, 원주와 중심각 비율로 실제 감긴 큰 호 길이를 이어 구한다. 원기둥은 단면을 제시하는 맥락이다."
+    },
+    "difficulty": {
+      "level": "상",
+      "difficultyBucket": 3,
+      "reason": "원기둥을 원 단면과 두 접선으로 해석하고 실제로 감기는 큰 호를 선택한 뒤 접선 두 길이와 호 길이를 합한다. 단면·접점 직각·큰 호의 관계를 한 번 구조화하는 표준 전략이므로 3을 수용한다.",
+      "boundary": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "independentAdjudication": {
+        "path": "reused-difficulty-review.json",
+        "sha256": "77b5aad8526b4963c172203d19bd16d443516d35b406a43389026ef1564e2394",
+        "reviewer": "c",
+        "rootAcceptance": "FINAL_VALUES_REQUESTED_BY_ROOT"
+      }
+    },
+    "fourSlot": {
+      "status": "CORRECT",
+      "rationale": "명시되지 않은 정리 이름은 구체 IMPLIED로,1:2의 특수 직각삼각형 해석은 실제 문장으로 정리했다. 독립검토 b의 지적을 수용해 given 반지름8과 method 단면 전환을 보완했다.",
+      "existing": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          711,
+          217
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          448,
+          195,
+          155,
+          194
+        ],
+        "condition": [],
+        "candidates": []
+      }
+    },
+    "debts": [
+      {
+        "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+        "detail": "기존 ACTIVE PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_SECTOR_MEASURE 의미를 재사용한다. 원본 RPM072/현행 RPM160은 다른 PT/TPL을 가리켜 선택한 정확 골격의 crosswalk 연결이 필요하고, 2022 exact context binding도 없다. 신규 유형 공백으로 보고하지 않는다."
+      },
+      {
+        "type": "RESOLVER_SOLUTION_PROVENANCE",
+        "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+      }
+    ],
+    "solutionEvidenceProvenance": {
+      "mode": "REUSE_EXISTING_SOLUTION_ONLY",
+      "newR1R2R3": false,
+      "reviewStatus": null,
+      "solutionSource": null,
+      "sourceBlob": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+      "solutionSha256": "802b05de10b01ad649b2d4198035b648daba43125f262ad4d267433433d3bf14",
+      "previousEvidenceRefs": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "m3-s2-primary-adjudication-v1",
+  "examId": "E026",
+  "reviewer": "GPT_ROOT_6538DF266481",
+  "sourceGitBlobSha": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+  "items": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+      "status": "EXISTING_ACTIVE_TEMPLATE_REUSE_WITH_EXACT_CONTEXT_BINDING_DEBT",
+      "primaryRpm2015": "M3-RPM-072",
+      "primaryRpm2022": "M3-RPM-160",
+      "activeProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "activeTemplateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "basis": "접점의 반지름과 접선의 수직 관계가 두 접선 길이 및 감긴 큰 호의 중심각을 결정하므로 원과 직선 접선 Primary를 유지한다. ACTIVE TPL 정의가 중심각·반지름·호 비례 및 부채꼴 포함 합성도형 둘레를 명시하고 지원 UID qid_v1_bf96f1e1a94e3d1d870f8dcadcfb1b43e00f25468d52ec16892851e7d7902017도 호 길이와 직선 길이의 합을 계산한다. 따라서 접선 선행조건은 새로운 TPL을 요구하지 않으며 기존 TPL과 정본 PT 부모를 재사용하고 정확-context 연결 부재를 따로 인계한다.",
+      "reviewerAgreement": [
+        "author_a",
+        "independent_b",
+        "root"
+      ],
+      "rejectedDraft": "NEW_TPL_PROPOSAL_FOR_TANGENT_PLUS_WRAPPED_ARC",
+      "newKeysInserted": false,
+      "crossConceptPolicy": "접선은 RPM Primary이므로 접선성질 CC를 중복 추가하지 않는다. 피타고라스·특수각·원주 계산을 보조CC로 유지한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalImageByAuthorAndIndependentReviewer",
+        "GLOBAL_ACTIVE_definition_and_supporting_skeleton"
+      ],
+      "newMathematicalVerification": false,
+      "nextOwner": "CODEX_RELEASE_OWNER"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "m3-s2-difficulty-adjudication-v1",
+  "examId": "E026",
+  "author": "b",
+  "reviewer": "c",
+  "sourceGitBlobSha": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+  "sourcePacketSha256": "2ca9d0a2a9580c0b1b5338d84f55165315d0d3299003f2573b4570c40e601d2f",
+  "sampledAuthorReviewSha256": "c39e68f22835b57efb690c1156f66222a024b268aaba608434d58fdac4724994",
+  "status": "INDEPENDENT_REVIEW_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "scope": "All 5 author historical-level/bucket mismatches; historical level unchanged.",
+  "authority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md §§3–4, LEVEL BORDERLINE STABILITY LOCK",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9393d2663b3122a4b0015a8c7f4b1341f15eee90d3c5b3e31ce114c15393e5f2",
+      "historicalLevel": "하",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 2,
+      "basis": "현에 내린 중심 수선으로 반현을 정한 뒤 주어진 반지름·중심거리로 피타고라스 식을 바로 적용한다. 한 번의 기하 관계 해석이 있는 정형 연결이므로 2를 유지한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentSolutionSVG"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_cc8ea1e449102b1d6fe55a08670c620f63d792f0b3405c334a960d0bbdc8785a",
+      "historicalLevel": "상",
+      "difficultyBucket": 2,
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "authorDifficultyBucket": 2,
+      "basis": "주어진 원주각과 호 길이의 대응으로 원주를 구하고 다른 호에 비례를 적용해 중심각·원주각을 계산한다. 보조선이나 경우 선택 없이 익숙한 배수·비례 관계를 연쇄하는 구조여서 2를 수용하며 역사 상과의 강한 차이는 그대로 기록한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentSolutionSVG"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "원기둥을 원 단면과 두 접선으로 해석하고 실제로 감기는 큰 호를 선택한 뒤 접선 두 길이와 호 길이를 합한다. 단면·접점 직각·큰 호의 관계를 한 번 구조화하는 표준 전략이므로 3을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "currentOriginalImage",
+        "currentSolutionSVG"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_141483d409b985ceb32a0b2fbe6558e706a90762a6b0348a5bb3f0a58133f381",
+      "historicalLevel": "하",
+      "difficultyBucket": 1,
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "authorDifficultyBucket": 2,
+      "basis": "주어진 여덟 자료를 정렬한 뒤 짝수 자료의 두 가운데 값 평균과 최다 빈도를 정의대로 각각 구한다. 정렬과 동률 최빈값 확인은 정의의 직접 실행이고 숨은 조건 변환·전략 선택이 없으므로 v1.3 §4.1에 따라 1을 제안한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "currentOriginalImage"
+      ],
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_d1f64021d47896fb1ea2a90839bb1474102c26e09753f925e8d51e8141545074",
+      "historicalLevel": "상",
+      "difficultyBucket": 3,
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "authorDifficultyBucket": 3,
+      "basis": "기존 변량의 빈도와 최빈값 조건으로 미지수의 반복 횟수를 제한하고 모두 같은 경우를 중앙값 조건으로 배제한다. 남은 하나를 짝수 중앙값 식으로 복원하는 표준 제약 해석이므로 3을 수용한다.",
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "currentOriginalImage"
+      ],
+      "newMathematicalVerification": false
+    }
+  ],
+  "visualEvidence": [
+    "worker-outputs/c/E026-sample-visuals-0.jpg",
+    "worker-outputs/c/E026-sample-visuals-3.jpg"
+  ],
+  "newMathematicalVerification": false
+}

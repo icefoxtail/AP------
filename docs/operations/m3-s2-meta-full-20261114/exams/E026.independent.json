@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E026",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+  "sourceBlob": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+  "sourceGitBlobSha": "a30b1875bb499bd71fac3af9facd188d9f9671e5",
+  "sourcePacketSha256": "10bd71e77da436b0e66eb0d225c0bfe4aaf3f64526ab8aa6ec0378cb5f1f1589",
+  "target4slotSha256": "fd0525577dd0539f64af52a6616805927224b6f26d47368590f6cdb104ffbd9e",
+  "targetReviewSha256": "4651bcc5d392b9bfb5ae1aed0a5195fc72fd915ab410e493a0e0ee077b92ecf7",
+  "sampledSourcePatchSha256": "831c2d6686c461efef8c9dcd2d53769522802519fe62fa290ea6cc556a435a45",
+  "sampleOrdinals": [
+    5,
+    12,
+    16
+  ],
+  "sampleRule": "접현각 연쇄·접선과 큰 호 경계·대푯값 제약 복원의 IMPLIED/조건 구별 우선",
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_9f7e424073229cfd5bde3020e156baa42a9e0d014aa7d3740b5b1c93f3c9e0de",
+      "status": "PASS",
+      "independentMeaningReview": "반지름의 이등변삼각형에서 중심각120°, 접현각54°에서 중심각108°를 얻고 나머지 호132°를 두 접선 사이 각48°로 바꾸는 실제 연쇄를 모두 보존했다. method의 접선 IMPLIED는 접점 수직에서 중심각과 보각임을 정확히 설명한다. 원주각 복합 관계 primary와 접선 보조를 구분한 메타가 타당하다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage",
+        "currentSolutionSvg"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_향림중_2학기_기말_중3_기출/q5.png",
+      "currentSolutionImageRead": true,
+      "currentSolutionImagePath": "assets/images/23_향림중_2학기_기말_중3_기출/q5-solution-v2.svg",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+      "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+      "independentMeaningReview": "원기둥을 평면 원 단면으로 옮기고 반지름8·외부거리8로 OP=16을 만든다. 접점의 직각과1:2 특수직각삼각형에서 두 접선 길이와 중심각을 얻은 후 실제 감긴 큰 호240°를 골라 합한다. 요청한 given 반지름8 및 method 단면이 최종본에 반영됐다. 원과직선의 접선 RPM은 보존하면서 최종 합성도형 둘레를 포괄하는 GLOBAL sectorTPL의 기존 정의를 재사용하고 native binding공백으로 분리한 판정을 수용한다.",
+      "quotesChecked": 9,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage",
+        "currentSolutionSvg"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_향림중_2학기_기말_중3_기출/q12.png",
+      "currentSolutionImageRead": true,
+      "currentSolutionImagePath": "assets/images/23_향림중_2학기_기말_중3_기출/q12-solution-v2.svg",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_b2ed2a988f278e046cbc19577c43a1fd58629a99bed91a3f3b8647455af95794",
+      "status": "PASS",
+      "independentMeaningReview": "평균1과 자료5개로 a+b=4를 얻고, 기존 자료 -2,-1,4 사이의 중앙값1 및 a<b를 함께 사용해 미지 자료를 복원한다. 주어진 대표값, 미지수의 차라는 목표, 평균·중앙값·순서 방법, 명시 a<b 조건이 각각 정확히 결속됐다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "originalQuestionImage"
+      ],
+      "imageRead": true,
+      "imagePath": "assets/images/23_향림중_2학기_기말_중3_기출/q16.png",
+      "currentSolutionImageRead": false,
+      "currentSolutionImagePath": null,
+      "newMathematicalVerification": false
+    }
+  ],
+  "requestedCorrectionsResolved": true,
+  "requestedCorrections": [
+    {
+      "ordinal": 12,
+      "slot": "given",
+      "change": "원기둥 밑면 반지름8을 직접 발문 인용으로 추가"
+    },
+    {
+      "ordinal": 12,
+      "slot": "method",
+      "change": "원기둥에서 원 단면으로 옮기는 결정 단계를 해설 인용으로 추가"
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "worker-outputs/b/independent/E026-image-version.json",
+    "sha256": "b6b3846fcc88f3043fc6479c7bbd61242da6cedcb9d4d1b83dd33c5eca733761"
+  },
+  "visualEvidence": [
+    "worker-outputs/b/independent/E026-visuals-0.png",
+    "worker-outputs/b/independent/E026-visuals-1.png",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/solution-images-0.png",
+    "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E026/solution-images-1.png"
+  ],
+  "newMathematicalVerification": false
+}
