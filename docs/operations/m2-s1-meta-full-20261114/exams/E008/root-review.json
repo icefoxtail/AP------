@@ -1,0 +1,186 @@
+{
+  "sampleReviewer": "C",
+  "sampleFile": "E008.sample-revision2.json",
+  "decision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "순환마디 양끝 점표시의 같은 규칙을 각 보기에서 확인한다. 복합조건 재구성이 없어숫자1, 기존중/B12 인접허용에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "계수의 거듭제곱과 문자지수의 곱·합·차를 보기마다 표준 적용한다. 여러보기라는 이유만으로3을 유지하지 않은2제안에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "잘못 나눈 결과와 원식의 관계를 먼저 뒤집고 정상곱셈으로 돌아가야 한다. 결과에같은단항식을 두번곱하는 구조선택이 핵심이므로 기존3/B23 유지가 합리적이다. 단순 계산량만을 근거로 하지 않았다.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 y의식을 그대로 대입한뒤 전개하고 세 계수를 읽는다. 새로운 구조선택이 작아3→2에 동의한다. PT/TPL정합성부채는 숫자난도와 별개.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수계수를 모은뒤 최고차항계수의 비영조건을 한 번 적용한다. 정의조건의 해석이 있으나 비정형분기없어3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 부등식을 정리한후 방향과경계가 같은지 비교하여a를 결정한다. 표준해석한번과경계등식이므로3→2에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "왕복의같은거리에서각시간을 표현하고휴식의분을시간단위로환산하여총량상한모델을 선택한다. 조건관계구성의3/B23 유지에 동의.",
+      "independentReviewer": "C"
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "100g당함량을1g당함량으로바꾸고총섭취량에서다른식품량을표현해함량하한모델을 세운다. 표와전체량을관계식으로옮기는3/B23 유지에 동의.",
+      "independentReviewer": "C"
+    }
+  ],
+  "targetedSemanticChecks": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "결정적 오류는 단항식 나눗셈에서 지수를 더한②이므로 POLYNOMIAL→EXPONENT_LAW/128 수정에 동의한다. 다항식 덧뺄셈은 다른 선택지의 검토개념으로 분리한CC가 적절하다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "integrationPattern",
+      "decision": "ACCEPT_AFTER_CORRECTION",
+      "reason": "수학적 조건분기가 아닌 독립선택지 검증이므로NONE."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_WITH_EXPLICIT_REGISTRY_DEBT",
+      "reason": "일반형기존후보의definition은전개계수추출을포괄하나internalSkeleton은항개수/나눠떨어짐나머지로불일치. 저자가후보두개를명시하고활성화HOLD 및REGISTRY_DEFINITION_SKELETON_CONFLICT를보존한최종본확인."
+    }
+  ],
+  "semanticOverrides": [],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 1,
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "직접 표기 규칙을 네 보기에 적용하므로 숫자1 제안. 기존중은 상대난도 경계로 독립 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "동일 지수법칙을 각 보기에 반복 적용하는 정형 계산이므로 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙"
+      },
+      "reason": "결정적 오류가 단항식 나눗셈이므로 source POLYNOMIAL에서 EXPONENT_LAW/128 교정. 다항식 합차는 다른 선택지 확인의 보조이다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 12,
+      "after": {
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "잘못된 결과→원식→정상계산의 두 역방향 관계를 구별해야 하므로3유지,2/3 경계 표시."
+    },
+    {
+      "sourceOrdinal": 13,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "한 선형 조건을 그대로 대입·전개한 후 계수 결합을 읽는 정형 절차라 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "분수계수를 모아 최고차항 계수의 비영조건 하나를 적용하므로 기존3→2."
+    },
+    {
+      "sourceOrdinal": 18,
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "두 부등식을 정리한 뒤 같은 경계값을 비교하는 표준 과정이라 기존3→2."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "왕복의 같은거리를 두 속력으로 나누고 휴식의 분을 시간단위로 환산해 더해야 하므로3유지의2/3경계."
+    },
+    {
+      "sourceOrdinal": 20,
+      "after": {
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "표의100g당 함량을1g당으로 바꾸고 두 식품 총량과 최소영양량을 결합하는 모델링 단계가 있어3의2/3경계."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "notes": [
+    "Root read and accepted the author-independent focused report; item-by-item semantic reasons remain in author and independent files. Mechanical serialization does not decide classification.",
+    "Only explicit existing source metadata fields are minimally changed; shared registry, runtime, metadata projection and production inbox remain untouched.",
+    "Unsupported/missing source fields and unresolved evidence stay in the source-bound small proposal packet for Codex; no unknowns are silently filled."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E008",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "e96aa6ac5d4f6432a5f4c7358ed3b95e09ff220c",
+  "finalSourceBlob": "eefed60edcff1d7e6f031477335d74703d847e38",
+  "reviewSha256": "00970ad30c23ea7bc809636679f7c4fc3ff10b6ba42097a5908bebaa821bd6c3",
+  "independentSha256": "b61e12030cab0e804f3af26039883f4a05bb96fe0133f5977d4fb2c383d5c3a0",
+  "reviewedFourSlotSha256": "98c604dff57ff819df10b4d7a588042b0b49e16c49307edf8fda2154d4172347",
+  "finalFourSlotSha256": "391ca012c667cd867e55e85c5bc0bab3cbeb9a9959c179b303328255be27e5e3",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T09:16:46.069068+00:00",
+  "independentHistory": [
+    {
+      "file": "docs/operations/m2-s1-meta-full-20261114/exams/E008/independent-history/E008.sample.json",
+      "sha256": "07a8bcc22b01ad9e26dc045fe1b5f3a874ade41699b65693ee4357e0cef660d2"
+    }
+  ]
+}

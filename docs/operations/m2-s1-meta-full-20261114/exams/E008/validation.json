@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E008",
+  "sourceBlob": "e96aa6ac5d4f6432a5f4c7358ed3b95e09ff220c",
+  "sourceSha256": "c8f2a4f736c10120dad2f886788351884d68ffa6f94f6d500a064915c5ade32d",
+  "reviewSha256": "00970ad30c23ea7bc809636679f7c4fc3ff10b6ba42097a5908bebaa821bd6c3",
+  "fourSlotSha256": "98c604dff57ff819df10b4d7a588042b0b49e16c49307edf8fda2154d4172347",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#1 only 4 distinct terms",
+    "#2 only 4 distinct terms",
+    "#5 only 3 distinct terms",
+    "#6 only 3 distinct terms",
+    "#7 only 4 distinct terms",
+    "#11 same 4-slot set as #10",
+    "#12 only 3 distinct terms",
+    "#14 only 3 distinct terms",
+    "#15 only 3 distinct terms",
+    "#16 only 3 distinct terms",
+    "#16 method has 1 term"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    1,
+    6,
+    12,
+    13,
+    17,
+    18,
+    19,
+    20
+  ],
+  "compatibilityAdjustments": [],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 131,
+    "fail": 0,
+    "warn": 11
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "e96aa6ac5d4f6432a5f4c7358ed3b95e09ff220c",
+  "finalSourceBlob": "eefed60edcff1d7e6f031477335d74703d847e38",
+  "finalSourceSha256": "78f0d54155e4c72fb6b44fd79b75c6950a9c1a7a589f46a1ff7746fa76239945",
+  "finalFourSlotSha256": "391ca012c667cd867e55e85c5bc0bab3cbeb9a9959c179b303328255be27e5e3",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#1 only 4 distinct terms",
+      "#2 only 4 distinct terms",
+      "#5 only 3 distinct terms",
+      "#6 only 3 distinct terms",
+      "#7 only 4 distinct terms",
+      "#11 same 4-slot set as #10",
+      "#12 only 3 distinct terms",
+      "#14 only 3 distinct terms",
+      "#15 only 3 distinct terms",
+      "#16 only 3 distinct terms",
+      "#16 method has 1 term"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 131
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e5d6957c6a1327dd7f1ab73a2c6830a9e90e9be542d249c500d5ca98a3121be8",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "직접 표기 규칙을 네 보기에 적용하므로 숫자1 제안. 기존중은 상대난도 경계로 독립 보존한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e5d6957c6a1327dd7f1ab73a2c6830a9e90e9be542d249c500d5ca98a3121be8",
+      "field": "difficultyConfidence",
+      "before": "high",
+      "after": "medium",
+      "reason": "직접 표기 규칙을 네 보기에 적용하므로 숫자1 제안. 기존중은 상대난도 경계로 독립 보존한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e5d6957c6a1327dd7f1ab73a2c6830a9e90e9be542d249c500d5ca98a3121be8",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "직접 표기 규칙을 네 보기에 적용하므로 숫자1 제안. 기존중은 상대난도 경계로 독립 보존한다."
+    },
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_e5d6957c6a1327dd7f1ab73a2c6830a9e90e9be542d249c500d5ca98a3121be8",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "직접 표기 규칙을 네 보기에 적용하므로 숫자1 제안. 기존중은 상대난도 경계로 독립 보존한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a8bb7a55dfbbd8fdca448493e290f4bf21093681ace89366c890fd00c4f9917b",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "동일 지수법칙을 각 보기에 반복 적용하는 정형 계산이므로 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_a8bb7a55dfbbd8fdca448493e290f4bf21093681ace89366c890fd00c4f9917b",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "동일 지수법칙을 각 보기에 반복 적용하는 정형 계산이므로 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_28893e9925597051f5e95dc0797f6e70107574f2cdec5c5ac51efecb0a0f0671",
+      "field": "subUnitKey",
+      "before": "M2-01-POLYNOMIAL_OPERATIONS",
+      "after": "M2-01-EXPONENT_LAW",
+      "reason": "결정적 오류가 단항식 나눗셈이므로 source POLYNOMIAL에서 EXPONENT_LAW/128 교정. 다항식 합차는 다른 선택지 확인의 보조이다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_28893e9925597051f5e95dc0797f6e70107574f2cdec5c5ac51efecb0a0f0671",
+      "field": "subUnit",
+      "before": "다항식의 계산",
+      "after": "지수법칙",
+      "reason": "결정적 오류가 단항식 나눗셈이므로 source POLYNOMIAL에서 EXPONENT_LAW/128 교정. 다항식 합차는 다른 선택지 확인의 보조이다. Exact canonical label for the semantically accepted key."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "잘못된 결과→원식→정상계산의 두 역방향 관계를 구별해야 하므로3유지,2/3 경계 표시."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93f597f8393a1f0ff0cf78318ccdcb827003555f0ceb1aa5bccbd6d74df386ad",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "잘못된 결과→원식→정상계산의 두 역방향 관계를 구별해야 하므로3유지,2/3 경계 표시."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_45c81b506e32eb7fb2c1646dc7170989c7f2a457f2b96850866b14ca9c738355",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "한 선형 조건을 그대로 대입·전개한 후 계수 결합을 읽는 정형 절차라 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_45c81b506e32eb7fb2c1646dc7170989c7f2a457f2b96850866b14ca9c738355",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "한 선형 조건을 그대로 대입·전개한 후 계수 결합을 읽는 정형 절차라 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_83e3ae44c6ca11701f0e1475c0ebb704ce6c8efbef5b120901021fddccd279af",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "분수계수를 모아 최고차항 계수의 비영조건 하나를 적용하므로 기존3→2."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_83e3ae44c6ca11701f0e1475c0ebb704ce6c8efbef5b120901021fddccd279af",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "분수계수를 모아 최고차항 계수의 비영조건 하나를 적용하므로 기존3→2."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_efb8fa9e4a39ca92381095f4ef5f356da221d55a81e4cacbae2dec4408118c4a",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두 부등식을 정리한 뒤 같은 경계값을 비교하는 표준 과정이라 기존3→2."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_efb8fa9e4a39ca92381095f4ef5f356da221d55a81e4cacbae2dec4408118c4a",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "두 부등식을 정리한 뒤 같은 경계값을 비교하는 표준 과정이라 기존3→2."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_111202ca954e9650e3c80972a207fae2c9aa91be6692ec614e815ef06475f3ca",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "왕복의 같은거리를 두 속력으로 나누고 휴식의 분을 시간단위로 환산해 더해야 하므로3유지의2/3경계."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_111202ca954e9650e3c80972a207fae2c9aa91be6692ec614e815ef06475f3ca",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "왕복의 같은거리를 두 속력으로 나누고 휴식의 분을 시간단위로 환산해 더해야 하므로3유지의2/3경계."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_bae4cec9efb1501e130c43b8f74936df2ece6cfaf11c957d5a76557f5b72b09a",
+      "field": "difficultyConfidence",
+      "before": "medium",
+      "after": "high",
+      "reason": "표의100g당 함량을1g당으로 바꾸고 두 식품 총량과 최소영양량을 결합하는 모델링 단계가 있어3의2/3경계."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_bae4cec9efb1501e130c43b8f74936df2ece6cfaf11c957d5a76557f5b72b09a",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "표의100g당 함량을1g당으로 바꾸고 두 식품 총량과 최소영양량을 결합하는 모델링 단계가 있어3의2/3경계."
+    }
+  ]
+}

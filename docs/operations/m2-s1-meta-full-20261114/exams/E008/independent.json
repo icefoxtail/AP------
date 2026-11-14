@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E008",
+  "author": "B",
+  "reviewer": "C",
+  "independent": true,
+  "sourceGitBlobSha": "e96aa6ac5d4f6432a5f4c7358ed3b95e09ff220c",
+  "reviewSha256": "00970ad30c23ea7bc809636679f7c4fc3ff10b6ba42097a5908bebaa821bd6c3",
+  "fourSlotSha256": "98c604dff57ff819df10b4d7a588042b0b49e16c49307edf8fda2154d4172347",
+  "sampleOrdinals": [
+    4,
+    8,
+    17
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_8ec83404a6e2d807f07c2b4519379fbbe79ca99457097deec8f1bed8a9994df8",
+      "classification": "정수부/비순환부/순환마디를 구별한 분수변환 비교로M2-RPM-122가 정확하다.",
+      "binding": "분수변환 공식 후보는 기존 일반 term순환소수나 분수와 달리9·0분모/정수차분자의 실제 방법을 명시한다. 수식 인용이 실제 해설에 있으며 후보사전만 사용하고 공용 등록하지 않았다.",
+      "fourSlot": "given순환소수, goal분수+판정, method공식+정수부합의 역할이 분리된다. 0.182828… 변환과2+17/99 계산을 실제읽음. Revision 2: 후보의 parent 순환소수가 같은 method 슬롯에 추가되었으며 실제 해설의 같은 변환식을 직접 대조했다.",
+      "status": "PASS",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "순환소수",
+          "src": "stem",
+          "quote": "순환소수를 분수로",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "분수",
+          "src": "stem",
+          "quote": "분수로 나타낸 것",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "판정",
+          "src": "stem",
+          "quote": "옳지 않은 것은",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "순환소수의분수변환공식",
+          "src": "solution",
+          "quote": "0.182828…=(182-1)/990=181/990",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "합",
+          "src": "solution",
+          "quote": "2+17/99=215/99",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "순환소수",
+          "src": "solution",
+          "quote": "0.182828…=(182-1)/990=181/990",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_28893e9925597051f5e95dc0797f6e70107574f2cdec5c5ac51efecb0a0f0671",
+      "classification": "결정적 오류는 단항식 나눗셈에서 지수를 더한②이므로 POLYNOMIAL→EXPONENT_LAW/128 수정에 동의한다. 다항식 덧뺄셈은 다른 선택지의 검토개념으로 분리한CC가 적절하다.",
+      "binding": "ACTIVE 단항식계산 참거짓 TPL의 실제 계산-결과대조 골격과 일치하며 M2바인딩 근거는 저자 bindingReview에 보존된다.",
+      "fourSlot": "혼합선택지의 given다항식 누락을 보강하였고 각 method 인용이 실제답해설에 있다. 조건에 따른 수학적 경우분기 없이 독립보기검증이므로 CASE_BRANCH→NONE 수정 확인.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "단항식",
+          "src": "choices",
+          "quote": "$10x^4y^3 \\div \\dfrac{5}{2}xy^2 = 4x^5y^5$",
+          "literalVerified": true
+        },
+        {
+          "slot": "given",
+          "term": "다항식",
+          "src": "choices",
+          "quote": "$(3x-y)+(2x-2y) = 5x-3y$",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "판정",
+          "src": "stem",
+          "quote": "계산 결과가 옳지 않은 것",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "지수법칙",
+          "src": "solution",
+          "quote": "4x^3y로 제시된 4x^5y^5와 다르다.",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "동류항",
+          "src": "solution",
+          "quote": "5x-3y, -x^2-2x+1로 맞다.",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_83e3ae44c6ca11701f0e1475c0ebb704ce6c8efbef5b120901021fddccd279af",
+      "classification": "정리 후x계수가0이 아닌지로 일차부등식의 정의를 판정한다. 해의 범위 계수조건141로 강제하지 않은RPMgap에 동의한다.",
+      "binding": "여러 식의 일차성 선별과 한 식의 미지계수 허용값/제외값 결정은 template검토에서 구별할 필요가 있다. COND_POLYNOMIAL_DEGREE_ONE의 실제 정의와 맞는다.",
+      "fourSlot": "goal계수에 제외판정을 추가한 최종본을 확인했다. method동류항/차수는 실제정리식 및 비영계수서술에서 뒷받침되며 IMPLIED근거가 있다.",
+      "status": "PASS_AFTER_AUTHOR_CORRECTION",
+      "fourSlotEvidence": [
+        {
+          "slot": "given",
+          "term": "부등식",
+          "src": "stem",
+          "quote": "부등식 $1+",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "계수",
+          "src": "stem",
+          "quote": "수 $a$의 값",
+          "literalVerified": true
+        },
+        {
+          "slot": "goal",
+          "term": "판정",
+          "src": "stem",
+          "quote": "<u>아닌</u> 것은",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "동류항",
+          "src": "solution",
+          "quote": "((1-a)/6)x+4≥0",
+          "literalVerified": true
+        },
+        {
+          "slot": "method",
+          "term": "차수",
+          "src": "solution",
+          "quote": "x의 계수가 0이 아니어야",
+          "literalVerified": true
+        },
+        {
+          "slot": "condition",
+          "term": "일차부등식",
+          "src": "stem",
+          "quote": "일차부등식이 되도록",
+          "literalVerified": true
+        }
+      ],
+      "criticalGoalMethodDefects": 0,
+      "fabricatedQuotes": 0
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "순환마디 양끝 점표시의 같은 규칙을 각 보기에서 확인한다. 복합조건 재구성이 없어숫자1, 기존중/B12 인접허용에 동의."
+    },
+    {
+      "sourceOrdinal": 6,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "계수의 거듭제곱과 문자지수의 곱·합·차를 보기마다 표준 적용한다. 여러보기라는 이유만으로3을 유지하지 않은2제안에 동의."
+    },
+    {
+      "sourceOrdinal": 12,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "잘못 나눈 결과와 원식의 관계를 먼저 뒤집고 정상곱셈으로 돌아가야 한다. 결과에같은단항식을 두번곱하는 구조선택이 핵심이므로 기존3/B23 유지가 합리적이다. 단순 계산량만을 근거로 하지 않았다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진 y의식을 그대로 대입한뒤 전개하고 세 계수를 읽는다. 새로운 구조선택이 작아3→2에 동의한다. PT/TPL정합성부채는 숫자난도와 별개."
+    },
+    {
+      "sourceOrdinal": 17,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "분수계수를 모은뒤 최고차항계수의 비영조건을 한 번 적용한다. 정의조건의 해석이 있으나 비정형분기없어3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 부등식을 정리한후 방향과경계가 같은지 비교하여a를 결정한다. 표준해석한번과경계등식이므로3→2에 동의."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "왕복의같은거리에서각시간을 표현하고휴식의분을시간단위로환산하여총량상한모델을 선택한다. 조건관계구성의3/B23 유지에 동의."
+    },
+    {
+      "sourceOrdinal": 20,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "100g당함량을1g당함량으로바꾸고총섭취량에서다른식품량을표현해함량하한모델을 세운다. 표와전체량을관계식으로옮기는3/B23 유지에 동의."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "결정적 오류는 단항식 나눗셈에서 지수를 더한②이므로 POLYNOMIAL→EXPONENT_LAW/128 수정에 동의한다. 다항식 덧뺄셈은 다른 선택지의 검토개념으로 분리한CC가 적절하다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "field": "integrationPattern",
+      "decision": "ACCEPT_AFTER_CORRECTION",
+      "reason": "수학적 조건분기가 아닌 독립선택지 검증이므로NONE."
+    },
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT_WITH_EXPLICIT_REGISTRY_DEBT",
+      "reason": "일반형기존후보의definition은전개계수추출을포괄하나internalSkeleton은항개수/나눠떨어짐나머지로불일치. 저자가후보두개를명시하고활성화HOLD 및REGISTRY_DEFINITION_SKELETON_CONFLICT를보존한최종본확인."
+    }
+  ],
+  "canonicalEvidence": {
+    "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "rawSha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+    "candidates": [
+      {
+        "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "definition": "전체 또는 필요한 항만 전개하여 특정 차수의 계수를 구한다.",
+        "internalSkeleton": "TERM_COUNT_FROM_DISTINCT_FACTOR_CHOICES",
+        "status": "ACTIVE"
+      },
+      {
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+        "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+        "definition": "다항식의 덧셈·뺄셈·곱셈을 직접 수행해 식을 정리한다.",
+        "internalSkeleton": "BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY",
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "revisionNotes": [
+    "Q8 given에다항식보강·integrationNONE 및Q17 goal제외판정 추가를저자에게요청해반영된최종원문인용을재확인했다.",
+    "Q13 genericACTIVE 후보를찾아재사용가능성을제기했지만실제internalSkeleton 불일치가있어자동재사용이나신규template확정을보류하고registry정합성부채로분리했다.",
+    "Q10/11의같은registryconflict표시는이번3문항4slot표본밖이며본sample은그문항의독립semantic재검을주장하지않는다.",
+    "Scoped recheck: E008 Q4 method parent 순환소수 atom added under §10, literal quote and candidate-parent coexistence verified. Review file and all other atoms/difficulty/semantic decisions unchanged; prior sample bytes preserved."
+  ],
+  "reviewedAt": "2026-11-14T09:11:35.737775+00:00",
+  "revision": 2,
+  "priorSample": {
+    "path": "workers/C/cross/E008.sample.json",
+    "sha256": "07a8bcc22b01ad9e26dc045fe1b5f3a874ade41699b65693ee4357e0cef660d2",
+    "fourSlotSha256": "90f9a98342c90d2a46adc8ade59eb9db199a95a161d9a9c6c8fdde164c0fac34"
+  }
+}
