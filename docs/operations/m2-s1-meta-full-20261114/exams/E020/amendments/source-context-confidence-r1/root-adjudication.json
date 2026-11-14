@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "m2-s1-root-scoped-acceptance-v1",
+  "examId": "E020",
+  "rootReviewer": "GPT_ROOT_59E0F5BD3A77",
+  "at": "2026-11-14T11:45:18.940839+00:00",
+  "decision": "ACCEPT_NARROW_EVIDENCE_BOUND_CORRECTION",
+  "config": {
+    "examId": "E020",
+    "revisionName": "source-context-confidence-r1",
+    "difficultyOverrides": [
+      {
+        "sourceOrdinal": 19,
+        "after": {
+          "difficultyConfidence": "low"
+        },
+        "reason": "v1.3 §9 explicitly assigns low confidence when source/solution disagreement is suspected. Independent C actually viewed the downward second graph, which conflicts with the upward line implied by the existing equation and marked intersection; root read the existing source/solution and accepted that documented evidence. Numeric2 and learning level중 remain conditional on the intended algebraic data; the image-direction content debt remains. No full question re-review or student-content change."
+      }
+    ],
+    "evidencePaths": [
+      {
+        "path": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E020.independent-review.json",
+        "role": "ACTUAL_INDEPENDENT_Q19_FIGURE_AND_SOURCE_CHECK"
+      }
+    ]
+  },
+  "previousCurrent": {
+    "effectiveReview": "accepted-review.json",
+    "authorEvidence": "review.json",
+    "authorFourSlot": "author-four-slot.json",
+    "fourSlot": "four-slot.json",
+    "originalIndependent": "independent.json",
+    "scopedAdjudication": "root-review.json",
+    "validation": "validation.json",
+    "sourceWriterDeferred": "source-writer-deferred.json",
+    "currentSourceGitBlobSha": "acd5a4d732daebe241e3e6427d9da8ebf1b26c88",
+    "currentFourSlotSha256": "2c303ebd51f07dd758cf3bba0bf2ba2fc80fdde0c26c94589182e15db207a491",
+    "registrationStatus": "NOT_RUN"
+  },
+  "previousReviewSha256": "d27c0f352b8bfbb7c86c8cee49f718127f17805c841a05bd8d7260200b579671",
+  "previousFourSlotSha256": "2c303ebd51f07dd758cf3bba0bf2ba2fc80fdde0c26c94589182e15db207a491",
+  "acceptedReviewSha256": "c04537bedb5fb07b06d222acee7ee35921822b7d683baad98217b6f0a950378e",
+  "acceptedFourSlotSha256": "2c303ebd51f07dd758cf3bba0bf2ba2fc80fdde0c26c94589182e15db207a491",
+  "reviewedSourceBlob": "acd5a4d732daebe241e3e6427d9da8ebf1b26c88",
+  "finalSourceBlob": "acd5a4d732daebe241e3e6427d9da8ebf1b26c88",
+  "changes": [
+    {
+      "sourceOrdinal": 19,
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "Root reread the exact current source and existing solution and accepts this independent learning-level adjudication: 교점의 표시된 x=−1을 두 식에 차례로 대입한다. 그림 방향 모순은 내용 부채이고 난도를 올리는 수학적 추론이 아니다. Learning level reflects the stated standard learning demands; it is independently assessed, not derived by numeric conversion. Original source상 remains in author evidence.",
+        "authorReason": "그림의교점x−1을두식에차례로대입한다. 그림의둘째직선방향불일치는내용부채이며난도상승이유가아니다."
+      },
+      "after": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "v1.3 §9 explicitly assigns low confidence when source/solution disagreement is suspected. Independent C actually viewed the downward second graph, which conflicts with the upward line implied by the existing equation and marked intersection; root read the existing source/solution and accepted that documented evidence. Numeric2 and learning level중 remain conditional on the intended algebraic data; the image-direction content debt remains. No full question re-review or student-content change.",
+        "authorReason": "Root reread the exact current source and existing solution and accepts this independent learning-level adjudication: 교점의 표시된 x=−1을 두 식에 차례로 대입한다. 그림 방향 모순은 내용 부채이고 난도를 올리는 수학적 추론이 아니다. Learning level reflects the stated standard learning demands; it is independently assessed, not derived by numeric conversion. Original source상 remains in author evidence."
+      },
+      "basis": "v1.3 §9 explicitly assigns low confidence when source/solution disagreement is suspected. Independent C actually viewed the downward second graph, which conflicts with the upward line implied by the existing equation and marked intersection; root read the existing source/solution and accepted that documented evidence. Numeric2 and learning level중 remain conditional on the intended algebraic data; the image-direction content debt remains. No full question re-review or student-content change."
+    }
+  ],
+  "sourceFieldEdits": [],
+  "evidence": [
+    {
+      "file": "evidence/E020.independent-review.json",
+      "sha256": "74e021c8b71c9df76af4b10e909b6b0c79622fbfd5c12282c6ecd2ad72871cce",
+      "role": "ACTUAL_INDEPENDENT_Q19_FIGURE_AND_SOURCE_CHECK"
+    }
+  ],
+  "studentContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "registrationStatus": "NOT_RUN"
+}

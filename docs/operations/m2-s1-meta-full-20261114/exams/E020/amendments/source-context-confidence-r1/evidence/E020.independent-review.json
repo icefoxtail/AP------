@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E020",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T11:33:16.952513+00:00",
+  "sourceGitBlobSha": "9a5978498c600b0ed18d32b0e0663657599fa0ab",
+  "sourceSha256": "201ef7cb107e3da725f04725219de116f7a87dfcf7f57f6afa29f5dc8e0793b4",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E020.review.json",
+    "reviewSha256": "5af0ee08f32bb445d51577e3299833aafabb66afec48fb037e8febc7153501b7",
+    "fourSlotPath": "/workspace/scratch/59e0f5bd3a77/workers/B/E020.4slot.json",
+    "fourSlotSha256": "06efa2b23438ed6da03fa0876de2f4c789c86c7a60e065e1fc96d0043b2453e8"
+  },
+  "status": "ACCEPT_WITH_NARROW_AMENDMENTS",
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      6,
+      15,
+      19
+    ],
+    "difficultyOrdinals": [
+      3,
+      6,
+      7,
+      8,
+      9,
+      12,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "narrowAdditionalClassificationOrdinals": [
+      21,
+      23
+    ],
+    "priorExamsNotRepeated": true
+  },
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "status": "ACCEPT",
+      "classification": "두 접합도형의 합·차 길이로 두 미지수의 방정식을 만드는162가 실제 그림과 해설에 일치한다. 그림1의 전체3y에서 오른쪽2x를 뺀19, 그림2의3x+y=21을 실제 확인했다.",
+      "binding": "도형 모델의 exact M2 TPL 부재를 기록한 것이 맞고 generic H1 system TPL의 이차근 skeleton을 억지 적용하지 않았다.",
+      "crossConcept": "CC_AREA는 도형 넓이를 계산하는 실제 정의이며 구한 두 변의 곱이 목표 넓이로 이어진다.",
+      "condition": "임의 정수 제한을 추가하지 않았다. 도형 수와 길이는 given이다.",
+      "integration": "모델→연립해→넓이의 SEQUENTIAL을 수용한다.",
+      "fourSlot": "시스템의 두 식, 첫 식에 다른 식의 y표현 대입, 넓이 곱은 실제 전체 해설에 명칭/표준식이 있어 NAMED가 타당하다. 정확 인용과 사전ID를 확인했다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "status": "ACCEPT_WITH_LEGACY_LEVEL_CORRECTION",
+      "classification": "실제 한 미지수 사다리꼴 넓이 방정식은 M1-RPM160의 도형 길이·넓이 semantic이며 M2 target L1/L2를 유지한 prerequisite 처리다. 실제 그림의 BC10,AB6,P 위치를 확인했다.",
+      "binding": "M1 quantity modeling은 넓이·이동까지 exact라고 확정하지 않고 target binding을 유보한 caveat가 타당하다.",
+      "crossConcept": "CC_SPEED_DISTANCE_TIME의 속력×시간 거리 관계가 도형 방정식의 입력 BP를 만든다. 사다리꼴 넓이는 primary 내부이다.",
+      "condition": "시간을 정수로 제한하지 않았다. 계산된1초가 실제0~5초 이동 구간 안에 있음을 확인했다.",
+      "integration": "거리2x→PC10−2x→넓이 방정식 SEQUENTIAL을 수용한다.",
+      "fourSlot": "실제 속력 관계 BP=2x를 수단으로 식별한 IMPLIED 근거와 명시된 넓이/방정식의 NAMED가 모두 원문 해설에 연결된다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "status": "ACCEPT_WITH_LEGACY_LEVEL_CORRECTION_AND_CONTENT_DEBT",
+      "classification": "교점의 알려진 x좌표로 나머지 좌표와 계수를 복원하는 교점·연립174 semantic과 맞는다. 표기된 부분 좌표가 직접 입력이므로 두 좌표합 TPL의 exact를 확정하지 않은 것이 맞다.",
+      "binding": "M2 교점좌표합 TPL은 두 좌표를 구해 그 합을 출력한다. 현재 출력은 계수a와 y좌표b의 합이라 변형 부채가 필요하다.",
+      "crossConcept": "좌표 대입은 선택한 교점·연립 primary 내부의 표준 절차이다.",
+      "condition": "추가 숫자 도메인 제한 없음.",
+      "integration": "동일 primary 안의 연속 대입이므로 NONE 수용.",
+      "fourSlot": "교점·대입·일차방정식이 실제 해설에 명시되어 NAMED이고 사전ID·문항UID·QBODY/QFULL 및 인용 모두 대조했다.",
+      "contentDebt": "실제 PNG의 두 번째 선은 우하향이다. 그러나 x=−1,b=2,a=−2이면 그 선은 y=(2/3)x+8/3으로 우상향이어야 한다. 기존 좌표 표시·대수 답0은 일치하며 원문/그림/정답/해설은 보존한다."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 3,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "분수식 하나를4배하면 목표 x−2y가 드러나는 익숙한 정리이며 모든 연립해를 강제로 구할 필요가 없다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "두 접합 그림에서 3y−2x와 y+3x를 모델로 선택해야 하므로 3/B23이 타당하다. 이후 해와 넓이 계산은 정형이다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "두 속력 구간의 전체 시간·거리 합을 두 식으로 쓰는 표준 모델이며 추가 경우 분류나 전략 선택은 없다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "각 생활 관계를 한 식으로 옮긴 뒤 일차함수 정의를 확인하는 한 번의 표현 변환이다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "주어진 두 입력값으로 함숫값을 직접 구한 뒤 상수배 합을 계산하므로1이다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "기울기−6에 x변화량−3을 곱하는 정의 직접 적용이므로1이다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "움직인 거리2x를 남은 변10−2x로 바꾸고 사다리꼴 공식에 직접 넣는 정형 역산이므로2이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "ACCEPT",
+      "reason": "일반형을 y형식으로 고쳐 두 절편을 읽는 익숙한 변환이므로2이다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "y축 평행이면 두 x좌표가 같다는 성질을 직접 적용하고 단순 일차식만 풀므로1이다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "두 직선의 교점과 각각의 x절편을 구하여 명확한 수평 밑변·높이로 넓이 공식을 적용하는 정형 좌표 넓이 과제이다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "교점의 표시된 x=−1을 두 식에 차례로 대입한다. 그림 방향 모순은 내용 부채이고 난도를 올리는 수학적 추론이 아니다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "주어진 사분면에서 a>0,b<0를 읽고 새 기울기 b/a와 절편−ab의 부호를 계산하는 정형 순서이다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "어느 계수를 오독했는지와 두 잘못 구한 해가 명시되어 각각 보존된 식에 대입하고 복원식의 해를 구하는 정형 절차이다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "20분당50을 시간당150으로 바꾸고 초기700을 더한 일차식을 만들어 주어진 양으로 시간을 역산한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "independentDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "decision": "CORRECT_LEGACY_LEVEL_TO_MEDIUM_AFTER_INDEPENDENT_REVIEW",
+      "reason": "소문항이 두 절편의 직선식 두 개와 같은 양의 교점 시각을 순서대로 안내하므로 수치난도2가 타당하다."
+    }
+  ],
+  "narrowAmendments": [
+    {
+      "sourceOrdinal": 21,
+      "type": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "reason": "(1) 계수 복원151과(2) 복원된 원식의 해149가 각각 명시된 출력이다. 선행/후행이라는 순서만으로151을 유일 overarching primary라고 입증할 수 없다.",
+      "acceptedAction": "perPart151/149 evidence를 보존하고 source target 및 condition/difficulty/4slot은 유지한다. 단일 rpmRecordId/rpmPath와 종속 CC/Integration 확정만 META_ONLY_UNRESOLVED/HOLD로 남긴다. 새 RPM key나 exam HOLD를 만들지 않는다.",
+      "authorAgreement": "B independently re-read source+§1.4.1#9 and agreed; original author bytes preserved."
+    },
+    {
+      "sourceOrdinal": 23,
+      "type": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "reason": "(1)(2)의 두 점 식170과(3)의 교점174가 각각 필수 출력이다. 최종 소문항이라는 이유로174가 나머지 식 산출을 포괄하지 않는다.",
+      "acceptedAction": "perPart170/170/174 evidence 및 source target을 보존하고 단일 RPM·종속 CC/Integration 확정만 META_ONLY_UNRESOLVED/HOLD로 남긴다. numeric2/B23 유지, legacy중 보정.",
+      "authorAgreement": "B independently re-read source+§1.4.1#9 and agreed; original author bytes preserved."
+    }
+  ],
+  "visualEvidence": [
+    {
+      "sourceOrdinal": 6,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E020-q6.png",
+      "sha256": "b0b09c97bb027e04aeaada3d718c93a303f03e5311eb447bbf9f74cb9a1da7f1",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "sourceOrdinal": 15,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E020-q15.png",
+      "sha256": "7b4eb222ec825fc6859008f940dc096c9990af08389a49c4fab322e3bf3825b5",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "sourceOrdinal": 19,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E020-q19.png",
+      "sha256": "1def644bbae0151ca9fc698219f8cebe45dbbd35dc687b0b9060ae737f36085e",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "sourceOrdinal": 20,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E020-q20.png",
+      "sha256": "9eccb5ada1e6836b4c3a99aabc2a8a025059e019cfb6ce1d76a6f02586b6296b",
+      "status": "ACTUALLY_VIEWED"
+    },
+    {
+      "sourceOrdinal": 23,
+      "path": "/workspace/scratch/59e0f5bd3a77/workers/B/assets/E020-q23.png",
+      "sha256": "2e62b73339b8b25eecdc23eee5dfb32674b3d75dc639b70dac25fd89311660c2",
+      "status": "ACTUALLY_VIEWED"
+    }
+  ],
+  "verification": {
+    "actualSourceReadbackSha256": "201ef7cb107e3da725f04725219de116f7a87dfcf7f57f6afa29f5dc8e0793b4",
+    "sampleUidFingerprintQuoteProblems": [],
+    "nativeValidationPath": "/workspace/scratch/59e0f5bd3a77/workers/C/cross/E020.native-validation.json",
+    "items": 23,
+    "quotes": 128,
+    "fail": 0,
+    "warn": 8,
+    "warningReview": "3~4개 용어의 직접 계산/판정 문항이며 불필요 용어로 최소 개수를 채우지 않았다.",
+    "officialResolver": "NOT_RUN_EVIDENCE_INCOMPLETE"
+  },
+  "processDisclosure": "Independent semantic review used current source, existing solution, actual images, author candidates and applicable definitions; not a fresh blind difficulty claim. Author first-pass content-only freeze is separate evidence."
+}
