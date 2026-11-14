@@ -5034,9 +5034,10 @@
           "sha256": "22bb732de0f64625a55de585f4464ccc6d2dab28be0a63b21bceb0a3379bef59"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "ae6ae0c778bc843a1691478d5734c11781309859"
     },
     {
       "examId": "E035",
@@ -5369,12 +5370,117 @@
         25,
         26
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "f408160f0b662e86990cd9ccdf8e42c8875eccbc34925361003e0622bc80e4de"
+      "uidSetSha256": "f408160f0b662e86990cd9ccdf8e42c8875eccbc34925361003e0622bc80e4de",
+      "reviewedQuestionCount": 26,
+      "registrationPendingQuestionCount": 26,
+      "unresolvedQuestionCount": 0,
+      "sourceHoldQuestionCount": 2,
+      "sourceHoldOrdinals": [
+        18,
+        20
+      ],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 26,
+      "independentSampleOrdinals": [
+        7,
+        18,
+        23
+      ],
+      "independentReviewer": "B",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            8,
+            24
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            25,
+            26
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E037/four-slot.json",
+          "sha256": "4a1a5662bd769e27dec083ee9c3877125494fa8c920ada65ed83b6c91deb1be5"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E037/independent-sample.json",
+          "sha256": "7ed9d37377d600d3c059f82e49de0595c88211769ca5d54fb4cfe13fd526fc2e"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E037/mechanical-check.json",
+          "sha256": "69bf0e6041d405c6452c59ca5edf91b82e83ee61cf930996fe46f92387bc335e"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E037/review.json",
+          "sha256": "2ef0584642681be312342615d52ab7f47109b63bcdd94e39499722c8194cc158"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E037/root-acceptance.json",
+          "sha256": "0dc03f0807d471d16941cad04bfe3d9cf57292e2003d5af70fa630d330a2c42a"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E038",
@@ -6834,13 +6940,13 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 37,
-    "reviewedQuestions": 879,
+    "reviewedExams": 38,
+    "reviewedQuestions": 905,
     "unresolvedQuestions": 0,
-    "remainingExams": 30,
-    "remainingQuestions": 725
+    "remainingExams": 29,
+    "remainingQuestions": 699
   },
-  "lastVerifiedExamCommit": "0ee4d1ab44cf99e75e7d9e278c49485dca41fa26",
+  "lastVerifiedExamCommit": "ae6ae0c778bc843a1691478d5734c11781309859",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-review-v1",
+  "examId": "E037",
+  "owner": "B",
+  "author": "A",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "b81c3d897344c7524bbf45b8e327f8b3a21ad6af",
+  "reviewedAt": "2026-11-14",
+  "reviewInputSha256": "82d2bcdfc9cb97a663da74b20bdafb961fb3af655955639a9ddc9ca4b0e6b7d7",
+  "fourSlotInputSha256": "4a1a5662bd769e27dec083ee9c3877125494fa8c920ada65ed83b6c91deb1be5",
+  "sampleOrdinals": [
+    7,
+    18,
+    23
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_6086c6a5c31a9ba9e81dbc91a32ba0111b7675de18b3081601697f2ee98e1e6b",
+      "verdict": "PASS",
+      "metadataReview": "평행한 위·아래 선분과 교차 두 직선으로 생긴 삼각형을 그림에서 확인했다. AD:AB=9:6의 한 비로 AE:AC와 ED:BC를 반복 적용하므로 GENERAL TPL과 M2-RPM-096을 수용한다. 다른 개념 결합 없이 Primary 내에서 끝나므로 CC=[], Integration NONE도 타당하다.",
+      "fourSlotReview": "삼각형·닮음·닮음비·평행과 목표 합은 실제 발문/해설 및 그림에 부합한다. method 두 단계의 IMPLIED 정당화도 정확하다. 목표의 길이 성격은 원본 그림의 x,y와 기존 해설에 분명하며 합 term으로 그 수치 합을 기록한 것으로 수용한다.",
+      "difficultyReview": "동일 닮음비를 두 대응길이에 반복 적용하는 표준형이므로 중/bucket2/high를 수용한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E037-07.png",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한닮음비를두목표길이에반복적용하며새조건연결은없다."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_12def9e59614babe936c8398c7b76cea74416be52ebc7502c32495e3638bffdb",
+      "verdict": "PASS_WITH_EXISTING_SOURCE_HOLD",
+      "metadataReview": "네 이진 결과 중 뒤집힌 두 위치를 나열하여 사건수6을 세고 전체16과 비교하는 기존 해설 구조로 BASIC_COUNT_RATIO를 수용한다. 발문에 등가능성이 없다는 SOURCE_HOLD는 실제 결함을 정확히 분리하며 이 메타의 조건부 성격을 유지해야 한다. 구체 경우 세기는 해당 Basic TPL 내부여서 CC 빈값을 수용한다.",
+      "fourSlotReview": "시행과 확률 목표, 곱의법칙·조합·수학적확률 세 결정 단계가 exact quote와 맞는다. 조합은 고교 공식 사용 주장이 아니라 source에 실제 나열된 두 위치의 순서없는 선택 구조를 가리킨다. 발문에 없는 독립/등가능 조건을 condition에 만들어 넣지 않은 것도 타당하다.",
+      "difficultyReview": "기존 해설의 등가능 모형에 한정하면 네개 중 두개의 경우를 세는 전형적 구조여서 중/bucket2를 수용한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 5,
+      "imageViewed": null,
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "네개중두개선택을전체이진표본수와비교하는정형구조이다."
+      },
+      "sourceHoldPreserved": true
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4334625c302f4c44fb56b81695e0a5fa817fe88088f753e084a0921988eaa510",
+      "verdict": "PASS",
+      "metadataReview": "그림 AD4,DB8,AE6과 뒤바뀐 AA 대응 ABC↔AED를 직접 확인했다. 닮음을 판정한 뒤 전체길이를 만들어 대응변과 남은 부분길이로 전달하므로 APPLICATION TPL 및 exact 2015 triangle-similarity binding이 적합하다. M2-RPM-238과 current2022EquivalentRecordId 분리도 타당하다.",
+      "fourSlotReview": "소문항의 닮음조건·닮음비·길이 목표, AA/대응변/닮음비 method가 빠짐없다. 단순 전체·부분 길이 합차는 일반 사칙계산으로 별도 method를 억지 추가하지 않아도 된다. exact quotes 존재를 확인했다.",
+      "difficultyReview": "소문항 안내가 있으나 뒤집힌 대응과 전체/부분 입력을 연결해야 하므로 3 medium B23은 합리적이며 원문 중과 호환한다.",
+      "sourceExactRead": true,
+      "reviewer": "B",
+      "independentFromAuthor": "A",
+      "quotesChecked": 9,
+      "imageViewed": "/workspace/scratch/87f142347508/workers/B/images/E037-23.png",
+      "observedFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "뒤바뀐대응과전체입력전처리를연결한다. E025Q12와같은구조를3/B23으로유지한다."
+      }
+    }
+  ],
+  "approvalScope": "metadata/4slot independent sample only; no independent full-exam solution verification",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0
+}
