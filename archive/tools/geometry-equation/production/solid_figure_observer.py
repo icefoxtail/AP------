@@ -16,6 +16,7 @@ DEFAULT_YAW_DEG = 28
 YAW = math.radians(28.0)
 PITCH = math.radians(20.0)
 POS_TOL = 0.9        # px
+PRISM_UNION_KIND = 'ORTHOGONAL_SQUARE_PRISM_UNION'
 NAME = re.compile(r'^[A-Z]′?$')
 # the tints of a highlight fill (a colour and an opacity): written here again from the grammar, not read from the producer
 BASE_FILL_STYLE = {'LIGHT': ('#7fa6e8', 0.32), 'MEDIUM': ('#7fa6e8', 0.55), 'WARM': ('#f2a65a', 0.42), 'GREEN': ('#6fcf97', 0.42), 'ROSE': ('#e98aa8', 0.42), 'VIOLET': ('#a78bdb', 0.42)}
@@ -108,6 +109,7 @@ def build_solid(spec):
     if spec.get('on') is not None and kind in ('PRISM', 'PYRAMID', 'FRUSTUM', 'REGULAR_POLYHEDRON', 'BIPYRAMID'): raise ValueError('SOLID_STACK_UNSUPPORTED:' + kind)
     if kind == 'REGULAR_POLYHEDRON': return build_regular(spec)
     if kind == 'BIPYRAMID': return build_bipyramid(spec)
+    if kind == PRISM_UNION_KIND: return build_prism_union(spec)
     if kind in ('PRISM', 'PYRAMID', 'FRUSTUM'):
         pts, plane = base_polygon(spec['base'])
         n, h = len(pts), float(spec['height'])
@@ -342,6 +344,35 @@ def build_bipyramid(spec):
     return {'id': spec.get('id'), 'kind': 'BIPYRAMID', 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': 2 * h, 'aliases': aliases}
 
 
+def build_prism_union(spec):
+    """Derive the six terminal squares and the four exposed side rectangles of each arm."""
+    side, length = spec.get('side'), spec.get('length')
+    if set(spec) - {'id', 'kind', 'side', 'length'}:
+        raise ValueError('SOLID_UNION_PARAM_INVALID')
+    if any(type(d) not in (float, int) or not 0 < d <= 1000 for d in (side, length)) or length <= side:
+        raise ValueError('SOLID_UNION_DIMENSION_INVALID')
+    inner, outer = side / 2, length / 2
+    quads = []
+    for axis in range(3):
+        u, v = [i for i in range(3) if i != axis]
+        for sign in (-1, 1):
+            ring = []
+            for s, t in [(-inner, -inner), (inner, -inner), (inner, inner), (-inner, inner)]:
+                point = [0.0] * 3
+                point[axis], point[u], point[v] = sign * outer, s, t
+                ring.append(tuple(point))
+            joints = [tuple(sign * inner if j == axis else p[j] for j in range(3)) for p in ring]
+            quads.append(ring)
+            for i in range(4):
+                j = (i + 1) % 4
+                quads.append([ring[i], ring[j], joints[j], joints[i]])
+    pts = sorted({p for quad in quads for p in quad})
+    indices = {p: i for i, p in enumerate(pts)}
+    return {'id': spec.get('id'), 'kind': PRISM_UNION_KIND, 'cat': 'POLY',
+            'verts': [(None, p) for p in pts], 'faces': [[indices[p] for p in quad] for quad in quads],
+            'height': length, 'aliases': {}}
+
+
 # --- planes cutting a convex polyhedron -----------------------------------------------------------------------------------------------------------------
 CUT_EPS = 1e-6
 CUT_AT = re.compile(r'^([1-9]\d?)/([1-9]\d?)$')
@@ -510,7 +541,7 @@ def _ring_size(solid):
 
 
 def vertex_slot(solid, i):
-    if solid['kind'] == 'REGULAR_POLYHEDRON': return 'v%d' % i
+    if solid['kind'] in ('REGULAR_POLYHEDRON', PRISM_UNION_KIND): return 'v%d' % i
     n = _ring_size(solid)
     if solid['kind'] == 'PYRAMID': return 'b%d' % i if i < n else 'apex'
     if solid['kind'] == 'BIPYRAMID': return 'b%d' % i if i < n else 'apex' if i == n else 'apex2'
@@ -539,7 +570,7 @@ def make_norm(solids, named):
             if solid['cat'] != 'POLY' or solid.get('cut') or (prefix is not None and solid['id'] != prefix): continue
             total, n, kind = len(solid['verts']), _ring_size(solid), solid['kind']
             if ring == 'v': i = int(index) if int(index) < total else None
-            elif kind == 'REGULAR_POLYHEDRON': i = None
+            elif kind in ('REGULAR_POLYHEDRON', PRISM_UNION_KIND): i = None
             elif apex == 'apex': i = n if kind in ('PYRAMID', 'BIPYRAMID') else None
             elif apex == 'apex2': i = n + 1 if kind == 'BIPYRAMID' else None
             elif ring == 'b': i = int(index) if int(index) < n else None
@@ -881,6 +912,18 @@ def _stroke_ok(el, expect_dashed, errors, ident):
 
 def audit_solids(plan, ctx):
     root, errors = ctx['root'], ctx['errors']
+    if any(isinstance(spec, dict) and spec.get('kind') == PRISM_UNION_KIND for spec in plan.get('solids') or []):
+        if len(plan['solids']) != 1 or any(k in plan for k in ('unit', 'space', 'dims', 'highlights', 'segments', 'section', 'marks', 'labels')):
+            raise ValueError('SOLID_UNION_CONTEXT_UNSUPPORTED')
+        sid = plan['solids'][0].get('id') or 's1'
+        # Any other painted primitive in this panel can introduce a false seam or occlude a boundary.
+        background = root.find(NS + 'rect')
+        for el in root.iter():
+            if el is root or el.tag == NS + 'g' or el is background:
+                continue
+            if el.tag != NS + 'line' or el.get('data-role') != 'edge' or el.get('data-solid') != sid:
+                errors.append('SOLID_UNION_UNDECLARED_PRIMITIVE')
+                break
     solids = [build_solid(spec) for spec in expanded_solid_specs(plan)]
     add_level_points(plan, solids)
     stacks = ctx['stacks'] = resolve_stacks(solids)
