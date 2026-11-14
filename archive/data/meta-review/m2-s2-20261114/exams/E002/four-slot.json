@@ -1,0 +1,1639 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+  "sourceGitBlobSha": "03f52e43d9fcab780926cd27404d7cc157cbacae",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_9f7461a54c31a540a755649e583dcd0a7d7713697bfbce556293067e850e5117",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b5cb78a07250d16a8a1696a43ca8cc3dbd72a26e8932c7cc571dece7b7d6a4a5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da1781b51130206ce2ab1987738d4669ff5822c0e4d5b754409bcc6caefceb6f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\angle B=\\angle C$",
+            "evidenceType": "IMPLIED",
+            "justification": "B=C와 B/2+C+72=180을 결합하여 꼭짓각을 구한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\dfrac{\\angle B}{2}+\\angle C+72^\\circ=180^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "B=C와 B/2+C+72=180을 결합하여 꼭짓각을 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "B=C와 B/2+C+72=180을 결합하여 꼭짓각을 구한다.",
+      "reasons": {
+        "review": "같은 밑각에 이등분선 조건을 적용하는 익숙한 각 계산이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_26f488702195a2c595d11737ccaf965606e24a97cfaa3a7ba54f4ad4e68642d2",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e9ae82804bb94815bb4050c6d8b1dc4d7c06ecc4c32c6397c83f0f504f2f2737"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "af20c30e624386aaced154585acc691bfbe84fed5996cb04f0ca00986bd83c62"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동조건",
+            "src": "stem",
+            "quote": "RHA 합동이 되기 위한 조건"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "빗변과 한 예각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "$\\angle B=\\angle E=90^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "직각 조건에 더해 빗변 AC=DF와 예각 A=D를 고른다.",
+      "reasons": {
+        "review": "RHA 정의를 대응하는 빗변과 예각에 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_25fe097323a6a80cf63624ebbb0a10a4b617882031ac800b18e45ec6ac0a0b31",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3ec64104181047a77faf833fea942879ac77a79cb96b3dcbaaed170b6ff63270"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e145b48d6f696972b1326c0baa63f12e727a1580d48f705f843a7a9dd29bdc27"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심 성질",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "$\\angle DOF=102^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽 내심각 119도와 오른쪽 외심 관련각 39도를 각각 구해 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "왼쪽 내심각 119도와 오른쪽 외심 관련각 39도를 각각 구해 더한다.",
+      "reasons": {
+        "review": "두 별도 삼각형의 중심 성질 계산은 서로 결과를 요구하지 않는다. primary 중심 복합 family 안에서 독립 계산 후 합산하므로 INTERDEPENDENT를 NONE으로 고친다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_dfd4e2dca76b1977f471d71cf2397d1e2cce19cad3679cdf85ddf8b01c585410",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a86c56818071e1faba823f349eaf7d7f82f88c747e5df8549e3d74441552bc03"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7f9617542d47e17b3a690912d9264daf58777ce3aa0933b4455f7e89504ca3ed"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중점",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "둔각 A=100도를 해석한 뒤 O′가 AC 중점임을 두 직각삼각형에 재사용한다.",
+      "reasons": {
+        "review": "외심의 도형 밖 위치와 두 직각삼각형의 공통 빗변 중점을 연결해 다섯 진술을 점검하는 복합 구조이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_c32da9ac829d6a224ef8fe613a3170fba405e9d0d57379e6b9cb4e6c141593bf",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "37bc2af9880151897200d12e48e3bf558f88f3c2e6df4eea3f85ce7c6e5d0e01"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d4e925b297d847684a76e090b34e01d0d2d024726be6dc4ef6462426c1431af2"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHS 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\angle B=\\angle C=50^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "BDE≅CEF에서 B=C를 얻고 AB=AC=AF+FC로 환산한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "BDE≅CEF에서 B=C를 얻고 AB=AC=AF+FC로 환산한다.",
+      "reasons": {
+        "review": "수선과 두 길이 조건으로 RHS를 선택한 뒤 같은 각의 대변 길이를 연결한다. 표준 연결 두 단계여서 bucket4를 3으로 조정하되 기존 상 level의 인접 경계는 독립 재검 대상으로 둔다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_b7d86c9229307a12886ae00caddf69fd9f897de7650b1e3fba9ff6c7053325d8",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b14d37c1aaf198de1b61c71083cb68a1064d8515b02187715735830cf91d3525"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c02a59817126184cd4e03f8b7face954b584d1e27a55df6f3688efc77165b470"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "수직이등분선",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "BD가 AC의 수직이등분선임을 이용하되 BP=PD와 AC=AD/2를 배제한다.",
+      "reasons": {
+        "review": "꼭짓각 이등분선의 표준 성질을 여러 진술에 적용하고 일반적으로 보장되지 않는 것을 구별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_b2e1c466a4ef4a095ac430049d562557e10726eed8b951a69cfb001cd98dac7b",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f4c47a84a1d14470d74f6778195bed8822069c7567915109908abafe746b05c4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "815682ee4ec5768de4bf5283756492893c3329995e6873e95edb54ce386250a0"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "연립일차방정식",
+            "src": "solution",
+            "quote": "$\\dfrac B2+C=80^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "B/2+C=80, B+C/2=76을 연립해 A를 얻고 내심각을 계산한다."
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심 성질",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "B/2+C=80, B+C/2=76을 연립해 A를 얻고 내심각을 계산한다.",
+      "reasons": {
+        "review": "두 내부 삼각형의 각 관계를 일차연립식으로 정리하는 선택이 필요하다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_cd21d3215b4816bee2c8d2e60126d13112bb2118d6c6b0fa049a284c5930cca1",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68c0a7aa7827ada50be4762684777777eddba68eb8c1bb3ff347f9f31ede6ef0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aa1f16283c755f8ea848175dcff4e9f858694d4d6765edf9c8cb5c5f9766e09d"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "A=36, 밑각72를 구한 뒤 OBC54와 IBC36의 차를 취한다.",
+      "reasons": {
+        "review": "내심각에서 꼭짓각과 밑각을 먼저 얻고, 그 결과로 외심각과 이등분각을 각각 계산해 차를 구하는 순차 구조이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_f62bc9fc8c204af9a2d208988d8fccd0507b021a63f3029251960943d1768889",
+      "format": "보기(ㄱㄴㄷ) 판정",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77d6a9a69de0cb611f59de7ecd8d73ae9749a700e9c66d1cac75002cbce58f0b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "891e40efb97c4306c9433aaede62f84d1c8e2401f0d4a3b404a8c77bf08a5ac1"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "수직이등분선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "중심각",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "정삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "두 수직이등분선의 교점을 외심으로 확인하고 중심각·등거리 진술을 검토한다.",
+      "reasons": {
+        "review": "접기 활동을 외심의 정의로 바꾸어 각 보기의 성질을 판단한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4d185df459ee544c6105fa2386439930974029bcbb676b8b0561db476e451cde",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c4bcd59255706c69c641a58a81a4d82bfa1ce4e416257d50c6275b1f5ebc736"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f82f179e0997aa7f557db077bd39a5bf0b0ce1af2738b05b4de997aa4d8a33c9"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이는?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\overline{AB}+\\overline{AC}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "$\\angle DBI=\\angle BID$",
+            "evidenceType": "IMPLIED",
+            "justification": "엇각으로 BD=DI와 CE=IE를 얻어 두 변의 길이에 더한다."
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$BD=DI=4$",
+            "evidenceType": "IMPLIED",
+            "justification": "엇각으로 BD=DI와 CE=IE를 얻어 두 변의 길이에 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행한 직선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "엇각으로 BD=DI와 CE=IE를 얻어 두 변의 길이에 더한다.",
+      "reasons": {
+        "review": "내심의 이등분선과 평행선이 같은 밑각을 만들어 길이로 바뀐다. 기존 CC_PARALLEL_LINES는 좌표·기울기 정의이므로 정확한 결합 개념으로 고친다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2c50aa891ba362e8094ac4af10350a667cc7eaaf0083edc6013b4f3fcbfefa95",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "aba29593262585a38b3ca3831dd7c0ac6dd942aaf87eac97d5063723804dabf8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b2a6846a08989e38d6dd4d012bc94369458f7943c164ff270210610332e7c305"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값을"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$x+y$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "마주 보는 변의 길이는 각각 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "대변끼리 4,7을 대응시켜 더한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "대변끼리 4,7을 대응시켜 더한다.",
+      "reasons": {
+        "review": "평행사변형의 대변 같음을 한 번 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_2a8b0f6b7a066d01a94770a4b378295e1b6e135a52eab61969da3adfa63b0861",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "217100ada03987d26b349aa38cc9f33c14b3a7c50408307ad1b41762f470e6ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9f3d4b8ab157b46f13efb9cc67541de203cfbfd7187e30d1d95c1a71c35a8eb5"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "평행사변형인 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선의 교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "대변 두 쌍 같음 또는 엇각 두 쌍 같음을 충분조건으로 판정한다.",
+      "reasons": {
+        "review": "보기의 길이 대응과 평행의 충분조건을 점검해야 하므로 단순 정의 확인보다 한 단계 높다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_6dfc7527eeb1a41c02367c2e1dba66a00ff36644dbd3baf8a5b38e018c308eaf",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ef2de26cec2f505e71fe99d64c11f6767acb348ea44c7a5998d042400ee2d052"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0ffe007370bdf3f3489cafca2ce66b940a3d825ad0d7f2d9896502a6b507ec7c"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$\\angle A+\\angle C$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "$\\angle A:\\angle B=4:5$",
+            "evidenceType": "IMPLIED",
+            "justification": "A:B=4:5를 합180에 나누고 C=A를 이용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "비례",
+            "src": "stem",
+            "quote": "비가 $4:5$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "A:B=4:5를 합180에 나누고 C=A를 이용한다.",
+      "reasons": {
+        "review": "익숙한 대각·이웃각 관계를 주어진 비에 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9a9d8f0854ea6bee7cc8a2a8e0b73afbf0d1feb21632d68d1c1896dc112ebd8c",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "50411538830262147d99d1009f3d2870c53ea5136df2fe7ec65100eeae13f8da"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e505feca674fe6e5f720efa15178486642d409edaac0934d70c78a3cc0998308"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선의 교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "이웃각 합180의 절반으로 직각을 확인하고 직사각형 대각선 성질을 적용한다.",
+      "reasons": {
+        "review": "이등분선이 만드는 새 사각형의 종류를 먼저 결정해야 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_e4d28763fc4c3e20784ad1dc24e33d43b5be8a48eb885480533444a929cd7f37",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "206407b597109f3f9074f2d156bd15821cbebf07879acf02f55613243b902d89"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c3a419bd728847a98c4c35eb85a9bd7efb7590c3fa02f52e70b4d810acb728a5"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "평행사변형"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "수직이등분"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "같은 길이·수직·서로 수직이등분의 세 집합을 분리해 센다.",
+      "reasons": {
+        "review": "세 조건을 사각형 종류별로 비교하는 표준 성질 분류이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_8f798625036829586d6e886759791677bb318a167f362cce012591754b88a337",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "45ff5c8b9fac11f61944e3baec5ed53525cdbc0d785a9d893784900ca687e65f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da8a3737d01100bb710cc1369f78421f75fb443e9be7daa13e63fae5756eb303"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "$4x+6=2(4x-2)$",
+            "evidenceType": "IMPLIED",
+            "justification": "AC=2BO를 한 일차식으로 풀어 AC를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "AC=2BO를 한 일차식으로 풀어 AC를 구한다.",
+      "reasons": {
+        "review": "직사각형의 대각선 성질을 명시된 두 일차식에 직접 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_93bc727bcb10a83682b5c31fb3d11690b3217bbdb31e142bc1a27a3e1a074738",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0e7276ac05589d45f56adc45ca4364852b63d7ea059369a17965d6d81b482ca0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a345584bbbcd89e4b0113470e9318d8ea086e6ed8f48953f85593ef6c93268e4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$BC=CE$",
+            "evidenceType": "IMPLIED",
+            "justification": "DEC=90−θ/2와 BEC=45−θ/2의 차로 θ를 없앤다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle DEC=90^\\circ-\\dfrac\\theta2$",
+            "evidenceType": "IMPLIED",
+            "justification": "DEC=90−θ/2와 BEC=45−θ/2의 차로 θ를 없앤다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{CD}=\\overline{CE}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "DEC=90−θ/2와 BEC=45−θ/2의 차로 θ를 없앤다.",
+      "reasons": {
+        "review": "정사각형의 같은 변에서 두 이등변삼각형을 찾아 공통 보조각을 소거한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_c2b89344e49773c0cbf83882d14f34ff70b943e5810ce7b795394db506b206e3",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1bc0672770c76c47d533cf8bc593cff65e6d027c436dc4b1cb26aba6a2bb04bb"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f41be99231bdf18adfb2ecb53ab54e464e3188b1fa66a752c7b11bda1d4b6f58"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "이등분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "115도에서 BDC25를 얻어 D50,C130,ACB65로 연결한다.",
+      "reasons": {
+        "review": "수선의 각을 대각선 각으로 전환한 뒤 서로 다른 꼭짓각의 이등분 성질을 연쇄 사용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_17c60ebbb6430ede6d016e728e2aaa738c7a3ee0aa7ae39e24ffc4f28a63c1c6",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5169bc4d9306e51380cf424555bb66010ac9cdecc68da699e079dcae50be39ea"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "828104cd532f983c0a22e3dc276b51b412c48e4c89b6f3b6c98b709cae1de025"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle ABC\\sim\\triangle DEF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "대응",
+            "src": "solution",
+            "quote": "대응",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "A↔D,B↔E,C↔F의 대응에서 BC:EF를 읽는다.",
+      "reasons": {
+        "review": "보기의 대응 꼭짓점·변을 확인한 후 길이비를 단순화한다. 보기 대응 검토가 있어 bucket2 유지."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_a623d41ef207a4d3e099e1b600d7cfcaafd977bd152febe1f92655f7c701a60b",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bf465320c693205ab29159244dd278e80c7fcd98e95c35da1a762541c52d9674"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0a051d05da8fd548711d234b0435245439b673cc34f80ff3fb21eff0aa58e1b6"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle ABC\\sim\\triangle DEF$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "대응변의 길이비",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이비는 $9:25$",
+            "evidenceType": "IMPLIED",
+            "justification": "대응변3:5를 넓이9:25로 바꾸어 주어진 넓이에 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "대응변3:5를 넓이9:25로 바꾸어 주어진 넓이에 적용한다.",
+      "reasons": {
+        "review": "길이비에서 넓이비로 한 번 해석하는 익숙한 변환이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3583e434442f9a996975a0a188ce969409c6fd8804bba6c0768378b443975a0e",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bda9da7bb66536565a8a6d11b0c0d839e5580bdbb0ab59969b746baa71382642"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bdb4d2f051be5b57c09b63c22a39088367db91743049303be33b0b3752fc03f7"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "RHA 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[DEC]=\\dfrac12\\cdot3\\cdot4=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "ABD≅AED에서 AE와 DE를 얻고 EC=AC−AE로 목표 직각삼각형 넓이를 구한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "삼각형의 합동을 이용할 것"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "ABD≅AED에서 AE와 DE를 얻고 EC=AC−AE로 목표 직각삼각형 넓이를 구한다.",
+      "reasons": {
+        "review": "합동인 삼각형을 선택하고 그 결과를 다른 부분삼각형의 밑변·높이에 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_7557a2d9ceac6b3d21ac3b6d5decb9f6f2da3152ecae5637b2f520f70631af27",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0f99cab5f1a1e32c99c8e549883373ea2991e7b1653c799dd759f52eb05f5df1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d15e50621e0e716ae52d9a5cf59d58b9af3e917ee67d3181a1d5a6cc30f15b08"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          },
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접원"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "내접원의 넓이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "내심",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "반지름",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\dfrac12(14+15+13)r",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 높이 r인 세 삼각형 넓이합으로 r를 얻어 πr²에 적용한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "같은 높이 r인 세 삼각형 넓이합으로 r를 얻어 πr²에 적용한다.",
+      "reasons": {
+        "review": "기존 TPL_TRIANGLE_INCENTER의 각 이등분선 골격과 달리 등거리·넓이가 핵심이다. 거리 관계를 명시하는 ACTIVE 중심 성질 template으로 수정한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_28c3bdf098a6acd7523773897c4201aa90405e7f44ac1bfd97560b161dd43a22",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b8d6689d536df34f8e25bac11ad04973dcd0242aa8bd03514cc3d50ef739c1ac"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00cdfce1ae98c562c717f2cbc57c521919d4839cd7a041ea3e09e0e6f08a2de2"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "크기를"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "$AB=AD$, $AP$는 공통",
+            "evidenceType": "IMPLIED",
+            "justification": "ABP의 각을 구하고 ABP≅ADP로 목표각을 옮긴다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle ABP=10^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "ABP의 각을 구하고 ABP≅ADP로 목표각을 옮긴다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "삼각형의 합동을 이용할 것"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $AC$ 위"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "ABP의 각을 구하고 ABP≅ADP로 목표각을 옮긴다.",
+      "reasons": {
+        "review": "정사각형의 두 변·공통변·45도 끼인각으로 표준 SAS를 적용하는 연결이다. bucket3로 조정하고 기존 상과 인접 mismatch는 독립 재검 대기."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d0c05578b3e67140dc5575b20a2a6dae9adfdfd416d99af315b620cb02fe6765",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "95ea567788bb2a8f9228890ae3f7e8c8f4715631947985ebb593ad76373ec1c8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b99a36c116acff3b59e8cee2ef14cdb89f25dc3a6f826878d79ba8293970b17b"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 합"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "넓이의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "$[ABM]=\\dfrac12[ABO]=6$",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 넓이를 4등분한 뒤 각 부분을 중점에서 다시 반으로 나눈다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점을"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "대각선으로 넓이를 4등분한 뒤 각 부분을 중점에서 다시 반으로 나눈다.",
+      "reasons": {
+        "review": "RPM 분할도형에는 맞지만 기존 평행사변형 TPL은 변·각·대각선으로 목표값을 연결하는 포괄 정의에 그친다. 등고 삼각형의 넓이비를 사용하는 재사용 가능 풀이골격을 별도 제안한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E002",
+  "examiner": "C",
+  "author": "B",
+  "sourceGitBlobSha": "03f52e43d9fcab780926cd27404d7cc157cbacae",
+  "reviewSha256": "3051ba27b5fdb380fb6aee303e86d0b0dc97659408cea9cf911b2a6061ca458a",
+  "fourSlotSha256": "d29a04a36aa7289fce3e27461646318d0db8526dac53bad84c4b45c7729192ea",
+  "ordinals": [
+    2,
+    10,
+    24
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_26f488702195a2c595d11737ccaf965606e24a97cfaa3a7ba54f4ad4e68642d2",
+      "quoteCount": 5,
+      "quotesExact": true,
+      "verdict": "PASS",
+      "fourSlotVerdict": "PASS",
+      "metadataVerdict": "PASS",
+      "evidence": "두 직각과 RHA가 명시되어 필요한 추가 조건은 대응 빗변과 예각이다. goal 합동조건은 수행 행위가 아니라 물은 대상이므로 goal-only-method WARN은 수리 사유가 아니다. difficulty 1도 정의의 직접 적용에 부합.",
+      "imageEvidence": "직각 꼭짓점 B/E와 대응 빗변 AC/DF가 발문과 해설에 명시되어 표본 의미판정에 추가 그림 정보가 필요하지 않음."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4d185df459ee544c6105fa2386439930974029bcbb676b8b0561db476e451cde",
+      "quoteCount": 7,
+      "quotesExact": true,
+      "verdict": "PASS",
+      "fourSlotVerdict": "PASS",
+      "metadataVerdict": "PASS",
+      "evidence": "내심→각이등분선과 주어진 평행선의 엇각으로 두 이등변삼각형을 구성한다. method의 IMPLIED 근거 및 CC_ANGLE_BISECTOR_PARALLEL의 현행 definition이 실제 길이 이전과 정확히 일치. 목표는 두 변 길이의 합.",
+      "imageEvidence": "workers/B/images/E002-10.png 시각 확인: AD8, AE12, DI4, IE6, DE∥BC."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_d0c05578b3e67140dc5575b20a2a6dae9adfdfd416d99af315b620cb02fe6765",
+      "quoteCount": 8,
+      "quotesExact": true,
+      "verdict": "REPAIR",
+      "fourSlotVerdict": "PASS",
+      "metadataVerdict": "REPAIR",
+      "evidence": "대각선의 네 등적 분할 후 중점에 의한 반넓이가 결정적이다. 4칸 given/goal/method/condition 및 IMPLIED 근거는 타당. 새 TPL의 의미도 재사용 가능하고 일반 대각선 길이·각 TPL과 구별된다. 다만 finalDifficulty.reason이 분류 등록 사유를 반복하므로 학생 사고에 근거한 문장으로 바꾸고 독립 경계검토 결과를 반영할 것.",
+      "repairs": [
+        {
+          "field": "finalDifficulty.reason",
+          "proposed": "평행사변형의 대각선이 만드는 네 삼각형의 같은 넓이를 먼저 구하고 중점으로 각 부분을 절반으로 나누는 익숙한 두 단계 변환이므로 bucket 2. 기존 하 level은 쉬운 정형 계산이라는 관점에서 유지 가능."
+        },
+        {
+          "field": "finalDifficulty.legacyLevelCompatibility",
+          "proposed": "BORDERLINE_ACCEPTABLE",
+          "basis": "독립 검수 C가 하/2 인접 경계를 위 근거로 수용."
+        },
+        {
+          "field": "after.problemTypeKey",
+          "proposed": "새 TPL의 승인·Resolver 실행 전에는 parent PT 의미 후보로만 구분해 보존하고 자동 적용하지 말 것.",
+          "basis": "현 검토는 공식 Resolver 영수증이 아니며 2022 exact binding도 대기 상태."
+        }
+      ],
+      "imageEvidence": "workers/B/images/E002-24.png 시각 확인: 밑변8 높이6, 두 대각선과 AO/CO의 중점 M/N."
+    }
+  ],
+  "overallStatus": "REPAIR",
+  "fourSlotOverallStatus": "PASS",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "3개 표본의 4칸 의미는 모두 통과. 메타 난도 근거와 후보 적용 범위에 한정한 경미한 수리 요청. 저자 파일을 수정하지 않음.",
+    "전 시험지 독립 재풀이 또는 전 문항 의미 승인으로 확장하지 않음."
+  ]
+}
