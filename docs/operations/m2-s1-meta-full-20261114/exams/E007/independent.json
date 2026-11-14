@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E007",
+  "author": "A",
+  "reviewer": "B",
+  "independent": true,
+  "sourceGitBlobSha": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+  "reviewSha256": "ae40bbf4f9f0c245e936b712161ed64fd652128d51f9e1f358373d0e17793733",
+  "fourSlotSha256": "b84ba55c1affd1284769d33ca306368377986f1aae060db67f542c667452bff8",
+  "sampleOrdinals": [
+    2,
+    13,
+    22
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3c499607afb3d37a4051a0fde3607d3a41f9599116816f0b04e7596a6f27b6eb",
+      "status": "PASS_WITH_EXISTING_CONTENT_DEBT",
+      "findings": "다섯 분수의 약분 후 기약분모로 유한·순환소수를 구별한다. count goal과 기약분수/소인수 method가 역전되지 않았으며 모든 인용은 실재. source가 개수를 묻지만 choices가 검사대상 분수이고 answer③인 구조 충돌은 contentDebt로 보존해야 한다. goal 순환소수 대상 추가를 권고하였다.",
+      "quoteCheck": "All sample quotes checked literally against exact packed source.",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "status": "PASS",
+      "findings": "원그림에서 회전축AB와 직각삼각형ABC·반원O를 직접 확인했다. 원뿔/구의 생성과 부피공식이 결정적이므로 M1입체측정 primary, 문자거듭제곱 지수법칙 CC 판정에 동의한다. method 회전체/원뿔/구/부피가 기존 해설에 존재하고 goal 부피와 구분된다. goal 합 추가를 권고하였다.",
+      "quoteCheck": "All sample quotes checked literally against exact packed source.",
+      "goalMethodInversion": false
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "status": "PASS_WITH_EXISTING_CONTENT_DEBT",
+      "findings": "2와5의아홉쌍을10⁹으로 묶고 11자리의 경계를 비교한다. a≥9/a<9 실제 분기가 해설에 있어 CASE_BRANCH 근거가 존재한다. 자릿수·지수법칙·경우분류 method와 목표 지수가 분리되며 순환추론/인용허구가 없다. a=8의 최댓값과 55억이 같은데 해설이 작다고 한 strictness 부채를 보존한다.",
+      "quoteCheck": "All sample quotes checked literally against exact packed source.",
+      "goalMethodInversion": false
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3c499607afb3d37a4051a0fde3607d3a41f9599116816f0b04e7596a6f27b6eb",
+      "level": "하",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "약분이 필요한 여러 분수에서 기약분모를 분류해 합계까지 세므로 숫자2와 기존하 B12를 독립 수용."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "소수표현의 정의와 기본 포함관계를 직접 대조하고81의 소인수만 확인한다. 숫자1로의 교정은 새로운 추론 전환이 없다는 근거가 있다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "통분으로3≤n≤14를 얻은 뒤 금지 소인수11의 배수를 고르는 두 정형 단계라2 수용."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63",
+      "level": "하",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "정수부와 비순환부가 있는 다섯 표현을 정형 변환으로 대조한다. 하/2 경계쌍 수용."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "한 분수의 모든 자리가3이라 합조건을 다른 분수의2 위치로 바로 줄이고20까지 반복자리를 세므로2 수용."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_814d4aacc0a0fc6c2060ebd7b8eef05659639172a08d679ba83540fb86c40cd9",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정답보기의 동일밑 지수합 오류는 지수법칙의 직접 적용으로 드러나1 수용."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "81을3⁴로 쓰고 A=3²와 비교하는 정형 거듭제곱의 거듭제곱 적용이라1 수용."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "단항식으로 각 항을 나누고 뒤 괄호를 빼 계수 합을 구하는 직접 연산이므로2 수용."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "주어진A,B를 대입하여 중첩 음수괄호를 전개하고 x계수와 상수항을 읽는다. 계산 길이는 있으나2 수용."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "회전 도형 두 가지의 반지름·높이를 구별하고 다른 두 부피공식을 문자식으로 계산하여 더한다. 구조 연결은3, 기존상은 B34 경계로 독립 수용."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두 조건에서 같은A를 따로 복원하고 대응계수로a,b를 정하는 연결이 있어3. 기존상/3 B34 수용."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac",
+      "level": "하",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "두 다항식 나눗셈과 후속 뺄셈의 부호를 처리해 계수합을 구한다. 숫자2/기존하 B12 수용."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_670bcb378bf92967e1aa9f534587aec3d9ee0049f4bc6afb3b7689b0e38d226c",
+      "level": "중",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "정수계수 이항과 양수 나눗셈으로 직접 해구간을 구한다. 숫자1과 기존중의 B12 쌍 수용."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "level": "하",
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "기초관계a<b를 얻은 뒤 음수배 부등호 반전 오류를 바로 찾는 정의적 적용이므로1 수용."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "level": "하",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "소수·분수계수 정리 후 엄격경계보다 큰 최소정수를 읽으므로2/하 B12 수용."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "서로 독립인 두 부등식을 풀고 각 정수 최솟값을 합한다. 경우결합의 추가발상은 없어2 수용."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "level": "상",
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "xy=630의 역수조건, 유한분모 소인수, 자연수범위를 함께 제한하여 후보를 확인한다.3/상 B34 수용."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "level": "상",
+      "difficultyBucket": 4,
+      "decision": "ACCEPT",
+      "reason": "2·5짝지음과 십진자릿수 경계를 결합하며 a가9보다작은 경우를 따로 배제하는 구조전환이 있어4 유지, B34 수용."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "그림의 두 가로길이가 각각 넓이/세로임을 적용해 정형 다항식나눗셈 두 개와 합을 계산한다.2 수용."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_853f962fcf94cfef5eec13cb28d0323ec78b911c67f9168dc807e4b5a8da048d",
+      "level": "중",
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "동일한 왕복속력으로 이동시간을 하나의x/2로 만들고40분을시간으로환산하여상한부등식을푼다. 서로다른속력의경우보다모델이직접적이므로2 수용."
+    }
+  ],
+  "legacyCompatibilityAudit": {
+    "all24PairsChecked": true,
+    "mismatchOrdinals": [
+      2,
+      7,
+      13,
+      14,
+      15,
+      16,
+      19,
+      21
+    ],
+    "labelsMatchCanonical": true
+  },
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 13,
+      "decision": "ACCEPT",
+      "reason": "도형을 회전시켜 생성 입체 두 개를 식별하고 부피합을 구하는 목표이므로 M1입체측정 primary+지수법칙CC; 좁은 단일도형 leaf 강제배정 없이 gap 보존."
+    },
+    {
+      "sourceOrdinal": 23,
+      "decision": "ACCEPT",
+      "reason": "넓이와 세로길이가 명시된 두 직사각형의 가로를 다항식 나눗셈으로 복원하는 과제여서 M2계산 primary+CC_RECTANGLE_AREA; 실제그림 A/B 수직길이와 L 확인."
+    }
+  ],
+  "status": "PASS_WITH_EXISTING_CONTENT_DEBT",
+  "at": "2026-11-14T09:11:01.798682+00:00",
+  "scopedRevision": {
+    "previousFourSlotSha256": "7a942c90626554c46697d472cc88970fc5bad2a533ee33ef3c6107ac552f55f7",
+    "checkedAdditions": [
+      "Q2 goal순환소수",
+      "Q13 goal합"
+    ],
+    "decision": "ACCEPT",
+    "reason": "두추가atom을현재source및최종fourbytes에서직접재확인. 목표객체와합연산이명시되었고방법은변경없음."
+  }
+}

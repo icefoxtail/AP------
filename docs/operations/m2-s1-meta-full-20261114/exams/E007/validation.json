@@ -1,0 +1,481 @@
+{
+  "schemaVersion": "m2-s1-mechanical-check-v1",
+  "examId": "E007",
+  "sourceBlob": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+  "sourceSha256": "e01b9fa4e46470e7fe06a5fddf98deb3402c5ed2a37cf041069a325a124b1dd7",
+  "reviewSha256": "ae40bbf4f9f0c245e936b712161ed64fd652128d51f9e1f358373d0e17793733",
+  "fourSlotSha256": "b84ba55c1affd1284769d33ca306368377986f1aae060db67f542c667452bff8",
+  "questionCount": 24,
+  "structuralStatus": "PASS",
+  "fourSlotStatus": "PASS_STATIC_ONLY",
+  "fail": [],
+  "warn": [
+    "#1 only 4 distinct terms",
+    "#5 only 4 distinct terms",
+    "#7 only 4 distinct terms",
+    "#9 only 3 distinct terms",
+    "#9 method has 1 term",
+    "#10 only 2 distinct terms",
+    "#10 method has 1 term",
+    "#11 only 4 distinct terms",
+    "#14 only 4 distinct terms",
+    "#15 only 4 distinct terms",
+    "#16 only 4 distinct terms",
+    "#17 only 4 distinct terms",
+    "#18 only 4 distinct terms",
+    "#19 only 4 distinct terms"
+  ],
+  "requiredEvidenceDebt": [],
+  "keyDebt": [],
+  "changedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "difficultyRecheckOrdinals": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "compatibilityAdjustments": [],
+  "sourceOnlyOrdinals": [],
+  "fourSlotCounts": {
+    "items": 24,
+    "examItems": 24,
+    "quotes": 132,
+    "fail": 0,
+    "warn": 14
+  },
+  "semanticApproval": "NOT_A_MACHINE_VERDICT",
+  "reviewedSourceBlob": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+  "finalSourceBlob": "1a3299cfa67359c68d770acf842a3419c02c15e3",
+  "finalSourceSha256": "c94952e34bb3571e6172b00f98385d0cc0b9efb73ef5e4c367c4e9720c98e092",
+  "finalFourSlotSha256": "ce9ef7fafb8670d9f68ab7a5abefb6c5630d8bcbb0c1c35366f05607b8873497",
+  "finalFourSlotValidation": {
+    "fail": [],
+    "warn": [
+      "#1 only 4 distinct terms",
+      "#5 only 4 distinct terms",
+      "#7 only 4 distinct terms",
+      "#9 only 3 distinct terms",
+      "#9 method has 1 term",
+      "#10 only 2 distinct terms",
+      "#10 method has 1 term",
+      "#11 only 4 distinct terms",
+      "#14 only 4 distinct terms",
+      "#15 only 4 distinct terms",
+      "#16 only 4 distinct terms",
+      "#17 only 4 distinct terms",
+      "#18 only 4 distinct terms",
+      "#19 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 132
+    }
+  },
+  "sourceSyntax": "PASS_VM_AND_JSON",
+  "sourceContentPreservation": "PASS_ALL_NONAPPROVED_FIELDS_IDENTICAL",
+  "uidOrderPreservation": "PASS",
+  "sourceFieldEdits": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "유리수와소수표현의 정의·기본성질 직접대조. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "유리수와소수표현의 정의·기본성질 직접대조. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "통분하여3..14 범위에서11배수 고르는 표준두단계. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "통분하여3..14 범위에서11배수 고르는 표준두단계. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "정수부·비순환부있는다섯표현을계산해대조."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "정수부·비순환부있는다섯표현을계산해대조."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "한쪽숫자가항상3이므로다른쪽의2위치만세는표준주기활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "한쪽숫자가항상3이므로다른쪽의2위치만세는표준주기활용. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_814d4aacc0a0fc6c2060ebd7b8eef05659639172a08d679ba83540fb86c40cd9",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "정답오류는같은밑의지수합을바로확인하면확정. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_814d4aacc0a0fc6c2060ebd7b8eef05659639172a08d679ba83540fb86c40cd9",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "정답오류는같은밑의지수합을바로확인하면확정. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "81과A를3의거듭제곱으로놓아지수한번비교. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "81과A를3의거듭제곱으로놓아지수한번비교. 기존2→1 제안."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "단항식나눗셈과괄호부호처리라는표준다단계. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "단항식나눗셈과괄호부호처리라는표준다단계. 기존3→2 제안."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "음수괄호와대입의표준계산절차.계산길이만으로3부여하지않음."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "음수괄호와대입의표준계산절차.계산길이만으로3부여하지않음."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "standardUnitKey",
+      "before": "M2-01",
+      "after": "M1-07",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "standardUnit",
+      "before": "수와 식",
+      "after": "입체도형의 성질",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "standardUnitOrder",
+      "before": 1,
+      "after": 7,
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "category",
+      "before": "수학",
+      "after": "입체도형의 성질",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "subUnitKey",
+      "before": "M2-01-POLYNOMIAL_OPERATIONS",
+      "after": "M1-07-SOLID_FIGURE_MEASURE",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "subUnit",
+      "before": "다항식의 계산",
+      "after": "입체도형의 측정",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "standardCourse",
+      "before": "중2 수학",
+      "after": "중1",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "입체부피와회전도형종류파악이결정적이므로 M2다항식→M1입체측정. 원뿔/구단일leaf는둘의합을덮지못해 결합leaf제안. Exact canonical label for the semantically accepted key. 원뿔과구의생성및부피공식을구별하고문자식을정리하는다단계. 기존4→3제안,상은독립유지."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "뺄셈조건과나눗셈조건을각각복원하여계수대응시키는구조적연결. 기존4→3상유지."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "뺄셈조건과나눗셈조건을각각복원하여계수대응시키는구조적연결. 기존4→3상유지."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "뺄셈조건과나눗셈조건을각각복원하여계수대응시키는구조적연결. 기존4→3상유지."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "두분수식나눗셈과부호를유지한뺄셈."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "두분수식나눗셈과부호를유지한뺄셈."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_670bcb378bf92967e1aa9f534587aec3d9ee0049f4bc6afb3b7689b0e38d226c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "정수계수이항및양수나눗셈의직접풀이.기존중은상대난도값으로독립유지."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 1,
+      "reason": "같은수더하기와음수곱방향이라는기본성질대조. 기존2→1제안."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "같은수더하기와음수곱방향이라는기본성질대조. 기존2→1제안."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B12",
+      "reason": "소수분수풀이후엄격경계의최소정수를선택."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "소수분수풀이후엄격경계의최소정수를선택."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "소수계수포함두부등식을풀고각최소정수를더하는표준반복. 기존3→2제안."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "xy630,유한분모소인수,자연수범위를세조건으로결합. 표준후보검사로4→3제안,상독립유지."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B34",
+      "reason": "xy630,유한분모소인수,자연수범위를세조건으로결합. 표준후보검사로4→3제안,상독립유지."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "field": "legacyLevelCompatibility",
+      "before": "NORMAL",
+      "after": "BORDERLINE_ACCEPTABLE",
+      "reason": "xy630,유한분모소인수,자연수범위를세조건으로결합. 표준후보검사로4→3제안,상독립유지."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "두직사각형의가로=넓이/높이후동류항합이라는표준활용. 기존3→2제안."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "두직사각형의가로=넓이/높이후동류항합이라는표준활용. 기존3→2제안."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_853f962fcf94cfef5eec13cb28d0323ec78b911c67f9168dc807e4b5a8da048d",
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 2,
+      "reason": "분을시간으로고치고왕복걷기시간과합하여표준일차부등식을푸는과정. 기존3→2제안."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_853f962fcf94cfef5eec13cb28d0323ec78b911c67f9168dc807e4b5a8da048d",
+      "field": "difficultyBoundaryFlag",
+      "before": "NONE",
+      "after": "B23",
+      "reason": "분을시간으로고치고왕복걷기시간과합하여표준일차부등식을푸는과정. 기존3→2제안."
+    }
+  ]
+}
