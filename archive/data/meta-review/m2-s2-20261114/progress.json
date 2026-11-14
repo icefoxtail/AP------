@@ -10457,7 +10457,7 @@
           "sha256": "92286f6a467db63eb7bd49643c23a00a0da37585f86f269e035dfd04abdf2527"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         1,
@@ -10484,7 +10484,8 @@
         22,
         23,
         24
-      ]
+      ],
+      "remoteCommit": "1c06ca10e5426c29bc9ddf44ce859f330599d322"
     }
   ],
   "concurrencyCheck": {
@@ -10500,7 +10501,7 @@
     "remainingExams": 0,
     "remainingQuestions": 0
   },
-  "lastVerifiedExamCommit": "26e82c40deba80f8a30ba1a6478908c3c7802f61",
+  "lastVerifiedExamCommit": "1c06ca10e5426c29bc9ddf44ce859f330599d322",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
@@ -10566,9 +10567,27 @@
     "remainingAtStartExams": 2,
     "remainingAtStartQuestions": 49,
     "scope": "E065/E067 pending packets and evidence-based closeout aggregation only",
-    "concurrencyControl": "Isolated worktree; re-read remote before each publish; non-force Git receive-pack expected-old object compare-and-swap; reject divergence",
+    "concurrencyControl": "Isolated worktree; GitHub update_ref expected_sha non-force CAS; reread remote and reject any divergent HEAD",
     "sourceReadOnly": true,
     "mainMergeExecuted": false,
-    "observedAt": "2026-11-14T08:35:42.632587+00:00"
+    "observedAt": "2026-11-14T08:35:42.632587+00:00",
+    "latestMainVerified": "0ba1e7de048de3af0771da6c0972409fd46baa75"
+  },
+  "closeout": {
+    "status": "REVIEW_COVERAGE_COMPLETE_WITH_EXPLICIT_SOURCE_HOLDS",
+    "reviewedExams": 67,
+    "reviewedQuestions": 1604,
+    "fullyJudgedQuestions": 1568,
+    "unresolvedQuestions": 36,
+    "independentSamples": 201,
+    "examPacketHead": "1c06ca10e5426c29bc9ddf44ce859f330599d322",
+    "latestMainVerified": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+    "registrationExecuted": false,
+    "mainMerged": false,
+    "codexHandoff": "OFFERED_IN_REPOSITORY",
+    "codexAcceptance": "NOT_OBSERVED",
+    "unresolvedItemsPath": "archive/data/meta-review/m2-s2-20261114/closeout/unresolved-items.json",
+    "codexRequestPath": "archive/data/meta-review/m2-s2-20261114/closeout/codex-release-request.json",
+    "handoffPath": "archive/data/meta-review/m2-s2-20261114/CODEX_HANDOFF.md"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "m2-s2-codex-release-request-v1",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "reviewBranch": "review/m2-s2-meta-full-20261114",
+  "examPacketHead": "1c06ca10e5426c29bc9ddf44ce859f330599d322",
+  "requestedBy": "GPT_ROOT_9D4541661C34_M2",
+  "requestedRecipient": "CODEX_RELEASE_OWNER",
+  "state": "OFFERED",
+  "acceptedBy": null,
+  "acceptanceObserved": false,
+  "scope": {
+    "reviewedExams": 67,
+    "reviewedQuestions": 1604,
+    "fullyJudgedQuestions": 1568,
+    "unresolvedQuestions": 36
+  },
+  "registrationExecuted": false,
+  "mainMerged": false,
+  "paths": {
+    "registrationQueue": "archive/data/meta-review/m2-s2-20261114/closeout/registration-queue.json",
+    "sourceHolds": "archive/data/meta-review/m2-s2-20261114/closeout/source-holds.json",
+    "unresolvedItems": "archive/data/meta-review/m2-s2-20261114/closeout/unresolved-items.json",
+    "difficultyDisposition": "archive/data/meta-review/m2-s2-20261114/closeout/difficulty-disposition.json",
+    "exactKeyAudit": "archive/data/meta-review/m2-s2-20261114/closeout/declared-key-audit.json",
+    "remoteEvidence": "archive/data/meta-review/m2-s2-20261114/closeout/remote-evidence.json",
+    "progress": "archive/data/meta-review/m2-s2-20261114/progress.json"
+  },
+  "requiredDisposition": [
+    "Claim exact task/branch after checking existing release owner and active PRs; do not overwrite concurrent changes.",
+    "Reuse the existing 67 exam packets and 201 independent sample records. Do not repeat completed semantic reviews.",
+    "Resolve or explicitly retain the 36 UID-bound source evidence blocks; never register their conditional candidates as approved.",
+    "Deduplicate and process official PT/TPL, L1-L4/RPM leaf, exact curriculum binding, CrossConcept, Condition, Integration, four-slot term and learning-level registration proposals.",
+    "Reuse valid existing verification evidence or run required registration/Resolver and changed-UID consumer gates; these review packets are not fabricated Resolver or full mathematical verification receipts.",
+    "Create the operational PR only after registration and required gates; preserve source question/answer/solution bytes except separately justified minimum source repairs.",
+    "Merge main through the established Codex release path and report actual PR/merge SHA; main merge is not claimed by this handoff."
+  ],
+  "remoteRefPolicy": "Re-read review branch HEAD and use expected_sha non-force CAS when updating.",
+  "previousOwnerTermination": "UNKNOWN; current user explicitly authorized exact-task continuation. No prior OFFERED/ACCEPTED event was invented."
+}
