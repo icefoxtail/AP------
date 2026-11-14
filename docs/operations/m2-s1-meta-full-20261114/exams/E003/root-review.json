@@ -1,0 +1,112 @@
+{
+  "sampleReviewer": "A",
+  "decision": "ACCEPT_REVIEW_WITH_REGISTRATION_DEBTS",
+  "targetedSemanticChecks": [
+    {
+      "ordinals": [
+        7,
+        8,
+        17,
+        19,
+        22
+      ],
+      "decision": "ACCEPT",
+      "reason": "Q7은 계수와 해의 개수 판정이며 WORD가 아니다. Q8은 타일 배치와 둘레의 모델링, Q22는 승패의 상대적 이동 모델링이므로 WORD. Q17은 주어진 일차방정식의 그래프 설명, Q19는 수직선 x좌표 일정 성질이므로 EQUATION이다. 원문·기존 해설·정본 부모와 대조하였다."
+    },
+    {
+      "ordinals": [
+        1,
+        2,
+        3,
+        9,
+        16
+      ],
+      "decision": "ACCEPT_GAP_PROPOSAL",
+      "reason": "단일 이원일차방정식의 정의·자연수해·해 대입, 일반 함수 정의와 변화율 직접 활용을 기존 연립/일차함수 판별의 좁은 leaf로 강제하지 않고 등록 검토로 넘긴다."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 2,
+      "difficultyBucket": 1,
+      "decision": "ACCEPT",
+      "reason": "작은 자연수 네 경우를 열거하는 직접 대입 과제이다. B12를 두고 1 유지."
+    },
+    {
+      "sourceOrdinal": 4,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "첫 해를 둘째 연립방정식의 계수로 재사용하는 단계 연결이 있어 직접 한 번 풀이보다 높다. 표본 A도 중/2 동의."
+    },
+    {
+      "sourceOrdinal": 5,
+      "difficultyBucket": 2,
+      "decision": "ACCEPT",
+      "reason": "순환소수 환산과 분모 제거는 정수화된 연립식 풀이에 앞선 표준 전처리이다. B23으로 통상 난도2 유지."
+    },
+    {
+      "sourceOrdinal": 8,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "타일 배치에서 길이 관계와 둘레의 두 식을 추출하는 모델링이 핵심이다. 계산량과 무관한 관계 해석을 반영한3."
+    },
+    {
+      "sourceOrdinal": 18,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "삼각형 넓이에서 높이를 역산하고 교점과 계수를 이어 구한다. 관계의 순차 역산이 필요하여3/B23 유지."
+    },
+    {
+      "sourceOrdinal": 23,
+      "difficultyBucket": 3,
+      "decision": "ACCEPT",
+      "reason": "두 오독 상황의 보존 성분인 절편과 기울기를 따로 복원하여 결합한다. 두 점식 계산만으로 판단하지 않는3/B23 적정."
+    }
+  ],
+  "sourcePatches": [
+    {
+      "sourceOrdinal": 8,
+      "after": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "reason": "타일 배치·둘레 모델링의 도형 활용을 source의 일반 연립 풀이에서 활용으로 교정."
+    },
+    {
+      "sourceOrdinal": 19,
+      "after": {
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계"
+      },
+      "reason": "y축 평행 직선의 일정한 x좌표 성질이며 일차함수 일반 그래프가 아님."
+    },
+    {
+      "sourceOrdinal": 22,
+      "after": {
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용"
+      },
+      "reason": "승패 횟수와 계단 이동을 두 식으로 모델링하는 활용."
+    }
+  ],
+  "notes": [
+    "작성자의 전체 의미 검토와 작성자 외 3문항 표본을 재사용했다. 변경/난이도 경계만 표적 재확인하며 새 수학 R1/R2/R3를 주장하지 않는다.",
+    "RPM/PT/TPL 및 확장 메타는 source 원판본·before/after가 결속된 소형 제안 패킷으로 보존하고 Codex 등록에서 최종 source blob과 결속한다."
+  ],
+  "schemaVersion": "m2-s1-root-acceptance-v1",
+  "examId": "E003",
+  "owner": "GPT_ROOT_6F3D37EEA78A",
+  "reviewedSourceBlob": "f84c7bf637e3d4e83a995630d2d3cebb3fdd32a1",
+  "finalSourceBlob": "38ed8454b3502b10f185fb08fdf7963ed55f2bd0",
+  "reviewSha256": "0498dff67540fa356f1a5f4cda576f310a29f6ccd7e155c11ac84a3f95bc163e",
+  "independentSha256": "c2fa23c8b8ed5b6c3bf08f2aebc1d9e65d3f94d3b0dc47dc226d429c7103a326",
+  "reviewedFourSlotSha256": "c608e58050aaef08f86f7fe05969db1cae4979bee050ccaad0a9e33605c4894c",
+  "finalFourSlotSha256": "af1438fd36463d0211880b55ed016612f81025c584b3f2523f8ecf12c492b770",
+  "fourSlotRebind": {
+    "transformation": "Replace the unique sourceGitBlobSha string only; every item/quote/slot and dictionary binding is byte-identical.",
+    "studentContentUnchanged": true
+  },
+  "registrationStatus": "NOT_RUN",
+  "resolverStatus": "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+  "createdAt": "2026-11-14T08:46:05.045860+00:00"
+}

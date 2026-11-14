@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "m2-s1-independent-sample-v1",
+  "examId": "E003",
+  "author": "C",
+  "reviewer": "A",
+  "independent": true,
+  "sourceGitBlobSha": "f84c7bf637e3d4e83a995630d2d3cebb3fdd32a1",
+  "reviewSha256": "0498dff67540fa356f1a5f4cda576f310a29f6ccd7e155c11ac84a3f95bc163e",
+  "fourSlotSha256": "c608e58050aaef08f86f7fe05969db1cae4979bee050ccaad0a9e33605c4894c",
+  "sampleOrdinals": [
+    4,
+    17,
+    19
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_b31b8d5e6ff121ab2b5f96328c3bd8197dc7fdc9a064af7fd5467f69c96ec917",
+      "status": "PASS",
+      "findings": "해를 goal로 두고 대입법을 method로 분리했다. 첫해(m,n)가 두 번째 연립식의 계수로 들어가는 구조가 계수 term의 실제 근거이다. 네 용어 경고는 이 동형 절차 문항에서는 과소분류의 증거가 아니다. 두 기본 대입법을 이어 쓰므로 중/2 허용.",
+      "sourceRead": "Full stem, choices, existing solution and submitted semantic/4slot inspected. No additional solve verification claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_5c9f4ff3309c71f6caba1e97f84cc5501797ff0a075653435654f27ebbe9fee8",
+      "status": "PASS_WITH_NOTE",
+      "findings": "주어진 -5x+2y+1=0의 그래프 명제 판단이므로 EQUATION/172와 ACTIVE 그래프 설명 PT/TPL 재사용 후보 일치. 실제 solution의 y=mx+n 변환,기울기,사분면,점 대입 인용 모두 존재한다. goal=판정은 적합. y절편과 평행 관계도 선택지 검증에 사용되므로 향후 method 함숫식 표기 대신 절편/평행의 구체 표상을 검토할 수 있으나 핵심 정답②④의 기울기·사분면을 누락하지 않아 중대결함 아님.",
+      "sourceRead": "Full stem, choices, existing solution and submitted semantic/4slot inspected. No additional solve verification claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_05561bf015e00ae502ff4563d00107f1790a4578fa04ce74eb2460bb7490a879",
+      "status": "PASS",
+      "findings": "수직방향 직선은 두 점의 x좌표가 같다는 특수 방정식 성질이므로 BASIC→EQUATION/173 수정 타당. goal은 a값, method는 좌표일정 및 2a=-a+9의 일차방정식으로 잘 분리됨. 기존 ACTIVE 한점→x=c 템플릿을 강제하지 않은 결정 타당. 직접 성질이므로 하/1 적합.",
+      "sourceRead": "Full stem, choices, existing solution and submitted semantic/4slot inspected. No additional solve verification claimed.",
+      "quoteCheck": "All sampled literal quotes found in exact source",
+      "goalMethodInversion": false,
+      "difficulty": "AGREE"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "difficultyRechecks": [],
+  "status": "PASS_WITH_NONBLOCKING_NOTE",
+  "at": "2026-11-14T08:44:09.218521+00:00"
+}
