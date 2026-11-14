@@ -105,8 +105,8 @@
 | 기준 | 수 |
 |------|---:|
 | q.image 보유 | 4072 |
-| content <img> | 1136 |
-| content <svg> | 58 |
+| content <img> | 1138 |
+| content <svg> | 56 |
 | content <table> | 388 |
 | 시각요소 보유(hasImage=true) | 5468 |
 
