@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "examId": "E008",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "1d84894ee7e4e89b0dc99f9bf3a87653c46351b1",
+  "sampled4slotSha256": "cde5f89e2f60bacad86969fd7a2a36a31552dea59dcdca991deb99ab03f6a25c",
+  "sampledReviewSha256": "953492e1c177e5962065db2b7ec6782773e394749cf896893968aedf76a82716",
+  "sourcePacketSha256": "05555bdd7d78cf22df37b6cd77f6f36aa40883f59405ef6e6e3c588fd8dbbf3e",
+  "sampled": [
+    6,
+    11,
+    18
+  ],
+  "status": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_a5fbe1472c327d76d6f5ecf84aa165b767b0162e3a4640fea21fb31346f7277f",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 9
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "같은 두 호의 합이 반원이라는 조건으로 반중심각이 여각임을 얻고 RHA 합동으로 중심거리와 반현을 교환하여 반지름을 복원한다. 두 부채꼴에서 삼각형을 빼므로 현 길이 조건 활용 주분류가 맞다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_35165b145f472d65fd19b63184b7fccc577e1aacdfbc300a869884b9212e2ab5",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 7
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "접현각과 공통각의 AA 닮음으로 두 할선 길이를 얻어 차로 현의 길이를 구한다. ACTIVE 접현각 TPL의 목표각 한정 때문에 신규 길이 TPL 제안을 분리한 판단이 타당하다.",
+      "status": "PASS"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_10947c50eebae80e19633700a08cbd9535e1d5a8ed95b70c34eb68b523fb973e",
+      "sourceImageRead": true,
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 5
+      },
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "산점도에서 두 점수가 같은 대각선 위 점만 세어 전체 인원 대비 비율을 구한다. 상등 조건 인용과 비율 목표를 확인했다.",
+      "status": "PASS"
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "followup": "Q6 네 호 등식 양변을 given/condition에 완전 보존하고 중점 명시 문장으로 NAMED quote를 수정한 최종본 확인. Q11 목표길이 TPL 공백과 Q18 상등 조건 유지 타당."
+}

@@ -37,7 +37,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=54도와 같은 호 AB를 보는 원주각 ACB=x가 나타나 있다. 호 AB와 중심각이 같은 색이다.",
-    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. ∠AOB=54°이므로 x=54°÷2=27°이고 정답은 ③이다."
+    "solutionImageCaption": "같은 호 AB를 보는 중심각은 원주각의 2배이다. ∠AOB=54°이므로 x=54°÷2=27°이고 정답은 ③이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -74,7 +83,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 중심각 AOB=50도인 호 AB는 15cm로 파란색이고, 원주각 CPD=40도가 보는 호 CD는 x cm로 주황색이며 호 CD의 중심각 COD는 80도이다.",
-    "solutionImageCaption": "∠CPD=40°는 호 CD의 원주각이므로 중심각 ∠COD=2×40°=80°이다. 호의 길이는 중심각에 비례하므로 15:x=50:80이고 x=24이다. 정답은 ⑤이다."
+    "solutionImageCaption": "∠CPD=40°는 호 CD의 원주각이므로 중심각 ∠COD=2×40°=80°이다. 호의 길이는 중심각에 비례하므로 15:x=50:80이고 x=24이다. 정답은 ⑤이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -111,7 +129,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 지름 AB를 가진 반원에서 E에서 두 할선이 이루는 ∠E=62°를 보이고, 호 DC와 중심각 ∠DOC(x)를 같은 초록으로 칠해 두 값이 같음을 보여 준다.",
-    "solutionImageCaption": "62°=½(180°−호 DC)에서 180°−호 DC=124°이므로 호 DC=56°이고 ∠DOC=호 DC이므로 x=56°이다. 정답 ⑤."
+    "solutionImageCaption": "62°=½(180°−호 DC)에서 180°−호 DC=124°이므로 호 DC=56°이고 ∠DOC=호 DC이므로 x=56°이다. 정답 ⑤.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -148,7 +175,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접한 □ABCD에서 호 DC를 보는 원주각 x와 ∠DBC=50°를 같은 색으로, 호 BC를 보는 원주각 y와 ∠BDC=32°를 같은 색으로 표시한다.",
-    "solutionImageCaption": "∠DAC와 ∠DBC는 같은 호 DC를 보는 원주각이라 x=50°이고, ∠BAC와 ∠BDC는 같은 호 BC를 보는 원주각이라 y=32°이다. 따라서 x−y=18°이고 정답은 ④이다."
+    "solutionImageCaption": "∠DAC와 ∠DBC는 같은 호 DC를 보는 원주각이라 x=50°이고, ∠BAC와 ∠BDC는 같은 호 BC를 보는 원주각이라 y=32°이다. 따라서 x−y=18°이고 정답은 ④이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 5,
@@ -178,7 +214,16 @@ window.questionBank=[
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 6,
@@ -209,13 +254,22 @@ window.questionBank=[
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q6-solution-v2.svg",
     "solutionImageSize": "medium",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q6.png",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O의 현 AB=6, CD=4와 각 중점 M, N, 반지름 OA, OC. 같은 길이 OM=CN=2(파랑), ON=AM=3(주황), 반지름 OA=OC=√13(보라)이 표시되고 합동인 직각삼각형 OAM과 CNO가 초록으로 칠해져 있다.",
-    "solutionImageCaption": "합동인 △OAM≅△CNO에서 R²=3²+2²=13이고, 부채꼴 두 개의 넓이 합은 13π/2, 삼각형 둘의 넓이 합은 6+6이므로 색칠된 부분의 넓이는 13π/2−12 (정답 ④)"
+    "solutionImageCaption": "합동인 △OAM≅△CNO에서 R²=3²+2²=13이고, 부채꼴 두 개의 넓이 합은 13π/2, 삼각형 둘의 넓이 합은 6+6이므로 색칠된 부분의 넓이는 13π/2−12 (정답 ④)",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_CONGRUENCE_RHA","CC_PYTHAGOREAN","CC_CIRCLE_SECTOR_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -252,7 +306,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 BA와 CD의 연장선이 E, AD와 BC의 연장선이 F에서 만나고 ∠B=50°, ∠F=55°이며 원이 호 AB, 호 BC, 호 ADC 세 색으로 나뉘어 각 호의 관계식이 적힌 그림.",
-    "solutionImageCaption": "∠ABC=50°는 호 ADC를 보는 원주각이므로 호 AD+호 DC=100°이고, F에서 55°=½(호 AB−호 CD)이므로 호 AB=호 CD+110°, 네 호의 합 360°에서 호 BC=호 AD+50°이다. 따라서 E에서 ∠x=½(호 BC−호 AD)=25°이다. 정답 ⑤."
+    "solutionImageCaption": "∠ABC=50°는 호 ADC를 보는 원주각이므로 호 AD+호 DC=100°이고, F에서 55°=½(호 AB−호 CD)이므로 호 AB=호 CD+110°, 네 호의 합 360°에서 호 BC=호 AD+50°이다. 따라서 E에서 ∠x=½(호 BC−호 AD)=25°이다. 정답 ⑤.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -286,7 +349,16 @@ window.questionBank=[
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽은 원에 내접하는 직사각형으로 네 각이 모두 직각이다. 오른쪽은 대각이 70도, 70도인 평행사변형(예)으로 마주 보는 두 각의 합이 140도이다.",
     "solutionImageCaption": "예: 원에 내접하는 사각형은 마주 보는 두 각의 합이 180°이다. 직사각형은 항상 90°+90°=180°이고 평행사변형은 대각의 합이 180°가 아닐 수 있다(예: 70°+70°=140°). 따라서 항상 내접하는 것은 ㄹ, ㅁ이므로 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_UNIVERSAL_INPUTS"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -323,7 +395,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 육각형 ABCDEF에서 각 A=x, 각 C=123도, 각 E=117도가 서로 다른 색이고 각 각이 보는 호가 같은 색의 바깥 호 세 겹으로 표시되어 원을 두 번 덮는다.",
-    "solutionImageCaption": "∠A, ∠C, ∠E가 보는 호의 합은 원 전체를 두 번 덮은 720°이므로 ∠A+∠C+∠E=360°이다. x+123°+117°=360°이므로 x=120°이고 정답은 ①이다."
+    "solutionImageCaption": "∠A, ∠C, ∠E가 보는 호의 합은 원 전체를 두 번 덮은 720°이므로 ∠A+∠C+∠E=360°이다. x+123°+117°=360°이므로 x=120°이고 정답은 ①이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -360,7 +441,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 접선 PQ와 현 TB가 이루는 ∠BTQ=55°와 현 TB를 보는 원주각 ∠TAB(x)를 같은 파랑으로 칠해 두 각이 같음을 보여 준다.",
-    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠BTQ=55°이다. 정답 ②."
+    "solutionImageCaption": "접선과 현이 이루는 각은 그 현을 보는 원주각과 같으므로 x=∠BTQ=55°이다. 정답 ②.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -397,7 +487,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원의 접선 PT와 직선 PAB에서 ∠PTA=∠PBT를 같은 색으로, 대응변 PA와 PT, TA와 TB를 색으로 묶어 △PTA∽△PBT를 보이고 PA=6, PB=32/3을 표시한다.",
-    "solutionImageCaption": "접선과 현의 성질로 ∠PTA=∠PBT이고 ∠P가 공통이어서 △PTA∽△PBT이다. PA:PT=TA:TB=6:8=3:4에서 PA=6, PT:PB=3:4에서 PB=32/3이다. 따라서 AB=PB−PA=14/3이고 정답은 ①이다."
+    "solutionImageCaption": "접선과 현의 성질로 ∠PTA=∠PBT이고 ∠P가 공통이어서 △PTA∽△PBT이다. PA:PT=TA:TB=6:8=3:4에서 PA=6, PT:PB=3:4에서 PB=32/3이다. 따라서 AB=PB−PA=14/3이고 정답은 ①이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -434,7 +533,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 지름을 포함하는 선분 AC와 B에서의 접선 BC. 원주각 ∠ADB=55°, 같은 호의 중심각 ∠AOB=110°, ∠BOC=70°가 표시되고 직각삼각형 OBC가 주황으로 칠해져 있으며 ∠BCO는 x이다.",
-    "solutionImageCaption": "∠AOB=2×55°=110°이므로 ∠BOC=70°이고 OB⊥BC인 삼각형 OBC에서 x=180°−90°−70°=20° (정답 ③)"
+    "solutionImageCaption": "∠AOB=2×55°=110°이므로 ∠BOC=70°이고 OB⊥BC인 삼각형 OBC에서 x=180°−90°−70°=20° (정답 ③)",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -469,7 +577,16 @@ window.questionBank=[
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 마라톤 참가자 나이 줄기와 잎 그림. 작은 쪽 9번째 잎(줄기 2의 4)에 동그라미와 번호 9가 있어 앞에 8개, 뒤에 8개가 있음을 보인다.",
     "solutionImageCaption": "자료가 17개이므로 중앙값은 작은 쪽 9번째 값이고 24세이다. 정답은 ②이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -499,7 +616,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": ["CC_LINEAR_INEQUALITIES"],
+    "conditionKeys": ["COND_INTEGER"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -530,7 +656,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 16,
@@ -560,7 +695,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_CENTRAL_TENDENCY"],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -590,7 +734,16 @@ window.questionBank=[
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -621,13 +774,22 @@ window.questionBank=[
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18.png",
     "imageSize": "tall",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 국어 점수(가로)와 영어 점수(세로)의 산점도 20개 점에 대각선 y=x를 점선으로 그린 그림. 선 위의 6개 점 (50,50), (60,60), (70,70), (80,80), (90,90), (100,100)을 주황색으로 강조했다.",
     "solutionImageCaption": "국어 점수와 영어 점수가 같은 학생은 직선 y=x 위의 주황색 점 6명이므로 6/20×100=30%이다. 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 19,
@@ -652,13 +814,22 @@ window.questionBank=[
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q19.png",
     "imageSize": "tall",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 음의 상관관계의 예시 산점도 두 개. ④는 점들이 내려가는 한 직선 주위에 좁게 모여 있고 ⑤는 더 넓게 퍼져 있으며 둘 다 오른쪽 아래로 향하는 화살표가 있다.",
     "solutionImageCaption": "예시: ④와 ⑤는 모두 x가 커질수록 y가 작아지는 음의 상관관계이다. ④는 점들이 오른쪽 아래 방향의 한 직선 주변에 가장 좁게 모여 있고 ⑤는 더 넓게 흩어져 있다. 따라서 가장 강한 음의 상관관계가 있는 것은 ④이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -686,9 +857,18 @@ window.questionBank=[
     "answer": "④",
     "solution": "① 고도가 높아질수록 산소량은 대체로 감소한다.\n② 스마트폰 사용 시간이 길수록 수면 시간은 대체로 감소한다.\n③ 산이 높을수록 정상의 기온은 대체로 낮아진다.\n⑤ 흡연량이 많을수록 기대 수명은 대체로 감소한다.\n이 네 경우는 음의 상관관계이다.\n반면 ④는 전기 사용량이 많아질수록 전기 요금도 대체로 증가하므로 양의 상관관계이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -719,7 +899,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 네 점 A, B, C, D를 지나는 원과 점 P에서 만나는 두 할선 PAD, PBC, 두 현의 교점 E, ∠ACB=23°, ∠E=83°, 호 AB=46°(파랑), 호 DC=120°(주황), ∠x를 나타낸 그림.",
-    "solutionImageCaption": "∠ACB=23°는 호 AB를 보는 원주각이므로 호 AB=46°이다. 두 현 AC, BD가 E에서 만나므로 83°=½(호 AB+호 DC)에서 호 DC=120°이다. P에서 두 할선이 만나므로 ∠x=½(호 DC−호 AB)=½(120°−46°)=37°이다."
+    "solutionImageCaption": "∠ACB=23°는 호 AB를 보는 원주각이므로 호 AB=46°이다. 두 현 AC, BD가 E에서 만나므로 83°=½(호 AB+호 DC)에서 호 DC=120°이다. P에서 두 할선이 만나므로 ∠x=½(호 DC−호 AB)=½(120°−46°)=37°이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -750,7 +939,16 @@ window.questionBank=[
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에서 두 현 AC와 BD가 점 P에서 만난다. 호 AB는 40도, 호 CD는 72도로 서로 다른 색이고 각 DPC는 x이다.",
-    "solutionImageCaption": "호 AB는 원주의 1/9이므로 40°이고 호 AB:호 CD=5:9에서 호 CD=72°이다. x=(40°+72°)÷2=56°이다."
+    "solutionImageCaption": "호 AB는 원주의 1/9이므로 40°이고 호 AB:호 CD=5:9에서 호 CD=72°이다. x=(40°+72°)÷2=56°이다.",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -779,7 +977,16 @@ window.questionBank=[
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 학생 A와 B의 4회 쪽지 시험 점수를 각각 점도표로 나타낸 그림. 두 점도표 모두 평균 8에 점선이 있고 각 점 위에 평균과의 차가 쓰여 있다. A는 −2, +1, 0, +1이고 B는 −1, +2, +1, −2이다.",
     "solutionImageCaption": "점 하나가 시험 한 번이다. 두 학생의 평균은 모두 8이고 그림의 숫자는 점수에서 평균 8을 뺀 편차이다. A의 편차의 제곱은 4, 1, 0, 1로 합이 6이고, B는 1, 4, 1, 4로 합이 10이다. 분산은 편차의 제곱의 합을 4로 나눈 값이다. 분산이 작을수록 점수가 평균 주변에 고르게 모여 있어 A가 더 고르다. 따라서 A의 분산은 3/2, B의 분산은 5/2이고 점수가 더 고른 학생은 A이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -804,12 +1011,21 @@ window.questionBank=[
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q24.png",
     "imageSize": "tall",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnit": "상관관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_풍덕중_2학기_기말_중3_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 차량 15대의 속력과 제동 거리 산점도. 점이 왼쪽 아래에서 오른쪽 위로 올라간다.",
     "solutionImageCaption": "그림에서 읽은 점 15개이다(값은 눈금에서 읽은 근삿값). 점들이 왼쪽 아래에서 오른쪽 위로 퍼져 있어 속력이 커질수록 제동 거리도 대체로 커진다. 따라서 차량 속력과 제동 거리 사이에는 양의 상관관계가 있다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
