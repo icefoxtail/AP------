@@ -281,11 +281,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$DE\\perp AB$이므로 $\\triangle BDE$에서\n$\\angle B+x=90^\\circ$이다.\n또 $\\angle C=90^\\circ$이므로 $\\triangle ABC$에서\n$\\angle B+\\angle A=90^\\circ$이다.\n따라서 $x=\\angle A$이다.\n$AB=\\sqrt{6^2+3^2}=3\\sqrt5$이므로\n$\\sin x=\\sin A=\\dfrac6{3\\sqrt5}=\\dfrac{2\\sqrt5}{5}$,\n$\\tan x=\\tan A=\\dfrac63=2$이다.\n따라서\n$\\sin x\\tan x=\\dfrac{2\\sqrt5}{5}\\times2=\\dfrac{4\\sqrt5}{5}$이다.\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q9-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에 BC=6 cm, AC=3 cm를 표시한다. BC 위 D에서 AB에 내린 수선 DE와 두 같은 파란 각 x, ∠BAC를 보인다.",
+    "solutionImageCaption": "AB=3√5 cm이고 x=∠A이다. sin x=2√5/5, tan x=2이므로 sin x·tan x=4√5/5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -314,11 +317,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$CD\\perp AB$이므로 $\\triangle ACD$에서\n$\\angle A+x=90^\\circ$이다.\n또 $\\triangle ABC$에서\n$\\angle A+\\angle B=90^\\circ$이므로 $x=\\angle B$이다.\n같은 방법으로 $y=\\angle A$이다.\n$AB=\\sqrt{6^2+12^2}=6\\sqrt5$이므로\n$\\sin x=\\dfrac{AC}{AB}=\\dfrac{\\sqrt5}{5}$,\n$\\sin y=\\dfrac{BC}{AB}=\\dfrac{2\\sqrt5}{5}$이다.\n따라서\n$\\sin x+\\sin y=\\dfrac{3\\sqrt5}{5}$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q10-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 빗변 AB의 높이 CD. 파란색 x=∠ABC, 주황색 y=∠BAC를 대응시킨다. AC=6 cm, BC=12 cm.",
+    "solutionImageCaption": "AB=6√5 cm이다. sin x=√5/5, sin y=2√5/5이므로 sin x+sin y=3√5/5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -377,11 +383,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$AD\\perp BC$이므로 두 삼각형 $ABD$, $ACD$는 모두 직각삼각형이다.\nㄱ. $\\angle ABD=45^\\circ$이므로 $\\triangle ABD$의 나머지 예각도 $45^\\circ$이다. 따라서 직각이등변삼각형이고 $BD=AD=5$이다.\n\nㄴ. $\\tan30^\\circ=\\dfrac{AD}{DC}$이므로\n$\\dfrac{\\sqrt3}{3}=\\dfrac5{DC}$\n$DC=5\\sqrt3$이다.\n따라서 $BC=BD+DC=5+5\\sqrt3$이다.\n\nㄷ. $\\sin30^\\circ=\\dfrac{AD}{AC}$이므로\n$\\dfrac12=\\dfrac5{AC}$\n$AC=10$이다. 따라서 ㄷ은 옳지 않다.\n\nㄹ. 삼각형 $ABC$의 넓이는\n$\\dfrac12\\times BC\\times AD$\n$=\\dfrac12\\times(5+5\\sqrt3)\\times5$\n$=\\dfrac{25(1+\\sqrt3)}2$이다. 따라서 ㄹ은 옳지 않다.\n그러므로 옳은 것은 ㄱ, ㄴ이고 정답은 ①이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q12-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD는 BC에 수직이다. AD와 BD에 파란 한 눈금, 두 45° 각에 주황 표시를 하고 오른쪽 직각삼각형 ACD에 30°, DC=5√3 cm, AC=10 cm를 표시한다.",
+    "solutionImageCaption": "BD=AD=5 cm이고 DC=5√3 cm이므로 BC=5+5√3 cm이다. AC=10 cm이다. 넓이는 1/2×(5+5√3)×5=25(1+√3)/2 cm²이므로 옳은 것은 ㄱ, ㄴ이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -539,11 +548,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "ㄱ에서 밑변을 $6$으로 잡으면 높이는\n$5\\sin60^\\circ=\\dfrac{5\\sqrt3}{2}$이다.\n따라서 넓이는\n$\\dfrac12\\times6\\times\\dfrac{5\\sqrt3}{2}=\\dfrac{15\\sqrt3}{2}$이다.\n\nㄴ에서 $135^\\circ$와 이웃한 예각은 $45^\\circ$이다.\n밑변을 $3$으로 잡으면 높이는\n$2\\sqrt2\\sin45^\\circ=2$이다.\n따라서 넓이는\n$\\dfrac12\\times3\\times2=3$이다.\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q17-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 밑변 6 cm인 ㄱ의 높이는 안쪽에, 밑변 3 cm인 ㄴ의 높이는 바깥쪽에 점선으로 내렸다. 두 수선의 발에 직각 표시가 있다.",
+    "solutionImageCaption": "ㄱ의 넓이는 ½×6×5√3/2=15√3/2, ㄴ의 넓이는 ½×3×2=3이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -572,11 +584,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직각삼각형 $ABC$에서 $AC=150\\,\\mathrm{m}$이고 $\\angle C=30^\\circ$이다.\n$\\tan30^\\circ=\\dfrac{AB}{AC}$이므로\n$\\dfrac{\\sqrt3}{3}=\\dfrac{AB}{150}$이다.\n따라서\n$AB=150\\times\\dfrac{\\sqrt3}{3}=50\\sqrt3\\,\\mathrm{m}$이다.\n따라서 정답은 ③이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q18-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: AC=150m, ∠C=30°와 직각 A를 표시한 삼각형이다. AB는 값 없이 남긴다.",
+    "solutionImageCaption": "AB=150tan30°=50√3m이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -705,11 +720,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "원래 윗변 $DC$와 회전된 변 $B'C'$의 교점을 $X$라 하자. 겹치는 부분은 사각형 $ADXB'$이다.\n$AB'=3$이고 $\\angle BAB'=30^\\circ$이므로 $B'$에서 $AD$까지의 거리는\n$3\\cos30^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n따라서\n$[\\triangle ADB']=\\dfrac12\\times3\\times\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n또 $B'$의 높이는\n$3\\sin30^\\circ=\\dfrac32$이므로 $B'$에서 $DC$까지의 거리는\n$3-\\dfrac32=\\dfrac32$이다.\n$B'C'$는 $DC$와 $60^\\circ$의 예각을 이루므로 $B'$에서 $X$까지의 수평거리는\n$\\dfrac{\\frac{3}{2}}{\\tan60^\\circ}=\\dfrac{\\sqrt3}{2}$이다.\n따라서\n$DX=\\dfrac{3\\sqrt3}{2}-\\dfrac{\\sqrt3}{2}=\\sqrt3$이고\n$[\\triangle DB'X]=\\dfrac12\\times\\sqrt3\\times\\dfrac32=\\dfrac{3\\sqrt3}{4}$이다.\n그러므로 겹치는 넓이는\n$\\dfrac{9\\sqrt3}{4}+\\dfrac{3\\sqrt3}{4}=3\\sqrt3$이다.\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q22-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 변 3cm인 정사각형을 A를 중심으로 30° 돌린 뒤 겹친 사각형 A-D-X-B′를 주황색으로 표시한다. B′에서 원래 변에 내린 두 수선도 함께 보인다.",
+    "solutionImageCaption": "DX=√3cm이다. B′에서 AD와 DC에 내린 수선의 길이는 각각 3√3/2cm, 3/2cm이다. 두 직각삼각형의 넓이는 9√3/4와 3√3/4이므로 겹친 넓이는 3√3cm²이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -757,11 +775,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$2\\sqrt{13}$",
     "solution": "$AB=8$은 빗변이고 $\\angle A=60^\\circ$이므로\n$AC=8\\cos60^\\circ=4$,\n$BC=8\\sin60^\\circ=4\\sqrt3$이다.\n$D$는 $AC$의 중점이므로\n$CD=\\dfrac{AC}{2}=2$이다.\n직각삼각형 $BCD$에서 피타고라스 정리를 이용하면\n$BD^2=BC^2+CD^2$\n$=(4\\sqrt3)^2+2^2=52$이다.\n따라서\n$BD=\\sqrt{52}=2\\sqrt{13}$이다.\n따라서 구하는 길이는 $2\\sqrt{13}$이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q24-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: D가 AC의 중점인 직각삼각형. AB=8cm, ∠A=60°, C 직각, AD=DC의 같은 눈금과 BD=x를 표시한다.",
+    "solutionImageCaption": "AC=ABcos60°=4cm이므로 CD=2cm이다. 직각삼각형 BCD에서 BD=√((4√3)²+2²)=2√13cm이다. 답: 2√13.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -785,10 +806,13 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$",
     "solution": "직각삼각형 $ADE$에서 $AE=3$, $\\angle E=45^\\circ$이므로\n$AD=AE\\sin45^\\circ$\n$=3\\times\\dfrac{\\sqrt2}{2}=\\dfrac{3\\sqrt2}{2}$이다.\n직각삼각형 $ABC$에서 $\\angle C=60^\\circ$이므로\n$\\angle A=30^\\circ$이다.\n그림에서 $D$는 $AB$ 위에 있고 $F$는 $AC$와 $DE$의 교점이므로\n$\\angle DAF=30^\\circ$이다.\n직각삼각형 $ADF$에서\n$DF=AD\\tan30^\\circ$\n$=\\dfrac{3\\sqrt2}{2}\\times\\dfrac{\\sqrt3}{3}=\\dfrac{\\sqrt6}{2}$이다.\n따라서\n$[\\triangle ADF]=\\dfrac12\\times AD\\times DF$\n$=\\dfrac12\\times\\dfrac{3\\sqrt2}{2}\\times\\dfrac{\\sqrt6}{2}$\n$=\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $\\dfrac{3\\sqrt3}{4}\\,\\mathrm{cm}^2$이다.",
-    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q25-solution-v2.svg",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 ADE가 겹치며, 겹친 삼각형 ADF를 주황색으로 채우고 AD·DF와 45°·60°를 표시한다.",
+    "solutionImageCaption": "AD=3√2/2cm이고 직각삼각형 ADF에서 DF=ADtan30°=√6/2cm이다. 따라서 [△ADF]=½·AD·DF=3√3/4cm²이다. 답: 3√3/4cm².",
+    "solutionImageSize": "full"
   }
 ];
