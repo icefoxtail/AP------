@@ -8781,7 +8781,7 @@
           "sha256": "82d0f8eabba75547fc79d79afeb226717742fe83c1e02c6af74173e5ee5f08a2"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
       "noncanonicalHistoricalLevelOrdinals": [
         5,
@@ -8790,7 +8790,8 @@
         12,
         15,
         17
-      ]
+      ],
+      "remoteCommit": "27a6d3375f6be14149a7ed539a829d9b621f29c1"
     },
     {
       "examId": "E058",
@@ -8830,12 +8831,117 @@
         24,
         25
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE",
       "existing4slotPath": "archive/data/item-4slot/original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.4slot.json",
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "6ffde01ef719e3ccc7ae75ab40ad3cf2ee80161113236b32e100ea275a308270"
+      "uidSetSha256": "6ffde01ef719e3ccc7ae75ab40ad3cf2ee80161113236b32e100ea275a308270",
+      "reviewedQuestionCount": 25,
+      "fullyJudgedQuestionCount": 25,
+      "registrationPendingQuestionCount": 25,
+      "unresolvedQuestionCount": 0,
+      "unresolvedOrdinals": [],
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        25
+      ],
+      "changedQuestionCount": 25,
+      "fourSlotQuestionCount": 25,
+      "independentSampleOrdinals": [
+        3,
+        22,
+        24
+      ],
+      "independentReviewer": "ROOT",
+      "topicSummary": [
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            22
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "평행선 사이의 선분의 길이의 비",
+          "ordinals": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "삼각형의 무게중심",
+          "ordinals": [
+            10,
+            11,
+            23
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "피타고라스 정리",
+          "ordinals": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            24
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "경우의 수",
+          "ordinals": [
+            18,
+            19
+          ]
+        },
+        {
+          "rpmL1": "확률",
+          "rpmL2": "확률",
+          "ordinals": [
+            20,
+            21,
+            25
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/four-slot.json",
+          "sha256": "db12c228132b3e907d2b95e4ad8032beda170d150343257ba504b66167383fcd"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/independent-sample.json",
+          "sha256": "f547b127f25d1ee5a8aa86c87e8aa4e1d63d675c1578eaca686aca5eeb39779e"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/mechanical-check.json",
+          "sha256": "82e153f7d6bacc748ac599ea43264069b8b10df1018a0f1229949a865a00d428"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/review.json",
+          "sha256": "9e408cc29001c8ac306980b67f9e145febc335d6a6471561cbf0f3c709e47d2b"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/root-acceptance.json",
+          "sha256": "9ad6de2e8cd914379876255abd3c52c94fcc1b9557624447756b136e3b0d1a70"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E059",
@@ -9334,14 +9440,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 58,
-    "reviewedQuestions": 1388,
-    "fullyJudgedQuestions": 1361,
+    "reviewedExams": 59,
+    "reviewedQuestions": 1413,
+    "fullyJudgedQuestions": 1386,
     "unresolvedQuestions": 27,
-    "remainingExams": 9,
-    "remainingQuestions": 216
+    "remainingExams": 8,
+    "remainingQuestions": 191
   },
-  "lastVerifiedExamCommit": "b622f3e6523ee26ff4229403585c067d94840265",
+  "lastVerifiedExamCommit": "27a6d3375f6be14149a7ed539a829d9b621f29c1",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
