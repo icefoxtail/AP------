@@ -628,7 +628,11 @@ window.questionBank = [
       "subConcept": "그래프의 모양",
       "conditionsUsed": "계수 절댓값을 비교한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 색 대응은 파랑 y=−3x², 보라 y=−x²/3, 주황 y=x², 초록 y=2x², 분홍 y=5x²/2이다. 한 좌표계에서 같은 높이의 수평 점선을 비교한다.",
+    "solutionImageCaption": "파랑 y=−3x², 보라 y=−x²/3, 주황 y=x², 초록 y=2x², 분홍 y=5x²/2. 같은 높이에서 |a|가 큰 그래프일수록 폭이 좁다. 가장 좁은 것은 y=−3x².",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -685,7 +689,11 @@ window.questionBank = [
       "subConcept": "그래프의 모양",
       "conditionsUsed": "포물선의 축·꼭짓점·방향·폭·대칭 성질을 다섯 문장에 적용한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통 꼭짓점 O를 갖는 파란 아래쪽 포물선 y=−3x²와 주황 위쪽 포물선 y=7x²/2를 같은 좌표축에 표시한다.",
+    "solutionImageCaption": "두 그래프는 y축 대칭이고 꼭짓점은 O이다. |−3|<7/2이므로 y=−3x²가 더 넓다. 옳은 것은 ㄴ, ㄷ이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -742,7 +750,11 @@ window.questionBank = [
       "subConcept": "그래프의 모양",
       "conditionsUsed": "대칭 변환 후 한 점의 함숫값을 계산한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: y=3x²와 x축 대칭인 y=−3x², 그리고 x=−2에서 반사된 점의 위치를 보인다.",
+    "solutionImageCaption": "대칭된 함수는 y=−3x²이므로 k=−3(−2)²=−12이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -799,7 +811,11 @@ window.questionBank = [
       "subConcept": "평행이동",
       "conditionsUsed": "평행이동의 부호를 정한 뒤 두 이동량을 더한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선의 꼭짓점은 원점에 있고, 주황 평행이동 포물선의 꼭짓점은 원점에서 왼쪽 아래로 옮겨져 있다.",
+    "solutionImageCaption": "원래 그래프를 왼쪽으로 1, 아래로 2만큼 이동했다. 따라서 m+n=−3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -856,7 +872,11 @@ window.questionBank = [
       "subConcept": "꼭짓점·축",
       "conditionsUsed": "꼭짓점형의 축·꼭짓점·폭·변환을 판별한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: y=−x²와 y=−(x−1)²+4를 서로 다른 색으로 표시하고 두 꼭짓점 위치를 잇는다.",
+    "solutionImageCaption": "y=−x²의 그래프를 오른쪽으로 1, 위로 4만큼 옮기면 주어진 그래프와 겹친다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -914,7 +934,11 @@ window.questionBank = [
       "subConcept": "완전제곱식 변형",
       "conditionsUsed": "완전제곱식 변형 후 꼭짓점을 읽는다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 최솟값 위치를 점으로 표시하며 좌표는 그림에 적지 않는다.",
+    "solutionImageCaption": "y=½(x−2)²+1이므로 꼭짓점은 (2,1)이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1088,7 +1112,11 @@ window.questionBank = [
       "subConcept": "조건으로 식 구하기",
       "conditionsUsed": "대칭축과 꼭짓점으로 식을 복원하고 계수 조합을 계산한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 같은 높이 점 (−2,1),(4,1), 대칭축 x=1, 꼭짓점 (1,−17)을 표시한다.",
+    "solutionImageCaption": "y=2(x−1)²−17=2x²−4x−15이므로 p=2, q=−4, r=−15이다. p−q+r=−9. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1147,7 +1175,11 @@ window.questionBank = [
       "subConcept": "평행이동",
       "conditionsUsed": "수평이동 조건을 풀고 평행사변형의 좌표·넓이를 계산한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 이동 포물선, 두 꼭짓점과 공통 y절편으로 만든 연두색 평행사변형 ABCD.",
+    "solutionImageCaption": "BC=4이고 두 평행한 변 사이의 높이는 2이다. 평행사변형 ABCD의 넓이는 8. 정답 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1249,7 +1281,11 @@ window.questionBank = [
       "subConcept": "길이·넓이",
       "conditionsUsed": "도형을 변수식으로 모델링하고 이차방정식 두 근 중 부등식 조건으로 하나를 고른다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 철판의 전체 폭은 50 cm이다. 양 끝의 같은 길이를 주황 눈금으로 표시했다. 양쪽을 세우고 나면 파란 직사각형 단면의 높이는 x cm, 아래쪽 폭은 50−2x cm가 된다.",
+    "solutionImageCaption": "단면의 넓이는 x(50−2x)=200이다. x는 5 또는 20이고, 가로가 세로보다 길다는 조건을 만족하는 x는 5 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1301,7 +1337,11 @@ window.questionBank = [
       "subConcept": "완전제곱식 변형",
       "conditionsUsed": "완전제곱식·절편·대칭점을 구해 그래프를 구성한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 이차함수의 넓게 그린 위로 열린 포물선과 y축 교점을 나타낸다.",
+    "solutionImageCaption": "y=2(x−2)²−5, 꼭짓점 (2,−5), 축 x=2, y절편 (0,3).",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1353,6 +1393,10 @@ window.questionBank = [
       "subConcept": "점의 좌표",
       "conditionsUsed": "꼭짓점과 y절편을 좌표로 읽고 밑변·높이를 정해 넓이를 계산한다.",
       "integrationPatternExplanation": "M3 RPM classification is recorded separately from PT/TPL active binding; no unbound mapping is asserted."
-    }
+    },
+    "solutionImage": "assets/images/23_연향중_1학기_기말_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 포물선의 꼭짓점 A와 y절편 B, 원점 O를 이은 주황 삼각형이다. A에서 y축에 그은 수평선이 삼각형의 높이이다.",
+    "solutionImageCaption": "A=(1,3), B=(0,4)이므로 밑변 BO=4, 수평 높이 AH=1이다. 삼각형의 넓이는 (1/2)·4·1=2이다.",
+    "solutionImageSize": "full"
   }
 ];
