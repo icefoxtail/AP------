@@ -130,10 +130,10 @@
     "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
   },
   {
-    "type": "NEW_TPL_PROPOSAL",
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
     "nameKo": "편차합에서 누락 변량 복원",
     "reuseDefinition": "편차들의 합이 0임을 이용해 누락 편차를 구하고 알려진 평균과 합하여 변량을 복원한다.",
-    "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "parentProblemTypeKey": null,
     "distinguishingCriterion": "기존 unknown-deviation TPL은 이어 표준편차까지 요구한다. 여기서는 원자료 값 복원이 목표다.",
     "supportingQuestionUids": [
       "qid_v1_07791f58bce33236f7b00f9d3e81cfd5f502ec14c65800c43b062c581c1711e8"
@@ -143,7 +143,28 @@
       "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
       "exactFitFound": false
     },
-    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "proposedParentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProposal": {
+      "proposedKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "definition": "유한 자료의 평균·중앙값·편차·분산·순서 조건에서 미지 변량 또는 합·제곱합을 추론하고 변경 자료의 통계량을 구한다.",
+      "internalSkeleton": "자료의 위치·합·편차제곱 조건을 수식화하여 결합한다.",
+      "reuseRef": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+      "reuseRefSha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+      "reuseProposalId": "B-E008-REUSE-CANDIDATE-PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY",
+      "originalAuthorReferenceSha256": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7",
+      "reuseRefCommit": "c45b169eb007dcac08e8368bdeff1ec1b5ef60e4"
+    },
+    "templateProposal": {
+      "nameKo": "편차합에서 누락 변량 복원",
+      "reuseDefinition": "편차들의 합이 0임을 이용해 누락 편차를 구하고 알려진 평균과 합하여 변량을 복원한다.",
+      "distinguishingCriterion": "기존 unknown-deviation TPL은 이어 표준편차까지 요구한다. 여기서는 원자료 값 복원이 목표다.",
+      "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY"
+    },
+    "existingParentRejected": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "existingParentDefinition": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다."
   },
   {
     "type": "REUSE_ACTIVE_ADD_CROSSWALK",
@@ -213,10 +234,10 @@
     "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
   },
   {
-    "type": "NEW_TPL_PROPOSAL",
+    "type": "NEW_PT_AND_TPL_PROPOSAL",
     "nameKo": "문자 자료의 분산에서 평균 역산",
     "reuseDefinition": "문자 자료의 평균식을 구해 편차 제곱합을 세우고 지정 분산에서 매개변수를 결정하여 평균을 구한다.",
-    "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "parentProblemTypeKey": null,
     "distinguishingCriterion": "미지 편차 하나를 합0으로 찾는 TPL과 달리 평균 자체가 매개변수에 의존하며 분산식의 이차근과 부호 조건을 사용한다.",
     "supportingQuestionUids": [
       "qid_v1_fb0a2cfd59df99eef301f4aafeedb083622ebb7e002903b6eabad727db75af72"
@@ -226,6 +247,27 @@
       "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
       "exactFitFound": false
     },
-    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "proposedParentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProposal": {
+      "proposedKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "definition": "유한 자료의 평균·중앙값·편차·분산·순서 조건에서 미지 변량 또는 합·제곱합을 추론하고 변경 자료의 통계량을 구한다.",
+      "internalSkeleton": "자료의 위치·합·편차제곱 조건을 수식화하여 결합한다.",
+      "reuseRef": "docs/operations/m3-s2-meta-full-20261114/exams/E008.proposals.json",
+      "reuseRefSha256": "dbf79ccd8604593df595220c1e49436213126b2949efebad08d094574fa7bc67",
+      "reuseProposalId": "B-E008-REUSE-CANDIDATE-PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY",
+      "originalAuthorReferenceSha256": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7",
+      "reuseRefCommit": "c45b169eb007dcac08e8368bdeff1ec1b5ef60e4"
+    },
+    "templateProposal": {
+      "nameKo": "문자 자료의 분산에서 평균 역산",
+      "reuseDefinition": "문자 자료의 평균식을 구해 편차 제곱합을 세우고 지정 분산에서 매개변수를 결정하여 평균을 구한다.",
+      "distinguishingCriterion": "미지 편차 하나를 합0으로 찾는 TPL과 달리 평균 자체가 매개변수에 의존하며 분산식의 이차근과 부호 조건을 사용한다.",
+      "parentCandidateKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+      "status": "UNREGISTERED_PROPOSAL_ONLY"
+    },
+    "existingParentRejected": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "existingParentDefinition": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다."
   }
 ]

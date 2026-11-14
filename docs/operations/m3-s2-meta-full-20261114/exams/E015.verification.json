@@ -7,10 +7,10 @@
     "sourcePath": "archive/exams/original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
     "baselineBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
     "baselineSha256": "79dff37cb74bcceb90833e1a265c8e958848ea035814d2f8ba254bf514c9655c",
-    "sourceAfterSha256": "9b665bf39de2f499ed9c686f839449a0b48ae7bc97b58a7e65348125e1f84f9c",
+    "sourceAfterSha256": "e35c501b8f3133a5fedaceacea97163303557520ac32c41cf0a6746d9c92eb62",
     "questionCount": 23,
     "uidDigest": "0d61ebe8601281508aaad12f4a0eb7ff61dbf88535690a36e13c42c414e561f4",
-    "patchSha256": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3",
+    "patchSha256": "dd32377e392752d7cf947d05abef3e23f80308c4b5c58f154ab1a6c669bd642d",
     "metadataChangedQuestions": 23,
     "metadataChangedFieldCount": 198,
     "changedFields": [
@@ -32,7 +32,7 @@
     "QBODY_QFULL": "PASS",
     "studentPayloadDigest": "ee138c8856a42ffefdb3b3c67999ccb6ff6e057505332260d3c5993f1210a769",
     "write": true,
-    "sourceAfterBlob": "2652fba7e7967dc8da54bb37886b63c7a26174e7"
+    "sourceAfterBlob": "f493101a2c852fda7c50eebc12218f9e9aed3d8c"
   },
   "registry": {
     "status": "ACTIVE",
@@ -307,12 +307,13 @@
       ],
       "activeValidationStatus": "FAIL",
       "activeValidationErrors": [
-        "ADVANCED_META_FIELD_MISSING:templateKey"
+        "ADVANCED_META_FIELD_MISSING:templateKey",
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey"
       ],
       "bindingLookupCurriculum": "2015",
       "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
-      "activeBinding": true,
-      "activePT": true,
+      "activeBinding": false,
+      "activePT": false,
       "activeTPL": false,
       "masterTagErrors": []
     },
@@ -429,12 +430,13 @@
       ],
       "activeValidationStatus": "FAIL",
       "activeValidationErrors": [
-        "ADVANCED_META_FIELD_MISSING:templateKey"
+        "ADVANCED_META_FIELD_MISSING:templateKey",
+        "ADVANCED_META_FIELD_TYPE_INVALID:problemTypeKey"
       ],
       "bindingLookupCurriculum": "2015",
       "bindingLookupPolicy": "EXISTING_VALIDATOR_SOURCE_PATH_INFERENCE_NOT_ORIGINAL_CURRICULUM_ATTESTATION",
-      "activeBinding": true,
-      "activePT": true,
+      "activeBinding": false,
+      "activePT": false,
       "activeTPL": false,
       "masterTagErrors": []
     }
@@ -480,7 +482,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.source-patch.json",
-      "sha256": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3"
+      "sha256": "dd32377e392752d7cf947d05abef3e23f80308c4b5c58f154ab1a6c669bd642d"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot.json",
@@ -488,7 +490,7 @@
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.proposals.json",
-      "sha256": "bd669cd9573ef66d1a5ad768fdeaf4a24a125725d693bd504430884cffe461ad"
+      "sha256": "07c0264d3dac9a31a4fe8557ea3d05e6fdfc7c99668853709b7da85a07d5a674"
     },
     "4slot-reuse-evidence.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot-reuse-evidence.json",
@@ -501,14 +503,24 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.difficulty-adjudication.json",
       "sha256": "4bac0dc4710b238ac007b658b13eb15ef6686adc57d379ec0f7c1800b4bd673f"
+    },
+    "semanticAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.semantic-amendment.json",
+      "sha256": "d85e2f9b70e97db96a1309fddb98e3c1879d3b1fd8c9a420284a4b96b11d5c6b"
     }
   },
-  "packagedMetadataSha256": "ccc8d63bd1deaeee12138321734cebc5e07a792640c238b80864a4f2c1c206c5",
+  "packagedMetadataSha256": "04e8834d7f9f576c4726b280b01753fe806eb2c6312226ae786ae059195a6ad0",
   "sourcePayloadReuse": {
     "basis": "All non-metadata fields compared exactly by VM values; QBODY and QFULL additionally unchanged",
     "evidenceSourceBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
-    "metadataOnlySourceBlob": "2652fba7e7967dc8da54bb37886b63c7a26174e7",
+    "metadataOnlySourceBlob": "f493101a2c852fda7c50eebc12218f9e9aed3d8c",
     "sameStudentContent": true,
     "sameFourSlotArtifact": true
-  }
+  },
+  "rootAdjudicationRefs": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.semantic-amendment.json",
+      "sha256": "d85e2f9b70e97db96a1309fddb98e3c1879d3b1fd8c9a420284a4b96b11d5c6b"
+    }
+  ]
 }

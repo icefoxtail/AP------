@@ -8,8 +8,8 @@
   "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
   "baselineMain": "0f638ef02303919e82136e4671d0f9f70db436b1",
   "sourceBeforeBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
-  "sourceAfterBlob": "2652fba7e7967dc8da54bb37886b63c7a26174e7",
-  "sourceAfterSha256": "9b665bf39de2f499ed9c686f839449a0b48ae7bc97b58a7e65348125e1f84f9c",
+  "sourceAfterBlob": "f493101a2c852fda7c50eebc12218f9e9aed3d8c",
+  "sourceAfterSha256": "e35c501b8f3133a5fedaceacea97163303557520ac32c41cf0a6746d9c92eb62",
   "questionCount": 23,
   "uidDigest": "0d61ebe8601281508aaad12f4a0eb7ff61dbf88535690a36e13c42c414e561f4",
   "authorRawReviewSha256": "5ba2e8b2c1a7462d28f1b20b2cd5a89fec7c053b8a096ad3221fbe84ae556d34",
@@ -26,7 +26,7 @@
   "artifactRefs": {
     "sourcePatch": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.source-patch.json",
-      "sha256": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3"
+      "sha256": "dd32377e392752d7cf947d05abef3e23f80308c4b5c58f154ab1a6c669bd642d"
     },
     "fourSlot": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot.json",
@@ -34,7 +34,7 @@
     },
     "proposals": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.proposals.json",
-      "sha256": "bd669cd9573ef66d1a5ad768fdeaf4a24a125725d693bd504430884cffe461ad"
+      "sha256": "07c0264d3dac9a31a4fe8557ea3d05e6fdfc7c99668853709b7da85a07d5a674"
     },
     "4slot-reuse-evidence.json": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.4slot-reuse-evidence.json",
@@ -47,6 +47,10 @@
     "difficultyAdjudication": {
       "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.difficulty-adjudication.json",
       "sha256": "4bac0dc4710b238ac007b658b13eb15ef6686adc57d379ec0f7c1800b4bd673f"
+    },
+    "semanticAmendment": {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.semantic-amendment.json",
+      "sha256": "d85e2f9b70e97db96a1309fddb98e3c1879d3b1fd8c9a420284a4b96b11d5c6b"
     }
   },
   "items": [
@@ -2181,7 +2185,7 @@
         "standardUnitOrder": 7,
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
-        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "problemTypeKey": null,
         "templateKey": null,
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -2231,15 +2235,15 @@
         "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
         "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
         "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
-        "selectedProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "selectedProblemTypeKey": null,
         "selectedTemplateKey": null,
         "listedCrosswalkTemplate": false,
         "globalActiveSearched": true,
         "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
         "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
         "activeDefinition": null,
-        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
-        "newPTRequired": false,
+        "reuseAssessment": "정확한 ACTIVE 통계 부모가 없다. 기존 편차합0→미지편차→분산/표준편차 골격 전체를 쓰지 않으므로 미등록 통계 제약추론 부모 제안으로 분리한다.",
+        "newPTRequired": true,
         "newTPLRequired": true
       },
       "crossConceptKeys": [],
@@ -2260,7 +2264,8 @@
         "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다."
       },
       "debt": [
-        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요",
+        "정확 ACTIVE PT 부모 범위 공백: 미등록 통계 제약추론 부모 후보와 새 TPL의 공식 등록 대기"
       ],
       "reviewNotes": [],
       "operationalBeforeDelta": {
@@ -3145,7 +3150,7 @@
         "standardUnitOrder": 7,
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
-        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "problemTypeKey": null,
         "templateKey": null,
         "crossConceptKeys": [],
         "conditionKeys": [
@@ -3197,15 +3202,15 @@
         "mode": "READ_ONLY_CROSSWALK_GLOBAL_ACTIVE_LOOKUP",
         "executionStatus": "NOT_ATTEMPTED_NO_NEW_VERIFIED_SOLUTION_ATTESTATION",
         "expectedProjectionStatus": "PROJECTION_UNMATERIALIZED",
-        "selectedProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "selectedProblemTypeKey": null,
         "selectedTemplateKey": null,
         "listedCrosswalkTemplate": false,
         "globalActiveSearched": true,
         "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
         "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
         "activeDefinition": null,
-        "reuseAssessment": "ACTIVE 골격은 있으나 crosswalk 연결 누락; 등록 제안 대상으로 분리",
-        "newPTRequired": false,
+        "reuseAssessment": "정확한 ACTIVE 통계 부모가 없다. 기존 편차합0→미지편차→분산/표준편차 골격 전체를 쓰지 않으므로 미등록 통계 제약추론 부모 제안으로 분리한다.",
+        "newPTRequired": true,
         "newTPLRequired": true
       },
       "crossConceptKeys": [],
@@ -3228,7 +3233,8 @@
         "reviewReason": "원본 JS blob exact 일치. 기존 4칸과 실제 문항·보기·풀이·필요 그림을 읽어 대조했다. 평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다."
       },
       "debt": [
-        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요"
+        "공식 crosswalk/교육과정 binding 또는 해당 세부 골격 연결 보완 필요",
+        "정확 ACTIVE PT 부모 범위 공백: 미등록 통계 제약추론 부모 후보와 새 TPL의 공식 등록 대기"
       ],
       "reviewNotes": [],
       "operationalBeforeDelta": {
@@ -3291,6 +3297,12 @@
   "operationalRegistration": "NOT_RUN_CODEX_RELEASE_OWNER",
   "mainMerge": "NOT_RUN_USER_EXCLUDED",
   "mathR1R2R3": "NOT_RUN_OUT_OF_SCOPE",
-  "semanticPayloadSha256": "16d02ef7cfb39baf98031f13986d4d79c469e250b47f728eada27132616790ed",
-  "independentFinalStatus": "PASS_AFTER_REQUESTED_CORRECTIONS"
+  "semanticPayloadSha256": "fbaffedb44ea251804563925504377412fe18ef72d579ff63ac84cda893e2330",
+  "independentFinalStatus": "PASS_AFTER_REQUESTED_CORRECTIONS",
+  "rootAdjudicationRefs": [
+    {
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E015.semantic-amendment.json",
+      "sha256": "d85e2f9b70e97db96a1309fddb98e3c1879d3b1fd8c9a420284a4b96b11d5c6b"
+    }
+  ]
 }

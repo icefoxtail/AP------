@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "m3-s2-post-review-semantic-amendment-v1",
+  "examId": "E015",
+  "kind": "ACTIVE_STATISTICS_PARENT_SCOPE",
+  "reviewer": "GPT_ROOT_9C9D44BB632B",
+  "previousBranchCommit": "c45b169eb007dcac08e8368bdeff1ec1b5ef60e4",
+  "sourceBeforeAmendmentBlob": "2652fba7e7967dc8da54bb37886b63c7a26174e7",
+  "sourceAfterBlob": "f493101a2c852fda7c50eebc12218f9e9aed3d8c",
+  "sourceBaselineBlob": "7742cda556d8f783ef83d6f4d950b66ec6e2ead8",
+  "originalArtifactHashes": {
+    "metadata": "ccc8d63bd1deaeee12138321734cebc5e07a792640c238b80864a4f2c1c206c5",
+    "verification": "00bd34c2547f930ac724695d9169327b230db0beb3d3574b70d1618359ddaeb4",
+    "sourcePatch": "d81174ecfbb87ca2d03880ddb767705cc638f6f1e574332627efabb48000bab3",
+    "proposals": "bd669cd9573ef66d1a5ad768fdeaf4a24a125725d693bd504430884cffe461ad"
+  },
+  "authorAmendment": {
+    "sha256": "ee26a88a67279c25ff20d9fcbd23cb5858d210e72efffb3a92caf685ce204511",
+    "schemaVersion": "m3-s2-frozen-parent-scope-amendment-v1",
+    "author": "c"
+  },
+  "changes": [
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_07791f58bce33236f7b00f9d3e81cfd5f502ec14c65800c43b062c581c1711e8",
+      "field": "problemTypeKey",
+      "before": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "after": null,
+      "decisiveMethod": "편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다.",
+      "basis": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다.",
+      "sourceValuesChanged": true,
+      "proposedParentKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_fb0a2cfd59df99eef301f4aafeedb083622ebb7e002903b6eabad727db75af72",
+      "field": "problemTypeKey",
+      "before": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "after": null,
+      "decisiveMethod": "평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다.",
+      "basis": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다.",
+      "sourceValuesChanged": true,
+      "proposedParentKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE"
+    }
+  ],
+  "protection": {
+    "allStudentAndOtherNonMetadataValuesUnchanged": true,
+    "fourSlotArtifactUnchanged": true,
+    "independentThreeSampleArtifactUnchanged": true,
+    "historicalLevelAndDifficultyUnchanged": true
+  },
+  "registration": "NOT_RUN_CODEX_RELEASE_OWNER",
+  "newMathematicalVerification": false
+}
