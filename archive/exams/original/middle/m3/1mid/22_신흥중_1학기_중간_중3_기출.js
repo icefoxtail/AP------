@@ -639,7 +639,10 @@ window.questionBank = [
       "$-2\\sqrt{2}$"
     ],
     "answer": "④",
-    "solution": "정사각형의 한 변은 $AB=2-1=1$이다.<br>직각삼각형 $ABC$에 피타고라스 정리를 적용하면<br>$AC^2=AB^2+BC^2=1^2+1^2=2$이다.<br>길이는 양수이므로 $AC=\\sqrt2$이다.<br>그림에서 $P$는 $A$의 왼쪽, $Q$는 오른쪽에 있고 $AP=AQ=\\sqrt2$이므로<br>$a=1-\\sqrt2$, $b=1+\\sqrt2$이다.<br>따라서<br>$a+b=(1-\\sqrt2)+(1+\\sqrt2)=2$이다.<br>정답은 ④이다.<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12_solution_SOURCE_PARITY_REPAIRED_20261013.svg\">",
+    "solution": "정사각형의 한 변은 $AB=2-1=1$이다.<br>직각삼각형 $ABC$에 피타고라스 정리를 적용하면<br>$AC^2=AB^2+BC^2=1^2+1^2=2$이다.<br>길이는 양수이므로 $AC=\\sqrt2$이다.<br>그림에서 $P$는 $A$의 왼쪽, $Q$는 오른쪽에 있고 $AP=AQ=\\sqrt2$이므로<br>$a=1-\\sqrt2$, $b=1+\\sqrt2$이다.<br>따라서<br>$a+b=(1-\\sqrt2)+(1+\\sqrt2)=2$이다.<br>정답은 ④이다.",
+      "solutionImage": "assets/images/22_신흥중_1학기_중간_중3_기출/q12-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 정사각형 대각선 AC와 같은 반지름을 따르는 호가 수직선 위의 P와 Q를 지난다.",
+      "solutionImageSize": "full",
     "sourceQid": 12,
     "sourceMode": "AUDITED_REPAIR",
     "primaryRpmRef": "M3-RPM-005",
@@ -683,7 +686,8 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImageCaption": "AC=√2이고 AP=AQ=AC이다. 따라서 a=1−√2, b=1+√2이므로 a+b=2이다. 정답은 ④이다."
   },
   {
     "id": 13,
@@ -1039,7 +1043,10 @@ window.questionBank = [
       "$34\\sqrt{5}\\text{ cm}$"
     ],
     "answer": "②",
-    "solution": "정사각형의 한 변은 넓이의 양의 제곱근이므로 각각<br>$\\sqrt5$, $\\sqrt{45}=3\\sqrt5$, $\\sqrt{125}=5\\sqrt5\\text{ cm}$이다.<br>세 정사각형의 둘레를 모두 더하면<br>$4(\\sqrt5+3\\sqrt5+5\\sqrt5)=4\\times9\\sqrt5=36\\sqrt5\\text{ cm}$이다.<br>그림에서 밑변이 일직선이므로 공유한 변의 길이는 작은 두 정사각형의 한 변과 같아<br>$\\sqrt5+3\\sqrt5=4\\sqrt5\\text{ cm}$이다.<br>공유한 변은 도형 내부에 있고 앞의 둘레 합에서 두 번씩 세었으므로 두 번 빼야 한다.<br>따라서 구하는 둘레는<br>$36\\sqrt5-2\\times4\\sqrt5=28\\sqrt5\\text{ cm}$이다.<br>정답은 ②이다.<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q19_solution_SHARED_BORDER.svg\">",
+    "solution": "정사각형의 한 변은 넓이의 양의 제곱근이므로 각각<br>$\\sqrt5$, $\\sqrt{45}=3\\sqrt5$, $\\sqrt{125}=5\\sqrt5\\text{ cm}$이다.<br>세 정사각형의 둘레를 모두 더하면<br>$4(\\sqrt5+3\\sqrt5+5\\sqrt5)=4\\times9\\sqrt5=36\\sqrt5\\text{ cm}$이다.<br>그림에서 밑변이 일직선이므로 공유한 변의 길이는 작은 두 정사각형의 한 변과 같아<br>$\\sqrt5+3\\sqrt5=4\\sqrt5\\text{ cm}$이다.<br>공유한 변은 도형 내부에 있고 앞의 둘레 합에서 두 번씩 세었으므로 두 번 빼야 한다.<br>따라서 구하는 둘레는<br>$36\\sqrt5-2\\times4\\sqrt5=28\\sqrt5\\text{ cm}$이다.<br>정답은 ②이다.",
+      "solutionImage": "assets/images/22_신흥중_1학기_중간_중3_기출/q19-solution-v2.svg",
+      "solutionImageAlt": "해설 그림: 파랑·초록·주황 세 정사각형의 내부 공유 변 두 곳을 분홍색으로 표시했다.",
+      "solutionImageSize": "full",
     "sourceQid": 19,
     "sourceMode": "AUDITED_REPAIR",
     "primaryRpmRef": "M3-RPM-009",
@@ -1083,7 +1090,8 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": ["CC_SQUARE"],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "solutionImageCaption": "세 정사각형의 변의 길이는 √5, 3√5, 5√5이다. 전체 둘레 합에서 두 공유 변을 두 번씩 빼면 36√5−2(√5+3√5)=28√5 cm이다. 정답은 ②이다."
   },
   {
     "id": 20,
