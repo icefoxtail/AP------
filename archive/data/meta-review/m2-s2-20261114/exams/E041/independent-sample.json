@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E041",
+  "examiner": "C",
+  "author": "B",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_연향중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "b9bcb6462dcf7464c5cd231a18a9410517452632",
+  "reviewSha256": "0aaf62e6054c85d04ec34127c1f4443d71ee288774780c9e0e31acf0951a5e2e",
+  "fourSlotSha256": "cc42fa813395116840ec662f8cf83d2e7db2d1d473a098abf64b39de50cc4d51",
+  "ordinals": [
+    3,
+    10,
+    14
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e59850cd1471015c82d8e4dbe04b4a11185f97a73b11023d7933de18dc6bdf46",
+      "verdict": "PASS",
+      "reason": "실제 여섯 그림의 직각 표시·빗변·예각을 읽었다. ㄴ/ㅂ은 빗변5와 변4, ㄱ/ㅁ은 빗변4와 보완 예각40/50의 대응이다. 단일 RHS 또는 RHA 적용 골격에 두 조건별 합동쌍 비교 전체를 강제하지 않는 NEW_TPL/RPM 공백 판단을 수용한다. 나머지 예각의 계산은 주방법 내부여서 별도 CC를 붙이지 않는다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 2,
+        "judgment": "ACCEPT",
+        "reason": "회전된 그림에서 대응 빗변·변을 찾고 보완 예각을 맞추는 표준 비교이므로2/신규 중 후보 수용."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_1accc6f73a25c69b67cf5c4293f3c7a94a5c73bc2dde97cfa8da6828b78de884",
+      "verdict": "PASS",
+      "reason": "실제 그림의5·12·13 직각삼각형, 내심과 접점 D/E 및 음영 DBEI를 확인했다. 내심의 등거리 높이→전체 넓이에서 반지름→접선 구간과 분할 넓이라는 메타 경로가 가능하다. CC_CIRCLE_TANGENT_LENGTH의 정의는 같은 점의 접선길이와 반지름의 수직성을 모두 포함하고 CC_TRIANGLE_AREA도 정확하다. 새 해설이나 정답 승인을 생성하지 않는다.",
+      "quotesExact": true,
+      "quoteCount": 7,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "judgment": "ACCEPT",
+        "reason": "전체 내접반지름과 접점 길이 및 음영 분할을 선택해 연결하는 부담으로3/medium/B34 및 신규 상 후보 수용."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_4e364b68c4ba85e09db0335ca9e6b274a67f73f5843a66cbcd805a934025bdf4",
+      "verdict": "PASS",
+      "reason": "실제 AD와 연장된 DF의18 표시, AB10, B각60 및 A-E-F 공선 관계를 확인했다. 같은 변 두 개의 큰 삼각형에서60도 밑각을 얻는 결정 단계는 TPL_ISOSCELES_BASE_ANGLES의 각관계 skeleton이며, 최종 길이 전달은 CC_EQUILATERAL_TRIANGLE로 설명된다. 최종 목표가 길이합이어도 실제 결정 각 단계가 남아 있으므로 Primary를 유지한다. 평행사변형/평행각 보조 관계와 SEQUENTIAL도 수용한다.",
+      "quotesExact": true,
+      "quoteCount": 5,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "repairs": [],
+      "difficultyIndependentRecheck": {
+        "difficultyBucket": 3,
+        "judgment": "ACCEPT",
+        "reason": "큰 숨은 정삼각형을 먼저 파악하고 작은 정삼각형으로 관계를 전달하므로3/medium/B34 및 신규 상 후보 수용."
+      }
+    }
+  ],
+  "overallStatus": "PASS",
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "independent": true,
+  "notes": [
+    "원본의 기존 정답·해설이 실제 빈 문자열임을 확인했다. 실제 발문·선지·그림을 읽어 메타 의미를 검수했으며 해설 독해, 학생 답안 생성, 수학 검수 PASS를 주장하지 않는다.",
+    "methods는 실제 stem/choices의 exact 인용에 그림 표시를 설명한 IMPLIED justification을 결합했다. 선택 문항 전부 historical level 부재/새 후보와 UNKNOWN 및 배정 부채의 분리를 수용한다.",
+    "ACTIVE TPL의 definition/internalSkeleton, 관련 CC의 exact 정의를 직접 대조했다. 저자 파일 및 source는 수정하지 않았다."
+  ]
+}

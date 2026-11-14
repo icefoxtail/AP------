@@ -5804,9 +5804,10 @@
           "sha256": "34af69d1ac4f4be0c4ada1f7e8eb9cbda8ea60c3d3ec2de2f9ceb65ed657c8c9"
         }
       },
-      "remoteSaveState": "PENDING_READBACK",
+      "remoteSaveState": "VERIFIED",
       "historicalLevelAbsentOrdinals": [],
-      "noncanonicalHistoricalLevelOrdinals": []
+      "noncanonicalHistoricalLevelOrdinals": [],
+      "remoteCommit": "2b4f97cbe0a8bcc5e6cae95a0abce6b27a224272"
     },
     {
       "examId": "E040",
@@ -5888,12 +5889,129 @@
         20,
         21
       ],
-      "status": "ASSIGNED",
+      "status": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
       "existing4slotPath": null,
       "sourceReviewStatus": [
         null
       ],
-      "uidSetSha256": "528059bac034e0490adac7517ee99516203cf917597f24de6c96d956cc5d47b5"
+      "uidSetSha256": "528059bac034e0490adac7517ee99516203cf917597f24de6c96d956cc5d47b5",
+      "reviewedQuestionCount": 21,
+      "fullyJudgedQuestionCount": 20,
+      "registrationPendingQuestionCount": 20,
+      "unresolvedQuestionCount": 1,
+      "unresolvedOrdinals": [
+        5
+      ],
+      "sourceHoldQuestionCount": 1,
+      "sourceHoldOrdinals": [
+        5
+      ],
+      "changedQuestionCount": 21,
+      "fourSlotQuestionCount": 21,
+      "independentSampleOrdinals": [
+        3,
+        10,
+        14
+      ],
+      "independentReviewer": "C",
+      "topicSummary": [
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "이등변삼각형",
+          "ordinals": [
+            1,
+            14
+          ]
+        },
+        {
+          "rpmL1": "삼각형의 성질",
+          "rpmL2": "삼각형의 외심과 내심",
+          "ordinals": [
+            4,
+            10,
+            11,
+            12,
+            19
+          ]
+        },
+        {
+          "rpmL1": "기본 도형",
+          "rpmL2": "작도와 합동",
+          "ordinals": [
+            5,
+            16
+          ]
+        },
+        {
+          "rpmL1": "사각형의 성질",
+          "rpmL2": "여러 가지 사각형",
+          "ordinals": [
+            6,
+            13,
+            15,
+            20
+          ]
+        },
+        {
+          "rpmL1": "도형의 닮음과 피타고라스 정리",
+          "rpmL2": "도형의 닮음",
+          "ordinals": [
+            7,
+            8,
+            9,
+            17,
+            18,
+            21
+          ]
+        }
+      ],
+      "artifacts": {
+        "four-slot.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E041/four-slot.json",
+          "sha256": "1981e766d52f660867a6f81235c74f987aef1d7dc4d6bd7d141ba03ac444c657"
+        },
+        "independent-sample.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E041/independent-sample.json",
+          "sha256": "0995afa7ceb6d37c70470b65e09d547f87537b21e34e3c094af699aa17b3d7b1"
+        },
+        "mechanical-check.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E041/mechanical-check.json",
+          "sha256": "05b59e22e1ef715847965de0bb03f6dbead4606de61b6a687aae2bc1439d1ce8"
+        },
+        "review.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E041/review.json",
+          "sha256": "9eeec378fa00146017c2e3a69cf41876a9d09fe57dd0881172672ab64d72fbf8"
+        },
+        "root-acceptance.json": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E041/root-acceptance.json",
+          "sha256": "b3c01d294b29bb33177669bd484094ac675016f282df64a564ca98ad30f8c712"
+        }
+      },
+      "remoteSaveState": "PENDING_READBACK",
+      "historicalLevelAbsentOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "noncanonicalHistoricalLevelOrdinals": []
     },
     {
       "examId": "E042",
@@ -7050,13 +7168,14 @@
     "otherOpenPRScope": "Observed older content/asset-only M2 PRs; no current same-scope metadata writer identified. Source files remain read-only; proposals are bound to exact baseline."
   },
   "progressCounts": {
-    "reviewedExams": 39,
-    "reviewedQuestions": 929,
-    "unresolvedQuestions": 0,
-    "remainingExams": 28,
-    "remainingQuestions": 675
+    "reviewedExams": 40,
+    "reviewedQuestions": 950,
+    "fullyJudgedQuestions": 949,
+    "unresolvedQuestions": 1,
+    "remainingExams": 27,
+    "remainingQuestions": 654
   },
-  "lastVerifiedExamCommit": "d79bdab39f6fcefd9d8b5604b00a9df81ee1abf2",
+  "lastVerifiedExamCommit": "2b4f97cbe0a8bcc5e6cae95a0abce6b27a224272",
   "originalOwner": "GPT_ROOT_576242AD7339",
   "continuation": {
     "acceptedBy": "GPT_ROOT_87F142347508",
@@ -7074,5 +7193,11 @@
     "previousWorkspaceProcessObserved": false,
     "sourceReadOnly": true,
     "mainMergeAuthorized": false
+  },
+  "countSemantics": {
+    "reviewed": "Every item was inspected; unresolved evidence is counted separately and is not accepted metadata.",
+    "fullyJudged": "Reviewed questions minus explicitly unresolved questions. Registration may still be pending.",
+    "remaining": "Exams not yet inspected and accepted as review packets.",
+    "unresolved": "Named metadata fields blocked by insufficient source evidence; proposals cannot be registered as approved."
   }
 }
