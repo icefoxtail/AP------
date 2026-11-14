@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E012",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "7e52d7f9ea8911f3a9c9fffdd000f653ec16a272",
+  "sourceSha256": "a6d23bd4c8b7b49d5fbb53e9980b346ad2ca5078bfbb13f8ba458788285a1932",
+  "reviewSha256": "42a41ced86020972b730117ef24a4a30fb4f8c644906143bd1197821efae5b4a",
+  "fourSlotSha256": "99a9cdb33f45810d6d82c346a82af61aff3ed5cb95c48234ff5e4770ca94fe67",
+  "independentSampleSha256": "aabf85841d8791226a858ab345cad8748a1c01558f6985df7b801ef25c25686d",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "sampleReviewer": "A",
+  "sampleOrdinals": [
+    18,
+    22,
+    17
+  ],
+  "sampleResolution": [
+    {
+      "ordinal": 18,
+      "resolution": "The actual parallelogram and median construction creates the hidden centroid. The application template is exact because additional quadrilateral properties are required."
+    },
+    {
+      "ordinal": 22,
+      "resolution": "The state-dependent transition requires conditional branch probabilities, not independent trials. The existing conditional-branch template includes this forward branch structure."
+    },
+    {
+      "ordinal": 17,
+      "resolution": "The source inequality a/b≠1 is correctly distinguished from equality. Add ACTIVE COND_NONZERO with the explicitly recorded expression a-b≠0; it does not mean that individual a or b must merely be nonzero."
+    },
+    {
+      "ordinal": 19,
+      "resolution": "Reuse ACTIVE CC_POLYGON_VERTEX_MOTION for cyclic polygon vertex movement; withdraw the duplicate proposed concept after checking the full Korean definition."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "The favorable color and all counts are supplied; directly apply the probability definition. Preserve medium confidence and B12."
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "The centroid and one part of its median are supplied; directly apply the standard two-to-one ratio. Preserve medium confidence and B12."
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "Recognize the standard right-triangle altitude relation, then solve a single proportion/product equation."
+    }
+  ],
+  "notes": [
+    "The direct centroid segment-length goal needs a new template beneath the existing centroid PT, not the vertex-coordinate reverse template."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "m2-s2-meta-independent-sample-v1",
+  "examId": "E012",
+  "author": "C",
+  "reviewer": "A",
+  "sourceArchiveFile": "original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "7e52d7f9ea8911f3a9c9fffdd000f653ec16a272",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "reviewSha256": "55da4df236d52d4e0fb8099807a400a106692033b46db3ac03ec4ef663d096ea",
+  "fourSlotSha256": "99a9cdb33f45810d6d82c346a82af61aff3ed5cb95c48234ff5e4770ca94fe67",
+  "ordinals": [
+    18,
+    22,
+    17
+  ],
+  "overallConclusion": "MINOR_CONDITION_REFINEMENT_REQUIRED",
+  "items": [
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_f9c6c4d38adbff18cc78bc8ecc3a0d616ff2457d540e0b93f37cec6ca7cb4d84",
+      "conclusion": "PASS",
+      "reason": "그림에서 AFGC의 마주 보는 평행변과 삼등분 표시, Q의 두 대각선 교점, P의 두 중선 교점을 확인했다. 숨은 무게중심을 찾아 2:1을 얻는 단계가 결정적이므로 RPM100과 centroid 세부단원, PT_COORD_CENTROID가 적합하다. 다른 평행사변형의 판정·대각선 이등분을 먼저 사용하므로 TPL_CENTROID_APPLICATION의 다른 도형 성질 결합 조건도 충족한다. CC_PARALLELOGRAM_CRITERIA 및 대각선 이등분을 정의한 CC_PARALLELOGRAM_PROPERTIES는 실제 외부 보조 개념이다. 넓이 곱비는 해당 centroid 응용 내부이며 4칸의 IMPLIED 근거가 정확하다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_1b584c2038b7d9bc7a98f185a40bd3acde3d642b3e60e33f9aa0a59b26007aa8",
+      "conclusion": "PASS",
+      "reason": "전날의 비 여부에 따라 다음날 확률이 바뀌므로 독립시행으로 분류하면 안 된다. 토요일의 두 상태를 분리하고 각 경로의 조건부확률을 곱한 뒤 합하는 구조가 PT_CONDITIONAL_PROBABILITY와 TPL_CONDITIONAL_BRANCH_REVERSE 정의의 분기 구조에 정확히 맞는다. 이 템플릿은 역조건만으로 제한되지 않는다. CASE_BRANCH가 맞으며 전이 확률 CC의 중복 첨가는 필요 없다. 4칸의 여사건·경우분류·전확률 근거와 실제 계산 문맥을 대조했다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_5172d1fd4e4e4c00b808d7c7bb41bfbe17b1c0634ebf9c0a5c8dd081b49f53fc",
+      "conclusion": "CONDITION_PRECISION_REQUIRED",
+      "reason": "확률이 목표이고 직선의 교점 조건을 먼저 판정하므로 RPM117, 확률계산 PT/TPL, CC_LINE_INTERSECTION과 SEQUENTIAL은 타당하다. 4칸 a/b≠1 인용은 exact이며 구별가능의 사전 동의어 서로다른과 의미가 맞고 이전 상등의 반대 의미 오류는 해소되었다. 다만 canonical Condition의 자연수/유한범위만으로는 결과 두 값이 서로 다르다는 결정적 제한을 명시적으로 식별하지 못한다. 현행 COND_NONZERO는 해 선택·개수 판정의 0 배제를 포함하므로 a-b≠0 또는 a/b-1≠0을 대상으로 한다고 명시하여 추가하는 것이 정확하다. a 또는 b 자체의 0 배제로 오인하지 않도록 fieldReview.condition에 대상 식을 남겨야 한다. COND_DISTINCT_DIGITS는 만드는 수의 자릿수 제한이므로 이 문항에 적용하지 않는다. 일치 직선을 만남으로 포함하는 기존 해설의 해석을 보존했으며 새 수학 검수 승인은 아니다."
+    }
+  ],
+  "freshMathematicalReverification": false,
+  "authorFilesModified": false
+}
