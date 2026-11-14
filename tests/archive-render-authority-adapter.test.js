@@ -15,7 +15,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
   assert.match(engine, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
   assert.match(engine, /src="svg-accessibility\.js\?v=20261014\.1"/);
-  assert.match(engine, /archive2-preview-mobile\.css\?v=20261011\.2/);
+  assert.match(engine, /archive2-preview-mobile\.css\?v=20261114-svg-problem/);
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
