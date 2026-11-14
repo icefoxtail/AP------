@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "m1-s1-independent-exam-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+  "author": "META_A",
+  "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+  "at": "2026-11-14T08:20:03.694Z",
+  "sourceBaselineBlob": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+  "sourceCurrentBlob": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+  "workerReviewSha256": "a6d09f0c78ee8d960b253d22e62abfc49902e231d9013fb5a40c7304367b1e6a",
+  "workerFourSlotSha256": "4b3d120e085c95df895fda3c614c9fc56b8ecd48e285df2873ef1f2e961eed06",
+  "sampleSelection": "WARN/IMPLIED and unresolved boundary or content risks first",
+  "samples": [
+    {
+      "ordinal": 4,
+      "result": "SOURCE_AMBIGUITY_OPEN",
+      "notes": "원문은 a+b+c를 자연수라 부르지만 각 변수의 범위와 c의 소수 조건이 명시되지 않았다. 동일한 소인수분해 복원 유형의 전제를 임의로 보충하지 않은 판단을 확인했다. given 최대공약수/최소공배수와 goal 합은 맞으며 exact 방법 및 난이도는 조건 확인 전 후보이다.",
+      "questionUid": "qid_v1_0ebe24b2f37a820655f7f5e9a80207b8bf4a66d7ac62a55e653444299aca5c94"
+    },
+    {
+      "ordinal": 14,
+      "result": "VISUAL_EVIDENCE_DEBT_CONFIRMED",
+      "notes": "현재 Git PNG를 직접 열었다. 원 테두리와 잔상은 있으나 내부 정수와 A/B의 위치·값을 읽을 수 없다. 발문의 등합 구조와 A-B 목표까지만 기록하고 level/bucket UNKNOWN으로 둔 결정이 타당하다. 원PDF/선명한 그림 없이는 이 문항을 확정할 수 없다.",
+      "questionUid": "qid_v1_84a055950e7a61c7ab2cbda27ac3f0beffa6e136f90adbe452fd30c00968c5ff"
+    },
+    {
+      "ordinal": 19,
+      "result": "ACCEPTED_PROPOSAL_TRANSCRIPTION_CHECK_OPEN",
+      "notes": "기호 생략과 분수·계수 표현을 판별하는 선지를 직접 읽었다. ④의 -0.x^2 표기는 실제 source에 존재하지만 의도된 오답인지 전사 누락인지 단정하지 않았다. goal 판정과 문자식 given이 맞으며 원문을 자동수정하지 않았다.",
+      "questionUid": "qid_v1_9b9c2e542781840d71af3629a82ea5ad613067059ab306b14da6d579297469f5"
+    }
+  ],
+  "scope": "Metadata and 4-slot sample comparison against current stems/choices/existing solutions/required images. No new exhaustive solving or R1/R2/R3.",
+  "overall": "REVIEWED_WITH_Q14_VISUAL_HOLD_AND_SOURCE_ONLY_METHOD_DEBT",
+  "sourcePatchPolicy": "SOURCE_ONLY source를 유지했다. 정확한 판독을 못한 q14에 임의 난이도나 배치 정보를 넣지 않고 UNKNOWN과 필요한 후속자료를 기록했다.",
+  "deferredPatchPolicy": "Unregistered, binding-gap and unsupported source fields remain proposals. No shared registration has been run."
+}
