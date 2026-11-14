@@ -32,6 +32,7 @@ import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { registerDifficulty5 } from "./register-difficulty5.mjs";
 
 export const SCHEMA = "archive-basic-scope-rebind-request-v1";
 export const PARENT_SCHEMA = "archive-basic-parent-correction-request-v1";
@@ -188,6 +189,25 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
   const previous = fs.existsSync(receiptFull) ? read(receiptPath) : null;
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
 
+  // The same nine rows already carry a separate, reviewed difficulty correction.
+  // Validate that original request before rebinding its baseline fingerprints.
+  let difficultyByUid = new Map();
+  if (correction) {
+    const original = JSON.parse(execFileSync("git", ["show",
+      "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20:.archive-meta-register/inbox/m1s2-b01-c-25-pungdeok-mid-difficulty-20261114.json"],
+    { cwd: root, encoding: "utf8" }));
+    if (!eq(req.difficultyEvidence, {
+      path: original.reviewedCorrection.evidencePath, sha256: original.reviewedCorrection.evidenceSha256,
+    }) || sha256(fs.readFileSync(safePath(root, req.difficultyEvidence.path))) !== req.difficultyEvidence.sha256)
+      fail("reviewed difficulty evidence drift");
+    const uids = new Set(req.items.map(item => item.questionUid));
+    original.gemini.items = original.gemini.items.filter(item => uids.has(item.questionUid));
+    original.reviewedCorrection.rows = original.reviewedCorrection.rows.filter(item => uids.has(item.questionUid));
+    if (original.gemini.sourceArchiveFile !== source || original.gemini.latestBlobSha !== req.expectedSourceBlobSha1 ||
+        original.gemini.items.length !== req.items.length) fail("reviewed difficulty scope mismatch");
+    if (!previous) registerDifficulty5({ root, request: original, write: false });
+    difficultyByUid = new Map(original.gemini.items.map(item => [item.questionUid, item.after]));
+  }
   const seen = new Set(), applied = [];
   for (const item of req.items) {
     const uid = requireText(item?.questionUid, "item questionUid");
@@ -261,8 +281,11 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
         sourceFile: source, sourceOrdinal: n, sourceFingerprint: now.sourceFingerprint, L1: bp.L1, L2: bp.L2,
         reason: `BASIC_PARENT_CORRECTION ${req.requestId}: ${item.reason}`, sourceBodyFingerprint: now.contentFingerprint };
       if ((previous || existingLink) && !eq(existingLink, nextLink)) fail(`${uid} existing reviewed source link differs`);
+      const difficulty = difficultyByUid.get(uid);
+      if (!difficulty || (previous && Object.entries(difficulty).some(([key, value]) => !eq(row[key], value))))
+        fail(`${uid} reviewed difficulty drift`);
       applied.push({ questionUid: uid, sourceOrdinal: n, before: item.before, after: item.after,
-        parentBefore: priorParent, parentAfter: nextParent, nextLink });
+        parentBefore: priorParent, parentAfter: nextParent, difficulty, nextLink });
       continue;
     }
     // Only a figure may differ.
@@ -326,7 +349,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     row.sourceFingerprint = record.after.sourceFingerprint;
     row.contentFingerprint = record.after.contentFingerprint;
     id.sourceFingerprint = record.after.sourceFingerprint;
-    if (correction) Object.assign(row, record.parentAfter, { conceptClusterKey: record.parentAfter.subUnitKey });
+    if (correction) Object.assign(row, record.parentAfter, record.difficulty, { conceptClusterKey: record.parentAfter.subUnitKey });
     if (record.nextLink) {
       const at = links.records.findIndex(link => link.sourceFile === source && Number(link.sourceOrdinal) === record.sourceOrdinal);
       if (at >= 0) links.records[at] = record.nextLink; else links.records.push(record.nextLink);

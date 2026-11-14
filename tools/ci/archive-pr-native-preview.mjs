@@ -83,7 +83,8 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     const refs = new Map();
     for (const list of [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
-      ...(request.registryChanges || []).map(i => i.evidenceRefs)]) {
+      ...(request.registryChanges || []).map(i => i.evidenceRefs),
+      ...(correction ? [[request.difficultyEvidence]] : [])]) {
       if (!Array.isArray(list) || !list.length) fail('EVIDENCE_REQUIRED');
       for (const item of list) {
         if (!/^[a-f0-9]{64}$/.test(item.sha256 || '')) fail('EVIDENCE_SHA');
