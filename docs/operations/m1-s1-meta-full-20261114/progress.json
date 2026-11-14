@@ -399,7 +399,19 @@
         "registeredCurrentQfullMatches": 0
       },
       "appliedSourceItemCount": 2,
-      "writerState": "CLOSED"
+      "writerState": "CLOSED",
+      "residualReview": {
+        "status": "RESIDUAL_DECISIONS_RECORDED_PENDING_SHARED_PROPOSAL_BINDING",
+        "author": "META_C",
+        "items": 23,
+        "artifacts": {
+          "residual-review.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/residual-review.json",
+          "residual-checks.json": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/residual-checks.json"
+        },
+        "sourceEdits": 0,
+        "sourceSha256": "d63b3ac4134a1b4adec3b8cc9bd8721ec906ab8d00c30dd91aaa42d6d34e216d",
+        "reusedIndependentSamples": 3
+      }
     },
     {
       "sourcePath": "archive/exams/original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js",
@@ -830,7 +842,7 @@
     "uniqueUids": 286,
     "sourceOnlyMethodPolicy": "PROPOSE_SEPARATELY_DO_NOT_INVENT_SOLUTION_EVIDENCE"
   },
-  "updatedAt": "2026-11-14T13:42:59.537759+00:00",
+  "updatedAt": "2026-11-14T13:44:55.455569+00:00",
   "reviewedExamCount": 12,
   "reviewedQuestionCount": 286,
   "remoteReceipts": [
@@ -1204,12 +1216,17 @@
       "questionCount": 97
     }
   ],
-  "residualExamCount": 1,
-  "residualQuestionCount": 23,
+  "residualExamCount": 2,
+  "residualQuestionCount": 46,
   "resumeRemoteReceipts": [
     {
       "unit": "source-lineage-and-targeted-original-evidence",
       "remoteHead": "24967490dc04f29ebd83683aa1d90bbb1c2f1920",
+      "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
+    },
+    {
+      "unit": "previous-residual-exam",
+      "remoteHead": "47b21d114bb03378df8ffbf677309d228cdc1510",
       "remoteReadback": "EXACT_TREE_AND_REF_VERIFIED"
     }
   ]
