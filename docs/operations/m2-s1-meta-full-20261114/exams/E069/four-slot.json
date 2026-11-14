@@ -1,0 +1,1131 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "M2-S1-META-FULL/C",
+    "at": "2026-11-14T15:16:32.413055+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5c23d5b89f27d074840a96a49fca131bbab3104c9c03d946bb620052bdaed078",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df6f883076a3d1c0164b1be41518a45ec5470026fe08d9029c7f3839f7520e29"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20b9a452faf146e5be3264f38dc3de3b6622060dedfba4ffeca43e13aa7c8077"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수 $x=1.858585"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "분수로 나타낼 때"
+          },
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "choices",
+            "quote": "$100x-x$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "004 순환부분을맞추는배수차를선택하는단계가직접목표.연립소거법으로과장하지않고method는비워둔다.",
+        "method": "순환소수 분수화에 필요한 소거식"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_80f3595615859aaa33c60600173b7dfeca46ea018e6821c33ad327177e976e69",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20667f9cd0ed6877a8ce64be62f01485e6c50c231af466e566b4807428a3d54e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea935b55f3a7d7d5baddf30f99916a70149b0abe37a519665407f37c875fb1c3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{7}{2^3\\times 5\\times \\square}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분모",
+            "termId": 581,
+            "src": "stem",
+            "quote": "$\\square$ 안의 수"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수가 된다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "002 약분후분모의2/5이외인수존재여부로순환조건을판정한다.분자7과보기분모의약분을놓치지않는다.",
+        "method": "약분을 고려한 분모 소인수 판별"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ca672998f647346b7b8ffc68735136b96f878ba53a7dbf1c3f1bf6a8ef89adca",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27b325f59af6d87fa71a04c24f0c2d730b8d37662433e85eed8198a7d590c06d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "908292e34ef695c5d20b7b0a32c4293e2edee0e27d84d974ad90922b4706cd36"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "순환소수 $0.19\\dot{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분모",
+            "termId": 581,
+            "src": "stem",
+            "quote": "$\\frac{b}{a}$"
+          },
+          {
+            "term": "분자",
+            "termId": 582,
+            "src": "stem",
+            "quote": "$\\frac{b}{a}$"
+          },
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "기약분수",
+            "termId": 558,
+            "src": "stem",
+            "quote": "기약분수로 나타내면"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "004 비순환부분을포함한분수화가주요골격.기약조건을명시적으로보존.",
+        "method": "혼합 순환소수의 기약분수 분모분자 차"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2968b66e402d846bd3db94bdbfcc79d0fb2892b41202fb4004cd7dc17e37a274",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "766dbeec95086af29042350d68227fe193af2fbe0902af0f57e13f989df4b189"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "08a12120d036e243a39eaf84b355c493d6652a37b1c161efc75abac0f78f9862"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{16}{45}=A+0.\\dot{1}$"
+          },
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "$\\frac{16}{45}=A+0.\\dot{1}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "stem",
+            "quote": "$A$를 순환소수로 나타내면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+        "method": "분수와 순환소수의 차를 순환표현으로 변환"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_90dba81c35c2a8d89765bd1b46d273e02f2a5f655a3dc0660f895c7c47cf7ae2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5cd0fdf1da7c424efcafe3256bd55a8234348f8dcd5d1f8aa0a216e1b6840c24"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d0bfe95608dc9c3963405d3980c442e8b416e0f7e8da6607ecfe03edee79c1c"
+        }
+      ],
+      "format": "보기 판정",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "termId": 3,
+            "src": "choices",
+            "quote": "모든 유리수는"
+          },
+          {
+            "term": "유한소수",
+            "termId": 426,
+            "src": "choices",
+            "quote": "유한소수"
+          },
+          {
+            "term": "무한소수",
+            "termId": 427,
+            "src": "choices",
+            "quote": "무한소수는 모두"
+          },
+          {
+            "term": "순환소수",
+            "termId": 428,
+            "src": "choices",
+            "quote": "모든 순환소수는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "옳은 것을 모두 고르면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+        "method": "유리수와 소수 분류 진술 판정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_9fd2806c7ce1e6a7726dbb697e312358618651fbf779a7945d1e0e199b6035c1",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1df25101b1f2e68f2d991dc76ec59e0a267d76f177407b035d1131be9bee8e48"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b860b5871e41b05ea36abc074f265c98962614221bd7eadb6dc5f2ea3650b5e3"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$\\frac{9}{250}$"
+          },
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$\\frac{a}{10^n}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a+n$"
+          },
+          {
+            "term": "최솟값",
+            "termId": 128,
+            "src": "stem",
+            "quote": "최솟값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "$a, n$은 자연수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "006 자연수분자·지수제약을만족하는분수표현중합최소조건.최적화일반고등template를억지대입하지않는다.",
+        "method": "10의 거듭제곱 분모의 자연수 최소합"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_d55900ef5658e87fd3b9f27874fb098ada8c6a45bee133508206f13589b917a2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "80cd5d346e36b51934c8422997d2203efd2afeba2e60c5f06a04e337a4c30646"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "16825068b72a97df551e259076d2ecfed21bd36afe35427bbbb4d8a4e4c55c88"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "choices",
+            "quote": "$(a^2)^3"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "choices",
+            "quote": "a^4+a^4"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "termId": 132,
+            "src": "stem",
+            "quote": "계산이 옳은 것은?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "007곱몫과008거듭제곱의거듭제곱및항의합이독립보기에분산.단일leafprimary미판정이며M2단항식오답선택template와현재옳은식선택/합보기차이를보존.",
+        "method": "여러 거듭제곱과 몫·합 연산의 진술 검산"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3652bae854b117b43e15ece48b9c27b98da8ba4fac32df2c491d9fb2393a23c4",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1849025fee98eb752dcd30e2aa4813b10579f67bd2e847c2eecaadd3c30b08f4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "69665d7e448309aed60794d9d4dc1b6f70e0c34273f6cca8909bce6b9801fdce"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직육면체",
+            "termId": 603,
+            "src": "stem",
+            "quote": "직육면체"
+          },
+          {
+            "term": "길이",
+            "termId": 215,
+            "src": "stem",
+            "quote": "$6a^2\\text{cm}, 2ab^2\\text{cm}$"
+          },
+          {
+            "term": "부피",
+            "termId": 219,
+            "src": "stem",
+            "quote": "$72a^5b^5\\text{cm}^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "termId": 218,
+            "src": "stem",
+            "quote": "높이를 구하면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "010 단항식나눗셈.부피=가로×세로×높이공식은지수몫밖의외부기하공식으로실제genericarea-volumeCC후보를조건부연결.",
+        "method": "직육면체 부피와 밑면으로 높이 단항식 몫"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_11da4fe9a5d2642f10cd900a92c525c6541860876a55ab8f976fcd01c3aa76ca",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "722ff0170a572f357f90f8128701cbee3914d6c09b9f5b0c8f5410c4fabedc53"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c6d3cf5d119e5343f30b5ee14f7803d8eed1102eda2e51e456bd23c68b2660c6"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "stem",
+            "quote": "$\\frac{12x^2-9xy}{-3x}-\\frac{8y^2-4xy}{2y}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "계산하면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "015 각다항식을단항식으로나누어차를정리하는정형연산.",
+        "method": "두 다항식 나눗셈 결과의 차"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7d4aca82aeccb87790ce292e302245a5c9898a2bba679d14ab23484d2a354176",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "82b4d2c62a746b4f37b6b049d6dc012521e69604e9d0b8041ba41855546f05ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34a8c8a82cb03d38e4c4320c0107b4362aa43ca1960676287a18078c108eded8"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$-3x(x+2y+7)$"
+          },
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "$5x(-x+2y+4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$x^2$의 계수와 $5x(-x+2y+4)$를 전개한 식의 $xy$의 계수"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "합을 구하면?"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "014 두단항식곱전개에서지정항의계수를확인한다.단순합은내부최종연산.",
+        "method": "분배 전개한 두 식의 지정 계수합"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_81fcb8631bb60827f1d0efab5f923439498537c0071cc2e1951d1b7189e3db1a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ce35b27a90f96b2c0cb8153a7cbb57fc858746a5cffa7b85ee60d1797e869e14"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33ca16e1efc6a8315ee049f8158247aabef31d8537537079bb6dfab5d7ce9260"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "\\left(\\frac{2}{3}xy\\right)^2"
+          },
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "$-\\frac{1}{3}xy^2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "(가)에 알맞은 식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "011 주어진두단항식연산과최종결과를만족하는앞식을구하는역산구조.원풀이를생성하지않고연산흐름만분류한다.",
+        "method": "곱·나눗셈 화살표의 원래 단항식 복원"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e9f50f766e881629550d314ab2ab739cb7e354533963c133db59c8e0ab28183d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "594fdf2b8c362140e9645dd239b72e2a30a44993a42b52bb4a52f7eb445f0392"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "25857b2f69a8ffb84250f03988248c80edadc8c715bc031756fc9259df926cf2"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "$(-6a^3b^5)\\div \\square \\times 4ab^2 = -12ab^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "단항식",
+            "termId": 430,
+            "src": "stem",
+            "quote": "$\\square$ 안에 알맞은 식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "011 곱나눗셈혼합등식의빈단항식을역산하는목표.곱셈만009또는몫010한단계로축소하지않는다.",
+        "method": "단항식 혼합 연산의 빈 제수"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_eb74a473be72f437229515ea6650c0c16533e2eca0e6790f3ef7fbb16e48b178",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "27945ba9c728d4c34f7c10a878ed382302f820e8362699f9fcac9cc3a238f535"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ef68ebd8dcae59984adac1cfffc45b6cab6e6b0bca93aae39b75923b4a7a28d"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$A=3^{2019}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$A$의 식으로"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$3^{2020}+3^{2018}$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "007 밑3의곱몫관계로주어진A를활용한다.고등로그/거듭제곱근template의동명키를사용하지않는다.",
+        "method": "기준 거듭제곱과 지수 한 차이의 표현"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c304234cf7109c9f6abfef35f942178a6a5e450c80eddbeb692d0f8874812fe7",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "813e2396ae09a53ade0660004370420bc29d3c4ed6e185496242bc4f1b3476d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ebe29cd5c03326f43378b8d074015313750b95903982347c6ff0277728ea3987"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$A=-7x-6y+(3x^2-15xy)\\div (-3x)$"
+          },
+          {
+            "term": "분수",
+            "termId": 27,
+            "src": "stem",
+            "quote": "$B=\\frac{3x-5y}{2}-\\frac{2x-3y}{3}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$A+6B$를 $x, y$의 식으로"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "A의015다항식나눗셈과B의013분수괄호정리가독립입력연산으로함께있다.원해설없는상태에서단일primary를억지선정하지않고종속축null.",
+        "method": "나눗셈 포함 A와 분수식 B의 선형결합"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_df59bc0ad7485bb7bd0a41bf42dd3d2d00e8a5fdb42dc9cbe4cae631b933241f",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ddf38e024c08ddf284c3639018cac0ab01192675eeb2522f8a82c7a15125c791"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "755bb5ef7deb82e59156adb6610f041d342d23cbe3be9d54eac4a702cb80459d"
+        }
+      ],
+      "format": "빈칸 채우기",
+      "slots": {
+        "given": [
+          {
+            "term": "등식",
+            "termId": 349,
+            "src": "stem",
+            "quote": "$5a-[2b-a-\\{3a-(\\square+4b)\\}]=10a-7b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "알맞은 다항식"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "017 등식조건을만족하는미지다항식을찾는다.괄호부호013은그조건결정의내부단계.",
+        "method": "중첩 괄호 등식의 미지 다항식"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a9e1f8398841abe7cd6e6df6b63eabfd13f207fb919b6823b4318f2cd29ffa5d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13acc9b41a8bf167eb6c7e10594b111ee61d5f54f6a873a731bcecf728e181a8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ceb84c8c8980791384e1b2bc7803981b89d5ce8aa03e725b24b107e98f614784"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "$\\frac{1}{6}x^2-\\frac{2}{3}x+\\frac{5}{2}-ax^2-\\frac{5}{6}x-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "termId": 309,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "stem",
+            "quote": "$x^2$의 계수와 $x$의 계수"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "합이 $0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "017 다항식계수조건.동류항012정리는미지계수를정하는준비단계.",
+        "method": "계수 합 조건으로 상수 결정"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_3ce4a6965ece776100fe49d515d127c51cf8341f34ff179a71dfb5d7c8618494",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6d24e3ad52778cda4edc0cd8902677845ece6295487393e55c72c5e2bce0f1a2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ce58c274fe0b882ac766959fbec1505df891ea8b2f516d1f0462cdc2c0dcd69c"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식의나눗셈",
+            "termId": 46,
+            "src": "stem",
+            "quote": "$(8a^2b-12ab^2)\\div 4ab-(ab-a^2)\\div \\left(-\\frac{1}{5}a\\right)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "termId": 61,
+            "src": "stem",
+            "quote": "식의 값"
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "값",
+            "termId": 131,
+            "src": "stem",
+            "quote": "$a=-\\frac{1}{3}, b=\\frac{5}{2}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "016 식값이최종목표.015다항식나눗셈은그식정리의내부단계이며별도CC대입으로과장하지않는다.",
+        "method": "다항식 나눗셈과 분수 수치 대입"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_12dd1eed5f856b9d8d913e9d01e5279a15de8fd5ca999da2baadc37bf5c0518c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "590295d4d6a8203ef98d7e36ed986f05233f39a66382872829d0ab07e99c4372"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b4ef716a8507cb7f326d4960175b34f9021e389e160727a3cbfd45e3005efbc7"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "이웃한 두 칸의 식"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "식을 더하여 아래 줄에"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "termId": 35,
+            "src": "stem",
+            "quote": "맨 아래칸 $A$"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "017 실제피라미드에빈상단과중단합조건이있어조건에맞는식복원이필수.전체가단순순방향합012만은아니다.",
+        "method": "합 피라미드의 미지식 복원과 최종합"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c9880ea43dac01b5ed95ca92cc1a80596def7e84c7954dea34894fef93fa9867",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41805650125c80aadc36632023c372474b69a610ffab38eaa08aad366ea96b00"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "715e6f9e8c9457321818e48f9c7adbaa4531677ca827ebb5875d1d08c086b156"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$2^{31}$"
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "stem",
+            "quote": "$3^{12}\\times 81^{24}$의 일의 자리의 숫자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "termId": 288,
+            "src": "stem",
+            "quote": "$a-b$의 값"
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "classification": "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+        "method": "자연수 거듭제곱의 일의 자리 주기"
+      },
+      "judgedBy": {
+        "agent": "M2-S1-META-FULL/C",
+        "at": "2026-11-14T15:16:32.413055+00:00"
+      },
+      "review": {
+        "status": "SELF_CHECKED"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "FAIL",
+    "validator": "tools/4slot/validate-4slot.cjs",
+    "items": 19,
+    "examItems": 19,
+    "quotes": 63,
+    "fail": 19,
+    "warn": 16,
+    "warningReview": [
+      "Warnings of few distinct terms or one method were reviewed against actual direct tasks; no irrelevant terms were inserted to satisfy a count."
+    ],
+    "independentReview": "PENDING"
+  }
+}

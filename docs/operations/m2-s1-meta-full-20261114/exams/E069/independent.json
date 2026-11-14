@@ -1,0 +1,509 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E069",
+  "author": "C",
+  "reviewer": "GPT_ROOT_14C2C64E43FB",
+  "independent": true,
+  "status": "ACCEPT_WITH_EXPLICIT_DEBTS_AND_SCOPED_SUPPLEMENTS",
+  "createdAt": "2026-11-14T15:21:28.960275+00:00",
+  "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+  "sourceSha256": "79675e120ff228ac8b3e4fd1d236cc2bdd91e4bb08f6d35f59f42c0443e0d0a2",
+  "reviewSha256": "4ef7ef4a908796a8ff5e2d573259d6e236d037b02261774774b956954f9b2bf6",
+  "fourSlotSha256": "0c46c9abfa07e4485b981969b50e3abf50f6c040482d87e57661d6c17c6b78ca",
+  "sampleOrdinals": [
+    6,
+    8,
+    18
+  ],
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "classification": "분수9/250을자연수a/10^n으로표현하는조건에서a+n최소를정하는RPM006. 단순소수변환만으로축약하지않음.",
+      "binding": "실제RPM006 NO_ACTIVE_MAPPING확인. 고등최적화TPL을임의로활성화하지않는다.",
+      "crossConcept": "분모2/5조건과10의거듭제곱표현은해당유리수조건primary내부.",
+      "condition": "실제ACTIVE COND_NATURAL의양의정수제한정의와발문a,n자연수를대조했다.",
+      "integration": "동일유리수조건판정내부 NONE.",
+      "difficulty": "독립2/저자2. 주어진표현으로익숙하게옮기고최소합을선택하는구조.",
+      "fourSlot": "분수/거듭제곱given,합/최솟값goal,자연수condition literal확인. method[]유지."
+    },
+    {
+      "sourceOrdinal": 8,
+      "classification": "직육면체높이의문자식을구하는RPM010 단항식나눗셈.",
+      "binding": "실제RPM010 NO_ACTIVE_MAPPING확인. 정확PT/TPL/진짜resolver미확정유지.",
+      "crossConcept": "ACTIVE generic CC정의는넓이/부피등도형공식을문자식으로쓰는범위다. 직육면체의가로세로높이관계는이범위에해당하며단항식몫밖의선행공식. 실제기존해설부재로조건부제안.",
+      "condition": "제시한문자길이/부피이외부호제약새로추가없음.",
+      "integration": "기하부피관계→대수단항식몫SEQUENTIAL.",
+      "difficulty": "독립2/저자2. 부피공식과지수계산의정형연계,source-onlylow.",
+      "fourSlot": "직육면체603/길이215/부피219입력및높이218목표literal. 원해설없으므로method생성없음."
+    },
+    {
+      "sourceOrdinal": 18,
+      "classification": "실제합피라미드의빈상단값과중간합을역으로복원하는RPM017 조건식활용. 단순정방향덧셈012만이아님.",
+      "binding": "실제RPM017 NO_ACTIVE_MAPPING확인. 그림만으로새registeredkey를발명하지않음.",
+      "crossConcept": "다항식조건의역연산과아래합은primary내부라CC[]조건부.",
+      "condition": "그림의세기입식과인접합규칙외새수범위제약없음.",
+      "integration": "단일다항식조건식primary NONE.",
+      "difficulty": "독립2/저자2. 주어진합규칙을거꾸로한번사용한뒤정방향으로잇는익숙한변형.",
+      "fourSlot": "다항식과이웃합규칙given,아래A다항식goal. 실제PNG상단a+b/2a-b,중단-4b일치;method[]native유지."
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5c23d5b89f27d074840a96a49fca131bbab3104c9c03d946bb620052bdaed078",
+      "independentInitial": {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_5c23d5b89f27d074840a96a49fca131bbab3104c9c03d946bb620052bdaed078",
+        "difficulty": 1,
+        "confidence": "low",
+        "reason": "두자리순환마디에 맞는 두 배수의 차를 직접 대응한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두자리순환부분을맞추는10의거듭제곱배와소거식선택. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두자리순환마디에 맞는 두 배수의 차를 직접 대응한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_80f3595615859aaa33c60600173b7dfeca46ea018e6821c33ad327177e976e69",
+      "independentInitial": {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_80f3595615859aaa33c60600173b7dfeca46ea018e6821c33ad327177e976e69",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "분자7 약분 후 남는 분모 소인수를 비교한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "분모의보기수와분자7의약분을함께고려해유한/순환경계를판정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분자7 약분 후 남는 분모 소인수를 비교한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ca672998f647346b7b8ffc68735136b96f878ba53a7dbf1c3f1bf6a8ef89adca",
+      "independentInitial": {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_ca672998f647346b7b8ffc68735136b96f878ba53a7dbf1c3f1bf6a8ef89adca",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "혼합순환소수를 분수로 바꿔 기약분모/분자의 차를 구하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환부분앞두자리있는소수를기약분수로바꿔분모분자차를구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "혼합순환소수를 분수로 바꿔 기약분모/분자의 차를 구하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2968b66e402d846bd3db94bdbfcc79d0fb2892b41202fb4004cd7dc17e37a274",
+      "independentInitial": {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_2968b66e402d846bd3db94bdbfcc79d0fb2892b41202fb4004cd7dc17e37a274",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "순환소수를 분수로 표현해 주어진 차를 다시 순환표기로 바꾼다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환소수를분수로바꾼차를다시순환소수로표현하는정형변환. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "순환소수를 분수로 표현해 주어진 차를 다시 순환표기로 바꾼다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_90dba81c35c2a8d89765bd1b46d273e02f2a5f655a3dc0660f895c7c47cf7ae2",
+      "independentInitial": {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_90dba81c35c2a8d89765bd1b46d273e02f2a5f655a3dc0660f895c7c47cf7ae2",
+        "difficulty": 1,
+        "confidence": "low",
+        "reason": "유리수·유한/무한·순환소수의 포함관계 정의를 판정한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유리수·유한·무한·순환소수의포함관계를다섯진술에서비교. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "독립1/저자2 B12. 유리수/무한/순환소수의여러전칭진술을대조해두개를선택하는복수판정으로저자2수용."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_9fd2806c7ce1e6a7726dbb697e312358618651fbf779a7945d1e0e199b6035c1",
+      "independentInitial": {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_9fd2806c7ce1e6a7726dbb697e312358618651fbf779a7945d1e0e199b6035c1",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "분모를10의거듭제곱으로 만드는 최소 자연수지수와 분자를 연결한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "10의거듭제곱분모표현에서자연수분자와지수의최소합을조건으로선별한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분모를10의거듭제곱으로 만드는 최소 자연수지수와 분자를 연결한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_d55900ef5658e87fd3b9f27874fb098ada8c6a45bee133508206f13589b917a2",
+      "independentInitial": {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_d55900ef5658e87fd3b9f27874fb098ada8c6a45bee133508206f13589b917a2",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "여러 지수법칙과 동일항합을 비교하는 독립보기들의 정형계산. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "곱몫과거듭제곱법칙및같은항의합을보기별로검산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "여러 지수법칙과 동일항합을 비교하는 독립보기들의 정형계산. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3652bae854b117b43e15ece48b9c27b98da8ba4fac32df2c491d9fb2393a23c4",
+      "independentInitial": {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_3652bae854b117b43e15ece48b9c27b98da8ba4fac32df2c491d9fb2393a23c4",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "직육면체의 부피와 밑면적에서 높이를 역산하는 단항식계산. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "직육면체부피와밑면변으로높이의단항식몫을구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "직육면체의 부피와 밑면적에서 높이를 역산하는 단항식계산. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_11da4fe9a5d2642f10cd900a92c525c6541860876a55ab8f976fcd01c3aa76ca",
+      "independentInitial": {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_11da4fe9a5d2642f10cd900a92c525c6541860876a55ab8f976fcd01c3aa76ca",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "두 다항식/단항식 나눗셈을 한 뒤 차를 정리한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두다항식÷단항식결과를빼어동류항정리한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 다항식/단항식 나눗셈을 한 뒤 차를 정리한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7d4aca82aeccb87790ce292e302245a5c9898a2bba679d14ab23484d2a354176",
+      "independentInitial": {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_7d4aca82aeccb87790ce292e302245a5c9898a2bba679d14ab23484d2a354176",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "두 분배전개의 지정항 계수를 읽어 합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두분배연산에서요구된항의계수를읽어합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두 분배전개의 지정항 계수를 읽어 합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_81fcb8631bb60827f1d0efab5f923439498537c0071cc2e1951d1b7189e3db1a",
+      "independentInitial": {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_81fcb8631bb60827f1d0efab5f923439498537c0071cc2e1951d1b7189e3db1a",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "화살표로 주어진 두곱셈/나눗셈의 역연산을 순차적용하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "화살표두연산의순서를역으로따라원래단항식을복원한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "화살표로 주어진 두곱셈/나눗셈의 역연산을 순차적용하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e9f50f766e881629550d314ab2ab739cb7e354533963c133db59c8e0ab28183d",
+      "independentInitial": {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_e9f50f766e881629550d314ab2ab739cb7e354533963c133db59c8e0ab28183d",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "곱셈·나눗셈 관계에서 빠진 단항식을 복원한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "단항식곱나눗셈등식에서미지의제수를역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "곱셈·나눗셈 관계에서 빠진 단항식을 복원한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_eb74a473be72f437229515ea6650c0c16533e2eca0e6790f3ef7fbb16e48b178",
+      "independentInitial": {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_eb74a473be72f437229515ea6650c0c16533e2eca0e6790f3ef7fbb16e48b178",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "주어진 거듭제곱 A와 지수차가1인 두항을 대응하여 합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기준거듭제곱에서한차이지수를배수관계로표현한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 거듭제곱 A와 지수차가1인 두항을 대응하여 합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c304234cf7109c9f6abfef35f942178a6a5e450c80eddbeb692d0f8874812fe7",
+      "independentInitial": {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_c304234cf7109c9f6abfef35f942178a6a5e450c80eddbeb692d0f8874812fe7",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "A/B를 각각 정리한 뒤 일차결합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각A,B를괄호·분수·다항식나눗셈으로정리해선형결합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "A/B를 각각 정리한 뒤 일차결합한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_df59bc0ad7485bb7bd0a41bf42dd3d2d00e8a5fdb42dc9cbe4cae631b933241f",
+      "independentInitial": {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_df59bc0ad7485bb7bd0a41bf42dd3d2d00e8a5fdb42dc9cbe4cae631b933241f",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "중괄호/대괄호 속 미지 다항식을 역연산으로 복원한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "중첩괄호의부호를정리해빈다항식을역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "중괄호/대괄호 속 미지 다항식을 역연산으로 복원한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a9e1f8398841abe7cd6e6df6b63eabfd13f207fb919b6823b4318f2cd29ffa5d",
+      "independentInitial": {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_a9e1f8398841abe7cd6e6df6b63eabfd13f207fb919b6823b4318f2cd29ffa5d",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "두지정항 계수합0으로 미정계수를 구한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두계수합0조건으로미지계수를결정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "두지정항 계수합0으로 미정계수를 구한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_3ce4a6965ece776100fe49d515d127c51cf8341f34ff179a71dfb5d7c8618494",
+      "independentInitial": {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_3ce4a6965ece776100fe49d515d127c51cf8341f34ff179a71dfb5d7c8618494",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "복합식을 정리한 뒤 분수 두 값을 대입한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "다항식나눗셈을정리한뒤분수값을대입하는식값절차. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "복합식을 정리한 뒤 분수 두 값을 대입한다. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_12dd1eed5f856b9d8d913e9d01e5279a15de8fd5ca999da2baadc37bf5c0518c",
+      "independentInitial": {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_12dd1eed5f856b9d8d913e9d01e5279a15de8fd5ca999da2baadc37bf5c0518c",
+        "difficulty": 2,
+        "confidence": "low",
+        "reason": "실제합피라미드의 중간칸−4b와 위칸 a+b,2a−b를 보고 역연산 후 아래합을 구하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제합피라미드에서중간입력복원후아래합으로이동하는정형역연산. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "실제합피라미드의 중간칸−4b와 위칸 a+b,2a−b를 보고 역연산 후 아래합을 구하는 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다. 실제 원문과 최종 저자숫자를 대조했으며 독립판정과 일치한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c9880ea43dac01b5ed95ca92cc1a80596def7e84c7954dea34894fef93fa9867",
+      "independentInitial": {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_c9880ea43dac01b5ed95ca92cc1a80596def7e84c7954dea34894fef93fa9867",
+        "difficulty": 3,
+        "confidence": "low",
+        "reason": "밑2와 밑3 거듭제곱의 일의자리 주기와 지수변환을 결합하는 규칙선택 구조. 원해설 없는 조건부 구조판정이며 method를 생성하지 않는다."
+      },
+      "authorFinalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "자연수거듭제곱일의자리주기와81의밑표현을연결하는정형반복구조. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "독립3/저자2 B23. 밑2/3의일의자리반복과81의같은밑변환은익숙한거듭제곱주기확인의정형연계라는저자2를수용;원해설부재low와독립초기3보존."
+    }
+  ],
+  "adjacentMismatchAdjudication": [],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 19,
+      "decision": "ACCEPT_EXPLICIT_LEAF_GAP",
+      "reason": "일의자리주기목표를지수법칙단일leaf에강제하지않는다."
+    }
+  ],
+  "initialSnapshot": {
+    "path": "/workspace/scratch/14c2c64e43fb/root/independent/E069/initial.json",
+    "sha256": "89f32a0d3c36a81c7598d9968384e64661163ec4a072a476b4d9fc6bd98e452c"
+  },
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "actualReading": {
+    "questionOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "existingSolutionOrdinals": [],
+    "images": [
+      {
+        "sourceOrdinal": 18,
+        "path": "/workspace/scratch/14c2c64e43fb/root/independent/E069/q18.png",
+        "repoPath": "archive/assets/images/19_부산사직여중_1학기_중간_중2_수학/q18.png",
+        "sha256": "77f09bf8e01aaf816cbf012dca9790491e613ad4415215fc83d7783c6bbbc27a",
+        "visuallyInspected": true
+      }
+    ],
+    "sourceAnswersOrHandwritingExposure": "Source answer and solution absent; no new solution produced."
+  },
+  "canonicalEvidenceRead": [
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/compiled/concept_registry.json",
+    "archive/data/meta-foundation/compiled/condition_registry.json",
+    "docs/architecture/4slot/term-dictionary-v1.5.json"
+  ],
+  "notes": [
+    "Root actual19source andonePNG independently read andfrozen beforeauthornumbers;all19numberscompared.",
+    "Sourceonlymethod19/deferredregistration retained; no source/solution/answer generation."
+  ]
+}

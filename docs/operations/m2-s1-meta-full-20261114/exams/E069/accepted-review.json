@@ -1,0 +1,2175 @@
+{
+  "schemaVersion": "m2-s1-meta-review-v1",
+  "examId": "E069",
+  "owner": "C",
+  "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+  "sourceSha256": "79675e120ff228ac8b3e4fd1d236cc2bdd91e4bb08f6d35f59f42c0443e0d0a2",
+  "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75",
+  "reviewedQuestionCount": 19,
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5c23d5b89f27d074840a96a49fca131bbab3104c9c03d946bb620052bdaed078",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-004",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "순환소수 분수화에 필요한 소거식",
+      "decisiveStep": "004 순환부분을맞추는배수차를선택하는단계가직접목표.연립소거법으로과장하지않고method는비워둔다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "004 순환부분을맞추는배수차를선택하는단계가직접목표.연립소거법으로과장하지않고method는비워둔다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "두자리순환부분을맞추는10의거듭제곱배와소거식선택. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "004 순환부분을맞추는배수차를선택하는단계가직접목표.연립소거법으로과장하지않고method는비워둔다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두자리순환부분을맞추는10의거듭제곱배와소거식선택. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_80f3595615859aaa33c60600173b7dfeca46ea018e6821c33ad327177e976e69",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-002",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "약분을 고려한 분모 소인수 판별",
+      "decisiveStep": "002 약분후분모의2/5이외인수존재여부로순환조건을판정한다.분자7과보기분모의약분을놓치지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "002 약분후분모의2/5이외인수존재여부로순환조건을판정한다.분자7과보기분모의약분을놓치지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "실제 명시 또는 목표의 수범위 제한: 순환소수가 된다",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "분모의보기수와분자7의약분을함께고려해유한/순환경계를판정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "002 약분후분모의2/5이외인수존재여부로순환조건을판정한다.분자7과보기분모의약분을놓치지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "분모의보기수와분자7의약분을함께고려해유한/순환경계를판정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ca672998f647346b7b8ffc68735136b96f878ba53a7dbf1c3f1bf6a8ef89adca",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-004",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "혼합 순환소수의 기약분수 분모분자 차",
+      "decisiveStep": "004 비순환부분을포함한분수화가주요골격.기약조건을명시적으로보존.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "004 비순환부분을포함한분수화가주요골격.기약조건을명시적으로보존.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "실제 명시 또는 목표의 수범위 제한: 기약분수로 나타내면",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "순환부분앞두자리있는소수를기약분수로바꿔분모분자차를구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "004 비순환부분을포함한분수화가주요골격.기약조건을명시적으로보존.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환부분앞두자리있는소수를기약분수로바꿔분모분자차를구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_2968b66e402d846bd3db94bdbfcc79d0fb2892b41202fb4004cd7dc17e37a274",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "분수와 순환소수의 차를 순환표현으로 변환",
+      "decisiveStep": "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "순환소수를분수로바꾼차를다시순환소수로표현하는정형변환. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "RPM_LEAF_GAP: 입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E069-Q4-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "순환소수를분수로바꾼차를다시순환소수로표현하는정형변환. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_90dba81c35c2a8d89765bd1b46d273e02f2a5f655a3dc0660f895c7c47cf7ae2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "유리수와 소수 분류 진술 판정",
+      "decisiveStep": "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "유리수·유한·무한·순환소수의포함관계를다섯진술에서비교. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "RPM_LEAF_GAP: 유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E069-Q5-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "유리수·유한·무한·순환소수의포함관계를다섯진술에서비교. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_9fd2806c7ce1e6a7726dbb697e312358618651fbf779a7945d1e0e199b6035c1",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-006",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "10의 거듭제곱 분모의 자연수 최소합",
+      "decisiveStep": "006 자연수분자·지수제약을만족하는분수표현중합최소조건.최적화일반고등template를억지대입하지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "유리수와 순환소수"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "조건을 만족하는 유리수"
+        },
+        "rpmBasePath": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "조건을 만족하는 유리수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "006 자연수분자·지수제약을만족하는분수표현중합최소조건.최적화일반고등template를억지대입하지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "실제 명시 또는 목표의 수범위 제한: $a, n$은 자연수",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "10의거듭제곱분모표현에서자연수분자와지수의최소합을조건으로선별한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "006 자연수분자·지수제약을만족하는분수표현중합최소조건.최적화일반고등template를억지대입하지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "10의거듭제곱분모표현에서자연수분자와지수의최소합을조건으로선별한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_d55900ef5658e87fd3b9f27874fb098ada8c6a45bee133508206f13589b917a2",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "META_ONLY_UNRESOLVED",
+      "primaryMethod": "여러 거듭제곱과 몫·합 연산의 진술 검산",
+      "decisiveStep": "007곱몫과008거듭제곱의거듭제곱및항의합이독립보기에분산.단일leafprimary미판정이며M2단항식오답선택template와현재옳은식선택/합보기차이를보존.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "007곱몫과008거듭제곱의거듭제곱및항의합이독립보기에분산.단일leafprimary미판정이며M2단항식오답선택template와현재옳은식선택/합보기차이를보존.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "single primary 미판정으로 CC=null이며 NONE이 아니다.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "single primary 미판정의 종속축을 null로 보존하며 NONE을 확정하지 않는다.",
+        "difficulty": "곱몫과거듭제곱법칙및같은항의합을보기별로검산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "007곱몫과008거듭제곱의거듭제곱및항의합이독립보기에분산.단일leafprimary미판정이며M2단항식오답선택template와현재옳은식선택/합보기차이를보존.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "META_ONLY_UNRESOLVED: 007곱몫과008거듭제곱의거듭제곱및항의합이독립보기에분산.단일leafprimary미판정이며M2단항식오답선택template와현재옳은식선택/합보기차이를보존.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "곱몫과거듭제곱법칙및같은항의합을보기별로검산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_3652bae854b117b43e15ece48b9c27b98da8ba4fac32df2c491d9fb2393a23c4",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-010",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "직육면체 부피와 밑면으로 높이 단항식 몫",
+      "decisiveStep": "010 단항식나눗셈.부피=가로×세로×높이공식은지수몫밖의외부기하공식으로실제genericarea-volumeCC후보를조건부연결.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 나눗셈"
+        },
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "010 단항식나눗셈.부피=가로×세로×높이공식은지수몫밖의외부기하공식으로실제genericarea-volumeCC후보를조건부연결.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "직육면체길이와부피의기하공식을문자관계로표현한뒤단항식몫을취하는외부공식단계.공식실행은원해설부재로조건부이며generic정의범위는root교차대상.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "기하부피공식→단항식나눗셈primary의순차제안.",
+        "difficulty": "직육면체부피와밑면변으로높이의단항식몫을구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "010 단항식나눗셈.부피=가로×세로×높이공식은지수몫밖의외부기하공식으로실제genericarea-volumeCC후보를조건부연결.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "직육면체부피와밑면변으로높이의단항식몫을구한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_11da4fe9a5d2642f10cd900a92c525c6541860876a55ab8f976fcd01c3aa76ca",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-015",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "두 다항식 나눗셈 결과의 차",
+      "decisiveStep": "015 각다항식을단항식으로나누어차를정리하는정형연산.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "015 각다항식을단항식으로나누어차를정리하는정형연산.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "두다항식÷단항식결과를빼어동류항정리한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "015 각다항식을단항식으로나누어차를정리하는정형연산.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두다항식÷단항식결과를빼어동류항정리한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_7d4aca82aeccb87790ce292e302245a5c9898a2bba679d14ab23484d2a354176",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-014",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "분배 전개한 두 식의 지정 계수합",
+      "decisiveStep": "014 두단항식곱전개에서지정항의계수를확인한다.단순합은내부최종연산.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "014 두단항식곱전개에서지정항의계수를확인한다.단순합은내부최종연산.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "두분배연산에서요구된항의계수를읽어합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "014 두단항식곱전개에서지정항의계수를확인한다.단순합은내부최종연산.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두분배연산에서요구된항의계수를읽어합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_81fcb8631bb60827f1d0efab5f923439498537c0071cc2e1951d1b7189e3db1a",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-011",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "곱·나눗셈 화살표의 원래 단항식 복원",
+      "decisiveStep": "011 주어진두단항식연산과최종결과를만족하는앞식을구하는역산구조.원풀이를생성하지않고연산흐름만분류한다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "011 주어진두단항식연산과최종결과를만족하는앞식을구하는역산구조.원풀이를생성하지않고연산흐름만분류한다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "화살표두연산의순서를역으로따라원래단항식을복원한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "011 주어진두단항식연산과최종결과를만족하는앞식을구하는역산구조.원풀이를생성하지않고연산흐름만분류한다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "화살표두연산의순서를역으로따라원래단항식을복원한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e9f50f766e881629550d314ab2ab739cb7e354533963c133db59c8e0ab28183d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-011",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "단항식 혼합 연산의 빈 제수",
+      "decisiveStep": "011 곱나눗셈혼합등식의빈단항식을역산하는목표.곱셈만009또는몫010한단계로축소하지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "011 곱나눗셈혼합등식의빈단항식을역산하는목표.곱셈만009또는몫010한단계로축소하지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "단항식곱나눗셈등식에서미지의제수를역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "011 곱나눗셈혼합등식의빈단항식을역산하는목표.곱셈만009또는몫010한단계로축소하지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "단항식곱나눗셈등식에서미지의제수를역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_eb74a473be72f437229515ea6650c0c16533e2eca0e6790f3ef7fbb16e48b178",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-007",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "기준 거듭제곱과 지수 한 차이의 표현",
+      "decisiveStep": "007 밑3의곱몫관계로주어진A를활용한다.고등로그/거듭제곱근template의동명키를사용하지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "007 밑3의곱몫관계로주어진A를활용한다.고등로그/거듭제곱근template의동명키를사용하지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "기준거듭제곱에서한차이지수를배수관계로표현한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "007 밑3의곱몫관계로주어진A를활용한다.고등로그/거듭제곱근template의동명키를사용하지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "기준거듭제곱에서한차이지수를배수관계로표현한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c304234cf7109c9f6abfef35f942178a6a5e450c80eddbeb692d0f8874812fe7",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "META_ONLY_UNRESOLVED",
+      "primaryMethod": "나눗셈 포함 A와 분수식 B의 선형결합",
+      "decisiveStep": "A의015다항식나눗셈과B의013분수괄호정리가독립입력연산으로함께있다.원해설없는상태에서단일primary를억지선정하지않고종속축null.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": null,
+        "conditionKeys": [],
+        "integrationPattern": null,
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION",
+        "dependentAxisStatus": {
+          "crossConcept": "META_ONLY_UNRESOLVED",
+          "integrationPattern": "META_ONLY_UNRESOLVED"
+        }
+      },
+      "fieldReview": {
+        "classification": "A의015다항식나눗셈과B의013분수괄호정리가독립입력연산으로함께있다.원해설없는상태에서단일primary를억지선정하지않고종속축null.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "single primary 미판정으로 CC=null이며 NONE이 아니다.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "single primary 미판정의 종속축을 null로 보존하며 NONE을 확정하지 않는다.",
+        "difficulty": "각A,B를괄호·분수·다항식나눗셈으로정리해선형결합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "A의015다항식나눗셈과B의013분수괄호정리가독립입력연산으로함께있다.원해설없는상태에서단일primary를억지선정하지않고종속축null.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "META_ONLY_UNRESOLVED: A의015다항식나눗셈과B의013분수괄호정리가독립입력연산으로함께있다.원해설없는상태에서단일primary를억지선정하지않고종속축null.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "각A,B를괄호·분수·다항식나눗셈으로정리해선형결합한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_df59bc0ad7485bb7bd0a41bf42dd3d2d00e8a5fdb42dc9cbe4cae631b933241f",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-017",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "중첩 괄호 등식의 미지 다항식",
+      "decisiveStep": "017 등식조건을만족하는미지다항식을찾는다.괄호부호013은그조건결정의내부단계.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "017 등식조건을만족하는미지다항식을찾는다.괄호부호013은그조건결정의내부단계.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "중첩괄호의부호를정리해빈다항식을역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "017 등식조건을만족하는미지다항식을찾는다.괄호부호013은그조건결정의내부단계.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "중첩괄호의부호를정리해빈다항식을역산한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_a9e1f8398841abe7cd6e6df6b63eabfd13f207fb919b6823b4318f2cd29ffa5d",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-017",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "계수 합 조건으로 상수 결정",
+      "decisiveStep": "017 다항식계수조건.동류항012정리는미지계수를정하는준비단계.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "017 다항식계수조건.동류항012정리는미지계수를정하는준비단계.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "실제 명시 또는 목표의 수범위 제한: $x^2$의 계수와 $x$의 계수 / 합이 $0$",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "두계수합0조건으로미지계수를결정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "017 다항식계수조건.동류항012정리는미지계수를정하는준비단계.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "두계수합0조건으로미지계수를결정한다. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_3ce4a6965ece776100fe49d515d127c51cf8341f34ff179a71dfb5d7c8618494",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-016",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "다항식 나눗셈과 분수 수치 대입",
+      "decisiveStep": "016 식값이최종목표.015다항식나눗셈은그식정리의내부단계이며별도CC대입으로과장하지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "016 식값이최종목표.015다항식나눗셈은그식정리의내부단계이며별도CC대입으로과장하지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "실제 명시 또는 목표의 수범위 제한: $a=-\\frac{1}{3}, b=\\frac{5}{2}$",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "다항식나눗셈을정리한뒤분수값을대입하는식값절차. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "016 식값이최종목표.015다항식나눗셈은그식정리의내부단계이며별도CC대입으로과장하지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "다항식나눗셈을정리한뒤분수값을대입하는식값절차. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_12dd1eed5f856b9d8d913e9d01e5279a15de8fd5ca999da2baadc37bf5c0518c",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": "M2-RPM-017",
+      "rpmDecision": "CORRECT",
+      "primaryMethod": "합 피라미드의 미지식 복원과 최종합",
+      "decisiveStep": "017 실제피라미드에빈상단과중단합조건이있어조건에맞는식복원이필수.전체가단순순방향합012만은아니다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "다항식의 계산"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "rpmBasePath": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "017 실제피라미드에빈상단과중단합조건이있어조건에맞는식복원이필수.전체가단순순방향합012만은아니다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "실제합피라미드에서중간입력복원후아래합으로이동하는정형역연산. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "017 실제피라미드에빈상단과중단합조건이있어조건에맞는식복원이필수.전체가단순순방향합012만은아니다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "실제합피라미드에서중간입력복원후아래합으로이동하는정형역연산. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c9880ea43dac01b5ed95ca92cc1a80596def7e84c7954dea34894fef93fa9867",
+      "verdict": "REGISTRATION_PENDING",
+      "rpmRecordId": null,
+      "rpmDecision": "RPM_LEAF_GAP",
+      "primaryMethod": "자연수 거듭제곱의 일의 자리 주기",
+      "decisiveStep": "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+      "beforeSource": {
+        "standardCourse": null,
+        "standardUnitKey": null,
+        "standardUnit": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "subUnit": null,
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "level": null,
+        "difficultyBucket": null,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "beforeMetadata": {
+        "standardCourse": "",
+        "standardUnitKey": "",
+        "standardUnit": "",
+        "standardUnitOrder": null,
+        "subUnitKey": "",
+        "subUnit": "",
+        "curriculum": null,
+        "course": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN"
+      },
+      "after": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "standardUnit": "수와 식",
+        "category": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnit": "지수법칙"
+      },
+      "semanticDecision": {
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "semanticCurriculum": "UNKNOWN",
+        "rpmPath": null,
+        "rpmBasePath": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "machineCurriculum": "UNKNOWN",
+        "curriculumProvenance": "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY",
+        "reviewScope": "SOURCE_ONLY_NO_EXISTING_SOLUTION"
+      },
+      "fieldReview": {
+        "classification": "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+        "binding": "실제 RPM 의미 및 읽은 ACTIVE 후보 정의와의 차이를 판단했다. 정의 일치가 입증되지 않은 exact PT/TPL을 발명하지 않는다.",
+        "crossConcept": "기존해설이 없는 source-only 제안. primary 내부의 기본 연산 외 별도 CC 없음이라는 조건부 제안.",
+        "condition": "입력 수치 이외 별도 해 선택 제한을 추가하지 않는다.",
+        "integration": "source 구조의 NONE 조건부 제안이며 실제 기존해설 검증으로 주장하지 않는다.",
+        "difficulty": "자연수거듭제곱일의자리주기와81의밑표현을연결하는정형반복구조. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다.",
+        "fourSlot": "Actual source literals manually selected; no answer/solution or method hypothesis written. Current source-only difficulty frozen before legacy comparison."
+      },
+      "reason": "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+      "registrationDebt": [
+        "EXISTING_SOLUTION_ABSENT: method[] and native validation failure retained.",
+        "RPM_LEAF_GAP: 두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+        "PT_TPL_EVIDENCE_INCOMPLETE: No genuine VERIFIED_FINAL resolver input was supplied; reviewed reuse candidates are not activated."
+      ],
+      "proposalRefs": [
+        "C-E069-Q19-RPM-LEAF"
+      ],
+      "finalDifficulty": {
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "reason": "자연수거듭제곱일의자리주기와81의밑표현을연결하는정형반복구조. 기존 해설이 없어 조건부 구조 추정이며 낮은 확신으로 보존한다."
+      },
+      "resolverEvidence": {
+        "status": "NOT_RUN",
+        "reason": "No fabricated independent solution verification or synthetic VERIFIED_FINAL evidence. Genuine read-only resolver gate remains pending."
+      }
+    }
+  ],
+  "topicSummary": [],
+  "proposals": [
+    {
+      "id": "C-E069-Q4-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "분수와 순환소수의 차를 순환표현으로 변환",
+      "distinguishingRule": "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap.",
+      "intendedParent": "M2-01-REPEATING_DECIMAL",
+      "sourceOrdinals": [
+        4
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2968b66e402d846bd3db94bdbfcc79d0fb2892b41202fb4004cd7dc17e37a274"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+      "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+      "evidence": [
+        "입력의004분수화와최종005소수표현이연결된사칙연산과제.어느방향변환만을전체primary로강제하지않는명확한leafgap."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E069-Q5-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "유리수와 소수 분류 진술 판정",
+      "distinguishingRule": "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치.",
+      "intendedParent": "M2-01-REPEATING_DECIMAL",
+      "sourceOrdinals": [
+        5
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_90dba81c35c2a8d89765bd1b46d273e02f2a5f655a3dc0660f895c7c47cf7ae2"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+      "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+      "evidence": [
+        "유한소수·순환소수·무한소수·분수의포함관계판정은특정분수001또는변환004와구분되는leafgap.M3실수/무리수전체template는현재범위와불일치."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    },
+    {
+      "id": "C-E069-Q19-RPM-LEAF",
+      "type": "RPM_LEAF_GAP",
+      "definition": "자연수 거듭제곱의 일의 자리 주기",
+      "distinguishingRule": "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다.",
+      "intendedParent": "M2-01-EXPONENT_LAW",
+      "sourceOrdinals": [
+        19
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_c9880ea43dac01b5ed95ca92cc1a80596def7e84c7954dea34894fef93fa9867"
+      ],
+      "sourceArchiveFile": "original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+      "sourceGitBlobSha": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+      "evidence": [
+        "두밑의일의자리반복구조를이용하는primary는007단순지수곱몫만으로포괄되지않는leafgap.3^x주기CC는primary외부가아니므로중복CC등록하지않는다."
+      ],
+      "activationStatus": "NOT_REGISTERED"
+    }
+  ],
+  "notes": [
+    "All current source stems and choices actually read. Existing solutions absent; method slots deliberately empty.",
+    "Source-only initial snapshot and actual visual reads reused; no source answer/solution/UID/order mutation."
+  ],
+  "sourceVisualEvidence": [
+    {
+      "sourceOrdinal": 18,
+      "sourcePath": "assets/images/19_부산사직여중_1학기_중간_중2_수학/q18.png",
+      "localPath": "/workspace/scratch/14c2c64e43fb/workers/C/E069/assets/q18.png",
+      "sha256": "77f09bf8e01aaf816cbf012dca9790491e613ad4415215fc83d7783c6bbbc27a"
+    }
+  ],
+  "difficultyAssessmentDisclosure": "Current content-only judgments and actual figure inspection were frozen before legacy source/metadata comparison. Source curriculum and level absence are not replaced by invented old values; proposed levels/numeric buckets remain proposals.",
+  "difficultyInitialFreeze": {
+    "path": "/workspace/scratch/14c2c64e43fb/workers/C/E069/blind-initial.json",
+    "sha256": "2d3c724c214c6806dde8e5c338ff0e00f1a4c260daa0fb1fe15781bf6daa0f02"
+  }
+}
