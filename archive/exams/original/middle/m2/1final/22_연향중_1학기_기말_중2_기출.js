@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -108,7 +108,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -182,13 +182,13 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
     "standardCourse": "중2 수학",
@@ -219,14 +219,14 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "low",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식의 활용",
     "originalCategory": "연립일차방정식의 활용",
     "standardCourse": "중2 수학",
@@ -257,9 +257,9 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -296,8 +296,8 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -333,7 +333,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -365,13 +365,13 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[핵심] $y=ax$를 $y$축 방향으로 $-2$만큼 옮기면 $y=ax-2$가 된다.\n[풀이] 이동한 그래프가 $(3,-1)$을 지나므로 $-1=3a-2$이다. 따라서 $3a=1$, $a=\\dfrac13$이다.\n[확인] $y=\\dfrac13x-2$에 $x=3$을 넣으면 $y=-1$이 된다.\n[결론] 정답은 ①이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -406,10 +406,10 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 12,
@@ -479,8 +479,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[핵심] 평행한 두 일차함수의 그래프는 기울기가 같다.\n[풀이] $y=ax+2$와 $y=\\dfrac32x-4$가 평행하므로 $a=\\dfrac32$이다. 점 $(b,-1)$을 지나므로 $-1=\\dfrac32b+2$, 따라서 $b=-2$이다.\n[확인] $a+b=\\dfrac32-2=-\\dfrac12$이다.\n[결론] 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
@@ -490,7 +490,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "level": "하",
+    "level": "중",
     "category": "일차방정식의 그래프",
     "originalCategory": "일차방정식의 그래프",
     "standardCourse": "중2 수학",
@@ -521,7 +521,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
@@ -559,19 +559,19 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
     "level": "중",
-    "category": "일차방정식의 그래프",
+    "category": "연립일차방정식",
     "originalCategory": "일차방정식의 그래프",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-04",
-    "standardUnit": "일차함수와 그래프",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "M2-03",
+    "standardUnit": "연립일차방정식",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -593,18 +593,18 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[핵심] 그림에서 두 직선의 교점 $(3,2)$을 읽어 각 방정식에 대입한다.\n[풀이] $2x-y-a=0$에 $(3,2)$를 넣으면 $6-2-a=0$, 따라서 $a=4$이다. $bx+y-5=0$에 넣으면 $3b+2-5=0$, 따라서 $b=1$이다.\n[확인] $(a,b)=(4,1)$이면 두 직선 모두 $(3,2)$를 지난다.\n[결론] 정답은 ②이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
-    "level": "상",
+    "level": "중",
     "category": "일차방정식의 그래프",
     "originalCategory": "일차방정식의 그래프",
     "standardCourse": "중2 수학",
@@ -635,9 +635,9 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -675,13 +675,13 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 19,
-    "level": "상",
+    "level": "중",
     "category": "일차함수의 그래프",
     "originalCategory": "일차함수의 그래프",
     "standardCourse": "중2 수학",
@@ -716,15 +716,12 @@ window.questionBank = [
     "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
     "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_NEGATIVE",
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
     "solutionImageSize": "full",
     "solutionImageLayout": "fullwidth",
@@ -733,7 +730,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "상",
+    "level": "중",
     "category": "일차함수의 활용",
     "originalCategory": "일차함수의 활용",
     "standardCourse": "중2 수학",
@@ -761,13 +758,13 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "그래프에서 동생은\n\n$(0,0)$에서 $(60,1200)$까지 이동한다.\n\n따라서 동생의 속력은\n\n$\\dfrac{1200}{60}=20\\mathrm{m/min}$이다.\n\n형은\n\n$(10,0)$에서 $(50,1200)$까지 이동하므로\n\n속력은\n\n$\\dfrac{1200}{50-10}=30\\mathrm{m/min}$이다.\n\n동생 출발 후 $x$분일 때\n\n동생이 간 거리는\n\n$20x$,\n\n형이 간 거리는\n\n$30(x-10)$이다.\n\n두 사람이 만날 때 거리가 같으므로\n\n$20x=30(x-10)$\n\n$20x=30x-300$\n\n$10x=300$\n\n$x=30$이다.\n\n이는 동생이 출발한 지 $30$분 후이다.\n\n형은 $10$분 늦게 출발했으므로\n\n$30-10=20$분 동안 움직였다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -797,8 +794,8 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -862,13 +859,13 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
-    "level": "상",
+    "level": "중",
     "category": "일차함수의 활용",
     "originalCategory": "일차함수의 활용",
     "standardCourse": "중2 수학",
@@ -890,13 +887,13 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $y=20x+120$  (2) 2초 후",
     "solution": "(1)\n점 $P$는 초속 $2\\mathrm{cm}$로 움직이므로\n$x$초 후\n\n$CP=2x\\mathrm{cm}$이다.\n\n사각형 $ABCP$는\n평행한 두 변의 길이가\n\n$AB=12\\mathrm{cm}$,\n\n$CP=2x\\mathrm{cm}$\n\n이고 높이가\n\n$AD=20\\mathrm{cm}$\n\n인 사다리꼴이다.\n\n따라서 넓이 $y$는\n\n$y=\\dfrac12(12+2x)\\times20$\n\n$=10(12+2x)$\n\n$=120+20x$이다.\n\n따라서\n\n$y=20x+120$이다.\n\n(2)\n넓이가 $160\\mathrm{cm}^2$일 때\n\n$20x+120=160$\n\n$20x=40$\n\n$x=2$이다.\n\n따라서 점 $P$가 출발한 지 $2$초 후이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   }
 ];

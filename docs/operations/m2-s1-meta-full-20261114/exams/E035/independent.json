@@ -1,0 +1,865 @@
+{
+  "schemaVersion": "m2-s1-independent-review-v1",
+  "examId": "E035",
+  "taskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "reviewer": "M2-S1-META-FULL/C",
+  "at": "2026-11-14T13:51:00.846569+00:00",
+  "status": "ACCEPT_WITH_NARROW_SUPPLEMENT_AND_NAMED_DEBTS",
+  "sourceGitBlobSha": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
+  "sourceSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+  "reviewedAuthorArtifacts": {
+    "reviewPath": "/workspace/scratch/14c2c64e43fb/workers/B/E035.review.json",
+    "reviewSha256": "adf385bcce3a35c85c1272c69abd24ad0dc4103e3874303a11fae59cebd52cef",
+    "fourSlotPath": "/workspace/scratch/14c2c64e43fb/workers/B/E035.4slot.json",
+    "fourSlotSha256": "760763d3273511ac3fce3c3d8149294dfa3b3e2e5993e88df0898946ff102ca4"
+  },
+  "scope": {
+    "sevenAxisSampleOrdinals": [
+      6,
+      18,
+      24
+    ],
+    "additionalClassificationOrdinals": [
+      8,
+      10,
+      16,
+      20
+    ],
+    "difficultyOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "allCurrentStemsChoicesAndExistingSolutionsRead": true,
+    "imagesViewed": [
+      12,
+      16,
+      18,
+      19,
+      20,
+      23,
+      24
+    ],
+    "solutionSvgInspectedAsSourceXml": 19,
+    "blindClaim": true,
+    "initialFreeze": {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/C/independent/E035.initial.json",
+      "sha256": "7bd5bc102e889cd0c882c5e2b58ff9f5c1b31808141b341ea3dab771f5dd255d"
+    }
+  },
+  "samples": [
+    {
+      "sourceOrdinal": 6,
+      "classification": "M2-RPM-037 계수 조건으로 해의 상태 판단이 실제 목표와 맞는다.",
+      "binding": "실제 ACTIVE PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION과 TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM의 계수비·상수항비 정의와 부모를 확인했다. source curriculum 없음은 UNKNOWN이며2015 path는제안으로만 수용.",
+      "crossConcept": "계수비와 평행·불일치는 이 primary 내부 절차이므로 CC 없음 수용.",
+      "condition": "해가 없음은 문제 핵심이며 임의 b≠0 조건을 추가하면 안 된다.",
+      "integration": "정형 하나의 해 없음 판정 흐름으로 NONE 수용.",
+      "difficulty": "2/중 B23의 저자 제안을 인접경계로 수용.",
+      "fourSlot": "보완본에서 given 연립일차방정식568과 goal 매개변수308/조건의 literal을 직접 확인. 기존 해설 중3/(2b)은 b=0에서 정의되지 않는 부채를 지우지 않는다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "classification": "M2-RPM-059 조건에 따른 식 결정의 선분 교차 후보제한을 수용. 원 직선AB 전체와 선분을 혼동하지 않음.",
+      "binding": "사분면 교점 범위 TPL은 좌표 부호가 제한조건이고 여기서는 유한 선분구간이다. 관련 variant만 남긴 판단 수용.",
+      "crossConcept": "교점과 범위 검사는 조건식 결정 primary 내부 구조. CC 없음 수용.",
+      "condition": "COND_RANGE 실제 ACTIVE 정의 확인,교점x가4≤x≤8일 때만 허용.",
+      "integration": "하나의 교점 조건 판정 흐름이므로 NONE 수용.",
+      "difficulty": "3/중 B23 수용. 초기가상인 학습level은 저자의 중과 경계차이며 구조상 오판으로 강제수정하지 않음.",
+      "fourSlot": "이미지A(4,6),B(8,2)를 확인. goal 매개변수308+판정의 보완인용 정확. 기울기·교점·범위 방법의 literal검증."
+    },
+    {
+      "sourceOrdinal": 24,
+      "classification": "시간→이동거리→사다리꼴넓이의 모델이며 좌표그래프 영역의058과 구별한 leaf gap 수용.",
+      "binding": "현재 exact shared template를 확인할 수 없어 named debt를 보존하는 판단 수용.",
+      "crossConcept": "ACTIVE CC_AREA의 도형넓이 조건을 함수모델 앞의 실제 외부개념으로 인정.",
+      "condition": "명시0<x≤6을 COND_RANGE로 보존. CP 언급은 표현지시로4slot에 보존.",
+      "integration": "이동거리→넓이→관계식과 목표넓이 대입의 SEQUENTIAL 수용.",
+      "difficulty": "2/중 B23의 정형 두소문항 판단 수용. 초기3과 인접 경계이다.",
+      "fourSlot": "그림AD20/AB12/P onCD를 확인. 보완된 사다리꼴 단계와 기존거리·넓이·대입 근거 확인. 경과시간candidate의 값parent가 같은goal에 존재하며 정의·사용처가 선언됨."
+    }
+  ],
+  "semanticRechecks": [
+    {
+      "sourceOrdinal": 8,
+      "decision": "ACCEPT",
+      "reason": "일반 함수 유일대응 정의와 일차함수 판별047을 구별. ACTIVE 함수정의PT/대응판정TPL 확인, goal함수 보완 확인."
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "ACCEPT",
+      "reason": "알려진 이동량으로 미지기울기를 찾으므로 이동량 자체를 구하는M2template는relatedvariant. ACTIVE 공유평행이동TT는 actual범위 일치. goal매개변수 보완확인."
+    },
+    {
+      "sourceOrdinal": 16,
+      "decision": "ACCEPT",
+      "reason": "그림공유점(3,2)을 직접읽고 두식에 대입해 계수를 결정하는033. 교점자체를 다시 구하는056으로 억지지정하지 않음."
+    },
+    {
+      "sourceOrdinal": 20,
+      "decision": "ACCEPT",
+      "reason": "실제그림의동생0→60분,형10→50분을 확인. 두 위치함수의 교점시각056과 motiongraphtemplate 정의 부합. 질문은형 출발 후 경과시간이며 독립goalcandidate로 보존."
+    }
+  ],
+  "difficultyReview": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_90b7ee93b6519a2530525e688039ea59337012cfbf1348c0a59477ffe36077ce",
+      "independentDifficulty": {
+        "difficultyBucket": 1,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 순서쌍을 두 식에 대입해 해의 뜻을 직접 판정한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 순서쌍을 두 식에 직접 대입해 동시 성립만 확인한다."
+      },
+      "acceptedProposal": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 순서쌍을 두 식에 직접 대입해 동시 성립만 확인한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 순서쌍을 두 식에 대입해 해의 뜻을 직접 판정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ef3a50aef5bccc70c8a89e9c5c9b43625315f156cb3b62ab8f506d18756d34e3",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "좌표에 표현된 b를 첫 식에서 결정한 뒤 두 번째 식의 a를 결정한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해의 좌표 관계를 첫 식에 넣어 b를 구하고 둘째 식에서 a를 복원한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해의 좌표 관계를 첫 식에 넣어 b를 구하고 둘째 식에서 a를 복원한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "좌표에 표현된 b를 첫 식에서 결정한 뒤 두 번째 식의 a를 결정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_4dae217ef42855e9388e3c6ab6c463d4c0c305389fa61d0599206501473b298d",
+      "independentDifficulty": {
+        "difficultyBucket": 1,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "x계수의 공배수와 두 식의 차를 고르는 소거 단계다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소거할 문자까지 지정되어 있어 계수2,3의 최소공배수6을 맞춰 빼는 기본 가감법 준비다."
+      },
+      "acceptedProposal": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "소거할 문자까지 지정되어 있어 계수2,3의 최소공배수6을 맞춰 빼는 기본 가감법 준비다."
+      },
+      "decision": "ACCEPT",
+      "reason": "x계수의 공배수와 두 식의 차를 고르는 소거 단계다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_4658bab402d9e4bbf7546f7d041926082dd20b531416a454f4fe3bd76d8b9cbc",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "분수·소수를 정수 계수로 바꾸어 정형 가감법으로 해를 구한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수의 정수화 후 같은 x계수 소거 및 해의 차 계산은 표준 절차다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "분수·소수의 정수화 후 같은 x계수 소거 및 해의 차 계산은 표준 절차다."
+      },
+      "decision": "ACCEPT",
+      "reason": "분수·소수를 정수 계수로 바꾸어 정형 가감법으로 해를 구한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_67aafa8792070e1350e85add229276104c435502282b7424899568b5a2310f47",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "네 식 중 계수가 없는 두 식을 선택하여 공통해를 먼저 정하고 남은 계수를 결정한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "미정계수가 없는 두 식으로 공통해를 먼저 구하고 나머지 식에 넣어 계수를 결정하는 정형 공통해 문제다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "미정계수가 없는 두 식으로 공통해를 먼저 구하고 나머지 식에 넣어 계수를 결정하는 정형 공통해 문제다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "네 식 중 계수가 없는 두 식을 선택하여 공통해를 먼저 정하고 남은 계수를 결정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_bf73519ee8c86e25805ec66ca2db0cd33bffdc238dddd8f3b6fa4d75bfb99684",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "해가 없음의 계수비와 상수항 불일치를 함께 조건화한다. 기존 해설3/(2b)은 b=0에서 정의되지 않아 그 중간 근거부채를 보존해야 한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수비는 같고 상수항비는 달라야 하는 표준 해 없음 판정을 두 조건으로 쓴다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "계수비는 같고 상수항비는 달라야 하는 표준 해 없음 판정을 두 조건으로 쓴다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "해가 없음의 계수비와 상수항 불일치를 함께 조건화한다. 기존 해설3/(2b)은 b=0에서 정의되지 않아 그 중간 근거부채를 보존해야 한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_ab5d9589a308e2a677554096654f13f57aa0a3096ddab9eaed985a6331dda98b",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "승패 횟수와 계단 이동 부호를 두 사람의 식으로 모델링한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 사람 승패에 따른 +3,-2 이동량으로 두 식을 세우는 정형 모델이며 조건선택이나 추가 경우가 없다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 사람 승패에 따른 +3,-2 이동량으로 두 식을 세우는 정형 모델이며 조건선택이나 추가 경우가 없다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "승패 횟수와 계단 이동 부호를 두 사람의 식으로 모델링한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_e76a3f32ea5c9a3aef03158e10fb1b433464cf8194e512d82ccc765032643bcb",
+      "independentDifficulty": {
+        "difficultyBucket": 1,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "입력에 출력이 하나인지 함수 정의를 판단한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "reason": "입력 하나에 출력 하나인지 함수 정의를 직접 적용한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "입력 하나에 출력 하나인지 함수 정의를 직접 적용한다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "입력에 출력이 하나인지 함수 정의를 판단한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7d36fb1aa9c10c0a2b1a60abe6f1620a9821d4252ccf1e4b420a4e8400ff830f",
+      "independentDifficulty": {
+        "difficultyBucket": 1,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "함수식에 두 수를 대입한 함수값의 차를 계산한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 지정 입력의 함숫값을 직접 대입하고 차를 구한다."
+      },
+      "acceptedProposal": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 지정 입력의 함숫값을 직접 대입하고 차를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "함수식에 두 수를 대입한 함수값의 차를 계산한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_301bb8438f9c973866743ba14ada009b0ee70e1e04a1519eea1d7199e839f298",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "수직이동된 식에 점을 넣어 계수를 결정한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "알려진 수직이동량을 식에 반영한 뒤 한 점을 대입하여 기울기를 정한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "알려진 수직이동량을 식에 반영한 뒤 한 점을 대입하여 기울기를 정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "수직이동된 식에 점을 넣어 계수를 결정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_41c4348adf98ac7841e6bc461f816247cf4863cd80433721098177cb8d27131e",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "하",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기울기·두 절편 정의를 식에 적용하여 곱한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "authorDifficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "기울기와 두 절편의 표준 정의를 읽고 x절편의 짧은 일차식을 푼 뒤 곱한다."
+      },
+      "acceptedProposal": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "기울기와 두 절편의 표준 정의를 읽고 x절편의 짧은 일차식을 푼 뒤 곱한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "기울기·두 절편 정의를 식에 적용하여 곱한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "그림의 두 점으로 기울기와 식을 구한 뒤 x절편을 구한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 두 점으로 기울기와 절편을 복원한 뒤 x절편을 구하는 정형 절차다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 두 점으로 기울기와 절편을 복원한 뒤 x절편을 구하는 정형 절차다."
+      },
+      "decision": "ACCEPT",
+      "reason": "그림의 두 점으로 기울기와 식을 구한 뒤 x절편을 구한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_33473f4560750a37947daef5ca59356f03396e7da325408bb06e77a9f35b0f31",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "평행관계에서 기울기를 정하고 통과점을 대입한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행에서 기울기를 결정하고 한 점 통과를 대입하여 나머지 좌표를 구한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "평행에서 기울기를 결정하고 한 점 통과를 대입하여 나머지 좌표를 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "평행관계에서 기울기를 정하고 통과점을 대입한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_9c58658a15c462b85060acd0dba7c6153be1f99a3135474642750daa4fbf600f",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "기울기·절편·증가감소·사분면·평행을 여러 진술에서 점검한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차방정식을 기울기절편형으로 정리하여 절편,증감,사분면,평행을 표준 성질로 판정한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "일차방정식을 기울기절편형으로 정리하여 절편,증감,사분면,평행을 표준 성질로 판정한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "기울기·절편·증가감소·사분면·평행을 여러 진술에서 점검한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_53791eee47b44ce0cc1bef027574638afa6f7565c6d5c800c0893f5cb6e95635",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "연립 교점의 y좌표를 수평선 식으로 바꾼다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연립식에서 교점 y좌표를 구하면 수평선의 식이 곧 결정된다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "연립식에서 교점 y좌표를 구하면 수평선의 식이 곧 결정된다."
+      },
+      "decision": "ACCEPT",
+      "reason": "연립 교점의 y좌표를 수평선 식으로 바꾼다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_c45ffbe499795ed9a6823ef24b7099ef2b27331bb91b6d5d0c559a13b92b6b95",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "그림 교점을 두 방정식에 각각 대입해 계수를 정한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 공통점(3,2)을 읽고 두 식에 대입해 계수를 각각 복원한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "그림의 공통점(3,2)을 읽고 두 식에 대입해 계수를 각각 복원한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "그림 교점을 두 방정식에 각각 대입해 계수를 정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_d2cf6ad989b44be47e9c281a39879ed194c8894c7ea9566d1ca4611fb1e68401",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 직선의 교점과 x절편을 삼각형 밑변·높이에 연결한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 절편과 교점을 구하여 밑변·높이가 드러나는 삼각형 넓이 공식에 넣는다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 절편과 교점을 구하여 밑변·높이가 드러나는 삼각형 넓이 공식에 넣는다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "두 직선의 교점과 x절편을 삼각형 밑변·높이에 연결한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "상",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "교점 x좌표를 선분의 유한범위로 제한해 보기 계수 가능 여부를 판정한다.",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "authorDifficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "직선의 교점만으로는 부족하고 선분 구간4≤x≤8에 속하는지를 매개변수별로 제한하여 판정해야 한다."
+      },
+      "acceptedProposal": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "직선의 교점만으로는 부족하고 선분 구간4≤x≤8에 속하는지를 매개변수별로 제한하여 판정해야 한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "교점 x좌표를 선분의 유한범위로 제한해 보기 계수 가능 여부를 판정한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_50ad9d7ca3a5a9b9bb98771d205ff88250f1de608f14e123d0ea1d3d1e26f758",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "상",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "그림의 기울기·절편 부호를 변형계수에 적용해 사분면 통과 여부를 다시 판단한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "원 그래프의 기울기와 절편 부호에서 네 파생직선의 부호와 제2사분면 통과를 판정하는 정형 그래프 부호 문제다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "원 그래프의 기울기와 절편 부호에서 네 파생직선의 부호와 제2사분면 통과를 판정하는 정형 그래프 부호 문제다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "그림의 기울기·절편 부호를 변형계수에 적용해 사분면 통과 여부를 다시 판단한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_49e36e2eb2e7cacc9e0b24eeaccde9a71785ad38266d2b6130cff7e01dfeed3f",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "상",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "시차가 있는 두 그래프의 속력·교점을 모델링하고 질문한 사람의 경과시간으로 환산한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거리시간 그래프에서 두 속력을 읽어 출발시각 차가 반영된 한 일차식을 풀고 요구된 형의 경과시간으로 바꾼다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거리시간 그래프에서 두 속력을 읽어 출발시각 차가 반영된 한 일차식을 풀고 요구된 형의 경과시간으로 바꾼다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "시차가 있는 두 그래프의 속력·교점을 모델링하고 질문한 사람의 경과시간으로 환산한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_79a69763d1d56a2a5a9db07a6881e456fb8a8a6067e194c55a7ae6d3ac1fa1c0",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "주어진 해를 대입해 계수에 관한 연립방정식으로 바꾼다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해를 대입하면 두 미정계수의 표준 연립식이 생긴다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "주어진 해를 대입하면 두 미정계수의 표준 연립식이 생긴다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 해를 대입해 계수에 관한 연립방정식으로 바꾼다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_548c9d6ee9787f204e294b8c950430d5d8ff72aed29375d875d3a6174381b03c",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "reason": "주어진 두 그래프의 절편점을 구한 후 그 두 점을 잇는 식을 만든다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 축 위의 교점을 절편으로 읽고 두 점을 지나는 직선 식을 구한다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "각 축 위의 교점을 절편으로 읽고 두 점을 지나는 직선 식을 구한다."
+      },
+      "decision": "ACCEPT",
+      "reason": "주어진 두 그래프의 절편점을 구한 후 그 두 점을 잇는 식을 만든다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b24f83ce58820c087018e9b78f654a595164a79e4195c09e8ec8a079d9552ec6",
+      "independentDifficulty": {
+        "difficultyBucket": 2,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "그림의 수직선에서 y계수 소거와 x절편 값 조건을 사용한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "수직선에서는 y계수0임을 적용하고 x=3을 넣어 상수항을 정하는 짧은 표준 계수 문제다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "수직선에서는 y계수0임을 적용하고 x=3을 넣어 상수항을 정하는 짧은 표준 계수 문제다."
+      },
+      "decision": "ACCEPT",
+      "reason": "그림의 수직선에서 y계수 소거와 x절편 값 조건을 사용한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6d24de40d61c8689c8bd129af58e495cee463c88761d4d3e7e537b64af2a00d4",
+      "independentDifficulty": {
+        "difficultyBucket": 3,
+        "level": "중",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "속력으로 움직인 변 길이를 표현한 사다리꼴 넓이식을 만들고 목표넓이의 시각을 구한다.",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "authorDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "속력×시간으로 CP를 나타낸 뒤 사다리꼴 넓이 관계식을 만들고 주어진 넓이의 시간을 역으로 구하는 정형 두 소문항이다."
+      },
+      "acceptedProposal": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "속력×시간으로 CP를 나타낸 뒤 사다리꼴 넓이 관계식을 만들고 주어진 넓이의 시간을 역으로 구하는 정형 두 소문항이다."
+      },
+      "decision": "ACCEPT_ADJACENT_LEGACY_COMPATIBILITY",
+      "reason": "속력으로 움직인 변 길이를 표현한 사다리꼴 넓이식을 만들고 목표넓이의 시각을 구한다. 저자의 정형 절차 판단과 비교했고 한 단계 차이는 B23/B12 경계 내이다. 숫자·학습 level을 별도 판단하며 명확한 구조상 오판 근거가 없어 저자 제안을 수용한다."
+    }
+  ],
+  "acceptedFourSlotCandidate": {
+    "path": "/workspace/scratch/14c2c64e43fb/workers/B/E035.accepted-four-slot-candidate.json",
+    "sha256": "dc2739903a480bb5c3d6013ac02d536401882e266ffd180153f4d9f2c1ee1f42",
+    "basis": "Only author-accepted independent narrow exact-object/goal/method amendments for6,8,10,18,24; all literals and same-slot candidate parent checked."
+  },
+  "acceptedSupplements": [
+    {
+      "path": "/workspace/scratch/14c2c64e43fb/workers/B/E035.independent-semantic-supplement.json",
+      "sha256": "bc926e6fd5fcd9082ffcbda2c1c5352eab3b2a418e2a0dcdff1ea71d813ca4cb"
+    }
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "preservedDebts": [
+    "Q6 existing solution3/(2b) undefined atb0; original unchanged.",
+    "Exact RPM/registration/resolver gaps retained."
+  ],
+  "sourceChangesMade": false
+}
