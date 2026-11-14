@@ -1,0 +1,161 @@
+[
+  {
+    "ordinal": 5,
+    "questionUid": "qid_v1_b387917356c7533097b35dc5fee74cb1f16179f0d94156a1dfc861c82bfdc1a2",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형의 대각합과 외각 계산",
+    "definition": "내접사각형의 마주보는 내각합180° 및 외각의 보각 관계로 각을 계산한다.",
+    "distinction": "호·중심각 비를 직접 사용하지 않으며 여러 원의 각 관계를 연쇄하는 COMPOSITE보다 단일 대각합 성질이 결정 단계다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 6,
+    "questionUid": "qid_v1_3d749d5cddf8f2f01b67bbae6189e95c98f6aa73a4ee9ce4011e81b0db2a4a18",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형의 대각합과 외각 계산",
+    "definition": "대각의 합180°와 외각의 보각 관계를 직접 적용한다.",
+    "distinction": "E022Q5와 같은 결정 골격이며 계산할 각의 개수는 별도TPL 분리 근거가 아니다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 7,
+    "questionUid": "qid_v1_5c17c3b717e10f6e5782d619b477e3eaeefbb7ef3c33274bd7a2fab9c70b70f8",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형 연장선의 각 연립",
+    "definition": "두 외부 삼각형의 각을 내접사각형의 내각으로 바꾸어 대각합 조건과 연립한다.",
+    "distinction": "단일 대각합 대입과 달리 두 외부각 조건의 연립이 필요하다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 9,
+    "questionUid": "qid_v1_f72582b53b49658267ad2938552a4763ebea31fd42de713a0c8837cb183202bc",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "접현각 정리의 증명근거 판정",
+    "definition": "접점수직·반원의 원주각·같은 호의 원주각을 이용해 접현각 정리의 유도 각 관계를 검토한다.",
+    "distinction": "접현각 정리를 이미 성립한 정리로 바로 대입하는 기존TPL과 구분한다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 16,
+    "questionUid": "qid_v1_00171f1c311c9d8ce5c68ee9b69129bbcefb018371f497b15897592273e25427",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "편차합0의 직접 적용",
+    "definition": "편차합은0이라는 성질로 제시된 원자료의 합편차를 바로 결정한다.",
+    "distinction": "미지편차를 구한 후 표준편차까지 계산하는 기존TPL보다 목표가 편차합 자체다.",
+    "parent": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 17,
+    "questionUid": "qid_v1_9aedba234551d6781758f00168481a7cb7285af14dfb02b56ef00c428d3cd8be",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "평균 조건의 누락변량 복원 후 분산",
+    "definition": "평균이 알려진 원자료에서 한 누락값을 복원하고 편차제곱의 산술평균으로 분산을 계산한다.",
+    "distinction": "도수표 가중평균·미지편차합0·확률변수 기댓값 유형과 구별한다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "산포도"
+    ],
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 18,
+    "questionUid": "qid_v1_0db28b88ddabc0c8006df587c69277014f07c790183638c640027d978fe5529c",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "원자료의 표준편차 직접 계산",
+    "definition": "완전한 유한자료에서 평균·편차·분산을 차례로 계산하여 표준편차를 구한다.",
+    "distinction": "도수표 가중치나 미지편차 복원 및 확률변수 모델을 사용하지 않는 기본 원자료 계산이다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "산포도"
+    ],
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 19,
+    "questionUid": "qid_v1_c8a5a0685a57713a539a9148f01114c7ce302ccd776afcd15b7b8692c4f52cc6",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "일부 점 제외 후 산점도의 상관 읽기",
+    "definition": "지정된 점들을 제외한 산점도 분포에서 상관 방향 또는 뚜렷하지 않음을 판단한다.",
+    "distinction": "원자료의 대표값이나 좌표거리 계산과 구별되는 산점도 경향판정이다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "상자그림과 산점도"
+    ],
+    "searchedGlobalActive": true,
+    "nearestTemplates": [],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 20,
+    "questionUid": "qid_v1_6818ecc503cc66de9892475cba832e4dcc0fba8c63d6da94068ef43de739ecb1",
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 두 축 대소조건의 비율",
+    "definition": "두 축의 값을 비교하는 조건으로 점들을 집계하고 전체에 대한 백분율을 구한다.",
+    "distinction": "상관관계의 방향 판단과 달리 조건에 맞는 개수·비율이 목표다.",
+    "parent": [
+      "2022",
+      "M3-2",
+      "통계",
+      "상자그림과 산점도"
+    ],
+    "searchedGlobalActive": true,
+    "nearestTemplates": [],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  },
+  {
+    "ordinal": 21,
+    "questionUid": "qid_v1_9b9df4bbe6ff731a2054ad6b25b03c1a6380a05e49228b6aee12c124487af7f8",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "내접사각형 대각합의 원주각 증명",
+    "definition": "마주보는 두 각의 호가 원 전체임을 표시하고 원주각의 절반관계로 대각합180°를 유도한다.",
+    "distinction": "이미 알고 있는 대각합을 수치각 계산에 대입하는 골격과 구분한다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "searchedGlobalActive": true,
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC"
+    ],
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED"
+  }
+]

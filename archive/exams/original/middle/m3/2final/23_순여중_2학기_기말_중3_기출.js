@@ -32,7 +32,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q1-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q1-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 2,
@@ -65,7 +75,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q2-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q2-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 3,
@@ -98,7 +118,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q3-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q3-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 4,
@@ -132,7 +162,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q4-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q4-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 5,
@@ -165,7 +205,16 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q5-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q5-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 6,
@@ -198,7 +247,16 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q6-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q6-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B12",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 1
   },
   {
     "id": 7,
@@ -231,7 +289,16 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q7-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q7-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 8,
@@ -264,7 +331,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q8-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q8-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 9,
@@ -297,7 +374,16 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q9-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 10,
@@ -330,7 +416,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q10-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q10-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 11,
@@ -363,7 +459,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q11-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q11-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 12,
@@ -396,7 +502,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q12-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q12-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 13,
@@ -428,7 +544,17 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 14,
@@ -460,7 +586,17 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 15,
@@ -492,7 +628,17 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 16,
@@ -524,7 +670,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1
   },
   {
     "id": 17,
@@ -556,7 +711,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 18,
@@ -588,7 +751,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B12",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2
   },
   {
     "id": 19,
@@ -621,7 +792,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 20,
@@ -654,7 +833,15 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 21,
@@ -681,7 +868,16 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q21-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q21-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   },
   {
     "id": 22,
@@ -708,7 +904,17 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q22-solution.svg",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 23,
@@ -734,7 +940,17 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3
   },
   {
     "id": 24,
@@ -760,7 +976,17 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2
   }
 ];
 window.examTitle = "23_순여중_2학기_기말_중3_기출";
