@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E029",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "at": "2026-11-14T14:07:14.673203+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_연향중_1학기_중간_중3_기출.js",
+  "sourceBlob": "d0485a88f135af46b29485ed9174cc159e7a83ba",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E029.review.json",
+      "sha256": "1e223cbabd7cf490c7b306ecac296384c6ecb98c2dbcdf62b7daec04730772bf"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/0b1af1898334/workers/B/E029.4slot.json",
+      "sha256": "a52de927c9e33b44062b1edc22ff05581c3065ced4f3b497966dd1d893d43afe"
+    }
+  },
+  "sampledOrdinals": [
+    7,
+    8,
+    16
+  ],
+  "additionalChangedOrBoundaryOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "scope": "METADATA_ONLY; actual 21 question stems, choices and existing solutions read and compared with decisions/4slot; q7/8/16 original PNG directly viewed.",
+  "findings": [
+    {
+      "ordinal": 7,
+      "status": "PASS",
+      "note": "평행선과 닮음의 원본 배치 확인. 부분넓이비1:4를 전체1:5로 바꾸고 대응변비의 양의제곱근을 구하는2/B23 수용."
+    },
+    {
+      "ordinal": 8,
+      "status": "PASS_AFTER_REVISION",
+      "note": "원본 모눈의 A=(2,0),B=(3,2),두 수직선 교점 확인. 반지름→좌표 이후 여러 성질감사는005부모맥락+exact 복합감사gap이 적합. CC_CIRCLE_CIRCUMFERENCE 정본정의가둘레와넓이 모두를 포함함 확인."
+    },
+    {
+      "ordinal": 16,
+      "status": "PASS",
+      "note": "원본 계단 결손 도형의 치수를 읽고 바깥직사각형-결손직사각형+작은정사각형 구성과 양의 제곱근 target을 확인. 표준 면적합차와길이 연결3/B34 수용."
+    },
+    {
+      "ordinal": 17,
+      "status": "PASS_AFTER_REVISION",
+      "note": "해를 구하거나 존재 판정하지 않고 주어진 관계를x로나누어 x+1/x=5로 만든다. CC_QUADRATIC_EQUATION의 정확정의와 불일치하므로 제거/NONE 수용."
+    },
+    {
+      "ordinal": 6,
+      "status": "PASS_AFTER_REVISION",
+      "note": "정수인수쌍 열거로 가능한 계수값을 제한하는3/B34.028은부모맥락이며 exact조건열거gap 추가 확인."
+    },
+    {
+      "ordinal": 18,
+      "status": "PASS_AFTER_REVISION",
+      "note": "각1-1/n²를 두 연속 비로 분해하여 두 약분사슬로 전체곱을 재배열하는 구조선택으로4/B34 수용.026 부모맥락+정확연쇄곱gap 확인."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS",
+      "note": "√x=a+1에서 파생된 a≥-1과 명시범위를 반영한 완전제곱식 절댓값 제거를 기존해설에서 확인.3/B34 및 보조인수분해 수용."
+    },
+    {
+      "ordinal": 21,
+      "status": "PASS",
+      "note": "인수분해가 발문에서 지정되며 분자제곱차와 분모완전제곱식의 직접약분2/B23 적합."
+    }
+  ],
+  "additionalCheck": "q9 완전제곱식에는 무리수계수도 포함되어2/B23, q19 양수조건에서 공통√(3ab)를 만드는 표준연결3/B34 확인. 기본정의·근호연산 및 진술감사 q1~5,10~15의 sparse 슬롯과 난도는 실제 source와 일치. q15 기존해설의 인수정리식 대입 설명 교육과정 debt 보존.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
