@@ -1077,7 +1077,11 @@ window.questionBank = [
       "subConcept": "한 점에서 그은 두 접선",
       "conditionsUsed": "PA·PB·CE는 접선, AC=3, CE=8, PC=11.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 닿는 두 접선 PA와 PB가 점 P에서 만난다. C의 두 접선은 주황색 두 눈금이고, E의 두 접선은 초록색 세 눈금이다.",
+    "solutionImageCaption": "PA=PB=PC+CA=11+3=14이다. C에서 CA=CD=3이고 CE=8이므로 DE=5이다. E에서 DE=EB=5이므로 PE=PB−EB=14−5=9. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1233,7 +1237,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "정사각형 한 변 4, M/N은 AD/CD 중점, x=∠MBN.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형의 두 중점 M과 N, B에서 그은 같은 길이의 BM과 BN, 두 선 사이의 각 x가 표시된다.",
+    "solutionImageCaption": "정사각형에서 [BMN]=16−4−4−2=6이다. BM=BN=2√5이므로 6=½·BM·BN·sin x=10 sin x. 따라서 sin x=3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

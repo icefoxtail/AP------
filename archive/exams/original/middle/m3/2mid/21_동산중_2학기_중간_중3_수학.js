@@ -84,7 +84,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 y축 방향으로 이동한 포물선을 겹쳐 그리고, 주어진 점 P와 같은 x좌표의 원래 그래프 점 Q를 세로 선분으로 연결한다.",
+    "solutionImageCaption": "x=−2에서 원래 그래프의 y값은 −8이므로 이동량 q=−5−(−8)=3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -170,7 +174,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 포물선과 y축 방향으로 이동한 포물선을 함께 나타낸다. 같은 x좌표의 점 Q와 P를 잇고 두 꼭짓점 O와 V를 구별한다.",
+    "solutionImageCaption": "a=2−6=−4이고 이동한 꼭짓점은 (0,−4)이므로 a+b+c=−8이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -877,7 +885,11 @@ window.questionBank = [
       "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "RPM semantic classification is evidence-backed; exact M3 problem-type/template binding is missing in the active crosswalk and remains pending."
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 아래로 열린 포물선과 오른쪽 위로 옮긴 포물선을 함께 나타낸다. 이동한 그래프의 꼭짓점, x=3인 축, y절편을 표시한다.",
+    "solutionImageCaption": "완전제곱식은 −2(x−3)²+9이므로 원래 그래프에서 오른쪽 3, 위쪽 9만큼 이동한다. 왼쪽 3만큼 이동했다는 설명이 틀렸으므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1049,7 +1061,11 @@ window.questionBank = [
       "templateKey": null,
       "projectionStatus": "PROJECTION_UNMATERIALIZED",
       "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색과 주황색 포물선이 공통 꼭짓점 V(−2,6)을 갖고, 서로 다른 폭으로 아래로 열린다.",
+    "solutionImageCaption": "꼭짓점에서 p=−2, q=4이므로 p+q=2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1229,7 +1245,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각이등변삼각형에서 D는 AC의 중점이다. 두 주황 변 AD와 DC에 같은 눈금이 있고 직각삼각형 BCD의 각 x가 표시된다.",
+    "solutionImageCaption": "CD=AC/2=BC/2이므로 tan x=CD/BC=1/2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1590,7 +1610,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "CURRENT_M3_CROSSWALK_DIRECT_ACTIVE"
-    }
+    },
+    "solutionImage": "assets/images/21_동산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: C가 직각인 삼각형에서 각 B의 맞은편 변 AC=12cm와 이웃한 변 BC=8cm를 서로 다른 색으로 표시하고, 빗변 AB에는 길이를 쓰지 않는다.",
+    "solutionImageCaption": "tan B=AC/BC=3/2이므로 AC=12cm이다. 따라서 AB=√(12²+8²)=4√13cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

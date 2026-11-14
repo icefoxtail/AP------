@@ -76,7 +76,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "dcf7c61c425c5cbf104ee0161394266a85a55680"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: C에서 직각인 삼각형 ABC의 빗변 AB=4, BC=2√3, 계산된 AC=2를 서로 다른 색으로 구분했다.",
+    "solutionImageCaption": "AC=2이므로 sin B=AC/AB=1/2이다. 따라서 옳지 않은 식은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -152,7 +156,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "d9704178bcd1b495e4f255651295dfec98c86db0"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 B의 빗변 BC=2, 이웃변 AB=√3, 맞은편변 AC=1을 색으로 구분했다.",
+    "solutionImageCaption": "sin(90°−B)tan B=cos B·tan B=(√3/2)(√3/3)=1/2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -305,7 +313,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "5a820ea13ef738f3f578ae15d42bcb5653df3fd5"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: AC=8, BC=15, AB=17인 직각삼각형 ABC에 고도 CD를 그었다. x와 ∠B, y와 ∠A를 각각 같은 색으로 대응시켰다.",
+    "solutionImageCaption": "tan x=8/15, cos y=8/17이므로 tan x/cos y=17/15이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -533,7 +545,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "ba61b1faf9d63cf291c60063e55a8583cc3be972"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: D를 사이에 둔 두 직각삼각형에서 각 B는 45도, 각 C는 60도이다. 길이 3 cm인 두 변 AD, BD는 같은 파란 눈금으로 표시했다.",
+    "solutionImageCaption": "직각이등변삼각형 ABD에서 AD=BD=3 cm이다. 직각삼각형 ACD에서 CD=√3 cm이고 AC=2√3 cm이다. 따라서 AC−CD=√3 cm이며 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
