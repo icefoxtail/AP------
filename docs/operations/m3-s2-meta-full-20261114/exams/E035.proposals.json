@@ -1,0 +1,377 @@
+[
+  {
+    "id": "B-E035-REUSE-1",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "definition": "원에 내접하는 사각형의 대각의 합180도 또는 외각과 내대각이 같다는 관계로 미지각이나 각의 결합값을 정한다.",
+    "internalSkeleton": "대각 쌍을 정한다 → 보각식을 쓴다 → 목표 각 또는 결합값을 구한다.",
+    "distinguishFrom": {
+      "TPL_CIRCLE_ANGLE_COMPOSITE": "원주각·중심각 여러 관계의 연쇄 대신 내접사각형의 대각 관계 자체가 결정 원리다."
+    },
+    "supportOrdinals": [
+      3
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E005/proposals.json",
+    "reuseCandidateSha256": "eba4e8f73c8a7f8dc81c5c49e20c6e0df6f294f52cceb851209d76f7fde9235b",
+    "originalSupportingQuestionUids": [
+      "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354"
+    ],
+    "extensionRationale": "같은 대각 보각 정리의 두 번 직접 적용으로 기존 후보의 지원 UID만 추가한다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-REUSE-2",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_CIRCLE_INSCRIBED_ANGLE_PROPERTY_CLAIM_AUDIT",
+    "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "definition": "원주각·중심각·반원·현과 각의 관계 및 내접사각형의 각 성질에 관한 진술의 참·거짓을 판정한다.",
+    "internalSkeleton": "각 진술의 호·중심각·원주각 대응과 내접 조건을 확인하여 판정한다.",
+    "distinguishFrom": {
+      "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT": "기존은 중심·반지름·현·호·활꼴·부채꼴의 정의와 대응 성질을 다루며 내접사각형 및 원주각 성질 판정의 범위를 명시하지 않는다.",
+      "TPL_CIRCLE_ANGLE_COMPOSITE": "목표 미지각을 계산하는 연쇄가 아니라 여러 진술의 성질을 판정한다."
+    },
+    "supportOrdinals": [
+      4
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_d8042496d199fa6784bbb97ccf747ae3bdad1a2e39cef4fec8f15a211ada4f78"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "RPM crosswalk 연결",
+      "exact curriculum binding 확인"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E008/proposals.json",
+    "reuseCandidateSha256": "078c2cfa7d350f5e1ef2af3f190d900f1e23fc1b2d7205635b970b9ca73cfbf7",
+    "originalSupportingQuestionUids": [
+      "qid_v1_fa63ddc0250872df61a57391103e00aa7d897312bf38ad1c9d1cf2e280f769b0"
+    ],
+    "extensionRationale": "반원·중심각·원주각·호·현의 성질 진술 판정. 기존 후보 범위의 지원 UID다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원 내부 두 현의 교점각에서 호길이 합",
+    "definition": "원 내부에서 교차하는 두 현의 각과 마주 보는 두 호 각도합의 관계를 직접 적용해 호길이 합 또는 교점각을 구한다.",
+    "distinction": "기존 해설은 원주각·닮음 증명을 다시 전개하지 않는다. GLOBAL ACTIVE CHORD/INTERSECTION/ANGLE/교차현/두현각 검색에서 정확TPL을 찾지 못했다.",
+    "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+    "nearestTemplates": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE"
+    ],
+    "searchedGlobalActive": true,
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/a/E031/proposals.json",
+    "reuseCandidateSha256": "8abf836060fb7e7479b9e7459355efb45e0bd494563993b4b4241da6c992d915",
+    "originalSupportingQuestionUids": [
+      "qid_v1_6d897acd0b1fd2bee1ad47363707d4ea47e9dbe4395a467d484e4bfa6df3d4da"
+    ],
+    "supportOrdinals": [
+      6
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_3a9073f91f5ef8450cafaf089988a42ab860c4cfca9abf8e62d700b993439e9e"
+    ],
+    "id": "B-E035-REUSE-3",
+    "extensionRationale": "정확한 내부 교점각 직접 정리 골격의 지원 UID 추가. 원주각으로 두 호의 수치만 얻는 전처리가 복합각 leaf를 정당화하지 않는다.",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "원자료의 최빈값 직접 결정",
+    "reuseDefinition": "원자료의 값별 출현 횟수를 세어 최대 도수를 가진 변량을 선택한다.",
+    "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "distinguishingCriterion": "기존 TPL은 중앙값과 최빈값의 동시 계산이며 본 문항에는 중앙값 과정이 없다.",
+    "supportingQuestionUids": [
+      "qid_v1_9cd7dd179a11bcb1110b7d0b291824c92b0cfba2887950e15516865f5c81fa32"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E024/proposals.json",
+    "reuseCandidateSha256": "8e0bef1f853c82d4e4b69d11ed6d4a8aef28cb689cfd2713c30d70660ae3882d",
+    "originalSupportingQuestionUids": [
+      "qid_v1_608cb1a65899afb60195f59564e919e88776c5d47a02c55d962b073ffbfe805c"
+    ],
+    "supportOrdinals": [
+      12
+    ],
+    "id": "B-E035-REUSE-4",
+    "extensionRationale": "최빈값만 요구하는 원자료 직접 빈도 판정. 중앙값 병렬 산출은 없다.",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-REUSE-5",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_M3_DISPERSION_DEFINITION_CLAIM_AUDIT",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "definition": "대푯값·편차·분산·표준편차의 정의 및 평균 주위 집중 정도를 구별하여 진술의 참·거짓을 판정한다.",
+    "internalSkeleton": "용어별 정의를 기준으로 진술을 비교한다 → 제곱평균과 제곱근 및 대푯값의 역할을 구별한다.",
+    "distinguishFrom": {
+      "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE": "기존 TPL은 편차의 부호를 거꾸로 서술한 진술을 고르는 좁은 골격이다."
+    },
+    "supportOrdinals": [
+      13
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_b7986d6d2e6e4ced4c880a9990e90dd6870d8e229a4b1bffcd2b65f562f32cc3"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E005/proposals.json",
+    "reuseCandidateSha256": "eba4e8f73c8a7f8dc81c5c49e20c6e0df6f294f52cceb851209d76f7fde9235b",
+    "originalSupportingQuestionUids": [
+      "qid_v1_1b9b31386833098c7560a0b26855bdd0ebdf84c2af06cecb69abe7271d24c5e4"
+    ],
+    "extensionRationale": "편차 제곱평균과 표준편차의 구별이 틀린 진술이며 대푯값 기본 진술도 포함한다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-CENTRAL-TENDENCY-FREQUENCY-CLAIM",
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "도수 자료의 세 대푯값 수치 진술 판정",
+    "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "definition": "한 자료의 도수에서 평균·중앙값·최빈값을 산출하여 각 대푯값에 관한 수치 진술을 판정한다.",
+    "distinguishFrom": {
+      "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION": "세 대푯값의 결합값 계산과 달리 각 수치 진술의 참거짓이 목표다.",
+      "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON": "두 자료를 비교하지 않는다.",
+      "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS": "여러 집단의 꺾은선 해석이 아닌 한 도수 자료다."
+    },
+    "supportOrdinals": [
+      14
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_e1cf9a97232565aac869ad514848c7d0e4fd515ee1feddd8b7a382180d8e9ee9"
+    ],
+    "relatedProposal": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E006/proposals.json#index5",
+    "relatedProposalNote": "원자료 수치 진술 판정 제안과 등록 시 병합 범위를 검토한다. 본 지원에는 분산 계산이 없다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "주어진 평균과 표준편차로 자료 특성 판정",
+    "reuseDefinition": "여러 집단의 평균과 표준편차가 주어졌을 때 중심 크기와 고른 정도를 구분하여 비교 진술을 판단한다.",
+    "parentProblemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "distinguishingCriterion": "막대그래프 분포에서 산포도를 추론하는 부모와 달리 숫자로 주어진 통계량을 비교한다. 기존 편차부호오류 TPL보다 진술 범위가 넓다.",
+    "supportingQuestionUids": [
+      "qid_v1_219acb018cb1631e5987ac445cd5041b08412ee38ed8aeca26a0daa1c9ee25cd"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E036/proposals.json",
+    "reuseCandidateSha256": "f604e5a308cfbdb976cdfc5a937402cd18f5c946523947238202799848a29cc5",
+    "originalSupportingQuestionUids": [
+      "qid_v1_328bd81661f928cecddfbe977438e1edfe6f846797b7d95c44ea4a7ab4ed2436"
+    ],
+    "supportOrdinals": [
+      16
+    ],
+    "id": "B-E035-REUSE-7",
+    "extensionRationale": "여러 집단의 요약 평균·표준편차 및 편차합 진술을 그대로 읽는다.",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "NEW_TPL_PROPOSAL",
+    "nameKo": "변량 평행이동의 평균·분산",
+    "reuseDefinition": "모든 변량에 상수를 더할 때 평균의 이동과 편차 및 분산의 불변을 결정한다.",
+    "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "distinguishingCriterion": "기존 SCALED_DATA는 k배 변환을 명시하므로 더하기만 하는 변환은 별도 정확 골격으로 제안한다.",
+    "supportingQuestionUids": [
+      "qid_v1_3a35102fa73a44317d18ba014eb99aad36147ed14e0060f88141bbdafb66e512"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E006/proposals.json",
+    "reuseCandidateSha256": "523896f02abc140e8e3ae139d5cc177d41ad923bdb9c183e4655a9b3c979f92c",
+    "originalSupportingQuestionUids": [
+      "qid_v1_986b7a314c55656e4ed15b796b315e61e93ea23a59f75aea6fb039a36df65df2"
+    ],
+    "supportOrdinals": [
+      18
+    ],
+    "id": "B-E035-REUSE-8",
+    "extensionRationale": "전체 변량에 같은 상수를 빼는 분산 불변의 직접 적용이다.",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-REUSE-9",
+    "kind": "NEW_PT",
+    "proposedKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "parentProblemTypeKey": null,
+    "definition": "유한 자료의 평균·중앙값·분산·순서 조건에서 미지 변량 또는 합·제곱합을 추론하고 변경 자료의 통계량을 구한다.",
+    "internalSkeleton": "자료의 위치·합·편차제곱 조건을 수식화하여 결합한다.",
+    "distinguishFrom": {
+      "PT_M3_LINEAR_TRANSFORMATION_STATISTICS": "모든 변량에 같은 일차변환을 적용하는 문제가 아니다.",
+      "PT_M3_DISPERSION_DEVIATION_PROPERTIES": "편차합0으로 미지 편차를 하나 구하는 것보다 원자료의 합·제곱합 역추론이 중심이다.",
+      "PT_EXPECTATION_VARIANCE": "확률변수의 분포가 아닌 유한 자료 자체의 기술통계다."
+    },
+    "supportOrdinals": [
+      24
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_defcdab5726c3f28b195ce2a09a1f46b0ff1251295e51a8539a5b3e4ea0d065f"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E005/proposals.json",
+    "reuseCandidateSha256": "eba4e8f73c8a7f8dc81c5c49e20c6e0df6f294f52cceb851209d76f7fde9235b",
+    "originalSupportingQuestionUids": [
+      "qid_v1_96e32fa7c1227598b3c5ac89e77f636a1d7840843be2d850f7e3c7d779738442",
+      "qid_v1_dc4d05c35672e98f47cc6ac910b797d468991116831c9909e58f4a962c4fb68a"
+    ],
+    "extensionRationale": "미지 두 자료를 개별 복원하지 않고 합과 편차제곱합을 재사용하는 부모 후보.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-REUSE-10",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_STAT_CONSTRAINT_REPLACED_DATA_VARIANCE",
+    "parentProblemTypeKey": "PT_M3_STATISTICAL_CONSTRAINT_INFERENCE",
+    "definition": "기존 자료의 평균·분산에서 알려지지 않은 부분의 합과 제곱합을 복원하여 일부 변량이 교체된 새 자료의 분산을 구한다.",
+    "internalSkeleton": "기존 평균에서 합 → 기존 분산에서 제곱합 → 변경된 평균과 편차제곱합 → 새 분산",
+    "distinguishFrom": {
+      "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA": "자료 전체의 배율 변환이 아니라 일부 값 교체다."
+    },
+    "supportOrdinals": [
+      24
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_defcdab5726c3f28b195ce2a09a1f46b0ff1251295e51a8539a5b3e4ea0d065f"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E005/proposals.json",
+    "reuseCandidateSha256": "eba4e8f73c8a7f8dc81c5c49e20c6e0df6f294f52cceb851209d76f7fde9235b",
+    "originalSupportingQuestionUids": [
+      "qid_v1_96e32fa7c1227598b3c5ac89e77f636a1d7840843be2d850f7e3c7d779738442"
+    ],
+    "extensionRationale": "변하지 않은 부분의 편차제곱합에 교체값의 기여를 추가한다. 평균과 표준편차는 같은 골격의 부수 산출이다.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "id": "B-E035-REUSE-11",
+    "kind": "NEW_PT",
+    "proposedKey": "PT_M3_SCATTERPLOT_ANALYSIS",
+    "parentProblemTypeKey": null,
+    "definition": "두 변량의 산점도를 읽고 상관관계·좌표 조건·비율·순위·선택된 자료의 통계량을 해석한다.",
+    "internalSkeleton": "각 점을 한 관측값의 두 좌표로 읽어 관계·조건·순위를 분석한다.",
+    "distinguishFrom": {
+      "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS": "도수분포 꺾은선의 정점·중앙값 해석이 아니라 쌍자료 산점도다.",
+      "PT_SAMPLE_MEAN_DISTRIBUTION": "표본평균의 확률분포와 무관하다."
+    },
+    "supportOrdinals": [
+      25
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_2a49db073297691de555f05994aef60580f1069595bc3c6ab1f9204748b525a5"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "requiredChanges": [
+      "정식 registryChanges",
+      "지원문항 RPM 잎 crosswalk 연결",
+      "원본2015·현행2022 exact binding 검증"
+    ],
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/b/E005/proposals.json",
+    "reuseCandidateSha256": "eba4e8f73c8a7f8dc81c5c49e20c6e0df6f294f52cceb851209d76f7fde9235b",
+    "originalSupportingQuestionUids": [
+      "qid_v1_eb593dc168657bd4004b71a013cc6fb891ea024edb086baac278bd2f8133a1aa",
+      "qid_v1_9bd539b51506f85921472f24f0f34497d9a9aae0e7163a61e7861cdcce06f7d0",
+      "qid_v1_8841ceb6028b6fcf41602ea8c47e951bdca0a0db0b04c7a9403cbc21a46eac8a",
+      "qid_v1_50222e845c0b28ee4387d603ce408c09c54f20f449858ccc06ceb40f92da699f"
+    ],
+    "extensionRationale": "산점도 좌표 대소와 전체 추세를 읽는 기존 미등록 부모 후보.",
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "sourceNewStringKeyInserted": false
+  },
+  {
+    "type": "NEW_PT_TPL_PROPOSAL",
+    "nameKo": "산점도 좌표 비교와 상관 방향 판정",
+    "reuseDefinition": "가로·세로 좌표의 크기를 개별 점에서 비교하고 전체 분포의 증가·감소 경향으로 상관 방향을 판정한다.",
+    "distinguishingCriterion": "막대/꺾은선 그래프의 도수·산포 비교와 다르게 두 변량의 대응 점을 직접 읽는다.",
+    "parentScope": "M3-RPM-090 / M3-RPM-179",
+    "supportingQuestionUids": [
+      "qid_v1_2a49db073297691de555f05994aef60580f1069595bc3c6ab1f9204748b525a5"
+    ],
+    "globalActiveSearch": {
+      "searchedGlobalActive": true,
+      "registrySha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+      "exactFitFound": false
+    },
+    "registrationStatus": "PROPOSAL_ONLY_NOT_INSERTED",
+    "reuseCandidateFrom": "/workspace/scratch/9c9d44bb632b/worker-outputs/c/E006/proposals.json",
+    "reuseCandidateSha256": "523896f02abc140e8e3ae139d5cc177d41ad923bdb9c183e4655a9b3c979f92c",
+    "originalSupportingQuestionUids": [
+      "qid_v1_0ee5f580ccba2843c07ea6865ae53cfd189df4305ea6ccf02df6b98edee4758e"
+    ],
+    "supportOrdinals": [
+      25
+    ],
+    "id": "B-E035-REUSE-12",
+    "extensionRationale": "좌표 대소 집계의 백분율과 양의 상관을 함께 서술한다.",
+    "sourceNewStringKeyInserted": false
+  }
+]

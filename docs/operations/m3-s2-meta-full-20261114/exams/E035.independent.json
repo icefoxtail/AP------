@@ -1,0 +1,231 @@
+{
+  "examId": "E035",
+  "author": "b",
+  "reviewer": "c",
+  "rootTaskId": "1bd79c4f-817a-4748-9cff-4d17a9758c33",
+  "sourceBlob": "842552b13a694e66803b054c74369245740083e6",
+  "sourceRawSha256": "2455cd8a00b45e5568b440b1f9b4feab7365ede05c75200ebde49f38c3ca0e88",
+  "sourcePacketSha256": "5a3a617db517ca59d169c00ca02a34bd5014fd0586a8bcbba1c9ac7295a1d7a0",
+  "sampled4slotSha256": "39d85e11440415ac84f65a4a99476c259a0e7c61a83407da4e3593725f876172",
+  "sampledReviewSha256": "c80dbc10473a0eea2c4bd139078e7b101ec94c20e9e91d4f4dc90605175b55c1",
+  "sampledSourcePatchSha256": "ead696011be763dfcfb13600181aabd4f478c2394ca9f85347020523143b488f",
+  "schemaVersion": "archive-independent-meta-4slot-sample-v1",
+  "sampled": [
+    6,
+    15,
+    25
+  ],
+  "status": "PASS",
+  "criticalGoalMethodErrors": 0,
+  "fabricatedQuotes": 0,
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_3a9073f91f5ef8450cafaf089988a42ab860c4cfca9abf8e62d700b993439e9e",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_SOURCE_AND_SOLUTION_IMAGES",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본과 현행 해설 그림에서 원 안의 두 현 AC·BD 및 교점P, 주어진 원주각60°·50°를 확인했다. given의 원주각은 그림에 이미 주어졌고 method는 그 두 배인 호의 크기 뒤 교차현의 호합 절반 정리를 적용한다. 일반 각이라는 중복 용어 없이 목표각과 정리 후보를 구분한4칸을 수용한다. 현행2015/2022 원각 leaf 전체와 ACTIVE CENTER_ARC/COMPOSITE 정의를 읽고 E031 Q20의 기존 exact-gap 판정을 대조했다. 교차현 정리의 직접 적용에 맞는 exact leaf와 TPL 공백을 인접 복합각 leaf로 덮지 않는 판단이 타당하다. 후속 parent각 추가는 이미 읽은 내부교점각 정리 인용과 정확히 맞고 같은칸 후보-parent 결속을 보완한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9bb22d0b45e7349138cd817a8694dedddbe664a6282282af6dcec21311424604",
+      "sourceImageRead": true,
+      "solutionImageRead": false,
+      "visualStatus": "READ_CURRENT_SOURCE_IMAGE_NO_SOLUTION_IMAGE_PRESENT",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 6
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 이미지의 두 중앙값 조건(5개 자료의8,6개 자료의14)을 직접 읽었다. given 중앙값·변량, goal 미지수a의 범위, method 홀짝 중앙 위치와 두 부등식의 공통해가 실제 역할과 맞는다. 도출한 a의 범위를 새 조건에 넣지 않은 점도 적절하다. 기존 중앙값 조건복원 ACTIVE 정의의 자료 순서 점검 골격을 재사용하며2015 원본 분류와2022 중1 대푯값 대응을 분리한 판단을 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_2a49db073297691de555f05994aef60580f1069595bc3c6ab1f9204748b525a5",
+      "sourceImageRead": true,
+      "solutionImageRead": true,
+      "visualStatus": "READ_CURRENT_SOURCE_AND_SOLUTION_IMAGES",
+      "quoteCheck": {
+        "allExact": true,
+        "checked": 8
+      },
+      "given": "PASS",
+      "goal": "PASS",
+      "method": "PASS",
+      "condition": "PASS",
+      "independentReason": "원본 산점도와 실제 두 소문항을 읽었다. 첫 목표는 과학 성적이 더 높은 학생의 백분율이며 둘째는 상관 방향이다. source 그림에 과학>수학 제한이 명시되어 있으므로 condition 부등식과 COND_INEQUALITY_CONSTRAINT가 유효하다. y=x 아래의 점을 세는 좌표·직선 method, 전체 대비 상대도수, 전체 추세의 상관관계를 분리했다. 유효한 기존 예시와 새 제안을 구분하고 등록 전 임의 PT/TPL 키를 넣지 않은 판단도 수용한다.",
+      "status": "PASS",
+      "newMathematicalVerification": false
+    }
+  ],
+  "outstanding": [],
+  "scope": "Three independent metadata/4slot samples; no full-exam R1/R2/R3 certification",
+  "visualEvidence": [
+    "worker-outputs/b/E035/image-sheet-0.png",
+    "worker-outputs/b/E035/image-sheet-1.png",
+    "worker-outputs/b/E035/image-sheet-2.png",
+    "worker-outputs/b/E035/image-sheet-3.png",
+    "worker-outputs/b/E035/solutionImage-sheet-0.png",
+    "worker-outputs/b/E035/solutionImage-sheet-1.png",
+    "worker-outputs/b/E035/solutionImage-sheet-2.png"
+  ],
+  "assetByteChecks": [
+    {
+      "ordinal": 2,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q2.png",
+      "blob": "7ea360b442917afe49dd949766d0bd3ac6dd883c",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q6.png",
+      "blob": "38bd6a748c3e00f6c5e2722f3430831fa84276d3",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 9,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q9.png",
+      "blob": "45baf76befea66ee0ed2d8e870ed6ea4756dee42",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q10.png",
+      "blob": "a6672c479f9c29d9d56e971ba6e119bdce060452",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 11,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q11.png",
+      "blob": "4326c4457de052c055b8b85620d9cd38f885ac06",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 15,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q15.png",
+      "blob": "0728dd243a63472e938c02609d6e4611c6a6a2c6",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 20,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q20.png",
+      "blob": "4a3210b00817f6c80fbdc58cba7f0b340819d586",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 21,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q21.png",
+      "blob": "ad736bbaef2c45086932c40e64c99215c93737c0",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 25,
+      "field": "image",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q25.png",
+      "blob": "7d892006b80cd434ae9811c988b5b8ccf0f04472",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 2,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q2-solution.svg",
+      "blob": "e1823b95b0c3aa3597a680743500cd80454d27c5",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 6,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q6-solution-v2.svg",
+      "blob": "35070e3edf6574d05a33b619e50566d9cf7246a3",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 9,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q9-solution-v2.svg",
+      "blob": "93bd982bb704d8c24fc019125da944e965bfd4d4",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 10,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q10-solution-v2.svg",
+      "blob": "67de949fb5729ff481c6573c11f3bad62041e1c2",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 11,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q11-solution-v2.svg",
+      "blob": "07a8f3bd3f513d56d1c8bf489082dee20557bbff",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 20,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q20-solution-v2.svg",
+      "blob": "43fe3804d197248fd9f3e3b7578598d155b5af13",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 21,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q21-solution-v2.svg",
+      "blob": "47e4df8af618b7156339b72e8c83f9e874772262",
+      "bytesMatchCurrentBranch": true
+    },
+    {
+      "ordinal": 25,
+      "field": "solutionImage",
+      "path": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q25-solution.svg",
+      "blob": "aa7da501b8f6794332c3d4606dbf34d9acfe094f",
+      "bytesMatchCurrentBranch": true
+    }
+  ],
+  "definitionRefs": [
+    "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "docs/operations/m3-s2-meta-full-20261114/exams/E031.rpm-leaf-gap-adjudication.json"
+  ],
+  "finalBindingReview": {
+    "previousHashes": {
+      "sampled4slotSha256": "68225350ae8c9cfee4a0380114a72711ab7ddb0c016ab01701d30c4ed0eefff7",
+      "sampledReviewSha256": "ab9d01d5ef23fb744d842d88fda186f9dec5804f4ccf0bdab37fc730a358a0e6",
+      "sampledSourcePatchSha256": "ead696011be763dfcfb13600181aabd4f478c2394ca9f85347020523143b488f"
+    },
+    "status": "REBOUND_AFTER_CANDIDATE_PARENT_DELTA_REVIEW",
+    "changedScope": "Q6/Q10/Q21 method에 부모 각1개씩 추가, 해당 reasons.method의 상위일반각 제거라는 잘못된 설명을 부모결속 설명으로 정정, selfCheckquotes163→166. 이 delta를 역변환한 hash가 이전4slot과 정확일치한다. source-patch동일·난도판정동일.",
+    "amendmentRef": "worker-outputs/b/E035/candidate-parent-amendment.json",
+    "deltaOrdinals": [
+      6,
+      10,
+      21
+    ],
+    "allAddedQuotesExact": true,
+    "reverseDelta4slotSha256": "68225350ae8c9cfee4a0380114a72711ab7ddb0c016ab01701d30c4ed0eefff7"
+  }
+}

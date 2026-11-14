@@ -36,7 +36,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O 위의 점 A, B, P가 있고, 호 AB는 초록색으로 강조되어 있으며 이 호를 보는 원주각 ∠APB=26°는 주황색, 중심각 ∠AOB=x는 파란색으로 표시되어 있다.",
     "solutionImageCaption": "호 AB를 보는 중심각 ∠AOB는 같은 호를 보는 원주각 26°의 2배이다. 그러므로 x=2×26°=52°이다. 정답은 52°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -73,7 +80,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O에서 원주각 25°가 보는 호 AB는 파란색으로 길이 2cm, 원주각 50°가 보는 호 CD는 주황색으로 길이 x cm로 표시되어 있다.",
     "solutionImageCaption": "같은 원에서 호의 길이는 그 호를 보는 원주각의 크기에 비례한다. 원주각이 25°와 50°이므로 호의 길이의 비는 1:2이고 2:x=25:50이다. 정답은 x=4이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -106,11 +120,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "templateKey": "",
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 마주 보는 각 ∠B=120°는 파란색, ∠D=x는 주황색, 크기가 같은 ∠A=90°와 ∠C=y는 초록색으로 표시되어 있다.",
     "solutionImageCaption": "원에 내접하는 사각형에서 마주 보는 두 각의 합은 180°이다. ∠B와 ∠D가 짝이므로 x=180°−120°이고, ∠A와 ∠C가 짝이므로 y=180°−90°이다. 정답은 x=60°, y=90°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -140,7 +161,14 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -177,7 +205,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 접선 AT와 현 AB가 이루는 각 x는 파란색, 호 AB를 보는 원주각 ∠ACB=56°는 주황색으로 표시되어 있고 호 AB는 초록색으로 강조되어 있다.",
     "solutionImageCaption": "접선과 현이 이루는 각의 크기는 그 현이 만드는 호를 보는 원주각의 크기와 같다. 따라서 x는 ∠ACB와 같다. 정답은 56°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -211,10 +246,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q6-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "templateKey": "",
     "solutionImageAlt": "해설 그림: 원에서 두 현 AC와 BD가 점 P에서 만난다. ∠BAC=60°가 보는 호 BC는 파란색, ∠ACD=50°가 보는 호 AD는 주황색으로 강조되고 ∠APD=x는 초록색으로 표시되어 있다.",
     "solutionImageCaption": "∠BAC=60°가 보는 호 BC는 120°이고 ∠ACD=50°가 보는 호 AD는 100°이다. 두 현이 원 안에서 만날 때 생기는 ∠APD는 마주 보는 두 호의 크기의 합의 절반이다. 정답은 110°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -251,7 +293,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 원 위의 점 C가 있고, ∠CAB=40°와 ∠ACB의 직각 표시가 있다. 호 AC는 파란색으로 길이 15cm, 호 CB는 주황색으로 길이 x cm로 표시되어 있다.",
     "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이고 ∠ABC=50°이다. 호 AC와 호 CB의 크기는 각각 100°, 80°이므로 호의 길이의 비는 5:4이다. 15:x=5:4이므로 정답은 x=12이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -288,7 +337,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC에서 호 AB, BC, CA가 각각 파란색, 주황색, 초록색으로 구분되어 3, 4, 5로 표시되어 있고, 호 BC를 보는 ∠A=x가 주황색으로 표시되어 있다.",
     "solutionImageCaption": "호의 비가 3:4:5이므로 전체 360°를 12등분하면 호 BC는 360°×4/12=120°이다. ∠A는 호 BC를 보는 원주각이므로 120°의 절반이다. 정답은 60°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_RATIO_AND_PROPORTION"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -325,7 +381,14 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImageAlt": "해설 그림: 두 원이 공통인 현 PQ에서 만난다. 오른쪽 원의 ∠D=83°와 왼쪽 원의 ∠BQP는 파란색, ∠C=80°와 ∠APQ는 주황색, ∠PQC=97°와 ∠A=x는 초록색, ∠DPQ=100°와 ∠B=y는 분홍색으로 표시되어 있다.",
     "solutionImageCaption": "오른쪽 원의 내접사각형에서 ∠PQC=180°−83°=97°, ∠DPQ=180°−80°=100°이다. B, Q, C와 A, P, D가 각각 일직선이므로 ∠BQP=83°, ∠APQ=80°이다. 왼쪽 원의 내접사각형 APQB에서 x=180°−83°, y=180°−80°이다. 정답은 x+y=197°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_STRAIGHT_ANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 10,
@@ -362,7 +425,14 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImageAlt": "해설 그림: 반원에서 AB는 지름이고 두 현 AC와 BD가 점 P에서 만난다. ∠ABD=26°가 보는 호 AD와 같은 길이의 호 DC는 파란색, 호 CB는 주황색이며 ∠CPB=x는 초록색으로 표시되어 있다.",
     "solutionImageCaption": "∠ABD=26°이므로 호 AD=52°이고 호 CD=52°이다. 반원이 180°이므로 호 CB=180°−52°−52°=76°이다. ∠CPB는 마주 보는 두 호 CB와 AD의 합의 절반이다. 정답은 64°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -399,7 +469,14 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB와 현 AC, BC가 있다. ∠APB=30°는 분홍색, 작은 호 AB는 초록색, 호 AC는 파란색, 호 BC는 주황색으로 표시되고 호 AC를 보는 ∠ABC=x가 파란색으로 표시되어 있다.",
     "solutionImageCaption": "두 접선이 이루는 각이 30°이므로 작은 호 AB는 150°이고 큰 호 ACB는 210°이다. 호 AC:호 BC=1:2이므로 호 AC=70°, 호 BC=140°이다. ∠ABC는 호 AC를 보는 원주각이다. 정답은 35°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_RATIO_AND_PROPORTION"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 12,
@@ -427,7 +504,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -455,7 +541,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_MEDIAN","CC_MODE"],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -487,7 +582,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -516,7 +620,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": ["CC_LINEAR_INEQUALITIES"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 16,
@@ -547,7 +660,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -575,7 +697,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -603,7 +734,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -640,7 +780,14 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 육각형 ABCDEF의 여섯 호가 a, b, c, d, e, f로 표시되어 있고, ∠B는 파란색, ∠D는 주황색, ∠F는 초록색으로 표시되어 있다.",
     "solutionImageCaption": "여섯 호의 크기를 a, b, c, d, e, f라 하면 ∠B, ∠D, ∠F가 보는 호는 각각 c+d+e+f, a+b+e+f, a+b+c+d이다. 세 각의 합은 각 호를 두 번씩 포함하므로 2분의 1 곱하기 2(a+b+c+d+e+f)이다. 정답은 360°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -677,7 +824,14 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
     "solutionImageAlt": "해설 그림: 원 O의 지름 CB의 연장선과 점 A에서의 접선이 점 P에서 만난다. ∠CAT=θ와 접선과 현의 각 관계로 크기가 같은 ∠ABC=90°−θ/2는 파란색, AP=AC의 밑각 θ/2는 초록색, 지름에 대한 직각 ∠BAC는 주황색으로 표시되어 있다.",
     "solutionImageCaption": "∠CAT=θ라 하자. AP=AC이므로 ∠APC=∠ACP=θ/2이다. BC가 지름이므로 ∠BAC=90°이고 ∠ABC=90°−θ/2이다. 접선과 현의 성질로 ∠ABC=∠CAT이므로 θ=90°−θ/2이다. 정답은 60°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_STRAIGHT_ANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -714,7 +868,14 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD의 두 대각선 AC와 BD가 점 E에서 만난다. 호 BC=72°는 파란색, 호 AD=d는 주황색이고 호 AD를 보는 ∠ABE=d/2와 구하는 ∠ACD=x도 주황색, ∠AED=(d+72°)/2는 초록색으로 표시되어 있다.",
     "solutionImageCaption": "호 BC는 원 둘레의 5분의 1이므로 72°이다. 호 AD를 d라 하면 ∠ABE=d/2, ∠AED=(d+72°)/2이고 그림의 주황색 ∠ABE는 d/2이다. 조건 5∠ABE=3∠AED에서 d=108°이다. ∠ACD는 호 AD를 보는 원주각이다. 정답은 54°이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 22,
@@ -740,7 +901,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+    "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -765,7 +935,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -789,7 +968,16 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 25,
@@ -820,6 +1008,15 @@ window.questionBank = [
     "solutionImage": "assets/images/22_풍덕중_2학기_기말_중3_기출/q25-solution.svg",
     "solutionImageAlt": "해설 그림: 산점도에 y=x 점선이 있고, 과학 성적이 더 높은 점은 주황색, 수학 성적이 더 높은 점은 파란색으로 구분되며 오른쪽 위로 향하는 화살표가 있다.",
     "solutionImageCaption": "과학 성적이 수학 성적보다 높은 학생은 점이 y=x 선보다 아래에 있는 경우이고 주황색 점 9개이다. 전체 20명 중 9명이므로 20분의 9 곱하기 100은 45%이다. 점들이 오른쪽 위로 향하므로 양의 상관관계이다. 정답은 (1) 45%, (2) 양의 상관관계이다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": ["CC_PERCENTAGE_CALCULATION"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

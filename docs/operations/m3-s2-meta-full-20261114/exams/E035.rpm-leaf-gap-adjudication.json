@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "m3-s2-rpm-leaf-gap-adjudication-v1",
+  "examId": "E035",
+  "reviewer": "GPT_ROOT_6538DF266481",
+  "sourceGitBlobSha": "842552b13a694e66803b054c74369245740083e6",
+  "items": [
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_3a9073f91f5ef8450cafaf089988a42ab860c4cfca9abf8e62d700b993439e9e",
+      "status": "SEMANTIC_COMPLETE_PUBLISHER_LEAF_AND_NATIVE_TEMPLATE_GAP",
+      "method": "주어진 원주각60°와50°에서 마주 보는 호120°와100°를 얻고 원 내부 두 현의 교점각을 그 합의 절반110°로 정한다.",
+      "effectiveParentPath": [
+        "2022",
+        "M3-2",
+        "원의 성질",
+        "원주각의 활용"
+      ],
+      "activeProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "nativeTemplateKey": null,
+      "activeSearch": "GLOBAL ACTIVE 정의 및074~080/162~168과 선행 E031q20 직접 교차현 정리 공백 판정 비교. 주어진 원주각을 호의 각도로 정규화한 뒤 내부교점각=대응호합/2를 직접 적용하며, 남은 호를 추가 조건으로 복원하거나 여러 원각관계 경로를 선택하는 COMPOSITE와 구별한다. 새 유사후보를 중복 만들지 않고 E031의 후보에 지원UID를 추가한다.",
+      "canonicalSearch": [
+        "M3-RPM-074 through 080",
+        "M3-RPM-162 through 168"
+      ],
+      "reusedAdjudication": {
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E031.rpm-leaf-gap-adjudication.json",
+        "sha256": "16514433907607bf961b4d1e65634fedebf02e4749106e015e1f9292db07b828",
+        "ordinal": 20
+      },
+      "newNativeTemplateRequired": true,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "existingSolution",
+        "originalImage",
+        "GLOBAL_ACTIVE_definitions",
+        "existingAdjudication"
+      ],
+      "sourceCurriculumMustRemainUnchanged": true,
+      "newUnregisteredKeysAllowedInSource": false,
+      "newMathematicalVerification": false,
+      "nextOwner": "CODEX_RELEASE_OWNER",
+      "nextAction": "Reuse the E031 interior-chord-intersection-angle proposal, add this supporting UID, and resolve the exact publisher leaf and native template registration."
+    }
+  ]
+}
