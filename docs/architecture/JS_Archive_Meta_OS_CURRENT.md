@@ -253,3 +253,14 @@ node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage R1 --input arch
 | --- | --- | --- |
 | [DF] §20·21: 자동추천·자동출제는 `reviewed_pass`만 기본 허용, `UNKNOWN`·`manual_review` 사용 불가 | 기록된 정수 난이도는 상태와 무관하게 쓴다(문제지 만들기·빠른 평가·APMS 추천 모두, 엄격 경로를 따로 두지 않음). `UNKNOWN` 추정 금지와 level→bucket 환산 금지는 그대로 | 2026-10-29·2026-11-11 사용자 결정 ([UL], 0장) |
 | [RI] 410행 "임의 신규 key를 만들지 않는다" | 근거 SHA·등록기·Resolver를 거친 정식 요청의 신설은 허용. "임의"는 정식 요청 없이를 뜻한다 | [MD] 확장 원칙 (2026-11-02 사용자 결정) |
+
+## 부록. 받아 둔 값 등록부와 후보 칸 (2026-11-14, 사용자 승인)
+
+방향 원칙 6을 등록기에 옮긴 1단계다. 설계 근거: `.tmp/handoff/등록기-받고-나중에-묶기-설계안-20261114.md`.
+
+- **받아 둔 값 등록부** `archive/data/meta-os/received-values.json` (`archive-received-values-v1`). 추가만 되는 표다. 한 줄: `kind`(unit, subUnit, rpmPath, pt, tpl, cross, cond, term4), `value`, `label`, `parent`, `reason`, `firstExam`, `receivedAt`, `status`(UNGROUPED, GROUPED, WITHDRAWN). 줄은 지우지 않고 `WITHDRAWN`으로 표시한다. 봉인 문서·LOCKED 정본 표·4칸 사전·등록 영수증은 건드리지 않고, 등록기(`loadReceivedValues`)가 정본과 함께 읽기만 한다.
+- **받는 범위**: 유형을 정하지 못한 문항(typeHold)의 단원·소단원·조건·연결 개념 키가 정본 표에 없으면 등록부에 있는 값으로 통과시킨다. 등록부에도 없으면 이전처럼 거절한다. PT/TPL은 등록부에 두더라도 문항 행의 PT/TPL 칸에는 쓰지 않는다(Resolver 결과만).
+- **후보 칸** `fieldCandidates`: 시험지 JS 원본이나 이미 승인된 값이 본칸에 있고 판정이 그것과 다르면, 본칸은 그대로 두고 판정 값을 후보로 남긴다. 후보 값도 정본 또는 등록부에 있어야 하고(RPM 경로는 `major > mid > l3 > l4`), 통합 유형은 여섯 값이어야 한다. 후보는 REVIEW2에서만 받고, 기존 후보는 지우거나 바꾸지 않는다.
+- **원본의 빈 PT/TPL 칸**: REVIEW2에서 원본이 `null`/`""` 자리를 가지고 문항 행에 아직 PT/TPL이 없으면, Resolver가 정한 PT/TPL을 처음 등록하는 것과 어긋나지 않는 것으로 본다(원본은 고치지 않는다).
+- **소비자 검사**: typeHold 항목은 소비자가 아직 배정·값 열을 내보내지 않으므로 원본 지문 결속만 확인하고, 소비자가 빈 칸으로 내보내는 배정 관련 열은 불일치로 보지 않는다. 값이 있는데 다르면 여전히 거절한다.
+- **묶음 층은 이번 범위가 아니다.** 같은 뜻의 값을 묶는 묶음표와 화면 읽기는 3단계다.

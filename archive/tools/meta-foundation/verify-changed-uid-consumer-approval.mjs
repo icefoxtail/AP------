@@ -136,6 +136,10 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
       const unchanged = Object.keys(item.after).every(k => same(item.before?.[k], item.after[k])) && item.identityBefore === undefined;
+      // REVIEW2 type-hold item: the consumer deliberately publishes no assignment, PT/TPL or value columns for it yet (they stay in the
+      // registrar's own checks and, once grouped, in the output layer), so only the source binding is verified here. Any other item is unchanged.
+      if (item.typeHold === true && doc.approval?.type === "REVIEW2")
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint, unchanged, gated: false };
       return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
         gated: touchesAssignment(changedKeys(item.before, item.after)) };
     });
@@ -278,8 +282,11 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
-  if (Array.isArray(resolved.metadataConflicts) && resolved.metadataConflicts.length)
-    return { ...out, reason: "METADATA_CONFLICT", detail: resolved.metadataConflicts.join(",") };
+  // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
+  // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  if (blockingConflicts.length)
+    return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
   const reasons = resolved.canonicalAssignmentReasons;
   if (!Array.isArray(reasons) || reasons.length || evidence?.approvalStatus !== "APPROVED" || evidence?.reviewEvidence?.status !== "PASS") {
