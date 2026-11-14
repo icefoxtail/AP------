@@ -1686,12 +1686,9 @@
       },
       "reason": "두 둘레 주기로 같은 이동합의 위치를 각각 추적해 공통 꼭짓점이 되는 합만 선택한다.",
       "registrationDebt": [
-        "DEFINITION_REGISTRATION_PENDING",
         "OFFICIAL_RESOLVER_RECEIPT_REQUIRED"
       ],
-      "proposalRefs": [
-        "C-E012-CC-CYCLIC"
-      ],
+      "proposalRefs": [],
       "finalDifficulty": {
         "level": "상",
         "difficultyBucket": 4,
@@ -2229,26 +2226,6 @@
   ],
   "proposals": [
     {
-      "id": "C-E012-CC-CYCLIC",
-      "type": "CC",
-      "name": "순환경로의 이동량과 나머지",
-      "definition": "한 바퀴 길이를 주기로 누적 이동량의 나머지를 구하여 도착 위치를 결정하고 여러 경로의 공통 위치 조건을 비교한다.",
-      "parent": "NUMBER / GEOMETRY",
-      "discrimination": "현 CC_PERIODICITY는 반복함수, UNITS_DIGIT_PERIODICITY는 거듭제곱 일의자리, PARITY_MODULAR_ARITHMETIC은 홀짝과 제곱의 나머지에 한정되어 적용하지 않음.",
-      "checkedExisting": [
-        "CC_PERIODICITY",
-        "CC_UNITS_DIGIT_PERIODICITY",
-        "CC_PARITY_MODULAR_ARITHMETIC"
-      ],
-      "reuseProposal": "B-E008-CC-CYCLIC",
-      "ordinals": [
-        19
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_6b70295abd9e6160a7d5a1550397f110801d5d15c4d2ac9e2b4ef0823c54e7ef"
-      ]
-    },
-    {
       "id": "C-E012-LINK22",
       "type": "LINK_MISSING",
       "name": "상태별 전이확률 분기의 기존 ACTIVE 연결",
@@ -2300,6 +2277,7 @@
     "현행 TPL_CENTROID_REVERSE의 목표 제한을 재확인하여 순수 중선비→선분길이는 NEW_TPL 공백으로 교정. 기존 SOURCE 및 공식 Resolver 승인 여부를 변경하지 않음.",
     "ROOT 독립 검토: Q1·5 중/1 B12 medium 인접 난도 수용, Q10 표준 높이 닮음의 bucket2 수용.",
     "A 표본 및 ROOT의 COND_NONZERO 정의 확인에 따라 Q17 조건을 a-b≠0 대상으로 정밀화. 기존 일치 직선도 만남으로 세는 source 해석과 별도이며 수학 원문은 변경하지 않는다.",
-    "Q19의 순환 이동 신규 CC 제안을 철회하고 실제 ACTIVE CC_POLYGON_VERTEX_MOTION으로 수정. 앞선 검색의 누락을 후속 registry 재조회에서 발견했으며 ROOT에 즉시 통보했다."
+    "Q19의 순환 이동 신규 CC 제안을 철회하고 실제 ACTIVE CC_POLYGON_VERTEX_MOTION으로 수정. 앞선 검색의 누락을 후속 registry 재조회에서 발견했으며 ROOT에 즉시 통보했다.",
+    "후속 정정: 실제 로컬 제안ID C-E012-CC-CYCLIC도 proposalRefs/proposals에서 완전히 제거했다. ACTIVE 키 재사용만 남기며 신규등록 대기 수집에 포함하지 않는다."
   ]
 }
