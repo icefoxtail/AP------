@@ -268,7 +268,7 @@ def inside_contours(x, y, contours):
 
 
 # --- counts (the opt-in headcount labels of a Venn diagram) ---------------------------------------------------------------------------------
-VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle', 'labelGap', 'universeLabelOutside')
+VENN_KEYS = ('kind', 'sets', 'elements', 'shade', 'subset', 'disjoint', 'universe', 'countStyle', 'labelGap', 'showUniverse', 'universeLabelOutside')
 SET_KEYS = ('id', 'name', 'count', 'countUnit')
 UNIVERSE_KEYS = ('name', 'count', 'countUnit')
 COUNT_PATTERN = re.compile(r'^(0|[1-9][0-9]{0,3})$')
@@ -363,10 +363,42 @@ def audit_venn(plan, doc):
     ordered = [drawn[s] for s in sets if s in drawn]
     if len(ordered) != len(sets):
         return {'sets': len(sets), 'ellipses': len(ellipses)}
+    if 'showUniverse' in plan and not isinstance(plan['showUniverse'], bool):
+        fail('SD_SHOW_UNIVERSE_INVALID')
+    hide_universe = plan.get('showUniverse') is False
     universal = doc.role('rect', 'universal')
-    if len(universal) != 1:
-        fail('SD_UNIVERSAL_RECT')
-    rect = (num(universal[0], 'x'), num(universal[0], 'y'), num(universal[0], 'width'), num(universal[0], 'height'))
+    if hide_universe:
+        if 'universe' in plan or any(not element.get('in') for element in plan.get('elements', [])):
+            fail('SD_HIDDEN_UNIVERSE_DATA')
+        if any(node.get('data-role') == 'universal' or node.get('id') == 'universal' for node in doc.root.iter()):
+            doc.err('SD_UNIVERSAL_RECT_UNEXPECTED')
+        # Outline glyph internals can contain rectangles, but the Venn drawing can
+        # contain only its unstroked white background outside those labels.
+        glyph_rects = {node for label in doc.labels for node in label.iter(NS + 'rect')}
+        for node in doc.root.iter(NS + 'rect'):
+            if node not in glyph_rects and (node not in doc.root or node.get('fill') != '#fff'
+                                            or node.get('stroke') not in (None, 'none') or node.get('style')):
+                doc.err('SD_UNIVERSAL_RECT_UNEXPECTED')
+        rect = (0.0, 0.0, num(doc.root, 'width'), num(doc.root, 'height'))
+        try:
+            viewbox = tuple(map(float, doc.root.get('viewBox', '').split()))
+        except ValueError:
+            viewbox = ()
+        if rect[2] <= 0 or rect[3] <= 0 or viewbox != rect:
+            fail('SD_FRAMELESS_VENN_VIEWBOX')
+        for node in ellipses:
+            set_id = node.get('data-set')
+            ellipse = drawn[set_id]
+            if ellipse['rx'] <= 0 or ellipse['rx'] != ellipse['ry']:
+                doc.err('SD_SET_NOT_A_CIRCLE:' + set_id)
+                return {'sets': len(sets), 'ellipses': len(ellipses)}
+            if (node.get('stroke') != '#111' or num(node, 'stroke-width') <= 0 or node.get('fill') != 'none'
+                or any(node.get(key) is not None for key in ('display', 'visibility', 'opacity', 'stroke-opacity', 'style'))):
+                doc.err('SD_SET_OUTLINE_NOT_VISIBLE:' + set_id)
+    else:
+        if len(universal) != 1:
+            fail('SD_UNIVERSAL_RECT')
+        rect = (num(universal[0], 'x'), num(universal[0], 'y'), num(universal[0], 'width'), num(universal[0], 'height'))
     # G17: the drawn circles show what the plan says about the sets: every circle lies in the universal rectangle, each set of a subset chain (innermost
     # first) lies wholly inside the next one, and the two sets of a disjoint pair are drawn apart
     for set_id, ellipse in drawn.items():
@@ -390,10 +422,13 @@ def audit_venn(plan, doc):
     # universal-set label (with its headcount when the plan gives one)
     universal_labels = doc.label_role('universal-name')
     want_universal = 'n(%s)=%s' % (uni['name'], uni['count']) if uni['count'] is not None and style == 'n' else uni['name']
-    if len(universal_labels) != 1 or doc.shown_text(universal_labels[0]) != want_universal:
+    if hide_universe:
+        if universal_labels or any(label.get('data-owner') == 'universal' or doc.shown_text(label) == 'U' for label in doc.labels):
+            doc.err('SD_UNIVERSAL_LABEL_UNEXPECTED')
+    elif len(universal_labels) != 1 or doc.shown_text(universal_labels[0]) != want_universal:
         doc.err('SD_UNIVERSAL_LABEL')
     if 'universeLabelOutside' in plan:
-        if plan['universeLabelOutside'] is not True or 'universe' in plan:
+        if plan['universeLabelOutside'] is not True or 'universe' in plan or hide_universe:
             fail('SD_UNIVERSAL_LABEL_OUTSIDE_INVALID')
         if len(universal_labels) == 1:
             x, y, width, height = doc.label_box(universal_labels[0])
@@ -533,6 +568,8 @@ def audit_venn(plan, doc):
             doc.err('SD_SHADE_UNEXPECTED')
         return {'sets': len(sets), 'elements': len(plan.get('elements') or [])}
     fn = parse_expression(shade, sets)
+    if hide_universe and fn(0):
+        fail('SD_HIDDEN_UNIVERSE_OUTSIDE_SHADE')
     contours = []
     for path in shade_paths:
         if (path.get('fill') or '').lower() != SHADE_FILL:
@@ -549,6 +586,7 @@ def audit_venn(plan, doc):
         doc.err('SD_SHADE_MISSING')
         return {'sets': len(sets), 'elements': len(plan.get('elements') or [])}
     expected_total = actual_total = mismatch = 0
+    sampled_atoms = set()
     steps_x = int((rect[2] - 2 * BOUNDARY_CLEAR) / SAMPLE_STEP)
     steps_y = int((rect[3] - 2 * BOUNDARY_CLEAR) / SAMPLE_STEP)
     for j in range(steps_y + 1):
@@ -561,12 +599,15 @@ def audit_venn(plan, doc):
             for index, ellipse in enumerate(ordered):
                 if inside_ellipse(x, y, ellipse):
                     bits |= 1 << index
+            sampled_atoms.add(bits)
             want = bool(fn(bits))
             got = inside_contours(x, y, contours)
             expected_total += want
             actual_total += got
             if want != got:
                 mismatch += 1
+    if hide_universe and not (plan.get('subset') or plan.get('disjoint')) and len(sampled_atoms) != 1 << len(sets):
+        doc.err('SD_VENN_ATOM_GEOMETRY_MISSING')
     if expected_total == 0:
         doc.err('SD_SHADE_EMPTY')
     else:
