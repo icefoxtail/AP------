@@ -72,6 +72,8 @@ def _produce(plan):
     if plan.get('family')=='piecewise-discontinuous':return _produce_piecewise_discontinuous(plan,vp)
     if plan.get('family')=='multi-curve':return _produce_multi_curve(plan,vp)
     if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
+    if plan.get('overviewPolicy')=='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1':
+        return _produce_trig_axis_crossing_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':
         from graph_framing import pp_exact_float
@@ -299,6 +301,26 @@ def _produce(plan):
         region_fills,region_labels=_rational_region_parts(plan,vp)
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+curves+region_labels)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+def _produce_trig_axis_crossing_pair(plan,vp):
+    features=plan['trigAxisCrossingPairFeatures']
+    pi_x=features['xPi']
+    lo,hi=map(Fraction,features['windowPi'])
+    anchor=f'({pi_x})*pi'
+    parts=[];sampling=[]
+    for name,expression,shift in (
+            ('SIN',f'sin(x)-sin({anchor})',Fraction(1,2)),
+            ('NEGCOS',f'cos({anchor})-cos(x)',Fraction(0))):
+        critical=[float(at)*math.pi for at in (Fraction(pi_x),*(k+shift for k in range(math.ceil(lo-shift),math.floor(hi-shift)+1)))]
+        result=sample(expression,plan['domain'],vp,critical_x=critical)
+        sampling.append({'id':name,**{key:value for key,value in result.items() if key!='branches'}})
+        for index,branch in enumerate(result['branches']):
+            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in branch)
+            parts.append(f'<polyline id="{name}-{index}" data-role="curve" data-branch="REF_{name}" points="{points}" fill="none" stroke="black"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width}" height="{vp.height}" viewBox="0 0 {vp.width} {vp.height}">'+''.join(parts)+'</svg>'
+    return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(parts),
+            'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},
+            'transform':{**{key:value for key,value in vp.model().items() if key!='aspectPolicy'},'displayScale':1}}
 
 def _produce_exp_log_pair(plan,vp):
     """Two exp/log curves in one plane (optionally with the identity line y=x), each tagged with its curve id so the observer can bind every

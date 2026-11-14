@@ -4160,6 +4160,155 @@ def _trig_v2_tick_audit(plan,root,transform,expected):
         if not any(abs(float(line.get('data-value'))-float(multiple)*math.pi)<1e-9 for line in ticks if line.get('data-value') is not None):errors.append('TRIG_PI_TICK_PRIMITIVE_MISSING:'+str(multiple))
     return errors
 
+def _trig_pair_guides(root, transform, guides, ticks, low, high):
+    nodes=[node for node in root.iter() if node.get('data-role')=='guide']
+    if sorted(node.get('id','') for node in nodes)!=[f'trig-pair-guide-{i}' for i in range(len(guides))]:
+        return ['TRIG_AXIS_CROSSING_PAIR_GUIDE_INVENTORY']
+    span=high-low
+    errors=[]
+    for i,value in enumerate(guides):
+        node=next(node for node in nodes if node.get('id')==f'trig-pair-guide-{i}')
+        x=transform['originX']+transform['sx']*float(value)*math.pi
+        from_y=0 if value in ticks else low-.08*span
+        expected=(x,transform['originY']-transform['sy']*from_y,
+                  x,transform['originY']-transform['sy']*(high+.05*span))
+        coordinates=(float(node.get(key,'inf')) for key in ('x1','y1','x2','y2'))
+        if (node.tag.split('}')[-1]!='line' or node.get('stroke-dasharray')!='2 4'
+            or node.get('stroke')!='#8a8a8a' or
+            any(not abs(got-want)*transform['displayScale']<=.35 for got,want in zip(coordinates,expected))):
+            errors.append('TRIG_AXIS_CROSSING_PAIR_GUIDE_MISMATCH:'+str(value))
+    return errors
+
+def _trig_pair_labels(root,transform,ticks):
+    errors=_trig_v2_tick_audit({},root,transform,ticks)
+    all_ticks=[node for node in root.iter() if node.get('data-role')=='tick']
+    all_labels=[node for node in root.iter() if node.get('data-label-kind')]
+    tick_labels=[node for node in all_labels if node.get('data-label-kind')=='TICK_LABEL']
+    if (len(all_ticks)!=len(ticks) or len(tick_labels)!=len(ticks)
+        or any(node.get('data-axis')!='x' for node in all_ticks)):
+        errors.append('TRIG_AXIS_CROSSING_PAIR_TICK_INVENTORY')
+    for tick in all_ticks:
+        owners=[label for label in tick_labels if label.get('data-tick-owner')==tick.get('id')]
+        if len(owners)!=1 or owners[0].get('id')!=tick.get('data-required-label-id'):
+            errors.append('TRIG_AXIS_CROSSING_PAIR_TICK_OWNER')
+            continue
+        label=owners[0]
+        expected=transform['originX']+transform['sx']*float(Fraction(label.get('data-tick-pi-value')))*math.pi
+        if (any(not abs(float(tick.get(key,'inf'))-expected)*transform['displayScale']<=.35 for key in ('x1','x2'))
+            or not abs(float(tick.get('y1','inf'))-transform['originY'])*transform['displayScale']<=.35):
+            errors.append('TRIG_AXIS_CROSSING_PAIR_TICK_GEOMETRY')
+        text=label.get('data-tick-display-value','')
+        glyphs=_ov_glyph_codes(label)
+        expected_codes=_ov_label_codes(text)
+        if len(glyphs)!=len(expected_codes) or any(code not in allowed for code,allowed in zip(glyphs,expected_codes)):
+            errors.append('TRIG_AXIS_CROSSING_PAIR_TICK_GLYPH')
+    named=[node for node in all_labels if node.get('data-label-kind')!='TICK_LABEL']
+    if sorted(node.get('id','') for node in named)!=['axis-x','axis-y']:
+        errors.append('TRIG_AXIS_CROSSING_PAIR_LABEL_INVENTORY')
+    for node in named:
+        ident=node.get('id','')
+        if ident in ('axis-x','axis-y'):
+            glyphs=_ov_glyph_codes(node)
+            if len(glyphs)!=1 or glyphs[0] not in _ov_label_codes(ident[-1])[0]:
+                errors.append('TRIG_AXIS_CROSSING_PAIR_AXIS_TITLE')
+    for node in root:
+        if node.tag.split('}')[-1] in ('title','desc'):
+            text=''.join(node.itertext())
+            for label in sorted(map(_trig_pi_tick_text,ticks),key=len,reverse=True):
+                text=text.replace(label,' ')
+            if any(char.isnumeric() for char in text) or re.search(r'[=√]|\bsqrt\b',text,re.IGNORECASE):
+                errors.append('TRIG_AXIS_CROSSING_PAIR_ACCESSIBLE_ANSWER')
+    return errors
+
+def trig_axis_crossing_pair_audit(plan,svg,transform,model):
+    """Recover both functions from the shared zero and inspect their actual SVG paths."""
+    try:
+        if plan['sourceDomain']!={'kind':'ALL_REALS'} or plan['axisTickPi'] is not True:
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
+        request=plan['pairedAxisCrossing']
+        crossing=_piecewise_rational(request['xPi'],'TRIG_AXIS_CROSSING_PAIR_PI_INVALID')
+        lo,hi=(_piecewise_rational(value,'TRIG_AXIS_CROSSING_PAIR_PI_INVALID') for value in request['windowPi'])
+        ticks=[_piecewise_rational(value,'TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID') for value in plan['axisTickValues']['x']]
+        guides=[_piecewise_rational(value,'TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID') for value in request.get('guidesPi',[])]
+        if (not -2<=lo<0<hi<=4 or not lo<crossing<hi or not Fraction(1,2)<=hi-lo<=3
+            or not crossing-2<lo<hi<crossing+2 or max(v.denominator for v in (lo,hi,crossing,*ticks,*guides))>120):
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_WINDOW_INVALID')
+        if (plan['axisTickValues']['y']!=[] or not 1<=len(ticks)<=6 or crossing not in ticks or
+            len(set(ticks))!=len(ticks) or any(not (value and lo<value<hi) for value in ticks)):
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_TICKS_INVALID')
+        if len(guides)>8 or len(set(guides))!=len(guides) or any(not (value and lo<value<hi) for value in guides):
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_GUIDES_INVALID')
+        angle=S.pi*S.Rational(crossing.numerator,crossing.denominator)
+        exact_sin,exact_cos=S.sin(angle),S.cos(angle)
+        if exact_sin==0 or exact_cos==0 or S.simplify(exact_sin-exact_cos)==0:
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_NOT_TRANSVERSE')
+
+        offsets=(-float(exact_sin),float(exact_cos))
+        low,high=min(offsets)-1,max(offsets)+1
+        x0,x1=float(lo)*math.pi,float(hi)*math.pi
+        span=high-low
+        expected_view=[x0-.035*(x1-x0),x1+.035*(x1-x0),low-.27*span,high+.15*span]
+        if (plan['domain']!=[x0,x1] or any(abs(got-want)>1e-9 for got,want in zip(plan['viewport'],expected_view))
+            or len(plan['viewport'])!=4):
+            raise ValueError('TRIG_AXIS_CROSSING_PAIR_FRAME_MISMATCH')
+        if (set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(v) for v in transform.values())
+            or min(transform['sx'],transform['sy'],transform['displayScale'])<=0):
+            raise ValueError('INVALID_OBSERVED_TRANSFORM')
+        root=ET.fromstring(svg)
+        curve_nodes=[node for node in root.iter() if node.get('data-role')=='curve']
+        keys=['REF_SIN','REF_NEGCOS']
+        if sorted(node.get('data-branch','') for node in curve_nodes)!=sorted(keys):
+            return {'status':'FAIL','errors':['TRIG_AXIS_CROSSING_PAIR_CURVE_INVENTORY']}
+        scale=transform['displayScale']
+        sx,sy=transform['sx']*scale,transform['sy']*scale
+        proposed_x=float(angle)
+        errors=[]
+        counts=[]
+        for index,(key,offset,fn) in enumerate(zip(keys,offsets,(math.sin,lambda x:-math.cos(x)))):
+            node=next(node for node in curve_nodes if node.get('data-branch')==key)
+            paths,parse_errors=_observed_curve_branch_list(node,transform)
+            errors.extend(parse_errors)
+            if len(paths)!=1:
+                errors.append('TRIG_AXIS_CROSSING_PAIR_CURVE_INVALID:'+key)
+                continue
+            points=paths[0]
+            counts.append(len(points))
+            if not model:
+                expected=(('#111','3.2',None),('#111','1.7','6 4'))[index]
+                if tuple(node.get(attr) for attr in ('stroke','stroke-width','stroke-dasharray'))!=expected:
+                    errors.append('TRIG_AXIS_CROSSING_PAIR_CURVE_STYLE:'+key)
+            if max(abs(points[0][0]-x0),abs(points[-1][0]-x1))*sx>.35:
+                errors.append('TRIG_AXIS_CROSSING_PAIR_CURVE_RANGE:'+key)
+            if any(abs(y-(fn(x)+offset))*sy>.35 for x,y in points):
+                errors.append('TRIG_AXIS_CROSSING_PAIR_CURVE_VALUE:'+key)
+            if any(b[0]<=a[0] or (b[0]-a[0])**2*sy/8>.7 or
+                   abs((a[1]+b[1])/2-(fn((a[0]+b[0])/2)+offset))*sy>.35 for a,b in zip(points,points[1:])):
+                errors.append('TRIG_AXIS_CROSSING_PAIR_CURVE_CHORD:'+key)
+            at=min(range(len(points)),key=lambda i:abs(points[i][0]-proposed_x))
+            actual_x,actual_y=points[at]
+            if (max(abs(actual_x-proposed_x)*sx,abs(actual_y)*sy)>.35 or
+                not 0<at<len(points)-1 or points[at-1][1]*points[at+1][1]>=0):
+                errors.append('TRIG_AXIS_CROSSING_PAIR_ZERO_NOT_DRAWN:'+key)
+
+        if any(node.tag.split('}')[-1] in ('text','circle') or
+               node.get('data-role') not in (None,'curve','axis','tick','guide','leader') for node in root.iter()):
+            errors.append('TRIG_AXIS_CROSSING_PAIR_EXTRA_MARKUP')
+        if not model:
+            axes=[node for node in root.iter() if node.get('data-role')=='axis']
+            if sorted(node.get('data-axis','') for node in axes)!=['x','y']:
+                errors.append('TRIG_AXIS_CROSSING_PAIR_AXES')
+            for node in axes:
+                attr='y' if node.get('data-axis')=='x' else 'x'
+                target=transform['originY' if attr=='y' else 'originX']
+                if any(not abs(float(node.get(attr+end,'inf'))-target)*scale<=.35 for end in ('1','2')):
+                    errors.append('TRIG_AXIS_CROSSING_PAIR_AXES')
+            errors.extend(_trig_pair_guides(root,transform,guides,ticks,low,high))
+            errors.extend(_trig_pair_labels(root,transform,ticks))
+        return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),
+                'axisCrossingPi':str(crossing),'curvePoints':counts}
+    except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID']}
+
 def trigonometric_interval_v2_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
@@ -5211,6 +5360,8 @@ def _audit_family(plan,svg,transform,model=False):
     if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
         return exp_log_pair_overview_audit(plan,svg,transform)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1':
+            return trig_axis_crossing_pair_audit(plan,svg,transform,model)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
